@@ -4,12 +4,12 @@ SET NAMES 'utf8';
 
 DROP TABLE IF EXISTS blocktypenames;
 CREATE TABLE blocktypenames (
-    id int not null primary key auto_increment,
-    name varchar(100) unique
+    id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    name varchar(100) UNIQUE
 ) ENGINE=InnoDB;
 
-LOAD DATA LOCAL INFILE 'Xcos Categories - Xcos Blocks.csv'
-    INTO TABLE blocks
+LOAD DATA LOCAL INFILE 'Xcos Categories - Xcos Datatypes.csv'
+    INTO TABLE blocktypenames
     FIELDS TERMINATED BY ','
     OPTIONALLY ENCLOSED BY '"'
     LINES TERMINATED BY '\r\n'
@@ -18,8 +18,8 @@ LOAD DATA LOCAL INFILE 'Xcos Categories - Xcos Blocks.csv'
 
 DROP TABLE IF EXISTS blocks;
 CREATE TABLE blocks (
-    id int not null primary key auto_increment,
-    name varchar(50) unique,
+    id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    name varchar(100) UNIQUE,
     initial_explicit_input_ports int,
     initial_implicit_input_ports int,
     initial_explicit_output_ports int,
@@ -171,53 +171,382 @@ LOAD DATA LOCAL INFILE 'Xcos Categories - Xcos Blocks.csv'
     variable_explicit_output_ports, variable_implicit_output_ports,
     variable_control_ports, variable_command_ports,
     variable_display_parameter,
-    @tp000, @tp000typename,
-    @tp001, @tp001typename,
-    @tp002, @tp002typename,
-    @tp003, @tp003typename,
-    @tp004, @tp004typename,
-    @tp005, @tp005typename,
-    @tp006, @tp006typename,
-    @tp007, @tp007typename,
-    @tp008, @tp008typename,
-    @tp009, @tp009typename,
-    @tp010, @tp010typename,
-    @tp011, @tp011typename,
-    @tp012, @tp012typename,
-    @tp013, @tp013typename,
-    @tp014, @tp014typename,
-    @tp015, @tp015typename,
-    @tp016, @tp016typename,
-    @tp017, @tp017typename,
-    @tp018, @tp018typename,
-    @tp019, @tp019typename)
-    SET
-    p000 = NULLIF(@tp000, ''), p000typename = NULLIF(@tp000typename, ''),
-    p001 = NULLIF(@tp001, ''), p001typename = NULLIF(@tp001typename, ''),
-    p002 = NULLIF(@tp002, ''), p002typename = NULLIF(@tp002typename, ''),
-    p003 = NULLIF(@tp003, ''), p003typename = NULLIF(@tp003typename, ''),
-    p004 = NULLIF(@tp004, ''), p004typename = NULLIF(@tp004typename, ''),
-    p005 = NULLIF(@tp005, ''), p005typename = NULLIF(@tp005typename, ''),
-    p006 = NULLIF(@tp006, ''), p006typename = NULLIF(@tp006typename, ''),
-    p007 = NULLIF(@tp007, ''), p007typename = NULLIF(@tp007typename, ''),
-    p008 = NULLIF(@tp008, ''), p008typename = NULLIF(@tp008typename, ''),
-    p009 = NULLIF(@tp009, ''), p009typename = NULLIF(@tp009typename, ''),
-    p010 = NULLIF(@tp010, ''), p010typename = NULLIF(@tp010typename, ''),
-    p011 = NULLIF(@tp011, ''), p011typename = NULLIF(@tp011typename, ''),
-    p012 = NULLIF(@tp012, ''), p012typename = NULLIF(@tp012typename, ''),
-    p013 = NULLIF(@tp013, ''), p013typename = NULLIF(@tp013typename, ''),
-    p014 = NULLIF(@tp014, ''), p014typename = NULLIF(@tp014typename, ''),
-    p015 = NULLIF(@tp015, ''), p015typename = NULLIF(@tp015typename, ''),
-    p016 = NULLIF(@tp016, ''), p016typename = NULLIF(@tp016typename, ''),
-    p017 = NULLIF(@tp017, ''), p017typename = NULLIF(@tp017typename, ''),
-    p018 = NULLIF(@tp018, ''), p018typename = NULLIF(@tp018typename, ''),
-    p019 = NULLIF(@tp019, ''), p019typename = NULLIF(@tp019typename, '');
+    @tp000, p000typename,
+    @tp001, p001typename,
+    @tp002, p002typename,
+    @tp003, p003typename,
+    @tp004, p004typename,
+    @tp005, p005typename,
+    @tp006, p006typename,
+    @tp007, p007typename,
+    @tp008, p008typename,
+    @tp009, p009typename,
+    @tp010, p010typename,
+    @tp011, p011typename,
+    @tp012, p012typename,
+    @tp013, p013typename,
+    @tp014, p014typename,
+    @tp015, p015typename,
+    @tp016, p016typename,
+    @tp017, p017typename,
+    @tp018, p018typename,
+    @tp019, p019typename)
+    SET p000 = NULLIF(@tp000, ''),
+        p001 = NULLIF(@tp001, ''),
+        p002 = NULLIF(@tp002, ''),
+        p003 = NULLIF(@tp003, ''),
+        p004 = NULLIF(@tp004, ''),
+        p005 = NULLIF(@tp005, ''),
+        p006 = NULLIF(@tp006, ''),
+        p007 = NULLIF(@tp007, ''),
+        p008 = NULLIF(@tp008, ''),
+        p009 = NULLIF(@tp009, ''),
+        p010 = NULLIF(@tp010, ''),
+        p011 = NULLIF(@tp011, ''),
+        p012 = NULLIF(@tp012, ''),
+        p013 = NULLIF(@tp013, ''),
+        p014 = NULLIF(@tp014, ''),
+        p015 = NULLIF(@tp015, ''),
+        p016 = NULLIF(@tp016, ''),
+        p017 = NULLIF(@tp017, ''),
+        p018 = NULLIF(@tp018, ''),
+        p019 = NULLIF(@tp019, '');
+
+UPDATE blocks
+INNER JOIN blocktypenames ON p000typename = blocktypenames.name
+    SET p000typeid = blocktypenames.id;
+UPDATE blocks
+INNER JOIN blocktypenames ON p001typename = blocktypenames.name
+    SET p001typeid = blocktypenames.id;
+UPDATE blocks
+INNER JOIN blocktypenames ON p002typename = blocktypenames.name
+    SET p002typeid = blocktypenames.id;
+UPDATE blocks
+INNER JOIN blocktypenames ON p003typename = blocktypenames.name
+    SET p003typeid = blocktypenames.id;
+UPDATE blocks
+INNER JOIN blocktypenames ON p004typename = blocktypenames.name
+    SET p004typeid = blocktypenames.id;
+UPDATE blocks
+INNER JOIN blocktypenames ON p005typename = blocktypenames.name
+    SET p005typeid = blocktypenames.id;
+UPDATE blocks
+INNER JOIN blocktypenames ON p006typename = blocktypenames.name
+    SET p006typeid = blocktypenames.id;
+UPDATE blocks
+INNER JOIN blocktypenames ON p007typename = blocktypenames.name
+    SET p007typeid = blocktypenames.id;
+UPDATE blocks
+INNER JOIN blocktypenames ON p008typename = blocktypenames.name
+    SET p008typeid = blocktypenames.id;
+UPDATE blocks
+INNER JOIN blocktypenames ON p009typename = blocktypenames.name
+    SET p009typeid = blocktypenames.id;
+
+UPDATE blocks
+INNER JOIN blocktypenames ON p010typename = blocktypenames.name
+    SET p010typeid = blocktypenames.id;
+UPDATE blocks
+INNER JOIN blocktypenames ON p011typename = blocktypenames.name
+    SET p011typeid = blocktypenames.id;
+UPDATE blocks
+INNER JOIN blocktypenames ON p012typename = blocktypenames.name
+    SET p012typeid = blocktypenames.id;
+UPDATE blocks
+INNER JOIN blocktypenames ON p013typename = blocktypenames.name
+    SET p013typeid = blocktypenames.id;
+UPDATE blocks
+INNER JOIN blocktypenames ON p014typename = blocktypenames.name
+    SET p014typeid = blocktypenames.id;
+UPDATE blocks
+INNER JOIN blocktypenames ON p015typename = blocktypenames.name
+    SET p015typeid = blocktypenames.id;
+UPDATE blocks
+INNER JOIN blocktypenames ON p016typename = blocktypenames.name
+    SET p016typeid = blocktypenames.id;
+UPDATE blocks
+INNER JOIN blocktypenames ON p017typename = blocktypenames.name
+    SET p017typeid = blocktypenames.id;
+UPDATE blocks
+INNER JOIN blocktypenames ON p018typename = blocktypenames.name
+    SET p018typeid = blocktypenames.id;
+UPDATE blocks
+INNER JOIN blocktypenames ON p019typename = blocktypenames.name
+    SET p019typeid = blocktypenames.id;
+
+UPDATE blocks
+INNER JOIN blocktypenames ON p020typename = blocktypenames.name
+    SET p020typeid = blocktypenames.id;
+UPDATE blocks
+INNER JOIN blocktypenames ON p021typename = blocktypenames.name
+    SET p021typeid = blocktypenames.id;
+UPDATE blocks
+INNER JOIN blocktypenames ON p022typename = blocktypenames.name
+    SET p022typeid = blocktypenames.id;
+UPDATE blocks
+INNER JOIN blocktypenames ON p023typename = blocktypenames.name
+    SET p023typeid = blocktypenames.id;
+UPDATE blocks
+INNER JOIN blocktypenames ON p024typename = blocktypenames.name
+    SET p024typeid = blocktypenames.id;
+UPDATE blocks
+INNER JOIN blocktypenames ON p025typename = blocktypenames.name
+    SET p025typeid = blocktypenames.id;
+UPDATE blocks
+INNER JOIN blocktypenames ON p026typename = blocktypenames.name
+    SET p026typeid = blocktypenames.id;
+UPDATE blocks
+INNER JOIN blocktypenames ON p027typename = blocktypenames.name
+    SET p027typeid = blocktypenames.id;
+UPDATE blocks
+INNER JOIN blocktypenames ON p028typename = blocktypenames.name
+    SET p028typeid = blocktypenames.id;
+UPDATE blocks
+INNER JOIN blocktypenames ON p029typename = blocktypenames.name
+    SET p029typeid = blocktypenames.id;
+
+UPDATE blocks
+INNER JOIN blocktypenames ON p030typename = blocktypenames.name
+    SET p030typeid = blocktypenames.id;
+UPDATE blocks
+INNER JOIN blocktypenames ON p031typename = blocktypenames.name
+    SET p031typeid = blocktypenames.id;
+UPDATE blocks
+INNER JOIN blocktypenames ON p032typename = blocktypenames.name
+    SET p032typeid = blocktypenames.id;
+UPDATE blocks
+INNER JOIN blocktypenames ON p033typename = blocktypenames.name
+    SET p033typeid = blocktypenames.id;
+UPDATE blocks
+INNER JOIN blocktypenames ON p034typename = blocktypenames.name
+    SET p034typeid = blocktypenames.id;
+UPDATE blocks
+INNER JOIN blocktypenames ON p035typename = blocktypenames.name
+    SET p035typeid = blocktypenames.id;
+UPDATE blocks
+INNER JOIN blocktypenames ON p036typename = blocktypenames.name
+    SET p036typeid = blocktypenames.id;
+UPDATE blocks
+INNER JOIN blocktypenames ON p037typename = blocktypenames.name
+    SET p037typeid = blocktypenames.id;
+UPDATE blocks
+INNER JOIN blocktypenames ON p038typename = blocktypenames.name
+    SET p038typeid = blocktypenames.id;
+UPDATE blocks
+INNER JOIN blocktypenames ON p039typename = blocktypenames.name
+    SET p039typeid = blocktypenames.id;
+
+SELECT name, p000, p000typeid, p000typename
+FROM blocks
+    WHERE (p000 IS NULL AND p000typeid IS NOT NULL) OR (p000 IS NOT NULL AND p000typeid IS NULL)
+    LIMIT 3;
+SELECT name, p001, p001typeid, p001typename
+FROM blocks
+    WHERE (p001 IS NULL AND p001typeid IS NOT NULL) OR (p001 IS NOT NULL AND p001typeid IS NULL)
+    LIMIT 3;
+SELECT name, p002, p002typeid, p002typename
+FROM blocks
+    WHERE (p002 IS NULL AND p002typeid IS NOT NULL) OR (p002 IS NOT NULL AND p002typeid IS NULL)
+    LIMIT 3;
+SELECT name, p003, p003typeid, p003typename
+FROM blocks
+    WHERE (p003 IS NULL AND p003typeid IS NOT NULL) OR (p003 IS NOT NULL AND p003typeid IS NULL)
+    LIMIT 3;
+SELECT name, p004, p004typeid, p004typename
+FROM blocks
+    WHERE (p004 IS NULL AND p004typeid IS NOT NULL) OR (p004 IS NOT NULL AND p004typeid IS NULL)
+    LIMIT 3;
+SELECT name, p005, p005typeid, p005typename
+FROM blocks
+    WHERE (p005 IS NULL AND p005typeid IS NOT NULL) OR (p005 IS NOT NULL AND p005typeid IS NULL)
+    LIMIT 3;
+SELECT name, p006, p006typeid, p006typename
+FROM blocks
+    WHERE (p006 IS NULL AND p006typeid IS NOT NULL) OR (p006 IS NOT NULL AND p006typeid IS NULL)
+    LIMIT 3;
+SELECT name, p007, p007typeid, p007typename
+FROM blocks
+    WHERE (p007 IS NULL AND p007typeid IS NOT NULL) OR (p007 IS NOT NULL AND p007typeid IS NULL)
+    LIMIT 3;
+SELECT name, p008, p008typeid, p008typename
+FROM blocks
+    WHERE (p008 IS NULL AND p008typeid IS NOT NULL) OR (p008 IS NOT NULL AND p008typeid IS NULL)
+    LIMIT 3;
+SELECT name, p009, p009typeid, p009typename
+FROM blocks
+    WHERE (p009 IS NULL AND p009typeid IS NOT NULL) OR (p009 IS NOT NULL AND p009typeid IS NULL)
+    LIMIT 3;
+
+SELECT name, p010, p010typeid, p010typename
+FROM blocks
+    WHERE (p010 IS NULL AND p010typeid IS NOT NULL) OR (p010 IS NOT NULL AND p010typeid IS NULL)
+    LIMIT 3;
+SELECT name, p011, p011typeid, p011typename
+FROM blocks
+    WHERE (p011 IS NULL AND p011typeid IS NOT NULL) OR (p011 IS NOT NULL AND p011typeid IS NULL)
+    LIMIT 3;
+SELECT name, p012, p012typeid, p012typename
+FROM blocks
+    WHERE (p012 IS NULL AND p012typeid IS NOT NULL) OR (p012 IS NOT NULL AND p012typeid IS NULL)
+    LIMIT 3;
+SELECT name, p013, p013typeid, p013typename
+FROM blocks
+    WHERE (p013 IS NULL AND p013typeid IS NOT NULL) OR (p013 IS NOT NULL AND p013typeid IS NULL)
+    LIMIT 3;
+SELECT name, p014, p014typeid, p014typename
+FROM blocks
+    WHERE (p014 IS NULL AND p014typeid IS NOT NULL) OR (p014 IS NOT NULL AND p014typeid IS NULL)
+    LIMIT 3;
+SELECT name, p015, p015typeid, p015typename
+FROM blocks
+    WHERE (p015 IS NULL AND p015typeid IS NOT NULL) OR (p015 IS NOT NULL AND p015typeid IS NULL)
+    LIMIT 3;
+SELECT name, p016, p016typeid, p016typename
+FROM blocks
+    WHERE (p016 IS NULL AND p016typeid IS NOT NULL) OR (p016 IS NOT NULL AND p016typeid IS NULL)
+    LIMIT 3;
+SELECT name, p017, p017typeid, p017typename
+FROM blocks
+    WHERE (p017 IS NULL AND p017typeid IS NOT NULL) OR (p017 IS NOT NULL AND p017typeid IS NULL)
+    LIMIT 3;
+SELECT name, p018, p018typeid, p018typename
+FROM blocks
+    WHERE (p018 IS NULL AND p018typeid IS NOT NULL) OR (p018 IS NOT NULL AND p018typeid IS NULL)
+    LIMIT 3;
+SELECT name, p019, p019typeid, p019typename
+FROM blocks
+    WHERE (p019 IS NULL AND p019typeid IS NOT NULL) OR (p019 IS NOT NULL AND p009typeid IS NULL)
+    LIMIT 3;
+
+SELECT name, p020, p020typeid, p020typename
+FROM blocks
+    WHERE (p020 IS NULL AND p020typeid IS NOT NULL) OR (p020 IS NOT NULL AND p020typeid IS NULL)
+    LIMIT 3;
+SELECT name, p021, p021typeid, p021typename
+FROM blocks
+    WHERE (p021 IS NULL AND p021typeid IS NOT NULL) OR (p021 IS NOT NULL AND p021typeid IS NULL)
+    LIMIT 3;
+SELECT name, p022, p022typeid, p022typename
+FROM blocks
+    WHERE (p022 IS NULL AND p022typeid IS NOT NULL) OR (p022 IS NOT NULL AND p022typeid IS NULL)
+    LIMIT 3;
+SELECT name, p023, p023typeid, p023typename
+FROM blocks
+    WHERE (p023 IS NULL AND p023typeid IS NOT NULL) OR (p023 IS NOT NULL AND p023typeid IS NULL)
+    LIMIT 3;
+SELECT name, p024, p024typeid, p024typename
+FROM blocks
+    WHERE (p024 IS NULL AND p024typeid IS NOT NULL) OR (p024 IS NOT NULL AND p024typeid IS NULL)
+    LIMIT 3;
+SELECT name, p025, p025typeid, p025typename
+FROM blocks
+    WHERE (p025 IS NULL AND p025typeid IS NOT NULL) OR (p025 IS NOT NULL AND p025typeid IS NULL)
+    LIMIT 3;
+SELECT name, p026, p026typeid, p026typename
+FROM blocks
+    WHERE (p026 IS NULL AND p026typeid IS NOT NULL) OR (p026 IS NOT NULL AND p026typeid IS NULL)
+    LIMIT 3;
+SELECT name, p027, p027typeid, p027typename
+FROM blocks
+    WHERE (p027 IS NULL AND p027typeid IS NOT NULL) OR (p027 IS NOT NULL AND p027typeid IS NULL)
+    LIMIT 3;
+SELECT name, p028, p028typeid, p028typename
+FROM blocks
+    WHERE (p028 IS NULL AND p028typeid IS NOT NULL) OR (p028 IS NOT NULL AND p028typeid IS NULL)
+    LIMIT 3;
+SELECT name, p029, p029typeid, p029typename
+FROM blocks
+    WHERE (p029 IS NULL AND p029typeid IS NOT NULL) OR (p029 IS NOT NULL AND p029typeid IS NULL)
+    LIMIT 3;
+
+SELECT name, p030, p030typeid, p030typename
+FROM blocks
+    WHERE (p030 IS NULL AND p030typeid IS NOT NULL) OR (p030 IS NOT NULL AND p030typeid IS NULL)
+    LIMIT 3;
+SELECT name, p031, p031typeid, p031typename
+FROM blocks
+    WHERE (p031 IS NULL AND p031typeid IS NOT NULL) OR (p031 IS NOT NULL AND p031typeid IS NULL)
+    LIMIT 3;
+SELECT name, p032, p032typeid, p032typename
+FROM blocks
+    WHERE (p032 IS NULL AND p032typeid IS NOT NULL) OR (p032 IS NOT NULL AND p032typeid IS NULL)
+    LIMIT 3;
+SELECT name, p033, p033typeid, p033typename
+FROM blocks
+    WHERE (p033 IS NULL AND p033typeid IS NOT NULL) OR (p033 IS NOT NULL AND p033typeid IS NULL)
+    LIMIT 3;
+SELECT name, p034, p034typeid, p034typename
+FROM blocks
+    WHERE (p034 IS NULL AND p034typeid IS NOT NULL) OR (p034 IS NOT NULL AND p034typeid IS NULL)
+    LIMIT 3;
+SELECT name, p035, p035typeid, p035typename
+FROM blocks
+    WHERE (p035 IS NULL AND p035typeid IS NOT NULL) OR (p035 IS NOT NULL AND p035typeid IS NULL)
+    LIMIT 3;
+SELECT name, p036, p036typeid, p036typename
+FROM blocks
+    WHERE (p036 IS NULL AND p036typeid IS NOT NULL) OR (p036 IS NOT NULL AND p036typeid IS NULL)
+    LIMIT 3;
+SELECT name, p037, p037typeid, p037typename
+FROM blocks
+    WHERE (p037 IS NULL AND p037typeid IS NOT NULL) OR (p037 IS NOT NULL AND p037typeid IS NULL)
+    LIMIT 3;
+SELECT name, p038, p038typeid, p038typename
+FROM blocks
+    WHERE (p038 IS NULL AND p038typeid IS NOT NULL) OR (p038 IS NOT NULL AND p038typeid IS NULL)
+    LIMIT 3;
+SELECT name, p039, p039typeid, p039typename
+FROM blocks
+    WHERE (p039 IS NULL AND p039typeid IS NOT NULL) OR (p039 IS NOT NULL AND p039typeid IS NULL)
+    LIMIT 3;
+
+ALTER TABLE blocks
+    DROP COLUMN p000typename,
+    DROP COLUMN p001typename,
+    DROP COLUMN p002typename,
+    DROP COLUMN p003typename,
+    DROP COLUMN p004typename,
+    DROP COLUMN p005typename,
+    DROP COLUMN p006typename,
+    DROP COLUMN p007typename,
+    DROP COLUMN p008typename,
+    DROP COLUMN p009typename,
+    DROP COLUMN p010typename,
+    DROP COLUMN p011typename,
+    DROP COLUMN p012typename,
+    DROP COLUMN p013typename,
+    DROP COLUMN p014typename,
+    DROP COLUMN p015typename,
+    DROP COLUMN p016typename,
+    DROP COLUMN p017typename,
+    DROP COLUMN p018typename,
+    DROP COLUMN p019typename,
+    DROP COLUMN p020typename,
+    DROP COLUMN p021typename,
+    DROP COLUMN p022typename,
+    DROP COLUMN p023typename,
+    DROP COLUMN p024typename,
+    DROP COLUMN p025typename,
+    DROP COLUMN p026typename,
+    DROP COLUMN p027typename,
+    DROP COLUMN p028typename,
+    DROP COLUMN p029typename,
+    DROP COLUMN p030typename,
+    DROP COLUMN p031typename,
+    DROP COLUMN p032typename,
+    DROP COLUMN p033typename,
+    DROP COLUMN p034typename,
+    DROP COLUMN p035typename,
+    DROP COLUMN p036typename,
+    DROP COLUMN p037typename,
+    DROP COLUMN p038typename,
+    DROP COLUMN p039typename;
 
 DROP TABLE IF EXISTS categories;
 CREATE TABLE categories (
-    id int not null primary key auto_increment,
-    name varchar(100) unique,
-    sort_order int not null
+    id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    name varchar(100) UNIQUE,
+    sort_order int NOT NULL
 ) ENGINE=InnoDB;
 
 LOAD DATA LOCAL INFILE 'Xcos Categories - Xcos Categories.csv'
@@ -230,11 +559,11 @@ LOAD DATA LOCAL INFILE 'Xcos Categories - Xcos Categories.csv'
 
 DROP TABLE IF EXISTS blockcategories;
 CREATE TABLE blockcategories (
-    id int not null primary key auto_increment,
+    id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
     categoryid int,
     categoryname varchar(100),
     blockid int,
-    blockname varchar(50),
+    blockname varchar(100),
     CONSTRAINT categoryblock UNIQUE(categoryid, blockid)
 ) ENGINE=InnoDB;
 
@@ -249,12 +578,11 @@ LOAD DATA LOCAL INFILE 'Xcos Categories - Categories and Blocks.csv'
 UPDATE blockcategories
 INNER JOIN categories ON categoryname = categories.name
 INNER JOIN blocks ON blockname = blocks.name
-SET
-categoryid = categories.id,
-blockid = blocks.id;
+    SET categoryid = categories.id,
+        blockid = blocks.id;
 
 ALTER TABLE blockcategories
-MODIFY COLUMN categoryid int NOT NULL,
-DROP COLUMN categoryname,
-MODIFY COLUMN blockid int NOT NULL,
-DROP COLUMN blockname;
+    MODIFY COLUMN categoryid int NOT NULL,
+    DROP COLUMN categoryname,
+    MODIFY COLUMN blockid int NOT NULL,
+    DROP COLUMN blockname;
