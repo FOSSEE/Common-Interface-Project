@@ -1,0 +1,268 @@
+Category,Block
+Commonly Used Blocks,ANDBLK
+Commonly Used Blocks,BIGSOM_f
+Commonly Used Blocks,CMSCOPE
+Commonly Used Blocks,CONST_m
+Commonly Used Blocks,CONVERT
+Commonly Used Blocks,CSCOPXY
+Commonly Used Blocks,DEMUX
+Commonly Used Blocks,DOLLAR_f
+Commonly Used Blocks,IN_f
+Commonly Used Blocks,INTEGRAL_f
+Commonly Used Blocks,LOGICAL_OP
+Commonly Used Blocks,MUX
+Commonly Used Blocks,NRMSOM_f
+Commonly Used Blocks,OUT_f
+Commonly Used Blocks,PRODUCT
+Commonly Used Blocks,RELATIONALOP
+Commonly Used Blocks,SATURATION
+Commonly Used Blocks,SWITCH2_m
+Commonly Used Blocks,TEXT_f
+Continuous time systems,CLINDUMMY_f
+Continuous time systems,CLR
+Continuous time systems,CLSS
+Continuous time systems,DERIV
+Continuous time systems,INTEGRAL_f
+Continuous time systems,INTEGRAL_m
+Continuous time systems,PDE
+Continuous time systems,PID
+Continuous time systems,TCLSS
+Continuous time systems,TIME_DELAY
+Continuous time systems,VARIABLE_DELAY
+Discontinuities,BACKLASH
+Discontinuities,DEADBAND
+Discontinuities,DELAYV_f
+Discontinuities,HYSTHERESIS
+Discontinuities,QUANT_f
+Discontinuities,RATELIMITER
+Discontinuities,SATURATION
+Discrete time systems,AUTOMAT
+Discrete time systems,DELAY_f
+Discrete time systems,DELAYV_f
+Discrete time systems,DLR
+Discrete time systems,DLRADAPT_f
+Discrete time systems,DLSS
+Discrete time systems,DOLLAR
+Discrete time systems,DOLLAR_f
+Discrete time systems,DOLLAR_m
+Discrete time systems,REGISTER
+Discrete time systems,SAMPHOLD_m
+Discrete time systems,TCLSS
+Lookup tables,INTRP2BLK_f
+Lookup tables,INTRPLBLK_f
+Lookup tables,LOOKUP_f
+Event handling,ANDBLK
+Event handling,ANDLOG_f
+Event handling,CEVENTSCOPE
+Event handling,CLKFROM
+Event handling,CLKGOTO
+Event handling,CLKGotoTagVisibility
+Event handling,CLKOUTV_f
+Event handling,CLKSOMV_f
+Event handling,CLOCK_c
+Event handling,EDGE_TRIGGER
+Event handling,END_c
+Event handling,ENDBLK
+Event handling,ESELECT_f
+Event handling,EVTDLY_c
+Event handling,EVTGEN_f
+Event handling,EVTVARDLY
+Event handling,Extract_Activation
+Event handling,freq_div
+Event handling,HALT_f
+Event handling,IFTHEL_f
+Event handling,M_freq
+Event handling,MCLOCK_f
+Event handling,MFCLCK_f
+Event handling,SampleCLK
+Event handling,VirtualCLK0
+Mathematical Operations,ABS_VALUE
+Mathematical Operations,BIGSOM_f
+Mathematical Operations,COSBLK_f
+Mathematical Operations,EXPBLK_m
+Mathematical Operations,GAIN_f
+Mathematical Operations,GAINBLK
+Mathematical Operations,GAINBLK_f
+Mathematical Operations,INVBLK
+Mathematical Operations,LOGBLK_f
+Mathematical Operations,MATMAGPHI
+Mathematical Operations,MATZREIM
+Mathematical Operations,MAX_f
+Mathematical Operations,MAXMIN
+Mathematical Operations,MIN_f
+Mathematical Operations,POWBLK_f
+Mathematical Operations,PROD_f
+Mathematical Operations,PRODUCT
+Mathematical Operations,SIGNUM
+Mathematical Operations,SINBLK_f
+Mathematical Operations,SOM_f
+Mathematical Operations,SQRT
+Mathematical Operations,SUM_f
+Mathematical Operations,SUMMATION
+Mathematical Operations,TANBLK_f
+Mathematical Operations,TrigFun
+Matrix,CUMSUM
+Matrix,EXTRACT
+Matrix,EXTTRI
+Matrix,MATBKSL
+Matrix,MATCATH
+Matrix,MATCATV
+Matrix,MATDET
+Matrix,MATDIAG
+Matrix,MATDIV
+Matrix,MATEIG
+Matrix,MATEXPM
+Matrix,MATINV
+Matrix,MATLU
+Matrix,MATMAGPHI
+Matrix,MATMUL
+Matrix,MATPINV
+Matrix,MATRESH
+Matrix,MATSING
+Matrix,MATSUM
+Matrix,MATTRAN
+Matrix,MATZCONJ
+Matrix,MATZREIM
+Matrix,RICC
+Matrix,ROOTCOEF
+Matrix,SQRT
+Matrix,SUBMAT
+Electrical,Capacitor
+Electrical,CCS
+Electrical,ConstantVoltage
+Electrical,CurrentSensor
+Electrical,CVS
+Electrical,Diode
+Electrical,Ground
+Electrical,Gyrator
+Electrical,IdealTransformer
+Electrical,Inductor
+Electrical,NMOS
+Electrical,NPN
+Electrical,OpAmp
+Electrical,PMOS
+Electrical,PNP
+Electrical,PotentialSensor
+Electrical,Resistor
+Electrical,SineVoltage
+Electrical,Switch
+Electrical,VariableResistor
+Electrical,VoltageSensor
+Electrical,VsourceAC
+Electrical,VVsourceAC
+Integer,BITCLEAR
+Integer,BITSET
+Integer,CONVERT
+Integer,DFLIPFLOP
+Integer,DLATCH
+Integer,EXTRACTBITS
+Integer,INTMUL
+Integer,JKFLIPFLOP
+Integer,LOGIC
+Integer,SHIFT
+Integer,SRFLIPFLOP
+Port & Subsystem,CLKINV_f
+Port & Subsystem,CLKOUTV_f
+Port & Subsystem,IN_f
+Port & Subsystem,INIMPL_f
+Port & Subsystem,OUT_f
+Port & Subsystem,OUTIMPL_f
+Port & Subsystem,SUPER_f
+Zero crossing detection,GENERAL_f
+Zero crossing detection,NEGTOPOS_f
+Zero crossing detection,POSTONEG_f
+Zero crossing detection,ZCROSS_f
+Signal Routing,CLKFROM
+Signal Routing,CLKGOTO
+Signal Routing,DEMUX
+Signal Routing,DEMUX_f
+Signal Routing,EXTRACTOR
+Signal Routing,FROM
+Signal Routing,FROMMO
+Signal Routing,GOTO
+Signal Routing,GOTOMO
+Signal Routing,GotoTagVisibility
+Signal Routing,GotoTagVisibilityMO
+Signal Routing,ISELECT_m
+Signal Routing,M_SWITCH
+Signal Routing,MUX
+Signal Routing,MUX_f
+Signal Routing,NRMSOM_f
+Signal Routing,RELAY_f
+Signal Routing,SCALAR2VECTOR
+Signal Routing,SELECT_m
+Signal Routing,SELF_SWITCH
+Signal Routing,SWITCH_f
+Signal Routing,SWITCH2_m
+Signal Processing,QUANT_f
+Signal Processing,SAMPHOLD_m
+Implicit,CONSTRAINT_c
+Implicit,CONSTRAINT2_c
+Implicit,DIFF_f
+Annotations,TEXT_f
+Sinks,AFFICH_m
+Sinks,BARXY
+Sinks,CANIMXY
+Sinks,CANIMXY3D
+Sinks,CFSCOPE
+Sinks,CLKOUTV_f
+Sinks,CMAT3D
+Sinks,CMATVIEW
+Sinks,CMSCOPE
+Sinks,CSCOPE
+Sinks,CSCOPXY
+Sinks,CSCOPXY3D
+Sinks,END_c
+Sinks,ENDBLK
+Sinks,HALT_f
+Sinks,OUT_f
+Sinks,OUTIMPL_f
+Sinks,TOWS_c
+Sinks,TRASH_f
+Sinks,WRITEAU_f
+Sinks,WRITEC_f
+Sources,CLKINV_f
+Sources,CLOCK_c
+Sources,CONST
+Sources,CONST_f
+Sources,CONST_m
+Sources,Counter
+Sources,CURV_f
+Sources,FROMWSB
+Sources,GENSIN_f
+Sources,GENSQR_f
+Sources,IN_f
+Sources,INIMPL_f
+Sources,Modulo_Count
+Sources,PULSE_SC
+Sources,RAMP
+Sources,RAND_m
+Sources,READAU_f
+Sources,READC_f
+Sources,RFILE_f
+Sources,SampleCLK
+Sources,SAWTOOTH_f
+Sources,Sigbuilder
+Sources,STEP_FUNCTION
+Sources,TIME_f
+Sources,TKSCALE
+Thermo-Hydraulics,Bache
+Thermo-Hydraulics,Flowmeter
+Thermo-Hydraulics,PerteDP
+Thermo-Hydraulics,PuitsP
+Thermo-Hydraulics,SourceP
+Thermo-Hydraulics,VanneReglante
+Demonstration Blocks,BOUNCE
+Demonstration Blocks,BOUNCEXY
+Demonstration Blocks,BPLATFORM
+User-Defined Functions,c_block
+User-Defined Functions,CBLOCK
+User-Defined Functions,CBLOCK4
+User-Defined Functions,DEBUG
+User-Defined Functions,EXPRESSION
+User-Defined Functions,fortran_block
+User-Defined Functions,generic_block3
+User-Defined Functions,MBLOCK
+User-Defined Functions,PDE
+User-Defined Functions,scifunc_block_m
+User-Defined Functions,SUPER_f
