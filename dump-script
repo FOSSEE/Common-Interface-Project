@@ -2,8 +2,11 @@
 
 # Add a login path to your database. This is a one time setting.
 
-# mysql_config_editor set -G blocks -h <db-host> -u <db-user> -p
+# mysql_config_editor set -G blocks -h <db-host> -u <db-user> -P <db-port> -p
 
 mysqldump --login-path=blocks --compact --single-transaction \
-    xcosblocks > xcosblocks-dump.sql
+    xcosblocks | sed \
+        -e '/INSERT INTO/s/\(),\)\((\)/\1\n\2/g' \
+        -e '/INSERT INTO/s/\(VALUES\) \((\)/\1\n\2/' \
+        > xcosblocks-dump.sql
 
