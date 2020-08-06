@@ -4,7 +4,7 @@
 
 # mysql_config_editor set -G blocks -h <db-host> -u <db-user> -P <db-port> -p
 
-mysqldump --login-path=blocks --compact --single-transaction \
+mysqldump --login-path=blocks --compact --no-tablespaces --single-transaction \
     xcosblocks | sed \
         -e '/INSERT INTO/s/\(),\)\((\)/\1\n\2/g' \
         -e '/INSERT INTO/s/\(VALUES\) \((\)/\1\n\2/' \
