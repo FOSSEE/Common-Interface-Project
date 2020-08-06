@@ -5,9 +5,17 @@ class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
     sort_order = models.IntegerField()
 
+    def __str__(self):
+        """String for representing the Model object."""
+        return self.name
+
 
 class BlockDataType(models.Model):
     name = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        """String for representing the Model object."""
+        return self.name
 
 
 class Block(models.Model):
@@ -147,3 +155,7 @@ class Block(models.Model):
     p039 = models.CharField(max_length=100, blank=True, null=True)
     p039_type = models.ForeignKey(BlockDataType, on_delete=models.PROTECT,
         related_name='+', blank=True, null=True)
+
+    def __str__(self):
+        """String for representing the Model object."""
+        return self.name
