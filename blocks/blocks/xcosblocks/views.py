@@ -1,10 +1,12 @@
-import django_filters
-from rest_framework import viewsets
+from django_filters import FilterSet
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.viewsets import ReadOnlyModelViewSet
+
 from . import models
 from . import serializers
 
 
-class CategoryFilterSet(django_filters.FilterSet):
+class CategoryFilterSet(FilterSet):
     class Meta:
         model = models.Category
         fields = {
@@ -12,19 +14,19 @@ class CategoryFilterSet(django_filters.FilterSet):
         }
 
 
-class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
+class CategoryViewSet(ReadOnlyModelViewSet):
     """
      Listing All Category Details
     """
-    queryset = models.Category.objects.all()
+    queryset = models.Category.objects.all().order_by('sort_order')
     serializer_class = serializers.CategorySerializer
     filter_backends = [
-        django_filters.rest_framework.DjangoFilterBackend
+        DjangoFilterBackend
     ]
     filterset_class = CategoryFilterSet
 
 
-class BlockFilterSet(django_filters.FilterSet):
+class BlockFilterSet(FilterSet):
     class Meta:
         model = models.Block
         fields = {
@@ -32,13 +34,13 @@ class BlockFilterSet(django_filters.FilterSet):
         }
 
 
-class BlockViewSet(viewsets.ReadOnlyModelViewSet):
+class BlockViewSet(ReadOnlyModelViewSet):
     """
      Listing All Block Details
     """
     queryset = models.Block.objects.all()
     serializer_class = serializers.BlockSerializer
     filter_backends = [
-        django_filters.rest_framework.DjangoFilterBackend
+        DjangoFilterBackend
     ]
     filterset_class = BlockFilterSet
