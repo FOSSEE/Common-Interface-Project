@@ -30,7 +30,8 @@ class BlockFilterSet(FilterSet):
     class Meta:
         model = Block
         fields = {
-            'name': ['icontains'],
+            'name': ['istartswith'],
+            'categories': ['exact'],
         }
 
 
