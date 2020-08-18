@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'blocks.xcosblocks',
     'django_filters',
     'rest_framework',
+    'frontend',
 ]
 
 MIDDLEWARE = [
