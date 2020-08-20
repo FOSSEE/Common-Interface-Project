@@ -1,52 +1,18 @@
-import React, { Component } from "react";
+import React from "react";
 import { render } from "react-dom";
+import SideBar from './SideBar';
+import MxGraphGridAreaEditor from './MxGraphGridAreaEditor';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: [],
-      loaded: false,
-      placeholder: "Loading"
-    };
-  }
-
-  componentDidMount() {
-    fetch("api/categories/")
-      .then(response => {
-        if (response.status > 400) {
-          return this.setState(() => {
-            return { placeholder: "Something went wrong!" };
-          });
-        }
-        return response.json();
-      })
-      .then(data => {
-        this.setState(() => {
-          return {
-            data,
-            loaded: true
-          };
-        });
-      });
-  }
-
+export default class App extends React.Component {
   render() {
     return (
-      <ul>
-        {this.state.data.map(contact => {
-          return (
-            <li key={contact.id}>
-              {contact.name}
-            </li>
-          );
-        })}
-      </ul>
+        <div>
+            <SideBar />
+            <MxGraphGridAreaEditor />
+        </div>
     );
   }
 }
-
-export default App;
 
 const container = document.getElementById("app");
 render(<App />, container);
