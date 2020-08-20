@@ -1,4 +1,5 @@
 import React from 'react';
+import Api from '../utils/Api';
 
 export default class SideBar extends React.Component {
   constructor(props) {
