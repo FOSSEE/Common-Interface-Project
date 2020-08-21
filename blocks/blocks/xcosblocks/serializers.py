@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Category, BlockDataType, Block
+from .models import Category, ParameterDataType, Block
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -13,9 +13,9 @@ class CategorySerializer(serializers.ModelSerializer):
         ]
 
 
-class BlockDataTypeSerializer(serializers.ModelSerializer):
+class ParameterDataTypeSerializer(serializers.ModelSerializer):
     class Meta:
-        model = BlockDataType
+        model = ParameterDataType
         fields = [
             'id',
             'name',
