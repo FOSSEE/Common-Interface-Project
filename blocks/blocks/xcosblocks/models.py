@@ -18,8 +18,18 @@ class ParameterDataType(models.Model):
         return self.name
 
 
-class Block(models.Model):
+class BlockType(models.Model):
     name = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        """String for representing the Model object."""
+        return self.name
+
+
+class Block(models.Model):
+    blocktype = models.ForeignKey(BlockType, default='Xcos',
+                                  on_delete=models.PROTECT, related_name='+')
+    name = models.CharField(max_length=100)
     categories = models.ManyToManyField(Category)
     initial_explicit_input_ports = models.IntegerField()
     initial_implicit_input_ports = models.IntegerField()
@@ -28,6 +38,20 @@ class Block(models.Model):
     initial_control_ports = models.IntegerField()
     initial_command_ports = models.IntegerField()
     initial_display_parameter = models.CharField(max_length=100)
+
+    def __str__(self):
+        """String for representing the Model object."""
+        return self.name
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['blocktype', 'name'],
+                                    name='unique_blocktype_name')
+        ]
+
+
+class BlockParameter(models.Model):
+    block = models.ForeignKey(Block, on_delete=models.PROTECT)
     variable_explicit_input_ports = models.CharField(max_length=100)
     variable_implicit_input_ports = models.CharField(max_length=100)
     variable_explicit_output_ports = models.CharField(max_length=100)
