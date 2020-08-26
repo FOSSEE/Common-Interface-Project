@@ -1,0 +1,29 @@
+POST /function/{block_id}/
+
+Input JSON - Map of
+
+Time
+Input Values (one for each port)
+Parameter Values
+
+Response JSON - function_execution_id
+
+
+GET /stopfunction/{function_execution_id}/
+
+Status Code
+
+200
+
+Response JSON -
+
+
+GET /getfunctionoutput/{function_execution_id}/
+
+Status Code
+
+200
+
+Response JSON - Array of
+
+value

@@ -27,7 +27,7 @@ class BlockType(models.Model):
 
 
 class Block(models.Model):
-    blocktype = models.ForeignKey(BlockType, default='Xcos',
+    blocktype = models.ForeignKey(BlockType, default=1,
                                   on_delete=models.PROTECT, related_name='+')
     name = models.CharField(max_length=100)
     categories = models.ManyToManyField(Category)

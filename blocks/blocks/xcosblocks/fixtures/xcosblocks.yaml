@@ -162,31 +162,31 @@
 - model: xcosblocks.parameterdatatype
   pk: 15
   fields:
-    name: array of booleans
+    name: matrix of booleans
 - model: xcosblocks.parameterdatatype
   pk: 16
   fields:
-    name: array of integers
+    name: matrix of integers
 - model: xcosblocks.parameterdatatype
   pk: 17
   fields:
-    name: array of doubles
+    name: matrix of doubles
 - model: xcosblocks.parameterdatatype
   pk: 18
   fields:
-    name: array of complexes
+    name: matrix of complexes
 - model: xcosblocks.parameterdatatype
   pk: 19
   fields:
-    name: array of strings
+    name: matrix of strings
 - model: xcosblocks.parameterdatatype
   pk: 20
   fields:
-    name: array of yesnoes
+    name: matrix of yesnoes
 - model: xcosblocks.parameterdatatype
   pk: 21
   fields:
-    name: array of filenames
+    name: matrix of filenames
 - model: xcosblocks.blocktype
   pk: 1
   fields:

@@ -1,0 +1,283 @@
+GET /categories/
+
+Status Code
+
+200
+
+Response JSON - Array of maps of
+
+id
+name
+sort_order
+
+
+
+GET /blocks/?categories={category_id}
+
+Status Code
+
+200
+
+Response JSON - Array of maps of
+
+id
+name
+initial_explicit_input_ports
+initial_implicit_input_ports
+initial_explicit_output_ports
+initial_implicit_output_ports
+initial_control_ports
+initial_command_ports
+initial_display_parameter
+block_image
+
+
+
+GET /blocks/?name__istartswith={string}
+
+Status Code
+
+200
+
+Response JSON - Array of maps of
+
+id
+name
+initial_explicit_input_ports
+initial_implicit_input_ports
+initial_explicit_output_ports
+initial_implicit_output_ports
+initial_control_ports
+initial_command_ports
+initial_display_parameter
+initial_block_image
+
+
+
+GET /block_parameter/{block_id}/
+
+Status Code
+
+200
+
+Response JSON - Map of
+
+id
+p000_type
+p000_value_initial
+p001_type
+p001_value_initial
+p002_type
+p002_value_initial
+p003_type
+p003_value_initial
+p004_type
+p004_value_initial
+p005_type
+p005_value_initial
+p006_type
+p006_value_initial
+p007_type
+p007_value_initial
+p008_type
+p008_value_initial
+p009_type
+p009_value_initial
+p010_type
+p010_value_initial
+p011_type
+p011_value_initial
+p012_type
+p012_value_initial
+p013_type
+p013_value_initial
+p014_type
+p014_value_initial
+p015_type
+p015_value_initial
+p016_type
+p016_value_initial
+p017_type
+p017_value_initial
+p018_type
+p018_value_initial
+p019_type
+p019_value_initial
+p020_type
+p020_value_initial
+p021_type
+p021_value_initial
+p022_type
+p022_value_initial
+p023_type
+p023_value_initial
+p024_type
+p024_value_initial
+p025_type
+p025_value_initial
+p026_type
+p026_value_initial
+p027_type
+p027_value_initial
+p028_type
+p028_value_initial
+p029_type
+p029_value_initial
+p030_type
+p030_value_initial
+p031_type
+p031_value_initial
+p032_type
+p032_value_initial
+p033_type
+p033_value_initial
+p034_type
+p034_value_initial
+p035_type
+p035_value_initial
+p036_type
+p036_value_initial
+p037_type
+p037_value_initial
+p038_type
+p038_value_initial
+p039_type
+p039_value_initial
+
+
+
+POST /set_this_block_parameter/{this_block_id}/
+
+Input JSON - Map of
+
+block_id
+p000
+p001
+p002
+p003
+p004
+p005
+p006
+p007
+p008
+p009
+p010
+p011
+p012
+p013
+p014
+p015
+p016
+p017
+p018
+p019
+p020
+p021
+p022
+p023
+p024
+p025
+p026
+p027
+p028
+p029
+p030
+p031
+p032
+p033
+p034
+p035
+p036
+p037
+p038
+p039
+
+Status Code
+
+200
+
+Response JSON - Map of
+
+variable_explicit_input_ports
+variable_implicit_input_ports
+variable_explicit_output_ports
+variable_implicit_output_ports
+variable_control_ports
+variable_command_ports
+variable_display_parameter
+variable_block_image
+
+
+
+POST /simulate/
+
+Input MxGraph Block Diagram
+
+Status Code
+
+200
+
+Response JSON - simulation_id
+
+
+
+GET /stopsimulation/{simulation_id}/
+
+Status Code
+
+200
+
+Response JSON -
+
+
+
+GET /getsimulationoutput/{simulation_id}/
+
+Status Code
+
+200
+
+Response Text - streaming
+
+
+
+POST /uploadscript/{script_type_id}/
+
+Input Script File
+
+Status Code
+
+200
+
+Response JSON - script_id
+
+
+
+GET /uploadscript/{script_id}/
+
+Status Code
+
+200
+
+Response JSON - script_execution_id
+
+
+GET /stopscript/{script_execution_id}/
+
+Status Code
+
+200
+
+Response JSON -
+
+
+GET /getscriptoutput/{script_execution_id}/
+
+Status Code
+
+200
+
+Response JSON - Array of
+
+variable
+value
