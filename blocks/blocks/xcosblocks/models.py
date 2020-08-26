@@ -52,13 +52,6 @@ class Block(models.Model):
 
 class BlockParameter(models.Model):
     block = models.ForeignKey(Block, on_delete=models.PROTECT)
-    variable_explicit_input_ports = models.CharField(max_length=100)
-    variable_implicit_input_ports = models.CharField(max_length=100)
-    variable_explicit_output_ports = models.CharField(max_length=100)
-    variable_implicit_output_ports = models.CharField(max_length=100)
-    variable_control_ports = models.CharField(max_length=100)
-    variable_command_ports = models.CharField(max_length=100)
-    variable_display_parameter = models.CharField(max_length=100)
     p000 = models.CharField(max_length=100, blank=True, null=True)
     p000_type = models.ForeignKey(ParameterDataType, on_delete=models.PROTECT,
                                   related_name='+', blank=True, null=True)

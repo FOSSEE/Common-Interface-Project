@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Category, ParameterDataType, Block
+from .models import Category, ParameterDataType, BlockType, Block, BlockParameter
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -22,11 +22,21 @@ class ParameterDataTypeSerializer(serializers.ModelSerializer):
         ]
 
 
+class BlockTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = BlockType
+        fields = [
+            'id',
+            'name',
+        ]
+
+
 class BlockSerializer(serializers.ModelSerializer):
     class Meta:
         model = Block
         fields = [
             'id',
+            'blocktype',
             'name',
             'categories',
             'initial_explicit_input_ports',
@@ -36,13 +46,15 @@ class BlockSerializer(serializers.ModelSerializer):
             'initial_control_ports',
             'initial_command_ports',
             'initial_display_parameter',
-            'variable_explicit_input_ports',
-            'variable_implicit_input_ports',
-            'variable_explicit_output_ports',
-            'variable_implicit_output_ports',
-            'variable_control_ports',
-            'variable_command_ports',
-            'variable_display_parameter',
+        ]
+
+
+class BlockParameterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = BlockParameter
+        fields = [
+            'id',
+            'block',
             'p000',
             'p000_type',
             'p000_value_initial',

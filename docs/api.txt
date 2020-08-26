@@ -12,7 +12,7 @@ sort_order
 
 
 
-GET /blocks/?categories={category_id}
+GET /blocks/
 
 Status Code
 
@@ -30,27 +30,6 @@ initial_control_ports
 initial_command_ports
 initial_display_parameter
 block_image
-
-
-
-GET /blocks/?name__istartswith={string}
-
-Status Code
-
-200
-
-Response JSON - Array of maps of
-
-id
-name
-initial_explicit_input_ports
-initial_implicit_input_ports
-initial_explicit_output_ports
-initial_implicit_output_ports
-initial_control_ports
-initial_command_ports
-initial_display_parameter
-initial_block_image
 
 
 
