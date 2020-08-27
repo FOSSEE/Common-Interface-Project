@@ -1,8 +1,9 @@
 from rest_framework.routers import DefaultRouter
 
-from .views import CategoryViewSet, BlockViewSet
+from .views import CategoryViewSet, BlockViewSet, BlockParameterViewSet
 
 router = DefaultRouter()
-router.register(r'categories', CategoryViewSet, basename='category')
-router.register(r'blocks', BlockViewSet, basename='block')
+router.register(r'categories', CategoryViewSet)
+router.register(r'blocks', BlockViewSet)
+router.register(r'block_parameters', BlockParameterViewSet)
 urlpatterns = router.urls

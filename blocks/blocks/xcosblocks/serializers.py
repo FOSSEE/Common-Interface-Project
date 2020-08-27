@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
-from .models import Category, ParameterDataType, BlockType, Block, BlockParameter
+from .models import Category, ParameterDataType, BlockType, Block, \
+    BlockParameter
 
 
 class CategorySerializer(serializers.ModelSerializer):
