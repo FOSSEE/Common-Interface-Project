@@ -13,10 +13,10 @@ Id,Datatype,Explanation
 12,vector of strings,
 13,vector of yesnoes,
 14,vector of filenames,
-15,array of booleans,a 2-D array of specified datatype
-16,array of integers,
-17,array of doubles,
-18,array of complexes,
-19,array of strings,
-20,array of yesnoes,
-21,array of filenames,
+15,matrix of booleans,a 2-D array of specified datatype
+16,matrix of integers,
+17,matrix of doubles,
+18,matrix of complexes,
+19,matrix of strings,
+20,matrix of yesnoes,
+21,matrix of filenames,

@@ -117,7 +117,7 @@ id,Block names,Initial Input Ports Explicit,Initial Input Ports Implicit,Initial
 151,ISELECT_m,1,0,2,0,2,0,Selector,1,0,2/n,0,2/n,0,Selector,Datatype (1=real double 2=Complex 3=int32...),double,number of outputs,double,initial connected output,integer,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 132,JKFLIPFLOP,3,0,2,0,0,0,,3,0,2,0,0,0,,Initial Value,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 62,LOGBLK_f,1,0,1,0,0,0,LOG,1,0,1,0,0,0,LOG,Basis(>1),double,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-133,LOGIC,2,0,1,0,1,0,LOGIC,2,0,1,0,0/1,0,LOGIC,Truth Table (matrix of outputs),array of booleans,"Accepts Inherited Events (0:No, 1:Yes)",boolean,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+133,LOGIC,2,0,1,0,1,0,LOGIC,2,0,1,0,0/1,0,LOGIC,Truth Table (matrix of outputs),matrix of booleans,"Accepts Inherited Events (0:No, 1:Yes)",boolean,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 1,LOGICAL_OP,2,0,1,0,0,0,AND,n,0,1,0,0,0,AND / OR / NAND / NOR / XOR / NOT,number of inputs,integer,"Operator : AND(0), OR(1), NAND(2), NOR(3), XOR(4), NOT(5)",integer,Datatype (1=double 3=int32..),double,Bitwise Rule (0=No 1=yes),boolean,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 33,LOOKUP_f,1,0,1,0,0,0,,1,0,1,0,0,0,,xmin,integer,xmax,integer,ymin,integer,ymax,integer,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 50,M_freq,0,0,0,0,1,3,Multiple frequency,0,0,0,0,1,3,Multiple frequency,Sample time,vector of integers,Offset,vector of integers,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

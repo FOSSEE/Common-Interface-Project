@@ -3413,13 +3413,6 @@
   pk: 1
   fields:
     block: 1
-    variable_explicit_input_ports: n
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: AND / OR / NAND / NOR / XOR / NOT
     p000: number of inputs
     p000_type: 2
     p000_value_initial: null
@@ -3544,13 +3537,6 @@
   pk: 2
   fields:
     block: 2
-    variable_explicit_input_ports: '2'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: 'Operator : == (0), `=(1), <(2), <=(3), >(4), >=(5)'
     p000_type: 2
     p000_value_initial: null
@@ -3675,13 +3661,6 @@
   pk: 4
   fields:
     block: 4
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: num/den
     p000: Numerator
     p000_type: 3
     p000_value_initial: null
@@ -3806,13 +3785,6 @@
   pk: 5
   fields:
     block: 5
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: xd = Ax+ Bu, y = Cx + Du
     p000: A matrix
     p000_type: 3
     p000_value_initial: null
@@ -3937,13 +3909,6 @@
   pk: 7
   fields:
     block: 7
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: 1/s
     p000: Initial state
     p000_type: 3
     p000_value_initial: null
@@ -4068,13 +4033,6 @@
   pk: 8
   fields:
     block: 8
-    variable_explicit_input_ports: 1/2
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: 0/1
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: Initial condition
     p000_type: 3
     p000_value_initial: null
@@ -4199,13 +4157,6 @@
   pk: 10
   fields:
     block: 10
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: PID
     p000: Proportional
     p000_type: 3
     p000_value_initial: null
@@ -4330,13 +4281,6 @@
   pk: 11
   fields:
     block: 11
-    variable_explicit_input_ports: '2'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '1'
-    variable_command_ports: '0'
-    variable_display_parameter: Jump (A,B,C,D)
     p000: A matrix
     p000_type: 3
     p000_value_initial: null
@@ -4461,13 +4405,6 @@
   pk: 12
   fields:
     block: 12
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: Continuous fix delay
     p000: Delay
     p000_type: 3
     p000_value_initial: null
@@ -4592,13 +4529,6 @@
   pk: 13
   fields:
     block: 13
-    variable_explicit_input_ports: '2'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: Variable Delay
     p000: Max delay
     p000_type: 3
     p000_value_initial: null
@@ -4723,13 +4653,6 @@
   pk: 14
   fields:
     block: 14
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: Backlash
     p000: initial output
     p000_type: 3
     p000_value_initial: null
@@ -4854,13 +4777,6 @@
   pk: 15
   fields:
     block: 15
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: End of dead band
     p000_type: 3
     p000_value_initial: null
@@ -4985,13 +4901,6 @@
   pk: 16
   fields:
     block: 16
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: switch on at
     p000_type: 2
     p000_value_initial: null
@@ -5116,13 +5025,6 @@
   pk: 17
   fields:
     block: 17
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: Step
     p000_type: 3
     p000_value_initial: null
@@ -5247,13 +5149,6 @@
   pk: 18
   fields:
     block: 18
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: Rate limiter
     p000: max slope
     p000_type: 2
     p000_value_initial: null
@@ -5378,13 +5273,6 @@
   pk: 19
   fields:
     block: 19
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: Upper limit
     p000_type: 2
     p000_value_initial: null
@@ -5509,13 +5397,6 @@
   pk: 20
   fields:
     block: 20
-    variable_explicit_input_ports: '2'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '2'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '1'
-    variable_display_parameter: Automaton nM=2, nX=1
     p000: Number(finite state) Mode
     p000_type: 2
     p000_value_initial: null
@@ -5640,13 +5521,6 @@
   pk: 21
   fields:
     block: 21
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: Delay
     p000: Discretization time step
     p000_type: 3
     p000_value_initial: null
@@ -5771,13 +5645,6 @@
   pk: 22
   fields:
     block: 22
-    variable_explicit_input_ports: '2'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '1'
-    variable_command_ports: '2'
-    variable_display_parameter: Variable delay
     p000: Number of inputs
     p000_type: 2
     p000_value_initial: null
@@ -5902,13 +5769,6 @@
   pk: 23
   fields:
     block: 23
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '1'
-    variable_command_ports: '0'
-    variable_display_parameter: num/den
     p000: Numerator (z)
     p000_type: 3
     p000_value_initial: null
@@ -6033,13 +5893,6 @@
   pk: 24
   fields:
     block: 24
-    variable_explicit_input_ports: '2'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '1'
-    variable_command_ports: '0'
-    variable_display_parameter: N (z,p)/D (z,p)
     p000: Vector of p mesh points
     p000_type: 9
     p000_value_initial: null
@@ -6164,13 +6017,6 @@
   pk: 25
   fields:
     block: 25
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '1'
-    variable_command_ports: '0'
-    variable_display_parameter: x = Ax+Bu, y = Cx+Du
     p000: A matrix
     p000_type: 2
     p000_value_initial: null
@@ -6295,13 +6141,6 @@
   pk: 26
   fields:
     block: 26
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: 1/z
     p000: initial condition
     p000_type: 2
     p000_value_initial: null
@@ -6426,13 +6265,6 @@
   pk: 27
   fields:
     block: 27
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: 1/z
     p000: initial condition
     p000_type: 2
     p000_value_initial: null
@@ -6557,13 +6389,6 @@
   pk: 28
   fields:
     block: 28
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: 1/z
     p000: initial condition
     p000_type: 2
     p000_value_initial: null
@@ -6688,13 +6513,6 @@
   pk: 29
   fields:
     block: 29
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '1'
-    variable_command_ports: '0'
-    variable_display_parameter: Shift register
     p000: Register initial condition
     p000_type: 9
     p000_value_initial: null
@@ -6819,13 +6637,6 @@
   pk: 30
   fields:
     block: 30
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '1'
-    variable_command_ports: '0'
-    variable_display_parameter: S / H
     p000: Datatype (1=real double 2=Complex 3=int32...)
     p000_type: 2
     p000_value_initial: null
@@ -6950,13 +6761,6 @@
   pk: 31
   fields:
     block: 31
-    variable_explicit_input_ports: '2'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: Interp 2
     p000: X coord
     p000_type: 9
     p000_value_initial: null
@@ -7081,13 +6885,6 @@
   pk: 32
   fields:
     block: 32
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: Interp
     p000: X coord
     p000_type: 9
     p000_value_initial: null
@@ -7212,13 +7009,6 @@
   pk: 33
   fields:
     block: 33
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: xmin
     p000_type: 2
     p000_value_initial: null
@@ -7343,13 +7133,6 @@
   pk: 36
   fields:
     block: 36
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '1'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: Number of event inputs
     p000_type: 2
     p000_value_initial: null
@@ -7474,13 +7257,6 @@
   pk: 37
   fields:
     block: 37
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: '{n}'
     p000: GoToTag
     p000_type: 5
     p000_value_initial: null
@@ -7605,13 +7381,6 @@
   pk: 39
   fields:
     block: 39
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '1'
-    variable_display_parameter: Edge tigger
     p000: rising(1), falling(-1), both(0)
     p000_type: 2
     p000_value_initial: null
@@ -7736,13 +7505,6 @@
   pk: 40
   fields:
     block: 40
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '1'
-    variable_command_ports: '1'
-    variable_display_parameter: END
     p000: Final simulation time
     p000_type: 3
     p000_value_initial: null
@@ -7867,13 +7629,6 @@
   pk: 41
   fields:
     block: 41
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: END
     p000: Final simulation time
     p000_type: 3
     p000_value_initial: null
@@ -7998,13 +7753,6 @@
   pk: 42
   fields:
     block: 42
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: 0/1
-    variable_command_ports: n
-    variable_display_parameter: Event select
     p000: number of output event ports
     p000_type: 2
     p000_value_initial: null
@@ -8129,13 +7877,6 @@
   pk: 43
   fields:
     block: 43
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '1'
-    variable_command_ports: '1'
-    variable_display_parameter: 'Delay: n'
     p000: Delay
     p000_type: 3
     p000_value_initial: null
@@ -8260,13 +8001,6 @@
   pk: 44
   fields:
     block: 44
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '1'
-    variable_display_parameter: Event at time n
     p000: Event Time
     p000_type: 2
     p000_value_initial: null
@@ -8391,13 +8125,6 @@
   pk: 45
   fields:
     block: 45
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '1'
-    variable_command_ports: '1'
-    variable_display_parameter: Event delay
     p000: Initial event firing time (<0 if absent)
     p000_type: 2
     p000_value_initial: null
@@ -8522,13 +8249,6 @@
   pk: 47
   fields:
     block: 47
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '1'
-    variable_command_ports: '1'
-    variable_display_parameter: Frequency division
     p000: Phase (0 to division factor -1)
     p000_type: 2
     p000_value_initial: null
@@ -8653,13 +8373,6 @@
   pk: 48
   fields:
     block: 48
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '1'
-    variable_command_ports: '0'
-    variable_display_parameter: HALT
     p000: State on halt
     p000_type: 2
     p000_value_initial: null
@@ -8784,13 +8497,6 @@
   pk: 49
   fields:
     block: 49
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: 0/1
-    variable_command_ports: '2'
-    variable_display_parameter: ''
     p000: Inherit (1:yes, 0:no)
     p000_type: 1
     p000_value_initial: null
@@ -8915,13 +8621,6 @@
   pk: 50
   fields:
     block: 50
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '1'
-    variable_command_ports: '3'
-    variable_display_parameter: Multiple frequency
     p000: Sample time
     p000_type: 9
     p000_value_initial: null
@@ -9046,13 +8745,6 @@
   pk: 51
   fields:
     block: 51
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '2'
-    variable_display_parameter: 2freq clock f/n f
     p000: basic period (1/f)
     p000_type: 3
     p000_value_initial: null
@@ -9177,13 +8869,6 @@
   pk: 52
   fields:
     block: 52
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '1'
-    variable_command_ports: '2'
-    variable_display_parameter: M. freq clock
     p000: basic period (1/f)
     p000_type: 3
     p000_value_initial: null
@@ -9308,13 +8993,6 @@
   pk: 54
   fields:
     block: 54
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ABS
     p000: use zero crossing (0/1)?
     p000_type: 1
     p000_value_initial: null
@@ -9439,13 +9117,6 @@
   pk: 55
   fields:
     block: 55
-    variable_explicit_input_ports: n
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: Inputs port sign/gain
     p000_type: 10
     p000_value_initial: null
@@ -9570,13 +9241,6 @@
   pk: 57
   fields:
     block: 57
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: a^u
     p000: a (>0)
     p000_type: 3
     p000_value_initial: null
@@ -9701,13 +9365,6 @@
   pk: 58
   fields:
     block: 58
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: n
     p000: Gain
     p000_type: 2
     p000_value_initial: null
@@ -9832,13 +9489,6 @@
   pk: 59
   fields:
     block: 59
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: n
     p000: Gain
     p000_type: 2
     p000_value_initial: null
@@ -9963,13 +9613,6 @@
   pk: 60
   fields:
     block: 60
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: n
     p000: Gain
     p000_type: 2
     p000_value_initial: null
@@ -10094,13 +9737,6 @@
   pk: 62
   fields:
     block: 62
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: LOG
     p000: Basis(>1)
     p000_type: 3
     p000_value_initial: null
@@ -10225,13 +9861,6 @@
   pk: 64
   fields:
     block: 64
-    variable_explicit_input_ports: 1/2
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: MAX/MIN
     p000: Min(1) or Max(2)
     p000_type: 2
     p000_value_initial: null
@@ -10356,13 +9985,6 @@
   pk: 66
   fields:
     block: 66
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: u ^ a
     p000: to the power of
     p000_type: 3
     p000_value_initial: null
@@ -10487,13 +10109,6 @@
   pk: 68
   fields:
     block: 68
-    variable_explicit_input_ports: '2'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: Number of inputs or sign vector
     p000_type: 9
     p000_value_initial: null
@@ -10618,13 +10233,6 @@
   pk: 69
   fields:
     block: 69
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: SIGN
     p000: use zero crossing (1:yes, 0:no)
     p000_type: 1
     p000_value_initial: null
@@ -10749,13 +10357,6 @@
   pk: 73
   fields:
     block: 73
-    variable_explicit_input_ports: '2'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: Datatype ( 1= real double, 2=complex, 3=int32)
     p000_type: 2
     p000_value_initial: null
@@ -10880,13 +10481,6 @@
   pk: 75
   fields:
     block: 75
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: Trig function
     p000: Function
     p000_type: 5
     p000_value_initial: null
@@ -11011,13 +10605,6 @@
   pk: 76
   fields:
     block: 76
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: CUMSUM
     p000: Datatype(1=real double 2=Complex)
     p000_type: 2
     p000_value_initial: null
@@ -11142,13 +10729,6 @@
   pk: 77
   fields:
     block: 77
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: EXTRACT
     p000: Datatype (1=real double 2=Complex)
     p000_type: 2
     p000_value_initial: null
@@ -11273,13 +10853,6 @@
   pk: 78
   fields:
     block: 78
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: Tri/Diag Extraction
     p000: Datatype (1=real double 2=Complex)
     p000_type: 2
     p000_value_initial: null
@@ -11404,13 +10977,6 @@
   pk: 79
   fields:
     block: 79
-    variable_explicit_input_ports: '2'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: AB
     p000: Datatype (1=real double, 2=Complex)
     p000_type: 2
     p000_value_initial: null
@@ -11535,13 +11101,6 @@
   pk: 80
   fields:
     block: 80
-    variable_explicit_input_ports: n
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: Horiz Cat
     p000: number of inputs
     p000_type: 2
     p000_value_initial: null
@@ -11666,13 +11225,6 @@
   pk: 81
   fields:
     block: 81
-    variable_explicit_input_ports: n
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: Horiz Cat
     p000: number of inputs
     p000_type: 2
     p000_value_initial: null
@@ -11797,13 +11349,6 @@
   pk: 82
   fields:
     block: 82
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: DET
     p000: Datatype (1=real double, 2=Complex)
     p000_type: 2
     p000_value_initial: null
@@ -11928,13 +11473,6 @@
   pk: 83
   fields:
     block: 83
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: DIAG
     p000: Datatype (1=real double, 2=Complex)
     p000_type: 2
     p000_value_initial: null
@@ -12059,13 +11597,6 @@
   pk: 84
   fields:
     block: 84
-    variable_explicit_input_ports: '2'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: A/B
     p000: Datatype (1=real double, 2=Complex)
     p000_type: 2
     p000_value_initial: null
@@ -12190,13 +11721,6 @@
   pk: 85
   fields:
     block: 85
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: 1/2
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: EIG
     p000: Datatype (1=real double, 2=Complex)
     p000_type: 2
     p000_value_initial: null
@@ -12321,13 +11845,6 @@
   pk: 86
   fields:
     block: 86
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: EXPM
     p000: Datatype (1=real double, 2=Complex)
     p000_type: 2
     p000_value_initial: null
@@ -12452,13 +11969,6 @@
   pk: 87
   fields:
     block: 87
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: INV
     p000: Datatype (1=real double, 2=Complex)
     p000_type: 2
     p000_value_initial: null
@@ -12583,13 +12093,6 @@
   pk: 88
   fields:
     block: 88
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '2'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: LU
     p000: Datatype (1=real double, 2=Complex)
     p000_type: 2
     p000_value_initial: null
@@ -12714,13 +12217,6 @@
   pk: 89
   fields:
     block: 89
-    variable_explicit_input_ports: 1/2
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: 1/2
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: Mag & Phi
     p000: decomposition type (1=Complex2MAG&PHI 2=MAG&PHI2Complex)
     p000_type: 2
     p000_value_initial: null
@@ -12845,13 +12341,6 @@
   pk: 90
   fields:
     block: 90
-    variable_explicit_input_ports: '2'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: MATMUL
     p000: Datatype (1=real double, 2=Complex, 3=int32)
     p000_type: 2
     p000_value_initial: null
@@ -12976,13 +12465,6 @@
   pk: 91
   fields:
     block: 91
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: PINV
     p000: Datatype (1=real double, 2=Complex)
     p000_type: 2
     p000_value_initial: null
@@ -13107,13 +12589,6 @@
   pk: 92
   fields:
     block: 92
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: RESHAPE
     p000: Datatype (1=real double, 2=Complex)
     p000_type: 2
     p000_value_initial: null
@@ -13238,13 +12713,6 @@
   pk: 93
   fields:
     block: 93
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: 1/3
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: SVD
     p000: Datatype (1=real double, 2=Complex)
     p000_type: 2
     p000_value_initial: null
@@ -13369,13 +12837,6 @@
   pk: 94
   fields:
     block: 94
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: MATSUM
     p000: Datatype (1=real double, 2=Complex)
     p000_type: 2
     p000_value_initial: null
@@ -13500,13 +12961,6 @@
   pk: 95
   fields:
     block: 95
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: MATTRAN
     p000: Datatype (1=real double, 2=Complex)
     p000_type: 2
     p000_value_initial: null
@@ -13631,13 +13085,6 @@
   pk: 97
   fields:
     block: 97
-    variable_explicit_input_ports: 1/2
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: 1/2
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: Re & Im
     p000: decomposition type (1=Complex2Real&Imag 2=Real&Imag2Complex)
     p000_type: 2
     p000_value_initial: null
@@ -13762,13 +13209,6 @@
   pk: 98
   fields:
     block: 98
-    variable_explicit_input_ports: '3'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: RICC
     p000: Type (1=Cont, 2=Disc)
     p000_type: 2
     p000_value_initial: null
@@ -13893,13 +13333,6 @@
   pk: 99
   fields:
     block: 99
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ROOT COEF
     p000: Datatype (1=real double, 2=Complex)
     p000_type: 2
     p000_value_initial: null
@@ -14024,13 +13457,6 @@
   pk: 100
   fields:
     block: 100
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: SQRT
     p000: Datatype (1=real double, 2=Complex)
     p000_type: 2
     p000_value_initial: null
@@ -14155,13 +13581,6 @@
   pk: 101
   fields:
     block: 101
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: SUBMAT
     p000: Datatype (1=real double, 2=Complex)
     p000_type: 2
     p000_value_initial: null
@@ -14286,13 +13705,6 @@
   pk: 102
   fields:
     block: 102
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '1'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '1'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: C(F)
     p000_type: 3
     p000_value_initial: null
@@ -14417,13 +13829,6 @@
   pk: 104
   fields:
     block: 104
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '1'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '1'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: V(volt)
     p000_type: 3
     p000_value_initial: null
@@ -14548,13 +13953,6 @@
   pk: 107
   fields:
     block: 107
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '1'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '1'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: Saturation current (A)
     p000_type: 3
     p000_value_initial: null
@@ -14679,13 +14077,6 @@
   pk: 109
   fields:
     block: 109
-    variable_explicit_input_ports: '2'
-    variable_implicit_input_ports: '2'
-    variable_explicit_output_ports: '2'
-    variable_implicit_output_ports: '2'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: G1
     p000_type: 2
     p000_value_initial: null
@@ -14810,13 +14201,6 @@
   pk: 110
   fields:
     block: 110
-    variable_explicit_input_ports: '2'
-    variable_implicit_input_ports: '2'
-    variable_explicit_output_ports: '2'
-    variable_implicit_output_ports: '2'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: N
     p000_type: 2
     p000_value_initial: null
@@ -14941,13 +14325,6 @@
   pk: 111
   fields:
     block: 111
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '1'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '1'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: L(H)
     p000_type: 3
     p000_value_initial: null
@@ -15072,13 +14449,6 @@
   pk: 112
   fields:
     block: 112
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '1'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '3'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: Width [m]
     p000_type: 3
     p000_value_initial: null
@@ -15203,13 +14573,6 @@
   pk: 113
   fields:
     block: 113
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '1'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '2'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: 'Bf : Forward beta'
     p000_type: 3
     p000_value_initial: null
@@ -15334,13 +14697,6 @@
   pk: 115
   fields:
     block: 115
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '1'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '3'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: Width[m]
     p000_type: 3
     p000_value_initial: null
@@ -15465,13 +14821,6 @@
   pk: 116
   fields:
     block: 116
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '1'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '2'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: 'Bf : Forward beta'
     p000_type: 3
     p000_value_initial: null
@@ -15596,13 +14945,6 @@
   pk: 118
   fields:
     block: 118
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '1'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '1'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: R (ohm)
     p000_type: 3
     p000_value_initial: null
@@ -15727,13 +15069,6 @@
   pk: 119
   fields:
     block: 119
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '1'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '1'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: n V
     p000: Amplitude (Volt)
     p000_type: 2
     p000_value_initial: null
@@ -15858,13 +15193,6 @@
   pk: 120
   fields:
     block: 120
-    variable_explicit_input_ports: '2'
-    variable_implicit_input_ports: '1'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '1'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: Resistance in On state (Ohm)
     p000_type: 3
     p000_value_initial: null
@@ -15989,13 +15317,6 @@
   pk: 123
   fields:
     block: 123
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '1'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '1'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: n V ~ n
     p000: Amplitude (Volt)
     p000_type: 2
     p000_value_initial: null
@@ -16120,13 +15441,6 @@
   pk: 124
   fields:
     block: 124
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '1'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '1'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: 1 V ~ n
     p000: Frequency (Hz)
     p000_type: 2
     p000_value_initial: null
@@ -16251,13 +15565,6 @@
   pk: 125
   fields:
     block: 125
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: Clear bit 0
     p000: Data type (3:int32, 4:int16, 5:int8,..)
     p000_type: 2
     p000_value_initial: null
@@ -16382,13 +15689,6 @@
   pk: 126
   fields:
     block: 126
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: Set bit 0
     p000: Data type (3:int32, 4:int16, 5:int8,..)
     p000_type: 2
     p000_value_initial: null
@@ -16513,13 +15813,6 @@
   pk: 127
   fields:
     block: 127
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: Convert to
     p000: Input type (1:double, 3:int32, 4:int16, 5:int8,..)
     p000_type: 2
     p000_value_initial: null
@@ -16644,13 +15937,6 @@
   pk: 130
   fields:
     block: 130
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: Extract Bits n
     p000: Data Type (3:int32, 4:int16, 5:int8, ...)
     p000_type: 2
     p000_value_initial: null
@@ -16775,13 +16061,6 @@
   pk: 131
   fields:
     block: 131
-    variable_explicit_input_ports: '2'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: INTMUL
     p000: Data Type (3:int32, 4:int16, 5:int8,..)
     p000_type: 2
     p000_value_initial: null
@@ -16906,13 +16185,6 @@
   pk: 132
   fields:
     block: 132
-    variable_explicit_input_ports: '3'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '2'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: Initial Value
     p000_type: 5
     p000_value_initial: null
@@ -17037,13 +16309,6 @@
   pk: 133
   fields:
     block: 133
-    variable_explicit_input_ports: '2'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: 0/1
-    variable_command_ports: '0'
-    variable_display_parameter: LOGIC
     p000: Truth Table (matrix of outputs)
     p000_type: 15
     p000_value_initial: null
@@ -17168,13 +16433,6 @@
   pk: 134
   fields:
     block: 134
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: Arithmetic shift n
     p000: Data Type (3:int32, 4:int16, 5:int8,...)
     p000_type: 2
     p000_value_initial: null
@@ -17299,13 +16557,6 @@
   pk: 135
   fields:
     block: 135
-    variable_explicit_input_ports: '2'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '2'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: S   Q, R   !Q
     p000: Initial Value
     p000_type: 2
     p000_value_initial: null
@@ -17430,13 +16681,6 @@
   pk: 136
   fields:
     block: 136
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: n
-    variable_display_parameter: GENERAL
     p000: Input size
     p000_type: 2
     p000_value_initial: null
@@ -17561,13 +16805,6 @@
   pk: 139
   fields:
     block: 139
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '1'
-    variable_display_parameter: Zcross
     p000: Input size
     p000_type: 3
     p000_value_initial: null
@@ -17692,13 +16929,6 @@
   pk: 140
   fields:
     block: 140
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '1'
-    variable_display_parameter: n
     p000: Tag
     p000_type: 5
     p000_value_initial: null
@@ -17823,13 +17053,6 @@
   pk: 141
   fields:
     block: 141
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '1'
-    variable_command_ports: '0'
-    variable_display_parameter: n
     p000: Tag
     p000_type: 5
     p000_value_initial: null
@@ -17954,13 +17177,6 @@
   pk: 142
   fields:
     block: 142
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: n
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: number of output ports or vector of sizes
     p000_type: 2
     p000_value_initial: null
@@ -18085,13 +17301,6 @@
   pk: 143
   fields:
     block: 143
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: n
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: number of output ports or vector of sizes
     p000_type: 2
     p000_value_initial: null
@@ -18216,13 +17425,6 @@
   pk: 144
   fields:
     block: 144
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: Extractor
     p000: indices to extract
     p000_type: 3
     p000_value_initial: null
@@ -18347,13 +17549,6 @@
   pk: 145
   fields:
     block: 145
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: Tag
     p000_type: 5
     p000_value_initial: null
@@ -18478,13 +17673,6 @@
   pk: 146
   fields:
     block: 146
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '1'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: Tag
     p000_type: 5
     p000_value_initial: null
@@ -18609,13 +17797,6 @@
   pk: 147
   fields:
     block: 147
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: Tag
     p000_type: 5
     p000_value_initial: null
@@ -18740,13 +17921,6 @@
   pk: 148
   fields:
     block: 148
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '1'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: Tag
     p000_type: 5
     p000_value_initial: null
@@ -18871,13 +18045,6 @@
   pk: 149
   fields:
     block: 149
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: GotoTag
     p000_type: 5
     p000_value_initial: null
@@ -19002,13 +18169,6 @@
   pk: 150
   fields:
     block: 150
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: GotoTag
     p000_type: 5
     p000_value_initial: null
@@ -19133,13 +18293,6 @@
   pk: 151
   fields:
     block: 151
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: 2/n
-    variable_implicit_output_ports: '0'
-    variable_control_ports: 2/n
-    variable_command_ports: '0'
-    variable_display_parameter: Selector
     p000: Datatype (1=real double 2=Complex 3=int32...)
     p000_type: 3
     p000_value_initial: null
@@ -19264,13 +18417,6 @@
   pk: 152
   fields:
     block: 152
-    variable_explicit_input_ports: n+1
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: number of inputs
     p000_type: 2
     p000_value_initial: null
@@ -19395,13 +18541,6 @@
   pk: 153
   fields:
     block: 153
-    variable_explicit_input_ports: 2-31
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: number of input ports or vector of sizes
     p000_type: 9
     p000_value_initial: null
@@ -19526,13 +18665,6 @@
   pk: 154
   fields:
     block: 154
-    variable_explicit_input_ports: 2-8
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: number of input ports or vector of sizes
     p000_type: 9
     p000_value_initial: null
@@ -19657,13 +18789,6 @@
   pk: 155
   fields:
     block: 155
-    variable_explicit_input_ports: 0/n
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: number of inputs
     p000_type: 2
     p000_value_initial: null
@@ -19788,13 +18913,6 @@
   pk: 156
   fields:
     block: 156
-    variable_explicit_input_ports: 2-n
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: 2-n
-    variable_command_ports: '0'
-    variable_display_parameter: Relay
     p000: number of inputs
     p000_type: 2
     p000_value_initial: null
@@ -19919,13 +19037,6 @@
   pk: 157
   fields:
     block: 157
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: SCALAR to VECTOR
     p000: 'size of output (-1: if don''t know)'
     p000_type: 3
     p000_value_initial: null
@@ -20050,13 +19161,6 @@
   pk: 158
   fields:
     block: 158
-    variable_explicit_input_ports: n
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: n
-    variable_command_ports: '0'
-    variable_display_parameter: Selector
     p000: Datatype (1=real double 2=Complex 3=int32..)
     p000_type: 3
     p000_value_initial: null
@@ -20181,13 +19285,6 @@
   pk: 160
   fields:
     block: 160
-    variable_explicit_input_ports: n
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: number of inputs
     p000_type: 2
     p000_value_initial: null
@@ -20312,13 +19409,6 @@
   pk: 161
   fields:
     block: 161
-    variable_explicit_input_ports: '3'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: Datatype (1=real double 2=complex 3=int32..)
     p000_type: 3
     p000_value_initial: null
@@ -20443,13 +19533,6 @@
   pk: 162
   fields:
     block: 162
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: x == n
     p000: Initial guess value
     p000_type: 3
     p000_value_initial: null
@@ -20574,13 +19657,6 @@
   pk: 163
   fields:
     block: 163
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '2'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: x == n,  x' == n
     p000: Initial guess value of state x
     p000_type: 3
     p000_value_initial: null
@@ -20705,13 +19781,6 @@
   pk: 164
   fields:
     block: 164
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: S
     p000: Initial state
     p000_type: 3
     p000_value_initial: null
@@ -20836,13 +19905,6 @@
   pk: 166
   fields:
     block: 166
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: 0/1
-    variable_command_ports: '0'
-    variable_display_parameter: '0.0'
     p000: input size
     p000_type: 10
     p000_value_initial: null
@@ -20967,13 +20029,6 @@
   pk: 167
   fields:
     block: 167
-    variable_explicit_input_ports: '2'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '1'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: Xmin
     p000_type: 3
     p000_value_initial: null
@@ -21098,13 +20153,6 @@
   pk: 168
   fields:
     block: 168
-    variable_explicit_input_ports: '2'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '1'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: Number of curves
     p000_type: 3
     p000_value_initial: null
@@ -21229,13 +20277,6 @@
   pk: 169
   fields:
     block: 169
-    variable_explicit_input_ports: '3'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '1'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: Number of curves
     p000_type: 3
     p000_value_initial: null
@@ -21360,13 +20401,6 @@
   pk: 170
   fields:
     block: 170
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '1'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: color(>0) or mark(<0) vector
     p000_type: 3
     p000_value_initial: null
@@ -21491,13 +20525,6 @@
   pk: 171
   fields:
     block: 171
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '1'
-    variable_command_ports: '0'
-    variable_display_parameter: n
     p000: Port Number
     p000_type: 2
     p000_value_initial: null
@@ -21622,13 +20649,6 @@
   pk: 172
   fields:
     block: 172
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '1'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: Bounds vector X
     p000_type: 3
     p000_value_initial: null
@@ -21753,13 +20773,6 @@
   pk: 173
   fields:
     block: 173
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '1'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: ColorMap
     p000_type: 9
     p000_value_initial: null
@@ -21884,13 +20897,6 @@
   pk: 174
   fields:
     block: 174
-    variable_explicit_input_ports: n
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: 0/1
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: Input ports size
     p000_type: 10
     p000_value_initial: null
@@ -22015,13 +21021,6 @@
   pk: 175
   fields:
     block: 175
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: 1/0
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: Color(>0) or mark(<0)vector(8 entries)
     p000_type: 3
     p000_value_initial: null
@@ -22146,13 +21145,6 @@
   pk: 176
   fields:
     block: 176
-    variable_explicit_input_ports: '2'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '1'
-    variable_command_ports: '0'
-    variable_display_parameter: x, y
     p000: Number of curves
     p000_type: 3
     p000_value_initial: null
@@ -22277,13 +21269,6 @@
   pk: 177
   fields:
     block: 177
-    variable_explicit_input_ports: '3'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '1'
-    variable_command_ports: '0'
-    variable_display_parameter: x, y, z
     p000: Number of curves
     p000_type: 3
     p000_value_initial: null
@@ -22408,13 +21393,6 @@
   pk: 178
   fields:
     block: 178
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: 1/n
     p000: Port number
     p000_type: 3
     p000_value_initial: null
@@ -22539,13 +21517,6 @@
   pk: 179
   fields:
     block: 179
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '1'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: 1/n
     p000: Port number
     p000_type: 3
     p000_value_initial: null
@@ -22670,13 +21641,6 @@
   pk: 180
   fields:
     block: 180
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: 0/1
-    variable_command_ports: '0'
-    variable_display_parameter: To workspace A [n]
     p000: Size of buffer
     p000_type: 3
     p000_value_initial: null
@@ -22801,13 +21765,6 @@
   pk: 182
   fields:
     block: 182
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '1'
-    variable_command_ports: '0'
-    variable_display_parameter: Write AU to /dev/audio
     p000: Buffer Size
     p000_type: 3
     p000_value_initial: null
@@ -22932,13 +21889,6 @@
   pk: 183
   fields:
     block: 183
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '1'
-    variable_command_ports: '0'
-    variable_display_parameter: Write to C binary file
     p000: Input Size
     p000_type: 3
     p000_value_initial: null
@@ -23063,13 +22013,6 @@
   pk: 184
   fields:
     block: 184
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '1'
-    variable_display_parameter: n
     p000: Port Number
     p000_type: 3
     p000_value_initial: null
@@ -23194,13 +22137,6 @@
   pk: 185
   fields:
     block: 185
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '1'
-    variable_display_parameter: ''
     p000: Period
     p000_type: 3
     p000_value_initial: null
@@ -23325,13 +22261,6 @@
   pk: 186
   fields:
     block: 186
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: n
     p000: Constant
     p000_type: 3
     p000_value_initial: null
@@ -23456,13 +22385,6 @@
   pk: 187
   fields:
     block: 187
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: n
     p000: Constant
     p000_type: 3
     p000_value_initial: null
@@ -23587,13 +22509,6 @@
   pk: 188
   fields:
     block: 188
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: n
     p000: Constant value
     p000_type: 3
     p000_value_initial: null
@@ -23718,13 +22633,6 @@
   pk: 189
   fields:
     block: 189
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '1'
-    variable_command_ports: '0'
-    variable_display_parameter: Counter n --> n
     p000: Minimum
     p000_type: 3
     p000_value_initial: null
@@ -23849,13 +22757,6 @@
   pk: 190
   fields:
     block: 190
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: Curve
     p000: xmin
     p000_type: 3
     p000_value_initial: null
@@ -23980,13 +22881,6 @@
   pk: 191
   fields:
     block: 191
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: From workspace
     p000: Variable name
     p000_type: 5
     p000_value_initial: null
@@ -24111,13 +23005,6 @@
   pk: 192
   fields:
     block: 192
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: Magnitude
     p000_type: 3
     p000_value_initial: null
@@ -24242,13 +23129,6 @@
   pk: 193
   fields:
     block: 193
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '1'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: Amplitude
     p000_type: 3
     p000_value_initial: null
@@ -24373,13 +23253,6 @@
   pk: 194
   fields:
     block: 194
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: n
     p000: Port number
     p000_type: 3
     p000_value_initial: null
@@ -24504,13 +23377,6 @@
   pk: 195
   fields:
     block: 195
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '1'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: n
     p000: Port Number
     p000_type: 3
     p000_value_initial: null
@@ -24635,13 +23501,6 @@
   pk: 196
   fields:
     block: 196
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '1'
-    variable_command_ports: '0'
-    variable_display_parameter: Counter Modulo n
     p000: Initial State (zero or positive number)
     p000_type: 3
     p000_value_initial: null
@@ -24766,13 +23625,6 @@
   pk: 197
   fields:
     block: 197
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: 'Phase delay (secs) :'
     p000_type: 3
     p000_value_initial: null
@@ -24897,13 +23749,6 @@
   pk: 198
   fields:
     block: 198
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: Slope
     p000_type: 3
     p000_value_initial: null
@@ -25028,13 +23873,6 @@
   pk: 199
   fields:
     block: 199
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '1'
-    variable_command_ports: '0'
-    variable_display_parameter: Random generator
     p000: Datatype (1=real double 2=complex)
     p000_type: 2
     p000_value_initial: null
@@ -25159,13 +23997,6 @@
   pk: 200
   fields:
     block: 200
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '1'
-    variable_command_ports: '0'
-    variable_display_parameter: Read from .au sound file
     p000: Input File Name
     p000_type: 7
     p000_value_initial: null
@@ -25290,13 +24121,6 @@
   pk: 201
   fields:
     block: 201
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '1'
-    variable_command_ports: '0'
-    variable_display_parameter: Read from C binary file
     p000: Time Record Selection
     p000_type: 5
     p000_value_initial: null
@@ -25421,13 +24245,6 @@
   pk: 202
   fields:
     block: 202
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '1'
-    variable_command_ports: '0'
-    variable_display_parameter: Read from input file
     p000: Time Record Selection
     p000_type: 5
     p000_value_initial: null
@@ -25552,13 +24369,6 @@
   pk: 203
   fields:
     block: 203
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '1'
-    variable_display_parameter: ''
     p000: Sample time
     p000_type: 3
     p000_value_initial: null
@@ -25683,13 +24493,6 @@
   pk: 205
   fields:
     block: 205
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '1'
-    variable_display_parameter: Signal Builder
     p000: Spline Method (0..7)
     p000_type: 3
     p000_value_initial: null
@@ -25814,13 +24617,6 @@
   pk: 206
   fields:
     block: 206
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: Step Time
     p000_type: 3
     p000_value_initial: null
@@ -25945,13 +24741,6 @@
   pk: 208
   fields:
     block: 208
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '1'
-    variable_command_ports: '0'
-    variable_display_parameter: TK Scale
     p000: Min value
     p000_type: 3
     p000_value_initial: null
@@ -26076,13 +24865,6 @@
   pk: 209
   fields:
     block: 209
-    variable_explicit_input_ports: '2'
-    variable_implicit_input_ports: '2'
-    variable_explicit_output_ports: '3'
-    variable_implicit_output_ports: '2'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: 'Pressure in the sky of the cover: Patm (pa)'
     p000_type: 3
     p000_value_initial: null
@@ -26207,13 +24989,6 @@
   pk: 211
   fields:
     block: 211
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '1'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '1'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: 'Tube length: L (m)'
     p000_type: 3
     p000_value_initial: null
@@ -26338,13 +25113,6 @@
   pk: 212
   fields:
     block: 212
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '1'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: 'Source pressure: P0 (Pa)'
     p000_type: 3
     p000_value_initial: null
@@ -26469,13 +25237,6 @@
   pk: 213
   fields:
     block: 213
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '1'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: S
     p000: 'Source pressure: P0 (Pa)'
     p000_type: 3
     p000_value_initial: null
@@ -26600,13 +25361,6 @@
   pk: 214
   fields:
     block: 214
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '1'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '1'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: Cvmax
     p000_type: 3
     p000_value_initial: null
@@ -26731,13 +25485,6 @@
   pk: 215
   fields:
     block: 215
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '2'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: Bouncing balls
     p000: Mass
     p000_type: 10
     p000_value_initial: null
@@ -26862,13 +25609,6 @@
   pk: 216
   fields:
     block: 216
-    variable_explicit_input_ports: '2'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '1'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: colors
     p000_type: 10
     p000_value_initial: null
@@ -26993,13 +25733,6 @@
   pk: 217
   fields:
     block: 217
-    variable_explicit_input_ports: '2'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '1'
-    variable_command_ports: '0'
-    variable_display_parameter: ''
     p000: pendulum length
     p000_type: 3
     p000_value_initial: null
@@ -27124,13 +25857,6 @@
   pk: 218
   fields:
     block: 218
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: 'C block : n'
     p000: input ports sizes
     p000_type: 3
     p000_value_initial: null
@@ -27255,13 +25981,6 @@
   pk: 219
   fields:
     block: 219
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: 0/1
-    variable_command_ports: 0/1
-    variable_display_parameter: 'C block 2 : n'
     p000: simulation function
     p000_type: 5
     p000_value_initial: null
@@ -27386,13 +26105,6 @@
   pk: 220
   fields:
     block: 220
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: 0/2
-    variable_command_ports: '0'
-    variable_display_parameter: 'C block 4 : n'
     p000: simulation function
     p000_type: 5
     p000_value_initial: null
@@ -27517,13 +26229,6 @@
   pk: 221
   fields:
     block: 221
-    variable_explicit_input_ports: '0'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '0'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: n
     p000: Enter scilab instructions for debugging. Inputs are block and flag, output
       is block
     p000_type: 5
@@ -27649,13 +26354,6 @@
   pk: 222
   fields:
     block: 222
-    variable_explicit_input_ports: ''
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: ''
-    variable_implicit_output_ports: '0'
-    variable_control_ports: ''
-    variable_command_ports: ''
-    variable_display_parameter: ''
     p000: number of inputs
     p000_type: 2
     p000_value_initial: null
@@ -27780,13 +26478,6 @@
   pk: 223
   fields:
     block: 223
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: 'Fortran block: forty'
     p000: input ports sizes
     p000_type: 3
     p000_value_initial: null
@@ -27911,13 +26602,6 @@
   pk: 224
   fields:
     block: 224
-    variable_explicit_input_ports: '1'
-    variable_implicit_input_ports: '0'
-    variable_explicit_output_ports: '1'
-    variable_implicit_output_ports: '0'
-    variable_control_ports: '0'
-    variable_command_ports: '0'
-    variable_display_parameter: 'native block : sinblk'
     p000: Simulation function
     p000_type: 5
     p000_value_initial: null
