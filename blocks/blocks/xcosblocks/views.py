@@ -31,6 +31,7 @@ class BlockFilterSet(FilterSet):
     class Meta:
         model = Block
         fields = {
+            'id': ['exact'],
             'name': ['istartswith'],
             'categories': ['exact'],
         }
@@ -58,7 +59,7 @@ class BlockParameterFilterSet(FilterSet):
 
 class BlockParameterViewSet(ReadOnlyModelViewSet):
     """
-     Listing All Block Details
+     Listing All Block Parameter Details
     """
     queryset = BlockParameter.objects.all()
     serializer_class = BlockParameterSerializer

@@ -1,3 +1,4 @@
+*.pem
 *.pyc
 blocks/blocks/*/migrations/*.py
 blocks/*/migrations/*.py
