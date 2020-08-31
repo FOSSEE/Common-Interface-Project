@@ -42,16 +42,8 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const searchOptions = {
-  NAME: 'name__icontains',
-  KEYWORD: 'keyword__icontains',
-  DESCRIPTION: 'description__icontains',
-  COMPONENT_LIBRARY: 'component_library__library_name__icontains',
-  PREFIX: 'symbol_prefix'
+  NAME: 'name__istartswith',
 }
-
-// var tempSearchTxt = ''
-
-const searchOptionsList = ['NAME', 'KEYWORD', 'DESCRIPTION', 'COMPONENT_LIBRARY', 'PREFIX']
 
 export default function ComponentSidebar ({ compRef }) {
   const classes = useStyles()
@@ -66,18 +58,11 @@ export default function ComponentSidebar ({ compRef }) {
   const [loading, setLoading] = useState(false)
 
   const [searchedComponentList, setSearchedComponents] = useState([])
-  const [searchOption, setSearchOption] = useState('NAME')
-  // const searchedComponentList = React.useRef([])
+  const searchOption = 'NAME'
 
   const timeoutId = React.useRef()
 
-  const handleSearchOptionType = (evt) => {
-    setSearchedComponents([])
-    setSearchOption(evt.target.value)
-  }
-
   const handleSearchText = (evt) => {
-    // tempSearchTxt = evt.target.value
     if (searchText.length === 0) {
       setSearchedComponents([])
     }
@@ -99,7 +84,7 @@ export default function ComponentSidebar ({ compRef }) {
       // call api here
       setLoading(true)
 
-      api.get(`components/?${searchOptions[searchOption]}=${searchText}`)
+      api.get(`blocks/?${searchOptions[searchOption]}=${searchText}`)
         .then(
           (res) => {
             if (res.data.length === 0) {
@@ -152,13 +137,13 @@ export default function ComponentSidebar ({ compRef }) {
         {/* Display List of categorized components */}
         <List>
           <ListItem button>
-            <h2 style={{ margin: '5px' }}>Components List</h2>
+            <h2 style={{ margin: '5px' }}>Blocks List</h2>
           </ListItem>
           <ListItem>
 
             <TextField
               id="standard-number"
-              placeholder="Search Component"
+              placeholder="Search Block"
               variant="outlined"
               size="small"
               value={searchText}
@@ -176,31 +161,6 @@ export default function ComponentSidebar ({ compRef }) {
 
           </ListItem>
 
-          <ListItem divider>
-            <TextField
-              style={{ width: '100%' }}
-              id="searchType"
-              size='small'
-              variant="outlined"
-              select
-              label="Search By"
-              value={searchOption}
-              onChange={handleSearchOptionType}
-              SelectProps={{
-                native: true
-              }}
-            >
-
-              {
-                searchOptionsList.map((value, i) => {
-                  return (<option key={i} value={value}>
-                    {value}
-                  </option>)
-                })
-              }
-
-            </TextField>
-          </ListItem>
           <div style={{ maxHeight: '70vh', overflowY: 'auto', overflowX: 'hidden' }} >
             {searchText.length !== 0 && searchedComponentList.length !== 0 &&
 
@@ -226,35 +186,31 @@ export default function ComponentSidebar ({ compRef }) {
 
             {!loading && searchText.length !== 0 && isSearchedResultsEmpty &&
 
-              <span style={{ margin: '20px' }}>No Components Found</span>
+              <span style={{ margin: '20px' }}>No Blocks Found</span>
 
             }
 
             {/* Collapsing List Mapped by Libraries fetched by the API */}
             {searchText.length === 0 &&
-              libraries.sort(function (a, b) {
-                var textA = a.library_name.toUpperCase()
-                var textB = b.library_name.toUpperCase()
-                return (textA < textB) ? -1 : (textA > textB) ? 1 : 0
-              }).map(
+              libraries.map(
                 (library) => {
                   return (
                     <div key={library.id}>
                       <ListItem onClick={(e, id = library.id) => handleCollapse(id)} button divider>
-                        <span className={classes.head}>{library.library_name.slice(0, -4)}</span>
+                        <span className={classes.head}>{library.name}</span>
                         {collapse[library.id] ? <ExpandLess /> : <ExpandMore />}
                       </ListItem>
                       <Collapse in={collapse[library.id]} timeout={'auto'} unmountOnExit mountOnEnter exit={false}>
                         <List component="div" disablePadding dense >
 
-                          {/* Chunked Components of Library */}
+                          {/* Chunked Blocks of Library */}
                           {
                             chunk(components[library.id], COMPONENTS_PER_ROW).map((componentChunk) => {
                               return (
                                 <ListItem key={componentChunk[0].svg_path} divider>
                                   {
                                     componentChunk.map((component) => {
-                                      return (<ListItemIcon key={component.full_name}>
+                                      return (<ListItemIcon key={component.name}>
                                         <SideComp component={component} />
                                       </ListItemIcon>)
                                     }

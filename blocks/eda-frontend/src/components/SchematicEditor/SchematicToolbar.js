@@ -12,7 +12,6 @@ import ZoomOutIcon from '@material-ui/icons/ZoomOut'
 import DeleteIcon from '@material-ui/icons/Delete'
 import SettingsOverscanIcon from '@material-ui/icons/SettingsOverscan'
 import PrintOutlinedIcon from '@material-ui/icons/PrintOutlined'
-import BugReportOutlinedIcon from '@material-ui/icons/BugReportOutlined'
 import RotateRightIcon from '@material-ui/icons/RotateRight'
 import BorderClearIcon from '@material-ui/icons/BorderClear'
 import { makeStyles } from '@material-ui/core/styles'
@@ -26,7 +25,7 @@ import SystemUpdateAltOutlinedIcon from '@material-ui/icons/SystemUpdateAltOutli
 import { Link as RouterLink } from 'react-router-dom'
 
 import { NetlistModal, HelpScreen, ImageExportDialog, OpenSchDialog } from './ToolbarExtension'
-import { ZoomIn, ZoomOut, ZoomAct, DeleteComp, PrintPreview, ErcCheck, Rotate, GenerateNetList, Undo, Redo, Save, ClearGrid } from './Helper/ToolbarTools'
+import { ZoomIn, ZoomOut, ZoomAct, DeleteComp, PrintPreview, Rotate, GenerateNetList, Undo, Redo, Save, ClearGrid } from './Helper/ToolbarTools'
 import { useSelector, useDispatch } from 'react-redux'
 import { toggleSimulate, closeCompProperties, setSchXmlData, saveSchematic, openLocalSch } from '../../redux/actions/index'
 
@@ -390,11 +389,6 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
         </IconButton>
       </Tooltip>
       <NetlistModal open={open} close={handleClose} netlist={netlist} />
-      <Tooltip title="ERC Check">
-        <IconButton color="inherit" className={classes.tools} size="small" onClick={ErcCheck}>
-          <BugReportOutlinedIcon fontSize="small" />
-        </IconButton>
-      </Tooltip>
       <span className={classes.pipe}>|</span>
 
       <Tooltip title="Undo">

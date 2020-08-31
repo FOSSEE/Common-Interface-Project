@@ -1,7 +1,7 @@
 import * as actions from '../actions/actions'
 
 const initialState = {
-  title: '* Untitled_Schematic',
+  title: '* Untitled',
   model: '',
   netlist: '',
   controlLine: '',

@@ -39,7 +39,7 @@ export default function SideComp ({ component }) {
   return (
     <div>
 
-      <Tooltip title={component.full_name} arrow>
+      <Tooltip title={component.name} arrow>
         {/* Display Image thumbnail in left side pane */}
         <img ref={imageRef} className='compImage' src={'../' + component.svg_path} alt="Logo" aria-describedby={id} onClick={handleClick} />
       </Tooltip>
@@ -62,27 +62,15 @@ export default function SideComp ({ component }) {
       >
         <List component="div" className={classes.popupInfo} disablePadding dense >
           <ListItemText>
-            <b>Component Name:</b> {component.name}
+            <b>Block Name:</b> {component.name}
           </ListItemText>
-
-          { component.description !== '' &&
-            <ListItemText>
-              <b>Description:</b> {component.description}
-            </ListItemText>
-          }
-          {
-            component.keyword !== '' &&
-          <ListItemText>
-            <b>Keywords:</b> {component.keyword}
-          </ListItemText>
-
-          }
 
           {
-            component.data_link !== '' &&
+            component.categories !== '' &&
           <ListItemText>
-            <b>Datasheet:</b> <a href={component.data_link} rel="noopener noreferrer" target='_blank' >{component.data_link}</a>
+            <b>Categories:</b> {component.categories}
           </ListItemText>
+
           }
 
         </List>

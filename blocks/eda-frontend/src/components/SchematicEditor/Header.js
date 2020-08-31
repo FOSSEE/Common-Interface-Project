@@ -214,7 +214,7 @@ function Header () {
         <Input
           className={classes.input}
           color="secondary"
-          value={schSave.title === 'Untitled_Schematic' ? 'Untitled_Schematic' : schSave.title}
+          value={schSave.title === 'Untitled' ? 'Untitled' : schSave.title}
           onChange={titleHandler}
           inputProps={{ 'aria-label': 'SchematicTitle' }}
         />

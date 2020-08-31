@@ -7,11 +7,11 @@ export const fetchLibraries = () => (dispatch) => {
 // [
   //  {
   //   "id": 1
-  //   "library_name": "Analog.lib",
-  //   "saved_on": "2020-05-19T14:06:02.351977Z"
+  //   "name": "Commonly Used Blocks",
+  //   "sort_order": 1
   // },
 // ] -- Multiple dicts in array
-  api.get('libraries/')
+  api.get('categories/')
     .then(
       (res) => {
         dispatch({
@@ -28,35 +28,25 @@ export const fetchComponents = (libraryId) => (dispatch) => {
 // SAMPLE Response from API
 //   [
   // {
-  //   "id": 14221,
-  //   "name": "BAT54ADW",
-  //   "svg_path": "kicad-symbols/symbol_svgs/Diode/D-BAT54ADW-1-A.svg",
-  //   "thumbnail_path": "kicad-symbols/symbol_svgs/Diode/D-BAT54ADW-1-A_thumbnail.svg",
-  //   "symbol_prefix": "D",
-  //   "component_library": "http://localhost/api/libraries/193/",
-  //   "description": "Schottky diode array 2 pair Com A",
-  //   "data_link": "http://www.diodes.com/datasheets/ds30152.pdf",
-  //   "full_name": "D-BAT54ADW-1-A",
-  //   "keyword": "diode",
-  //   "alternate_component": [
-  //     {
-  //       "dmg": 1,
-  //       "part": "C",
-  //       "full_name": "D-BAT54ADW-1-C",
-  //       "svg_path": "kicad-symbols/symbol_svgs/Diode/D-BAT54ADW-1-C.svg",
-  //       "id": 2326
-  //     },
-  //     {
-  //       "dmg": 1,
-  //       "part": "B",
-  //       "full_name": "D-BAT54ADW-1-B",
-  //       "svg_path": "kicad-symbols/symbol_svgs/Diode/D-BAT54ADW-1-B.svg",
-  //       "id": 2327
-  //     },
-  //   ]
+  //   "id": 1,
+  //   "blocktype": 1,
+  //   "name": "LOGICAL_OP",
+  //   "categories": [ 1 ],
+  //   "initial_explicit_input_ports": 2,
+  //   "initial_implicit_input_ports": 0,
+  //   "initial_explicit_output_ports": 1,
+  //   "initial_implicit_output_ports": 0,
+  //   "initial_display_parameter": "AND",
+  //   "p000_value_initial": "AND",
+  //   "p001_value_initial": "AND",
+  //   "p002_value_initial": "AND",
+  //   "p003_value_initial": "AND",
+  //   "p004_value_initial": null,
+  //   ...
+  //   "p039_value_initial": null,
   // },
 // ] -- Multiple dicts in array
-  const url = 'components/?component_library=' + parseInt(libraryId)
+  const url = 'blocks/?categories=' + parseInt(libraryId)
   api.get(url)
     .then(
       (res) => {
