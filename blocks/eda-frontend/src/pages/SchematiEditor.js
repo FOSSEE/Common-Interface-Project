@@ -39,7 +39,7 @@ export default function SchematiEditor (props) {
   }
 
   useEffect(() => {
-    document.title = 'Schematic Editor - Xcos'
+    document.title = 'Diagram Editor - Xcos'
     var container = gridRef.current
     var sidebar = compRef.current
     var outline = outlineRef.current

@@ -51,7 +51,7 @@ export default function Home () {
           size="large"
           color="primary"
         >
-          Schematic Editor
+          Diagram Editor
         </Button>
       </Typography>
     </Container>

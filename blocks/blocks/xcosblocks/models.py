@@ -38,6 +38,8 @@ class Block(models.Model):
     initial_control_ports = models.IntegerField()
     initial_command_ports = models.IntegerField()
     initial_display_parameter = models.CharField(max_length=100)
+    block_image_path = models.CharField(max_length=100,
+                                        blank=True, null=True)
     p000_value_initial = models.CharField(max_length=100,
                                           blank=True, null=True)
     p001_value_initial = models.CharField(max_length=100,

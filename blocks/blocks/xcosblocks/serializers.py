@@ -47,6 +47,7 @@ class BlockSerializer(serializers.ModelSerializer):
             'initial_control_ports',
             'initial_command_ports',
             'initial_display_parameter',
+            'block_image_path',
             'p000_value_initial',
             'p001_value_initial',
             'p002_value_initial',

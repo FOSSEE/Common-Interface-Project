@@ -108,21 +108,6 @@ export default function ProgressPanel () {
           </Typography>
         }
       </TabPanel>
-
-      {/* Listing Schematics Under Review */}
-      {/* <TabPanel value={value} index={1}>
-        <Typography variant="button" display="block" gutterBottom>
-          Start publishing circuit , You don't have any schematics under review...
-        </Typography>
-      </TabPanel> */}
-
-      {/* Listing Reviewed Schematics */}
-      {/* <TabPanel value={value} index={2}>
-        <Typography variant="button" display="block" gutterBottom>
-          Start publishing circuit , You don't have any schematics to be tagged by
-          domain expert...
-        </Typography>
-      </TabPanel> */}
     </div>
   )
 }

@@ -140,7 +140,7 @@ export function PrintPreview () {
     header.style.borderBottom = '1px solid blue'
     header.style.top = '0px'
 
-    mxUtils.write(footer, 'Made with Schematic Editor - ' + pageNumber + ' - Xcos on Cloud')
+    mxUtils.write(footer, 'Made with Diagram Editor - ' + pageNumber + ' - Xcos on Cloud')
     footer.style.borderTop = '1px solid blue'
     footer.style.bottom = '0px'
 
