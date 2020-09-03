@@ -61,7 +61,7 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
   // initialize information from the svg meta
   // plots pinnumbers and component labels.
 
-  var path = '../' + component.svg_path
+  var path = 'http://localhost:8000/static/' + component.block_image_path
 
   fetch(path)
     .then(function (response) {

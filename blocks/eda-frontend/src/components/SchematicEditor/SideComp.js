@@ -41,7 +41,7 @@ export default function SideComp ({ component }) {
 
       <Tooltip title={component.name} arrow>
         {/* Display Image thumbnail in left side pane */}
-        <img ref={imageRef} className='compImage' src={'../' + component.svg_path} alt="Logo" aria-describedby={id} onClick={handleClick} />
+        <img ref={imageRef} className='compImage' src={'http://localhost:8000/static/' + component.block_image_path} alt="Logo" aria-describedby={id} onClick={handleClick} />
       </Tooltip>
 
       {/* Popover to display component information on single click */}
@@ -68,7 +68,7 @@ export default function SideComp ({ component }) {
           {
             component.categories !== '' &&
           <ListItemText>
-            <b>Categories:</b> {component.categories}
+            <b>Categories:</b> {component.categories.map((c) => <li>{c}</li>)}
           </ListItemText>
 
           }
