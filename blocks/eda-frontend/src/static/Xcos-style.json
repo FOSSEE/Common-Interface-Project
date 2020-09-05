@@ -271,7 +271,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/SQUARE_WAVE_f.svg"
+    "image": "http://localhost:8000/static/blocks/SQUARE_WAVE_f.svg"
   },
   "RAMP": {
     "shape": "label",
@@ -284,7 +284,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/RAMP.svg"
+    "image": "http://localhost:8000/static/blocks/RAMP.svg"
   },
   "RAND_m": {
     "shape": "label",
@@ -375,7 +375,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/sawtooth.svg"
+    "image": "http://localhost:8000/static/blocks/sawtooth.svg"
   },
   "STEP_FUNCTION": {
     "shape": "label",
@@ -388,7 +388,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/STEP_FUNCTION.svg"
+    "image": "http://localhost:8000/static/blocks/STEP_FUNCTION.svg"
   },
   "STEP": {
     "shape": "label",
@@ -401,7 +401,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/STEP_FUNCTION.svg"
+    "image": "http://localhost:8000/static/blocks/STEP_FUNCTION.svg"
   },
   "PULSE_SC": {
     "shape": "label",
@@ -414,7 +414,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/PULSE_SC.svg"
+    "image": "http://localhost:8000/static/blocks/PULSE_SC.svg"
   },
   "CLOCK_c": {
     "shape": "label",
@@ -427,7 +427,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/CLOCK_c.svg"
+    "image": "http://localhost:8000/static/blocks/CLOCK_c.svg"
   },
   "CLOCK_f": {
     "shape": "label",
@@ -440,7 +440,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/CLOCK_f.svg"
+    "image": "http://localhost:8000/static/blocks/CLOCK_f.svg"
   },
   "GENSIN_f": {
     "shape": "label",
@@ -453,7 +453,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/SINUS_f.svg"
+    "image": "http://localhost:8000/static/blocks/SINUS_f.svg"
   },
   "IN_f": {
     "shape": "hexagon",
@@ -492,7 +492,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/CLOCK_f.svg"
+    "image": "http://localhost:8000/static/blocks/CLOCK_f.svg"
   },
   "Modulo_Count": {
     "shape": "label",
@@ -531,7 +531,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/SampleCLK.svg"
+    "image": "http://localhost:8000/static/blocks/SampleCLK.svg"
   },
   "TKSCALE": {
     "shape": "label",
@@ -583,7 +583,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/INTEGRAL.svg"
+    "image": "http://localhost:8000/static/blocks/INTEGRAL.svg"
   },
   "INTEGRAL": {
     "shape": "label",
@@ -596,7 +596,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/INTEGRAL.svg"
+    "image": "http://localhost:8000/static/blocks/INTEGRAL.svg"
   },
   "CLSS": {
     "shape": "label",
@@ -739,7 +739,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/SATURATION.svg"
+    "image": "http://localhost:8000/static/blocks/SATURATION.svg"
   },
   "DEADBAND": {
     "shape": "label",
@@ -752,7 +752,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/DEADBAND.svg"
+    "image": "http://localhost:8000/static/blocks/DEADBAND.svg"
   },
   "HYSTHERESIS": {
     "shape": "label",
@@ -765,7 +765,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/HYSTHERESIS.svg"
+    "image": "http://localhost:8000/static/blocks/HYSTHERESIS.svg"
   },
   "BACKLASH": {
     "shape": "label",
@@ -830,7 +830,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/DSCOPE.svg"
+    "image": "http://localhost:8000/static/blocks/DSCOPE.svg"
   },
   "INTRP2BLK_f": {
     "shape": "label",
@@ -882,7 +882,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/QUANT_f.svg"
+    "image": "http://localhost:8000/static/blocks/QUANT_f.svg"
   },
   "MFCLCK_f": {
     "shape": "label",
@@ -1025,7 +1025,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/SUM.svg"
+    "image": "http://localhost:8000/static/blocks/SUM.svg"
   },
   "POWBLK_f": {
     "shape": "label",
@@ -1221,7 +1221,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/SUM.svg"
+    "image": "http://localhost:8000/static/blocks/SUM.svg"
   },
   "TrigFun": {
     "shape": "label",
@@ -1247,7 +1247,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/PRODUCT.svg"
+    "image": "http://localhost:8000/static/blocks/PRODUCT.svg"
   },
   "MAXMIN": {
     "shape": "label",
@@ -1845,7 +1845,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/ASCOPE.svg"
+    "image": "http://localhost:8000/static/blocks/ASCOPE.svg"
   },
   "BARXY": {
     "shape": "label",
@@ -1858,7 +1858,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/BARXY.svg"
+    "image": "http://localhost:8000/static/blocks/BARXY.svg"
   },
   "CANIMXY": {
     "shape": "label",
@@ -1871,7 +1871,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/3DSCOPE.svg"
+    "image": "http://localhost:8000/static/blocks/3DSCOPE.svg"
   },
   "CSCOPE": {
     "shape": "label",
@@ -1884,7 +1884,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/ASCOPE.svg"
+    "image": "http://localhost:8000/static/blocks/ASCOPE.svg"
   },
   "CSCOPXY": {
     "shape": "label",
@@ -1897,7 +1897,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/CSCOPXY.svg"
+    "image": "http://localhost:8000/static/blocks/CSCOPXY.svg"
   },
   "TOWS_c": {
     "shape": "label",
@@ -1923,7 +1923,7 @@
     "spacing": 13,
     "gradientColor": "white",
     "rounded": 1,
-    "image": "blocks/ASCOPE.svg"
+    "image": "http://localhost:8000/static/blocks/ASCOPE.svg"
   },
   "CSCOPXY3D": {
     "shape": "label",
@@ -1936,7 +1936,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/CSCOPXY3D.svg"
+    "image": "http://localhost:8000/static/blocks/CSCOPXY3D.svg"
   },
   "CANIMXY3D": {
     "shape": "label",
@@ -1949,7 +1949,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/3DSCOPE.svg"
+    "image": "http://localhost:8000/static/blocks/3DSCOPE.svg"
   },
   "CMATVIEW": {
     "shape": "label",
@@ -1962,7 +1962,7 @@
     "spacing": 13,
     "gradientColor": "white",
     "rounded": 1,
-    "image": "blocks/ASCOPE.svg"
+    "image": "http://localhost:8000/static/blocks/ASCOPE.svg"
   },
   "CMSCOPE": {
     "shape": "label",
@@ -1975,7 +1975,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/ASCOPE.svg"
+    "image": "http://localhost:8000/static/blocks/ASCOPE.svg"
   },
   "AFFICH_m": {
     "shape": "label",
@@ -2221,8 +2221,7 @@
     "noLabel": 0,
     "gradientColor": "white",
     "rounded": 1,
-    "imageBorder": "black",
-    "image": "blocks/CLKOUT_f.gif"
+    "imageBorder": "black"
   },
   "CLKSOMV_f": {
     "shape": "ellipse",
@@ -2290,7 +2289,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/ANDBLK.svg"
+    "image": "http://localhost:8000/static/blocks/ANDBLK.svg"
   },
   "HALT_f": {
     "shape": "label",
@@ -2355,7 +2354,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/DSCOPE.svg"
+    "image": "http://localhost:8000/static/blocks/DSCOPE.svg"
   },
   "SELF_SWITCH": {
     "shape": "label",
@@ -2368,7 +2367,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/Self_Switch_off.svg"
+    "image": "http://localhost:8000/static/blocks/Self_Switch_off.svg"
   },
   "SELF_SWITCH_ON": {
     "shape": "label",
@@ -2381,7 +2380,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/Self_Switch_on.svg"
+    "image": "http://localhost:8000/static/blocks/Self_Switch_on.svg"
   },
   "SELF_SWITCH_OFF": {
     "shape": "label",
@@ -2394,7 +2393,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/Self_Switch_off.svg"
+    "image": "http://localhost:8000/static/blocks/Self_Switch_off.svg"
   },
   "ISELECT_m": {
     "shape": "label",
@@ -2485,7 +2484,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/SWITCH.svg"
+    "image": "http://localhost:8000/static/blocks/SWITCH.svg"
   },
   "SWITCH_f": {
     "shape": "label",
@@ -2498,7 +2497,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/SWITCH.svg"
+    "image": "http://localhost:8000/static/blocks/SWITCH.svg"
   },
   "SWITCH2_m": {
     "shape": "label",
@@ -2511,7 +2510,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/SWITCH.svg"
+    "image": "http://localhost:8000/static/blocks/SWITCH.svg"
   },
   "NRMSOM_f": {
     "shape": "label",
@@ -2813,7 +2812,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/SUPER.svg"
+    "image": "http://localhost:8000/static/blocks/SUPER.svg"
   },
   "DSUPER": {
     "shape": "label",
@@ -2826,7 +2825,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/SUPER.svg"
+    "image": "http://localhost:8000/static/blocks/SUPER.svg"
   },
   "Capacitor": {
     "shape": "label",
@@ -2839,7 +2838,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/Capacitor.svg"
+    "image": "http://localhost:8000/static/blocks/Capacitor.svg"
   },
   "Ground": {
     "shape": "label",
@@ -2852,7 +2851,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/Ground.svg"
+    "image": "http://localhost:8000/static/blocks/Ground.svg"
   },
   "VVsourceAC": {
     "shape": "ellipse",
@@ -2878,7 +2877,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/ConstantVoltage.svg"
+    "image": "http://localhost:8000/static/blocks/ConstantVoltage.svg"
   },
   "Inductor": {
     "shape": "label",
@@ -2891,7 +2890,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/Inductor.svg"
+    "image": "http://localhost:8000/static/blocks/Inductor.svg"
   },
   "PotentialSensor": {
     "shape": "label",
@@ -2904,7 +2903,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/PotentialSensor.svg"
+    "image": "http://localhost:8000/static/blocks/PotentialSensor.svg"
   },
   "VariableResistor": {
     "shape": "label",
@@ -2917,7 +2916,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/VariableResistor.svg"
+    "image": "http://localhost:8000/static/blocks/VariableResistor.svg"
   },
   "CurrentSensor": {
     "shape": "label",
@@ -2930,7 +2929,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/CurrentSensor.svg"
+    "image": "http://localhost:8000/static/blocks/CurrentSensor.svg"
   },
   "Resistor": {
     "shape": "label",
@@ -2943,7 +2942,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/Resistor.svg"
+    "image": "http://localhost:8000/static/blocks/Resistor.svg"
   },
   "VoltageSensor": {
     "shape": "label",
@@ -2956,7 +2955,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/VoltageSensor.svg"
+    "image": "http://localhost:8000/static/blocks/VoltageSensor.svg"
   },
   "Diode": {
     "shape": "label",
@@ -2969,7 +2968,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/Diode.svg"
+    "image": "http://localhost:8000/static/blocks/Diode.svg"
   },
   "VsourceAC": {
     "shape": "ellipse",
@@ -2996,7 +2995,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/NPN.svg"
+    "image": "http://localhost:8000/static/blocks/NPN.svg"
   },
   "PNP": {
     "shape": "label",
@@ -3009,7 +3008,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/PNP.svg"
+    "image": "http://localhost:8000/static/blocks/PNP.svg"
   },
   "SineVoltage": {
     "shape": "ellipse",
@@ -3035,7 +3034,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/SWITCH.svg"
+    "image": "http://localhost:8000/static/blocks/SWITCH.svg"
   },
   "OpAmp": {
     "shape": "triangle",
@@ -3065,7 +3064,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/PMOS.svg"
+    "image": "http://localhost:8000/static/blocks/PMOS.svg"
   },
   "NMOS": {
     "shape": "label",
@@ -3078,7 +3077,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/NMOS.svg"
+    "image": "http://localhost:8000/static/blocks/NMOS.svg"
   },
   "CCS": {
     "shape": "label",
@@ -3091,7 +3090,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/CCS.svg"
+    "image": "http://localhost:8000/static/blocks/CCS.svg"
   },
   "CVS": {
     "shape": "label",
@@ -3104,7 +3103,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/CVS.svg"
+    "image": "http://localhost:8000/static/blocks/CVS.svg"
   },
   "IdealTransformer": {
     "shape": "label",
@@ -3117,7 +3116,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/IdealTransformer.svg"
+    "image": "http://localhost:8000/static/blocks/IdealTransformer.svg"
   },
   "Gyrator": {
     "shape": "label",
@@ -3130,7 +3129,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/Gyrator.svg"
+    "image": "http://localhost:8000/static/blocks/Gyrator.svg"
   },
   "Bache": {
     "shape": "label",
@@ -3143,7 +3142,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/BACHE.svg"
+    "image": "http://localhost:8000/static/blocks/BACHE.svg"
   },
   "VanneReglante": {
     "shape": "label",
@@ -3156,7 +3155,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/VanneReglante.svg"
+    "image": "http://localhost:8000/static/blocks/VanneReglante.svg"
   },
   "PerteDP": {
     "shape": "label",
@@ -3169,7 +3168,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/PerteDP.svg"
+    "image": "http://localhost:8000/static/blocks/PerteDP.svg"
   },
   "PuitsP": {
     "shape": "label",
@@ -3182,7 +3181,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/PuitP.svg"
+    "image": "http://localhost:8000/static/blocks/PuitP.svg"
   },
   "SourceP": {
     "shape": "label",
@@ -3195,7 +3194,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/SourceP.svg"
+    "image": "http://localhost:8000/static/blocks/SourceP.svg"
   },
   "Flowmeter": {
     "shape": "label",
@@ -3208,7 +3207,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/Flowmeter.svg"
+    "image": "http://localhost:8000/static/blocks/Flowmeter.svg"
   },
   "BOUNCE": {
     "shape": "label",
@@ -3234,7 +3233,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/3DSCOPE.svg"
+    "image": "http://localhost:8000/static/blocks/3DSCOPE.svg"
   },
   "BPLATFORM": {
     "shape": "label",
@@ -3247,7 +3246,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/BPLATFORM.svg"
+    "image": "http://localhost:8000/static/blocks/BPLATFORM.svg"
   },
   "AUTOMAT": {
     "shape": "label",
@@ -3282,7 +3281,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/SATURATION.svg"
+    "image": "http://localhost:8000/static/blocks/SATURATION.svg"
   },
   "RAND_f": {
     "shape": "label",
@@ -3495,7 +3494,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "blocks/CLOCK_f.svg"
+    "image": "http://localhost:8000/static/blocks/CLOCK_f.svg"
   },
   "CLKSPLIT_f": {
     "shape": "rectangle",
