@@ -404,14 +404,14 @@ export function OpenSchDialog (props) {
       aria-describedby="open-dialog-description"
     >
       <DialogTitle id="open-dialog-title" onClose={close}>
-        <Typography variant="h6">{'Open Schematic'}</Typography>
+        <Typography component="span" variant="h3">{'Open Schematic'}</Typography>
       </DialogTitle>
       <DialogContent dividers>
         <DialogContentText id="open-dialog-description" >
           {isLocal
-            ? <center> <Button variant="outlined" fullWidth={true} size="large" onClick={() => { openLocal(); close() }} color="primary">
+            ? <Button variant="outlined" fullWidth={true} size="large" onClick={() => { openLocal(); close() }} color="primary">
               Upload File
-            </Button></center>
+            </Button>
             : isGallery
               ? <Grid item xs={12} sm={12}>
                 {/* Listing Gallery Schematics */}

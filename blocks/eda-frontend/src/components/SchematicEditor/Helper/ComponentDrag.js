@@ -6,6 +6,7 @@ import mxGraphFactory from 'mxgraph'
 import * as actions from '../../../redux/actions/actions'
 import store from '../../../redux/store'
 import dot from '../../../static/dot.gif'
+import xcosstyle from '../../../static/Xcos-style.json'
 
 import ToolbarTools from './ToolbarTools.js'
 import KeyboardShorcuts from './KeyboardShorcuts.js'
@@ -41,6 +42,10 @@ const {
   mxConstraintHandler,
   mxImage
 } = new mxGraphFactory()
+
+function configureStylesheet(graph) {
+    graph.stylesheet.styles = xcosstyle;
+}
 
 export default function LoadGrid (container, sidebar, outline) {
   // Checks if the browser is supported
@@ -131,6 +136,7 @@ export default function LoadGrid (container, sidebar, outline) {
     })
 
     graph.view.scale = 1
+    configureStylesheet(graph)
     graph.setPanning(true)
     graph.setConnectable(true)
     graph.setConnectableEdges(true)
