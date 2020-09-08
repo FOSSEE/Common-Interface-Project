@@ -3,8 +3,10 @@ POST /function/{block_id}/
 Input JSON - Map of
 
 Time
-Input Values (one for each port)
-Parameter Values
+Explicit Input Port Values (one for each port)
+Implicit Input Port Values (one for each port)
+Command Port Values (one for each port)
+Block Parameter Values
 
 Response JSON - function_execution_id
 
@@ -26,4 +28,6 @@ Status Code
 
 Response JSON - Array of
 
-value
+Explicit Output Port Values (one for each port)
+Implicit Output Port Values (one for each port)
+Control Port Values (one for each port)

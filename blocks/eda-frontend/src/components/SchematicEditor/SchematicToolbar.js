@@ -23,6 +23,7 @@ import CreateNewFolderOutlinedIcon from '@material-ui/icons/CreateNewFolderOutli
 import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined'
 import SystemUpdateAltOutlinedIcon from '@material-ui/icons/SystemUpdateAltOutlined'
 import { Link as RouterLink } from 'react-router-dom'
+import beautify from 'xml-beautifier';
 
 import { NetlistModal, HelpScreen, ImageExportDialog, OpenSchDialog } from './ToolbarExtension'
 import { ZoomIn, ZoomOut, ZoomAct, DeleteComp, PrintPreview, Rotate, GenerateNetList, Undo, Redo, Save, ClearGrid } from './Helper/ToolbarTools'
@@ -280,19 +281,14 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
 
   // Save Schematics Locally
   const handelLocalSchSave = () => {
-    var saveLocalData = {}
-    saveLocalData.data_dump = Save()
-    saveLocalData.title = schSave.title
-    saveLocalData.description = schSave.description
-    var json = JSON.stringify(saveLocalData)
-    const blob = new Blob([json], { type: 'octet/stream' })
+    const blob = new Blob([beautify(Save())], { type: 'application/xml' })
     const evt = new MouseEvent('click', {
       view: window,
       bubbles: false,
       cancelable: true
     })
     const a = document.createElement('a')
-    a.setAttribute('download', schSave.title + '_Xcos_on_Cloud.json')
+    a.setAttribute('download', schSave.title + '_Xcos_on_Cloud.xml')
     a.href = URL.createObjectURL(blob)
     a.target = '_blank'
     a.setAttribute('target', '_blank')

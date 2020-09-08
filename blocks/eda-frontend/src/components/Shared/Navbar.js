@@ -8,7 +8,7 @@ import {
 import { makeStyles } from '@material-ui/core/styles'
 import { deepPurple } from '@material-ui/core/colors'
 import { Link as RouterLink, useHistory } from 'react-router-dom'
-import logo from '../../static/logo.png'
+import logo from '../../static/favicon.ico'
 import store from '../../redux/store'
 import { logout } from '../../redux/actions/index'
 

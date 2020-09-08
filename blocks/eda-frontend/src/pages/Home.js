@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 import { Link as RouterLink } from 'react-router-dom'
-import logo from '../static/logo.png'
+import logo from '../static/favicon.ico'
 
 const useStyles = makeStyles((theme) => ({
   header: {
@@ -41,7 +41,7 @@ export default function Home () {
         color="textSecondary"
         component="p"
       >
-        Online Circuit Simulator
+        Online Xcos Simulator
         <br></br>
         <br></br>
         <Button
