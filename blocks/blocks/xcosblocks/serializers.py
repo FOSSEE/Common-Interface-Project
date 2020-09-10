@@ -184,43 +184,117 @@ class BlockParameterSerializer(serializers.ModelSerializer):
 
 class SetBlockParameterSerializer(serializers.Serializer):
     block_id = serializers.IntegerField()
-    p000_value = serializers.CharField(max_length=100, allow_blank=True, trim_whitespace=True)
-    p001_value = serializers.CharField(max_length=100, allow_blank=True, trim_whitespace=True)
-    p002_value = serializers.CharField(max_length=100, allow_blank=True, trim_whitespace=True)
-    p003_value = serializers.CharField(max_length=100, allow_blank=True, trim_whitespace=True)
-    p004_value = serializers.CharField(max_length=100, allow_blank=True, trim_whitespace=True)
-    p005_value = serializers.CharField(max_length=100, allow_blank=True, trim_whitespace=True)
-    p006_value = serializers.CharField(max_length=100, allow_blank=True, trim_whitespace=True)
-    p007_value = serializers.CharField(max_length=100, allow_blank=True, trim_whitespace=True)
-    p008_value = serializers.CharField(max_length=100, allow_blank=True, trim_whitespace=True)
-    p009_value = serializers.CharField(max_length=100, allow_blank=True, trim_whitespace=True)
-    p010_value = serializers.CharField(max_length=100, allow_blank=True, trim_whitespace=True)
-    p011_value = serializers.CharField(max_length=100, allow_blank=True, trim_whitespace=True)
-    p012_value = serializers.CharField(max_length=100, allow_blank=True, trim_whitespace=True)
-    p013_value = serializers.CharField(max_length=100, allow_blank=True, trim_whitespace=True)
-    p014_value = serializers.CharField(max_length=100, allow_blank=True, trim_whitespace=True)
-    p015_value = serializers.CharField(max_length=100, allow_blank=True, trim_whitespace=True)
-    p016_value = serializers.CharField(max_length=100, allow_blank=True, trim_whitespace=True)
-    p017_value = serializers.CharField(max_length=100, allow_blank=True, trim_whitespace=True)
-    p018_value = serializers.CharField(max_length=100, allow_blank=True, trim_whitespace=True)
-    p019_value = serializers.CharField(max_length=100, allow_blank=True, trim_whitespace=True)
-    p020_value = serializers.CharField(max_length=100, allow_blank=True, trim_whitespace=True)
-    p021_value = serializers.CharField(max_length=100, allow_blank=True, trim_whitespace=True)
-    p022_value = serializers.CharField(max_length=100, allow_blank=True, trim_whitespace=True)
-    p023_value = serializers.CharField(max_length=100, allow_blank=True, trim_whitespace=True)
-    p024_value = serializers.CharField(max_length=100, allow_blank=True, trim_whitespace=True)
-    p025_value = serializers.CharField(max_length=100, allow_blank=True, trim_whitespace=True)
-    p026_value = serializers.CharField(max_length=100, allow_blank=True, trim_whitespace=True)
-    p027_value = serializers.CharField(max_length=100, allow_blank=True, trim_whitespace=True)
-    p028_value = serializers.CharField(max_length=100, allow_blank=True, trim_whitespace=True)
-    p029_value = serializers.CharField(max_length=100, allow_blank=True, trim_whitespace=True)
-    p030_value = serializers.CharField(max_length=100, allow_blank=True, trim_whitespace=True)
-    p031_value = serializers.CharField(max_length=100, allow_blank=True, trim_whitespace=True)
-    p032_value = serializers.CharField(max_length=100, allow_blank=True, trim_whitespace=True)
-    p033_value = serializers.CharField(max_length=100, allow_blank=True, trim_whitespace=True)
-    p034_value = serializers.CharField(max_length=100, allow_blank=True, trim_whitespace=True)
-    p035_value = serializers.CharField(max_length=100, allow_blank=True, trim_whitespace=True)
-    p036_value = serializers.CharField(max_length=100, allow_blank=True, trim_whitespace=True)
-    p037_value = serializers.CharField(max_length=100, allow_blank=True, trim_whitespace=True)
-    p038_value = serializers.CharField(max_length=100, allow_blank=True, trim_whitespace=True)
-    p039_value = serializers.CharField(max_length=100, allow_blank=True, trim_whitespace=True)
+    p000_value = serializers.CharField(max_length=100,
+                                       allow_blank=True, trim_whitespace=True)
+    p001_value = serializers.CharField(max_length=100,
+                                       allow_blank=True, trim_whitespace=True)
+    p002_value = serializers.CharField(max_length=100,
+                                       allow_blank=True, trim_whitespace=True)
+    p003_value = serializers.CharField(max_length=100,
+                                       allow_blank=True, trim_whitespace=True)
+    p004_value = serializers.CharField(max_length=100,
+                                       allow_blank=True, trim_whitespace=True)
+    p005_value = serializers.CharField(max_length=100,
+                                       allow_blank=True, trim_whitespace=True)
+    p006_value = serializers.CharField(max_length=100,
+                                       allow_blank=True, trim_whitespace=True)
+    p007_value = serializers.CharField(max_length=100,
+                                       allow_blank=True, trim_whitespace=True)
+    p008_value = serializers.CharField(max_length=100,
+                                       allow_blank=True, trim_whitespace=True)
+    p009_value = serializers.CharField(max_length=100,
+                                       allow_blank=True, trim_whitespace=True)
+    p010_value = serializers.CharField(max_length=100,
+                                       allow_blank=True, trim_whitespace=True)
+    p011_value = serializers.CharField(max_length=100,
+                                       allow_blank=True, trim_whitespace=True)
+    p012_value = serializers.CharField(max_length=100,
+                                       allow_blank=True, trim_whitespace=True)
+    p013_value = serializers.CharField(max_length=100,
+                                       allow_blank=True, trim_whitespace=True)
+    p014_value = serializers.CharField(max_length=100,
+                                       allow_blank=True, trim_whitespace=True)
+    p015_value = serializers.CharField(max_length=100,
+                                       allow_blank=True, trim_whitespace=True)
+    p016_value = serializers.CharField(max_length=100,
+                                       allow_blank=True, trim_whitespace=True)
+    p017_value = serializers.CharField(max_length=100,
+                                       allow_blank=True, trim_whitespace=True)
+    p018_value = serializers.CharField(max_length=100,
+                                       allow_blank=True, trim_whitespace=True)
+    p019_value = serializers.CharField(max_length=100,
+                                       allow_blank=True, trim_whitespace=True)
+    p020_value = serializers.CharField(max_length=100,
+                                       allow_blank=True, trim_whitespace=True)
+    p021_value = serializers.CharField(max_length=100,
+                                       allow_blank=True, trim_whitespace=True)
+    p022_value = serializers.CharField(max_length=100,
+                                       allow_blank=True, trim_whitespace=True)
+    p023_value = serializers.CharField(max_length=100,
+                                       allow_blank=True, trim_whitespace=True)
+    p024_value = serializers.CharField(max_length=100,
+                                       allow_blank=True, trim_whitespace=True)
+    p025_value = serializers.CharField(max_length=100,
+                                       allow_blank=True, trim_whitespace=True)
+    p026_value = serializers.CharField(max_length=100,
+                                       allow_blank=True, trim_whitespace=True)
+    p027_value = serializers.CharField(max_length=100,
+                                       allow_blank=True, trim_whitespace=True)
+    p028_value = serializers.CharField(max_length=100,
+                                       allow_blank=True, trim_whitespace=True)
+    p029_value = serializers.CharField(max_length=100,
+                                       allow_blank=True, trim_whitespace=True)
+    p030_value = serializers.CharField(max_length=100,
+                                       allow_blank=True, trim_whitespace=True)
+    p031_value = serializers.CharField(max_length=100,
+                                       allow_blank=True, trim_whitespace=True)
+    p032_value = serializers.CharField(max_length=100,
+                                       allow_blank=True, trim_whitespace=True)
+    p033_value = serializers.CharField(max_length=100,
+                                       allow_blank=True, trim_whitespace=True)
+    p034_value = serializers.CharField(max_length=100,
+                                       allow_blank=True, trim_whitespace=True)
+    p035_value = serializers.CharField(max_length=100,
+                                       allow_blank=True, trim_whitespace=True)
+    p036_value = serializers.CharField(max_length=100,
+                                       allow_blank=True, trim_whitespace=True)
+    p037_value = serializers.CharField(max_length=100,
+                                       allow_blank=True, trim_whitespace=True)
+    p038_value = serializers.CharField(max_length=100,
+                                       allow_blank=True, trim_whitespace=True)
+    p039_value = serializers.CharField(max_length=100,
+                                       allow_blank=True, trim_whitespace=True)
+
+    def getblockportserializer(self):
+        block = Block.objects.get(id=self.data['block_id'])
+
+        explicit_input_ports = block.initial_explicit_input_ports
+        implicit_input_ports = block.initial_implicit_input_ports
+        control_ports = block.initial_control_ports
+        explicit_output_ports = block.initial_explicit_output_ports
+        implicit_output_ports = block.initial_implicit_output_ports
+        command_ports = block.initial_command_ports
+        display_parameter = block.initial_display_parameter
+
+        # TODO: change values depending on block name
+
+        return SetBlockPortSerializer(data={
+            'explicit_input_ports': explicit_input_ports,
+            'implicit_input_ports': implicit_input_ports,
+            'control_ports': control_ports,
+            'explicit_output_ports': explicit_output_ports,
+            'implicit_output_ports': implicit_output_ports,
+            'command_ports': command_ports,
+            'display_parameter': display_parameter
+        })
+
+
+class SetBlockPortSerializer(serializers.Serializer):
+    explicit_input_ports = serializers.IntegerField()
+    implicit_input_ports = serializers.IntegerField()
+    control_ports = serializers.IntegerField()
+    explicit_output_ports = serializers.IntegerField()
+    implicit_output_ports = serializers.IntegerField()
+    command_ports = serializers.IntegerField()
+    display_parameter = serializers.CharField(
+        max_length=100, allow_blank=True, trim_whitespace=True)
