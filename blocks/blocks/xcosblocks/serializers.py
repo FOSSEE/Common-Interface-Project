@@ -182,6 +182,12 @@ class BlockParameterSerializer(serializers.ModelSerializer):
         ]
 
 
+class ErrorSerializer(serializers.Serializer):
+    code = serializers.IntegerField()
+    error = serializers.CharField(
+        max_length=200, allow_blank=False, trim_whitespace=True)
+
+
 class SetBlockParameterSerializer(serializers.Serializer):
     block_id = serializers.IntegerField()
     p000_value = serializers.CharField(max_length=100,

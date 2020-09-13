@@ -67,7 +67,7 @@ p039_type
 
 
 
-POST /set_block_parameters/
+POST /setblockparameter
 
 Input JSON - Map of
 

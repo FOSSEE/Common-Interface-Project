@@ -5,7 +5,7 @@ from rest_framework.viewsets import ReadOnlyModelViewSet
 
 from .models import Category, Block, BlockParameter
 from .serializers import CategorySerializer, BlockSerializer, \
-    BlockParameterSerializer, SetBlockParameterSerializer
+    BlockParameterSerializer, ErrorSerializer, SetBlockParameterSerializer
 
 
 class CategoryFilterSet(FilterSet):
@@ -75,9 +75,14 @@ def set_block_parameter(request):
         serializer = SetBlockParameterSerializer(data=request.POST)
         if serializer.is_valid():
             # process the data to get port
-            port = serializer.getblockportserializer()
-            if port.is_valid():
-                return JsonResponse(port.data)
+            try:
+                port = serializer.getblockportserializer()
+                return JsonResponse(port.initial_data)
+            except Exception as e:
+                error = 'getblockportserializer error: %s' % str(e)
+                errorserializer = ErrorSerializer(data={
+                    'code': 500, 'error': error})
+                return JsonResponse(errorserializer.initial_data)
     else:
         serializer = SetBlockParameterSerializer()
 
