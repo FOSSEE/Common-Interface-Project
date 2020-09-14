@@ -7,53 +7,20 @@ const {
   mxConstants
 } = new mxGraphFactory()
 
-let pinData, metadata, pinList, pinName, pinOrientation, pinLength, pinShape
-let currentPin, x_pos, y_pos
+let metadata, pinList, pinOrientation, pinLength, pinShape
+let x_pos, y_pos
 let width, height, symbolName
 
 // we need to divide the svg width and height by the same number in order to maintain the aspect ratio.
 const default_scale = 5
 
-function extractData (xml) {
-  // extracting metadata from the svg file.
-
-  pinData = []
-  metadata = xml.getElementsByTagName('metadata')
-  const width = metadata[0].attributes[0].nodeValue
-  const height = metadata[0].attributes[1].nodeValue
-  const symbolName = metadata[0].attributes[4].nodeValue
-  pinList = metadata[0].childNodes
-  // console.log(metadata)
-  // console.log(xmlDoc)
-  // console.log(width,height)
-  pinList.forEach(function (pin) {
-    const pinNumber = pin.tagName.split('-').pop()
-    const pinX = pin.getElementsByTagName('x')[0].innerHTML
-    const pinY = pin.getElementsByTagName('y')[0].innerHTML
-    const pinType = pin.getElementsByTagName('type')[0].innerHTML.trim()
-    const pinName = pin.getElementsByTagName('name')[0].innerHTML.trim()
-    const pinOrientation = pin.getElementsByTagName('orientation')[0].innerHTML.trim()
-    const pinLength = pin.getElementsByTagName('length')[0].innerHTML.trim()
-    const pinShape = pin.getElementsByTagName('pinShape')[0].innerHTML.trim()
-
-    pinData.push({
-      pinNumber: pinNumber,
-      pinX: pinX,
-      pinY: pinY,
-      type: pinType,
-      pinName: pinName,
-      pinOrientation: pinOrientation,
-      pinLength: pinLength,
-      pinShape: pinShape
-    })
-    // console.log(pinNumber, pinX, pinY, pinType)
-  })
-  return {
-    width: width,
-    height: height,
-    symbolName: symbolName,
-    pinData: pinData
-  }
+function getParameter(i) {
+    if (i < 10)
+        return 'p00' + i.toString();
+    else if (i < 100)
+        return 'p0' + i.toString();
+    else
+        return 'p' + i.toString();
 }
 
 export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
@@ -61,126 +28,105 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
   // initialize information from the svg meta
   // plots pinnumbers and component labels.
 
-  var path = 'http://localhost:8000/static/' + component.block_image_path
+  console.log(component)
 
-  fetch(path)
-    .then(function (response) {
-      return response.text()
-    })
-    .then(function (data) {
-      const parser = new DOMParser()
-      const xml = parser.parseFromString(data, 'text/xml')
-      // console.log(xmlDoc);
-      data = extractData(xml)
-      // console.log(data)
-      return data
-    }).then(function (data) {
-      const pins = []
-      width = data.width
-      height = data.height
-      pinData = data.pinData
+  var data = component;
+  const block_name = component.name;
+  const pins = []
+  width = component.block_width
+  height = component.block_height
 
-      // console.log(pinData)
+  const v1 = graph.insertVertex(
+    parent,
+    null,
+    block_name,
+    x,
+    y,
+    width,
+    height,
+    block_name
+  )
+  v1.Component = true
+  v1.CellType = 'Component'
+  v1.explicit_input_ports = component.initial_explicit_input_ports
+  v1.implicit_input_ports = component.initial_implicit_input_ports
+  v1.control_ports = component.initial_control_ports
+  v1.explicit_output_ports = component.initial_explicit_output_ports
+  v1.implicit_output_ports = component.initial_implicit_output_ports
+  v1.command_ports = component.initial_command_ports
+  v1.display_parameter = component.initial_display_parameter
+  for (let i = 0; i < 40; i++) {
+      let p = getParameter(i) + '_value';
+      let pinitial = p + '_initial';
+      v1[p] = component[pinitial];
+  }
+  console.log(v1);
 
-      // Enables moving of vertex labels
-      graph.vertexLabelsMovable = true
+  var props = {}
+  props.NAME = component.name
+  v1.properties = props
 
-      // Creates a style with an indicator
-      var style = graph.getStylesheet().getDefaultVertexStyle()
+  v1.setConnectable(false)
 
-      style[mxConstants.STYLE_SHAPE] = 'label'
-      style[mxConstants.STYLE_VERTICAL_ALIGN] = 'bottom'
-      // style[mxConstants.STYLE_INDICATOR_SHAPE] = 'ellipse'
-      // style[mxConstants.STYLE_INDICATOR_WIDTH] = 34
-      // style[mxConstants.STYLE_INDICATOR_HEIGHT] = 34
-      style[mxConstants.STYLE_IMAGE_VERTICAL_ALIGN] = 'bottom' // indicator v-alignment
-      style[mxConstants.STYLE_IMAGE_ALIGN] = 'bottom'
-      style[mxConstants.STYLE_INDICATOR_COLOR] = 'green'
-      style[mxConstants.STYLE_FONTCOLOR] = 'red'
-      style[mxConstants.STYLE_FONTSIZE] = '10'
-      delete style[mxConstants.STYLE_STROKECOLOR] // transparent
-      // delete style[mxConstants.STYLE_FILLCOLOR] // transparent
+  let ports = component.initial_explicit_input_ports + component.initial_implicit_input_ports;
+  for (let i = 0; i < ports; i++) {
+      if (i < component.initial_explicit_input_ports)
+        pinOrientation = 'ExplicitInputPort';
+    else
+        pinOrientation = 'ImplicitInputPort';
 
-      // make the component images larger by reducing the denominator and smaller by increasing the denominator
-      width = width / default_scale
-      height = height / default_scale
+    x_pos = 0;
+    y_pos = (i + 1) / (ports + 1);
 
-      const v1 = graph.insertVertex(
-        parent,
-        null,
-        component.name,
-        x,
-        y,
-        width,
-        height,
-        'shape=image;fontColor=blue;image=' + path + ';imageVerticalAlign=bottom;verticalAlign=bottom;imageAlign=bottom;align=bottom;spacingLeft=25'
-      )
-      v1.Component = true
-      /* var newsource = path
-      var prefix = newsource.split('/')
-      var symboltype = prefix[3].split('') */
-      v1.CellType = 'Component'
-      v1.symbol = component.symbol_prefix.toUpperCase()
-      v1.CompObject = component
+    pins[i] = graph.insertVertex(v1, null, i, x_pos, y_pos, 0.8, 0.8, pinOrientation)
+    pins[i].geometry.relative = true;
+    pins[i].pinType = 'Input'
+    pins[i].ParentComponent = v1
+    pins[i].PinNumber = i
+  }
 
-      component.name = component.name.toUpperCase()
-      var props = {}
-      if (v1.symbol === 'V') {
-        // console.log('voltage')
+  ports = component.initial_explicit_output_ports + component.initial_implicit_output_ports;
+  for (let i = 0; i < ports; i++) {
+      if (i < component.initial_explicit_output_ports)
+        pinOrientation = 'ExplicitOutputPort';
+    else
+        pinOrientation = 'ImplicitOutputPort';
 
-        if (ComponentParameters[v1.symbol][component.name] === undefined) {
-          props = Object.assign({}, ComponentParameters[v1.symbol].VSOURCE)
-        } else {
-          props = Object.assign({}, ComponentParameters[v1.symbol][component.name])
-        }
-      } else if (v1.symbol === 'I') {
-        // console.log('CURRENT')
-        if (ComponentParameters[v1.symbol][component.name] === undefined) {
-          props = Object.assign({}, ComponentParameters[v1.symbol].ISOURCE)
-        } else {
-          props = Object.assign({}, ComponentParameters[v1.symbol][component.name])
-        }
-      } else {
-        // console.log('other')
+    x_pos = 1;
+    y_pos = (i + 1) / (ports + 1);
 
-        props = Object.assign({}, ComponentParameters[v1.symbol])
-      }
-      props.NAME = component.name
-      v1.properties = props
-      // console.log('component', component)
-      // console.log('v1.properties', v1.properties)
+    pins[i] = graph.insertVertex(v1, null, i, x_pos, y_pos, 0.8, 0.8, pinOrientation)
+    pins[i].geometry.relative = true;
+    pins[i].pinType = 'Output'
+    pins[i].ParentComponent = v1
+    pins[i].PinNumber = i
+  }
 
-      v1.setConnectable(false)
+  ports = component.initial_control_ports;
+  for (let i = 0; i < ports; i++) {
+    pinOrientation = 'ControlPort';
 
-      for (let i = 0; i < pinData.length; i++) {
-        currentPin = pinData[i]
-        if (currentPin.pinName === 'NC') continue
-        // move this to another file
-        x_pos = (parseInt(width) / 2 + parseInt(currentPin.pinX) / default_scale)
-        y_pos = (parseInt(height) / 2 - parseInt(currentPin.pinY) / default_scale) - 1
+    x_pos = (i + 1) / (ports + 1);
+    y_pos = 0;
 
-        // move this to another file
-        // eslint-disable-next-line
+    pins[i] = graph.insertVertex(v1, null, i, x_pos, y_pos, 0.8, 0.8, pinOrientation)
+    pins[i].geometry.relative = true;
+    pins[i].pinType = 'Input'
+    pins[i].ParentComponent = v1
+    pins[i].PinNumber = i
+  }
 
-        if (currentPin.pinOrientation === 'L') {
-          pins[i] = graph.insertVertex(v1, null, currentPin.pinNumber, x_pos, y_pos, 0.5, 0.5, 'align=right;verticalAlign=bottom;rotation=0')
-        } else if (currentPin.pinOrientation === 'R') {
-          pins[i] = graph.insertVertex(v1, null, currentPin.pinNumber, x_pos, y_pos, 0.5, 0.5, 'align=left;verticalAlign=bottom;rotation=0')
-        } else if (currentPin.pinOrientation === 'U') {
-          pins[i] = graph.insertVertex(v1, null, currentPin.pinNumber, x_pos, y_pos, 0.5, 0.5, 'align=right;verticalAlign=bottom;rotation=0')
-        } else {
-          pins[i] = graph.insertVertex(v1, null, currentPin.pinNumber, x_pos, y_pos, 0.5, 0.5, 'align=right;verticalAlign=up;rotation=0')
-        }
-        pins[i].geometry.relative = false
-        pins[i].Pin = true
-        if (currentPin.type === 'I') {
-          pins[i].pinType = 'Input'
-        } else {
-          pins[i].pinType = 'Output'
-        }
-        // pins[i].pinType = currentPin['type']
-        pins[i].ParentComponent = v1
-        pins[i].PinNumber = currentPin.pinNumber
-      }
-    })
+  ports = component.initial_command_ports;
+  for (let i = 0; i < ports; i++) {
+    pinOrientation = 'CommandPort';
+
+    x_pos = (i + 1) / (ports + 1);
+    y_pos = 1;
+
+    pins[i] = graph.insertVertex(v1, null, i, x_pos, y_pos, 0.8, 0.8, pinOrientation)
+    pins[i].geometry.relative = true;
+    pins[i].pinType = 'Output'
+    pins[i].ParentComponent = v1
+    pins[i].PinNumber = i
+  }
 }
