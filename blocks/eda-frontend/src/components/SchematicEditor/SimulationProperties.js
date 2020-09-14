@@ -1,8 +1,6 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
 import {
   List,
-  Checkbox,
   ListItem,
   Button,
   TextField,
@@ -10,7 +8,6 @@ import {
   ExpansionPanelSummary,
   ExpansionPanelDetails,
   Typography,
-  Select,
   Divider,
   Popover,
   Tooltip,
@@ -21,7 +18,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import { makeStyles } from '@material-ui/core/styles'
 import { useSelector, useDispatch } from 'react-redux'
 import { setControlLine, setControlBlock, setResultTitle, setResultGraph, setResultText } from '../../redux/actions/index'
-import { GenerateNetList, GenerateNodeList, GenerateCompList } from './Helper/ToolbarTools'
+import { GenerateNetList, GenerateCompList } from './Helper/ToolbarTools'
 import SimulationScreen from './SimulationScreen'
 
 import api from '../../utils/Api'
@@ -52,7 +49,6 @@ export default function SimulationProperties () {
   const isSimRes = useSelector(state => state.simulationReducer.isSimRes)
   const dispatch = useDispatch()
   const classes = useStyles()
-  const [nodeList, setNodeList] = useState([])
   const [componentsList, setComponentsList] = useState([])
   const [dcSweepcontrolLine, setDcSweepControlLine] = useState({
     parameter: '',
@@ -128,17 +124,6 @@ export default function SimulationProperties () {
 
   const handleSimulateClose = () => {
     setSimulateOpen(false)
-  }
-  const [simResult, setSimResult] = React.useState({})
-
-  const handleSimulationResult = (simResults) => {
-    setSimResult(simResults)
-  }
-
-  const acTypeOptionList = {
-    Linear: 'lin',
-    Decade: 'dec',
-    Octave: 'oct'
   }
 
   // Prepare Netlist to file
@@ -244,7 +229,6 @@ export default function SimulationProperties () {
                 simResultText.push(temp[i][0] + ' ' + temp[i][1] + ' ' + parseFloat(temp[i][2]) + ' ' + postfixUnit + '\n')
               }
 
-              handleSimulationResult(res.data.details)
               dispatch(setResultText(simResultText))
             }
           }

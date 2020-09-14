@@ -1,4 +1,3 @@
-/* eslint-disable new-cap */
 import MxGraphFactory from 'mxgraph'
 import { Undo, Redo, ZoomIn, ZoomOut, ZoomAct } from './ToolbarTools'
 

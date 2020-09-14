@@ -1,5 +1,4 @@
 // Main Layout for Schemaic Editor page.
-/* eslint-disable react/prop-types */
 import React, { useEffect } from 'react'
 import { CssBaseline } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'

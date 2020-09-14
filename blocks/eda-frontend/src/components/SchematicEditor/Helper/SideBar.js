@@ -1,7 +1,5 @@
-/* eslint-disable new-cap */
 import MxGraphFactory from 'mxgraph'
 import { getSvgMetadata } from './SvgParser.js'
-// import NetlistInfoFunct from './NetlistInfo.js'
 const {
   mxClient,
   mxUtils,

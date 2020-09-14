@@ -1,18 +1,6 @@
-/* eslint-disable new-cap */
-/* eslint-disable no-unused-vars */
-/* eslint-disable camelcase */
-import mxGraphFactory from 'mxgraph'
-import ComponentParameters from './ComponentParametersData'
-const {
-  mxConstants
-} = new mxGraphFactory()
-
-let metadata, pinList, pinOrientation, pinLength, pinShape
+let pinOrientation
 let x_pos, y_pos
-let width, height, symbolName
-
-// we need to divide the svg width and height by the same number in order to maintain the aspect ratio.
-const default_scale = 5
+let width, height
 
 function getParameter(i) {
     if (i < 10)
@@ -30,7 +18,6 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
 
   console.log(component)
 
-  var data = component;
   const block_name = component.name;
   const pins = []
   width = component.block_width

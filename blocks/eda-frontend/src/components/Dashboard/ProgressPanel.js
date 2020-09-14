@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import React, { useEffect } from 'react'
 import { Tab, Box, Tabs, AppBar, Typography, Grid } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'

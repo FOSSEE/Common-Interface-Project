@@ -1,7 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable camelcase */
-/* eslint-disable new-cap */
-/* eslint-disable */
 import mxGraphFactory from 'mxgraph'
 import store from '../../../redux/store'
 import * as actions from '../../../redux/actions/actions'
@@ -159,9 +155,7 @@ export function ErcCheck () {
   var vertexCount = 0
   var errorCount = 0
   var PinNC = 0
-  var stypes = 0
   var ground = 0
-  var wirec = 0
   for (var property in list) {
     var cell = list[property]
     if (cell.Component === true) {
@@ -176,10 +170,6 @@ export function ErcCheck () {
           for (var w in childVertex.edges) {
             if (childVertex.edges[w].source === null || childVertex.edges[w].target === null) {
               ++PinNC
-            } else {
-              if (childVertex.edges[w].source.edge === true || childVertex.edges[w].target.edge === true) {
-                ++wirec
-              }
             }
           }
         }
@@ -211,7 +201,6 @@ function ErcCheckNets () {
   var vertexCount = 0
   var errorCount = 0
   var PinNC = 0
-  var stypes = 0
   var ground = 0
   for (var property in list) {
     var cell = list[property]
@@ -261,7 +250,6 @@ export function GenerateNetList () {
   var v = 1
   var c = 1
   // var list = graph.getModel().cells
-  var n = 1
   var spiceModels = ''
   var netlist = {
     componentlist: [],
@@ -275,7 +263,6 @@ export function GenerateNetList () {
     var list = annotate(graph)
     for (var property in list) {
       if (list[property].Component === true && list[property].symbol !== 'PWR') {
-        // k = ''
         // alert('Component is present')
         var compobj = {
           name: '',
@@ -347,7 +334,6 @@ export function GenerateNetList () {
                       pin.edges[wire].node = pin.edges[wire].source.ParentComponent.properties.PREFIX + '.' + pin.edges[wire].source.value
                       pin.ConnectedNode = pin.edges[wire].source.ParentComponent.properties.PREFIX + '.' + pin.edges[wire].source.value
                       console.log('comp')
-                      // ++n
                       // }
                       pin.edges[wire].sourceVertex = pin.edges[wire].source.id
                       pin.edges[wire].targetVertex = pin.edges[wire].target.id
@@ -454,12 +440,7 @@ function annotate (graph) {
   var r = 1
   var v = 1
   var c = 1
-  var l = 1
-  var d = 1
-  var q = 1
-  var w = 1
   var list = graph.getModel().cells
-  var n = 1
   var netlist = {
     componentlist: [],
     nodelist: []
@@ -508,21 +489,18 @@ function annotate (graph) {
           component.value = component.symbol + v.toString()
           component.properties.PREFIX = component.value
           // component.symbol = component.value
-          ++d
         } else if (component.symbol === 'Q') {
           // component.symbol = component.symbol + v.toString()
           k = k + component.symbol + v.toString()
           component.value = component.symbol + v.toString()
           component.properties.PREFIX = component.value
           // component.symbol = component.value
-          ++q
         } else {
           // component.symbol = component.symbol + c.toString()
           k = k + component.symbol + c.toString()
           component.value = component.symbol + c.toString()
           component.properties.PREFIX = component.value
           // component.symbol = component.value
-          ++w
         }
         // compobj.name = component.symbol
 
@@ -542,17 +520,14 @@ function annotate (graph) {
                       pin.edges[wire].node = 0
                       // pin.edges[wire].node = '0'
                       pin.edges[wire].value = 0
-                      // k = k + ' ' + pin.edges[wire].node
                     } else {
                       // if (pin.edges[wire].node === null) {
                       pin.edges[wire].node = pin.edges[wire].source.ParentComponent.properties.PREFIX + '.' + pin.edges[wire].source.value
                       pin.ConnectedNode = pin.edges[wire].source.ParentComponent.properties.PREFIX + '.' + pin.edges[wire].source.value
                       console.log('comp')
-                      // ++n
                       // }
 
                       pin.edges[wire].value = pin.edges[wire].node
-                      // k = k + '  ' + pin.edges[wire].node
                     }
                   }
 
@@ -581,7 +556,6 @@ function annotate (graph) {
         if (component.properties.MODEL.length > 0) {
           k = k + ' ' + component.properties.MODEL.split(' ')[1]
         }
-        // k = k + ' 10'
         k = k + ' \n'
       }
     }
@@ -591,14 +565,10 @@ function annotate (graph) {
 
 export function GenerateNodeList () {
   var list = annotate(graph)
-  var a = []
-  // var netlist = []
   var netlist = new Set()
 
-  var k = 'Unitled netlist \n'
   for (var property in list) {
     if (list[property].Component === true && list[property].symbol !== 'PWR') {
-      // k = ''
       // alert('Component is present')Component Name: ZMYxx
       var compobj = {
         name: '',
@@ -619,14 +589,10 @@ export function GenerateNodeList () {
 }
 export function GenerateCompList () {
   var list = annotate(graph)
-  var a = []
-  // var netlist = []
   var netlist = []
 
-  var k = 'Unitled netlist \n'
   for (var property in list) {
     if (list[property].Component === true && list[property].symbol !== 'PWR') {
-      // k = ''
       // alert('Component is present')
       var compobj = {
         name: '',
@@ -724,8 +690,6 @@ function parseXmlToGraph (xmlDoc, graph) {
       } else {
         yPos = Number(geom.y.value)
       }
-      const height = Number(geom.height.value)
-      const width = Number(geom.width.value)
       var vp = graph.insertVertex(v1, vertexId, vertexName, xPos, yPos, 0.5, 0.5, style)
       vp.ParentComponent = v1
       vp.Pin = 1

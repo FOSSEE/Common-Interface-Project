@@ -1,7 +1,3 @@
-/* eslint-disable no-inner-declarations */
-/* eslint-disable no-new */
-/* eslint-disable new-cap */
-/* eslint-disable */
 import mxGraphFactory from 'mxgraph'
 import * as actions from '../../../redux/actions/actions'
 import store from '../../../redux/store'
@@ -28,7 +24,6 @@ const {
   mxEdgeHandler,
   mxConnectionConstraint,
   mxEdgeSegmentHandler,
-  mxCellHighlight,
   mxEdgeStyle,
   mxStyleRegistry,
   mxConnectionHandler,
@@ -36,9 +31,6 @@ const {
   mxGraphHandler,
   mxCylinder,
   mxCellRenderer,
-  mxCodec,
-  mxEditor,
-  mxEditorUI,
   mxConstraintHandler,
   mxImage
 } = new mxGraphFactory()
@@ -447,7 +439,7 @@ export default function LoadGrid (container, sidebar, outline) {
     }
   } }
   catch(e){
-    console
+    console.log(e)
   }
 
   // Updates the terminal and control points in the cloned preview.
@@ -522,8 +514,6 @@ export default function LoadGrid (container, sidebar, outline) {
     }
 
     // Adds in-place highlighting
-    // eslint-disable-next-line no-unused-vars
-    var mxCellHighlightHighlight = mxCellHighlight.prototype.highlight
     marker.highlight.highlight = function (state) {
       if (this.state !== state) {
         if (this.state != null) {
@@ -702,9 +692,6 @@ export default function LoadGrid (container, sidebar, outline) {
   // This connector needs an mxEdgeSegmentHandler
   var mxGraphCreateHandler = mxGraph.prototype.createHandler
   mxGraph.prototype.createHandler = function (state) {
-    // eslint-disable-next-line no-unused-vars
-    var result = null
-
     if (state != null) {
       if (this.model.isEdge(state.cell)) {
         var style = this.view.getEdgeStyle(state)

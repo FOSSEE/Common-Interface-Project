@@ -1,5 +1,4 @@
 // User Login / Sign In page.
-/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react'
 
 import {
