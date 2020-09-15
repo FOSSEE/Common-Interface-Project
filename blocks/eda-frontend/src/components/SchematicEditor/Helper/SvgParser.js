@@ -35,6 +35,7 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
   )
   v1.Component = true
   v1.CellType = 'Component'
+  v1.block_id = component.id
   v1.explicit_input_ports = component.initial_explicit_input_ports
   v1.implicit_input_ports = component.initial_implicit_input_ports
   v1.control_ports = component.initial_control_ports

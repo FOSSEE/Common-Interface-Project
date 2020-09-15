@@ -3,6 +3,7 @@ import * as actions from '../../../redux/actions/actions'
 import store from '../../../redux/store'
 import dot from '../../../static/dot.gif'
 import xcosstyle from '../../../static/Xcos-style.json'
+import { getCompProperties } from '../../../redux/actions/index'
 
 import ToolbarTools from './ToolbarTools.js'
 import KeyboardShorcuts from './KeyboardShorcuts.js'
@@ -106,15 +107,8 @@ export default function LoadGrid (container, sidebar, outline) {
 
     graph.addListener(mxEvent.DOUBLE_CLICK, function (sender, evt) {
       var cell = evt.getProperty('cell')
-      // mxUtils.alert('Doubleclick: ' + ((cell != null) ? cell.symbol : 'Graph'))
       if (cell !== undefined && cell.CellType === 'Component') {
-        store.dispatch({
-          type: actions.GET_COMP_PROPERTIES,
-          payload: {
-            id: cell.id,
-            compProperties: cell.properties
-          }
-        })
+        store.dispatch(getCompProperties(cell.block_id))
       } else if (cell !== undefined && cell.CellType === 'This is where you say what the vertex is') {
         store.dispatch({
           type: actions.CLOSE_COMP_PROPERTIES
