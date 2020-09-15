@@ -207,7 +207,7 @@ export default function ComponentSidebar ({ compRef }) {
                           {
                             chunk(components[library.id], COMPONENTS_PER_ROW).map((componentChunk) => {
                               return (
-                                <ListItem key={componentChunk[0].svg_path} divider>
+                                <ListItem key={componentChunk[0].id} divider>
                                   {
                                     componentChunk.map((component) => {
                                       return (<ListItemIcon key={component.name}>

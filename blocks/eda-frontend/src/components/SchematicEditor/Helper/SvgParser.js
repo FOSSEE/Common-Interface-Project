@@ -16,8 +16,6 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
   // initialize information from the svg meta
   // plots pinnumbers and component labels.
 
-  console.log(component)
-
   const block_name = component.name;
   const pins = []
   width = component.block_width
@@ -48,7 +46,6 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
       let pinitial = p + '_initial';
       v1[p] = component[pinitial];
   }
-  console.log(v1);
 
   var props = {}
   props.NAME = component.name

@@ -108,7 +108,7 @@ export default function LoadGrid (container, sidebar, outline) {
     graph.addListener(mxEvent.DOUBLE_CLICK, function (sender, evt) {
       var cell = evt.getProperty('cell')
       if (cell !== undefined && cell.CellType === 'Component') {
-        store.dispatch(getCompProperties(cell.block_id))
+        store.dispatch(getCompProperties(cell))
       } else if (cell !== undefined && cell.CellType === 'This is where you say what the vertex is') {
         store.dispatch({
           type: actions.CLOSE_COMP_PROPERTIES

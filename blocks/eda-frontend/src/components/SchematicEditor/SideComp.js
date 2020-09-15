@@ -68,7 +68,7 @@ export default function SideComp ({ component }) {
           {
             component.categories !== '' &&
           <ListItemText>
-            <b>Categories:</b> {component.categories.map((c) => <li>{c}</li>)}
+            <b>Categories:</b> {component.categories.map((c) => <li key={c}>{c}</li>)}
           </ListItemText>
 
           }
