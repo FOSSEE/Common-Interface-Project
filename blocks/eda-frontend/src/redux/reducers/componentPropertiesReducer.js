@@ -26,7 +26,6 @@ export default function (state = InitialState, action) {
         id: action.payload.id,
         block: action.payload.block,
         isPropertiesWindowOpen: false,
-        compProperties: action.payload.compProperties
       }
     }
 

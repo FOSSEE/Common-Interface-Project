@@ -21,13 +21,12 @@ export const getCompProperties = (block) => (dispatch) => {
 }
 
 // Actions for updating entered component properites on clicking set parameters
-export const setCompProperties = (id, block, compProperties) => (dispatch) => {
+export const setCompProperties = (id, block) => (dispatch) => {
   dispatch({
     type: actions.SET_COMP_PROPERTIES,
     payload: {
       id: id,
-      block: block,
-      compProperties: compProperties
+      block: block
     }
   })
 }
