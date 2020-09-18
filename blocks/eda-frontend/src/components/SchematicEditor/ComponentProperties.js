@@ -16,7 +16,12 @@ export default function ComponentProperties () {
 
   useEffect(() => {
     setVal(block)
+    console.log('useEffect block=', block)
   }, [block])
+
+  useEffect(() => {
+    console.log('useEffect val=', val)
+  }, [val])
 
   const getInputValues = (evt) => {
     const value = evt.target.value
@@ -38,6 +43,7 @@ export default function ComponentProperties () {
         <ListItemText primary='Block Parameters' />
       </ListItem>
 
+      { console.log('rendering') }
       {
         Object.keys(val).map((keyName, i) => {
           if (keyName.match(/^p[0-9]*_value$/)) {
