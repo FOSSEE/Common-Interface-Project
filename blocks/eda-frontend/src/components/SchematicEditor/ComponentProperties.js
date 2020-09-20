@@ -9,19 +9,20 @@ export default function ComponentProperties () {
   const properties = useSelector(state => state.componentPropertiesReducer.compProperties)
   const isOpen = useSelector(state => state.componentPropertiesReducer.isPropertiesWindowOpen)
   const id = useSelector(state => state.componentPropertiesReducer.id)
+  const parameter_values = useSelector(state => state.componentPropertiesReducer.parameter_values)
+  const parameter_values_changed = useSelector(state => state.componentPropertiesReducer.parameter_values_changed)
   const block = useSelector(state => state.componentPropertiesReducer.block)
-  const [val, setVal] = useState(block)
+  const [val, setVal] = useState(parameter_values)
 
   const dispatch = useDispatch()
 
   useEffect(() => {
-    setVal(block)
-    console.log('useEffect block=', block)
-  }, [block])
-
-  useEffect(() => {
-    console.log('useEffect val=', val)
-  }, [val])
+    if (parameter_values_changed) {
+        block.parameter_values = parameter_values;
+    } else {
+        setVal(parameter_values)
+    }
+  }, [parameter_values_changed, parameter_values, block.parameter_values])
 
   const getInputValues = (evt) => {
     const value = evt.target.value
@@ -32,7 +33,7 @@ export default function ComponentProperties () {
   }
 
   const setProps = () => {
-    dispatch(setCompProperties(id, val))
+    dispatch(setCompProperties(id, val, block))
   }
 
   return (
@@ -43,7 +44,6 @@ export default function ComponentProperties () {
         <ListItemText primary='Block Parameters' />
       </ListItem>
 
-      { console.log('rendering') }
       {
         Object.keys(val).map((keyName, i) => {
           if (keyName.match(/^p[0-9]*_value$/)) {
