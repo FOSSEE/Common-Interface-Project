@@ -67,9 +67,7 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
 
     pins[i] = graph.insertVertex(v1, null, i, x_pos, y_pos, 0.8, 0.8, pinOrientation)
     pins[i].geometry.relative = true;
-    pins[i].pinType = 'Input'
     pins[i].ParentComponent = v1
-    pins[i].PinNumber = i
   }
 
   ports = component.initial_explicit_output_ports + component.initial_implicit_output_ports;
@@ -84,9 +82,7 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
 
     pins[i] = graph.insertVertex(v1, null, i, x_pos, y_pos, 0.8, 0.8, pinOrientation)
     pins[i].geometry.relative = true;
-    pins[i].pinType = 'Output'
     pins[i].ParentComponent = v1
-    pins[i].PinNumber = i
   }
 
   ports = component.initial_control_ports;
@@ -98,9 +94,7 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
 
     pins[i] = graph.insertVertex(v1, null, i, x_pos, y_pos, 0.8, 0.8, pinOrientation)
     pins[i].geometry.relative = true;
-    pins[i].pinType = 'Input'
     pins[i].ParentComponent = v1
-    pins[i].PinNumber = i
   }
 
   ports = component.initial_command_ports;
@@ -112,8 +106,6 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
 
     pins[i] = graph.insertVertex(v1, null, i, x_pos, y_pos, 0.8, 0.8, pinOrientation)
     pins[i].geometry.relative = true;
-    pins[i].pinType = 'Output'
     pins[i].ParentComponent = v1
-    pins[i].PinNumber = i
   }
 }

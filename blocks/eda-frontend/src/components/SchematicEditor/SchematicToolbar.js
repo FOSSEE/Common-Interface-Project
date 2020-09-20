@@ -120,13 +120,13 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
     setHelpOpen(false)
   }
 
-  // Handel Delete component
+  // Handle Delete component
   const handleDeleteComp = () => {
     DeleteComp()
     dispatch(closeCompProperties())
   }
 
-  // Handel Notification Snackbar
+  // Handle Notification Snackbar
   const [snacOpen, setSnacOpen] = React.useState(false)
   const [message, setMessage] = React.useState('')
 
@@ -260,8 +260,8 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
     }
   }
 
-  // Handel Save Schematic onCloud
-  const handelSchSave = () => {
+  // Handle Save Schematic onCloud
+  const handleSchSave = () => {
     if (auth.isAuthenticated !== true) {
       setMessage('You are not Logged In')
       handleSnacClick()
@@ -280,7 +280,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
   }
 
   // Save Schematics Locally
-  const handelLocalSchSave = () => {
+  const handleLocalSchSave = () => {
     const blob = new Blob([beautify(Save())], { type: 'application/xml' })
     const evt = new MouseEvent('click', {
       view: window,
@@ -296,7 +296,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
   }
 
   // Open Locally Saved Schematic
-  const handelLocalSchOpen = () => {
+  const handleLocalSchOpen = () => {
     var obj = {}
     const fileSelector = document.createElement('input')
     fileSelector.setAttribute('type', 'file')
@@ -347,9 +347,9 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
           <OpenInBrowserIcon fontSize="small" />
         </IconButton>
       </Tooltip>
-      <OpenSchDialog open={schOpen} close={handleSchDialClose} openLocal={handelLocalSchOpen} />
+      <OpenSchDialog open={schOpen} close={handleSchDialClose} openLocal={handleLocalSchOpen} />
       <Tooltip title="Save">
-        <IconButton color="inherit" className={classes.tools} size="small" onClick={handelSchSave} >
+        <IconButton color="inherit" className={classes.tools} size="small" onClick={handleSchSave} >
           <SaveOutlinedIcon fontSize="small" />
         </IconButton>
       </Tooltip>
@@ -357,7 +357,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
       <span className={classes.pipe}>|</span>
 
       <Tooltip title="Export">
-        <IconButton color="inherit" className={classes.tools} size="small" onClick={handelLocalSchSave}>
+        <IconButton color="inherit" className={classes.tools} size="small" onClick={handleLocalSchSave}>
           <SystemUpdateAltOutlinedIcon fontSize="small" />
         </IconButton>
       </Tooltip>

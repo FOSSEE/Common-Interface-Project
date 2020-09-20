@@ -13,7 +13,6 @@ const {
   mxUndoManager,
   mxEvent,
   mxCodec,
-  mxCell,
   mxMorphing,
   mxPoint
 } = new mxGraphFactory()
@@ -176,11 +175,6 @@ export function ErcCheck () {
       }
       ++vertexCount
     }
-    if (cell.symbol === 'PWR') { // Checking for ground
-      console.log('Ground is present')
-      console.log(cell)
-      ++ground
-    }
   }
 
   if (vertexCount === 0) {
@@ -220,11 +214,6 @@ function ErcCheckNets () {
       }
       ++vertexCount
     }
-    if (cell.symbol === 'PWR') {
-      console.log('Ground is present')
-      console.log(cell)
-      ++ground
-    }
   }
   if (vertexCount === 0) {
     alert('No Component added')
@@ -246,8 +235,6 @@ function ErcCheckNets () {
 // GENERATE NETLIST
 export function GenerateNetList () {
 
-  var r = 1
-  var v = 1
   var c = 1
   // var list = graph.getModel().cells
   var spiceModels = ''
@@ -270,33 +257,11 @@ export function GenerateNetList () {
           node2: '',
           magnitude: ''
         }
-        mxCell.prototype.ConnectedNode = null
         var component = list[property]
-        if (component.symbol === 'R') {
-          // component.symbol = component.symbol + r.toString()
-          k = k + component.symbol + r.toString()
-          component.value = component.symbol + r.toString()
-          component.properties.PREFIX = component.value
-          // component.symbol = component.value
-
-          ++r
-        } else if (component.symbol === 'V') {
-          // component.symbol = component.symbol + v.toString()
-          console.log(component)
-          k = k + component.symbol + v.toString()
-          component.value = component.symbol + v.toString()
-          component.properties.PREFIX = component.value
-          // component.symbol = component.value
-          ++v
-        } else {
-          // component.symbol = component.symbol + c.toString()
           k = k + component.symbol + c.toString()
           component.value = component.symbol + c.toString()
           component.properties.PREFIX = component.value
-          // component.symbol = component.value
           ++c
-        } 
-        // compobj.name = component.symbol
 
         if (component.children !== null) {
           for (var child in component.children) {
@@ -322,24 +287,13 @@ export function GenerateNetList () {
                       pin.edges[wire].targetVertex = pin.edges[wire].target.id
                       pin.edges[wire].tarx = pin.edges[wire].geometry.targetPoint.x
                       pin.edges[wire].tary = pin.edges[wire].geometry.targetPoint.y
-                    } else if (pin.edges[wire].source.ParentComponent.symbol === 'PWR' || pin.edges[wire].target.ParentComponent.symbol === 'PWR') {
-                      pin.edges[wire].node = 0
-                      // pin.edges[wire].node = '0'
-                      pin.edges[wire].value = 0
-                      // k = k + ' ' + pin.edges[wire].node
-                      pin.edges[wire].sourceVertex = pin.edges[wire].source.id
-                      pin.edges[wire].targetVertex = pin.edges[wire].target.id
                     } else {
-                      // if (pin.edges[wire].node === null) {
                       pin.edges[wire].node = pin.edges[wire].source.ParentComponent.properties.PREFIX + '.' + pin.edges[wire].source.value
-                      pin.ConnectedNode = pin.edges[wire].source.ParentComponent.properties.PREFIX + '.' + pin.edges[wire].source.value
                       console.log('comp')
-                      // }
                       pin.edges[wire].sourceVertex = pin.edges[wire].source.id
                       pin.edges[wire].targetVertex = pin.edges[wire].target.id
 
                       pin.edges[wire].value = pin.edges[wire].node
-                      // k = k + '  ' + pin.edges[wire].node
                     }
                     pin.edges[wire].value = pin.edges[wire].node
                   }
@@ -362,31 +316,10 @@ export function GenerateNetList () {
         }
         console.log('component properties', component.properties)
 
-        if (component.properties.PREFIX.charAt(0) === 'V' || component.properties.PREFIX.charAt(0) === 'v' || component.properties.PREFIX.charAt(0) === 'I' || component.properties.PREFIX.charAt(0) === 'i') {
-          const comp = component.properties
-          if (comp.NAME === 'SINE') {
-            k = k + ` SIN(${comp.OFFSET} ${comp.AMPLITUDE} ${comp.FREQUENCY} ${comp.DELAY} ${comp.DAMPING_FACTOR} ${comp.PHASE} )`
-          } else if (comp.NAME === 'EXP') {
-            k = k + ` EXP(${comp.INITIAL_VALUE} ${comp.PULSED_VALUE} ${comp.FREQUENCY} ${comp.RISE_DELAY_TIME} ${comp.RISE_TIME_CONSTANT} ${comp.FALL_DELAY_TIME} ${comp.FALL_TIME_CONSTANT} )`
-          } else if (comp.NAME === 'DC') {
-            if (component.properties.VALUE !== undefined) {
-              k = k + ' DC ' + component.properties.VALUE
-              component.value = component.value + '\n' + component.properties.VALUE
-            }
-          } else if (comp.NAME === 'PULSE') {
-            k = k + ` PULSE(${comp.INITIAL_VALUE} ${comp.PULSED_VALUE} ${comp.DELAY_TIME} ${comp.RISE_TIME} ${comp.FALL_TIME} ${comp.PULSE_WIDTH} ${comp.PERIOD} ${comp.PHASE} )`
-          } else {
-            if (component.properties.VALUE !== undefined) {
-              k = k + ' ' + component.properties.VALUE
-              component.value = component.value + '\n' + component.properties.VALUE
-            }
-          }
-        } else {
           if (component.properties.VALUE !== undefined) {
             k = k + ' ' + component.properties.VALUE
             component.value = component.value + '\n' + component.properties.VALUE
           }
-        }
 
         if (component.properties.EXTRA_EXPRESSION.length > 0) {
           k = k + ' ' + component.properties.EXTRA_EXPRESSION
@@ -437,8 +370,6 @@ export function GenerateNetList () {
 }
 function annotate (graph) {
 
-  var r = 1
-  var v = 1
   var c = 1
   var list = graph.getModel().cells
   var netlist = {
@@ -459,50 +390,10 @@ function annotate (graph) {
           node2: '',
           magnitude: ''
         }
-        mxCell.prototype.ConnectedNode = null
         var component = list[property]
-        if (component.symbol === 'R') {
-          // component.symbol = component.symbol + r.toString()
-          k = k + component.symbol + r.toString()
-          component.value = component.symbol + r.toString()
-          component.properties.PREFIX = component.value
-          // component.symbol = component.value
-
-          ++r
-        } else if (component.symbol === 'V') {
-          // component.symbol = component.symbol + v.toString()
-          k = k + component.symbol + v.toString()
-          component.value = component.symbol + v.toString()
-          component.properties.PREFIX = component.value
-          // component.symbol = component.value
-          ++v
-        } else if (component.symbol === 'C') {
-          // component.symbol = component.symbol + v.toString()
-          k = k + component.symbol + v.toString()
-          component.value = component.symbol + v.toString()
-          component.properties.PREFIX = component.value
-          // component.symbol = component.value
-          ++c
-        } else if (component.symbol === 'D') {
-          // component.symbol = component.symbol + v.toString()
-          k = k + component.symbol + v.toString()
-          component.value = component.symbol + v.toString()
-          component.properties.PREFIX = component.value
-          // component.symbol = component.value
-        } else if (component.symbol === 'Q') {
-          // component.symbol = component.symbol + v.toString()
-          k = k + component.symbol + v.toString()
-          component.value = component.symbol + v.toString()
-          component.properties.PREFIX = component.value
-          // component.symbol = component.value
-        } else {
-          // component.symbol = component.symbol + c.toString()
           k = k + component.symbol + c.toString()
           component.value = component.symbol + c.toString()
           component.properties.PREFIX = component.value
-          // component.symbol = component.value
-        }
-        // compobj.name = component.symbol
 
         if (component.children !== null) {
           for (var child in component.children) {
@@ -516,16 +407,9 @@ function annotate (graph) {
 
                     } else if (pin.edges[wire].target.edge === true) {
 
-                    } else if (pin.edges[wire].source.ParentComponent.symbol === 'PWR' || pin.edges[wire].target.ParentComponent.symbol === 'PWR') {
-                      pin.edges[wire].node = 0
-                      // pin.edges[wire].node = '0'
-                      pin.edges[wire].value = 0
                     } else {
-                      // if (pin.edges[wire].node === null) {
                       pin.edges[wire].node = pin.edges[wire].source.ParentComponent.properties.PREFIX + '.' + pin.edges[wire].source.value
-                      pin.ConnectedNode = pin.edges[wire].source.ParentComponent.properties.PREFIX + '.' + pin.edges[wire].source.value
                       console.log('comp')
-                      // }
 
                       pin.edges[wire].value = pin.edges[wire].node
                     }
@@ -657,21 +541,13 @@ function parseXmlToGraph (xmlDoc, graph) {
       const width = Number(geom.width.value)
       v1 = graph.insertVertex(parent, vertexId, vertexName, xPos, yPos, width, height, style)
       v1.symbol = cellAttrs.symbol.value
-      if (v1.symbol === 'V') {
-        try { props = Object.assign({}, ComponentParameters[v1.symbol][cells[i].children[2].attributes.NAME.value]) } catch (e) { props = Object.assign({}, ComponentParameters[v1.symbol][cells[i].children[1].attributes.NAME.value]) }
-      } else {
         props = Object.assign({}, ComponentParameters[v1.symbol])
-      }
 
       try { props.NAME = cells[i].children[2].attributes.NAME.value } catch (e) { props.NAME = cells[i].children[1].attributes.NAME.value }
       v1.properties = props
       v1.Component = true
       v1.CellType = 'Component'
       console.log(props)
-      if (v1.properties.name === 'VSOURCE') {
-        console.log('here it is')
-        console.log(v1.properties)
-      }
       for (var check in props) {
         try { v1.properties[check] = cells[i].children[2].attributes[check].value } catch (e) { try { v1.properties[check] = cells[i].children[1].attributes[check].value } catch (e) { console.log('parameter errors') } }
       }
@@ -763,7 +639,6 @@ function XMLWireConnections () {
     var list = graph.getModel().cells
     for (var property in list) {
       if (list[property].Component === true && list[property].symbol !== 'PWR') {
-        mxCell.prototype.ConnectedNode = null
         var component = list[property]
 
         if (component.children !== null) {
@@ -785,13 +660,8 @@ function XMLWireConnections () {
                         pin.edges[wire].tarx = pin.edges[wire].geometry.targetPoint.x
                         pin.edges[wire].tary = pin.edges[wire].geometry.targetPoint.y
                         pin.edges[wire].PointsArray = pin.edges[wire].geometry.points
-                      } else if (pin.edges[wire].source.ParentComponent.symbol === 'PWR' || pin.edges[wire].target.ParentComponent.symbol === 'PWR') {
-                        pin.edges[wire].sourceVertex = pin.edges[wire].source.id
-                        pin.edges[wire].targetVertex = pin.edges[wire].target.id
-                        pin.edges[wire].PointsArray = pin.edges[wire].geometry.points
                       } else {
                         pin.edges[wire].node = pin.edges[wire].source.ParentComponent.properties.PREFIX + '.' + pin.edges[wire].source.value
-                        pin.ConnectedNode = pin.edges[wire].source.ParentComponent.properties.PREFIX + '.' + pin.edges[wire].source.value
                         pin.edges[wire].sourceVertex = pin.edges[wire].source.id
                         pin.edges[wire].targetVertex = pin.edges[wire].target.id
                         pin.edges[wire].PointsArray = pin.edges[wire].geometry.points

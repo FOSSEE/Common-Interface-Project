@@ -52,19 +52,14 @@ export default function LoadGrid (container, sidebar, outline) {
     mxCell.prototype.CellType = 'This is where you say what the vertex is'
     // Tells the magnitude of a resistor/capacitor
     mxCell.prototype.Magnitude = null
-    // Tells whether the pin is input/output
-    mxCell.prototype.pinType = ' '
     // Tells if the cell is component, Default is false
     mxCell.prototype.Component = false
     // Tells if the cell is pin, Default is false
     mxCell.prototype.Pin = false
-    // Pin number of the component, default is 0
-    mxCell.prototype.PinNumber = 0
     // Parent component of a pin, default is null
     mxCell.prototype.ParentComponent = null
     mxCell.prototype.symbol = null
     mxCell.prototype.node = null
-    mxCell.prototype.PinName = ''
     mxCell.prototype.CompObject = null
     mxCell.prototype.properties = {}
     mxCell.prototype.sourceVertex = false
@@ -72,7 +67,6 @@ export default function LoadGrid (container, sidebar, outline) {
     mxCell.prototype.tarx = 0
     mxCell.prototype.tary = 0
     mxCell.prototype.PointsArray = null
-    // mxCell.prototype.ConnectedNode = null
 
     // Enables guides
     mxGraphHandler.prototype.guidesEnabled = true

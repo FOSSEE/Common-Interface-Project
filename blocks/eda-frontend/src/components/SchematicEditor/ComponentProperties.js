@@ -4,9 +4,9 @@ import { setCompProperties } from '../../redux/actions/index'
 import { ListItem, ListItemText, Button, TextField } from '@material-ui/core'
 
 export default function ComponentProperties () {
-  // component properties that are displayed on the right side bar when user clicks on a component on the grid.
+  // compProperties that are displayed on the right side bar when user clicks on a component on the grid.
 
-  const properties = useSelector(state => state.componentPropertiesReducer.compProperties)
+  const compProperties = useSelector(state => state.componentPropertiesReducer.compProperties)
   const isOpen = useSelector(state => state.componentPropertiesReducer.isPropertiesWindowOpen)
   const id = useSelector(state => state.componentPropertiesReducer.id)
   const parameter_values = useSelector(state => state.componentPropertiesReducer.parameter_values)
@@ -48,9 +48,9 @@ export default function ComponentProperties () {
         Object.keys(val).map((keyName, i) => {
           if (keyName.match(/^p[0-9]*_value$/)) {
             let rootKeyName = keyName.substr(0, 4)
-            if (properties[rootKeyName] !== null) {
+            if (compProperties[rootKeyName] !== null) {
               return <ListItem key={i}>
-                <TextField id={keyName} label={properties[rootKeyName]} value={val[keyName] || ''} size='small' variant='outlined' onChange={getInputValues} />
+                <TextField id={keyName} label={compProperties[rootKeyName]} value={val[keyName] || ''} size='small' variant='outlined' onChange={getInputValues} />
               </ListItem>
             }
           }
