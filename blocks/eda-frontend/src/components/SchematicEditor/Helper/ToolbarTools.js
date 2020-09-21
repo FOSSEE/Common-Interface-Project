@@ -288,7 +288,7 @@ export function GenerateNetList () {
                       pin.edges[wire].tarx = pin.edges[wire].geometry.targetPoint.x
                       pin.edges[wire].tary = pin.edges[wire].geometry.targetPoint.y
                     } else {
-                      pin.edges[wire].node = pin.edges[wire].source.ParentComponent.properties.PREFIX + '.' + pin.edges[wire].source.value
+                      pin.edges[wire].node = '.' + pin.edges[wire].source.value
                       console.log('comp')
                       pin.edges[wire].sourceVertex = pin.edges[wire].source.id
                       pin.edges[wire].targetVertex = pin.edges[wire].target.id
@@ -315,22 +315,6 @@ export function GenerateNetList () {
 
         }
         console.log('component properties', component.properties)
-
-          if (component.properties.VALUE !== undefined) {
-            k = k + ' ' + component.properties.VALUE
-            component.value = component.value + '\n' + component.properties.VALUE
-          }
-
-        if (component.properties.EXTRA_EXPRESSION.length > 0) {
-          k = k + ' ' + component.properties.EXTRA_EXPRESSION
-          component.value = component.value + ' ' + component.properties.EXTRA_EXPRESSION
-        }
-        if (component.properties.MODEL.length > 0) {
-          k = k + ' ' + component.properties.MODEL.split(' ')[1]
-        }
-        if (component.properties.MODEL.length > 0) {
-          spiceModels += component.properties.MODEL + '\n'
-        }
 
         k = k + ' \n'
       }
@@ -408,7 +392,7 @@ function annotate (graph) {
                     } else if (pin.edges[wire].target.edge === true) {
 
                     } else {
-                      pin.edges[wire].node = pin.edges[wire].source.ParentComponent.properties.PREFIX + '.' + pin.edges[wire].source.value
+                      pin.edges[wire].node = '.' + pin.edges[wire].source.value
                       console.log('comp')
 
                       pin.edges[wire].value = pin.edges[wire].node
@@ -430,16 +414,7 @@ function annotate (graph) {
           netlist.nodelist.push(compobj.node2, compobj.node1)
 
         }
-        if (component.properties.VALUE !== undefined) {
-          k = k + ' ' + component.properties.VALUE
-        }
 
-        if (component.properties.EXTRA_EXPRESSION.length > 0) {
-          k = k + ' ' + component.properties.EXTRA_EXPRESSION
-        }
-        if (component.properties.MODEL.length > 0) {
-          k = k + ' ' + component.properties.MODEL.split(' ')[1]
-        }
         k = k + ' \n'
       }
     }
@@ -567,7 +542,7 @@ function parseXmlToGraph (xmlDoc, graph) {
         yPos = Number(geom.y.value)
       }
       var vp = graph.insertVertex(v1, vertexId, vertexName, xPos, yPos, 0.5, 0.5, style)
-      vp.ParentComponent = v1
+      vp.ParentComponent = v1.id
       vp.Pin = 1
     } else if (cellAttrs.edge) { // is edge
       // const edgeName = cellAttrs.value.value
@@ -661,7 +636,7 @@ function XMLWireConnections () {
                         pin.edges[wire].tary = pin.edges[wire].geometry.targetPoint.y
                         pin.edges[wire].PointsArray = pin.edges[wire].geometry.points
                       } else {
-                        pin.edges[wire].node = pin.edges[wire].source.ParentComponent.properties.PREFIX + '.' + pin.edges[wire].source.value
+                        pin.edges[wire].node = '.' + pin.edges[wire].source.value
                         pin.edges[wire].sourceVertex = pin.edges[wire].source.id
                         pin.edges[wire].targetVertex = pin.edges[wire].target.id
                         pin.edges[wire].PointsArray = pin.edges[wire].geometry.points
