@@ -236,7 +236,6 @@ function ErcCheckNets () {
 export function GenerateNetList () {
 
   var c = 1
-  // var list = graph.getModel().cells
   var spiceModels = ''
   var netlist = {
     componentlist: [],
@@ -250,7 +249,6 @@ export function GenerateNetList () {
     var list = annotate(graph)
     for (var property in list) {
       if (list[property].Component === true && list[property].symbol !== 'PWR') {
-        // alert('Component is present')
         var compobj = {
           name: '',
           node1: '',
@@ -267,7 +265,6 @@ export function GenerateNetList () {
           for (var child in component.children) {
             var pin = component.children[child]
             if (pin.vertex === true) {
-              // alert(pin.id)
               if (pin.edges !== null || pin.edges.length !== 0) {
                 for (var wire in pin.edges) {
                   if (pin.edges[wire].source !== null && pin.edges[wire].target !== null) {
@@ -353,122 +350,7 @@ export function GenerateNetList () {
   return netobj
 }
 function annotate (graph) {
-
-  var c = 1
-  var list = graph.getModel().cells
-  var netlist = {
-    componentlist: [],
-    nodelist: []
-  }
-  // var erc = ErcCheckNets()
-  var erc = true
-  var k = ''
-  if (erc === false) {
-    alert('ERC check failed')
-  } else {
-    for (var property in list) {
-      if (list[property].Component === true && list[property].symbol !== 'PWR') {
-        var compobj = {
-          name: '',
-          node1: '',
-          node2: '',
-          magnitude: ''
-        }
-        var component = list[property]
-          k = k + component.symbol + c.toString()
-          component.value = component.symbol + c.toString()
-          component.properties.PREFIX = component.value
-
-        if (component.children !== null) {
-          for (var child in component.children) {
-            var pin = component.children[child]
-            if (pin.vertex === true) {
-              // alert(pin.id)
-              if (pin.edges !== null || pin.edges.length !== 0) {
-                for (var wire in pin.edges) {
-                  if (pin.edges[wire].source !== null && pin.edges[wire].target !== null) {
-                    if (pin.edges[wire].source.edge === true) {
-
-                    } else if (pin.edges[wire].target.edge === true) {
-
-                    } else {
-                      pin.edges[wire].node = '.' + pin.edges[wire].source.value
-                      console.log('comp')
-
-                      pin.edges[wire].value = pin.edges[wire].node
-                    }
-                  }
-
-                  console.log(pin.edges[wire])
-                }
-                k = k + ' ' + pin.edges[0].node
-
-              }
-            }
-          }
-          compobj.name = component.symbol
-          compobj.node1 = component.children[0].edges[0].node
-          compobj.node2 = component.children[1].edges[0].node
-          compobj.magnitude = 10
-          netlist.componentlist.push(component.properties.PREFIX)
-          netlist.nodelist.push(compobj.node2, compobj.node1)
-
-        }
-
-        k = k + ' \n'
-      }
-    }
-  }
-  return list
-}
-
-export function GenerateNodeList () {
-  var list = annotate(graph)
-  var netlist = new Set()
-
-  for (var property in list) {
-    if (list[property].Component === true && list[property].symbol !== 'PWR') {
-      // alert('Component is present')Component Name: ZMYxx
-      var compobj = {
-        name: '',
-        node1: '',
-        node2: '',
-        magnitude: ''
-      }
-      var component = list[property]
-      if (component.children !== null) {
-        compobj.name = component.symbol
-        compobj.node1 = component.children[0].edges[0].node
-        compobj.node2 = component.children[1].edges[0].node
-        netlist.add(compobj.node1, compobj.node2)
-      }
-    }
-  }
-  return netlist
-}
-export function GenerateCompList () {
-  var list = annotate(graph)
-  var netlist = []
-
-  for (var property in list) {
-    if (list[property].Component === true && list[property].symbol !== 'PWR') {
-      // alert('Component is present')
-      var compobj = {
-        name: '',
-        node1: '',
-        node2: '',
-        magnitude: ''
-      }
-      var component = list[property]
-      compobj.name = component.symbol
-      compobj.node1 = component.children[0].edges[0].node
-      compobj.node2 = component.children[1].edges[0].node
-      netlist.push(component.properties.PREFIX)
-    }
-  }
-
-  return netlist
-  
+  return graph.getModel().cells
 }
 
 export function renderXML () {
@@ -620,7 +502,6 @@ function XMLWireConnections () {
           for (var child in component.children) {
             var pin = component.children[child]
             if (pin.vertex === true) {
-              // alert(pin.id)
               try {
                 if (pin.edges !== null || pin.edges.length !== 0) {
                   for (var wire in pin.edges) {
