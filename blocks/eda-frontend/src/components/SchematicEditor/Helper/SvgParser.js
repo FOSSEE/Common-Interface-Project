@@ -49,10 +49,6 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
   }
   v1.parameter_values = parameter_values;
 
-  var props = {}
-  props.NAME = component.name
-  v1.properties = props
-
   v1.setConnectable(false)
 
   let ports = component.initial_explicit_input_ports + component.initial_implicit_input_ports;

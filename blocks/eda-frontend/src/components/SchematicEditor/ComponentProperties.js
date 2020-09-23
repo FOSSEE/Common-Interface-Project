@@ -10,19 +10,13 @@ export default function ComponentProperties () {
   const isOpen = useSelector(state => state.componentPropertiesReducer.isPropertiesWindowOpen)
   const id = useSelector(state => state.componentPropertiesReducer.id)
   const parameter_values = useSelector(state => state.componentPropertiesReducer.parameter_values)
-  const parameter_values_changed = useSelector(state => state.componentPropertiesReducer.parameter_values_changed)
-  const block = useSelector(state => state.componentPropertiesReducer.block)
   const [val, setVal] = useState(parameter_values)
 
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if (parameter_values_changed) {
-        block.parameter_values = parameter_values;
-    } else {
-        setVal(parameter_values)
-    }
-  }, [parameter_values_changed, parameter_values, block.parameter_values])
+      setVal(parameter_values)
+  }, [parameter_values])
 
   const getInputValues = (evt) => {
     const value = evt.target.value
@@ -33,7 +27,7 @@ export default function ComponentProperties () {
   }
 
   const setProps = () => {
-    dispatch(setCompProperties(id, val, block))
+    dispatch(setCompProperties(id, val))
   }
 
   return (

@@ -1,7 +1,7 @@
 import mxGraphFactory from 'mxgraph'
 import store from '../../../redux/store'
 import * as actions from '../../../redux/actions/actions'
-import ComponentParameters from './ComponentParametersData'
+
 var graph
 var undoManager
 
@@ -258,7 +258,6 @@ export function GenerateNetList () {
         var component = list[property]
           k = k + component.symbol + c.toString()
           component.value = component.symbol + c.toString()
-          component.properties.PREFIX = component.value
           ++c
 
         if (component.children !== null) {
@@ -307,11 +306,10 @@ export function GenerateNetList () {
           compobj.node1 = component.children[0].edges[0].node
           compobj.node2 = component.children[1].edges[0].node
           compobj.magnitude = 10
-          netlist.componentlist.push(component.properties.PREFIX)
           netlist.nodelist.push(compobj.node2, compobj.node1)
 
         }
-        console.log('component properties', component.properties)
+        console.log('component parameter_values', component.parameter_values)
 
         k = k + ' \n'
       }
@@ -366,7 +364,6 @@ function parseXmlToGraph (xmlDoc, graph) {
   var v1
   var yPos
   var xPos
-  var props
   var style = graph.getStylesheet().getDefaultVertexStyle()
 
   style[mxConstants.STYLE_SHAPE] = 'label'
@@ -398,16 +395,9 @@ function parseXmlToGraph (xmlDoc, graph) {
       const width = Number(geom.width.value)
       v1 = graph.insertVertex(parent, vertexId, vertexName, xPos, yPos, width, height, style)
       v1.symbol = cellAttrs.symbol.value
-        props = Object.assign({}, ComponentParameters[v1.symbol])
 
-      try { props.NAME = cells[i].children[2].attributes.NAME.value } catch (e) { props.NAME = cells[i].children[1].attributes.NAME.value }
-      v1.properties = props
       v1.Component = true
       v1.CellType = 'Component'
-      console.log(props)
-      for (var check in props) {
-        try { v1.properties[check] = cells[i].children[2].attributes[check].value } catch (e) { try { v1.properties[check] = cells[i].children[1].attributes[check].value } catch (e) { console.log('parameter errors') } }
-      }
       console.log('component added')
     } else if (cellAttrs.Pin.value === '1') {
       const vertexName = cellAttrs.value.value

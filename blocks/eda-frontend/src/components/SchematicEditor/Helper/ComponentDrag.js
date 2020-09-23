@@ -61,7 +61,7 @@ export default function LoadGrid (container, sidebar, outline) {
     mxCell.prototype.symbol = null
     mxCell.prototype.node = null
     mxCell.prototype.CompObject = null
-    mxCell.prototype.properties = {}
+    mxCell.prototype.parameter_values = {}
     mxCell.prototype.sourceVertex = false
     mxCell.prototype.targetVertex = false
     mxCell.prototype.tarx = 0
@@ -253,11 +253,11 @@ export default function LoadGrid (container, sidebar, outline) {
 
     store.subscribe(() => {
       var id = store.getState().componentPropertiesReducer.id
-      var props = store.getState().componentPropertiesReducer.compProperties
+      var parameter_values = store.getState().componentPropertiesReducer.parameter_values
       var cellList = graph.getModel().cells
       var c = cellList[id]
       if (c !== undefined) {
-        c.properties = props
+        c.parameter_values = parameter_values
       }
     })
 

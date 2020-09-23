@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-// Editor right side pane to display grid and component properties.
+// Editor right side pane to display grid and compProperties.
 export default function RightSidebar ({ window, mobileOpen, mobileClose, children }) {
   const classes = useStyles()
 
