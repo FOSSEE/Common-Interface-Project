@@ -1,6 +1,8 @@
 from django.http import JsonResponse
 from django_filters import FilterSet
 from django_filters.rest_framework import DjangoFilterBackend
+import io
+from rest_framework.parsers import JSONParser
 from rest_framework.viewsets import ReadOnlyModelViewSet
 
 from .models import Category, Block, BlockParameter
@@ -72,7 +74,9 @@ class BlockParameterViewSet(ReadOnlyModelViewSet):
 
 def set_block_parameter(request):
     if request.method == 'POST':
-        serializer = SetBlockParameterSerializer(data=request.POST)
+        stream = io.BytesIO(request.body)
+        data = JSONParser().parse(stream)
+        serializer = SetBlockParameterSerializer(data=data)
         if serializer.is_valid():
             # process the data to get port
             try:
@@ -83,6 +87,11 @@ def set_block_parameter(request):
                 errorserializer = ErrorSerializer(data={
                     'code': 500, 'error': error})
                 return JsonResponse(errorserializer.initial_data)
+        else:
+            error = 'getblockportserializer errors: %s' % serializer.errors
+            errorserializer = ErrorSerializer(data={
+                'code': 500, 'error': error})
+            return JsonResponse(errorserializer.initial_data)
     else:
         serializer = SetBlockParameterSerializer()
 
