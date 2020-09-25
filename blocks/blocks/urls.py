@@ -18,6 +18,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/simulation/', include('simulationAPI.urls')),
     path('api/', include('blocks.xcosblocks.urls')),
     path('', include('frontend.urls')),
 ]
