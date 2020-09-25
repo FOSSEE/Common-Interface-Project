@@ -58,10 +58,10 @@ export default function LoadGrid (container, sidebar, outline) {
     mxCell.prototype.Pin = false
     // Parent component of a pin, default is null
     mxCell.prototype.ParentComponent = null
-    mxCell.prototype.symbol = null
     mxCell.prototype.node = null
     mxCell.prototype.CompObject = null
     mxCell.prototype.parameter_values = {}
+    mxCell.prototype.displayProperties = {}
     mxCell.prototype.sourceVertex = false
     mxCell.prototype.targetVertex = false
     mxCell.prototype.tarx = 0
@@ -254,10 +254,12 @@ export default function LoadGrid (container, sidebar, outline) {
     store.subscribe(() => {
       var id = store.getState().componentPropertiesReducer.id
       var parameter_values = store.getState().componentPropertiesReducer.parameter_values
+      var displayProperties = store.getState().componentPropertiesReducer.displayProperties
       var cellList = graph.getModel().cells
       var c = cellList[id]
       if (c !== undefined) {
         c.parameter_values = parameter_values
+        c.displayProperties = displayProperties
       }
     })
 

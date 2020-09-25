@@ -34,13 +34,15 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
   v1.Component = true
   v1.CellType = 'Component'
   v1.block_id = component.id
-  v1.explicit_input_ports = component.initial_explicit_input_ports
-  v1.implicit_input_ports = component.initial_implicit_input_ports
-  v1.control_ports = component.initial_control_ports
-  v1.explicit_output_ports = component.initial_explicit_output_ports
-  v1.implicit_output_ports = component.initial_implicit_output_ports
-  v1.command_ports = component.initial_command_ports
-  v1.display_parameter = component.initial_display_parameter
+  v1.displayProperties = {
+    explicit_input_ports: component.initial_explicit_input_ports,
+    implicit_input_ports: component.initial_implicit_input_ports,
+    control_ports: component.initial_control_ports,
+    explicit_output_ports: component.initial_explicit_output_ports,
+    implicit_output_ports: component.initial_implicit_output_ports,
+    command_ports: component.initial_command_ports,
+    display_parameter: component.initial_display_parameter,
+  }
   let parameter_values = {};
   for (let i = 0; i < 40; i++) {
       let p = getParameter(i) + '_value';

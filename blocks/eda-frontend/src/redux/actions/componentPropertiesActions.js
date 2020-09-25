@@ -22,13 +22,23 @@ export const getCompProperties = (block) => (dispatch) => {
 
 // Actions for updating entered component properites on clicking set parameters
 export const setCompProperties = (id, parameter_values) => (dispatch) => {
-  dispatch({
-    type: actions.SET_COMP_PROPERTIES,
-    payload: {
-      id: id,
-      parameter_values: parameter_values
-    }
-  })
+  const url = 'setblockparameter'
+  const filtered_parameter_values = Object.fromEntries(Object.entries(parameter_values).filter(([k, v]) => v != null))
+  const data = { block_id: id, ...filtered_parameter_values }
+  api.post(url, data)
+    .then(
+      (res) => {
+        dispatch({
+          type: actions.SET_COMP_PROPERTIES,
+          payload: {
+            id: id,
+            parameter_values: parameter_values,
+            displayProperties: res.data
+          }
+        })
+      }
+    )
+    .catch((err) => { console.error(err) })
 }
 
 // Handling hiding of compProperties sidebar

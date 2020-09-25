@@ -5,7 +5,8 @@ const InitialState = {
   id: 0,
   parameter_values: {},
   isPropertiesWindowOpen: false,
-  compProperties: {}
+  compProperties: {},
+  displayProperties: {}
 }
 
 export default function (state = InitialState, action) {
@@ -25,7 +26,8 @@ export default function (state = InitialState, action) {
         ...state,
         id: action.payload.id,
         parameter_values: action.payload.parameter_values,
-        isPropertiesWindowOpen: false
+        isPropertiesWindowOpen: false,
+        displayProperties: action.payload.displayProperties
       }
     }
 
