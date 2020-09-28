@@ -135,6 +135,9 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 STATIC_URL = '/static/'
 
+# noqa For Netlist handling netlist uploads and other temp uploads
+MEDIA_URL = '/_files/'
+MEDIA_ROOT = os.path.join('/tmp', 'blocks-tmp')
 
 # celery
 CELERY_BROKER_URL = 'redis://redis:6379'
