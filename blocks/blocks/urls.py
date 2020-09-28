@@ -17,8 +17,12 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('api/admin/', admin.site.urls),
+
+    # Simulation API Routes
     path('api/simulation/', include('simulationAPI.urls')),
+
+    # libAPI routes
     path('api/', include('blocks.xcosblocks.urls')),
     path('', include('frontend.urls')),
 ]

@@ -5,9 +5,6 @@ import uuid
 
 
 class Task(models.Model):
-    # User details for auth to be stored along with task.
-    # user = models.ForeignKey(User, on_delete=models.CASCADE)
-
     task_time = models.DateTimeField(auto_now=True, db_index=True)
     task_id = models.UUIDField(
         primary_key=True, default=uuid.uuid4, editable=False)
@@ -24,8 +21,6 @@ class spiceFile(models.Model):
         storage=FileSystemStorage(location=settings.MEDIA_ROOT))
     upload_time = models.DateTimeField(auto_now=True, db_index=True)
 
-    # User details for auth to be stored along with task.
-    # owner = models.ForeignKey('auth.User')
     task = models.ForeignKey(
         Task, on_delete=models.CASCADE, related_name='file')
 

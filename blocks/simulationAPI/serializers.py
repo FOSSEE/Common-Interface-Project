@@ -12,7 +12,6 @@ class FileSerializer(serializers.ModelSerializer):
 
 
 class TaskSerializer(serializers.HyperlinkedModelSerializer):
-    # user = serializers.ReadOnlyField(source='user.username')
     file = FileSerializer(many=True, read_only=True)
 
     class Meta:
