@@ -5,3 +5,5 @@ blocks/*/migrations/*.py
 blocks/frontend/static/frontend/main.js
 .env
 tags
+Xcos/*.sci
+Xcos/*.xml

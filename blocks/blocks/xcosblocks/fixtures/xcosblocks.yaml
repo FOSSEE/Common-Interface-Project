@@ -9636,13 +9636,13 @@
     block_image_path: palettes/AFFICH_m.png
     block_width: 60
     block_height: 40
-    p000_value_initial: null
-    p001_value_initial: null
-    p002_value_initial: null
-    p003_value_initial: null
-    p004_value_initial: null
-    p005_value_initial: null
-    p006_value_initial: null
+    p000_value_initial: '[1, 1]'
+    p001_value_initial: '1'
+    p002_value_initial: '1'
+    p003_value_initial: '1'
+    p004_value_initial: '5'
+    p005_value_initial: '1'
+    p006_value_initial: '0'
     p007_value_initial: null
     p008_value_initial: null
     p009_value_initial: null
@@ -10727,8 +10727,8 @@
     block_image_path: palettes/CLOCK_c.png
     block_width: 40
     block_height: 40
-    p000_value_initial: null
-    p001_value_initial: null
+    p000_value_initial: '0.1'
+    p001_value_initial: '0.1'
     p002_value_initial: null
     p003_value_initial: null
     p004_value_initial: null
@@ -10785,7 +10785,7 @@
     block_image_path: palettes/CONST.png
     block_width: 40
     block_height: 40
-    p000_value_initial: null
+    p000_value_initial: '1'
     p001_value_initial: null
     p002_value_initial: null
     p003_value_initial: null
