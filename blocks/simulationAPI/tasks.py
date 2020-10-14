@@ -3,14 +3,14 @@ from celery import states
 from simulationAPI.helpers import ngspice_helper
 from celery.exceptions import Ignore
 import traceback
-from simulationAPI.models import spiceFile
+from simulationAPI.models import TaskFile
 
 
 @shared_task
 def process_task(task_id):
     try:
 
-        file_obj = list(spiceFile.objects.filter(task_id=task_id))[0]
+        file_obj = list(TaskFile.objects.filter(task_id=task_id))[0]
         file_path = file_obj.file.path
         file_id = file_obj.file_id
 

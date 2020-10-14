@@ -13,7 +13,7 @@ class Task(models.Model):
         super(Task, self).save(*args, **kwargs)
 
 
-class spiceFile(models.Model):
+class TaskFile(models.Model):
 
     file_id = models.UUIDField(
         primary_key=True, default=uuid.uuid4, editable=False)
@@ -25,4 +25,4 @@ class spiceFile(models.Model):
         Task, on_delete=models.CASCADE, related_name='file')
 
     def save(self, *args, **kwargs):
-        super(spiceFile, self).save(*args, **kwargs)
+        super(TaskFile, self).save(*args, **kwargs)
