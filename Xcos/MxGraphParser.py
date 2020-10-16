@@ -20,6 +20,9 @@ for root in mxGraphModel:
         sys.exit(2)
 
     a1 = ''
+    a1 += 'outf = tempname(\'Xcos\');\n'
+    a1 += 'outfd = mopen(outf, \'wt\');\n'
+    a1 += '\n'
     a1 += 'SIMULATION_ET = 30;\n'   # TODO: From POST
     a1 += 'SIMULATION_DT = 0.1;\n'  # TODO: From POST
     a1 += 't = 0;\n'
@@ -85,7 +88,7 @@ for root in mxGraphModel:
             attribid, ', '.join(IIV[attribid]),
             attribid, ', '.join(CON[attribid])))
         print(('    [EOV%s, IOV%s, COM%s, SV%s] = '
-               'Xcos_%s(t, EIV%s, IIV%s, CON%s, BP%s, SV%s);') % (
+               'Xcos_%s(outfd, t, EIV%s, IIV%s, CON%s, BP%s, SV%s);') % (
             attribid, attribid, attribid, attribid, blocks[attribid],
             attribid, attribid, attribid, attribid, attribid))
         for i, aid in enumerate(EOV[attribid]):
@@ -102,3 +105,5 @@ for root in mxGraphModel:
         print('    %s = %s;' % (links[sourceLink], sourceLink))
     print('    t = t + SIMULATION_DT;')
     print('end')
+    print('')
+    print('mclose(outfd);')
