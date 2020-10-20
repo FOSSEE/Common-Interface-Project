@@ -13,16 +13,16 @@ function [explicit_output_vector, implicit_output_vector, command_vector, new_st
     time_difference = block_parameters(1);
     minimum_time = block_parameters(2);
     last_time =  state_vector(1);
-    if time < minimum_time then
+    if time < minimum_time || (time - last_time) < time_difference then
         next_state = 0;
-    elseif (time - last_time) < time_difference then
-        next_state = 0;
+        next_time = last_time;
     else
         next_state = 1;
+        next_time = last_time + time_difference;
     end
 
     explicit_output_vector = list()
     implicit_output_vector = list()
     command_vector = list(next_state)
-    new_state_vector = list(time)
+    new_state_vector = list(next_time)
 endfunction

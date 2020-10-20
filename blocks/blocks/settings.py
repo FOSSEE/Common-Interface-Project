@@ -29,6 +29,7 @@ DEBUG = bool(os.environ.get('DJANGO_DEBUG', default=True))
 
 ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', '127.0.1.1']
 
+SCILAB_DIR = '/home/sunil/software/scilab-6.1.0'
 
 # Application definition
 

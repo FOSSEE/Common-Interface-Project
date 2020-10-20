@@ -3,11 +3,12 @@
 import sys
 import xml.etree.ElementTree as ET
 
-if len(sys.argv) != 2:
-    print("Usage: %s filename" % sys.argv[0])
+if len(sys.argv) != 3:
+    print("Usage: %s filename directory" % sys.argv[0])
     sys.exit(1)
 
 filename = sys.argv[1]
+current_dir = sys.argv[2]
 tree = ET.parse(filename)
 mxGraphModel = tree.getroot()
 if mxGraphModel.tag != 'mxGraphModel':
@@ -20,7 +21,7 @@ for root in mxGraphModel:
         sys.exit(2)
 
     a1 = ''
-    a1 += 'outf = tempname(\'Xcos\');\n'
+    a1 += 'outf = "%s/data.txt";\n' % current_dir
     a1 += 'outfd = mopen(outf, \'wt\');\n'
     a1 += '\n'
     a1 += 'SIMULATION_ET = 30;\n'   # TODO: From POST
