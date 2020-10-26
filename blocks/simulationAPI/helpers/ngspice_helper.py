@@ -71,28 +71,17 @@ def ExecXml(filepath, file_id):
 
         stdout, stderr = proc.communicate()
 
-        if proc.returncode not in [0, 1]:
-            logger.error('%s error encountered', SCILAB_CMD[0])
-            logger.error(stderr)
-            logger.error(proc.returncode)
-            logger.error(stdout)
-            raise CannotRunParser('exited with error')
-
         logger.info('Ran %s', SCILAB_CMD[0])
 
-        logger.info("Reading Output")
-        output = extract_data_from_ngspice_output(current_dir+'/data.txt')
-        return output
+        return "Success"
     except Exception as e:
         logger.exception('Encountered Exception:')
-    finally:
         logger.info('removing %s', filepath)
         os.remove(filepath)
         target = os.listdir(current_dir)
         for item in target:
-            if not item.beginswith('.'):
-                logger.info('removing %s', item)
-                os.remove(os.path.join(current_dir, item))
+            logger.info('removing %s', item)
+            os.remove(os.path.join(current_dir, item))
         logger.info('removing %s', current_dir)
         os.rmdir(current_dir)
         logger.info('Deleted Files')

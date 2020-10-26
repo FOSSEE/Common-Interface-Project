@@ -5,14 +5,14 @@ from simulationAPI.models import TaskFile, Task
 logger = logging.getLogger(__name__)
 
 
-class FileSerializer(serializers.ModelSerializer):
+class TaskFileSerializer(serializers.ModelSerializer):
     class Meta:
         model = TaskFile
-        fields = ('file', 'upload_time', 'file_id', 'task')
+        fields = ('file_id', 'file', 'upload_time', 'task')
 
 
 class TaskSerializer(serializers.HyperlinkedModelSerializer):
-    file = FileSerializer(many=True, read_only=True)
+    file = TaskFileSerializer(many=True, read_only=True)
 
     class Meta:
         model = Task
