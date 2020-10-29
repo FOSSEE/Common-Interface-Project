@@ -20,11 +20,11 @@ class TaskSerializer(serializers.HyperlinkedModelSerializer):
 
     def create(self, validated_data):
         # Takes file from request and stores it along with a taskid
-        files_data = list(self.context.get(
-            'view').request.FILES.getlist("file"))[0]
-        logger.info('File Upload')
+        request = self.context.get('request')
+        file = request.FILES.get('file')
+        logger.info('File Upload: %s', file)
         task = Task.objects.create()
-        logger.info('task: '+str(task))
-        TaskFile.objects.create(task=task, file=files_data)
-        logger.info('Created Object for:' + files_data.name)
+        logger.info('task: %s', task)
+        taskfile = TaskFile.objects.create(task=task, file=file)
+        logger.info('taskfile: %s', taskfile)
         return task

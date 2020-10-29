@@ -25,12 +25,12 @@ class XmlUploader(APIView):
     parser_classes = (MultiPartParser, FormParser,)
 
     def post(self, request, *args, **kwargs):
-        logger.info('Got POST for Xml upload: ')
-        logger.info(request.data)
-        serializer = TaskSerializer(data=request.data, context={'view': self})
+        logger.info('Got POST for Xml upload: data=%s', request.data)
+        serializer = TaskSerializer(data=request.data, context={'request': request})
         if serializer.is_valid():
             serializer.save()
             task_id = serializer.data['task_id']
+            logger.info('task_id=%s %s', task_id, type(task_id))
             celery_task = process_task.apply_async(
                 kwargs={'task_id': str(task_id)}, task_id=str(task_id))
             response_data = {

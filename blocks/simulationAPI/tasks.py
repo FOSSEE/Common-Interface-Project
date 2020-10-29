@@ -4,17 +4,22 @@ from simulationAPI.helpers import ngspice_helper
 from celery.exceptions import Ignore
 import traceback
 from simulationAPI.models import TaskFile
+import logging
+
+
+logger = logging.getLogger(__name__)
 
 
 @shared_task
 def process_task(task_id):
     try:
 
-        file_obj = list(TaskFile.objects.filter(task_id=task_id))[0]
+        task_filter = TaskFile.objects.filter(task_id=task_id)
+        file_obj = list(task_filter)[0]
         file_path = file_obj.file.path
         file_id = file_obj.file_id
 
-        print("Processing ", file_path, file_id)
+        logger.info("Processing %s %s", file_path, file_id)
 
         current_task.update_state(
             state='PROGRESS',
@@ -30,5 +35,5 @@ def process_task(task_id):
         current_task.update_state(state=states.FAILURE, meta={
             'exc_type': type(e).__name__,
             'exc_message': traceback.format_exc().split('\n')})
-        print('Exception Occured: ', type(e).__name__)
+        logger.warning('Exception Occurred: %s', str(e))
         raise Ignore()
