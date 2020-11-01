@@ -16,6 +16,8 @@
     "chart.js": "^2.9.3",
     "chartjs-plugin-colorschemes": "^0.4.0",
     "file-saver": "^2.0.2",
+    "highcharts": "^8.2.2",
+    "highcharts-react-official": "^3.0.0",
     "material-ui-popup-state": "^1.5.4",
     "mxgraph": "^4.2.0",
     "query-string": "^6.12.1",
