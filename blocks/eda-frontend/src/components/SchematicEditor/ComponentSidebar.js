@@ -66,7 +66,7 @@ export default function ComponentSidebar ({ compRef }) {
     if (searchText.length === 0) {
       setSearchedComponents([])
     }
-    setSearchText(evt.target.value)
+    setSearchText(evt.target.value.trim())
     setSearchedComponents([])
     // mimic the value so we can access the latest value in our API call.
 
@@ -76,8 +76,9 @@ export default function ComponentSidebar ({ compRef }) {
   React.useEffect(() => {
     // if the user keeps typing, stop the API call!
     clearTimeout(timeoutId.current)
+    setSearchedComponents([])
     // don't make an API call with no data
-    if (!searchText.trim()) return
+    if (searchText.length === 0) return
     // capture the timeoutId so we can
     // stop the call if the user keeps typing
     timeoutId.current = setTimeout(() => {

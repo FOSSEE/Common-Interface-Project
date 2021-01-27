@@ -66,8 +66,8 @@ export function AddComponent (component, imgref) {
   // Creates the element that is being for the actual preview.
   var dragElt = document.createElement('div')
   dragElt.style.border = 'dashed black 1px'
-  dragElt.style.width = '120px'
-  dragElt.style.height = '40px'
+  dragElt.style.width = (img.naturalWidth ? img.naturalWidth : 40) + 'px'
+  dragElt.style.height = (img.naturalHeight ? img.naturalHeight : 40) + 'px'
 
   // Drag source is configured to use dragElt for preview and as drag icon
   // if scalePreview (last) argument is true. Dx and dy are null to force
