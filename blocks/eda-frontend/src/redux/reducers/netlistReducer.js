@@ -29,18 +29,6 @@ export default function (state = initialState, action) {
         model: action.payload.model
       }
     }
-    case actions.SET_CONTROL_LINE: {
-      return {
-        ...state,
-        controlLine: action.payload.controlLine
-      }
-    }
-    case actions.SET_CONTROL_BLOCK: {
-      return {
-        ...state,
-        controlBlock: action.payload.controlBlock
-      }
-    }
     default:
       return state
   }

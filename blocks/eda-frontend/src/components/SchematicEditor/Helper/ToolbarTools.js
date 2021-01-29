@@ -1,6 +1,6 @@
 import mxGraphFactory from 'mxgraph'
 import store from '../../../redux/store'
-import * as actions from '../../../redux/actions/actions'
+import { setModel, setNetlist } from '../../../redux/actions/index'
 
 var graph
 var undoManager
@@ -315,18 +315,8 @@ export function GenerateNetList () {
       }
     }
   }
-  store.dispatch({
-    type: actions.SET_MODEL,
-    payload: {
-      model: spiceModels
-    }
-  })
-  store.dispatch({
-    type: actions.SET_NETLIST,
-    payload: {
-      netlist: k
-    }
-  })
+  store.dispatch(setModel(spiceModels))
+  store.dispatch(setNetlist(k))
   graph.getModel().beginUpdate()
   try {
     graph.view.refresh()

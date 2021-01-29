@@ -13,8 +13,6 @@ export const CLOSE_COMP_PROPERTIES = 'CLOSE_COMP_PROPERTIES'
 export const SET_NETLIST = 'SET_NETLIST'
 export const SET_TITLE = 'SET_TITLE'
 export const SET_MODEL = 'SET_MODEL'
-export const SET_CONTROL_LINE = 'SET_CONTROL_LINE'
-export const SET_CONTROL_BLOCK = 'SET_CONTROL_BLOCK'
 
 // Actions for handling simualtion result display
 export const SET_RESULT_TITLE = 'SET_RESULT_TITLE'

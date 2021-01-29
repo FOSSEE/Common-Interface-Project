@@ -1,9 +1,8 @@
 import mxGraphFactory from 'mxgraph'
-import * as actions from '../../../redux/actions/actions'
 import store from '../../../redux/store'
 import dot from '../../../static/dot.gif'
 import xcosstyle from '../../../static/Xcos-style.json'
-import { getCompProperties } from '../../../redux/actions/index'
+import { getCompProperties, closeCompProperties } from '../../../redux/actions/index'
 
 import ToolbarTools from './ToolbarTools.js'
 import KeyboardShorcuts from './KeyboardShorcuts.js'
@@ -104,13 +103,9 @@ export default function LoadGrid (container, sidebar, outline) {
       if (cell !== undefined && cell.CellType === 'Component') {
         store.dispatch(getCompProperties(cell))
       } else if (cell !== undefined && cell.CellType === 'This is where you say what the vertex is') {
-        store.dispatch({
-          type: actions.CLOSE_COMP_PROPERTIES
-        })
+        store.dispatch(closeCompProperties())
       } else if (cell === undefined) {
-        store.dispatch({
-          type: actions.CLOSE_COMP_PROPERTIES
-        })
+        store.dispatch(closeCompProperties())
       }
       evt.consume()
     })

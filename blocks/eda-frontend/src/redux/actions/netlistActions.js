@@ -29,23 +29,3 @@ export const setModel = (model) => (dispatch) => {
     }
   })
 }
-
-// Action to update netlist contorl line section
-export const setControlLine = (controlLine) => (dispatch) => {
-  dispatch({
-    type: actions.SET_CONTROL_LINE,
-    payload: {
-      controlLine: controlLine
-    }
-  })
-}
-
-// Action to update netlist control block section
-export const setControlBlock = (controlBlock) => (dispatch) => {
-  dispatch({
-    type: actions.SET_CONTROL_BLOCK,
-    payload: {
-      controlBlock: controlBlock
-    }
-  })
-}
