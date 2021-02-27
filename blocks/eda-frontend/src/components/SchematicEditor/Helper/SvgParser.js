@@ -1,3 +1,9 @@
+import mxGraphFactory from 'mxgraph'
+
+const {
+  mxPoint
+} = new mxGraphFactory();
+
 let pinOrientation
 let x_pos, y_pos
 let width, height
@@ -24,7 +30,7 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
   const v1 = graph.insertVertex(
     parent,
     null,
-    block_name,
+    null,
     x,
     y,
     width,
@@ -63,8 +69,9 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
     x_pos = 0;
     y_pos = (i + 1) / (ports + 1);
 
-    pins[i] = graph.insertVertex(v1, null, i, x_pos, y_pos, 0.8, 0.8, pinOrientation)
+    pins[i] = graph.insertVertex(v1, null, null, x_pos, y_pos, 8, 8, pinOrientation)
     pins[i].geometry.relative = true;
+    pins[i].geometry.offset = new mxPoint(-8, -4);
     pins[i].ParentComponent = v1.id
   }
 
@@ -78,8 +85,9 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
     x_pos = 1;
     y_pos = (i + 1) / (ports + 1);
 
-    pins[i] = graph.insertVertex(v1, null, i, x_pos, y_pos, 0.8, 0.8, pinOrientation)
+    pins[i] = graph.insertVertex(v1, null, null, x_pos, y_pos, 8, 8, pinOrientation)
     pins[i].geometry.relative = true;
+    pins[i].geometry.offset = new mxPoint(0, -4);
     pins[i].ParentComponent = v1.id
   }
 
@@ -90,8 +98,9 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
     x_pos = (i + 1) / (ports + 1);
     y_pos = 0;
 
-    pins[i] = graph.insertVertex(v1, null, i, x_pos, y_pos, 0.8, 0.8, pinOrientation)
+    pins[i] = graph.insertVertex(v1, null, null, x_pos, y_pos, 8, 8, pinOrientation)
     pins[i].geometry.relative = true;
+    pins[i].geometry.offset = new mxPoint(-4, -8);
     pins[i].ParentComponent = v1.id
   }
 
@@ -102,8 +111,9 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
     x_pos = (i + 1) / (ports + 1);
     y_pos = 1;
 
-    pins[i] = graph.insertVertex(v1, null, i, x_pos, y_pos, 0.8, 0.8, pinOrientation)
+    pins[i] = graph.insertVertex(v1, null, null, x_pos, y_pos, 8, 8, pinOrientation)
     pins[i].geometry.relative = true;
+    pins[i].geometry.offset = new mxPoint(-4, 0);
     pins[i].ParentComponent = v1.id
   }
 }
