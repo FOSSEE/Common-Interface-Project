@@ -16,7 +16,6 @@ const {
   mxClient,
   mxUtils,
   mxEvent,
-  mxOutline,
   mxCell,
   mxPoint,
   mxGraphView,
@@ -93,10 +92,10 @@ export default function LoadGrid (container, sidebar, outline) {
 
     // Creates the outline (navigator, overview) for moving
     // around the graph in the top, right corner of the window.
-    var outln = new mxOutline(graph, outline)
+    // var outln = new mxOutline(graph, outline)
     // To show the images in the outline, uncomment the following code
-    outln.outline.labelsVisible = true
-    outln.outline.setHtmlLabels(true)
+    // outln.outline.labelsVisible = true
+    // outln.outline.setHtmlLabels(true)
 
     graph.addListener(mxEvent.DOUBLE_CLICK, function (sender, evt) {
       var cell = evt.getProperty('cell')
