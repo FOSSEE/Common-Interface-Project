@@ -1,6 +1,6 @@
-CREATE DATABASE IF NOT EXISTS xcosblocks DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_bin;
+CREATE DATABASE IF NOT EXISTS esimblocks DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_bin;
 
-USE xcosblocks;
+USE esimblocks;
 
 SET NAMES 'utf8' COLLATE 'utf8_bin';
 
@@ -10,7 +10,7 @@ CREATE TABLE blocktypenames (
     name varchar(100) UNIQUE
 ) ENGINE=InnoDB;
 
-LOAD DATA LOCAL INFILE 'Xcos Categories - Xcos Datatypes.csv'
+LOAD DATA LOCAL INFILE 'eSimBlockTypenames.csv'
     INTO TABLE blocktypenames
     FIELDS TERMINATED BY ','
     OPTIONALLY ENCLOSED BY '"'
@@ -21,51 +21,54 @@ LOAD DATA LOCAL INFILE 'Xcos Categories - Xcos Datatypes.csv'
 DROP TABLE IF EXISTS blocks;
 CREATE TABLE blocks (
     id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    name varchar(100) UNIQUE,
-    initial_explicit_input_ports int,
-    initial_implicit_input_ports int,
-    initial_explicit_output_ports int,
-    initial_implicit_output_ports int,
-    initial_control_ports int,
-    initial_command_ports int,
-    initial_display_parameter varchar(100)
+    name varchar(100) UNIQUE
 ) ENGINE=InnoDB;
 
-LOAD DATA LOCAL INFILE 'Xcos Categories - Xcos Blocks.csv'
+LOAD DATA LOCAL INFILE 'eSimBlocks.csv'
     INTO TABLE blocks
     FIELDS TERMINATED BY ','
     OPTIONALLY ENCLOSED BY '"'
-    LINES TERMINATED BY '\r\n'
-    IGNORE 1 ROWS
-    (id, name,
-    initial_explicit_input_ports, initial_implicit_input_ports,
-    initial_explicit_output_ports, initial_implicit_output_ports,
-    initial_control_ports, initial_command_ports,
-    initial_display_parameter,
-    @variable_explicit_input_ports, @variable_implicit_input_ports,
-    @variable_explicit_output_ports, @variable_implicit_output_ports,
-    @variable_control_ports, @variable_command_ports,
-    @variable_display_parameter,
-    @tp000, @p000_type_name,
-    @tp001, @p001_type_name,
-    @tp002, @p002_type_name,
-    @tp003, @p003_type_name,
-    @tp004, @p004_type_name,
-    @tp005, @p005_type_name,
-    @tp006, @p006_type_name,
-    @tp007, @p007_type_name,
-    @tp008, @p008_type_name,
-    @tp009, @p009_type_name,
-    @tp010, @p010_type_name,
-    @tp011, @p011_type_name,
-    @tp012, @p012_type_name,
-    @tp013, @p013_type_name,
-    @tp014, @p014_type_name,
-    @tp015, @p015_type_name,
-    @tp016, @p016_type_name,
-    @tp017, @p017_type_name,
-    @tp018, @p018_type_name,
-    @tp019, @p019_type_name);
+    LINES TERMINATED BY '\n'
+    (name);
+
+DROP TABLE IF EXISTS blockports;
+CREATE TABLE blockports (
+    id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    block_id int,
+    block_name varchar(100) NOT NULL,
+    port_order int NOT NULL,
+    port_name varchar(100),
+    port_number int,
+    port_type varchar(100),
+    port_orientation varchar(100),
+    CONSTRAINT blockports_block_id_port_order UNIQUE(block_id, port_order),
+    CONSTRAINT blockports_block_name_port_order UNIQUE(block_name, port_order)
+) ENGINE=InnoDB;
+
+LOAD DATA LOCAL INFILE 'eSimBlockPorts.csv'
+    INTO TABLE blockports
+    FIELDS TERMINATED BY ','
+    OPTIONALLY ENCLOSED BY '"'
+    LINES TERMINATED BY '\n'
+    (block_name,
+    port_order, port_name,
+    port_number, port_type,
+    port_orientation);
+
+UPDATE blockports
+INNER JOIN blocks ON block_name = blocks.name
+    SET block_id = blocks.id;
+
+SELECT block_name
+FROM blockports
+    WHERE block_id IS NULL
+    ORDER BY 1
+    LIMIT 5;
+
+ALTER TABLE blockports
+    MODIFY COLUMN block_id int NOT NULL,
+    DROP INDEX blockports_block_name_port_order,
+    DROP COLUMN block_name;
 
 DROP TABLE IF EXISTS blockparameters;
 CREATE TABLE blockparameters (
@@ -194,21 +197,12 @@ CREATE TABLE blockparameters (
     p039_type_name varchar(100)
 ) ENGINE=InnoDB;
 
-LOAD DATA LOCAL INFILE 'Xcos Categories - Xcos Blocks.csv'
+LOAD DATA LOCAL INFILE 'eSimBlockParameters.csv'
     INTO TABLE blockparameters
     FIELDS TERMINATED BY ','
     OPTIONALLY ENCLOSED BY '"'
-    LINES TERMINATED BY '\r\n'
-    IGNORE 1 ROWS
+    LINES TERMINATED BY '\n'
     (id, block_name,
-    @initial_explicit_input_ports, @initial_implicit_input_ports,
-    @initial_explicit_output_ports, @initial_implicit_output_ports,
-    @initial_control_ports, @initial_command_ports,
-    @initial_display_parameter,
-    @variable_explicit_input_ports, @variable_implicit_input_ports,
-    @variable_explicit_output_ports, @variable_implicit_output_ports,
-    @variable_control_ports, @variable_command_ports,
-    @variable_display_parameter,
     @tp000, p000_type_name,
     @tp001, p001_type_name,
     @tp002, p002_type_name,
@@ -633,12 +627,11 @@ CREATE TABLE categories (
     sort_order int NOT NULL
 ) ENGINE=InnoDB;
 
-LOAD DATA LOCAL INFILE 'Xcos Categories - Xcos Categories.csv'
+LOAD DATA LOCAL INFILE 'eSimCategories.csv'
     INTO TABLE categories
     FIELDS TERMINATED BY ','
     OPTIONALLY ENCLOSED BY '"'
-    LINES TERMINATED BY '\r\n'
-    IGNORE 2 ROWS
+    LINES TERMINATED BY '\n'
     (id, name, sort_order);
 
 DROP TABLE IF EXISTS blockcategories;
@@ -652,12 +645,11 @@ CREATE TABLE blockcategories (
     CONSTRAINT blockcategories_category_name_block_name UNIQUE(category_name, block_name)
 ) ENGINE=InnoDB;
 
-LOAD DATA LOCAL INFILE 'Xcos Categories - Categories and Blocks.csv'
+LOAD DATA LOCAL INFILE 'eSimBlockCategories.csv'
     INTO TABLE blockcategories
     FIELDS TERMINATED BY ','
     OPTIONALLY ENCLOSED BY '"'
-    LINES TERMINATED BY '\r\n'
-    IGNORE 1 ROWS
+    LINES TERMINATED BY '\n'
     (category_name, block_name);
 
 UPDATE blockcategories
