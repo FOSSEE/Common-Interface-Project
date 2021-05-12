@@ -2,6 +2,7 @@ from django.db import models
 
 
 class Category(models.Model):
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100, unique=True)
     sort_order = models.IntegerField()
 
@@ -11,6 +12,7 @@ class Category(models.Model):
 
 
 class ParameterDataType(models.Model):
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100, unique=True)
 
     def __str__(self):
@@ -19,6 +21,7 @@ class ParameterDataType(models.Model):
 
 
 class BlockType(models.Model):
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100, unique=True)
 
     def __str__(self):
@@ -27,6 +30,7 @@ class BlockType(models.Model):
 
 
 class Block(models.Model):
+    id = models.AutoField(primary_key=True)
     blocktype = models.ForeignKey(BlockType, default=1,
                                   on_delete=models.PROTECT, related_name='+')
     name = models.CharField(max_length=100)
@@ -135,6 +139,7 @@ class Block(models.Model):
 
 
 class BlockParameter(models.Model):
+    id = models.AutoField(primary_key=True)
     block = models.ForeignKey(Block, on_delete=models.PROTECT)
     p000 = models.CharField(max_length=100, blank=True, null=True)
     p000_type = models.ForeignKey(ParameterDataType, on_delete=models.PROTECT,
