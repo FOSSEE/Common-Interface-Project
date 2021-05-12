@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class XcosblocksConfig(AppConfig):
-    name = 'xcosblocks'
+    name = 'blocks.xcosblocks'
