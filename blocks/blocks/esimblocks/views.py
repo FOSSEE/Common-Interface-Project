@@ -5,9 +5,10 @@ import io
 from rest_framework.parsers import JSONParser
 from rest_framework.viewsets import ReadOnlyModelViewSet
 
-from .models import Category, Block, BlockParameter
+from .models import Category, Block, BlockParameter, BlockPort
 from .serializers import CategorySerializer, BlockSerializer, \
-    BlockParameterSerializer, ErrorSerializer, SetBlockParameterSerializer
+    BlockParameterSerializer, BlockPortSerializer, ErrorSerializer, \
+    SetBlockParameterSerializer
 
 
 class CategoryFilterSet(FilterSet):
@@ -70,6 +71,26 @@ class BlockParameterViewSet(ReadOnlyModelViewSet):
         DjangoFilterBackend
     ]
     filterset_class = BlockParameterFilterSet
+
+
+class BlockPortFilterSet(FilterSet):
+    class Meta:
+        model = BlockPort
+        fields = {
+            'block': ['exact'],
+        }
+
+
+class BlockPortViewSet(ReadOnlyModelViewSet):
+    """
+     Listing All Block Port Details
+    """
+    queryset = BlockPort.objects.all()
+    serializer_class = BlockPortSerializer
+    filter_backends = [
+        DjangoFilterBackend
+    ]
+    filterset_class = BlockPortFilterSet
 
 
 def set_block_parameter(request):

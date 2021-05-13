@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blocks.xcosblocks',
+    'blocks.esimblocks',
     'django_filters',
     'corsheaders',
     'rest_framework',
@@ -90,7 +90,7 @@ DATABASES = {
         'PORT': os.environ.get('SQL_PORT', '3306'),
         'USER': os.environ.get('SQL_USER', 'blocks'),
         'PASSWORD': os.environ.get('SQL_PASSWORD', 'stereo@129'),
-        'NAME': os.environ.get('SQL_DATABASE', 'xcosblocks'),
+        'NAME': os.environ.get('SQL_DATABASE', 'esimblocks'),
     }
 }
 
