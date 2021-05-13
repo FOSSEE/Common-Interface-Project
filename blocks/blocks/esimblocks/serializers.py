@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from .models import Category, ParameterDataType, BlockType, Block, \
-    BlockParameter
+    BlockParameter, BlockPort
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -40,13 +40,6 @@ class BlockSerializer(serializers.ModelSerializer):
             'blocktype',
             'name',
             'categories',
-            'initial_explicit_input_ports',
-            'initial_implicit_input_ports',
-            'initial_explicit_output_ports',
-            'initial_implicit_output_ports',
-            'initial_control_ports',
-            'initial_command_ports',
-            'initial_display_parameter',
             'block_image_path',
             'block_width',
             'block_height',
@@ -272,35 +265,29 @@ class SetBlockParameterSerializer(serializers.Serializer):
                                        allow_blank=True, trim_whitespace=True)
 
     def getblockportserializer(self):
-        block = Block.objects.get(id=self.data['block_id'])
-
-        explicit_input_ports = block.initial_explicit_input_ports
-        implicit_input_ports = block.initial_implicit_input_ports
-        control_ports = block.initial_control_ports
-        explicit_output_ports = block.initial_explicit_output_ports
-        implicit_output_ports = block.initial_implicit_output_ports
-        command_ports = block.initial_command_ports
-        display_parameter = block.initial_display_parameter
+        blockports = BlockPort.objects.filter(block=self.data['block_id'])
+        number_of_blockports = len(blockports)
 
         # TODO: change values depending on block name
 
         return SetBlockPortSerializer(data={
-            'explicit_input_ports': explicit_input_ports,
-            'implicit_input_ports': implicit_input_ports,
-            'control_ports': control_ports,
-            'explicit_output_ports': explicit_output_ports,
-            'implicit_output_ports': implicit_output_ports,
-            'command_ports': command_ports,
-            'display_parameter': display_parameter
+            'number_of_blockports': number_of_blockports
         })
 
 
 class SetBlockPortSerializer(serializers.Serializer):
-    explicit_input_ports = serializers.IntegerField()
-    implicit_input_ports = serializers.IntegerField()
-    control_ports = serializers.IntegerField()
-    explicit_output_ports = serializers.IntegerField()
-    implicit_output_ports = serializers.IntegerField()
-    command_ports = serializers.IntegerField()
-    display_parameter = serializers.CharField(
-        max_length=100, allow_blank=True, trim_whitespace=True)
+    number_of_blockports = serializers.IntegerField()
+
+
+class BlockPortSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = BlockPort
+        fields = [
+            'id',
+            'block',
+            'port_order',
+            'port_name',
+            'port_number',
+            'port_type',
+            'port_orientation',
+        ]

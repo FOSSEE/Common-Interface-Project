@@ -35,13 +35,6 @@ class Block(models.Model):
                                   on_delete=models.PROTECT, related_name='+')
     name = models.CharField(max_length=100)
     categories = models.ManyToManyField(Category)
-    initial_explicit_input_ports = models.IntegerField()
-    initial_implicit_input_ports = models.IntegerField()
-    initial_explicit_output_ports = models.IntegerField()
-    initial_implicit_output_ports = models.IntegerField()
-    initial_control_ports = models.IntegerField()
-    initial_command_ports = models.IntegerField()
-    initial_display_parameter = models.CharField(max_length=100)
     block_image_path = models.CharField(max_length=100,
                                         blank=True, null=True)
     block_width = models.IntegerField(default=40)
@@ -265,3 +258,23 @@ class BlockParameter(models.Model):
     def __str__(self):
         """String for representing the Model object."""
         return self.name
+
+
+class BlockPort(models.Model):
+    id = models.AutoField(primary_key=True)
+    block = models.ForeignKey(Block, on_delete=models.PROTECT)
+    port_order = models.IntegerField(default=1)
+    port_name = models.CharField(max_length=100)
+    port_number = models.IntegerField(default=1)
+    port_type = models.CharField(max_length=100)
+    port_orientation = models.CharField(max_length=100)
+
+    def __str__(self):
+        """String for representing the Model object."""
+        return '%s %s' % (self.block.name, self.port_order)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['block', 'port_order'],
+                                    name='unique_block_port_order')
+        ]
