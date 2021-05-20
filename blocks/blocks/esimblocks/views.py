@@ -46,6 +46,8 @@ class BlockViewSet(ReadOnlyModelViewSet):
      Listing All Block Details
     """
     queryset = Block.objects.all().order_by('name')
+    queryset = BlockSerializer.prefetch_category(queryset)
+    queryset = BlockSerializer.prefetch_blockport(queryset)
     serializer_class = BlockSerializer
     filter_backends = [
         DjangoFilterBackend
