@@ -32,7 +32,23 @@ class BlockTypeSerializer(serializers.ModelSerializer):
         ]
 
 
+class BlockPortSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = BlockPort
+        fields = [
+            'id',
+            'block',
+            'port_order',
+            'port_name',
+            'port_number',
+            'port_type',
+            'port_orientation',
+        ]
+
+
 class BlockSerializer(serializers.ModelSerializer):
+    blockport_set = BlockPortSerializer(many=True)
+
     class Meta:
         model = Block
         fields = [
@@ -83,7 +99,16 @@ class BlockSerializer(serializers.ModelSerializer):
             'p037_value_initial',
             'p038_value_initial',
             'p039_value_initial',
+            'blockport_set',
         ]
+
+    @staticmethod
+    def prefetch_category(queryset):
+        return queryset.prefetch_related('categories')
+
+    @staticmethod
+    def prefetch_blockport(queryset):
+        return queryset.prefetch_related('blockport_set')
 
 
 class BlockParameterSerializer(serializers.ModelSerializer):
@@ -277,17 +302,3 @@ class SetBlockParameterSerializer(serializers.Serializer):
 
 class SetBlockPortSerializer(serializers.Serializer):
     number_of_blockports = serializers.IntegerField()
-
-
-class BlockPortSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = BlockPort
-        fields = [
-            'id',
-            'block',
-            'port_order',
-            'port_name',
-            'port_number',
-            'port_type',
-            'port_orientation',
-        ]

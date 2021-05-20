@@ -23,15 +23,16 @@ class CategoryTestCase(TestCase):
                 print(blockport)
         print()
 
-        blockport = BlockPort.objects.select_related('block').get(id=1)
+        blockport = BlockPort.objects.get(id=88)
         print(blockport)
-        self.assertEqual(str(blockport), '+10V 1')
+        self.assertEqual(str(blockport), '1N4148WS 1')
         print()
 
         categories = Category.objects.all().order_by('sort_order')
-        for category in categories:
-            blocks = Block.objects.filter(categories=category) \
+        allblocks = Block.objects.all() \
                 .order_by('name')
+        for category in categories:
+            blocks = allblocks.filter(categories=category)
             print(category.id, category, len(blocks))
             if PRINT_BLOCKS:
                 for block in blocks:
