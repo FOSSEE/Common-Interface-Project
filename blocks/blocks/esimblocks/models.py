@@ -265,7 +265,7 @@ class BlockPort(models.Model):
     block = models.ForeignKey(Block, on_delete=models.PROTECT)
     port_order = models.IntegerField(default=1)
     port_name = models.CharField(max_length=100)
-    port_number = models.IntegerField(default=1)
+    port_number = models.CharField(max_length=10)
     port_type = models.CharField(max_length=100)
     port_orientation = models.CharField(max_length=100)
 

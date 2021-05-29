@@ -4,7 +4,7 @@ from .models import Category, Block, BlockPort
 
 
 PRINT_BLOCKS = False
-PRINT_PORTS = True
+PRINT_PORTS = False
 
 
 class CategoryTestCase(TestCase):
@@ -16,7 +16,7 @@ class CategoryTestCase(TestCase):
 
         block = Block.objects.get(id=66)
         print(block)
-        self.assertEqual(str(block), '14529')
+        self.assertEqual(str(block), 'Buzzer')
         if PRINT_PORTS:
             blockports = block.blockport_set.all()
             for blockport in blockports:
@@ -25,7 +25,7 @@ class CategoryTestCase(TestCase):
 
         blockport = BlockPort.objects.get(id=88)
         print(blockport)
-        self.assertEqual(str(blockport), '1N4148WS 1')
+        self.assertEqual(str(blockport), '4011 2')
         print()
 
         categories = Category.objects.all().order_by('sort_order')
