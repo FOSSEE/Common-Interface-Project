@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="1400" height="900" viewBox="-700.0 -450.0 1400 900">
+<defs>
+</defs>
+<path d="M-600,200 L-600,100" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-600,50 L-600,-50" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-600,-100 L-600,-200" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-500,-300 L-400,-300" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-400,300 L-500,300" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-250,300 L-350,300" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-250,-300 L-350,-300" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-100,300 L-200,300" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-100,-300 L-200,-300" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-50,300 L50,300" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M50,-300 L-50,-300" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M100,300 L200,300" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M200,-300 L100,-300" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M250,300 L350,300" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M350,-300 L250,-300" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M400,300 L500,300" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M500,-300 L400,-300" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M600,200 L600,100" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M600,50 L600,-50" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M600,-100 L600,-200" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-600,-250 L-600,-300 L-550,-300" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-550,300 L-600,300 L-600,250" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M550,300 L600,300 L600,250" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M600,-250 L600,-300 L550,-300" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-700,-200 L-700,-450 L700,-450 L700,-200" stroke-width="10" stroke="black" fill-opacity="0" />
+<text x="-17" y="333.3333333333333" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="182" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,400 L0,300" stroke="black" stroke-width="5" />
+<metadata width="1400" height="900" symbolPrefix="J" cmpPartDmgLabel="1:A" nameOfSymbol="J-RF_Shield_Two_Pieces-1-A_thumbnail"><p-1><x>0</x><y>-400</y><type>P
+                        </type><name>Shield</name><orientation>U</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-1></metadata></svg>

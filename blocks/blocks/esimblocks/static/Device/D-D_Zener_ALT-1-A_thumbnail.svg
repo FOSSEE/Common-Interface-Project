@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="300" height="100" viewBox="-150.0 -50.0 300 100">
+<defs>
+</defs>
+<path d="M50,0 L-50,0" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-50,50 L-50,-50 L-30,-50" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M50,50 L50,-50 L-50,0 L50,50" stroke-width="10" stroke="black" fill="black" />
+<text x="-100.0" y="-17" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="3" y="0" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-150,0 L-50,0" stroke="black" stroke-width="5" />
+<text x="100.0" y="-17" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-3" y="0" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M150,0 L50,0" stroke="black" stroke-width="5" />
+<metadata width="300" height="100" symbolPrefix="D" cmpPartDmgLabel="1:A" nameOfSymbol="D-D_Zener_ALT-1-A_thumbnail"><p-1><x>-150</x><y>0</y><type>P
+                        </type><name>K</name><orientation>R</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-1><p-2><x>150</x><y>0</y><type>P
+                        </type><name>A</name><orientation>L</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-2></metadata></svg>

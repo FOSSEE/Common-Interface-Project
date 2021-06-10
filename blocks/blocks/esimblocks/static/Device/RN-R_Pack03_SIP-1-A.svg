@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="900" height="400" viewBox="-450.0 -200.0 900 400">
+<defs>
+</defs>
+<path d="M-30,-110 L30,-110 L30,50 L-30,50 L-30,-110" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-330,-110 L-270,-110 L-270,50 L-330,50 L-330,-110" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-350,75 L450,75 L450,-175 L-350,-175 L-350,75" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M270,-110 L330,-110 L330,50 L270,50 L270,-110" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-300,-110 L-300,-140 L-200,-140 L-200,50" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M0,-110 L0,-140 L100,-140 L100,50" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M300,-110 L300,-140 L400,-140 L400,50" stroke-width="6" stroke="black" fill-opacity="0" />
+<text x="-317" y="100.0" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-300" y="-2" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-300,200 L-300,50" stroke="black" stroke-width="5" />
+<text x="-217" y="100.0" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-200" y="-2" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-200,200 L-200,50" stroke="black" stroke-width="5" />
+<text x="-17" y="100.0" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="-2" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,200 L0,50" stroke="black" stroke-width="5" />
+<text x="83" y="100.0" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="100" y="-2" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M100,200 L100,50" stroke="black" stroke-width="5" />
+<text x="283" y="100.0" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="300" y="-2" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M300,200 L300,50" stroke="black" stroke-width="5" />
+<text x="383" y="100.0" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="400" y="-2" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M400,200 L400,50" stroke="black" stroke-width="5" />
+<metadata width="900" height="400" symbolPrefix="RN" cmpPartDmgLabel="1:A" nameOfSymbol="RN-R_Pack03_SIP-1-A"><p-1><x>-300</x><y>-200</y><type>P
+                        </type><name>R1.1</name><orientation>U</orientation>
+                        <length>150</length><pinShape></pinShape>
+                        </p-1><p-2><x>-200</x><y>-200</y><type>P
+                        </type><name>R1.2</name><orientation>U</orientation>
+                        <length>150</length><pinShape></pinShape>
+                        </p-2><p-3><x>0</x><y>-200</y><type>P
+                        </type><name>R2.1</name><orientation>U</orientation>
+                        <length>150</length><pinShape></pinShape>
+                        </p-3><p-4><x>100</x><y>-200</y><type>P
+                        </type><name>R2.2</name><orientation>U</orientation>
+                        <length>150</length><pinShape></pinShape>
+                        </p-4><p-5><x>300</x><y>-200</y><type>P
+                        </type><name>R3.1</name><orientation>U</orientation>
+                        <length>150</length><pinShape></pinShape>
+                        </p-5><p-6><x>400</x><y>-200</y><type>P
+                        </type><name>R3.2</name><orientation>U</orientation>
+                        <length>150</length><pinShape></pinShape>
+                        </p-6></metadata></svg>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="200" height="300" viewBox="-100.0 -150.0 200 300">
+<defs>
+</defs>
+<path d="M99.99984769132877,149.82546716341017 A100,100,0,0,0,-99.99984769132877,149.82546716341017" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M-25,125 L25,125" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-5,150 L5,150" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M0,100 L0,0" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M50,100 L-50,100" stroke-width="6" stroke="black" fill-opacity="0" />
+<metadata width="200" height="300" symbolPrefix="PWR" cmpPartDmgLabel="1:A" nameOfSymbol="PWR-Earth_Clean-1-A"><p-1><x>0</x><y>0</y><type>W
+                        </type><name>Earth_Clean</name><orientation>D</orientation>
+                        <length>0</length><pinShape>N</pinShape>
+                        </p-1></metadata></svg>

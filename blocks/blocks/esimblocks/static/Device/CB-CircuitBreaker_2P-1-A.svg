@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="400" height="600" viewBox="-200.0 -300.0 400 600">
+<defs>
+</defs>
+<path d="M-150,0 L-90,0" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-100,150 L-200,-150" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-70,0 L-20,0" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M0,0 L50,0" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M100,200 L100,150" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M100,150 L0,-150" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-125,-175 L-75,-125" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-100,150 L-100,200" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-100,-200 L-100,-150" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-75,-175 L-125,-125" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M75,-175 L125,-125" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M100,-200 L100,-150" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M125,-175 L75,-125" stroke-width="6" stroke="black" fill-opacity="0" />
+<text x="-117" y="-233.33333333333334" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-100" y="-167" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-100,-300 L-100,-200" stroke="black" stroke-width="5" />
+<text x="-117" y="233.33333333333334" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-100" y="167" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-100,300 L-100,200" stroke="black" stroke-width="5" />
+<text x="83" y="-233.33333333333334" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="100" y="-167" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M100,-300 L100,-200" stroke="black" stroke-width="5" />
+<text x="83" y="233.33333333333334" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="100" y="167" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M100,300 L100,200" stroke="black" stroke-width="5" />
+<metadata width="400" height="600" symbolPrefix="CB" cmpPartDmgLabel="1:A" nameOfSymbol="CB-CircuitBreaker_2P-1-A"><p-1><x>-100</x><y>300</y><type>P
+                        </type><name>~</name><orientation>D</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-1><p-2><x>-100</x><y>-300</y><type>P
+                        </type><name>~</name><orientation>U</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-2><p-3><x>100</x><y>300</y><type>P
+                        </type><name>~</name><orientation>D</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-3><p-4><x>100</x><y>-300</y><type>P
+                        </type><name>~</name><orientation>U</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-4></metadata></svg>

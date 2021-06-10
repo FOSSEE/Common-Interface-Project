@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="360" height="600" viewBox="-180.0 -300.0 360 600">
+<defs>
+</defs>
+<path d="M0.30334124611485436,-0.32629066518592253 A184,184,0,0,1,0.30334124611482594,180.32629066518598" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M0.025409501149113112,-0.05311372181623142 A149,149,0,0,1,-60.41307969961011,169.67788270538534" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M-180.32629066518595,0.30334124611485436 A184,184,0,0,0,0.3262906651858941,0.30334124611485436" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M-169.67788270538531,-60.41307969961004 A149,149,0,0,0,0.053113721816266946,0.02540950114908469" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M169.6778827053853,60.41307969961001 A149,149,0,0,0,-0.05311372181624563,-0.02540950114908469" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M180.32629066518592,-0.30334124611485436 A184,184,0,0,0,-0.3262906651859083,-0.30334124611485436" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M60.41307969960998,-169.6778827053853 A149,149,0,0,0,-0.025409501149113112,0.0531137218162101" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M-0.30334124611485436,-180.32629066518592 A184,184,0,0,0,-0.30334124611485436,0.3262906651859083" stroke="black" stroke-width="6" fill-opacity="0" />
+<circle cx="0" cy="0" r="180" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M0,200 L0,180" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M0,-180 L0,-200" stroke-width="6" stroke="black" fill-opacity="0" />
+<text x="-17" y="-233.33333333333334" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="-187" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,-300 L0,-200" stroke="black" stroke-width="5" />
+<text x="-17" y="233.33333333333334" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="187" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,300 L0,200" stroke="black" stroke-width="5" />
+<metadata width="360" height="600" symbolPrefix="M" cmpPartDmgLabel="1:A" nameOfSymbol="M-Fan_ALT-1-A_thumbnail"><p-1><x>0</x><y>300</y><type>P
+                        </type><name>+</name><orientation>D</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-1><p-2><x>0</x><y>-300</y><type>P
+                        </type><name>-</name><orientation>U</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-2></metadata></svg>

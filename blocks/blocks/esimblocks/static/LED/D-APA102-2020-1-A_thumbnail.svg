@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="600" height="600" viewBox="-300.0 -300.0 600 600">
+<defs>
+</defs>
+<path d="M200,-200 L-200,-200 L-200,200 L200,200 L200,-200" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M50,140 L70,140" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M50,100 L70,100" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M185,140 L105,140" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M90,100 L50,140 L50,120" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M90,60 L50,100 L50,80" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M145,40 L145,140 L145,160" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M185,60 L105,60 L145,140 L185,60" stroke-width="6" stroke="black" fill-opacity="0" />
+<text x="-17" y="-233.33333333333334" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="-141" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,-300 L0,-200" stroke="black" stroke-width="5" />
+<text x="250.0" y="-17" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="141" y="0" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M300,0 L200,0" stroke="black" stroke-width="5" />
+<text x="250.0" y="-117" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="141" y="-100" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M300,-100 L200,-100" stroke="black" stroke-width="5" />
+<text x="-250.0" y="-117" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-141" y="-100" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-300,-100 L-200,-100" stroke="black" stroke-width="5" />
+<text x="-250.0" y="-17" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-141" y="0" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-300,0 L-200,0" stroke="black" stroke-width="5" />
+<text x="-17" y="233.33333333333334" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="141" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,300 L0,200" stroke="black" stroke-width="5" />
+<metadata width="600" height="600" symbolPrefix="D" cmpPartDmgLabel="1:A" nameOfSymbol="D-APA102-2020-1-A_thumbnail"><p-1><x>0</x><y>300</y><type>W
+                        </type><name>VDD</name><orientation>D</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-1><p-2><x>300</x><y>0</y><type>O
+                        </type><name>CKO</name><orientation>L</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-2><p-3><x>300</x><y>100</y><type>O
+                        </type><name>SDO</name><orientation>L</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-3><p-4><x>-300</x><y>100</y><type>I
+                        </type><name>SDI</name><orientation>R</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-4><p-5><x>-300</x><y>0</y><type>I
+                        </type><name>CKI</name><orientation>R</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-5><p-6><x>0</x><y>-300</y><type>W
+                        </type><name>GND</name><orientation>U</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-6></metadata></svg>

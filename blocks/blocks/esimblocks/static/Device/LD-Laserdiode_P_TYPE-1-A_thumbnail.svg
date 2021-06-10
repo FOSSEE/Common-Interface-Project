@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="600" height="480" viewBox="-300.0 -240.0 600 480">
+<defs>
+</defs>
+<path d="M-19.98778270143871,56.000010661606986 A7,7,0,0,1,-19.987782701438707,69.99998933839302" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M0.026179925488473924,55.00002284630068 A15,15,0,0,1,0.02617992548848357,84.99997715369932" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M0.026179925488473924,-79.99997715369932 A15,15,0,0,1,0.02617992548848357,-50.00002284630068" stroke="black" stroke-width="6" fill-opacity="0" />
+<circle cx="-60" cy="0" r="10" stroke-width="6" stroke="black" fill="black" />
+<path d="M170,-240 L-90,-240 L-90,170 L170,170 L170,-240" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-100,0 L-60,0" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-60,-150 L0,-210" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-60,-170 L0,-190" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-60,-190 L0,-170" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-60,-210 L0,-150" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-40,-210 L-20,-150" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-30,-180 L-30,-140" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-30,-180 L-30,-220" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-25,55 L-25,85" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-20,-210 L-40,-150" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M0,55 L0,85" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M0,-80 L0,-50" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M30,-180 L-70,-180" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M40,-150 L40,-50" stroke-width="8" stroke="black" fill-opacity="0" />
+<path d="M140,50 L140,150" stroke-width="8" stroke="black" fill-opacity="0" />
+<path d="M140,30 L120,30" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M150,-220 L130,-220" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-25,-80 L-25,-50 L-10,-50" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M80,-30 L140,30 L140,10" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M90,-160 L150,-220 L150,-200" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M40,50 L40,150 L140,100 L40,50" stroke-width="8" stroke="black" fill-opacity="0" />
+<path d="M140,-150 L140,-50 L40,-100 L140,-150" stroke-width="8" stroke="black" fill-opacity="0" />
+<path d="M200,-100 L-60,-100 L-60,100 L200,100" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M30,-30 L90,30 L90,10 L90,30 L70,30" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M40,-160 L100,-220 L100,-200 L100,-220 L80,-220" stroke-width="6" stroke="black" fill-opacity="0" />
+<text x="250.0" y="-117" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="167" y="-100" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M300,-100 L200,-100" stroke="black" stroke-width="5" />
+<text x="-150.0" y="-17" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-67" y="0" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-200,0 L-100,0" stroke="black" stroke-width="5" />
+<text x="250.0" y="83" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="167" y="100" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M300,100 L200,100" stroke="black" stroke-width="5" />
+<metadata width="600" height="480" symbolPrefix="LD" cmpPartDmgLabel="1:A" nameOfSymbol="LD-Laserdiode_P_TYPE-1-A_thumbnail"><p-1><x>300</x><y>100</y><type>P
+                        </type><name>~</name><orientation>L</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-1><p-2><x>-200</x><y>0</y><type>P
+                        </type><name>~</name><orientation>R</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-2><p-3><x>300</x><y>-100</y><type>P
+                        </type><name>~</name><orientation>L</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-3></metadata></svg>

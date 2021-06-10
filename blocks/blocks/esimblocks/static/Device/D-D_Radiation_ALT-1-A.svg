@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="400" height="420" viewBox="-200.0 -210.0 400 420">
+<defs>
+</defs>
+<path d="M-20.149300067547067,-149.6713932104661 A22,22,0,0,0,-49.6713932104661,-120.14930006754707" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M9.6713932104661,-179.85069993245293 A22,22,0,0,1,-19.850699932452947,-150.32860678953392" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M19.850699932452933,-129.6713932104661 A22,22,0,0,0,-9.6713932104661,-100.14930006754707" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M49.6713932104661,-159.85069993245293 A22,22,0,0,1,20.149300067547053,-130.32860678953392" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M39.85069993245293,-209.6713932104661 A22,22,0,0,0,10.3286067895339,-180.14930006754707" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M79.85069993245293,-189.6713932104661 A22,22,0,0,0,50.3286067895339,-160.14930006754707" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M-100,-50 L-100,50" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-80,-90 L-50,-90" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-80,-90 L-50,-120" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-80,-120 L-80,-90" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-40,-70 L-10,-70" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-40,-70 L-10,-100" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-40,-100 L-40,-70" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M0,0 L-100,0" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M0,-50 L0,50 L-100,0 L0,-50" stroke-width="10" stroke="black" fill="black" />
+<text x="-150.0" y="-17" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-47" y="0" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-200,0 L-100,0" stroke="black" stroke-width="5" />
+<text x="50.0" y="-17" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-53" y="0" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M100,0 L0,0" stroke="black" stroke-width="5" />
+<metadata width="400" height="420" symbolPrefix="D" cmpPartDmgLabel="1:A" nameOfSymbol="D-D_Radiation_ALT-1-A"><p-1><x>-200</x><y>0</y><type>P
+                        </type><name>K</name><orientation>R</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-1><p-2><x>100</x><y>0</y><type>P
+                        </type><name>A</name><orientation>L</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-2></metadata></svg>

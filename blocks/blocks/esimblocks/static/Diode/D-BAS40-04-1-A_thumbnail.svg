@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="600" height="300" viewBox="-300.0 -150.0 600 300">
+<defs>
+</defs>
+<circle cx="0" cy="-100" r="10" stroke-width="6" stroke="black" fill="black" />
+<path d="M-150,-100 L-50,-100" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-125,-50 L-125,-60" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-100,-50 L-125,-50" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-100,-50 L-100,-150" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-100,-150 L-75,-150" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-75,-100 L75,-100" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-75,-150 L-75,-140" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M50,-100 L150,-100" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M125,-50 L125,-60" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M150,-50 L125,-50" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M150,-50 L150,-150" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M150,-150 L175,-150" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M175,-150 L175,-140" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-175,-150 L-175,-50 L-100,-100 L-175,-150" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M75,-150 L75,-50 L150,-100 L75,-150" stroke-width="6" stroke="black" fill-opacity="0" />
+<text x="-225.0" y="-117" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-97" y="-100" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-300,-100 L-150,-100" stroke="black" stroke-width="5" />
+<text x="225.0" y="-117" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="97" y="-100" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M300,-100 L150,-100" stroke="black" stroke-width="5" />
+<text x="-17" y="-33.33333333333333" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="-153" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,100 L0,-100" stroke="black" stroke-width="5" />
+<metadata width="600" height="300" symbolPrefix="D" cmpPartDmgLabel="1:A" nameOfSymbol="D-BAS40-04-1-A_thumbnail"><p-1><x>-300</x><y>100</y><type>P
+                        </type><name>~</name><orientation>R</orientation>
+                        <length>150</length><pinShape></pinShape>
+                        </p-1><p-2><x>300</x><y>100</y><type>P
+                        </type><name>~</name><orientation>L</orientation>
+                        <length>150</length><pinShape></pinShape>
+                        </p-2><p-3><x>0</x><y>-100</y><type>P
+                        </type><name>~</name><orientation>U</orientation>
+                        <length>200</length><pinShape></pinShape>
+                        </p-3></metadata></svg>

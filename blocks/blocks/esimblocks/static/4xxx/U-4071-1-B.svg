@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="600" height="300" viewBox="-300.0 -150.0 600 300">
+<defs>
+</defs>
+<path d="M-149.697028702033,-149.45454246441113 A258,258,0,0,1,-149.697028702033,149.45454246441113" stroke="black" stroke-width="10" fill-opacity="0" />
+<path d="M150.04886856296994,-0.7990852009142344 A204,204,0,0,0,-24.614200537426747,-150.76803491285665" stroke="black" stroke-width="10" fill-opacity="0" />
+<path d="M-24.614200537426747,150.76803491285665 A204,204,0,0,0,150.04886856296994,0.7990852009142202" stroke="black" stroke-width="10" fill-opacity="0" />
+<path d="M-150,150 L-25,150" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-150,-150 L-25,-150" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-25,-150 L-150,-150 L-150,-150 L-140,-134 L-119,-89 L-106,-41 L-103,10 L-109,59 L-125,107 L-150,150 L-150,150 L-25,150" stroke-width="-1000" stroke="black" fill-opacity="0" />
+<text x="225.0" y="-17" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="97" y="0" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M300,0 L150,0" stroke="black" stroke-width="5" />
+<text x="-215.0" y="-117" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-77" y="-100" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-300,-100 L-130,-100" stroke="black" stroke-width="5" />
+<text x="-215.0" y="83" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-77" y="100" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-300,100 L-130,100" stroke="black" stroke-width="5" />
+<metadata width="600" height="300" symbolPrefix="U" cmpPartDmgLabel="1:B" nameOfSymbol="U-4071-1-B"><p-4><x>300</x><y>0</y><type>O
+                        </type><name>~</name><orientation>L</orientation>
+                        <length>150</length><pinShape></pinShape>
+                        </p-4><p-5><x>-300</x><y>100</y><type>I
+                        </type><name>~</name><orientation>R</orientation>
+                        <length>170</length><pinShape></pinShape>
+                        </p-5><p-6><x>-300</x><y>-100</y><type>I
+                        </type><name>~</name><orientation>R</orientation>
+                        <length>170</length><pinShape></pinShape>
+                        </p-6></metadata></svg>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="180" height="400" viewBox="-90.0 -200.0 180 400">
+<defs>
+</defs>
+<path d="M-90,-70 L90,-70 L90,-60 L-90,-60 L-90,-70" stroke-width="6" stroke="black" fill="black" />
+<path d="M-62,-47 L58,-47 L58,-27 L-62,-27 L-62,-47" stroke-width="6" stroke="black" fill="black" />
+<path d="M0,-30 L0,0" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M0,-70 L0,-100" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M20,-135 L60,-135" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M40,-155 L40,-115" stroke-width="10" stroke="black" fill-opacity="0" />
+<text x="-17" y="-133.33333333333334" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="-87" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,-200 L0,-100" stroke="black" stroke-width="5" />
+<text x="-17" y="33.333333333333336" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="-13" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,100 L0,0" stroke="black" stroke-width="5" />
+<metadata width="180" height="400" symbolPrefix="BT" cmpPartDmgLabel="1:A" nameOfSymbol="BT-Battery_Cell-1-A_thumbnail"><p-1><x>0</x><y>200</y><type>P
+                        </type><name>+</name><orientation>D</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-1><p-2><x>0</x><y>-100</y><type>P
+                        </type><name>-</name><orientation>U</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-2></metadata></svg>

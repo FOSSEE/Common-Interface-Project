@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="600" height="400" viewBox="-300.0 -200.0 600 400">
+<defs>
+</defs>
+<path d="M-14.811504536482987,-105.99983550663507 A108,108,0,0,1,-14.811504536482918,109.99983550663507" stroke="black" stroke-width="10" fill-opacity="0" />
+<circle cx="-150" cy="0" r="10" stroke-width="6" stroke="black" fill="black" />
+<circle cx="-15" cy="0" r="75" stroke-width="10" stroke="black" fill-opacity="0" />
+<circle cx="170" cy="40" r="5" stroke-width="10" stroke="black" fill-opacity="0" />
+<circle cx="170" cy="-40" r="5" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-200,-200 L200,-200 L200,200 L-200,200 L-200,-200" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-25,70 L-25,-70" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-15,70 L-15,-70" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-5,-70 L-5,70" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M150,0 L135,0" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M150,-40 L150,40" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-200,100 L-150,100 L-150,80" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-200,-100 L-150,-100 L-150,-80" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M10,120 L-20,110 L5,95" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M10,-115 L-20,-105 L5,-90" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M200,100 L170,100 L170,40" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M200,-100 L170,-100 L170,-40" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-200,0 L-150,0 L-150,40 L-130,80" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-170,0 L-150,0 L-150,-40 L-130,-80" stroke-width="6" stroke="black" fill-opacity="0" />
+<text x="-250.0" y="-117" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-177" y="-100" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-300,-100 L-200,-100" stroke="black" stroke-width="5" />
+<text x="-250.0" y="83" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-177" y="100" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-300,100 L-200,100" stroke="black" stroke-width="5" />
+<text x="-250.0" y="-17" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-177" y="0" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-300,0 L-200,0" stroke="black" stroke-width="5" />
+<text x="250.0" y="-117" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="164" y="-100" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M300,-100 L200,-100" stroke="black" stroke-width="5" />
+<text x="250.0" y="83" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="164" y="100" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M300,100 L200,100" stroke="black" stroke-width="5" />
+<metadata width="600" height="400" symbolPrefix="SW" cmpPartDmgLabel="1:A" nameOfSymbol="SW-Rotary_Encoder_Switch-1-A"><p-A><x>-300</x><y>100</y><type>P
+                        </type><name>A</name><orientation>R</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-A><p-B><x>-300</x><y>-100</y><type>P
+                        </type><name>B</name><orientation>R</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-B><p-C><x>-300</x><y>0</y><type>P
+                        </type><name>C</name><orientation>R</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-C><p-S1><x>300</x><y>100</y><type>P
+                        </type><name>S1</name><orientation>L</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-S1><p-S2><x>300</x><y>-100</y><type>P
+                        </type><name>S2</name><orientation>L</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-S2></metadata></svg>

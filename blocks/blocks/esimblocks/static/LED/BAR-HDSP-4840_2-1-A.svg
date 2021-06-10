@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="400" height="1200" viewBox="-200.0 -600.0 400 1200">
+<defs>
+</defs>
+<path d="M-100,-500 L100,-500 L100,600 L-100,600 L-100,-500" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-100,500 L100,500" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-100,400 L100,400" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-100,300 L100,300" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-100,200 L100,200" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-100,0 L100,0" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-100,-200 L100,-200" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-100,-300 L100,-300" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-100,-400 L100,-400" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M50,460 L50,540" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M50,360 L50,440" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M50,260 L50,340" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M50,160 L50,240" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M50,60 L50,140" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M50,-40 L50,40" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M50,-140 L50,-60" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M50,-240 L50,-160" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M50,-340 L50,-260" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M50,-440 L50,-360" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M100,100 L-100,100" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M100,-100 L-100,-100" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-30,460 L-30,540 L50,500 L-30,460" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-30,360 L-30,440 L50,400 L-30,360" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-30,260 L-30,340 L50,300 L-30,260" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-30,160 L-30,240 L50,200 L-30,160" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-30,60 L-30,140 L50,100 L-30,60" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-30,-40 L-30,40 L50,0 L-30,-40" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-30,-140 L-30,-60 L50,-100 L-30,-140" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-30,-240 L-30,-160 L50,-200 L-30,-240" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-30,-340 L-30,-260 L50,-300 L-30,-340" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-30,-440 L-30,-360 L50,-400 L-30,-440" stroke-width="10" stroke="black" fill-opacity="0" />
+<text x="-150.0" y="-417" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-47" y="-400" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-200,-400 L-100,-400" stroke="black" stroke-width="5" />
+<text x="-150.0" y="483" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-47" y="500" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-200,500 L-100,500" stroke="black" stroke-width="5" />
+<text x="150.0" y="483" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="47" y="500" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M200,500 L100,500" stroke="black" stroke-width="5" />
+<text x="150.0" y="383" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="47" y="400" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M200,400 L100,400" stroke="black" stroke-width="5" />
+<text x="150.0" y="283" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="47" y="300" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M200,300 L100,300" stroke="black" stroke-width="5" />
+<text x="150.0" y="183" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="47" y="200" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M200,200 L100,200" stroke="black" stroke-width="5" />
+<text x="150.0" y="83" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="47" y="100" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M200,100 L100,100" stroke="black" stroke-width="5" />
+<text x="150.0" y="-17" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="47" y="0" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M200,0 L100,0" stroke="black" stroke-width="5" />
+<text x="150.0" y="-117" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="47" y="-100" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M200,-100 L100,-100" stroke="black" stroke-width="5" />
+<text x="150.0" y="-217" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="47" y="-200" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M200,-200 L100,-200" stroke="black" stroke-width="5" />
+<text x="150.0" y="-317" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="47" y="-300" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M200,-300 L100,-300" stroke="black" stroke-width="5" />
+<text x="-150.0" y="-317" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-47" y="-300" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-200,-300 L-100,-300" stroke="black" stroke-width="5" />
+<text x="150.0" y="-417" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="47" y="-400" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M200,-400 L100,-400" stroke="black" stroke-width="5" />
+<text x="-150.0" y="-217" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-47" y="-200" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-200,-200 L-100,-200" stroke="black" stroke-width="5" />
+<text x="-150.0" y="-117" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-47" y="-100" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-200,-100 L-100,-100" stroke="black" stroke-width="5" />
+<text x="-150.0" y="-17" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-47" y="0" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-200,0 L-100,0" stroke="black" stroke-width="5" />
+<text x="-150.0" y="83" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-47" y="100" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-200,100 L-100,100" stroke="black" stroke-width="5" />
+<text x="-150.0" y="183" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-47" y="200" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-200,200 L-100,200" stroke="black" stroke-width="5" />
+<text x="-150.0" y="283" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-47" y="300" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-200,300 L-100,300" stroke="black" stroke-width="5" />
+<text x="-150.0" y="383" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-47" y="400" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-200,400 L-100,400" stroke="black" stroke-width="5" />
+<metadata width="400" height="1200" symbolPrefix="BAR" cmpPartDmgLabel="1:A" nameOfSymbol="BAR-HDSP-4840_2-1-A"><p-1><x>-200</x><y>400</y><type>P
+                        </type><name>A</name><orientation>R</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-1><p-10><x>-200</x><y>-500</y><type>P
+                        </type><name>A</name><orientation>R</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-10><p-11><x>200</x><y>-500</y><type>P
+                        </type><name>K</name><orientation>L</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-11><p-12><x>200</x><y>-400</y><type>P
+                        </type><name>K</name><orientation>L</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-12><p-13><x>200</x><y>-300</y><type>P
+                        </type><name>K</name><orientation>L</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-13><p-14><x>200</x><y>-200</y><type>P
+                        </type><name>K</name><orientation>L</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-14><p-15><x>200</x><y>-100</y><type>P
+                        </type><name>K</name><orientation>L</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-15><p-16><x>200</x><y>0</y><type>P
+                        </type><name>K</name><orientation>L</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-16><p-17><x>200</x><y>100</y><type>P
+                        </type><name>K</name><orientation>L</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-17><p-18><x>200</x><y>200</y><type>P
+                        </type><name>K</name><orientation>L</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-18><p-19><x>200</x><y>300</y><type>P
+                        </type><name>K</name><orientation>L</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-19><p-2><x>-200</x><y>300</y><type>P
+                        </type><name>A</name><orientation>R</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-2><p-20><x>200</x><y>400</y><type>P
+                        </type><name>K</name><orientation>L</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-20><p-3><x>-200</x><y>200</y><type>P
+                        </type><name>A</name><orientation>R</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-3><p-4><x>-200</x><y>100</y><type>P
+                        </type><name>A</name><orientation>R</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-4><p-5><x>-200</x><y>0</y><type>P
+                        </type><name>A</name><orientation>R</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-5><p-6><x>-200</x><y>-100</y><type>P
+                        </type><name>A</name><orientation>R</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-6><p-7><x>-200</x><y>-200</y><type>P
+                        </type><name>A</name><orientation>R</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-7><p-8><x>-200</x><y>-300</y><type>P
+                        </type><name>A</name><orientation>R</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-8><p-9><x>-200</x><y>-400</y><type>P
+                        </type><name>A</name><orientation>R</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-9></metadata></svg>

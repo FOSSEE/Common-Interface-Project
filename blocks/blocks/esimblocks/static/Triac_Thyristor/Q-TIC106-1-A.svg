@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="300" height="300" viewBox="-150.0 -150.0 300 300">
+<defs>
+</defs>
+<path d="M-50,100 L-25,50" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-50,50 L50,50" stroke-width="8" stroke="black" fill-opacity="0" />
+<path d="M0,100 L0,-100" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-50,-50 L50,-50 L0,50 L-50,-50" stroke-width="8" stroke="black" fill-opacity="0" />
+<text x="-17" y="83.33333333333334" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="37" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,150 L0,50" stroke="black" stroke-width="5" />
+<text x="-17" y="-83.33333333333334" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="-37" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,-150 L0,-50" stroke="black" stroke-width="5" />
+<text x="-100.0" y="83" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-37" y="100" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-150,100 L-50,100" stroke="black" stroke-width="5" />
+<metadata width="300" height="300" symbolPrefix="Q" cmpPartDmgLabel="1:A" nameOfSymbol="Q-TIC106-1-A"><p-1><x>0</x><y>-150</y><type>P
+                        </type><name>K</name><orientation>U</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-1><p-2><x>0</x><y>150</y><type>P
+                        </type><name>A</name><orientation>D</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-2><p-3><x>-150</x><y>-100</y><type>I
+                        </type><name>G</name><orientation>R</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-3></metadata></svg>

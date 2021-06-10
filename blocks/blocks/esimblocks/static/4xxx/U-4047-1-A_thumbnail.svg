@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="1200" height="2200" viewBox="-600.0 -1100.0 1200 2200">
+<defs>
+</defs>
+<path d="M-400,-900 L400,-900 L400,900 L-400,900 L-400,-900" stroke-width="10" stroke="black" fill-opacity="0" />
+<text x="-500.0" y="483" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-347" y="500" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-600,500 L-400,500" stroke="black" stroke-width="5" />
+<text x="500.0" y="-317" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="347" y="-300" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M600,-300 L400,-300" stroke="black" stroke-width="5" />
+<text x="500.0" y="-117" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="334" y="-100" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M600,-100 L400,-100" stroke="black" stroke-width="5" />
+<text x="-500.0" y="-117" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-243" y="-100" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-600,-100 L-400,-100" stroke="black" stroke-width="5" />
+<text x="500.0" y="-717" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="269" y="-700" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M600,-700 L400,-700" stroke="black" stroke-width="5" />
+<text x="-17" y="-966.6666666666666" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="-821" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,-1100 L0,-900" stroke="black" stroke-width="5" />
+<text x="-500.0" y="283" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-347" y="300" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-600,300 L-400,300" stroke="black" stroke-width="5" />
+<text x="-500.0" y="683" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-243" y="700" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-600,700 L-400,700" stroke="black" stroke-width="5" />
+<text x="-500.0" y="-617" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-256" y="-600" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-600,-600 L-400,-600" stroke="black" stroke-width="5" />
+<text x="-500.0" y="-717" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-269" y="-700" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-600,-700 L-400,-700" stroke="black" stroke-width="5" />
+<text x="-500.0" y="-417" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-256" y="-400" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-600,-400 L-400,-400" stroke="black" stroke-width="5" />
+<text x="-17" y="966.6666666666666" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="821" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,1100 L0,900" stroke="black" stroke-width="5" />
+<text x="-500.0" y="-317" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-256" y="-300" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-600,-300 L-400,-300" stroke="black" stroke-width="5" />
+<text x="-500.0" y="83" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-243" y="100" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-600,100 L-400,100" stroke="black" stroke-width="5" />
+<metadata width="1200" height="2200" symbolPrefix="U" cmpPartDmgLabel="1:A" nameOfSymbol="U-4047-1-A_thumbnail"><p-1><x>-600</x><y>-500</y><type>I
+                        </type><name>C</name><orientation>R</orientation>
+                        <length>200</length><pinShape></pinShape>
+                        </p-1><p-10><x>600</x><y>300</y><type>O
+                        </type><name>Q</name><orientation>L</orientation>
+                        <length>200</length><pinShape></pinShape>
+                        </p-10><p-11><x>600</x><y>100</y><type>O
+                        </type><name>~Q</name><orientation>L</orientation>
+                        <length>200</length><pinShape></pinShape>
+                        </p-11><p-12><x>-600</x><y>100</y><type>I
+                        </type><name>RETRIGGER</name><orientation>R</orientation>
+                        <length>200</length><pinShape></pinShape>
+                        </p-12><p-13><x>600</x><y>700</y><type>O
+                        </type><name>OSC_OUT</name><orientation>L</orientation>
+                        <length>200</length><pinShape></pinShape>
+                        </p-13><p-14><x>0</x><y>1100</y><type>W
+                        </type><name>VDD</name><orientation>D</orientation>
+                        <length>200</length><pinShape></pinShape>
+                        </p-14><p-2><x>-600</x><y>-300</y><type>I
+                        </type><name>R</name><orientation>R</orientation>
+                        <length>200</length><pinShape></pinShape>
+                        </p-2><p-3><x>-600</x><y>-700</y><type>I
+                        </type><name>RC_COMMON</name><orientation>R</orientation>
+                        <length>200</length><pinShape></pinShape>
+                        </p-3><p-4><x>-600</x><y>600</y><type>I
+                        </type><name>~ASTABLE</name><orientation>R</orientation>
+                        <length>200</length><pinShape></pinShape>
+                        </p-4><p-5><x>-600</x><y>700</y><type>I
+                        </type><name>ASTABLE</name><orientation>R</orientation>
+                        <length>200</length><pinShape></pinShape>
+                        </p-5><p-6><x>-600</x><y>400</y><type>I
+                        </type><name>-TRIGGER</name><orientation>R</orientation>
+                        <length>200</length><pinShape></pinShape>
+                        </p-6><p-7><x>0</x><y>-1100</y><type>W
+                        </type><name>VSS</name><orientation>U</orientation>
+                        <length>200</length><pinShape></pinShape>
+                        </p-7><p-8><x>-600</x><y>300</y><type>I
+                        </type><name>+TRIGGER</name><orientation>R</orientation>
+                        <length>200</length><pinShape></pinShape>
+                        </p-8><p-9><x>-600</x><y>-100</y><type>I
+                        </type><name>EXT_RESET</name><orientation>R</orientation>
+                        <length>200</length><pinShape></pinShape>
+                        </p-9></metadata></svg>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="340" height="200" viewBox="-170.0 -100.0 340 200">
+<defs>
+</defs>
+<circle cx="-120" cy="0" r="10" stroke-width="6" stroke="black" fill="black" />
+<path d="M-160,40 L-170,50" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-140,20 L-150,30" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-120,0 L-130,10" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-100,-20 L-110,-10" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-80,-40 L-90,-30" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-60,-60 L-70,-50" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-40,-80 L-50,-70" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-20,-100 L-30,-90" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M0,100 L-10,100" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M0,-100 L-20,-100" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M10,100 L-20,100 L-170,-50" stroke-width="6" stroke="black" fill-opacity="0" />
+<text x="50.0" y="-117" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-13" y="-100" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M100,-100 L0,-100" stroke="black" stroke-width="5" />
+<text x="50.0" y="83" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-13" y="100" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M100,100 L0,100" stroke="black" stroke-width="5" />
+<metadata width="340" height="200" symbolPrefix="TC" cmpPartDmgLabel="1:A" nameOfSymbol="TC-Thermocouple-1-A_thumbnail"><p-1><x>100</x><y>100</y><type>P
+                        </type><name>+</name><orientation>L</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-1><p-2><x>100</x><y>-100</y><type>P
+                        </type><name>-</name><orientation>L</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-2></metadata></svg>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="400" height="280" viewBox="-200.0 -140.0 400 280">
+<defs>
+</defs>
+<path d="M-65,-60 L60,-60 L60,-80 L-65,-80 L-65,-60" stroke-width="6" stroke="black" fill="black" />
+<path d="M60,-120 L-65,-120 L-65,-140 L60,-140 L60,-120" stroke-width="6" stroke="black" fill="black" />
+<path d="M-100,-100 L100,-100" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M0,0 L0,-70" stroke-width="6" stroke="black" fill-opacity="0" />
+<text x="-150.0" y="-117" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-77" y="-100" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-200,-100 L-100,-100" stroke="black" stroke-width="5" />
+<text x="-17" y="33.333333333333336" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="-23" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,100 L0,0" stroke="black" stroke-width="5" />
+<text x="150.0" y="-117" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="77" y="-100" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M200,-100 L100,-100" stroke="black" stroke-width="5" />
+<metadata width="400" height="280" symbolPrefix="C" cmpPartDmgLabel="1:A" nameOfSymbol="C-C_Feedthrough-1-A"><p-1><x>-200</x><y>100</y><type>P
+                        </type><name>1</name><orientation>R</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-1><p-2><x>0</x><y>-100</y><type>P
+                        </type><name>2</name><orientation>U</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-2><p-3><x>200</x><y>100</y><type>P
+                        </type><name>3</name><orientation>L</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-3></metadata></svg>

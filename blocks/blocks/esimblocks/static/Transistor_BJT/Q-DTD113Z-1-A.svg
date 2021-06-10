@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="500" height="400" viewBox="-250.0 -200.0 500 400">
+<defs>
+</defs>
+<path d="M-50.21816604573732,-124.99980961416097 A125,125,0,0,0,-50.2181660457373,124.99980961416097" stroke="black" stroke-width="10" fill-opacity="0" />
+<path d="M25.218166045737284,-124.99980961416097 A125,125,0,0,1,25.218166045737362,124.99980961416097" stroke="black" stroke-width="10" fill-opacity="0" />
+<circle cx="-50" cy="0" r="5" stroke-width="6" stroke="black" fill-opacity="0" />
+<circle cx="100" cy="90" r="5" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-135,0 L-150,0" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-50,125 L25,125" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-50,-125 L25,-125" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M0,10 L100,-90" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M5,-60 L5,65" stroke-width="20" stroke="black" fill="black" />
+<path d="M100,-90 L100,-100" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M100,90 L0,-10 L0,-10" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M35,45 L55,25 L75,65 L35,45" stroke-width="6" stroke="black" fill="black" />
+<path d="M0,0 L-75,0 L-80,-20 L-90,20 L-100,-20 L-110,20 L-120,-20 L-130,20 L-135,0" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-50,0 L-50,15 L-30,20 L-70,30 L-30,40 L-70,50 L-30,60 L-70,70 L-50,75 L-50,90 L100,90" stroke-width="6" stroke="black" fill-opacity="0" />
+<text x="-200.0" y="-17" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-137" y="0" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-250,0 L-150,0" stroke="black" stroke-width="5" />
+<text x="83" y="133.33333333333334" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="100" y="87" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M100,200 L100,100" stroke="black" stroke-width="5" />
+<text x="83" y="-133.33333333333334" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="100" y="-87" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M100,-200 L100,-100" stroke="black" stroke-width="5" />
+<metadata width="500" height="400" symbolPrefix="Q" cmpPartDmgLabel="1:A" nameOfSymbol="Q-DTD113Z-1-A"><p-1><x>-250</x><y>0</y><type>I
+                        </type><name>B</name><orientation>R</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-1><p-2><x>100</x><y>-200</y><type>P
+                        </type><name>E</name><orientation>U</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-2><p-3><x>100</x><y>200</y><type>P
+                        </type><name>C</name><orientation>D</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-3></metadata></svg>

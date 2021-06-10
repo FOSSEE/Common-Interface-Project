@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="600" height="300" viewBox="-300.0 -150.0 600 300">
+<defs>
+</defs>
+<path d="M-160.00003046173424,-100.03490656731796 A20,20,0,0,0,-199.99996953826576,-100.03490656731796" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M-120.00003046173424,-100.03490656731796 A20,20,0,0,0,-159.99996953826576,-100.03490656731796" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M-80.00003046173424,-100.03490656731796 A20,20,0,0,0,-119.99996953826576,-100.03490656731796" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M-40.00003046173425,-100.03490656731796 A20,20,0,0,0,-79.99996953826576,-100.03490656731796" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M79.99996953826576,-100.03490656731796 A20,20,0,0,0,40.00003046173425,-100.03490656731796" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M119.99996953826576,-100.03490656731796 A20,20,0,0,0,80.00003046173424,-100.03490656731796" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M159.99996953826576,-100.03490656731796 A20,20,0,0,0,120.00003046173424,-100.03490656731796" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M199.99996953826576,-100.03490656731796 A20,20,0,0,0,160.00003046173424,-100.03490656731796" stroke="black" stroke-width="6" fill-opacity="0" />
+<circle cx="0" cy="-100" r="10" stroke-width="6" stroke="black" fill="black" />
+<path d="M-225,-150 L225,-150 L225,0 L-225,0 L-225,-150" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-40,-30 L40,-30 L40,-40 L-40,-40 L-40,-30" stroke-width="6" stroke="black" fill="black" />
+<path d="M40,-60 L-40,-60 L-40,-70 L40,-70 L40,-60" stroke-width="6" stroke="black" fill="black" />
+<path d="M-40,-100 L40,-100" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M0,-30 L0,0" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M0,-100 L0,-70" stroke-width="6" stroke="black" fill-opacity="0" />
+<text x="-250.0" y="-117" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-177" y="-100" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-300,-100 L-200,-100" stroke="black" stroke-width="5" />
+<text x="-17" y="33.333333333333336" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="-23" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,100 L0,0" stroke="black" stroke-width="5" />
+<text x="250.0" y="-117" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="177" y="-100" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M300,-100 L200,-100" stroke="black" stroke-width="5" />
+<metadata width="600" height="300" symbolPrefix="FL" cmpPartDmgLabel="1:A" nameOfSymbol="FL-EMI_Filter_LCL-1-A"><p-1><x>-300</x><y>100</y><type>P
+                        </type><name>1</name><orientation>R</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-1><p-2><x>0</x><y>-100</y><type>P
+                        </type><name>2</name><orientation>U</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-2><p-3><x>300</x><y>100</y><type>P
+                        </type><name>3</name><orientation>L</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-3></metadata></svg>
