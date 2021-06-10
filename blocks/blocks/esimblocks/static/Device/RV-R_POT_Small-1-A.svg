@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="200" height="200" viewBox="-100.0 -100.0 200 200">
+<defs>
+</defs>
+<path d="M30,-71 L-30,-71 L-30,71 L30,71 L30,-71" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M35,0 L25,0 L65,-15 L65,15 L25,0 L35,0" stroke-width="6" stroke="black" fill="black" />
+<text x="-17" y="-83.33333333333333" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="-22" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,-100 L0,-75" stroke="black" stroke-width="5" />
+<text x="80.5" y="-17" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="8" y="0" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M100,0 L61,0" stroke="black" stroke-width="5" />
+<text x="-17" y="83.33333333333333" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="22" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,100 L0,75" stroke="black" stroke-width="5" />
+<metadata width="200" height="200" symbolPrefix="RV" cmpPartDmgLabel="1:A" nameOfSymbol="RV-R_POT_Small-1-A"><p-1><x>0</x><y>100</y><type>P
+                        </type><name>1</name><orientation>D</orientation>
+                        <length>25</length><pinShape></pinShape>
+                        </p-1><p-2><x>100</x><y>0</y><type>P
+                        </type><name>2</name><orientation>L</orientation>
+                        <length>39</length><pinShape></pinShape>
+                        </p-2><p-3><x>0</x><y>-100</y><type>P
+                        </type><name>3</name><orientation>U</orientation>
+                        <length>25</length><pinShape></pinShape>
+                        </p-3></metadata></svg>

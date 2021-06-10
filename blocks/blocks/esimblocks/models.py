@@ -29,11 +29,22 @@ class BlockType(models.Model):
         return self.name
 
 
+class BlockPrefix(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        """String for representing the Model object."""
+        return self.name
+
+
 class Block(models.Model):
     id = models.AutoField(primary_key=True)
     blocktype = models.ForeignKey(BlockType, default=1,
                                   on_delete=models.PROTECT, related_name='+')
     name = models.CharField(max_length=100)
+    blockprefix = models.ForeignKey(BlockPrefix, default=1,
+                                    on_delete=models.PROTECT, related_name='+')
     categories = models.ManyToManyField(Category)
     block_image_path = models.CharField(max_length=100,
                                         blank=True, null=True)
@@ -266,8 +277,10 @@ class BlockPort(models.Model):
     port_order = models.IntegerField(default=1)
     port_name = models.CharField(max_length=100)
     port_number = models.CharField(max_length=10)
-    port_type = models.CharField(max_length=100)
     port_orientation = models.CharField(max_length=100)
+    port_part = models.IntegerField(default=1)
+    port_dmg = models.IntegerField(default=1)
+    port_type = models.CharField(max_length=100)
 
     def __str__(self):
         """String for representing the Model object."""

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="400" height="100" viewBox="-200.0 -50.0 400 100">
+<defs>
+</defs>
+<path d="M-100,0 L100,0" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M50,50 L50,-50" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-50,-50 L-50,50 L50,0 L-50,-50" stroke-width="10" stroke="black" fill-opacity="0" />
+<text x="150.0" y="-17" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="47" y="0" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M200,0 L100,0" stroke="black" stroke-width="5" />
+<text x="-150.0" y="-17" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-47" y="0" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-200,0 L-100,0" stroke="black" stroke-width="5" />
+<metadata width="400" height="100" symbolPrefix="BAR" cmpPartDmgLabel="1:F" nameOfSymbol="BAR-HDSP-4840-1-F"><p-15><x>200</x><y>0</y><type>P
+                        </type><name>K</name><orientation>L</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-15><p-6><x>-200</x><y>0</y><type>P
+                        </type><name>A</name><orientation>R</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-6></metadata></svg>

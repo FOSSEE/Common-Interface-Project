@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="400" height="400" viewBox="-200.0 -200.0 400 400">
+<defs>
+</defs>
+<circle cx="65" cy="0" r="110" stroke-width="10" stroke="black" fill-opacity="0" />
+<circle cx="100" cy="70" r="10" stroke-width="6" stroke="black" fill="black" />
+<circle cx="100" cy="-70" r="10" stroke-width="6" stroke="black" fill="black" />
+<path d="M10,0 L-100,0" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M10,-75 L10,75" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M30,50 L30,90" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M30,-20 L30,20" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M30,-90 L30,-50" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M100,-100 L100,-70" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M100,100 L100,0 L30,0" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M30,70 L130,70 L130,-70 L30,-70" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M40,0 L80,-15 L80,15 L40,0" stroke-width="6" stroke="black" fill="black" />
+<path d="M110,-20 L115,-15 L145,-15 L150,-10" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M130,-15 L115,10 L145,10 L130,-15" stroke-width="6" stroke="black" fill-opacity="0" />
+<text x="83" y="133.33333333333334" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="100" y="87" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M100,200 L100,100" stroke="black" stroke-width="5" />
+<text x="83" y="-133.33333333333334" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="100" y="-87" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M100,-200 L100,-100" stroke="black" stroke-width="5" />
+<text x="-150.0" y="-17" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-87" y="0" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-200,0 L-100,0" stroke="black" stroke-width="5" />
+<metadata width="400" height="400" symbolPrefix="Q" cmpPartDmgLabel="1:A" nameOfSymbol="Q-Q_NMOS_SDG-1-A_thumbnail"><p-1><x>100</x><y>-200</y><type>P
+                        </type><name>S</name><orientation>U</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-1><p-2><x>100</x><y>200</y><type>P
+                        </type><name>D</name><orientation>D</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-2><p-3><x>-200</x><y>0</y><type>I
+                        </type><name>G</name><orientation>R</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-3></metadata></svg>

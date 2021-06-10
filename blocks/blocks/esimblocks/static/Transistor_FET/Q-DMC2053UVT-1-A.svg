@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="600" height="400" viewBox="-300.0 -200.0 600 400">
+<defs>
+</defs>
+<circle cx="-35" cy="0" r="110" stroke-width="10" stroke="black" fill-opacity="0" />
+<circle cx="0" cy="70" r="10" stroke-width="6" stroke="black" fill="black" />
+<circle cx="0" cy="-70" r="10" stroke-width="6" stroke="black" fill="black" />
+<path d="M-90,0 L-200,0" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-90,-75 L-90,75" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-70,50 L-70,90" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-70,-20 L-70,20" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-70,-90 L-70,-50" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M0,-100 L0,-70" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M0,100 L0,0 L-70,0" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-70,70 L30,70 L30,-70 L-70,-70" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-60,0 L-20,-15 L-20,15 L-60,0" stroke-width="6" stroke="black" fill="black" />
+<path d="M10,-20 L15,-15 L45,-15 L50,-10" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M30,-15 L15,10 L45,10 L30,-15" stroke-width="6" stroke="black" fill-opacity="0" />
+<text x="-250.0" y="-17" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-167" y="0" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-300,0 L-200,0" stroke="black" stroke-width="5" />
+<text x="-17" y="133.33333333333334" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="67" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,200 L0,100" stroke="black" stroke-width="5" />
+<text x="-17" y="-133.33333333333334" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="-67" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,-200 L0,-100" stroke="black" stroke-width="5" />
+<metadata width="600" height="400" symbolPrefix="Q" cmpPartDmgLabel="1:A" nameOfSymbol="Q-DMC2053UVT-1-A"><p-1><x>-300</x><y>0</y><type>P
+                        </type><name>G</name><orientation>R</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-1><p-5><x>0</x><y>-200</y><type>P
+                        </type><name>S</name><orientation>U</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-5><p-6><x>0</x><y>200</y><type>P
+                        </type><name>D</name><orientation>D</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-6></metadata></svg>

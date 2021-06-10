@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="1200" height="1000" viewBox="-600.0 -500.0 1200 1000">
+<defs>
+</defs>
+<path d="M-450,-350 L450,-350 L450,350 L-450,350 L-450,-350" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-75,50 L-50,50 L-50,-50 L0,-50 L0,50 L50,50 L50,-50 L100,-50 L100,50 L125,50" stroke-width="6" stroke="black" fill-opacity="0" />
+<text x="-525.0" y="-217" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-384" y="-200" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-600,-200 L-450,-200" stroke="black" stroke-width="5" />
+<text x="-525.0" y="-117" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-384" y="-100" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-600,-100 L-450,-100" stroke="black" stroke-width="5" />
+<text x="-17" y="400.0" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="271" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,500 L0,350" stroke="black" stroke-width="5" />
+<text x="525.0" y="-117" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="358" y="-100" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M600,-100 L450,-100" stroke="black" stroke-width="5" />
+<text x="525.0" y="83" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="358" y="100" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M600,100 L450,100" stroke="black" stroke-width="5" />
+<text x="-17" y="-400.0" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="-271" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,-500 L0,-350" stroke="black" stroke-width="5" />
+<text x="-525.0" y="83" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-371" y="100" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-600,100 L-450,100" stroke="black" stroke-width="5" />
+<text x="-525.0" y="183" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-371" y="200" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-600,200 L-450,200" stroke="black" stroke-width="5" />
+<metadata width="1200" height="1000" symbolPrefix="U" cmpPartDmgLabel="1:A" nameOfSymbol="U-Si571-1-A"><p-1><x>-600</x><y>200</y><type>I
+                        </type><name>Vc</name><orientation>R</orientation>
+                        <length>150</length><pinShape></pinShape>
+                        </p-1><p-2><x>-600</x><y>100</y><type>I
+                        </type><name>OE</name><orientation>R</orientation>
+                        <length>150</length><pinShape></pinShape>
+                        </p-2><p-3><x>0</x><y>-500</y><type>W
+                        </type><name>GND</name><orientation>U</orientation>
+                        <length>150</length><pinShape></pinShape>
+                        </p-3><p-4><x>600</x><y>100</y><type>O
+                        </type><name>CLK+</name><orientation>L</orientation>
+                        <length>150</length><pinShape></pinShape>
+                        </p-4><p-5><x>600</x><y>-100</y><type>O
+                        </type><name>CLK-</name><orientation>L</orientation>
+                        <length>150</length><pinShape></pinShape>
+                        </p-5><p-6><x>0</x><y>500</y><type>W
+                        </type><name>Vcc</name><orientation>D</orientation>
+                        <length>150</length><pinShape></pinShape>
+                        </p-6><p-7><x>-600</x><y>-100</y><type>B
+                        </type><name>SDA</name><orientation>R</orientation>
+                        <length>150</length><pinShape></pinShape>
+                        </p-7><p-8><x>-600</x><y>-200</y><type>I
+                        </type><name>SCL</name><orientation>R</orientation>
+                        <length>150</length><pinShape></pinShape>
+                        </p-8></metadata></svg>

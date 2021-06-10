@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="800" height="800" viewBox="-400.0 -400.0 800 800">
+<defs>
+</defs>
+<path d="M-300,-300 L300,-300 L300,300 L-300,300 L-300,-300" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-50,30 L-40,30 L-40,-30 L-20,-30 L-20,30 L0,30 L0,-30 L20,-30 L20,30 L30,30" stroke-width="6" stroke="black" fill-opacity="0" />
+<text x="-350.0" y="-117" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-254" y="-100" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-400,-100 L-300,-100" stroke="black" stroke-width="5" />
+<text x="-350.0" y="83" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-254" y="100" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-400,100 L-300,100" stroke="black" stroke-width="5" />
+<text x="-17" y="333.3333333333333" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="241" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,400 L0,300" stroke="black" stroke-width="5" />
+<text x="350.0" y="83" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="241" y="100" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M400,100 L300,100" stroke="black" stroke-width="5" />
+<text x="-17" y="-333.3333333333333" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="-241" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,-400 L0,-300" stroke="black" stroke-width="5" />
+<metadata width="800" height="800" symbolPrefix="U" cmpPartDmgLabel="1:A" nameOfSymbol="U-Si513A_2.5x3.2mm-1-A"><p-1><x>-400</x><y>100</y><type>I
+                        </type><name>OE</name><orientation>R</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-1><p-2><x>-400</x><y>-100</y><type>I
+                        </type><name>FS</name><orientation>R</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-2><p-3><x>0</x><y>-400</y><type>W
+                        </type><name>GND</name><orientation>U</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-3><p-4><x>400</x><y>-100</y><type>O
+                        </type><name>CLK</name><orientation>L</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-4><p-5><x>300</x><y>100</y><type>N
+                        </type><name>NC</name><orientation>L</orientation>
+                        <length>100</length><pinShape>N</pinShape>
+                        </p-5><p-6><x>0</x><y>400</y><type>W
+                        </type><name>VDD</name><orientation>D</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-6></metadata></svg>

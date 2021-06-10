@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="1000" height="800" viewBox="-500.0 -400.0 1000 800">
+<defs>
+</defs>
+<path d="M-400,-300 L300,-300 L300,300 L-400,300 L-400,-300" stroke-width="10" stroke="black" fill-opacity="0" />
+<text x="-117" y="-333.3333333333333" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-100" y="-228" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-100,-400 L-100,-300" stroke="black" stroke-width="5" />
+<text x="-17" y="-333.3333333333333" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="-228" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,-400 L0,-300" stroke="black" stroke-width="5" />
+<text x="-450.0" y="183" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-341" y="200" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-500,200 L-400,200" stroke="black" stroke-width="5" />
+<text x="-450.0" y="83" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-276" y="100" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-500,100 L-400,100" stroke="black" stroke-width="5" />
+<text x="-450.0" y="-217" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-328" y="-200" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-500,-200 L-400,-200" stroke="black" stroke-width="5" />
+<text x="350.0" y="183" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="228" y="200" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M400,200 L300,200" stroke="black" stroke-width="5" />
+<text x="-17" y="333.3333333333333" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="241" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,400 L0,300" stroke="black" stroke-width="5" />
+<text x="350.0" y="-217" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="228" y="-200" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M400,-200 L300,-200" stroke="black" stroke-width="5" />
+<text x="350.0" y="-117" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="241" y="-100" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M400,-100 L300,-100" stroke="black" stroke-width="5" />
+<text x="350.0" y="-17" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="241" y="0" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M400,0 L300,0" stroke="black" stroke-width="5" />
+<metadata width="1000" height="800" symbolPrefix="U" cmpPartDmgLabel="1:A" nameOfSymbol="U-PGA112-1-A"><p-1><x>-100</x><y>400</y><type>W
+                        </type><name>AVDD</name><orientation>D</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-1><p-10><x>0</x><y>400</y><type>W
+                        </type><name>DVDD</name><orientation>D</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-10><p-2><x>-500</x><y>-200</y><type>I
+                        </type><name>CH1</name><orientation>R</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-2><p-3><x>-500</x><y>-100</y><type>I
+                        </type><name>CH0/VCAL</name><orientation>R</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-3><p-4><x>-500</x><y>200</y><type>I
+                        </type><name>VREF</name><orientation>R</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-4><p-5><x>400</x><y>-200</y><type>O
+                        </type><name>VOUT</name><orientation>L</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-5><p-6><x>0</x><y>-400</y><type>W
+                        </type><name>GND</name><orientation>U</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-6><p-7><x>400</x><y>200</y><type>I
+                        </type><name>SCLK</name><orientation>L</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-7><p-8><x>400</x><y>100</y><type>B
+                        </type><name>DIO</name><orientation>L</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-8><p-9><x>400</x><y>0</y><type>I
+                        </type><name>~CS</name><orientation>L</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-9></metadata></svg>

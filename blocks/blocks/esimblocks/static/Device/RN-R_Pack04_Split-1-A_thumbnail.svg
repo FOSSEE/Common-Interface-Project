@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="80" height="300" viewBox="-40.0 -150.0 80 300">
+<defs>
+</defs>
+<path d="M40,-100 L-40,-100 L-40,100 L40,100 L40,-100" stroke-width="10" stroke="black" fill-opacity="0" />
+<text x="-17" y="116.66666666666667" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="48" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,150 L0,100" stroke="black" stroke-width="5" />
+<text x="-17" y="-116.66666666666667" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="-48" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,-150 L0,-100" stroke="black" stroke-width="5" />
+<metadata width="80" height="300" symbolPrefix="RN" cmpPartDmgLabel="1:A" nameOfSymbol="RN-R_Pack04_Split-1-A_thumbnail"><p-1><x>0</x><y>-150</y><type>P
+                        </type><name>R1.1</name><orientation>U</orientation>
+                        <length>50</length><pinShape></pinShape>
+                        </p-1><p-8><x>0</x><y>150</y><type>P
+                        </type><name>R1.2</name><orientation>D</orientation>
+                        <length>50</length><pinShape></pinShape>
+                        </p-8></metadata></svg>

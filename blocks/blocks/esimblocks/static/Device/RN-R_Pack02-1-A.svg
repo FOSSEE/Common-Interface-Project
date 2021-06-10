@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="300" height="400" viewBox="-150.0 -200.0 300 400">
+<defs>
+</defs>
+<path d="M-125,-75 L-75,-75 L-75,75 L-125,75 L-125,-75" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-150,95 L50,95 L50,-95 L-150,-95 L-150,95" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-25,-75 L25,-75 L25,75 L-25,75 L-25,-75" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-100,100 L-100,75" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-100,-75 L-100,-100" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M0,100 L0,75" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M0,-75 L0,-100" stroke-width="6" stroke="black" fill-opacity="0" />
+<text x="-117" y="133.33333333333334" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-100" y="48" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-100,200 L-100,100" stroke="black" stroke-width="5" />
+<text x="-117" y="-133.33333333333334" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-100" y="-48" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-100,-200 L-100,-100" stroke="black" stroke-width="5" />
+<text x="-17" y="133.33333333333334" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="48" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,200 L0,100" stroke="black" stroke-width="5" />
+<text x="-17" y="-133.33333333333334" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="-48" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,-200 L0,-100" stroke="black" stroke-width="5" />
+<metadata width="300" height="400" symbolPrefix="RN" cmpPartDmgLabel="1:A" nameOfSymbol="RN-R_Pack02-1-A"><p-1><x>-100</x><y>-200</y><type>P
+                        </type><name>R1.1</name><orientation>U</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-1><p-4><x>-100</x><y>200</y><type>P
+                        </type><name>R1.2</name><orientation>D</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-4><p-2><x>0</x><y>-200</y><type>P
+                        </type><name>R2.1</name><orientation>U</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-2><p-3><x>0</x><y>200</y><type>P
+                        </type><name>R2.2</name><orientation>D</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-3></metadata></svg>

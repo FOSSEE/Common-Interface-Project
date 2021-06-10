@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="500" height="200" viewBox="-250.0 -100.0 500 200">
+<defs>
+</defs>
+<path d="M-9.982689765195602,-49.92829418940072 A64,64,0,0,0,-109.9475460696531,-50.015530005485125" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M110.0173102348044,-49.92829418940072 A64,64,0,0,0,10.052453930346893,-50.015530005485125" stroke="black" stroke-width="6" fill-opacity="0" />
+<circle cx="-120" cy="0" r="35" stroke-width="6" stroke="black" fill-opacity="0" />
+<circle cx="0" cy="0" r="36" stroke-width="6" stroke="black" fill-opacity="0" />
+<circle cx="120" cy="0" r="35" stroke-width="6" stroke="black" fill-opacity="0" />
+<text x="-202.5" y="-17" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-112" y="0" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-250,0 L-155,0" stroke="black" stroke-width="5" />
+<text x="-17" y="60.0" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="-3" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,100 L0,40" stroke="black" stroke-width="5" />
+<text x="202.5" y="-17" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="112" y="0" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M250,0 L155,0" stroke="black" stroke-width="5" />
+<metadata width="500" height="200" symbolPrefix="JP" cmpPartDmgLabel="1:A" nameOfSymbol="JP-Jumper_NC_Dual-1-A_thumbnail"><p-1><x>-250</x><y>0</y><type>P
+                        </type><name>1</name><orientation>R</orientation>
+                        <length>95</length><pinShape></pinShape>
+                        </p-1><p-2><x>0</x><y>-100</y><type>P
+                        </type><name>2</name><orientation>U</orientation>
+                        <length>60</length><pinShape></pinShape>
+                        </p-2><p-3><x>250</x><y>0</y><type>P
+                        </type><name>3</name><orientation>L</orientation>
+                        <length>95</length><pinShape></pinShape>
+                        </p-3></metadata></svg>

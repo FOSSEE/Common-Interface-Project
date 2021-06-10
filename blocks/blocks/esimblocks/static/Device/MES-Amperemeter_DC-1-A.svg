@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="250" height="400" viewBox="-125.0 -200.0 250 400">
+<defs>
+</defs>
+<circle cx="0" cy="0" r="100" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-125,125 L-75,75" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M75,-75 L125,-125" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M75,-125 L125,-125 L125,-75" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M10,-150 L30,-150" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M20,-160 L20,-140" stroke-width="6" stroke="black" fill-opacity="0" />
+<text x="-17" y="133.33333333333334" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="86" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,200 L0,100" stroke="black" stroke-width="5" />
+<text x="-17" y="-133.33333333333334" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="-86" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,-200 L0,-100" stroke="black" stroke-width="5" />
+<metadata width="250" height="400" symbolPrefix="MES" cmpPartDmgLabel="1:A" nameOfSymbol="MES-Amperemeter_DC-1-A"><p-1><x>0</x><y>-200</y><type>P
+                        </type><name>-</name><orientation>U</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-1><p-2><x>0</x><y>200</y><type>P
+                        </type><name>+</name><orientation>D</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-2></metadata></svg>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="600" height="600" viewBox="-300.0 -300.0 600 600">
+<defs>
+</defs>
+<path d="M-200.0,20.0 A20,20,0,0,0,-220.0,40.0" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M-219.99996953826576,40.03490656731796 A20,20,0,0,0,-180.00003046173424,40.03490656731797" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M0.1553611315156047,-49.98682953286206 A113,113,0,0,1,-99.97212192741304,118.98278955267222" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M100.14527452600923,119.85098216205779 A112,112,0,0,0,-100.14527452600923,119.85098216205779" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M1.5554104079681963,-49.16636634023213 A115,115,0,0,0,99.98965094459454,119.96059237218908" stroke="black" stroke-width="6" fill-opacity="0" />
+<circle cx="0" cy="60" r="128" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-200,20 L-210,15" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-200,20 L-205,30" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-160,0 L-160,60 L-130,60" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-160,0 L-200,0" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M0,300 L0,280" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M0,188 L0,204" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M0,-68 L0,-82" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M0,-80 L0,-100" stroke-width="6" stroke="black" fill-opacity="0" />
+<text x="-250.0" y="-17" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-135" y="0" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-300,0 L-200,0" stroke="black" stroke-width="5" />
+<text x="-17" y="-133.33333333333334" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="-87" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,-200 L0,-100" stroke="black" stroke-width="5" />
+<text x="-17" y="233.33333333333334" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="187" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,300 L0,200" stroke="black" stroke-width="5" />
+<metadata width="600" height="600" symbolPrefix="M" cmpPartDmgLabel="1:A" nameOfSymbol="M-Fan_Tacho-1-A"><p-1><x>-300</x><y>0</y><type>P
+                        </type><name>Tacho</name><orientation>R</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-1><p-2><x>0</x><y>200</y><type>P
+                        </type><name>+</name><orientation>D</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-2><p-3><x>0</x><y>-300</y><type>P
+                        </type><name>-</name><orientation>U</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-3></metadata></svg>

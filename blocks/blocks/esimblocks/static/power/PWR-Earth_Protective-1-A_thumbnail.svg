@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="200" height="500" viewBox="-100.0 -250.0 200 500">
+<defs>
+</defs>
+<circle cx="0" cy="150" r="100" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-25,175 L25,175" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-5,200 L5,200" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M0,150 L0,0" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M50,150 L-50,150" stroke-width="6" stroke="black" fill-opacity="0" />
+<metadata width="200" height="500" symbolPrefix="PWR" cmpPartDmgLabel="1:A" nameOfSymbol="PWR-Earth_Protective-1-A_thumbnail"><p-1><x>0</x><y>0</y><type>W
+                        </type><name>Earth_Protective</name><orientation>D</orientation>
+                        <length>0</length><pinShape>N</pinShape>
+                        </p-1></metadata></svg>

@@ -5,6 +5,8 @@ BEGIN {
     PRINTCATEGORIESCSV = 1;
     CATEGORIESCSV = "categories.csv";
     categoryid = 0;
+    PRINTBLOCKPREFIXESCSV = 1;
+    BLOCKPREFIXESCSV = "blockprefixes.csv";
     PRINTCATEGORYBLOCKSCSV = 1;
     CATEGORYBLOCKSCSV = "categories-blocks.csv";
     PRINTBLOCKSCSV = 0;
@@ -33,13 +35,14 @@ BEGINFILE {
         blockid++;
         blockcount++;
         max_port_order = -1;
-        block_class = $3;
+        block_prefix = gensub("^#", "", "g", $3);
         blocks[idx] = $0;
+        BLOCK_PREFIXES[block_prefix] = 1;
         if (PRINTCATEGORYBLOCKSCSV) {
-            printf "%s\t%s\t%s\t%s\n", blockid, category, block, block_class > CATEGORYBLOCKSCSV;
+            printf "%s\t%s\t%s\t%s\n", blockid, category, block, block_prefix > CATEGORYBLOCKSCSV;
         }
         if (PRINTBLOCKSCSV) {
-            printf "%s\t%s\t%s\n", blockid, block, block_class > BLOCKSCSV;
+            printf "%s\t%s\t%s\n", blockid, block, block_prefix > BLOCKSCSV;
         }
     } else {
         if (blocks[idx] == $0) {
@@ -68,7 +71,7 @@ BEGINFILE {
     idx = block SUBSEP port_order;
     if (!(idx in ports)) {
         ports[idx] = $0;
-        blockports[port_order] = sprintf("%s\t%s\t%s\t%s\t%s\t%s\n", block, port_number, port_name, port_order, port_type, port_orientation);
+        blockports[port_order] = sprintf("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n", block, port_order, port_name, port_number, port_orientation, port_part, port_dmg, port_type);
         if (max_port_order < port_order) {
             max_port_order = port_order;
         }
@@ -117,6 +120,12 @@ END {
     if (PRINTMINMAXCSV) {
         for (block in minports) {
             printf "%s\t%s\t%s\n", block, minports[block], maxports[block] > MINMAXCSV;
+        }
+    }
+    if (PRINTBLOCKPREFIXESCSV) {
+        BLOCK_PREFIXES_LEN = asorti(BLOCK_PREFIXES);
+        for (i in BLOCK_PREFIXES) {
+            printf "%s\t%s\n", i, BLOCK_PREFIXES[i] > BLOCKPREFIXESCSV;
         }
     }
 }
