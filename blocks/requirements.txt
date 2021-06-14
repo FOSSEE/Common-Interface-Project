@@ -12,7 +12,7 @@ click-didyoumean==0.0.3
 click-repl==0.1.6
 cssselect2==0.4.1
 defusedxml==0.7.1
-Django==3.2
+Django==3.2.4
 django-cors-headers==3.5.0
 django-filter==2.3.0
 djangorestframework==3.11.2
@@ -34,12 +34,12 @@ pyflakes==2.2.0
 pytz==2020.1
 PyYAML==5.4.1
 redis==3.5.3
-requests==2.24.0
+requests==2.25.1
 six==1.15.0
-sqlparse==0.3.1
+sqlparse==0.4.1
 tinycss2==1.1.0
 typing-extensions==3.7.4.3
-urllib3==1.25.10
+urllib3==1.26.5
 vine==5.0.0
 wcwidth==0.2.5
 webencodings==0.5.1
