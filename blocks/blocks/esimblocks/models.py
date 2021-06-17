@@ -45,6 +45,8 @@ class Block(models.Model):
     name = models.CharField(max_length=100)
     blockprefix = models.ForeignKey(BlockPrefix, default=1,
                                     on_delete=models.PROTECT, related_name='+')
+    main_category = models.ForeignKey(Category, null=True,
+                                      on_delete=models.PROTECT, related_name='+')
     categories = models.ManyToManyField(Category)
     block_image_path = models.CharField(max_length=100,
                                         blank=True, null=True)
@@ -137,8 +139,8 @@ class Block(models.Model):
 
     class Meta:
         constraints = [
-            models.UniqueConstraint(fields=['blocktype', 'name'],
-                                    name='unique_blocktype_name')
+            models.UniqueConstraint(fields=['blocktype', 'name', 'main_category'],
+                                    name='unique_blocktype_name_category')
         ]
 
 

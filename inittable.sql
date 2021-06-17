@@ -31,21 +31,21 @@ LOAD DATA LOCAL INFILE 'categories-blocks.csv'
     FIELDS TERMINATED BY '\t'
     LINES TERMINATED BY '\n'
     (id, @category_name, name, @prefix_name)
-    SET block_width = 40, block_height = 40, blocktype_id = @esim_blocktype_id, blockprefix_id = (SELECT id FROM esimblocks_blockprefix WHERE name = @prefix_name);
+    SET block_width = 40, block_height = 40, blocktype_id = @esim_blocktype_id, blockprefix_id = (SELECT id FROM esimblocks_blockprefix WHERE name = @prefix_name), main_category_id = (SELECT id from esimblocks_category WHERE name = @category_name);
 
 LOAD DATA LOCAL INFILE 'categories-blocks.csv'
     INTO TABLE esimblocks_block_categories
     FIELDS TERMINATED BY '\t'
     LINES TERMINATED BY '\n'
     (id, @category_name, @block_name, @prefix_name)
-    SET block_id = (SELECT id FROM esimblocks_block WHERE name = @block_name and blocktype_id = @esim_blocktype_id), category_id = (SELECT id from esimblocks_category WHERE name = @category_name);
+    SET block_id = (SELECT esimblocks_block.id FROM esimblocks_block JOIN esimblocks_category ON main_category_id = esimblocks_category.id WHERE esimblocks_block.name = @block_name AND esimblocks_category.name = @category_name AND blocktype_id = @esim_blocktype_id), category_id = (SELECT id from esimblocks_category WHERE name = @category_name);
 
 LOAD DATA LOCAL INFILE 'blocks-ports.csv'
     INTO TABLE esimblocks_blockport
     FIELDS TERMINATED BY '\t'
     LINES TERMINATED BY '\n'
-    (id, @block_name, port_order, port_name, port_number, port_orientation, port_part, port_dmg, port_type)
-    SET block_id = (SELECT id FROM esimblocks_block WHERE name = @block_name and blocktype_id = @esim_blocktype_id);
+    (id, @category_name, @block_name, port_order, port_name, port_number, port_orientation, port_part, port_dmg, port_type)
+    SET block_id = (SELECT esimblocks_block.id FROM esimblocks_block JOIN esimblocks_category ON main_category_id = esimblocks_category.id WHERE esimblocks_block.name = @block_name AND esimblocks_category.name = @category_name AND blocktype_id = @esim_blocktype_id);
 
 UPDATE esimblocks_block B
     JOIN esimblocks_blockprefix BP ON BP.id = B.blockprefix_id
