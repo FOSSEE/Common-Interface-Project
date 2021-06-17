@@ -28,7 +28,7 @@ BEGINFILE {
 /^DEF / {
     delete blockports;
     block = $2;
-    idx = block;
+    idx = category SUBSEP block;
     duplicateblock = idx in blocks;
     last_port_order = 0;
     if (!duplicateblock) {
@@ -68,10 +68,10 @@ BEGINFILE {
     port_part = $10;
     port_dmg = $11;
     port_type = $12;
-    idx = block SUBSEP port_order;
+    idx = category SUBSEP block SUBSEP port_order;
     if (!(idx in ports)) {
         ports[idx] = $0;
-        blockports[port_order] = sprintf("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n", block, port_order, port_name, port_number, port_orientation, port_part, port_dmg, port_type);
+        blockports[port_order] = sprintf("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n", category, block, port_order, port_name, port_number, port_orientation, port_part, port_dmg, port_type);
         if (max_port_order < port_order) {
             max_port_order = port_order;
         }

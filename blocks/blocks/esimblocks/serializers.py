@@ -66,6 +66,8 @@ class BlockSerializer(serializers.ModelSerializer):
             'id',
             'blocktype',
             'name',
+            'blockprefix',
+            'main_category',
             'categories',
             'block_image_path',
             'block_width',

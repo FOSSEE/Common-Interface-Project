@@ -1095,4 +1095,5 @@
 1095	pspice	OPAMP	U
 1096	pspice	QNPN	Q
 1097	pspice	QPNP	Q
-1098	pspice	VSOURCE	V
+1098	pspice	R	R
+1099	pspice	VSOURCE	V
