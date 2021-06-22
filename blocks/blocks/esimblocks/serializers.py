@@ -50,6 +50,8 @@ class BlockPortSerializer(serializers.ModelSerializer):
             'port_order',
             'port_name',
             'port_number',
+            'port_x',
+            'port_y',
             'port_orientation',
             'port_part',
             'port_dmg',

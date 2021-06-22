@@ -9,14 +9,10 @@ BEGIN {
     BLOCKPREFIXESCSV = "blockprefixes.csv";
     PRINTCATEGORYBLOCKSCSV = 1;
     CATEGORYBLOCKSCSV = "categories-blocks.csv";
-    PRINTBLOCKSCSV = 0;
-    BLOCKSCSV = "blocks.csv";
     blockid = 0;
     PRINTBLOCKPORTSCSV = 1;
     BLOCKPORTSCSV = "blocks-ports.csv";
     blockportid = 0;
-    PRINTMINMAXCSV = 0;
-    MINMAXCSV = "blocks-ports-min-max.csv";
 }
 
 BEGINFILE {
@@ -41,9 +37,6 @@ BEGINFILE {
         if (PRINTCATEGORYBLOCKSCSV) {
             printf "%s\t%s\t%s\t%s\n", blockid, category, block, block_prefix > CATEGORYBLOCKSCSV;
         }
-        if (PRINTBLOCKSCSV) {
-            printf "%s\t%s\t%s\n", blockid, block, block_prefix > BLOCKSCSV;
-        }
     } else {
         if (blocks[idx] == $0) {
             printf "duplicate block: %s\n", block > STDERR;
@@ -64,6 +57,8 @@ BEGINFILE {
         port_order = last_port_order + 1;
     }
     last_port_order = port_order;
+    port_x = $4;
+    port_y = $5;
     port_orientation = $7;
     port_part = $10;
     port_dmg = $11;
@@ -71,19 +66,9 @@ BEGINFILE {
     idx = category SUBSEP block SUBSEP port_order;
     if (!(idx in ports)) {
         ports[idx] = $0;
-        blockports[port_order] = sprintf("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n", category, block, port_order, port_name, port_number, port_orientation, port_part, port_dmg, port_type);
+        blockports[port_order] = sprintf("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n", category, block, port_order, port_name, port_number, port_x, port_y, port_orientation, port_part, port_dmg, port_type);
         if (max_port_order < port_order) {
             max_port_order = port_order;
-        }
-        if (block in minports) {
-            if (minports[block] > port_order) {
-                minports[block] = port_order;
-            } else if (maxports[block] < port_order) {
-                maxports[block] = port_order;
-            }
-        } else {
-            minports[block] = port_order;
-            maxports[block] = port_order;
         }
     } else {
         if (port_part == "2" || port_part == "3" || port_part == "4" || port_dmg == "2") {
@@ -117,11 +102,6 @@ ENDFILE {
 }
 
 END {
-    if (PRINTMINMAXCSV) {
-        for (block in minports) {
-            printf "%s\t%s\t%s\n", block, minports[block], maxports[block] > MINMAXCSV;
-        }
-    }
     if (PRINTBLOCKPREFIXESCSV) {
         BLOCK_PREFIXES_LEN = asorti(BLOCK_PREFIXES);
         for (i in BLOCK_PREFIXES) {
