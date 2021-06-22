@@ -279,6 +279,8 @@ class BlockPort(models.Model):
     port_order = models.IntegerField(default=1)
     port_name = models.CharField(max_length=100)
     port_number = models.CharField(max_length=10)
+    port_x = models.IntegerField(default=1)
+    port_y = models.IntegerField(default=1)
     port_orientation = models.CharField(max_length=100)
     port_part = models.IntegerField(default=1)
     port_dmg = models.IntegerField(default=1)
