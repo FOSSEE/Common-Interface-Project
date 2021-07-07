@@ -21,6 +21,26 @@
     "strokeColor": "black",
     "perimeter": "null"
   },
+  "defaultPinD": {
+    "align": "right",
+    "verticalAlign": "bottom",
+    "rotation": 0
+  },
+  "defaultPinL": {
+    "align": "right",
+    "verticalAlign": "bottom",
+    "rotation": 0
+  },
+  "defaultPinR": {
+    "align": "left",
+    "verticalAlign": "bottom",
+    "rotation": 0
+  },
+  "defaultPinU": {
+    "align": "right",
+    "verticalAlign": "top",
+    "rotation": 0
+  },
   "1-41-14529": {
     "shape": "image",
     "fontColor": "blue",
