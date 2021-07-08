@@ -49,8 +49,9 @@ export function NetlistModal ({ open, close, netlist }) {
   const netfile = useSelector(state => state.netlistReducer)
   const createNetlistFile = () => {
     var titleA = netfile.title.split(' ')[1]
+    var name = process.env.REACT_APP_NAME
     var blob = new Blob([netlist], { type: 'text/plain;charset=utf-8' })
-    FileSaver.saveAs(blob, `${titleA}_Xcos_on_Cloud.cir`)
+    FileSaver.saveAs(blob, `${titleA}_${name}_on_Cloud.cir`)
   }
   return (
     <Dialog

@@ -131,11 +131,11 @@ export function PrintPreview () {
 
     var footer = header.cloneNode(true)
     var title = store.getState().saveSchematicReducer.title
-    mxUtils.write(header, title + ' - Xcos on Cloud')
+    mxUtils.write(header, title + ' - ' + process.env.REACT_APP_NAME + ' on Cloud')
     header.style.borderBottom = '1px solid blue'
     header.style.top = '0px'
 
-    mxUtils.write(footer, 'Made with Diagram Editor - ' + pageNumber + ' - Xcos on Cloud')
+    mxUtils.write(footer, 'Made with Diagram Editor - ' + pageNumber + ' - ' + process.env.REACT_APP_NAME + ' on Cloud')
     footer.style.borderTop = '1px solid blue'
     footer.style.bottom = '0px'
 

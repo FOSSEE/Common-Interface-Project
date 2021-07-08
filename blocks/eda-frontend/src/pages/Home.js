@@ -18,9 +18,11 @@ export default function Home () {
   const classes = useStyles()
 
   useEffect(() => {
-    document.title = 'Xcos'
+    document.title = process.env.REACT_APP_NAME
   })
 
+  const typography1 = process.env.REACT_APP_NAME + ' on Cloud'
+  const typography2 = 'Online ' + process.env.REACT_APP_NAME + ' Simulator'
   return (
     <Container maxWidth="sm" component="main" className={classes.header}>
       <center>
@@ -33,7 +35,7 @@ export default function Home () {
         color="textPrimary"
         gutterBottom
       >
-        Xcos on Cloud
+        {typography1}
       </Typography>
       <Typography
         variant="h5"
@@ -41,7 +43,7 @@ export default function Home () {
         color="textSecondary"
         component="p"
       >
-        Online Xcos Simulator
+        {typography2}
         <br></br>
         <br></br>
         <Button

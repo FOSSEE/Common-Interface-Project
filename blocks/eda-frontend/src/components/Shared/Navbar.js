@@ -56,11 +56,13 @@ export function Header () {
     setAnchorEl(null)
   }
 
+  const link = process.env.REACT_APP_NAME
+  const altImage = process.env.REACT_APP_NAME + ' logo'
   return (
     <>
       {/* Display logo */}
       <IconButton edge="start" className={classes.button} color="primary">
-        <Avatar alt="Xcos logo" src={logo} className={classes.small} />
+        <Avatar alt={altImage} src={logo} className={classes.small} />
       </IconButton>
       <Typography
         variant="h6"
@@ -69,7 +71,7 @@ export function Header () {
         className={classes.toolbarTitle}
       >
         <Link color="inherit" to="/" component={RouterLink}>
-          Xcos
+          {link}
         </Link>
       </Typography>
 

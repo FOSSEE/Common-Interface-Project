@@ -48,7 +48,7 @@ function SchematicCard ({ sch }) {
   const classes = useStyles()
 
   useEffect(() => {
-    document.title = 'Gallery - Xcos'
+    document.title = 'Gallery - ' + process.env.REACT_APP_NAME
   })
 
   const imageName = images('./' + sch.media)
@@ -91,15 +91,16 @@ SchematicCard.propTypes = {
   sch: PropTypes.object
 }
 
-// Card displaying Xcos gallery page header.
+// Card displaying gallery page header.
 function MainCard () {
   const classes = useStyles()
 
+  const typography = process.env.REACT_APP_NAME + ' Gallery'
   return (
     <Card className={classes.mainHead}>
       <CardContent>
         <Typography variant="h2" align="center" gutterBottom>
-        Xcos Gallery
+        {typography}
         </Typography>
         <Typography className={classes.title} align="center" gutterBottom>
         Sample schematics are listed below...
@@ -124,7 +125,7 @@ export default function Gallery () {
           alignContent="center"
           spacing={3}
         >
-          {/* Xcos Gallery Header */}
+          {/* Gallery Header */}
           <Grid item xs={12}>
             <MainCard />
           </Grid>

@@ -210,7 +210,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
     })
     var a = document.createElement('a')
     const ext = (type === 'PNG') ? '.png' : '.jpg'
-    a.setAttribute('download', schSave.title + '_Xcos_on_Cloud' + ext)
+    a.setAttribute('download', schSave.title + '_' + process.env.REACT_APP_NAME + '_on_Cloud' + ext)
     a.setAttribute('href', data)
     a.setAttribute('target', '_blank')
     a.dispatchEvent(evt)
@@ -225,7 +225,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
       cancelable: true
     })
     const a = document.createElement('a')
-    a.setAttribute('download', schSave.title + '_Xcos_on_Cloud.svg')
+    a.setAttribute('download', schSave.title + '_' + process.env.REACT_APP_NAME + '_on_Cloud.svg')
     a.href = URL.createObjectURL(blob)
     a.target = '_blank'
     a.setAttribute('target', '_blank')
@@ -288,7 +288,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
       cancelable: true
     })
     const a = document.createElement('a')
-    a.setAttribute('download', schSave.title + '_Xcos_on_Cloud.xml')
+    a.setAttribute('download', schSave.title + '_' + process.env.REACT_APP_NAME + '_on_Cloud.xml')
     a.href = URL.createObjectURL(blob)
     a.target = '_blank'
     a.setAttribute('target', '_blank')

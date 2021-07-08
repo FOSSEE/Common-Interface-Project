@@ -1,7 +1,8 @@
 import * as actions from '../actions/actions'
 
+const token = process.env.REACT_APP_NAME + '_token';
 const initialState = {
-  token: localStorage.getItem('Xcos_token'),
+  token: localStorage.getItem(token),
   isAuthenticated: null,
   isRegistered: null,
   isLoading: false,
@@ -53,7 +54,7 @@ export default function (state = initialState, action) {
     }
 
     case actions.LOGIN_SUCCESSFUL: {
-      localStorage.setItem('Xcos_token', action.payload.data.auth_token)
+      localStorage.setItem(token, action.payload.data.auth_token)
       return {
         ...state,
         token: action.payload.data.auth_token,
@@ -74,7 +75,7 @@ export default function (state = initialState, action) {
     case actions.AUTHENTICATION_ERROR:
     case actions.LOGIN_FAILED:
     case actions.LOGOUT_SUCCESSFUL: {
-      localStorage.removeItem('Xcos_token')
+      localStorage.removeItem(token)
       return {
         ...state,
         errors: action.payload.data,

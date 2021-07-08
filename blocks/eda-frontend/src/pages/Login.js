@@ -56,7 +56,7 @@ export default function SignIn (props) {
 
   useEffect(() => {
     dispatch(authDefault())
-    document.title = 'Login - Xcos'
+    document.title = 'Login - ' + process.env.REACT_APP_NAME
     if (props.location.search !== '') {
       const query = new URLSearchParams(props.location.search)
       url = query.get('url')
