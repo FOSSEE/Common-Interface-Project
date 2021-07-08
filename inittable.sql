@@ -24,7 +24,7 @@ LOAD DATA LOCAL INFILE 'blockprefixes.csv'
     INTO TABLE esimblocks_blockprefix
     FIELDS TERMINATED BY '\t'
     LINES TERMINATED BY '\n'
-    (id, name);
+    (id, name, @tmp2);
 
 LOAD DATA LOCAL INFILE 'categories-blocks.csv'
     INTO TABLE esimblocks_block
