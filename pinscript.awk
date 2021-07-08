@@ -33,7 +33,7 @@ BEGINFILE {
         max_port_order = -1;
         block_prefix = gensub("^#", "", "g", $3);
         blocks[idx] = $0;
-        BLOCK_PREFIXES[block_prefix] = 1;
+        BLOCK_PREFIXES[block_prefix]++;
         if (PRINTCATEGORYBLOCKSCSV) {
             printf "%s\t%s\t%s\t%s\n", blockid, category, block, block_prefix > CATEGORYBLOCKSCSV;
         }
@@ -103,9 +103,10 @@ ENDFILE {
 
 END {
     if (PRINTBLOCKPREFIXESCSV) {
-        BLOCK_PREFIXES_LEN = asorti(BLOCK_PREFIXES);
-        for (i in BLOCK_PREFIXES) {
-            printf "%s\t%s\n", i, BLOCK_PREFIXES[i] > BLOCKPREFIXESCSV;
+        asorti(BLOCK_PREFIXES, block_prefixes_2);
+        for (i in block_prefixes_2) {
+            block_prefix = block_prefixes_2[i];
+            printf "%s\t%s\t%s\n", i, block_prefix, BLOCK_PREFIXES[block_prefix] > BLOCKPREFIXESCSV;
         }
     }
 }
