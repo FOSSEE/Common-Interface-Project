@@ -31,7 +31,7 @@ SELECT CONCAT('  "', B.main_category_id, '-', B.blockprefix_id, '-', B.name, '":
               '    "imageAlign": "bottom",', @NewLineChar,
               '    "align": "bottom",', @NewLineChar,
               '    "spacingLeft": 25,', @NewLineChar,
-              '    "image": "http://localhost:8000/static/', C.name, '/', BP.name, '-', B.name, '-1-A.svg"', @NewLineChar,
+              '    "image": "/django_static/', C.name, '/', BP.name, '-', B.name, '-1-A.svg"', @NewLineChar,
               '  },')
     FROM esimblocks_block B
     JOIN esimblocks_blockprefix BP ON BP.id = B.blockprefix_id
