@@ -27,7 +27,13 @@ SECRET_KEY = os.environ.get(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(os.environ.get('DJANGO_DEBUG', default=True))
 
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', '127.0.1.1']
+ALLOWED_HOSTS = [
+    '0.0.0.0',
+    'localhost',
+    '127.0.0.1',
+    '127.0.1.1',
+    'esimblocks.fossee.org',
+]
 
 SCILAB_DIR = '/home/sunil/software/scilab-6.1.0'
 
@@ -134,7 +140,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/django_static/'
 
 # noqa For Netlist handling netlist uploads and other temp uploads
 MEDIA_URL = '/_files/'
