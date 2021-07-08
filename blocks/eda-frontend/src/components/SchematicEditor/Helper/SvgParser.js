@@ -67,7 +67,7 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
           continue;
 
       x_pos = width / 2 + blockport.port_x / default_scale;
-      y_pos = height / 2 - blockport.port_y / default_scale - 1;
+      y_pos = height / 2 - blockport.port_y / default_scale;
 
       pinOrientation = blockport.port_orientation;
       let portStyle = "defaultPin" + pinOrientation;
