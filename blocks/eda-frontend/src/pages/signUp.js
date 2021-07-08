@@ -54,7 +54,7 @@ export default function SignUp () {
 
   useEffect(() => {
     dispatch(authDefault())
-    document.title = 'Sign Up - Xcos'
+    document.title = 'Sign Up - ' + process.env.REACT_APP_NAME
   }, [dispatch])
 
   const history = useHistory()

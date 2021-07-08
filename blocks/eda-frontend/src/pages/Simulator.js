@@ -33,7 +33,7 @@ export default function Simulator () {
   })
 
   useEffect(() => {
-    document.title = 'Simulator - Xcos'
+    document.title = 'Simulator - ' + process.env.REACT_APP_NAME
   })
 
   const handleChange = (event) => {
@@ -168,6 +168,7 @@ export default function Simulator () {
       })
   }
 
+  const typography = process.env.REACT_APP_NAME + ' on Cloud - ngSpice Simulator'
   return (
     <Container maxWidth="lg" className={classes.header}>
       <SimulationScreen open={simulateOpen} isResult={isResult} close={handleSimulateClose} dark={state} />
@@ -185,7 +186,7 @@ export default function Simulator () {
               SPICE SIMULATOR
             </Typography>
             <Typography variant="subtitle1" gutterBottom>
-              Xcos on Cloud - ngSpice Simulator
+              {typography}
             </Typography>
           </Paper>
         </Grid>

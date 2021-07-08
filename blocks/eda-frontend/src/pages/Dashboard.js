@@ -25,7 +25,7 @@ export default function Dashboard () {
   const classes = useStyles()
 
   useEffect(() => {
-    document.title = 'Dashboard - Xcos'
+    document.title = 'Dashboard - ' + process.env.REACT_APP_NAME
   })
 
   return (

@@ -63,7 +63,7 @@ function App () {
         <PublicRoute exact path="/login" restricted={true} nav={false} component={Login} />
         <PublicRoute exact path="/signup" restricted={true} nav={false} component={SignUp} />
         <PublicRoute exact path="/" restricted={false} nav={true} component={Home} />
-        {localStorage.getItem('Xcos_token') !== null
+        {localStorage.getItem(process.env.REACT_APP_NAME + '_token') !== null
           ? <PublicRoute exact path="/editor" restricted={false} nav={false} component={SchematicEditor} />
           : <Route path="/editor" component={SchematicEditor} />
         }
