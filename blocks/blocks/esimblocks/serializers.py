@@ -60,6 +60,7 @@ class BlockPortSerializer(serializers.ModelSerializer):
 
 
 class BlockSerializer(serializers.ModelSerializer):
+    categories = CategorySerializer(many=True)
     blockport_set = BlockPortSerializer(many=True)
 
     class Meta:
