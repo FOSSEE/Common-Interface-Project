@@ -30,12 +30,14 @@ export default function ComponentProperties () {
     dispatch(setCompProperties(id, val))
   }
 
+  const link1 = process.env.REACT_APP_BLOCK_NAME + ' Parameters';
+  const link2 = 'Set ' + process.env.REACT_APP_BLOCK_NAME + ' Parameters';
   return (
 
     <div style={isOpen ? {} : { display: 'none' }}>
 
       <ListItem>
-        <ListItemText primary='Block Parameters' />
+        <ListItemText primary={link1} />
       </ListItem>
 
       {
@@ -54,7 +56,7 @@ export default function ComponentProperties () {
       }
 
       <ListItem>
-        <Button size='small' variant="contained" color="primary" onClick={setProps}>Set Block Parameters</Button>
+        <Button size='small' variant="contained" color="primary" onClick={setProps}>{link2}</Button>
       </ListItem>
 
     </div>
