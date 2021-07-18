@@ -128,6 +128,9 @@ export default function ComponentSidebar ({ compRef }) {
     }, [])
   }
 
+  const link1 = process.env.REACT_APP_BLOCKS_NAME + ' List'
+  const link2 = 'Search ' + process.env.REACT_APP_BLOCK_NAME
+  const link3 = 'No ' + process.env.REACT_APP_BLOCKS_NAME + ' Found'
   return (
     <>
       <Hidden smDown>
@@ -138,13 +141,13 @@ export default function ComponentSidebar ({ compRef }) {
         {/* Display List of categorized components */}
         <List>
           <ListItem button>
-            <h2 style={{ margin: '5px' }}>Blocks List</h2>
+            <h2 style={{ margin: '5px' }}>{link1}</h2>
           </ListItem>
           <ListItem>
 
             <TextField
               id="standard-number"
-              placeholder="Search Block"
+              placeholder={link2}
               variant="outlined"
               size="small"
               value={searchText}
@@ -187,7 +190,7 @@ export default function ComponentSidebar ({ compRef }) {
 
             {!loading && searchText.length !== 0 && isSearchedResultsEmpty &&
 
-              <span style={{ margin: '20px' }}>No Blocks Found</span>
+              <span style={{ margin: '20px' }}>{link3}</span>
 
             }
 

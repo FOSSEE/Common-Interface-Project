@@ -3,7 +3,6 @@
 blocks/blocks/*/migrations/*.py
 blocks/*/migrations/*.py
 blocks/env/
-blocks/frontend/static/frontend/main.js
 .env
 tags
 Xcos/U*.sci

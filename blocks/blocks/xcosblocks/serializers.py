@@ -33,12 +33,15 @@ class BlockTypeSerializer(serializers.ModelSerializer):
 
 
 class BlockSerializer(serializers.ModelSerializer):
+    categories = CategorySerializer(many=True)
+
     class Meta:
         model = Block
         fields = [
             'id',
             'blocktype',
             'name',
+            'main_category',
             'categories',
             'initial_explicit_input_ports',
             'initial_implicit_input_ports',
@@ -91,6 +94,10 @@ class BlockSerializer(serializers.ModelSerializer):
             'p038_value_initial',
             'p039_value_initial',
         ]
+
+    @staticmethod
+    def prefetch_category(queryset):
+        return queryset.prefetch_related('categories')
 
 
 class BlockParameterSerializer(serializers.ModelSerializer):

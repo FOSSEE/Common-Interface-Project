@@ -190,13 +190,15 @@ function Header () {
     handleSnacClick()
   }
 
+  const link = process.env.REACT_APP_NAME
+  const altImage = process.env.REACT_APP_NAME + ' logo'
   return (
     <Toolbar variant="dense" color="default">
       <SimpleSnackbar open={snacOpen} close={handleSnacClose} message={message} />
 
       {/* Display logo */}
       <IconButton edge="start" className={classes.button} color="primary">
-        <Avatar alt="Xcos logo" src={logo} className={classes.small} />
+        <Avatar alt={altImage} src={logo} className={classes.small} />
       </IconButton>
       <Typography
         variant="h6"
@@ -205,7 +207,7 @@ function Header () {
         className={classes.toolbarTitle}
       >
         <Link color="inherit" target='_blank' component={RouterLink} to="/">
-          Xcos
+          {link}
         </Link>
       </Typography>
 

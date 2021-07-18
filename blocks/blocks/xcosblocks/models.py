@@ -34,6 +34,8 @@ class Block(models.Model):
     blocktype = models.ForeignKey(BlockType, default=1,
                                   on_delete=models.PROTECT, related_name='+')
     name = models.CharField(max_length=100)
+    main_category = models.ForeignKey(Category, null=True,
+                                      on_delete=models.PROTECT, related_name='+')
     categories = models.ManyToManyField(Category)
     initial_explicit_input_ports = models.IntegerField()
     initial_implicit_input_ports = models.IntegerField()
@@ -133,8 +135,8 @@ class Block(models.Model):
 
     class Meta:
         constraints = [
-            models.UniqueConstraint(fields=['blocktype', 'name'],
-                                    name='unique_blocktype_name')
+            models.UniqueConstraint(fields=['blocktype', 'name', 'main_category'],
+                                    name='unique_blocktype_name_category')
         ]
 
 
