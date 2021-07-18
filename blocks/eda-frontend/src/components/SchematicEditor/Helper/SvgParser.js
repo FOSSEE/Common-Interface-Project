@@ -8,6 +8,9 @@ let pinOrientation
 let x_pos, y_pos
 let width, height
 
+// we need to divide the svg width and height by the same number in order to maintain the aspect ratio.
+export const default_scale = 1;
+
 function getParameter(i) {
     if (i < 10)
         return 'p00' + i.toString();
@@ -24,8 +27,9 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
 
   const block_name = component.name;
   const pins = []
-  width = component.block_width
-  height = component.block_height
+  // make the component images smaller by scaling
+  width = component.block_width / default_scale
+  height = component.block_height / default_scale
 
   const v1 = graph.insertVertex(
     parent,

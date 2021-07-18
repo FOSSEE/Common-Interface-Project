@@ -1,7 +1,7 @@
 import mxGraphFactory from 'mxgraph'
 import store from '../../../redux/store'
 import dot from '../../../static/dot.gif'
-import xcosstyle from '../../../static/Xcos-style.json'
+import blockstyle from '../../../static/Xcos-style.json'
 import { getCompProperties, closeCompProperties } from '../../../redux/actions/index'
 
 import ToolbarTools from './ToolbarTools.js'
@@ -36,7 +36,7 @@ const {
 } = new mxGraphFactory()
 
 function configureStylesheet(graph) {
-    graph.stylesheet.styles = xcosstyle;
+    graph.stylesheet.styles = blockstyle;
 }
 
 export default function LoadGrid (container, sidebar, outline) {

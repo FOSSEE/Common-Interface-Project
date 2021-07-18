@@ -36,12 +36,15 @@ export default function SideComp ({ component }) {
     AddComponent(component, imageRef.current)
   }, [imageRef, component])
 
+  const link1 = process.env.REACT_APP_BLOCK_NAME + ' Name';
+  const link2 = process.env.REACT_APP_CATEGORY_NAME;
+  const link3 = process.env.REACT_APP_CATEGORIES_NAME;
   return (
     <div>
 
       <Tooltip title={component.name} arrow>
         {/* Display Image thumbnail in left side pane */}
-        <img ref={imageRef} className='compImage' src={'http://localhost:8000/static/' + component.block_image_path} alt="Logo" aria-describedby={id} onClick={handleClick} />
+        <img ref={imageRef} className='compImage' src={'/django_static/' + component.block_image_path} alt={component.name} aria-describedby={id} onClick={handleClick} />
       </Tooltip>
 
       {/* Popover to display component information on single click */}
@@ -62,15 +65,21 @@ export default function SideComp ({ component }) {
       >
         <List component="div" className={classes.popupInfo} disablePadding dense >
           <ListItemText>
-            <b>Block Name:</b> {component.name}
+            <b>{link1}:</b> {component.name}
           </ListItemText>
 
           {
-            component.categories !== '' &&
+            component.categories.length === 1 &&
           <ListItemText>
-            <b>Categories:</b> {component.categories.map((c) => <li key={c}>{c}</li>)}
+            <b>{link2}:</b> {component.categories[0].name}
           </ListItemText>
+          }
 
+          {
+            component.categories.length > 1 &&
+          <ListItemText>
+            <b>{link3}:</b> {component.categories.map((c) => <li key={c.id}>{c.name}</li>)}
+          </ListItemText>
           }
 
         </List>
