@@ -2,21 +2,24 @@ Id,Datatype,Explanation
 1,boolean,0 or 1 only
 2,integer,"only integer values e.g. 2,4,6"
 3,double,double or integer values
-4,complex,complex or double or integer values
-5,string,any string values
-6,yesno,a yes (y) or no (n) value
-7,filename,a file for reading or writing
-8,vector of booleans,a 1-D array of specified datatype
-9,vector of integers,
-10,vector of doubles,
-11,vector of complexes,
-12,vector of strings,
-13,vector of yesnoes,
-14,vector of filenames,
-15,matrix of booleans,a 2-D array of specified datatype
-16,matrix of integers,
-17,matrix of doubles,
-18,matrix of complexes,
-19,matrix of strings,
-20,matrix of yesnoes,
-21,matrix of filenames,
+4,double with scale,"double or integer values with an optional scale like pico, micro (u), milli, kilo, mega, giga"
+5,complex,complex or double or integer values
+6,string,any string values
+7,yesno,a yes (y) or no (n) value
+8,filename,a file for reading or writing
+9,vector of booleans,a 1-D array of specified datatype
+10,vector of integers,
+11,vector of doubles,
+12,vector of doubles with scale,
+13,vector of complexes,
+14,vector of strings,
+15,vector of yesnoes,
+16,vector of filenames,
+17,array of booleans,a 2-D array of specified datatype
+18,array of integers,
+19,array of doubles,
+20,array of doubles with scale,
+21,array of complexes,
+22,array of strings,
+23,array of yesnoes,
+24,array of filenames,
