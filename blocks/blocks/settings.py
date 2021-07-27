@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blocks.esimblocks',
+    'blocks.xcosblocks',
     'django_filters',
     'corsheaders',
     'rest_framework',

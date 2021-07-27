@@ -4,7 +4,7 @@ BEGIN {
     GETSIZECSV = "getsize.csv";
 }
 
-# blocks/blocks/esimblocks/static/4xxx/U-4001-1-A.svg:     width="600" height="300" viewBox="-300.0 -150.0 600 300">
+# blocks/blocks/xcosblocks/static/4xxx/U-4001-1-A.svg:     width="600" height="300" viewBox="-300.0 -150.0 600 300">
 
 /\.svg: *width=".*" height=".*" / {
     name = gensub(".*/([^/]*/[^/]*)\\.svg:", "\\1", "g", $1);

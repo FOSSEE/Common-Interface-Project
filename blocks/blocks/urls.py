@@ -23,6 +23,6 @@ urlpatterns = [
     path('api/simulation/', include('simulationAPI.urls')),
 
     # libAPI routes
-    path('api/', include('blocks.esimblocks.urls')),
+    path('api/', include('blocks.xcosblocks.urls')),
     path('', include('frontend.urls')),
 ]
