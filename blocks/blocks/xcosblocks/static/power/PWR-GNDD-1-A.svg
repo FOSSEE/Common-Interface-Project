@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="100" height="160" viewBox="-50.0 -80.0 100 160">
+<defs>
+</defs>
+<path d="M-50,60 L50,60 L50,80 L-50,80 L-50,60" stroke-width="10" stroke="black" fill="black" />
+<path d="M0,0 L0,60" stroke-width="6" stroke="black" fill-opacity="0" />
+<metadata width="100" height="160" symbolPrefix="PWR" cmpPartDmgLabel="1:A" nameOfSymbol="PWR-GNDD-1-A"><p-1><x>0</x><y>0</y><type>W
+                        </type><name>GNDD</name><orientation>D</orientation>
+                        <length>0</length><pinShape>N</pinShape>
+                        </p-1></metadata></svg>

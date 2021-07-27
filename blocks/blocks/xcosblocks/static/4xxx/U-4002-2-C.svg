@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="200" height="1000" viewBox="-100.0 -500.0 200 1000">
+<defs>
+</defs>
+<text x="-17" y="-366.6666666666667" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="-221" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,-500 L0,-300" stroke="black" stroke-width="5" />
+<text x="-17" y="366.6666666666667" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="221" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,500 L0,300" stroke="black" stroke-width="5" />
+<metadata width="200" height="1000" symbolPrefix="U" cmpPartDmgLabel="2:C" nameOfSymbol="U-4002-2-C"><p-14><x>0</x><y>500</y><type>W
+                        </type><name>VDD</name><orientation>D</orientation>
+                        <length>200</length><pinShape></pinShape>
+                        </p-14><p-7><x>0</x><y>-500</y><type>W
+                        </type><name>VSS</name><orientation>U</orientation>
+                        <length>200</length><pinShape></pinShape>
+                        </p-7></metadata></svg>

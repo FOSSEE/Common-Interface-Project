@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="300" height="400" viewBox="-150.0 -200.0 300 400">
+<defs>
+</defs>
+<path d="M-45,-100 L45,-100 L45,100 L-45,100 L-45,-100" stroke-width="12" stroke="black" fill-opacity="0" />
+<path d="M-100,0 L-80,0" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-80,50 L-80,-50" stroke-width="20" stroke="black" fill-opacity="0" />
+<path d="M0,150 L0,140" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M0,-140 L0,-150" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M80,50 L80,-50" stroke-width="20" stroke="black" fill-opacity="0" />
+<path d="M80,0 L100,0" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-100,90 L-100,140 L100,140 L100,90" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-100,-90 L-100,-140 L100,-140 L100,-90" stroke-width="6" stroke="black" fill-opacity="0" />
+<text x="-125.0" y="-17" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-47" y="0" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-150,0 L-100,0" stroke="black" stroke-width="5" />
+<text x="-17" y="-166.66666666666666" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="-97" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,-200 L0,-150" stroke="black" stroke-width="5" />
+<text x="125.0" y="-17" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="47" y="0" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M150,0 L100,0" stroke="black" stroke-width="5" />
+<text x="-17" y="166.66666666666666" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="97" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,200 L0,150" stroke="black" stroke-width="5" />
+<metadata width="300" height="400" symbolPrefix="Y" cmpPartDmgLabel="1:A" nameOfSymbol="Y-Crystal_GND24-1-A_thumbnail"><p-1><x>-150</x><y>0</y><type>P
+                        </type><name>1</name><orientation>R</orientation>
+                        <length>50</length><pinShape></pinShape>
+                        </p-1><p-2><x>0</x><y>200</y><type>P
+                        </type><name>2</name><orientation>D</orientation>
+                        <length>50</length><pinShape></pinShape>
+                        </p-2><p-3><x>150</x><y>0</y><type>P
+                        </type><name>3</name><orientation>L</orientation>
+                        <length>50</length><pinShape></pinShape>
+                        </p-3><p-4><x>0</x><y>-200</y><type>P
+                        </type><name>4</name><orientation>U</orientation>
+                        <length>50</length><pinShape></pinShape>
+                        </p-4></metadata></svg>

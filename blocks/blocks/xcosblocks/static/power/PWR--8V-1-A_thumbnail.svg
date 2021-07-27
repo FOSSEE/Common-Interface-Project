@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="60" height="200" viewBox="-30.0 -100.0 60 200">
+<defs>
+</defs>
+<path d="M0,0 L0,-50 L30,-50 L0,-100 L-30,-50 L0,-50" stroke-width="6" stroke="black" fill="black" />
+<metadata width="60" height="200" symbolPrefix="PWR" cmpPartDmgLabel="1:A" nameOfSymbol="PWR--8V-1-A_thumbnail"><p-1><x>0</x><y>0</y><type>W
+                        </type><name>-8V</name><orientation>U</orientation>
+                        <length>0</length><pinShape>N</pinShape>
+                        </p-1></metadata></svg>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="400" height="400" viewBox="-200.0 -200.0 400 400">
+<defs>
+</defs>
+<circle cx="50" cy="0" r="111" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M25,-25 L100,-100" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M25,25 L100,100 L100,100" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M25,-75 L25,75 L25,75" stroke-width="20" stroke="black" fill-opacity="0" />
+<path d="M50,70 L70,50 L90,90 L50,70 L50,70" stroke-width="6" stroke="black" fill="black" />
+<text x="83" y="133.33333333333334" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="100" y="87" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M100,200 L100,100" stroke="black" stroke-width="5" />
+<text x="-87.5" y="-17" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="38" y="0" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-200,0 L25,0" stroke="black" stroke-width="5" />
+<text x="83" y="-133.33333333333334" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="100" y="-87" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M100,-200 L100,-100" stroke="black" stroke-width="5" />
+<metadata width="400" height="400" symbolPrefix="Q" cmpPartDmgLabel="1:A" nameOfSymbol="Q-2N2219-1-A_thumbnail"><p-1><x>100</x><y>-200</y><type>P
+                        </type><name>E</name><orientation>U</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-1><p-2><x>-200</x><y>0</y><type>P
+                        </type><name>B</name><orientation>R</orientation>
+                        <length>225</length><pinShape></pinShape>
+                        </p-2><p-3><x>100</x><y>200</y><type>P
+                        </type><name>C</name><orientation>D</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-3></metadata></svg>

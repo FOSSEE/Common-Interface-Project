@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="300" height="400" viewBox="-150.0 -200.0 300 400">
+<defs>
+</defs>
+<circle cx="-100" cy="-90" r="10" stroke-width="6" stroke="black" fill="black" />
+<circle cx="0" cy="-90" r="10" stroke-width="6" stroke="black" fill="black" />
+<path d="M-150,125 L150,125 L150,-125 L-150,-125 L-150,125" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-100,-90 L-100,-60 L-70,-46 L-130,-20 L-70,6 L-130,33 L-70,60 L-130,86 L-100,100 L-100,150" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M0,-90 L0,-60 L30,-46 L-30,-20 L30,6 L-30,33 L30,60 L-30,86 L0,100 L0,150" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M100,-90 L100,-60 L130,-46 L70,-20 L130,6 L70,33 L130,60 L70,86 L100,100 L100,150" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-100,-90 L100,-90" stroke-width="6" stroke="black" fill-opacity="0" />
+<text x="-117" y="166.66666666666666" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-100" y="124" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-100,200 L-100,150" stroke="black" stroke-width="5" />
+<text x="-17" y="166.66666666666666" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="124" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,200 L0,150" stroke="black" stroke-width="5" />
+<text x="83" y="166.66666666666666" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="100" y="124" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M100,200 L100,150" stroke="black" stroke-width="5" />
+<text x="-117" y="-133.33333333333334" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-100" y="-22" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-100,-200 L-100,-100" stroke="black" stroke-width="5" />
+<metadata width="300" height="400" symbolPrefix="RN" cmpPartDmgLabel="1:A" nameOfSymbol="RN-R_Network03_US-1-A"><p-2><x>-100</x><y>-200</y><type>P
+                        </type><name>R1</name><orientation>U</orientation>
+                        <length>50</length><pinShape></pinShape>
+                        </p-2><p-3><x>0</x><y>-200</y><type>P
+                        </type><name>R2</name><orientation>U</orientation>
+                        <length>50</length><pinShape></pinShape>
+                        </p-3><p-4><x>100</x><y>-200</y><type>P
+                        </type><name>R3</name><orientation>U</orientation>
+                        <length>50</length><pinShape></pinShape>
+                        </p-4><p-1><x>-100</x><y>200</y><type>P
+                        </type><name>common</name><orientation>D</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-1></metadata></svg>

@@ -1,38 +1,38 @@
-DELETE FROM esimblocks_blockparameter;
-DELETE FROM esimblocks_blockport;
-DELETE FROM esimblocks_block_categories;
-DELETE FROM esimblocks_block;
-DELETE FROM esimblocks_blockprefixparameter;
-DELETE FROM esimblocks_blockprefix;
-DELETE FROM esimblocks_category;
-DELETE FROM esimblocks_parameterdatatype;
+DELETE FROM xcosblocks_blockparameter;
+DELETE FROM xcosblocks_blockport;
+DELETE FROM xcosblocks_block_categories;
+DELETE FROM xcosblocks_block;
+DELETE FROM xcosblocks_blockprefixparameter;
+DELETE FROM xcosblocks_blockprefix;
+DELETE FROM xcosblocks_category;
+DELETE FROM xcosblocks_parameterdatatype;
 
-ALTER TABLE esimblocks_blockparameter AUTO_INCREMENT = 1;
-ALTER TABLE esimblocks_blockport AUTO_INCREMENT = 1;
-ALTER TABLE esimblocks_block_categories AUTO_INCREMENT = 1;
-ALTER TABLE esimblocks_block AUTO_INCREMENT = 1;
-ALTER TABLE esimblocks_blockprefixparameter AUTO_INCREMENT = 1;
-ALTER TABLE esimblocks_blockprefix AUTO_INCREMENT = 1;
-ALTER TABLE esimblocks_category AUTO_INCREMENT = 1;
-ALTER TABLE esimblocks_parameterdatatype AUTO_INCREMENT = 1;
+ALTER TABLE xcosblocks_blockparameter AUTO_INCREMENT = 1;
+ALTER TABLE xcosblocks_blockport AUTO_INCREMENT = 1;
+ALTER TABLE xcosblocks_block_categories AUTO_INCREMENT = 1;
+ALTER TABLE xcosblocks_block AUTO_INCREMENT = 1;
+ALTER TABLE xcosblocks_blockprefixparameter AUTO_INCREMENT = 1;
+ALTER TABLE xcosblocks_blockprefix AUTO_INCREMENT = 1;
+ALTER TABLE xcosblocks_category AUTO_INCREMENT = 1;
+ALTER TABLE xcosblocks_parameterdatatype AUTO_INCREMENT = 1;
 
-SELECT id INTO @esim_blocktype_id FROM esimblocks_blocktype WHERE name = 'eSim';
+SELECT id INTO @esim_blocktype_id FROM xcosblocks_blocktype WHERE name = 'eSim';
 
 LOAD DATA LOCAL INFILE 'Xcos Categories - Xcos Datatypes.csv'
-    INTO TABLE esimblocks_parameterdatatype
+    INTO TABLE xcosblocks_parameterdatatype
     FIELDS TERMINATED BY ','
     LINES TERMINATED BY '\n'
     IGNORE 1 LINES
     (id, name, @tmp1);
 
 LOAD DATA LOCAL INFILE 'categories.csv'
-    INTO TABLE esimblocks_category
+    INTO TABLE xcosblocks_category
     FIELDS TERMINATED BY '\t'
     LINES TERMINATED BY '\n'
     (id, name, sort_order, @tmp1);
 
 LOAD DATA LOCAL INFILE 'blockprefixes.csv'
-    INTO TABLE esimblocks_blockprefix
+    INTO TABLE xcosblocks_blockprefix
     FIELDS TERMINATED BY ','
     OPTIONALLY ENCLOSED BY '"'
     LINES TERMINATED BY '\n'
@@ -82,7 +82,7 @@ LOAD DATA LOCAL INFILE 'blockprefixes.csv'
     @p041_key, @p041, @p041_type, p041_value_initial);
 
 LOAD DATA LOCAL INFILE 'blockprefixes.csv'
-    INTO TABLE esimblocks_blockprefixparameter
+    INTO TABLE xcosblocks_blockprefixparameter
     FIELDS TERMINATED BY ','
     OPTIONALLY ENCLOSED BY '"'
     LINES TERMINATED BY '\n'
@@ -131,89 +131,89 @@ LOAD DATA LOCAL INFILE 'blockprefixes.csv'
     @p040_key, p040, @p040_type, @p040_value_initial,
     @p041_key, p041, @p041_type, @p041_value_initial)
     SET
-    p000_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p000_type),
-    p001_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p001_type),
-    p002_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p002_type),
-    p003_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p003_type),
-    p004_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p004_type),
-    p005_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p005_type),
-    p006_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p006_type),
-    p007_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p007_type),
-    p008_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p008_type),
-    p009_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p009_type),
-    p010_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p010_type),
-    p011_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p011_type),
-    p012_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p012_type),
-    p013_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p013_type),
-    p014_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p014_type),
-    p015_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p015_type),
-    p016_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p016_type),
-    p017_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p017_type),
-    p018_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p018_type),
-    p019_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p019_type),
-    p020_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p020_type),
-    p021_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p021_type),
-    p022_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p022_type),
-    p023_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p023_type),
-    p024_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p024_type),
-    p025_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p025_type),
-    p026_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p026_type),
-    p027_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p027_type),
-    p028_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p028_type),
-    p029_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p029_type),
-    p030_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p030_type),
-    p031_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p031_type),
-    p032_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p032_type),
-    p033_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p033_type),
-    p034_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p034_type),
-    p035_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p035_type),
-    p036_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p036_type),
-    p037_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p037_type),
-    p038_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p038_type),
-    p039_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p039_type),
-    p040_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p040_type),
-    p041_type_id = (SELECT id FROM esimblocks_parameterdatatype WHERE name = @p041_type);
+    p000_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p000_type),
+    p001_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p001_type),
+    p002_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p002_type),
+    p003_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p003_type),
+    p004_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p004_type),
+    p005_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p005_type),
+    p006_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p006_type),
+    p007_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p007_type),
+    p008_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p008_type),
+    p009_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p009_type),
+    p010_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p010_type),
+    p011_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p011_type),
+    p012_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p012_type),
+    p013_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p013_type),
+    p014_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p014_type),
+    p015_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p015_type),
+    p016_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p016_type),
+    p017_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p017_type),
+    p018_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p018_type),
+    p019_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p019_type),
+    p020_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p020_type),
+    p021_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p021_type),
+    p022_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p022_type),
+    p023_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p023_type),
+    p024_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p024_type),
+    p025_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p025_type),
+    p026_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p026_type),
+    p027_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p027_type),
+    p028_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p028_type),
+    p029_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p029_type),
+    p030_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p030_type),
+    p031_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p031_type),
+    p032_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p032_type),
+    p033_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p033_type),
+    p034_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p034_type),
+    p035_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p035_type),
+    p036_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p036_type),
+    p037_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p037_type),
+    p038_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p038_type),
+    p039_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p039_type),
+    p040_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p040_type),
+    p041_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p041_type);
 
 LOAD DATA LOCAL INFILE 'categories-blocks.csv'
-    INTO TABLE esimblocks_block
+    INTO TABLE xcosblocks_block
     FIELDS TERMINATED BY '\t'
     LINES TERMINATED BY '\n'
     (id, @category_name, name, @blockprefix_name)
     SET block_width = 40,
     block_height = 40,
     blocktype_id = @esim_blocktype_id,
-    blockprefix_id = (SELECT id FROM esimblocks_blockprefix WHERE name = @blockprefix_name),
-    main_category_id = (SELECT id from esimblocks_category WHERE name = @category_name);
+    blockprefix_id = (SELECT id FROM xcosblocks_blockprefix WHERE name = @blockprefix_name),
+    main_category_id = (SELECT id from xcosblocks_category WHERE name = @category_name);
 
 LOAD DATA LOCAL INFILE 'categories-blocks.csv'
-    INTO TABLE esimblocks_block_categories
+    INTO TABLE xcosblocks_block_categories
     FIELDS TERMINATED BY '\t'
     LINES TERMINATED BY '\n'
     (id, @category_name, @block_name, @blockprefix_name)
-    SET block_id = (SELECT esimblocks_block.id FROM esimblocks_block JOIN esimblocks_category ON main_category_id = esimblocks_category.id WHERE esimblocks_block.name = @block_name AND esimblocks_category.name = @category_name AND blocktype_id = @esim_blocktype_id),
-    category_id = (SELECT id from esimblocks_category WHERE name = @category_name);
+    SET block_id = (SELECT xcosblocks_block.id FROM xcosblocks_block JOIN xcosblocks_category ON main_category_id = xcosblocks_category.id WHERE xcosblocks_block.name = @block_name AND xcosblocks_category.name = @category_name AND blocktype_id = @esim_blocktype_id),
+    category_id = (SELECT id from xcosblocks_category WHERE name = @category_name);
 
 LOAD DATA LOCAL INFILE 'blocks-ports.csv'
-    INTO TABLE esimblocks_blockport
+    INTO TABLE xcosblocks_blockport
     FIELDS TERMINATED BY '\t'
     LINES TERMINATED BY '\n'
     (id, @category_name, @block_name, port_order, port_name, port_number, port_x, port_y, port_orientation, port_part, port_dmg, port_type)
-    SET block_id = (SELECT esimblocks_block.id FROM esimblocks_block JOIN esimblocks_category ON main_category_id = esimblocks_category.id WHERE esimblocks_block.name = @block_name AND esimblocks_category.name = @category_name AND blocktype_id = @esim_blocktype_id);
+    SET block_id = (SELECT xcosblocks_block.id FROM xcosblocks_block JOIN xcosblocks_category ON main_category_id = xcosblocks_category.id WHERE xcosblocks_block.name = @block_name AND xcosblocks_category.name = @category_name AND blocktype_id = @esim_blocktype_id);
 
-CREATE TEMPORARY TABLE tmp_esimblocks_block (
+CREATE TEMPORARY TABLE tmp_xcosblocks_block (
     id int NOT NULL PRIMARY KEY,
     block_width int NOT NULL,
     block_height int NOT NULL
 );
 
 LOAD DATA LOCAL INFILE 'getsize.csv'
-    INTO TABLE tmp_esimblocks_block
+    INTO TABLE tmp_xcosblocks_block
     FIELDS TERMINATED BY '\t'
     LINES TERMINATED BY '\n'
     (@category_name, @block_name, block_width, block_height)
-    SET id = (SELECT esimblocks_block.id FROM esimblocks_block JOIN esimblocks_category ON main_category_id = esimblocks_category.id WHERE esimblocks_block.name = @block_name AND esimblocks_category.name = @category_name AND blocktype_id = @esim_blocktype_id);
+    SET id = (SELECT xcosblocks_block.id FROM xcosblocks_block JOIN xcosblocks_category ON main_category_id = xcosblocks_category.id WHERE xcosblocks_block.name = @block_name AND xcosblocks_category.name = @category_name AND blocktype_id = @esim_blocktype_id);
 
-DELETE FROM esimblocks_blockprefixparameter
+DELETE FROM xcosblocks_blockprefixparameter
     WHERE (p000 IS NULL OR p000 = '') AND
     (p001 IS NULL OR p001 = '') AND
     (p002 IS NULL OR p002 = '') AND
@@ -275,19 +275,19 @@ DELETE FROM esimblocks_blockprefixparameter
     (p058 IS NULL OR p058 = '') AND
     (p059 IS NULL OR p059 = '');
 
-UPDATE esimblocks_block B
-    JOIN esimblocks_blockprefix BP ON BP.id = B.blockprefix_id
-    JOIN esimblocks_block_categories BC ON B.id = BC.block_id
-    JOIN esimblocks_category C ON BC.category_id = C.id
+UPDATE xcosblocks_block B
+    JOIN xcosblocks_blockprefix BP ON BP.id = B.blockprefix_id
+    JOIN xcosblocks_block_categories BC ON B.id = BC.block_id
+    JOIN xcosblocks_category C ON BC.category_id = C.id
     SET B.block_image_path = CONCAT(C.name, '/', BP.name, '-', B.name, '-1-A.svg');
 
-UPDATE esimblocks_block B
-    JOIN tmp_esimblocks_block TB ON TB.id = B.id
+UPDATE xcosblocks_block B
+    JOIN tmp_xcosblocks_block TB ON TB.id = B.id
     SET B.block_width = TB.block_width,
     B.block_height = TB.block_height;
 
-UPDATE esimblocks_block B
-    JOIN esimblocks_blockprefix BPR ON BPR.id = B.blockprefix_id
+UPDATE xcosblocks_block B
+    JOIN xcosblocks_blockprefix BPR ON BPR.id = B.blockprefix_id
     SET B.p000_value_initial = BPR.p000_value_initial,
     B.p001_value_initial = BPR.p001_value_initial,
     B.p002_value_initial = BPR.p002_value_initial,
@@ -349,7 +349,7 @@ UPDATE esimblocks_block B
     B.p058_value_initial = BPR.p058_value_initial,
     B.p059_value_initial = BPR.p059_value_initial;
 
-INSERT INTO esimblocks_blockparameter (block_id,
+INSERT INTO xcosblocks_blockparameter (block_id,
     p000, p000_type_id, p001, p001_type_id, p002, p002_type_id, p003, p003_type_id,
     p004, p004_type_id, p005, p005_type_id, p006, p006_type_id, p007, p007_type_id,
     p008, p008_type_id, p009, p009_type_id, p010, p010_type_id, p011, p011_type_id,
@@ -381,5 +381,5 @@ INSERT INTO esimblocks_blockparameter (block_id,
     BPRPA.p048, BPRPA.p048_type_id, BPRPA.p049, BPRPA.p049_type_id, BPRPA.p050, BPRPA.p050_type_id, BPRPA.p051, BPRPA.p051_type_id,
     BPRPA.p052, BPRPA.p052_type_id, BPRPA.p053, BPRPA.p053_type_id, BPRPA.p054, BPRPA.p054_type_id, BPRPA.p055, BPRPA.p055_type_id,
     BPRPA.p056, BPRPA.p056_type_id, BPRPA.p057, BPRPA.p057_type_id, BPRPA.p058, BPRPA.p058_type_id, BPRPA.p059, BPRPA.p059_type_id
-    FROM esimblocks_block B
-    JOIN esimblocks_blockprefixparameter BPRPA ON BPRPA.blockprefix_id = B.blockprefix_id;
+    FROM xcosblocks_block B
+    JOIN xcosblocks_blockprefixparameter BPRPA ON BPRPA.blockprefix_id = B.blockprefix_id;

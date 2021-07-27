@@ -33,9 +33,9 @@ SELECT CONCAT('  "', B.main_category_id, '-', B.blockprefix_id, '-', B.name, '":
               '    "spacingLeft": 25,', @NewLineChar,
               '    "image": "/django_static/', C.name, '/', BP.name, '-', B.name, '-1-A.svg"', @NewLineChar,
               '  },')
-    FROM esimblocks_block B
-    JOIN esimblocks_blockprefix BP ON BP.id = B.blockprefix_id
-    JOIN esimblocks_category C ON C.id = B.main_category_id
+    FROM xcosblocks_block B
+    JOIN xcosblocks_blockprefix BP ON BP.id = B.blockprefix_id
+    JOIN xcosblocks_category C ON C.id = B.main_category_id
     ORDER BY C.sort_order, B.name;
 SELECT '}';
 

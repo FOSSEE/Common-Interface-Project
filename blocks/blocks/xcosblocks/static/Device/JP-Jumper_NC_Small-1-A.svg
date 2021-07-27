@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="200" height="60" viewBox="-100.0 -30.0 200 60">
+<defs>
+</defs>
+<path d="M40.305086527633215,-30.305086527633208 A57,57,0,0,0,-40.30508652763321,-30.305086527633215" stroke="black" stroke-width="6" fill-opacity="0" />
+<circle cx="-40" cy="0" r="20" stroke-width="6" stroke="black" fill-opacity="0" />
+<circle cx="40" cy="0" r="20" stroke-width="6" stroke="black" fill-opacity="0" />
+<text x="-80.0" y="-17" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-17" y="0" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-100,0 L-60,0" stroke="black" stroke-width="5" />
+<text x="80.0" y="-17" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="17" y="0" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M100,0 L60,0" stroke="black" stroke-width="5" />
+<metadata width="200" height="60" symbolPrefix="JP" cmpPartDmgLabel="1:A" nameOfSymbol="JP-Jumper_NC_Small-1-A"><p-1><x>-100</x><y>0</y><type>P
+                        </type><name>1</name><orientation>R</orientation>
+                        <length>40</length><pinShape></pinShape>
+                        </p-1><p-2><x>100</x><y>0</y><type>P
+                        </type><name>2</name><orientation>L</orientation>
+                        <length>40</length><pinShape></pinShape>
+                        </p-2></metadata></svg>

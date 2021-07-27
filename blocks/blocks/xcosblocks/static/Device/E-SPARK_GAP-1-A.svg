@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="400" height="50" viewBox="-200.0 -25.0 400 50">
+<defs>
+</defs>
+<path d="M-100,-25 L-100,25 L-25,0 L-100,-25" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M100,-25 L100,25 L25,0 L100,-25" stroke-width="6" stroke="black" fill-opacity="0" />
+<text x="-150.0" y="-17" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-87" y="0" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-200,0 L-100,0" stroke="black" stroke-width="5" />
+<text x="150.0" y="-17" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="87" y="0" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M200,0 L100,0" stroke="black" stroke-width="5" />
+<metadata width="400" height="50" symbolPrefix="E" cmpPartDmgLabel="1:A" nameOfSymbol="E-SPARK_GAP-1-A"><p-1><x>-200</x><y>0</y><type>P
+                        </type><name>~</name><orientation>R</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-1><p-2><x>200</x><y>0</y><type>P
+                        </type><name>~</name><orientation>L</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-2></metadata></svg>

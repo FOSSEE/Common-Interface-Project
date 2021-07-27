@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="400" height="800" viewBox="-200.0 -400.0 400 800">
+<defs>
+</defs>
+<circle cx="65" cy="200" r="110" stroke-width="10" stroke="black" fill-opacity="0" />
+<circle cx="65" cy="-200" r="110" stroke-width="10" stroke="black" fill-opacity="0" />
+<circle cx="100" cy="270" r="10" stroke-width="6" stroke="black" fill="black" />
+<circle cx="100" cy="130" r="10" stroke-width="6" stroke="black" fill="black" />
+<circle cx="100" cy="0" r="10" stroke-width="6" stroke="black" fill="black" />
+<circle cx="100" cy="-130" r="10" stroke-width="6" stroke="black" fill="black" />
+<circle cx="100" cy="-270" r="10" stroke-width="6" stroke="black" fill="black" />
+<path d="M10,200 L-100,200" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M10,125 L10,275" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M10,-200 L-100,-200" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M10,-275 L10,-125" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M30,250 L30,290" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M30,180 L30,220" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M30,110 L30,150" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M30,-150 L30,-110" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M30,-220 L30,-180" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M30,-290 L30,-250" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M100,-300 L100,-270" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M100,300 L100,200 L30,200" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M100,130 L100,-200 L30,-200" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M30,270 L130,270 L130,130 L30,130" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M30,-130 L130,-130 L130,-270 L30,-270" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M40,200 L80,185 L80,215 L40,200" stroke-width="6" stroke="black" fill="black" />
+<path d="M40,-200 L80,-215 L80,-185 L40,-200" stroke-width="6" stroke="black" fill="black" />
+<path d="M110,180 L115,185 L145,185 L150,190" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M110,-220 L115,-215 L145,-215 L150,-210" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M130,185 L115,210 L145,210 L130,185" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M130,-215 L115,-190 L145,-190 L130,-215" stroke-width="6" stroke="black" fill-opacity="0" />
+<text x="83" y="333.3333333333333" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="100" y="254" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M100,400 L100,300" stroke="black" stroke-width="5" />
+<text x="-150.0" y="183" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-54" y="200" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-200,200 L-100,200" stroke="black" stroke-width="5" />
+<text x="150.0" y="-17" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="15" y="0" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M200,0 L100,0" stroke="black" stroke-width="5" />
+<text x="-150.0" y="-217" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-54" y="-200" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-200,-200 L-100,-200" stroke="black" stroke-width="5" />
+<text x="83" y="-333.3333333333333" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="100" y="-254" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M100,-400 L100,-300" stroke="black" stroke-width="5" />
+<metadata width="400" height="800" symbolPrefix="Q" cmpPartDmgLabel="1:A" nameOfSymbol="Q-IRFI4019H-1-A"><p-1><x>100</x><y>-400</y><type>P
+                        </type><name>S2</name><orientation>U</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-1><p-2><x>-200</x><y>-200</y><type>I
+                        </type><name>G2</name><orientation>R</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-2><p-3><x>200</x><y>0</y><type>P
+                        </type><name>S1/D2</name><orientation>L</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-3><p-4><x>-200</x><y>200</y><type>I
+                        </type><name>G1</name><orientation>R</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-4><p-5><x>100</x><y>400</y><type>P
+                        </type><name>D1</name><orientation>D</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-5></metadata></svg>

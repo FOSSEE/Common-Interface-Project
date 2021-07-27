@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="400" height="150" viewBox="-200.0 -75.0 400 150">
+<defs>
+</defs>
+<path d="M-140,-75 L-115,-75 L-115,0 L-140,0 L-140,-75" stroke-width="6" stroke="black" fill="black" />
+<path d="M-90,-75 L-65,-75 L-65,0 L-90,0 L-90,-75" stroke-width="6" stroke="black" fill="black" />
+<path d="M-15,-75 L-40,-75 L-40,0 L-15,0 L-15,-75" stroke-width="6" stroke="black" fill="black" />
+<path d="M35,-75 L10,-75 L10,0 L35,0 L35,-75" stroke-width="6" stroke="black" fill="black" />
+<path d="M60,0 L85,0 L85,-75 L60,-75 L60,0" stroke-width="6" stroke="black" fill="black" />
+<path d="M110,0 L135,0 L135,-75 L110,-75 L110,0" stroke-width="6" stroke="black" fill="black" />
+<path d="M-150,0 L150,0" stroke-width="10" stroke="black" fill="black" />
+<path d="M-150,-75 L150,-75" stroke-width="10" stroke="black" fill-opacity="0" />
+<text x="-175.0" y="-17" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-137" y="0" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-200,0 L-150,0" stroke="black" stroke-width="5" />
+<text x="175.0" y="-17" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="137" y="0" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M200,0 L150,0" stroke="black" stroke-width="5" />
+<metadata width="400" height="150" symbolPrefix="PE" cmpPartDmgLabel="1:A" nameOfSymbol="PE-Peltier_Element-1-A_thumbnail"><p-1><x>-200</x><y>0</y><type>P
+                        </type><name>~</name><orientation>R</orientation>
+                        <length>50</length><pinShape></pinShape>
+                        </p-1><p-2><x>200</x><y>0</y><type>P
+                        </type><name>~</name><orientation>L</orientation>
+                        <length>50</length><pinShape></pinShape>
+                        </p-2></metadata></svg>

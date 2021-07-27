@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="1200" height="1000" viewBox="-600.0 -500.0 1200 1000">
+<defs>
+</defs>
+<path d="M-400,-200 L350,-200 L350,500 L-400,500 L-400,-200" stroke-width="6" stroke="black" fill-opacity="0" />
+<text x="-500.0" y="-67" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-321" y="-50" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-600,-50 L-400,-50" stroke="black" stroke-width="5" />
+<text x="-500.0" y="33" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-321" y="50" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-600,50 L-400,50" stroke="black" stroke-width="5" />
+<text x="-500.0" y="133" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-321" y="150" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-600,150 L-400,150" stroke="black" stroke-width="5" />
+<text x="-500.0" y="233" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-321" y="250" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-600,250 L-400,250" stroke="black" stroke-width="5" />
+<text x="-500.0" y="333" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-321" y="350" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-600,350 L-400,350" stroke="black" stroke-width="5" />
+<text x="-500.0" y="433" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-321" y="450" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-600,450 L-400,450" stroke="black" stroke-width="5" />
+<text x="450.0" y="-67" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="258" y="-50" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M550,-50 L350,-50" stroke="black" stroke-width="5" />
+<text x="450.0" y="33" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="258" y="50" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M550,50 L350,50" stroke="black" stroke-width="5" />
+<text x="450.0" y="133" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="258" y="150" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M550,150 L350,150" stroke="black" stroke-width="5" />
+<text x="450.0" y="233" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="258" y="250" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M550,250 L350,250" stroke="black" stroke-width="5" />
+<text x="450.0" y="333" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="258" y="350" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M550,350 L350,350" stroke="black" stroke-width="5" />
+<text x="450.0" y="433" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="258" y="450" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M550,450 L350,450" stroke="black" stroke-width="5" />
+<metadata width="1200" height="1000" symbolPrefix="U" cmpPartDmgLabel="1:A" nameOfSymbol="U-adc_bridge_6-1-A_thumbnail"><p-1><x>-600</x><y>50</y><type>I
+                        </type><name>IN1</name><orientation>R</orientation>
+                        <length>200</length><pinShape></pinShape>
+                        </p-1><p-2><x>-600</x><y>-50</y><type>I
+                        </type><name>IN2</name><orientation>R</orientation>
+                        <length>200</length><pinShape></pinShape>
+                        </p-2><p-3><x>-600</x><y>-150</y><type>I
+                        </type><name>IN3</name><orientation>R</orientation>
+                        <length>200</length><pinShape></pinShape>
+                        </p-3><p-4><x>-600</x><y>-250</y><type>I
+                        </type><name>IN4</name><orientation>R</orientation>
+                        <length>200</length><pinShape></pinShape>
+                        </p-4><p-5><x>-600</x><y>-350</y><type>I
+                        </type><name>IN5</name><orientation>R</orientation>
+                        <length>200</length><pinShape></pinShape>
+                        </p-5><p-6><x>-600</x><y>-450</y><type>I
+                        </type><name>IN6</name><orientation>R</orientation>
+                        <length>200</length><pinShape></pinShape>
+                        </p-6><p-7><x>550</x><y>50</y><type>O
+                        </type><name>OUT1</name><orientation>L</orientation>
+                        <length>200</length><pinShape></pinShape>
+                        </p-7><p-8><x>550</x><y>-50</y><type>O
+                        </type><name>OUT2</name><orientation>L</orientation>
+                        <length>200</length><pinShape></pinShape>
+                        </p-8><p-9><x>550</x><y>-150</y><type>O
+                        </type><name>OUT3</name><orientation>L</orientation>
+                        <length>200</length><pinShape></pinShape>
+                        </p-9><p-10><x>550</x><y>-250</y><type>O
+                        </type><name>OUT4</name><orientation>L</orientation>
+                        <length>200</length><pinShape></pinShape>
+                        </p-10><p-11><x>550</x><y>-350</y><type>O
+                        </type><name>OUT5</name><orientation>L</orientation>
+                        <length>200</length><pinShape></pinShape>
+                        </p-11><p-12><x>550</x><y>-450</y><type>O
+                        </type><name>OUT6</name><orientation>L</orientation>
+                        <length>200</length><pinShape></pinShape>
+                        </p-12></metadata></svg>

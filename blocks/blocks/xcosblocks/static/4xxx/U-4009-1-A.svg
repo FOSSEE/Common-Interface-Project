@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="600" height="300" viewBox="-300.0 -150.0 600 300">
+<defs>
+</defs>
+<path d="M-150,-150 L-150,150 L150,0 L-150,-150" stroke-width="10" stroke="black" fill-opacity="0" />
+<text x="225.0" y="-17" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<circle cx="175" cy="0" r="25" stroke-width="5" stroke="black" fill="black" />
+<text x="97" y="0" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M300,0 L150,0" stroke="black" stroke-width="5" />
+<text x="-225.0" y="-17" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-97" y="0" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-300,0 L-150,0" stroke="black" stroke-width="5" />
+<metadata width="600" height="300" symbolPrefix="U" cmpPartDmgLabel="1:A" nameOfSymbol="U-4009-1-A"><p-2><x>300</x><y>0</y><type>O
+                        </type><name>~</name><orientation>L</orientation>
+                        <length>150</length><pinShape>I</pinShape>
+                        </p-2><p-3><x>-300</x><y>0</y><type>I
+                        </type><name>~</name><orientation>R</orientation>
+                        <length>150</length><pinShape></pinShape>
+                        </p-3></metadata></svg>

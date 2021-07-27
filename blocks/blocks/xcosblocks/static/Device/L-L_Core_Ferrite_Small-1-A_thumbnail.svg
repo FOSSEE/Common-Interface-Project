@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="80" height="200" viewBox="-40.0 -100.0 80 200">
+<defs>
+</defs>
+<path d="M0.03490656731796523,40.00003046173425 A20,20,0,0,1,0.034906567317978095,79.99996953826576" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M0.03490656731796523,3.0461734247921868e-05 A20,20,0,0,1,0.034906567317978095,39.99996953826575" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M0.03490656731796523,-39.99996953826575 A20,20,0,0,1,0.034906567317978095,-3.0461734247921868e-05" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M0.03490656731796523,-79.99996953826576 A20,20,0,0,1,0.034906567317978095,-40.00003046173425" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M30,75 L30,65" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M30,55 L30,45" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M30,35 L30,25" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M30,15 L30,5" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M30,-5 L30,-15" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M30,-25 L30,-35" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M30,-45 L30,-55" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M30,-65 L30,-75" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M40,65 L40,75" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M40,45 L40,55" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M40,25 L40,35" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M40,5 L40,15" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M40,-15 L40,-5" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M40,-35 L40,-25" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M40,-55 L40,-45" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M40,-75 L40,-65" stroke-width="6" stroke="black" fill-opacity="0" />
+<text x="-17" y="-86.66666666666667" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="-57" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,-100 L0,-80" stroke="black" stroke-width="5" />
+<text x="-17" y="86.66666666666667" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="57" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,100 L0,80" stroke="black" stroke-width="5" />
+<metadata width="80" height="200" symbolPrefix="L" cmpPartDmgLabel="1:A" nameOfSymbol="L-L_Core_Ferrite_Small-1-A_thumbnail"><p-1><x>0</x><y>100</y><type>P
+                        </type><name>~</name><orientation>D</orientation>
+                        <length>20</length><pinShape></pinShape>
+                        </p-1><p-2><x>0</x><y>-100</y><type>P
+                        </type><name>~</name><orientation>U</orientation>
+                        <length>20</length><pinShape></pinShape>
+                        </p-2></metadata></svg>

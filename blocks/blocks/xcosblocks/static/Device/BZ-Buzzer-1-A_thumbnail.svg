@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="200" height="250" viewBox="-100.0 -125.0 200 250">
+<defs>
+</defs>
+<path d="M0.21816604573728268,-124.99980961416097 A125,125,0,0,1,0.2181660457373631,124.99980961416097" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M-65,-75 L-45,-75" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-55,-85 L-55,-65" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M0,-125 L0,125" stroke-width="6" stroke="black" fill-opacity="0" />
+<text x="-50.0" y="-117" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="14" y="-100" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-100,-100 L0,-100" stroke="black" stroke-width="5" />
+<text x="-50.0" y="83" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="14" y="100" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-100,100 L0,100" stroke="black" stroke-width="5" />
+<metadata width="200" height="250" symbolPrefix="BZ" cmpPartDmgLabel="1:A" nameOfSymbol="BZ-Buzzer-1-A_thumbnail"><p-1><x>-100</x><y>100</y><type>P
+                        </type><name>-</name><orientation>R</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-1><p-2><x>-100</x><y>-100</y><type>P
+                        </type><name>+</name><orientation>R</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-2></metadata></svg>

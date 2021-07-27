@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="500" height="400" viewBox="-250.0 -200.0 500 400">
+<defs>
+</defs>
+<path d="M-150,0 L-40,0" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-145,50 L-145,-50" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-20,0 L-30,0" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M0,100 L0,80" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M5,0 L-5,0" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M20,0 L30,0" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M40,0 L150,0" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M45,50 L45,-50" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-160,20 L-160,80 L160,80 L160,20" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-45,50 L-45,-50 L-145,0 L-45,50" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M145,50 L145,-50 L45,0 L145,50" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-130,-55 L-70,-115 L-100,-115 L-70,-115 L-70,-85" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-80,-55 L-20,-115 L-50,-115 L-20,-115 L-20,-85" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M60,-55 L120,-115 L90,-115 L120,-115 L120,-85" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M110,-55 L170,-115 L140,-115 L170,-115 L170,-85" stroke-width="6" stroke="black" fill-opacity="0" />
+<text x="-200.0" y="-17" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-97" y="0" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-250,0 L-150,0" stroke="black" stroke-width="5" />
+<text x="200.0" y="-17" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="97" y="0" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M250,0 L150,0" stroke="black" stroke-width="5" />
+<text x="-17" y="133.33333333333334" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="21" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,200 L0,100" stroke="black" stroke-width="5" />
+<metadata width="500" height="400" symbolPrefix="D" cmpPartDmgLabel="1:A" nameOfSymbol="D-LED_Series_PAD-1-A_thumbnail"><p-1><x>-250</x><y>0</y><type>P
+                        </type><name>K</name><orientation>R</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-1><p-2><x>250</x><y>0</y><type>P
+                        </type><name>A</name><orientation>L</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-2><p-3><x>0</x><y>-200</y><type>P
+                        </type><name>PAD</name><orientation>U</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-3></metadata></svg>

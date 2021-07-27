@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="160" height="300" viewBox="-80.0 -150.0 160 300">
+<defs>
+</defs>
+<path d="M80.03106001097026,50.1049078606938 A128,128,0,0,0,-80.03106001097026,50.1049078606938" stroke="black" stroke-width="20" fill-opacity="0" />
+<path d="M-80,-30 L80,-30" stroke-width="20" stroke="black" fill-opacity="0" />
+<path d="M-70,-90 L-30,-90" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-50,-70 L-50,-110" stroke-width="6" stroke="black" fill-opacity="0" />
+<text x="-17" y="-76.66666666666666" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="-17" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,-150 L0,-40" stroke="black" stroke-width="5" />
+<text x="-17" y="63.333333333333336" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="-3" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,150 L0,20" stroke="black" stroke-width="5" />
+<metadata width="160" height="300" symbolPrefix="C" cmpPartDmgLabel="1:A" nameOfSymbol="C-CP1-1-A_thumbnail"><p-1><x>0</x><y>150</y><type>P
+                        </type><name>~</name><orientation>D</orientation>
+                        <length>110</length><pinShape></pinShape>
+                        </p-1><p-2><x>0</x><y>-150</y><type>P
+                        </type><name>~</name><orientation>U</orientation>
+                        <length>130</length><pinShape></pinShape>
+                        </p-2></metadata></svg>

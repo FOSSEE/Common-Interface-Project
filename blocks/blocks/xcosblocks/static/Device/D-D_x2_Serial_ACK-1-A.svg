@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="600" height="400" viewBox="-300.0 -200.0 600 400">
+<defs>
+</defs>
+<circle cx="0" cy="0" r="10" stroke-width="6" stroke="black" fill="black" />
+<path d="M0,0 L0,100" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M150,0 L-150,0" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M250,0 L300,0" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-50,50 L-50,-50 L-50,-50" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M150,-50 L150,50 L150,50" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-150,-50 L-50,0 L-150,50 L-150,-50 L-150,-50 L-150,-50" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M50,-50 L150,0 L50,50 L50,-50 L50,-50 L50,-50" stroke-width="10" stroke="black" fill-opacity="0" />
+<text x="-225.0" y="-17" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-107" y="0" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-300,0 L-150,0" stroke="black" stroke-width="5" />
+<text x="-17" y="133.33333333333334" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="-8" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,200 L0,100" stroke="black" stroke-width="5" />
+<text x="225.0" y="-17" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="107" y="0" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M300,0 L150,0" stroke="black" stroke-width="5" />
+<metadata width="600" height="400" symbolPrefix="D" cmpPartDmgLabel="1:A" nameOfSymbol="D-D_x2_Serial_ACK-1-A"><p-1><x>-300</x><y>0</y><type>P
+                        </type><name>A</name><orientation>R</orientation>
+                        <length>150</length><pinShape></pinShape>
+                        </p-1><p-2><x>0</x><y>-200</y><type>P
+                        </type><name>common</name><orientation>U</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-2><p-3><x>300</x><y>0</y><type>P
+                        </type><name>K</name><orientation>L</orientation>
+                        <length>150</length><pinShape></pinShape>
+                        </p-3></metadata></svg>

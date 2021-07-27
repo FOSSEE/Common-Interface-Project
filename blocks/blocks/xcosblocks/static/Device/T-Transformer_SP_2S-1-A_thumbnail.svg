@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="800" height="800" viewBox="-400.0 -400.0 800 800">
+<defs>
+</defs>
+<path d="M-50.000076154335616,149.91273358170508 A50,50,0,0,0,-99.91273358170508,100.00007615433562" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M-99.91273358170506,199.9999238456644 A50,50,0,0,0,-50.000076154335616,150.08726641829492" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M-50.000076154335616,49.91273358170508 A50,50,0,0,0,-99.91273358170508,7.615433561625196e-05" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M-99.91273358170506,99.99992384566438 A50,50,0,0,0,-50.000076154335616,50.087266418294924" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M-50.000076154335616,-50.08726641829492 A50,50,0,0,0,-99.91273358170508,-99.99992384566438" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M-99.91273358170506,-7.615433561625196e-05 A50,50,0,0,0,-50.000076154335616,-49.912733581705076" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M-50.000076154335616,-150.08726641829492 A50,50,0,0,0,-99.91273358170508,-199.9999238456644" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M-99.91273358170506,-100.00007615433562 A50,50,0,0,0,-50.000076154335616,-149.91273358170508" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M100.08726641829492,300.0000761543356 A50,50,0,0,0,50.000076154335616,350.0872664182949" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M50.000076154335616,349.9127335817051 A50,50,0,0,0,100.08726641829494,399.9999238456644" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M100.08726641829492,200.0000761543356 A50,50,0,0,0,50.000076154335616,250.08726641829492" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M50.000076154335616,249.91273358170508 A50,50,0,0,0,100.08726641829494,299.9999238456644" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M100.08726641829492,100.00007615433562 A50,50,0,0,0,50.000076154335616,150.08726641829492" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M50.000076154335616,149.91273358170508 A50,50,0,0,0,100.08726641829494,199.9999238456644" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M100.08726641829492,-199.9999238456644 A50,50,0,0,0,50.000076154335616,-149.91273358170508" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M50.000076154335616,-150.08726641829492 A50,50,0,0,0,100.08726641829494,-100.00007615433562" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M100.08726641829492,-299.9999238456644 A50,50,0,0,0,50.000076154335616,-249.91273358170508" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M50.000076154335616,-250.08726641829492 A50,50,0,0,0,100.08726641829494,-200.0000761543356" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M100.08726641829492,-399.9999238456644 A50,50,0,0,0,50.000076154335616,-349.9127335817051" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M50.000076154335616,-350.0872664182949 A50,50,0,0,0,100.08726641829494,-300.0000761543356" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M-20,400 L-20,-400" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M20,-400 L20,400" stroke-width="6" stroke="black" fill-opacity="0" />
+<text x="-250.0" y="-217" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-21" y="-200" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-400,-200 L-100,-200" stroke="black" stroke-width="5" />
+<text x="-250.0" y="-17" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-34" y="0" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-400,0 L-100,0" stroke="black" stroke-width="5" />
+<text x="-250.0" y="183" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-21" y="200" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-400,200 L-100,200" stroke="black" stroke-width="5" />
+<text x="250.0" y="-417" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-5" y="-400" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M400,-400 L100,-400" stroke="black" stroke-width="5" />
+<text x="250.0" y="-117" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-5" y="-100" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M400,-100 L100,-100" stroke="black" stroke-width="5" />
+<text x="250.0" y="83" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-5" y="100" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M400,100 L100,100" stroke="black" stroke-width="5" />
+<text x="250.0" y="383" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-5" y="400" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M400,400 L100,400" stroke="black" stroke-width="5" />
+<metadata width="800" height="800" symbolPrefix="T" cmpPartDmgLabel="1:A" nameOfSymbol="T-Transformer_SP_2S-1-A_thumbnail"><p-1><x>-400</x><y>200</y><type>P
+                        </type><name>IN+</name><orientation>R</orientation>
+                        <length>300</length><pinShape></pinShape>
+                        </p-1><p-2><x>-400</x><y>0</y><type>P
+                        </type><name>PM</name><orientation>R</orientation>
+                        <length>300</length><pinShape></pinShape>
+                        </p-2><p-3><x>-400</x><y>-200</y><type>P
+                        </type><name>IN-</name><orientation>R</orientation>
+                        <length>300</length><pinShape></pinShape>
+                        </p-3><p-4><x>400</x><y>400</y><type>P
+                        </type><name>OUT1A</name><orientation>L</orientation>
+                        <length>300</length><pinShape></pinShape>
+                        </p-4><p-5><x>400</x><y>100</y><type>P
+                        </type><name>OUT1B</name><orientation>L</orientation>
+                        <length>300</length><pinShape></pinShape>
+                        </p-5><p-6><x>400</x><y>-100</y><type>P
+                        </type><name>OUT2A</name><orientation>L</orientation>
+                        <length>300</length><pinShape></pinShape>
+                        </p-6><p-7><x>400</x><y>-400</y><type>P
+                        </type><name>OUT2B</name><orientation>L</orientation>
+                        <length>300</length><pinShape></pinShape>
+                        </p-7></metadata></svg>

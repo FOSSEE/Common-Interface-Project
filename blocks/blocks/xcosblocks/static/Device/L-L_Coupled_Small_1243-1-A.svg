@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="200" height="120" viewBox="-100.0 -60.0 200 120">
+<defs>
+</defs>
+<path d="M-40.00003046173425,49.96509343268203 A20,20,0,0,0,-79.99996953826576,49.96509343268203" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M-79.99996953826576,-49.96509343268204 A20,20,0,0,0,-40.00003046173425,-49.96509343268203" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M-3.0461734247921868e-05,49.96509343268203 A20,20,0,0,0,-39.99996953826575,49.96509343268203" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M-39.99996953826575,-49.96509343268204 A20,20,0,0,0,-3.0461734247921868e-05,-49.96509343268203" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M39.99996953826575,49.96509343268203 A20,20,0,0,0,3.0461734247921868e-05,49.96509343268203" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M3.0461734247921868e-05,-49.96509343268204 A20,20,0,0,0,39.99996953826575,-49.96509343268203" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M79.99996953826576,49.96509343268203 A20,20,0,0,0,40.00003046173425,49.96509343268203" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M40.00003046173425,-49.96509343268204 A20,20,0,0,0,79.99996953826576,-49.96509343268203" stroke="black" stroke-width="6" fill-opacity="0" />
+<circle cx="-60" cy="50" r="10" stroke-width="6" stroke="black" fill="black" />
+<circle cx="-60" cy="-50" r="10" stroke-width="6" stroke="black" fill="black" />
+<text x="-90.0" y="-67" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-57" y="-50" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-100,-50 L-80,-50" stroke="black" stroke-width="5" />
+<text x="90.0" y="-67" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="57" y="-50" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M100,-50 L80,-50" stroke="black" stroke-width="5" />
+<text x="90.0" y="33" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="57" y="50" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M100,50 L80,50" stroke="black" stroke-width="5" />
+<text x="-90.0" y="33" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="-57" y="50" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M-100,50 L-80,50" stroke="black" stroke-width="5" />
+<metadata width="200" height="120" symbolPrefix="L" cmpPartDmgLabel="1:A" nameOfSymbol="L-L_Coupled_Small_1243-1-A"><p-1><x>-100</x><y>50</y><type>P
+                        </type><name>1</name><orientation>R</orientation>
+                        <length>20</length><pinShape></pinShape>
+                        </p-1><p-2><x>100</x><y>50</y><type>P
+                        </type><name>2</name><orientation>L</orientation>
+                        <length>20</length><pinShape></pinShape>
+                        </p-2><p-3><x>100</x><y>-50</y><type>P
+                        </type><name>3</name><orientation>L</orientation>
+                        <length>20</length><pinShape></pinShape>
+                        </p-3><p-4><x>-100</x><y>-50</y><type>P
+                        </type><name>4</name><orientation>R</orientation>
+                        <length>20</length><pinShape></pinShape>
+                        </p-4></metadata></svg>

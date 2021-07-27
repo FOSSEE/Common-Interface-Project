@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="150" height="600" viewBox="-75.0 -300.0 150 600">
+<defs>
+</defs>
+<path d="M74.54166934118831,-149.99929442598787 A335,335,0,0,1,74.54166934118825,149.99929442598804" stroke="black" stroke-width="6" fill-opacity="0" />
+<circle cx="0" cy="175" r="25" stroke-width="6" stroke="black" fill-opacity="0" />
+<circle cx="0" cy="-175" r="25" stroke-width="6" stroke="black" fill-opacity="0" />
+<text x="-17" y="-233.33333333333334" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="-167" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,-300 L0,-200" stroke="black" stroke-width="5" />
+<text x="-17" y="233.33333333333334" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="167" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,300 L0,200" stroke="black" stroke-width="5" />
+<metadata width="150" height="600" symbolPrefix="CB" cmpPartDmgLabel="1:A" nameOfSymbol="CB-CircuitBreaker_1P_US-1-A"><p-1><x>0</x><y>300</y><type>P
+                        </type><name>~</name><orientation>D</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-1><p-2><x>0</x><y>-300</y><type>P
+                        </type><name>~</name><orientation>U</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-2></metadata></svg>

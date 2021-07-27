@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="250" height="500" viewBox="-125.0 -250.0 250 500">
+<defs>
+</defs>
+<path d="M-125.00159746406142,-94.92843361635452 A7,7,0,0,1,-119.73545946878583,-84.87661530823134" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M-120.0,-85.0 A10,10,0,0,0,-110.0,-75.0" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M-100.0,-85.0 A10,10,0,0,1,-110.0,-75.0" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M-100.0,-110.0 A10,10,0,0,0,-110.0,-120.0" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M-110.0,-120.0 A10,10,0,0,0,-120.0,-110.0" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M-120.0,-110.0 A10,10,0,0,0,-110.0,-100.0" stroke="black" stroke-width="6" fill-opacity="0" />
+<path d="M-110.01411599008547,-99.92566098503546 A20,20,0,0,0,-85.91834900678444,-110.45284273225614" stroke="black" stroke-width="6" fill-opacity="0" />
+<circle cx="0" cy="-125" r="11" stroke-width="6" stroke="black" fill="black" />
+<path d="M-40,-100 L40,-100 L40,100 L-40,100 L-40,-100" stroke-width="10" stroke="black" fill-opacity="0" />
+<path d="M-100,-85 L-100,-110" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M0,150 L0,100" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M0,-150 L0,-100" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M100,-150 L25,-150 L0,-125" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-70,-100 L-70,-60 L70,60 L70,100" stroke-width="6" stroke="black" fill-opacity="0" />
+<path d="M-100,145 L-100,55 L-110,85 L-90,85 L-100,55 L-100,65" stroke-width="6" stroke="black" fill="black" />
+<path d="M-70,145 L-70,55 L-80,85 L-60,85 L-70,55 L-70,65" stroke-width="6" stroke="black" fill="black" />
+<text x="-17" y="-183.33333333333334" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="-137" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,-250 L0,-150" stroke="black" stroke-width="5" />
+<text x="83" y="-183.33333333333334" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="100" y="-137" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M100,-250 L100,-150" stroke="black" stroke-width="5" />
+<text x="-17" y="183.33333333333334" font-size="23.333333333333332" fill="black" text-anchor="middle" dy="0.3em"></text>
+<text x="0" y="137" font-size="35" text-anchor="middle" dy="0.3em"></text>
+<path d="M0,250 L0,150" stroke="black" stroke-width="5" />
+<metadata width="250" height="500" symbolPrefix="TH" cmpPartDmgLabel="1:A" nameOfSymbol="TH-Thermistor_PTC_3wire-1-A"><p-1><x>0</x><y>250</y><type>P
+                        </type><name>~</name><orientation>D</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-1><p-2><x>100</x><y>250</y><type>P
+                        </type><name>~</name><orientation>D</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-2><p-3><x>0</x><y>-250</y><type>P
+                        </type><name>~</name><orientation>U</orientation>
+                        <length>100</length><pinShape></pinShape>
+                        </p-3></metadata></svg>
