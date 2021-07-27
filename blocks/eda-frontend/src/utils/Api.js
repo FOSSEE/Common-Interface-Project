@@ -4,6 +4,6 @@ import axios from 'axios'
 export default axios.create({
   baseURL: '/api/',
   responseType: 'json',
-  // xsrfCookieName: 'csrftoken',
-  // withCredentials: true,
+  xsrfCookieName: 'csrftoken',
+  withCredentials: true,
 })
