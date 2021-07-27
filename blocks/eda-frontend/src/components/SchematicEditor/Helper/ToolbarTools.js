@@ -264,7 +264,7 @@ export function GenerateNetList () {
           for (var child in component.children) {
             var pin = component.children[child]
             if (pin.vertex === true) {
-              if (pin.edges !== null || pin.edges.length !== 0) {
+              if (pin.edges !== null && pin.edges.length !== 0) {
                 for (var wire in pin.edges) {
                   if (pin.edges[wire].source !== null && pin.edges[wire].target !== null) {
                     if (pin.edges[wire].source.edge === true) {
@@ -414,18 +414,18 @@ function parseXmlToGraph (xmlDoc, graph) {
       console.log(edgeId)
       var plist = cells[i].children[1].children
       try {
-        var e = graph.insertEdge(parent, edgeId, null,
+        var edge = graph.insertEdge(parent, edgeId, null,
           graph.getModel().getCell(source),
           graph.getModel().getCell(target)
         )
-        e.geometry.points = []
+        edge.geometry.points = []
         for (var a in cells[i].children[1].children) {
           try {
             console.log(plist[a].attributes.x.value)
             console.log(plist[a].attributes.y.value)
-            e.geometry.points.push(new mxPoint(Number(plist[a].attributes.x.value), Number(plist[a].attributes.y.value)))
-            console.log(e.geometry.points)
-          } catch (e) { console.log('error') }
+            edge.geometry.points.push(new mxPoint(Number(plist[a].attributes.x.value), Number(plist[a].attributes.y.value)))
+            console.log(edge.geometry.points)
+          } catch (e) { console.log('error', e) }
           graph.getModel().beginUpdate()
           try {
             graph.view.refresh()
@@ -439,7 +439,7 @@ function parseXmlToGraph (xmlDoc, graph) {
           }
         }
         if (graph.getModel().getCell(target).edge === true) {
-          e.geometry.setTerminalPoint(new mxPoint(Number(cellAttrs.tarx.value), Number(cellAttrs.tary.value)), false)
+          edge.geometry.setTerminalPoint(new mxPoint(Number(cellAttrs.tarx.value), Number(cellAttrs.tary.value)), false)
           graph.getModel().beginUpdate()
           try {
             graph.view.refresh()
@@ -455,7 +455,7 @@ function parseXmlToGraph (xmlDoc, graph) {
       } catch (e) {
         console.log(graph.getModel().getCell(source))
         console.log(graph.getModel().getCell(target))
-        console.log('error')
+        console.log('error', e)
       }
     }
   }
@@ -483,7 +483,7 @@ function XMLWireConnections () {
             var pin = component.children[child]
             if (pin.vertex === true) {
               try {
-                if (pin.edges !== null || pin.edges.length !== 0) {
+                if (pin.edges !== null && pin.edges.length !== 0) {
                   for (var wire in pin.edges) {
                     if (pin.edges[wire].source !== null && pin.edges[wire].target !== null) {
                       if (pin.edges[wire].source.edge === true) {
@@ -509,7 +509,7 @@ function XMLWireConnections () {
                   }
                  
                 }
-              } catch (e) { console.log('error') }
+              } catch (e) { console.log('error', e) }
             }
           }
          
