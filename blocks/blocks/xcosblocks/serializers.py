@@ -556,12 +556,13 @@ class SetBlockParameterSerializer(serializers.Serializer):
 
     def getblockportserializer(self):
         blockports = BlockPort.objects.filter(block=self.data['block_id'])
+
         number_of_blockports = len(blockports)
 
         # TODO: change values depending on block name
 
         return SetBlockPortSerializer(data={
-            'number_of_blockports': number_of_blockports
+            'number_of_blockports': number_of_blockports,
         })
 
 
