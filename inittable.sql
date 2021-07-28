@@ -16,22 +16,24 @@ ALTER TABLE xcosblocks_blockprefix AUTO_INCREMENT = 1;
 ALTER TABLE xcosblocks_category AUTO_INCREMENT = 1;
 ALTER TABLE xcosblocks_parameterdatatype AUTO_INCREMENT = 1;
 
+INSERT IGNORE INTO xcosblocks_blocktype (name) VALUES ('eSim');
+
 SELECT id INTO @esim_blocktype_id FROM xcosblocks_blocktype WHERE name = 'eSim';
 
-LOAD DATA LOCAL INFILE 'Xcos Categories - Xcos Datatypes.csv'
+LOAD DATA LOCAL INFILE 'data/datatypes.csv'
     INTO TABLE xcosblocks_parameterdatatype
     FIELDS TERMINATED BY ','
     LINES TERMINATED BY '\n'
     IGNORE 1 LINES
     (id, name, @tmp1);
 
-LOAD DATA LOCAL INFILE 'categories.csv'
+LOAD DATA LOCAL INFILE 'data/categories.csv'
     INTO TABLE xcosblocks_category
     FIELDS TERMINATED BY '\t'
     LINES TERMINATED BY '\n'
     (id, name, sort_order, @tmp1);
 
-LOAD DATA LOCAL INFILE 'blockprefixes.csv'
+LOAD DATA LOCAL INFILE 'data/blockprefixes.csv'
     INTO TABLE xcosblocks_blockprefix
     FIELDS TERMINATED BY ','
     OPTIONALLY ENCLOSED BY '"'
@@ -81,7 +83,7 @@ LOAD DATA LOCAL INFILE 'blockprefixes.csv'
     @p040_key, @p040, @p040_type, p040_value_initial,
     @p041_key, @p041, @p041_type, p041_value_initial);
 
-LOAD DATA LOCAL INFILE 'blockprefixes.csv'
+LOAD DATA LOCAL INFILE 'data/blockprefixes.csv'
     INTO TABLE xcosblocks_blockprefixparameter
     FIELDS TERMINATED BY ','
     OPTIONALLY ENCLOSED BY '"'
@@ -174,7 +176,7 @@ LOAD DATA LOCAL INFILE 'blockprefixes.csv'
     p040_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p040_type),
     p041_type_id = (SELECT id FROM xcosblocks_parameterdatatype WHERE name = @p041_type);
 
-LOAD DATA LOCAL INFILE 'categories-blocks.csv'
+LOAD DATA LOCAL INFILE 'data/categories-blocks.csv'
     INTO TABLE xcosblocks_block
     FIELDS TERMINATED BY '\t'
     LINES TERMINATED BY '\n'
@@ -185,7 +187,7 @@ LOAD DATA LOCAL INFILE 'categories-blocks.csv'
     blockprefix_id = (SELECT id FROM xcosblocks_blockprefix WHERE name = @blockprefix_name),
     main_category_id = (SELECT id from xcosblocks_category WHERE name = @category_name);
 
-LOAD DATA LOCAL INFILE 'categories-blocks.csv'
+LOAD DATA LOCAL INFILE 'data/categories-blocks.csv'
     INTO TABLE xcosblocks_block_categories
     FIELDS TERMINATED BY '\t'
     LINES TERMINATED BY '\n'
@@ -193,7 +195,7 @@ LOAD DATA LOCAL INFILE 'categories-blocks.csv'
     SET block_id = (SELECT xcosblocks_block.id FROM xcosblocks_block JOIN xcosblocks_category ON main_category_id = xcosblocks_category.id WHERE xcosblocks_block.name = @block_name AND xcosblocks_category.name = @category_name AND blocktype_id = @esim_blocktype_id),
     category_id = (SELECT id from xcosblocks_category WHERE name = @category_name);
 
-LOAD DATA LOCAL INFILE 'blocks-ports.csv'
+LOAD DATA LOCAL INFILE 'data/blocks-ports.csv'
     INTO TABLE xcosblocks_blockport
     FIELDS TERMINATED BY '\t'
     LINES TERMINATED BY '\n'
@@ -206,7 +208,7 @@ CREATE TEMPORARY TABLE tmp_xcosblocks_block (
     block_height int NOT NULL
 );
 
-LOAD DATA LOCAL INFILE 'getsize.csv'
+LOAD DATA LOCAL INFILE 'data/getsize.csv'
     INTO TABLE tmp_xcosblocks_block
     FIELDS TERMINATED BY '\t'
     LINES TERMINATED BY '\n'

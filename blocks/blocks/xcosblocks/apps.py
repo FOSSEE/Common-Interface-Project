@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class eSimBlocksConfig(AppConfig):
+class XcosBlocksConfig(AppConfig):
     name = 'blocks.xcosblocks'
