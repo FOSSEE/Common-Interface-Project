@@ -1,0 +1,227 @@
+Commonly Used Blocks	LOGICAL_OP	40	40
+Commonly Used Blocks	RELATIONALOP	40	40
+Continuous time systems	CLINDUMMY_f	60	40
+Continuous time systems	CLR	60	40
+Continuous time systems	CLSS	80	40
+Continuous time systems	DERIV	40	40
+Commonly Used Blocks	INTEGRAL_f	40	40
+Continuous time systems	INTEGRAL_m	40	40
+Continuous time systems	PDE	60	60
+Continuous time systems	PID	40	40
+Continuous time systems	TCLSS	60	40
+Continuous time systems	TIME_DELAY	70	40
+Continuous time systems	VARIABLE_DELAY	60	40
+Discontinuities	BACKLASH	60	40
+Discontinuities	DEADBAND	40	40
+Discontinuities	HYSTHERESIS	40	40
+Discontinuities	QUANT_f	40	40
+Discontinuities	RATELIMITER	70	40
+Commonly Used Blocks	SATURATION	40	40
+Discrete time systems	AUTOMAT	80	40
+Discrete time systems	DELAY_f	40	40
+Discontinuities	DELAYV_f	60	40
+Discrete time systems	DLR	60	40
+Discrete time systems	DLRADAPT_f	40	40
+Discrete time systems	DLSS	80	40
+Discrete time systems	DOLLAR	40	40
+Commonly Used Blocks	DOLLAR_f	40	40
+Discrete time systems	DOLLAR_m	40	40
+Discrete time systems	REGISTER	60	40
+Discrete time systems	SAMPHOLD_m	40	40
+Lookup tables	INTRP2BLK_f	60	40
+Lookup tables	INTRPLBLK_f	40	40
+Lookup tables	LOOKUP_f	40	40
+Commonly Used Blocks	ANDBLK	40	40
+Event handling	ANDLOG_f	60	60
+Event handling	CEVENTSCOPE	40	40
+Event handling	CLKGotoTagVisibility	40	40
+Event handling	CLKSOMV_f	40	40
+Event handling	EDGE_TRIGGER	60	40
+Sinks	END_c	40	40
+Sinks	ENDBLK	40	40
+Event handling	ESELECT_f	80	40
+Event handling	EVTDLY_c	60	40
+Event handling	EVTGEN_f	60	40
+Event handling	EVTVARDLY	60	40
+Event handling	Extract_Activation	60	40
+Event handling	freq_div	60	40
+Sinks	HALT_f	40	40
+Event handling	IFTHEL_f	60	60
+Event handling	M_freq	60	40
+Event handling	MCLOCK_f	60	40
+Event handling	MFCLCK_f	60	40
+Event handling	VirtualCLK0	40	40
+Mathematical Operations	ABS_VALUE	40	40
+Commonly Used Blocks	BIGSOM_f	40	60
+Mathematical Operations	COSBLK_f	40	40
+Mathematical Operations	EXPBLK_m	40	40
+Mathematical Operations	GAIN_f	40	40
+Mathematical Operations	GAINBLK	40	40
+Mathematical Operations	GAINBLK_f	40	40
+Mathematical Operations	INVBLK	40	40
+Mathematical Operations	LOGBLK_f	40	40
+Mathematical Operations	MAX_f	40	40
+Mathematical Operations	MAXMIN	40	40
+Mathematical Operations	MIN_f	40	40
+Mathematical Operations	POWBLK_f	40	40
+Mathematical Operations	PROD_f	20	20
+Commonly Used Blocks	PRODUCT	40	60
+Mathematical Operations	SIGNUM	40	40
+Mathematical Operations	SINBLK_f	40	40
+Mathematical Operations	SOM_f	40	40
+Mathematical Operations	SUM_f	20	20
+Mathematical Operations	SUMMATION	40	60
+Mathematical Operations	TANBLK_f	40	40
+Mathematical Operations	TrigFun	80	40
+Matrix	CUMSUM	60	40
+Matrix	EXTRACT	60	40
+Matrix	EXTTRI	60	40
+Matrix	MATBKSL	40	40
+Matrix	MATCATH	40	60
+Matrix	MATCATV	40	60
+Matrix	MATDET	40	40
+Matrix	MATDIAG	40	40
+Matrix	MATDIV	40	40
+Matrix	MATEIG	40	40
+Matrix	MATEXPM	40	40
+Matrix	MATINV	40	40
+Matrix	MATLU	40	40
+Matrix	MATMAGPHI	60	40
+Matrix	MATMUL	60	40
+Matrix	MATPINV	40	40
+Matrix	MATRESH	60	40
+Matrix	MATSING	40	40
+Matrix	MATSUM	60	40
+Matrix	MATTRAN	60	40
+Matrix	MATZCONJ	40	40
+Matrix	MATZREIM	60	40
+Matrix	RICC	40	40
+Matrix	ROOTCOEF	60	40
+Matrix	SQRT	40	40
+Matrix	SUBMAT	50	40
+Electrical	Capacitor	40	22
+Electrical	CCS	42	60
+Electrical	ConstantVoltage	30	22
+Electrical	CurrentSensor	40	40
+Electrical	CVS	42	60
+Electrical	Diode	40	20
+Electrical	Ground	20	20
+Electrical	Gyrator	40	40
+Electrical	IdealTransformer	40	40
+Electrical	Inductor	40	18
+Electrical	NMOS	40	40
+Electrical	NPN	40	40
+Electrical	OpAmp	60	100
+Electrical	PMOS	40	40
+Electrical	PNP	40	40
+Electrical	PotentialSensor	40	40
+Electrical	Resistor	40	20
+Electrical	SineVoltage	40	40
+Electrical	Switch	40	40
+Electrical	VariableResistor	40	40
+Electrical	VoltageSensor	40	40
+Electrical	VsourceAC	40	40
+Electrical	VVsourceAC	40	40
+Integer	BITCLEAR	80	40
+Integer	BITSET	80	40
+Commonly Used Blocks	CONVERT	60	40
+Integer	DFLIPFLOP	40	60
+Integer	DLATCH	40	60
+Integer	EXTRACTBITS	80	40
+Integer	INTMUL	40	40
+Integer	JKFLIPFLOP	40	60
+Integer	LOGIC	40	40
+Integer	SHIFT	60	40
+Integer	SRFLIPFLOP	40	60
+Zero crossing detection	GENERAL_f	60	40
+Zero crossing detection	NEGTOPOS_f	40	40
+Zero crossing detection	POSTONEG_f	40	40
+Zero crossing detection	ZCROSS_f	40	40
+Signal Routing	CLKFROM	40	20
+Signal Routing	CLKGOTO	40	20
+Commonly Used Blocks	DEMUX	10	40
+Signal Routing	DEMUX_f	10	40
+Signal Routing	EXTRACTOR	60	40
+Signal Routing	FROM	40	20
+Signal Routing	FROMMO	40	20
+Signal Routing	GOTO	40	20
+Signal Routing	GOTOMO	40	20
+Signal Routing	GotoTagVisibility	40	40
+Signal Routing	GotoTagVisibilityMO	40	40
+Signal Routing	ISELECT_m	60	40
+Signal Routing	M_SWITCH	50	40
+Commonly Used Blocks	MUX	10	40
+Signal Routing	MUX_f	10	40
+Commonly Used Blocks	NRMSOM_f	4	40
+Signal Routing	RELAY_f	40	40
+Signal Routing	SCALAR2VECTOR	60	40
+Signal Routing	SELECT_m	60	40
+Signal Routing	SELF_SWITCH	40	40
+Signal Routing	SWITCH_f	40	40
+Commonly Used Blocks	SWITCH2_m	40	40
+Implicit	CONSTRAINT_c	60	40
+Implicit	CONSTRAINT2_c	60	40
+Implicit	DIFF_f	40	40
+Annotations	TEXT_f	40	40
+Sinks	AFFICH_m	60	40
+Sinks	BARXY	40	40
+Sinks	CANIMXY	40	40
+Sinks	CANIMXY3D	40	40
+Sinks	CFSCOPE	40	40
+Sinks	CLKOUTV_f	20	20
+Sinks	CMAT3D	40	40
+Sinks	CMATVIEW	40	40
+Commonly Used Blocks	CMSCOPE	40	40
+Sinks	CSCOPE	40	40
+Commonly Used Blocks	CSCOPXY	40	40
+Sinks	CSCOPXY3D	40	40
+Commonly Used Blocks	OUT_f	20	20
+Sinks	OUTIMPL_f	20	20
+Sinks	TOWS_c	80	40
+Sinks	TRASH_f	40	40
+Sinks	WRITEAU_f	80	40
+Sinks	WRITEC_f	80	40
+Sources	CLKINV_f	20	20
+Sources	CLOCK_c	40	40
+Sources	CONST	40	40
+Sources	CONST_f	40	40
+Commonly Used Blocks	CONST_m	40	40
+Sources	Counter	60	40
+Sources	CURV_f	40	40
+Sources	FROMWSB	100	40
+Sources	GENSIN_f	60	40
+Sources	GENSQR_f	60	40
+Commonly Used Blocks	IN_f	20	20
+Sources	INIMPL_f	20	20
+Sources	Modulo_Count	60	40
+Sources	PULSE_SC	60	40
+Sources	RAMP	40	40
+Sources	RAND_m	60	40
+Sources	READAU_f	100	40
+Sources	READC_f	80	40
+Sources	RFILE_f	60	40
+Sources	SampleCLK	40	40
+Sources	SAWTOOTH_f	60	40
+Sources	Sigbuilder	60	40
+Sources	STEP_FUNCTION	40	40
+Sources	TIME_f	40	40
+Sources	TKSCALE	60	40
+Thermo-Hydraulics	Bache	40	40
+Thermo-Hydraulics	Flowmeter	40	40
+Thermo-Hydraulics	PerteDP	40	20
+Thermo-Hydraulics	PuitsP	50	40
+Thermo-Hydraulics	SourceP	50	40
+Thermo-Hydraulics	VanneReglante	40	40
+Demonstration Blocks	BOUNCE	60	40
+Demonstration Blocks	BOUNCEXY	40	40
+Demonstration Blocks	BPLATFORM	40	40
+User-Defined Functions	c_block	60	40
+User-Defined Functions	CBLOCK	80	40
+User-Defined Functions	CBLOCK4	80	40
+User-Defined Functions	DEBUG	160	40
+User-Defined Functions	EXPRESSION	100	40
+User-Defined Functions	fortran_block	80	40
+User-Defined Functions	generic_block3	80	40
+User-Defined Functions	MBLOCK	60	40
+User-Defined Functions	scifunc_block_m	80	40
+Port & Subsystem	SUPER_f	40	40

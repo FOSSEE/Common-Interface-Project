@@ -1,0 +1,227 @@
+Commonly Used Blocks	LOGICAL_OP	2	0	1	0	0	0	40	40
+Commonly Used Blocks	RELATIONALOP	2	0	1	0	0	0	40	40
+Continuous time systems	CLINDUMMY_f	0	0	0	0	0	0	60	40
+Continuous time systems	CLR	1	0	1	0	0	0	60	40
+Continuous time systems	CLSS	1	0	1	0	0	0	80	40
+Continuous time systems	DERIV	1	0	1	0	0	0	40	40
+Commonly Used Blocks	INTEGRAL_f	1	0	1	0	0	0	40	40
+Continuous time systems	INTEGRAL_m	1	0	1	0	0	0	40	40
+Continuous time systems	PDE	5	0	2	0	0	0	60	60
+Continuous time systems	PID	1	0	1	0	0	0	40	40
+Continuous time systems	TCLSS	2	0	1	0	0	1	60	40
+Continuous time systems	TIME_DELAY	1	0	1	0	0	0	70	40
+Continuous time systems	VARIABLE_DELAY	2	0	1	0	0	0	60	40
+Discontinuities	BACKLASH	1	0	1	0	0	0	60	40
+Discontinuities	DEADBAND	1	0	1	0	0	0	40	40
+Discontinuities	HYSTHERESIS	1	0	1	0	0	0	40	40
+Discontinuities	QUANT_f	1	0	1	0	0	0	40	40
+Discontinuities	RATELIMITER	1	0	1	0	0	0	70	40
+Commonly Used Blocks	SATURATION	1	0	1	0	0	0	40	40
+Discrete time systems	AUTOMAT	2	0	2	0	1	0	80	40
+Discrete time systems	DELAY_f	1	0	1	0	0	0	40	40
+Discontinuities	DELAYV_f	2	0	1	0	2	1	60	40
+Discrete time systems	DLR	1	0	1	0	0	1	60	40
+Discrete time systems	DLRADAPT_f	2	0	1	0	0	1	40	40
+Discrete time systems	DLSS	1	0	1	0	0	1	80	40
+Discrete time systems	DOLLAR	1	0	1	0	0	1	40	40
+Commonly Used Blocks	DOLLAR_f	1	0	1	0	0	1	40	40
+Discrete time systems	DOLLAR_m	1	0	1	0	0	1	40	40
+Discrete time systems	REGISTER	1	0	1	0	0	1	60	40
+Discrete time systems	SAMPHOLD_m	1	0	1	0	0	1	40	40
+Lookup tables	INTRP2BLK_f	2	0	1	0	0	0	60	40
+Lookup tables	INTRPLBLK_f	1	0	1	0	0	0	40	40
+Lookup tables	LOOKUP_f	1	0	1	0	0	0	40	40
+Commonly Used Blocks	ANDBLK	0	0	0	0	1	2	40	40
+Event handling	ANDLOG_f	0	0	1	0	0	2	60	60
+Event handling	CEVENTSCOPE	0	0	0	0	0	1	40	40
+Event handling	CLKGotoTagVisibility	0	0	0	0	0	0	40	40
+Event handling	CLKSOMV_f	0	0	0	0	1	3	40	40
+Event handling	EDGE_TRIGGER	1	0	0	0	1	0	60	40
+Sinks	END_c	0	0	0	0	1	1	40	40
+Sinks	ENDBLK	0	0	0	0	0	0	40	40
+Event handling	ESELECT_f	1	0	0	0	2	1	80	40
+Event handling	EVTDLY_c	0	0	0	0	1	1	60	40
+Event handling	EVTGEN_f	0	0	0	0	1	0	60	40
+Event handling	EVTVARDLY	1	0	0	0	1	1	60	40
+Event handling	Extract_Activation	1	0	0	0	1	0	60	40
+Event handling	freq_div	0	0	0	0	1	1	60	40
+Sinks	HALT_f	0	0	0	0	0	1	40	40
+Event handling	IFTHEL_f	1	0	0	0	2	1	60	60
+Event handling	M_freq	0	0	0	0	3	1	60	40
+Event handling	MCLOCK_f	0	0	0	0	2	0	60	40
+Event handling	MFCLCK_f	0	0	0	0	2	1	60	40
+Event handling	VirtualCLK0	0	0	0	0	0	1	40	40
+Mathematical Operations	ABS_VALUE	1	0	1	0	0	0	40	40
+Commonly Used Blocks	BIGSOM_f	2	0	1	0	0	0	40	60
+Mathematical Operations	COSBLK_f	1	0	1	0	0	0	40	40
+Mathematical Operations	EXPBLK_m	1	0	1	0	0	0	40	40
+Mathematical Operations	GAIN_f	1	0	1	0	0	0	40	40
+Mathematical Operations	GAINBLK	1	0	1	0	0	0	40	40
+Mathematical Operations	GAINBLK_f	1	0	1	0	0	0	40	40
+Mathematical Operations	INVBLK	1	0	1	0	0	0	40	40
+Mathematical Operations	LOGBLK_f	1	0	1	0	0	0	40	40
+Mathematical Operations	MAX_f	1	0	1	0	0	0	40	40
+Mathematical Operations	MAXMIN	1	0	1	0	0	0	40	40
+Mathematical Operations	MIN_f	1	0	1	0	0	0	40	40
+Mathematical Operations	POWBLK_f	1	0	1	0	0	0	40	40
+Mathematical Operations	PROD_f	2	0	1	0	0	0	20	20
+Commonly Used Blocks	PRODUCT	2	0	1	0	0	0	40	60
+Mathematical Operations	SIGNUM	1	0	1	0	0	0	40	40
+Mathematical Operations	SINBLK_f	1	0	1	0	0	0	40	40
+Mathematical Operations	SOM_f	3	0	1	0	0	0	40	40
+Mathematical Operations	SUM_f	3	0	1	0	0	0	20	20
+Mathematical Operations	SUMMATION	2	0	1	0	0	0	40	60
+Mathematical Operations	TANBLK_f	1	0	1	0	0	0	40	40
+Mathematical Operations	TrigFun	1	0	1	0	0	0	80	40
+Matrix	CUMSUM	1	0	1	0	0	0	60	40
+Matrix	EXTRACT	1	0	1	0	0	0	60	40
+Matrix	EXTTRI	1	0	1	0	0	0	60	40
+Matrix	MATBKSL	2	0	1	0	0	0	40	40
+Matrix	MATCATH	2	0	1	0	0	0	40	60
+Matrix	MATCATV	2	0	1	0	0	0	40	60
+Matrix	MATDET	1	0	1	0	0	0	40	40
+Matrix	MATDIAG	1	0	1	0	0	0	40	40
+Matrix	MATDIV	2	0	1	0	0	0	40	40
+Matrix	MATEIG	1	0	1	0	0	0	40	40
+Matrix	MATEXPM	1	0	1	0	0	0	40	40
+Matrix	MATINV	1	0	1	0	0	0	40	40
+Matrix	MATLU	1	0	2	0	0	0	40	40
+Matrix	MATMAGPHI	1	0	2	0	0	0	60	40
+Matrix	MATMUL	2	0	1	0	0	0	60	40
+Matrix	MATPINV	1	0	1	0	0	0	40	40
+Matrix	MATRESH	1	0	1	0	0	0	60	40
+Matrix	MATSING	1	0	1	0	0	0	40	40
+Matrix	MATSUM	1	0	1	0	0	0	60	40
+Matrix	MATTRAN	1	0	1	0	0	0	60	40
+Matrix	MATZCONJ	1	0	1	0	0	0	40	40
+Matrix	MATZREIM	1	0	2	0	0	0	60	40
+Matrix	RICC	3	0	1	0	0	0	40	40
+Matrix	ROOTCOEF	1	0	1	0	0	0	60	40
+Matrix	SQRT	1	0	1	0	0	0	40	40
+Matrix	SUBMAT	1	0	1	0	0	0	50	40
+Electrical	Capacitor	0	1	0	1	0	0	40	22
+Electrical	CCS	1	1	0	1	0	0	42	60
+Electrical	ConstantVoltage	0	1	0	1	0	0	30	22
+Electrical	CurrentSensor	0	1	1	1	0	0	40	40
+Electrical	CVS	1	1	0	1	0	0	42	60
+Electrical	Diode	0	1	0	1	0	0	40	20
+Electrical	Ground	0	1	0	0	0	0	20	20
+Electrical	Gyrator	0	2	0	2	0	0	40	40
+Electrical	IdealTransformer	0	2	0	2	0	0	40	40
+Electrical	Inductor	0	1	0	1	0	0	40	18
+Electrical	NMOS	0	1	0	3	0	0	40	40
+Electrical	NPN	0	1	0	2	0	0	40	40
+Electrical	OpAmp	0	2	0	1	0	0	60	100
+Electrical	PMOS	0	1	0	3	0	0	40	40
+Electrical	PNP	0	1	0	2	0	0	40	40
+Electrical	PotentialSensor	0	1	1	0	0	0	40	40
+Electrical	Resistor	0	1	0	1	0	0	40	20
+Electrical	SineVoltage	0	1	0	1	0	0	40	40
+Electrical	Switch	1	1	0	1	0	0	40	40
+Electrical	VariableResistor	1	1	0	1	0	0	40	40
+Electrical	VoltageSensor	0	1	1	1	0	0	40	40
+Electrical	VsourceAC	0	1	0	1	0	0	40	40
+Electrical	VVsourceAC	1	1	0	1	0	0	40	40
+Integer	BITCLEAR	1	0	1	0	0	0	80	40
+Integer	BITSET	1	0	1	0	0	0	80	40
+Commonly Used Blocks	CONVERT	1	0	1	0	0	0	60	40
+Integer	DFLIPFLOP	3	0	2	0	0	0	40	60
+Integer	DLATCH	2	0	2	0	0	0	40	60
+Integer	EXTRACTBITS	1	0	1	0	0	0	80	40
+Integer	INTMUL	2	0	1	0	0	0	40	40
+Integer	JKFLIPFLOP	3	0	2	0	0	0	40	60
+Integer	LOGIC	2	0	1	0	0	1	40	40
+Integer	SHIFT	1	0	1	0	0	0	60	40
+Integer	SRFLIPFLOP	2	0	2	0	0	0	40	60
+Zero crossing detection	GENERAL_f	1	0	0	0	1	0	60	40
+Zero crossing detection	NEGTOPOS_f	1	0	0	0	1	0	40	40
+Zero crossing detection	POSTONEG_f	1	0	0	0	1	0	40	40
+Zero crossing detection	ZCROSS_f	1	0	0	0	1	0	40	40
+Signal Routing	CLKFROM	0	0	0	0	1	0	40	20
+Signal Routing	CLKGOTO	0	0	0	0	0	1	40	20
+Commonly Used Blocks	DEMUX	1	0	2	0	0	0	10	40
+Signal Routing	DEMUX_f	1	0	2	0	0	0	10	40
+Signal Routing	EXTRACTOR	1	0	1	0	0	0	60	40
+Signal Routing	FROM	0	0	1	0	0	0	40	20
+Signal Routing	FROMMO	0	0	0	1	0	0	40	20
+Signal Routing	GOTO	1	0	0	0	0	0	40	20
+Signal Routing	GOTOMO	0	1	0	0	0	0	40	20
+Signal Routing	GotoTagVisibility	0	0	0	0	0	0	40	40
+Signal Routing	GotoTagVisibilityMO	0	0	0	0	0	0	40	40
+Signal Routing	ISELECT_m	1	0	2	0	0	2	60	40
+Signal Routing	M_SWITCH	3	0	1	0	0	0	50	40
+Commonly Used Blocks	MUX	2	0	1	0	0	0	10	40
+Signal Routing	MUX_f	2	0	1	0	0	0	10	40
+Commonly Used Blocks	NRMSOM_f	2	0	1	0	0	0	4	40
+Signal Routing	RELAY_f	2	0	1	0	0	2	40	40
+Signal Routing	SCALAR2VECTOR	1	0	1	0	0	0	60	40
+Signal Routing	SELECT_m	2	0	1	0	0	2	60	40
+Signal Routing	SELF_SWITCH	1	0	1	0	0	0	40	40
+Signal Routing	SWITCH_f	2	0	1	0	0	0	40	40
+Commonly Used Blocks	SWITCH2_m	3	0	1	0	0	0	40	40
+Implicit	CONSTRAINT_c	1	0	1	0	0	0	60	40
+Implicit	CONSTRAINT2_c	1	0	2	0	0	0	60	40
+Implicit	DIFF_f	1	0	1	0	0	0	40	40
+Annotations	TEXT_f	0	0	0	0	0	0	40	40
+Sinks	AFFICH_m	1	0	0	0	0	1	60	40
+Sinks	BARXY	2	0	0	0	0	1	40	40
+Sinks	CANIMXY	2	0	0	0	0	1	40	40
+Sinks	CANIMXY3D	3	0	0	0	0	1	40	40
+Sinks	CFSCOPE	0	0	0	0	0	1	40	40
+Sinks	CLKOUTV_f	0	0	0	0	0	1	20	20
+Sinks	CMAT3D	1	0	0	0	0	1	40	40
+Sinks	CMATVIEW	1	0	0	0	0	1	40	40
+Commonly Used Blocks	CMSCOPE	2	0	0	0	0	1	40	40
+Sinks	CSCOPE	1	0	0	0	0	1	40	40
+Commonly Used Blocks	CSCOPXY	2	0	0	0	0	1	40	40
+Sinks	CSCOPXY3D	3	0	0	0	0	1	40	40
+Commonly Used Blocks	OUT_f	1	0	0	0	0	0	20	20
+Sinks	OUTIMPL_f	0	1	0	0	0	0	20	20
+Sinks	TOWS_c	1	0	0	0	0	1	80	40
+Sinks	TRASH_f	1	0	0	0	0	1	40	40
+Sinks	WRITEAU_f	1	0	0	0	0	1	80	40
+Sinks	WRITEC_f	1	0	0	0	0	1	80	40
+Sources	CLKINV_f	0	0	0	0	1	0	20	20
+Sources	CLOCK_c	0	0	0	0	1	0	40	40
+Sources	CONST	0	0	1	0	0	0	40	40
+Sources	CONST_f	0	0	1	0	0	0	40	40
+Commonly Used Blocks	CONST_m	0	0	1	0	0	0	40	40
+Sources	Counter	0	0	1	0	0	1	60	40
+Sources	CURV_f	0	0	1	0	0	0	40	40
+Sources	FROMWSB	0	0	1	0	0	0	100	40
+Sources	GENSIN_f	0	0	1	0	0	0	60	40
+Sources	GENSQR_f	0	0	1	0	0	1	60	40
+Commonly Used Blocks	IN_f	0	0	1	0	0	0	20	20
+Sources	INIMPL_f	0	0	0	1	0	0	20	20
+Sources	Modulo_Count	0	0	1	0	0	1	60	40
+Sources	PULSE_SC	0	0	1	0	0	0	60	40
+Sources	RAMP	0	0	1	0	0	0	40	40
+Sources	RAND_m	0	0	1	0	0	1	60	40
+Sources	READAU_f	0	0	1	0	0	1	100	40
+Sources	READC_f	0	0	1	0	0	1	80	40
+Sources	RFILE_f	0	0	1	0	0	1	60	40
+Sources	SampleCLK	0	0	0	0	1	0	40	40
+Sources	SAWTOOTH_f	0	0	1	0	0	1	60	40
+Sources	Sigbuilder	0	0	1	0	1	0	60	40
+Sources	STEP_FUNCTION	0	0	1	0	0	0	40	40
+Sources	TIME_f	0	0	1	0	0	0	40	40
+Sources	TKSCALE	0	0	1	0	0	1	60	40
+Thermo-Hydraulics	Bache	0	2	1	2	0	0	40	40
+Thermo-Hydraulics	Flowmeter	0	1	1	1	0	0	40	40
+Thermo-Hydraulics	PerteDP	0	1	0	1	0	0	40	20
+Thermo-Hydraulics	PuitsP	0	1	0	0	0	0	50	40
+Thermo-Hydraulics	SourceP	0	0	0	1	0	0	50	40
+Thermo-Hydraulics	VanneReglante	1	1	0	1	0	0	40	40
+Demonstration Blocks	BOUNCE	0	0	2	0	0	0	60	40
+Demonstration Blocks	BOUNCEXY	2	0	0	0	0	1	40	40
+Demonstration Blocks	BPLATFORM	2	0	0	0	0	1	40	40
+User-Defined Functions	c_block	1	0	1	0	0	0	60	40
+User-Defined Functions	CBLOCK	1	0	1	0	0	0	80	40
+User-Defined Functions	CBLOCK4	1	0	1	0	0	0	80	40
+User-Defined Functions	DEBUG	0	0	0	0	0	0	160	40
+User-Defined Functions	EXPRESSION	2	0	1	0	0	0	100	40
+User-Defined Functions	fortran_block	1	0	1	0	0	0	80	40
+User-Defined Functions	generic_block3	1	0	1	0	0	0	80	40
+User-Defined Functions	MBLOCK	0	1	1	1	0	0	60	40
+User-Defined Functions	scifunc_block_m	1	0	1	0	0	0	80	40
+Port & Subsystem	SUPER_f	1	0	1	0	0	0	40	40

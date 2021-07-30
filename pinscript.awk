@@ -1,112 +1,85 @@
 #!/usr/bin/awk -f
 
 BEGIN {
+    FS = "\t";
+    BLOCKPORTSCSVFORMAT = "%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n";
     STDERR = "/dev/stderr";
-    PRINTCATEGORIESCSV = 1;
-    CATEGORIESCSV = "categories.csv";
-    categoryid = 0;
-    PRINTBLOCKPREFIXESCSV = 1;
-    BLOCKPREFIXESCSV = "blockprefixes.csv";
-    PRINTCATEGORYBLOCKSCSV = 1;
-    CATEGORYBLOCKSCSV = "categories-blocks.csv";
-    blockid = 0;
-    PRINTBLOCKPORTSCSV = 1;
-    BLOCKPORTSCSV = "blocks-ports.csv";
+    BLOCKPORTSCSV = "data/blocks-ports.csv";
+
     blockportid = 0;
+    port_part = 1;
+    port_dmg = 1;
 }
 
-BEGINFILE {
-    category = gensub("(.*/)?([^/]*)\\.lib$", "\\2", "g", FILENAME);
-    categoryid++;
-    blockcount = 0;
-}
-
-/^DEF / {
-    delete blockports;
+{
+    category = $1;
     block = $2;
-    idx = category SUBSEP block;
-    duplicateblock = idx in blocks;
-    last_port_order = 0;
-    if (!duplicateblock) {
-        blockid++;
-        blockcount++;
-        max_port_order = -1;
-        block_prefix = gensub("^#", "", "g", $3);
-        blocks[idx] = $0;
-        BLOCK_PREFIXES[block_prefix]++;
-        if (PRINTCATEGORYBLOCKSCSV) {
-            printf "%s\t%s\t%s\t%s\n", blockid, category, block, block_prefix > CATEGORYBLOCKSCSV;
-        }
-    } else {
-        if (blocks[idx] == $0) {
-            printf "duplicate block: %s\n", block > STDERR;
-        } else {
-            printf "not a duplicate block: %s: %s and %s\n", block, blocks[idx], $0 > STDERR;
-        }
-    }
-}
+    explicit_input_ports = $3;
+    implicit_input_ports = $4;
+    explicit_output_ports = $5;
+    implicit_output_ports = $6;
+    command_ports = $7;
+    control_ports = $8;
+    block_width = $9;
+    block_height = $10;
 
-/^X / {
-    if (duplicateblock)
-        next;
-    port_name = $2;
-    port_number = $3;
-    if (port_number ~ /^[0-9]+$/) {
-        port_order = port_number;
-    } else {
-        port_order = last_port_order + 1;
-    }
-    last_port_order = port_order;
-    port_x = $4;
-    port_y = $5;
-    port_orientation = $7;
-    port_part = $10;
-    port_dmg = $11;
-    port_type = $12;
-    idx = category SUBSEP block SUBSEP port_order;
-    if (!(idx in ports)) {
-        ports[idx] = $0;
-        blockports[port_order] = sprintf("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n", category, block, port_order, port_name, port_number, port_x, port_y, port_orientation, port_part, port_dmg, port_type);
-        if (max_port_order < port_order) {
-            max_port_order = port_order;
-        }
-    } else {
-        if (port_part == "2" || port_part == "3" || port_part == "4" || port_dmg == "2") {
-            ;
-        } else if (ports[idx] == $0) {
-            printf "duplicate port: %s %s %s %s\n", block, port_number, port_part, port_dmg > STDERR;
-        } else {
-            printf "not a duplicate port: %s %s %s %s: %s and %s\n", block, port_number, port_part, port_dmg, ports[idx], $0 > STDERR;
-        }
-    }
-}
+    port_order = 0;
 
-/^ENDDEF/ {
-    if (PRINTBLOCKPORTSCSV) {
-        for (i = 0; i <= max_port_order; i++) {
-            if (i in blockports) {
-                blockportid++;
-                printf "%s\t%s", blockportid, blockports[i] > BLOCKPORTSCSV;
-            }
-        }
-    }
-    block = "";
-}
+    input_ports = explicit_input_ports + implicit_input_ports;
 
-ENDFILE {
-    if (PRINTCATEGORIESCSV) {
-        printf "%s\t%s\t%s\t%s\n", categoryid, category, categoryid, blockcount > CATEGORIESCSV;
+    for (i = 0; i < explicit_input_ports; i++) {
+        ++port_order;
+        port_x = 0;
+        port_y = int(block_height * (i + 0.5) / input_ports + 0.5);
+        port_orientation = "ExplicitInputPort";
+        port_type = "ExplicitInputPort";
+        printf BLOCKPORTSCSVFORMAT, ++blockportid, category, block, port_order, port_order, port_order, port_x, port_y, port_orientation, port_part, port_dmg, port_type > BLOCKPORTSCSV;
     }
 
-    category = "";
-}
+    for (i = 0; i < implicit_input_ports; i++) {
+        ++port_order;
+        port_x = 0;
+        port_y = int(block_height * (explicit_input_ports + i + 0.5) / input_ports + 0.5);
+        port_orientation = "ImplicitInputPort";
+        port_type = "ImplicitInputPort";
+        printf BLOCKPORTSCSVFORMAT, ++blockportid, category, block, port_order, port_order, port_order, port_x, port_y, port_orientation, port_part, port_dmg, port_type > BLOCKPORTSCSV;
+    }
 
-END {
-    if (PRINTBLOCKPREFIXESCSV) {
-        asorti(BLOCK_PREFIXES, block_prefixes_2);
-        for (i in block_prefixes_2) {
-            block_prefix = block_prefixes_2[i];
-            printf "%s\t%s\t%s\n", i, block_prefix, BLOCK_PREFIXES[block_prefix] > BLOCKPREFIXESCSV;
-        }
+    output_ports = explicit_output_ports + implicit_output_ports;
+
+    for (i = 0; i < explicit_output_ports; i++) {
+        ++port_order;
+        port_x = block_width;
+        port_y = int(block_height * (i + 0.5) / output_ports + 0.5);
+        port_orientation = "ExplicitOutputPort";
+        port_type = "ExplicitOutputPort";
+        printf BLOCKPORTSCSVFORMAT, ++blockportid, category, block, port_order, port_order, port_order, port_x, port_y, port_orientation, port_part, port_dmg, port_type > BLOCKPORTSCSV;
+    }
+
+    for (i = 0; i < implicit_output_ports; i++) {
+        ++port_order;
+        port_x = block_width;
+        port_y = int(block_height * (explicit_output_ports + i + 0.5) / output_ports + 0.5);
+        port_orientation = "ImplicitOutputPort";
+        port_type = "ImplicitOutputPort";
+        printf BLOCKPORTSCSVFORMAT, ++blockportid, category, block, port_order, port_order, port_order, port_x, port_y, port_orientation, port_part, port_dmg, port_type > BLOCKPORTSCSV;
+    }
+
+    for (i = 0; i < command_ports; i++) {
+        ++port_order;
+        port_x = int(block_width * (i + 0.5) / command_ports + 0.5);
+        port_y = 0;
+        port_orientation = "CommandPort";
+        port_type = "CommandPort";
+        printf BLOCKPORTSCSVFORMAT, ++blockportid, category, block, port_order, port_order, port_order, port_x, port_y, port_orientation, port_part, port_dmg, port_type > BLOCKPORTSCSV;
+    }
+
+    for (i = 0; i < control_ports; i++) {
+        ++port_order;
+        port_x = int(block_width * (i + 0.5) / control_ports + 0.5);
+        port_y = block_height;
+        port_orientation = "ControlPort";
+        port_type = "ControlPort";
+        printf BLOCKPORTSCSVFORMAT, ++blockportid, category, block, port_order, port_order, port_order, port_x, port_y, port_orientation, port_part, port_dmg, port_type > BLOCKPORTSCSV;
     }
 }
