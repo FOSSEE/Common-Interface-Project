@@ -23,6 +23,9 @@ class CategoryTestCase(TestCase):
                 print(blockport)
         print()
 
+        blockport = BlockPort.objects.get(id=88)
+        print(blockport)
+        self.assertEqual(str(blockport), 'INTRPLBLK_f 1')
         print()
 
         categories = Category.objects.all().order_by('sort_order')

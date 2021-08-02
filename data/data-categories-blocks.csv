@@ -1,0 +1,267 @@
+1	Commonly Used Blocks	ANDBLK	XCOS
+2	Commonly Used Blocks	BIGSOM_f	XCOS
+3	Commonly Used Blocks	CMSCOPE	XCOS
+4	Commonly Used Blocks	CONST_m	XCOS
+5	Commonly Used Blocks	CONVERT	XCOS
+6	Commonly Used Blocks	CSCOPXY	XCOS
+7	Commonly Used Blocks	DEMUX	XCOS
+8	Commonly Used Blocks	DOLLAR_f	XCOS
+9	Commonly Used Blocks	IN_f	XCOS
+10	Commonly Used Blocks	INTEGRAL_f	XCOS
+11	Commonly Used Blocks	LOGICAL_OP	XCOS
+12	Commonly Used Blocks	MUX	XCOS
+13	Commonly Used Blocks	NRMSOM_f	XCOS
+14	Commonly Used Blocks	OUT_f	XCOS
+15	Commonly Used Blocks	PRODUCT	XCOS
+16	Commonly Used Blocks	RELATIONALOP	XCOS
+17	Commonly Used Blocks	SATURATION	XCOS
+18	Commonly Used Blocks	SWITCH2_m	XCOS
+19	Commonly Used Blocks	TEXT_f	XCOS
+20	Continuous time systems	CLINDUMMY_f	XCOS
+21	Continuous time systems	CLR	XCOS
+22	Continuous time systems	CLSS	XCOS
+23	Continuous time systems	DERIV	XCOS
+24	Continuous time systems	INTEGRAL_f	XCOS
+25	Continuous time systems	INTEGRAL_m	XCOS
+26	Continuous time systems	PDE	XCOS
+27	Continuous time systems	PID	XCOS
+28	Continuous time systems	TCLSS	XCOS
+29	Continuous time systems	TIME_DELAY	XCOS
+30	Continuous time systems	VARIABLE_DELAY	XCOS
+31	Discontinuities	BACKLASH	XCOS
+32	Discontinuities	DEADBAND	XCOS
+33	Discontinuities	DELAYV_f	XCOS
+34	Discontinuities	HYSTHERESIS	XCOS
+35	Discontinuities	QUANT_f	XCOS
+36	Discontinuities	RATELIMITER	XCOS
+37	Discontinuities	SATURATION	XCOS
+38	Discrete time systems	AUTOMAT	XCOS
+39	Discrete time systems	DELAY_f	XCOS
+40	Discrete time systems	DELAYV_f	XCOS
+41	Discrete time systems	DLR	XCOS
+42	Discrete time systems	DLRADAPT_f	XCOS
+43	Discrete time systems	DLSS	XCOS
+44	Discrete time systems	DOLLAR	XCOS
+45	Discrete time systems	DOLLAR_f	XCOS
+46	Discrete time systems	DOLLAR_m	XCOS
+47	Discrete time systems	REGISTER	XCOS
+48	Discrete time systems	SAMPHOLD_m	XCOS
+49	Discrete time systems	TCLSS	XCOS
+50	Lookup tables	INTRP2BLK_f	XCOS
+51	Lookup tables	INTRPLBLK_f	XCOS
+52	Lookup tables	LOOKUP_f	XCOS
+53	Event handling	ANDBLK	XCOS
+54	Event handling	ANDLOG_f	XCOS
+55	Event handling	CEVENTSCOPE	XCOS
+56	Event handling	CLKFROM	XCOS
+57	Event handling	CLKGOTO	XCOS
+58	Event handling	CLKGotoTagVisibility	XCOS
+59	Event handling	CLKOUTV_f	XCOS
+60	Event handling	CLKSOMV_f	XCOS
+61	Event handling	CLOCK_c	XCOS
+62	Event handling	EDGE_TRIGGER	XCOS
+63	Event handling	END_c	XCOS
+64	Event handling	ENDBLK	XCOS
+65	Event handling	ESELECT_f	XCOS
+66	Event handling	EVTDLY_c	XCOS
+67	Event handling	EVTGEN_f	XCOS
+68	Event handling	EVTVARDLY	XCOS
+69	Event handling	Extract_Activation	XCOS
+70	Event handling	freq_div	XCOS
+71	Event handling	HALT_f	XCOS
+72	Event handling	IFTHEL_f	XCOS
+73	Event handling	M_freq	XCOS
+74	Event handling	MCLOCK_f	XCOS
+75	Event handling	MFCLCK_f	XCOS
+76	Event handling	SampleCLK	XCOS
+77	Event handling	VirtualCLK0	XCOS
+78	Mathematical Operations	ABS_VALUE	XCOS
+79	Mathematical Operations	BIGSOM_f	XCOS
+80	Mathematical Operations	COSBLK_f	XCOS
+81	Mathematical Operations	EXPBLK_m	XCOS
+82	Mathematical Operations	GAIN_f	XCOS
+83	Mathematical Operations	GAINBLK	XCOS
+84	Mathematical Operations	GAINBLK_f	XCOS
+85	Mathematical Operations	INVBLK	XCOS
+86	Mathematical Operations	LOGBLK_f	XCOS
+87	Mathematical Operations	MATMAGPHI	XCOS
+88	Mathematical Operations	MATZREIM	XCOS
+89	Mathematical Operations	MAX_f	XCOS
+90	Mathematical Operations	MAXMIN	XCOS
+91	Mathematical Operations	MIN_f	XCOS
+92	Mathematical Operations	POWBLK_f	XCOS
+93	Mathematical Operations	PROD_f	XCOS
+94	Mathematical Operations	PRODUCT	XCOS
+95	Mathematical Operations	SIGNUM	XCOS
+96	Mathematical Operations	SINBLK_f	XCOS
+97	Mathematical Operations	SOM_f	XCOS
+98	Mathematical Operations	SQRT	XCOS
+99	Mathematical Operations	SUM_f	XCOS
+100	Mathematical Operations	SUMMATION	XCOS
+101	Mathematical Operations	TANBLK_f	XCOS
+102	Mathematical Operations	TrigFun	XCOS
+103	Matrix	CUMSUM	XCOS
+104	Matrix	EXTRACT	XCOS
+105	Matrix	EXTTRI	XCOS
+106	Matrix	MATBKSL	XCOS
+107	Matrix	MATCATH	XCOS
+108	Matrix	MATCATV	XCOS
+109	Matrix	MATDET	XCOS
+110	Matrix	MATDIAG	XCOS
+111	Matrix	MATDIV	XCOS
+112	Matrix	MATEIG	XCOS
+113	Matrix	MATEXPM	XCOS
+114	Matrix	MATINV	XCOS
+115	Matrix	MATLU	XCOS
+116	Matrix	MATMAGPHI	XCOS
+117	Matrix	MATMUL	XCOS
+118	Matrix	MATPINV	XCOS
+119	Matrix	MATRESH	XCOS
+120	Matrix	MATSING	XCOS
+121	Matrix	MATSUM	XCOS
+122	Matrix	MATTRAN	XCOS
+123	Matrix	MATZCONJ	XCOS
+124	Matrix	MATZREIM	XCOS
+125	Matrix	RICC	XCOS
+126	Matrix	ROOTCOEF	XCOS
+127	Matrix	SQRT	XCOS
+128	Matrix	SUBMAT	XCOS
+129	Electrical	Capacitor	XCOS
+130	Electrical	CCS	XCOS
+131	Electrical	ConstantVoltage	XCOS
+132	Electrical	CurrentSensor	XCOS
+133	Electrical	CVS	XCOS
+134	Electrical	Diode	XCOS
+135	Electrical	Ground	XCOS
+136	Electrical	Gyrator	XCOS
+137	Electrical	IdealTransformer	XCOS
+138	Electrical	Inductor	XCOS
+139	Electrical	NMOS	XCOS
+140	Electrical	NPN	XCOS
+141	Electrical	OpAmp	XCOS
+142	Electrical	PMOS	XCOS
+143	Electrical	PNP	XCOS
+144	Electrical	PotentialSensor	XCOS
+145	Electrical	Resistor	XCOS
+146	Electrical	SineVoltage	XCOS
+147	Electrical	Switch	XCOS
+148	Electrical	VariableResistor	XCOS
+149	Electrical	VoltageSensor	XCOS
+150	Electrical	VsourceAC	XCOS
+151	Electrical	VVsourceAC	XCOS
+152	Integer	BITCLEAR	XCOS
+153	Integer	BITSET	XCOS
+154	Integer	CONVERT	XCOS
+155	Integer	DFLIPFLOP	XCOS
+156	Integer	DLATCH	XCOS
+157	Integer	EXTRACTBITS	XCOS
+158	Integer	INTMUL	XCOS
+159	Integer	JKFLIPFLOP	XCOS
+160	Integer	LOGIC	XCOS
+161	Integer	SHIFT	XCOS
+162	Integer	SRFLIPFLOP	XCOS
+163	Port & Subsystem	CLKINV_f	XCOS
+164	Port & Subsystem	CLKOUTV_f	XCOS
+165	Port & Subsystem	IN_f	XCOS
+166	Port & Subsystem	INIMPL_f	XCOS
+167	Port & Subsystem	OUT_f	XCOS
+168	Port & Subsystem	OUTIMPL_f	XCOS
+169	Port & Subsystem	SUPER_f	XCOS
+170	Zero crossing detection	GENERAL_f	XCOS
+171	Zero crossing detection	NEGTOPOS_f	XCOS
+172	Zero crossing detection	POSTONEG_f	XCOS
+173	Zero crossing detection	ZCROSS_f	XCOS
+174	Signal Routing	CLKFROM	XCOS
+175	Signal Routing	CLKGOTO	XCOS
+176	Signal Routing	DEMUX	XCOS
+177	Signal Routing	DEMUX_f	XCOS
+178	Signal Routing	EXTRACTOR	XCOS
+179	Signal Routing	FROM	XCOS
+180	Signal Routing	FROMMO	XCOS
+181	Signal Routing	GOTO	XCOS
+182	Signal Routing	GOTOMO	XCOS
+183	Signal Routing	GotoTagVisibility	XCOS
+184	Signal Routing	GotoTagVisibilityMO	XCOS
+185	Signal Routing	ISELECT_m	XCOS
+186	Signal Routing	M_SWITCH	XCOS
+187	Signal Routing	MUX	XCOS
+188	Signal Routing	MUX_f	XCOS
+189	Signal Routing	NRMSOM_f	XCOS
+190	Signal Routing	RELAY_f	XCOS
+191	Signal Routing	SCALAR2VECTOR	XCOS
+192	Signal Routing	SELECT_m	XCOS
+193	Signal Routing	SELF_SWITCH	XCOS
+194	Signal Routing	SWITCH_f	XCOS
+195	Signal Routing	SWITCH2_m	XCOS
+196	Signal Processing	QUANT_f	XCOS
+197	Signal Processing	SAMPHOLD_m	XCOS
+198	Implicit	CONSTRAINT_c	XCOS
+199	Implicit	CONSTRAINT2_c	XCOS
+200	Implicit	DIFF_f	XCOS
+201	Annotations	TEXT_f	XCOS
+202	Sinks	AFFICH_m	XCOS
+203	Sinks	BARXY	XCOS
+204	Sinks	CANIMXY	XCOS
+205	Sinks	CANIMXY3D	XCOS
+206	Sinks	CFSCOPE	XCOS
+207	Sinks	CLKOUTV_f	XCOS
+208	Sinks	CMAT3D	XCOS
+209	Sinks	CMATVIEW	XCOS
+210	Sinks	CMSCOPE	XCOS
+211	Sinks	CSCOPE	XCOS
+212	Sinks	CSCOPXY	XCOS
+213	Sinks	CSCOPXY3D	XCOS
+214	Sinks	END_c	XCOS
+215	Sinks	ENDBLK	XCOS
+216	Sinks	HALT_f	XCOS
+217	Sinks	OUT_f	XCOS
+218	Sinks	OUTIMPL_f	XCOS
+219	Sinks	TOWS_c	XCOS
+220	Sinks	TRASH_f	XCOS
+221	Sinks	WRITEAU_f	XCOS
+222	Sinks	WRITEC_f	XCOS
+223	Sources	CLKINV_f	XCOS
+224	Sources	CLOCK_c	XCOS
+225	Sources	CONST	XCOS
+226	Sources	CONST_f	XCOS
+227	Sources	CONST_m	XCOS
+228	Sources	Counter	XCOS
+229	Sources	CURV_f	XCOS
+230	Sources	FROMWSB	XCOS
+231	Sources	GENSIN_f	XCOS
+232	Sources	GENSQR_f	XCOS
+233	Sources	IN_f	XCOS
+234	Sources	INIMPL_f	XCOS
+235	Sources	Modulo_Count	XCOS
+236	Sources	PULSE_SC	XCOS
+237	Sources	RAMP	XCOS
+238	Sources	RAND_m	XCOS
+239	Sources	READAU_f	XCOS
+240	Sources	READC_f	XCOS
+241	Sources	RFILE_f	XCOS
+242	Sources	SampleCLK	XCOS
+243	Sources	SAWTOOTH_f	XCOS
+244	Sources	Sigbuilder	XCOS
+245	Sources	STEP_FUNCTION	XCOS
+246	Sources	TIME_f	XCOS
+247	Sources	TKSCALE	XCOS
+248	Thermo-Hydraulics	Bache	XCOS
+249	Thermo-Hydraulics	Flowmeter	XCOS
+250	Thermo-Hydraulics	PerteDP	XCOS
+251	Thermo-Hydraulics	PuitsP	XCOS
+252	Thermo-Hydraulics	SourceP	XCOS
+253	Thermo-Hydraulics	VanneReglante	XCOS
+254	Demonstration Blocks	BOUNCE	XCOS
+255	Demonstration Blocks	BOUNCEXY	XCOS
+256	Demonstration Blocks	BPLATFORM	XCOS
+257	User-Defined Functions	c_block	XCOS
+258	User-Defined Functions	CBLOCK	XCOS
+259	User-Defined Functions	CBLOCK4	XCOS
+260	User-Defined Functions	DEBUG	XCOS
+261	User-Defined Functions	EXPRESSION	XCOS
+262	User-Defined Functions	fortran_block	XCOS
+263	User-Defined Functions	generic_block3	XCOS
+264	User-Defined Functions	MBLOCK	XCOS
+265	User-Defined Functions	PDE	XCOS
+266	User-Defined Functions	scifunc_block_m	XCOS
+267	User-Defined Functions	SUPER_f	XCOS
