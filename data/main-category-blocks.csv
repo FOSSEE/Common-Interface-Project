@@ -1,0 +1,227 @@
+54	Mathematical Operations	ABS_VALUE	XCOS		use zero crossing (0/1)?	boolean																																																																													
+166	Sinks	AFFICH_m	XCOS		input size	vector of doubles			font number	double			font size	double			color	double			total number of digits	double			number of rational part digits	double			block inherits (0/1)?	boolean																																																					
+34	Event handling	ANDBLK	XCOS																																																																																
+35	Event handling	ANDLOG_f	XCOS																																																																																
+20	Discrete time systems	AUTOMAT	XCOS		Number(finite state) Mode	integer			Initial Mode	integer			Number of continuous timestates	integer			Continuous time states initial value	integer			Xproperties of continuous time states in each mode	vector of integers			Jump from Mode 1:[..;M_final(Guard=In(1).i);..]	integer			Jump from Mode 2:[..;M_final(Guard=In(1).i);..]	integer																																																					
+209	Thermo-Hydraulics	Bache	XCOS		Pressure in the sky of the cover: Patm (pa)	double			Sheet section: A (m2)	double			Altitude of the inlet 1 nozzle: ze1 (m)	double			Altitude of the inlet 2 nozzle: ze2 (m)	double			Altitude of the outlet 1 nozzle: zs1 (m)	double			Altitude of the outlet 2 nozzle: zs2 (m)	double			Initial altitude of the fluid: z0 (m)	double			Initial fluid temperature: T0 (K)	double			If>0, imposed fluid density: p_rho (kg/m3)	double																																													
+14	Discontinuities	BACKLASH	XCOS		initial output	double			gap	double			use zero crossing(0:no, 1:yes)	boolean																																																																					
+167	Sinks	BARXY	XCOS		Xmin	double			Xmax	double			Ymin	double			Ymax	double			Segs Thickness	double																																																													
+55	Mathematical Operations	BIGSOM_f	XCOS		Inputs port sign/gain	vector of doubles																																																																													
+125	Integer	BITCLEAR	XCOS		Data type (3:int32, 4:int16, 5:int8,..)	integer			Index of Bit (0 is least significant)	integer																																																																									
+126	Integer	BITSET	XCOS		Data type (3:int32, 4:int16, 5:int8,..)	integer			Index of Bit( 0is least significant)	integer																																																																									
+215	Demonstration Blocks	BOUNCE	XCOS		Mass	vector of doubles			Radius	vector of doubles			[xmin,xmax,ymin,ymax]	vector of doubles			xpos	vector of doubles			xdpos	vector of doubles			ypos	vector of doubles			ydpos	vector of doubles			g(gravity)	double			C(aerodynamic coeff)	double																																													
+216	Demonstration Blocks	BOUNCEXY	XCOS		colors	vector of doubles			radii	vector of doubles			window number( -1 for automatic)	double			animation mode(0,1)	double			Xmin	double			Xmax	double			Ymin	double			Ymax	double																																																	
+217	Demonstration Blocks	BPLATFORM	XCOS		pendulum length	double			cart size (square side)	double			slope	double			Xmin	double			Xmax	double			Ymin	double			Ymax	double																																																					
+218	User-Defined Functions	c_block	XCOS		input ports sizes	double			output port sizes	double			System parameters vector	vector of doubles			function name	string																																																																	
+168	Sinks	CANIMXY	XCOS		Number of curves	double			color(>0) or mark(<0)	double			line or mark size	double			Output window number	double			Output window size	vector of doubles			Xmin	double			Xmax	double			Ymin	double			Ymax	double			Buffer size	double			Output window position	vector of doubles																																					
+169	Sinks	CANIMXY3D	XCOS		Number of curves	double			color(>0) or mark(<0)	double			line or mark size	double			Output window number	double			Output window position	vector of doubles			Output window sizes	vector of doubles			Xmin and Xmax	double			Ymin and Ymax	double			Zmin and Zmax	double			Alpha and Theta	double			Buffer size	double																																					
+102	Electrical	Capacitor	XCOS		C(F)	double			Initial Voltage	integer																																																																									
+219	User-Defined Functions	CBLOCK	XCOS		simulation function	string			is block implicit(y,n)	yesno			input ports sizes	double			output ports sizes	double			input event ports sizes	vector of integers			output events ports size	vector of integers			initial continuous state	vector of integers			number of zero crossing surfaces	double			initial discrete state	vector of integers			Real parameters vector	vector of integers			Integer parameters vector	vector of integers			Initial firing vector(0< for no firing)	vector of integers			direct feedthrough( y or n)	yesno			time dependence (y or n)	yesno																									
+220	User-Defined Functions	CBLOCK4	XCOS		simulation function	string			is block implicit(y,n)	yesno			input ports sizes	vector of doubles			input ports type	integer			Output ports size	vector of doubles			Output ports type	integer			Input event ports sizes	vector of integers			Output events ports sizes	vector of integers			Initial continuous state	vector of doubles			Initial discrete state	vector of doubles			Initial object state	double			Real parameters vector	vector of doubles			Integer parameters vector	vector of doubles			Object paramters list	double			Number of modes	double			Number of zero crossing	double			Initial firing vector(0< for no firing)	vector of integers			direct feedthrough( y or n)	yesno			time dependence (y or n)	yesno					
+103	Electrical	CCS	XCOS																																																																																
+36	Event handling	CEVENTSCOPE	XCOS		Number of event inputs	integer			color(>0) or mark(<0)	integer			Output window number	integer			Output window position	vector of integers			Output window size	vector of integers			Refresh period	integer																																																									
+170	Sinks	CFSCOPE	XCOS		color(>0) or mark(<0) vector	double			Output window number	double			Output window position	vector of doubles			Ymin	double			Ymax	double			Refresh period	double			Buffer size	double			Links to view	double			Output window sizes	vector of doubles																																													
+3	Continuous time systems	CLINDUMMY_f	XCOS																																																																																
+140	Event handling	CLKFROM	XCOS		Tag	string																																																																													
+141	Event handling	CLKGOTO	XCOS		Tag	string			Tag Visibility(1=Local, 2=Scoped, 3=Global)	integer																																																																									
+37	Event handling	CLKGotoTagVisibility	XCOS		GoToTag	string																																																																													
+184	Port & Subsystem	CLKINV_f	XCOS		Port Number	double																																																																													
+171	Event handling	CLKOUTV_f	XCOS		Port Number	integer																																																																													
+38	Event handling	CLKSOMV_f	XCOS																																																																																
+185	Event handling	CLOCK_c	XCOS		Period	double			Initialisation Time	double																																																																									
+4	Continuous time systems	CLR	XCOS		Numerator	double			Denominator	double																																																																									
+5	Continuous time systems	CLSS	XCOS		A matrix	double			B matrix	double			C matrix	double			D matrix	double			initial state	double																																																													
+172	Sinks	CMAT3D	XCOS		Bounds vector X	double			Bounds vector Y	double			ColorMap	vector of integers			Zmin	double			Zmax	double																																																													
+173	Sinks	CMATVIEW	XCOS		ColorMap	vector of integers			Minimum level range	double			Maximum level range	double																																																																					
+174	Sinks	CMSCOPE	XCOS		Input ports size	vector of doubles			Drawing colors or mark	vector of doubles			Output window number	double			Output window position	vector of doubles			Output window sizes	vector of doubles			Ymin vector	double			Ymax vector	double			Refresh Period	double			Buffer size	double			Accept herited events	boolean			Name of scope	string																																					
+186	Sources	CONST	XCOS		Constant	double																																																																													
+187	Sources	CONST_f	XCOS		Constant	double																																																																													
+188	Sources	CONST_m	XCOS		Constant value	double																																																																													
+104	Electrical	ConstantVoltage	XCOS		V(volt)	double																																																																													
+162	Implicit	CONSTRAINT_c	XCOS		Initial guess value	double																																																																													
+163	Implicit	CONSTRAINT2_c	XCOS		Initial guess value of state x	double			initial guess value of derivative x	double			ld(1)=1: If x(i) is present in the feedback, else ld(i)=0	boolean																																																																					
+127	Integer	CONVERT	XCOS		Input type (1:double, 3:int32, 4:int16, 5:int8,..)	integer			Output type  (1:double, 3:int32, 4:int16, 5:int8,..)	integer			Do on overflow( 0:Nothing, 1:Saturate, 2:Error)	integer																																																																					
+56	Mathematical Operations	COSBLK_f	XCOS																																																																																
+189	Sources	Counter	XCOS		Minimum	double			Maximum	double			Rule( 1:increment, 2:Decrement)	integer																																																																					
+175	Sinks	CSCOPE	XCOS		Color(>0) or mark(<0)vector(8 entries)	double			Output window number	double			Output window position	vector of doubles			Output window sizes	vector of doubles			Ymin	double			Ymax	double			Refresh period	double			Buffer size	double			Accept herited events 0/1	boolean			Name of scope	string																																									
+176	Sinks	CSCOPXY	XCOS		Number of curves	double			color(>0) or mark(<0)	double			line or mark size	double			Output window number	double			Output window position	vector of doubles			Output window size	vector of doubles			Xmin	double			Xmax	double			Ymin	double			Yaxm	double			Buffer size	double																																					
+177	Sinks	CSCOPXY3D	XCOS		Number of curves	double			color(>0) or mark(<0)	double			line or mark size	double			Output window number	double			Output window position	vector of doubles			Output window size	vector of doubles			Xmin and Xmax	double			Ymin and Ymax	double			Zmin and Zmax	double			Alpha and Theta	double			Buffer size	double																																					
+76	Matrix	CUMSUM	XCOS		Datatype(1=real double 2=Complex)	integer			Sum along(0=the first non singleton dimension 1=Rows 2=Columns)  	integer																																																																									
+105	Electrical	CurrentSensor	XCOS																																																																																
+190	Sources	CURV_f	XCOS		xmin	double			xmax	double			ymin	double			ymax	double																																																																	
+106	Electrical	CVS	XCOS																																																																																
+15	Discontinuities	DEADBAND	XCOS		End of dead band	double			Start of dead band	double			zero crossing (0:no, 1:yes)	boolean																																																																					
+221	User-Defined Functions	DEBUG	XCOS		Enter scilab instructions for debugging. Inputs are block and flag, output is block	string																																																																													
+21	Discrete time systems	DELAY_f	XCOS		Discretization time step	double			Register initial state	vector of integers																																																																									
+22	Discontinuities	DELAYV_f	XCOS		Number of inputs	integer			Register initial condition	vector of integers			Max delay	integer																																																																					
+142	Signal Routing	DEMUX	XCOS		number of output ports or vector of sizes	integer																																																																													
+143	Signal Routing	DEMUX_f	XCOS		number of output ports or vector of sizes	integer																																																																													
+6	Continuous time systems	DERIV	XCOS																																																																																
+128	Integer	DFLIPFLOP	XCOS																																																																																
+164	Implicit	DIFF_f	XCOS		Initial state	double			Initial Derivative	double																																																																									
+107	Electrical	Diode	XCOS		Saturation current (A)	double			Voltage equivalent to temperature (Volt)	double			Max exponent for linear continuation	double			R (ohm)	double																																																																	
+129	Integer	DLATCH	XCOS																																																																																
+23	Discrete time systems	DLR	XCOS		Numerator (z)	double			Denominator (z)	double																																																																									
+24	Discrete time systems	DLRADAPT_f	XCOS		Vector of p mesh points	vector of integers			Numerator roots (one line for each mesh)	vector of integers			Denominator roots (one line for each mesh)	vector of integers			Vector of gain at mesh points	vector of integers			past inputs (Num degree values)	vector of integers			past outputs (Den degree values)	vector of integers																																																									
+25	Discrete time systems	DLSS	XCOS		A matrix	integer			B matrix	integer			C matrix	integer			D matrix	integer			Initial state	integer																																																													
+26	Discrete time systems	DOLLAR	XCOS		initial condition	integer			Inherit (no:0, yes:1)	boolean																																																																									
+27	Discrete time systems	DOLLAR_f	XCOS		initial condition	integer			Inherit (no:0, yes:1)	boolean																																																																									
+28	Discrete time systems	DOLLAR_m	XCOS		initial condition	integer			Inherit (no:0, yes:1)	boolean																																																																									
+39	Event handling	EDGE_TRIGGER	XCOS		rising(1), falling(-1), both(0)	integer																																																																													
+40	Event handling	END_c	XCOS		Final simulation time	double																																																																													
+41	Event handling	ENDBLK	XCOS		Final simulation time	double																																																																													
+42	Event handling	ESELECT_f	XCOS		number of output event ports	integer			Inherit (1:no, 0:yes)	boolean			zero-crossing (0:no, 1:yes)	boolean																																																																					
+43	Event handling	EVTDLY_c	XCOS		Delay	double			Date of initial output event	integer																																																																									
+44	Event handling	EVTGEN_f	XCOS		Event Time	integer																																																																													
+45	Event handling	EVTVARDLY	XCOS		Initial event firing time (<0 if absent)	integer																																																																													
+57	Mathematical Operations	EXPBLK_m	XCOS		a (>0)	double																																																																													
+222	User-Defined Functions	EXPRESSION	XCOS		number of inputs	integer			scilab expression	string			use zero-crossing (0:no, 1 yes)	boolean																																																																					
+77	Matrix	EXTRACT	XCOS		Datatype (1=real double 2=Complex)	integer			Lines to extract	integer			Columns to extract	integer																																																																					
+46	Event handling	Extract_Activation	XCOS																																																																																
+130	Integer	EXTRACTBITS	XCOS		Data Type (3:int32, 4:int16, 5:int8, ...)	integer			Bits to extract	integer			Number of Bits or Index of Bit	integer			Treat Bit Field as an Integer (0:No, 1:Yes)	boolean																																																																	
+144	Signal Routing	EXTRACTOR	XCOS		indices to extract	double																																																																													
+78	Matrix	EXTTRI	XCOS		Datatype (1=real double 2=Complex)	integer			extraction type (1=lower 2=upper 3=diagonal)	integer																																																																									
+210	Thermo-Hydraulics	Flowmeter	XCOS																																																																																
+223	User-Defined Functions	fortran_block	XCOS		input ports sizes	double			output port sizes	double			System parameters vector	vector of doubles			function name	string																																																																	
+47	Event handling	freq_div	XCOS		Phase (0 to division factor -1)	integer			Division factor	integer																																																																									
+145	Signal Routing	FROM	XCOS		Tag	string																																																																													
+146	Signal Routing	FROMMO	XCOS		Tag	string																																																																													
+191	Sources	FROMWSB	XCOS		Variable name	string			Interpolation Method	integer			Enable zero crossing (0:No, 1:Yes)?	boolean			Output at end (0:Zero, 1:Hold, 2:Repeat)	integer																																																																	
+58	Mathematical Operations	GAIN_f	XCOS		Gain	integer																																																																													
+59	Mathematical Operations	GAINBLK	XCOS		Gain	integer			Do On Overflow (0=Nothing 1=Saturate 2=Error)	integer																																																																									
+60	Mathematical Operations	GAINBLK_f	XCOS		Gain	integer																																																																													
+136	Zero crossing detection	GENERAL_f	XCOS		Input size	integer			Number of event output	integer																																																																									
+224	User-Defined Functions	generic_block3	XCOS		Simulation function	string			Function type (0,1,2,..)	double			Input ports sizes	vector of doubles			Input ports type	double			Output port sizes	vector of doubles			Output ports type	double			Input event ports sizes	vector of doubles			Output events ports sizes	vector of doubles			Initial continuous state	vector of doubles			Initial discrete state	vector of doubles			Initial object state	vector of doubles			Real parameters vector	vector of doubles			Integer parameters vector	vector of doubles			Object parameters list	vector of doubles			Number of modes	double			Number of zero crossings	double			Initial firing vector (<0 for no firing)	vector of doubles			Direct feedthrough (y or n)	yesno			Time dependence (y or n)	yesno					
+192	Sources	GENSIN_f	XCOS		Magnitude	double			Frequency (rad/s)	double			Phase (rad)	double																																																																					
+193	Sources	GENSQR_f	XCOS		Amplitude	double																																																																													
+147	Signal Routing	GOTO	XCOS		Tag	string			Tag Visibility (1=Local 2=scoped 3=global)	integer																																																																									
+148	Signal Routing	GOTOMO	XCOS		Tag	string			Tag Visibility (1=Local 2=scoped 3=global)	integer																																																																									
+149	Signal Routing	GotoTagVisibility	XCOS		GotoTag	string																																																																													
+150	Signal Routing	GotoTagVisibilityMO	XCOS		GotoTag	string																																																																													
+108	Electrical	Ground	XCOS																																																																																
+109	Electrical	Gyrator	XCOS		G1	integer			G2	integer																																																																									
+48	Event handling	HALT_f	XCOS		State on halt	integer																																																																													
+16	Discontinuities	HYSTHERESIS	XCOS		switch on at	integer			switch off at	integer			output when on	integer			output when off	integer			use zero crossing	boolean																																																													
+110	Electrical	IdealTransformer	XCOS		N	integer																																																																													
+49	Event handling	IFTHEL_f	XCOS		Inherit (1:yes, 0:no)	boolean			use zero crossing (0:no, 1:yes)	boolean																																																																									
+194	Port & Subsystem	IN_f	XCOS		Port number	double			Output size ([-1,-2] for inherit)	vector of doubles			Output type (-1 for inherit)	double																																																																					
+111	Electrical	Inductor	XCOS		L(H)	double																																																																													
+195	Port & Subsystem	INIMPL_f	XCOS		Port Number	double																																																																													
+7	Continuous time systems	INTEGRAL_f	XCOS		Initial state	double																																																																													
+8	Continuous time systems	INTEGRAL_m	XCOS		Initial condition	double			with re-initialization	boolean			with saturation	boolean			Upper limit	double			Lower limit	double																																																													
+131	Integer	INTMUL	XCOS		Data Type (3:int32, 4:int16, 5:int8,..)	integer			Do on Overflow (0:Nothing, 1:Saturate, 2:Error)	integer																																																																									
+31	Lookup tables	INTRP2BLK_f	XCOS		X coord	vector of integers			Y coord	vector of integers			Z values	vector of integers																																																																					
+32	Lookup tables	INTRPLBLK_f	XCOS		X coord	vector of integers			Y coord	vector of integers																																																																									
+61	Mathematical Operations	INVBLK	XCOS																																																																																
+151	Signal Routing	ISELECT_m	XCOS		Datatype (1=real double 2=Complex 3=int32...)	double			number of outputs	double			initial connected output	integer																																																																					
+132	Integer	JKFLIPFLOP	XCOS		Initial Value	string																																																																													
+62	Mathematical Operations	LOGBLK_f	XCOS		Basis(>1)	double																																																																													
+133	Integer	LOGIC	XCOS		Truth Table (matrix of outputs)	array of booleans			Accepts Inherited Events (0:No, 1:Yes)	boolean																																																																									
+1	Commonly Used Blocks	LOGICAL_OP	XCOS		number of inputs	integer			Operator : AND(0), OR(1), NAND(2), NOR(3), XOR(4), NOT(5)	integer			Datatype (1=double 3=int32..)	double			Bitwise Rule (0=No 1=yes)	boolean																																																																	
+33	Lookup tables	LOOKUP_f	XCOS		xmin	integer			xmax	integer			ymin	integer			ymax	integer																																																																	
+50	Event handling	M_freq	XCOS		Sample time	vector of integers			Offset	vector of integers																																																																									
+152	Signal Routing	M_SWITCH	XCOS		number of inputs	integer			zero base indexing (0), otherwise 1	boolean			rounding rule : int(0),round (1), ceil (2), floor (3)  	integer																																																																					
+79	Matrix	MATBKSL	XCOS		Datatype (1=real double, 2=Complex)	integer																																																																													
+80	Matrix	MATCATH	XCOS		number of inputs	integer																																																																													
+81	Matrix	MATCATV	XCOS		number of inputs	integer																																																																													
+82	Matrix	MATDET	XCOS		Datatype (1=real double, 2=Complex)	integer																																																																													
+83	Matrix	MATDIAG	XCOS		Datatype (1=real double, 2=Complex)	integer																																																																													
+84	Matrix	MATDIV	XCOS		Datatype (1=real double, 2=Complex)	integer																																																																													
+85	Matrix	MATEIG	XCOS		Datatype (1=real double, 2=Complex)	integer			decomposition type( 1=eig values, 2=eig values+eig vectors)	integer																																																																									
+86	Matrix	MATEXPM	XCOS		Datatype (1=real double, 2=Complex)	integer																																																																													
+87	Matrix	MATINV	XCOS		Datatype (1=real double, 2=Complex)	integer																																																																													
+88	Matrix	MATLU	XCOS		Datatype (1=real double, 2=Complex)	integer																																																																													
+89	Mathematical Operations	MATMAGPHI	XCOS		decomposition type (1=Complex2MAG&PHI 2=MAG&PHI2Complex)	integer																																																																													
+90	Matrix	MATMUL	XCOS		Datatype (1=real double, 2=Complex, 3=int32)	integer			Multiplication rule	integer			Do on overflow(0=Nothing, 1=Saturate, 2=Error)	integer																																																																					
+91	Matrix	MATPINV	XCOS		Datatype (1=real double, 2=Complex)	integer																																																																													
+92	Matrix	MATRESH	XCOS		Datatype (1=real double, 2=Complex)	integer			Input size	vector of integers			output size desired	vector of integers																																																																					
+93	Matrix	MATSING	XCOS		Datatype (1=real double, 2=Complex)	integer			decomposition type (1=singular values, 2=sing values+matrix U&V)	integer																																																																									
+94	Matrix	MATSUM	XCOS		Datatype (1=real double, 2=Complex)	integer			Sum along (0=all, 1=lines, 2=Columns)	integer																																																																									
+95	Matrix	MATTRAN	XCOS		Datatype (1=real double, 2=Complex)	integer			rule( 1=, 2='	integer																																																																									
+96	Matrix	MATZCONJ	XCOS																																																																																
+97	Mathematical Operations	MATZREIM	XCOS		decomposition type (1=Complex2Real&Imag 2=Real&Imag2Complex)	integer																																																																													
+63	Mathematical Operations	MAX_f	XCOS																																																																																
+64	Mathematical Operations	MAXMIN	XCOS		Min(1) or Max(2)	integer			Number of input vectors(1 or 2)	integer			zero crossing (1:yes, 0:no)	boolean																																																																					
+225	User-Defined Functions	MBLOCK	XCOS																																																																																
+51	Event handling	MCLOCK_f	XCOS		basic period (1/f)	double			multiply by (n)	integer																																																																									
+52	Event handling	MFCLCK_f	XCOS		basic period (1/f)	double			multiply by (n)	integer																																																																									
+65	Mathematical Operations	MIN_f	XCOS																																																																																
+196	Sources	Modulo_Count	XCOS		Initial State (zero or positive number)	double			Upper Limit (positive number)	double																																																																									
+153	Signal Routing	MUX	XCOS		number of input ports or vector of sizes	vector of integers																																																																													
+154	Signal Routing	MUX_f	XCOS		number of input ports or vector of sizes	vector of integers																																																																													
+137	Zero crossing detection	NEGTOPOS_f	XCOS																																																																																
+112	Electrical	NMOS	XCOS		Width [m]	double			Length [m]	double			Transconductance parameter [A/(V*V)]	double			Zero bias threshold voltage [V]	double			Bulk threshold parameter	double			Reduction of pinch-off region	double			Narrowing of channel [m]	double			Shortening of channel [m]	double			Drain-Source-Resistance [Ohm]	double																																													
+113	Electrical	NPN	XCOS		Bf : Forward beta	double			Br : Reverse beta	double			ls : Transport saturation current	double			Vak : Early voltage (inverse), 1/Volt	double			Tauf : Ideal forward transit time	double			Taur : Ideal reverse transit time	double			Ccs : Collector-substrat (ground) cap.	double			Cje : Base-emitter zero bias depletion cap.	double			Cjc : Base coll. zero bias depletion cap.	double			Phie : Base-emitter diffusion voltage	double			Me : Base emmiter gradation exponent	double			Phic : Base collector diffusion voltage	double			Mc : Base-collector gradation exponent	double			Gbc : Base collector conductance	double			Gbe : Base emitter conductance	double			Vt : Voltage equivalent of temperature	double			EminMax : If x> EminMax, the exp(x) function is linearized	double													
+155	Signal Routing	NRMSOM_f	XCOS		number of inputs	integer																																																																													
+114	Electrical	OpAmp	XCOS																																																																																
+178	Port & Subsystem	OUT_f	XCOS		Port number	double																																																																													
+179	Port & Subsystem	OUTIMPL_f	XCOS		Port number	double																																																																													
+9	Continuous time systems	PDE	XCOS																																																																																
+211	Thermo-Hydraulics	PerteDP	XCOS		Tube length: L (m)	double			Internal tube diameter: D (m)	double			Coefficient of pressure loss-friction (S.U): lambda	double			Pipe inlet altitude: z1 (m)	double			Pipe outlet altitude: z2 (m)	double			If> 0, imposed density fu fluid: p_rho (kg / m3)	double																																																									
+10	Continuous time systems	PID	XCOS		Proportional	double			Integral	double			Derivation	double																																																																					
+115	Electrical	PMOS	XCOS		Width[m]	double			Length [m]	double			Transconductance parameter [ A/(V*V) ]	double			Zero bias threshold voltage [V]	double			Bulk threshold parameter	double			Reduction of pinch-off region	double			Narrowing of channel	double			Shortening of channel	double			Drain source resistance(ohm)	double																																													
+116	Electrical	PNP	XCOS		Bf : Forward beta	double			Br ; Reverse beta	double			Is : Transport saturation current	double			Vak : Early Voltage(inverse)	double			Tauf : Ideal forward transit time	double			Taur : Ideal reverse transit time	double			Ccs : Collector substract cap	double			Cje : Base emitter zero bias depletion cap	double			Cjc : Base-coll zero bias depletion cap	double			Phie : Base-emitter diffusion voltage	double			Me : Base emmiter gradation exponent	double			Phic : Base collector diffusion voltage	double			Mc : Base-collector gradation exponent	double			Gbc : Base collector conductance	double			Gbe : Base emitter conductance	double			Vt : Voltage equivalent of temperature	double			EminMax : If x> EminMax, the exp(x) function is linearized	double													
+138	Zero crossing detection	POSTONEG_f	XCOS																																																																																
+117	Electrical	PotentialSensor	XCOS																																																																																
+66	Mathematical Operations	POWBLK_f	XCOS		to the power of	double																																																																													
+67	Mathematical Operations	PROD_f	XCOS																																																																																
+68	Mathematical Operations	PRODUCT	XCOS		Number of inputs or sign vector	vector of integers																																																																													
+212	Thermo-Hydraulics	PuitsP	XCOS		Source pressure: P0 (Pa)	double			Source temperature: T0 (K)	double			Source specific enthalpy: H0 (J/kg)	double			1: Fixed temperature, 2: Fixed enthalpy : option temperature	double																																																																	
+197	Sources	PULSE_SC	XCOS		Phase delay (secs) :	double			Pulse Width (% of period) :	double			Period (secs) :	double			Amplitude	double																																																																	
+17	Discontinuities	QUANT_f	XCOS		Step	double			Quantization Type (1-4)	integer																																																																									
+198	Sources	RAMP	XCOS		Slope	double			Start Time	double			Initial Value	double																																																																					
+199	Sources	RAND_m	XCOS		Datatype (1=real double 2=complex)	integer			flag	boolean			A	double			B	double			SEED	vector of doubles																																																													
+18	Discontinuities	RATELIMITER	XCOS		max slope	integer			min slope	integer																																																																									
+200	Sources	READAU_f	XCOS		Input File Name	filename			Buffer size	double			Swap Mode (0:No, 1:Yes)	boolean																																																																					
+201	Sources	READC_f	XCOS		Time Record Selection	string			Outputs Record Selection	integer			Input File Name	filename			Input Format	string			Record Size	double			Buffer Size	double			Initial Record Index	double			Swap Mode (0:No, 1:Yes)	boolean																																																	
+29	Discrete time systems	REGISTER	XCOS		Register initial condition	vector of integers			Datatype( 1=double, 3=int32)	integer																																																																									
+2	Commonly Used Blocks	RELATIONALOP	XCOS		Operator : == (0), `=(1), <(2), <=(3), >(4), >=(5)	integer			Use zero crossing	boolean			Datatype	double																																																																					
+156	Signal Routing	RELAY_f	XCOS		number of inputs	integer			initial connected input	double																																																																									
+118	Electrical	Resistor	XCOS		R (ohm)	double																																																																													
+202	Sources	RFILE_f	XCOS		Time Record Selection	string			Outputs Record Selection	double			Input File Name	string			Input Format	string			Buffer Size	double																																																													
+98	Matrix	RICC	XCOS		Type (1=Cont, 2=Disc)	integer			Model ( 1=Schr, 2=sign(cont) inv(disc))	integer																																																																									
+99	Matrix	ROOTCOEF	XCOS		Datatype (1=real double, 2=Complex)	integer			Input row size	integer																																																																									
+30	Discrete time systems	SAMPHOLD_m	XCOS		Datatype (1=real double 2=Complex 3=int32...)	integer																																																																													
+203	Event handling	SampleCLK	XCOS		Sample time	double			Offset	double																																																																									
+19	Discontinuities	SATURATION	XCOS		Upper limit	integer			Lower limit	integer			zero crossing	boolean																																																																					
+204	Sources	SAWTOOTH_f	XCOS																																																																																
+157	Signal Routing	SCALAR2VECTOR	XCOS		size of output (-1: if don't know)	double																																																																													
+226	User-Defined Functions	scifunc_block_m	XCOS																																																																																
+158	Signal Routing	SELECT_m	XCOS		Datatype (1=real double 2=Complex 3=int32..)	double			number of inputs	integer			initial connected input	double																																																																					
+159	Signal Routing	SELF_SWITCH	XCOS																																																																																
+134	Integer	SHIFT	XCOS		Data Type (3:int32, 4:int16, 5:int8,...)	integer			Number of Bits to Shift Left (Negative number to shift right)	integer			Shift Type (0: Arithmetic, 1: Circular)	boolean																																																																					
+205	Sources	Sigbuilder	XCOS		Spline Method (0..7)	double			x	vector of doubles			y	vector of doubles			Periodic signal (y/n)?	yesno			Launch graphic window (y/n)?	yesno																																																													
+69	Mathematical Operations	SIGNUM	XCOS		use zero crossing (1:yes, 0:no)	boolean																																																																													
+70	Mathematical Operations	SINBLK_f	XCOS																																																																																
+119	Electrical	SineVoltage	XCOS		Amplitude (Volt)	integer			phase (rad)	integer			Frequency (Hz)	integer			Voltageoffset(V)	integer			Time offset (s)	integer																																																													
+71	Mathematical Operations	SOM_f	XCOS																																																																																
+213	Thermo-Hydraulics	SourceP	XCOS		Source pressure: P0 (Pa)	double			Source temperature: T0 (K)	double			Source specific enthalpy: H0 (J/kg)	double			1: Fixed temperature, 2: Fixed enthalpy : option temperature	double																																																																	
+100	Mathematical Operations	SQRT	XCOS		Datatype (1=real double, 2=Complex)	integer																																																																													
+135	Integer	SRFLIPFLOP	XCOS		Initial Value	integer																																																																													
+206	Sources	STEP_FUNCTION	XCOS		Step Time	double			Initial Value	double			Final Value	double																																																																					
+101	Matrix	SUBMAT	XCOS		Datatype (1=real double, 2=Complex)	integer			Starting row index	integer			Ending row index	integer			Starting column index	integer			Ending column index	integer			Input Dimensions	vector of integers																																																									
+72	Mathematical Operations	SUM_f	XCOS																																																																																
+73	Mathematical Operations	SUMMATION	XCOS		Datatype ( 1= real double, 2=complex, 3=int32)	integer			Number of inputs or sign vector( of +1, -1)	vector of integers			Do on overflow (0=Nothing, 1=Saturate, 2=Error)	integer																																																																					
+227	Port & Subsystem	SUPER_f	XCOS																																																																																
+120	Electrical	Switch	XCOS		Resistance in On state (Ohm)	double			Resistance in Off state (Ohm)	integer																																																																									
+160	Signal Routing	SWITCH_f	XCOS		number of inputs	integer			connected input	double																																																																									
+161	Signal Routing	SWITCH2_m	XCOS		Datatype (1=real double 2=complex 3=int32..)	double			pass first input if: u2>=a(0), u2>a(1), u2~=a(2)	integer			threshold a	double			use zero crossing: yes(1),no(0)	boolean																																																																	
+74	Mathematical Operations	TANBLK_f	XCOS																																																																																
+11	Continuous time systems	TCLSS	XCOS		A matrix	double			B matrix	double			C matrix	double			D matrix	double			Initial state	double																																																													
+165	Annotations	TEXT_f	XCOS																																																																																
+12	Continuous time systems	TIME_DELAY	XCOS		Delay	double			Initial input	double			Buffer size	double																																																																					
+207	Sources	TIME_f	XCOS																																																																																
+208	Sources	TKSCALE	XCOS		Min value	double			Max value	double			Normalization	double																																																																					
+180	Sinks	TOWS_c	XCOS		Size of buffer	double			Scilab variable name	string			Inherit (no:0, yes:1)	boolean																																																																					
+181	Sinks	TRASH_f	XCOS																																																																																
+75	Mathematical Operations	TrigFun	XCOS		Function	string																																																																													
+214	Thermo-Hydraulics	VanneReglante	XCOS		Cvmax	double			p_rho	double																																																																									
+13	Continuous time systems	VARIABLE_DELAY	XCOS		Max delay	double			Initial input	double			Buffer size	double																																																																					
+121	Electrical	VariableResistor	XCOS																																																																																
+53	Event handling	VirtualCLK0	XCOS																																																																																
+122	Electrical	VoltageSensor	XCOS																																																																																
+123	Electrical	VsourceAC	XCOS		Amplitude (Volt)	integer			Frequency (Hz)	integer																																																																									
+124	Electrical	VVsourceAC	XCOS		Frequency (Hz)	integer																																																																													
+182	Sinks	WRITEAU_f	XCOS		Buffer Size	double			Swap Mode (0:No,1:Yes)	boolean																																																																									
+183	Sinks	WRITEC_f	XCOS		Input Size	double			Output File Name	filename			Output Format	string			Buffer Size	double			Swap Mode (0:No,1:Yes)	boolean																																																													
+139	Zero crossing detection	ZCROSS_f	XCOS		Input size	double																																																																													

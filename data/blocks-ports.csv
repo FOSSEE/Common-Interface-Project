@@ -10,8 +10,8 @@
 10	Continuous time systems	CLSS	2	2	2	80	20	ExplicitOutputPort	1	1	ExplicitOutputPort
 11	Continuous time systems	DERIV	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
 12	Continuous time systems	DERIV	2	2	2	40	20	ExplicitOutputPort	1	1	ExplicitOutputPort
-13	Commonly Used Blocks	INTEGRAL_f	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
-14	Commonly Used Blocks	INTEGRAL_f	2	2	2	40	20	ExplicitOutputPort	1	1	ExplicitOutputPort
+13	Continuous time systems	INTEGRAL_f	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
+14	Continuous time systems	INTEGRAL_f	2	2	2	40	20	ExplicitOutputPort	1	1	ExplicitOutputPort
 15	Continuous time systems	INTEGRAL_m	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
 16	Continuous time systems	INTEGRAL_m	2	2	2	40	20	ExplicitOutputPort	1	1	ExplicitOutputPort
 17	Continuous time systems	PDE	1	1	1	0	6	ExplicitInputPort	1	1	ExplicitInputPort
@@ -42,8 +42,8 @@
 42	Discontinuities	QUANT_f	2	2	2	40	20	ExplicitOutputPort	1	1	ExplicitOutputPort
 43	Discontinuities	RATELIMITER	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
 44	Discontinuities	RATELIMITER	2	2	2	70	20	ExplicitOutputPort	1	1	ExplicitOutputPort
-45	Commonly Used Blocks	SATURATION	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
-46	Commonly Used Blocks	SATURATION	2	2	2	40	20	ExplicitOutputPort	1	1	ExplicitOutputPort
+45	Discontinuities	SATURATION	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
+46	Discontinuities	SATURATION	2	2	2	40	20	ExplicitOutputPort	1	1	ExplicitOutputPort
 47	Discrete time systems	AUTOMAT	1	1	1	0	10	ExplicitInputPort	1	1	ExplicitInputPort
 48	Discrete time systems	AUTOMAT	2	2	2	0	30	ExplicitInputPort	1	1	ExplicitInputPort
 49	Discrete time systems	AUTOMAT	3	3	3	80	10	ExplicitOutputPort	1	1	ExplicitOutputPort
@@ -70,9 +70,9 @@
 70	Discrete time systems	DOLLAR	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
 71	Discrete time systems	DOLLAR	2	2	2	40	20	ExplicitOutputPort	1	1	ExplicitOutputPort
 72	Discrete time systems	DOLLAR	3	3	3	20	40	ControlPort	1	1	ControlPort
-73	Commonly Used Blocks	DOLLAR_f	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
-74	Commonly Used Blocks	DOLLAR_f	2	2	2	40	20	ExplicitOutputPort	1	1	ExplicitOutputPort
-75	Commonly Used Blocks	DOLLAR_f	3	3	3	20	40	ControlPort	1	1	ControlPort
+73	Discrete time systems	DOLLAR_f	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
+74	Discrete time systems	DOLLAR_f	2	2	2	40	20	ExplicitOutputPort	1	1	ExplicitOutputPort
+75	Discrete time systems	DOLLAR_f	3	3	3	20	40	ControlPort	1	1	ControlPort
 76	Discrete time systems	DOLLAR_m	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
 77	Discrete time systems	DOLLAR_m	2	2	2	40	20	ExplicitOutputPort	1	1	ExplicitOutputPort
 78	Discrete time systems	DOLLAR_m	3	3	3	20	40	ControlPort	1	1	ControlPort
@@ -89,9 +89,9 @@
 89	Lookup tables	INTRPLBLK_f	2	2	2	40	20	ExplicitOutputPort	1	1	ExplicitOutputPort
 90	Lookup tables	LOOKUP_f	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
 91	Lookup tables	LOOKUP_f	2	2	2	40	20	ExplicitOutputPort	1	1	ExplicitOutputPort
-92	Commonly Used Blocks	ANDBLK	1	1	1	20	0	CommandPort	1	1	CommandPort
-93	Commonly Used Blocks	ANDBLK	2	2	2	10	40	ControlPort	1	1	ControlPort
-94	Commonly Used Blocks	ANDBLK	3	3	3	30	40	ControlPort	1	1	ControlPort
+92	Event handling	ANDBLK	1	1	1	20	0	CommandPort	1	1	CommandPort
+93	Event handling	ANDBLK	2	2	2	10	40	ControlPort	1	1	ControlPort
+94	Event handling	ANDBLK	3	3	3	30	40	ControlPort	1	1	ControlPort
 95	Event handling	ANDLOG_f	1	1	1	60	30	ExplicitOutputPort	1	1	ExplicitOutputPort
 96	Event handling	ANDLOG_f	2	2	2	15	60	ControlPort	1	1	ControlPort
 97	Event handling	ANDLOG_f	3	3	3	45	60	ControlPort	1	1	ControlPort
@@ -102,8 +102,8 @@
 102	Event handling	CLKSOMV_f	4	4	4	33	40	ControlPort	1	1	ControlPort
 103	Event handling	EDGE_TRIGGER	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
 104	Event handling	EDGE_TRIGGER	2	2	2	30	0	CommandPort	1	1	CommandPort
-105	Sinks	END_c	1	1	1	20	0	CommandPort	1	1	CommandPort
-106	Sinks	END_c	2	2	2	20	40	ControlPort	1	1	ControlPort
+105	Event handling	END_c	1	1	1	20	0	CommandPort	1	1	CommandPort
+106	Event handling	END_c	2	2	2	20	40	ControlPort	1	1	ControlPort
 107	Event handling	ESELECT_f	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
 108	Event handling	ESELECT_f	2	2	2	20	0	CommandPort	1	1	CommandPort
 109	Event handling	ESELECT_f	3	3	3	60	0	CommandPort	1	1	CommandPort
@@ -118,7 +118,7 @@
 118	Event handling	Extract_Activation	2	2	2	30	0	CommandPort	1	1	CommandPort
 119	Event handling	freq_div	1	1	1	30	0	CommandPort	1	1	CommandPort
 120	Event handling	freq_div	2	2	2	30	40	ControlPort	1	1	ControlPort
-121	Sinks	HALT_f	1	1	1	20	40	ControlPort	1	1	ControlPort
+121	Event handling	HALT_f	1	1	1	20	40	ControlPort	1	1	ControlPort
 122	Event handling	IFTHEL_f	1	1	1	0	30	ExplicitInputPort	1	1	ExplicitInputPort
 123	Event handling	IFTHEL_f	2	2	2	15	0	CommandPort	1	1	CommandPort
 124	Event handling	IFTHEL_f	3	3	3	45	0	CommandPort	1	1	CommandPort
@@ -135,9 +135,9 @@
 135	Event handling	VirtualCLK0	1	1	1	20	40	ControlPort	1	1	ControlPort
 136	Mathematical Operations	ABS_VALUE	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
 137	Mathematical Operations	ABS_VALUE	2	2	2	40	20	ExplicitOutputPort	1	1	ExplicitOutputPort
-138	Commonly Used Blocks	BIGSOM_f	1	1	1	0	15	ExplicitInputPort	1	1	ExplicitInputPort
-139	Commonly Used Blocks	BIGSOM_f	2	2	2	0	45	ExplicitInputPort	1	1	ExplicitInputPort
-140	Commonly Used Blocks	BIGSOM_f	3	3	3	40	30	ExplicitOutputPort	1	1	ExplicitOutputPort
+138	Mathematical Operations	BIGSOM_f	1	1	1	0	15	ExplicitInputPort	1	1	ExplicitInputPort
+139	Mathematical Operations	BIGSOM_f	2	2	2	0	45	ExplicitInputPort	1	1	ExplicitInputPort
+140	Mathematical Operations	BIGSOM_f	3	3	3	40	30	ExplicitOutputPort	1	1	ExplicitOutputPort
 141	Mathematical Operations	COSBLK_f	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
 142	Mathematical Operations	COSBLK_f	2	2	2	40	20	ExplicitOutputPort	1	1	ExplicitOutputPort
 143	Mathematical Operations	EXPBLK_m	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
@@ -163,9 +163,9 @@
 163	Mathematical Operations	PROD_f	1	1	1	0	5	ExplicitInputPort	1	1	ExplicitInputPort
 164	Mathematical Operations	PROD_f	2	2	2	0	15	ExplicitInputPort	1	1	ExplicitInputPort
 165	Mathematical Operations	PROD_f	3	3	3	20	10	ExplicitOutputPort	1	1	ExplicitOutputPort
-166	Commonly Used Blocks	PRODUCT	1	1	1	0	15	ExplicitInputPort	1	1	ExplicitInputPort
-167	Commonly Used Blocks	PRODUCT	2	2	2	0	45	ExplicitInputPort	1	1	ExplicitInputPort
-168	Commonly Used Blocks	PRODUCT	3	3	3	40	30	ExplicitOutputPort	1	1	ExplicitOutputPort
+166	Mathematical Operations	PRODUCT	1	1	1	0	15	ExplicitInputPort	1	1	ExplicitInputPort
+167	Mathematical Operations	PRODUCT	2	2	2	0	45	ExplicitInputPort	1	1	ExplicitInputPort
+168	Mathematical Operations	PRODUCT	3	3	3	40	30	ExplicitOutputPort	1	1	ExplicitOutputPort
 169	Mathematical Operations	SIGNUM	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
 170	Mathematical Operations	SIGNUM	2	2	2	40	20	ExplicitOutputPort	1	1	ExplicitOutputPort
 171	Mathematical Operations	SINBLK_f	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
@@ -216,9 +216,9 @@
 216	Matrix	MATLU	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
 217	Matrix	MATLU	2	2	2	40	10	ExplicitOutputPort	1	1	ExplicitOutputPort
 218	Matrix	MATLU	3	3	3	40	30	ExplicitOutputPort	1	1	ExplicitOutputPort
-219	Matrix	MATMAGPHI	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
-220	Matrix	MATMAGPHI	2	2	2	60	10	ExplicitOutputPort	1	1	ExplicitOutputPort
-221	Matrix	MATMAGPHI	3	3	3	60	30	ExplicitOutputPort	1	1	ExplicitOutputPort
+219	Mathematical Operations	MATMAGPHI	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
+220	Mathematical Operations	MATMAGPHI	2	2	2	60	10	ExplicitOutputPort	1	1	ExplicitOutputPort
+221	Mathematical Operations	MATMAGPHI	3	3	3	60	30	ExplicitOutputPort	1	1	ExplicitOutputPort
 222	Matrix	MATMUL	1	1	1	0	10	ExplicitInputPort	1	1	ExplicitInputPort
 223	Matrix	MATMUL	2	2	2	0	30	ExplicitInputPort	1	1	ExplicitInputPort
 224	Matrix	MATMUL	3	3	3	60	20	ExplicitOutputPort	1	1	ExplicitOutputPort
@@ -234,17 +234,17 @@
 234	Matrix	MATTRAN	2	2	2	60	20	ExplicitOutputPort	1	1	ExplicitOutputPort
 235	Matrix	MATZCONJ	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
 236	Matrix	MATZCONJ	2	2	2	40	20	ExplicitOutputPort	1	1	ExplicitOutputPort
-237	Matrix	MATZREIM	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
-238	Matrix	MATZREIM	2	2	2	60	10	ExplicitOutputPort	1	1	ExplicitOutputPort
-239	Matrix	MATZREIM	3	3	3	60	30	ExplicitOutputPort	1	1	ExplicitOutputPort
+237	Mathematical Operations	MATZREIM	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
+238	Mathematical Operations	MATZREIM	2	2	2	60	10	ExplicitOutputPort	1	1	ExplicitOutputPort
+239	Mathematical Operations	MATZREIM	3	3	3	60	30	ExplicitOutputPort	1	1	ExplicitOutputPort
 240	Matrix	RICC	1	1	1	0	7	ExplicitInputPort	1	1	ExplicitInputPort
 241	Matrix	RICC	2	2	2	0	20	ExplicitInputPort	1	1	ExplicitInputPort
 242	Matrix	RICC	3	3	3	0	33	ExplicitInputPort	1	1	ExplicitInputPort
 243	Matrix	RICC	4	4	4	40	20	ExplicitOutputPort	1	1	ExplicitOutputPort
 244	Matrix	ROOTCOEF	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
 245	Matrix	ROOTCOEF	2	2	2	60	20	ExplicitOutputPort	1	1	ExplicitOutputPort
-246	Matrix	SQRT	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
-247	Matrix	SQRT	2	2	2	40	20	ExplicitOutputPort	1	1	ExplicitOutputPort
+246	Mathematical Operations	SQRT	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
+247	Mathematical Operations	SQRT	2	2	2	40	20	ExplicitOutputPort	1	1	ExplicitOutputPort
 248	Matrix	SUBMAT	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
 249	Matrix	SUBMAT	2	2	2	50	20	ExplicitOutputPort	1	1	ExplicitOutputPort
 250	Electrical	Capacitor	1	1	1	0	11	ImplicitInputPort	1	1	ImplicitInputPort
@@ -314,8 +314,8 @@
 314	Integer	BITCLEAR	2	2	2	80	20	ExplicitOutputPort	1	1	ExplicitOutputPort
 315	Integer	BITSET	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
 316	Integer	BITSET	2	2	2	80	20	ExplicitOutputPort	1	1	ExplicitOutputPort
-317	Commonly Used Blocks	CONVERT	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
-318	Commonly Used Blocks	CONVERT	2	2	2	60	20	ExplicitOutputPort	1	1	ExplicitOutputPort
+317	Integer	CONVERT	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
+318	Integer	CONVERT	2	2	2	60	20	ExplicitOutputPort	1	1	ExplicitOutputPort
 319	Integer	DFLIPFLOP	1	1	1	0	10	ExplicitInputPort	1	1	ExplicitInputPort
 320	Integer	DFLIPFLOP	2	2	2	0	30	ExplicitInputPort	1	1	ExplicitInputPort
 321	Integer	DFLIPFLOP	3	3	3	0	50	ExplicitInputPort	1	1	ExplicitInputPort
@@ -353,11 +353,11 @@
 353	Zero crossing detection	POSTONEG_f	2	2	2	20	0	CommandPort	1	1	CommandPort
 354	Zero crossing detection	ZCROSS_f	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
 355	Zero crossing detection	ZCROSS_f	2	2	2	20	0	CommandPort	1	1	CommandPort
-356	Signal Routing	CLKFROM	1	1	1	20	0	CommandPort	1	1	CommandPort
-357	Signal Routing	CLKGOTO	1	1	1	20	20	ControlPort	1	1	ControlPort
-358	Commonly Used Blocks	DEMUX	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
-359	Commonly Used Blocks	DEMUX	2	2	2	10	10	ExplicitOutputPort	1	1	ExplicitOutputPort
-360	Commonly Used Blocks	DEMUX	3	3	3	10	30	ExplicitOutputPort	1	1	ExplicitOutputPort
+356	Event handling	CLKFROM	1	1	1	20	0	CommandPort	1	1	CommandPort
+357	Event handling	CLKGOTO	1	1	1	20	20	ControlPort	1	1	ControlPort
+358	Signal Routing	DEMUX	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
+359	Signal Routing	DEMUX	2	2	2	10	10	ExplicitOutputPort	1	1	ExplicitOutputPort
+360	Signal Routing	DEMUX	3	3	3	10	30	ExplicitOutputPort	1	1	ExplicitOutputPort
 361	Signal Routing	DEMUX_f	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
 362	Signal Routing	DEMUX_f	2	2	2	10	10	ExplicitOutputPort	1	1	ExplicitOutputPort
 363	Signal Routing	DEMUX_f	3	3	3	10	30	ExplicitOutputPort	1	1	ExplicitOutputPort
@@ -376,15 +376,15 @@
 376	Signal Routing	M_SWITCH	2	2	2	0	20	ExplicitInputPort	1	1	ExplicitInputPort
 377	Signal Routing	M_SWITCH	3	3	3	0	33	ExplicitInputPort	1	1	ExplicitInputPort
 378	Signal Routing	M_SWITCH	4	4	4	50	20	ExplicitOutputPort	1	1	ExplicitOutputPort
-379	Commonly Used Blocks	MUX	1	1	1	0	10	ExplicitInputPort	1	1	ExplicitInputPort
-380	Commonly Used Blocks	MUX	2	2	2	0	30	ExplicitInputPort	1	1	ExplicitInputPort
-381	Commonly Used Blocks	MUX	3	3	3	10	20	ExplicitOutputPort	1	1	ExplicitOutputPort
+379	Signal Routing	MUX	1	1	1	0	10	ExplicitInputPort	1	1	ExplicitInputPort
+380	Signal Routing	MUX	2	2	2	0	30	ExplicitInputPort	1	1	ExplicitInputPort
+381	Signal Routing	MUX	3	3	3	10	20	ExplicitOutputPort	1	1	ExplicitOutputPort
 382	Signal Routing	MUX_f	1	1	1	0	10	ExplicitInputPort	1	1	ExplicitInputPort
 383	Signal Routing	MUX_f	2	2	2	0	30	ExplicitInputPort	1	1	ExplicitInputPort
 384	Signal Routing	MUX_f	3	3	3	10	20	ExplicitOutputPort	1	1	ExplicitOutputPort
-385	Commonly Used Blocks	NRMSOM_f	1	1	1	0	10	ExplicitInputPort	1	1	ExplicitInputPort
-386	Commonly Used Blocks	NRMSOM_f	2	2	2	0	30	ExplicitInputPort	1	1	ExplicitInputPort
-387	Commonly Used Blocks	NRMSOM_f	3	3	3	4	20	ExplicitOutputPort	1	1	ExplicitOutputPort
+385	Signal Routing	NRMSOM_f	1	1	1	0	10	ExplicitInputPort	1	1	ExplicitInputPort
+386	Signal Routing	NRMSOM_f	2	2	2	0	30	ExplicitInputPort	1	1	ExplicitInputPort
+387	Signal Routing	NRMSOM_f	3	3	3	4	20	ExplicitOutputPort	1	1	ExplicitOutputPort
 388	Signal Routing	RELAY_f	1	1	1	0	10	ExplicitInputPort	1	1	ExplicitInputPort
 389	Signal Routing	RELAY_f	2	2	2	0	30	ExplicitInputPort	1	1	ExplicitInputPort
 390	Signal Routing	RELAY_f	3	3	3	40	20	ExplicitOutputPort	1	1	ExplicitOutputPort
@@ -402,10 +402,10 @@
 402	Signal Routing	SWITCH_f	1	1	1	0	10	ExplicitInputPort	1	1	ExplicitInputPort
 403	Signal Routing	SWITCH_f	2	2	2	0	30	ExplicitInputPort	1	1	ExplicitInputPort
 404	Signal Routing	SWITCH_f	3	3	3	40	20	ExplicitOutputPort	1	1	ExplicitOutputPort
-405	Commonly Used Blocks	SWITCH2_m	1	1	1	0	7	ExplicitInputPort	1	1	ExplicitInputPort
-406	Commonly Used Blocks	SWITCH2_m	2	2	2	0	20	ExplicitInputPort	1	1	ExplicitInputPort
-407	Commonly Used Blocks	SWITCH2_m	3	3	3	0	33	ExplicitInputPort	1	1	ExplicitInputPort
-408	Commonly Used Blocks	SWITCH2_m	4	4	4	40	20	ExplicitOutputPort	1	1	ExplicitOutputPort
+405	Signal Routing	SWITCH2_m	1	1	1	0	7	ExplicitInputPort	1	1	ExplicitInputPort
+406	Signal Routing	SWITCH2_m	2	2	2	0	20	ExplicitInputPort	1	1	ExplicitInputPort
+407	Signal Routing	SWITCH2_m	3	3	3	0	33	ExplicitInputPort	1	1	ExplicitInputPort
+408	Signal Routing	SWITCH2_m	4	4	4	40	20	ExplicitOutputPort	1	1	ExplicitOutputPort
 409	Implicit	CONSTRAINT_c	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
 410	Implicit	CONSTRAINT_c	2	2	2	60	20	ExplicitOutputPort	1	1	ExplicitOutputPort
 411	Implicit	CONSTRAINT2_c	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
@@ -426,25 +426,25 @@
 426	Sinks	CANIMXY3D	3	3	3	0	33	ExplicitInputPort	1	1	ExplicitInputPort
 427	Sinks	CANIMXY3D	4	4	4	20	40	ControlPort	1	1	ControlPort
 428	Sinks	CFSCOPE	1	1	1	20	40	ControlPort	1	1	ControlPort
-429	Sinks	CLKOUTV_f	1	1	1	10	20	ControlPort	1	1	ControlPort
+429	Event handling	CLKOUTV_f	1	1	1	10	20	ControlPort	1	1	ControlPort
 430	Sinks	CMAT3D	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
 431	Sinks	CMAT3D	2	2	2	20	40	ControlPort	1	1	ControlPort
 432	Sinks	CMATVIEW	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
 433	Sinks	CMATVIEW	2	2	2	20	40	ControlPort	1	1	ControlPort
-434	Commonly Used Blocks	CMSCOPE	1	1	1	0	10	ExplicitInputPort	1	1	ExplicitInputPort
-435	Commonly Used Blocks	CMSCOPE	2	2	2	0	30	ExplicitInputPort	1	1	ExplicitInputPort
-436	Commonly Used Blocks	CMSCOPE	3	3	3	20	40	ControlPort	1	1	ControlPort
+434	Sinks	CMSCOPE	1	1	1	0	10	ExplicitInputPort	1	1	ExplicitInputPort
+435	Sinks	CMSCOPE	2	2	2	0	30	ExplicitInputPort	1	1	ExplicitInputPort
+436	Sinks	CMSCOPE	3	3	3	20	40	ControlPort	1	1	ControlPort
 437	Sinks	CSCOPE	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
 438	Sinks	CSCOPE	2	2	2	20	40	ControlPort	1	1	ControlPort
-439	Commonly Used Blocks	CSCOPXY	1	1	1	0	10	ExplicitInputPort	1	1	ExplicitInputPort
-440	Commonly Used Blocks	CSCOPXY	2	2	2	0	30	ExplicitInputPort	1	1	ExplicitInputPort
-441	Commonly Used Blocks	CSCOPXY	3	3	3	20	40	ControlPort	1	1	ControlPort
+439	Sinks	CSCOPXY	1	1	1	0	10	ExplicitInputPort	1	1	ExplicitInputPort
+440	Sinks	CSCOPXY	2	2	2	0	30	ExplicitInputPort	1	1	ExplicitInputPort
+441	Sinks	CSCOPXY	3	3	3	20	40	ControlPort	1	1	ControlPort
 442	Sinks	CSCOPXY3D	1	1	1	0	7	ExplicitInputPort	1	1	ExplicitInputPort
 443	Sinks	CSCOPXY3D	2	2	2	0	20	ExplicitInputPort	1	1	ExplicitInputPort
 444	Sinks	CSCOPXY3D	3	3	3	0	33	ExplicitInputPort	1	1	ExplicitInputPort
 445	Sinks	CSCOPXY3D	4	4	4	20	40	ControlPort	1	1	ControlPort
-446	Commonly Used Blocks	OUT_f	1	1	1	0	10	ExplicitInputPort	1	1	ExplicitInputPort
-447	Sinks	OUTIMPL_f	1	1	1	0	10	ImplicitInputPort	1	1	ImplicitInputPort
+446	Port & Subsystem	OUT_f	1	1	1	0	10	ExplicitInputPort	1	1	ExplicitInputPort
+447	Port & Subsystem	OUTIMPL_f	1	1	1	0	10	ImplicitInputPort	1	1	ImplicitInputPort
 448	Sinks	TOWS_c	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
 449	Sinks	TOWS_c	2	2	2	40	40	ControlPort	1	1	ControlPort
 450	Sinks	TRASH_f	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
@@ -453,11 +453,11 @@
 453	Sinks	WRITEAU_f	2	2	2	40	40	ControlPort	1	1	ControlPort
 454	Sinks	WRITEC_f	1	1	1	0	20	ExplicitInputPort	1	1	ExplicitInputPort
 455	Sinks	WRITEC_f	2	2	2	40	40	ControlPort	1	1	ControlPort
-456	Sources	CLKINV_f	1	1	1	10	0	CommandPort	1	1	CommandPort
-457	Sources	CLOCK_c	1	1	1	20	0	CommandPort	1	1	CommandPort
+456	Port & Subsystem	CLKINV_f	1	1	1	10	0	CommandPort	1	1	CommandPort
+457	Event handling	CLOCK_c	1	1	1	20	0	CommandPort	1	1	CommandPort
 458	Sources	CONST	1	1	1	40	20	ExplicitOutputPort	1	1	ExplicitOutputPort
 459	Sources	CONST_f	1	1	1	40	20	ExplicitOutputPort	1	1	ExplicitOutputPort
-460	Commonly Used Blocks	CONST_m	1	1	1	40	20	ExplicitOutputPort	1	1	ExplicitOutputPort
+460	Sources	CONST_m	1	1	1	40	20	ExplicitOutputPort	1	1	ExplicitOutputPort
 461	Sources	Counter	1	1	1	60	20	ExplicitOutputPort	1	1	ExplicitOutputPort
 462	Sources	Counter	2	2	2	30	40	ControlPort	1	1	ControlPort
 463	Sources	CURV_f	1	1	1	40	20	ExplicitOutputPort	1	1	ExplicitOutputPort
@@ -465,8 +465,8 @@
 465	Sources	GENSIN_f	1	1	1	60	20	ExplicitOutputPort	1	1	ExplicitOutputPort
 466	Sources	GENSQR_f	1	1	1	60	20	ExplicitOutputPort	1	1	ExplicitOutputPort
 467	Sources	GENSQR_f	2	2	2	30	40	ControlPort	1	1	ControlPort
-468	Commonly Used Blocks	IN_f	1	1	1	20	10	ExplicitOutputPort	1	1	ExplicitOutputPort
-469	Sources	INIMPL_f	1	1	1	20	10	ImplicitOutputPort	1	1	ImplicitOutputPort
+468	Port & Subsystem	IN_f	1	1	1	20	10	ExplicitOutputPort	1	1	ExplicitOutputPort
+469	Port & Subsystem	INIMPL_f	1	1	1	20	10	ImplicitOutputPort	1	1	ImplicitOutputPort
 470	Sources	Modulo_Count	1	1	1	60	20	ExplicitOutputPort	1	1	ExplicitOutputPort
 471	Sources	Modulo_Count	2	2	2	30	40	ControlPort	1	1	ControlPort
 472	Sources	PULSE_SC	1	1	1	60	20	ExplicitOutputPort	1	1	ExplicitOutputPort
@@ -479,7 +479,7 @@
 479	Sources	READC_f	2	2	2	40	40	ControlPort	1	1	ControlPort
 480	Sources	RFILE_f	1	1	1	60	20	ExplicitOutputPort	1	1	ExplicitOutputPort
 481	Sources	RFILE_f	2	2	2	30	40	ControlPort	1	1	ControlPort
-482	Sources	SampleCLK	1	1	1	20	0	CommandPort	1	1	CommandPort
+482	Event handling	SampleCLK	1	1	1	20	0	CommandPort	1	1	CommandPort
 483	Sources	SAWTOOTH_f	1	1	1	60	20	ExplicitOutputPort	1	1	ExplicitOutputPort
 484	Sources	SAWTOOTH_f	2	2	2	30	40	ControlPort	1	1	ControlPort
 485	Sources	Sigbuilder	1	1	1	60	20	ExplicitOutputPort	1	1	ExplicitOutputPort
