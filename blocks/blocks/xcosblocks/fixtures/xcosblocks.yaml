@@ -278,13 +278,7 @@
     name: LOGICAL_OP
     blockprefix: 1
     main_category: 1
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: AND
     block_image_path: palettes/LOGICAL_OP.png
     block_width: 40
     block_height: 40
@@ -357,13 +351,7 @@
     name: RELATIONALOP
     blockprefix: 1
     main_category: 1
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: <
     block_image_path: palettes/RELATIONALOP.png
     block_width: 40
     block_height: 40
@@ -436,12 +424,6 @@
     name: CLINDUMMY_f
     blockprefix: 1
     main_category: 2
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/CLINDUMMY_f.png
     block_width: 60
@@ -515,13 +497,7 @@
     name: CLR
     blockprefix: 1
     main_category: 2
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: 1/(1+s)
     block_image_path: palettes/CLR.png
     block_width: 60
     block_height: 40
@@ -594,13 +570,7 @@
     name: CLSS
     blockprefix: 1
     main_category: 2
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: xd = Ax+ Bu, y = Cx + Du
     block_image_path: palettes/CLSS.png
     block_width: 80
     block_height: 40
@@ -673,13 +643,7 @@
     name: DERIV
     blockprefix: 1
     main_category: 2
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: du/dt
     block_image_path: palettes/DERIV.png
     block_width: 40
     block_height: 40
@@ -752,13 +716,7 @@
     name: INTEGRAL_f
     blockprefix: 1
     main_category: 2
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: 1/s
     block_image_path: palettes/INTEGRAL_f.png
     block_width: 40
     block_height: 40
@@ -832,12 +790,6 @@
     name: INTEGRAL_m
     blockprefix: 1
     main_category: 2
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/INTEGRAL_m.png
     block_width: 40
@@ -911,13 +863,7 @@
     name: PDE
     blockprefix: 1
     main_category: 2
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: PDE
     block_image_path: palettes/PDE.png
     block_width: 60
     block_height: 60
@@ -991,13 +937,7 @@
     name: PID
     blockprefix: 1
     main_category: 2
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: PID
     block_image_path: palettes/PID.png
     block_width: 40
     block_height: 40
@@ -1070,13 +1010,7 @@
     name: TCLSS
     blockprefix: 1
     main_category: 2
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Jump (A,B,C,D)
     block_image_path: palettes/TCLSS.png
     block_width: 60
     block_height: 40
@@ -1150,13 +1084,7 @@
     name: TIME_DELAY
     blockprefix: 1
     main_category: 2
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Continuous fix delay
     block_image_path: palettes/TIME_DELAY.png
     block_width: 70
     block_height: 40
@@ -1229,13 +1157,7 @@
     name: VARIABLE_DELAY
     blockprefix: 1
     main_category: 2
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Variable Delay
     block_image_path: palettes/VARIABLE_DELAY.png
     block_width: 60
     block_height: 40
@@ -1308,13 +1230,7 @@
     name: BACKLASH
     blockprefix: 1
     main_category: 3
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Backlash
     block_image_path: palettes/BACKLASH.png
     block_width: 60
     block_height: 40
@@ -1387,12 +1303,6 @@
     name: DEADBAND
     blockprefix: 1
     main_category: 3
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/DEADBAND.png
     block_width: 40
@@ -1466,12 +1376,6 @@
     name: HYSTHERESIS
     blockprefix: 1
     main_category: 3
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/HYSTHERESIS.png
     block_width: 40
@@ -1545,12 +1449,6 @@
     name: QUANT_f
     blockprefix: 1
     main_category: 3
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/QUANT_f.png
     block_width: 40
@@ -1625,13 +1523,7 @@
     name: RATELIMITER
     blockprefix: 1
     main_category: 3
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Rate limiter
     block_image_path: palettes/RATELIMITER.png
     block_width: 70
     block_height: 40
@@ -1704,12 +1596,6 @@
     name: SATURATION
     blockprefix: 1
     main_category: 3
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/SATURATION.png
     block_width: 40
@@ -1784,13 +1670,7 @@
     name: AUTOMAT
     blockprefix: 1
     main_category: 4
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Automaton nM=2, nX=1
     block_image_path: palettes/AUTOMAT.png
     block_width: 80
     block_height: 40
@@ -1863,13 +1743,7 @@
     name: DELAY_f
     blockprefix: 1
     main_category: 4
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Delay
     block_image_path: palettes/DELAY_f.png
     block_width: 40
     block_height: 40
@@ -1942,13 +1816,7 @@
     name: DELAYV_f
     blockprefix: 1
     main_category: 3
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Variable delay
     block_image_path: palettes/DELAYV_f.png
     block_width: 60
     block_height: 40
@@ -2022,13 +1890,7 @@
     name: DLR
     blockprefix: 1
     main_category: 4
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: 1/(1+z)
     block_image_path: palettes/DLR.png
     block_width: 60
     block_height: 40
@@ -2101,13 +1963,7 @@
     name: DLRADAPT_f
     blockprefix: 1
     main_category: 4
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: N (z,p)/D (z,p)
     block_image_path: palettes/DLRADAPT_f.png
     block_width: 40
     block_height: 40
@@ -2180,13 +2036,7 @@
     name: DLSS
     blockprefix: 1
     main_category: 4
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: x = Ax+Bu, y = Cx+Du
     block_image_path: palettes/DLSS.png
     block_width: 80
     block_height: 40
@@ -2259,13 +2109,7 @@
     name: DOLLAR
     blockprefix: 1
     main_category: 4
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: 1/z
     block_image_path: palettes/DOLLAR.png
     block_width: 40
     block_height: 40
@@ -2338,13 +2182,7 @@
     name: DOLLAR_f
     blockprefix: 1
     main_category: 4
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: 1/z
     block_image_path: palettes/DOLLAR_f.png
     block_width: 40
     block_height: 40
@@ -2418,13 +2256,7 @@
     name: DOLLAR_m
     blockprefix: 1
     main_category: 4
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: 1/z
     block_image_path: palettes/DOLLAR_m.png
     block_width: 40
     block_height: 40
@@ -2497,13 +2329,7 @@
     name: REGISTER
     blockprefix: 1
     main_category: 4
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Shift register
     block_image_path: palettes/REGISTER.png
     block_width: 60
     block_height: 40
@@ -2576,13 +2402,7 @@
     name: SAMPHOLD_m
     blockprefix: 1
     main_category: 4
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: S / H
     block_image_path: palettes/SAMPHOLD_m.png
     block_width: 40
     block_height: 40
@@ -2656,13 +2476,7 @@
     name: INTRP2BLK_f
     blockprefix: 1
     main_category: 5
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Interp 2
     block_image_path: palettes/INTRP2BLK_f.png
     block_width: 60
     block_height: 40
@@ -2735,13 +2549,7 @@
     name: INTRPLBLK_f
     blockprefix: 1
     main_category: 5
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Interp
     block_image_path: palettes/INTRPLBLK_f.png
     block_width: 40
     block_height: 40
@@ -2814,12 +2622,6 @@
     name: LOOKUP_f
     blockprefix: 1
     main_category: 5
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/LOOKUP_f.png
     block_width: 40
@@ -2893,12 +2695,6 @@
     name: ANDBLK
     blockprefix: 1
     main_category: 6
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/ANDBLK.png
     block_width: 40
@@ -2973,12 +2769,6 @@
     name: ANDLOG_f
     blockprefix: 1
     main_category: 6
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/ANDLOG_f.png
     block_width: 60
@@ -3052,12 +2842,6 @@
     name: CEVENTSCOPE
     blockprefix: 1
     main_category: 6
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/CEVENTSCOPE.png
     block_width: 40
@@ -3131,13 +2915,7 @@
     name: CLKGotoTagVisibility
     blockprefix: 1
     main_category: 6
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: '{A}'
     block_image_path: palettes/CLKGotoTagVisibility.png
     block_width: 40
     block_height: 40
@@ -3210,12 +2988,6 @@
     name: CLKSOMV_f
     blockprefix: 1
     main_category: 6
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/CLKSOMV_f.png
     block_width: 40
@@ -3289,13 +3061,7 @@
     name: EDGE_TRIGGER
     blockprefix: 1
     main_category: 6
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Edge tigger
     block_image_path: palettes/EDGE_TRIGGER.png
     block_width: 60
     block_height: 40
@@ -3368,13 +3134,7 @@
     name: END_c
     blockprefix: 1
     main_category: 6
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: END
     block_image_path: palettes/END_c.png
     block_width: 40
     block_height: 40
@@ -3448,13 +3208,7 @@
     name: ENDBLK
     blockprefix: 1
     main_category: 6
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: END
     block_image_path: palettes/ENDBLK.png
     block_width: 40
     block_height: 40
@@ -3528,13 +3282,7 @@
     name: ESELECT_f
     blockprefix: 1
     main_category: 6
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Event select
     block_image_path: palettes/ESELECT_f.png
     block_width: 80
     block_height: 40
@@ -3607,13 +3355,7 @@
     name: EVTDLY_c
     blockprefix: 1
     main_category: 6
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: 'Delay: 0.1'
     block_image_path: palettes/EVTDLY_c.png
     block_width: 60
     block_height: 40
@@ -3686,13 +3428,7 @@
     name: EVTGEN_f
     blockprefix: 1
     main_category: 6
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Event at time 0
     block_image_path: palettes/EVTGEN_f.png
     block_width: 60
     block_height: 40
@@ -3765,13 +3501,7 @@
     name: EVTVARDLY
     blockprefix: 1
     main_category: 6
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Event delay
     block_image_path: palettes/EVTVARDLY.png
     block_width: 60
     block_height: 40
@@ -3844,13 +3574,7 @@
     name: Extract_Activation
     blockprefix: 1
     main_category: 6
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Extract Activation
     block_image_path: palettes/Extract_Activation.png
     block_width: 60
     block_height: 40
@@ -3923,13 +3647,7 @@
     name: freq_div
     blockprefix: 1
     main_category: 6
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Frequency division
     block_image_path: palettes/freq_div.png
     block_width: 60
     block_height: 40
@@ -4002,13 +3720,7 @@
     name: HALT_f
     blockprefix: 1
     main_category: 6
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: HALT
     block_image_path: palettes/HALT_f.png
     block_width: 40
     block_height: 40
@@ -4082,13 +3794,7 @@
     name: IFTHEL_f
     blockprefix: 1
     main_category: 6
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: if n>0 then else
     block_image_path: palettes/IFTHEL_f.png
     block_width: 60
     block_height: 60
@@ -4161,13 +3867,7 @@
     name: M_freq
     blockprefix: 1
     main_category: 6
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Multiple frequency
     block_image_path: palettes/M_freq.png
     block_width: 60
     block_height: 40
@@ -4240,13 +3940,7 @@
     name: MCLOCK_f
     blockprefix: 1
     main_category: 6
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: 2freq clock f/n f
     block_image_path: palettes/MCLOCK_f.png
     block_width: 60
     block_height: 40
@@ -4319,13 +4013,7 @@
     name: MFCLCK_f
     blockprefix: 1
     main_category: 6
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: M. freq clock
     block_image_path: palettes/MFCLCK_f.png
     block_width: 60
     block_height: 40
@@ -4398,12 +4086,6 @@
     name: VirtualCLK0
     blockprefix: 1
     main_category: 6
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/VirtualCLK0.png
     block_width: 40
@@ -4477,13 +4159,7 @@
     name: ABS_VALUE
     blockprefix: 1
     main_category: 7
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: ABS
     block_image_path: palettes/ABS_VALUE.png
     block_width: 40
     block_height: 40
@@ -4556,12 +4232,6 @@
     name: BIGSOM_f
     blockprefix: 1
     main_category: 7
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/BIGSOM_f.png
     block_width: 40
@@ -4636,13 +4306,7 @@
     name: COSBLK_f
     blockprefix: 1
     main_category: 7
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: cos
     block_image_path: palettes/COSBLK_f.png
     block_width: 40
     block_height: 40
@@ -4715,13 +4379,7 @@
     name: EXPBLK_m
     blockprefix: 1
     main_category: 7
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: a^u
     block_image_path: palettes/EXPBLK_m.png
     block_width: 40
     block_height: 40
@@ -4794,13 +4452,7 @@
     name: GAIN_f
     blockprefix: 1
     main_category: 7
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: '1'
     block_image_path: palettes/GAIN_f.png
     block_width: 40
     block_height: 40
@@ -4873,13 +4525,7 @@
     name: GAINBLK
     blockprefix: 1
     main_category: 7
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: '1'
     block_image_path: palettes/GAINBLK.png
     block_width: 40
     block_height: 40
@@ -4952,13 +4598,7 @@
     name: GAINBLK_f
     blockprefix: 1
     main_category: 7
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: '1'
     block_image_path: palettes/GAINBLK_f.png
     block_width: 40
     block_height: 40
@@ -5031,13 +4671,7 @@
     name: INVBLK
     blockprefix: 1
     main_category: 7
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: 1/u
     block_image_path: palettes/INVBLK.png
     block_width: 40
     block_height: 40
@@ -5110,13 +4744,7 @@
     name: LOGBLK_f
     blockprefix: 1
     main_category: 7
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: LOG
     block_image_path: palettes/LOGBLK_f.png
     block_width: 40
     block_height: 40
@@ -5189,13 +4817,7 @@
     name: MAX_f
     blockprefix: 1
     main_category: 7
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: MAX
     block_image_path: palettes/MAX_f.png
     block_width: 40
     block_height: 40
@@ -5268,13 +4890,7 @@
     name: MAXMIN
     blockprefix: 1
     main_category: 7
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: MAX
     block_image_path: palettes/MAXMIN.png
     block_width: 40
     block_height: 40
@@ -5347,13 +4963,7 @@
     name: MIN_f
     blockprefix: 1
     main_category: 7
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: MIN
     block_image_path: palettes/MIN_f.png
     block_width: 40
     block_height: 40
@@ -5426,13 +5036,7 @@
     name: POWBLK_f
     blockprefix: 1
     main_category: 7
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: u ^ a
     block_image_path: palettes/POWBLK_f.png
     block_width: 40
     block_height: 40
@@ -5505,12 +5109,6 @@
     name: PROD_f
     blockprefix: 1
     main_category: 7
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/PROD_f.png
     block_width: 20
@@ -5584,12 +5182,6 @@
     name: PRODUCT
     blockprefix: 1
     main_category: 7
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/PRODUCT.png
     block_width: 40
@@ -5664,13 +5256,7 @@
     name: SIGNUM
     blockprefix: 1
     main_category: 7
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: SIGN
     block_image_path: palettes/SIGNUM.png
     block_width: 40
     block_height: 40
@@ -5743,13 +5329,7 @@
     name: SINBLK_f
     blockprefix: 1
     main_category: 7
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: SIN
     block_image_path: palettes/SINBLK_f.png
     block_width: 40
     block_height: 40
@@ -5822,12 +5402,6 @@
     name: SOM_f
     blockprefix: 1
     main_category: 7
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/SOM_f.png
     block_width: 40
@@ -5901,12 +5475,6 @@
     name: SUM_f
     blockprefix: 1
     main_category: 7
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/SUM_f.png
     block_width: 20
@@ -5980,12 +5548,6 @@
     name: SUMMATION
     blockprefix: 1
     main_category: 7
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/SUMMATION.png
     block_width: 40
@@ -6059,13 +5621,7 @@
     name: TANBLK_f
     blockprefix: 1
     main_category: 7
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: TAN
     block_image_path: palettes/TANBLK_f.png
     block_width: 40
     block_height: 40
@@ -6138,13 +5694,7 @@
     name: TrigFun
     blockprefix: 1
     main_category: 7
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Trig function
     block_image_path: palettes/TrigFun.png
     block_width: 80
     block_height: 40
@@ -6217,13 +5767,7 @@
     name: CUMSUM
     blockprefix: 1
     main_category: 8
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: CUMSUM
     block_image_path: palettes/CUMSUM.png
     block_width: 60
     block_height: 40
@@ -6296,13 +5840,7 @@
     name: EXTRACT
     blockprefix: 1
     main_category: 8
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: EXTRACT
     block_image_path: palettes/EXTRACT.png
     block_width: 60
     block_height: 40
@@ -6375,13 +5913,7 @@
     name: EXTTRI
     blockprefix: 1
     main_category: 8
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Tri/Diag Extraction
     block_image_path: palettes/EXTTRI.png
     block_width: 60
     block_height: 40
@@ -6454,13 +5986,7 @@
     name: MATBKSL
     blockprefix: 1
     main_category: 8
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: AB
     block_image_path: palettes/MATBKSL.png
     block_width: 40
     block_height: 40
@@ -6533,13 +6059,7 @@
     name: MATCATH
     blockprefix: 1
     main_category: 8
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Horiz cat
     block_image_path: palettes/MATCATH.png
     block_width: 40
     block_height: 60
@@ -6612,13 +6132,7 @@
     name: MATCATV
     blockprefix: 1
     main_category: 8
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Vert Cat
     block_image_path: palettes/MATCATV.png
     block_width: 40
     block_height: 60
@@ -6691,13 +6205,7 @@
     name: MATDET
     blockprefix: 1
     main_category: 8
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: DET
     block_image_path: palettes/MATDET.png
     block_width: 40
     block_height: 40
@@ -6770,13 +6278,7 @@
     name: MATDIAG
     blockprefix: 1
     main_category: 8
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: DIAG
     block_image_path: palettes/MATDIAG.png
     block_width: 40
     block_height: 40
@@ -6849,13 +6351,7 @@
     name: MATDIV
     blockprefix: 1
     main_category: 8
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: A/B
     block_image_path: palettes/MATDIV.png
     block_width: 40
     block_height: 40
@@ -6928,13 +6424,7 @@
     name: MATEIG
     blockprefix: 1
     main_category: 8
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: EIG
     block_image_path: palettes/MATEIG.png
     block_width: 40
     block_height: 40
@@ -7007,13 +6497,7 @@
     name: MATEXPM
     blockprefix: 1
     main_category: 8
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: EXPM
     block_image_path: palettes/MATEXPM.png
     block_width: 40
     block_height: 40
@@ -7086,13 +6570,7 @@
     name: MATINV
     blockprefix: 1
     main_category: 8
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: INV
     block_image_path: palettes/MATINV.png
     block_width: 40
     block_height: 40
@@ -7165,13 +6643,7 @@
     name: MATLU
     blockprefix: 1
     main_category: 8
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: LU
     block_image_path: palettes/MATLU.png
     block_width: 40
     block_height: 40
@@ -7244,13 +6716,7 @@
     name: MATMAGPHI
     blockprefix: 1
     main_category: 7
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Mag & Phi
     block_image_path: palettes/MATMAGPHI.png
     block_width: 40
     block_height: 40
@@ -7324,13 +6790,7 @@
     name: MATMUL
     blockprefix: 1
     main_category: 8
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: MATMUL
     block_image_path: palettes/MATMUL.png
     block_width: 60
     block_height: 40
@@ -7403,13 +6863,7 @@
     name: MATPINV
     blockprefix: 1
     main_category: 8
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: PINV
     block_image_path: palettes/MATPINV.png
     block_width: 40
     block_height: 40
@@ -7482,13 +6936,7 @@
     name: MATRESH
     blockprefix: 1
     main_category: 8
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: RESHAPE
     block_image_path: palettes/MATRESH.png
     block_width: 60
     block_height: 40
@@ -7561,13 +7009,7 @@
     name: MATSING
     blockprefix: 1
     main_category: 8
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: SVD
     block_image_path: palettes/MATSING.png
     block_width: 40
     block_height: 40
@@ -7640,13 +7082,7 @@
     name: MATSUM
     blockprefix: 1
     main_category: 8
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: MATSUM
     block_image_path: palettes/MATSUM.png
     block_width: 60
     block_height: 40
@@ -7719,13 +7155,7 @@
     name: MATTRAN
     blockprefix: 1
     main_category: 8
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: MATTRAN
     block_image_path: palettes/MATTRAN.png
     block_width: 60
     block_height: 40
@@ -7798,13 +7228,7 @@
     name: MATZCONJ
     blockprefix: 1
     main_category: 8
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: CONJ
     block_image_path: palettes/MATZCONJ.png
     block_width: 40
     block_height: 40
@@ -7877,13 +7301,7 @@
     name: MATZREIM
     blockprefix: 1
     main_category: 7
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Re & Im
     block_image_path: palettes/MATZREIM.png
     block_width: 40
     block_height: 40
@@ -7957,13 +7375,7 @@
     name: RICC
     blockprefix: 1
     main_category: 8
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: RICC
     block_image_path: palettes/RICC.png
     block_width: 40
     block_height: 40
@@ -8036,13 +7448,7 @@
     name: ROOTCOEF
     blockprefix: 1
     main_category: 8
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: ROOT COEF
     block_image_path: palettes/ROOTCOEF.png
     block_width: 60
     block_height: 40
@@ -8115,13 +7521,7 @@
     name: SQRT
     blockprefix: 1
     main_category: 7
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: SQRT
     block_image_path: palettes/SQRT.png
     block_width: 40
     block_height: 40
@@ -8195,13 +7595,7 @@
     name: SUBMAT
     blockprefix: 1
     main_category: 8
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: SUBMAT
     block_image_path: palettes/SUBMAT.png
     block_width: 50
     block_height: 40
@@ -8274,12 +7668,6 @@
     name: Capacitor
     blockprefix: 1
     main_category: 9
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/Capacitor.png
     block_width: 40
@@ -8353,12 +7741,6 @@
     name: CCS
     blockprefix: 1
     main_category: 9
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/CCS.png
     block_width: 42
@@ -8432,12 +7814,6 @@
     name: ConstantVoltage
     blockprefix: 1
     main_category: 9
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/ConstantVoltage.png
     block_width: 30
@@ -8511,12 +7887,6 @@
     name: CurrentSensor
     blockprefix: 1
     main_category: 9
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/CurrentSensor.png
     block_width: 40
@@ -8590,12 +7960,6 @@
     name: CVS
     blockprefix: 1
     main_category: 9
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/CVS.png
     block_width: 42
@@ -8669,12 +8033,6 @@
     name: Diode
     blockprefix: 1
     main_category: 9
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/Diode.png
     block_width: 40
@@ -8748,12 +8106,6 @@
     name: Ground
     blockprefix: 1
     main_category: 9
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/Ground.png
     block_width: 20
@@ -8827,12 +8179,6 @@
     name: Gyrator
     blockprefix: 1
     main_category: 9
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/Gyrator.png
     block_width: 40
@@ -8906,12 +8252,6 @@
     name: IdealTransformer
     blockprefix: 1
     main_category: 9
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/IdealTransformer.png
     block_width: 40
@@ -8985,12 +8325,6 @@
     name: Inductor
     blockprefix: 1
     main_category: 9
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/Inductor.png
     block_width: 40
@@ -9064,12 +8398,6 @@
     name: NMOS
     blockprefix: 1
     main_category: 9
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/NMOS.png
     block_width: 40
@@ -9143,12 +8471,6 @@
     name: NPN
     blockprefix: 1
     main_category: 9
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/NPN.png
     block_width: 40
@@ -9222,12 +8544,6 @@
     name: OpAmp
     blockprefix: 1
     main_category: 9
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/OpAmp.png
     block_width: 60
@@ -9301,12 +8617,6 @@
     name: PMOS
     blockprefix: 1
     main_category: 9
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/PMOS.png
     block_width: 40
@@ -9380,12 +8690,6 @@
     name: PNP
     blockprefix: 1
     main_category: 9
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/PNP.png
     block_width: 40
@@ -9459,12 +8763,6 @@
     name: PotentialSensor
     blockprefix: 1
     main_category: 9
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/PotentialSensor.png
     block_width: 40
@@ -9538,12 +8836,6 @@
     name: Resistor
     blockprefix: 1
     main_category: 9
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/Resistor.png
     block_width: 40
@@ -9617,13 +8909,7 @@
     name: SineVoltage
     blockprefix: 1
     main_category: 9
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: 1 V
     block_image_path: palettes/SineVoltage.png
     block_width: 40
     block_height: 40
@@ -9696,12 +8982,6 @@
     name: Switch
     blockprefix: 1
     main_category: 9
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/Switch.png
     block_width: 40
@@ -9775,12 +9055,6 @@
     name: VariableResistor
     blockprefix: 1
     main_category: 9
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/VariableResistor.png
     block_width: 40
@@ -9854,12 +9128,6 @@
     name: VoltageSensor
     blockprefix: 1
     main_category: 9
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/VoltageSensor.png
     block_width: 40
@@ -9933,13 +9201,7 @@
     name: VsourceAC
     blockprefix: 1
     main_category: 9
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: 220 V ~50
     block_image_path: palettes/VsourceAC.png
     block_width: 40
     block_height: 40
@@ -10012,13 +9274,7 @@
     name: VVsourceAC
     blockprefix: 1
     main_category: 9
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: 1 V ~ 20
     block_image_path: palettes/VVsourceAC.png
     block_width: 40
     block_height: 40
@@ -10091,13 +9347,7 @@
     name: BITCLEAR
     blockprefix: 1
     main_category: 10
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Clear bit 0
     block_image_path: palettes/BITCLEAR.png
     block_width: 80
     block_height: 40
@@ -10170,13 +9420,7 @@
     name: BITSET
     blockprefix: 1
     main_category: 10
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Set bit 0
     block_image_path: palettes/BITSET.png
     block_width: 80
     block_height: 40
@@ -10249,13 +9493,7 @@
     name: CONVERT
     blockprefix: 1
     main_category: 10
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Convert to
     block_image_path: palettes/CONVERT.png
     block_width: 40
     block_height: 40
@@ -10329,12 +9567,6 @@
     name: DFLIPFLOP
     blockprefix: 1
     main_category: 10
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/DFLIPFLOP.png
     block_width: 40
@@ -10408,12 +9640,6 @@
     name: DLATCH
     blockprefix: 1
     main_category: 10
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/DLATCH.png
     block_width: 40
@@ -10487,13 +9713,7 @@
     name: EXTRACTBITS
     blockprefix: 1
     main_category: 10
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Extract Bits 1
     block_image_path: palettes/EXTRACTBITS.png
     block_width: 80
     block_height: 40
@@ -10566,13 +9786,7 @@
     name: INTMUL
     blockprefix: 1
     main_category: 10
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: INTMUL
     block_image_path: palettes/INTMUL.png
     block_width: 40
     block_height: 40
@@ -10645,12 +9859,6 @@
     name: JKFLIPFLOP
     blockprefix: 1
     main_category: 10
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/JKFLIPFLOP.png
     block_width: 40
@@ -10724,13 +9932,7 @@
     name: LOGIC
     blockprefix: 1
     main_category: 10
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: LOGIC
     block_image_path: palettes/LOGIC.png
     block_width: 40
     block_height: 40
@@ -10803,13 +10005,7 @@
     name: SHIFT
     blockprefix: 1
     main_category: 10
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Arithmetic shift 0
     block_image_path: palettes/SHIFT.png
     block_width: 60
     block_height: 40
@@ -10882,13 +10078,7 @@
     name: SRFLIPFLOP
     blockprefix: 1
     main_category: 10
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: S   Q, R   !Q
     block_image_path: palettes/SRFLIPFLOP.png
     block_width: 40
     block_height: 60
@@ -10961,13 +10151,7 @@
     name: GENERAL_f
     blockprefix: 1
     main_category: 12
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: GENERAL
     block_image_path: palettes/GENERAL_f.png
     block_width: 60
     block_height: 40
@@ -11040,13 +10224,7 @@
     name: NEGTOPOS_f
     blockprefix: 1
     main_category: 12
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: '- to +'
     block_image_path: palettes/NEGTOPOS_f.png
     block_width: 40
     block_height: 40
@@ -11119,13 +10297,7 @@
     name: POSTONEG_f
     blockprefix: 1
     main_category: 12
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: + to -
     block_image_path: palettes/POSTONEG_f.png
     block_width: 40
     block_height: 40
@@ -11198,13 +10370,7 @@
     name: ZCROSS_f
     blockprefix: 1
     main_category: 12
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Zcross
     block_image_path: palettes/ZCROSS_f.png
     block_width: 40
     block_height: 40
@@ -11277,13 +10443,7 @@
     name: CLKFROM
     blockprefix: 1
     main_category: 6
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: A
     block_image_path: palettes/CLKFROM.png
     block_width: 40
     block_height: 40
@@ -11357,13 +10517,7 @@
     name: CLKGOTO
     blockprefix: 1
     main_category: 6
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: A
     block_image_path: palettes/CLKGOTO.png
     block_width: 40
     block_height: 40
@@ -11437,12 +10591,6 @@
     name: DEMUX
     blockprefix: 1
     main_category: 13
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/DEMUX.png
     block_width: 40
@@ -11517,12 +10665,6 @@
     name: DEMUX_f
     blockprefix: 1
     main_category: 13
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/DEMUX_f.png
     block_width: 10
@@ -11596,13 +10738,7 @@
     name: EXTRACTOR
     blockprefix: 1
     main_category: 13
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Extractor
     block_image_path: palettes/EXTRACTOR.png
     block_width: 60
     block_height: 40
@@ -11675,13 +10811,7 @@
     name: FROM
     blockprefix: 1
     main_category: 13
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: A
     block_image_path: palettes/FROM.png
     block_width: 40
     block_height: 20
@@ -11754,13 +10884,7 @@
     name: FROMMO
     blockprefix: 1
     main_category: 13
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: A
     block_image_path: palettes/FROMMO.png
     block_width: 40
     block_height: 20
@@ -11833,13 +10957,7 @@
     name: GOTO
     blockprefix: 1
     main_category: 13
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: A
     block_image_path: palettes/GOTO.png
     block_width: 40
     block_height: 20
@@ -11912,13 +11030,7 @@
     name: GOTOMO
     blockprefix: 1
     main_category: 13
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: A
     block_image_path: palettes/GOTOMO.png
     block_width: 40
     block_height: 20
@@ -11991,13 +11103,7 @@
     name: GotoTagVisibility
     blockprefix: 1
     main_category: 13
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: A
     block_image_path: palettes/GotoTagVisibility.png
     block_width: 40
     block_height: 40
@@ -12070,13 +11176,7 @@
     name: GotoTagVisibilityMO
     blockprefix: 1
     main_category: 13
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: A
     block_image_path: palettes/GotoTagVisibilityMO.png
     block_width: 40
     block_height: 40
@@ -12149,13 +11249,7 @@
     name: ISELECT_m
     blockprefix: 1
     main_category: 13
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Selector
     block_image_path: palettes/ISELECT_m.png
     block_width: 60
     block_height: 40
@@ -12228,12 +11322,6 @@
     name: M_SWITCH
     blockprefix: 1
     main_category: 13
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/M_SWITCH.png
     block_width: 50
@@ -12307,12 +11395,6 @@
     name: MUX
     blockprefix: 1
     main_category: 13
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/MUX.png
     block_width: 40
@@ -12387,12 +11469,6 @@
     name: MUX_f
     blockprefix: 1
     main_category: 13
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/MUX_f.png
     block_width: 10
@@ -12466,12 +11542,6 @@
     name: NRMSOM_f
     blockprefix: 1
     main_category: 13
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/NRMSOM_f.png
     block_width: 40
@@ -12546,13 +11616,7 @@
     name: RELAY_f
     blockprefix: 1
     main_category: 13
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Relay
     block_image_path: palettes/RELAY_f.png
     block_width: 40
     block_height: 40
@@ -12625,13 +11689,7 @@
     name: SCALAR2VECTOR
     blockprefix: 1
     main_category: 13
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: SCALAR to VECTOR
     block_image_path: palettes/SCALAR2VECTOR.png
     block_width: 60
     block_height: 40
@@ -12704,13 +11762,7 @@
     name: SELECT_m
     blockprefix: 1
     main_category: 13
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Selector
     block_image_path: palettes/SELECT_m.png
     block_width: 60
     block_height: 40
@@ -12783,12 +11835,6 @@
     name: SELF_SWITCH
     blockprefix: 1
     main_category: 13
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/SELF_SWITCH.png
     block_width: 40
@@ -12862,12 +11908,6 @@
     name: SWITCH_f
     blockprefix: 1
     main_category: 13
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/SWITCH_f.png
     block_width: 40
@@ -12941,12 +11981,6 @@
     name: SWITCH2_m
     blockprefix: 1
     main_category: 13
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/SWITCH2_m.png
     block_width: 40
@@ -13021,13 +12055,7 @@
     name: CONSTRAINT_c
     blockprefix: 1
     main_category: 15
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: x == 0
     block_image_path: palettes/CONSTRAINT_c.png
     block_width: 60
     block_height: 40
@@ -13100,13 +12128,7 @@
     name: CONSTRAINT2_c
     blockprefix: 1
     main_category: 15
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: x == 0,  x' == 0
     block_image_path: palettes/CONSTRAINT2_c.png
     block_width: 60
     block_height: 40
@@ -13179,13 +12201,7 @@
     name: DIFF_f
     blockprefix: 1
     main_category: 15
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: S
     block_image_path: palettes/DIFF_f.png
     block_width: 40
     block_height: 40
@@ -13258,13 +12274,7 @@
     name: TEXT_f
     blockprefix: 1
     main_category: 16
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: '...'
     block_image_path: palettes/TEXT_f.png
     block_width: 40
     block_height: 40
@@ -13338,13 +12348,7 @@
     name: AFFICH_m
     blockprefix: 1
     main_category: 17
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: '0.0'
     block_image_path: palettes/AFFICH_m.png
     block_width: 60
     block_height: 40
@@ -13417,12 +12421,6 @@
     name: BARXY
     blockprefix: 1
     main_category: 17
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/BARXY.png
     block_width: 40
@@ -13496,12 +12494,6 @@
     name: CANIMXY
     blockprefix: 1
     main_category: 17
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/CANIMXY.png
     block_width: 40
@@ -13575,12 +12567,6 @@
     name: CANIMXY3D
     blockprefix: 1
     main_category: 17
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/CANIMXY3D.png
     block_width: 40
@@ -13654,12 +12640,6 @@
     name: CFSCOPE
     blockprefix: 1
     main_category: 17
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/CFSCOPE.png
     block_width: 40
@@ -13733,13 +12713,7 @@
     name: CLKOUTV_f
     blockprefix: 1
     main_category: 6
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: '1'
     block_image_path: palettes/CLKOUTV_f.png
     block_width: 40
     block_height: 40
@@ -13814,12 +12788,6 @@
     name: CMAT3D
     blockprefix: 1
     main_category: 17
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/CMAT3D.png
     block_width: 40
@@ -13893,12 +12861,6 @@
     name: CMATVIEW
     blockprefix: 1
     main_category: 17
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/CMATVIEW.png
     block_width: 40
@@ -13972,12 +12934,6 @@
     name: CMSCOPE
     blockprefix: 1
     main_category: 17
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/CMSCOPE.png
     block_width: 40
@@ -14052,12 +13008,6 @@
     name: CSCOPE
     blockprefix: 1
     main_category: 17
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/CSCOPE.png
     block_width: 40
@@ -14131,13 +13081,7 @@
     name: CSCOPXY
     blockprefix: 1
     main_category: 17
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: x, y
     block_image_path: palettes/CSCOPXY.png
     block_width: 40
     block_height: 40
@@ -14211,13 +13155,7 @@
     name: CSCOPXY3D
     blockprefix: 1
     main_category: 17
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: x, y, z
     block_image_path: palettes/CSCOPXY3D.png
     block_width: 40
     block_height: 40
@@ -14290,13 +13228,7 @@
     name: OUT_f
     blockprefix: 1
     main_category: 11
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: '1'
     block_image_path: palettes/OUT_f.png
     block_width: 40
     block_height: 40
@@ -14371,13 +13303,7 @@
     name: OUTIMPL_f
     blockprefix: 1
     main_category: 11
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: '1'
     block_image_path: palettes/OUTIMPL_f.png
     block_width: 40
     block_height: 40
@@ -14451,13 +13377,7 @@
     name: TOWS_c
     blockprefix: 1
     main_category: 17
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: To workspace A [128]
     block_image_path: palettes/TOWS_c.png
     block_width: 80
     block_height: 40
@@ -14530,13 +13450,7 @@
     name: TRASH_f
     blockprefix: 1
     main_category: 17
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Trash
     block_image_path: palettes/TRASH_f.png
     block_width: 40
     block_height: 40
@@ -14609,13 +13523,7 @@
     name: WRITEAU_f
     blockprefix: 1
     main_category: 17
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Write AU to /dev/audio
     block_image_path: palettes/WRITEAU_f.png
     block_width: 80
     block_height: 40
@@ -14688,13 +13596,7 @@
     name: WRITEC_f
     blockprefix: 1
     main_category: 17
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Write to C binary file
     block_image_path: palettes/WRITEC_f.png
     block_width: 80
     block_height: 40
@@ -14767,13 +13669,7 @@
     name: CLKINV_f
     blockprefix: 1
     main_category: 11
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: '1'
     block_image_path: palettes/CLKINV_f.png
     block_width: 40
     block_height: 40
@@ -14847,12 +13743,6 @@
     name: CLOCK_c
     blockprefix: 1
     main_category: 6
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/CLOCK_c.png
     block_width: 40
@@ -14927,13 +13817,7 @@
     name: CONST
     blockprefix: 1
     main_category: 18
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: '1'
     block_image_path: palettes/CONST.png
     block_width: 40
     block_height: 40
@@ -15006,13 +13890,7 @@
     name: CONST_f
     blockprefix: 1
     main_category: 18
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: '1'
     block_image_path: palettes/CONST_f.png
     block_width: 40
     block_height: 40
@@ -15085,13 +13963,7 @@
     name: CONST_m
     blockprefix: 1
     main_category: 18
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: '1'
     block_image_path: palettes/CONST_m.png
     block_width: 40
     block_height: 40
@@ -15165,13 +14037,7 @@
     name: Counter
     blockprefix: 1
     main_category: 18
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Counter 0 --> 2
     block_image_path: palettes/Counter.png
     block_width: 60
     block_height: 40
@@ -15244,13 +14110,7 @@
     name: CURV_f
     blockprefix: 1
     main_category: 18
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Curve
     block_image_path: palettes/CURV_f.png
     block_width: 40
     block_height: 40
@@ -15323,13 +14183,7 @@
     name: FROMWSB
     blockprefix: 1
     main_category: 18
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: From workspace
     block_image_path: palettes/FROMWSB.png
     block_width: 100
     block_height: 40
@@ -15402,12 +14256,6 @@
     name: GENSIN_f
     blockprefix: 1
     main_category: 18
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/GENSIN_f.png
     block_width: 60
@@ -15481,12 +14329,6 @@
     name: GENSQR_f
     blockprefix: 1
     main_category: 18
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/GENSQR_f.png
     block_width: 60
@@ -15560,13 +14402,7 @@
     name: IN_f
     blockprefix: 1
     main_category: 11
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: '1'
     block_image_path: palettes/IN_f.png
     block_width: 40
     block_height: 40
@@ -15641,13 +14477,7 @@
     name: INIMPL_f
     blockprefix: 1
     main_category: 11
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: '1'
     block_image_path: palettes/INIMPL_f.png
     block_width: 40
     block_height: 40
@@ -15721,13 +14551,7 @@
     name: Modulo_Count
     blockprefix: 1
     main_category: 18
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Counter Modulo 3
     block_image_path: palettes/Modulo_Count.png
     block_width: 60
     block_height: 40
@@ -15800,12 +14624,6 @@
     name: PULSE_SC
     blockprefix: 1
     main_category: 18
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/PULSE_SC.png
     block_width: 60
@@ -15879,12 +14697,6 @@
     name: RAMP
     blockprefix: 1
     main_category: 18
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/RAMP.png
     block_width: 40
@@ -15958,13 +14770,7 @@
     name: RAND_m
     blockprefix: 1
     main_category: 18
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Random generator
     block_image_path: palettes/RAND_m.png
     block_width: 60
     block_height: 40
@@ -16037,13 +14843,7 @@
     name: READAU_f
     blockprefix: 1
     main_category: 18
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Read from .au sound file
     block_image_path: palettes/READAU_f.png
     block_width: 100
     block_height: 40
@@ -16116,13 +14916,7 @@
     name: READC_f
     blockprefix: 1
     main_category: 18
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Read from C binary file
     block_image_path: palettes/READC_f.png
     block_width: 80
     block_height: 40
@@ -16195,13 +14989,7 @@
     name: RFILE_f
     blockprefix: 1
     main_category: 18
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Read from input file
     block_image_path: palettes/RFILE_f.png
     block_width: 60
     block_height: 40
@@ -16274,12 +15062,6 @@
     name: SampleCLK
     blockprefix: 1
     main_category: 6
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/SampleCLK.png
     block_width: 40
@@ -16354,12 +15136,6 @@
     name: SAWTOOTH_f
     blockprefix: 1
     main_category: 18
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/SAWTOOTH_f.png
     block_width: 60
@@ -16433,13 +15209,7 @@
     name: Sigbuilder
     blockprefix: 1
     main_category: 18
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Signal Builder
     block_image_path: palettes/Sigbuilder.png
     block_width: 60
     block_height: 40
@@ -16512,12 +15282,6 @@
     name: STEP_FUNCTION
     blockprefix: 1
     main_category: 18
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/STEP_FUNCTION.png
     block_width: 40
@@ -16591,12 +15355,6 @@
     name: TIME_f
     blockprefix: 1
     main_category: 18
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/TIME_f.png
     block_width: 40
@@ -16670,13 +15428,7 @@
     name: TKSCALE
     blockprefix: 1
     main_category: 18
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: TK Scale
     block_image_path: palettes/TKSCALE.png
     block_width: 60
     block_height: 40
@@ -16749,12 +15501,6 @@
     name: Bache
     blockprefix: 1
     main_category: 19
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/Bache.png
     block_width: 40
@@ -16828,12 +15574,6 @@
     name: Flowmeter
     blockprefix: 1
     main_category: 19
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/Flowmeter.png
     block_width: 40
@@ -16907,12 +15647,6 @@
     name: PerteDP
     blockprefix: 1
     main_category: 19
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/PerteDP.png
     block_width: 40
@@ -16986,12 +15720,6 @@
     name: PuitsP
     blockprefix: 1
     main_category: 19
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/PuitsP.png
     block_width: 50
@@ -17065,13 +15793,7 @@
     name: SourceP
     blockprefix: 1
     main_category: 19
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: S
     block_image_path: palettes/SourceP.png
     block_width: 50
     block_height: 40
@@ -17144,12 +15866,6 @@
     name: VanneReglante
     blockprefix: 1
     main_category: 19
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/VanneReglante.png
     block_width: 40
@@ -17223,13 +15939,7 @@
     name: BOUNCE
     blockprefix: 1
     main_category: 20
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Bouncing balls
     block_image_path: palettes/BOUNCE.png
     block_width: 60
     block_height: 40
@@ -17302,12 +16012,6 @@
     name: BOUNCEXY
     blockprefix: 1
     main_category: 20
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/BOUNCEXY.png
     block_width: 40
@@ -17381,12 +16085,6 @@
     name: BPLATFORM
     blockprefix: 1
     main_category: 20
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/BPLATFORM.png
     block_width: 40
@@ -17460,13 +16158,7 @@
     name: c_block
     blockprefix: 1
     main_category: 21
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: 'C block : toto'
     block_image_path: palettes/c_block.png
     block_width: 60
     block_height: 40
@@ -17539,13 +16231,7 @@
     name: CBLOCK
     blockprefix: 1
     main_category: 21
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: 'C block 2: toto'
     block_image_path: palettes/CBLOCK.png
     block_width: 80
     block_height: 40
@@ -17618,13 +16304,7 @@
     name: CBLOCK4
     blockprefix: 1
     main_category: 21
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: 'C block 4: toto'
     block_image_path: palettes/CBLOCK4.png
     block_width: 80
     block_height: 40
@@ -17697,13 +16377,7 @@
     name: DEBUG
     blockprefix: 1
     main_category: 21
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: 'Debug : xcos_debug_gui(flag, block);'
     block_image_path: palettes/DEBUG.png
     block_width: 160
     block_height: 40
@@ -17776,13 +16450,7 @@
     name: EXPRESSION
     blockprefix: 1
     main_category: 21
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: 'Expression : (u1>0)*sin(u2)^2'
     block_image_path: palettes/EXPRESSION.png
     block_width: 100
     block_height: 40
@@ -17855,13 +16523,7 @@
     name: fortran_block
     blockprefix: 1
     main_category: 21
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: 'Fortran block: forty'
     block_image_path: palettes/fortran_block.png
     block_width: 80
     block_height: 40
@@ -17934,13 +16596,7 @@
     name: generic_block3
     blockprefix: 1
     main_category: 21
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: 'native block : sinblk'
     block_image_path: palettes/generic_block3.png
     block_width: 80
     block_height: 40
@@ -18013,13 +16669,7 @@
     name: MBLOCK
     blockprefix: 1
     main_category: 21
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: Modelica generic
     block_image_path: palettes/MBLOCK.png
     block_width: 60
     block_height: 40
@@ -18092,13 +16742,7 @@
     name: scifunc_block_m
     blockprefix: 1
     main_category: 21
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
-    initial_display_parameter: ''
+    initial_display_parameter: 'Function: y1=sin(u1)'
     block_image_path: palettes/scifunc_block_m.png
     block_width: 80
     block_height: 40
@@ -18171,12 +16815,6 @@
     name: SUPER_f
     blockprefix: 1
     main_category: 11
-    initial_explicit_input_ports: 0
-    initial_implicit_input_ports: 0
-    initial_explicit_output_ports: 0
-    initial_implicit_output_ports: 0
-    initial_control_ports: 0
-    initial_command_ports: 0
     initial_display_parameter: ''
     block_image_path: palettes/SUPER_f.png
     block_width: 40
