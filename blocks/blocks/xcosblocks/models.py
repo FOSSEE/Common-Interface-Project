@@ -357,13 +357,8 @@ class Block(models.Model):
     main_category = models.ForeignKey(Category, null=True,
                                       on_delete=models.PROTECT, related_name='+')
     categories = models.ManyToManyField(Category)
-    initial_explicit_input_ports = models.IntegerField()
-    initial_implicit_input_ports = models.IntegerField()
-    initial_explicit_output_ports = models.IntegerField()
-    initial_implicit_output_ports = models.IntegerField()
-    initial_control_ports = models.IntegerField()
-    initial_command_ports = models.IntegerField()
-    initial_display_parameter = models.CharField(max_length=100)
+    initial_display_parameter = models.CharField(max_length=100,
+                                                 blank=True, null=True)
     block_image_path = models.CharField(max_length=100,
                                         blank=True, null=True)
     block_width = models.IntegerField(default=40)

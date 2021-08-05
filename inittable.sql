@@ -175,7 +175,7 @@ LOAD DATA LOCAL INFILE 'data/main-category-blocks.csv'
     INTO TABLE xcosblocks_block
     FIELDS TERMINATED BY '\t'
     LINES TERMINATED BY '\n'
-    (id, @main_category_name, name, @blockprefix_name,
+    (id, @main_category_name, name, @blockprefix_name, initial_display_parameter,
     @p000_key, @p000, @p000_type, p000_value_initial,
     @p001_key, @p001, @p001_type, p001_value_initial,
     @p002_key, @p002, @p002_type, p002_value_initial,
@@ -228,7 +228,7 @@ LOAD DATA LOCAL INFILE 'data/main-category-blocks.csv'
     INTO TABLE xcosblocks_blockparameter
     FIELDS TERMINATED BY '\t'
     LINES TERMINATED BY '\n'
-    (block_id, @main_category_name, @name, @blockprefix_name,
+    (block_id, @main_category_name, @name, @blockprefix_name, @initial_display_parameter,
     @p000_key, p000, @p000_type, @p000_value_initial,
     @p001_key, p001, @p001_type, @p001_value_initial,
     @p002_key, p002, @p002_type, @p002_value_initial,
