@@ -261,6 +261,7 @@ class BlockSerializer(serializers.ModelSerializer):
             'blockprefix',
             'main_category',
             'categories',
+            'initial_display_parameter',
             'block_image_path',
             'block_width',
             'block_height',
@@ -555,16 +556,21 @@ class SetBlockParameterSerializer(serializers.Serializer):
                                        allow_blank=True, trim_whitespace=True)
 
     def getblockportserializer(self):
+        block = Block.objects.get(id=self.data['block_id'])
         blockports = BlockPort.objects.filter(block=self.data['block_id'])
 
+        display_parameter = block.initial_display_parameter
         number_of_blockports = len(blockports)
 
         # TODO: change values depending on block name
 
         return SetBlockPortSerializer(data={
+            'display_parameter': display_parameter,
             'number_of_blockports': number_of_blockports,
         })
 
 
 class SetBlockPortSerializer(serializers.Serializer):
+    display_parameter = serializers.CharField(
+        max_length=100, allow_blank=True, trim_whitespace=True)
     number_of_blockports = serializers.IntegerField()
