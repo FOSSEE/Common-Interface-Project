@@ -24,12 +24,11 @@ id
 blocktype
 name
 categories
-initial_explicit_input_ports
-initial_implicit_input_ports
-initial_explicit_output_ports
-initial_implicit_output_ports
-initial_control_ports
-initial_command_ports
+initial_ports - Array of maps of
+  port_name
+  port_number
+  port_type
+  port_orientation
 initial_display_parameter
 block_image_path
 p000_value_initial
@@ -78,12 +77,11 @@ Status Code
 
 Response JSON - Map of
 
-variable_explicit_input_ports
-variable_implicit_input_ports
-variable_explicit_output_ports
-variable_implicit_output_ports
-variable_control_ports
-variable_command_ports
+variable_ports - Array of maps of
+  port_name
+  port_number
+  port_type
+  port_orientation
 variable_display_parameter
 
 
