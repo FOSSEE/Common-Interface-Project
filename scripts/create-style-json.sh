@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mysql --login-path=local -B -N esimblocks < create-style-json.sql |
+mysql --login-path=local -B -N esimblocks < scripts/create-style-json.sql |
     sed -e 's/\\n/\n/g' |
     tac |
     sed '1,/^  },/s/^  },/  }/' |

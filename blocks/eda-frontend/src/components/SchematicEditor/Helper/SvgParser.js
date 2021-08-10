@@ -1,9 +1,12 @@
-let pinOrientation
-let x_pos, y_pos
-let width, height
+import mxGraphFactory from 'mxgraph'
+
+const {
+    mxPoint
+} = new mxGraphFactory();
 
 // we need to divide the svg width and height by the same number in order to maintain the aspect ratio.
-export const default_scale = 5;
+export const default_scale = parseFloat(process.env.REACT_APP_BLOCK_SCALE);
+export const port_size = parseFloat(process.env.REACT_APP_PORT_SIZE);
 
 function getParameter(i) {
     if (i < 10)
@@ -25,8 +28,8 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
   const block_name = component.main_category + '-' + component.blockprefix + '-' + component.name;
   const pins = []
   // make the component images smaller by scaling
-  width = component.block_width / default_scale
-  height = component.block_height / default_scale
+  let width = component.block_width / default_scale
+  let height = component.block_height / default_scale
 
   const v1 = graph.insertVertex(
     parent,
@@ -66,14 +69,22 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
       if (blockport.port_name === 'NC')
           continue;
 
-      x_pos = width / 2 + blockport.port_x / default_scale;
-      y_pos = height / 2 - blockport.port_y / default_scale;
+      let x_pos = 1 / 2 + blockport.port_x / default_scale / width;
+      let y_pos = 1 / 2 - blockport.port_y / default_scale / height;
 
-      pinOrientation = blockport.port_orientation;
-      let portStyle = "defaultPin" + pinOrientation;
+      let port_orientation = blockport.port_orientation;
+      let point = null;
+      switch (port_orientation) {
+          case 'ExplicitInputPort': case 'ImplicitInputPort': point = new mxPoint(-port_size, -port_size / 2); break;
+          case 'ControlPort': point = new mxPoint(-port_size / 2, -port_size); break;
+          case 'ExplicitOutputPort': case 'ImplicitOutputPort': point = new mxPoint(0, -port_size / 2); break;
+          case 'CommandPort': point = new mxPoint(-port_size / 2, 0); break;
+          default: point = new mxPoint(-port_size / 2, -port_size / 2); break;
+      }
 
-      pins[i] = graph.insertVertex(v1, null, blockport.port_number, x_pos, y_pos, 0.5, 0.5, portStyle)
-      pins[i].geometry.relative = false;
+      pins[i] = graph.insertVertex(v1, null, null, x_pos, y_pos, port_size, port_size, port_orientation)
+      pins[i].geometry.relative = true;
+      pins[i].geometry.offset = point;
       pins[i].ParentComponent = v1.id;
   }
 }
