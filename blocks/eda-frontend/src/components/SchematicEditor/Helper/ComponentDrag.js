@@ -1,7 +1,7 @@
 import mxGraphFactory from 'mxgraph'
 import store from '../../../redux/store'
 import dot from '../../../static/dot.gif'
-import blockstyle from '../../../static/Xcos-style.json'
+import blockstyle from '../../../static/style.json'
 import { getCompProperties, closeCompProperties } from '../../../redux/actions/index'
 
 import ToolbarTools from './ToolbarTools.js'

@@ -4235,7 +4235,7 @@
     initial_display_parameter: ''
     block_image_path: palettes/BIGSOM_f.png
     block_width: 40
-    block_height: 40
+    block_height: 60
     p000_value_initial: ''
     p001_value_initial: ''
     p002_value_initial: ''
@@ -5185,7 +5185,7 @@
     initial_display_parameter: ''
     block_image_path: palettes/PRODUCT.png
     block_width: 40
-    block_height: 40
+    block_height: 60
     p000_value_initial: ''
     p001_value_initial: ''
     p002_value_initial: ''
@@ -6718,7 +6718,7 @@
     main_category: 7
     initial_display_parameter: Mag & Phi
     block_image_path: palettes/MATMAGPHI.png
-    block_width: 40
+    block_width: 60
     block_height: 40
     p000_value_initial: ''
     p001_value_initial: ''
@@ -7303,7 +7303,7 @@
     main_category: 7
     initial_display_parameter: Re & Im
     block_image_path: palettes/MATZREIM.png
-    block_width: 40
+    block_width: 60
     block_height: 40
     p000_value_initial: ''
     p001_value_initial: ''
@@ -9495,7 +9495,7 @@
     main_category: 10
     initial_display_parameter: Convert to
     block_image_path: palettes/CONVERT.png
-    block_width: 40
+    block_width: 60
     block_height: 40
     p000_value_initial: ''
     p001_value_initial: ''
@@ -10446,7 +10446,7 @@
     initial_display_parameter: A
     block_image_path: palettes/CLKFROM.png
     block_width: 40
-    block_height: 40
+    block_height: 20
     p000_value_initial: ''
     p001_value_initial: ''
     p002_value_initial: ''
@@ -10520,7 +10520,7 @@
     initial_display_parameter: A
     block_image_path: palettes/CLKGOTO.png
     block_width: 40
-    block_height: 40
+    block_height: 20
     p000_value_initial: ''
     p001_value_initial: ''
     p002_value_initial: ''
@@ -10593,7 +10593,7 @@
     main_category: 13
     initial_display_parameter: ''
     block_image_path: palettes/DEMUX.png
-    block_width: 40
+    block_width: 10
     block_height: 40
     p000_value_initial: ''
     p001_value_initial: ''
@@ -11397,7 +11397,7 @@
     main_category: 13
     initial_display_parameter: ''
     block_image_path: palettes/MUX.png
-    block_width: 40
+    block_width: 10
     block_height: 40
     p000_value_initial: ''
     p001_value_initial: ''
@@ -11544,7 +11544,7 @@
     main_category: 13
     initial_display_parameter: ''
     block_image_path: palettes/NRMSOM_f.png
-    block_width: 40
+    block_width: 4
     block_height: 40
     p000_value_initial: ''
     p001_value_initial: ''
@@ -12715,8 +12715,8 @@
     main_category: 6
     initial_display_parameter: '1'
     block_image_path: palettes/CLKOUTV_f.png
-    block_width: 40
-    block_height: 40
+    block_width: 20
+    block_height: 20
     p000_value_initial: ''
     p001_value_initial: ''
     p002_value_initial: ''
@@ -13230,8 +13230,8 @@
     main_category: 11
     initial_display_parameter: '1'
     block_image_path: palettes/OUT_f.png
-    block_width: 40
-    block_height: 40
+    block_width: 20
+    block_height: 20
     p000_value_initial: ''
     p001_value_initial: ''
     p002_value_initial: ''
@@ -13305,8 +13305,8 @@
     main_category: 11
     initial_display_parameter: '1'
     block_image_path: palettes/OUTIMPL_f.png
-    block_width: 40
-    block_height: 40
+    block_width: 20
+    block_height: 20
     p000_value_initial: ''
     p001_value_initial: ''
     p002_value_initial: ''
@@ -13671,8 +13671,8 @@
     main_category: 11
     initial_display_parameter: '1'
     block_image_path: palettes/CLKINV_f.png
-    block_width: 40
-    block_height: 40
+    block_width: 20
+    block_height: 20
     p000_value_initial: ''
     p001_value_initial: ''
     p002_value_initial: ''
@@ -14404,8 +14404,8 @@
     main_category: 11
     initial_display_parameter: '1'
     block_image_path: palettes/IN_f.png
-    block_width: 40
-    block_height: 40
+    block_width: 20
+    block_height: 20
     p000_value_initial: ''
     p001_value_initial: ''
     p002_value_initial: ''
@@ -14479,8 +14479,8 @@
     main_category: 11
     initial_display_parameter: '1'
     block_image_path: palettes/INIMPL_f.png
-    block_width: 40
-    block_height: 40
+    block_width: 20
+    block_height: 20
     p000_value_initial: ''
     p001_value_initial: ''
     p002_value_initial: ''
@@ -40202,8 +40202,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -20
+    port_y: -10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -40215,8 +40215,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 30
+    port_x: -20
+    port_y: 10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -40228,8 +40228,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -40241,8 +40241,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -20
+    port_y: -10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -40254,8 +40254,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 30
+    port_x: -20
+    port_y: 10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -40267,8 +40267,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -40280,8 +40280,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -30
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -40293,8 +40293,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 60
-    port_y: 20
+    port_x: 30
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -40306,8 +40306,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -40
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -40319,8 +40319,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 80
-    port_y: 20
+    port_x: 40
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -40332,8 +40332,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -40345,8 +40345,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -40358,8 +40358,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -40371,8 +40371,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -40384,8 +40384,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -40397,8 +40397,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -40410,8 +40410,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 6
+    port_x: -30
+    port_y: -24
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -40423,8 +40423,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 18
+    port_x: -30
+    port_y: -12
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -40436,8 +40436,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 0
-    port_y: 30
+    port_x: -30
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -40449,8 +40449,8 @@
     port_order: 4
     port_name: '4'
     port_number: '4'
-    port_x: 0
-    port_y: 42
+    port_x: -30
+    port_y: 12
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -40462,8 +40462,8 @@
     port_order: 5
     port_name: '5'
     port_number: '5'
-    port_x: 0
-    port_y: 54
+    port_x: -30
+    port_y: 24
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -40475,8 +40475,8 @@
     port_order: 6
     port_name: '6'
     port_number: '6'
-    port_x: 60
-    port_y: 15
+    port_x: 30
+    port_y: -15
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -40488,8 +40488,8 @@
     port_order: 7
     port_name: '7'
     port_number: '7'
-    port_x: 60
-    port_y: 45
+    port_x: 30
+    port_y: 15
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -40501,8 +40501,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -40514,8 +40514,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -40527,8 +40527,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -30
+    port_y: -10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -40540,8 +40540,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 30
+    port_x: -30
+    port_y: 10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -40553,8 +40553,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 60
-    port_y: 20
+    port_x: 30
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -40566,8 +40566,8 @@
     port_order: 4
     port_name: '4'
     port_number: '4'
-    port_x: 30
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -40579,8 +40579,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -35
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -40592,8 +40592,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 70
-    port_y: 20
+    port_x: 35
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -40605,8 +40605,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -30
+    port_y: -10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -40618,8 +40618,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 30
+    port_x: -30
+    port_y: 10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -40631,8 +40631,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 60
-    port_y: 20
+    port_x: 30
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -40644,8 +40644,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -30
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -40657,8 +40657,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 60
-    port_y: 20
+    port_x: 30
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -40670,8 +40670,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -40683,8 +40683,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -40696,8 +40696,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -40709,8 +40709,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -40722,8 +40722,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -40735,8 +40735,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -40748,8 +40748,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -35
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -40761,8 +40761,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 70
-    port_y: 20
+    port_x: 35
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -40774,8 +40774,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -40787,8 +40787,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -40800,8 +40800,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -40
+    port_y: -10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -40813,8 +40813,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 30
+    port_x: -40
+    port_y: 10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -40826,8 +40826,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 80
-    port_y: 10
+    port_x: 40
+    port_y: -10
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -40839,8 +40839,8 @@
     port_order: 4
     port_name: '4'
     port_number: '4'
-    port_x: 80
-    port_y: 30
+    port_x: 40
+    port_y: 10
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -40852,8 +40852,8 @@
     port_order: 5
     port_name: '5'
     port_number: '5'
-    port_x: 40
-    port_y: 0
+    port_x: 0
+    port_y: -20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -40865,8 +40865,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -40878,8 +40878,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -40891,8 +40891,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -30
+    port_y: -10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -40904,8 +40904,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 30
+    port_x: -30
+    port_y: 10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -40917,8 +40917,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 60
-    port_y: 20
+    port_x: 30
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -40930,8 +40930,8 @@
     port_order: 4
     port_name: '4'
     port_number: '4'
-    port_x: 15
-    port_y: 0
+    port_x: -15
+    port_y: -20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -40943,8 +40943,8 @@
     port_order: 5
     port_name: '5'
     port_number: '5'
-    port_x: 45
-    port_y: 0
+    port_x: 15
+    port_y: -20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -40956,8 +40956,8 @@
     port_order: 6
     port_name: '6'
     port_number: '6'
-    port_x: 30
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -40969,8 +40969,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -30
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -40982,8 +40982,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 60
-    port_y: 20
+    port_x: 30
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -40995,8 +40995,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 30
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -41008,8 +41008,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -20
+    port_y: -10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -41021,8 +41021,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 30
+    port_x: -20
+    port_y: 10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -41034,8 +41034,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -41047,8 +41047,8 @@
     port_order: 4
     port_name: '4'
     port_number: '4'
-    port_x: 20
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -41060,8 +41060,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -40
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -41073,8 +41073,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 80
-    port_y: 20
+    port_x: 40
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -41086,8 +41086,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 40
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -41099,8 +41099,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -41112,8 +41112,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -41125,8 +41125,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 20
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -41138,8 +41138,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -41151,8 +41151,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -41164,8 +41164,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 20
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -41177,8 +41177,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -41190,8 +41190,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -41203,8 +41203,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 20
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -41216,8 +41216,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -30
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -41229,8 +41229,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 60
-    port_y: 20
+    port_x: 30
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -41242,8 +41242,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 30
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -41255,8 +41255,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -41268,8 +41268,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -41281,8 +41281,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 20
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -41294,8 +41294,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -30
+    port_y: -10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -41307,8 +41307,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 30
+    port_x: -30
+    port_y: 10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -41320,8 +41320,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 60
-    port_y: 20
+    port_x: 30
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -41333,8 +41333,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -41346,8 +41346,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -41359,8 +41359,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -41372,8 +41372,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -41385,8 +41385,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 20
-    port_y: 0
+    port_x: 0
+    port_y: -20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -41398,8 +41398,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 10
-    port_y: 40
+    port_x: -10
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -41411,8 +41411,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 30
-    port_y: 40
+    port_x: 10
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -41424,8 +41424,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 60
-    port_y: 30
+    port_x: 30
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -41437,8 +41437,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 15
-    port_y: 60
+    port_x: -15
+    port_y: 30
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -41450,8 +41450,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 45
-    port_y: 60
+    port_x: 15
+    port_y: 30
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -41463,8 +41463,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 20
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -41476,8 +41476,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 20
-    port_y: 0
+    port_x: 0
+    port_y: -20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -41489,8 +41489,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 7
-    port_y: 40
+    port_x: -13
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -41502,8 +41502,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 20
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -41515,8 +41515,8 @@
     port_order: 4
     port_name: '4'
     port_number: '4'
-    port_x: 33
-    port_y: 40
+    port_x: 13
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -41528,8 +41528,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -30
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -41541,8 +41541,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 30
-    port_y: 0
+    port_x: 0
+    port_y: -20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -41554,8 +41554,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 20
-    port_y: 0
+    port_x: 0
+    port_y: -20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -41567,8 +41567,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 20
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -41580,8 +41580,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -40
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -41593,8 +41593,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 20
-    port_y: 0
+    port_x: -20
+    port_y: -20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -41606,8 +41606,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 60
-    port_y: 0
+    port_x: 20
+    port_y: -20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -41619,8 +41619,8 @@
     port_order: 4
     port_name: '4'
     port_number: '4'
-    port_x: 40
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -41632,8 +41632,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 30
-    port_y: 0
+    port_x: 0
+    port_y: -20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -41645,8 +41645,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 30
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -41658,8 +41658,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 30
-    port_y: 0
+    port_x: 0
+    port_y: -20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -41671,8 +41671,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -30
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -41684,8 +41684,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 30
-    port_y: 0
+    port_x: 0
+    port_y: -20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -41697,8 +41697,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 30
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -41710,8 +41710,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -30
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -41723,8 +41723,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 30
-    port_y: 0
+    port_x: 0
+    port_y: -20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -41736,8 +41736,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 30
-    port_y: 0
+    port_x: 0
+    port_y: -20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -41749,8 +41749,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 30
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -41762,8 +41762,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 20
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -41775,8 +41775,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 30
+    port_x: -30
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -41788,8 +41788,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 15
-    port_y: 0
+    port_x: -15
+    port_y: -30
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -41801,8 +41801,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 45
-    port_y: 0
+    port_x: 15
+    port_y: -30
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -41814,8 +41814,8 @@
     port_order: 4
     port_name: '4'
     port_number: '4'
-    port_x: 30
-    port_y: 60
+    port_x: 0
+    port_y: 30
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -41827,8 +41827,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 10
-    port_y: 0
+    port_x: -20
+    port_y: -20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -41840,8 +41840,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 30
-    port_y: 0
+    port_x: 0
+    port_y: -20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -41853,8 +41853,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 50
-    port_y: 0
+    port_x: 20
+    port_y: -20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -41866,8 +41866,8 @@
     port_order: 4
     port_name: '4'
     port_number: '4'
-    port_x: 30
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -41879,8 +41879,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 15
-    port_y: 0
+    port_x: -15
+    port_y: -20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -41892,8 +41892,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 45
-    port_y: 0
+    port_x: 15
+    port_y: -20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -41905,8 +41905,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 15
-    port_y: 0
+    port_x: -15
+    port_y: -20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -41918,8 +41918,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 45
-    port_y: 0
+    port_x: 15
+    port_y: -20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -41931,8 +41931,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 30
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -41944,8 +41944,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 20
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -41957,8 +41957,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -41970,8 +41970,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -41983,8 +41983,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 15
+    port_x: -20
+    port_y: -15
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -41996,8 +41996,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 45
+    port_x: -20
+    port_y: 15
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42009,8 +42009,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 40
-    port_y: 30
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -42022,8 +42022,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42035,8 +42035,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -42048,8 +42048,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42061,8 +42061,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -42074,8 +42074,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42087,8 +42087,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -42100,8 +42100,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42113,8 +42113,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -42126,8 +42126,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42139,8 +42139,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -42152,8 +42152,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42165,8 +42165,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -42178,8 +42178,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42191,8 +42191,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -42204,8 +42204,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42217,8 +42217,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -42230,8 +42230,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42243,8 +42243,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -42256,8 +42256,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42269,8 +42269,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -42282,8 +42282,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42295,8 +42295,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -42308,8 +42308,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 5
+    port_x: -10
+    port_y: -5
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42321,8 +42321,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 15
+    port_x: -10
+    port_y: 5
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42334,8 +42334,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 20
-    port_y: 10
+    port_x: 10
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -42347,8 +42347,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 15
+    port_x: -20
+    port_y: -15
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42360,8 +42360,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 45
+    port_x: -20
+    port_y: 15
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42373,8 +42373,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 40
-    port_y: 30
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -42386,8 +42386,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42399,8 +42399,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -42412,8 +42412,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42425,8 +42425,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -42438,8 +42438,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 7
+    port_x: -20
+    port_y: -13
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42451,8 +42451,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42464,8 +42464,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 0
-    port_y: 33
+    port_x: -20
+    port_y: 13
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42477,8 +42477,8 @@
     port_order: 4
     port_name: '4'
     port_number: '4'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -42490,8 +42490,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 3
+    port_x: -10
+    port_y: -7
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42503,8 +42503,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 10
+    port_x: -10
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42516,8 +42516,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 0
-    port_y: 17
+    port_x: -10
+    port_y: 7
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42529,8 +42529,8 @@
     port_order: 4
     port_name: '4'
     port_number: '4'
-    port_x: 20
-    port_y: 10
+    port_x: 10
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -42542,8 +42542,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 15
+    port_x: -20
+    port_y: -15
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42555,8 +42555,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 45
+    port_x: -20
+    port_y: 15
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42568,8 +42568,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 40
-    port_y: 30
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -42581,8 +42581,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42594,8 +42594,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -42607,8 +42607,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -40
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42620,8 +42620,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 80
-    port_y: 20
+    port_x: 40
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -42633,8 +42633,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -30
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42646,8 +42646,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 60
-    port_y: 20
+    port_x: 30
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -42659,8 +42659,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -30
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42672,8 +42672,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 60
-    port_y: 20
+    port_x: 30
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -42685,8 +42685,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -30
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42698,8 +42698,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 60
-    port_y: 20
+    port_x: 30
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -42711,8 +42711,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -20
+    port_y: -10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42724,8 +42724,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 30
+    port_x: -20
+    port_y: 10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42737,8 +42737,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -42750,8 +42750,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 15
+    port_x: -20
+    port_y: -15
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42763,8 +42763,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 45
+    port_x: -20
+    port_y: 15
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42776,8 +42776,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 40
-    port_y: 30
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -42789,8 +42789,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 15
+    port_x: -20
+    port_y: -15
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42802,8 +42802,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 45
+    port_x: -20
+    port_y: 15
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42815,8 +42815,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 40
-    port_y: 30
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -42828,8 +42828,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42841,8 +42841,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -42854,8 +42854,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42867,8 +42867,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -42880,8 +42880,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -20
+    port_y: -10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42893,8 +42893,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 30
+    port_x: -20
+    port_y: 10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42906,8 +42906,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -42919,8 +42919,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42932,8 +42932,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -42945,8 +42945,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42958,8 +42958,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -42971,8 +42971,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -42984,8 +42984,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -42997,8 +42997,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -43010,8 +43010,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 10
+    port_x: 20
+    port_y: -10
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -43023,8 +43023,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 40
-    port_y: 30
+    port_x: 20
+    port_y: 10
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -43036,8 +43036,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -30
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -43049,8 +43049,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 60
-    port_y: 10
+    port_x: 30
+    port_y: -10
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -43062,8 +43062,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 60
-    port_y: 30
+    port_x: 30
+    port_y: 10
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -43075,8 +43075,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -30
+    port_y: -10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -43088,8 +43088,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 30
+    port_x: -30
+    port_y: 10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -43101,8 +43101,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 60
-    port_y: 20
+    port_x: 30
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -43114,8 +43114,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -43127,8 +43127,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -43140,8 +43140,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -30
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -43153,8 +43153,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 60
-    port_y: 20
+    port_x: 30
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -43166,8 +43166,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -43179,8 +43179,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -43192,8 +43192,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -30
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -43205,8 +43205,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 60
-    port_y: 20
+    port_x: 30
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -43218,8 +43218,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -30
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -43231,8 +43231,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 60
-    port_y: 20
+    port_x: 30
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -43244,8 +43244,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -43257,8 +43257,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -43270,8 +43270,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -30
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -43283,8 +43283,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 60
-    port_y: 10
+    port_x: 30
+    port_y: -10
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -43296,8 +43296,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 60
-    port_y: 30
+    port_x: 30
+    port_y: 10
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -43309,8 +43309,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 7
+    port_x: -20
+    port_y: -13
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -43322,8 +43322,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -43335,8 +43335,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 0
-    port_y: 33
+    port_x: -20
+    port_y: 13
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -43348,8 +43348,8 @@
     port_order: 4
     port_name: '4'
     port_number: '4'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -43361,8 +43361,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -30
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -43374,8 +43374,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 60
-    port_y: 20
+    port_x: 30
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -43387,8 +43387,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -43400,8 +43400,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -43413,8 +43413,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -25
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -43426,8 +43426,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 50
-    port_y: 20
+    port_x: 25
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -43439,8 +43439,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 11
+    port_x: -20
+    port_y: 0
     port_orientation: ImplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -43452,8 +43452,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 11
+    port_x: 20
+    port_y: 0
     port_orientation: ImplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -43465,8 +43465,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 15
+    port_x: -21
+    port_y: -15
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -43478,8 +43478,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 45
+    port_x: -21
+    port_y: 15
     port_orientation: ImplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -43491,8 +43491,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 42
-    port_y: 30
+    port_x: 21
+    port_y: 0
     port_orientation: ImplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -43504,8 +43504,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 11
+    port_x: -15
+    port_y: 0
     port_orientation: ImplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -43517,8 +43517,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 30
-    port_y: 11
+    port_x: 15
+    port_y: 0
     port_orientation: ImplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -43530,8 +43530,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ImplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -43543,8 +43543,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 10
+    port_x: 20
+    port_y: -10
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -43556,8 +43556,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 40
-    port_y: 30
+    port_x: 20
+    port_y: 10
     port_orientation: ImplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -43569,8 +43569,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 15
+    port_x: -21
+    port_y: -15
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -43582,8 +43582,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 45
+    port_x: -21
+    port_y: 15
     port_orientation: ImplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -43595,8 +43595,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 42
-    port_y: 30
+    port_x: 21
+    port_y: 0
     port_orientation: ImplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -43608,8 +43608,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -20
+    port_y: 0
     port_orientation: ImplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -43621,8 +43621,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 10
+    port_x: 20
+    port_y: 0
     port_orientation: ImplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -43634,8 +43634,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -10
+    port_y: 0
     port_orientation: ImplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -43647,8 +43647,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -20
+    port_y: -10
     port_orientation: ImplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -43660,8 +43660,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 30
+    port_x: -20
+    port_y: 10
     port_orientation: ImplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -43673,8 +43673,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 40
-    port_y: 10
+    port_x: 20
+    port_y: -10
     port_orientation: ImplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -43686,8 +43686,8 @@
     port_order: 4
     port_name: '4'
     port_number: '4'
-    port_x: 40
-    port_y: 30
+    port_x: 20
+    port_y: 10
     port_orientation: ImplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -43699,8 +43699,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -20
+    port_y: -10
     port_orientation: ImplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -43712,8 +43712,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 30
+    port_x: -20
+    port_y: 10
     port_orientation: ImplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -43725,8 +43725,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 40
-    port_y: 10
+    port_x: 20
+    port_y: -10
     port_orientation: ImplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -43738,8 +43738,8 @@
     port_order: 4
     port_name: '4'
     port_number: '4'
-    port_x: 40
-    port_y: 30
+    port_x: 20
+    port_y: 10
     port_orientation: ImplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -43751,8 +43751,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 9
+    port_x: -20
+    port_y: 0
     port_orientation: ImplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -43764,8 +43764,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 9
+    port_x: 20
+    port_y: 0
     port_orientation: ImplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -43777,8 +43777,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ImplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -43790,8 +43790,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 7
+    port_x: 20
+    port_y: -13
     port_orientation: ImplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -43803,8 +43803,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ImplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -43816,8 +43816,8 @@
     port_order: 4
     port_name: '4'
     port_number: '4'
-    port_x: 40
-    port_y: 33
+    port_x: 20
+    port_y: 13
     port_orientation: ImplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -43829,8 +43829,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ImplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -43842,8 +43842,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 10
+    port_x: 20
+    port_y: -10
     port_orientation: ImplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -43855,8 +43855,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 40
-    port_y: 30
+    port_x: 20
+    port_y: 10
     port_orientation: ImplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -43868,8 +43868,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 25
+    port_x: -30
+    port_y: -25
     port_orientation: ImplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -43881,8 +43881,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 75
+    port_x: -30
+    port_y: 25
     port_orientation: ImplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -43894,8 +43894,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 60
-    port_y: 50
+    port_x: 30
+    port_y: 0
     port_orientation: ImplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -43907,8 +43907,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ImplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -43920,8 +43920,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 7
+    port_x: 20
+    port_y: -13
     port_orientation: ImplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -43933,8 +43933,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ImplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -43946,8 +43946,8 @@
     port_order: 4
     port_name: '4'
     port_number: '4'
-    port_x: 40
-    port_y: 33
+    port_x: 20
+    port_y: 13
     port_orientation: ImplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -43959,8 +43959,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ImplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -43972,8 +43972,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 10
+    port_x: 20
+    port_y: -10
     port_orientation: ImplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -43985,8 +43985,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 40
-    port_y: 30
+    port_x: 20
+    port_y: 10
     port_orientation: ImplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -43998,8 +43998,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ImplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -44011,8 +44011,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -44024,8 +44024,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -20
+    port_y: 0
     port_orientation: ImplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -44037,8 +44037,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 10
+    port_x: 20
+    port_y: 0
     port_orientation: ImplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -44050,8 +44050,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ImplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -44063,8 +44063,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ImplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -44076,8 +44076,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -20
+    port_y: -10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -44089,8 +44089,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 30
+    port_x: -20
+    port_y: 10
     port_orientation: ImplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -44102,8 +44102,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ImplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -44115,8 +44115,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -20
+    port_y: -10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -44128,8 +44128,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 30
+    port_x: -20
+    port_y: 10
     port_orientation: ImplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -44141,8 +44141,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ImplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -44154,8 +44154,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ImplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -44167,8 +44167,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 10
+    port_x: 20
+    port_y: -10
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -44180,8 +44180,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 40
-    port_y: 30
+    port_x: 20
+    port_y: 10
     port_orientation: ImplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -44193,8 +44193,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ImplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -44206,8 +44206,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ImplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -44219,8 +44219,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -20
+    port_y: -10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -44232,8 +44232,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 30
+    port_x: -20
+    port_y: 10
     port_orientation: ImplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -44245,8 +44245,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ImplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -44258,8 +44258,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -40
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -44271,8 +44271,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 80
-    port_y: 20
+    port_x: 40
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -44284,8 +44284,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -40
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -44297,8 +44297,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 80
-    port_y: 20
+    port_x: 40
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -44310,8 +44310,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -30
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -44323,8 +44323,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 60
-    port_y: 20
+    port_x: 30
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -44336,8 +44336,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -20
+    port_y: -20
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -44349,8 +44349,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 30
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -44362,8 +44362,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 0
-    port_y: 50
+    port_x: -20
+    port_y: 20
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -44375,8 +44375,8 @@
     port_order: 4
     port_name: '4'
     port_number: '4'
-    port_x: 40
-    port_y: 15
+    port_x: 20
+    port_y: -15
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -44388,8 +44388,8 @@
     port_order: 5
     port_name: '5'
     port_number: '5'
-    port_x: 40
-    port_y: 45
+    port_x: 20
+    port_y: 15
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -44401,8 +44401,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 15
+    port_x: -20
+    port_y: -15
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -44414,8 +44414,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 45
+    port_x: -20
+    port_y: 15
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -44427,8 +44427,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 40
-    port_y: 15
+    port_x: 20
+    port_y: -15
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -44440,8 +44440,8 @@
     port_order: 4
     port_name: '4'
     port_number: '4'
-    port_x: 40
-    port_y: 45
+    port_x: 20
+    port_y: 15
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -44453,8 +44453,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -40
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -44466,8 +44466,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 80
-    port_y: 20
+    port_x: 40
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -44479,8 +44479,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -20
+    port_y: -10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -44492,8 +44492,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 30
+    port_x: -20
+    port_y: 10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -44505,8 +44505,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -44518,8 +44518,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -20
+    port_y: -20
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -44531,8 +44531,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 30
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -44544,8 +44544,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 0
-    port_y: 50
+    port_x: -20
+    port_y: 20
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -44557,8 +44557,8 @@
     port_order: 4
     port_name: '4'
     port_number: '4'
-    port_x: 40
-    port_y: 15
+    port_x: 20
+    port_y: -15
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -44570,8 +44570,8 @@
     port_order: 5
     port_name: '5'
     port_number: '5'
-    port_x: 40
-    port_y: 45
+    port_x: 20
+    port_y: 15
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -44583,8 +44583,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -20
+    port_y: -10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -44596,8 +44596,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 30
+    port_x: -20
+    port_y: 10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -44609,8 +44609,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -44622,8 +44622,8 @@
     port_order: 4
     port_name: '4'
     port_number: '4'
-    port_x: 20
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -44635,8 +44635,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -30
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -44648,8 +44648,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 60
-    port_y: 20
+    port_x: 30
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -44661,8 +44661,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 15
+    port_x: -20
+    port_y: -15
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -44674,8 +44674,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 45
+    port_x: -20
+    port_y: 15
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -44687,8 +44687,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 40
-    port_y: 15
+    port_x: 20
+    port_y: -15
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -44700,8 +44700,8 @@
     port_order: 4
     port_name: '4'
     port_number: '4'
-    port_x: 40
-    port_y: 45
+    port_x: 20
+    port_y: 15
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -44713,8 +44713,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -30
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -44726,8 +44726,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 30
-    port_y: 0
+    port_x: 0
+    port_y: -20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -44739,8 +44739,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -44752,8 +44752,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 20
-    port_y: 0
+    port_x: 0
+    port_y: -20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -44765,8 +44765,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -44778,8 +44778,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 20
-    port_y: 0
+    port_x: 0
+    port_y: -20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -44791,8 +44791,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -44804,8 +44804,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 20
-    port_y: 0
+    port_x: 0
+    port_y: -20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -44817,8 +44817,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 20
-    port_y: 0
+    port_x: 0
+    port_y: -10
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -44830,8 +44830,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 20
-    port_y: 20
+    port_x: 0
+    port_y: 10
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -44843,8 +44843,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -5
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -44856,8 +44856,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 10
-    port_y: 10
+    port_x: 5
+    port_y: -10
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -44869,8 +44869,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 10
-    port_y: 30
+    port_x: 5
+    port_y: 10
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -44882,8 +44882,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -5
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -44895,8 +44895,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 10
-    port_y: 10
+    port_x: 5
+    port_y: -10
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -44908,8 +44908,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 10
-    port_y: 30
+    port_x: 5
+    port_y: 10
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -44921,8 +44921,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -30
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -44934,8 +44934,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 60
-    port_y: 20
+    port_x: 30
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -44947,8 +44947,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 40
-    port_y: 10
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -44960,8 +44960,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 40
-    port_y: 10
+    port_x: 20
+    port_y: 0
     port_orientation: ImplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -44973,8 +44973,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -44986,8 +44986,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -20
+    port_y: 0
     port_orientation: ImplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -44999,8 +44999,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -30
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45012,8 +45012,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 60
-    port_y: 10
+    port_x: 30
+    port_y: -10
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -45025,8 +45025,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 60
-    port_y: 30
+    port_x: 30
+    port_y: 10
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -45038,8 +45038,8 @@
     port_order: 4
     port_name: '4'
     port_number: '4'
-    port_x: 15
-    port_y: 40
+    port_x: -15
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -45051,8 +45051,8 @@
     port_order: 5
     port_name: '5'
     port_number: '5'
-    port_x: 45
-    port_y: 40
+    port_x: 15
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -45064,8 +45064,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 7
+    port_x: -25
+    port_y: -13
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45077,8 +45077,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 20
+    port_x: -25
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45090,8 +45090,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 0
-    port_y: 33
+    port_x: -25
+    port_y: 13
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45103,8 +45103,8 @@
     port_order: 4
     port_name: '4'
     port_number: '4'
-    port_x: 50
-    port_y: 20
+    port_x: 25
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -45116,8 +45116,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -5
+    port_y: -10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45129,8 +45129,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 30
+    port_x: -5
+    port_y: 10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45142,8 +45142,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 10
-    port_y: 20
+    port_x: 5
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -45155,8 +45155,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -5
+    port_y: -10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45168,8 +45168,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 30
+    port_x: -5
+    port_y: 10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45181,8 +45181,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 10
-    port_y: 20
+    port_x: 5
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -45194,8 +45194,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -2
+    port_y: -10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45207,8 +45207,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 30
+    port_x: -2
+    port_y: 10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45220,8 +45220,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 4
-    port_y: 20
+    port_x: 2
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -45233,8 +45233,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -20
+    port_y: -10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45246,8 +45246,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 30
+    port_x: -20
+    port_y: 10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45259,8 +45259,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -45272,8 +45272,8 @@
     port_order: 4
     port_name: '4'
     port_number: '4'
-    port_x: 10
-    port_y: 40
+    port_x: -10
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -45285,8 +45285,8 @@
     port_order: 5
     port_name: '5'
     port_number: '5'
-    port_x: 30
-    port_y: 40
+    port_x: 10
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -45298,8 +45298,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -30
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45311,8 +45311,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 60
-    port_y: 20
+    port_x: 30
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -45324,8 +45324,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -30
+    port_y: -10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45337,8 +45337,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 30
+    port_x: -30
+    port_y: 10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45350,8 +45350,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 60
-    port_y: 20
+    port_x: 30
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -45363,8 +45363,8 @@
     port_order: 4
     port_name: '4'
     port_number: '4'
-    port_x: 15
-    port_y: 40
+    port_x: -15
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -45376,8 +45376,8 @@
     port_order: 5
     port_name: '5'
     port_number: '5'
-    port_x: 45
-    port_y: 40
+    port_x: 15
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -45389,8 +45389,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45402,8 +45402,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -45415,8 +45415,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -20
+    port_y: -10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45428,8 +45428,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 30
+    port_x: -20
+    port_y: 10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45441,8 +45441,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -45454,8 +45454,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 7
+    port_x: -20
+    port_y: -13
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45467,8 +45467,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45480,8 +45480,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 0
-    port_y: 33
+    port_x: -20
+    port_y: 13
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45493,8 +45493,8 @@
     port_order: 4
     port_name: '4'
     port_number: '4'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -45506,8 +45506,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -30
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45519,8 +45519,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 60
-    port_y: 20
+    port_x: 30
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -45532,8 +45532,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -30
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45545,8 +45545,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 60
-    port_y: 10
+    port_x: 30
+    port_y: -10
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -45558,8 +45558,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 60
-    port_y: 30
+    port_x: 30
+    port_y: 10
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -45571,8 +45571,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45584,8 +45584,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -45597,8 +45597,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -30
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45610,8 +45610,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 30
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -45623,8 +45623,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -20
+    port_y: -10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45636,8 +45636,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 30
+    port_x: -20
+    port_y: 10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45649,8 +45649,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 20
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -45662,8 +45662,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -20
+    port_y: -10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45675,8 +45675,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 30
+    port_x: -20
+    port_y: 10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45688,8 +45688,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 20
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -45701,8 +45701,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 7
+    port_x: -20
+    port_y: -13
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45714,8 +45714,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45727,8 +45727,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 0
-    port_y: 33
+    port_x: -20
+    port_y: 13
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45740,8 +45740,8 @@
     port_order: 4
     port_name: '4'
     port_number: '4'
-    port_x: 20
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -45753,8 +45753,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 20
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -45766,8 +45766,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 10
-    port_y: 20
+    port_x: 0
+    port_y: 10
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -45779,8 +45779,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45792,8 +45792,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 20
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -45805,8 +45805,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45818,8 +45818,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 20
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -45831,8 +45831,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -20
+    port_y: -10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45844,8 +45844,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 30
+    port_x: -20
+    port_y: 10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45857,8 +45857,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 20
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -45870,8 +45870,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45883,8 +45883,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 20
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -45896,8 +45896,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -20
+    port_y: -10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45909,8 +45909,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 30
+    port_x: -20
+    port_y: 10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45922,8 +45922,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 20
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -45935,8 +45935,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 7
+    port_x: -20
+    port_y: -13
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45948,8 +45948,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45961,8 +45961,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 0
-    port_y: 33
+    port_x: -20
+    port_y: 13
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -45974,8 +45974,8 @@
     port_order: 4
     port_name: '4'
     port_number: '4'
-    port_x: 20
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -45987,8 +45987,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -10
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -46000,8 +46000,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -10
+    port_y: 0
     port_orientation: ImplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -46013,8 +46013,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -40
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -46026,8 +46026,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -46039,8 +46039,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -46052,8 +46052,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 20
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -46065,8 +46065,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -40
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -46078,8 +46078,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -46091,8 +46091,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -40
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -46104,8 +46104,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -46117,8 +46117,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 10
-    port_y: 0
+    port_x: 0
+    port_y: -10
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -46130,8 +46130,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 20
-    port_y: 0
+    port_x: 0
+    port_y: -20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -46143,8 +46143,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -46156,8 +46156,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -46169,8 +46169,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -46182,8 +46182,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 60
-    port_y: 20
+    port_x: 30
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -46195,8 +46195,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 30
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -46208,8 +46208,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -46221,8 +46221,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 100
-    port_y: 20
+    port_x: 50
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -46234,8 +46234,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 60
-    port_y: 20
+    port_x: 30
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -46247,8 +46247,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 60
-    port_y: 20
+    port_x: 30
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -46260,8 +46260,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 30
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -46273,8 +46273,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 20
-    port_y: 10
+    port_x: 10
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -46286,8 +46286,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 20
-    port_y: 10
+    port_x: 10
+    port_y: 0
     port_orientation: ImplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -46299,8 +46299,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 60
-    port_y: 20
+    port_x: 30
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -46312,8 +46312,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 30
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -46325,8 +46325,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 60
-    port_y: 20
+    port_x: 30
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -46338,8 +46338,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -46351,8 +46351,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 60
-    port_y: 20
+    port_x: 30
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -46364,8 +46364,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 30
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -46377,8 +46377,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 100
-    port_y: 20
+    port_x: 50
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -46390,8 +46390,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 50
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -46403,8 +46403,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 80
-    port_y: 20
+    port_x: 40
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -46416,8 +46416,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -46429,8 +46429,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 60
-    port_y: 20
+    port_x: 30
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -46442,8 +46442,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 30
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -46455,8 +46455,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 20
-    port_y: 0
+    port_x: 0
+    port_y: -20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -46468,8 +46468,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 60
-    port_y: 20
+    port_x: 30
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -46481,8 +46481,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 30
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -46494,8 +46494,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 60
-    port_y: 20
+    port_x: 30
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -46507,8 +46507,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 30
-    port_y: 0
+    port_x: 0
+    port_y: -20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -46520,8 +46520,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -46533,8 +46533,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -46546,8 +46546,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 60
-    port_y: 20
+    port_x: 30
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -46559,8 +46559,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 30
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -46572,8 +46572,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -20
+    port_y: -10
     port_orientation: ImplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -46585,8 +46585,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 30
+    port_x: -20
+    port_y: 10
     port_orientation: ImplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -46598,8 +46598,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 40
-    port_y: 7
+    port_x: 20
+    port_y: -13
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -46611,8 +46611,8 @@
     port_order: 4
     port_name: '4'
     port_number: '4'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ImplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -46624,8 +46624,8 @@
     port_order: 5
     port_name: '5'
     port_number: '5'
-    port_x: 40
-    port_y: 33
+    port_x: 20
+    port_y: 13
     port_orientation: ImplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -46637,8 +46637,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ImplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -46650,8 +46650,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 10
+    port_x: 20
+    port_y: -10
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -46663,8 +46663,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 40
-    port_y: 30
+    port_x: 20
+    port_y: 10
     port_orientation: ImplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -46676,8 +46676,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -20
+    port_y: 0
     port_orientation: ImplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -46689,8 +46689,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 10
+    port_x: 20
+    port_y: 0
     port_orientation: ImplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -46702,8 +46702,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -25
+    port_y: 0
     port_orientation: ImplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -46715,8 +46715,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 50
-    port_y: 20
+    port_x: 25
+    port_y: 0
     port_orientation: ImplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -46728,8 +46728,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -20
+    port_y: -10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -46741,8 +46741,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 30
+    port_x: -20
+    port_y: 10
     port_orientation: ImplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -46754,8 +46754,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ImplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -46767,8 +46767,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 60
-    port_y: 10
+    port_x: 30
+    port_y: -10
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -46780,8 +46780,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 60
-    port_y: 30
+    port_x: 30
+    port_y: 10
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -46793,8 +46793,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -20
+    port_y: -10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -46806,8 +46806,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 30
+    port_x: -20
+    port_y: 10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -46819,8 +46819,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 20
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -46832,8 +46832,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -20
+    port_y: -10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -46845,8 +46845,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 30
+    port_x: -20
+    port_y: 10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -46858,8 +46858,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 20
-    port_y: 40
+    port_x: 0
+    port_y: 20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -46871,8 +46871,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -30
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -46884,8 +46884,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 60
-    port_y: 20
+    port_x: 30
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -46897,8 +46897,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -40
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -46910,8 +46910,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 80
-    port_y: 20
+    port_x: 40
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -46923,8 +46923,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -40
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -46936,8 +46936,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 80
-    port_y: 20
+    port_x: 40
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -46949,8 +46949,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 10
+    port_x: -50
+    port_y: -10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -46962,8 +46962,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: 30
+    port_x: -50
+    port_y: 10
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -46975,8 +46975,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 100
-    port_y: 20
+    port_x: 50
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -46988,8 +46988,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -40
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -47001,8 +47001,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 80
-    port_y: 20
+    port_x: 40
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -47014,8 +47014,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -40
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -47027,8 +47027,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 80
-    port_y: 20
+    port_x: 40
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -47040,8 +47040,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -30
+    port_y: 0
     port_orientation: ImplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -47053,8 +47053,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 60
-    port_y: 10
+    port_x: 30
+    port_y: -10
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -47066,8 +47066,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 60
-    port_y: 30
+    port_x: 30
+    port_y: 10
     port_orientation: ImplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -47079,8 +47079,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -40
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -47092,8 +47092,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 80
-    port_y: 20
+    port_x: 40
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
@@ -47105,8 +47105,8 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
-    port_y: 20
+    port_x: -20
+    port_y: 0
     port_orientation: ExplicitInputPort
     port_part: 1
     port_dmg: 1
@@ -47118,8 +47118,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 40
-    port_y: 20
+    port_x: 20
+    port_y: 0
     port_orientation: ExplicitOutputPort
     port_part: 1
     port_dmg: 1
