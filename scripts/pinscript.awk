@@ -3,15 +3,15 @@
 BEGIN {
     STDERR = "/dev/stderr";
     PRINTCATEGORIESCSV = 1;
-    CATEGORIESCSV = "categories.csv";
+    CATEGORIESCSV = "data/categories.csv";
     categoryid = 0;
     PRINTBLOCKPREFIXESCSV = 1;
-    BLOCKPREFIXESCSV = "blockprefixes.csv";
+    BLOCKPREFIXESCSV = "data/blockprefixes.csv";
     PRINTCATEGORYBLOCKSCSV = 1;
-    CATEGORYBLOCKSCSV = "categories-blocks.csv";
+    CATEGORYBLOCKSCSV = "data/categories-blocks.csv";
     blockid = 0;
     PRINTBLOCKPORTSCSV = 1;
-    BLOCKPORTSCSV = "blocks-ports.csv";
+    BLOCKPORTSCSV = "data/blocks-ports.csv";
     blockportid = 0;
 }
 
@@ -35,7 +35,7 @@ BEGINFILE {
         blocks[idx] = $0;
         BLOCK_PREFIXES[block_prefix]++;
         if (PRINTCATEGORYBLOCKSCSV) {
-            printf "%s\t%s\t%s\t%s\n", blockid, category, block, block_prefix > CATEGORYBLOCKSCSV;
+            printf "%s\t%s\t%s\t%s\n", blockid, category, category, block > CATEGORYBLOCKSCSV;
         }
     } else {
         if (blocks[idx] == $0) {
@@ -59,7 +59,7 @@ BEGINFILE {
     last_port_order = port_order;
     port_x = $4;
     port_y = $5;
-    port_orientation = $7;
+    port_orientation = "pin" $7;
     port_part = $10;
     port_dmg = $11;
     port_type = $12;
@@ -106,7 +106,7 @@ END {
         asorti(BLOCK_PREFIXES, block_prefixes_2);
         for (i in block_prefixes_2) {
             block_prefix = block_prefixes_2[i];
-            printf "%s\t%s\t%s\n", i, block_prefix, BLOCK_PREFIXES[block_prefix] > BLOCKPREFIXESCSV;
+            printf "%s\t%s\t\t%s\n", i, block_prefix, BLOCK_PREFIXES[block_prefix] > BLOCKPREFIXESCSV;
         }
     }
 }

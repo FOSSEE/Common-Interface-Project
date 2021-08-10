@@ -2,7 +2,7 @@
 
 SYMBOLSDIR='../eSim-Cloud/esim-cloud-backend/kicad-symbols'
 
-./pinscript.awk \
+./scripts/pinscript.awk \
     $SYMBOLSDIR/additional/4xxx.lib \
     $SYMBOLSDIR/additional/Analog.lib \
     $SYMBOLSDIR/additional/Device.lib \
