@@ -261,6 +261,7 @@ class BlockSerializer(serializers.ModelSerializer):
             'blockprefix',
             'main_category',
             'categories',
+            'block_name',
             'initial_display_parameter',
             'block_image_path',
             'block_width',
