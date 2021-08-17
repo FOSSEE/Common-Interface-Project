@@ -357,6 +357,8 @@ class Block(models.Model):
     main_category = models.ForeignKey(Category, null=True,
                                       on_delete=models.PROTECT, related_name='+')
     categories = models.ManyToManyField(Category)
+    block_name = models.CharField(max_length=200,
+                                  unique=True, null=True)
     initial_display_parameter = models.CharField(max_length=100,
                                                  blank=True, null=True)
     block_image_path = models.CharField(max_length=100,
