@@ -25,7 +25,7 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
   const allowed_part = [0, 1];
   const allowed_dmg = [0, 1];
 
-  const block_name = component.name;
+  const block_name = component.block_name;
   const pins = []
   // make the component images smaller by scaling
   let width = component.block_width / default_scale
