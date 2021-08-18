@@ -1,106 +1,131 @@
+- model: xcosblocks.blocktype
+  pk: 1
+  fields:
+    name: Xcos
 - model: xcosblocks.category
   pk: 1
   fields:
+    blocktype: 1
     name: Commonly Used Blocks
     sort_order: 1
 - model: xcosblocks.category
   pk: 2
   fields:
+    blocktype: 1
     name: Continuous time systems
     sort_order: 2
 - model: xcosblocks.category
   pk: 3
   fields:
+    blocktype: 1
     name: Discontinuities
     sort_order: 3
 - model: xcosblocks.category
   pk: 4
   fields:
+    blocktype: 1
     name: Discrete time systems
     sort_order: 4
 - model: xcosblocks.category
   pk: 5
   fields:
+    blocktype: 1
     name: Lookup tables
     sort_order: 5
 - model: xcosblocks.category
   pk: 6
   fields:
+    blocktype: 1
     name: Event handling
     sort_order: 6
 - model: xcosblocks.category
   pk: 7
   fields:
+    blocktype: 1
     name: Mathematical Operations
     sort_order: 7
 - model: xcosblocks.category
   pk: 8
   fields:
+    blocktype: 1
     name: Matrix
     sort_order: 8
 - model: xcosblocks.category
   pk: 9
   fields:
+    blocktype: 1
     name: Electrical
     sort_order: 9
 - model: xcosblocks.category
   pk: 10
   fields:
+    blocktype: 1
     name: Integer
     sort_order: 10
 - model: xcosblocks.category
   pk: 11
   fields:
+    blocktype: 1
     name: Port & Subsystem
     sort_order: 11
 - model: xcosblocks.category
   pk: 12
   fields:
+    blocktype: 1
     name: Zero crossing detection
     sort_order: 12
 - model: xcosblocks.category
   pk: 13
   fields:
+    blocktype: 1
     name: Signal Routing
     sort_order: 13
 - model: xcosblocks.category
   pk: 14
   fields:
+    blocktype: 1
     name: Signal Processing
     sort_order: 14
 - model: xcosblocks.category
   pk: 15
   fields:
+    blocktype: 1
     name: Implicit
     sort_order: 15
 - model: xcosblocks.category
   pk: 16
   fields:
+    blocktype: 1
     name: Annotations
     sort_order: 16
 - model: xcosblocks.category
   pk: 17
   fields:
+    blocktype: 1
     name: Sinks
     sort_order: 17
 - model: xcosblocks.category
   pk: 18
   fields:
+    blocktype: 1
     name: Sources
     sort_order: 18
 - model: xcosblocks.category
   pk: 19
   fields:
+    blocktype: 1
     name: Thermo-Hydraulics
     sort_order: 19
 - model: xcosblocks.category
   pk: 20
   fields:
+    blocktype: 1
     name: Demonstration Blocks
     sort_order: 20
 - model: xcosblocks.category
   pk: 21
   fields:
+    blocktype: 1
     name: User-Defined Functions
     sort_order: 21
 - model: xcosblocks.parameterdatatype
@@ -199,14 +224,6 @@
   pk: 24
   fields:
     name: array of filenames
-- model: xcosblocks.blocktype
-  pk: 1
-  fields:
-    name: Xcos
-- model: xcosblocks.blocktype
-  pk: 2
-  fields:
-    name: eSim
 - model: xcosblocks.blockprefix
   pk: 1
   fields:
