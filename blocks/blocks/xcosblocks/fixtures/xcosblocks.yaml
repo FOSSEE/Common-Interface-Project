@@ -291,7 +291,6 @@
 - model: xcosblocks.block
   pk: 1
   fields:
-    blocktype: 1
     name: LOGICAL_OP
     blockprefix: 1
     main_category: 1
@@ -365,7 +364,6 @@
 - model: xcosblocks.block
   pk: 2
   fields:
-    blocktype: 1
     name: RELATIONALOP
     blockprefix: 1
     main_category: 1
@@ -439,7 +437,6 @@
 - model: xcosblocks.block
   pk: 3
   fields:
-    blocktype: 1
     name: CLINDUMMY_f
     blockprefix: 1
     main_category: 2
@@ -513,7 +510,6 @@
 - model: xcosblocks.block
   pk: 4
   fields:
-    blocktype: 1
     name: CLR
     blockprefix: 1
     main_category: 2
@@ -587,7 +583,6 @@
 - model: xcosblocks.block
   pk: 5
   fields:
-    blocktype: 1
     name: CLSS
     blockprefix: 1
     main_category: 2
@@ -661,7 +656,6 @@
 - model: xcosblocks.block
   pk: 6
   fields:
-    blocktype: 1
     name: DERIV
     blockprefix: 1
     main_category: 2
@@ -735,7 +729,6 @@
 - model: xcosblocks.block
   pk: 7
   fields:
-    blocktype: 1
     name: INTEGRAL_f
     blockprefix: 1
     main_category: 2
@@ -810,7 +803,6 @@
 - model: xcosblocks.block
   pk: 8
   fields:
-    blocktype: 1
     name: INTEGRAL_m
     blockprefix: 1
     main_category: 2
@@ -884,7 +876,6 @@
 - model: xcosblocks.block
   pk: 9
   fields:
-    blocktype: 1
     name: PDE
     blockprefix: 1
     main_category: 2
@@ -959,7 +950,6 @@
 - model: xcosblocks.block
   pk: 10
   fields:
-    blocktype: 1
     name: PID
     blockprefix: 1
     main_category: 2
@@ -1033,7 +1023,6 @@
 - model: xcosblocks.block
   pk: 11
   fields:
-    blocktype: 1
     name: TCLSS
     blockprefix: 1
     main_category: 2
@@ -1108,7 +1097,6 @@
 - model: xcosblocks.block
   pk: 12
   fields:
-    blocktype: 1
     name: TIME_DELAY
     blockprefix: 1
     main_category: 2
@@ -1182,7 +1170,6 @@
 - model: xcosblocks.block
   pk: 13
   fields:
-    blocktype: 1
     name: VARIABLE_DELAY
     blockprefix: 1
     main_category: 2
@@ -1256,7 +1243,6 @@
 - model: xcosblocks.block
   pk: 14
   fields:
-    blocktype: 1
     name: BACKLASH
     blockprefix: 1
     main_category: 3
@@ -1330,7 +1316,6 @@
 - model: xcosblocks.block
   pk: 15
   fields:
-    blocktype: 1
     name: DEADBAND
     blockprefix: 1
     main_category: 3
@@ -1404,7 +1389,6 @@
 - model: xcosblocks.block
   pk: 16
   fields:
-    blocktype: 1
     name: HYSTHERESIS
     blockprefix: 1
     main_category: 3
@@ -1478,7 +1462,6 @@
 - model: xcosblocks.block
   pk: 17
   fields:
-    blocktype: 1
     name: QUANT_f
     blockprefix: 1
     main_category: 3
@@ -1553,7 +1536,6 @@
 - model: xcosblocks.block
   pk: 18
   fields:
-    blocktype: 1
     name: RATELIMITER
     blockprefix: 1
     main_category: 3
@@ -1627,7 +1609,6 @@
 - model: xcosblocks.block
   pk: 19
   fields:
-    blocktype: 1
     name: SATURATION
     blockprefix: 1
     main_category: 3
@@ -1702,7 +1683,6 @@
 - model: xcosblocks.block
   pk: 20
   fields:
-    blocktype: 1
     name: AUTOMAT
     blockprefix: 1
     main_category: 4
@@ -1776,7 +1756,6 @@
 - model: xcosblocks.block
   pk: 21
   fields:
-    blocktype: 1
     name: DELAY_f
     blockprefix: 1
     main_category: 4
@@ -1850,7 +1829,6 @@
 - model: xcosblocks.block
   pk: 22
   fields:
-    blocktype: 1
     name: DELAYV_f
     blockprefix: 1
     main_category: 3
@@ -1925,7 +1903,6 @@
 - model: xcosblocks.block
   pk: 23
   fields:
-    blocktype: 1
     name: DLR
     blockprefix: 1
     main_category: 4
@@ -1999,7 +1976,6 @@
 - model: xcosblocks.block
   pk: 24
   fields:
-    blocktype: 1
     name: DLRADAPT_f
     blockprefix: 1
     main_category: 4
@@ -2073,7 +2049,6 @@
 - model: xcosblocks.block
   pk: 25
   fields:
-    blocktype: 1
     name: DLSS
     blockprefix: 1
     main_category: 4
@@ -2147,7 +2122,6 @@
 - model: xcosblocks.block
   pk: 26
   fields:
-    blocktype: 1
     name: DOLLAR
     blockprefix: 1
     main_category: 4
@@ -2221,7 +2195,6 @@
 - model: xcosblocks.block
   pk: 27
   fields:
-    blocktype: 1
     name: DOLLAR_f
     blockprefix: 1
     main_category: 4
@@ -2296,7 +2269,6 @@
 - model: xcosblocks.block
   pk: 28
   fields:
-    blocktype: 1
     name: DOLLAR_m
     blockprefix: 1
     main_category: 4
@@ -2370,7 +2342,6 @@
 - model: xcosblocks.block
   pk: 29
   fields:
-    blocktype: 1
     name: REGISTER
     blockprefix: 1
     main_category: 4
@@ -2444,7 +2415,6 @@
 - model: xcosblocks.block
   pk: 30
   fields:
-    blocktype: 1
     name: SAMPHOLD_m
     blockprefix: 1
     main_category: 4
@@ -2519,7 +2489,6 @@
 - model: xcosblocks.block
   pk: 31
   fields:
-    blocktype: 1
     name: INTRP2BLK_f
     blockprefix: 1
     main_category: 5
@@ -2593,7 +2562,6 @@
 - model: xcosblocks.block
   pk: 32
   fields:
-    blocktype: 1
     name: INTRPLBLK_f
     blockprefix: 1
     main_category: 5
@@ -2667,7 +2635,6 @@
 - model: xcosblocks.block
   pk: 33
   fields:
-    blocktype: 1
     name: LOOKUP_f
     blockprefix: 1
     main_category: 5
@@ -2741,7 +2708,6 @@
 - model: xcosblocks.block
   pk: 34
   fields:
-    blocktype: 1
     name: ANDBLK
     blockprefix: 1
     main_category: 6
@@ -2816,7 +2782,6 @@
 - model: xcosblocks.block
   pk: 35
   fields:
-    blocktype: 1
     name: ANDLOG_f
     blockprefix: 1
     main_category: 6
@@ -2890,7 +2855,6 @@
 - model: xcosblocks.block
   pk: 36
   fields:
-    blocktype: 1
     name: CEVENTSCOPE
     blockprefix: 1
     main_category: 6
@@ -2964,7 +2928,6 @@
 - model: xcosblocks.block
   pk: 37
   fields:
-    blocktype: 1
     name: CLKGotoTagVisibility
     blockprefix: 1
     main_category: 6
@@ -3038,7 +3001,6 @@
 - model: xcosblocks.block
   pk: 38
   fields:
-    blocktype: 1
     name: CLKSOMV_f
     blockprefix: 1
     main_category: 6
@@ -3112,7 +3074,6 @@
 - model: xcosblocks.block
   pk: 39
   fields:
-    blocktype: 1
     name: EDGE_TRIGGER
     blockprefix: 1
     main_category: 6
@@ -3186,7 +3147,6 @@
 - model: xcosblocks.block
   pk: 40
   fields:
-    blocktype: 1
     name: END_c
     blockprefix: 1
     main_category: 6
@@ -3261,7 +3221,6 @@
 - model: xcosblocks.block
   pk: 41
   fields:
-    blocktype: 1
     name: ENDBLK
     blockprefix: 1
     main_category: 6
@@ -3336,7 +3295,6 @@
 - model: xcosblocks.block
   pk: 42
   fields:
-    blocktype: 1
     name: ESELECT_f
     blockprefix: 1
     main_category: 6
@@ -3410,7 +3368,6 @@
 - model: xcosblocks.block
   pk: 43
   fields:
-    blocktype: 1
     name: EVTDLY_c
     blockprefix: 1
     main_category: 6
@@ -3484,7 +3441,6 @@
 - model: xcosblocks.block
   pk: 44
   fields:
-    blocktype: 1
     name: EVTGEN_f
     blockprefix: 1
     main_category: 6
@@ -3558,7 +3514,6 @@
 - model: xcosblocks.block
   pk: 45
   fields:
-    blocktype: 1
     name: EVTVARDLY
     blockprefix: 1
     main_category: 6
@@ -3632,7 +3587,6 @@
 - model: xcosblocks.block
   pk: 46
   fields:
-    blocktype: 1
     name: Extract_Activation
     blockprefix: 1
     main_category: 6
@@ -3706,7 +3660,6 @@
 - model: xcosblocks.block
   pk: 47
   fields:
-    blocktype: 1
     name: freq_div
     blockprefix: 1
     main_category: 6
@@ -3780,7 +3733,6 @@
 - model: xcosblocks.block
   pk: 48
   fields:
-    blocktype: 1
     name: HALT_f
     blockprefix: 1
     main_category: 6
@@ -3855,7 +3807,6 @@
 - model: xcosblocks.block
   pk: 49
   fields:
-    blocktype: 1
     name: IFTHEL_f
     blockprefix: 1
     main_category: 6
@@ -3929,7 +3880,6 @@
 - model: xcosblocks.block
   pk: 50
   fields:
-    blocktype: 1
     name: M_freq
     blockprefix: 1
     main_category: 6
@@ -4003,7 +3953,6 @@
 - model: xcosblocks.block
   pk: 51
   fields:
-    blocktype: 1
     name: MCLOCK_f
     blockprefix: 1
     main_category: 6
@@ -4077,7 +4026,6 @@
 - model: xcosblocks.block
   pk: 52
   fields:
-    blocktype: 1
     name: MFCLCK_f
     blockprefix: 1
     main_category: 6
@@ -4151,7 +4099,6 @@
 - model: xcosblocks.block
   pk: 53
   fields:
-    blocktype: 1
     name: VirtualCLK0
     blockprefix: 1
     main_category: 6
@@ -4225,7 +4172,6 @@
 - model: xcosblocks.block
   pk: 54
   fields:
-    blocktype: 1
     name: ABS_VALUE
     blockprefix: 1
     main_category: 7
@@ -4299,7 +4245,6 @@
 - model: xcosblocks.block
   pk: 55
   fields:
-    blocktype: 1
     name: BIGSOM_f
     blockprefix: 1
     main_category: 7
@@ -4374,7 +4319,6 @@
 - model: xcosblocks.block
   pk: 56
   fields:
-    blocktype: 1
     name: COSBLK_f
     blockprefix: 1
     main_category: 7
@@ -4448,7 +4392,6 @@
 - model: xcosblocks.block
   pk: 57
   fields:
-    blocktype: 1
     name: EXPBLK_m
     blockprefix: 1
     main_category: 7
@@ -4522,7 +4465,6 @@
 - model: xcosblocks.block
   pk: 58
   fields:
-    blocktype: 1
     name: GAIN_f
     blockprefix: 1
     main_category: 7
@@ -4596,7 +4538,6 @@
 - model: xcosblocks.block
   pk: 59
   fields:
-    blocktype: 1
     name: GAINBLK
     blockprefix: 1
     main_category: 7
@@ -4670,7 +4611,6 @@
 - model: xcosblocks.block
   pk: 60
   fields:
-    blocktype: 1
     name: GAINBLK_f
     blockprefix: 1
     main_category: 7
@@ -4744,7 +4684,6 @@
 - model: xcosblocks.block
   pk: 61
   fields:
-    blocktype: 1
     name: INVBLK
     blockprefix: 1
     main_category: 7
@@ -4818,7 +4757,6 @@
 - model: xcosblocks.block
   pk: 62
   fields:
-    blocktype: 1
     name: LOGBLK_f
     blockprefix: 1
     main_category: 7
@@ -4892,7 +4830,6 @@
 - model: xcosblocks.block
   pk: 63
   fields:
-    blocktype: 1
     name: MAX_f
     blockprefix: 1
     main_category: 7
@@ -4966,7 +4903,6 @@
 - model: xcosblocks.block
   pk: 64
   fields:
-    blocktype: 1
     name: MAXMIN
     blockprefix: 1
     main_category: 7
@@ -5040,7 +4976,6 @@
 - model: xcosblocks.block
   pk: 65
   fields:
-    blocktype: 1
     name: MIN_f
     blockprefix: 1
     main_category: 7
@@ -5114,7 +5049,6 @@
 - model: xcosblocks.block
   pk: 66
   fields:
-    blocktype: 1
     name: POWBLK_f
     blockprefix: 1
     main_category: 7
@@ -5188,7 +5122,6 @@
 - model: xcosblocks.block
   pk: 67
   fields:
-    blocktype: 1
     name: PROD_f
     blockprefix: 1
     main_category: 7
@@ -5262,7 +5195,6 @@
 - model: xcosblocks.block
   pk: 68
   fields:
-    blocktype: 1
     name: PRODUCT
     blockprefix: 1
     main_category: 7
@@ -5337,7 +5269,6 @@
 - model: xcosblocks.block
   pk: 69
   fields:
-    blocktype: 1
     name: SIGNUM
     blockprefix: 1
     main_category: 7
@@ -5411,7 +5342,6 @@
 - model: xcosblocks.block
   pk: 70
   fields:
-    blocktype: 1
     name: SINBLK_f
     blockprefix: 1
     main_category: 7
@@ -5485,7 +5415,6 @@
 - model: xcosblocks.block
   pk: 71
   fields:
-    blocktype: 1
     name: SOM_f
     blockprefix: 1
     main_category: 7
@@ -5559,7 +5488,6 @@
 - model: xcosblocks.block
   pk: 72
   fields:
-    blocktype: 1
     name: SUM_f
     blockprefix: 1
     main_category: 7
@@ -5633,7 +5561,6 @@
 - model: xcosblocks.block
   pk: 73
   fields:
-    blocktype: 1
     name: SUMMATION
     blockprefix: 1
     main_category: 7
@@ -5707,7 +5634,6 @@
 - model: xcosblocks.block
   pk: 74
   fields:
-    blocktype: 1
     name: TANBLK_f
     blockprefix: 1
     main_category: 7
@@ -5781,7 +5707,6 @@
 - model: xcosblocks.block
   pk: 75
   fields:
-    blocktype: 1
     name: TrigFun
     blockprefix: 1
     main_category: 7
@@ -5855,7 +5780,6 @@
 - model: xcosblocks.block
   pk: 76
   fields:
-    blocktype: 1
     name: CUMSUM
     blockprefix: 1
     main_category: 8
@@ -5929,7 +5853,6 @@
 - model: xcosblocks.block
   pk: 77
   fields:
-    blocktype: 1
     name: EXTRACT
     blockprefix: 1
     main_category: 8
@@ -6003,7 +5926,6 @@
 - model: xcosblocks.block
   pk: 78
   fields:
-    blocktype: 1
     name: EXTTRI
     blockprefix: 1
     main_category: 8
@@ -6077,7 +5999,6 @@
 - model: xcosblocks.block
   pk: 79
   fields:
-    blocktype: 1
     name: MATBKSL
     blockprefix: 1
     main_category: 8
@@ -6151,7 +6072,6 @@
 - model: xcosblocks.block
   pk: 80
   fields:
-    blocktype: 1
     name: MATCATH
     blockprefix: 1
     main_category: 8
@@ -6225,7 +6145,6 @@
 - model: xcosblocks.block
   pk: 81
   fields:
-    blocktype: 1
     name: MATCATV
     blockprefix: 1
     main_category: 8
@@ -6299,7 +6218,6 @@
 - model: xcosblocks.block
   pk: 82
   fields:
-    blocktype: 1
     name: MATDET
     blockprefix: 1
     main_category: 8
@@ -6373,7 +6291,6 @@
 - model: xcosblocks.block
   pk: 83
   fields:
-    blocktype: 1
     name: MATDIAG
     blockprefix: 1
     main_category: 8
@@ -6447,7 +6364,6 @@
 - model: xcosblocks.block
   pk: 84
   fields:
-    blocktype: 1
     name: MATDIV
     blockprefix: 1
     main_category: 8
@@ -6521,7 +6437,6 @@
 - model: xcosblocks.block
   pk: 85
   fields:
-    blocktype: 1
     name: MATEIG
     blockprefix: 1
     main_category: 8
@@ -6595,7 +6510,6 @@
 - model: xcosblocks.block
   pk: 86
   fields:
-    blocktype: 1
     name: MATEXPM
     blockprefix: 1
     main_category: 8
@@ -6669,7 +6583,6 @@
 - model: xcosblocks.block
   pk: 87
   fields:
-    blocktype: 1
     name: MATINV
     blockprefix: 1
     main_category: 8
@@ -6743,7 +6656,6 @@
 - model: xcosblocks.block
   pk: 88
   fields:
-    blocktype: 1
     name: MATLU
     blockprefix: 1
     main_category: 8
@@ -6817,7 +6729,6 @@
 - model: xcosblocks.block
   pk: 89
   fields:
-    blocktype: 1
     name: MATMAGPHI
     blockprefix: 1
     main_category: 7
@@ -6892,7 +6803,6 @@
 - model: xcosblocks.block
   pk: 90
   fields:
-    blocktype: 1
     name: MATMUL
     blockprefix: 1
     main_category: 8
@@ -6966,7 +6876,6 @@
 - model: xcosblocks.block
   pk: 91
   fields:
-    blocktype: 1
     name: MATPINV
     blockprefix: 1
     main_category: 8
@@ -7040,7 +6949,6 @@
 - model: xcosblocks.block
   pk: 92
   fields:
-    blocktype: 1
     name: MATRESH
     blockprefix: 1
     main_category: 8
@@ -7114,7 +7022,6 @@
 - model: xcosblocks.block
   pk: 93
   fields:
-    blocktype: 1
     name: MATSING
     blockprefix: 1
     main_category: 8
@@ -7188,7 +7095,6 @@
 - model: xcosblocks.block
   pk: 94
   fields:
-    blocktype: 1
     name: MATSUM
     blockprefix: 1
     main_category: 8
@@ -7262,7 +7168,6 @@
 - model: xcosblocks.block
   pk: 95
   fields:
-    blocktype: 1
     name: MATTRAN
     blockprefix: 1
     main_category: 8
@@ -7336,7 +7241,6 @@
 - model: xcosblocks.block
   pk: 96
   fields:
-    blocktype: 1
     name: MATZCONJ
     blockprefix: 1
     main_category: 8
@@ -7410,7 +7314,6 @@
 - model: xcosblocks.block
   pk: 97
   fields:
-    blocktype: 1
     name: MATZREIM
     blockprefix: 1
     main_category: 7
@@ -7485,7 +7388,6 @@
 - model: xcosblocks.block
   pk: 98
   fields:
-    blocktype: 1
     name: RICC
     blockprefix: 1
     main_category: 8
@@ -7559,7 +7461,6 @@
 - model: xcosblocks.block
   pk: 99
   fields:
-    blocktype: 1
     name: ROOTCOEF
     blockprefix: 1
     main_category: 8
@@ -7633,7 +7534,6 @@
 - model: xcosblocks.block
   pk: 100
   fields:
-    blocktype: 1
     name: SQRT
     blockprefix: 1
     main_category: 7
@@ -7708,7 +7608,6 @@
 - model: xcosblocks.block
   pk: 101
   fields:
-    blocktype: 1
     name: SUBMAT
     blockprefix: 1
     main_category: 8
@@ -7782,7 +7681,6 @@
 - model: xcosblocks.block
   pk: 102
   fields:
-    blocktype: 1
     name: Capacitor
     blockprefix: 1
     main_category: 9
@@ -7856,7 +7754,6 @@
 - model: xcosblocks.block
   pk: 103
   fields:
-    blocktype: 1
     name: CCS
     blockprefix: 1
     main_category: 9
@@ -7930,7 +7827,6 @@
 - model: xcosblocks.block
   pk: 104
   fields:
-    blocktype: 1
     name: ConstantVoltage
     blockprefix: 1
     main_category: 9
@@ -8004,7 +7900,6 @@
 - model: xcosblocks.block
   pk: 105
   fields:
-    blocktype: 1
     name: CurrentSensor
     blockprefix: 1
     main_category: 9
@@ -8078,7 +7973,6 @@
 - model: xcosblocks.block
   pk: 106
   fields:
-    blocktype: 1
     name: CVS
     blockprefix: 1
     main_category: 9
@@ -8152,7 +8046,6 @@
 - model: xcosblocks.block
   pk: 107
   fields:
-    blocktype: 1
     name: Diode
     blockprefix: 1
     main_category: 9
@@ -8226,7 +8119,6 @@
 - model: xcosblocks.block
   pk: 108
   fields:
-    blocktype: 1
     name: Ground
     blockprefix: 1
     main_category: 9
@@ -8300,7 +8192,6 @@
 - model: xcosblocks.block
   pk: 109
   fields:
-    blocktype: 1
     name: Gyrator
     blockprefix: 1
     main_category: 9
@@ -8374,7 +8265,6 @@
 - model: xcosblocks.block
   pk: 110
   fields:
-    blocktype: 1
     name: IdealTransformer
     blockprefix: 1
     main_category: 9
@@ -8448,7 +8338,6 @@
 - model: xcosblocks.block
   pk: 111
   fields:
-    blocktype: 1
     name: Inductor
     blockprefix: 1
     main_category: 9
@@ -8522,7 +8411,6 @@
 - model: xcosblocks.block
   pk: 112
   fields:
-    blocktype: 1
     name: NMOS
     blockprefix: 1
     main_category: 9
@@ -8596,7 +8484,6 @@
 - model: xcosblocks.block
   pk: 113
   fields:
-    blocktype: 1
     name: NPN
     blockprefix: 1
     main_category: 9
@@ -8670,7 +8557,6 @@
 - model: xcosblocks.block
   pk: 114
   fields:
-    blocktype: 1
     name: OpAmp
     blockprefix: 1
     main_category: 9
@@ -8744,7 +8630,6 @@
 - model: xcosblocks.block
   pk: 115
   fields:
-    blocktype: 1
     name: PMOS
     blockprefix: 1
     main_category: 9
@@ -8818,7 +8703,6 @@
 - model: xcosblocks.block
   pk: 116
   fields:
-    blocktype: 1
     name: PNP
     blockprefix: 1
     main_category: 9
@@ -8892,7 +8776,6 @@
 - model: xcosblocks.block
   pk: 117
   fields:
-    blocktype: 1
     name: PotentialSensor
     blockprefix: 1
     main_category: 9
@@ -8966,7 +8849,6 @@
 - model: xcosblocks.block
   pk: 118
   fields:
-    blocktype: 1
     name: Resistor
     blockprefix: 1
     main_category: 9
@@ -9040,7 +8922,6 @@
 - model: xcosblocks.block
   pk: 119
   fields:
-    blocktype: 1
     name: SineVoltage
     blockprefix: 1
     main_category: 9
@@ -9114,7 +8995,6 @@
 - model: xcosblocks.block
   pk: 120
   fields:
-    blocktype: 1
     name: Switch
     blockprefix: 1
     main_category: 9
@@ -9188,7 +9068,6 @@
 - model: xcosblocks.block
   pk: 121
   fields:
-    blocktype: 1
     name: VariableResistor
     blockprefix: 1
     main_category: 9
@@ -9262,7 +9141,6 @@
 - model: xcosblocks.block
   pk: 122
   fields:
-    blocktype: 1
     name: VoltageSensor
     blockprefix: 1
     main_category: 9
@@ -9336,7 +9214,6 @@
 - model: xcosblocks.block
   pk: 123
   fields:
-    blocktype: 1
     name: VsourceAC
     blockprefix: 1
     main_category: 9
@@ -9410,7 +9287,6 @@
 - model: xcosblocks.block
   pk: 124
   fields:
-    blocktype: 1
     name: VVsourceAC
     blockprefix: 1
     main_category: 9
@@ -9484,7 +9360,6 @@
 - model: xcosblocks.block
   pk: 125
   fields:
-    blocktype: 1
     name: BITCLEAR
     blockprefix: 1
     main_category: 10
@@ -9558,7 +9433,6 @@
 - model: xcosblocks.block
   pk: 126
   fields:
-    blocktype: 1
     name: BITSET
     blockprefix: 1
     main_category: 10
@@ -9632,7 +9506,6 @@
 - model: xcosblocks.block
   pk: 127
   fields:
-    blocktype: 1
     name: CONVERT
     blockprefix: 1
     main_category: 10
@@ -9707,7 +9580,6 @@
 - model: xcosblocks.block
   pk: 128
   fields:
-    blocktype: 1
     name: DFLIPFLOP
     blockprefix: 1
     main_category: 10
@@ -9781,7 +9653,6 @@
 - model: xcosblocks.block
   pk: 129
   fields:
-    blocktype: 1
     name: DLATCH
     blockprefix: 1
     main_category: 10
@@ -9855,7 +9726,6 @@
 - model: xcosblocks.block
   pk: 130
   fields:
-    blocktype: 1
     name: EXTRACTBITS
     blockprefix: 1
     main_category: 10
@@ -9929,7 +9799,6 @@
 - model: xcosblocks.block
   pk: 131
   fields:
-    blocktype: 1
     name: INTMUL
     blockprefix: 1
     main_category: 10
@@ -10003,7 +9872,6 @@
 - model: xcosblocks.block
   pk: 132
   fields:
-    blocktype: 1
     name: JKFLIPFLOP
     blockprefix: 1
     main_category: 10
@@ -10077,7 +9945,6 @@
 - model: xcosblocks.block
   pk: 133
   fields:
-    blocktype: 1
     name: LOGIC
     blockprefix: 1
     main_category: 10
@@ -10151,7 +10018,6 @@
 - model: xcosblocks.block
   pk: 134
   fields:
-    blocktype: 1
     name: SHIFT
     blockprefix: 1
     main_category: 10
@@ -10225,7 +10091,6 @@
 - model: xcosblocks.block
   pk: 135
   fields:
-    blocktype: 1
     name: SRFLIPFLOP
     blockprefix: 1
     main_category: 10
@@ -10299,7 +10164,6 @@
 - model: xcosblocks.block
   pk: 136
   fields:
-    blocktype: 1
     name: GENERAL_f
     blockprefix: 1
     main_category: 12
@@ -10373,7 +10237,6 @@
 - model: xcosblocks.block
   pk: 137
   fields:
-    blocktype: 1
     name: NEGTOPOS_f
     blockprefix: 1
     main_category: 12
@@ -10447,7 +10310,6 @@
 - model: xcosblocks.block
   pk: 138
   fields:
-    blocktype: 1
     name: POSTONEG_f
     blockprefix: 1
     main_category: 12
@@ -10521,7 +10383,6 @@
 - model: xcosblocks.block
   pk: 139
   fields:
-    blocktype: 1
     name: ZCROSS_f
     blockprefix: 1
     main_category: 12
@@ -10595,7 +10456,6 @@
 - model: xcosblocks.block
   pk: 140
   fields:
-    blocktype: 1
     name: CLKFROM
     blockprefix: 1
     main_category: 6
@@ -10670,7 +10530,6 @@
 - model: xcosblocks.block
   pk: 141
   fields:
-    blocktype: 1
     name: CLKGOTO
     blockprefix: 1
     main_category: 6
@@ -10745,7 +10604,6 @@
 - model: xcosblocks.block
   pk: 142
   fields:
-    blocktype: 1
     name: DEMUX
     blockprefix: 1
     main_category: 13
@@ -10820,7 +10678,6 @@
 - model: xcosblocks.block
   pk: 143
   fields:
-    blocktype: 1
     name: DEMUX_f
     blockprefix: 1
     main_category: 13
@@ -10894,7 +10751,6 @@
 - model: xcosblocks.block
   pk: 144
   fields:
-    blocktype: 1
     name: EXTRACTOR
     blockprefix: 1
     main_category: 13
@@ -10968,7 +10824,6 @@
 - model: xcosblocks.block
   pk: 145
   fields:
-    blocktype: 1
     name: FROM
     blockprefix: 1
     main_category: 13
@@ -11042,7 +10897,6 @@
 - model: xcosblocks.block
   pk: 146
   fields:
-    blocktype: 1
     name: FROMMO
     blockprefix: 1
     main_category: 13
@@ -11116,7 +10970,6 @@
 - model: xcosblocks.block
   pk: 147
   fields:
-    blocktype: 1
     name: GOTO
     blockprefix: 1
     main_category: 13
@@ -11190,7 +11043,6 @@
 - model: xcosblocks.block
   pk: 148
   fields:
-    blocktype: 1
     name: GOTOMO
     blockprefix: 1
     main_category: 13
@@ -11264,7 +11116,6 @@
 - model: xcosblocks.block
   pk: 149
   fields:
-    blocktype: 1
     name: GotoTagVisibility
     blockprefix: 1
     main_category: 13
@@ -11338,7 +11189,6 @@
 - model: xcosblocks.block
   pk: 150
   fields:
-    blocktype: 1
     name: GotoTagVisibilityMO
     blockprefix: 1
     main_category: 13
@@ -11412,7 +11262,6 @@
 - model: xcosblocks.block
   pk: 151
   fields:
-    blocktype: 1
     name: ISELECT_m
     blockprefix: 1
     main_category: 13
@@ -11486,7 +11335,6 @@
 - model: xcosblocks.block
   pk: 152
   fields:
-    blocktype: 1
     name: M_SWITCH
     blockprefix: 1
     main_category: 13
@@ -11560,7 +11408,6 @@
 - model: xcosblocks.block
   pk: 153
   fields:
-    blocktype: 1
     name: MUX
     blockprefix: 1
     main_category: 13
@@ -11635,7 +11482,6 @@
 - model: xcosblocks.block
   pk: 154
   fields:
-    blocktype: 1
     name: MUX_f
     blockprefix: 1
     main_category: 13
@@ -11709,7 +11555,6 @@
 - model: xcosblocks.block
   pk: 155
   fields:
-    blocktype: 1
     name: NRMSOM_f
     blockprefix: 1
     main_category: 13
@@ -11784,7 +11629,6 @@
 - model: xcosblocks.block
   pk: 156
   fields:
-    blocktype: 1
     name: RELAY_f
     blockprefix: 1
     main_category: 13
@@ -11858,7 +11702,6 @@
 - model: xcosblocks.block
   pk: 157
   fields:
-    blocktype: 1
     name: SCALAR2VECTOR
     blockprefix: 1
     main_category: 13
@@ -11932,7 +11775,6 @@
 - model: xcosblocks.block
   pk: 158
   fields:
-    blocktype: 1
     name: SELECT_m
     blockprefix: 1
     main_category: 13
@@ -12006,7 +11848,6 @@
 - model: xcosblocks.block
   pk: 159
   fields:
-    blocktype: 1
     name: SELF_SWITCH
     blockprefix: 1
     main_category: 13
@@ -12080,7 +11921,6 @@
 - model: xcosblocks.block
   pk: 160
   fields:
-    blocktype: 1
     name: SWITCH_f
     blockprefix: 1
     main_category: 13
@@ -12154,7 +11994,6 @@
 - model: xcosblocks.block
   pk: 161
   fields:
-    blocktype: 1
     name: SWITCH2_m
     blockprefix: 1
     main_category: 13
@@ -12229,7 +12068,6 @@
 - model: xcosblocks.block
   pk: 162
   fields:
-    blocktype: 1
     name: CONSTRAINT_c
     blockprefix: 1
     main_category: 15
@@ -12303,7 +12141,6 @@
 - model: xcosblocks.block
   pk: 163
   fields:
-    blocktype: 1
     name: CONSTRAINT2_c
     blockprefix: 1
     main_category: 15
@@ -12377,7 +12214,6 @@
 - model: xcosblocks.block
   pk: 164
   fields:
-    blocktype: 1
     name: DIFF_f
     blockprefix: 1
     main_category: 15
@@ -12451,7 +12287,6 @@
 - model: xcosblocks.block
   pk: 165
   fields:
-    blocktype: 1
     name: TEXT_f
     blockprefix: 1
     main_category: 16
@@ -12526,7 +12361,6 @@
 - model: xcosblocks.block
   pk: 166
   fields:
-    blocktype: 1
     name: AFFICH_m
     blockprefix: 1
     main_category: 17
@@ -12600,7 +12434,6 @@
 - model: xcosblocks.block
   pk: 167
   fields:
-    blocktype: 1
     name: BARXY
     blockprefix: 1
     main_category: 17
@@ -12674,7 +12507,6 @@
 - model: xcosblocks.block
   pk: 168
   fields:
-    blocktype: 1
     name: CANIMXY
     blockprefix: 1
     main_category: 17
@@ -12748,7 +12580,6 @@
 - model: xcosblocks.block
   pk: 169
   fields:
-    blocktype: 1
     name: CANIMXY3D
     blockprefix: 1
     main_category: 17
@@ -12822,7 +12653,6 @@
 - model: xcosblocks.block
   pk: 170
   fields:
-    blocktype: 1
     name: CFSCOPE
     blockprefix: 1
     main_category: 17
@@ -12896,7 +12726,6 @@
 - model: xcosblocks.block
   pk: 171
   fields:
-    blocktype: 1
     name: CLKOUTV_f
     blockprefix: 1
     main_category: 6
@@ -12972,7 +12801,6 @@
 - model: xcosblocks.block
   pk: 172
   fields:
-    blocktype: 1
     name: CMAT3D
     blockprefix: 1
     main_category: 17
@@ -13046,7 +12874,6 @@
 - model: xcosblocks.block
   pk: 173
   fields:
-    blocktype: 1
     name: CMATVIEW
     blockprefix: 1
     main_category: 17
@@ -13120,7 +12947,6 @@
 - model: xcosblocks.block
   pk: 174
   fields:
-    blocktype: 1
     name: CMSCOPE
     blockprefix: 1
     main_category: 17
@@ -13195,7 +13021,6 @@
 - model: xcosblocks.block
   pk: 175
   fields:
-    blocktype: 1
     name: CSCOPE
     blockprefix: 1
     main_category: 17
@@ -13269,7 +13094,6 @@
 - model: xcosblocks.block
   pk: 176
   fields:
-    blocktype: 1
     name: CSCOPXY
     blockprefix: 1
     main_category: 17
@@ -13344,7 +13168,6 @@
 - model: xcosblocks.block
   pk: 177
   fields:
-    blocktype: 1
     name: CSCOPXY3D
     blockprefix: 1
     main_category: 17
@@ -13418,7 +13241,6 @@
 - model: xcosblocks.block
   pk: 178
   fields:
-    blocktype: 1
     name: OUT_f
     blockprefix: 1
     main_category: 11
@@ -13494,7 +13316,6 @@
 - model: xcosblocks.block
   pk: 179
   fields:
-    blocktype: 1
     name: OUTIMPL_f
     blockprefix: 1
     main_category: 11
@@ -13569,7 +13390,6 @@
 - model: xcosblocks.block
   pk: 180
   fields:
-    blocktype: 1
     name: TOWS_c
     blockprefix: 1
     main_category: 17
@@ -13643,7 +13463,6 @@
 - model: xcosblocks.block
   pk: 181
   fields:
-    blocktype: 1
     name: TRASH_f
     blockprefix: 1
     main_category: 17
@@ -13717,7 +13536,6 @@
 - model: xcosblocks.block
   pk: 182
   fields:
-    blocktype: 1
     name: WRITEAU_f
     blockprefix: 1
     main_category: 17
@@ -13791,7 +13609,6 @@
 - model: xcosblocks.block
   pk: 183
   fields:
-    blocktype: 1
     name: WRITEC_f
     blockprefix: 1
     main_category: 17
@@ -13865,7 +13682,6 @@
 - model: xcosblocks.block
   pk: 184
   fields:
-    blocktype: 1
     name: CLKINV_f
     blockprefix: 1
     main_category: 11
@@ -13940,7 +13756,6 @@
 - model: xcosblocks.block
   pk: 185
   fields:
-    blocktype: 1
     name: CLOCK_c
     blockprefix: 1
     main_category: 6
@@ -14015,7 +13830,6 @@
 - model: xcosblocks.block
   pk: 186
   fields:
-    blocktype: 1
     name: CONST
     blockprefix: 1
     main_category: 18
@@ -14089,7 +13903,6 @@
 - model: xcosblocks.block
   pk: 187
   fields:
-    blocktype: 1
     name: CONST_f
     blockprefix: 1
     main_category: 18
@@ -14163,7 +13976,6 @@
 - model: xcosblocks.block
   pk: 188
   fields:
-    blocktype: 1
     name: CONST_m
     blockprefix: 1
     main_category: 18
@@ -14238,7 +14050,6 @@
 - model: xcosblocks.block
   pk: 189
   fields:
-    blocktype: 1
     name: Counter
     blockprefix: 1
     main_category: 18
@@ -14312,7 +14123,6 @@
 - model: xcosblocks.block
   pk: 190
   fields:
-    blocktype: 1
     name: CURV_f
     blockprefix: 1
     main_category: 18
@@ -14386,7 +14196,6 @@
 - model: xcosblocks.block
   pk: 191
   fields:
-    blocktype: 1
     name: FROMWSB
     blockprefix: 1
     main_category: 18
@@ -14460,7 +14269,6 @@
 - model: xcosblocks.block
   pk: 192
   fields:
-    blocktype: 1
     name: GENSIN_f
     blockprefix: 1
     main_category: 18
@@ -14534,7 +14342,6 @@
 - model: xcosblocks.block
   pk: 193
   fields:
-    blocktype: 1
     name: GENSQR_f
     blockprefix: 1
     main_category: 18
@@ -14608,7 +14415,6 @@
 - model: xcosblocks.block
   pk: 194
   fields:
-    blocktype: 1
     name: IN_f
     blockprefix: 1
     main_category: 11
@@ -14684,7 +14490,6 @@
 - model: xcosblocks.block
   pk: 195
   fields:
-    blocktype: 1
     name: INIMPL_f
     blockprefix: 1
     main_category: 11
@@ -14759,7 +14564,6 @@
 - model: xcosblocks.block
   pk: 196
   fields:
-    blocktype: 1
     name: Modulo_Count
     blockprefix: 1
     main_category: 18
@@ -14833,7 +14637,6 @@
 - model: xcosblocks.block
   pk: 197
   fields:
-    blocktype: 1
     name: PULSE_SC
     blockprefix: 1
     main_category: 18
@@ -14907,7 +14710,6 @@
 - model: xcosblocks.block
   pk: 198
   fields:
-    blocktype: 1
     name: RAMP
     blockprefix: 1
     main_category: 18
@@ -14981,7 +14783,6 @@
 - model: xcosblocks.block
   pk: 199
   fields:
-    blocktype: 1
     name: RAND_m
     blockprefix: 1
     main_category: 18
@@ -15055,7 +14856,6 @@
 - model: xcosblocks.block
   pk: 200
   fields:
-    blocktype: 1
     name: READAU_f
     blockprefix: 1
     main_category: 18
@@ -15129,7 +14929,6 @@
 - model: xcosblocks.block
   pk: 201
   fields:
-    blocktype: 1
     name: READC_f
     blockprefix: 1
     main_category: 18
@@ -15203,7 +15002,6 @@
 - model: xcosblocks.block
   pk: 202
   fields:
-    blocktype: 1
     name: RFILE_f
     blockprefix: 1
     main_category: 18
@@ -15277,7 +15075,6 @@
 - model: xcosblocks.block
   pk: 203
   fields:
-    blocktype: 1
     name: SampleCLK
     blockprefix: 1
     main_category: 6
@@ -15352,7 +15149,6 @@
 - model: xcosblocks.block
   pk: 204
   fields:
-    blocktype: 1
     name: SAWTOOTH_f
     blockprefix: 1
     main_category: 18
@@ -15426,7 +15222,6 @@
 - model: xcosblocks.block
   pk: 205
   fields:
-    blocktype: 1
     name: Sigbuilder
     blockprefix: 1
     main_category: 18
@@ -15500,7 +15295,6 @@
 - model: xcosblocks.block
   pk: 206
   fields:
-    blocktype: 1
     name: STEP_FUNCTION
     blockprefix: 1
     main_category: 18
@@ -15574,7 +15368,6 @@
 - model: xcosblocks.block
   pk: 207
   fields:
-    blocktype: 1
     name: TIME_f
     blockprefix: 1
     main_category: 18
@@ -15648,7 +15441,6 @@
 - model: xcosblocks.block
   pk: 208
   fields:
-    blocktype: 1
     name: TKSCALE
     blockprefix: 1
     main_category: 18
@@ -15722,7 +15514,6 @@
 - model: xcosblocks.block
   pk: 209
   fields:
-    blocktype: 1
     name: Bache
     blockprefix: 1
     main_category: 19
@@ -15796,7 +15587,6 @@
 - model: xcosblocks.block
   pk: 210
   fields:
-    blocktype: 1
     name: Flowmeter
     blockprefix: 1
     main_category: 19
@@ -15870,7 +15660,6 @@
 - model: xcosblocks.block
   pk: 211
   fields:
-    blocktype: 1
     name: PerteDP
     blockprefix: 1
     main_category: 19
@@ -15944,7 +15733,6 @@
 - model: xcosblocks.block
   pk: 212
   fields:
-    blocktype: 1
     name: PuitsP
     blockprefix: 1
     main_category: 19
@@ -16018,7 +15806,6 @@
 - model: xcosblocks.block
   pk: 213
   fields:
-    blocktype: 1
     name: SourceP
     blockprefix: 1
     main_category: 19
@@ -16092,7 +15879,6 @@
 - model: xcosblocks.block
   pk: 214
   fields:
-    blocktype: 1
     name: VanneReglante
     blockprefix: 1
     main_category: 19
@@ -16166,7 +15952,6 @@
 - model: xcosblocks.block
   pk: 215
   fields:
-    blocktype: 1
     name: BOUNCE
     blockprefix: 1
     main_category: 20
@@ -16240,7 +16025,6 @@
 - model: xcosblocks.block
   pk: 216
   fields:
-    blocktype: 1
     name: BOUNCEXY
     blockprefix: 1
     main_category: 20
@@ -16314,7 +16098,6 @@
 - model: xcosblocks.block
   pk: 217
   fields:
-    blocktype: 1
     name: BPLATFORM
     blockprefix: 1
     main_category: 20
@@ -16388,7 +16171,6 @@
 - model: xcosblocks.block
   pk: 218
   fields:
-    blocktype: 1
     name: c_block
     blockprefix: 1
     main_category: 21
@@ -16462,7 +16244,6 @@
 - model: xcosblocks.block
   pk: 219
   fields:
-    blocktype: 1
     name: CBLOCK
     blockprefix: 1
     main_category: 21
@@ -16536,7 +16317,6 @@
 - model: xcosblocks.block
   pk: 220
   fields:
-    blocktype: 1
     name: CBLOCK4
     blockprefix: 1
     main_category: 21
@@ -16610,7 +16390,6 @@
 - model: xcosblocks.block
   pk: 221
   fields:
-    blocktype: 1
     name: DEBUG
     blockprefix: 1
     main_category: 21
@@ -16684,7 +16463,6 @@
 - model: xcosblocks.block
   pk: 222
   fields:
-    blocktype: 1
     name: EXPRESSION
     blockprefix: 1
     main_category: 21
@@ -16758,7 +16536,6 @@
 - model: xcosblocks.block
   pk: 223
   fields:
-    blocktype: 1
     name: fortran_block
     blockprefix: 1
     main_category: 21
@@ -16832,7 +16609,6 @@
 - model: xcosblocks.block
   pk: 224
   fields:
-    blocktype: 1
     name: generic_block3
     blockprefix: 1
     main_category: 21
@@ -16906,7 +16682,6 @@
 - model: xcosblocks.block
   pk: 225
   fields:
-    blocktype: 1
     name: MBLOCK
     blockprefix: 1
     main_category: 21
@@ -16980,7 +16755,6 @@
 - model: xcosblocks.block
   pk: 226
   fields:
-    blocktype: 1
     name: scifunc_block_m
     blockprefix: 1
     main_category: 21
@@ -17054,7 +16828,6 @@
 - model: xcosblocks.block
   pk: 227
   fields:
-    blocktype: 1
     name: SUPER_f
     blockprefix: 1
     main_category: 11
