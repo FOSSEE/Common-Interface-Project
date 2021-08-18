@@ -257,7 +257,6 @@ class BlockSerializer(serializers.ModelSerializer):
         model = Block
         fields = [
             'id',
-            'blocktype',
             'name',
             'blockprefix',
             'main_category',
