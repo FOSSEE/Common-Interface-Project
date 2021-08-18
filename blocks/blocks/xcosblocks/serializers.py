@@ -1,7 +1,16 @@
 from rest_framework import serializers
 
-from .models import Category, ParameterDataType, BlockType, BlockPrefix, \
+from .models import BlockType, Category, ParameterDataType, BlockPrefix, \
     BlockPrefixParameter, Block, BlockParameter, BlockPort
+
+
+class BlockTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = BlockType
+        fields = [
+            'id',
+            'name',
+        ]
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -9,6 +18,7 @@ class CategorySerializer(serializers.ModelSerializer):
         model = Category
         fields = [
             'id',
+            'blocktype',
             'name',
             'sort_order',
         ]
@@ -17,15 +27,6 @@ class CategorySerializer(serializers.ModelSerializer):
 class ParameterDataTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = ParameterDataType
-        fields = [
-            'id',
-            'name',
-        ]
-
-
-class BlockTypeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = BlockType
         fields = [
             'id',
             'name',
