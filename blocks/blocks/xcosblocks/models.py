@@ -1,26 +1,34 @@
 from django.db import models
 
 
-class Category(models.Model):
+class BlockType(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        """String for representing the Model object."""
+        return self.name
+
+
+class Category(models.Model):
+    id = models.AutoField(primary_key=True)
+    blocktype = models.ForeignKey(BlockType, default=1,
+                                  on_delete=models.PROTECT, related_name='+')
+    name = models.CharField(max_length=100)
     sort_order = models.IntegerField()
 
     def __str__(self):
         """String for representing the Model object."""
         return self.name
 
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['blocktype', 'name'],
+                                    name='unique_blocktype_name')
+        ]
+
 
 class ParameterDataType(models.Model):
-    id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=100, unique=True)
-
-    def __str__(self):
-        """String for representing the Model object."""
-        return self.name
-
-
-class BlockType(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100, unique=True)
 
