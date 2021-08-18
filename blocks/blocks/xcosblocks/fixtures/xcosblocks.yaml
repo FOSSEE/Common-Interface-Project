@@ -1,76 +1,95 @@
+- model: xcosblocks.blocktype
+  pk: 1
+  fields:
+    name: eSim
 - model: xcosblocks.category
   pk: 1
   fields:
+    blocktype: 1
     name: 4xxx
     sort_order: 1
 - model: xcosblocks.category
   pk: 2
   fields:
+    blocktype: 1
     name: Analog
     sort_order: 2
 - model: xcosblocks.category
   pk: 3
   fields:
+    blocktype: 1
     name: Device
     sort_order: 3
 - model: xcosblocks.category
   pk: 4
   fields:
+    blocktype: 1
     name: Diode
     sort_order: 4
 - model: xcosblocks.category
   pk: 5
   fields:
+    blocktype: 1
     name: LED
     sort_order: 5
 - model: xcosblocks.category
   pk: 6
   fields:
+    blocktype: 1
     name: Motor
     sort_order: 6
 - model: xcosblocks.category
   pk: 7
   fields:
+    blocktype: 1
     name: Oscillator
     sort_order: 7
 - model: xcosblocks.category
   pk: 8
   fields:
+    blocktype: 1
     name: Transistor_BJT
     sort_order: 8
 - model: xcosblocks.category
   pk: 9
   fields:
+    blocktype: 1
     name: Transistor_FET
     sort_order: 9
 - model: xcosblocks.category
   pk: 10
   fields:
+    blocktype: 1
     name: Transistor_IGBT
     sort_order: 10
 - model: xcosblocks.category
   pk: 11
   fields:
+    blocktype: 1
     name: Triac_Thyristor
     sort_order: 11
 - model: xcosblocks.category
   pk: 12
   fields:
+    blocktype: 1
     name: eSim_Hybrid
     sort_order: 12
 - model: xcosblocks.category
   pk: 13
   fields:
+    blocktype: 1
     name: eSim_Sources
     sort_order: 13
 - model: xcosblocks.category
   pk: 14
   fields:
+    blocktype: 1
     name: power
     sort_order: 14
 - model: xcosblocks.category
   pk: 15
   fields:
+    blocktype: 1
     name: pspice
     sort_order: 15
 - model: xcosblocks.parameterdatatype
@@ -169,10 +188,6 @@
   pk: 24
   fields:
     name: array of filenames
-- model: xcosblocks.blocktype
-  pk: 1
-  fields:
-    name: eSim
 - model: xcosblocks.blockprefix
   pk: 1
   fields:

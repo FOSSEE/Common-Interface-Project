@@ -32,7 +32,8 @@ LOAD DATA LOCAL INFILE 'data/categories.csv'
     INTO TABLE xcosblocks_category
     FIELDS TERMINATED BY '\t'
     LINES TERMINATED BY '\n'
-    (id, name, sort_order, @tmp1);
+    (id, name, sort_order, @tmp1)
+    SET blocktype_id = @blocktype_id;
 
 LOAD DATA LOCAL INFILE 'data/blockprefixes.csv'
     INTO TABLE xcosblocks_blockprefix
@@ -224,7 +225,7 @@ LOAD DATA LOCAL INFILE 'data/main-category-blocks.csv'
     block_height = 40,
     blocktype_id = @blocktype_id,
     blockprefix_id = (SELECT id FROM xcosblocks_blockprefix WHERE name = @blockprefix_name),
-    main_category_id = (SELECT id from xcosblocks_category WHERE name = @main_category_name);
+    main_category_id = (SELECT id from xcosblocks_category WHERE blocktype_id = @blocktype_id AND name = @main_category_name);
 
 LOAD DATA LOCAL INFILE 'data/main-category-blocks.csv'
     INTO TABLE xcosblocks_blockparameter
@@ -322,15 +323,15 @@ LOAD DATA LOCAL INFILE 'data/categories-blocks.csv'
     FIELDS TERMINATED BY '\t'
     LINES TERMINATED BY '\n'
     (id, @category_name, @main_category_name, @block_name)
-    SET block_id = (SELECT xcosblocks_block.id FROM xcosblocks_block JOIN xcosblocks_category ON main_category_id = xcosblocks_category.id WHERE xcosblocks_block.name = @block_name AND xcosblocks_category.name = @main_category_name AND blocktype_id = @blocktype_id),
-    category_id = (SELECT id from xcosblocks_category WHERE name = @category_name);
+    SET block_id = (SELECT xcosblocks_block.id FROM xcosblocks_block JOIN xcosblocks_category ON main_category_id = xcosblocks_category.id WHERE xcosblocks_block.blocktype_id = @blocktype_id AND xcosblocks_block.name = @block_name AND xcosblocks_category.blocktype_id = @blocktype_id AND xcosblocks_category.name = @main_category_name),
+    category_id = (SELECT id from xcosblocks_category WHERE blocktype_id = @blocktype_id AND name = @category_name);
 
 LOAD DATA LOCAL INFILE 'data/blocks-ports.csv'
     INTO TABLE xcosblocks_blockport
     FIELDS TERMINATED BY '\t'
     LINES TERMINATED BY '\n'
     (id, @main_category_name, @block_name, port_order, port_name, port_number, port_x, port_y, port_orientation, port_part, port_dmg, port_type)
-    SET block_id = (SELECT xcosblocks_block.id FROM xcosblocks_block JOIN xcosblocks_category ON main_category_id = xcosblocks_category.id WHERE xcosblocks_block.name = @block_name AND xcosblocks_category.name = @main_category_name AND blocktype_id = @blocktype_id);
+    SET block_id = (SELECT xcosblocks_block.id FROM xcosblocks_block JOIN xcosblocks_category ON main_category_id = xcosblocks_category.id WHERE xcosblocks_block.blocktype_id = @blocktype_id AND xcosblocks_block.name = @block_name AND xcosblocks_category.blocktype_id = @blocktype_id AND xcosblocks_category.name = @main_category_name);
 
 CREATE TEMPORARY TABLE tmp_xcosblocks_block (
     id int NOT NULL PRIMARY KEY,
@@ -343,7 +344,7 @@ LOAD DATA LOCAL INFILE 'data/getsize.csv'
     FIELDS TERMINATED BY '\t'
     LINES TERMINATED BY '\n'
     (@main_category_name, @block_name, block_width, block_height)
-    SET id = (SELECT xcosblocks_block.id FROM xcosblocks_block JOIN xcosblocks_category ON main_category_id = xcosblocks_category.id WHERE xcosblocks_block.name = @block_name AND xcosblocks_category.name = @main_category_name AND blocktype_id = @blocktype_id);
+    SET id = (SELECT xcosblocks_block.id FROM xcosblocks_block JOIN xcosblocks_category ON main_category_id = xcosblocks_category.id WHERE xcosblocks_block.blocktype_id = @blocktype_id AND xcosblocks_block.name = @block_name AND xcosblocks_category.blocktype_id = @blocktype_id AND xcosblocks_category.name = @main_category_name);
 
 DELETE FROM xcosblocks_blockprefixparameter
     WHERE (p000 IS NULL OR p000 = '') AND
