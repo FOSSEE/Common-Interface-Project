@@ -357,8 +357,6 @@ class BlockPrefixParameter(models.Model):
 
 class Block(models.Model):
     id = models.AutoField(primary_key=True)
-    blocktype = models.ForeignKey(BlockType, default=1,
-                                  on_delete=models.PROTECT, related_name='+')
     name = models.CharField(max_length=100)
     blockprefix = models.ForeignKey(BlockPrefix, default=1,
                                     on_delete=models.PROTECT, related_name='+')
@@ -500,8 +498,8 @@ class Block(models.Model):
 
     class Meta:
         constraints = [
-            models.UniqueConstraint(fields=['blocktype', 'name', 'main_category'],
-                                    name='unique_blocktype_name_category')
+            models.UniqueConstraint(fields=['main_category', 'name'],
+                                    name='unique_category_name')
         ]
 
 
