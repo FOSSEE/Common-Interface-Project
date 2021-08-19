@@ -6,6 +6,7 @@ DELETE FROM xcosblocks_blockprefixparameter;
 DELETE FROM xcosblocks_blockprefix;
 DELETE FROM xcosblocks_category;
 DELETE FROM xcosblocks_parameterdatatype;
+DELETE FROM xcosblocks_blocktype;
 
 ALTER TABLE xcosblocks_blockparameter AUTO_INCREMENT = 1;
 ALTER TABLE xcosblocks_blockport AUTO_INCREMENT = 1;
@@ -15,10 +16,11 @@ ALTER TABLE xcosblocks_blockprefixparameter AUTO_INCREMENT = 1;
 ALTER TABLE xcosblocks_blockprefix AUTO_INCREMENT = 1;
 ALTER TABLE xcosblocks_category AUTO_INCREMENT = 1;
 ALTER TABLE xcosblocks_parameterdatatype AUTO_INCREMENT = 1;
+ALTER TABLE xcosblocks_blocktype AUTO_INCREMENT = 1;
 
 SET @blocktype_name = 'Xcos';
 
-INSERT IGNORE INTO xcosblocks_blocktype (name) VALUES (@blocktype_name);
+INSERT INTO xcosblocks_blocktype (name) VALUES (@blocktype_name);
 
 SELECT id INTO @blocktype_id FROM xcosblocks_blocktype WHERE name = @blocktype_name;
 
