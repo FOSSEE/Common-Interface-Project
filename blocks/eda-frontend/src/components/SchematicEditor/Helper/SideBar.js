@@ -1,11 +1,14 @@
-import MxGraphFactory from 'mxgraph'
+import 'mxgraph/javascript/src/css/common.css';
+
+import mxGraphFactory from 'mxgraph';
 import { default_scale, getSvgMetadata } from './SvgParser.js'
+
 const {
   mxClient,
   mxUtils,
   mxEvent,
   mxDragSource
-} = new MxGraphFactory()
+} = new mxGraphFactory();
 
 var graph
 

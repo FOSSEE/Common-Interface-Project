@@ -1,4 +1,6 @@
-import mxGraphFactory from 'mxgraph'
+import 'mxgraph/javascript/src/css/common.css';
+
+import mxGraphFactory from 'mxgraph';
 import store from '../../../redux/store'
 import { setModel, setNetlist } from '../../../redux/actions/index'
 
@@ -15,7 +17,7 @@ const {
   mxCodec,
   mxMorphing,
   mxPoint
-} = new mxGraphFactory()
+} = new mxGraphFactory();
 
 export default function ToolbarTools (grid, unredo) {
   graph = grid
