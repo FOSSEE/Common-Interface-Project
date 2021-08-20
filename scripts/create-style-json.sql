@@ -23,7 +23,27 @@ SELECT CONCAT('  "defaultEdge": {', @NewLineChar,
               '    "strokeColor": "black",', @NewLineChar,
               '    "perimeter": "null"', @NewLineChar,
               '  },');
-SELECT CONCAT('  "', B.main_category_id, '-', B.blockprefix_id, '-', B.name, '": {', @NewLineChar,
+SELECT CONCAT('  "pinD": {', @NewLineChar,
+              '    "align": "right",', @NewLineChar,
+              '    "verticalAlign": "bottom",', @NewLineChar,
+              '    "rotation": 0', @NewLineChar,
+              '  },');
+SELECT CONCAT('  "pinL": {', @NewLineChar,
+              '    "align": "right",', @NewLineChar,
+              '    "verticalAlign": "bottom",', @NewLineChar,
+              '    "rotation": 0', @NewLineChar,
+              '  },');
+SELECT CONCAT('  "pinR": {', @NewLineChar,
+              '    "align": "left",', @NewLineChar,
+              '    "verticalAlign": "bottom",', @NewLineChar,
+              '    "rotation": 0', @NewLineChar,
+              '  },');
+SELECT CONCAT('  "pinU": {', @NewLineChar,
+              '    "align": "right",', @NewLineChar,
+              '    "verticalAlign": "top",', @NewLineChar,
+              '    "rotation": 0', @NewLineChar,
+              '  },');
+SELECT CONCAT('  "', C.name, '-', BP.name, '-', B.name, '": {', @NewLineChar,
               '    "shape": "image",', @NewLineChar,
               '    "fontColor": "blue",', @NewLineChar,
               '    "imageVerticalAlign": "bottom",', @NewLineChar,
@@ -38,4 +58,3 @@ SELECT CONCAT('  "', B.main_category_id, '-', B.blockprefix_id, '-', B.name, '":
     JOIN xcosblocks_category C ON C.id = B.main_category_id
     ORDER BY C.sort_order, B.name;
 SELECT '}';
-
