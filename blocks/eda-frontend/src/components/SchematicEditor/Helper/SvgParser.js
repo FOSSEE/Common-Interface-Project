@@ -1,4 +1,6 @@
-import mxGraphFactory from 'mxgraph'
+import 'mxgraph/javascript/src/css/common.css';
+
+import mxGraphFactory from 'mxgraph';
 
 const {
     mxPoint
