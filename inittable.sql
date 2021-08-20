@@ -474,7 +474,7 @@ DELETE FROM xcosblocks_blockparameter
 UPDATE xcosblocks_block B
     JOIN xcosblocks_blockprefix BP ON BP.id = B.blockprefix_id
     JOIN xcosblocks_category C ON C.id = B.main_category_id
-    SET B.block_name = CONCAT(C.id, '-', BP.id, '-', B.name),
+    SET B.block_name = CONCAT(C.name, '-', BP.name, '-', B.name),
     B.block_image_path = CONCAT(C.name, '/', BP.name, '-', B.name, '-1-A.svg');
 
 UPDATE xcosblocks_block B
