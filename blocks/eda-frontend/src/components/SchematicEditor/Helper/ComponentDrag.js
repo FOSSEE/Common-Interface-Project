@@ -1,4 +1,6 @@
-import mxGraphFactory from 'mxgraph'
+import 'mxgraph/javascript/src/css/common.css';
+
+import mxGraphFactory from 'mxgraph';
 import store from '../../../redux/store'
 import dot from '../../../static/dot.gif'
 import blockstyle from '../../../static/style.json'
@@ -32,7 +34,7 @@ const {
   mxCellRenderer,
   mxConstraintHandler,
   mxImage
-} = new mxGraphFactory()
+} = new mxGraphFactory();
 
 function configureStylesheet(graph) {
     graph.stylesheet.styles = blockstyle;
