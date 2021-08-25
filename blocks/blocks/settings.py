@@ -34,6 +34,8 @@ ALLOWED_HOSTS = [
     '127.0.1.1',
     'xcosblocks.fossee.org',
     'esimblocks.fossee.org',
+    'test.xcosblocks.fossee.org',
+    'test.esimblocks.fossee.org',
 ]
 
 SCILAB_DIR = '/home/sunil/software/scilab-6.1.0'
