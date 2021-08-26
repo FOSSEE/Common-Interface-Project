@@ -192,6 +192,8 @@ function Header () {
 
   const link = process.env.REACT_APP_NAME
   const altImage = process.env.REACT_APP_NAME + ' logo'
+  const typography1 = 'Share Your ' + process.env.REACT_APP_DIAGRAM_NAME
+  const typography2 = 'My ' + process.env.REACT_APP_DIAGRAMS_NAME
   return (
     <Toolbar variant="dense" color="default">
       <SimpleSnackbar open={snacOpen} close={handleSnacClose} message={message} />
@@ -255,7 +257,7 @@ function Header () {
         aria-labelledby="share-dialog-title"
         aria-describedby="share-dialog-description"
       >
-        <DialogTitle id="share-dialog-title">{'Share Your Schematic'}</DialogTitle>
+        <DialogTitle id="share-dialog-title">{typography1}</DialogTitle>
         <DialogContent>
           <DialogContentText id="share-dialog-description">
             <FormControlLabel
@@ -344,7 +346,7 @@ function Header () {
                 to="/dashboard/schematics"
                 onClick={handleClose}
               >
-                My Schematics
+                {typography2}
               </MenuItem>
               <MenuItem onClick={() => {
                 store.dispatch(logout(history))
