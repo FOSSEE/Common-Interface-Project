@@ -32,19 +32,21 @@ export default function ComponentProperties () {
 
   const link1 = process.env.REACT_APP_BLOCK_NAME + ' Parameters';
   const link2 = 'Set ' + process.env.REACT_APP_BLOCK_NAME + ' Parameters';
+  const link3 = 'No ' + process.env.REACT_APP_BLOCK_NAME + ' Parameters';
   return (
 
     <div style={isOpen ? {} : { display: 'none' }}>
 
       <ListItem>
-        <ListItemText primary={link1} />
+        { compProperties !== undefined ? <ListItemText primary={link1} /> : <ListItemText primary={link3} /> }
       </ListItem>
 
       {
         Object.keys(val).map((keyName, i) => {
           if (keyName.match(/^p[0-9]*_value$/)) {
             let rootKeyName = keyName.substr(0, 4)
-            if (compProperties[rootKeyName] !== null) {
+            let type_id = rootKeyName + '_type';
+            if (compProperties !== undefined && compProperties[rootKeyName] !== null && compProperties[type_id] !== null) {
               return <ListItem key={i}>
                 <TextField id={keyName} label={compProperties[rootKeyName]} value={val[keyName] || ''} size='small' variant='outlined' onChange={getInputValues} />
               </ListItem>
@@ -55,9 +57,11 @@ export default function ComponentProperties () {
         })
       }
 
-      <ListItem>
-        <Button size='small' variant="contained" color="primary" onClick={setProps}>{link2}</Button>
-      </ListItem>
+      {
+        compProperties !== undefined && <ListItem>
+          <Button size='small' variant="contained" color="primary" onClick={setProps}>{link2}</Button>
+        </ListItem>
+      }
 
     </div>
   )
