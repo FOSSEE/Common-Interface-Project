@@ -53,6 +53,7 @@ export function NetlistModal ({ open, close, netlist }) {
     var blob = new Blob([netlist], { type: 'text/plain;charset=utf-8' })
     FileSaver.saveAs(blob, `${titleA}_${name}_on_Cloud.cir`)
   }
+  const typography2 = 'Current netlist for given ' + process.env.REACT_APP_SMALL_DIAGRAM_NAME + '...'
   return (
     <Dialog
       open={open}
@@ -65,7 +66,7 @@ export function NetlistModal ({ open, close, netlist }) {
       <DialogTitle id="generate-netlist-title">{'Netlist Generator'}</DialogTitle>
       <DialogContent dividers>
         <DialogContentText id="generate-netlist-description">
-          Current Netlist for given schematic...<br /><br />
+          {typography2}<br /><br />
           <TextareaAutosize aria-label="empty textarea" rowsMin={20} rowsMax={50} style={{ minWidth: '500px' }} value={netlist} />
         </DialogContentText>
       </DialogContent>
@@ -394,6 +395,8 @@ export function OpenSchDialog (props) {
 
   const dispatch = useDispatch()
 
+  const title = 'Open ' + process.env.REACT_APP_DIAGRAM_NAME
+  const typography1 = "You don't have any saved " + process.env.REACT_APP_SMALL_DIAGRAMS_NAME + '...'
   return (
     <Dialog
       open={open}
@@ -405,7 +408,7 @@ export function OpenSchDialog (props) {
       aria-describedby="open-dialog-description"
     >
       <DialogTitle id="open-dialog-title" onClose={close}>
-        <Typography component="span" variant="h3">{'Open Schematic'}</Typography>
+        <Typography component="span" variant="h3">{title}</Typography>
       </DialogTitle>
       <DialogContent dividers>
         <DialogContentText id="open-dialog-description" >
@@ -462,7 +465,7 @@ export function OpenSchDialog (props) {
                 {/* Listing Saved Schematics */}
                 {schematics.length === 0
                   ? <Typography variant="subtitle1" gutterBottom>
-                  Hey {auth.user.username} , You dont have any saved schematics...
+                  Hey {auth.user.username} , {typography1}
                   </Typography>
                   : <TableContainer component={Paper} style={{ maxHeight: '45vh' }}>
                     <Table stickyHeader size="small" aria-label="simple table">
