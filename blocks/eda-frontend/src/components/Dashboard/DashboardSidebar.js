@@ -58,6 +58,8 @@ export default function DashSidebar (props) {
     dispatch(fetchSchematics())
   }, [dispatch])
 
+  const button = 'My ' + process.env.REACT_APP_DIAGRAMS_NAME
+  const placeholder = 'Find your ' + process.env.REACT_APP_SMALL_DIAGRAM_NAME + '...'
   return (
     <>
       <Hidden smDown>
@@ -109,14 +111,14 @@ export default function DashSidebar (props) {
           className={classes.sideItem}
           button
         >
-          <ListItemText primary='My Schematics'/>
+          <ListItemText primary={button}/>
         </ListItem>
 
         {/* List name of saved schematics */}
         <List className={classes.nestedSearch} >
           <InputBase
             className={classes.input}
-            placeholder="Find your schematic..."
+            placeholder={placeholder}
           />
         </List>
         <div className={classes.nested} >

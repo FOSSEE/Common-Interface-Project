@@ -96,6 +96,7 @@ function MainCard () {
   const classes = useStyles()
 
   const typography = process.env.REACT_APP_NAME + ' Gallery'
+  const diagramTypography = 'Sample ' + process.env.REACT_APP_SMALL_DIAGRAMS_NAME + ' are listed below...'
   return (
     <Card className={classes.mainHead}>
       <CardContent>
@@ -103,7 +104,7 @@ function MainCard () {
         {typography}
         </Typography>
         <Typography className={classes.title} align="center" gutterBottom>
-        Sample schematics are listed below...
+        {diagramTypography}
         </Typography>
       </CardContent>
     </Card>

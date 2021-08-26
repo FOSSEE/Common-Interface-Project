@@ -29,15 +29,17 @@ const useStyles = makeStyles({
 // Card displaying user my schematics page header.
 function MainCard () {
   const classes = useStyles()
+  const typography1 = 'All ' + process.env.REACT_APP_SMALL_DIAGRAMS_NAME + ' are listed below'
+  const typography2 = 'My ' + process.env.REACT_APP_DIAGRAMS_NAME
 
   return (
     <Card className={classes.mainHead}>
       <CardContent>
         <Typography className={classes.title} gutterBottom>
-          All schematics are Listed Below
+          {typography1}
         </Typography>
         <Typography variant="h5" component="h2">
-          My Schematics
+          {typography2}
         </Typography>
       </CardContent>
       <CardActions>
@@ -70,6 +72,7 @@ export default function SchematicsList () {
     dispatch(fetchSchematics())
   }, [dispatch])
 
+  const typography1 = "You don't have any saved " + process.env.REACT_APP_SMALL_DIAGRAMS_NAME + '...'
   return (
     <>
       <Grid
@@ -101,7 +104,7 @@ export default function SchematicsList () {
           : <Grid item xs={12}>
             <Card style={{ padding: '7px 15px' }} className={classes.mainHead}>
               <Typography variant="subtitle1" gutterBottom>
-                Hey {auth.user.username} , You dont have any saved schematics...
+                Hey {auth.user.username} , {typography1}
               </Typography>
             </Card>
           </Grid>

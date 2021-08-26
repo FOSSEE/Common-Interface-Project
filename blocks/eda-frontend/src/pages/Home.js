@@ -23,6 +23,7 @@ export default function Home () {
 
   const typography1 = process.env.REACT_APP_NAME + ' on Cloud'
   const typography2 = 'Online ' + process.env.REACT_APP_NAME + ' Simulator'
+  const typography3 = process.env.REACT_APP_DIAGRAM_NAME + ' Editor'
   return (
     <Container maxWidth="sm" component="main" className={classes.header}>
       <center>
@@ -53,7 +54,7 @@ export default function Home () {
           size="large"
           color="primary"
         >
-          Diagram Editor
+          {typography3}
         </Button>
       </Typography>
     </Container>

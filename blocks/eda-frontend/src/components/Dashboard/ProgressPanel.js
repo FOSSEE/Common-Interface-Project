@@ -65,6 +65,8 @@ export default function ProgressPanel () {
     dispatch(fetchSchematics())
   }, [dispatch])
 
+  const tab = 'Recent ' + process.env.REACT_APP_DIAGRAMS_NAME
+  const typography = 'You have not created any ' + process.env.REACT_APP_SMALL_DIAGRAM_NAME
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -75,9 +77,7 @@ export default function ProgressPanel () {
           scrollButtons="auto"
           aria-label="scrollable auto tabs example"
         >
-          <Tab label="Recent Schematics" {...a11yProps(0)} />
-          {/* <Tab label="Under Reviewer" {...a11yProps(1)} />
-          <Tab label="Under Domain Expert" {...a11yProps(2)} /> */}
+          <Tab label={tab} {...a11yProps(0)} />
         </Tabs>
       </AppBar>
 
@@ -103,7 +103,7 @@ export default function ProgressPanel () {
             )}
           </Grid>
           : <Typography variant="button" display="block" gutterBottom>
-            You have not created any schematic , Create your first one now...
+            {typography} , Create your first one now...
           </Typography>
         }
       </TabPanel>

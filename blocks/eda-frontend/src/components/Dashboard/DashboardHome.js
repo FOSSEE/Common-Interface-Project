@@ -29,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
 function MainCard () {
   const classes = useStyles()
   const auth = useSelector(state => state.authReducer)
+  const button = 'My ' + process.env.REACT_APP_DIAGRAMS_NAME
 
   return (
     <Card className={classes.mainHead}>
@@ -47,7 +48,7 @@ function MainCard () {
           color="primary"
           size="small"
         >
-          My Schematics
+          {button}
         </Button>
       </CardActions>
     </Card>
@@ -57,6 +58,7 @@ function MainCard () {
 export default function DashboardHome () {
   const classes = useStyles()
   const auth = useSelector(state => state.authReducer)
+  const typography = 'Track your ' + process.env.REACT_APP_SMALL_DIAGRAMS_NAME + ' status here...'
 
   return (
     <>
@@ -76,7 +78,7 @@ export default function DashboardHome () {
         <Grid item xs={12}>
           <Card style={{ padding: '7px 15px' }} className={classes.mainHead}>
             <Typography variant="subtitle1" gutterBottom>
-              Hey {auth.user.username} , Track your schematics status here...
+              Hey {auth.user.username} , {typography}
             </Typography>
           </Card>
         </Grid>

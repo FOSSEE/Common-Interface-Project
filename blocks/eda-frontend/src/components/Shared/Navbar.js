@@ -58,6 +58,7 @@ export function Header () {
 
   const link = process.env.REACT_APP_NAME
   const altImage = process.env.REACT_APP_NAME + ' logo'
+  const typography = 'My ' + process.env.REACT_APP_DIAGRAMS_NAME
   return (
     <>
       {/* Display logo */}
@@ -219,7 +220,7 @@ export function Header () {
                 to="/dashboard/schematics"
                 onClick={handleClose}
               >
-                My Schematics
+                {typography}
               </MenuItem>
               <MenuItem onClick={() => {
                 store.dispatch(logout(history))

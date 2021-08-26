@@ -80,6 +80,8 @@ export default function SimulationScreen ({ open, close, isResult }) {
     setPrecision(evt.target.value)
   }
 
+  const typography1 = 'SOMETHING WENT WRONG. Please Check The Simulation Parameters.'
+  const typography2 = 'SOMETHING WENT WRONG. Please Check The Simulation Parameters And ' + process.env.REACT_APP_DIAGRAM_NAME + '.'
   return (
     <div>
       <Dialog fullScreen open={open} onClose={close} TransitionComponent={Transition} PaperProps={{
@@ -247,7 +249,7 @@ export default function SimulationScreen ({ open, close, isResult }) {
                       />
                     </Paper>
                   </Grid>
-                  : (result.isGraph === 'true') ? <span>SOMETHING WENT WRONG PLEASE CHECK THE SIMULATION PARAMETERS.</span> : <span></span>
+                  : (result.isGraph === 'true') ? <span>{typography1}</span> : <span></span>
               }
 
               {/* Display text result */}
@@ -356,7 +358,7 @@ export default function SimulationScreen ({ open, close, isResult }) {
               : <Grid item xs={12} sm={12}>
                 <Paper className={classes.paper}>
                   <Typography variant="h6" align="center" gutterBottom>
-                    SOMETHING WENT WRONG PLEASE CHECK THE SIMULATION PARAMETERS AND SCHEMATIC DIAGRAM. {/* Error handling message in case of null result */}
+                    {typography2} {/* Error handling message in case of null result */}
                   </Typography>
                 </Paper>
               </Grid>

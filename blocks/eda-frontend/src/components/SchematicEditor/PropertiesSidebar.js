@@ -130,6 +130,9 @@ export default function PropertiesSidebar ({ gridRef, outlineRef }) {
     dispatch(setSchDescription(evt.target.value))
   }
 
+  const typography1 = process.env.REACT_APP_DIAGRAM_NAME + ' Description'
+  const typography2 = 'Add ' + process.env.REACT_APP_DIAGRAM_NAME + ' Description'
+  const typography3 = process.env.REACT_APP_BLOCKS_NAME + ' Position'
   return (
     <>
       <Hidden mdDown>
@@ -145,7 +148,7 @@ export default function PropertiesSidebar ({ gridRef, outlineRef }) {
 
           {/* Display component position box */}
           <ListItem>
-            <ListItemText primary="Components Position" />
+            <ListItemText primary={typography3} />
           </ListItem>
           <ListItem style={{ padding: '0px' }} divider>
             <div className="outline-container" ref={outlineRef} id="outlineContainer" />
@@ -153,10 +156,10 @@ export default function PropertiesSidebar ({ gridRef, outlineRef }) {
 
           {/* Input form field for schematic description */}
           <ListItem>
-            <ListItemText primary="Schematic Description" />
+            <ListItemText primary={typography1} />
           </ListItem>
           <ListItem style={{ padding: '0px 7px 7px 7px' }} divider>
-            <TextareaAutosize id='Description' label='Description' value={ schSave.description === '' ? description || '' : schSave.description } onChange={getInputValues} rowsMin={6} aria-label='Description' placeholder={'Add Schematic Description'} style={{ width: '100%', minWidth: '234px', maxHeight: '250px' }} />
+            <TextareaAutosize id='Description' label='Description' value={ schSave.description === '' ? description || '' : schSave.description } onChange={getInputValues} rowsMin={6} aria-label='Description' placeholder={typography2} style={{ width: '100%', minWidth: '234px', maxHeight: '250px' }} />
           </ListItem>
         </div>
       </List>
