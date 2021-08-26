@@ -54,7 +54,8 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
   for (let i = 0; i < 40; i++) {
       let p = getParameter(i) + '_value';
       let pinitial = p + '_initial';
-      parameter_values[p] = component[pinitial];
+      if (component[pinitial] !== '')
+          parameter_values[p] = component[pinitial];
   }
   v1.parameter_values = parameter_values;
 
