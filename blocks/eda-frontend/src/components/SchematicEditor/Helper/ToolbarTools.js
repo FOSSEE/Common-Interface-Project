@@ -137,7 +137,7 @@ export function PrintPreview () {
     header.style.borderBottom = '1px solid blue'
     header.style.top = '0px'
 
-    mxUtils.write(footer, 'Made with Diagram Editor - ' + pageNumber + ' - ' + process.env.REACT_APP_NAME + ' on Cloud')
+    mxUtils.write(footer, 'Made with ' + process.env.REACT_APP_DIAGRAM_NAME + ' Editor - ' + pageNumber + ' - ' + process.env.REACT_APP_NAME + ' on Cloud')
     footer.style.borderTop = '1px solid blue'
     footer.style.bottom = '0px'
 
@@ -152,6 +152,7 @@ export function PrintPreview () {
 
 // ERC CHECK FOR SCHEMATIC
 export function ErcCheck () {
+  const NoAddition = 'No ' + process.env.REACT_APP_BLOCK_NAME + ' added';
   var list = graph.getModel().cells // mapping the grid
   var vertexCount = 0
   var errorCount = 0
@@ -180,7 +181,7 @@ export function ErcCheck () {
   }
 
   if (vertexCount === 0) {
-    alert('No Component added')
+    alert(NoAddition)
     ++errorCount
   } else if (PinNC !== 0) {
     alert('Pins not connected')
@@ -193,6 +194,7 @@ export function ErcCheck () {
   }
 }
 function ErcCheckNets () {
+  const NoAddition = 'No ' + process.env.REACT_APP_BLOCK_NAME + ' added';
   var list = graph.getModel().cells // mapping the grid
   var vertexCount = 0
   var errorCount = 0
@@ -218,7 +220,7 @@ function ErcCheckNets () {
     }
   }
   if (vertexCount === 0) {
-    alert('No Component added')
+    alert(NoAddition)
     ++errorCount
     return false
   } else if (PinNC !== 0) {
