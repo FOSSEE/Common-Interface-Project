@@ -300,12 +300,12 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
     var obj = {}
     const fileSelector = document.createElement('input')
     fileSelector.setAttribute('type', 'file')
-    fileSelector.setAttribute('accept', 'application/JSON')
+    fileSelector.setAttribute('accept', 'application/xml')
     fileSelector.click()
     fileSelector.addEventListener('change', function (event) {
       var reader = new FileReader()
       var filename = event.target.files[0].name
-      if (filename.slice(filename.length - 4) === 'json') {
+      if (filename.slice(filename.length - 3) === 'xml') {
         reader.onload = onReaderLoad
         reader.readAsText(event.target.files[0])
       } else {
@@ -314,7 +314,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
       }
     })
     const onReaderLoad = function (event) {
-      obj = JSON.parse(event.target.result)
+      obj = { 'data_dump': event.target.result, 'title': 'Untitled', 'description': 'Untitled' }
       if (obj.data_dump === undefined || obj.title === undefined || obj.description === undefined) {
         setMessage('Unsupported file error !')
         handleSnacClick()
