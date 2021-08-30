@@ -1,6 +1,7 @@
 import 'mxgraph/javascript/src/css/common.css';
 
 import mxGraphFactory from 'mxgraph';
+import { port_size } from './SvgParser';
 import store from '../../../redux/store'
 import { setModel, setNetlist } from '../../../redux/actions/index'
 
@@ -360,7 +361,6 @@ function parseXmlToGraph (xmlDoc, graph) {
   for (let i = 0; i < cells.length; i++) {
     const cellAttrs = cells[i].attributes
     if (cellAttrs.Component.value === '1') { // is component
-      const vertexName = cellAttrs.value.value
       const style = cellAttrs.style.value
       const vertexId = Number(cellAttrs.id.value)
       const geom = cells[i].children[0].attributes
@@ -368,22 +368,20 @@ function parseXmlToGraph (xmlDoc, graph) {
       const yPos = (geom.y !== undefined) ? Number(geom.y.value) : 0;
       const height = Number(geom.height.value)
       const width = Number(geom.width.value)
-      v1 = graph.insertVertex(parent, vertexId, vertexName, xPos, yPos, width, height, style)
+      v1 = graph.insertVertex(parent, vertexId, null, xPos, yPos, width, height, style)
       v1.symbol = cellAttrs.symbol.value
 
       v1.Component = true
       v1.CellType = 'Component'
       console.log('component added')
     } else if (cellAttrs.Pin.value === '1') {
-      const vertexName = cellAttrs.value.value
       const style = cellAttrs.style.value
       console.log('Pin name')
-      console.log(vertexName)
       const vertexId = Number(cellAttrs.id.value)
       const geom = cells[i].children[0].attributes
       const xPos = (geom.x !== undefined) ? Number(geom.x.value) : 0;
       const yPos = (geom.y !== undefined) ? Number(geom.y.value) : 0;
-      var vp = graph.insertVertex(v1, vertexId, vertexName, xPos, yPos, 0.5, 0.5, style)
+      var vp = graph.insertVertex(v1, vertexId, null, xPos, yPos, port_size, port_size, style)
       vp.ParentComponent = v1.id
       vp.Pin = 1
     } else if (cellAttrs.edge) { // is edge
