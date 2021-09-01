@@ -50,15 +50,9 @@ export default function LoadGrid (container, sidebar, outline) {
     // Disables the built-in context men
     mxEvent.disableContextMenu(container)
     // Tells if the cell is a component or a pin or a wire
-    mxCell.prototype.CellType = 'This is where you say what the vertex is'
+    mxCell.prototype.CellType = 'Unknown'
     // Tells the magnitude of a resistor/capacitor
     mxCell.prototype.Magnitude = null
-    // Tells if the cell is component, Default is false
-    mxCell.prototype.Component = false
-    // Tells if the cell is pin, Default is false
-    mxCell.prototype.Pin = false
-    // Parent component of a pin, default is null
-    mxCell.prototype.ParentComponent = null
     mxCell.prototype.node = null
     mxCell.prototype.CompObject = null
     mxCell.prototype.parameter_values = {}
@@ -67,7 +61,6 @@ export default function LoadGrid (container, sidebar, outline) {
     mxCell.prototype.targetVertex = false
     mxCell.prototype.tarx = 0
     mxCell.prototype.tary = 0
-    mxCell.prototype.PointsArray = null
 
     // Enables guides
     mxGraphHandler.prototype.guidesEnabled = true
@@ -104,9 +97,7 @@ export default function LoadGrid (container, sidebar, outline) {
       var cell = evt.getProperty('cell')
       if (cell !== undefined && cell.CellType === 'Component') {
         store.dispatch(getCompProperties(cell))
-      } else if (cell !== undefined && cell.CellType === 'This is where you say what the vertex is') {
-        store.dispatch(closeCompProperties())
-      } else if (cell === undefined) {
+      } else {
         store.dispatch(closeCompProperties())
       }
       evt.consume()
@@ -324,12 +315,6 @@ export default function LoadGrid (container, sidebar, outline) {
 
     if (constraint != null) {
       pt = this.graph.getConnectionPoint(terminal, constraint)
-    }
-
-    if (source) {
-      edge.sourceSegment = null
-    } else {
-      edge.targetSegment = null
     }
 
     if (pt == null) {
