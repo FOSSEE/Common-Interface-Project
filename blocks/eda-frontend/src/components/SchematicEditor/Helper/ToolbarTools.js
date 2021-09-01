@@ -161,12 +161,10 @@ export function ErcCheck () {
   var ground = 0
   for (var property in list) {
     var cell = list[property]
-    if (cell.Component === true) {
-      console.log(cell)
-      // cell.value = 'Checked'
+    if (cell.CellType === 'Component') {
       for (var child in cell.children) {
         var childVertex = cell.children[child]
-        if (childVertex.Pin === true && childVertex.edges === null) { // Checking if connections exist from a given pin
+        if (childVertex.CellType === 'Pin' && childVertex.edges === null) { // Checking if connections exist from a given pin
           ++PinNC
           ++errorCount
         } else {
@@ -203,13 +201,11 @@ function ErcCheckNets () {
   var ground = 0
   for (var property in list) {
     var cell = list[property]
-    if (cell.Component === true) {
-      console.log(cell)
-      // cell.value = 'Checked'
+    if (cell.CellType === 'Component') {
       for (var child in cell.children) {
         console.log(cell.children[child])
         var childVertex = cell.children[child]
-        if (childVertex.Pin === true && childVertex.edges === null) {
+        if (childVertex.CellType === 'Pin' && childVertex.edges === null) {
           graph.getSelectionCell(childVertex)
           console.log('This pin is not connected')
           console.log(childVertex)
@@ -253,7 +249,7 @@ export function GenerateNetList () {
   } else {
     var list = annotate(graph)
     for (var property in list) {
-      if (list[property].Component === true && list[property].symbol !== 'PWR') {
+      if (list[property].CellType === 'Component' && list[property].blockprefix !== 'PWR') {
         var compobj = {
           name: '',
           node1: '',
@@ -261,8 +257,8 @@ export function GenerateNetList () {
           magnitude: ''
         }
         var component = list[property]
-          k = k + component.symbol + c.toString()
-          component.value = component.symbol + c.toString()
+          k = k + component.blockprefix + c.toString()
+          component.value = component.blockprefix + c.toString()
           ++c
 
         if (component.children !== null) {
@@ -307,7 +303,7 @@ export function GenerateNetList () {
               }
             }
           }
-          compobj.name = component.symbol
+          compobj.name = component.blockprefix
           compobj.node1 = component.children[0].edges[0].node
           compobj.node2 = component.children[1].edges[0].node
           compobj.magnitude = 10
@@ -360,7 +356,7 @@ function parseXmlToGraph (xmlDoc, graph) {
 
   for (let i = 0; i < cells.length; i++) {
     const cellAttrs = cells[i].attributes
-    if (cellAttrs.Component.value === '1') { // is component
+    if (cellAttrs.CellType.value === 'Component') { // is component
       const style = cellAttrs.style.value
       const vertexId = Number(cellAttrs.id.value)
       const geom = cells[i].children[0].attributes
@@ -369,28 +365,37 @@ function parseXmlToGraph (xmlDoc, graph) {
       const height = Number(geom.height.value)
       const width = Number(geom.width.value)
       v1 = graph.insertVertex(parent, vertexId, null, xPos, yPos, width, height, style)
-      v1.symbol = cellAttrs.symbol.value
-
-      v1.Component = true
       v1.CellType = 'Component'
-      console.log('component added')
-    } else if (cellAttrs.Pin.value === '1') {
+      v1.block_id = Number(cellAttrs.block_id.value)
+      v1.blockprefix = cellAttrs.blockprefix.value;
+      v1.displayProperties = {
+        blockport_set: cellAttrs.displayProperties.blockport_set,
+        display_parameter: cellAttrs.displayProperties.display_parameter,
+      }
+    } else if (cellAttrs.CellType.value === 'Pin') {
       const style = cellAttrs.style.value
-      console.log('Pin name')
       const vertexId = Number(cellAttrs.id.value)
       const geom = cells[i].children[0].attributes
       const xPos = (geom.x !== undefined) ? Number(geom.x.value) : 0;
       const yPos = (geom.y !== undefined) ? Number(geom.y.value) : 0;
+      let point = null;
+      switch (style) {
+          case 'ExplicitInputPort': case 'ImplicitInputPort': point = new mxPoint(-port_size, -port_size / 2); break;
+          case 'ControlPort': point = new mxPoint(-port_size / 2, -port_size); break;
+          case 'ExplicitOutputPort': case 'ImplicitOutputPort': point = new mxPoint(0, -port_size / 2); break;
+          case 'CommandPort': point = new mxPoint(-port_size / 2, 0); break;
+          default: point = new mxPoint(-port_size / 2, -port_size / 2); break;
+      }
       var vp = graph.insertVertex(v1, vertexId, null, xPos, yPos, port_size, port_size, style)
-      vp.ParentComponent = v1.id
-      vp.Pin = 1
+      vp.geometry.relative = true;
+      vp.geometry.offset = point;
+      vp.CellType = 'Pin'
     } else if (cellAttrs.edge) { // is edge
-      // const edgeName = cellAttrs.value.value
       const edgeId = Number(cellAttrs.id.value)
       const source = Number(cellAttrs.sourceVertex.value)
       const target = Number(cellAttrs.targetVertex.value)
-      console.log(edgeId)
-      var plist = cells[i].children[1].children
+      console.log('edgeId=', edgeId, ', source=', source, ', target=', target);
+      var plist = cells[i].children[0].children[0].children
       try {
         var edge = graph.insertEdge(parent, edgeId, null,
           graph.getModel().getCell(source),
@@ -454,7 +459,7 @@ function XMLWireConnections () {
   } else {
     var list = graph.getModel().cells
     for (var property in list) {
-      if (list[property].Component === true && list[property].symbol !== 'PWR') {
+      if (list[property].CellType === 'Component' && list[property].blockprefix !== 'PWR') {
         var component = list[property]
 
         if (component.children !== null) {
@@ -468,18 +473,15 @@ function XMLWireConnections () {
                       if (pin.edges[wire].source.edge === true) {
                         pin.edges[wire].sourceVertex = pin.edges[wire].source.id
                         pin.edges[wire].targetVertex = pin.edges[wire].target.id
-                        pin.edges[wire].PointsArray = pin.edges[wire].geometry.points
                       } else if (pin.edges[wire].target.edge === true) {
                         pin.edges[wire].sourceVertex = pin.edges[wire].source.id
                         pin.edges[wire].targetVertex = pin.edges[wire].target.id
                         pin.edges[wire].tarx = pin.edges[wire].geometry.targetPoint.x
                         pin.edges[wire].tary = pin.edges[wire].geometry.targetPoint.y
-                        pin.edges[wire].PointsArray = pin.edges[wire].geometry.points
                       } else {
                         pin.edges[wire].node = '.' + pin.edges[wire].source.value
                         pin.edges[wire].sourceVertex = pin.edges[wire].source.id
                         pin.edges[wire].targetVertex = pin.edges[wire].target.id
-                        pin.edges[wire].PointsArray = pin.edges[wire].geometry.points
                       }
                     }
                     console.log('Check the wires here ')

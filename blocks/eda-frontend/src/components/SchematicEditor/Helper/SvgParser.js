@@ -34,9 +34,9 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
   let height = component.block_height / default_scale
 
   const v1 = graph.insertVertex(parent, null, null, x, y, width, height, block_name)
-  v1.Component = true
   v1.CellType = 'Component'
   v1.block_id = component.id
+  v1.blockprefix = component.blockprefix.name;
   v1.displayProperties = {
     blockport_set: component.blockport_set,
     display_parameter: component.initial_display_parameter,
@@ -78,7 +78,7 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
       var vp = graph.insertVertex(v1, null, null, x_pos, y_pos, port_size, port_size, port_orientation)
       vp.geometry.relative = true;
       vp.geometry.offset = point;
-      vp.ParentComponent = v1.id;
+      vp.CellType = 'Pin'
       pins[i] = vp;
   }
 }
