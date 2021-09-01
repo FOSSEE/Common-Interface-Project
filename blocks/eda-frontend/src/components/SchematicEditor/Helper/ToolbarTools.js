@@ -356,21 +356,7 @@ function parseXmlToGraph (xmlDoc, graph) {
   const cells = xmlDoc.documentElement.children[0].children
   const parent = graph.getDefaultParent()
   var v1
-  var yPos
-  var xPos
-  var style = graph.getStylesheet().getDefaultVertexStyle()
 
-  style[mxConstants.STYLE_SHAPE] = 'label'
-  style[mxConstants.STYLE_VERTICAL_ALIGN] = 'bottom'
-      // style[mxConstants.STYLE_INDICATOR_SHAPE] = 'ellipse'
-      // style[mxConstants.STYLE_INDICATOR_WIDTH] = 34
-      // style[mxConstants.STYLE_INDICATOR_HEIGHT] = 34
-  style[mxConstants.STYLE_IMAGE_VERTICAL_ALIGN] = 'bottom' // indicator v-alignment
-  style[mxConstants.STYLE_IMAGE_ALIGN] = 'bottom'
-  style[mxConstants.STYLE_INDICATOR_COLOR] = 'green'
-  style[mxConstants.STYLE_FONTCOLOR] = 'red'
-  style[mxConstants.STYLE_FONTSIZE] = '10'
-  delete style[mxConstants.STYLE_STROKECOLOR] // transparent
   for (let i = 0; i < cells.length; i++) {
     const cellAttrs = cells[i].attributes
     if (cellAttrs.Component.value === '1') { // is component
@@ -378,13 +364,8 @@ function parseXmlToGraph (xmlDoc, graph) {
       const style = cellAttrs.style.value
       const vertexId = Number(cellAttrs.id.value)
       const geom = cells[i].children[0].attributes
-      const xPos = Number(geom.x.value)
-      // var yPos
-      if (geom.y === undefined) {
-        yPos = 0
-      } else {
-        yPos = Number(geom.y.value)
-      }
+      const xPos = (geom.x !== undefined) ? Number(geom.x.value) : 0;
+      const yPos = (geom.y !== undefined) ? Number(geom.y.value) : 0;
       const height = Number(geom.height.value)
       const width = Number(geom.width.value)
       v1 = graph.insertVertex(parent, vertexId, vertexName, xPos, yPos, width, height, style)
@@ -400,13 +381,8 @@ function parseXmlToGraph (xmlDoc, graph) {
       console.log(vertexName)
       const vertexId = Number(cellAttrs.id.value)
       const geom = cells[i].children[0].attributes
-      try { xPos = Number(geom.x.value) } catch (e) { xPos = 0 }
-      // var yPos
-      if (geom.y === undefined) {
-        yPos = 0
-      } else {
-        yPos = Number(geom.y.value)
-      }
+      const xPos = (geom.x !== undefined) ? Number(geom.x.value) : 0;
+      const yPos = (geom.y !== undefined) ? Number(geom.y.value) : 0;
       var vp = graph.insertVertex(v1, vertexId, vertexName, xPos, yPos, 0.5, 0.5, style)
       vp.ParentComponent = v1.id
       vp.Pin = 1
@@ -423,11 +399,12 @@ function parseXmlToGraph (xmlDoc, graph) {
           graph.getModel().getCell(target)
         )
         edge.geometry.points = []
-        for (var a in cells[i].children[1].children) {
+        for (var a of plist) {
           try {
-            console.log(plist[a].attributes.x.value)
-            console.log(plist[a].attributes.y.value)
-            edge.geometry.points.push(new mxPoint(Number(plist[a].attributes.x.value), Number(plist[a].attributes.y.value)))
+            var xPos = a.attributes.x.value;
+            var yPos = a.attributes.y.value;
+            console.log('xPos=', xPos, ', yPos=', yPos)
+            edge.geometry.points.push(new mxPoint(Number(xPos), Number(yPos)))
             console.log(edge.geometry.points)
           } catch (e) { console.log('error', e) }
           graph.getModel().beginUpdate()
