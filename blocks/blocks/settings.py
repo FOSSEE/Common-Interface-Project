@@ -25,7 +25,7 @@ SECRET_KEY = os.environ.get(
     'SECRET_KEY', '0nf@7n04(5$e7$*=lfdl088favhq5g29%=v@#l=zn=&os98s)%')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(os.environ.get('DJANGO_DEBUG', default=True))
+DEBUG = bool(os.environ.get('DJANGO_DEBUG', default=False))
 
 ALLOWED_HOSTS = [
     'localhost',
@@ -93,7 +93,7 @@ WSGI_APPLICATION = 'blocks.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': os.environ.get('SQL_ENGINE', 'django.db.backends.sqlite3'),
-        'NAME': os.environ.get('SQL_DATABASE', 'xcosblocks.sqlite3'),
+        'NAME': os.environ.get('SQL_DATABASE', 'xcosblocks_test.sqlite3'),
     }
 }
 
@@ -144,8 +144,8 @@ MEDIA_URL = '/_files/'
 MEDIA_ROOT = os.path.join('/tmp', 'blocks-tmp')
 
 # celery
-CELERY_BROKER_URL = 'redis://redis:6379/1'
-CELERY_RESULT_BACKEND = 'redis://redis:6379/1'
+CELERY_BROKER_URL = 'redis://redis:6379/2'
+CELERY_RESULT_BACKEND = 'redis://redis:6379/2'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TASK_SERIALIZER = 'json'
