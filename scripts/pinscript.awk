@@ -3,15 +3,15 @@
 BEGIN {
     STDERR = "/dev/stderr";
     PRINTCATEGORIESCSV = 1;
-    CATEGORIESCSV = "data/categories.csv";
+    CATEGORIESCSV = "data/categories.tsv";
     categoryid = 0;
     PRINTBLOCKPREFIXESCSV = 1;
-    BLOCKPREFIXESCSV = "data/blockprefixes.csv";
+    BLOCKPREFIXESCSV = "data/blockprefixes.tsv";
     PRINTCATEGORYBLOCKSCSV = 1;
-    CATEGORYBLOCKSCSV = "data/categories-blocks.csv";
+    CATEGORYBLOCKSCSV = "data/categories-blocks.tsv";
     blockid = 0;
     PRINTBLOCKPORTSCSV = 1;
-    BLOCKPORTSCSV = "data/blocks-ports.csv";
+    BLOCKPORTSCSV = "data/blocks-ports.tsv";
     blockportid = 0;
 }
 

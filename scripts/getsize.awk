@@ -1,7 +1,7 @@
 #!/usr/bin/awk -f
 
 BEGIN {
-    GETSIZECSV = "data/getsize.csv";
+    GETSIZECSV = "data/getsize.tsv";
 }
 
 # blocks/blocks/xcosblocks/static/4xxx/U-4001-1-A.svg:     width="600" height="300" viewBox="-300.0 -150.0 600 300">
