@@ -1,3 +1,3 @@
 #!/bin/bash
 
-./scripts/pinscript.awk scripts/blocks-ports-old.csv
+./scripts/pinscript.awk scripts/blocks-ports-old.tsv
