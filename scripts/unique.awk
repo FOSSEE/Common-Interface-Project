@@ -1,8 +1,8 @@
 #!/usr/bin/awk -f
 
 BEGIN {
-    MAIN_CATEGORY_BLOCKS_CSV = "data/main-category-blocks.csv";
-    CATEGORIES_BLOCKS_CSV = "data/categories-blocks.csv";
+    MAIN_CATEGORY_BLOCKS_CSV = "data/main-category-blocks.tsv";
+    CATEGORIES_BLOCKS_CSV = "data/categories-blocks.tsv";
     FS = "\t";
     OFS = "\t";
     split("", blocks);
