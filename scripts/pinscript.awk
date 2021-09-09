@@ -5,8 +5,8 @@ BEGIN {
     OFS = "\t";
     BLOCKPORTSCSVFORMAT = "%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n";
     STDERR = "/dev/stderr";
-    BLOCKPORTSCSV = "data/blocks-ports.csv";
-    GETSIZECSV = "data/getsize.csv";
+    BLOCKPORTSCSV = "data/blocks-ports.tsv";
+    GETSIZECSV = "data/getsize.tsv";
 
     blockportid = 0;
     port_part = 1;
