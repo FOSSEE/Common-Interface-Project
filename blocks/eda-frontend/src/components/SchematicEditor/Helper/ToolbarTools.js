@@ -411,30 +411,28 @@ function parseXmlToGraph (xmlDoc, graph) {
         const edgeId = Number(cellAttrs.id.value)
         const source = Number(cellAttrs.sourceVertex.value)
         const target = Number(cellAttrs.targetVertex.value)
-        console.log('edgeId=', edgeId, ', source=', source, ', target=', target);
+        const sourceCell = graph.getModel().getCell(source);
+        const targetCell = graph.getModel().getCell(target);
         try {
-          var edge = graph.insertEdge(parent, edgeId, null,
-            graph.getModel().getCell(source),
-            graph.getModel().getCell(target)
-          )
+          var edge = graph.insertEdge(parent, edgeId, null, sourceCell, targetCell)
           var firstChild = cellChildren[0].children[0];
           if (firstChild !== undefined) {
             edge.geometry.points = []
             var plist = firstChild.children
             for (var a of plist) {
               try {
-                var xPos = a.attributes.x.value;
-                var yPos = a.attributes.y.value;
-                edge.geometry.points.push(new mxPoint(Number(xPos), Number(yPos)))
+                var xPos = Number(a.attributes.x.value);
+                var yPos = Number(a.attributes.y.value);
+                edge.geometry.points.push(new mxPoint(xPos, yPos))
               } catch (e) { console.log('error', e) }
             }
           }
-          if (graph.getModel().getCell(target).edge === true) {
+          if (targetCell.edge === true) {
             edge.geometry.setTerminalPoint(new mxPoint(Number(cellAttrs.tarx.value), Number(cellAttrs.tary.value)), false)
           }
         } catch (e) {
-          console.log(graph.getModel().getCell(source))
-          console.log(graph.getModel().getCell(target))
+          console.log(sourceCell)
+          console.log(targetCell)
           console.log('error', e)
         }
       }
