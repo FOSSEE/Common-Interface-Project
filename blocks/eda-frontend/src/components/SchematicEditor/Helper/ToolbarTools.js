@@ -16,7 +16,6 @@ const {
   mxUndoManager,
   mxEvent,
   mxCodec,
-  mxMorphing,
   mxPoint
 } = new mxGraphFactory();
 
@@ -322,12 +321,7 @@ export function GenerateNetList () {
   try {
     graph.view.refresh()
   } finally {
-    // Arguments are number of steps, ease and delay
-    var morph = new mxMorphing(graph, 20, 1.2, 20)
-    morph.addListener(mxEvent.DONE, function () {
-      graph.getModel().endUpdate()
-    })
-    morph.startAnimation()
+    graph.getModel().endUpdate()
   }
   var a = new Set(netlist.nodelist)
   console.log(netlist.nodelist)
@@ -353,117 +347,101 @@ function parseXmlToGraph (xmlDoc, graph) {
   const parent = graph.getDefaultParent()
   var v1
 
-  for (let i = 0; i < cells.length; i++) {
-    const cell = cells[i];
-    const cellAttrs = cell.attributes;
-    const cellChildren = cell.children;
-    if (cellAttrs.CellType.value === 'Component') { // is component
-      const style = cellAttrs.style.value
-      const vertexId = Number(cellAttrs.id.value)
-      const geom = cellChildren[0].attributes
-      const xPos = (geom.x !== undefined) ? Number(geom.x.value) : 0;
-      const yPos = (geom.y !== undefined) ? Number(geom.y.value) : 0;
-      const height = Number(geom.height.value)
-      const width = Number(geom.width.value)
-      v1 = graph.insertVertex(parent, vertexId, null, xPos, yPos, width, height, style)
-      v1.connectable = 0;
-      v1.CellType = 'Component'
-      v1.block_id = Number(cellAttrs.block_id.value)
-      v1.blockprefix = cellAttrs.blockprefix.value;
-      var blockport_set = [];
-      var cellChildrenBlockport_set = cellChildren[1].children[0];
-      if (cellChildrenBlockport_set !== undefined) {
-        for (var b of cellChildrenBlockport_set.children) {
-          let bc = {};
-          for (let i = 0, n = b.attributes.length; i < n; i++) {
-            let key = b.attributes[i].nodeName;
-            let value = b.attributes[i].nodeValue;
-            bc[key] = value;
+  graph.getModel().beginUpdate()
+  try {
+    for (let i = 0; i < cells.length; i++) {
+      const cell = cells[i];
+      const cellAttrs = cell.attributes;
+      const cellChildren = cell.children;
+      if (cellAttrs.CellType.value === 'Component') { // is component
+        const style = cellAttrs.style.value
+        const vertexId = Number(cellAttrs.id.value)
+        const geom = cellChildren[0].attributes
+        const xPos = (geom.x !== undefined) ? Number(geom.x.value) : 0;
+        const yPos = (geom.y !== undefined) ? Number(geom.y.value) : 0;
+        const height = Number(geom.height.value)
+        const width = Number(geom.width.value)
+        v1 = graph.insertVertex(parent, vertexId, null, xPos, yPos, width, height, style)
+        v1.connectable = 0;
+        v1.CellType = 'Component'
+        v1.block_id = Number(cellAttrs.block_id.value)
+        v1.blockprefix = cellAttrs.blockprefix.value;
+        var blockport_set = [];
+        var cellChildrenBlockport_set = cellChildren[1].children[0];
+        if (cellChildrenBlockport_set !== undefined) {
+          for (var b of cellChildrenBlockport_set.children) {
+            let bc = {};
+            for (let i = 0, n = b.attributes.length; i < n; i++) {
+              let key = b.attributes[i].nodeName;
+              let value = b.attributes[i].nodeValue;
+              bc[key] = value;
+            }
+            blockport_set.push(bc);
           }
-          blockport_set.push(bc);
         }
-      }
-      v1.displayProperties = {
-        blockport_set: blockport_set,
-        display_parameter: cellChildren[1].attributes.display_parameter.value,
-      }
-      var parameter_values = {};
-      var cellChildrenParameter_values = cellChildren[2].attributes.parameter_values;
-      if (cellChildrenParameter_values !== undefined) {
-        parameter_values = cellChildrenParameter_values.value;
-      }
-      v1.parameter_values = parameter_values;
-    } else if (cellAttrs.CellType.value === 'Pin') {
-      const style = cellAttrs.style.value
-      const vertexId = Number(cellAttrs.id.value)
-      const geom = cellChildren[0].attributes
-      const xPos = (geom.x !== undefined) ? Number(geom.x.value) : 0;
-      const yPos = (geom.y !== undefined) ? Number(geom.y.value) : 0;
-      let point = null;
-      switch (style) {
-          case 'ExplicitInputPort': case 'ImplicitInputPort': point = new mxPoint(-port_size, -port_size / 2); break;
-          case 'ControlPort': point = new mxPoint(-port_size / 2, -port_size); break;
-          case 'ExplicitOutputPort': case 'ImplicitOutputPort': point = new mxPoint(0, -port_size / 2); break;
-          case 'CommandPort': point = new mxPoint(-port_size / 2, 0); break;
-          default: point = new mxPoint(-port_size / 2, -port_size / 2); break;
-      }
-      var vp = graph.insertVertex(v1, vertexId, null, xPos, yPos, port_size, port_size, style)
-      vp.geometry.relative = true;
-      vp.geometry.offset = point;
-      vp.CellType = 'Pin'
-    } else if (cellAttrs.edge) { // is edge
-      const edgeId = Number(cellAttrs.id.value)
-      const source = Number(cellAttrs.sourceVertex.value)
-      const target = Number(cellAttrs.targetVertex.value)
-      console.log('edgeId=', edgeId, ', source=', source, ', target=', target);
-      try {
-        var edge = graph.insertEdge(parent, edgeId, null,
-          graph.getModel().getCell(source),
-          graph.getModel().getCell(target)
-        )
-        var firstChild = cellChildren[0].children[0];
-        if (firstChild !== undefined) {
-          edge.geometry.points = []
-          var plist = firstChild.children
-          for (var a of plist) {
-            try {
-              var xPos = a.attributes.x.value;
-              var yPos = a.attributes.y.value;
-              edge.geometry.points.push(new mxPoint(Number(xPos), Number(yPos)))
-            } catch (e) { console.log('error', e) }
-            graph.getModel().beginUpdate()
-            try {
-              graph.view.refresh()
-            } finally {
-              // Arguments are number of steps, ease and delay
-              var morph = new mxMorphing(graph, 20, 1.2, 20)
-              morph.addListener(mxEvent.DONE, function () {
-                graph.getModel().endUpdate()
-              })
-              morph.startAnimation()
+        v1.displayProperties = {
+          blockport_set: blockport_set,
+          display_parameter: cellChildren[1].attributes.display_parameter.value,
+        }
+        var parameter_values = {};
+        var cellChildrenParameter_values = cellChildren[2].attributes.parameter_values;
+        if (cellChildrenParameter_values !== undefined) {
+          parameter_values = cellChildrenParameter_values.value;
+        }
+        v1.parameter_values = parameter_values;
+      } else if (cellAttrs.CellType.value === 'Pin') {
+        const style = cellAttrs.style.value
+        const vertexId = Number(cellAttrs.id.value)
+        const geom = cellChildren[0].attributes
+        const xPos = (geom.x !== undefined) ? Number(geom.x.value) : 0;
+        const yPos = (geom.y !== undefined) ? Number(geom.y.value) : 0;
+        let point = null;
+        switch (style) {
+            case 'ExplicitInputPort': case 'ImplicitInputPort': point = new mxPoint(-port_size, -port_size / 2); break;
+            case 'ControlPort': point = new mxPoint(-port_size / 2, -port_size); break;
+            case 'ExplicitOutputPort': case 'ImplicitOutputPort': point = new mxPoint(0, -port_size / 2); break;
+            case 'CommandPort': point = new mxPoint(-port_size / 2, 0); break;
+            default: point = new mxPoint(-port_size / 2, -port_size / 2); break;
+        }
+        var vp = graph.insertVertex(v1, vertexId, null, xPos, yPos, port_size, port_size, style)
+        vp.geometry.relative = true;
+        vp.geometry.offset = point;
+        vp.CellType = 'Pin'
+      } else if (cellAttrs.edge) { // is edge
+        const edgeId = Number(cellAttrs.id.value)
+        const source = Number(cellAttrs.sourceVertex.value)
+        const target = Number(cellAttrs.targetVertex.value)
+        console.log('edgeId=', edgeId, ', source=', source, ', target=', target);
+        try {
+          var edge = graph.insertEdge(parent, edgeId, null,
+            graph.getModel().getCell(source),
+            graph.getModel().getCell(target)
+          )
+          var firstChild = cellChildren[0].children[0];
+          if (firstChild !== undefined) {
+            edge.geometry.points = []
+            var plist = firstChild.children
+            for (var a of plist) {
+              try {
+                var xPos = a.attributes.x.value;
+                var yPos = a.attributes.y.value;
+                edge.geometry.points.push(new mxPoint(Number(xPos), Number(yPos)))
+              } catch (e) { console.log('error', e) }
             }
           }
-        }
-        if (graph.getModel().getCell(target).edge === true) {
-          edge.geometry.setTerminalPoint(new mxPoint(Number(cellAttrs.tarx.value), Number(cellAttrs.tary.value)), false)
-          graph.getModel().beginUpdate()
-          try {
-            graph.view.refresh()
-          } finally {
-            // Arguments are number of steps, ease and delay
-            morph = new mxMorphing(graph, 20, 1.2, 20)
-            morph.addListener(mxEvent.DONE, function () {
-              graph.getModel().endUpdate()
-            })
-            morph.startAnimation()
+          if (graph.getModel().getCell(target).edge === true) {
+            edge.geometry.setTerminalPoint(new mxPoint(Number(cellAttrs.tarx.value), Number(cellAttrs.tary.value)), false)
           }
+        } catch (e) {
+          console.log(graph.getModel().getCell(source))
+          console.log(graph.getModel().getCell(target))
+          console.log('error', e)
         }
-      } catch (e) {
-        console.log(graph.getModel().getCell(source))
-        console.log(graph.getModel().getCell(target))
-        console.log('error', e)
       }
     }
+    graph.view.refresh()
+  } finally {
+    graph.getModel().endUpdate()
   }
 }
 
