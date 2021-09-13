@@ -297,31 +297,33 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
 
   // Open Locally Saved Schematic
   const handleLocalSchOpen = () => {
-    var obj = {}
     const fileSelector = document.createElement('input')
     fileSelector.setAttribute('type', 'file')
     fileSelector.setAttribute('accept', 'application/xml')
     fileSelector.click()
     fileSelector.addEventListener('change', function (event) {
-      var reader = new FileReader()
-      var filename = event.target.files[0].name
-      if (filename.slice(filename.length - 3) === 'xml') {
-        reader.onload = onReaderLoad
-        reader.readAsText(event.target.files[0])
+      var file = event.target.files[0];
+      var filename = file.name;
+      var base = '(_' + process.env.REACT_APP_NAME + '_on_Cloud)?( *\\([0-9]*\\))?\\.xml$';
+      var re = new RegExp(base, 'i');
+      if (re.test(filename)) {
+        var reader = new FileReader()
+        reader.onload = function (event) {
+          var title = filename.replace(re, '');
+          var obj = { 'data_dump': event.target.result, 'title': title, 'description': '' }
+          if (obj.data_dump === undefined || obj.title === undefined || obj.description === undefined) {
+            setMessage('Unsupported file error !')
+            handleSnacClick()
+          } else {
+            dispatch(openLocalSch(obj))
+          }
+        }
+        reader.readAsText(file)
       } else {
         setMessage('Unsupported file type error ! Select valid file.')
         handleSnacClick()
       }
     })
-    const onReaderLoad = function (event) {
-      obj = { 'data_dump': event.target.result, 'title': 'Untitled', 'description': 'Untitled' }
-      if (obj.data_dump === undefined || obj.title === undefined || obj.description === undefined) {
-        setMessage('Unsupported file error !')
-        handleSnacClick()
-      } else {
-        dispatch(openLocalSch(obj))
-      }
-    }
   }
 
   // Control Help dialog window open and close
