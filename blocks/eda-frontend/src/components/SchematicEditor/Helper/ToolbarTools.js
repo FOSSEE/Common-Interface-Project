@@ -31,10 +31,14 @@ export default function ToolbarTools (grid, unredo) {
 }
 
 // SAVE
-export function Save () {
+export function Save (description = '') {
   XMLWireConnections()
   var enc = new mxCodec(mxUtils.createXmlDocument())
-  var node = enc.encode(graph.getModel())
+  var model = graph.getModel();
+  var firstCell = model.cells[0];
+  firstCell.appname = process.env.REACT_APP_NAME;
+  firstCell.description = description;
+  var node = enc.encode(model);
   var value = mxUtils.getXml(node)
   return value
 }

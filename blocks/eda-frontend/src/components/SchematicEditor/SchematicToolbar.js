@@ -24,11 +24,16 @@ import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined'
 import SystemUpdateAltOutlinedIcon from '@material-ui/icons/SystemUpdateAltOutlined'
 import { Link as RouterLink } from 'react-router-dom'
 import beautify from 'xml-beautifier';
+import mxGraphFactory from 'mxgraph';
 
 import { NetlistModal, HelpScreen, ImageExportDialog, OpenSchDialog } from './ToolbarExtension'
 import { ZoomIn, ZoomOut, ZoomAct, DeleteComp, PrintPreview, Rotate, GenerateNetList, Undo, Redo, Save, ClearGrid } from './Helper/ToolbarTools'
 import { useSelector, useDispatch } from 'react-redux'
 import { toggleSimulate, closeCompProperties, setSchXmlData, saveSchematic, openLocalSch } from '../../redux/actions/index'
+
+const {
+  mxUtils
+} = new mxGraphFactory();
 
 const useStyles = makeStyles((theme) => ({
   menuButton: {
@@ -266,10 +271,10 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
       setMessage('You are not Logged In')
       handleSnacClick()
     } else {
-      var xml = Save()
+      var description = schSave.description
+      var xml = Save(description)
       dispatch(setSchXmlData(xml))
       var title = schSave.title
-      var description = schSave.description
       exportImage('PNG')
         .then(res => {
           dispatch(saveSchematic(title, description, xml, res))
@@ -281,7 +286,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
 
   // Save Schematics Locally
   const handleLocalSchSave = () => {
-    const blob = new Blob([beautify(Save())], { type: 'application/xml' })
+    const blob = new Blob([beautify(Save(schSave.description))], { type: 'application/xml' })
     const evt = new MouseEvent('click', {
       view: window,
       bubbles: false,
@@ -310,12 +315,23 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
         var reader = new FileReader()
         reader.onload = function (event) {
           var title = filename.replace(re, '');
-          var obj = { 'data_dump': event.target.result, 'title': title, 'description': '' }
-          if (obj.data_dump === undefined || obj.title === undefined || obj.description === undefined) {
-            setMessage('Unsupported file error !')
-            handleSnacClick()
+          var data_dump = event.target.result;
+          var xmlDoc = mxUtils.parseXml(data_dump);
+          const firstCell = xmlDoc.documentElement.children[0].children[0];
+          const firstCellAttrs = firstCell.attributes;
+          const appname = firstCellAttrs.appname.value;
+          const description = (firstCellAttrs.description !== undefined) ? firstCellAttrs.description.value : '';
+          if (appname !== process.env.REACT_APP_NAME) {
+            setMessage('Unsupported app name error !');
+            handleSnacClick();
           } else {
-            dispatch(openLocalSch(obj))
+            var obj = { 'data_dump': data_dump, 'title': title, 'description': description };
+            if (obj.data_dump === undefined || obj.title === undefined || obj.description === undefined) {
+              setMessage('Unsupported file error !');
+              handleSnacClick();
+            } else {
+              dispatch(openLocalSch(obj));
+            }
           }
         }
         reader.readAsText(file)
