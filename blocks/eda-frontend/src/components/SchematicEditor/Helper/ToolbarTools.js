@@ -238,7 +238,6 @@ function ErcCheckNets () {
 
 // GENERATE NETLIST
 export function GenerateNetList () {
-
   var c = 1
   var spiceModels = ''
   var netlist = {
@@ -302,7 +301,6 @@ export function GenerateNetList () {
                   console.log(pin.edges[wire].targetVertex)
                 }
                 k = k + ' ' + pin.edges[0].node
-
               }
             }
           }
@@ -311,7 +309,6 @@ export function GenerateNetList () {
           compobj.node2 = component.children[1].edges[0].node
           compobj.magnitude = 10
           netlist.nodelist.push(compobj.node2, compobj.node1)
-
         }
         console.log('component parameter_values', component.parameter_values)
 
@@ -453,8 +450,8 @@ export function renderGalleryXML (xml) {
   var xmlDoc = mxUtils.parseXml(xml)
   parseXmlToGraph(xmlDoc, graph)
 }
-function XMLWireConnections () {
 
+function XMLWireConnections () {
   var erc = true
   if (erc === false) {
     alert('ERC check failed')
@@ -490,16 +487,12 @@ function XMLWireConnections () {
                     console.log(pin.edges[wire].sourceVertex)
                     console.log(pin.edges[wire].targetVertex)
                   }
-                 
                 }
               } catch (e) { console.log('error', e) }
             }
           }
-         
         }
-        
       }
     }
   }
-  
 }
