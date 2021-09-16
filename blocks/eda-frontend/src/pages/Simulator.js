@@ -19,7 +19,6 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     backgroundColor: '#404040',
     color: '#fff'
-
   }
 }))
 
@@ -29,7 +28,6 @@ export default function Simulator () {
   const [netlistCode, setNetlistCode] = useState('')
   const [state, setState] = React.useState({
     checkedA: false
-
   })
 
   useEffect(() => {

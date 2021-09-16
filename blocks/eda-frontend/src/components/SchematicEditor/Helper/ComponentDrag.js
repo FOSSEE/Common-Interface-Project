@@ -71,7 +71,6 @@ export default function LoadGrid (container, sidebar, outline) {
 
     // Creates the graph inside the given container
     graph = new mxGraph(container)
-   
 
     mxConnectionHandler.prototype.movePreviewAway = false
     mxConnectionHandler.prototype.waypointsEnabled = true
@@ -327,7 +326,7 @@ export default function LoadGrid (container, sidebar, outline) {
       // Computes edge-to-edge connection point
       if (pt != null) {
         pt = new mxPoint(s * (tr.x + pt.x + orig.x),
-									 s * (tr.y + pt.y + orig.y))
+          s * (tr.y + pt.y + orig.y))
 
         // Finds nearest segment on edge and computes intersection
         if (terminal != null && terminal.absolutePoints != null) {
@@ -370,7 +369,7 @@ export default function LoadGrid (container, sidebar, outline) {
 
     if (this.sourceConstraint != null && this.previous != null) {
       edge.style = mxConstants.STYLE_EXIT_X + '=' + this.sourceConstraint.point.x + ';' +
-					mxConstants.STYLE_EXIT_Y + '=' + this.sourceConstraint.point.y + ';'
+        mxConstants.STYLE_EXIT_Y + '=' + this.sourceConstraint.point.y + ';'
     } else if (this.graph.model.isEdge(me.getCell())) {
       var scale = this.graph.view.scale
       var tr = this.graph.view.translate
@@ -391,17 +390,16 @@ export default function LoadGrid (container, sidebar, outline) {
   try {
   var mxConnectionHandlerUpdateCurrentState = mxConnectionHandler.prototype.updateCurrentState
   mxConnectionHandler.prototype.updateCurrentState = function (me) {
-    try { 
+    try {
     mxConnectionHandlerUpdateCurrentState.apply(this, arguments)
     }
     catch(err) {
-      
     }
     if (this.edgeState != null) {
       this.edgeState.cell.geometry.setTerminalPoint(null, false)
 
       if (this.shape != null && this.currentState != null &&
-					this.currentState.view.graph.model.isEdge(this.currentState.cell)) {
+          this.currentState.view.graph.model.isEdge(this.currentState.cell)) {
         var scale = this.graph.view.scale
         var tr = this.graph.view.translate
         var pt = new mxPoint(this.graph.snap(me.getGraphX() / scale) - tr.x,
@@ -610,19 +608,19 @@ export default function LoadGrid (container, sidebar, outline) {
     if (hints != null && hints.length > 0) {
       // FIXME: First segment not movable
       /* hint = state.view.transformControlPoint(state, hints[0]);
-			mxLog.show();
-			mxLog.debug(hints.length,'hints0.y='+hint.y, pt.y)
+         mxLog.show();
+         mxLog.debug(hints.length,'hints0.y='+hint.y, pt.y)
 
-			if (horizontal && Math.floor(hint.y) != Math.floor(pt.y))
-			{
-				mxLog.show();
-				mxLog.debug('add waypoint');
+         if (horizontal && Math.floor(hint.y) != Math.floor(pt.y))
+         {
+           mxLog.show();
+           mxLog.debug('add waypoint');
 
-				pt = new mxPoint(pt.x, hint.y);
-				result.push(pt);
-				pt = pt.clone();
-				//horizontal = !horizontal;
-			} */
+           pt = new mxPoint(pt.x, hint.y);
+           result.push(pt);
+           pt = pt.clone();
+           //horizontal = !horizontal;
+         } */
 
       for (var i = 0; i < hints.length; i++) {
         horizontal = !horizontal
