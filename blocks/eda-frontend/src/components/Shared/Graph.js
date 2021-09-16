@@ -79,7 +79,6 @@ class Graph extends Component {
     lineGraph = new Chart(myChartRef, {
       type: 'line',
       data: {
-
         // labels: x,
         labels: x.map(e => (e / scales[xscale].value).toFixed(precision)),
         datasets: dataset()
@@ -87,11 +86,8 @@ class Graph extends Component {
 
       options: {
         plugins: {
-
           colorschemes: {
-
             scheme: 'brewer.SetOne9'
-
           }
         },
         responsive: true,

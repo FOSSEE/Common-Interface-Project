@@ -15,7 +15,7 @@ Refer to https://nodejs.org/en/ to install nodejs
 
 Clone the project into local
 
-#### Install all the npm packages. 
+#### Install all the npm packages.
 Go into the project folder and type the following command to install all npm packages and dependencies
 
 ```bash

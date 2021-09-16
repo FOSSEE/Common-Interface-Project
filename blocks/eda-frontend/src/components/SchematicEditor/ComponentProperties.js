@@ -34,7 +34,6 @@ export default function ComponentProperties () {
   const link2 = 'Set ' + process.env.REACT_APP_BLOCK_NAME + ' Parameters';
   const link3 = 'No ' + process.env.REACT_APP_BLOCK_NAME + ' Parameters';
   return (
-
     <div style={isOpen ? {} : { display: 'none' }}>
 
       <ListItem>

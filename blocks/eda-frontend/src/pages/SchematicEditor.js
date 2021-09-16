@@ -59,7 +59,6 @@ export default function SchematicEditor (props) {
   }, [compRef, gridRef, outlineRef, props.location, dispatch])
 
   return (
-
     <div className={classes.root}>
 
       <CssBaseline />
