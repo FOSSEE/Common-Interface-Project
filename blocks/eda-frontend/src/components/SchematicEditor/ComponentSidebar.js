@@ -11,7 +11,6 @@ import {
   Tooltip,
   TextField,
   InputAdornment
-
 } from '@material-ui/core'
 import Loader from 'react-loader-spinner'
 import SearchIcon from '@material-ui/icons/Search'
@@ -157,9 +156,7 @@ export default function ComponentSidebar ({ compRef }) {
                   <InputAdornment position="start">
                     <SearchIcon />
                   </InputAdornment>
-
                 )
-
               }}
             />
 
@@ -174,7 +171,6 @@ export default function ComponentSidebar ({ compRef }) {
                 </ListItemIcon>)
               }
               )
-
             }
 
             <ListItem>
@@ -191,7 +187,6 @@ export default function ComponentSidebar ({ compRef }) {
             {!loading && searchText.length !== 0 && isSearchedResultsEmpty &&
 
               <span style={{ margin: '20px' }}>{link3}</span>
-
             }
 
             {/* Collapsing List Mapped by Libraries fetched by the API */}

@@ -159,9 +159,10 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
     canvas.style.height = canvas.height + 'px'
     var images = svg.getElementsByTagName('image')
     for (var image of images) {
-      const data = await fetch(image.getAttribute('xlink:href')).then((v) => {
+      let data = await fetch(image.getAttribute('xlink:href')).then((v) => {
         return v.text()
       })
+      data = encodeURIComponent(data);
       image.removeAttribute('xlink:href')
       image.setAttribute(
         'href',
@@ -169,7 +170,6 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
       )
     }
     var ctx = canvas.getContext('2d')
-    ctx.mozImageSmoothingEnabled = true
     ctx.webkitImageSmoothingEnabled = true
     ctx.msImageSmoothingEnabled = true
     ctx.imageSmoothingEnabled = true

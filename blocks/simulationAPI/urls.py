@@ -8,5 +8,4 @@ urlpatterns = [
 
     path('status/<uuid:task_id>',
          simulationAPI_views.CeleryResultView.as_view(), name='celery_status'),
-
 ]

@@ -7,7 +7,6 @@ import 'brace/theme/github'
 export default function Editor (props) {
   // code editor for online spice simulator
   return (
-
     <AceEditor
       style={{ width: '100%', marginTop: '35px' }}
       onChange={props.onCodeChange}
@@ -22,10 +21,8 @@ export default function Editor (props) {
         enableLiveAutocompletion: true,
         enableSnippets: true,
         fontSize: 18
-
       }}
     />
-
   )
 }
 
