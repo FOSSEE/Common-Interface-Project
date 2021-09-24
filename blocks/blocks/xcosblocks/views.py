@@ -55,6 +55,12 @@ class BlockViewSet(ReadOnlyModelViewSet):
     filterset_class = BlockFilterSet
 
 
+def get_block_images(request):
+    if request.method == 'GET':
+        queryset = Block.objects.all().values_list('block_image_path', flat=True)
+        return JsonResponse(list(queryset), safe=False)
+
+
 class BlockParameterFilterSet(FilterSet):
     class Meta:
         model = BlockParameter

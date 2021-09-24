@@ -59,6 +59,27 @@ export const fetchComponents = (libraryId) => (dispatch) => {
     .catch((err) => { console.error(err) })
 }
 
+// Api call for fetching component image names
+export const componentImages = () => (dispatch) => {
+// SAMPLE Response from API
+//   [
+  //   "palettes/LOGICAL_OP.png",
+  //   ...
+  //   "palettes/SUPER_f.png"
+// ] -- Multiple strings in array
+  const url = 'block_images'
+  api.get(url)
+    .then(
+      (res) => {
+        dispatch({
+          type: actions.COMPONENT_IMAGES,
+          payload: { component_images: res.data }
+        })
+      }
+    )
+    .catch((err) => { console.error(err) })
+}
+
 // Action to keep only one component list dropdown open at a time
 export const toggleCollapse = (id) => (dispatch) => {
   dispatch({
