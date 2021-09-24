@@ -1,4 +1,5 @@
 // Actions for schematic editor
+export const COMPONENT_IMAGES = 'COMPONENT_IMAGES'
 export const FETCH_LIBRARIES = 'FETCH_LIBRARIES'
 export const TOGGLE_COLLAPSE = 'TOGGLE_COLLAPSE'
 export const FETCH_COMPONENTS = 'FETCH_COMPONENTS'
