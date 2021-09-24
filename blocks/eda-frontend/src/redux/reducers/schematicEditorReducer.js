@@ -40,6 +40,12 @@ export default function (state = InitialState, action) {
       return { ...state, components: { ...state.components, newComponents } }
     }
 
+    case actions.COMPONENT_IMAGES: {
+      const component_images = action.payload.component_images
+      // console.log('Fetched and added ', component_images.length, ' images')
+      return { ...state, component_images: component_images }
+    }
+
     case actions.TOGGLE_SIMULATE: {
       return { ...state, isSimulate: !state.isSimulate }
     }
