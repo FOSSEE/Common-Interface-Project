@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles'
 
 import Layout from '../components/Shared/Layout'
 import Header from '../components/SchematicEditor/Header'
-import ComponentSidebar from '../components/SchematicEditor/ComponentSidebar'
+import ComponentSidebar, { ComponentImages } from '../components/SchematicEditor/ComponentSidebar'
 import LayoutMain from '../components/Shared/LayoutMain'
 import SchematicToolbar from '../components/SchematicEditor/SchematicToolbar'
 import RightSidebar from '../components/SchematicEditor/RightSidebar'
@@ -64,6 +64,7 @@ export default function SchematicEditor (props) {
       <CssBaseline />
 
       {/* Schematic editor header, toolbar and left side pane */}
+      <ComponentImages />
       <Layout header={<Header />} resToolbar={<SchematicToolbar gridRef={gridRef} mobileClose={handleDrawerToggle} />} sidebar={<ComponentSidebar compRef={compRef} />} />
 
       {/* Grid for drawing and designing circuits */}
