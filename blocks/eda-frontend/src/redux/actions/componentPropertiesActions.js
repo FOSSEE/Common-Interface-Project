@@ -11,6 +11,7 @@ export const getCompProperties = (block) => (dispatch) => {
           type: actions.GET_COMP_PROPERTIES,
           payload: {
             id: block.id,
+            name: block.style,
             parameter_values: block.parameter_values,
             compProperties: res.data[0]
           }

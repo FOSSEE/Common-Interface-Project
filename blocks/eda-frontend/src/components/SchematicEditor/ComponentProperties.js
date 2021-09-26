@@ -9,6 +9,7 @@ export default function ComponentProperties () {
   const compProperties = useSelector(state => state.componentPropertiesReducer.compProperties)
   const isOpen = useSelector(state => state.componentPropertiesReducer.isPropertiesWindowOpen)
   const id = useSelector(state => state.componentPropertiesReducer.id)
+  const name = useSelector(state => state.componentPropertiesReducer.name)
   const parameter_values = useSelector(state => state.componentPropertiesReducer.parameter_values)
   const [val, setVal] = useState(parameter_values)
 
@@ -30,9 +31,9 @@ export default function ComponentProperties () {
     dispatch(setCompProperties(id, val))
   }
 
-  const link1 = process.env.REACT_APP_BLOCK_NAME + ' Parameters';
+  const link1 = name + ' Parameters';
   const link2 = 'Set ' + process.env.REACT_APP_BLOCK_NAME + ' Parameters';
-  const link3 = 'No ' + process.env.REACT_APP_BLOCK_NAME + ' Parameters';
+  const link3 = 'No ' + name + ' Parameters';
   return (
     <div style={isOpen ? {} : { display: 'none' }}>
 
