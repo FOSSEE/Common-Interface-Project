@@ -45,14 +45,14 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-var url = ''
+let url = ''
 
 export default function SignIn (props) {
   const classes = useStyles()
   const auth = useSelector(state => state.authReducer)
 
   const dispatch = useDispatch()
-  var homeURL = `${window.location.protocol}\\\\${window.location.host}/`
+  const homeURL = `${window.location.protocol}\\\\${window.location.host}/`
 
   useEffect(() => {
     dispatch(authDefault())
@@ -79,75 +79,75 @@ export default function SignIn (props) {
 
   // Function call for google oAuth login.
   const handleGoogleLogin = () => {
-    var host = window.location.protocol + '//' + window.location.host
+    const host = window.location.protocol + '//' + window.location.host
     dispatch(googleLogin(host))
   }
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component='main' maxWidth='xs'>
       <Card className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
 
-        <Typography component="h1" variant="h5">
+        <Typography component='h1' variant='h5'>
           Login | Sign In
         </Typography>
 
         {/* Display's error messages while logging in */}
-        <Typography variant="body1" align="center" style={{ marginTop: '10px' }} color="error" >
+        <Typography variant='body1' align='center' style={{ marginTop: '10px' }} color='error'>
           {auth.errors}
         </Typography>
 
         <form className={classes.form} noValidate>
           <TextField
-            variant="outlined"
-            margin="normal"
+            variant='outlined'
+            margin='normal'
             required
             fullWidth
-            id="email"
-            label="Username"
-            name="email"
-            autoComplete="email"
+            id='email'
+            label='Username'
+            name='email'
+            autoComplete='email'
             value={username}
             onChange={e => setUsername(e.target.value)}
             autoFocus
           />
           <TextField
-            variant="outlined"
-            margin="normal"
+            variant='outlined'
+            margin='normal'
             required
             fullWidth
-            name="password"
-            label="Password"
+            name='password'
+            label='Password'
             InputProps={{
               endAdornment: (
-                <InputAdornment position="end">
+                <InputAdornment position='end'>
                   <IconButton
-                    size="small"
-                    aria-label="toggle password visibility"
+                    size='small'
+                    aria-label='toggle password visibility'
                     onClick={handleClickShowPassword}
                     onMouseDown={handleMouseDownPassword}
                   >
-                    {showPassword ? <Visibility fontSize="small" /> : <VisibilityOff fontSize="small" />} {/* Handle password visibility */}
+                    {showPassword ? <Visibility fontSize='small' /> : <VisibilityOff fontSize='small' />} {/* Handle password visibility */}
                   </IconButton>
                 </InputAdornment>
               )
             }}
             type={showPassword ? 'text' : 'password'}
-            id="password"
+            id='password'
             value={password}
             onChange={e => setPassword(e.target.value)}
-            autoComplete="current-password"
+            autoComplete='current-password'
           />
           <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
+            control={<Checkbox value='remember' color='primary' />}
+            label='Remember me'
           />
           <Button
             fullWidth
-            variant="contained"
-            color="primary"
+            variant='contained'
+            color='primary'
             onClick={handleLogin}
             className={classes.submit}
           >
@@ -155,34 +155,34 @@ export default function SignIn (props) {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link component={RouterLink} to="#" variant="body2">
+              <Link component={RouterLink} to='#' variant='body2'>
                 Forgot password?
               </Link>
             </Grid>
             <Grid item>
-              <Link component={RouterLink} to="/signup" variant="body2">
-                {'New User? Sign Up'}
+              <Link component={RouterLink} to='/signup' variant='body2'>
+                New User? Sign Up
               </Link>
             </Grid>
           </Grid>
         </form>
-        <Typography variant="body1" color="secondary" align="center" >Or</Typography>
+        <Typography variant='body1' color='secondary' align='center'>Or</Typography>
 
         {/* Google oAuth Sign In option */}
         <Button
           fullWidth
-          variant="outlined"
-          color="primary"
+          variant='outlined'
+          color='primary'
           onClick={handleGoogleLogin}
           className={classes.submit}
         >
-          <img alt="G" src={google} height="20" />&emsp; Login With Google
+          <img alt='G' src={google} height='20' />&emsp; Login With Google
         </Button>
       </Card>
       <Button
         onClick={() => { window.open(homeURL, '_self') }}
         fullWidth
-        color="default"
+        color='default'
         className={classes.submit}
       >
         Back to home

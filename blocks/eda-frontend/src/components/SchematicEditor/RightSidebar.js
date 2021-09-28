@@ -27,13 +27,13 @@ export default function RightSidebar ({ window, mobileOpen, mobileClose, childre
 
   return (
     <>
-      <nav className={classes.drawer} aria-label="mailbox folders">
-        <Hidden xlUp implementation="css">
+      <nav className={classes.drawer} aria-label='mailbox folders'>
+        <Hidden xlUp implementation='css'>
           <Drawer
             container={container}
-            variant="temporary"
+            variant='temporary'
             open={mobileOpen}
-            anchor="right"
+            anchor='right'
             onClose={mobileClose}
             classes={{
               paper: classes.drawerPaper
@@ -44,7 +44,7 @@ export default function RightSidebar ({ window, mobileOpen, mobileClose, childre
           >
             <IconButton
               onClick={mobileClose}
-              color="inherit"
+              color='inherit'
               style={{ marginRight: '190px' }}
             >
               <HighlightOffIcon />
@@ -53,13 +53,13 @@ export default function RightSidebar ({ window, mobileOpen, mobileClose, childre
           </Drawer>
         </Hidden>
 
-        <Hidden mdDown implementation="css">
+        <Hidden mdDown implementation='css'>
           <Drawer
             classes={{
               paper: classes.drawerPaper
             }}
-            anchor="right"
-            variant="permanent"
+            anchor='right'
+            variant='permanent'
             open
           >
             {children}

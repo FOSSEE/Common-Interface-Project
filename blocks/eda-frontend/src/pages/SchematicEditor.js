@@ -39,14 +39,14 @@ export default function SchematicEditor (props) {
 
   useEffect(() => {
     document.title = process.env.REACT_APP_DIAGRAM_NAME + ' Editor - ' + process.env.REACT_APP_NAME
-    var container = gridRef.current
-    var sidebar = compRef.current
-    var outline = outlineRef.current
+    const container = gridRef.current
+    const sidebar = compRef.current
+    const outline = outlineRef.current
     LoadGrid(container, sidebar, outline)
 
     if (props.location.search !== '') {
       const query = new URLSearchParams(props.location.search)
-      var cktid = query.get('id')
+      const cktid = query.get('id')
 
       if (cktid.substr(0, 7) === 'gallery') {
         // Loading Gallery schemaic.
@@ -71,12 +71,12 @@ export default function SchematicEditor (props) {
       <LayoutMain>
         <div className={classes.toolbar} />
         <center>
-          <div className="grid-container A4-L" ref={gridRef} id="divGrid" />
+          <div className='grid-container A4-L' ref={gridRef} id='divGrid' />
         </center>
       </LayoutMain>
 
       {/* Schematic editor Right side pane */}
-      <RightSidebar mobileOpen={mobileOpen} mobileClose={handleDrawerToggle} >
+      <RightSidebar mobileOpen={mobileOpen} mobileClose={handleDrawerToggle}>
         <PropertiesSidebar gridRef={gridRef} outlineRef={outlineRef} />
       </RightSidebar>
     </div>
