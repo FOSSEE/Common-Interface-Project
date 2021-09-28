@@ -135,7 +135,7 @@ export const setSchShared = (share) => (dispatch, getState) => {
     config.headers.Authorization = `Token ${token}`
   }
 
-  var isShared
+  let isShared
   if (share === true) {
     isShared = 'on'
   } else {
@@ -156,7 +156,7 @@ export const setSchShared = (share) => (dispatch, getState) => {
 
 // Action for Loading Gallery schematics
 export const loadGallery = (Id) => (dispatch, getState) => {
-  var data = GallerySchSample[Id]
+  const data = GallerySchSample[Id]
 
   dispatch({
     type: actions.LOAD_GALLERY,
@@ -171,7 +171,7 @@ export const loadGallery = (Id) => (dispatch, getState) => {
 
 // Action for Loading local exported schematics
 export const openLocalSch = (obj) => (dispatch, getState) => {
-  var data = obj
+  const data = obj
 
   dispatch({ type: actions.CLEAR_DETAILS })
   dispatch(setTitle('* ' + data.title))

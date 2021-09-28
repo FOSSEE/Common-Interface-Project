@@ -96,7 +96,7 @@ const GallerySchSample = [
     description: 'A simple AFFICH diagram',
     media: 'AFFICH_Xcos_on_Cloud.png',
     shared: true
-  },
+  }
 ]
 
 export default GallerySchSample
