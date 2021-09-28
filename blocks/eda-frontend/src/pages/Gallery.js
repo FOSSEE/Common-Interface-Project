@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-var images = require.context('../static/gallery', true)
+const images = require.context('../static/gallery', true)
 
 // Card displaying overview of gallery sample schematics.
 function SchematicCard ({ sch }) {
@@ -63,10 +63,10 @@ function SchematicCard ({ sch }) {
             title={sch.name}
           />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
+            <Typography gutterBottom variant='h5' component='h2'>
               {sch.name}
             </Typography>
-            <Typography variant="body2" component="p">
+            <Typography variant='body2' component='p'>
               {sch.description}
             </Typography>
           </CardContent>
@@ -74,11 +74,11 @@ function SchematicCard ({ sch }) {
 
         <CardActions>
           <Button
-            target="_blank"
+            target='_blank'
             component={RouterLink}
             to={'/editor?id=' + sch.save_id}
-            size="small"
-            color="primary"
+            size='small'
+            color='primary'
           >
             Launch in Editor
           </Button>
@@ -100,11 +100,11 @@ function MainCard () {
   return (
     <Card className={classes.mainHead}>
       <CardContent>
-        <Typography variant="h2" align="center" gutterBottom>
-        {typography}
+        <Typography variant='h2' align='center' gutterBottom>
+          {typography}
         </Typography>
-        <Typography className={classes.title} align="center" gutterBottom>
-        {diagramTypography}
+        <Typography className={classes.title} align='center' gutterBottom>
+          {diagramTypography}
         </Typography>
       </CardContent>
     </Card>
@@ -117,13 +117,13 @@ export default function Gallery () {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <Container maxWidth="lg" className={classes.header}>
+      <Container maxWidth='lg' className={classes.header}>
         <Grid
           container
-          direction="row"
-          justify="flex-start"
-          alignItems="flex-start"
-          alignContent="center"
+          direction='row'
+          justify='flex-start'
+          alignItems='flex-start'
+          alignContent='center'
           spacing={3}
         >
           {/* Gallery Header */}

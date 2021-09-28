@@ -55,14 +55,14 @@ export default function Simulator () {
   }
 
   const netlistCodeSanitization = (code) => {
-    var cleanCode = code.replace('plot', 'print')
+    const cleanCode = code.replace('plot', 'print')
 
     return cleanCode
   }
 
   function prepareNetlist () {
-    var sanatizedText = netlistCodeSanitization(netlistCode)
-    var file = textToFile(sanatizedText)
+    const sanatizedText = netlistCodeSanitization(netlistCode)
+    const file = textToFile(sanatizedText)
     sendNetlist(file)
   }
 
@@ -99,25 +99,25 @@ export default function Simulator () {
         if (res.data.state === 'PROGRESS' || res.data.state === 'PENDING') {
           setTimeout(simulationResult(url), 1000)
         } else {
-          var result = res.data.details
+          const result = res.data.details
           if (result === null) {
             setIsResult(false)
           } else {
             setIsResult(true)
-            var temp = res.data.details.data
+            const temp = res.data.details.data
 
-            var data = result.data
+            const data = result.data
             if (res.data.details.graph === 'true') {
-              var simResultGraph = { labels: [], x_points: [], y_points: [] }
+              const simResultGraph = { labels: [], x_points: [], y_points: [] }
               // populate the labels
-              for (var i = 0; i < data.length; i++) {
+              for (let i = 0; i < data.length; i++) {
                 simResultGraph.labels[0] = data[i].labels[0]
-                var lab = data[i].labels
+                const lab = data[i].labels
                 // lab is an array containeing labels names ['time','abc','def']
                 simResultGraph.x_points = data[0].x
 
                 // labels
-                for (var x = 1; x < lab.length; x++) {
+                for (let x = 1; x < lab.length; x++) {
                   if (lab[x].includes('#branch')) {
                     lab[x] = `I (${lab[x].replace('#branch', '')})`
                   }
@@ -129,7 +129,7 @@ export default function Simulator () {
                   simResultGraph.labels.push(lab[x])
                 }
                 // populate y_points
-                for (var z = 0; z < data[i].y.length; z++) {
+                for (let z = 0; z < data[i].y.length; z++) {
                   simResultGraph.y_points.push(data[i].y[z])
                 }
               }
@@ -141,7 +141,7 @@ export default function Simulator () {
               }
               dispatch(setResultGraph(simResultGraph))
             } else {
-              var simResultText = []
+              const simResultText = []
               for (let i = 0; i < temp.length; i++) {
                 let postfixUnit = ''
                 if (temp[i][0].includes('#branch')) {
@@ -168,45 +168,45 @@ export default function Simulator () {
 
   const typography = process.env.REACT_APP_NAME + ' on Cloud - ngSpice Simulator'
   return (
-    <Container maxWidth="lg" className={classes.header}>
+    <Container maxWidth='lg' className={classes.header}>
       <SimulationScreen open={simulateOpen} isResult={isResult} close={handleSimulateClose} dark={state} />
       <Grid
         container
         spacing={3}
-        direction="row"
-        justify="center"
-        alignItems="stretch"
+        direction='row'
+        justify='center'
+        alignItems='stretch'
       >
-        <Grid item xs={12} >
+        <Grid item xs={12}>
           <Paper className={classes.paper}>
 
-            <Typography variant="h4" gutterBottom>
+            <Typography variant='h4' gutterBottom>
               SPICE SIMULATOR
             </Typography>
-            <Typography variant="subtitle1" gutterBottom>
+            <Typography variant='subtitle1' gutterBottom>
               {typography}
             </Typography>
           </Paper>
         </Grid>
 
-        <Grid item xs={12} >
+        <Grid item xs={12}>
           <Paper className={classes.paper}>
 
-            <Typography variant="h5" gutterBottom>
+            <Typography variant='h5' gutterBottom>
               Enter Netlist
 
             </Typography>
 
             <FormControlLabel
               style={{ marginLeft: '10px' }}
-              control={<Switch checked={state.checkedA} color="primary" onChange={handleChange} name="checkedA" />}
-              label="Light Mode"
+              control={<Switch checked={state.checkedA} color='primary' onChange={handleChange} name='checkedA' />}
+              label='Light Mode'
             />
 
             <Editor code={netlistCode} onCodeChange={onCodeChange} dark={state} />
             <br />
 
-            <Button variant="contained" color="primary" size="large" onClick={handleSimulationButtonClick}>
+            <Button variant='contained' color='primary' size='large' onClick={handleSimulationButtonClick}>
               Simulate
             </Button>
           </Paper>
