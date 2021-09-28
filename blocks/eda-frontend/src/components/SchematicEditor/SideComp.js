@@ -36,9 +36,9 @@ export default function SideComp ({ component }) {
     AddComponent(component, imageRef.current)
   }, [imageRef, component])
 
-  const link1 = process.env.REACT_APP_BLOCK_NAME + ' Name';
-  const link2 = process.env.REACT_APP_CATEGORY_NAME;
-  const link3 = process.env.REACT_APP_CATEGORIES_NAME;
+  const link1 = process.env.REACT_APP_BLOCK_NAME + ' Name'
+  const link2 = process.env.REACT_APP_CATEGORY_NAME
+  const link3 = process.env.REACT_APP_CATEGORIES_NAME
   return (
     <div>
 
@@ -63,23 +63,23 @@ export default function SideComp ({ component }) {
           horizontal: 'center'
         }}
       >
-        <List component="div" className={classes.popupInfo} disablePadding dense >
+        <List component='div' className={classes.popupInfo} disablePadding dense>
           <ListItemText>
             <b>{link1}:</b> {component.name}
           </ListItemText>
 
           {
             component.categories.length === 1 &&
-          <ListItemText>
-            <b>{link2}:</b> {component.categories[0].name}
-          </ListItemText>
+              <ListItemText>
+                <b>{link2}:</b> {component.categories[0].name}
+              </ListItemText>
           }
 
           {
             component.categories.length > 1 &&
-          <ListItemText>
-            <b>{link3}:</b> {component.categories.map((c) => <li key={c.id}>{c.name}</li>)}
-          </ListItemText>
+              <ListItemText>
+                <b>{link3}:</b> {component.categories.map((c) => <li key={c.id}>{c.name}</li>)}
+              </ListItemText>
           }
 
         </List>

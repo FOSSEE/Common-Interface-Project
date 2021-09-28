@@ -5,5 +5,5 @@ export default axios.create({
   baseURL: '/api/',
   responseType: 'json',
   xsrfCookieName: 'csrftoken',
-  withCredentials: true,
+  withCredentials: true
 })

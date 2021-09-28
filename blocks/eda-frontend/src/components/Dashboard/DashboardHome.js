@@ -37,16 +37,16 @@ function MainCard () {
         <Typography className={classes.title} gutterBottom>
           Welcome to your EDA Dashboard
         </Typography>
-        <Typography variant="h5" component="h2">
+        <Typography variant='h5' component='h2'>
           Welcome {auth.user.username}...
         </Typography>
       </CardContent>
       <CardActions>
         <Button
           component={RouterLink}
-          to="/dashboard/schematics"
-          color="primary"
-          size="small"
+          to='/dashboard/schematics'
+          color='primary'
+          size='small'
         >
           {button}
         </Button>
@@ -64,10 +64,10 @@ export default function DashboardHome () {
     <>
       <Grid
         container
-        direction="row"
-        justify="flex-start"
-        alignItems="flex-start"
-        alignContent="center"
+        direction='row'
+        justify='flex-start'
+        alignItems='flex-start'
+        alignContent='center'
         spacing={3}
       >
         {/* User Dashboard Home Header */}
@@ -77,7 +77,7 @@ export default function DashboardHome () {
 
         <Grid item xs={12}>
           <Card style={{ padding: '7px 15px' }} className={classes.mainHead}>
-            <Typography variant="subtitle1" gutterBottom>
+            <Typography variant='subtitle1' gutterBottom>
               Hey {auth.user.username} , {typography}
             </Typography>
           </Card>

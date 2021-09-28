@@ -67,9 +67,9 @@ export default function DashSidebar (props) {
       </Hidden>
       <List>
         <ListItem
-          alignItems="flex-start"
+          alignItems='flex-start'
           component={RouterLink}
-          to="/dashboard"
+          to='/dashboard'
           style={{ marginTop: '15px' }}
           className={classes.sideItem}
           button
@@ -83,45 +83,45 @@ export default function DashSidebar (props) {
           <ListItemText
             primary={auth.user.username}
             secondary={
-              <React.Fragment>
+              <>
                 <Typography
-                  component="span"
-                  variant="body2"
-                  color="textSecondary"
+                  component='span'
+                  variant='body2'
+                  color='textSecondary'
                 >
                   Contributor
                 </Typography>
-              </React.Fragment>
+              </>
             }
           />
         </ListItem>
 
         <ListItem
           component={RouterLink}
-          to="/dashboard/profile"
+          to='/dashboard/profile'
           className={classes.sideItem}
           button
           divider
         >
-          <ListItemText primary='My Profile'/>
+          <ListItemText primary='My Profile' />
         </ListItem>
         <ListItem
           component={RouterLink}
-          to="/dashboard/schematics"
+          to='/dashboard/schematics'
           className={classes.sideItem}
           button
         >
-          <ListItemText primary={button}/>
+          <ListItemText primary={button} />
         </ListItem>
 
         {/* List name of saved schematics */}
-        <List className={classes.nestedSearch} >
+        <List className={classes.nestedSearch}>
           <InputBase
             className={classes.input}
             placeholder={placeholder}
           />
         </List>
-        <div className={classes.nested} >
+        <div className={classes.nested}>
           {schematics.map((sch) => (
             <ListItem key={sch.save_id} button>
               <ListItemText primary={`${sch.name}`} />

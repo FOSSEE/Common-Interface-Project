@@ -24,15 +24,19 @@ function PrivateRoute ({ component: Component, ...rest }) {
 
   useEffect(() => dispatch(loadUser()), [dispatch])
 
-  return <Route {...rest} render={props => {
-    if (auth.isLoading) {
-      return <CircularProgress style={{ margin: '50vh 50vw' }} />
-    } else if (!auth.isAuthenticated) {
-      return <Redirect to="/login" />
-    } else {
-      return <Component {...props} />
-    }
-  }} />
+  return (
+    <Route
+      {...rest} render={props => {
+        if (auth.isLoading) {
+          return <CircularProgress style={{ margin: '50vh 50vw' }} />
+        } else if (!auth.isAuthenticated) {
+          return <Redirect to='/login' />
+        } else {
+          return <Component {...props} />
+        }
+      }}
+    />
+  )
 }
 
 // Public routes accessible to all users. [ e.g. editor, gallery ]
@@ -42,17 +46,21 @@ function PublicRoute ({ component: Component, restricted, nav, ...rest }) {
 
   useEffect(() => dispatch(loadUser()), [dispatch])
 
-  return <Route {...rest} render={props => {
-    if (auth.isLoading) {
-      return <CircularProgress style={{ margin: '50vh 50vw' }} />
-    } else if (auth.isAuthenticated && restricted) {
-      return <Redirect to="/dashboard" />
-    } else if (nav) {
-      return (<><Navbar /><Component {...props} /></>)
-    } else {
-      return <Component {...props} />
-    }
-  }} />
+  return (
+    <Route
+      {...rest} render={props => {
+        if (auth.isLoading) {
+          return <CircularProgress style={{ margin: '50vh 50vw' }} />
+        } else if (auth.isAuthenticated && restricted) {
+          return <Redirect to='/dashboard' />
+        } else if (nav) {
+          return (<><Navbar /><Component {...props} /></>)
+        } else {
+          return <Component {...props} />
+        }
+      }}
+    />
+  )
 }
 
 function App () {
@@ -60,17 +68,16 @@ function App () {
     // Handles Routing for an application
     <HashRouter>
       <Switch>
-        <PublicRoute exact path="/login" restricted={true} nav={false} component={Login} />
-        <PublicRoute exact path="/signup" restricted={true} nav={false} component={SignUp} />
-        <PublicRoute exact path="/" restricted={false} nav={true} component={Home} />
+        <PublicRoute exact path='/login' restricted nav={false} component={Login} />
+        <PublicRoute exact path='/signup' restricted nav={false} component={SignUp} />
+        <PublicRoute exact path='/' restricted={false} nav component={Home} />
         {localStorage.getItem(process.env.REACT_APP_NAME + '_token') !== null
-          ? <PublicRoute exact path="/editor" restricted={false} nav={false} component={SchematicEditor} />
-          : <Route path="/editor" component={SchematicEditor} />
-        }
-        <PublicRoute exact path="/simulator/ngspice" restricted={false} nav={true} component={Simulator} />
-        <PublicRoute exact path="/gallery" restricted={false} nav={true} component={Gallery} />
-        <PrivateRoute path="/dashboard" component={Dashboard} />
-        <PublicRoute restricted={false} nav={true} component={NotFound} />
+          ? <PublicRoute exact path='/editor' restricted={false} nav={false} component={SchematicEditor} />
+          : <Route path='/editor' component={SchematicEditor} />}
+        <PublicRoute exact path='/simulator/ngspice' restricted={false} nav component={Simulator} />
+        <PublicRoute exact path='/gallery' restricted={false} nav component={Gallery} />
+        <PrivateRoute path='/dashboard' component={Dashboard} />
+        <PublicRoute restricted={false} nav component={NotFound} />
       </Switch>
     </HashRouter>
   )

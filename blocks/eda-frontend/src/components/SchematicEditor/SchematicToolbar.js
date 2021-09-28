@@ -23,8 +23,8 @@ import CreateNewFolderOutlinedIcon from '@material-ui/icons/CreateNewFolderOutli
 import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined'
 import SystemUpdateAltOutlinedIcon from '@material-ui/icons/SystemUpdateAltOutlined'
 import { Link as RouterLink } from 'react-router-dom'
-import beautify from 'xml-beautifier';
-import mxGraphFactory from 'mxgraph';
+import beautify from 'xml-beautifier'
+import mxGraphFactory from 'mxgraph'
 
 import { NetlistModal, HelpScreen, ImageExportDialog, OpenSchDialog } from './ToolbarExtension'
 import { ZoomIn, ZoomOut, ZoomAct, DeleteComp, PrintPreview, Rotate, GenerateNetList, Undo, Redo, Save, ClearGrid } from './Helper/ToolbarTools'
@@ -33,7 +33,7 @@ import { toggleSimulate, closeCompProperties, setSchXmlData, saveSchematic, open
 
 const {
   mxUtils
-} = new mxGraphFactory();
+} = new mxGraphFactory()
 
 const useStyles = makeStyles((theme) => ({
   menuButton: {
@@ -70,11 +70,11 @@ function SimpleSnackbar ({ open, close, message }) {
         onClose={close}
         message={message}
         action={
-          <React.Fragment>
-            <IconButton size="small" aria-label="close" color="inherit" onClick={close}>
-              <CloseIcon fontSize="small" />
+          <>
+            <IconButton size='small' aria-label='close' color='inherit' onClick={close}>
+              <CloseIcon fontSize='small' />
             </IconButton>
-          </React.Fragment>
+          </>
         }
       />
     </div>
@@ -100,8 +100,8 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
   const [netlist, genNetlist] = React.useState('')
 
   const handleClickOpen = () => {
-    var compNetlist = GenerateNetList()
-    var netlist = netfile.title + '\n\n' +
+    const compNetlist = GenerateNetList()
+    const netlist = netfile.title + '\n\n' +
       compNetlist.models + '\n' +
       compNetlist.main + '\n' +
       netfile.controlLine + '\n' +
@@ -157,19 +157,19 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
     canvas.height = gridRef.current.scrollHeight
     canvas.style.width = canvas.width + 'px'
     canvas.style.height = canvas.height + 'px'
-    var images = svg.getElementsByTagName('image')
-    for (var image of images) {
+    const images = svg.getElementsByTagName('image')
+    for (const image of images) {
       let data = await fetch(image.getAttribute('xlink:href')).then((v) => {
         return v.text()
       })
-      data = encodeURIComponent(data);
+      data = encodeURIComponent(data)
       image.removeAttribute('xlink:href')
       image.setAttribute(
         'href',
         'data:image/svg+xml;base64,' + window.btoa(data)
       )
     }
-    var ctx = canvas.getContext('2d')
+    const ctx = canvas.getContext('2d')
     ctx.webkitImageSmoothingEnabled = true
     ctx.msImageSmoothingEnabled = true
     ctx.imageSmoothingEnabled = true
@@ -177,13 +177,13 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
     ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0)
     return new Promise(resolve => {
       if (type === 'SVG') {
-        var svgdata = new XMLSerializer().serializeToString(svg)
+        const svgdata = new XMLSerializer().serializeToString(svg)
         resolve('<?xml version="1.0" encoding="UTF-8"?>' + svgdata)
         return
       }
-      var v = Canvg.fromString(ctx, svg.outerHTML)
+      const v = Canvg.fromString(ctx, svg.outerHTML)
       v.render().then(() => {
-        var image = ''
+        let image = ''
         if (type === 'JPG') {
           const imgdata = ctx.getImageData(0, 0, canvas.width, canvas.height)
           for (let i = 0; i < imgdata.data.length; i += 4) {
@@ -208,12 +208,12 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
 
   // Download JPEG, PNG exported Image
   function downloadImage (data, type) {
-    var evt = new MouseEvent('click', {
+    const evt = new MouseEvent('click', {
       view: window,
       bubbles: false,
       cancelable: true
     })
-    var a = document.createElement('a')
+    const a = document.createElement('a')
     const ext = (type === 'PNG') ? '.png' : '.jpg'
     a.setAttribute('download', schSave.title + '_' + process.env.REACT_APP_NAME + '_on_Cloud' + ext)
     a.setAttribute('href', data)
@@ -271,10 +271,10 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
       setMessage('You are not Logged In')
       handleSnacClick()
     } else {
-      var description = schSave.description
-      var xml = Save(description)
+      const description = schSave.description
+      const xml = Save(description)
       dispatch(setSchXmlData(xml))
-      var title = schSave.title
+      const title = schSave.title
       exportImage('PNG')
         .then(res => {
           dispatch(saveSchematic(title, description, xml, res))
@@ -307,30 +307,30 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
     fileSelector.setAttribute('accept', 'application/xml')
     fileSelector.click()
     fileSelector.addEventListener('change', function (event) {
-      var file = event.target.files[0];
-      var filename = file.name;
-      var base = '(_' + process.env.REACT_APP_NAME + '_on_Cloud)?( *\\([0-9]*\\))?\\.xml$';
-      var re = new RegExp(base, 'i');
+      const file = event.target.files[0]
+      const filename = file.name
+      const base = '(_' + process.env.REACT_APP_NAME + '_on_Cloud)?( *\\([0-9]*\\))?\\.xml$'
+      const re = new RegExp(base, 'i')
       if (re.test(filename)) {
-        var reader = new FileReader()
+        const reader = new FileReader()
         reader.onload = function (event) {
-          var title = filename.replace(re, '');
-          var data_dump = event.target.result;
-          var xmlDoc = mxUtils.parseXml(data_dump);
-          const firstCell = xmlDoc.documentElement.children[0].children[0];
-          const firstCellAttrs = firstCell.attributes;
-          const appname = firstCellAttrs.appname.value;
-          const description = (firstCellAttrs.description !== undefined) ? firstCellAttrs.description.value : '';
+          const title = filename.replace(re, '')
+          const data_dump = event.target.result
+          const xmlDoc = mxUtils.parseXml(data_dump)
+          const firstCell = xmlDoc.documentElement.children[0].children[0]
+          const firstCellAttrs = firstCell.attributes
+          const appname = firstCellAttrs.appname.value
+          const description = (firstCellAttrs.description !== undefined) ? firstCellAttrs.description.value : ''
           if (appname !== process.env.REACT_APP_NAME) {
-            setMessage('Unsupported app name error !');
-            handleSnacClick();
+            setMessage('Unsupported app name error !')
+            handleSnacClick()
           } else {
-            var obj = { 'data_dump': data_dump, 'title': title, 'description': description };
+            const obj = { data_dump: data_dump, title: title, description: description }
             if (obj.data_dump === undefined || obj.title === undefined || obj.description === undefined) {
-              setMessage('Unsupported file error !');
-              handleSnacClick();
+              setMessage('Unsupported file error !')
+              handleSnacClick()
             } else {
-              dispatch(openLocalSch(obj));
+              dispatch(openLocalSch(obj))
             }
           }
         }
@@ -355,103 +355,103 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
 
   return (
     <>
-      <Tooltip title="New">
-        <IconButton color="inherit" className={classes.tools} size="small" target="_blank" component={RouterLink} to="/editor" >
-          <CreateNewFolderOutlinedIcon fontSize="small" />
+      <Tooltip title='New'>
+        <IconButton color='inherit' className={classes.tools} size='small' target='_blank' component={RouterLink} to='/editor'>
+          <CreateNewFolderOutlinedIcon fontSize='small' />
         </IconButton>
       </Tooltip>
-      <Tooltip title="Open">
-        <IconButton color="inherit" className={classes.tools} size="small" onClick={handleSchDialOpen} >
-          <OpenInBrowserIcon fontSize="small" />
+      <Tooltip title='Open'>
+        <IconButton color='inherit' className={classes.tools} size='small' onClick={handleSchDialOpen}>
+          <OpenInBrowserIcon fontSize='small' />
         </IconButton>
       </Tooltip>
       <OpenSchDialog open={schOpen} close={handleSchDialClose} openLocal={handleLocalSchOpen} />
-      <Tooltip title="Save">
-        <IconButton color="inherit" className={classes.tools} size="small" onClick={handleSchSave} >
-          <SaveOutlinedIcon fontSize="small" />
+      <Tooltip title='Save'>
+        <IconButton color='inherit' className={classes.tools} size='small' onClick={handleSchSave}>
+          <SaveOutlinedIcon fontSize='small' />
         </IconButton>
       </Tooltip>
       <SimpleSnackbar open={snacOpen} close={handleSnacClose} message={message} />
       <span className={classes.pipe}>|</span>
 
-      <Tooltip title="Export">
-        <IconButton color="inherit" className={classes.tools} size="small" onClick={handleLocalSchSave}>
-          <SystemUpdateAltOutlinedIcon fontSize="small" />
+      <Tooltip title='Export'>
+        <IconButton color='inherit' className={classes.tools} size='small' onClick={handleLocalSchSave}>
+          <SystemUpdateAltOutlinedIcon fontSize='small' />
         </IconButton>
       </Tooltip>
-      <Tooltip title="Image Export">
-        <IconButton color="inherit" className={classes.tools} size="small" onClick={handleImgClickOpen}>
-          <ImageOutlinedIcon fontSize="small" />
+      <Tooltip title='Image Export'>
+        <IconButton color='inherit' className={classes.tools} size='small' onClick={handleImgClickOpen}>
+          <ImageOutlinedIcon fontSize='small' />
         </IconButton>
       </Tooltip>
       <ImageExportDialog open={imgopen} onClose={handleImgClose} />
-      <Tooltip title="Print Preview">
-        <IconButton color="inherit" className={classes.tools} size="small" onClick={PrintPreview}>
-          <PrintOutlinedIcon fontSize="small" />
+      <Tooltip title='Print Preview'>
+        <IconButton color='inherit' className={classes.tools} size='small' onClick={PrintPreview}>
+          <PrintOutlinedIcon fontSize='small' />
         </IconButton>
       </Tooltip>
       <span className={classes.pipe}>|</span>
 
-      <Tooltip title="Simulate">
-        <IconButton color="inherit" className={classes.tools} size="small" onClick={() => { dispatch(toggleSimulate()) }}>
-          <PlayCircleOutlineIcon fontSize="small" />
+      <Tooltip title='Simulate'>
+        <IconButton color='inherit' className={classes.tools} size='small' onClick={() => { dispatch(toggleSimulate()) }}>
+          <PlayCircleOutlineIcon fontSize='small' />
         </IconButton>
       </Tooltip>
-      <Tooltip title="Generate Netlist">
-        <IconButton color="inherit" className={classes.tools} size="small" onClick={handleClickOpen} >
-          <BorderClearIcon fontSize="small" />
+      <Tooltip title='Generate Netlist'>
+        <IconButton color='inherit' className={classes.tools} size='small' onClick={handleClickOpen}>
+          <BorderClearIcon fontSize='small' />
         </IconButton>
       </Tooltip>
       <NetlistModal open={open} close={handleClose} netlist={netlist} />
       <span className={classes.pipe}>|</span>
 
-      <Tooltip title="Undo">
-        <IconButton color="inherit" className={classes.tools} size="small" onClick={Undo}>
-          <UndoIcon fontSize="small" />
+      <Tooltip title='Undo'>
+        <IconButton color='inherit' className={classes.tools} size='small' onClick={Undo}>
+          <UndoIcon fontSize='small' />
         </IconButton>
       </Tooltip>
-      <Tooltip title="Redo">
-        <IconButton color="inherit" className={classes.tools} size="small" onClick={Redo}>
-          <RedoIcon fontSize="small" />
+      <Tooltip title='Redo'>
+        <IconButton color='inherit' className={classes.tools} size='small' onClick={Redo}>
+          <RedoIcon fontSize='small' />
         </IconButton>
       </Tooltip>
-      <Tooltip title="Rotate">
-        <IconButton color="inherit" className={classes.tools} size="small" onClick={Rotate}>
-          <RotateRightIcon fontSize="small" />
-        </IconButton>
-      </Tooltip>
-      <span className={classes.pipe}>|</span>
-
-      <Tooltip title="Zoom In">
-        <IconButton color="inherit" className={classes.tools} size="small" onClick={ZoomIn}>
-          <ZoomInIcon fontSize="small" />
-        </IconButton>
-      </Tooltip>
-      <Tooltip title="Zoom Out">
-        <IconButton color="inherit" className={classes.tools} size="small" onClick={ZoomOut}>
-          <ZoomOutIcon fontSize="small" />
-        </IconButton>
-      </Tooltip>
-      <Tooltip title="Default Size">
-        <IconButton color="inherit" className={classes.tools} size="small" onClick={ZoomAct}>
-          <SettingsOverscanIcon fontSize="small" />
+      <Tooltip title='Rotate'>
+        <IconButton color='inherit' className={classes.tools} size='small' onClick={Rotate}>
+          <RotateRightIcon fontSize='small' />
         </IconButton>
       </Tooltip>
       <span className={classes.pipe}>|</span>
 
-      <Tooltip title="Delete">
-        <IconButton color="inherit" className={classes.tools} size="small" onClick={handleDeleteComp}>
-          <DeleteIcon fontSize="small" />
+      <Tooltip title='Zoom In'>
+        <IconButton color='inherit' className={classes.tools} size='small' onClick={ZoomIn}>
+          <ZoomInIcon fontSize='small' />
         </IconButton>
       </Tooltip>
-      <Tooltip title="Clear All">
-        <IconButton color="inherit" className={classes.tools} size="small" onClick={ClearGrid}>
-          <ClearAllIcon fontSize="small" />
+      <Tooltip title='Zoom Out'>
+        <IconButton color='inherit' className={classes.tools} size='small' onClick={ZoomOut}>
+          <ZoomOutIcon fontSize='small' />
         </IconButton>
       </Tooltip>
-      <Tooltip title="Help">
-        <IconButton color="inherit" className={classes.tools} size="small" onClick={handleHelpOpen}>
-          <HelpOutlineIcon fontSize="small" />
+      <Tooltip title='Default Size'>
+        <IconButton color='inherit' className={classes.tools} size='small' onClick={ZoomAct}>
+          <SettingsOverscanIcon fontSize='small' />
+        </IconButton>
+      </Tooltip>
+      <span className={classes.pipe}>|</span>
+
+      <Tooltip title='Delete'>
+        <IconButton color='inherit' className={classes.tools} size='small' onClick={handleDeleteComp}>
+          <DeleteIcon fontSize='small' />
+        </IconButton>
+      </Tooltip>
+      <Tooltip title='Clear All'>
+        <IconButton color='inherit' className={classes.tools} size='small' onClick={ClearGrid}>
+          <ClearAllIcon fontSize='small' />
+        </IconButton>
+      </Tooltip>
+      <Tooltip title='Help'>
+        <IconButton color='inherit' className={classes.tools} size='small' onClick={handleHelpOpen}>
+          <HelpOutlineIcon fontSize='small' />
         </IconButton>
       </Tooltip>
       <HelpScreen open={helpOpen} close={handleHelpClose} />
@@ -460,11 +460,11 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
         color='inherit'
         aria-label='open drawer'
         edge='end'
-        size="small"
+        size='small'
         onClick={mobileClose}
         className={classes.menuButton}
       >
-        <AddBoxOutlinedIcon fontSize="small" />
+        <AddBoxOutlinedIcon fontSize='small' />
       </IconButton>
     </>
   )

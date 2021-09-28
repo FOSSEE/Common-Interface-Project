@@ -40,11 +40,11 @@ export default function Dashboard () {
 
         {/* Subroutes under dashboard section */}
         <Switch>
-          <Route exact path="/dashboard" component={DashboardHome} />
-          <Route exact path="/dashboard/profile" />
+          <Route exact path='/dashboard' component={DashboardHome} />
+          <Route exact path='/dashboard/profile' />
           <Route
             exact
-            path="/dashboard/schematics"
+            path='/dashboard/schematics'
             component={SchematicsList}
           />
         </Switch>

@@ -1,6 +1,6 @@
-import 'mxgraph/javascript/src/css/common.css';
+import 'mxgraph/javascript/src/css/common.css'
 
-import mxGraphFactory from 'mxgraph';
+import mxGraphFactory from 'mxgraph'
 import store from '../../../redux/store'
 import dot from '../../../static/dot.gif'
 import blockstyle from '../../../static/style.json'
@@ -10,7 +10,7 @@ import ToolbarTools from './ToolbarTools.js'
 import KeyboardShorcuts from './KeyboardShorcuts.js'
 import { SideBar } from './SideBar.js'
 
-var graph
+let graph
 
 const {
   mxGraph,
@@ -35,10 +35,10 @@ const {
   mxCellRenderer,
   mxConstraintHandler,
   mxImage
-} = new mxGraphFactory();
+} = new mxGraphFactory()
 
-function configureStylesheet(graph) {
-    graph.stylesheet.styles = blockstyle;
+function configureStylesheet (graph) {
+  graph.stylesheet.styles = blockstyle
 }
 
 export default function LoadGrid (container, sidebar, outline) {
@@ -76,8 +76,8 @@ export default function LoadGrid (container, sidebar, outline) {
     mxConnectionHandler.prototype.waypointsEnabled = true
     mxGraph.prototype.resetEdgesOnConnect = false
     mxConstants.SHADOWCOLOR = '#C0C0C0'
-    var joinNodeSize = 7
-    var strokeWidth = 2
+    const joinNodeSize = 7
+    const strokeWidth = 2
 
     // Replaces the port image
     mxConstraintHandler.prototype.pointImage = new mxImage(dot, 10, 10)
@@ -87,13 +87,13 @@ export default function LoadGrid (container, sidebar, outline) {
 
     // Creates the outline (navigator, overview) for moving
     // around the graph in the top, right corner of the window.
-    var outln = new mxOutline(graph, outline)
+    const outln = new mxOutline(graph, outline)
     // To show the images in the outline, uncomment the following code
     outln.outline.labelsVisible = true
     outln.outline.setHtmlLabels(true)
 
     graph.addListener(mxEvent.DOUBLE_CLICK, function (sender, evt) {
-      var cell = evt.getProperty('cell')
+      const cell = evt.getProperty('cell')
       if (cell !== undefined && cell.CellType === 'Component') {
         store.dispatch(getCompProperties(cell))
       } else {
@@ -124,7 +124,7 @@ export default function LoadGrid (container, sidebar, outline) {
     // This can be extended as shown in portrefs.html example to allow for per-port
     // incoming/outgoing direction.
     graph.getAllConnectionConstraints = function (terminal) {
-      var geo = (terminal != null) ? this.getCellGeometry(terminal.cell) : null
+      const geo = (terminal != null) ? this.getCellGeometry(terminal.cell) : null
 
       if ((geo != null ? !geo.relative : false) && this.getModel().isVertex(terminal.cell) && this.getModel().getChildCount(terminal.cell) === 0) {
         return [new mxConnectionConstraint(new mxPoint(0, 0.5), false), new mxConnectionConstraint(new mxPoint(1, 0.5), false)]
@@ -138,7 +138,7 @@ export default function LoadGrid (container, sidebar, outline) {
       if (this.graph.getModel().isEdge(cell)) {
         return true
       } else {
-        var geo = (cell != null) ? this.graph.getCellGeometry(cell) : null
+        const geo = (cell != null) ? this.graph.getCellGeometry(cell) : null
 
         return (geo != null) ? geo.relative : false
       }
@@ -150,18 +150,18 @@ export default function LoadGrid (container, sidebar, outline) {
     // Adds a special tooltip for edges
     graph.setTooltips(true)
 
-    var getTooltipForCell = graph.getTooltipForCell
+    const getTooltipForCell = graph.getTooltipForCell
     graph.getTooltipForCell = function (cell) {
-      var tip = ''
+      let tip = ''
 
       if (cell != null) {
-        var src = this.getModel().getTerminal(cell, true)
+        const src = this.getModel().getTerminal(cell, true)
 
         if (src != null) {
           tip += this.getTooltipForCell(src) + ' '
         }
 
-        var parent = this.getModel().getParent(cell)
+        const parent = this.getModel().getParent(cell)
 
         if (this.getModel().isVertex(parent)) {
           tip += this.getTooltipForCell(parent) + '.'
@@ -169,7 +169,7 @@ export default function LoadGrid (container, sidebar, outline) {
 
         tip += getTooltipForCell.apply(this, arguments)
 
-        var trg = this.getModel().getTerminal(cell, false)
+        const trg = this.getModel().getTerminal(cell, false)
 
         if (trg != null) {
           tip += ' ' + this.getTooltipForCell(trg)
@@ -180,13 +180,13 @@ export default function LoadGrid (container, sidebar, outline) {
     }
 
     // Switch for black background and bright styles
-    var invert = false
+    const invert = false
 
     if (invert) {
       container.style.backgroundColor = 'black'
 
       // White in-place editor text color
-      var mxCellEditorStartEditing = mxCellEditor.prototype.startEditing
+      const mxCellEditorStartEditing = mxCellEditor.prototype.startEditing
       mxCellEditor.prototype.startEditing = function (cell, trigger) {
         mxCellEditorStartEditing.apply(this, arguments)
 
@@ -198,12 +198,12 @@ export default function LoadGrid (container, sidebar, outline) {
       mxGraphHandler.prototype.previewColor = 'white'
     }
 
-    var labelBackground = (invert) ? '#000000' : '#FFFFFF'
-    var fontColor = (invert) ? '#FFFFFF' : '#000000'
-    var strokeColor = (invert) ? '#C0C0C0' : '#000000'
+    const labelBackground = (invert) ? '#000000' : '#FFFFFF'
+    const fontColor = (invert) ? '#FFFFFF' : '#000000'
+    const strokeColor = (invert) ? '#C0C0C0' : '#000000'
     // var fillColor = (invert) ? 'none' : '#FFFFFF'
 
-    var style = graph.getStylesheet().getDefaultEdgeStyle()
+    let style = graph.getStylesheet().getDefaultEdgeStyle()
     delete style.endArrow
     style.strokeColor = strokeColor
     style.labelBackgroundColor = labelBackground
@@ -235,15 +235,15 @@ export default function LoadGrid (container, sidebar, outline) {
 
     SideBar(graph, sidebar)
     KeyboardShorcuts(graph)
-    //NetlistInfoFunct(graph)
+    // NetlistInfoFunct(graph)
     ToolbarTools(graph)
 
     store.subscribe(() => {
-      var id = store.getState().componentPropertiesReducer.id
-      var parameter_values = store.getState().componentPropertiesReducer.parameter_values
-      var displayProperties = store.getState().componentPropertiesReducer.displayProperties
-      var cellList = graph.getModel().cells
-      var c = cellList[id]
+      const id = store.getState().componentPropertiesReducer.id
+      const parameter_values = store.getState().componentPropertiesReducer.parameter_values
+      const displayProperties = store.getState().componentPropertiesReducer.displayProperties
+      const cellList = graph.getModel().cells
+      const c = cellList[id]
       if (c !== undefined) {
         c.parameter_values = parameter_values
         c.displayProperties = displayProperties
@@ -251,27 +251,27 @@ export default function LoadGrid (container, sidebar, outline) {
     })
 
     // Wire-mode
-    var checkbox = {
+    const checkbox = {
       checked: false
     }
 
-    //document.body.appendChild(checkbox)
-    //mxUtils.write(document.body, 'Wire Mode')
+    // document.body.appendChild(checkbox)
+    // mxUtils.write(document.body, 'Wire Mode')
 
     // Starts connections on the background in wire-mode
-    var connectionHandlerIsStartEvent = graph.connectionHandler.isStartEvent
+    const connectionHandlerIsStartEvent = graph.connectionHandler.isStartEvent
     graph.connectionHandler.isStartEvent = function (me) {
       return checkbox.checked || connectionHandlerIsStartEvent.apply(this, arguments)
     }
 
     // Avoids any connections for gestures within tolerance except when in wire-mode
     // or when over a port
-    var connectionHandlerMouseUp = graph.connectionHandler.mouseUp
+    const connectionHandlerMouseUp = graph.connectionHandler.mouseUp
     graph.connectionHandler.mouseUp = function (sender, me) {
       if (this.first != null && this.previous != null) {
-        var point = mxUtils.convertPoint(this.graph.container, me.getX(), me.getY())
-        var dx = Math.abs(point.x - this.first.x)
-        var dy = Math.abs(point.y - this.first.y)
+        const point = mxUtils.convertPoint(this.graph.container, me.getX(), me.getY())
+        const dx = Math.abs(point.x - this.first.x)
+        const dy = Math.abs(point.y - this.first.y)
 
         if (dx < this.graph.tolerance && dy < this.graph.tolerance) {
           // Selects edges in non-wire mode for single clicks, but starts
@@ -310,17 +310,17 @@ export default function LoadGrid (container, sidebar, outline) {
 
   // Computes the position of edge to edge connection points.
   mxGraphView.prototype.updateFixedTerminalPoint = function (edge, terminal, source, constraint) {
-    var pt = null
+    let pt = null
 
     if (constraint != null) {
       pt = this.graph.getConnectionPoint(terminal, constraint)
     }
 
     if (pt == null) {
-      var s = this.scale
-      var tr = this.translate
-      var orig = edge.origin
-      var geo = this.graph.getCellGeometry(edge.cell)
+      const s = this.scale
+      const tr = this.translate
+      const orig = edge.origin
+      const geo = this.graph.getCellGeometry(edge.cell)
       pt = geo.getTerminalPoint(source)
 
       // Computes edge-to-edge connection point
@@ -330,16 +330,16 @@ export default function LoadGrid (container, sidebar, outline) {
 
         // Finds nearest segment on edge and computes intersection
         if (terminal != null && terminal.absolutePoints != null) {
-          var seg = mxUtils.findNearestSegment(terminal, pt.x, pt.y)
+          const seg = mxUtils.findNearestSegment(terminal, pt.x, pt.y)
 
           // Finds orientation of the segment
-          var p0 = terminal.absolutePoints[seg]
-          var pe = terminal.absolutePoints[seg + 1]
-          var horizontal = (p0.x - pe.x === 0)
+          const p0 = terminal.absolutePoints[seg]
+          const pe = terminal.absolutePoints[seg + 1]
+          const horizontal = (p0.x - pe.x === 0)
 
           // Stores the segment in the edge state
-          var key = (source) ? 'sourceConstraint' : 'targetConstraint'
-          var value = (horizontal) ? 'horizontal' : 'vertical'
+          const key = (source) ? 'sourceConstraint' : 'targetConstraint'
+          const value = (horizontal) ? 'horizontal' : 'vertical'
           edge.style[key] = value
 
           // Keeps the coordinate within the segment bounds
@@ -365,15 +365,15 @@ export default function LoadGrid (container, sidebar, outline) {
   }
   // Sets source terminal point for edge-to-edge connections.
   mxConnectionHandler.prototype.createEdgeState = function (me) {
-    var edge = this.graph.createEdge()
+    const edge = this.graph.createEdge()
 
     if (this.sourceConstraint != null && this.previous != null) {
       edge.style = mxConstants.STYLE_EXIT_X + '=' + this.sourceConstraint.point.x + ';' +
         mxConstants.STYLE_EXIT_Y + '=' + this.sourceConstraint.point.y + ';'
     } else if (this.graph.model.isEdge(me.getCell())) {
-      var scale = this.graph.view.scale
-      var tr = this.graph.view.translate
-      var pt = new mxPoint(this.graph.snap(me.getGraphX() / scale) - tr.x,
+      const scale = this.graph.view.scale
+      const tr = this.graph.view.translate
+      const pt = new mxPoint(this.graph.snap(me.getGraphX() / scale) - tr.x,
         this.graph.snap(me.getGraphY() / scale) - tr.y)
       edge.geometry.setTerminalPoint(pt, true)
     }
@@ -388,33 +388,32 @@ export default function LoadGrid (container, sidebar, outline) {
 
   // Updates target terminal point for edge-to-edge connections.
   try {
-  var mxConnectionHandlerUpdateCurrentState = mxConnectionHandler.prototype.updateCurrentState
-  mxConnectionHandler.prototype.updateCurrentState = function (me) {
-    try {
-    mxConnectionHandlerUpdateCurrentState.apply(this, arguments)
-    }
-    catch(err) {
-    }
-    if (this.edgeState != null) {
-      this.edgeState.cell.geometry.setTerminalPoint(null, false)
+    const mxConnectionHandlerUpdateCurrentState = mxConnectionHandler.prototype.updateCurrentState
+    mxConnectionHandler.prototype.updateCurrentState = function (me) {
+      try {
+        mxConnectionHandlerUpdateCurrentState.apply(this, arguments)
+      } catch (err) {
+      }
+      if (this.edgeState != null) {
+        this.edgeState.cell.geometry.setTerminalPoint(null, false)
 
-      if (this.shape != null && this.currentState != null &&
+        if (this.shape != null && this.currentState != null &&
           this.currentState.view.graph.model.isEdge(this.currentState.cell)) {
-        var scale = this.graph.view.scale
-        var tr = this.graph.view.translate
-        var pt = new mxPoint(this.graph.snap(me.getGraphX() / scale) - tr.x,
-          this.graph.snap(me.getGraphY() / scale) - tr.y)
-        this.edgeState.cell.geometry.setTerminalPoint(pt, false)
+          const scale = this.graph.view.scale
+          const tr = this.graph.view.translate
+          const pt = new mxPoint(this.graph.snap(me.getGraphX() / scale) - tr.x,
+            this.graph.snap(me.getGraphY() / scale) - tr.y)
+          this.edgeState.cell.geometry.setTerminalPoint(pt, false)
+        }
       }
     }
-  } }
-  catch(e){
+  } catch (e) {
     console.log(e)
   }
 
   // Updates the terminal and control points in the cloned preview.
   mxEdgeSegmentHandler.prototype.clonePreviewState = function (point, terminal) {
-    var clone = mxEdgeHandler.prototype.clonePreviewState.apply(this, arguments)
+    const clone = mxEdgeHandler.prototype.clonePreviewState.apply(this, arguments)
     clone.cell = clone.cell.clone()
 
     if (this.isSource || this.isTarget) {
@@ -432,27 +431,27 @@ export default function LoadGrid (container, sidebar, outline) {
     return clone
   }
 
-  var mxEdgeHandlerConnect = mxEdgeHandler.prototype.connect
+  const mxEdgeHandlerConnect = mxEdgeHandler.prototype.connect
   mxEdgeHandler.prototype.connect = function (edge, terminal, isSource, isClone, me) {
-    var result = null
-    var model = this.graph.getModel()
+    let result = null
+    const model = this.graph.getModel()
     // var parent = model.getParent(edge)
 
     model.beginUpdate()
     try {
       result = mxEdgeHandlerConnect.apply(this, arguments)
-      var geo = model.getGeometry(result)
+      let geo = model.getGeometry(result)
 
       if (geo != null) {
         geo = geo.clone()
-        var pt = null
+        let pt = null
 
         if (model.isEdge(terminal)) {
           pt = this.abspoints[(this.isSource) ? 0 : this.abspoints.length - 1]
           pt.x = pt.x / this.graph.view.scale - this.graph.view.translate.x
           pt.y = pt.y / this.graph.view.scale - this.graph.view.translate.y
 
-          var pstate = this.graph.getView().getState(
+          const pstate = this.graph.getView().getState(
             this.graph.getModel().getParent(edge))
 
           if (pstate != null) {
@@ -474,9 +473,9 @@ export default function LoadGrid (container, sidebar, outline) {
     return result
   }
 
-  var mxConnectionHandlerCreateMarker = mxConnectionHandler.prototype.createMarker
+  const mxConnectionHandlerCreateMarker = mxConnectionHandler.prototype.createMarker
   mxConnectionHandler.prototype.createMarker = function () {
-    var marker = mxConnectionHandlerCreateMarker.apply(this, arguments)
+    const marker = mxConnectionHandlerCreateMarker.apply(this, arguments)
 
     // Uses complete area of cell for new connections (no hotspot)
     marker.intersects = function (state, evt) {
@@ -518,9 +517,9 @@ export default function LoadGrid (container, sidebar, outline) {
     return marker
   }
 
-  var mxEdgeHandlerCreateMarker = mxEdgeHandler.prototype.createMarker
+  const mxEdgeHandlerCreateMarker = mxEdgeHandler.prototype.createMarker
   mxEdgeHandler.prototype.createMarker = function () {
-    var marker = mxEdgeHandlerCreateMarker.apply(this, arguments)
+    const marker = mxEdgeHandlerCreateMarker.apply(this, arguments)
 
     // Adds in-place highlighting when reconnecting existing edges
     marker.highlight.highlight = this.graph.connectionHandler.marker.highlight.highlight
@@ -528,9 +527,9 @@ export default function LoadGrid (container, sidebar, outline) {
     return marker
   }
 
-  var mxGraphGetCellStyle = mxGraph.prototype.getCellStyle
+  const mxGraphGetCellStyle = mxGraph.prototype.getCellStyle
   mxGraph.prototype.getCellStyle = function (cell) {
-    var style = mxGraphGetCellStyle.apply(this, arguments)
+    let style = mxGraphGetCellStyle.apply(this, arguments)
 
     if (style != null && this.model.isEdge(cell)) {
       style = mxUtils.clone(style)
@@ -552,7 +551,7 @@ export default function LoadGrid (container, sidebar, outline) {
   ResistorShape.prototype.constructor = ResistorShape
 
   ResistorShape.prototype.redrawPath = function (path, x, y, w, h, isForeground) {
-    var dx = w / 16
+    const dx = w / 16
 
     if (isForeground) {
       path.moveTo(0, h / 2)
@@ -574,9 +573,9 @@ export default function LoadGrid (container, sidebar, outline) {
 
   mxEdgeStyle.WireConnector = function (state, source, target, hints, result) {
     // Creates array of all way- and terminalpoints
-    var pts = state.absolutePoints
-    var horizontal = true
-    var hint = null
+    const pts = state.absolutePoints
+    let horizontal = true
+    let hint = null
 
     // Gets the initial connection from the source terminal or edge
     if (source != null && state.view.graph.model.isEdge(source.cell)) {
@@ -585,7 +584,7 @@ export default function LoadGrid (container, sidebar, outline) {
       horizontal = source.style.portConstraint !== 'vertical'
 
       // Checks the direction of the shape and rotates
-      var direction = source.style[mxConstants.STYLE_DIRECTION]
+      const direction = source.style[mxConstants.STYLE_DIRECTION]
 
       if (direction === 'north' || direction === 'south') {
         horizontal = !horizontal
@@ -594,7 +593,7 @@ export default function LoadGrid (container, sidebar, outline) {
 
     // Adds the first point
     // TODO: Should move along connected segment
-    var pt = pts[0]
+    let pt = pts[0]
 
     if (pt == null && source != null) {
       pt = new mxPoint(state.view.getRoutingCenterX(source), state.view.getRoutingCenterY(source))
@@ -602,7 +601,7 @@ export default function LoadGrid (container, sidebar, outline) {
       pt = pt.clone()
     }
 
-    var first = pt
+    const first = pt
 
     // Adds the waypoints
     if (hints != null && hints.length > 0) {
@@ -622,7 +621,7 @@ export default function LoadGrid (container, sidebar, outline) {
            //horizontal = !horizontal;
          } */
 
-      for (var i = 0; i < hints.length; i++) {
+      for (let i = 0; i < hints.length; i++) {
         horizontal = !horizontal
         hint = state.view.transformControlPoint(state, hints[i])
 
@@ -660,11 +659,11 @@ export default function LoadGrid (container, sidebar, outline) {
   mxStyleRegistry.putValue('wireEdgeStyle', mxEdgeStyle.WireConnector)
 
   // This connector needs an mxEdgeSegmentHandler
-  var mxGraphCreateHandler = mxGraph.prototype.createHandler
+  const mxGraphCreateHandler = mxGraph.prototype.createHandler
   mxGraph.prototype.createHandler = function (state) {
     if (state != null) {
       if (this.model.isEdge(state.cell)) {
-        var style = this.view.getEdgeStyle(state)
+        const style = this.view.getEdgeStyle(state)
 
         if (style === mxEdgeStyle.WireConnector) {
           return new mxEdgeSegmentHandler(state)

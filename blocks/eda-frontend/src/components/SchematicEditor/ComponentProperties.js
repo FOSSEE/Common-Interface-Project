@@ -16,7 +16,7 @@ export default function ComponentProperties () {
   const dispatch = useDispatch()
 
   useEffect(() => {
-      setVal(parameter_values)
+    setVal(parameter_values)
   }, [parameter_values])
 
   const getInputValues = (evt) => {
@@ -31,25 +31,27 @@ export default function ComponentProperties () {
     dispatch(setCompProperties(id, val))
   }
 
-  const link1 = name + ' Parameters';
-  const link2 = 'Set ' + process.env.REACT_APP_BLOCK_NAME + ' Parameters';
-  const link3 = 'No ' + name + ' Parameters';
+  const link1 = name + ' Parameters'
+  const link2 = 'Set ' + process.env.REACT_APP_BLOCK_NAME + ' Parameters'
+  const link3 = 'No ' + name + ' Parameters'
   return (
     <div style={isOpen ? {} : { display: 'none' }}>
 
       <ListItem>
-        { compProperties !== undefined ? <ListItemText primary={link1} /> : <ListItemText primary={link3} /> }
+        {compProperties !== undefined ? <ListItemText primary={link1} /> : <ListItemText primary={link3} />}
       </ListItem>
 
       {
         Object.keys(val).map((keyName, i) => {
           if (keyName.match(/^p[0-9]*_value$/)) {
-            let rootKeyName = keyName.substr(0, 4)
-            let type_id = rootKeyName + '_type';
+            const rootKeyName = keyName.substr(0, 4)
+            const type_id = rootKeyName + '_type'
             if (compProperties !== undefined && compProperties[rootKeyName] !== null && compProperties[type_id] !== null) {
-              return <ListItem key={i}>
-                <TextField id={keyName} label={compProperties[rootKeyName]} value={val[keyName] || ''} size='small' variant='outlined' onChange={getInputValues} />
-              </ListItem>
+              return (
+                <ListItem key={i}>
+                  <TextField id={keyName} label={compProperties[rootKeyName]} value={val[keyName] || ''} size='small' variant='outlined' onChange={getInputValues} />
+                </ListItem>
+              )
             }
           }
 
@@ -59,7 +61,7 @@ export default function ComponentProperties () {
 
       {
         compProperties !== undefined && <ListItem>
-          <Button size='small' variant="contained" color="primary" onClick={setProps}>{link2}</Button>
+          <Button size='small' variant='contained' color='primary' onClick={setProps}>{link2}</Button>
         </ListItem>
       }
 

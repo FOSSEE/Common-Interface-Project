@@ -1,16 +1,16 @@
-import 'mxgraph/javascript/src/css/common.css';
+import 'mxgraph/javascript/src/css/common.css'
 
-import mxGraphFactory from 'mxgraph';
+import mxGraphFactory from 'mxgraph'
 import { Undo, Redo, ZoomIn, ZoomOut, ZoomAct } from './ToolbarTools'
 
 const {
   mxKeyHandler,
   mxEvent,
   mxClient
-} = new mxGraphFactory();
+} = new mxGraphFactory()
 
 export default function KeyboardShortcuts (graph) {
-  var keyHandler = new mxKeyHandler(graph)
+  const keyHandler = new mxKeyHandler(graph)
 
   keyHandler.getFunction = function (evt) {
     if (evt != null) {

@@ -81,11 +81,11 @@ function SimpleSnackbar ({ open, close, message }) {
         onClose={close}
         message={message}
         action={
-          <React.Fragment>
-            <IconButton size="small" aria-label="close" color="inherit" onClick={close}>
-              <CloseIcon fontSize="small" />
+          <>
+            <IconButton size='small' aria-label='close' color='inherit' onClick={close}>
+              <CloseIcon fontSize='small' />
             </IconButton>
-          </React.Fragment>
+          </>
         }
       />
     </div>
@@ -172,8 +172,8 @@ function Header () {
 
   // handle display format of last saved status
   function getDate (jsonDate) {
-    var json = jsonDate
-    var date = new Date(json)
+    const json = jsonDate
+    const date = new Date(json)
     const dateTimeFormat = new Intl.DateTimeFormat('en', { month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' })
     const [{ value: month }, , { value: day }, , { value: hour }, , { value: minute }, , { value: second }] = dateTimeFormat.formatToParts(date)
     return `${day} ${month} ${hour}:${minute}:${second}`
@@ -195,20 +195,20 @@ function Header () {
   const typography1 = 'Share Your ' + process.env.REACT_APP_DIAGRAM_NAME
   const typography2 = 'My ' + process.env.REACT_APP_DIAGRAMS_NAME
   return (
-    <Toolbar variant="dense" color="default">
+    <Toolbar variant='dense' color='default'>
       <SimpleSnackbar open={snacOpen} close={handleSnacClose} message={message} />
 
       {/* Display logo */}
-      <IconButton edge="start" className={classes.button} color="primary">
+      <IconButton edge='start' className={classes.button} color='primary'>
         <Avatar alt={altImage} src={logo} className={classes.small} />
       </IconButton>
       <Typography
-        variant="h6"
-        color="inherit"
+        variant='h6'
+        color='inherit'
         noWrap
         className={classes.toolbarTitle}
       >
-        <Link color="inherit" target='_blank' component={RouterLink} to="/">
+        <Link color='inherit' target='_blank' component={RouterLink} to='/'>
           {link}
         </Link>
       </Typography>
@@ -217,7 +217,7 @@ function Header () {
       <Hidden xsDown>
         <Input
           className={classes.input}
-          color="secondary"
+          color='secondary'
           value={schSave.title === 'Untitled' ? 'Untitled' : schSave.title}
           onChange={titleHandler}
           inputProps={{ 'aria-label': 'SchematicTitle' }}
@@ -229,17 +229,16 @@ function Header () {
         ? <>
           {(schSave.isSaved === true && schSave.details.save_time !== undefined)
             ? <Typography
-              variant="body2"
-              style={{ margin: '0px 15px 0px auto', paddingTop: '5px', color: '#8c8c8c' }}
-            >
+                variant='body2'
+                style={{ margin: '0px 15px 0px auto', paddingTop: '5px', color: '#8c8c8c' }}
+              >
               Last Saved : {getDate(schSave.details.save_time)} {/* Display last saved status for saved schematics */}
             </Typography>
-            : <></>
-          }
+            : <></>}
           <Button
-            size="small"
+            size='small'
             variant={shared !== true ? 'outlined' : 'contained'}
-            color="primary"
+            color='primary'
             className={schSave.isSaved === true && schSave.details.save_time !== undefined ? classes.button : classes.rightBlock}
             startIcon={<ShareIcon />}
             onClick={handleShare}
@@ -247,44 +246,41 @@ function Header () {
             <Hidden xsDown>Share</Hidden>
           </Button>
         </>
-        : <></>
-      }
+        : <></>}
 
       {/* Share dialog box to get share url */}
       <Dialog
         open={openShare}
         onClose={handleShareClose}
-        aria-labelledby="share-dialog-title"
-        aria-describedby="share-dialog-description"
+        aria-labelledby='share-dialog-title'
+        aria-describedby='share-dialog-description'
       >
-        <DialogTitle id="share-dialog-title">{typography1}</DialogTitle>
+        <DialogTitle id='share-dialog-title'>{typography1}</DialogTitle>
         <DialogContent>
-          <DialogContentText id="share-dialog-description">
+          <DialogContentText id='share-dialog-description'>
             <FormControlLabel
-              control={<Switch checked={shared} onChange={handleShareChange} name="shared" />}
-              label=": Sharing On"
+              control={<Switch checked={shared} onChange={handleShareChange} name='shared' />}
+              label=': Sharing On'
             />
           </DialogContentText>
-          <DialogContentText id="share-dialog-description">
+          <DialogContentText id='share-dialog-description'>
             {shared === true
               ? <input
-                ref={textAreaRef}
-                value={`${window.location.protocol}\\\\${window.location.host}/eda/#/editor?id=${schSave.details.save_id}`}
-                readOnly
-              />
-              : <> Turn On sharing </>
-            }
+                  ref={textAreaRef}
+                  value={`${window.location.protocol}\\\\${window.location.host}/eda/#/editor?id=${schSave.details.save_id}`}
+                  readOnly
+                />
+              : <> Turn On sharing </>}
           </DialogContentText>
 
         </DialogContent>
         <DialogActions>
           {shared === true && document.queryCommandSupported('copy')
-            ? <Button onClick={copyToClipboard} color="primary" autoFocus>
+            ? <Button onClick={copyToClipboard} color='primary' autoFocus>
               Copy url
             </Button>
-            : <></>
-          }
-          <Button onClick={handleShareClose} color="primary" autoFocus>
+            : <></>}
+          <Button onClick={handleShareClose} color='primary' autoFocus>
             close
           </Button>
         </DialogActions>
@@ -293,22 +289,22 @@ function Header () {
       {/* Display login option or user menu as per authenticated status */}
       {
         (!auth.isAuthenticated ? (<Button
-          size="small"
+          size='small'
           component={RouterLink}
-          to="/login"
+          to='/login'
           style={{ marginLeft: 'auto' }}
-          color="primary"
-          variant="outlined"
-        >
+          color='primary'
+          variant='outlined'
+                                  >
           Login
         </Button>)
           : (<>
 
             <IconButton
-              edge="start"
-              color="primary"
-              aria-controls="simple-menu"
-              aria-haspopup="true"
+              edge='start'
+              color='primary'
+              aria-controls='simple-menu'
+              aria-haspopup='true'
               onClick={handleClick}
             >
               <Avatar className={classes.purple}>
@@ -316,7 +312,7 @@ function Header () {
               </Avatar>
             </IconButton>
             <Menu
-              id="simple-menu"
+              id='simple-menu'
               anchorEl={anchorEl}
               keepMounted
               open={Boolean(anchorEl)}
@@ -327,7 +323,7 @@ function Header () {
               <MenuItem
                 target='_blank'
                 component={RouterLink}
-                to="/dashboard"
+                to='/dashboard'
                 onClick={handleClose}
               >
                 <ListItemText primary={auth.user.username} secondary={auth.user.email} />
@@ -335,7 +331,7 @@ function Header () {
               <MenuItem
                 target='_blank'
                 component={RouterLink}
-                to="/dashboard/profile"
+                to='/dashboard/profile'
                 onClick={handleClose}
               >
                 My Profile
@@ -343,19 +339,20 @@ function Header () {
               <MenuItem
                 target='_blank'
                 component={RouterLink}
-                to="/dashboard/schematics"
+                to='/dashboard/schematics'
                 onClick={handleClose}
               >
                 {typography2}
               </MenuItem>
               <MenuItem onClick={() => {
                 store.dispatch(logout(history))
-              }}>
+              }}
+              >
                 Logout
               </MenuItem>
             </Menu>
           </>
-          )
+            )
         )
       }
     </Toolbar>

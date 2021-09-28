@@ -1,6 +1,6 @@
-import 'mxgraph/javascript/src/css/common.css';
+import 'mxgraph/javascript/src/css/common.css'
 
-import mxGraphFactory from 'mxgraph';
+import mxGraphFactory from 'mxgraph'
 import { default_scale, getSvgMetadata } from './SvgParser.js'
 
 const {
@@ -8,31 +8,31 @@ const {
   mxUtils,
   mxEvent,
   mxDragSource
-} = new mxGraphFactory();
+} = new mxGraphFactory()
 
-var graph
+let graph
 
 export function SideBar (getGraph) {
   graph = getGraph
 }
 
 export function AddComponent (component, imgref) {
-  var img = imgref
+  const img = imgref
 
-  var graphF = function (evt) {
-    var x = mxEvent.getClientX(evt)
-    var y = mxEvent.getClientY(evt)
-    var elt = document.elementFromPoint(x, y)
+  const graphF = function (evt) {
+    const x = mxEvent.getClientX(evt)
+    const y = mxEvent.getClientY(evt)
+    const elt = document.elementFromPoint(x, y)
     if (mxUtils.isAncestorNode(graph.container, elt)) {
       return graph
     }
     return null
   }
-  var funct = function (graph, evt, target, x, y) {
-    var parent = graph.getDefaultParent()
-    var model = graph.getModel()
+  const funct = function (graph, evt, target, x, y) {
+    const parent = graph.getDefaultParent()
+    const model = graph.getModel()
 
-    var v1 = null
+    const v1 = null
 
     model.beginUpdate()
     try {
@@ -67,7 +67,7 @@ export function AddComponent (component, imgref) {
   }
 
   // Creates the element that is being for the actual preview.
-  var dragElt = document.createElement('div')
+  const dragElt = document.createElement('div')
   dragElt.style.border = 'dashed black 1px'
   dragElt.style.width = (component.block_width / default_scale) + 'px'
   dragElt.style.height = (component.block_height / default_scale) + 'px'
@@ -77,7 +77,7 @@ export function AddComponent (component, imgref) {
   // the use of the defaults. Note that dx and dy are only used for the
   // drag icon but not for the preview.
 
-  var ds = mxUtils.makeDraggable(
+  const ds = mxUtils.makeDraggable(
     img,
     graphF,
     funct,

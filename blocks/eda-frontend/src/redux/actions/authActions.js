@@ -94,7 +94,7 @@ export const login = (username, password, toUrl) => {
         }
       })
       .catch((err) => {
-        var res = err.response
+        const res = err.response
         if (res.status === 400 || res.status === 403 || res.status === 401) {
           dispatch(loginError('Incorrect Username or Password.'))
         } else {
@@ -132,7 +132,7 @@ export const signUp = (email, username, password, history) => (dispatch) => {
       }
     })
     .catch((err) => {
-      var res = err.response
+      const res = err.response
       if (res.status === 400 || res.status === 403 || res.status === 401) {
         if (res.data.username !== undefined) {
           if (res.data.username[0].search('already') !== -1 && res.data.username[0].search('exists') !== -1) { dispatch(signUpError('Username Already Taken.')) }
@@ -223,7 +223,7 @@ export const googleLogin = (host, toUrl) => {
       })
       .then((res) => { console.log(res) })
       .catch((err) => {
-        var res = err.response
+        const res = err.response
         if (res.status === 400 || res.status === 403 || res.status === 401) {
           dispatch(loginError('Incorrect Username or Password.'))
         } else {

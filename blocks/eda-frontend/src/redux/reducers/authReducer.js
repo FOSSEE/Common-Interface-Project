@@ -1,6 +1,6 @@
 import * as actions from '../actions/actions'
 
-const token = process.env.REACT_APP_NAME + '_token';
+const token = process.env.REACT_APP_NAME + '_token'
 const initialState = {
   token: localStorage.getItem(token),
   isAuthenticated: null,

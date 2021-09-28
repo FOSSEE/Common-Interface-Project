@@ -20,7 +20,7 @@ function TabPanel (props) {
 
   return (
     <div
-      role="tabpanel"
+      role='tabpanel'
       hidden={value !== index}
       id={`scrollable-auto-tabpanel-${index}`}
       aria-labelledby={`scrollable-auto-tab-${index}`}
@@ -69,13 +69,13 @@ export default function ProgressPanel () {
   const typography = 'You have not created any ' + process.env.REACT_APP_SMALL_DIAGRAM_NAME
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position='static'>
         <Tabs
           value={value}
           onChange={handleChange}
-          variant="scrollable"
-          scrollButtons="auto"
-          aria-label="scrollable auto tabs example"
+          variant='scrollable'
+          scrollButtons='auto'
+          aria-label='scrollable auto tabs example'
         >
           <Tab label={tab} {...a11yProps(0)} />
         </Tabs>
@@ -85,13 +85,13 @@ export default function ProgressPanel () {
       <TabPanel value={value} index={0}>
         {schematics.length !== 0
           ? <Grid
-            container
-            direction="row"
-            justify="flex-start"
-            alignItems="flex-start"
-            alignContent="center"
-            spacing={3}
-          >
+              container
+              direction='row'
+              justify='flex-start'
+              alignItems='flex-start'
+              alignContent='center'
+              spacing={3}
+            >
             {schematics.slice(0, 4).map(
               (sch) => {
                 return (
@@ -102,10 +102,9 @@ export default function ProgressPanel () {
               }
             )}
           </Grid>
-          : <Typography variant="button" display="block" gutterBottom>
+          : <Typography variant='button' display='block' gutterBottom>
             {typography} , Create your first one now...
-          </Typography>
-        }
+          </Typography>}
       </TabPanel>
     </div>
   )

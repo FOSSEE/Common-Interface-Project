@@ -33,23 +33,23 @@ function Layout ({ header, resToolbar, sidebar }) {
     <>
       {/* Header and Toolbar of layout */}
       <AppBar
-        position="fixed"
-        color="default"
+        position='fixed'
+        color='default'
         elevation={0}
         className={classes.appBar}
       >
         {header}
 
-        <Toolbar variant="dense" color="default">
+        <Toolbar variant='dense' color='default'>
           <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            size="small"
+            color='inherit'
+            aria-label='open drawer'
+            edge='start'
+            size='small'
             onClick={handleDrawerToggle}
             className={classes.menuButton}
           >
-            <MenuIcon fontSize="small" />
+            <MenuIcon fontSize='small' />
           </IconButton>
 
           {resToolbar}

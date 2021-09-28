@@ -18,14 +18,14 @@ export default function NotFound () {
   })
 
   return (
-    <Container maxWidth="lg" className={classes.header}>
-      <Typography variant="h1" align="center" gutterBottom>
+    <Container maxWidth='lg' className={classes.header}>
+      <Typography variant='h1' align='center' gutterBottom>
         404 Not Found
       </Typography>
       <Typography
-        variant="h4"
-        align="center"
-        color="textSecondary"
+        variant='h4'
+        align='center'
+        color='textSecondary'
         gutterBottom
       >
         Sorry, Requested page not found

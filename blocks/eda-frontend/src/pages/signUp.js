@@ -50,7 +50,7 @@ export default function SignUp () {
   const auth = useSelector(state => state.authReducer)
 
   const dispatch = useDispatch()
-  var homeURL = `${window.location.protocol}\\\\${window.location.host}/`
+  const homeURL = `${window.location.protocol}\\\\${window.location.host}/`
 
   useEffect(() => {
     dispatch(authDefault())
@@ -69,113 +69,113 @@ export default function SignUp () {
 
   // Function call for google oAuth sign up.
   const handleGoogleSignup = () => {
-    var host = window.location.protocol + '//' + window.location.host
+    const host = window.location.protocol + '//' + window.location.host
     dispatch(googleLogin(host))
   }
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component='main' maxWidth='xs'>
       <Card className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
 
-        <Typography component="h1" variant="h5">
+        <Typography component='h1' variant='h5'>
           Register | Sign Up
         </Typography>
 
         {/* Display's error messages while signing in */}
-        <Typography variant="body1" align="center" style={{ marginTop: '10px' }} color={auth.isRegistered ? 'secondary' : 'error'}>
+        <Typography variant='body1' align='center' style={{ marginTop: '10px' }} color={auth.isRegistered ? 'secondary' : 'error'}>
           {auth.regErrors}
         </Typography>
 
         <form className={classes.form} noValidate>
           <TextField
-            variant="outlined"
-            margin="normal"
+            variant='outlined'
+            margin='normal'
             required
             fullWidth
-            id="username"
-            label="Username"
-            name="username"
-            autoComplete="email"
+            id='username'
+            label='Username'
+            name='username'
+            autoComplete='email'
             value={username}
             onChange={e => setUsername(e.target.value)}
             autoFocus
           />
           <TextField
-            variant="outlined"
-            margin="normal"
+            variant='outlined'
+            margin='normal'
             required
             fullWidth
-            id="email"
-            label="email"
-            name="email"
-            type="email"
-            autoComplete="email"
+            id='email'
+            label='email'
+            name='email'
+            type='email'
+            autoComplete='email'
             value={email}
             onChange={e => setEmail(e.target.value)}
             autoFocus
           />
           <TextField
-            variant="outlined"
-            margin="normal"
+            variant='outlined'
+            margin='normal'
             required
             fullWidth
-            name="password"
-            label="Password"
+            name='password'
+            label='Password'
             InputProps={{
               endAdornment: (
-                <InputAdornment position="end">
+                <InputAdornment position='end'>
                   <IconButton
-                    size="small"
-                    aria-label="toggle password visibility"
+                    size='small'
+                    aria-label='toggle password visibility'
                     onClick={handleClickShowPassword}
                     onMouseDown={handleMouseDownPassword}
                   >
-                    {showPassword ? <Visibility fontSize="small" /> : <VisibilityOff fontSize="small" />} {/* Handle password visibility */}
+                    {showPassword ? <Visibility fontSize='small' /> : <VisibilityOff fontSize='small' />} {/* Handle password visibility */}
                   </IconButton>
                 </InputAdornment>
               )
             }}
             type={showPassword ? 'text' : 'password'}
-            id="password"
+            id='password'
             value={password}
             onChange={e => setPassword(e.target.value)}
-            autoComplete="current-password"
+            autoComplete='current-password'
           />
           <FormControlLabel
-            control={<Checkbox checked={accept} onChange={e => setAccept(e.target.checked)} color="primary" />}
-            label="I accept the Terms of Use & Privacy Policy"
+            control={<Checkbox checked={accept} onChange={e => setAccept(e.target.checked)} color='primary' />}
+            label='I accept the Terms of Use & Privacy Policy'
           />
           <Button
             fullWidth
-            variant="contained"
-            color="primary"
+            variant='contained'
+            color='primary'
             onClick={() => dispatch(signUp(email, username, password, history))}
             className={classes.submit}
             disabled={!accept}
           >
             Sign Up
           </Button>
-          <Typography variant="body2" color="secondary" align="center" >Or</Typography>
+          <Typography variant='body2' color='secondary' align='center'>Or</Typography>
 
           {/* Google oAuth Sign Up option */}
           <Button
             fullWidth
-            variant="outlined"
-            color="primary"
+            variant='outlined'
+            color='primary'
             onClick={handleGoogleSignup}
             className={classes.submit}
           >
-            <img alt="G" src={google} height="20" />&emsp; Sign Up With Google
+            <img alt='G' src={google} height='20' />&emsp; Sign Up With Google
           </Button>
         </form>
 
         <Grid container>
-          <Grid item style={{ margin: 'auto' }} >
-            <Link component={RouterLink} to="/login" variant="body2">
-              {'Already have account? Login'}
+          <Grid item style={{ margin: 'auto' }}>
+            <Link component={RouterLink} to='/login' variant='body2'>
+              Already have account? Login
             </Link>
           </Grid>
         </Grid>
@@ -183,7 +183,7 @@ export default function SignUp () {
       <Button
         fullWidth
         onClick={() => { window.open(homeURL, '_self') }}
-        color="default"
+        color='default'
         className={classes.submit}
       >
         Back to home
