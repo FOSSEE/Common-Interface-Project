@@ -26,7 +26,7 @@ import { useSelector } from 'react-redux'
 import Graph from '../Shared/Graph'
 
 const Transition = React.forwardRef(function Transition (props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />
+  return <Slide direction='up' ref={ref} {...props} />
 })
 
 const useStyles = makeStyles((theme) => ({
@@ -78,49 +78,51 @@ export default function SimulationScreen ({ open, close, isResult }) {
   }
   return (
     <div>
-      <Dialog fullScreen open={open} onClose={close} TransitionComponent={Transition} PaperProps={{
-        style: {
-          backgroundColor: '#4d4d4d',
-          boxShadow: 'none'
-        }
-      }}>
-        <AppBar position="static" elevation={0} className={classes.appBar}>
-          <Toolbar variant="dense" style={{ backgroundColor: '#404040' }} >
-            <IconButton edge="start" color="inherit" onClick={close} aria-label="close">
+      <Dialog
+        fullScreen open={open} onClose={close} TransitionComponent={Transition} PaperProps={{
+          style: {
+            backgroundColor: '#4d4d4d',
+            boxShadow: 'none'
+          }
+        }}
+      >
+        <AppBar position='static' elevation={0} className={classes.appBar}>
+          <Toolbar variant='dense' style={{ backgroundColor: '#404040' }}>
+            <IconButton edge='start' color='inherit' onClick={close} aria-label='close'>
               <CloseIcon />
             </IconButton>
-            <Typography variant="h6" className={classes.title}>
+            <Typography variant='h6' className={classes.title}>
               Simulation Result
             </Typography>
-            <Button autoFocus color="inherit" onClick={close}>
+            <Button autoFocus color='inherit' onClick={close}>
               close
             </Button>
           </Toolbar>
         </AppBar>
-        <Container maxWidth="lg" className={classes.header}>
+        <Container maxWidth='lg' className={classes.header}>
           <Grid
             container
             spacing={3}
-            direction="row"
-            justify="center"
-            alignItems="center"
+            direction='row'
+            justify='center'
+            alignItems='center'
           >
             {isResult === true ? <>
               {
                 (result.graph !== {} && result.isGraph === 'true')
                   ? <Grid item xs={12} sm={12}>
                     <Paper className={classes.paper}>
-                      <Typography variant="h4" align="center" gutterBottom>
+                      <Typography variant='h4' align='center' gutterBottom>
                         GRAPH OUTPUT
                       </Typography>
                       <div style={{ padding: '15px 10px 10px 10px', margin: '20px 0px', backgroundColor: 'white', borderRadius: '5px' }}>
                         <TextField
                           style={{ width: '20%' }}
-                          id="xscale"
+                          id='xscale'
                           size='small'
-                          variant="outlined"
+                          variant='outlined'
                           select
-                          label="Select X Axis Scale"
+                          label='Select X Axis Scale'
                           value={xscale}
                           onChange={handleXScale}
                           SelectProps={{
@@ -156,11 +158,11 @@ export default function SimulationScreen ({ open, close, isResult }) {
                         </TextField>
                         <TextField
                           style={{ width: '20%', marginLeft: '10px' }}
-                          id="yscale"
+                          id='yscale'
                           size='small'
-                          variant="outlined"
+                          variant='outlined'
                           select
-                          label="Select Y Axis Scale"
+                          label='Select Y Axis Scale'
                           value={yscale}
                           onChange={handleYScale}
                           SelectProps={{
@@ -197,11 +199,11 @@ export default function SimulationScreen ({ open, close, isResult }) {
 
                         <TextField
                           style={{ width: '20%', marginLeft: '10px' }}
-                          id="precision"
+                          id='precision'
                           size='small'
-                          variant="outlined"
+                          variant='outlined'
                           select
-                          label="Select Precision"
+                          label='Select Precision'
                           value={precision}
                           onChange={handlePrecision}
                           SelectProps={{
@@ -230,24 +232,24 @@ export default function SimulationScreen ({ open, close, isResult }) {
                       />
                     </Paper>
                   </Grid>
-                  : (result.isGraph === 'true') ? <span>SOMETHING WENT WRONG PLEASE CHECK THE SIMULATION PARAMETERS.</span> : <span></span>
+                  : (result.isGraph === 'true') ? <span>SOMETHING WENT WRONG PLEASE CHECK THE SIMULATION PARAMETERS.</span> : <span />
               }
 
               {
                 (result.isGraph === 'false')
                   ? <Grid item xs={12} sm={12}>
                     <Paper className={classes.paper}>
-                      <Typography variant="h4" align="center" gutterBottom>
+                      <Typography variant='h4' align='center' gutterBottom>
                         OUTPUT
                       </Typography>
                       <div style={{ padding: '15px 10px 10px 10px', backgroundColor: 'white', margin: '20px 0px', borderRadius: '5px' }}>
                         <TextField
                           style={{ width: '20%' }}
-                          id="xscale"
+                          id='xscale'
                           size='small'
-                          variant="outlined"
+                          variant='outlined'
                           select
-                          label="Select Scale"
+                          label='Select Scale'
                           value={xscale}
                           onChange={handleXScale}
                           SelectProps={{
@@ -284,11 +286,11 @@ export default function SimulationScreen ({ open, close, isResult }) {
 
                         <TextField
                           style={{ width: '20%', marginLeft: '10px' }}
-                          id="precision"
+                          id='precision'
                           size='small'
-                          variant="outlined"
+                          variant='outlined'
                           select
-                          label="Select Precision"
+                          label='Select Precision'
                           value={precision}
                           onChange={handlePrecision}
                           SelectProps={{
@@ -309,23 +311,22 @@ export default function SimulationScreen ({ open, close, isResult }) {
                       </div>
 
                       <TableContainer component={Paper}>
-                        <Table className={classes.table} aria-label="simple table">
+                        <Table className={classes.table} aria-label='simple table'>
                           <TableHead>
                             <TableRow>
-                              <TableCell align="center">Node/Branch</TableCell>
-                              <TableCell align="center">Value</TableCell>
-                              <TableCell align="center">Unit</TableCell>
+                              <TableCell align='center'>Node/Branch</TableCell>
+                              <TableCell align='center'>Value</TableCell>
+                              <TableCell align='center'>Unit</TableCell>
                             </TableRow>
                           </TableHead>
                           <TableBody>
                             {result.text.map((line, index) => (
                               <TableRow key={index}>
-                                <TableCell align="center">{line.split('=')[0]}</TableCell>
-                                <TableCell align="center">{(parseFloat(line.split(' ')[2]) / scales[xscale]).toFixed(precision)}</TableCell>
-                                <TableCell align="center">{xscale === 'si' ? '' : xscale}{line.split(' ')[3]}</TableCell>
+                                <TableCell align='center'>{line.split('=')[0]}</TableCell>
+                                <TableCell align='center'>{(parseFloat(line.split(' ')[2]) / scales[xscale]).toFixed(precision)}</TableCell>
+                                <TableCell align='center'>{xscale === 'si' ? '' : xscale}{line.split(' ')[3]}</TableCell>
                               </TableRow>
-                            ))
-                            }
+                            ))}
 
                           </TableBody>
                         </Table>
@@ -333,16 +334,16 @@ export default function SimulationScreen ({ open, close, isResult }) {
 
                     </Paper>
                   </Grid>
-                  : <span></span>
-              }</>
+                  : <span />
+              }
+            </>
               : <Grid item xs={12} sm={12}>
                 <Paper className={classes.paper}>
-                  <Typography variant="h6" align="center" gutterBottom>
+                  <Typography variant='h6' align='center' gutterBottom>
                     SOMETHING WENT WRONG PLEASE CHECK THE NETLIST.
                   </Typography>
                 </Paper>
-              </Grid>
-            }
+              </Grid>}
           </Grid>
         </Container>
       </Dialog>

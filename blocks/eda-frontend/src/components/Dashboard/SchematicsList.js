@@ -38,21 +38,21 @@ function MainCard () {
         <Typography className={classes.title} gutterBottom>
           {typography1}
         </Typography>
-        <Typography variant="h5" component="h2">
+        <Typography variant='h5' component='h2'>
           {typography2}
         </Typography>
       </CardContent>
       <CardActions>
         <Button
-          target="_blank"
+          target='_blank'
           component={RouterLink}
-          to="/editor"
-          size="small"
-          color="primary"
+          to='/editor'
+          size='small'
+          color='primary'
         >
           Create New
         </Button>
-        <Button size="small" color="secondary">
+        <Button size='small' color='secondary'>
           Load More
         </Button>
       </CardActions>
@@ -77,10 +77,10 @@ export default function SchematicsList () {
     <>
       <Grid
         container
-        direction="row"
-        justify="flex-start"
-        alignItems="flex-start"
-        alignContent="center"
+        direction='row'
+        justify='flex-start'
+        alignItems='flex-start'
+        alignContent='center'
         spacing={3}
       >
         {/* User Dashboard My Schematic Header */}
@@ -103,12 +103,11 @@ export default function SchematicsList () {
           </>
           : <Grid item xs={12}>
             <Card style={{ padding: '7px 15px' }} className={classes.mainHead}>
-              <Typography variant="subtitle1" gutterBottom>
+              <Typography variant='subtitle1' gutterBottom>
                 Hey {auth.user.username} , {typography1}
               </Typography>
             </Card>
-          </Grid>
-        }
+          </Grid>}
       </Grid>
     </>
   )

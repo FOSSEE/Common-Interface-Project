@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 function Alert (props) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />
+  return <MuiAlert elevation={6} variant='filled' {...props} />
 }
 
 // Schematic delete snackbar
@@ -48,15 +48,16 @@ function SimpleSnackbar ({ open, close, sch }) {
       autoHideDuration={6000}
       onClose={close}
     >
-      <Alert icon={false} severity="warning" color="error" style={{ width: '100%' }} action={
-        <>
-          <Button size="small" aria-label="close" color="inherit" onClick={() => { dispatch(deleteSchematic(sch.save_id)) }}>
-            Yes
-          </Button>
-          <Button size="small" aria-label="close" color="inherit" onClick={close}>
-            NO
-          </Button>
-        </>
+      <Alert
+        icon={false} severity='warning' color='error' style={{ width: '100%' }} action={
+          <>
+            <Button size='small' aria-label='close' color='inherit' onClick={() => { dispatch(deleteSchematic(sch.save_id)) }}>
+              Yes
+            </Button>
+            <Button size='small' aria-label='close' color='inherit' onClick={close}>
+              NO
+            </Button>
+          </>
       }
       >
         {'Delete ' + sch.name + ' ?'}
@@ -73,13 +74,13 @@ SimpleSnackbar.propTypes = {
 
 // Display schematic updated status (e.g : updated 2 hours ago...)
 function timeSince (jsonDate) {
-  var json = jsonDate
+  const json = jsonDate
 
-  var date = new Date(json)
+  const date = new Date(json)
 
-  var seconds = Math.floor((new Date() - date) / 1000)
+  const seconds = Math.floor((new Date() - date) / 1000)
 
-  var interval = Math.floor(seconds / 31536000)
+  let interval = Math.floor(seconds / 31536000)
 
   if (interval > 1) {
     return interval + ' years'
@@ -105,8 +106,8 @@ function timeSince (jsonDate) {
 
 // Display schematic created date (e.g : Created On 29 Jun 2020)
 function getDate (jsonDate) {
-  var json = jsonDate
-  var date = new Date(json)
+  const json = jsonDate
+  const date = new Date(json)
   const dateTimeFormat = new Intl.DateTimeFormat('en', { year: 'numeric', month: 'short', day: '2-digit' })
   const [{ value: month }, , { value: day }, , { value: year }] = dateTimeFormat.formatToParts(date)
   return `${day}-${month}-${year}`
@@ -145,11 +146,11 @@ export default function SchematicCard ({ sch }) {
             title={sch.name}
           />
           <CardContent>
-            <Typography variant="body2" component="p">
+            <Typography variant='body2' component='p'>
               {sch.description}
             </Typography>
             {/* Display updated status */}
-            <Typography variant="body2" color="textSecondary" component="p" style={{ margin: '5px 0px 0px 0px' }}>
+            <Typography variant='body2' color='textSecondary' component='p' style={{ margin: '5px 0px 0px 0px' }}>
               Updated {timeSince(sch.save_time)} ago...
             </Typography>
           </CardContent>
@@ -157,20 +158,20 @@ export default function SchematicCard ({ sch }) {
 
         <CardActions>
           <Button
-            target="_blank"
+            target='_blank'
             component={RouterLink}
             to={'/editor?id=' + sch.save_id}
-            size="small"
-            color="primary"
+            size='small'
+            color='primary'
           >
             Launch in Editor
           </Button>
 
           {/* Display delete option */}
-          <Tooltip title='Delete' placement="bottom" arrow>
+          <Tooltip title='Delete' placement='bottom' arrow>
             <DeleteIcon
               color='secondary'
-              fontSize="small"
+              fontSize='small'
               style={{ marginLeft: 'auto' }}
               onClick={() => { handleSnacClick() }}
             />
@@ -178,10 +179,10 @@ export default function SchematicCard ({ sch }) {
           <SimpleSnackbar open={snacOpen} close={handleSnacClose} sch={sch} />
 
           {/* Display share status */}
-          <Tooltip title={!sch.shared ? 'SHARE OFF' : 'SHARE ON'} placement="bottom" arrow>
+          <Tooltip title={!sch.shared ? 'SHARE OFF' : 'SHARE ON'} placement='bottom' arrow>
             <ShareIcon
               color={!sch.shared ? 'disabled' : 'primary'}
-              fontSize="small"
+              fontSize='small'
               style={{ marginRight: '10px' }}
             />
           </Tooltip>

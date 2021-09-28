@@ -27,11 +27,11 @@ export default function LayoutSidebar ({ window, mobileOpen, mobileClose, childr
 
   return (
     <>
-      <nav className={classes.drawer} aria-label="mailbox folders">
-        <Hidden lgUp implementation="css">
+      <nav className={classes.drawer} aria-label='mailbox folders'>
+        <Hidden lgUp implementation='css'>
           <Drawer
             container={container}
-            variant="temporary"
+            variant='temporary'
             open={mobileOpen}
             onClose={mobileClose}
             classes={{
@@ -43,7 +43,7 @@ export default function LayoutSidebar ({ window, mobileOpen, mobileClose, childr
           >
             <IconButton
               onClick={mobileClose}
-              color="inherit"
+              color='inherit'
               style={{ marginLeft: '190px' }}
             >
               <HighlightOffIcon />
@@ -52,12 +52,12 @@ export default function LayoutSidebar ({ window, mobileOpen, mobileClose, childr
           </Drawer>
         </Hidden>
 
-        <Hidden smDown implementation="css">
+        <Hidden smDown implementation='css'>
           <Drawer
             classes={{
               paper: classes.drawerPaper
             }}
-            variant="permanent"
+            variant='permanent'
             open
           >
             {children}

@@ -71,18 +71,18 @@ function GridProperties ({ gridRef }) {
   return (
     <>
       <ListItem>
-        <ListItemText primary="Grid Properties" />
+        <ListItemText primary='Grid Properties' />
       </ListItem>
       <ListItem style={{ padding: '10px 5px 15px 5px' }} divider>
         <TextField
-          id="filled-select-currency"
+          id='filled-select-currency'
           select
           size='small'
           className={classes.pages}
           value={gridSize}
           onChange={handleSizeChange}
-          helperText="Grid size"
-          variant="outlined"
+          helperText='Grid size'
+          variant='outlined'
         >
           {pageSize.map((option) => (
             <MenuItem key={option.value} value={option.value}>
@@ -91,14 +91,14 @@ function GridProperties ({ gridRef }) {
           ))}
         </TextField>
         <TextField
-          id="grid-layout"
+          id='grid-layout'
           select
           size='small'
           className={classes.pages}
           value={gridLayout}
           onChange={handleLayoutChange}
-          helperText="Grid Layout"
-          variant="outlined"
+          helperText='Grid Layout'
+          variant='outlined'
         >
           {pageLayout.map((option) => (
             <MenuItem key={option.value} value={option.value}>
@@ -143,7 +143,7 @@ export default function PropertiesSidebar ({ gridRef, outlineRef }) {
         <ListItem button divider>
           <h2 style={{ margin: '5px' }}>Properties</h2>
         </ListItem>
-        <div style={isOpen ? { display: 'none' } : {} }>
+        <div style={isOpen ? { display: 'none' } : {}}>
           <GridProperties gridRef={gridRef} />
 
           {/* Display component position box */}
@@ -151,7 +151,7 @@ export default function PropertiesSidebar ({ gridRef, outlineRef }) {
             <ListItemText primary={typography3} />
           </ListItem>
           <ListItem style={{ padding: '0px' }} divider>
-            <div className="outline-container" ref={outlineRef} id="outlineContainer" />
+            <div className='outline-container' ref={outlineRef} id='outlineContainer' />
           </ListItem>
 
           {/* Input form field for schematic description */}
@@ -159,7 +159,7 @@ export default function PropertiesSidebar ({ gridRef, outlineRef }) {
             <ListItemText primary={typography1} />
           </ListItem>
           <ListItem style={{ padding: '0px 7px 7px 7px' }} divider>
-            <TextareaAutosize id='Description' label='Description' value={ schSave.description === '' ? description || '' : schSave.description } onChange={getInputValues} rowsMin={6} aria-label='Description' placeholder={typography2} style={{ width: '100%', minWidth: '234px', maxHeight: '250px' }} />
+            <TextareaAutosize id='Description' label='Description' value={schSave.description === '' ? description || '' : schSave.description} onChange={getInputValues} rowsMin={6} aria-label='Description' placeholder={typography2} style={{ width: '100%', minWidth: '234px', maxHeight: '250px' }} />
           </ListItem>
         </div>
       </List>

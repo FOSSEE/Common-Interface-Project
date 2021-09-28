@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const searchOptions = {
-  NAME: 'name__istartswith',
+  NAME: 'name__istartswith'
 }
 
 export default function ComponentSidebar ({ compRef }) {
@@ -145,15 +145,15 @@ export default function ComponentSidebar ({ compRef }) {
           <ListItem>
 
             <TextField
-              id="standard-number"
+              id='standard-number'
               placeholder={link2}
-              variant="outlined"
-              size="small"
+              variant='outlined'
+              size='small'
               value={searchText}
               onChange={handleSearchText}
               InputProps={{
                 startAdornment: (
-                  <InputAdornment position="start">
+                  <InputAdornment position='start'>
                     <SearchIcon />
                   </InputAdornment>
                 )
@@ -162,22 +162,23 @@ export default function ComponentSidebar ({ compRef }) {
 
           </ListItem>
 
-          <div style={{ maxHeight: '70vh', overflowY: 'auto', overflowX: 'hidden' }} >
+          <div style={{ maxHeight: '70vh', overflowY: 'auto', overflowX: 'hidden' }}>
             {searchText.length !== 0 && searchedComponentList.length !== 0 &&
 
               searchedComponentList.map((component, i) => {
-                return (<ListItemIcon key={i}>
-                  <SideComp component={component} />
-                </ListItemIcon>)
+                return (
+                  <ListItemIcon key={i}>
+                    <SideComp component={component} />
+                  </ListItemIcon>
+                )
               }
-              )
-            }
+              )}
 
             <ListItem>
 
               <Loader
-                type="TailSpin"
-                color="#F44336"
+                type='TailSpin'
+                color='#F44336'
                 height={100}
                 width={100}
                 visible={loading}
@@ -186,8 +187,7 @@ export default function ComponentSidebar ({ compRef }) {
 
             {!loading && searchText.length !== 0 && isSearchedResultsEmpty &&
 
-              <span style={{ margin: '20px' }}>{link3}</span>
-            }
+              <span style={{ margin: '20px' }}>{link3}</span>}
 
             {/* Collapsing List Mapped by Libraries fetched by the API */}
             {searchText.length === 0 &&
@@ -199,8 +199,8 @@ export default function ComponentSidebar ({ compRef }) {
                         <span className={classes.head}>{library.name}</span>
                         {collapse[library.id] ? <ExpandLess /> : <ExpandMore />}
                       </ListItem>
-                      <Collapse in={collapse[library.id]} timeout={'auto'} unmountOnExit mountOnEnter exit={false}>
-                        <List component="div" disablePadding dense >
+                      <Collapse in={collapse[library.id]} timeout='auto' unmountOnExit mountOnEnter exit={false}>
+                        <List component='div' disablePadding dense>
 
                           {/* Chunked Blocks of Library */}
                           {
@@ -209,9 +209,11 @@ export default function ComponentSidebar ({ compRef }) {
                                 <ListItem key={componentChunk[0].id} divider>
                                   {
                                     componentChunk.map((component) => {
-                                      return (<ListItemIcon key={component.name}>
-                                        <SideComp component={component} />
-                                      </ListItemIcon>)
+                                      return (
+                                        <ListItemIcon key={component.name}>
+                                          <SideComp component={component} />
+                                        </ListItemIcon>
+                                      )
                                     }
                                     )
                                   }
@@ -225,8 +227,7 @@ export default function ComponentSidebar ({ compRef }) {
                     </div>
                   )
                 }
-              )
-            }
+              )}
           </div>
         </List>
       </div>
@@ -235,9 +236,9 @@ export default function ComponentSidebar ({ compRef }) {
         <List>
           <ListItem button divider>
             <h2 style={{ margin: '5px auto 5px 5px' }}>Simulation Modes</h2>
-            <Tooltip title="close">
-              <IconButton color="inherit" className={classes.tools} size="small" onClick={() => { dispatch(toggleSimulate()) }}>
-                <CloseIcon fontSize="small" />
+            <Tooltip title='close'>
+              <IconButton color='inherit' className={classes.tools} size='small' onClick={() => { dispatch(toggleSimulate()) }}>
+                <CloseIcon fontSize='small' />
               </IconButton>
             </Tooltip>
           </ListItem>
@@ -248,7 +249,7 @@ export default function ComponentSidebar ({ compRef }) {
   )
 }
 
-export function ComponentImages() {
+export function ComponentImages () {
   const component_images = useSelector(state => state.schematicEditorReducer.component_images)
 
   const dispatch = useDispatch()
@@ -260,7 +261,7 @@ export function ComponentImages() {
 
   return (
     <div>
-      {(component_images !== undefined) && component_images.forEach((image) => { new Image().src = '/django_static/' + image; })}
+      {(component_images !== undefined) && component_images.forEach((image) => { new Image().src = '/django_static/' + image })}
     </div>
   )
 }
