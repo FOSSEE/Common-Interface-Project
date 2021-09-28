@@ -7,8 +7,8 @@ const {
 } = new mxGraphFactory()
 
 // we need to divide the svg width and height by the same number in order to maintain the aspect ratio.
-export const default_scale = parseFloat(process.env.REACT_APP_BLOCK_SCALE)
-export const port_size = parseFloat(process.env.REACT_APP_PORT_SIZE)
+export const defaultScale = parseFloat(process.env.REACT_APP_BLOCK_SCALE)
+export const portSize = parseFloat(process.env.REACT_APP_PORT_SIZE)
 
 function getParameter (i) {
   if (i < 10) { return 'p00' + i.toString() } else if (i < 100) { return 'p0' + i.toString() } else { return 'p' + i.toString() }
@@ -19,14 +19,14 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
   // initialize information from the svg meta
   // plots pinnumbers and component labels.
 
-  const allowed_part = [0, 1]
-  const allowed_dmg = [0, 1]
+  const allowedPart = [0, 1]
+  const allowedDmg = [0, 1]
 
   const block_name = component.block_name
   const pins = []
   // make the component images smaller by scaling
-  const width = component.block_width / default_scale
-  const height = component.block_height / default_scale
+  const width = component.block_width / defaultScale
+  const height = component.block_height / defaultScale
 
   const v1 = graph.insertVertex(parent, null, null, x, y, width, height, block_name)
   v1.CellType = 'Component'
@@ -50,24 +50,24 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
   const ports = blockports.length
   for (let i = 0; i < ports; i++) {
     const blockport = blockports[i]
-    if (!allowed_part.includes(blockport.port_part)) { continue }
-    if (!allowed_dmg.includes(blockport.port_dmg)) { continue }
+    if (!allowedPart.includes(blockport.port_part)) { continue }
+    if (!allowedDmg.includes(blockport.port_dmg)) { continue }
     if (blockport.port_name === 'NC') { continue }
 
-    const x_pos = 1 / 2 + blockport.port_x / default_scale / width
-    const y_pos = 1 / 2 - blockport.port_y / default_scale / height
+    const xPos = 1 / 2 + blockport.port_x / defaultScale / width
+    const yPos = 1 / 2 - blockport.port_y / defaultScale / height
 
     const port_orientation = blockport.port_orientation
     let point = null
     switch (port_orientation) {
-      case 'ExplicitInputPort': case 'ImplicitInputPort': point = new mxPoint(-port_size, -port_size / 2); break
-      case 'ControlPort': point = new mxPoint(-port_size / 2, -port_size); break
-      case 'ExplicitOutputPort': case 'ImplicitOutputPort': point = new mxPoint(0, -port_size / 2); break
-      case 'CommandPort': point = new mxPoint(-port_size / 2, 0); break
-      default: point = new mxPoint(-port_size / 2, -port_size / 2); break
+      case 'ExplicitInputPort': case 'ImplicitInputPort': point = new mxPoint(-portSize, -portSize / 2); break
+      case 'ControlPort': point = new mxPoint(-portSize / 2, -portSize); break
+      case 'ExplicitOutputPort': case 'ImplicitOutputPort': point = new mxPoint(0, -portSize / 2); break
+      case 'CommandPort': point = new mxPoint(-portSize / 2, 0); break
+      default: point = new mxPoint(-portSize / 2, -portSize / 2); break
     }
 
-    const vp = graph.insertVertex(v1, null, null, x_pos, y_pos, port_size, port_size, port_orientation)
+    const vp = graph.insertVertex(v1, null, null, xPos, yPos, portSize, portSize, port_orientation)
     vp.geometry.relative = true
     vp.geometry.offset = point
     vp.CellType = 'Pin'
