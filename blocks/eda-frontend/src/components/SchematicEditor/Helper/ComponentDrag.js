@@ -353,9 +353,8 @@ export default function LoadGrid (container, sidebar, outline) {
             pt.x = Math.max(pt.x, Math.min(p0.x, pe.x))
           }
         }
-      }
-      // Computes constraint connection points on vertices and ports
-      else if (terminal != null && terminal.cell.geometry.relative) {
+      } else if (terminal != null && terminal.cell.geometry.relative) {
+        // Computes constraint connection points on vertices and ports
         pt = new mxPoint(this.getRoutingCenterX(terminal),
           this.getRoutingCenterY(terminal))
       }
