@@ -45,8 +45,8 @@ export default function ComponentProperties () {
         Object.keys(val).map((keyName, i) => {
           if (keyName.match(/^p[0-9]*_value$/)) {
             const rootKeyName = keyName.substr(0, 4)
-            const type_id = rootKeyName + '_type'
-            if (compProperties !== undefined && compProperties[rootKeyName] !== null && compProperties[type_id] !== null) {
+            const typeId = rootKeyName + '_type'
+            if (compProperties !== undefined && compProperties[rootKeyName] !== null && compProperties[typeId] !== null) {
               return (
                 <ListItem key={i}>
                   <TextField id={keyName} label={compProperties[rootKeyName]} value={val[keyName] || ''} size='small' variant='outlined' onChange={getInputValues} />

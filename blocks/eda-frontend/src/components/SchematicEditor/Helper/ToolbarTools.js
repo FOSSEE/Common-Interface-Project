@@ -1,7 +1,7 @@
 import 'mxgraph/javascript/src/css/common.css'
 
 import mxGraphFactory from 'mxgraph'
-import { port_size } from './SvgParser'
+import { portSize } from './SvgParser'
 import store from '../../../redux/store'
 import { setModel, setNetlist } from '../../../redux/actions/index'
 
@@ -398,13 +398,13 @@ function parseXmlToGraph (xmlDoc, graph) {
         const yPos = (geom.y !== undefined) ? Number(geom.y.value) : 0
         let point = null
         switch (style) {
-          case 'ExplicitInputPort': case 'ImplicitInputPort': point = new mxPoint(-port_size, -port_size / 2); break
-          case 'ControlPort': point = new mxPoint(-port_size / 2, -port_size); break
-          case 'ExplicitOutputPort': case 'ImplicitOutputPort': point = new mxPoint(0, -port_size / 2); break
-          case 'CommandPort': point = new mxPoint(-port_size / 2, 0); break
-          default: point = new mxPoint(-port_size / 2, -port_size / 2); break
+          case 'ExplicitInputPort': case 'ImplicitInputPort': point = new mxPoint(-portSize, -portSize / 2); break
+          case 'ControlPort': point = new mxPoint(-portSize / 2, -portSize); break
+          case 'ExplicitOutputPort': case 'ImplicitOutputPort': point = new mxPoint(0, -portSize / 2); break
+          case 'CommandPort': point = new mxPoint(-portSize / 2, 0); break
+          default: point = new mxPoint(-portSize / 2, -portSize / 2); break
         }
-        const vp = graph.insertVertex(v1, vertexId, null, xPos, yPos, port_size, port_size, style)
+        const vp = graph.insertVertex(v1, vertexId, null, xPos, yPos, portSize, portSize, style)
         vp.geometry.relative = true
         vp.geometry.offset = point
         vp.CellType = 'Pin'

@@ -15,7 +15,6 @@ export default function Editor (props) {
       editorProps={{
         $blockScrolling: true
       }}
-
       setOptions={{
         enableBasicAutocompletion: true,
         enableLiveAutocompletion: true,

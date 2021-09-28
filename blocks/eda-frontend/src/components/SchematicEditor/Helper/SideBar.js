@@ -1,7 +1,7 @@
 import 'mxgraph/javascript/src/css/common.css'
 
 import mxGraphFactory from 'mxgraph'
-import { default_scale, getSvgMetadata } from './SvgParser.js'
+import { defaultScale, getSvgMetadata } from './SvgParser.js'
 
 const {
   mxClient,
@@ -69,8 +69,8 @@ export function AddComponent (component, imgref) {
   // Creates the element that is being for the actual preview.
   const dragElt = document.createElement('div')
   dragElt.style.border = 'dashed black 1px'
-  dragElt.style.width = (component.block_width / default_scale) + 'px'
-  dragElt.style.height = (component.block_height / default_scale) + 'px'
+  dragElt.style.width = (component.block_width / defaultScale) + 'px'
+  dragElt.style.height = (component.block_height / defaultScale) + 'px'
 
   // Drag source is configured to use dragElt for preview and as drag icon
   // if scalePreview (last) argument is true. Dx and dy are null to force
