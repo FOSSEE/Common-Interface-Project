@@ -103,8 +103,9 @@ export default function SimulationProperties () {
   function netlistConfig (file) {
     const formData = new FormData()
     formData.append('file', file)
-    formData.append('stop', transientAnalysisControlLine.stop)
-    formData.append('step', transientAnalysisControlLine.step)
+    for (const [key, value] of Object.entries(transientAnalysisControlLine)) {
+      formData.append(key, value)
+    }
     const config = {
       headers: {
         'content-type': 'multipart/form-data'
