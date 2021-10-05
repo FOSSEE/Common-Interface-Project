@@ -4,19 +4,22 @@ import {
   ListItem,
   Button,
   TextField,
-  InputAdornment,
-  MenuItem,
   ExpansionPanel,
   ExpansionPanelSummary,
   ExpansionPanelDetails,
-  Typography
+  Typography,
+  Divider,
+  Popover,
+  Tooltip,
+  IconButton
 } from '@material-ui/core'
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import { makeStyles } from '@material-ui/core/styles'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { setResultTitle, setResultGraph, setResultText } from '../../redux/actions/index'
-import { Save } from './Helper/ToolbarTools'
+import { Save, GenerateCompList } from './Helper/ToolbarTools'
 import SimulationScreen from './SimulationScreen'
 import api from '../../utils/Api'
 
@@ -46,22 +49,70 @@ export default function SimulationProperties () {
   const isSimRes = useSelector(state => state.simulationReducer.isSimRes)
   const dispatch = useDispatch()
   const classes = useStyles()
-  const [transientAnalysisControlLine, setTransientAnalysisControlLine] = useState({
-    final_integration_time: '30',
-    real_time_scaling: '0',
-    integrator_absolute_tolerance: '1E-6',
-    integrator_relative_tolerance: '1E-6',
-    tolerance_on_time: '1E-10',
-    max_integration_time_interval: '100001',
-    solver_kind: '1',
-    maximum_step_size: '0'
+  const [componentsList, setComponentsList] = useState([])
+  const [dcSweepcontrolLine, setDcSweepControlLine] = useState({
+    parameter: '',
+    sweepType: 'Linear',
+    start: '',
+    stop: '',
+    step: '',
+    parameter2: '',
+    start2: '',
+    stop2: '',
+    step2: ''
   })
+  const [transientAnalysisControlLine, setTransientAnalysisControlLine] = useState({
+    start: '',
+    stop: '',
+    step: '',
+    skipInitial: 'No'
+  })
+
+  const [acAnalysisControlLine, setAcAnalysisControlLine] = useState({
+    input: 'dec',
+    start: '',
+    stop: '',
+    pointsBydecade: ''
+  })
+
+  const [controlBlockParam, setControlBlockParam] = useState('')
+
+  const handleControlBlockParam = (evt) => {
+    setControlBlockParam(evt.target.value)
+  }
+
+  const onDcSweepTabExpand = () => {
+    try {
+      setComponentsList(['', ...GenerateCompList()])
+    } catch (err) {
+      setComponentsList([])
+      alert('Circuit not complete. Please Check Connectons.')
+    }
+  }
+
+  const handleDcSweepControlLine = (evt) => {
+    const value = evt.target.value
+
+    setDcSweepControlLine({
+      ...dcSweepcontrolLine,
+      [evt.target.id]: value
+    })
+  }
 
   const handleTransientAnalysisControlLine = (evt) => {
     const value = evt.target.value
 
     setTransientAnalysisControlLine({
       ...transientAnalysisControlLine,
+      [evt.target.id]: value
+    })
+  }
+
+  const handleAcAnalysisControlLine = (evt) => {
+    const value = evt.target.value
+
+    setAcAnalysisControlLine({
+      ...acAnalysisControlLine,
       [evt.target.id]: value
     })
   }
@@ -195,8 +246,17 @@ export default function SimulationProperties () {
   const startSimulate = (type) => {
     const compNetlist = Save()
     switch (type) {
+      case 'DcSolver':
+        dispatch(setResultTitle('DC Solver Output'))
+        break
+      case 'DcSweep':
+        dispatch(setResultTitle('DC Sweep Output'))
+        break
       case 'Transient':
         dispatch(setResultTitle('Transient Analysis Output'))
+        break
+      case 'Ac':
+        dispatch(setResultTitle('AC Analysis Output'))
         break
       default:
         break
@@ -205,9 +265,23 @@ export default function SimulationProperties () {
     const netlist = compNetlist
 
     prepareNetlist(netlist)
+
+    // handlesimulateOpen()
   }
 
   // simulation properties add expression input box
+  const [anchorEl, setAnchorEl] = React.useState(null)
+  const handleAddExpressionClick = (event) => {
+    setAnchorEl(event.currentTarget)
+  }
+
+  const handleAddExpressionClose = () => {
+    setAnchorEl(null)
+  }
+
+  const open = Boolean(anchorEl)
+  const id = open ? 'simple-popover' : undefined
+
   return (
     <>
       <div className={classes.SimulationOptions}>
@@ -215,6 +289,235 @@ export default function SimulationProperties () {
 
         {/* Simulation modes list */}
         <List>
+
+          {/* DC Solver */}
+          <ListItem className={classes.simulationOptions} divider>
+            <div className={classes.propertiesBox}>
+              <ExpansionPanel>
+                <ExpansionPanelSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls='panel1a-content'
+                  id='panel1a-header'
+                >
+                  <Typography className={classes.heading}>DC Solver</Typography>
+                </ExpansionPanelSummary>
+                <ExpansionPanelDetails>
+                  <form>
+                    <List>
+                      <ListItem>
+
+                        <Button aria-describedby={id} variant='outlined' color='primary' size='small' onClick={handleAddExpressionClick}>
+                          Add Expression
+                        </Button>
+                        <Tooltip title={'Add expression seperated by spaces.\n Include #branch at end of expression to indicate current  e.g v1#branch. To add multiple expression seperate them by spaces eg. v1 v2 v3#branch'}>
+                          <IconButton aria-label='info'>
+                            <InfoOutlinedIcon style={{ fontSize: 'large' }} />
+                          </IconButton>
+                        </Tooltip>
+                        <Popover
+                          id={id}
+                          open={open}
+                          anchorEl={anchorEl}
+                          onClose={handleAddExpressionClose}
+
+                          anchorOrigin={{
+                            vertical: 'center',
+                            horizontal: 'left'
+                          }}
+                          transformOrigin={{
+                            vertical: 'top',
+                            horizontal: 'left'
+                          }}
+                        >
+
+                          <TextField id='controlBlockParam' placeHolder='enter expression' size='large' variant='outlined'
+                            value={controlBlockParam}
+                            onChange={handleControlBlockParam}
+                          />
+                        </Popover>
+                      </ListItem>
+                      <ListItem>
+                        <Button size='small' variant='contained' color='primary'
+                          onClick={(e) => { startSimulate('DcSolver') }}>
+                          Run dc solver
+                        </Button>
+                      </ListItem>
+                    </List>
+                  </form>
+                </ExpansionPanelDetails>
+              </ExpansionPanel>
+
+            </div>
+          </ListItem>
+
+          {/* DC Sweep */}
+          <ListItem className={classes.simulationOptions} divider>
+            <ExpansionPanel onClick={onDcSweepTabExpand}>
+              <ExpansionPanelSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls='panel1a-content'
+                id='panel1a-header'
+              >
+                <Typography className={classes.heading}>DC Sweep</Typography>
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <form className={classes.propertiesBox} noValidate autoComplete='off'>
+                  <List>
+                    <ListItem>
+                      <TextField
+                        style={{ width: '100%' }}
+                        id='parameter'
+                        size='small'
+                        variant='outlined'
+                        select
+                        label='Select Component'
+                        value={dcSweepcontrolLine.parameter}
+                        onChange={handleDcSweepControlLine}
+                        SelectProps={{
+                          native: true
+                        }}
+                      >
+
+                        {
+                          componentsList.map((value, i) => {
+                            if (value.charAt(0) === 'V' || value.charAt(0) === 'v' || value.charAt(0) === 'I' || value.charAt(0) === 'i' || value === '') {
+                              return (<option key={i} value={value}>
+                                {value}
+                              </option>)
+                            } else {
+                              return null
+                            }
+                          })
+                        }
+
+                      </TextField>
+
+                    </ListItem>
+
+                    <ListItem>
+                      <TextField id='start' label='Start Voltage' size='small' variant='outlined'
+                        value={dcSweepcontrolLine.start}
+                        onChange={handleDcSweepControlLine}
+                      />
+                      <span style={{ marginLeft: '10px' }}>V</span>
+                    </ListItem>
+                    <ListItem>
+                      <TextField id='stop' label='Stop Voltage' size='small' variant='outlined'
+                        value={dcSweepcontrolLine.stop}
+                        onChange={handleDcSweepControlLine}
+                      />
+                      <span style={{ marginLeft: '10px' }}>V</span>
+                    </ListItem>
+                    <ListItem>
+                      <TextField id='step' label='Step' size='small' variant='outlined'
+                        value={dcSweepcontrolLine.step}
+                        onChange={handleDcSweepControlLine}
+                      />
+                      <span style={{ marginLeft: '10px' }}>V</span>
+                    </ListItem>
+
+                    {/* SECONDARY PARAMETER FOR SWEEP */}
+                    <Divider />
+                    <ListItem>
+
+                      <h4 style={{ marginLeft: '10px' }}>Secondary Parameters</h4>
+                    </ListItem>
+
+                    <ListItem>
+
+                      <TextField
+                        style={{ width: '100%' }}
+                        id='parameter2'
+                        size='small'
+                        variant='outlined'
+                        select
+                        label='Select Component'
+                        value={dcSweepcontrolLine.parameter2}
+                        onChange={handleDcSweepControlLine}
+                        SelectProps={{
+                          native: true
+                        }}
+
+                      >
+
+                        {
+                          componentsList.map((value, i) => {
+                            return <option key={i} value={value}>
+                              {value}
+                            </option>
+                          })
+                        }
+
+                      </TextField>
+
+                    </ListItem>
+
+                    <ListItem>
+                      <TextField id='start2' label='Start Value' size='small' variant='outlined'
+                        value={dcSweepcontrolLine.start2}
+                        onChange={handleDcSweepControlLine}
+                      />
+
+                    </ListItem>
+                    <ListItem>
+                      <TextField id='stop2' label='Stop Value' size='small' variant='outlined'
+                        value={dcSweepcontrolLine.stop2}
+                        onChange={handleDcSweepControlLine}
+                      />
+
+                    </ListItem>
+                    <ListItem>
+                      <TextField id='step2' label='Step Value' size='small' variant='outlined'
+                        value={dcSweepcontrolLine.step2}
+                        onChange={handleDcSweepControlLine}
+                      />
+
+                    </ListItem>
+                    <ListItem>
+
+                      <Button aria-describedby={id} variant='outlined' color='primary' size='small' onClick={handleAddExpressionClick}>
+                        Add Expression
+                      </Button>
+                      <Tooltip title={'Add expression seperated by spaces.\n Include #branch at end of expression to indicate current  e.g v1#branch. To add multiple expression seperate them by spaces eg. v1 v2 v3#branch'}>
+                        <IconButton aria-label='info'>
+                          <InfoOutlinedIcon style={{ fontSize: 'large' }} />
+                        </IconButton>
+                      </Tooltip>
+                      <Popover
+                        id={id}
+                        open={open}
+                        anchorEl={anchorEl}
+                        onClose={handleAddExpressionClose}
+
+                        anchorOrigin={{
+                          vertical: 'center',
+                          horizontal: 'left'
+                        }}
+                        transformOrigin={{
+                          vertical: 'top',
+                          horizontal: 'left'
+                        }}
+                      >
+
+                        <TextField id='controlBlockParam' placeHolder='enter expression' size='large' variant='outlined'
+                          value={controlBlockParam}
+                          onChange={handleControlBlockParam}
+                        />
+
+                      </Popover>
+
+                    </ListItem>
+
+                    <ListItem>
+                      <Button id='dcSweepSimulate' size='small' variant='contained' color='primary' onClick={(e) => { startSimulate('DcSweep') }}>
+                        Simulate
+                      </Button>
+                    </ListItem>
+                  </List>
+                </form>
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+          </ListItem>
 
           {/* Transient Analysis */}
           <ListItem className={classes.simulationOptions} divider>
@@ -230,77 +533,61 @@ export default function SimulationProperties () {
                 <form className={classes.propertiesBox} noValidate autoComplete='off'>
                   <List>
                     <ListItem>
-                      <TextField
-                        id='final_integration_time' label='Final integration time' size='small' variant='outlined'
-                        InputProps={{ endAdornment: <InputAdornment position='end'>S</InputAdornment> }}
-                        value={transientAnalysisControlLine.final_integration_time}
+                      <TextField id='start' label='Start Time' size='small' variant='outlined'
+                        value={transientAnalysisControlLine.start}
                         onChange={handleTransientAnalysisControlLine}
                       />
+                      <span style={{ marginLeft: '10px' }}>S</span>
                     </ListItem>
                     <ListItem>
-                      <TextField
-                        id='real_time_scaling' label='Real time scaling' size='small' variant='outlined'
-                        value={transientAnalysisControlLine.real_time_scaling}
+                      <TextField id='stop' label='Stop Time' size='small' variant='outlined'
+                        value={transientAnalysisControlLine.stop}
                         onChange={handleTransientAnalysisControlLine}
                       />
+                      <span style={{ marginLeft: '10px' }}>S</span>
                     </ListItem>
                     <ListItem>
-                      <TextField
-                        id='integrator_absolute_tolerance' label='Integrator absolute tolerance' size='small' variant='outlined'
-                        value={transientAnalysisControlLine.integrator_absolute_tolerance}
+                      <TextField id='step' label='Time Step' size='small' variant='outlined'
+                        value={transientAnalysisControlLine.step}
                         onChange={handleTransientAnalysisControlLine}
                       />
-                    </ListItem>
-                    <ListItem>
-                      <TextField
-                        id='integrator_relative_tolerance' label='Integrator relative tolerance' size='small' variant='outlined'
-                        value={transientAnalysisControlLine.integrator_relative_tolerance}
-                        onChange={handleTransientAnalysisControlLine}
-                      />
-                    </ListItem>
-                    <ListItem>
-                      <TextField
-                        id='tolerance_on_time' label='Tolerance on time' size='small' variant='outlined'
-                        InputProps={{ endAdornment: <InputAdornment position='end'>S</InputAdornment> }}
-                        value={transientAnalysisControlLine.tolerance_on_time}
-                        onChange={handleTransientAnalysisControlLine}
-                      />
-                    </ListItem>
-                    <ListItem>
-                      <TextField
-                        id='max_integration_time_interval' label='Max integration time interval' size='small' variant='outlined'
-                        InputProps={{ endAdornment: <InputAdornment position='end'>S</InputAdornment> }}
-                        value={transientAnalysisControlLine.max_integration_time_interval}
-                        onChange={handleTransientAnalysisControlLine}
-                      />
-                    </ListItem>
-                    <ListItem>
-                      <TextField
-                        id='solver_kind' select label='Solver kind' size='small' variant='outlined'
-                        value={transientAnalysisControlLine.solver_kind}
-                        onChange={handleTransientAnalysisControlLine}
-                      >
-                        <MenuItem value='0'>LSodar</MenuItem>
-                        <MenuItem value='1'>Sundials/CVODE - BDF - NEWTON</MenuItem>
-                        <MenuItem value='2'>Sundials/CVODE - BDF - FUNCTIONAL</MenuItem>
-                        <MenuItem value='3'>Sundials/CVODE - ADAMS - NEWTON</MenuItem>
-                        <MenuItem value='4'>Sundials/CVODE - ADAMS - FUNCTIONAL</MenuItem>
-                        <MenuItem value='5'>DOPRI5 - Dormand-Prince 4(5)</MenuItem>
-                        <MenuItem value='6'>RK45 - Runge-Kutta 4(5)</MenuItem>
-                        <MenuItem value='7'>Implicit RK45 - Implicit Runge-Kutta 4(5) - FIXED-POINT</MenuItem>
-                        <MenuItem value='8'>CRANI - Crank-Nicolson 2(3) - FIXED-POINT</MenuItem>
-                        <MenuItem value='100'>Sundials/IDA</MenuItem>
-                        <MenuItem value='101'>DDaskr - BDF</MenuItem>
-                      </TextField>
-                    </ListItem>
-                    <ListItem>
-                      <TextField
-                        id='maximum_step_size' label='Maximum step size' size='small' variant='outlined'
-                        value={transientAnalysisControlLine.maximum_step_size}
-                        onChange={handleTransientAnalysisControlLine}
-                      />
+                      <span style={{ marginLeft: '10px' }}>S</span>
                     </ListItem>
 
+                    <ListItem>
+
+                      <Button aria-describedby={id} variant='outlined' color='primary' size='small' onClick={handleAddExpressionClick}>
+                        Add Expression
+                      </Button>
+                      <Tooltip title={'Add expression seperated by spaces.\n Include #branch at end of expression to indicate current  e.g v1#branch. To add multiple expression seperate them by spaces eg. v1 v2 v3#branch'}>
+                        <IconButton aria-label='info'>
+                          <InfoOutlinedIcon style={{ fontSize: 'large' }} />
+                        </IconButton>
+                      </Tooltip>
+                      <Popover
+                        id={id}
+                        open={open}
+                        anchorEl={anchorEl}
+                        onClose={handleAddExpressionClose}
+
+                        anchorOrigin={{
+                          vertical: 'center',
+                          horizontal: 'left'
+                        }}
+                        transformOrigin={{
+                          vertical: 'top',
+                          horizontal: 'left'
+                        }}
+                      >
+
+                        <TextField id='controlBlockParam' placeHolder='enter expression' size='large' variant='outlined'
+                          value={controlBlockParam}
+                          onChange={handleControlBlockParam}
+                        />
+
+                      </Popover>
+
+                    </ListItem>
                     <ListItem>
                       <Button id='transientAnalysisSimulate' size='small' variant='contained' color='primary' onClick={(e) => { startSimulate('Transient') }}>
                         Simulate
@@ -312,7 +599,115 @@ export default function SimulationProperties () {
             </ExpansionPanel>
           </ListItem>
 
-          <ListItem style={isSimRes ? {} : { display: 'none' }} onClick={handlesimulateOpen}>
+          {/* AC Analysis */}
+          <ListItem className={classes.simulationOptions} divider>
+            <ExpansionPanel>
+              <ExpansionPanelSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls='panel1a-content'
+                id='panel1a-header'
+              >
+                <Typography className={classes.heading}>AC Analysis</Typography>
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <form className={classes.propertiesBox} noValidate autoComplete='off'>
+                  <List>
+
+                    <ListItem>
+                      <TextField
+                        style={{ width: '100%' }}
+                        id='input'
+                        size='small'
+                        variant='outlined'
+                        select
+                        label='Type'
+                        value={acAnalysisControlLine.input}
+                        onChange={handleAcAnalysisControlLine}
+                        SelectProps={{
+                          native: true
+                        }}
+
+                      >
+                        <option key='linear' value='lin'>
+                          Linear
+                        </option>
+                        <option key='decade' value='dec'>
+                          Decade
+                        </option>
+                        <option key='octave' value='oct'>
+                          Octave
+                        </option>
+                      </TextField>
+                    </ListItem>
+
+                    <ListItem>
+                      <TextField id='pointsBydecade' label='Points/ Decade' size='small' variant='outlined'
+                        value={acAnalysisControlLine.pointsBydecade}
+                        onChange={handleAcAnalysisControlLine}
+                      />
+                    </ListItem>
+                    <ListItem>
+                      <TextField id='start' label='Start Frequency' size='small' variant='outlined'
+                        value={acAnalysisControlLine.start}
+                        onChange={handleAcAnalysisControlLine}
+                      />
+                      <span style={{ marginLeft: '10px' }}>Hz</span>
+                    </ListItem>
+                    <ListItem>
+                      <TextField id='stop' label='Stop Frequency' size='small' variant='outlined'
+                        value={acAnalysisControlLine.stop}
+                        onChange={handleAcAnalysisControlLine}
+                      />
+                      <span style={{ marginLeft: '10px' }}>Hz</span>
+                    </ListItem>
+
+                    <ListItem>
+
+                      <Button aria-describedby={id} variant='outlined' color='primary' size='small' onClick={handleAddExpressionClick}>
+                        Add Expression
+                      </Button>
+                      <Tooltip title={'Add expression seperated by spaces. Include #branch at end of expression to indicate current  e.g v1#branch. To add multiple expression seperate them by spaces eg. v1 v2 v3#branch'}>
+                        <IconButton aria-label='info'>
+                          <InfoOutlinedIcon style={{ fontSize: 'large' }} />
+                        </IconButton>
+                      </Tooltip>
+                      <Popover
+                        id={id}
+                        open={open}
+                        anchorEl={anchorEl}
+                        onClose={handleAddExpressionClose}
+
+                        anchorOrigin={{
+                          vertical: 'center',
+                          horizontal: 'left'
+                        }}
+                        transformOrigin={{
+                          vertical: 'top',
+                          horizontal: 'left'
+                        }}
+                      >
+
+                        <TextField id='controlBlockParam' placeHolder='enter expression' size='large' variant='outlined'
+                          value={controlBlockParam}
+                          onChange={handleControlBlockParam}
+                        />
+
+                      </Popover>
+
+                    </ListItem>
+
+                    <ListItem>
+                      <Button size='small' variant='contained' color='primary' onClick={(e) => { startSimulate('Ac') }}>
+                        Simulate
+                      </Button>
+                    </ListItem>
+                  </List>
+                </form>
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+          </ListItem>
+
+          <ListItem style={isSimRes ? {} : { display: 'none' }} onClick={handlesimulateOpen} >
             <Button size='small' variant='contained' color='primary' style={{ margin: '10px auto' }} onClick={handlesimulateOpen}>
               Simulation Result
             </Button>

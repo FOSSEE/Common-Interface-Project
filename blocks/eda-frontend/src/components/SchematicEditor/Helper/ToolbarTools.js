@@ -161,13 +161,13 @@ export function ErcCheck () {
   let vertexCount = 0
   let errorCount = 0
   let PinNC = 0
-  const ground = 0
+  let ground = 0
   for (const property in list) {
     const cell = list[property]
-    if (cell.CellType === 'Component') {
+    if (cell.CellType.value === 'Component') {
       for (const child in cell.children) {
         const childVertex = cell.children[child]
-        if (childVertex.CellType === 'Pin' && childVertex.edges === null) { // Checking if connections exist from a given pin
+        if (childVertex.CellType.value === 'Pin' && childVertex.edges === null) { // Checking if connections exist from a given pin
           ++PinNC
           ++errorCount
         } else {
@@ -179,6 +179,11 @@ export function ErcCheck () {
         }
       }
       ++vertexCount
+    }
+    if (cell.blockprefix === 'PWR') { // Checking for ground
+      console.log('Ground is present')
+      console.log(cell)
+      ++ground
     }
   }
 
@@ -201,14 +206,14 @@ function ErcCheckNets () {
   let vertexCount = 0
   let errorCount = 0
   let PinNC = 0
-  const ground = 0
+  let ground = 0
   for (const property in list) {
     const cell = list[property]
-    if (cell.CellType === 'Component') {
+    if (cell.CellType.value === 'Component') {
       for (const child in cell.children) {
         console.log(cell.children[child])
         const childVertex = cell.children[child]
-        if (childVertex.CellType === 'Pin' && childVertex.edges === null) {
+        if (childVertex.CellType.value === 'Pin' && childVertex.edges === null) {
           graph.getSelectionCell(childVertex)
           console.log('This pin is not connected')
           console.log(childVertex)
@@ -217,6 +222,11 @@ function ErcCheckNets () {
         }
       }
       ++vertexCount
+    }
+    if (cell.blockprefix === 'PWR') {
+      console.log('Ground is present')
+      console.log(cell)
+      ++ground
     }
   }
   if (vertexCount === 0) {
@@ -238,8 +248,10 @@ function ErcCheckNets () {
 
 // GENERATE NETLIST
 export function GenerateNetList () {
+  let r = 1
+  let v = 1
   let c = 1
-  const spiceModels = ''
+  let spiceModels = ''
   const netlist = {
     componentlist: [],
     nodelist: []
@@ -251,7 +263,7 @@ export function GenerateNetList () {
   } else {
     const list = annotate(graph)
     for (const property in list) {
-      if (list[property].CellType === 'Component' && list[property].blockprefix !== 'PWR') {
+      if (list[property].CellType.value === 'Component' && list[property].blockprefix !== 'PWR') {
         const compobj = {
           name: '',
           node1: '',
@@ -259,9 +271,23 @@ export function GenerateNetList () {
           magnitude: ''
         }
         const component = list[property]
-        k = k + component.blockprefix + c.toString()
-        component.value = component.blockprefix + c.toString()
-        ++c
+        if (component.blockprefix === 'R') {
+          k = k + component.blockprefix + r.toString()
+          component.value = component.blockprefix + r.toString()
+          component.properties.PREFIX = component.value
+          ++r
+        } else if (component.blockprefix === 'V') {
+          console.log(component)
+          k = k + component.blockprefix + v.toString()
+          component.value = component.blockprefix + v.toString()
+          component.properties.PREFIX = component.value
+          ++v
+        } else {
+          k = k + component.blockprefix + c.toString()
+          component.value = component.blockprefix + c.toString()
+          component.properties.PREFIX = component.value
+          ++c
+        } 
 
         if (component.children !== null) {
           for (const child in component.children) {
@@ -286,8 +312,15 @@ export function GenerateNetList () {
                       pin.edges[wire].targetVertex = pin.edges[wire].target.id
                       pin.edges[wire].tarx = pin.edges[wire].geometry.targetPoint.x
                       pin.edges[wire].tary = pin.edges[wire].geometry.targetPoint.y
+                    } else if (pin.edges[wire].source.ParentComponent.blockprefix === 'PWR' || pin.edges[wire].target.ParentComponent.blockprefix === 'PWR') {
+                      pin.edges[wire].node = 0
+                      // pin.edges[wire].node = '0'
+                      pin.edges[wire].value = 0
+                      // k = k + ' ' + pin.edges[wire].node
+                      pin.edges[wire].sourceVertex = pin.edges[wire].source.id
+                      pin.edges[wire].targetVertex = pin.edges[wire].target.id
                     } else {
-                      pin.edges[wire].node = '.' + pin.edges[wire].source.value
+                      pin.edges[wire].node = pin.edges[wire].source.ParentComponent.properties.PREFIX + '.' + pin.edges[wire].source.value
                       console.log('comp')
                       pin.edges[wire].sourceVertex = pin.edges[wire].source.id
                       pin.edges[wire].targetVertex = pin.edges[wire].target.id
@@ -308,7 +341,47 @@ export function GenerateNetList () {
           compobj.node1 = component.children[0].edges[0].node
           compobj.node2 = component.children[1].edges[0].node
           compobj.magnitude = 10
+          netlist.componentlist.push(component.properties.PREFIX)
           netlist.nodelist.push(compobj.node2, compobj.node1)
+
+        }
+        console.log('component properties', component.properties)
+
+        if (component.properties.PREFIX.charAt(0) === 'V' || component.properties.PREFIX.charAt(0) === 'v' || component.properties.PREFIX.charAt(0) === 'I' || component.properties.PREFIX.charAt(0) === 'i') {
+          const comp = component.properties
+          if (comp.NAME === 'SINE') {
+            k = k + ` SIN(${comp.OFFSET} ${comp.AMPLITUDE} ${comp.FREQUENCY} ${comp.DELAY} ${comp.DAMPING_FACTOR} ${comp.PHASE} )`
+          } else if (comp.NAME === 'EXP') {
+            k = k + ` EXP(${comp.INITIAL_VALUE} ${comp.PULSED_VALUE} ${comp.FREQUENCY} ${comp.RISE_DELAY_TIME} ${comp.RISE_TIME_CONSTANT} ${comp.FALL_DELAY_TIME} ${comp.FALL_TIME_CONSTANT} )`
+          } else if (comp.NAME === 'DC') {
+            if (component.properties.VALUE !== undefined) {
+              k = k + ' DC ' + component.properties.VALUE
+              component.value = component.value + '\n' + component.properties.VALUE
+            }
+          } else if (comp.NAME === 'PULSE') {
+            k = k + ` PULSE(${comp.INITIAL_VALUE} ${comp.PULSED_VALUE} ${comp.DELAY_TIME} ${comp.RISE_TIME} ${comp.FALL_TIME} ${comp.PULSE_WIDTH} ${comp.PERIOD} ${comp.PHASE} )`
+          } else {
+            if (component.properties.VALUE !== undefined) {
+              k = k + ' ' + component.properties.VALUE
+              component.value = component.value + '\n' + component.properties.VALUE
+            }
+          }
+        } else {
+          if (component.properties.VALUE !== undefined) {
+            k = k + ' ' + component.properties.VALUE
+            component.value = component.value + '\n' + component.properties.VALUE
+          }
+        }
+
+        if (component.properties.EXTRA_EXPRESSION.length > 0) {
+          k = k + ' ' + component.properties.EXTRA_EXPRESSION
+          component.value = component.value + ' ' + component.properties.EXTRA_EXPRESSION
+        }
+        if (component.properties.MODEL.length > 0) {
+          k = k + ' ' + component.properties.MODEL.split(' ')[1]
+        }
+        if (component.properties.MODEL.length > 0) {
+          spiceModels += component.properties.MODEL + '\n'
         }
         console.log('component parameter_values', component.parameter_values)
 
@@ -335,6 +408,30 @@ export function GenerateNetList () {
 }
 function annotate (graph) {
   return graph.getModel().cells
+}
+
+export function GenerateCompList () {
+  const list = annotate(graph)
+  const netlist = []
+
+  for (const property in list) {
+    if (list[property].CellType.value === 'Component' && list[property].blockprefix !== 'PWR') {
+      const compobj = {
+        name: '',
+        node1: '',
+        node2: '',
+        magnitude: ''
+      }
+      const component = list[property]
+      compobj.name = component.blockprefix
+      compobj.node1 = component.children[0].edges[0].node
+      compobj.node2 = component.children[1].edges[0].node
+      netlist.push(component.properties.PREFIX)
+    }
+  }
+
+  return netlist
+  
 }
 
 export function renderXML () {
@@ -408,6 +505,7 @@ function parseXmlToGraph (xmlDoc, graph) {
         vp.geometry.relative = true
         vp.geometry.offset = point
         vp.CellType = 'Pin'
+        vp.ParentComponent = v1
       } else if (cellAttrs.edge) { // is edge
         const edgeId = Number(cellAttrs.id.value)
         const source = Number(cellAttrs.sourceVertex.value)
@@ -458,7 +556,7 @@ function XMLWireConnections () {
   } else {
     const list = graph.getModel().cells
     for (const property in list) {
-      if (list[property].CellType === 'Component' && list[property].blockprefix !== 'PWR') {
+      if (list[property].CellType.value === 'Component' && list[property].blockprefix !== 'PWR') {
         const component = list[property]
 
         if (component.children !== null) {
@@ -477,8 +575,11 @@ function XMLWireConnections () {
                         pin.edges[wire].targetVertex = pin.edges[wire].target.id
                         pin.edges[wire].tarx = pin.edges[wire].geometry.targetPoint.x
                         pin.edges[wire].tary = pin.edges[wire].geometry.targetPoint.y
+                      } else if (pin.edges[wire].source.ParentComponent.blockprefix === 'PWR' || pin.edges[wire].target.ParentComponent.blockprefix === 'PWR') {
+                        pin.edges[wire].sourceVertex = pin.edges[wire].source.id
+                        pin.edges[wire].targetVertex = pin.edges[wire].target.id
                       } else {
-                        pin.edges[wire].node = '.' + pin.edges[wire].source.value
+                        pin.edges[wire].node = pin.edges[wire].source.ParentComponent.properties.PREFIX + '.' + pin.edges[wire].source.value
                         pin.edges[wire].sourceVertex = pin.edges[wire].source.id
                         pin.edges[wire].targetVertex = pin.edges[wire].target.id
                       }
