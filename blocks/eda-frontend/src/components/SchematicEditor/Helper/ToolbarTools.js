@@ -1,7 +1,7 @@
 import 'mxgraph/javascript/src/css/common.css'
 
 import mxGraphFactory from 'mxgraph'
-import { portSize } from './SvgParser'
+import { portSize, parameterCount, getParameter } from './SvgParser'
 import store from '../../../redux/store'
 import { setModel, setNetlist } from '../../../redux/actions/index'
 
@@ -481,10 +481,15 @@ function parseXmlToGraph (xmlDoc, graph) {
           blockport_set: blockport_set,
           display_parameter: cellChildren[1].attributes.display_parameter.value
         }
-        let parameter_values = {}
-        const cellChildrenParameter_values = cellChildren[2].attributes.parameter_values
-        if (cellChildrenParameter_values !== undefined) {
-          parameter_values = cellChildrenParameter_values.value
+        const parameter_values = {}
+        const cellChildrenAttributes = cellChildren[2].attributes
+        if (cellChildrenAttributes !== undefined) {
+          for (let i = 0; i < parameterCount; i++) {
+            const p = getParameter(i) + '_value'
+            if (cellChildrenAttributes[p] !== undefined) {
+                parameter_values[p] = cellChildrenAttributes[p].value
+            }
+          }
         }
         v1.parameter_values = parameter_values
       } else if (cellAttrs.CellType.value === 'Pin') {
