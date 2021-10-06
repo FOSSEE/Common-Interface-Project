@@ -416,8 +416,8 @@ function parseXmlToGraph (xmlDoc, graph) {
         const targetCell = graph.getModel().getCell(target)
         try {
           const edge = graph.insertEdge(parent, edgeId, null, sourceCell, targetCell)
-          const firstChild = cellChildren[0].querySelector('Array[as]')
-          if (firstChild !== undefined) {
+          const firstChild = cellChildren[0].querySelector('Array[as=points]')
+          if (firstChild !== null) {
             edge.geometry.points = []
             const plist = firstChild.children
             for (const a of plist) {
