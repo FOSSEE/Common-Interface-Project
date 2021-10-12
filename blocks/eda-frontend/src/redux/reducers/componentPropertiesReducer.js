@@ -2,7 +2,7 @@ import * as actions from '../actions/actions'
 import { ZoomAct } from '../../components/SchematicEditor/Helper/ToolbarTools.js'
 
 const InitialState = {
-  block_id: 0,
+  block: null,
   name: '',
   parameter_values: {},
   isPropertiesWindowOpen: false,
@@ -15,7 +15,7 @@ export default function (state = InitialState, action) {
     case actions.GET_COMP_PROPERTIES: {
       return {
         ...state,
-        block_id: action.payload.block_id,
+        block: action.payload.block,
         name: action.payload.name,
         parameter_values: action.payload.parameter_values,
         isPropertiesWindowOpen: true,
@@ -26,7 +26,7 @@ export default function (state = InitialState, action) {
     case actions.SET_COMP_PROPERTIES: {
       return {
         ...state,
-        block_id: action.payload.block_id,
+        block: action.payload.block,
         parameter_values: action.payload.parameter_values,
         isPropertiesWindowOpen: false,
         displayProperties: action.payload.displayProperties
