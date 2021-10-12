@@ -115,12 +115,12 @@ def set_block_parameter(request):
                 error = 'getblockportserializer error: %s' % str(e)
                 errorserializer = ErrorSerializer(data={
                     'code': 500, 'error': error})
-                return JsonResponse(errorserializer.initial_data)
+                return JsonResponse(errorserializer, safe=False)
         else:
             error = 'getblockportserializer errors: %s' % serializer.errors
             errorserializer = ErrorSerializer(data={
                 'code': 500, 'error': error})
-            return JsonResponse(errorserializer.initial_data)
+            return JsonResponse(errorserializer, safe=False)
     else:
         serializer = SetBlockParameterSerializer()
 
