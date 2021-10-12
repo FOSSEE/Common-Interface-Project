@@ -8,7 +8,7 @@ export default function ComponentProperties () {
 
   const compProperties = useSelector(state => state.componentPropertiesReducer.compProperties)
   const isOpen = useSelector(state => state.componentPropertiesReducer.isPropertiesWindowOpen)
-  const id = useSelector(state => state.componentPropertiesReducer.id)
+  const block = useSelector(state => state.componentPropertiesReducer.block)
   const name = useSelector(state => state.componentPropertiesReducer.name)
   const parameter_values = useSelector(state => state.componentPropertiesReducer.parameter_values)
   const [val, setVal] = useState(parameter_values)
@@ -28,7 +28,7 @@ export default function ComponentProperties () {
   }
 
   const setProps = () => {
-    dispatch(setCompProperties(id, val))
+    dispatch(setCompProperties(block, val))
   }
 
   const link1 = name + ' Parameters'

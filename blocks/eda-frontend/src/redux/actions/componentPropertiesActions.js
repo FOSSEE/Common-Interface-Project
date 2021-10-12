@@ -10,7 +10,7 @@ export const getCompProperties = (block) => (dispatch) => {
         dispatch({
           type: actions.GET_COMP_PROPERTIES,
           payload: {
-            id: block.id,
+            block: block,
             name: block.style,
             parameter_values: block.parameter_values,
             compProperties: res.data[0]
@@ -22,17 +22,18 @@ export const getCompProperties = (block) => (dispatch) => {
 }
 
 // Actions for updating entered component properites on clicking set parameters
-export const setCompProperties = (id, parameter_values) => (dispatch) => {
+export const setCompProperties = (block, parameter_values) => (dispatch) => {
   const url = 'setblockparameter'
   const filteredParameterValues = Object.fromEntries(Object.entries(parameter_values).filter(([k, v]) => v != null))
-  const data = { block_id: id, ...filteredParameterValues }
+  const data = { block_id: block.block_id, ...filteredParameterValues }
   api.post(url, data)
     .then(
       (res) => {
+        block.parameter_values = filteredParameterValues
         dispatch({
           type: actions.SET_COMP_PROPERTIES,
           payload: {
-            id: id,
+            block: block,
             parameter_values: parameter_values,
             displayProperties: res.data
           }
