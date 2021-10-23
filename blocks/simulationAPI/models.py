@@ -12,16 +12,24 @@ class Task(models.Model):
     def save(self, *args, **kwargs):
         super(Task, self).save(*args, **kwargs)
 
+    def __str__(self):
+        """String for representing the Model object."""
+        return self.task_id.hex
+
 
 class TaskFile(models.Model):
     file_id = models.UUIDField(
         primary_key=True, default=uuid.uuid4, editable=False)
     file = models.FileField(
         storage=FileSystemStorage(location=settings.MEDIA_ROOT))
+    parameters = models.TextField(blank=True, null=True)
     upload_time = models.DateTimeField(auto_now=True)
-
-    task = models.ForeignKey(
-        Task, on_delete=models.CASCADE, related_name='file')
+    task = models.ForeignKey(Task, on_delete=models.CASCADE,
+                             related_name='file')
 
     def save(self, *args, **kwargs):
         super(TaskFile, self).save(*args, **kwargs)
+
+    def __str__(self):
+        """String for representing the Model object."""
+        return self.file_id.hex
