@@ -102,6 +102,7 @@ export default function SimulationProperties () {
   // Upload the nelist
   function netlistConfig (file) {
     const formData = new FormData()
+    formData.append('app_name', process.env.REACT_APP_NAME)
     formData.append('file', file)
     for (const [key, value] of Object.entries(transientAnalysisControlLine)) {
       formData.append(key, value)
