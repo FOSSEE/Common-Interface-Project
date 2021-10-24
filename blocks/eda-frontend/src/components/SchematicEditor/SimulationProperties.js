@@ -123,7 +123,7 @@ export default function SimulationProperties () {
       .get(url)
       .then((res) => {
         if (res.data.state === 'PROGRESS' || res.data.state === 'PENDING') {
-          setTimeout(simulationResult(url), 1000)
+          setTimeout(function() { simulationResult(url); }, 10000)
         } else {
           const result = res.data.details
           if (result === null) {
