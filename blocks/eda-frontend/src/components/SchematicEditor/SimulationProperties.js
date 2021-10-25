@@ -67,7 +67,7 @@ export default function SimulationProperties () {
   }
 
   const [simulateOpen, setSimulateOpen] = React.useState(false)
-  const handlesimulateOpen = () => {
+  const handleSimulateOpen = () => {
     setSimulateOpen(true)
   }
 
@@ -123,7 +123,7 @@ export default function SimulationProperties () {
       .get(url)
       .then((res) => {
         if (res.data.state === 'PROGRESS' || res.data.state === 'PENDING') {
-          setTimeout(function() { simulationResult(url); }, 10000)
+          setTimeout(() => simulationResult(url), 10000)
         } else {
           const result = res.data.details
           if (result === null) {
@@ -187,7 +187,7 @@ export default function SimulationProperties () {
           }
         }
       })
-      .then((res) => { handlesimulateOpen() })
+      .then((res) => { handleSimulateOpen() })
       .catch(function (error) {
         console.log(error)
       })
@@ -313,8 +313,8 @@ export default function SimulationProperties () {
             </ExpansionPanel>
           </ListItem>
 
-          <ListItem style={isSimRes ? {} : { display: 'none' }} onClick={handlesimulateOpen}>
-            <Button size='small' variant='contained' color='primary' style={{ margin: '10px auto' }} onClick={handlesimulateOpen}>
+          <ListItem style={isSimRes ? {} : { display: 'none' }} onClick={handleSimulateOpen}>
+            <Button size='small' variant='contained' color='primary' style={{ margin: '10px auto' }} onClick={handleSimulateOpen}>
               Simulation Result
             </Button>
           </ListItem>
