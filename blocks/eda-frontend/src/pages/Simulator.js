@@ -97,7 +97,7 @@ export default function Simulator () {
       .get(url)
       .then((res) => {
         if (res.data.state === 'PROGRESS' || res.data.state === 'PENDING') {
-          setTimeout(simulationResult(url), 1000)
+          setTimeout(() => simulationResult(url), 10000)
         } else {
           const result = res.data.details
           if (result === null) {
