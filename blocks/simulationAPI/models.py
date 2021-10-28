@@ -22,9 +22,10 @@ class TaskFile(models.Model):
         primary_key=True, default=uuid.uuid4, editable=False)
     file = models.FileField(
         storage=FileSystemStorage(location=settings.MEDIA_ROOT))
+    app_name = models.CharField(max_length=100, blank=True, null=True)
     parameters = models.TextField(blank=True, null=True)
     upload_time = models.DateTimeField(auto_now=True)
-    task = models.ForeignKey(Task, on_delete=models.CASCADE,
+    task = models.OneToOneField(Task, on_delete=models.CASCADE,
                              related_name='file')
 
     def save(self, *args, **kwargs):

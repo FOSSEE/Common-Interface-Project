@@ -1,3 +1,4 @@
+import json
 from celery import shared_task, current_task
 from celery import states
 from simulationAPI.helpers import ngspice_helper
@@ -14,18 +15,19 @@ logger = logging.getLogger(__name__)
 def process_task(task_id):
     try:
 
-        task_filter = TaskFile.objects.filter(task_id=task_id)
-        file_obj = list(task_filter)[0]
+        file_obj = TaskFile.objects.get(task_id=task_id)
         file_path = file_obj.file.path
         file_id = file_obj.file_id
+        app_name = file_obj.app_name
+        parameters = json.loads(file_obj.parameters)
 
-        logger.info("Processing %s %s", file_path, file_id)
+        logger.info("Processing %s %s %s", file_path, file_id, app_name)
 
         current_task.update_state(
             state='PROGRESS',
             meta={'current_process': 'Started Processing File'})
 
-        output = ngspice_helper.ExecXml(file_path, file_id)
+        output = ngspice_helper.ExecXml(file_path, file_id, parameters)
         current_task.update_state(
             state='PROGRESS',
             meta={'current_process': 'Processed Xml, Loading Output'})

@@ -38,7 +38,7 @@ ALLOWED_HOSTS = [
     'test.esimblocks.fossee.org',
 ]
 
-SCILAB_DIR = '/home/sunil/software/scilab-6.1.0'
+SCILAB_DIR = '/home/sunil/software/scilab-6.1.1'
 
 # Application definition
 
