@@ -26,9 +26,10 @@ class TaskSerializer(serializers.HyperlinkedModelSerializer):
         logger.info('File Upload: %s', file)
         post = request.POST
         postdata = post.dict()
+        app_name = postdata.pop('app_name')
         parameters = json.dumps(postdata, separators=(',', ':'))
         task = Task.objects.create()
         taskfile = TaskFile.objects.create(
-            task=task, file=file, parameters=parameters)
+            task=task, file=file, app_name=app_name, parameters=parameters)
         logger.info('task: %s, taskfile: %s', task, taskfile)
         return task

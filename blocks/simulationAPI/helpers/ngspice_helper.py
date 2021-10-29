@@ -32,7 +32,7 @@ class CannotRunParser(Exception):
     pass
 
 
-def ExecXml(filepath, file_id):
+def ExecXml(filepath, file_id, parameters):
     if not os.path.isfile(filepath):
         raise IOError
     try:
