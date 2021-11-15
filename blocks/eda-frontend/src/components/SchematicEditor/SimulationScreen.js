@@ -125,244 +125,246 @@ export default function SimulationScreen ({ open, close, isResult }) {
             </Grid>
 
             {/* Display graph result */}
-            {isResult === true ? <>
-              {
-                (result.graph !== {} && result.isGraph === 'true')
-                  ? <Grid item xs={12} sm={12}>
-                    <Paper className={classes.paper}>
-                      <Typography variant='h4' align='center' gutterBottom>
-                        GRAPH OUTPUT
-                      </Typography>
-                      <div style={{ padding: '15px 10px 10px 10px', margin: '20px 0px', backgroundColor: 'white', borderRadius: '5px' }}>
-                        <TextField
-                          style={{ width: '20%' }}
-                          id='xscale'
-                          size='small'
-                          variant='outlined'
-                          select
-                          label='Select X Axis Scale'
-                          value={xscale}
-                          onChange={handleXScale}
-                          SelectProps={{
-                            native: true
-                          }}
-                        >
-                          <option value='G'>
-                            Giga (G)
-                          </option>
-                          <option value='M'>
-                            Mega (MEG)
-                          </option>
-                          <option value='K'>
-                            Kilo (K)
-                          </option>
-                          <option value='si'>
-                            SI UNIT
-                          </option>
+            {isResult === true
+              ? <>
+                {
+                  (result.graph !== {} && result.isGraph === 'true')
+                    ? <Grid item xs={12} sm={12}>
+                      <Paper className={classes.paper}>
+                        <Typography variant='h4' align='center' gutterBottom>
+                          GRAPH OUTPUT
+                        </Typography>
+                        <div style={{ padding: '15px 10px 10px 10px', margin: '20px 0px', backgroundColor: 'white', borderRadius: '5px' }}>
+                          <TextField
+                            style={{ width: '20%' }}
+                            id='xscale'
+                            size='small'
+                            variant='outlined'
+                            select
+                            label='Select X Axis Scale'
+                            value={xscale}
+                            onChange={handleXScale}
+                            SelectProps={{
+                              native: true
+                            }}
+                          >
+                            <option value='G'>
+                              Giga (G)
+                            </option>
+                            <option value='M'>
+                              Mega (MEG)
+                            </option>
+                            <option value='K'>
+                              Kilo (K)
+                            </option>
+                            <option value='si'>
+                              SI UNIT
+                            </option>
 
-                          <option value='m'>
-                            Milli (m)
-                          </option>
-                          <option value='u'>
-                            Micro (u)
-                          </option>
-                          <option value='n'>
-                            Nano (n)
-                          </option>
-                          <option value='p'>
-                            Pico (p)
-                          </option>
+                            <option value='m'>
+                              Milli (m)
+                            </option>
+                            <option value='u'>
+                              Micro (u)
+                            </option>
+                            <option value='n'>
+                              Nano (n)
+                            </option>
+                            <option value='p'>
+                              Pico (p)
+                            </option>
 
-                        </TextField>
-                        <TextField
-                          style={{ width: '20%', marginLeft: '10px' }}
-                          id='yscale'
-                          size='small'
-                          variant='outlined'
-                          select
-                          label='Select Y Axis Scale'
-                          value={yscale}
-                          onChange={handleYScale}
-                          SelectProps={{
-                            native: true
-                          }}
-                        >
-                          <option value='G'>
-                            Giga (G)
-                          </option>
-                          <option value='M'>
-                            Mega (MEG)
-                          </option>
-                          <option value='K'>
-                            Kilo (K)
-                          </option>
-                          <option value='si'>
-                            SI UNIT
-                          </option>
+                          </TextField>
+                          <TextField
+                            style={{ width: '20%', marginLeft: '10px' }}
+                            id='yscale'
+                            size='small'
+                            variant='outlined'
+                            select
+                            label='Select Y Axis Scale'
+                            value={yscale}
+                            onChange={handleYScale}
+                            SelectProps={{
+                              native: true
+                            }}
+                          >
+                            <option value='G'>
+                              Giga (G)
+                            </option>
+                            <option value='M'>
+                              Mega (MEG)
+                            </option>
+                            <option value='K'>
+                              Kilo (K)
+                            </option>
+                            <option value='si'>
+                              SI UNIT
+                            </option>
 
-                          <option value='m'>
-                            Milli (m)
-                          </option>
-                          <option value='u'>
-                            Micro (u)
-                          </option>
-                          <option value='n'>
-                            Nano (n)
-                          </option>
-                          <option value='p'>
-                            Pico (p)
-                          </option>
+                            <option value='m'>
+                              Milli (m)
+                            </option>
+                            <option value='u'>
+                              Micro (u)
+                            </option>
+                            <option value='n'>
+                              Nano (n)
+                            </option>
+                            <option value='p'>
+                              Pico (p)
+                            </option>
 
-                        </TextField>
+                          </TextField>
 
-                        <TextField
-                          style={{ width: '20%', marginLeft: '10px' }}
-                          id='precision'
-                          size='small'
-                          variant='outlined'
-                          select
-                          label='Select Precision'
-                          value={precision}
-                          onChange={handlePrecision}
-                          SelectProps={{
-                            native: true
-                          }}
-                        >
-                          {
-                            precisionArr.map((d, i) => {
-                              return (
-                                <option key={i} value={d}>
-                                  {d}
-                                </option>
-                              )
-                            })
-                          }
+                          <TextField
+                            style={{ width: '20%', marginLeft: '10px' }}
+                            id='precision'
+                            size='small'
+                            variant='outlined'
+                            select
+                            label='Select Precision'
+                            value={precision}
+                            onChange={handlePrecision}
+                            SelectProps={{
+                              native: true
+                            }}
+                          >
+                            {
+                              precisionArr.map((d, i) => {
+                                return (
+                                  <option key={i} value={d}>
+                                    {d}
+                                  </option>
+                                )
+                              })
+                            }
 
-                        </TextField>
-                      </div>
-                      <Graph
-                        labels={result.graph.labels}
-                        x={result.graph.x_points}
-                        y={result.graph.y_points}
-                        xscale={xscale}
-                        yscale={yscale}
-                        precision={precision}
-                      />
-                    </Paper>
-                  </Grid>
-                  : (result.isGraph === 'true') ? <span>{typography1}</span> : <span />
-              }
+                          </TextField>
+                        </div>
+                        <Graph
+                          labels={result.graph.labels}
+                          x={result.graph.x_points}
+                          y={result.graph.y_points}
+                          xscale={xscale}
+                          yscale={yscale}
+                          precision={precision}
+                        />
+                      </Paper>
+                    </Grid>
+                    : (result.isGraph === 'true') ? <span>{typography1}</span> : <span />
+                }
 
-              {/* Display text result */}
-              {
-                (result.isGraph === 'false')
-                  ? <Grid item xs={12} sm={12}>
-                    <Paper className={classes.paper}>
-                      <Typography variant='h4' align='center' gutterBottom>
-                        OUTPUT
-                      </Typography>
-                      <div style={{ padding: '15px 10px 10px 10px', backgroundColor: 'white', margin: '20px 0px', borderRadius: '5px' }}>
-                        <TextField
-                          style={{ width: '20%' }}
-                          id='xscale'
-                          size='small'
-                          variant='outlined'
-                          select
-                          label='Select Scale'
-                          value={xscale}
-                          onChange={handleXScale}
-                          SelectProps={{
-                            native: true
-                          }}
-                        >
-                          <option value='G'>
-                            Giga (G)
-                          </option>
-                          <option value='M'>
-                            Mega (MEG)
-                          </option>
-                          <option value='K'>
-                            Kilo (K)
-                          </option>
-                          <option value='si'>
-                            SI UNIT
-                          </option>
+                {/* Display text result */}
+                {
+                  (result.isGraph === 'false')
+                    ? <Grid item xs={12} sm={12}>
+                      <Paper className={classes.paper}>
+                        <Typography variant='h4' align='center' gutterBottom>
+                          OUTPUT
+                        </Typography>
+                        <div style={{ padding: '15px 10px 10px 10px', backgroundColor: 'white', margin: '20px 0px', borderRadius: '5px' }}>
+                          <TextField
+                            style={{ width: '20%' }}
+                            id='xscale'
+                            size='small'
+                            variant='outlined'
+                            select
+                            label='Select Scale'
+                            value={xscale}
+                            onChange={handleXScale}
+                            SelectProps={{
+                              native: true
+                            }}
+                          >
+                            <option value='G'>
+                              Giga (G)
+                            </option>
+                            <option value='M'>
+                              Mega (MEG)
+                            </option>
+                            <option value='K'>
+                              Kilo (K)
+                            </option>
+                            <option value='si'>
+                              SI UNIT
+                            </option>
 
-                          <option value='m'>
-                            Milli (m)
-                          </option>
-                          <option value='u'>
-                            Micro (u)
-                          </option>
-                          <option value='n'>
-                            Nano (n)
-                          </option>
-                          <option value='p'>
-                            Pico (p)
-                          </option>
+                            <option value='m'>
+                              Milli (m)
+                            </option>
+                            <option value='u'>
+                              Micro (u)
+                            </option>
+                            <option value='n'>
+                              Nano (n)
+                            </option>
+                            <option value='p'>
+                              Pico (p)
+                            </option>
 
-                        </TextField>
+                          </TextField>
 
-                        <TextField
-                          style={{ width: '20%', marginLeft: '10px' }}
-                          id='precision'
-                          size='small'
-                          variant='outlined'
-                          select
-                          label='Select Precision'
-                          value={precision}
-                          onChange={handlePrecision}
-                          SelectProps={{
-                            native: true
-                          }}
-                        >
-                          {
-                            precisionArr.map((d, i) => {
-                              return (
-                                <option key={i} value={d}>
-                                  {d}
-                                </option>
-                              )
-                            })
-                          }
+                          <TextField
+                            style={{ width: '20%', marginLeft: '10px' }}
+                            id='precision'
+                            size='small'
+                            variant='outlined'
+                            select
+                            label='Select Precision'
+                            value={precision}
+                            onChange={handlePrecision}
+                            SelectProps={{
+                              native: true
+                            }}
+                          >
+                            {
+                              precisionArr.map((d, i) => {
+                                return (
+                                  <option key={i} value={d}>
+                                    {d}
+                                  </option>
+                                )
+                              })
+                            }
 
-                        </TextField>
-                      </div>
+                          </TextField>
+                        </div>
 
-                      <TableContainer component={Paper}>
-                        <Table className={classes.table} aria-label='simple table'>
-                          <TableHead>
-                            <TableRow>
-                              <TableCell align='center'>Node/Branch</TableCell>
-                              <TableCell align='center'>Value</TableCell>
-                              <TableCell align='center'>Unit</TableCell>
-                            </TableRow>
-                          </TableHead>
-                          <TableBody>
-                            {result.text.map((line, index) => (
-                              <TableRow key={index}>
-                                <TableCell align='center'>{line.split('=')[0]}</TableCell>
-                                <TableCell align='center'>{(parseFloat(line.split(' ')[2]) / scales[xscale]).toFixed(precision)}</TableCell>
-                                <TableCell align='center'>{xscale === 'si' ? '' : xscale}{line.split(' ')[3]}</TableCell>
+                        <TableContainer component={Paper}>
+                          <Table className={classes.table} aria-label='simple table'>
+                            <TableHead>
+                              <TableRow>
+                                <TableCell align='center'>Node/Branch</TableCell>
+                                <TableCell align='center'>Value</TableCell>
+                                <TableCell align='center'>Unit</TableCell>
                               </TableRow>
-                            ))}
+                            </TableHead>
+                            <TableBody>
+                              {result.text.map((line, index) => (
+                                <TableRow key={index}>
+                                  <TableCell align='center'>{line.split('=')[0]}</TableCell>
+                                  <TableCell align='center'>{(parseFloat(line.split(' ')[2]) / scales[xscale]).toFixed(precision)}</TableCell>
+                                  <TableCell align='center'>{xscale === 'si' ? '' : xscale}{line.split(' ')[3]}</TableCell>
+                                </TableRow>
+                              ))}
 
-                          </TableBody>
-                        </Table>
-                      </TableContainer>
+                            </TableBody>
+                          </Table>
+                        </TableContainer>
 
-                    </Paper>
-                  </Grid>
-                  : <span />
-              }
-            </>
+                      </Paper>
+                    </Grid>
+                    : <span />
+                }
+              </>
               : <Grid item xs={12} sm={12}>
                 <Paper className={classes.paper}>
                   <Typography variant='h6' align='center' gutterBottom>
                     {typography2} {/* Error handling message in case of null result */}
                   </Typography>
                 </Paper>
-              </Grid>}
+              </Grid>
+            }
           </Grid>
         </Container>
       </Dialog>
