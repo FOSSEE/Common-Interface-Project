@@ -35,9 +35,9 @@ class Graph extends Component {
     if (typeof lineGraph !== 'undefined') lineGraph.destroy()
 
     const dataset = () => {
-      var arr = []
+      const arr = []
 
-      for (var i = 0; i < y.length; i++) {
+      for (let i = 0; i < y.length; i++) {
         if (labels[0] === labels[i + 1]) continue
         arr.push({
           label: labels[i + 1],

@@ -3,7 +3,6 @@ import logging
 import subprocess
 from pathlib import Path
 from django.conf import settings
-from .parse import extract_data_from_ngspice_output
 
 logger = logging.getLogger(__name__)
 MxGraphParser = os.path.join(settings.BASE_DIR, '../Xcos/MxGraphParser.py')
@@ -28,8 +27,7 @@ SCILAB_CMD = [SCILAB,
 
 
 class CannotRunParser(Exception):
-    """Base class for exceptions in this module."""
-    pass
+    """ Base class for exceptions in this module. """
 
 
 def ExecXml(filepath, file_id, parameters):
@@ -74,7 +72,7 @@ def ExecXml(filepath, file_id, parameters):
         logger.info('Ran %s', SCILAB_CMD[0])
 
         return "Success"
-    except Exception as e:
+    except Exception:
         logger.exception('Encountered Exception:')
         logger.info('removing %s', filepath)
         os.remove(filepath)
