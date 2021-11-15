@@ -12,7 +12,7 @@
   border-radius: 5px;
   transform: scale(1.2);
   padding: 3px;
-  box-shadow: 0px 0px 41px 17px rgba(207,218,225,0.68);
+  box-shadow: 0 0 41px 17px rgba(207,218,225,0.68);
 }
 
 /* Schematic Editer Grid */
@@ -91,7 +91,7 @@ html {
   overflow-x: hidden;
 }
 ::-webkit-scrollbar {
-  width: 0px;  /* Remove scrollbar space */
+  width: 0;  /* Remove scrollbar space */
   background: transparent;  /* Optional: just make scrollbar invisible */
 }
 /* Optional: show position indicator in red */
