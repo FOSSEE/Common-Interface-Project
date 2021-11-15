@@ -169,7 +169,8 @@ export function Header () {
 
       {/* Display login option or user menu as per authenticated status */}
       {
-        (!auth.isAuthenticated ? (<Button
+        (!auth.isAuthenticated
+? (<Button
           size='small'
           component={RouterLink}
           to='/login'

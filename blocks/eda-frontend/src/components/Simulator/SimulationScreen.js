@@ -107,7 +107,8 @@ export default function SimulationScreen ({ open, close, isResult }) {
             justify='center'
             alignItems='center'
           >
-            {isResult === true ? <>
+            {isResult === true
+? <>
               {
                 (result.graph !== {} && result.isGraph === 'true')
                   ? <Grid item xs={12} sm={12}>
