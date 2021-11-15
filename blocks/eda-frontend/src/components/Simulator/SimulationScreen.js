@@ -344,7 +344,8 @@ export default function SimulationScreen ({ open, close, isResult }) {
                     SOMETHING WENT WRONG PLEASE CHECK THE NETLIST.
                   </Typography>
                 </Paper>
-              </Grid>}
+              </Grid>
+            }
           </Grid>
         </Container>
       </Dialog>
