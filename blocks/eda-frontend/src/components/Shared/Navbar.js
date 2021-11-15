@@ -169,17 +169,17 @@ export function Header () {
 
       {/* Display login option or user menu as per authenticated status */}
       {
-        (!auth.isAuthenticated ? (<Button
-          size='small'
-          component={RouterLink}
-          to='/login'
-          color='primary'
-          variant='outlined'
-                                  >
-          Login
-        </Button>)
-          : (<>
-
+        (!auth.isAuthenticated
+          ? <Button
+            size='small'
+            component={RouterLink}
+            to='/login'
+            color='primary'
+            variant='outlined'
+          >
+            Login
+          </Button>
+          : <>
             <IconButton
               edge='start'
               style={{ marginLeft: 'auto' }}
@@ -230,7 +230,6 @@ export function Header () {
               </MenuItem>
             </Menu>
           </>
-            )
         )
       }
     </>
