@@ -53,13 +53,12 @@ class CeleryResultView(APIView):
     methods = ['GET']
 
     def get(self, request, task_id):
-
-        if isinstance(task_id, uuid.UUID):
-            celery_result = AsyncResult(str(task_id))
-            response_data = {
-                'state': celery_result.state,
-                'details': celery_result.info
-            }
-            return Response(response_data)
-        else:
+        if not isinstance(task_id, uuid.UUID):
             raise ValidationError('Invalid uuid format')
+
+        celery_result = AsyncResult(str(task_id))
+        response_data = {
+            'state': celery_result.state,
+            'details': celery_result.info
+        }
+        return Response(response_data)

@@ -288,18 +288,18 @@ function Header () {
 
       {/* Display login option or user menu as per authenticated status */}
       {
-        (!auth.isAuthenticated ? (<Button
-          size='small'
-          component={RouterLink}
-          to='/login'
-          style={{ marginLeft: 'auto' }}
-          color='primary'
-          variant='outlined'
-                                  >
-          Login
-        </Button>)
-          : (<>
-
+        (!auth.isAuthenticated
+          ? <Button
+            size='small'
+            component={RouterLink}
+            to='/login'
+            style={{ marginLeft: 'auto' }}
+            color='primary'
+            variant='outlined'
+          >
+            Login
+          </Button>
+          : <>
             <IconButton
               edge='start'
               color='primary'
@@ -352,7 +352,6 @@ function Header () {
               </MenuItem>
             </Menu>
           </>
-            )
         )
       }
     </Toolbar>
