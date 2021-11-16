@@ -72,6 +72,7 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
     vp.geometry.relative = true
     vp.geometry.offset = point
     vp.CellType = 'Pin'
+    vp.ParentComponent = v1.id
     pins[i] = vp
   }
 }
