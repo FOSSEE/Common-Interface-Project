@@ -413,6 +413,7 @@ function parseXmlToGraph (xmlDoc, graph) {
         vp.geometry.relative = true
         vp.geometry.offset = point
         vp.CellType = 'Pin'
+        vp.ParentComponent = v1.id
       } else if (cellAttrs.edge) { // is edge
         const edgeId = Number(cellAttrs.id.value)
         const source = Number(cellAttrs.sourceVertex.value)

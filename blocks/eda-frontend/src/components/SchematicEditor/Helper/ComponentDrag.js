@@ -53,6 +53,8 @@ export default function LoadGrid (container, sidebar, outline) {
     mxCell.prototype.CellType = 'Unknown'
     // Tells the magnitude of a resistor/capacitor
     mxCell.prototype.Magnitude = null
+    // Parent component of a pin, default is null
+    mxCell.prototype.ParentComponent = null
     mxCell.prototype.node = null
     mxCell.prototype.CompObject = null
     mxCell.prototype.parameter_values = {}
