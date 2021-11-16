@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import sys
-import xml.etree.ElementTree as ET
+import defusedxml.ElementTree as ET
 
 if len(sys.argv) != 3:
     print("Usage: %s filename directory" % sys.argv[0])
