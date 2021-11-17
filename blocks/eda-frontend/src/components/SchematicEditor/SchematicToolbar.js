@@ -315,8 +315,8 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
         const reader = new FileReader()
         reader.onload = function (event) {
           const title = filename.replace(re, '')
-          const data_dump = event.target.result
-          const xmlDoc = mxUtils.parseXml(data_dump)
+          const dataDump = event.target.result
+          const xmlDoc = mxUtils.parseXml(dataDump)
           const firstCell = xmlDoc.documentElement.children[0].children[0]
           const firstCellAttrs = firstCell.attributes
           const appname = firstCellAttrs.appname.value
@@ -325,7 +325,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
             setMessage('Unsupported app name error !')
             handleSnacClick()
           } else {
-            const obj = { data_dump: data_dump, title: title, description: description }
+            const obj = { data_dump: dataDump, title: title, description: description }
             if (obj.data_dump === undefined || obj.title === undefined || obj.description === undefined) {
               setMessage('Unsupported file error !')
               handleSnacClick()

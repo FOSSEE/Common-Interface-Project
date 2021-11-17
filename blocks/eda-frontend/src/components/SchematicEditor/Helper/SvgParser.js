@@ -23,13 +23,13 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
   const allowedPart = [0, 1]
   const allowedDmg = [0, 1]
 
-  const block_name = component.block_name
+  const blockName = component.block_name
   const pins = []
   // make the component images smaller by scaling
   const width = component.block_width / defaultScale
   const height = component.block_height / defaultScale
 
-  const v1 = graph.insertVertex(parent, null, null, x, y, width, height, block_name)
+  const v1 = graph.insertVertex(parent, null, null, x, y, width, height, blockName)
   v1.CellType = 'Component'
   v1.block_id = component.id
   v1.blockprefix = component.blockprefix.name
@@ -37,13 +37,13 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
     blockport_set: component.blockport_set,
     display_parameter: component.initial_display_parameter
   }
-  const parameter_values = {}
+  const parameterValues = {}
   for (let i = 0; i < parameterCount; i++) {
     const p = getParameter(i) + '_value'
     const pinitial = p + '_initial'
-    parameter_values[p] = component[pinitial]
+    parameterValues[p] = component[pinitial]
   }
-  v1.parameter_values = parameter_values
+  v1.parameter_values = parameterValues
 
   v1.setConnectable(false)
 
@@ -58,9 +58,9 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
     const xPos = 1 / 2 + blockport.port_x / defaultScale / width
     const yPos = 1 / 2 - blockport.port_y / defaultScale / height
 
-    const port_orientation = blockport.port_orientation
+    const portOrientation = blockport.port_orientation
     let point = null
-    switch (port_orientation) {
+    switch (portOrientation) {
       case 'ExplicitInputPort': case 'ImplicitInputPort': point = new mxPoint(-portSize, -portSize / 2); break
       case 'ControlPort': point = new mxPoint(-portSize / 2, -portSize); break
       case 'ExplicitOutputPort': case 'ImplicitOutputPort': point = new mxPoint(0, -portSize / 2); break
@@ -68,7 +68,7 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
       default: point = new mxPoint(-portSize / 2, -portSize / 2); break
     }
 
-    const vp = graph.insertVertex(v1, null, null, xPos, yPos, portSize, portSize, port_orientation)
+    const vp = graph.insertVertex(v1, null, null, xPos, yPos, portSize, portSize, portOrientation)
     vp.geometry.relative = true
     vp.geometry.offset = point
     vp.CellType = 'Pin'

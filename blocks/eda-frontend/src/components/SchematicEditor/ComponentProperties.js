@@ -10,14 +10,14 @@ export default function ComponentProperties () {
   const isOpen = useSelector(state => state.componentPropertiesReducer.isPropertiesWindowOpen)
   const block = useSelector(state => state.componentPropertiesReducer.block)
   const name = useSelector(state => state.componentPropertiesReducer.name)
-  const parameter_values = useSelector(state => state.componentPropertiesReducer.parameter_values)
-  const [val, setVal] = useState(parameter_values)
+  const parameterValues = useSelector(state => state.componentPropertiesReducer.parameter_values)
+  const [val, setVal] = useState(parameterValues)
 
   const dispatch = useDispatch()
 
   useEffect(() => {
-    setVal(parameter_values)
-  }, [parameter_values])
+    setVal(parameterValues)
+  }, [parameterValues])
 
   const getInputValues = (evt) => {
     const value = evt.target.value

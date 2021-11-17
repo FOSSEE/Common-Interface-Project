@@ -60,7 +60,7 @@ export const fetchComponents = (libraryId) => (dispatch) => {
 }
 
 // Api call for fetching component image names
-export const componentImages = () => (dispatch) => {
+export const fetchComponentImages = () => (dispatch) => {
 // SAMPLE Response from API
 //   [
   //   "palettes/LOGICAL_OP.png",

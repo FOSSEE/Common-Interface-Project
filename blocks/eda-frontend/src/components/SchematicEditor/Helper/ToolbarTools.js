@@ -367,34 +367,34 @@ function parseXmlToGraph (xmlDoc, graph) {
         v1.CellType = 'Component'
         v1.block_id = Number(cellAttrs.block_id.value)
         v1.blockprefix = cellAttrs.blockprefix.value
-        const blockport_set = []
-        const cellChildrenBlockport_set = cellChildren[1].children[0]
-        if (cellChildrenBlockport_set !== undefined) {
-          for (const b of cellChildrenBlockport_set.children) {
+        const blockportSet = []
+        const cellChildrenBlockportSet = cellChildren[1].children[0]
+        if (cellChildrenBlockportSet !== undefined) {
+          for (const b of cellChildrenBlockportSet.children) {
             const bc = {}
             for (let i = 0, n = b.attributes.length; i < n; i++) {
               const key = b.attributes[i].nodeName
               const value = b.attributes[i].nodeValue
               bc[key] = value
             }
-            blockport_set.push(bc)
+            blockportSet.push(bc)
           }
         }
         v1.displayProperties = {
-          blockport_set: blockport_set,
+          blockport_set: blockportSet,
           display_parameter: cellChildren[1].attributes.display_parameter.value
         }
-        const parameter_values = {}
+        const parameterValues = {}
         const cellChildrenAttributes = cellChildren[2].attributes
         if (cellChildrenAttributes !== undefined) {
           for (let i = 0; i < parameterCount; i++) {
             const p = getParameter(i) + '_value'
             if (cellChildrenAttributes[p] !== undefined) {
-                parameter_values[p] = cellChildrenAttributes[p].value
+                parameterValues[p] = cellChildrenAttributes[p].value
             }
           }
         }
-        v1.parameter_values = parameter_values
+        v1.parameter_values = parameterValues
       } else if (cellAttrs.CellType.value === 'Pin') {
         const style = cellAttrs.style.value
         const vertexId = Number(cellAttrs.id.value)
