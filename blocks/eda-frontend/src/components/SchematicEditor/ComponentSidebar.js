@@ -22,7 +22,7 @@ import CloseIcon from '@material-ui/icons/Close'
 
 import './Helper/SchematicEditor.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchLibraries, toggleCollapse, fetchComponents, componentImages, toggleSimulate } from '../../redux/actions/index'
+import { fetchLibraries, toggleCollapse, fetchComponents, fetchComponentImages, toggleSimulate } from '../../redux/actions/index'
 import SideComp from './SideComp.js'
 import SimulationProperties from './SimulationProperties'
 const COMPONENTS_PER_ROW = 3
@@ -250,18 +250,18 @@ export default function ComponentSidebar ({ compRef }) {
 }
 
 export function ComponentImages () {
-  const component_images = useSelector(state => state.schematicEditorReducer.component_images)
+  const componentImages = useSelector(state => state.schematicEditorReducer.component_images)
 
   const dispatch = useDispatch()
 
   // For Fetching Image Paths
   useEffect(() => {
-    dispatch(componentImages())
+    dispatch(fetchComponentImages())
   }, [dispatch])
 
   return (
     <div>
-      {(component_images !== undefined) && component_images.forEach((image) => { new Image().src = '/django_static/' + image })}
+      {(componentImages !== undefined) && componentImages.forEach((image) => { new Image().src = '/django_static/' + image })}
     </div>
   )
 }

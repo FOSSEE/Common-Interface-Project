@@ -242,12 +242,12 @@ export default function LoadGrid (container, sidebar, outline) {
 
     store.subscribe(() => {
       const id = store.getState().componentPropertiesReducer.id
-      const parameter_values = store.getState().componentPropertiesReducer.parameter_values
+      const parameterValues = store.getState().componentPropertiesReducer.parameter_values
       const displayProperties = store.getState().componentPropertiesReducer.displayProperties
       const cellList = graph.getModel().cells
       const c = cellList[id]
       if (c !== undefined) {
-        c.parameter_values = parameter_values
+        c.parameter_values = parameterValues
         c.displayProperties = displayProperties
       }
     })

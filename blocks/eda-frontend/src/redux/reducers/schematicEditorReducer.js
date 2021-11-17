@@ -41,9 +41,9 @@ export default function (state = InitialState, action) {
     }
 
     case actions.COMPONENT_IMAGES: {
-      const component_images = action.payload.component_images
-      // console.log('Fetched and added ', component_images.length, ' images')
-      return { ...state, component_images: component_images }
+      const componentImages = action.payload.component_images
+      // console.log('Fetched and added ', componentImages.length, ' images')
+      return { ...state, component_images: componentImages }
     }
 
     case actions.TOGGLE_SIMULATE: {
