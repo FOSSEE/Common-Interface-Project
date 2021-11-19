@@ -84,9 +84,6 @@ export default function LoadGrid (container, sidebar, outline) {
     // Replaces the port image
     mxConstraintHandler.prototype.pointImage = new mxImage(dot, 10, 10)
 
-    // Enables rubberband selection
-    new mxRubberband(graph)
-
     // Creates the outline (navigator, overview) for moving
     // around the graph in the top, right corner of the window.
     const outln = new mxOutline(graph, outline)
