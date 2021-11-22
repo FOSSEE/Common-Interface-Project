@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 import os
-import tempfile
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -147,7 +146,7 @@ STATIC_URL = '/django_static/'
 
 # noqa For Netlist handling netlist uploads and other temp uploads
 MEDIA_URL = '/_files/'
-MEDIA_ROOT = tempfile.mkdtemp()
+MEDIA_ROOT = os.path.join('/tmp', 'blocks-tmp')
 
 # celery
 CELERY_BROKER_URL = 'redis://redis:6379'
