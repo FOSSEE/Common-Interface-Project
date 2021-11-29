@@ -28,14 +28,17 @@ def process_task(task_id):
             meta={'current_process': 'Started Processing File'})
 
         output = ngspice_helper.ExecXml(file_path, file_id, parameters)
+        if output[0] == "Success":
+            file_obj.log_name = output[1]
+            file_obj.save()
         current_task.update_state(
             state='PROGRESS',
             meta={'current_process': 'Processed Xml, Loading Output'})
-        return output
+        return output[0]
 
     except Exception as e:
         current_task.update_state(state=states.FAILURE, meta={
             'exc_type': type(e).__name__,
             'exc_message': traceback.format_exc().split('\n')})
-        logger.warning('Exception Occurred: %s', str(e))
+        logger.exception('Exception Occurred:')
         raise Ignore()
