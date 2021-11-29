@@ -59,7 +59,7 @@ def extract_data_from_ngspice_output(pathToFile):
                     len(json_data["data"])
         return json_data
 
-    except IOError as e:
+    except OSError as e:
         print('Cannot Open File')
         raise e
 

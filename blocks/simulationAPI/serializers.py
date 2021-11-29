@@ -9,7 +9,8 @@ logger = logging.getLogger(__name__)
 class TaskFileSerializer(serializers.ModelSerializer):
     class Meta:
         model = TaskFile
-        fields = ('file_id', 'file', 'app_name', 'parameters', 'upload_time', 'task')
+        fields = ('file_id', 'file', 'app_name', 'parameters', 'upload_time',
+                  'log_name', 'task')
 
 
 class TaskSerializer(serializers.HyperlinkedModelSerializer):
