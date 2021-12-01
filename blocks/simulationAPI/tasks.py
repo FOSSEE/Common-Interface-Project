@@ -30,10 +30,11 @@ def process_task(task_id):
         output = ngspice_helper.ExecXml(file_path, file_id, parameters)
         if output[0] == "Success":
             file_obj.log_name = output[1]
+            file_obj.returncode = output[2]
             file_obj.save()
         current_task.update_state(
-            state='PROGRESS',
-            meta={'current_process': 'Processed Xml, Loading Output'})
+            state='STREAM',
+            meta={'current_process': 'Processed Xml, Streaming Output'})
         return output[0]
 
     except Exception as e:

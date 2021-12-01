@@ -102,7 +102,7 @@ def ExecXml(filepath, file_id, parameters):
                 logger.info('err=%s', err)
 
         log_name = '/tmp/blocks-tmp/scilab-log.txt' # FIXME: remove this line
-        return ('Success', log_name)
+        return ('Success', log_name, proc.returncode)
     except BaseException as e:
         logger.exception('Encountered Exception:')
         logger.info('removing %s', filepath)
