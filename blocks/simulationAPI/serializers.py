@@ -10,7 +10,7 @@ class TaskFileSerializer(serializers.ModelSerializer):
     class Meta:
         model = TaskFile
         fields = ('file_id', 'file', 'app_name', 'parameters', 'upload_time',
-                  'log_name', 'task')
+                  'log_name', 'returncode', 'task')
 
 
 class TaskSerializer(serializers.HyperlinkedModelSerializer):

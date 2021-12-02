@@ -26,6 +26,7 @@ class TaskFile(models.Model):
     parameters = models.TextField(blank=True, null=True)
     upload_time = models.DateTimeField(auto_now=True)
     log_name = models.CharField(max_length=500, blank=True, null=True)
+    returncode = models.IntegerField(blank=True, null=True)
     task = models.OneToOneField(Task, on_delete=models.CASCADE,
                              related_name='file')
 
