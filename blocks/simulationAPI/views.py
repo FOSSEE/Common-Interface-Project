@@ -129,24 +129,22 @@ def get_line_and_state(file, figure_list, lineno, incomplete_line):
         return (line, NOLINE)
     # every line is passed to function parse_line for getting values
     line = line.rstrip()
-    parse_result = parse_line(line, lineno)
-    figure_id = parse_result[0]
-    state = parse_result[1]
+    (figure_id, state) = parse_line(line, lineno)
     if state == INITIALIZATION:
         # New figure created
         # Add figure ID to list
         figure_list.append(figure_id)  # figure id of block is added to list
-        return (None, INITIALIZATION)
+        line = None
     elif state == ENDING:
         # End of figure
         # Remove figure ID from list
         # Once ending of log file/data is encountered for that block, figure id
         # will be removed
         figure_list.remove(figure_id)
-        return (None, ENDING)
+        line = None
     elif state == NOLINE:
-        return (None, NOLINE)
-    return (line, DATA)
+        line = None
+    return (line, state)
 
 
 class StreamView(APIView):
@@ -185,6 +183,14 @@ class StreamView(APIView):
                 continue
             return log_name
 
+    def handle_duplicate_lines(self):
+        if self.duplicatelineno == 0:
+            return
+
+        self.duplicatelines += self.duplicatelineno
+        yield "event: duplicate\ndata: %d\n\n" % self.duplicatelineno
+        self.duplicatelineno = 0
+
     def event_stream(self, task_id):
         if not isinstance(task_id, uuid.UUID):
             raise ValidationError('Invalid uuid format')
@@ -202,8 +208,8 @@ class StreamView(APIView):
 
         with open(log_name, 'r') as log_file:
             # Start sending log
-            duplicatelineno = 0
-            duplicatelines = 0
+            self.duplicatelineno = 0
+            self.duplicatelines = 0
             lastline = ''
             lineno = 0
             line = None
@@ -226,27 +232,21 @@ class StreamView(APIView):
                 if line is None:
                     continue
                 if lastline != line:
-                    if duplicatelineno != 0:
-                        duplicatelines += duplicatelineno
-                        yield "event: duplicate\ndata: %d\n\n" % duplicatelineno
-                        duplicatelineno = 0
+                    self.handle_duplicate_lines()
                     lastline = line
                     log_size += len(line)
                     if state == DATA:
                         yield "event: log\ndata: %s\n\n" % line
                 else:
-                    duplicatelineno += 1
+                    self.duplicatelineno += 1
                 lineno += 1
                 line = None
 
-            if duplicatelineno != 0:
-                duplicatelines += duplicatelineno
-                yield "event: duplicate\ndata: %d\n\n" % duplicatelineno
-                duplicatelineno = 0
+            self.handle_duplicate_lines()
 
-            if duplicatelines != 0:
+            if self.duplicatelines != 0:
                 logger.info('lines = %s, duplicate lines = %s, log size = %s',
-                            lineno, duplicatelines, log_size)
+                            lineno, self.duplicatelines, log_size)
             else:
                 logger.info('lines = %s, log size = %s', lineno, log_size)
 
