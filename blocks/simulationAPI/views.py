@@ -98,16 +98,17 @@ def parse_line(line, lineno):
             # to extract figure ids (sometime multiple sinks can be used in one
             # diagram to differentiate that)
             figure_id = line_words[-1]
-            return (figure_id, INITIALIZATION)
+            state = INITIALIZATION
         elif line_words[0] == "Ending":
             # Current figure end
             # Get fig id
             figure_id = line_words[-1]
-            return (figure_id, ENDING)
+            state = ENDING
         else:
             # Current figure coordinates
             figure_id = line_words[2]
-            return (figure_id, DATA)
+            state = DATA
+        return (figure_id, state)
     except Exception as e:
         logger.error('%s while parsing %s on line %s', str(e), line, lineno)
         return (None, NOLINE)
@@ -162,10 +163,7 @@ class StreamView(APIView):
     def get(self, request, task_id):
         return Response(self.event_stream(task_id), content_type='text/event-stream')
 
-    def event_stream(self, task_id):
-        if not isinstance(task_id, uuid.UUID):
-            raise ValidationError('Invalid uuid format')
-
+    def get_log_name(self, task_id):
         while True:
             file_obj = TaskFile.objects.get(task_id=task_id)
             log_name = file_obj.log_name
@@ -173,18 +171,29 @@ class StreamView(APIView):
             if log_name is None and returncode is None:
                 time.sleep(LOOK_DELAY)
                 continue
-            if log_name is None or log_name[0] != '/':
-                raise ValidationError('Invalid log_name format')
+            if log_name is None:
+                logger.warning('log_name is None')
+                return None
+            if log_name[0] != '/':
+                logger.warning('Invalid log_name format')
+                return None
             if not os.path.isfile(log_name):
                 logger.warning('log file does not exist')
-                yield "event: ERROR\ndata: no log file found\n\n"
-                return
+                return None
             if os.stat(log_name).st_size == 0 and returncode is None:
                 time.sleep(LOOK_DELAY)
                 continue
-            break
+            return log_name
 
-        # Open the log file
+    def event_stream(self, task_id):
+        if not isinstance(task_id, uuid.UUID):
+            raise ValidationError('Invalid uuid format')
+
+        log_name = self.get_log_name(task_id)
+        if log_name is None:
+            yield "event: ERROR\ndata: no log file found\n\n"
+            return
+
         if os.stat(log_name).st_size == 0 and \
                 returncode is not None:
             logger.warning('log file is empty')
