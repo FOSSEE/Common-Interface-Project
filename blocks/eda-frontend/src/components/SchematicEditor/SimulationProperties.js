@@ -82,7 +82,6 @@ export default function SimulationProperties () {
       type: 'text/plain'
     })
     const file = new File([myblob], `${titleA}.xml`, { type: 'text/xml', lastModified: Date.now() })
-    // console.log(file)
     sendNetlist(file)
   }
 
@@ -91,8 +90,9 @@ export default function SimulationProperties () {
       .then((response) => {
         const res = response.data
         const getUrl = 'simulation/status/'.concat(res.details.task_id)
+        const getStreamingUrl = 'simulation/streaming/'.concat(res.details.task_id)
 
-        simulationResult(getUrl)
+        simulationResult(getUrl, getStreamingUrl)
       })
       .catch(function (error) {
         console.log(error)
@@ -117,14 +117,44 @@ export default function SimulationProperties () {
 
   const [isResult, setIsResult] = useState(false)
 
+  function streamSimulationResult(streamingUrl) {
+    const sse = new EventSource('/api/' + streamingUrl, { withCredentials: true })
+    sse.addEventListener('log', e => {
+      console.log('log', e);
+    }, false)
+    sse.addEventListener('duplicate', e => {
+      console.log('duplicate', e);
+    }, false)
+    sse.addEventListener('DONE', e => {
+      console.log('DONE', e);
+      sse.close();
+    }, false)
+    sse.addEventListener('ERROR', e => {
+      console.log('ERROR', e);
+      sse.close();
+    }, false)
+    sse.addEventListener('MESSAGE', e => {
+      console.log('MESSAGE', e);
+      sse.close();
+    }, false)
+  }
+
   // Get the simulation result with task_Id
-  function simulationResult (url) {
+  function simulationResult (url, streamingUrl) {
     api
       .get(url)
       .then((res) => {
-        if (res.data.state === 'PROGRESS' || res.data.state === 'PENDING') {
-          setTimeout(() => simulationResult(url), 10000)
-        } else {
+        switch (res.data.state) {
+          case 'PROGRESS':
+          case 'PENDING':
+          setTimeout(() => simulationResult(url, streamingUrl), 10000)
+          break
+
+          case 'STREAMING':
+          streamSimulationResult(streamingUrl)
+          break
+
+          default:
           const result = res.data.details
           if (result === null) {
             setIsResult(false)
@@ -132,7 +162,6 @@ export default function SimulationProperties () {
             setIsResult(true)
             const temp = res.data.details.data
             const data = result.data
-            // console.log('DATA SIm', data)
             if (res.data.details.graph === 'true') {
               const simResultGraph = { labels: [], x_points: [], y_points: [] }
               // populate the labels
