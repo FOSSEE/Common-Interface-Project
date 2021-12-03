@@ -1,11 +1,11 @@
-import json
-from celery import shared_task, current_task
-from celery import states
-from simulationAPI.helpers import ngspice_helper
+from celery import shared_task, current_task, states
 from celery.exceptions import Ignore
-import traceback
-from simulationAPI.models import TaskFile
+import json
 import logging
+import traceback
+
+from simulationAPI.helpers import ngspice_helper
+from simulationAPI.models import TaskFile
 
 
 logger = logging.getLogger(__name__)
@@ -28,13 +28,18 @@ def process_task(task_id):
             meta={'current_process': 'Started Processing File'})
 
         output = ngspice_helper.ExecXml(file_path, file_id, parameters)
-        if output[0] == "Success":
+        if output[0] == "Streaming":
             file_obj.log_name = output[1]
             file_obj.returncode = output[2]
             file_obj.save()
+            state = 'STREAMING'
+            current_process = 'Processed Xml, Streaming Output'
+        elif output[0] == "Success":
+            state = 'SUCCESS'
+            current_process = 'Processed Xml, Loading Output'
         current_task.update_state(
-            state='STREAM',
-            meta={'current_process': 'Processed Xml, Streaming Output'})
+            state=state,
+            meta={'current_process': current_process})
         return output[0]
 
     except Exception as e:
