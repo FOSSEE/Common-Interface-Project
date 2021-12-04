@@ -1,17 +1,20 @@
-from simulationAPI.models import TaskFile
-from simulationAPI.serializers import TaskSerializer
-from simulationAPI.tasks import process_task
+import logging
+import os
+import time
+import uuid
+from celery.result import AsyncResult
+from django.http import StreamingHttpResponse
 from rest_framework import status
 from rest_framework.exceptions import ValidationError
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.permissions import AllowAny
-from rest_framework.views import APIView
 from rest_framework.response import Response
-from celery.result import AsyncResult
-import os
-import uuid
-import logging
-import time
+from rest_framework.views import APIView
+
+from simulationAPI.models import TaskFile
+from simulationAPI.negotiation import IgnoreClientContentNegotiation
+from simulationAPI.serializers import TaskSerializer
+from simulationAPI.tasks import process_task
 
 
 SCILAB_INSTANCE_TIMEOUT_INTERVAL = 300
@@ -152,14 +155,15 @@ class StreamView(APIView):
 
     Streams Simulation results for 'task_id' provided after
     uploading the xml
-    /api/stream/<uuid>
+    /api/streaming/<uuid>
 
     """
     permission_classes = (AllowAny,)
     methods = ['GET']
+    content_negotiation_class = IgnoreClientContentNegotiation
 
     def get(self, request, task_id):
-        return Response(self.event_stream(task_id), content_type='text/event-stream')
+        return StreamingHttpResponse(self.event_stream(task_id), content_type='text/event-stream')
 
     def get_log_name(self, task_id):
         while True:

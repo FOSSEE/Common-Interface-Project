@@ -2,6 +2,7 @@ import os
 import logging
 import re
 import subprocess
+from celery import current_task
 from datetime import datetime
 from pathlib import Path
 from tempfile import mkstemp
@@ -75,6 +76,10 @@ def ExecXml(filepath, file_id, parameters):
 
         os.close(LOGFILEFD)
 
+        current_task.update_state(
+            state='STREAMING',
+            meta={'current_process': 'Processed Xml, Streaming Output'})
+
         cmd = "try;"
         cmd += "chdir('%s');" % current_dir
         cmd += "loadXcosLibs();"
@@ -102,7 +107,7 @@ def ExecXml(filepath, file_id, parameters):
                 logger.info('err=%s', err)
 
         log_name = '/tmp/blocks-tmp/scilab-log.txt' # FIXME: remove this line
-        return ('Success', log_name, proc.returncode)
+        return ('Streaming', log_name, proc.returncode)
     except BaseException as e:
         logger.exception('Encountered Exception:')
         logger.info('removing %s', filepath)

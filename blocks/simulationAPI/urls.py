@@ -9,6 +9,6 @@ urlpatterns = [
     path('status/<uuid:task_id>',
          simulationAPI_views.CeleryResultView.as_view(), name='celery_status'),
 
-    path('stream/<uuid:task_id>',
+    path('streaming/<uuid:task_id>',
          simulationAPI_views.StreamView.as_view(), name='stream_status'),
 ]
