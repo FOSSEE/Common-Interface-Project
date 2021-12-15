@@ -266,57 +266,57 @@ export function editPointsValue (graphObject, graphParameters, pointsHistory) {
 }
 
 export function removePointsFromChart (graphObject, graphParameters, pointsHistory) {
-    const counter = graphObject.point.index;
-    sigbuilderGraph.series[0].data[counter].remove();
-    pointsHistory.push(graphParameters.graphPoints.slice());
-    graphParameters.points = sigbuilderGraph.series[0].data.length;
-    graphParameters.xmaxTitle = sigbuilderGraph.xAxis[0].getExtremes().dataMax.toFixed(6);
-    sigbuilderGraph.setTitle(null, { text: updateSubtitleForSigbuilderGraph(graphParameters.points, graphParameters.mtd, graphParameters.xmaxTitle, graphParameters.PeriodicOption) });
+    const counter = graphObject.point.index
+    sigbuilderGraph.series[0].data[counter].remove()
+    pointsHistory.push(graphParameters.graphPoints.slice())
+    graphParameters.points = sigbuilderGraph.series[0].data.length
+    graphParameters.xmaxTitle = sigbuilderGraph.xAxis[0].getExtremes().dataMax.toFixed(6)
+    sigbuilderGraph.setTitle(null, { text: updateSubtitleForSigbuilderGraph(graphParameters.points, graphParameters.mtd, graphParameters.xmaxTitle, graphParameters.PeriodicOption) })
 }
 
 export function addPointsOnChart (graphParameters, pointsHistory, xValue, yValue) {
-    document.getElementById("messageLabel").innerHTML = "";
+    document.getElementById("messageLabel").innerHTML = ""
     if (xValue === 0 && yValue === 0) {
-        graphParameters.flag_for_zeros = true;
+        graphParameters.flag_for_zeros = true
     }
-    const points = graphParameters.graphPoints;
-    const xArry = [];
+    const points = graphParameters.graphPoints
+    const xArry = []
     for (let i = 0; i < points.length; i++) {
-        xArry[i] = points[i][0];
+        xArry[i] = points[i][0]
     }
-    xArry[points.length] = xValue;
-    const result = checkDuplicateXValues(xArry);
-    const mtdCheck = [0, 1, 2].includes(graphParameters.mtd);
+    xArry[points.length] = xValue
+    const result = checkDuplicateXValues(xArry)
+    const mtdCheck = [0, 1, 2].includes(graphParameters.mtd)
     if (result) {
-        sigbuilderGraph.series[0].addPoint([xValue, yValue]);
-        pointsHistory.push(graphParameters.graphPoints.slice());
-        graphParameters.points = sigbuilderGraph.series[0].data.length;
-        graphParameters.xmaxTitle = sigbuilderGraph.xAxis[0].getExtremes().dataMax.toFixed(6);
-        sigbuilderGraph.setTitle(null, { text: updateSubtitleForSigbuilderGraph(graphParameters.points, graphParameters.mtd, graphParameters.xmaxTitle, graphParameters.PeriodicOption) });
+        sigbuilderGraph.series[0].addPoint([xValue, yValue])
+        pointsHistory.push(graphParameters.graphPoints.slice())
+        graphParameters.points = sigbuilderGraph.series[0].data.length
+        graphParameters.xmaxTitle = sigbuilderGraph.xAxis[0].getExtremes().dataMax.toFixed(6)
+        sigbuilderGraph.setTitle(null, { text: updateSubtitleForSigbuilderGraph(graphParameters.points, graphParameters.mtd, graphParameters.xmaxTitle, graphParameters.PeriodicOption) })
     } else {
         if (mtdCheck) {
-            sigbuilderGraph.series[0].addPoint([xValue, yValue]);
-            pointsHistory.push(graphParameters.graphPoints.slice());
-            graphParameters.points = sigbuilderGraph.series[0].data.length;
-            graphParameters.xmaxTitle = sigbuilderGraph.xAxis[0].getExtremes().dataMax.toFixed(6);
-            sigbuilderGraph.setTitle(null, { text: updateSubtitleForSigbuilderGraph(graphParameters.points, graphParameters.mtd, graphParameters.xmaxTitle, graphParameters.PeriodicOption) });
+            sigbuilderGraph.series[0].addPoint([xValue, yValue])
+            pointsHistory.push(graphParameters.graphPoints.slice())
+            graphParameters.points = sigbuilderGraph.series[0].data.length
+            graphParameters.xmaxTitle = sigbuilderGraph.xAxis[0].getExtremes().dataMax.toFixed(6)
+            sigbuilderGraph.setTitle(null, { text: updateSubtitleForSigbuilderGraph(graphParameters.points, graphParameters.mtd, graphParameters.xmaxTitle, graphParameters.PeriodicOption) })
         } else {
-            document.getElementById("messageLabel").innerHTML = "ERROR IN SPLINE : " + getmethod(graphParameters.mtd);
-            throw "incorrect";
+            document.getElementById("messageLabel").innerHTML = "ERROR IN SPLINE : " + getmethod(graphParameters.mtd)
+            throw "incorrect"
         }
     }
 }
 
 function checkDuplicateXValues (xxArry) {
-    const arrayForCompare = [];
+    const arrayForCompare = []
     const result = xxArry.slice(0).every(function (item, index, array) {
         if (arrayForCompare.indexOf(item) > -1) {
-            array.length = 0;
-            return false;
+            array.length = 0
+            return false
         } else {
-            arrayForCompare.push(item);
-            return true;
+            arrayForCompare.push(item)
+            return true
         }
-    });
-    return result;
+    })
+    return result
 }
