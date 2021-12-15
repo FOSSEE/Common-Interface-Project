@@ -6,7 +6,7 @@ const {
     mxEvent
 } = new mxGraphFactory()
 
-export let graph_sigbuilder = "";
+export const graph_sigbuilder = "";
 export let sigbuilderGraph = "";
 
 let wind = "";
@@ -17,7 +17,7 @@ function createDraggablePointsChartSigbuilder (graphParameters, pointsHistory, x
     const subtitle = updateSubtitleForSigbuilderGraph(points, graphParameters.mtd, xmaxtitle, graphParameters.PeriodicOption);
     pointsHistory.push(graphParameters.graphPoints.slice());
 
-    let sigbuilderGraph = Highcharts.chart('drag_sig_chart', {
+    sigbuilderGraph = Highcharts.chart('drag_sig_chart', {
         chart: {
             type: chart_type,
             animation: false,
@@ -25,7 +25,7 @@ function createDraggablePointsChartSigbuilder (graphParameters, pointsHistory, x
                 click: function (e) {
                     const xValue = e.xAxis[0].value;
                     const yValue = e.yAxis[0].value;
-                    addPointsOnChart(sigbuilderGraph, graphParameters, pointsHistory, xValue, yValue);
+                    addPointsOnChart(graphParameters, pointsHistory, xValue, yValue);
                 }
             }
         },
@@ -86,11 +86,11 @@ function createDraggablePointsChartSigbuilder (graphParameters, pointsHistory, x
                         },
                         dblclick: function (e) {
                             const graphObject = e;
-                            editPointsValue(graphObject, graph_sigbuilder, sigbuilderGraph, graphParameters, pointsHistory);
+                            editPointsValue(graphObject, graphParameters, pointsHistory);
                         },
                         contextmenu: function (e) {
                             const graphObject = e;
-                            removePointsFromChart(graphObject, sigbuilderGraph, graphParameters, pointsHistory);
+                            removePointsFromChart(graphObject, graphParameters, pointsHistory);
                         }
                     },
                     stickyTracking: false
@@ -113,7 +113,6 @@ function createDraggablePointsChartSigbuilder (graphParameters, pointsHistory, x
             name: stepname
         }]
     });
-    return sigbuilderGraph;
 };
 
 export function updateSubtitleForSigbuilderGraph (points, method, xmaxtitle, periodicFlag) {
@@ -126,7 +125,7 @@ export function updateSubtitleForSigbuilderGraph (points, method, xmaxtitle, per
   return subTitle;
 }
 
-function autoscaleFunctionalityForGraph (sigbuilderGraph, graphParameters, pointsHistory) {
+function autoscaleFunctionalityForGraph (graphParameters, pointsHistory) {
   // Added for postive/maximum value autoscale functionality
   const maxXValueNew = sigbuilderGraph.xAxis[0].getExtremes().dataMax; // get max x point's value
   const minXValueNew = sigbuilderGraph.xAxis[0].getExtremes().dataMin; // get min x point's value
@@ -142,10 +141,10 @@ function autoscaleFunctionalityForGraph (sigbuilderGraph, graphParameters, point
   graphParameters.ymin = minYValueNew - diffY; // set min y axis value
   graphParameters.ymax = maxYValueNew + diffY; // set max y axis value
   graphParameters.points = graphParameters.graphPoints.length;
-  sigbuilderGraph = createDraggablePointsChartSigbuilder(graphParameters, pointsHistory, graphParameters.xmin, graphParameters.xmax, graphParameters.ymin, graphParameters.ymax, graphParameters.chartType, graphParameters.points, graphParameters.mtd, graphParameters.xmaxTitle, graphParameters.step, graphParameters.stepname);
+  createDraggablePointsChartSigbuilder(graphParameters, pointsHistory, graphParameters.xmin, graphParameters.xmax, graphParameters.ymin, graphParameters.ymax, graphParameters.chartType, graphParameters.points, graphParameters.mtd, graphParameters.xmaxTitle, graphParameters.step, graphParameters.stepname);
 }
 
-export function editPointsValue (graphObject, graph, sigbuilderGraph, graphParameters, pointsHistory) {
+export function editPointsValue (graphObject, graphParameters, pointsHistory) {
   document.getElementById("messageLabel").innerHTML = "";
   // Making graph window inaccessible
   const graphWind = document.getElementById("graphcontentwind");
@@ -216,7 +215,7 @@ export function editPointsValue (graphObject, graph, sigbuilderGraph, graphParam
   myform.appendChild(okBtn);
   content.appendChild(myform);
   const height = 150;
-  wind = showModalWindow(graph, 'Scilab Multiple Values Request', content, 200, height);
+  wind = showModalWindow(graph_sigbuilder, 'Scilab Multiple Values Request', content, 200, height);
   wind.addListener(mxEvent.DESTROY, function (evt) {
     graphWind.style.pointerEvents = "auto";
   });
@@ -232,7 +231,7 @@ export function editPointsValue (graphObject, graph, sigbuilderGraph, graphParam
     if (xValue < 0) {
       xValue = 0;
     }
-    let yValue = parseFloat(document.getElementById("edit_y").value);
+    const yValue = parseFloat(document.getElementById("edit_y").value);
     const points = graphParameters.graphPoints;
     const xArry = [];
     for (let i = 0; i < points.length; i++) {
@@ -242,17 +241,17 @@ export function editPointsValue (graphObject, graph, sigbuilderGraph, graphParam
     const result = checkDuplicateXValues(xArry);
     const mtdCheck = [0, 1, 2].includes(graphParameters.mtd);
     if (result) {
-      removePointsFromChart(graphObject, sigbuilderGraph, graphParameters, pointsHistory);
-      addPointsOnChart(sigbuilderGraph, graphParameters, pointsHistory, xValue, yValue);
-      autoscaleFunctionalityForGraph(sigbuilderGraph, graphParameters, pointsHistory);
+      removePointsFromChart(graphObject, graphParameters, pointsHistory);
+      addPointsOnChart(graphParameters, pointsHistory, xValue, yValue);
+      autoscaleFunctionalityForGraph(graphParameters, pointsHistory);
       document.getElementById("messageLabel").innerHTML = "";
       graphWind.style.pointerEvents = "auto";
       wind.destroy();
     } else {
       if (mtdCheck) {
-        removePointsFromChart(graphObject, sigbuilderGraph, graphParameters, pointsHistory);
-        addPointsOnChart(sigbuilderGraph, graphParameters, pointsHistory, xValue, yValue);
-        autoscaleFunctionalityForGraph(sigbuilderGraph, graphParameters, pointsHistory);
+        removePointsFromChart(graphObject, graphParameters, pointsHistory);
+        addPointsOnChart(graphParameters, pointsHistory, xValue, yValue);
+        autoscaleFunctionalityForGraph(graphParameters, pointsHistory);
         document.getElementById("messageLabel").innerHTML = "";
         graphWind.style.pointerEvents = "auto";
         wind.destroy();
@@ -266,7 +265,7 @@ export function editPointsValue (graphObject, graph, sigbuilderGraph, graphParam
   };
 }
 
-export function removePointsFromChart (graphObject, sigbuilderGraph, graphParameters, pointsHistory) {
+export function removePointsFromChart (graphObject, graphParameters, pointsHistory) {
     const counter = graphObject.point.index;
     sigbuilderGraph.series[0].data[counter].remove();
     pointsHistory.push(graphParameters.graphPoints.slice());
@@ -275,7 +274,7 @@ export function removePointsFromChart (graphObject, sigbuilderGraph, graphParame
     sigbuilderGraph.setTitle(null, { text: updateSubtitleForSigbuilderGraph(graphParameters.points, graphParameters.mtd, graphParameters.xmaxTitle, graphParameters.PeriodicOption)});
 }
 
-export function addPointsOnChart (sigbuilderGraph, graphParameters, pointsHistory, xValue, yValue) {
+export function addPointsOnChart (graphParameters, pointsHistory, xValue, yValue) {
     document.getElementById("messageLabel").innerHTML = "";
     if (xValue == 0 && yValue == 0) {
         graphParameters.flag_for_zeros = true;
