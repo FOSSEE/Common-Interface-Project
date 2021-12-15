@@ -296,9 +296,7 @@ export function GenerateNetList () {
                     }
                     pin.edges[wire].value = pin.edges[wire].node
                   }
-                  console.log('Check the wires here ')
-                  console.log(pin.edges[wire].sourceVertex)
-                  console.log(pin.edges[wire].targetVertex)
+                  console.log('Check the wires here', pin.edges[wire].sourceVertex, pin.edges[wire].targetVertex)
                 }
                 k = k + ' ' + pin.edges[0].node
               }
@@ -489,9 +487,7 @@ function XMLWireConnections () {
                         pin.edges[wire].targetVertex = pin.edges[wire].target.id
                       }
                     }
-                    console.log('Check the wires here ')
-                    console.log(pin.edges[wire].sourceVertex)
-                    console.log(pin.edges[wire].targetVertex)
+                    console.log('Check the wires here', pin.edges[wire].sourceVertex, pin.edges[wire].targetVertex)
                   }
                 }
               } catch (e) { console.log('error', e) }
