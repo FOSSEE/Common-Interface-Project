@@ -57,7 +57,7 @@ export function updateDetails(graph, cell, details, detailsInstance, styleName, 
         if (styleName.startsWith("SELF_SWITCH")) {
             const stateOpen = detailsInstance.stateOpen;
             styleName = stateOpen ? "SELF_SWITCH_OFF" : "SELF_SWITCH_ON";
-        }else{
+        } else {
             if (idx !== -1) {
                 styleName = styleName.substring(0, idx);
             }
@@ -86,7 +86,7 @@ export function updateDetails(graph, cell, details, detailsInstance, styleName, 
      */
     if (style != null && style['image'] != null) {
         // Make label as a image html element
-        const label = '<img src="' + style['image'] + '" height="' + (height*0.9) + '" width="' + (width*0.9) + '">';
+        const label = '<img src="' + style['image'] + '" height="' + (height * 0.9) + '" width="' + (width * 0.9) + '">';
 
         // Set label
         style['label'] = label;
@@ -123,10 +123,9 @@ export function updateDetails(graph, cell, details, detailsInstance, styleName, 
 // to objects because of dragging the points
 export function objToArrayList(graphPoints) {
     const tempPoints=[];
-    for (let i=0;i< graphPoints.length; i++)
-    {
-        if(graphPoints[i].x) {
-            tempPoints.push([graphPoints[i].x,graphPoints[i].y]);
+    for (let i = 0; i < graphPoints.length; i++) {
+        if (graphPoints[i].x) {
+            tempPoints.push([graphPoints[i].x, graphPoints[i].y]);
         } else {
             tempPoints.push(graphPoints[i]);
         }
@@ -135,9 +134,9 @@ export function objToArrayList(graphPoints) {
 }
 
 //For Sigbuilder block
-export function getmethod(mtd){
+export function getmethod(mtd) {
     let METHOD = "";
-    switch (mtd){
+    switch (mtd) {
         case 0: METHOD = "zero order"; break;
         case 1: METHOD = "linear"; break;
         case 2: METHOD = "order 2"; break;
