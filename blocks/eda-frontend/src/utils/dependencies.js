@@ -68,8 +68,8 @@ export function updateDetails (graph, cell, details, detailsInstance, styleName,
     const style = stylesheet.styles[styleName];
 
     const dimensionForBlock = detailsInstance.getDimensionForDisplay();
-    const height = dimensionForBlock["height"];
-    const width = dimensionForBlock["width"];
+    const height = dimensionForBlock.height;
+    const width = dimensionForBlock.width;
     if (geometryCell.height != null && geometryCell.height > 1)
         height = geometryCell.height;
     if (geometryCell.width != null && geometryCell.width > 1)
@@ -84,15 +84,15 @@ export function updateDetails (graph, cell, details, detailsInstance, styleName,
      * NOTE: Since the image of any block need not be changed for every
      * movement of that block, the image must be set only once.
      */
-    if (style != null && style['image'] != null) {
+    if (style != null && style.image != null) {
         // Make label as a image html element
-        const label = '<img src="' + style['image'] + '" height="' + (height * 0.9) + '" width="' + (width * 0.9) + '">';
+        const label = '<img src="' + style.image + '" height="' + (height * 0.9) + '" width="' + (width * 0.9) + '">';
 
         // Set label
-        style['label'] = label;
-        style['imagePath'] = style['image'];
+        style.label = label;
+        style.imagePath = style.image;
         // Set image as null
-        style['image'] = null;
+        style.image = null;
 
         // Add the label as a part of node
         node.setAttribute('label', label);
@@ -104,9 +104,9 @@ export function updateDetails (graph, cell, details, detailsInstance, styleName,
      * instances of the same block. Hence, set the label from the label tag in
      * style which was set when that blockModel was invoked on the first time.
      */
-    if (style != null && style['label'] != null) {
+    if (style != null && style.label != null) {
         // Set label from the label field in the style property
-        node.setAttribute('label', style['label']);
+        node.setAttribute('label', style.label);
     }
 
     const parent = graph.getDefaultParent();
@@ -133,7 +133,7 @@ export function objToArrayList (graphPoints) {
     return tempPoints;
 }
 
-//For Sigbuilder block
+// For Sigbuilder block
 export function getmethod (mtd) {
     let METHOD = "";
     switch (mtd) {
