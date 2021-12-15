@@ -38,7 +38,12 @@ class Graph2 extends Component {
                   let x = parseFloat(point[1]);
                   let timediff = (starttime + x * 1000) - Date.now();
                   if (timediff > 0) {
-                    setInterval(addPoints, timediff);
+                    if (timediff < 1000) {
+                      timediff *= 5;
+                      if (timediff > 1000)
+                        timediff = 1000;
+                    }
+                    setTimeout(addPoints, timediff);
                     return;
                   }
                   let y = parseFloat(point[2]);
@@ -47,7 +52,8 @@ class Graph2 extends Component {
                 }
                 chart.redraw();
                 if (!pointList.isEmpty() || !statusDone) {
-                  setInterval(addPoints, 1000);
+                  setTimeout(addPoints, 1000);
+                  return;
                 }
               }
               addPoints();
