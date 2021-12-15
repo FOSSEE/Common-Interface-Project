@@ -7,25 +7,25 @@ const {
 } = new mxGraphFactory()
 
 export var graph_sigbuilder = "";
-export var sigbuilder_Graph = "";
+export var sigbuilderGraph = "";
 
 var wind = "";
 
 // Function to create a chart with responsive points for Sigbuilder
-var create_draggable_points_chart_sigbuilder = function(graphParameters, pointsHistory, xmin, xmax, ymin, ymax, chart_type, points, method, xmaxtitle,step,stepname) {
+var createDraggablePointsChartSigbuilder = function(graphParameters, pointsHistory, xmin, xmax, ymin, ymax, chart_type, points, method, xmaxtitle,step,stepname) {
     graphParameters.mtd = method;
     var subtitle = updateSubtitleForSigbuilderGraph(points, graphParameters.mtd, xmaxtitle,graphParameters.PeriodicOption);
     pointsHistory.push(graphParameters.graphPoints.slice());
 
-    let sigbuilder_Graph = Highcharts.chart('drag_sig_chart', {
+    let sigbuilderGraph = Highcharts.chart('drag_sig_chart', {
         chart: {
             type: chart_type,
             animation: false,
             events: {
                 click: function (e) {
-                    var x_value = e.xAxis[0].value;
-                    var y_value = e.yAxis[0].value;
-                    addPointsOnChart(sigbuilder_Graph, graphParameters, pointsHistory, x_value, y_value);
+                    var xValue = e.xAxis[0].value;
+                    var yValue = e.yAxis[0].value;
+                    addPointsOnChart(sigbuilderGraph, graphParameters, pointsHistory, xValue, yValue);
                 }
             }
         },
@@ -86,11 +86,11 @@ var create_draggable_points_chart_sigbuilder = function(graphParameters, pointsH
                         },
                         dblclick: function (e) {
                             var graphObject = e;
-                            editPointsValue(graphObject, graph_sigbuilder, sigbuilder_Graph, graphParameters, pointsHistory);
+                            editPointsValue(graphObject, graph_sigbuilder, sigbuilderGraph, graphParameters, pointsHistory);
                         },
                         contextmenu: function (e) {
                             var graphObject = e;
-                            removePointsFromChart(graphObject, sigbuilder_Graph, graphParameters, pointsHistory);
+                            removePointsFromChart(graphObject, sigbuilderGraph, graphParameters, pointsHistory);
                         }
                     },
                     stickyTracking: false
@@ -113,7 +113,7 @@ var create_draggable_points_chart_sigbuilder = function(graphParameters, pointsH
             name: stepname
         }]
     });
-    return sigbuilder_Graph;
+    return sigbuilderGraph;
 };
 
 export function updateSubtitleForSigbuilderGraph(points, method, xmaxtitle, periodicFlag){
@@ -127,31 +127,31 @@ export function updateSubtitleForSigbuilderGraph(points, method, xmaxtitle, peri
     return subTitle;
 }
 
-function autoscaleFunctionalityForGraph(sigbuilder_Graph, graphParameters, pointsHistory){
+function autoscaleFunctionalityForGraph(sigbuilderGraph, graphParameters, pointsHistory){
     //Added for postive/maximum value autoscale functionality
-        var max_x_value_new = sigbuilder_Graph.xAxis[0].getExtremes().dataMax; //get max x point's value
-        var min_x_value_new = sigbuilder_Graph.xAxis[0].getExtremes().dataMin; //get min x point's value
-        var max_y_value_new = sigbuilder_Graph.yAxis[0].getExtremes().dataMax; //get max y point's value
-        var min_y_value_new = sigbuilder_Graph.yAxis[0].getExtremes().dataMin; //get min y point's value
-        var diff_x = ((Math.abs(max_x_value_new - min_x_value_new))/100)*10;
-        var diff_y = ((Math.abs(max_y_value_new - min_y_value_new))/100)*10;
+        var maxXValueNew = sigbuilderGraph.xAxis[0].getExtremes().dataMax; //get max x point's value
+        var minXValueNew = sigbuilderGraph.xAxis[0].getExtremes().dataMin; //get min x point's value
+        var maxYValueNew = sigbuilderGraph.yAxis[0].getExtremes().dataMax; //get max y point's value
+        var minYValueNew = sigbuilderGraph.yAxis[0].getExtremes().dataMin; //get min y point's value
+        var diffX = ((Math.abs(maxXValueNew - minXValueNew))/100)*10;
+        var diffY = ((Math.abs(maxYValueNew - minYValueNew))/100)*10;
         graphParameters.xmin = 0; //set min x axis value
-        graphParameters.xmax = max_x_value_new + diff_x; //set max x axis value
-        if(min_y_value_new > 0){
-            min_y_value_new = 0;
+        graphParameters.xmax = maxXValueNew + diffX; //set max x axis value
+        if(minYValueNew > 0){
+            minYValueNew = 0;
         }
-        graphParameters.ymin = min_y_value_new - diff_y; //set min y axis value
-        graphParameters.ymax = max_y_value_new + diff_y; //set max y axis value
+        graphParameters.ymin = minYValueNew - diffY; //set min y axis value
+        graphParameters.ymax = maxYValueNew + diffY; //set max y axis value
         graphParameters.points = graphParameters.graphPoints.length;
-        sigbuilder_Graph = create_draggable_points_chart_sigbuilder(graphParameters, pointsHistory, graphParameters.xmin, graphParameters.xmax, graphParameters.ymin, graphParameters.ymax, graphParameters.chartType, graphParameters.points, graphParameters.mtd, graphParameters.xmaxTitle, graphParameters.step, graphParameters.stepname);
+        sigbuilderGraph = createDraggablePointsChartSigbuilder(graphParameters, pointsHistory, graphParameters.xmin, graphParameters.xmax, graphParameters.ymin, graphParameters.ymax, graphParameters.chartType, graphParameters.points, graphParameters.mtd, graphParameters.xmaxTitle, graphParameters.step, graphParameters.stepname);
 }
 
-export function editPointsValue(graphObject,graph,sigbuilder_Graph,graphParameters, pointsHistory){
+export function editPointsValue(graphObject,graph,sigbuilderGraph,graphParameters, pointsHistory){
 
     document.getElementById("messageLabel").innerHTML = "";
     //Making graph window inaccessible
-    var graph_wind = document.getElementById("graphcontentwind");
-    graph_wind.style.pointerEvents = "none";
+    var graphWind = document.getElementById("graphcontentwind");
+    graphWind.style.pointerEvents = "none";
     // Create basic structure for the form
     var content = document.createElement('div');
     content.setAttribute("id", "editCoordinates");
@@ -209,112 +209,109 @@ export function editPointsValue(graphObject,graph,sigbuilder_Graph,graphParamete
     myform.appendChild(linebreak);
 
     // Button - Cancel
-    var cancel_btn = document.createElement("button");
-    cancel_btn.style.cssFloat = "right";
-    cancel_btn.innerHTML = 'Cancel';
-    cancel_btn.type = "button";
-    cancel_btn.name = "Cancel";
-    myform.appendChild(cancel_btn);
+    var cancelBtn = document.createElement("button");
+    cancelBtn.style.cssFloat = "right";
+    cancelBtn.innerHTML = 'Cancel';
+    cancelBtn.type = "button";
+    cancelBtn.name = "Cancel";
+    myform.appendChild(cancelBtn);
 
     // Button - OK
-    var ok_btn = document.createElement("button");
-    ok_btn.style.cssFloat = "right";
-    ok_btn.style.marginRight = "20px";
-    ok_btn.innerHTML = 'OK';
-    ok_btn.type = "button";
-    ok_btn.name = "OK";
+    var okBtn = document.createElement("button");
+    okBtn.style.cssFloat = "right";
+    okBtn.style.marginRight = "20px";
+    okBtn.innerHTML = 'OK';
+    okBtn.type = "button";
+    okBtn.name = "OK";
 
-    myform.appendChild(ok_btn);
+    myform.appendChild(okBtn);
     content.appendChild(myform);
     var height = 150;
     wind = showModalWindow(graph, 'Scilab Multiple Values Request', content, 200, height);
     wind.addListener(mxEvent.DESTROY, function(evt) {
-        graph_wind.style.pointerEvents = "auto";
+        graphWind.style.pointerEvents = "auto";
     });
-    // Executes when button 'cancel_btn' is clicked
-    cancel_btn.onclick = function() {
+    // Executes when button 'cancelBtn' is clicked
+    cancelBtn.onclick = function() {
         document.getElementById("messageLabel").innerHTML = "";
-        graph_wind.style.pointerEvents = "auto";
+        graphWind.style.pointerEvents = "auto";
         wind.destroy();
     };
-    // Executes when button 'ok_btn' is clicked
-    ok_btn.onclick = function() {
-        var x_value = parseFloat(document.getElementById("edit_x").value);
-        if(x_value < 0){
-            x_value = 0;
+    // Executes when button 'okBtn' is clicked
+    okBtn.onclick = function() {
+        var xValue = parseFloat(document.getElementById("edit_x").value);
+        if(xValue < 0){
+            xValue = 0;
         }
-        var y_value = parseFloat(document.getElementById("edit_y").value);
+        var yValue = parseFloat(document.getElementById("edit_y").value);
         var points = graphParameters.graphPoints;
-        var x_arry = [];
+        var xArry = [];
         for(var i = 0;i < points.length;i++){
-            x_arry[i] = points[i][0];
+            xArry[i] = points[i][0];
         }
-        x_arry[points.length] = x_value;
-        var result = checkDuplicate_X_values(x_arry);
-        var mtd_check = [0, 1, 2].includes(graphParameters.mtd);
+        xArry[points.length] = xValue;
+        var result = checkDuplicateXValues(xArry);
+        var mtdCheck = [0, 1, 2].includes(graphParameters.mtd);
         if(result){
-            removePointsFromChart(graphObject,sigbuilder_Graph,graphParameters, pointsHistory);
-            addPointsOnChart(sigbuilder_Graph,graphParameters, pointsHistory,x_value,y_value);
-            autoscaleFunctionalityForGraph(sigbuilder_Graph, graphParameters, pointsHistory);
+            removePointsFromChart(graphObject,sigbuilderGraph,graphParameters, pointsHistory);
+            addPointsOnChart(sigbuilderGraph,graphParameters, pointsHistory,xValue,yValue);
+            autoscaleFunctionalityForGraph(sigbuilderGraph, graphParameters, pointsHistory);
             document.getElementById("messageLabel").innerHTML = "";
-            graph_wind.style.pointerEvents = "auto";
+            graphWind.style.pointerEvents = "auto";
             wind.destroy();
         }else{
-            if(mtd_check){
-                removePointsFromChart(graphObject,sigbuilder_Graph,graphParameters, pointsHistory);
-                addPointsOnChart(sigbuilder_Graph,graphParameters, pointsHistory,x_value,y_value);
-                autoscaleFunctionalityForGraph(sigbuilder_Graph, graphParameters, pointsHistory);
+            if(mtdCheck){
+                removePointsFromChart(graphObject,sigbuilderGraph,graphParameters, pointsHistory);
+                addPointsOnChart(sigbuilderGraph,graphParameters, pointsHistory,xValue,yValue);
+                autoscaleFunctionalityForGraph(sigbuilderGraph, graphParameters, pointsHistory);
                 document.getElementById("messageLabel").innerHTML = "";
-                graph_wind.style.pointerEvents = "auto";
+                graphWind.style.pointerEvents = "auto";
                 wind.destroy();
             }else{
                 document.getElementById("messageLabel").innerHTML = "ERROR IN SPLINE : "+getmethod(graphParameters.mtd);
                 wind.destroy();
-                graph_wind.style.pointerEvents = "auto";
+                graphWind.style.pointerEvents = "auto";
                 throw "incorrect";
             }
         }
     };
 }
 
-export function removePointsFromChart(graphObject, sigbuilder_Graph, graphParameters, pointsHistory){
+export function removePointsFromChart(graphObject, sigbuilderGraph, graphParameters, pointsHistory){
     var counter = graphObject.point.index;
-    sigbuilder_Graph.series[0].data[counter].remove();
+    sigbuilderGraph.series[0].data[counter].remove();
     pointsHistory.push(graphParameters.graphPoints.slice());
-    graphParameters.points = sigbuilder_Graph.series[0].data.length;
-    graphParameters.mtd = graphParameters.mtd;
-    graphParameters.xmaxTitle = sigbuilder_Graph.xAxis[0].getExtremes().dataMax.toFixed(6);
-    sigbuilder_Graph.setTitle(null, { text: updateSubtitleForSigbuilderGraph(graphParameters.points, graphParameters.mtd, graphParameters.xmaxTitle, graphParameters.PeriodicOption)});
+    graphParameters.points = sigbuilderGraph.series[0].data.length;
+    graphParameters.xmaxTitle = sigbuilderGraph.xAxis[0].getExtremes().dataMax.toFixed(6);
+    sigbuilderGraph.setTitle(null, { text: updateSubtitleForSigbuilderGraph(graphParameters.points, graphParameters.mtd, graphParameters.xmaxTitle, graphParameters.PeriodicOption)});
 }
 
-export function addPointsOnChart(sigbuilder_Graph, graphParameters, pointsHistory, x_value, y_value){
+export function addPointsOnChart(sigbuilderGraph, graphParameters, pointsHistory, xValue, yValue){
     document.getElementById("messageLabel").innerHTML = "";
-    if(x_value == 0 && y_value == 0){
+    if(xValue == 0 && yValue == 0){
         graphParameters.flag_for_zeros = true;
     }
     var points = graphParameters.graphPoints;
-    var x_arry = [];
+    var xArry = [];
     for(var i = 0;i < points.length;i++){
-        x_arry[i] = points[i][0];
+        xArry[i] = points[i][0];
     }
-    x_arry[points.length] = x_value;
-    var result = checkDuplicate_X_values(x_arry);
-    var mtd_check = [0, 1, 2].includes(graphParameters.mtd);
+    xArry[points.length] = xValue;
+    var result = checkDuplicateXValues(xArry);
+    var mtdCheck = [0, 1, 2].includes(graphParameters.mtd);
     if(result){
-        sigbuilder_Graph.series[0].addPoint([x_value, y_value]);
+        sigbuilderGraph.series[0].addPoint([xValue, yValue]);
         pointsHistory.push(graphParameters.graphPoints.slice());
-        graphParameters.points = sigbuilder_Graph.series[0].data.length;
-        graphParameters.mtd = graphParameters.mtd;
-        graphParameters.xmaxTitle = sigbuilder_Graph.xAxis[0].getExtremes().dataMax.toFixed(6);
-        sigbuilder_Graph.setTitle(null, { text: updateSubtitleForSigbuilderGraph(graphParameters.points, graphParameters.mtd,   graphParameters.xmaxTitle, graphParameters.PeriodicOption)});
+        graphParameters.points = sigbuilderGraph.series[0].data.length;
+        graphParameters.xmaxTitle = sigbuilderGraph.xAxis[0].getExtremes().dataMax.toFixed(6);
+        sigbuilderGraph.setTitle(null, { text: updateSubtitleForSigbuilderGraph(graphParameters.points, graphParameters.mtd,   graphParameters.xmaxTitle, graphParameters.PeriodicOption)});
     }else{
-        if(mtd_check){
-            sigbuilder_Graph.series[0].addPoint([x_value, y_value]);
+        if(mtdCheck){
+            sigbuilderGraph.series[0].addPoint([xValue, yValue]);
             pointsHistory.push(graphParameters.graphPoints.slice());
-            graphParameters.points = sigbuilder_Graph.series[0].data.length;
-            graphParameters.mtd = graphParameters.mtd;
-            graphParameters.xmaxTitle = sigbuilder_Graph.xAxis[0].getExtremes().dataMax.toFixed(6);
-            sigbuilder_Graph.setTitle(null, { text: updateSubtitleForSigbuilderGraph(graphParameters.points, graphParameters.mtd,   graphParameters.xmaxTitle, graphParameters.PeriodicOption)});
+            graphParameters.points = sigbuilderGraph.series[0].data.length;
+            graphParameters.xmaxTitle = sigbuilderGraph.xAxis[0].getExtremes().dataMax.toFixed(6);
+            sigbuilderGraph.setTitle(null, { text: updateSubtitleForSigbuilderGraph(graphParameters.points, graphParameters.mtd,   graphParameters.xmaxTitle, graphParameters.PeriodicOption)});
         }else{
             document.getElementById("messageLabel").innerHTML = "ERROR IN SPLINE : "+getmethod(graphParameters.mtd);
             throw "incorrect";
@@ -322,14 +319,14 @@ export function addPointsOnChart(sigbuilder_Graph, graphParameters, pointsHistor
     }
 }
 
-function checkDuplicate_X_values(xx_arry){
-    var array_for_compare = [];
-    var result = xx_arry.slice(0).every(function(item, index, array){
-        if(array_for_compare.indexOf(item) > -1){
+function checkDuplicateXValues(xxArry){
+    var arrayForCompare = [];
+    var result = xxArry.slice(0).every(function(item, index, array){
+        if(arrayForCompare.indexOf(item) > -1){
             array.length = 0;
             return false;
         }else{
-            array_for_compare.push(item);
+            arrayForCompare.push(item);
             return true;
         }
     });

@@ -12,8 +12,6 @@ const {
 
 // Added to handle ordering for a few blocks.
 
-export var name_values_colormap = new Map(); //for storing colormap values of cmatview and cmat3d block
-
 window.inBitMap='0';
 window.outBitMap='0';
 
@@ -49,7 +47,7 @@ export function showModalWindow(graph, title, content, width, height) {
     return wind;
 }
 
-export function updateDetails(graph, cell, details, details_instance, styleName, geometryCell, create=false) {
+export function updateDetails(graph, cell, details, detailsInstance, styleName, geometryCell, create=false) {
     var enc = new mxCodec(mxUtils.createXmlDocument());
     var node = enc.encode(details);
 
@@ -57,7 +55,7 @@ export function updateDetails(graph, cell, details, details_instance, styleName,
     if (styleName != null) {
         var idx = styleName.indexOf(';');
         if (styleName.startsWith("SELF_SWITCH")) {
-            var stateOpen = details_instance.stateOpen;
+            var stateOpen = detailsInstance.stateOpen;
             styleName = stateOpen ? "SELF_SWITCH_OFF" : "SELF_SWITCH_ON";
         }else{
             if (idx !== -1) {
@@ -69,7 +67,7 @@ export function updateDetails(graph, cell, details, details_instance, styleName,
     var stylesheet = graph.getStylesheet();
     var style = stylesheet.styles[styleName];
 
-    var dimensionForBlock = details_instance.getDimensionForDisplay();
+    var dimensionForBlock = detailsInstance.getDimensionForDisplay();
     var height = dimensionForBlock["height"];
     var width = dimensionForBlock["width"];
     if (geometryCell.height != null && geometryCell.height > 1)
