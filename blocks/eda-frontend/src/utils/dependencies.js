@@ -68,12 +68,14 @@ export function updateDetails (graph, cell, details, detailsInstance, styleName,
     const style = stylesheet.styles[styleName];
 
     const dimensionForBlock = detailsInstance.getDimensionForDisplay();
-    const height = dimensionForBlock.height;
-    const width = dimensionForBlock.width;
-    if (geometryCell.height != null && geometryCell.height > 1)
+    let height = dimensionForBlock.height;
+    let width = dimensionForBlock.width;
+    if (geometryCell.height != null && geometryCell.height > 1) {
         height = geometryCell.height;
-    if (geometryCell.width != null && geometryCell.width > 1)
+    }
+    if (geometryCell.width != null && geometryCell.width > 1) {
         width = geometryCell.width;
+    }
 
     /*
      * When a particular block is loaded for the first time, the image in the
