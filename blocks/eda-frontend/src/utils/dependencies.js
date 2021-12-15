@@ -16,7 +16,7 @@ window.inBitMap='0';
 window.outBitMap='0';
 
 export function showModalWindow(graph, title, content, width, height) {
-    var background = document.createElement('div');
+    const background = document.createElement('div');
     background.style.position = 'absolute';
     background.style.left = '0px';
     background.style.top = '0px';
@@ -30,9 +30,9 @@ export function showModalWindow(graph, title, content, width, height) {
         new mxDivResizer(background);
     }
 
-    var x = Math.max(0, document.body.scrollWidth / 2 - width / 2);
-    var y = Math.max(10, (document.body.scrollHeight || document.documentElement.scrollHeight) / 2 - height * 2 / 3);
-    var wind = new mxWindow(title, content, x, y, width, height, false, true);
+    const x = Math.max(0, document.body.scrollWidth / 2 - width / 2);
+    const y = Math.max(10, (document.body.scrollHeight || document.documentElement.scrollHeight) / 2 - height * 2 / 3);
+    const wind = new mxWindow(title, content, x, y, width, height, false, true);
     wind.setClosable(true);
 
     // Fades the background out after after the window has been closed
@@ -48,14 +48,14 @@ export function showModalWindow(graph, title, content, width, height) {
 }
 
 export function updateDetails(graph, cell, details, detailsInstance, styleName, geometryCell, create=false) {
-    var enc = new mxCodec(mxUtils.createXmlDocument());
-    var node = enc.encode(details);
+    const enc = new mxCodec(mxUtils.createXmlDocument());
+    const node = enc.encode(details);
 
-    var fullStyleName = styleName;
+    const fullStyleName = styleName;
     if (styleName != null) {
-        var idx = styleName.indexOf(';');
+        const idx = styleName.indexOf(';');
         if (styleName.startsWith("SELF_SWITCH")) {
-            var stateOpen = detailsInstance.stateOpen;
+            const stateOpen = detailsInstance.stateOpen;
             styleName = stateOpen ? "SELF_SWITCH_OFF" : "SELF_SWITCH_ON";
         }else{
             if (idx !== -1) {
@@ -64,12 +64,12 @@ export function updateDetails(graph, cell, details, detailsInstance, styleName, 
         }
     }
 
-    var stylesheet = graph.getStylesheet();
-    var style = stylesheet.styles[styleName];
+    const stylesheet = graph.getStylesheet();
+    const style = stylesheet.styles[styleName];
 
-    var dimensionForBlock = detailsInstance.getDimensionForDisplay();
-    var height = dimensionForBlock["height"];
-    var width = dimensionForBlock["width"];
+    const dimensionForBlock = detailsInstance.getDimensionForDisplay();
+    const height = dimensionForBlock["height"];
+    const width = dimensionForBlock["width"];
     if (geometryCell.height != null && geometryCell.height > 1)
         height = geometryCell.height;
     if (geometryCell.width != null && geometryCell.width > 1)
@@ -86,7 +86,7 @@ export function updateDetails(graph, cell, details, detailsInstance, styleName, 
      */
     if (style != null && style['image'] != null) {
         // Make label as a image html element
-        var label = '<img src="' + style['image'] + '" height="' + (height*0.9) + '" width="' + (width*0.9) + '">';
+        const label = '<img src="' + style['image'] + '" height="' + (height*0.9) + '" width="' + (width*0.9) + '">';
 
         // Set label
         style['label'] = label;
@@ -109,7 +109,7 @@ export function updateDetails(graph, cell, details, detailsInstance, styleName, 
         node.setAttribute('label', style['label']);
     }
 
-    var parent = graph.getDefaultParent();
+    const parent = graph.getDefaultParent();
     node.setAttribute('parent', parent.id);
 
     if (create) {
@@ -122,8 +122,8 @@ export function updateDetails(graph, cell, details, detailsInstance, styleName, 
 // To convert graph points to array which have been converted
 // to objects because of dragging the points
 export function objToArrayList(graphPoints) {
-    var tempPoints=[];
-    for (var i=0;i< graphPoints.length; i++)
+    const tempPoints=[];
+    for (let i=0;i< graphPoints.length; i++)
     {
         if(graphPoints[i].x) {
             tempPoints.push([graphPoints[i].x,graphPoints[i].y]);
@@ -136,7 +136,7 @@ export function objToArrayList(graphPoints) {
 
 //For Sigbuilder block
 export function getmethod(mtd){
-    var METHOD = "";
+    let METHOD = "";
     switch (mtd){
         case 0: METHOD = "zero order"; break;
         case 1: METHOD = "linear"; break;
