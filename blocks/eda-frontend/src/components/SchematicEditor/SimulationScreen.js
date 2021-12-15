@@ -1,23 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {
-  Slide,
-  Button,
-  Dialog,
   AppBar,
-  Toolbar,
-  IconButton,
-  Typography,
+  Button,
+  Container,
+  Dialog,
   Grid,
+  IconButton,
   TextField,
   Paper,
-  Container,
+  Slide,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
-  TableRow
+  TableRow,
+  Toolbar,
+  Typography
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import CloseIcon from '@material-ui/icons/Close'
@@ -52,8 +52,8 @@ const useStyles = makeStyles((theme) => ({
 // Screen to display simulation result in graph or text format
 export default function SimulationScreen ({ open, close, isResult }) {
   const classes = useStyles()
-  const result = useSelector((state) => state.simulationReducer)
-  const stitle = useSelector((state) => state.netlistReducer.title)
+  const result = useSelector(state => state.simulationReducer)
+  const stitle = useSelector(state => state.netlistReducer.title)
   const [xscale, setXScale] = React.useState('si')
   const [yscale, setYScale] = React.useState('si')
   const [precision, setPrecision] = React.useState(5)
@@ -112,7 +112,7 @@ export default function SimulationScreen ({ open, close, isResult }) {
             justify='center'
             alignItems='center'
           >
-            {/* Card to display simualtion result screen header */}
+            {/* Card to display simulation result screen header */}
             <Grid item xs={12} sm={12}>
               <Paper className={classes.paper}>
                 <Typography variant='h2' align='center' gutterBottom>

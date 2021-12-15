@@ -1,5 +1,6 @@
 from rest_framework.negotiation import BaseContentNegotiation
 
+
 class IgnoreClientContentNegotiation(BaseContentNegotiation):
     def select_parser(self, request, parsers):
         """
