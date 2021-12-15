@@ -113,7 +113,7 @@ export default function Simulator () {
               for (let i = 0; i < data.length; i++) {
                 simResultGraph.labels[0] = data[i].labels[0]
                 const lab = data[i].labels
-                // lab is an array containeing labels names ['time','abc','def']
+                // lab is an array containeing labels names ['time', 'abc', 'def']
                 simResultGraph.x_points = data[0].x
 
                 // labels

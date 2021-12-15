@@ -200,7 +200,6 @@ export default function LoadGrid (container, sidebar, outline) {
     const labelBackground = (invert) ? '#000000' : '#FFFFFF'
     const fontColor = (invert) ? '#FFFFFF' : '#000000'
     const strokeColor = (invert) ? '#C0C0C0' : '#000000'
-    // var fillColor = (invert) ? 'none' : '#FFFFFF'
 
     let style = graph.getStylesheet().getDefaultEdgeStyle()
     delete style.endArrow
@@ -229,8 +228,6 @@ export default function LoadGrid (container, sidebar, outline) {
     style.resizable = '0'
     style.rounded = '1'
     style.strokeWidth = strokeWidth
-
-    // var parent = graph.getDefaultParent()
 
     SideBar(graph, sidebar)
     KeyboardShorcuts(graph)
@@ -287,7 +284,7 @@ export default function LoadGrid (container, sidebar, outline) {
     }
 
     // Grid
-    /* var checkbox2 = document.createElement('input')
+    /* const checkbox2 = document.createElement('input')
     checkbox2.setAttribute('type', 'checkbox')
     checkbox2.setAttribute('checked', 'true')
 
@@ -433,7 +430,6 @@ export default function LoadGrid (container, sidebar, outline) {
   mxEdgeHandler.prototype.connect = function (edge, terminal, isSource, isClone, me) {
     let result = null
     const model = this.graph.getModel()
-    // var parent = model.getParent(edge)
 
     model.beginUpdate()
     try {
@@ -606,7 +602,7 @@ export default function LoadGrid (container, sidebar, outline) {
       // FIXME: First segment not movable
       /* hint = state.view.transformControlPoint(state, hints[0]);
          mxLog.show();
-         mxLog.debug(hints.length,'hints0.y='+hint.y, pt.y)
+         mxLog.debug(hints.length, 'hints0.y=' + hint.y, pt.y)
 
          if (horizontal && Math.floor(hint.y) != Math.floor(pt.y))
          {

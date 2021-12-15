@@ -54,7 +54,7 @@ export function AddComponent (component, imgref) {
     }
 
     graph.setSelectionCell(v1)
-    /* var preview = new mxPrintPreview(graph)
+    /* const preview = new mxPrintPreview(graph)
     preview.open() */
   }
 
