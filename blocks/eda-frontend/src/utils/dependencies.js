@@ -12,10 +12,10 @@ const {
 
 // Added to handle ordering for a few blocks.
 
-window.inBitMap='0';
-window.outBitMap='0';
+window.inBitMap = '0';
+window.outBitMap = '0';
 
-export function showModalWindow(graph, title, content, width, height) {
+export function showModalWindow (graph, title, content, width, height) {
     const background = document.createElement('div');
     background.style.position = 'absolute';
     background.style.left = '0px';
@@ -36,7 +36,7 @@ export function showModalWindow(graph, title, content, width, height) {
     wind.setClosable(true);
 
     // Fades the background out after after the window has been closed
-    wind.addListener(mxEvent.DESTROY, function(evt) {
+    wind.addListener(mxEvent.DESTROY, function (evt) {
         graph.setEnabled(true);
         mxEffects.fadeOut(background, 50, true, 10, 30, true);
     });
@@ -47,7 +47,7 @@ export function showModalWindow(graph, title, content, width, height) {
     return wind;
 }
 
-export function updateDetails(graph, cell, details, detailsInstance, styleName, geometryCell, create=false) {
+export function updateDetails (graph, cell, details, detailsInstance, styleName, geometryCell, create = false) {
     const enc = new mxCodec(mxUtils.createXmlDocument());
     const node = enc.encode(details);
 
@@ -121,8 +121,8 @@ export function updateDetails(graph, cell, details, detailsInstance, styleName, 
 
 // To convert graph points to array which have been converted
 // to objects because of dragging the points
-export function objToArrayList(graphPoints) {
-    const tempPoints=[];
+export function objToArrayList (graphPoints) {
+    const tempPoints = [];
     for (let i = 0; i < graphPoints.length; i++) {
         if (graphPoints[i].x) {
             tempPoints.push([graphPoints[i].x, graphPoints[i].y]);
@@ -134,7 +134,7 @@ export function objToArrayList(graphPoints) {
 }
 
 //For Sigbuilder block
-export function getmethod(mtd) {
+export function getmethod (mtd) {
     let METHOD = "";
     switch (mtd) {
         case 0: METHOD = "zero order"; break;

@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
     color: '#fff'
   }
 }))
-// {details:{},title:''} simResults
+// { details: {}, title: '' } simResults
 export default function SimulationScreen ({ open, close, isResult }) {
   const classes = useStyles()
   const result = useSelector((state) => state.simulationReducer)

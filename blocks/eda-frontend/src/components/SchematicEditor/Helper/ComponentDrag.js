@@ -602,7 +602,7 @@ export default function LoadGrid (container, sidebar, outline) {
       // FIXME: First segment not movable
       /* hint = state.view.transformControlPoint(state, hints[0]);
          mxLog.show();
-         mxLog.debug(hints.length,'hints0.y='+hint.y, pt.y)
+         mxLog.debug(hints.length, 'hints0.y=' + hint.y, pt.y)
 
          if (horizontal && Math.floor(hint.y) != Math.floor(pt.y))
          {

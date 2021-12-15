@@ -12,9 +12,9 @@ export let sigbuilderGraph = "";
 let wind = "";
 
 // Function to create a chart with responsive points for Sigbuilder
-function createDraggablePointsChartSigbuilder(graphParameters, pointsHistory, xmin, xmax, ymin, ymax, chart_type, points, method, xmaxtitle,step,stepname) {
+function createDraggablePointsChartSigbuilder (graphParameters, pointsHistory, xmin, xmax, ymin, ymax, chart_type, points, method, xmaxtitle, step, stepname) {
     graphParameters.mtd = method;
-    const subtitle = updateSubtitleForSigbuilderGraph(points, graphParameters.mtd, xmaxtitle,graphParameters.PeriodicOption);
+    const subtitle = updateSubtitleForSigbuilderGraph(points, graphParameters.mtd, xmaxtitle, graphParameters.PeriodicOption);
     pointsHistory.push(graphParameters.graphPoints.slice());
 
     let sigbuilderGraph = Highcharts.chart('drag_sig_chart', {
@@ -116,7 +116,7 @@ function createDraggablePointsChartSigbuilder(graphParameters, pointsHistory, xm
     return sigbuilderGraph;
 };
 
-export function updateSubtitleForSigbuilderGraph(points, method, xmaxtitle, periodicFlag) {
+export function updateSubtitleForSigbuilderGraph (points, method, xmaxtitle, periodicFlag) {
 
     let subTitle = "";
     if (periodicFlag == "y") {
@@ -127,7 +127,7 @@ export function updateSubtitleForSigbuilderGraph(points, method, xmaxtitle, peri
     return subTitle;
 }
 
-function autoscaleFunctionalityForGraph(sigbuilderGraph, graphParameters, pointsHistory) {
+function autoscaleFunctionalityForGraph (sigbuilderGraph, graphParameters, pointsHistory) {
     //Added for postive/maximum value autoscale functionality
         const maxXValueNew = sigbuilderGraph.xAxis[0].getExtremes().dataMax; //get max x point's value
         const minXValueNew = sigbuilderGraph.xAxis[0].getExtremes().dataMin; //get min x point's value
@@ -146,7 +146,7 @@ function autoscaleFunctionalityForGraph(sigbuilderGraph, graphParameters, points
         sigbuilderGraph = createDraggablePointsChartSigbuilder(graphParameters, pointsHistory, graphParameters.xmin, graphParameters.xmax, graphParameters.ymin, graphParameters.ymax, graphParameters.chartType, graphParameters.points, graphParameters.mtd, graphParameters.xmaxTitle, graphParameters.step, graphParameters.stepname);
 }
 
-export function editPointsValue(graphObject,graph,sigbuilderGraph,graphParameters, pointsHistory) {
+export function editPointsValue (graphObject, graph, sigbuilderGraph, graphParameters, pointsHistory) {
 
     document.getElementById("messageLabel").innerHTML = "";
     //Making graph window inaccessible
@@ -220,17 +220,17 @@ export function editPointsValue(graphObject,graph,sigbuilderGraph,graphParameter
     content.appendChild(myform);
     const height = 150;
     wind = showModalWindow(graph, 'Scilab Multiple Values Request', content, 200, height);
-    wind.addListener(mxEvent.DESTROY, function(evt) {
+    wind.addListener(mxEvent.DESTROY, function (evt) {
         graphWind.style.pointerEvents = "auto";
     });
     // Executes when button 'cancelBtn' is clicked
-    cancelBtn.onclick = function() {
+    cancelBtn.onclick = function () {
         document.getElementById("messageLabel").innerHTML = "";
         graphWind.style.pointerEvents = "auto";
         wind.destroy();
     };
     // Executes when button 'okBtn' is clicked
-    okBtn.onclick = function() {
+    okBtn.onclick = function () {
         let xValue = parseFloat(document.getElementById("edit_x").value);
         if (xValue < 0) {
             xValue = 0;
@@ -245,16 +245,16 @@ export function editPointsValue(graphObject,graph,sigbuilderGraph,graphParameter
         const result = checkDuplicateXValues(xArry);
         const mtdCheck = [0, 1, 2].includes(graphParameters.mtd);
         if (result) {
-            removePointsFromChart(graphObject,sigbuilderGraph,graphParameters, pointsHistory);
-            addPointsOnChart(sigbuilderGraph,graphParameters, pointsHistory,xValue,yValue);
+            removePointsFromChart(graphObject, sigbuilderGraph, graphParameters, pointsHistory);
+            addPointsOnChart(sigbuilderGraph, graphParameters, pointsHistory, xValue, yValue);
             autoscaleFunctionalityForGraph(sigbuilderGraph, graphParameters, pointsHistory);
             document.getElementById("messageLabel").innerHTML = "";
             graphWind.style.pointerEvents = "auto";
             wind.destroy();
         } else {
             if (mtdCheck) {
-                removePointsFromChart(graphObject,sigbuilderGraph,graphParameters, pointsHistory);
-                addPointsOnChart(sigbuilderGraph,graphParameters, pointsHistory,xValue,yValue);
+                removePointsFromChart(graphObject, sigbuilderGraph, graphParameters, pointsHistory);
+                addPointsOnChart(sigbuilderGraph, graphParameters, pointsHistory, xValue, yValue);
                 autoscaleFunctionalityForGraph(sigbuilderGraph, graphParameters, pointsHistory);
                 document.getElementById("messageLabel").innerHTML = "";
                 graphWind.style.pointerEvents = "auto";
@@ -269,7 +269,7 @@ export function editPointsValue(graphObject,graph,sigbuilderGraph,graphParameter
     };
 }
 
-export function removePointsFromChart(graphObject, sigbuilderGraph, graphParameters, pointsHistory) {
+export function removePointsFromChart (graphObject, sigbuilderGraph, graphParameters, pointsHistory) {
     const counter = graphObject.point.index;
     sigbuilderGraph.series[0].data[counter].remove();
     pointsHistory.push(graphParameters.graphPoints.slice());
@@ -278,7 +278,7 @@ export function removePointsFromChart(graphObject, sigbuilderGraph, graphParamet
     sigbuilderGraph.setTitle(null, { text: updateSubtitleForSigbuilderGraph(graphParameters.points, graphParameters.mtd, graphParameters.xmaxTitle, graphParameters.PeriodicOption)});
 }
 
-export function addPointsOnChart(sigbuilderGraph, graphParameters, pointsHistory, xValue, yValue) {
+export function addPointsOnChart (sigbuilderGraph, graphParameters, pointsHistory, xValue, yValue) {
     document.getElementById("messageLabel").innerHTML = "";
     if (xValue == 0 && yValue == 0) {
         graphParameters.flag_for_zeros = true;
@@ -311,9 +311,9 @@ export function addPointsOnChart(sigbuilderGraph, graphParameters, pointsHistory
     }
 }
 
-function checkDuplicateXValues(xxArry) {
+function checkDuplicateXValues (xxArry) {
     const arrayForCompare = [];
-    const result = xxArry.slice(0).every(function(item, index, array) {
+    const result = xxArry.slice(0).every(function (item, index, array) {
         if (arrayForCompare.indexOf(item) > -1) {
             array.length = 0;
             return false;

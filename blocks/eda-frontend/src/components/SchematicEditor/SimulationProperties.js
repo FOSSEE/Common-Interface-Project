@@ -141,7 +141,7 @@ export default function SimulationProperties () {
  * block
  * blockId : is used to get needed div according to affichm id
  */
-function create_affich_displaytext(displayParameter, blockId) {
+function create_affich_displaytext (displayParameter, blockId) {
     $('#img_loader').html(""); // remove loading image once data is received
     // updating html data of div html for each time change according to each
     // affich
@@ -149,7 +149,7 @@ function create_affich_displaytext(displayParameter, blockId) {
 };
 
 // Function to create a new chart
-function create_new_chart(id, no_of_graph, ymin, ymax, xmin, xmax, type_chart, title_text) {
+function create_new_chart (id, no_of_graph, ymin, ymax, xmin, xmax, type_chart, title_text) {
     /*
      * id - container id for graph(chart),
      * no_of_graph - number of graphs in output of a block,
@@ -197,10 +197,10 @@ function create_new_chart(id, no_of_graph, ymin, ymax, xmin, xmax, type_chart, t
 };
 
 //To create coloraxis array which will be passed to cmatview chart for heatmap creation
-function get_color_axis_for_points(block_uid){
+function get_color_axis_for_points (block_uid) {
     const color_axis_array = [];
     const get_hex_color_array = name_values_colormap.get(block_uid);
-    for(let i = 0; i < get_hex_color_array.length; i++){
+    for (let i = 0; i < get_hex_color_array.length; i++) {
         const color_values = {};
         const temp = i;
         color_values["from"] = temp + 1;
@@ -212,11 +212,11 @@ function get_color_axis_for_points(block_uid){
 }
 
 //Gets data (array with x , y and coloraxis values) to be passed to chart points
-function get_points_for_data(data, m, n){
+function get_points_for_data (data, m, n) {
     const array_data = [];
     let i = 12;
-    for (let x = (m-2) ; x >= 0; x--){
-        for (let y = 0 ; y < (n-1) ; y++){
+    for (let x = (m-2) ; x >= 0; x--) {
+        for (let y = 0 ; y < (n-1) ; y++) {
             const data_values = [];
             data_values[0] = x;
             data_values[1] = y;
@@ -229,7 +229,7 @@ function get_points_for_data(data, m, n){
 }
 
 //Chart function for cmatview which has less than 10*10 matrix size
-function create_chart_for_cmatview(id, m, n, title_text, color_axis) {
+function create_chart_for_cmatview (id, m, n, title_text, color_axis) {
     let xmin = 0;
     let xmax = m;
     let ymin = 0;
@@ -277,7 +277,7 @@ function create_chart_for_cmatview(id, m, n, title_text, color_axis) {
 };
 
 //Chart function for cmatview large data ie matrix more than 10*10 size
-function create_chart_for_large_data_cmatview(id, m, n, title_text, color_axis) {
+function create_chart_for_large_data_cmatview (id, m, n, title_text, color_axis) {
     let xmax = m;
     let ymax = n;
     $('#charts').append("<div id='chart-"+id+"' style = 'height:100%;width:100%'></div>");
@@ -338,7 +338,7 @@ function create_chart_for_large_data_cmatview(id, m, n, title_text, color_axis) 
 
 
 // Function to create a new 3d-chart
-function create_new_chart_3d(id, no_of_graph, xmin, xmax, ymin, ymax, zmin, zmax, type_chart, title_text, alpha, theta) {
+function create_new_chart_3d (id, no_of_graph, xmin, xmax, ymin, ymax, zmin, zmax, type_chart, title_text, alpha, theta) {
     /*
      * id - container id for graph(chart),
      * no_of_graph - number of graphs in output of a block,
@@ -487,7 +487,7 @@ function create_new_chart_3d(id, no_of_graph, xmin, xmax, ymin, ymax, zmin, zmax
     series_list.push([]);
 };
 
-  function streamSimulationResult(streamingUrl) {
+  function streamSimulationResult (streamingUrl) {
     let block;
     // Initialise variable for entry condition of creating chart for BARXY and
     // AFFICH_m
@@ -495,7 +495,7 @@ function create_new_chart_3d(id, no_of_graph, xmin, xmax, ymin, ymax, zmin, zmax
     let cmatview_counter = 0; // counter to know how many line in log
     let loglines = 0;
 
-    function printloglines() {
+    function printloglines () {
         if (loglines > 0) {
             console.log(loglines, 'log lines');
             loglines = 0;
@@ -548,7 +548,7 @@ function create_new_chart_3d(id, no_of_graph, xmin, xmax, ymin, ymax, zmin, zmax
         xhr.responseType = 'blob';
         // sending form to get file for download
         xhr.open("POST", "/downloadfile", true);
-        xhr.onload = function() {
+        xhr.onload = function () {
           if (this.status === 200) {
             // blob data type to receive the file
             let blob = this.response;
@@ -571,7 +571,7 @@ function create_new_chart_3d(id, no_of_graph, xmin, xmax, ymin, ymax, zmin, zmax
         xhr.send(form);
         let xhr2 = new XMLHttpRequest();
         xhr2.open("POST", "/deletefile");
-        xhr2.onload = function() {
+        xhr2.onload = function () {
         };
         xhr2.send(form);
       } else if (block < 5 ||block === 9 ||block === 23 ||block === 12) {
@@ -770,7 +770,7 @@ function create_new_chart_3d(id, no_of_graph, xmin, xmax, ymin, ymax, zmin, zmax
               for (let i = 0; i < data.length; i++) {
                 simResultGraph.labels[0] = data[i].labels[0]
                 const lab = data[i].labels
-                // lab is an array containeing labels names ['time','abc','def']
+                // lab is an array containeing labels names ['time', 'abc', 'def']
                 simResultGraph.x_points = data[0].x
 
                 // labels

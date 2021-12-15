@@ -11,11 +11,11 @@ Chart.defaults.global.defaultFontColor = '#e6e6e6'
 let pointList = new Queue();
 let statusDone = false;
 
-export function addPointToQueue(id, point) {
+export function addPointToQueue (id, point) {
   pointList.enqueue(point);
 }
 
-export function setStatusDone() {
+export function setStatusDone () {
   statusDone = true;
 }
 
@@ -32,7 +32,7 @@ class Graph2 extends Component {
               let chart = this;
               let series = this.series[0];
               let starttime = Date.now();
-              function addPoints() {
+              function addPoints () {
                 while (!pointList.isEmpty()) {
                   let point = pointList.peek();
                   let x = parseFloat(point[1]);
