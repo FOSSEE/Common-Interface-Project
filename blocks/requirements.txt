@@ -12,7 +12,7 @@ click-didyoumean==0.0.3
 click-repl==0.1.6
 cssselect2==0.4.1
 defusedxml==0.7.1
-Django==3.2.7
+Django==3.2.10
 django-cors-headers==3.5.0
 django-filter==2.3.0
 djangorestframework==3.11.2
