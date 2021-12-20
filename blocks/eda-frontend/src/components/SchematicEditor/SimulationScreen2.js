@@ -16,7 +16,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import CloseIcon from '@material-ui/icons/Close'
 import { useSelector } from 'react-redux'
 
-import Graph2 from '../Shared/Graph2'
+import Graph2, { addPointToQueue, setStatusDone } from '../Shared/Graph2'
 
 const Transition = React.forwardRef(function Transition (props, ref) {
   return <Slide direction='up' ref={ref} {...props} />
@@ -42,13 +42,21 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
+export function addPointToGraph (id, point) {
+    addPointToQueue(id, point)
+}
+
+export function setGraphStatusDone () {
+    setStatusDone()
+}
+
 // Screen to display simulation result in graph or text format
 export default function SimulationScreen2 ({ open, close, isResult }) {
   const classes = useStyles()
   const result = useSelector(state => state.simulationReducer)
   const datapoint = useSelector(state => state.datapointReducer)
   const stitle = useSelector(state => state.netlistReducer.title)
-  const ref = React.useRef(null);
+  const graphRef = React.useRef(null);
 
   const typography1 = 'SOMETHING WENT WRONG. Please Check The Simulation Parameters.'
   const typography2 = 'SOMETHING WENT WRONG. Please Check The Simulation Parameters And ' + process.env.REACT_APP_DIAGRAM_NAME + '.'
@@ -106,7 +114,7 @@ export default function SimulationScreen2 ({ open, close, isResult }) {
                           GRAPH OUTPUT
                         </Typography>
                         <Graph2
-                          ref={ref}
+                          ref={graphRef}
                           datapoint={datapoint}
                         />
                       </Paper>

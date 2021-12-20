@@ -31,12 +31,6 @@ export default function (state = initialState, action) {
         datapointPointWidth: action.payload.datapointPointWidth
       }
     }
-    case actions.ADD_DATAPOINT_POINT: {
-      return {
-        ...state,
-        datapointPoint: action.payload.datapointPoint
-      }
-    }
 
     default:
       return state

@@ -19,8 +19,7 @@ import $ from 'jquery'
 import { Queue } from '../../utils/Queue'
 import { setResultTitle, setResultGraph, setResultText, addDatapointChart } from '../../redux/actions/index'
 import { Save } from './Helper/ToolbarTools'
-import SimulationScreen2 from './SimulationScreen2'
-import { addPointToQueue, setStatusDone } from '../Shared/Graph2'
+import SimulationScreen2, { addPointToGraph, setGraphStatusDone } from './SimulationScreen2'
 import api from '../../utils/Api'
 
 const useStyles = makeStyles((theme) => ({
@@ -70,6 +69,8 @@ export default function SimulationProperties () {
   }
 
   const [simulateOpen, setSimulateOpen] = React.useState(false)
+  const simulationScreenRef = React.useRef(null)
+
   const handleSimulateOpen = () => {
     setSimulateOpen(true)
   }
@@ -629,7 +630,7 @@ function create_new_chart_3d (id, no_of_graph, xmin, xmax, ymin, ymax, zmin, zma
         // store 2d-data
         if (block !== 12) {
           points_list[index].enqueue([line_id, x, y]);
-          addPointToQueue(figure_id, [line_id, x, y]);
+          addPointToGraph(figure_id, [line_id, x, y]);
         } else {
           let values = get_points_for_data(data, data[8], data[10]);
           cmatview_counter++; // to count lines from log
@@ -725,7 +726,7 @@ function create_new_chart_3d (id, no_of_graph, xmin, xmax, ymin, ymax, zmin, zma
       printloglines();
       console.log('DONE');
       sse.close();
-      setStatusDone();
+      setGraphStatusDone();
     }, false)
     sse.addEventListener('ERROR', e => {
       printloglines();
@@ -845,7 +846,7 @@ function create_new_chart_3d (id, no_of_graph, xmin, xmax, ymin, ymax, zmin, zma
       <div className={classes.SimulationOptions}>
       {
         simulateOpen
-        ? <SimulationScreen2 open={simulateOpen} isResult={isResult} close={handleSimulateClose} />
+        ? <SimulationScreen2 ref={simulationScreenRef} open={simulateOpen} isResult={isResult} close={handleSimulateClose} />
         : <div />
       }
 
