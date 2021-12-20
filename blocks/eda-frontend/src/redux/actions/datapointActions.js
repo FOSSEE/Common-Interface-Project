@@ -18,14 +18,3 @@ export const addDatapointChart = (id, type, title, xMin, yMin, xMax, yMax, point
     }
   })
 }
-
-// Action to update store with graphical result points
-export const addDatapointPoint = (id, point) => (dispatch) => {
-  dispatch({
-    type: actions.ADD_DATAPOINT_POINT,
-    payload: {
-      datapointId: id,
-      datapointPoint: point
-    }
-  })
-}

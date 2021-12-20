@@ -22,7 +22,6 @@ export const SET_RESULT_TEXT = 'SET_RESULT_TEXT'
 
 // Actions for handling simulation result display
 export const ADD_DATAPOINT_CHART = 'ADD_DATAPOINT_CHART'
-export const ADD_DATAPOINT_POINT = 'ADD_DATAPOINT_POINT'
 
 // Actions for handling user authentication and registeration
 export const USER_LOADING = 'USER_LOADING'
