@@ -124,6 +124,8 @@ export default function SimulationProperties () {
         break
     }
 
+    dispatch(setResultTaskId(''))
+
     const netlist = compNetlist
 
     prepareNetlist(netlist)

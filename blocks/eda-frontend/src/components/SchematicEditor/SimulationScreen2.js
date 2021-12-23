@@ -18,7 +18,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import $ from 'jquery'
 
 import Graph2, { setStatusDone } from '../Shared/Graph2'
-import { setResultGraph, setResultText, addDatapointChart } from '../../redux/actions/index'
+import { setResultGraph, addDatapointChart } from '../../redux/actions/index'
 import api from '../../utils/Api'
 
 const Transition = React.forwardRef(function Transition (props, ref) {
@@ -58,319 +58,17 @@ export default function SimulationScreen2 ({ open, close }) {
   const stitle = useSelector(state => state.netlistReducer.title)
   const taskId = useSelector(state => state.simulationReducer.taskId)
   const [isResult, setIsResult] = useState(false)
-  const graphRef = useRef(null);
+  const graphsRef = useRef([]);
   const timeoutRef = useRef(null)
+  const [noOfGraphs, setNoOfGraphs] = useState(0)
+  const chartIdCount = useRef(0)
+  const chartIdList = useRef({})
 
-  const chart_id_list = [];
   // Keep track of block number for each graph(chart)
   const block_list = [];
   // Keep track of RANGE of each graph(chart)
   const RANGE = [];
-  const name_values_colormap = new Map(); //for storing colormap values of cmatview and cmat3d block
-
-  // Function to create a new chart
-  const create_new_chart = useCallback((id, no_of_graph, ymin, ymax, xmin, xmax, type_chart, title_text) => {
-      /*
-       * id - container id for graph(chart),
-       * no_of_graph - number of graphs in output of a block,
-       * ymin - minimum y-axis value,
-       * ymax - maximum y-axis value,
-       * xmin - minimum x-axis value,
-       * xmax - maximum x-axis value,
-       * type_chart - type of chart to be drawn,
-       * title_text - title to be given to the chart
-       */
-
-      // convert String values to desired datatype
-      xmin = parseFloat(xmin);
-      xmax = parseFloat(xmax);
-      ymin = parseFloat(ymin);
-      ymax = parseFloat(ymax);
-
-      // default value of pointpadding added for ceventscope
-      let pointWidth=0.1;
-      let pointRange = null;
-
-      let lineWidth = 2;
-      if (title_text.substring(0, 5) === "BARXY") {
-          lineWidth = no_of_graph;
-          no_of_graph = 1;
-      } else if (title_text.substring(0, 7) === "CSCOPXY") {
-          // disable line by putting lineWidth as 0
-          lineWidth = 0
-      } else if (title_text.substring(0, 7) === "CANIMXY") {
-          // disable line by putting lineWidth as 0
-          lineWidth = 0
-      } else if (title_text.substring(0, 7) === "CEVSCPE") {
-          // To manipulate the graph width of ceventscope
-          pointWidth = 2;
-          pointRange = 0.05;
-      }
-
-      dispatch(addDatapointChart(id, type_chart, title_text, xmin, ymin, xmax, ymax, pointRange, lineWidth, pointWidth));
-  }, [dispatch])
-
-  // Chart function for cmatview which has less than 10*10 matrix size
-  const create_chart_for_cmatview = useCallback((id, m, n, title_text, color_axis) => {
-      let xmin = 0;
-      let xmax = m;
-      let ymin = 0;
-      let ymax = n;
-      $('#charts').append("<div id='chart-"+id+"' style = 'height:100%;width:100%'></div>");
-      let elem = $('#chart-'+id.toString());
-      elem.highcharts({
-          tooltip: {
-              enabled: false
-          },
-          chart: {
-              type: 'heatmap'
-          },
-          title: {
-              text: title_text
-          },
-          xAxis: {
-              min: xmin,
-              max: xmax
-          },
-          yAxis: {
-              min: ymin,
-              max: ymax,
-          },
-          plotOptions: {
-              marker: {
-                  enabled: false
-              },
-              series: {
-                  enableMouseTracking: false
-              }
-          },
-          colorAxis: {
-              dataClasses: color_axis
-          },
-          legend: {
-              enabled: false
-          },
-          series: []
-      });
-  }, [])
-
-  // Chart function for cmatview large data ie matrix more than 10*10 size
-  const create_chart_for_large_data_cmatview = useCallback((id, m, n, title_text, color_axis) => {
-      let xmax = m;
-      let ymax = n;
-      $('#charts').append("<div id='chart-"+id+"' style = 'height:100%;width:100%'></div>");
-      let elem = $('#chart-'+id.toString());
-      elem.highcharts({
-          tooltip: {
-              enabled: false
-          },
-          chart: {
-              type: 'heatmap'
-          },
-          boost: {
-              useGPUTranslations: true,
-              usePreallocated: true
-          },
-          title: {
-              text: title_text
-          },
-          xAxis: {
-              min: 0,
-              max: xmax
-          },
-          yAxis: {
-              min: 0,
-              max: ymax
-          },
-          plotOptions: {
-             series: {
-                  animation:false,
-                  boostThreshold : 400000,
-                  turboThreshold : 0,
-                  stickyTracking: false,
-                  shadow: false
-              },
-              marker: {
-                  enabled: false
-              },
-               heatmap: {
-                  shadow: false,
-                  animation: false
-              }
-          },
-          legend: {
-              enabled: false
-          },
-          colorAxis: {
-              dataClasses: color_axis
-          },
-          series: [{
-              seriesThreshold: 2
-          }]
-      });
-  }, [])
-
-
-  // Function to create a new 3d-chart
-  const create_new_chart_3d = useCallback((id, no_of_graph, xmin, xmax, ymin, ymax, zmin, zmax, type_chart, title_text, alpha, theta) => {
-      /*
-       * id - container id for graph(chart),
-       * no_of_graph - number of graphs in output of a block,
-       * ymin - minimum y-axis value,
-       * ymax - maximum y-axis value,
-       * xmin - minimum x-axis value,
-       * xmax - maximum x-axis value,
-       * zmin - minimum z-axis value,
-       * zmax - maximum z-axis value,
-       * type_chart - type of chart to be drawn,
-       * title_text - title to be given to the chart,
-       * alpha - Angle of rotation for graph for 3D chart
-       * theta - Angle of rotation for graph for 3D chart
-       */
-
-      // convert String values to desired datatype
-      xmin = parseFloat(xmin);
-      xmax = parseFloat(xmax);
-      ymin = parseFloat(ymin);
-      ymax = parseFloat(ymax);
-      zmin = parseFloat(zmin);
-      zmax = parseFloat(zmax);
-      // Assigning angle theta of 3D block to beta angle of highchart ( Can be
-      // modified later)
-      let beta = theta;
-      let lineWidth = 1;
-      let radius = 1;
-      if (title_text.substring(0, 9) === "CANIMXY3D") {
-          lineWidth = 0;
-          radius = 3;
-      }
-      $('#charts').append("<div id='chart-"+id.toString()+"' style = 'height:200px'></div>");
-
-      let elem = $('#chart-'+id.toString());
-      // change graph height if block has only 1 output graph
-      if (no_of_graph === 1)
-          elem.css('height', '400px');
-
-      elem.highcharts({
-          chart: {
-              type: type_chart,
-              zoomtype: 'xy',
-              options3d: {
-                  enabled: true,
-                  alpha: alpha,
-                  beta: beta,
-                  depth: 100,
-                  viewDistance: 100,
-                  frame: {
-                      bottom: {
-                          size: 0,
-                          color: '#FFFFFF'
-                      },
-                      back: {
-                          size: 0,
-                          color: '#FFFFFF'
-                      },
-                      side: {
-                          size: 0,
-                          color: '#FFFFFF'
-                      }
-                  }
-              }
-          },
-          title: {
-              text: title_text
-          },
-          tooltip: {
-              enabled: false
-          },
-          yAxis: {
-              // Manipulation for showing z axis vertically instead of Y axis
-              // (only for 3D graph).
-              min: zmin,
-              max: zmax,
-              gridLineWidth: 1,
-              tickInterval: 1,
-              title: {
-                  rotation: 0,
-                  style: {
-                      fontWeight: 'bold',
-                      fontSize: '15px'
-                  },
-                  text: 'z'
-              }
-          },
-          xAxis: {
-              min: xmin,
-              max: xmax,
-              tickInterval: 1,
-              gridLineWidth: 1,
-              title: {
-                  style: {
-                      fontWeight: 'bold',
-                      fontSize: '15px'
-                  },
-                  text: 'x' // title for X for differentiating axis
-              }
-          },
-          zAxis: {
-              // Manipulation for showing y axis values in place of z axis (only
-              // for 3D graph).
-              min: ymin,
-              max: ymax,
-              tickInterval: 1,
-              gridLineWidth: 1,
-              title: {
-                  rotation: 300,
-                  margin: -30,
-                  style: {
-                      fontWeight: 'bold',
-                      fontSize: '15px'
-                  },
-                  text: 'y'
-              }
-          },
-          plotOptions: {
-              marker: {
-                  enabled: false
-              },
-              series: {
-                  lineWidth: lineWidth,
-                  states: {
-                      hover: {
-                          lineWidth: lineWidth
-                      }
-                  }
-              },
-              scatter: {
-                  marker: {
-                      radius: radius,
-                      states: {
-                          hover: {
-                              enabled: true,
-                              lineColor: 'rgb(100,100,100)'
-                          }
-                      }
-                  }
-              }
-          },
-          series: []
-      });
-  }, [])
-
-  // To create coloraxis array which will be passed to cmatview chart for heatmap creation
-  const get_color_axis_for_points = useCallback((block_uid) => {
-      const color_axis_array = [];
-      const get_hex_color_array = name_values_colormap.get(block_uid);
-      for (let i = 0; i < get_hex_color_array.length; i++) {
-          const color_values = {};
-          const temp = i;
-          color_values["from"] = temp + 1;
-          color_values["to"] = temp + 2;
-          color_values["color"] = get_hex_color_array[i];
-          color_axis_array.push(color_values);
-      }
-      return color_axis_array;
-  }, [name_values_colormap])
+  const name_values_colormap = new Map(); // for storing colormap values of cmatview and cmat3d block
 
   const streamSimulationResult = useCallback((streamingUrl) => {
     // define variables for block event
@@ -386,11 +84,327 @@ export default function SimulationScreen2 ({ open, close }) {
     let cmatview_counter = 0; // counter to know how many line in log
     let loglines = 0;
 
-    function printloglines () {
+    const printloglines = () => {
         if (loglines > 0) {
             console.log(loglines, 'log lines');
             loglines = 0;
         }
+    }
+
+    const addPointToGraph = (id, point) => {
+      const refId = chartIdList.current[id]
+      if (graphsRef.current[refId] !== undefined) {
+        graphsRef.current[refId].addPointToQueue(id, point)
+      } else {
+        console.log('cannot add point', id, point, chartIdList)
+      }
+    }
+
+    // Function to create a new chart
+    const create_new_chart = (id, no_of_graph, ymin, ymax, xmin, xmax, type_chart, title_text) => {
+        /*
+         * id - container id for graph(chart),
+         * no_of_graph - number of graphs in output of a block,
+         * ymin - minimum y-axis value,
+         * ymax - maximum y-axis value,
+         * xmin - minimum x-axis value,
+         * xmax - maximum x-axis value,
+         * type_chart - type of chart to be drawn,
+         * title_text - title to be given to the chart
+         */
+
+        // convert String values to desired datatype
+        xmin = parseFloat(xmin);
+        xmax = parseFloat(xmax);
+        ymin = parseFloat(ymin);
+        ymax = parseFloat(ymax);
+
+        // default value of pointpadding added for ceventscope
+        let pointWidth=0.1;
+        let pointRange = null;
+
+        let lineWidth = 2;
+        if (title_text.substring(0, 5) === "BARXY") {
+            lineWidth = no_of_graph;
+            no_of_graph = 1;
+        } else if (title_text.substring(0, 7) === "CSCOPXY") {
+            // disable line by putting lineWidth as 0
+            lineWidth = 0
+        } else if (title_text.substring(0, 7) === "CANIMXY") {
+            // disable line by putting lineWidth as 0
+            lineWidth = 0
+        } else if (title_text.substring(0, 7) === "CEVSCPE") {
+            // To manipulate the graph width of ceventscope
+            pointWidth = 2;
+            pointRange = 0.05;
+        }
+
+        dispatch(addDatapointChart(id, type_chart, title_text, xmin, ymin, xmax, ymax, pointRange, lineWidth, pointWidth));
+        chartIdList.current[id] = chartIdCount.current
+        setNoOfGraphs(nog => nog + 1)
+        chartIdCount.current = chartIdCount.current + 1
+    }
+
+    // Chart function for cmatview which has less than 10*10 matrix size
+    const create_chart_for_cmatview = (id, m, n, title_text, color_axis) => {
+        let xmin = 0;
+        let xmax = m;
+        let ymin = 0;
+        let ymax = n;
+        $('#charts').append("<div id='chart-"+id+"' style = 'height:100%;width:100%'></div>");
+        let elem = $('#chart-'+id.toString());
+        elem.highcharts({
+            tooltip: {
+                enabled: false
+            },
+            chart: {
+                type: 'heatmap'
+            },
+            title: {
+                text: title_text
+            },
+            xAxis: {
+                min: xmin,
+                max: xmax
+            },
+            yAxis: {
+                min: ymin,
+                max: ymax,
+            },
+            plotOptions: {
+                marker: {
+                    enabled: false
+                },
+                series: {
+                    enableMouseTracking: false
+                }
+            },
+            colorAxis: {
+                dataClasses: color_axis
+            },
+            legend: {
+                enabled: false
+            },
+            series: []
+        });
+    }
+
+    // Chart function for cmatview large data ie matrix more than 10*10 size
+    const create_chart_for_large_data_cmatview = (id, m, n, title_text, color_axis) => {
+        let xmax = m;
+        let ymax = n;
+        $('#charts').append("<div id='chart-"+id+"' style = 'height:100%;width:100%'></div>");
+        let elem = $('#chart-'+id.toString());
+        elem.highcharts({
+            tooltip: {
+                enabled: false
+            },
+            chart: {
+                type: 'heatmap'
+            },
+            boost: {
+                useGPUTranslations: true,
+                usePreallocated: true
+            },
+            title: {
+                text: title_text
+            },
+            xAxis: {
+                min: 0,
+                max: xmax
+            },
+            yAxis: {
+                min: 0,
+                max: ymax
+            },
+            plotOptions: {
+               series: {
+                    animation:false,
+                    boostThreshold : 400000,
+                    turboThreshold : 0,
+                    stickyTracking: false,
+                    shadow: false
+                },
+                marker: {
+                    enabled: false
+                },
+                 heatmap: {
+                    shadow: false,
+                    animation: false
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            colorAxis: {
+                dataClasses: color_axis
+            },
+            series: [{
+                seriesThreshold: 2
+            }]
+        });
+    }
+
+
+    // Function to create a new 3d-chart
+    const create_new_chart_3d = (id, no_of_graph, xmin, xmax, ymin, ymax, zmin, zmax, type_chart, title_text, alpha, theta) => {
+        /*
+         * id - container id for graph(chart),
+         * no_of_graph - number of graphs in output of a block,
+         * ymin - minimum y-axis value,
+         * ymax - maximum y-axis value,
+         * xmin - minimum x-axis value,
+         * xmax - maximum x-axis value,
+         * zmin - minimum z-axis value,
+         * zmax - maximum z-axis value,
+         * type_chart - type of chart to be drawn,
+         * title_text - title to be given to the chart,
+         * alpha - Angle of rotation for graph for 3D chart
+         * theta - Angle of rotation for graph for 3D chart
+         */
+
+        // convert String values to desired datatype
+        xmin = parseFloat(xmin);
+        xmax = parseFloat(xmax);
+        ymin = parseFloat(ymin);
+        ymax = parseFloat(ymax);
+        zmin = parseFloat(zmin);
+        zmax = parseFloat(zmax);
+        // Assigning angle theta of 3D block to beta angle of highchart ( Can be
+        // modified later)
+        let beta = theta;
+        let lineWidth = 1;
+        let radius = 1;
+        if (title_text.substring(0, 9) === "CANIMXY3D") {
+            lineWidth = 0;
+            radius = 3;
+        }
+        $('#charts').append("<div id='chart-"+id.toString()+"' style = 'height:200px'></div>");
+
+        let elem = $('#chart-'+id.toString());
+        // change graph height if block has only 1 output graph
+        if (no_of_graph === 1)
+            elem.css('height', '400px');
+
+        elem.highcharts({
+            chart: {
+                type: type_chart,
+                zoomtype: 'xy',
+                options3d: {
+                    enabled: true,
+                    alpha: alpha,
+                    beta: beta,
+                    depth: 100,
+                    viewDistance: 100,
+                    frame: {
+                        bottom: {
+                            size: 0,
+                            color: '#FFFFFF'
+                        },
+                        back: {
+                            size: 0,
+                            color: '#FFFFFF'
+                        },
+                        side: {
+                            size: 0,
+                            color: '#FFFFFF'
+                        }
+                    }
+                }
+            },
+            title: {
+                text: title_text
+            },
+            tooltip: {
+                enabled: false
+            },
+            yAxis: {
+                // Manipulation for showing z axis vertically instead of Y axis
+                // (only for 3D graph).
+                min: zmin,
+                max: zmax,
+                gridLineWidth: 1,
+                tickInterval: 1,
+                title: {
+                    rotation: 0,
+                    style: {
+                        fontWeight: 'bold',
+                        fontSize: '15px'
+                    },
+                    text: 'z'
+                }
+            },
+            xAxis: {
+                min: xmin,
+                max: xmax,
+                tickInterval: 1,
+                gridLineWidth: 1,
+                title: {
+                    style: {
+                        fontWeight: 'bold',
+                        fontSize: '15px'
+                    },
+                    text: 'x' // title for X for differentiating axis
+                }
+            },
+            zAxis: {
+                // Manipulation for showing y axis values in place of z axis (only
+                // for 3D graph).
+                min: ymin,
+                max: ymax,
+                tickInterval: 1,
+                gridLineWidth: 1,
+                title: {
+                    rotation: 300,
+                    margin: -30,
+                    style: {
+                        fontWeight: 'bold',
+                        fontSize: '15px'
+                    },
+                    text: 'y'
+                }
+            },
+            plotOptions: {
+                marker: {
+                    enabled: false
+                },
+                series: {
+                    lineWidth: lineWidth,
+                    states: {
+                        hover: {
+                            lineWidth: lineWidth
+                        }
+                    }
+                },
+                scatter: {
+                    marker: {
+                        radius: radius,
+                        states: {
+                            hover: {
+                                enabled: true,
+                                lineColor: 'rgb(100,100,100)'
+                            }
+                        }
+                    }
+                }
+            },
+            series: []
+        });
+    }
+
+    // To create coloraxis array which will be passed to cmatview chart for heatmap creation
+    const get_color_axis_for_points = (block_uid) => {
+        const color_axis_array = [];
+        const get_hex_color_array = name_values_colormap.get(block_uid);
+        for (let i = 0; i < get_hex_color_array.length; i++) {
+            const color_values = {};
+            const temp = i;
+            color_values["from"] = temp + 1;
+            color_values["to"] = temp + 2;
+            color_values["color"] = get_hex_color_array[i];
+            color_axis_array.push(color_values);
+        }
+        return color_axis_array;
     }
 
     const sse = new EventSource('/api/' + streamingUrl, { withCredentials: true })
@@ -464,7 +478,7 @@ export default function SimulationScreen2 ({ open, close }) {
         // added new condition for ceventscope
         // process data for 2D-SCOPE blocks
         let figure_id = 0 ;
-        if (block === 2) { //For cmscope block
+        if (block === 2) { // For cmscope block
           figure_id = data[4];
         } else {
           figure_id = data[2];
@@ -472,7 +486,7 @@ export default function SimulationScreen2 ({ open, close }) {
         let line_id = parseInt(data[6]);
         let x = parseFloat(data[8]);
         let y = parseFloat(data[9]);
-        if (chart_id_list.indexOf(figure_id) < 0) {
+        if (chartIdList.current[figure_id] === undefined) {
           // set default chart type
 
           // if sink block is CSCOPXY or CANIMXY
@@ -483,13 +497,13 @@ export default function SimulationScreen2 ({ open, close }) {
             } else {
               create_new_chart(figure_id, data[10], data[13], data[14], data[11], data[12], chart_type, data[16]+'-'+data[2]);
             }
-            RANGE[chart_id_list.indexOf(figure_id)] = parseFloat(data[12]);
+            RANGE[chartIdList.current[figure_id]] = parseFloat(data[12]);
           } else {
             // Event Handling block is ceventscope
             if (block === 23) {
               let chart_type = 'column';
               create_new_chart(figure_id, data[10], 0, 1, 0, data[11], chart_type, data[12]+'-'+data[2]);
-              RANGE[chart_id_list.indexOf(figure_id)] = parseFloat(data[11]);
+              RANGE[chartIdList.current[figure_id]] = parseFloat(data[11]);
             } else if (block === 12) {
               // process data for CMATVIEW blocks
               let m = data[8];
@@ -502,16 +516,16 @@ export default function SimulationScreen2 ({ open, close }) {
               } else {
                 create_chart_for_large_data_cmatview(figure_id, m, n, data[data.length-1]+'-'+figure_id, color_axis);
               }
-              RANGE[chart_id_list.indexOf(figure_id)] = parseFloat(30);
+              RANGE[chartIdList.current[figure_id]] = parseFloat(30);
             } else {
               // sink block is not CSCOPXY
               let chart_type = 'line';
               create_new_chart(figure_id, data[10], data[11], data[12], 0, data[13], chart_type, data[14]+'-'+data[2]);
-              RANGE[chart_id_list.indexOf(figure_id)] = parseFloat(data[13]);
+              RANGE[chartIdList.current[figure_id]] = parseFloat(data[13]);
             }
           }
         }
-        let index = chart_id_list.indexOf(figure_id);
+        let index = chartIdList.current[figure_id];
         // store 2d-data
         if (block !== 12) {
           addPointToGraph(figure_id, [line_id, x, y]);
@@ -519,16 +533,16 @@ export default function SimulationScreen2 ({ open, close }) {
           let values = get_points_for_data(data, data[8], data[10]);
           cmatview_counter++; // to count lines from log
           if (cmatview_counter === 1) {
-            //Only add points of line 1, so that no delay in chart appearance)
+            // Only add points of line 1, so that no delay in chart appearance)
             addPointToGraph(figure_id, [line_id, values]);
           } else if (cmatview_counter < 16) {
-            //Only add points of line which are multiple of 5, till 15 like 5 10 15 (this is to reduce load on browser)
+            // Only add points of line which are multiple of 5, till 15 like 5 10 15 (this is to reduce load on browser)
             let count = cmatview_counter % 5;
             if (count === 0) {
               addPointToGraph(figure_id, [line_id, values]);
             }
           } else {
-            //Only add points of line which are multiple of 10 but after 16 like 20 30 ... (this is to reduce load on browser)
+            // Only add points of line which are multiple of 10 but after 16 like 20 30 ... (this is to reduce load on browser)
             let count = cmatview_counter % 10;
             if (count === 0) {
               addPointToGraph(figure_id, [line_id, values]);
@@ -545,7 +559,7 @@ export default function SimulationScreen2 ({ open, close }) {
         let x = parseFloat(data[8]);
         let y = parseFloat(data[9]);
         let z = parseFloat(data[10]);
-        if (chart_id_list.indexOf(figure_id) < 0) {
+        if (chartIdList.current[figure_id] === undefined) {
           let chart_type = 'scatter';
           if (block === 10) {
             create_new_chart_3d(figure_id, data[11], data[12], data[13], data[14], data[15], data[16], data[17], chart_type, data[21]+'-'+data[2], data[18], data[19]);
@@ -553,7 +567,7 @@ export default function SimulationScreen2 ({ open, close }) {
             create_new_chart_3d(figure_id, data[11], data[12], data[13], data[14], data[15], data[16], data[17], chart_type, data[20]+'-'+data[2], data[18], data[19]);
           }
         }
-        let index = chart_id_list.indexOf(figure_id);
+        let index = chartIdList.current[figure_id];
         // store 3d-data
         addPointToGraph(figure_id, [line_id, x, y, z]);
         // store block number for chart creation
@@ -622,7 +636,7 @@ export default function SimulationScreen2 ({ open, close }) {
       console.log('MESSAGE', e);
       sse.close();
     }, false)
-  }, [taskId, RANGE, block_list, chart_id_list, create_new_chart, create_chart_for_cmatview, create_chart_for_large_data_cmatview, create_new_chart_3d, get_color_axis_for_points])
+  }, [dispatch, taskId, RANGE, block_list, chartIdList, name_values_colormap])
 
   // Get the simulation result with task_Id
   const simulationResult = useCallback((url, streamingUrl) => {
@@ -632,75 +646,28 @@ export default function SimulationScreen2 ({ open, close }) {
         switch (res.data.state) {
           case 'PROGRESS':
           case 'PENDING':
+          setIsResult(false)
           timeoutRef.current = setTimeout(() => simulationResult(url, streamingUrl), 10000)
           break
 
           case 'STREAMING':
+          case 'SUCCESS':
           streamSimulationResult(streamingUrl)
           setIsResult(true)
           dispatch(setResultGraph(null))
+          if (timeoutRef.current !== null) {
+            clearTimeout(timeoutRef.current)
+            timeoutRef.current = null
+          }
           break
 
           default:
-          const result = res.data.details
-          if (result === null) {
-            setIsResult(false)
-          } else {
-            setIsResult(true)
-            const temp = res.data.details.data
-            const data = result.data
-            if (res.data.details.graph === 'true') {
-              const simResultGraph = { labels: [], x_points: [], y_points: [] }
-              // populate the labels
-              for (let i = 0; i < data.length; i++) {
-                simResultGraph.labels[0] = data[i].labels[0]
-                const lab = data[i].labels
-                // lab is an array containeing labels names ['time', 'abc', 'def']
-                simResultGraph.x_points = data[0].x
-
-                // labels
-                for (let x = 1; x < lab.length; x++) {
-                  if (lab[x].includes('#branch')) {
-                    lab[x] = `I (${lab[x].replace('#branch', '')})`
-                  }
-                  //  uncomment below if you want label like V(r1.1) but it will break the graph showing time as well
-                  //  else {
-                  // lab[x] = `V (${lab[x]})`
-
-                  // }
-                  simResultGraph.labels.push(lab[x])
-                }
-                // populate y_points
-                for (let z = 0; z < data[i].y.length; z++) {
-                  simResultGraph.y_points.push(data[i].y[z])
-                }
-              }
-
-              simResultGraph.x_points = simResultGraph.x_points.map(d => parseFloat(d))
-
-              for (let i1 = 0; i1 < simResultGraph.y_points.length; i1++) {
-                simResultGraph.y_points[i1] = simResultGraph.y_points[i1].map(d => parseFloat(d))
-              }
-
-              dispatch(setResultGraph(simResultGraph))
-            } else {
-              const simResultText = []
-              for (let i = 0; i < temp.length; i++) {
-                let postfixUnit = ''
-                if (temp[i][0].includes('#branch')) {
-                  temp[i][0] = `I(${temp[i][0].replace('#branch', '')})`
-                  postfixUnit = 'A'
-                } else {
-                  temp[i][0] = `V(${temp[i][0]})`
-                  postfixUnit = 'V'
-                }
-
-                simResultText.push(temp[i][0] + ' ' + temp[i][1] + ' ' + parseFloat(temp[i][2]) + ' ' + postfixUnit + '\n')
-              }
-
-              dispatch(setResultText(simResultText))
-            }
+          console.log('unhandled case', res)
+          if (timeoutRef.current !== null) {
+            clearTimeout(timeoutRef.current)
+            timeoutRef.current = null
           }
+          break
         }
       })
       .catch(function (error) {
@@ -723,14 +690,6 @@ export default function SimulationScreen2 ({ open, close }) {
 
   useEffect(() => getSimulationResult(taskId), [taskId, getSimulationResult])
 
-  function addPointToGraph (id, point) {
-    if (graphRef.current !== null) {
-      graphRef.current.addPointToQueue(id, point)
-    } else {
-      console.log('cannot add point', id, point)
-    }
-  }
-
 /*
  * Function to display values of all affich blocks
  * displayParameter : Contains the data which is display as data of affich
@@ -743,7 +702,7 @@ function create_affich_displaytext (displayParameter, blockId) {
     $('#affichdata-'+blockId).html(displayParameter);
 };
 
-//Gets data (array with x , y and coloraxis values) to be passed to chart points
+// Gets data (array with x , y and coloraxis values) to be passed to chart points
 function get_points_for_data (data, m, n) {
     const array_data = [];
     let i = 12;
@@ -809,16 +768,30 @@ function get_points_for_data (data, m, n) {
             {isResult === true && datapoint.datapointId !== 0
               ? <>
                 {
-                  (result.graph !== {} && result.isGraph === 'true')
+                  (result.isGraph === 'true')
                     ? <Grid item xs={12} sm={12}>
                       <Paper className={classes.paper}>
                         <Typography variant='h4' align='center' gutterBottom>
                           GRAPH OUTPUT
                         </Typography>
-                        <Graph2
-                          ref={graphRef}
-                          datapoint={datapoint}
-                        />
+                        {
+                          (noOfGraphs >= 1)
+                            ? <Graph2
+                              key={0}
+                              ref={el => graphsRef.current[0] = el}
+                              datapoint={datapoint}
+                            />
+                            : <div />
+                        }
+                        {
+                          (noOfGraphs >= 2)
+                            ? <Graph2
+                              key={1}
+                              ref={el => graphsRef.current[1] = el}
+                              datapoint={datapoint}
+                            />
+                            : <div />
+                        }
                       </Paper>
                     </Grid>
                     : (result.isGraph === 'true') ? <span>{typography1}</span> : <span />
