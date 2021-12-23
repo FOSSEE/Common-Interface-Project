@@ -10,8 +10,7 @@ const initialState = {
   datapointYMax: 0,
   datapointPointRange: null,
   datapointLineWidth: 2,
-  datapointPointWidth: 2,
-  datapointPoint: []
+  datapointPointWidth: 2
 }
 
 export default function (state = initialState, action) {

@@ -19,6 +19,7 @@ export const SET_MODEL = 'SET_MODEL'
 export const SET_RESULT_TITLE = 'SET_RESULT_TITLE'
 export const SET_RESULT_GRAPH = 'SET_RESULT_GRAPH'
 export const SET_RESULT_TEXT = 'SET_RESULT_TEXT'
+export const SET_RESULT_TASK_ID = 'SET_RESULT_TASK_ID'
 
 // Actions for handling simulation result display
 export const ADD_DATAPOINT_CHART = 'ADD_DATAPOINT_CHART'
