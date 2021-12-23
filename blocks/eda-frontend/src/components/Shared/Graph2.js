@@ -8,21 +8,23 @@ import { Queue } from '../../utils/Queue'
 // Chart Style Options
 Chart.defaults.global.defaultFontColor = '#e6e6e6'
 
-let pointList = new Queue();
 let statusDone = false;
-
-export function addPointToQueue (id, point) {
-  pointList.enqueue(point);
-}
 
 export function setStatusDone () {
   statusDone = true;
 }
 
 class Graph2 extends Component {
+  pointList = new Queue();
+
+  addPointToQueue = (id, point) => {
+    this.pointList.enqueue(point);
+  }
+
   constructor(props) {
     super(props)
     const datapoint = props.datapoint;
+    const pointList = this.pointList;
     this.state = {
       options: {
         chart: {

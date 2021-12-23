@@ -29,3 +29,13 @@ export const setResultText = (text) => (dispatch) => {
     }
   })
 }
+
+// Actions to update task id for simulation result screen
+export const setResultTaskId = (taskId) => (dispatch) => {
+  dispatch({
+    type: actions.SET_RESULT_TASK_ID,
+    payload: {
+      taskId: taskId
+    }
+  })
+}

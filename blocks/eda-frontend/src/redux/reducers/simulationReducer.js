@@ -5,7 +5,8 @@ const initialState = {
   isGraph: 'false',
   text: [],
   graph: {},
-  isSimRes: false
+  isSimRes: false,
+  taskId: ''
 }
 
 export default function (state = initialState, action) {
@@ -31,6 +32,13 @@ export default function (state = initialState, action) {
         isSimRes: true,
         isGraph: 'false',
         text: action.payload.text
+      }
+    }
+
+    case actions.SET_RESULT_TASK_ID: {
+      return {
+        ...state,
+        taskId: action.payload.taskId
       }
     }
 
