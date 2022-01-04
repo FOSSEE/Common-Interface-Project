@@ -18,7 +18,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import $ from 'jquery'
 
 import Graph2, { setStatusDone } from '../Shared/Graph2'
-import { setResultGraph, addDatapointChart } from '../../redux/actions/index'
+import { setResultGraph } from '../../redux/actions/index'
 import api from '../../utils/Api'
 
 const Transition = React.forwardRef(function Transition (props, ref) {
@@ -54,11 +54,11 @@ export default function SimulationScreen2 ({ open, close }) {
   const classes = useStyles()
   const dispatch = useDispatch()
   const result = useSelector(state => state.simulationReducer)
-  const datapoint = useSelector(state => state.datapointReducer)
   const stitle = useSelector(state => state.netlistReducer.title)
   const taskId = useSelector(state => state.simulationReducer.taskId)
   const [isResult, setIsResult] = useState(false)
-  const graphsRef = useRef([]);
+  const graphsRef = useRef([])
+  const datapointsRef = useRef([])
   const timeoutRef = useRef(null)
   const [noOfGraphs, setNoOfGraphs] = useState(0)
   const chartIdCount = useRef(0)
@@ -139,10 +139,22 @@ export default function SimulationScreen2 ({ open, close }) {
             pointRange = 0.05;
         }
 
-        dispatch(addDatapointChart(id, type_chart, title_text, xmin, ymin, xmax, ymax, pointRange, lineWidth, pointWidth));
         chartIdList.current[id] = chartIdCount.current
-        setNoOfGraphs(nog => nog + 1)
+        const datapoint = {
+          datapointId: id,
+          datapointType: type_chart,
+          datapointTitle: title_text,
+          datapointXMin: xmin,
+          datapointYMin: ymin,
+          datapointXMax: xmax,
+          datapointYMax: ymax,
+          datapointPointRange: pointRange,
+          datapointLineWidth: lineWidth,
+          datapointPointWidth: pointWidth
+        }
+        datapointsRef.current[chartIdCount.current] = datapoint
         chartIdCount.current = chartIdCount.current + 1
+        setNoOfGraphs(nog => nog + 1)
     }
 
     // Chart function for cmatview which has less than 10*10 matrix size
@@ -636,7 +648,7 @@ export default function SimulationScreen2 ({ open, close }) {
       console.log('MESSAGE', e);
       sse.close();
     }, false)
-  }, [dispatch, taskId, RANGE, block_list, chartIdList, name_values_colormap])
+  }, [taskId, RANGE, block_list, chartIdList, name_values_colormap])
 
   // Get the simulation result with task_Id
   const simulationResult = useCallback((url, streamingUrl) => {
@@ -765,7 +777,7 @@ function get_points_for_data (data, m, n) {
             </Grid>
 
             {/* Display graph result */}
-            {isResult === true && datapoint.datapointId !== 0
+            {isResult === true
               ? <>
                 {
                   (result.isGraph === 'true')
@@ -779,7 +791,7 @@ function get_points_for_data (data, m, n) {
                             ? <Graph2
                               key={0}
                               ref={el => graphsRef.current[0] = el}
-                              datapoint={datapoint}
+                              datapoint={datapointsRef.current[0]}
                             />
                             : <div />
                         }
@@ -788,7 +800,7 @@ function get_points_for_data (data, m, n) {
                             ? <Graph2
                               key={1}
                               ref={el => graphsRef.current[1] = el}
-                              datapoint={datapoint}
+                              datapoint={datapointsRef.current[1]}
                             />
                             : <div />
                         }

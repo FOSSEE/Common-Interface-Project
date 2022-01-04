@@ -21,9 +21,6 @@ export const SET_RESULT_GRAPH = 'SET_RESULT_GRAPH'
 export const SET_RESULT_TEXT = 'SET_RESULT_TEXT'
 export const SET_RESULT_TASK_ID = 'SET_RESULT_TASK_ID'
 
-// Actions for handling simulation result display
-export const ADD_DATAPOINT_CHART = 'ADD_DATAPOINT_CHART'
-
 // Actions for handling user authentication and registeration
 export const USER_LOADING = 'USER_LOADING'
 export const USER_LOADED = 'USER_LOADED'
