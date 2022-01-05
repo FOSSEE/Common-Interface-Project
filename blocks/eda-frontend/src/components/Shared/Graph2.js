@@ -65,30 +65,11 @@ class Graph2 extends Component {
           animation: false,
           zoomType: 'xy'
         },
-        title: {
-          text: datapoint.datapointTitle
+        colorAxis: {
+          dataClasses: datapoint.datapointDataClasses
         },
-        xAxis: {
-          title: {
-            text: 'x'
-          },
-          tickInterval: 2,
-          startOnTick: true,
-          endOnTick: true,
-          showLastLabel: true,
-          min: parseFloat(datapoint.datapointXMin),
-          max: parseFloat(datapoint.datapointXMax)
-        },
-        yAxis: {
-          title: {
-            text: 'y'
-          },
-          min: parseFloat(datapoint.datapointYMin),
-          max: parseFloat(datapoint.datapointYMax),
-          plotLines: [{
-            width: 2,
-            color: '#808080'
-          }]
+        legend: {
+          enabled: false
         },
         plotOptions: {
           marker: {
@@ -120,17 +101,37 @@ class Graph2 extends Component {
             }
           }
         },
-        legend: {
-          enabled: false
+        series: [{
+          data: []
+        }],
+        title: {
+          text: datapoint.datapointTitle
         },
         tooltip: {
           enabled: false
         },
-        series: [
-          {
-            data: []
-          }
-        ]
+        xAxis: {
+          title: {
+            text: 'x'
+          },
+          tickInterval: 2,
+          startOnTick: true,
+          endOnTick: true,
+          showLastLabel: true,
+          min: parseFloat(datapoint.datapointXMin),
+          max: parseFloat(datapoint.datapointXMax)
+        },
+        yAxis: {
+          title: {
+            text: 'y'
+          },
+          min: parseFloat(datapoint.datapointYMin),
+          max: parseFloat(datapoint.datapointYMax),
+          plotLines: [{
+            width: 2,
+            color: '#808080'
+          }]
+        }
       }
     }
   }
