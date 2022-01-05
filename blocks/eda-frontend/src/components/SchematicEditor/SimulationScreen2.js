@@ -64,23 +64,17 @@ export default function SimulationScreen2 ({ open, close }) {
   const chartIdCount = useRef(0)
   const chartIdList = useRef({})
 
-  // Keep track of block number for each graph(chart)
-  const block_list = [];
   // Keep track of RANGE of each graph(chart)
   const RANGE = [];
   const name_values_colormap = new Map(); // for storing colormap values of cmatview and cmat3d block
 
   const streamSimulationResult = useCallback((streamingUrl) => {
     // define variables for block event
-    // fig_id - figure_id  of blocks,
     // pnts - Points list of the blocks
-    let fig_id
     const pnts = [];
 
-    let block;
     // Initialise variable for entry condition of creating chart for BARXY and
     // AFFICH_m
-    let block_entry_BARXY = 1;
     let cmatview_counter = 0; // counter to know how many line in log
     let loglines = 0;
 
@@ -101,14 +95,14 @@ export default function SimulationScreen2 ({ open, close }) {
     }
 
     // Function to create a new chart
-    const create_new_chart = (id, no_of_graph, ymin, ymax, xmin, xmax, type_chart, title_text) => {
+    const create_new_chart = (id, no_of_graph, xmin, xmax, ymin, ymax, type_chart, title_text, color_axis=null) => {
         /*
          * id - container id for graph(chart),
          * no_of_graph - number of graphs in output of a block,
-         * ymin - minimum y-axis value,
-         * ymax - maximum y-axis value,
          * xmin - minimum x-axis value,
          * xmax - maximum x-axis value,
+         * ymin - minimum y-axis value,
+         * ymax - maximum y-axis value,
          * type_chart - type of chart to be drawn,
          * title_text - title to be given to the chart
          */
@@ -120,7 +114,7 @@ export default function SimulationScreen2 ({ open, close }) {
         ymax = parseFloat(ymax);
 
         // default value of pointpadding added for ceventscope
-        let pointWidth=0.1;
+        let pointWidth = 0.1;
         let pointRange = null;
 
         let lineWidth = 2;
@@ -150,61 +144,16 @@ export default function SimulationScreen2 ({ open, close }) {
           datapointYMax: ymax,
           datapointPointRange: pointRange,
           datapointLineWidth: lineWidth,
-          datapointPointWidth: pointWidth
+          datapointPointWidth: pointWidth,
+          datapointDataClasses: null
         }
         datapointsRef.current[chartIdCount.current] = datapoint
         chartIdCount.current = chartIdCount.current + 1
         setNoOfGraphs(nog => nog + 1)
     }
 
-    // Chart function for cmatview which has less than 10*10 matrix size
-    const create_chart_for_cmatview = (id, m, n, title_text, color_axis) => {
-        let xmin = 0;
-        let xmax = m;
-        let ymin = 0;
-        let ymax = n;
-        $('#charts').append("<div id='chart-"+id+"' style = 'height:100%;width:100%'></div>");
-        let elem = $('#chart-'+id.toString());
-        elem.highcharts({
-            tooltip: {
-                enabled: false
-            },
-            chart: {
-                type: 'heatmap'
-            },
-            title: {
-                text: title_text
-            },
-            xAxis: {
-                min: xmin,
-                max: xmax
-            },
-            yAxis: {
-                min: ymin,
-                max: ymax,
-            },
-            plotOptions: {
-                marker: {
-                    enabled: false
-                },
-                series: {
-                    enableMouseTracking: false
-                }
-            },
-            colorAxis: {
-                dataClasses: color_axis
-            },
-            legend: {
-                enabled: false
-            },
-            series: []
-        });
-    }
-
     // Chart function for cmatview large data ie matrix more than 10*10 size
-    const create_chart_for_large_data_cmatview = (id, m, n, title_text, color_axis) => {
-        let xmax = m;
-        let ymax = n;
+    const create_chart_for_large_data_cmatview = (id, xmin, xmax, ymin, ymax, type_chart, title_text, color_axis) => {
         $('#charts').append("<div id='chart-"+id+"' style = 'height:100%;width:100%'></div>");
         let elem = $('#chart-'+id.toString());
         elem.highcharts({
@@ -212,7 +161,7 @@ export default function SimulationScreen2 ({ open, close }) {
                 enabled: false
             },
             chart: {
-                type: 'heatmap'
+                type: type_chart
             },
             boost: {
                 useGPUTranslations: true,
@@ -423,10 +372,89 @@ export default function SimulationScreen2 ({ open, close }) {
     sse.addEventListener('log', e => {
       ++loglines;
 
-      let data = e.data.split(' ');
+      const data = e.data.split(' ');
 
       // store block info. from the data line
-      block = parseInt(data[0]);
+      const block = parseInt(data[0]);
+      const figure_id = (block === 2) ? data[4] : data[2]; // For CMSCOPE
+      let no_of_graph;
+      if (block === 5 || block === 10) { // For 3D-SCOPE blocks
+        no_of_graph = data[11];
+      } else if (block === 11) { // For BARXY
+        no_of_graph = data[12];
+      } else {
+        no_of_graph = data[10];
+      }
+      let xmin, xmax, ymin, ymax, zmin = null, zmax = null;
+      if (block === 4 || block === 9) { // For CSCOPXY or CANIMXY
+        xmin = data[11]; xmax = data[12]; ymin = data[13]; ymax = data[14];
+      } else if (block === 5 || block === 10) { // For 3D-SCOPE blocks
+        xmin = data[12]; xmax = data[13]; ymin = data[14]; ymax = data[15]; zmin = data[16]; zmax = data[17];
+      } else if (block === 11) { // For BARXY
+        xmin = data[8]; xmax = data[9]; ymin = data[10]; ymax = data[11];
+      } else if (block === 12) { // For CMATVIEW
+        xmin = 0; xmax = data[8]; ymin = 0; ymax = data[10];
+      } else if (block === 23) { // For CEVENTSCOPE
+        xmin = 0; xmax = data[11]; ymin = 0; ymax = 1;
+      } else {
+        xmin = 0; xmax = data[13]; ymin = data[11]; ymax = data[12];
+      }
+      let alpha = null, theta = null;
+      if (block === 5 || block === 10) { // For 3D-SCOPE blocks
+        alpha = data[18]; theta = data[19];
+      }
+      let color_axis = null;
+      if (block === 12) { // For CMATVIEW
+        color_axis = get_color_axis_for_points(figure_id);
+      }
+      // set default chart type
+      let type_chart;
+      if (block === 4 || block === 5 || block === 9 || block === 10) { // For CSCOPXY or CANIMXY
+        type_chart = 'scatter';
+      } else if (block === 12) { // For CMATVIEW
+        type_chart = 'heatmap';
+      } else if (block === 23) { // For CEVENTSCOPE
+        type_chart = 'column';
+      } else {
+        type_chart = 'line';
+      }
+      let title_text;
+      if (block === 4) { // For CSCOPXY
+        title_text = data[15] + '-' + data[2];
+      } else if (block === 5) { // For 3D-SCOPE block
+        title_text = data[20] + '-' + data[2];
+      } else if (block === 9) { // For CANIMXY
+        title_text = data[16] + '-' + data[2];
+      } else if (block === 10) { // For 3D-SCOPE block
+        title_text = data[21] + '-' + data[2];
+      } else if (block === 11) { // For BARXY
+        title_text = data[13] + '-' + figure_id;
+      } else if (block === 12) { // For CMATVIEW
+        title_text = data[data.length - 1] + '-' + figure_id;
+      } else if (block === 23) { // For CEVENTSCOPE
+        title_text = data[12] + '-' + data[2];
+      } else {
+        title_text = data[14] + '-' + data[2];
+      }
+
+      if (chartIdList.current[figure_id] === undefined) {
+        if (block === 5 || block === 10) {
+          // process data for 3D-SCOPE blocks
+          create_new_chart_3d(figure_id, no_of_graph, xmin, xmax, ymin, ymax, zmin, zmax, type_chart, title_text, alpha, theta);
+        } else if (block === 12) {
+          // process data for CMATVIEW blocks
+          if (xmax * ymax <= 100) {
+            create_new_chart(figure_id, no_of_graph, xmin, xmax, ymin, ymax, type_chart, title_text, color_axis);
+          } else {
+            create_chart_for_large_data_cmatview(figure_id, xmin, xmax, ymin, ymax, type_chart, title_text, color_axis);
+          }
+          RANGE[chartIdList.current[figure_id]] = parseFloat(xmax);
+        } else if (block < 5 || block === 9 || block === 11 || block === 23) {
+          // sink block is not CSCOPXY
+          create_new_chart(figure_id, no_of_graph, xmin, xmax, ymin, ymax, type_chart, title_text);
+          RANGE[chartIdList.current[figure_id]] = parseFloat(xmax);
+        }
+      }
 
       // For BARXY
       if (block === 11) {
@@ -435,20 +463,13 @@ export default function SimulationScreen2 ({ open, close }) {
         let x2 = parseFloat(data[6]);
         let y2 = parseFloat(data[7]);
 
-        if (block_entry_BARXY === 1) {
-          fig_id = data[2];
-
-          create_new_chart(fig_id, data[12], data[10], data[11], data[8], data[9], 'line', data[13]+'-'+fig_id);
-          block_entry_BARXY = block_entry_BARXY + 1;
-        }
-
         pnts.push([x1, y1]);
         pnts.push([x2, y2]);
 
         // Ending condition for blocks not having a dataline for 'Ending'
         if (pnts.length === (this.finalIntegrationTime*10-1)) {
           let xhr = new XMLHttpRequest();
-          xhr.open("GET", "/endBlock/"+fig_id, true);
+          xhr.open("GET", "/endBlock/"+figure_id, true);
           xhr.send();
         }
       } else if (block === 21 || block === 22) {
@@ -489,55 +510,9 @@ export default function SimulationScreen2 ({ open, close }) {
       } else if (block < 5 ||block === 9 ||block === 23 ||block === 12) {
         // added new condition for ceventscope
         // process data for 2D-SCOPE blocks
-        let figure_id = 0 ;
-        if (block === 2) { // For cmscope block
-          figure_id = data[4];
-        } else {
-          figure_id = data[2];
-        }
         let line_id = parseInt(data[6]);
         let x = parseFloat(data[8]);
         let y = parseFloat(data[9]);
-        if (chartIdList.current[figure_id] === undefined) {
-          // set default chart type
-
-          // if sink block is CSCOPXY or CANIMXY
-          if (block === 4 || block === 9) {
-            let chart_type = 'scatter';
-            if (block === 4) {
-              create_new_chart(figure_id, data[10], data[13], data[14], data[11], data[12], chart_type, data[15]+'-'+data[2]);
-            } else {
-              create_new_chart(figure_id, data[10], data[13], data[14], data[11], data[12], chart_type, data[16]+'-'+data[2]);
-            }
-            RANGE[chartIdList.current[figure_id]] = parseFloat(data[12]);
-          } else {
-            // Event Handling block is ceventscope
-            if (block === 23) {
-              let chart_type = 'column';
-              create_new_chart(figure_id, data[10], 0, 1, 0, data[11], chart_type, data[12]+'-'+data[2]);
-              RANGE[chartIdList.current[figure_id]] = parseFloat(data[11]);
-            } else if (block === 12) {
-              // process data for CMATVIEW blocks
-              let m = data[8];
-              let n = data[10];
-              // let chart_type = 'heatmap';
-              // let title_text = "CMATVIEW-" + figure_id;
-              let color_axis = get_color_axis_for_points(figure_id);
-              if (m*n <= 100) {
-                create_chart_for_cmatview(figure_id, m, n, data[data.length-1]+'-'+figure_id, color_axis);
-              } else {
-                create_chart_for_large_data_cmatview(figure_id, m, n, data[data.length-1]+'-'+figure_id, color_axis);
-              }
-              RANGE[chartIdList.current[figure_id]] = parseFloat(30);
-            } else {
-              // sink block is not CSCOPXY
-              let chart_type = 'line';
-              create_new_chart(figure_id, data[10], data[11], data[12], 0, data[13], chart_type, data[14]+'-'+data[2]);
-              RANGE[chartIdList.current[figure_id]] = parseFloat(data[13]);
-            }
-          }
-        }
-        let index = chartIdList.current[figure_id];
         // store 2d-data
         if (block !== 12) {
           addPointToGraph(figure_id, [line_id, x, y]);
@@ -562,28 +537,15 @@ export default function SimulationScreen2 ({ open, close }) {
           }
         }
         // store block number for chart creation
-        block_list[index] = block;
       } else if (block === 5 || block === 10) {
         // process data for 3D-SCOPE blocks
-
-        let figure_id = data[2];
         let line_id = parseInt(data[6]);
         let x = parseFloat(data[8]);
         let y = parseFloat(data[9]);
         let z = parseFloat(data[10]);
-        if (chartIdList.current[figure_id] === undefined) {
-          let chart_type = 'scatter';
-          if (block === 10) {
-            create_new_chart_3d(figure_id, data[11], data[12], data[13], data[14], data[15], data[16], data[17], chart_type, data[21]+'-'+data[2], data[18], data[19]);
-          } else {
-            create_new_chart_3d(figure_id, data[11], data[12], data[13], data[14], data[15], data[16], data[17], chart_type, data[20]+'-'+data[2], data[18], data[19]);
-          }
-        }
-        let index = chartIdList.current[figure_id];
         // store 3d-data
         addPointToGraph(figure_id, [line_id, x, y, z]);
         // store block number for chart creation
-        block_list[index] = block;
       } else if (block === 13) {
         // process data for CMAT3D blocks
         // let block_uid = data[2];
@@ -648,7 +610,7 @@ export default function SimulationScreen2 ({ open, close }) {
       console.log('MESSAGE', e);
       sse.close();
     }, false)
-  }, [taskId, RANGE, block_list, chartIdList, name_values_colormap])
+  }, [taskId, RANGE, chartIdList, name_values_colormap])
 
   // Get the simulation result with task_Id
   const simulationResult = useCallback((url, streamingUrl) => {
