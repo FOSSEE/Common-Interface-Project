@@ -152,61 +152,6 @@ export default function SimulationScreen2 ({ open, close }) {
         setNoOfGraphs(nog => nog + 1)
     }
 
-    // Chart function for cmatview large data ie matrix more than 10*10 size
-    const create_chart_for_large_data_cmatview = (id, xmin, xmax, ymin, ymax, type_chart, title_text, color_axis) => {
-        $('#charts').append("<div id='chart-"+id+"' style = 'height:100%;width:100%'></div>");
-        let elem = $('#chart-'+id.toString());
-        elem.highcharts({
-            tooltip: {
-                enabled: false
-            },
-            chart: {
-                type: type_chart
-            },
-            boost: {
-                useGPUTranslations: true,
-                usePreallocated: true
-            },
-            title: {
-                text: title_text
-            },
-            xAxis: {
-                min: 0,
-                max: xmax
-            },
-            yAxis: {
-                min: 0,
-                max: ymax
-            },
-            plotOptions: {
-               series: {
-                    animation:false,
-                    boostThreshold : 400000,
-                    turboThreshold : 0,
-                    stickyTracking: false,
-                    shadow: false
-                },
-                marker: {
-                    enabled: false
-                },
-                 heatmap: {
-                    shadow: false,
-                    animation: false
-                }
-            },
-            legend: {
-                enabled: false
-            },
-            colorAxis: {
-                dataClasses: color_axis
-            },
-            series: [{
-                seriesThreshold: 2
-            }]
-        });
-    }
-
-
     // Function to create a new 3d-chart
     const create_new_chart_3d = (id, no_of_graph, xmin, xmax, ymin, ymax, zmin, zmax, type_chart, title_text, alpha, theta) => {
         /*
@@ -441,17 +386,9 @@ export default function SimulationScreen2 ({ open, close }) {
         if (block === 5 || block === 10) {
           // process data for 3D-SCOPE blocks
           create_new_chart_3d(figure_id, no_of_graph, xmin, xmax, ymin, ymax, zmin, zmax, type_chart, title_text, alpha, theta);
-        } else if (block === 12) {
-          // process data for CMATVIEW blocks
-          if (xmax * ymax <= 100) {
-            create_new_chart(figure_id, no_of_graph, xmin, xmax, ymin, ymax, type_chart, title_text, color_axis);
-          } else {
-            create_chart_for_large_data_cmatview(figure_id, xmin, xmax, ymin, ymax, type_chart, title_text, color_axis);
-          }
-          RANGE[chartIdList.current[figure_id]] = parseFloat(xmax);
-        } else if (block < 5 || block === 9 || block === 11 || block === 23) {
+        } else if (block < 5 || block === 9 || block === 11 || block === 12 || block === 23) {
           // sink block is not CSCOPXY
-          create_new_chart(figure_id, no_of_graph, xmin, xmax, ymin, ymax, type_chart, title_text);
+          create_new_chart(figure_id, no_of_graph, xmin, xmax, ymin, ymax, type_chart, title_text, color_axis);
           RANGE[chartIdList.current[figure_id]] = parseFloat(xmax);
         }
       }
