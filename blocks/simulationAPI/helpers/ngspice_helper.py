@@ -1,14 +1,15 @@
+import json
 import os
-import logging
 import re
 import subprocess
 from celery import current_task
+from celery.utils.log import get_task_logger
 from datetime import datetime
 from pathlib import Path
 from tempfile import mkstemp
 from django.conf import settings
 
-logger = logging.getLogger(__name__)
+logger = get_task_logger(__name__)
 MxGraphParser = os.path.join(settings.BASE_DIR, '../Xcos/MxGraphParser.py')
 SCILAB_DIR = os.path.abspath(settings.SCILAB_DIR)
 SCILAB = os.path.join(SCILAB_DIR, 'bin', 'scilab-adv-cli')
@@ -36,16 +37,18 @@ class CannotRunParser(Exception):
     """ Base class for exceptions in this module. """
 
 
-def ExecXml(filepath, file_id, parameters):
+def ExecXml(file_obj):
     try:
-        current_dir = settings.MEDIA_ROOT+'/'+str(file_id)
+        file_path = file_obj.file.path
+        parameters = json.loads(file_obj.parameters)
+        current_dir = settings.MEDIA_ROOT+'/'+str(file_obj.file_id)
         # Make Unique Directory for simulation to run
         Path(current_dir).mkdir(parents=True, exist_ok=True)
         os.chdir(current_dir)
-        (xcosfilebase, __) = os.path.splitext(filepath)
+        (xcosfilebase, __) = os.path.splitext(file_path)
         xcosfile = xcosfilebase + '.xcos'
-        logger.info('will run %s %s', 'MxGraphParser', filepath)
-        proc = subprocess.Popen([MxGraphParser, filepath],
+        logger.info('will run %s %s', 'MxGraphParser', file_path)
+        proc = subprocess.Popen([MxGraphParser, file_path],
                                 stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                                 cwd=current_dir)
         (stdout, stderr) = proc.communicate()
@@ -65,6 +68,10 @@ def ExecXml(filepath, file_id, parameters):
         if logfilefd != LOGFILEFD:
             os.dup2(logfilefd, LOGFILEFD)
             os.close(logfilefd)
+
+        log_name = '/tmp/blocks-tmp/scilab-log.txt' # FIXME: remove this line
+        file_obj.log_name = log_name
+        file_obj.save()
 
         logger.info('will run %s %s> %s', SCILAB_CMD[0], LOGFILEFD, log_name)
         logger.info('running command %s', SCILAB_CMD[-1])
@@ -106,12 +113,14 @@ def ExecXml(filepath, file_id, parameters):
                 err = '\n'.join(re.split(r'\n+', err, maxlines + 1)[:maxlines])
                 logger.info('err=%s', err)
 
-        log_name = '/tmp/blocks-tmp/scilab-log.txt' # FIXME: remove this line
-        return ('Streaming', log_name, proc.returncode)
+        file_obj.returncode = proc.returncode
+        file_obj.save()
+
+        return 'Streaming'
     except BaseException as e:
         logger.exception('Encountered Exception:')
-        logger.info('removing %s', filepath)
-        os.remove(filepath)
+        logger.info('removing %s', file_path)
+        os.remove(file_path)
         target = os.listdir(current_dir)
         for item in target:
             logger.info('removing %s', item)
