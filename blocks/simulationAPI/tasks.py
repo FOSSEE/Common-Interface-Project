@@ -1,14 +1,14 @@
+import json
+import traceback
 from celery import shared_task, current_task, states
 from celery.exceptions import Ignore
-import json
-import logging
-import traceback
+from celery.utils.log import get_task_logger
 
 from simulationAPI.helpers import ngspice_helper
 from simulationAPI.models import TaskFile
 
 
-logger = logging.getLogger(__name__)
+logger = get_task_logger(__name__)
 
 
 @shared_task

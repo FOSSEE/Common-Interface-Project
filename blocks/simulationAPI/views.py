@@ -1,8 +1,8 @@
-import logging
 import os
 import time
 import uuid
 from celery.result import AsyncResult
+from celery.utils.log import get_task_logger
 from django.http import StreamingHttpResponse
 from rest_framework import status
 from rest_framework.exceptions import ValidationError
@@ -31,7 +31,7 @@ DATA = 2
 # to indicate there is no line in log file further
 NOLINE = -1
 
-logger = logging.getLogger(__name__)
+logger = get_task_logger(__name__)
 
 
 class XmlUploader(APIView):

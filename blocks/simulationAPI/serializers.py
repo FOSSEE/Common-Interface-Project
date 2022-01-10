@@ -1,9 +1,10 @@
 import json
-import logging
+from celery.utils.log import get_task_logger
 from rest_framework import serializers
+
 from simulationAPI.models import TaskFile, Task
 
-logger = logging.getLogger(__name__)
+logger = get_task_logger(__name__)
 
 
 class TaskFileSerializer(serializers.ModelSerializer):
