@@ -1,4 +1,3 @@
-import json
 import traceback
 from celery import shared_task, current_task, states
 from celery.exceptions import Ignore
@@ -14,33 +13,26 @@ logger = get_task_logger(__name__)
 @shared_task
 def process_task(task_id):
     try:
-
         file_obj = TaskFile.objects.get(task_id=task_id)
-        file_path = file_obj.file.path
-        file_id = file_obj.file_id
-        app_name = file_obj.app_name
-        parameters = json.loads(file_obj.parameters)
 
-        logger.info("Processing %s %s %s", file_path, file_id, app_name)
+        logger.info("Processing %s %s %s",
+                    file_obj.file.path, file_obj.file_id, file_obj.app_name)
 
         current_task.update_state(
             state='PROGRESS',
             meta={'current_process': 'Started Processing File'})
 
-        output = ngspice_helper.ExecXml(file_path, file_id, parameters)
-        if output[0] == "Streaming":
-            file_obj.log_name = output[1]
-            file_obj.returncode = output[2]
-            file_obj.save()
+        output = ngspice_helper.ExecXml(file_obj)
+        if output == "Streaming":
             state = 'STREAMING'
             current_process = 'Processed Xml, Streaming Output'
-        elif output[0] == "Success":
+        elif output == "Success":
             state = 'SUCCESS'
             current_process = 'Processed Xml, Loading Output'
         current_task.update_state(
             state=state,
             meta={'current_process': current_process})
-        return output[0]
+        return output
 
     except Exception as e:
         current_task.update_state(state=states.FAILURE, meta={
