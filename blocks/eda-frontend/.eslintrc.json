@@ -24,9 +24,9 @@
         "react"
     ],
     "rules": {
+        "new-cap": "warn",
         "react/prop-types": "warn"
     },
-
     "settings": {
         "react": {
             "version": "latest"
