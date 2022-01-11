@@ -259,7 +259,7 @@ export function editPointsValue (graphObject, graphParameters, pointsHistory) {
         document.getElementById("messageLabel").innerHTML = "ERROR IN SPLINE : " + getmethod(graphParameters.mtd)
         wind.destroy()
         graphWind.style.pointerEvents = "auto"
-        throw "incorrect"
+        throw new Error("incorrect")
       }
     }
   }
@@ -302,7 +302,7 @@ export function addPointsOnChart (graphParameters, pointsHistory, xValue, yValue
             sigbuilderGraph.setTitle(null, { text: updateSubtitleForSigbuilderGraph(graphParameters.points, graphParameters.mtd, graphParameters.xmaxTitle, graphParameters.PeriodicOption) })
         } else {
             document.getElementById("messageLabel").innerHTML = "ERROR IN SPLINE : " + getmethod(graphParameters.mtd)
-            throw "incorrect"
+            throw new Error("incorrect")
         }
     }
 }
