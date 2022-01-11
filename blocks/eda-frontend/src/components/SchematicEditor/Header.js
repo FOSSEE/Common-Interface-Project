@@ -229,9 +229,9 @@ function Header () {
         ? <>
           {(schSave.isSaved === true && schSave.details.save_time !== undefined)
             ? <Typography
-                variant='body2'
-                style={{ margin: '0px 15px 0px auto', paddingTop: '5px', color: '#8c8c8c' }}
-              >
+              variant='body2'
+              style={{ margin: '0px 15px 0px auto', paddingTop: '5px', color: '#8c8c8c' }}
+            >
               Last Saved : {getDate(schSave.details.save_time)} {/* Display last saved status for saved schematics */}
             </Typography>
             : <></>}
@@ -266,10 +266,10 @@ function Header () {
           <DialogContentText id='share-dialog-description'>
             {shared === true
               ? <input
-                  ref={textAreaRef}
-                  value={`${window.location.protocol}\\\\${window.location.host}/eda/#/editor?id=${schSave.details.save_id}`}
-                  readOnly
-                />
+                ref={textAreaRef}
+                value={`${window.location.protocol}\\\\${window.location.host}/eda/#/editor?id=${schSave.details.save_id}`}
+                readOnly
+              />
               : <> Turn On sharing </>}
           </DialogContentText>
 

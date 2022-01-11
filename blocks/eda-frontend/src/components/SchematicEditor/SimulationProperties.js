@@ -137,11 +137,11 @@ export default function SimulationProperties () {
   return (
     <>
       <div className={classes.SimulationOptions}>
-      {
-        simulateOpen
-        ? <SimulationScreen2 open={simulateOpen} close={handleSimulateClose} />
-        : <div />
-      }
+        {
+          simulateOpen
+            ? <SimulationScreen2 open={simulateOpen} close={handleSimulateClose} />
+            : <div />
+        }
 
         {/* Simulation modes list */}
         <List>

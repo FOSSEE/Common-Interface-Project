@@ -25,6 +25,7 @@
     ],
     "rules": {
         "new-cap": "warn",
+        "no-new": "warn",
         "react/prop-types": "warn"
     },
     "settings": {

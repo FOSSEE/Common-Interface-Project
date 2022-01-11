@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Highcharts from 'highcharts';
-import HighchartsReact from 'highcharts-react-official';
+import Highcharts from 'highcharts'
+import HighchartsReact from 'highcharts-react-official'
 import Chart from 'chart.js'
 import 'chartjs-plugin-colorschemes'
 import { Queue } from '../../utils/Queue'
@@ -8,57 +8,57 @@ import { Queue } from '../../utils/Queue'
 // Chart Style Options
 Chart.defaults.global.defaultFontColor = '#e6e6e6'
 
-let statusDone = false;
+let statusDone = false
 
 export function setStatusDone () {
-  statusDone = true;
+  statusDone = true
 }
 
 class Graph2 extends Component {
   pointList = new Queue();
 
   addPointToQueue = (id, point) => {
-    this.pointList.enqueue(point);
+    this.pointList.enqueue(point)
   }
 
-  constructor(props) {
+  constructor (props) {
     super(props)
-    const datapoint = props.datapoint;
-    const pointList = this.pointList;
+    const datapoint = props.datapoint
+    const pointList = this.pointList
     this.state = {
       options: {
         chart: {
           events: {
             load: function () {
               // set up the updating of the chart each second
-              let chart = this;
-              let series = this.series[0];
-              let starttime = Date.now();
+              const chart = this
+              const series = this.series[0]
+              const starttime = Date.now()
               function addPoints () {
                 while (!pointList.isEmpty()) {
-                  let point = pointList.peek();
-                  let x = parseFloat(point[1]);
-                  let timediff = (starttime + x * 1000) - Date.now();
+                  const point = pointList.peek()
+                  const x = parseFloat(point[1])
+                  let timediff = (starttime + x * 1000) - Date.now()
                   if (timediff > 0) {
                     if (timediff < 1000) {
-                      timediff *= 5;
-                      if (timediff > 1000)
-                        timediff = 1000;
+                      timediff *= 5
+                      if (timediff > 1000) {
+                        timediff = 1000
+                      }
                     }
-                    setTimeout(addPoints, timediff);
-                    return;
+                    setTimeout(addPoints, timediff)
+                    return
                   }
-                  let y = parseFloat(point[2]);
-                  series.addPoint([x, y]);
-                  pointList.dequeue();
+                  const y = parseFloat(point[2])
+                  series.addPoint([x, y])
+                  pointList.dequeue()
                 }
-                chart.redraw();
+                chart.redraw()
                 if (!pointList.isEmpty() || !statusDone) {
-                  setTimeout(addPoints, 1000);
-                  return;
+                  setTimeout(addPoints, 1000)
                 }
               }
-              addPoints();
+              addPoints()
             }
           },
           type: datapoint.datapointType,

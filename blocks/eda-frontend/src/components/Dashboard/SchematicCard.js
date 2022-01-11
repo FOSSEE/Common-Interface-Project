@@ -58,7 +58,7 @@ function SimpleSnackbar ({ open, close, sch }) {
               NO
             </Button>
           </>
-      }
+        }
       >
         {'Delete ' + sch.name + ' ?'}
       </Alert>
