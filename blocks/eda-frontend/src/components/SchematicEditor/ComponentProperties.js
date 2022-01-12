@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { setCompProperties } from '../../redux/actions/index'
 import { ListItem, ListItemText, Button, TextField } from '@material-ui/core'

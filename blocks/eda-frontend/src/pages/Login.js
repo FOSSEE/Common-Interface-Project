@@ -1,5 +1,5 @@
 // User Login / Sign In page.
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 import {
   Container,

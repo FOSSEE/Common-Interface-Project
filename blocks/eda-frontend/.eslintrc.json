@@ -1,5 +1,5 @@
 {
-    "parser": "babel-eslint",
+    "parser": "@babel/eslint-parser",
     "env": {
         "browser": true,
         "es6": true,
@@ -7,13 +7,17 @@
     },
     "extends": [
         "plugin:react/recommended",
-        "standard"
+        "standard",
+        "plugin:react/jsx-runtime"
     ],
     "globals": {
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"
     },
     "parserOptions": {
+        "babelOptions": {
+            "presets": ["@babel/preset-react"]
+        },
         "ecmaFeatures": {
             "jsx": true
         },

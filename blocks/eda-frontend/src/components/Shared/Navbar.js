@@ -162,7 +162,7 @@ export function Header () {
                 Simulator
               </Link>
             </>
-            )
+              )
           )
         }
       </nav>
