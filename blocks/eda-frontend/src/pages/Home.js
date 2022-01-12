@@ -1,5 +1,5 @@
 // Main layout for home page.
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
