@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { setCompProperties } from '../../redux/actions/index'
 import { ListItem, ListItemText, Button, TextField } from '@material-ui/core'
@@ -15,7 +15,7 @@ export default function ComponentProperties () {
 
   const dispatch = useDispatch()
 
-  useEffect(() => {
+  React.useEffect(() => {
     setVal(parameterValues)
   }, [parameterValues])
 

@@ -226,7 +226,7 @@ class StreamView(APIView):
                                                    lineno, line)
                 # if incomplete line, wait for the complete line
                 if state == NOLINE:
-                    gevent.sleep(LOOK_DELAY)
+                    time.sleep(LOOK_DELAY)
                     continue
 
                 if not figure_list:

@@ -7,8 +7,7 @@
     },
     "extends": [
         "plugin:react/recommended",
-        "standard",
-        "plugin:react/jsx-runtime"
+        "standard"
     ],
     "globals": {
         "Atomics": "readonly",
@@ -30,6 +29,7 @@
     "rules": {
         "new-cap": "warn",
         "no-new": "warn",
+        "no-unused-vars": "warn",
         "react/prop-types": "warn"
     },
     "settings": {
