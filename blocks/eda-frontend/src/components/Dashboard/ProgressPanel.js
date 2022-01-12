@@ -85,13 +85,13 @@ export default function ProgressPanel () {
       <TabPanel value={value} index={0}>
         {schematics.length !== 0
           ? <Grid
-              container
-              direction='row'
-              justify='flex-start'
-              alignItems='flex-start'
-              alignContent='center'
-              spacing={3}
-            >
+            container
+            direction='row'
+            justify='flex-start'
+            alignItems='flex-start'
+            alignContent='center'
+            spacing={3}
+          >
             {schematics.slice(0, 4).map(
               (sch) => {
                 return (

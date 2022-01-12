@@ -59,14 +59,33 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
     const yPos = 1 / 2 - blockport.port_y / defaultScale / height
 
     const portOrientation = blockport.port_orientation
-    let point = null
+    let pointX
+    let pointY
     switch (portOrientation) {
-      case 'ExplicitInputPort': case 'ImplicitInputPort': point = new mxPoint(-portSize, -portSize / 2); break
-      case 'ControlPort': point = new mxPoint(-portSize / 2, -portSize); break
-      case 'ExplicitOutputPort': case 'ImplicitOutputPort': point = new mxPoint(0, -portSize / 2); break
-      case 'CommandPort': point = new mxPoint(-portSize / 2, 0); break
-      default: point = new mxPoint(-portSize / 2, -portSize / 2); break
+      case 'ExplicitInputPort':
+      case 'ImplicitInputPort':
+        pointX = -portSize
+        pointY = -portSize / 2
+        break
+      case 'ControlPort':
+        pointX = -portSize / 2
+        pointY = -portSize
+        break
+      case 'ExplicitOutputPort':
+      case 'ImplicitOutputPort':
+        pointX = 0
+        pointY = -portSize / 2
+        break
+      case 'CommandPort':
+        pointX = -portSize / 2
+        pointY = 0
+        break
+      default:
+        pointX = -portSize / 2
+        pointY = -portSize / 2
+        break
     }
+    const point = new mxPoint(pointX, pointY)
 
     const vp = graph.insertVertex(v1, null, null, xPos, yPos, portSize, portSize, portOrientation)
     vp.geometry.relative = true

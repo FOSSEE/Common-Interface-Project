@@ -388,7 +388,7 @@ function parseXmlToGraph (xmlDoc, graph) {
           for (let i = 0; i < parameterCount; i++) {
             const p = getParameter(i) + '_value'
             if (cellChildrenAttributes[p] !== undefined) {
-                parameterValues[p] = cellChildrenAttributes[p].value
+              parameterValues[p] = cellChildrenAttributes[p].value
             }
           }
         }
@@ -399,14 +399,33 @@ function parseXmlToGraph (xmlDoc, graph) {
         const geom = cellChildren[0].attributes
         const xPos = (geom.x !== undefined) ? Number(geom.x.value) : 0
         const yPos = (geom.y !== undefined) ? Number(geom.y.value) : 0
-        let point = null
+        let pointX
+        let pointY
         switch (style) {
-          case 'ExplicitInputPort': case 'ImplicitInputPort': point = new mxPoint(-portSize, -portSize / 2); break
-          case 'ControlPort': point = new mxPoint(-portSize / 2, -portSize); break
-          case 'ExplicitOutputPort': case 'ImplicitOutputPort': point = new mxPoint(0, -portSize / 2); break
-          case 'CommandPort': point = new mxPoint(-portSize / 2, 0); break
-          default: point = new mxPoint(-portSize / 2, -portSize / 2); break
+          case 'ExplicitInputPort':
+          case 'ImplicitInputPort':
+            pointX = -portSize
+            pointY = -portSize / 2
+            break
+          case 'ControlPort':
+            pointX = -portSize / 2
+            pointY = -portSize
+            break
+          case 'ExplicitOutputPort':
+          case 'ImplicitOutputPort':
+            pointX = 0
+            pointY = -portSize / 2
+            break
+          case 'CommandPort':
+            pointX = -portSize / 2
+            pointY = 0
+            break
+          default:
+            pointX = -portSize / 2
+            pointY = -portSize / 2
+            break
         }
+        const point = new mxPoint(pointX, pointY)
         const vp = graph.insertVertex(v1, vertexId, null, xPos, yPos, portSize, portSize, style)
         vp.geometry.relative = true
         vp.geometry.offset = point
