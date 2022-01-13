@@ -11,7 +11,7 @@ export function setStatusDone () {
 }
 
 class Graph2 extends React.Component {
-  pointList = new Queue();
+  pointList = new Queue()
 
   addPointToQueue = (id, point) => {
     this.pointList.enqueue(point)

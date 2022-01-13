@@ -8,7 +8,7 @@ let lineGraph
 Chart.defaults.global.defaultFontColor = '#e6e6e6'
 
 class Graph extends Component {
-  chartRef = React.createRef();
+  chartRef = React.createRef()
 
   componentDidMount () {
     this.buildChart()
@@ -141,7 +141,7 @@ class Graph extends Component {
         }
       }
     })
-  };
+  }
 
   render () {
     return (
