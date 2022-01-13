@@ -210,7 +210,7 @@ export default function LoadGrid (container, sidebar, outline) {
     style.fontSize = '9'
     style.movable = '0'
     style.strokeWidth = strokeWidth
-    // style['rounded'] = '1';
+    // style['rounded'] = '1'
 
     // Sets join node size
     style.startSize = joinNodeSize
@@ -218,9 +218,9 @@ export default function LoadGrid (container, sidebar, outline) {
 
     style = graph.getStylesheet().getDefaultVertexStyle()
     style.gradientDirection = 'south'
-    // style['gradientColor'] = '#909090';
+    // style['gradientColor'] = '#909090'
     style.strokeColor = strokeColor
-    // style['fillColor'] = '#e0e0e0';
+    // style['fillColor'] = '#e0e0e0'
     style.fillColor = 'none'
     style.fontColor = fontColor
     style.fontStyle = '1'
@@ -302,7 +302,7 @@ export default function LoadGrid (container, sidebar, outline) {
     }) */
 
     mxEvent.disableContextMenu(container)
-  };
+  }
 
   // Computes the position of edge to edge connection points.
   mxGraphView.prototype.updateFixedTerminalPoint = function (edge, terminal, source, constraint) {
@@ -540,7 +540,7 @@ export default function LoadGrid (container, sidebar, outline) {
     return style
   }
 
-  function ResistorShape () { };
+  function ResistorShape () { }
   ResistorShape.prototype = new mxCylinder()
   ResistorShape.prototype.constructor = ResistorShape
 
@@ -600,19 +600,19 @@ export default function LoadGrid (container, sidebar, outline) {
     // Adds the waypoints
     if (hints != null && hints.length > 0) {
       // FIXME: First segment not movable
-      /* hint = state.view.transformControlPoint(state, hints[0]);
-         mxLog.show();
+      /* hint = state.view.transformControlPoint(state, hints[0])
+         mxLog.show()
          mxLog.debug(hints.length, 'hints0.y=' + hint.y, pt.y)
 
          if (horizontal && Math.floor(hint.y) != Math.floor(pt.y))
          {
-           mxLog.show();
-           mxLog.debug('add waypoint');
+           mxLog.show()
+           mxLog.debug('add waypoint')
 
-           pt = new mxPoint(pt.x, hint.y);
-           result.push(pt);
-           pt = pt.clone();
-           //horizontal = !horizontal;
+           pt = new mxPoint(pt.x, hint.y)
+           result.push(pt)
+           pt = pt.clone()
+           horizontal = !horizontal
          } */
 
       for (let i = 0; i < hints.length; i++) {
