@@ -7,7 +7,7 @@ const InitialState = {
   components: {}
 }
 
-export default function (state = InitialState, action) {
+export default function schematicEditorReducer (state = InitialState, action) {
   switch (action.type) {
     case actions.FETCH_LIBRARIES: {
     // Add 'open' parameter to track open/close state of collapse

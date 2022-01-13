@@ -4,7 +4,7 @@ const InitialState = {
   schematics: []
 }
 
-export default function (state = InitialState, action) {
+export default function dashboardReducer (state = InitialState, action) {
   switch (action.type) {
     case actions.FETCH_SCHEMATICS: {
       return {

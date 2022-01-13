@@ -9,7 +9,7 @@ const initialState = {
   isShared: null
 }
 
-export default function (state = initialState, action) {
+export default function saveSchematicReducer (state = initialState, action) {
   switch (action.type) {
     case actions.SET_SCH_SAVED: {
       return {
