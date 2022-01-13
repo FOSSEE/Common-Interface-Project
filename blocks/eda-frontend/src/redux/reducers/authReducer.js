@@ -11,7 +11,7 @@ const initialState = {
   regErrors: ''
 }
 
-export default function (state = initialState, action) {
+export default function authReducer (state = initialState, action) {
   switch (action.type) {
     case actions.USER_LOADING: {
       return {

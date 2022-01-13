@@ -8,7 +8,7 @@ const initialState = {
   controlBlock: ''
 }
 
-export default function (state = initialState, action) {
+export default function netlistReducer (state = initialState, action) {
   switch (action.type) {
     case actions.SET_NETLIST: {
       return {

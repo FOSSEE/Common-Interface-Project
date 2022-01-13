@@ -1,5 +1,5 @@
 // Main layout for gallery page.
-import { useEffect } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import {
   Card,
@@ -47,7 +47,7 @@ const images = require.context('../static/gallery', true)
 function SchematicCard ({ sch }) {
   const classes = useStyles()
 
-  useEffect(() => {
+  React.useEffect(() => {
     document.title = 'Gallery - ' + process.env.REACT_APP_NAME
   })
 

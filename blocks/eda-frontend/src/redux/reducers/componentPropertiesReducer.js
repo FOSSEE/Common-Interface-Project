@@ -10,7 +10,7 @@ const InitialState = {
   displayProperties: {}
 }
 
-export default function (state = InitialState, action) {
+export default function componentPropertiesReducer (state = InitialState, action) {
   switch (action.type) {
     case actions.GET_COMP_PROPERTIES: {
       return {

@@ -1,3 +1,4 @@
+import React from 'react'
 import AceEditor from 'react-ace'
 import PropTypes from 'prop-types'
 import 'brace/theme/monokai'

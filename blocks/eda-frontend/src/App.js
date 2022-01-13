@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import React from 'react'
 import { HashRouter, Switch, Route, Redirect } from 'react-router-dom'
 import CircularProgress from '@material-ui/core/CircularProgress'
 
@@ -22,7 +22,7 @@ function PrivateRoute ({ component: Component, ...rest }) {
   const auth = useSelector(state => state.authReducer)
   const dispatch = useDispatch()
 
-  useEffect(() => dispatch(loadUser()), [dispatch])
+  React.useEffect(() => dispatch(loadUser()), [dispatch])
 
   return (
     <Route
@@ -44,7 +44,7 @@ function PublicRoute ({ component: Component, restricted, nav, ...rest }) {
   const auth = useSelector(state => state.authReducer)
   const dispatch = useDispatch()
 
-  useEffect(() => dispatch(loadUser()), [dispatch])
+  React.useEffect(() => dispatch(loadUser()), [dispatch])
 
   return (
     <Route

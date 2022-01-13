@@ -1,5 +1,5 @@
 // Main Layout for user dashboard.
-import { useEffect } from 'react'
+import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import { CssBaseline } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Dashboard () {
   const classes = useStyles()
 
-  useEffect(() => {
+  React.useEffect(() => {
     document.title = 'Dashboard - ' + process.env.REACT_APP_NAME
   })
 

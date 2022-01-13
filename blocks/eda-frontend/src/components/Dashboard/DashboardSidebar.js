@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import React from 'react'
 import {
   Hidden,
   Divider,
@@ -54,7 +54,7 @@ export default function DashSidebar (props) {
   const dispatch = useDispatch()
 
   // For Fetching Saved Schematics
-  useEffect(() => {
+  React.useEffect(() => {
     dispatch(fetchSchematics())
   }, [dispatch])
 

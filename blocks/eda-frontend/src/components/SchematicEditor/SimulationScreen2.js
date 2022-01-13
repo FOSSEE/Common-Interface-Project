@@ -65,8 +65,8 @@ export default function SimulationScreen2 ({ open, close }) {
   const chartIdList = useRef({})
 
   // Keep track of RANGE of each graph(chart)
-  const RANGE = []
-  const nameValuesColormap = new Map() // for storing colormap values of cmatview and cmat3d block
+  const range = useRef([])
+  const nameValuesColormap = useRef(new Map()) // for storing colormap values of cmatview and cmat3d block
 
   const streamSimulationResult = useCallback((streamingUrl) => {
     // define variables for block event
@@ -302,7 +302,7 @@ export default function SimulationScreen2 ({ open, close }) {
     // To create coloraxis array which will be passed to cmatview chart for heatmap creation
     const getColorAxisForPoints = (blockUid) => {
       const colorAxisArray = []
-      const getHexColorArray = nameValuesColormap.get(blockUid)
+      const getHexColorArray = nameValuesColormap.current.get(blockUid)
       for (let i = 0; i < getHexColorArray.length; i++) {
         const colorValues = {}
         const temp = i
@@ -417,7 +417,7 @@ export default function SimulationScreen2 ({ open, close }) {
         } else if (block < 5 || block === 9 || block === 11 || block === 12 || block === 23) {
           // sink block is not CSCOPXY
           createNewChart(figureId, noOfGraph, xmin, xmax, ymin, ymax, typeChart, titleText, colorAxis)
-          RANGE[chartIdList.current[figureId]] = parseFloat(xmax)
+          range.current[chartIdList.current[figureId]] = parseFloat(xmax)
         }
       }
 
@@ -575,7 +575,7 @@ export default function SimulationScreen2 ({ open, close }) {
       console.log('MESSAGE', e)
       sse.close()
     }, false)
-  }, [taskId, RANGE, chartIdList, nameValuesColormap])
+  }, [taskId, chartIdList])
 
   // Get the simulation result with task_Id
   const simulationResult = useCallback((url, streamingUrl) => {

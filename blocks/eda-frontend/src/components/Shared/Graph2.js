@@ -1,12 +1,8 @@
-import { Component } from 'react'
+import React from 'react'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
-import Chart from 'chart.js'
 import 'chartjs-plugin-colorschemes'
 import { Queue } from '../../utils/Queue'
-
-// Chart Style Options
-Chart.defaults.global.defaultFontColor = '#e6e6e6'
 
 let statusDone = false
 
@@ -14,8 +10,8 @@ export function setStatusDone () {
   statusDone = true
 }
 
-class Graph2 extends Component {
-  pointList = new Queue();
+class Graph2 extends React.Component {
+  pointList = new Queue()
 
   addPointToQueue = (id, point) => {
     this.pointList.enqueue(point)
