@@ -39,7 +39,7 @@ export function AddComponent (component, imgref) {
       // NOTE: For non-HTML labels the image must be displayed via the style
       // rather than the label markup, so use 'image=' + image for the style.
       // as follows: v1 = graph.insertVertex(parent, null, label,
-      // pt.x, pt.y, 120, 120, 'image=' + image);
+      // pt.x, pt.y, 120, 120, 'image=' + image)
 
       // ***IMP
       // GET THE SIZE OF SVG FOROM METADATA AND THEN DIVIDE BOTH WIDTH AND HEIGHT BE SAME RATIO
