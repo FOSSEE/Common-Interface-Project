@@ -3,7 +3,7 @@ sse.addEventListener('instruction', e => {
   const data = e.data
   console.log('instruction', data)
 })
-sse.addEventListener('done', e => {
+sse.addEventListener('done', () => {
   console.log('done')
   sse.close()
 })
