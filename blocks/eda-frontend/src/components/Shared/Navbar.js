@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-// Common navbar for Dashboard, Home, Simulator, Gallery, etc.
+// Common navbar for Dashboard, Home, Gallery, etc.
 export function Header () {
   const history = useHistory()
   const classes = useStyles()
@@ -114,16 +114,6 @@ export function Header () {
               <Link
                 variant='button'
                 color='textPrimary'
-                to='/simulator/ngspice'
-                component={RouterLink}
-                className={classes.link}
-              >
-                Simulator
-              </Link>
-
-              <Link
-                variant='button'
-                color='textPrimary'
                 to='/dashboard'
                 component={RouterLink}
                 className={classes.link}
@@ -150,16 +140,6 @@ export function Header () {
                 style={{ marginRight: '20px' }}
               >
                 Gallery
-              </Link>
-
-              <Link
-                variant='button'
-                color='textPrimary'
-                to='/simulator/ngspice'
-                component={RouterLink}
-                style={{ marginRight: '20px' }}
-              >
-                Simulator
               </Link>
             </>
               )

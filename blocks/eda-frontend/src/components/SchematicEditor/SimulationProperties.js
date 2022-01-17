@@ -17,7 +17,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { setResultTitle, setResultTaskId } from '../../redux/actions/index'
 import { Save } from './Helper/ToolbarTools'
-import SimulationScreen2 from './SimulationScreen2'
+import SimulationScreen from './SimulationScreen'
 import api from '../../utils/Api'
 
 const useStyles = makeStyles((theme) => ({
@@ -139,7 +139,7 @@ export default function SimulationProperties () {
       <div className={classes.SimulationOptions}>
         {
           simulateOpen
-            ? <SimulationScreen2 open={simulateOpen} close={handleSimulateClose} />
+            ? <SimulationScreen open={simulateOpen} close={handleSimulateClose} />
             : <div />
         }
 

@@ -8,7 +8,6 @@ import Login from './pages/Login'
 import NotFound from './pages/NotFound'
 import SchematicEditor from './pages/SchematicEditor'
 
-import Simulator from './pages/Simulator'
 import Gallery from './pages/Gallery'
 import Dashboard from './pages/Dashboard'
 import SignUp from './pages/signUp'
@@ -74,7 +73,6 @@ function App () {
         {localStorage.getItem(process.env.REACT_APP_NAME + '_token') !== null
           ? <PublicRoute exact path='/editor' restricted={false} nav={false} component={SchematicEditor} />
           : <Route path='/editor' component={SchematicEditor} />}
-        <PublicRoute exact path='/simulator/ngspice' restricted={false} nav component={Simulator} />
         <PublicRoute exact path='/gallery' restricted={false} nav component={Gallery} />
         <PrivateRoute path='/dashboard' component={Dashboard} />
         <PublicRoute restricted={false} nav component={NotFound} />
