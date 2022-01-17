@@ -27,8 +27,7 @@ class Instructions(APIView):
         done = False
         while not done:
             number = randrange(100)
-            sleep = randrange(2, 6)
-            logger.info('number=%s, sleep=%s', number, sleep)
+            sleep = randrange(1, 4)
             if number < 75:
                 event = 'instruction'
                 data = 'add'

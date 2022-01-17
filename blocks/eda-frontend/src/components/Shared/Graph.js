@@ -1,152 +1,141 @@
-import React, { Component } from 'react'
-import Chart from 'chart.js'
-
+import React from 'react'
+import Highcharts from 'highcharts'
+import HighchartsReact from 'highcharts-react-official'
 import 'chartjs-plugin-colorschemes'
-let lineGraph
+import { Queue } from '../../utils/Queue'
 
-// Chart Style Options
-Chart.defaults.global.defaultFontColor = '#e6e6e6'
+let statusDone = false
 
-class Graph extends Component {
-  chartRef = React.createRef()
+export function setStatusDone () {
+  statusDone = true
+}
 
-  componentDidMount () {
-    this.buildChart()
+class Graph extends React.Component {
+  pointList = new Queue()
+
+  addPointToQueue = (id, point) => {
+    this.pointList.enqueue(point)
   }
 
-  componentDidUpdate () {
-    this.buildChart()
-  }
-
-  buildChart = () => {
-    const myChartRef = this.chartRef.current.getContext('2d')
-    const { x, y, labels, xscale, yscale, precision } = this.props
-    // ticks are the number of points to show on x axis
-    const scales = {
-      G: { value: 1000000000, ticks: 3 },
-      M: { value: 1000000, ticks: 3 },
-      K: { value: 1000, ticks: 3 },
-      si: { value: 1, ticks: 3 },
-      m: { value: 0.001, ticks: 5 },
-      u: { value: 0.000001, ticks: 7 },
-      n: { value: 0.000000001, ticks: 9 },
-      p: { value: 0.000000000001, ticks: 11 }
-    }
-    if (typeof lineGraph !== 'undefined') lineGraph.destroy()
-
-    const dataset = () => {
-      const arr = []
-
-      for (let i = 0; i < y.length; i++) {
-        if (labels[0] === labels[i + 1]) continue
-        arr.push({
-          label: labels[i + 1],
-          data: y[i].map(e => (e / scales[yscale].value).toFixed(precision)),
-          fill: false
-          // borderColor: getRandomColor()
-        })
-      }
-      return arr
-    }
-    const selectLabel = () => {
-      if (labels[0] === 'time') {
-        if (xscale === 'si') {
-          return 'Time in S'
-        } else {
-          return `Time in ${xscale}S`
-        }
-      } else if (labels[0] === 'v-sweep') {
-        if (xscale === 'si') {
-          return 'Voltage in V'
-        } else {
-          return `Voltage in ${xscale}V`
-        }
-      } else if (labels[0] === 'frequency') {
-        if (xscale === 'si') {
-          return 'frequency in Hz'
-        } else {
-          return `frequency in ${xscale}Hz`
-        }
-      } else {
-        if (xscale === 'si') {
-          return `${labels[0]}`
-        } else {
-          return `${labels[0]} in ${xscale}`
-        }
-      }
-    }
-
-    lineGraph = new Chart(myChartRef, {
-      type: 'line',
-      data: {
-        // labels: x,
-        labels: x.map(e => (e / scales[xscale].value).toFixed(precision)),
-        datasets: dataset()
-      },
-
+  constructor (props) {
+    super(props)
+    const datapoint = props.datapoint
+    const pointList = this.pointList
+    this.state = {
       options: {
-        plugins: {
-          colorschemes: {
-            scheme: 'brewer.SetOne9'
+        chart: {
+          events: {
+            load: function () {
+              // set up the updating of the chart each second
+              const chart = this
+              const series = this.series[0]
+              const starttime = Date.now()
+              function addPoints () {
+                while (!pointList.isEmpty()) {
+                  const point = pointList.peek()
+                  const x = parseFloat(point[1])
+                  let timediff = (starttime + x * 1000) - Date.now()
+                  if (timediff > 0) {
+                    if (timediff < 1000) {
+                      timediff *= 5
+                      if (timediff > 1000) {
+                        timediff = 1000
+                      }
+                    }
+                    setTimeout(addPoints, timediff)
+                    return
+                  }
+                  const y = parseFloat(point[2])
+                  series.addPoint([x, y])
+                  pointList.dequeue()
+                }
+                chart.redraw()
+                if (!pointList.isEmpty() || !statusDone) {
+                  setTimeout(addPoints, 1000)
+                }
+              }
+              addPoints()
+            }
+          },
+          type: datapoint.datapointType,
+          animation: false,
+          zoomType: 'xy'
+        },
+        colorAxis: {
+          dataClasses: datapoint.datapointDataClasses
+        },
+        legend: {
+          enabled: false
+        },
+        plotOptions: {
+          marker: {
+            enabled: false
+          },
+          column: {
+            pointPlacement: 0,
+            pointRange: datapoint.datapointPointRange
+          },
+          series: {
+            lineWidth: datapoint.datapointLineWidth,
+            pointWidth: datapoint.datapointPointWidth,
+            enableMouseTracking: false,
+            states: {
+              hover: {
+                lineWidth: datapoint.datapointLineWidth
+              }
+            }
+          },
+          scatter: {
+            marker: {
+              radius: 1,
+              states: {
+                hover: {
+                  enabled: true,
+                  lineColor: 'rgb(100,100,100)'
+                }
+              }
+            }
           }
         },
-        responsive: true,
+        series: [{
+          data: []
+        }],
         title: {
-          display: false,
-          text: ''
+          text: datapoint.datapointTitle
         },
-        tooltips: {
-          mode: 'index',
-          intersect: false,
-          backgroundColor: '#39604d'
+        tooltip: {
+          enabled: false
         },
-        hover: {
-          mode: 'nearest',
-          intersect: true
+        xAxis: {
+          title: {
+            text: 'x'
+          },
+          tickInterval: 2,
+          startOnTick: true,
+          endOnTick: true,
+          showLastLabel: true,
+          min: parseFloat(datapoint.datapointXMin),
+          max: parseFloat(datapoint.datapointXMax)
         },
-        scales: {
-          xAxes: [
-            {
-              display: true,
-              gridLines: {
-                color: '#67737e'
-              },
-              scaleLabel: {
-                display: true,
-                labelString: selectLabel()
-              },
-
-              ticks: {
-                maxTicksLimit: scales[xscale].ticks
-              }
-            }
-          ],
-          yAxes: [
-            {
-              display: true,
-              scaleLabel: {
-                display: false,
-                labelString: 'Volatge ( V )'
-              },
-              gridLines: {
-                color: '#67737e'
-              },
-              ticks: {
-                beginAtZero: true,
-                fontSize: 15,
-                padding: 25
-              }
-            }
-          ]
+        yAxis: {
+          title: {
+            text: 'y'
+          },
+          min: parseFloat(datapoint.datapointYMin),
+          max: parseFloat(datapoint.datapointYMax),
+          plotLines: [{
+            width: 2,
+            color: '#808080'
+          }]
         }
       }
-    })
+    }
   }
 
   render () {
     return (
       <div>
-        <canvas id="myChart" ref={this.chartRef} />
+        <HighchartsReact highcharts={Highcharts} options={this.state.options} />
       </div>
     )
   }
