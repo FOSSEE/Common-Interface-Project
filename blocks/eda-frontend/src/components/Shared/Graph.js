@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import 'chartjs-plugin-colorschemes'
@@ -139,6 +140,10 @@ class Graph extends React.Component {
       </div>
     )
   }
+}
+
+Graph.propTypes = {
+  datapoint: PropTypes.object
 }
 
 export default Graph

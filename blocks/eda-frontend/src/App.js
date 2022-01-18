@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { HashRouter, Switch, Route, Redirect } from 'react-router-dom'
 import CircularProgress from '@material-ui/core/CircularProgress'
 
@@ -38,6 +39,10 @@ function PrivateRoute ({ component: Component, ...rest }) {
   )
 }
 
+PrivateRoute.propTypes = {
+  component: PropTypes.func
+}
+
 // Public routes accessible to all users. [ e.g. editor, gallery ]
 function PublicRoute ({ component: Component, restricted, nav, ...rest }) {
   const auth = useSelector(state => state.authReducer)
@@ -60,6 +65,12 @@ function PublicRoute ({ component: Component, restricted, nav, ...rest }) {
       }}
     />
   )
+}
+
+PublicRoute.propTypes = {
+  component: PropTypes.func,
+  nav: PropTypes.bool,
+  restricted: PropTypes.bool
 }
 
 function App () {
