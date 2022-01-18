@@ -1,5 +1,6 @@
 // User Login / Sign In page.
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 
 import {
   Container,
@@ -189,4 +190,8 @@ export default function SignIn (props) {
       </Button>
     </Container>
   )
+}
+
+SignIn.propTypes = {
+  location: PropTypes.object
 }
