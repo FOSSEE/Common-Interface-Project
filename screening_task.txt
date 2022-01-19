@@ -1,0 +1,161 @@
+Task 1: React
+
+Make an output page containing charts each having data.
+
+Connect to https://xcosblocks.fossee.org/api/instructions/get to start
+receiving events looking like this:
+
+=========================================================================
+event: instruction
+data: addChart id=1 type=bar xMin=0 xMax=10 yMin=-30 yMax=30
+
+event: instruction
+data: addChart id=2 type=curve xMin=0 xMax=20 yMin=-10 yMax=10
+
+event: instruction
+data: addData id=1 x=2 y=6
+
+event: instruction
+data: addData id=2 x=3 y=1
+
+event: instruction
+data: reset
+
+event: instruction
+data: addChart id=1 type=curve xMin=0 xMax=10 yMin=-30 yMax=30
+
+event: done
+data: none
+
+=========================================================================
+
+Note that there may be a delay between two successive events. Order of events is
+important. You have to receive and process one event at a time.
+
+Depending on the events received, take the following actions:
+
+1. event: instruction
+
+The instruction event will be of three types of data. Depending on the data
+received, take the following actions:
+
+                                                             # Comments
+data: addChart id=uniqueId type=chartType other-parameters   # add (render) a chart to the page
+data: addData id=chartId other-parameters                    # add (render) a point to that chart
+data: reset                                                  # clear the page. remove all added charts
+
+Once the event is completed, wait for the next event.
+
+2. event: done
+
+Ignore the data. Close the connection.
+
+Endpoint: /api/instructions/get
+
+GET / POST parameters: (none)
+
+Output: An eventstream which gives a series of instructions
+
+Example of output:
+
+                                                                 # Comments
+                                                                 #
+                                                                 # There will be a blank page at start.
+event: instruction                                               #
+data: addChart id=7 type=bar xMin=0 xMax=10 yMin=-30 yMax=30     #
+                                                                 # Add 1st chart to page. It will occupy the full width.
+event: instruction                                               #
+data: addChart id=9 type=chart xMin=-10 xMax=10 yMin=-30 yMax=30 #
+                                                                 # Add 2nd chart to page. It will occupy the full width.
+                                                                 # It will be below the 1st chart.
+event: instruction                                               #
+data: reset                                                      #
+                                                                 # Remove all charts from the page. Forget all previous
+                                                                 # ids.
+event: instruction                                               #
+data: addChart id=3 type=bar xMin=0 xMax=10 yMin=-30 yMax=30     #
+                                                                 # Add 1st chart to page. It will occupy the full width.
+event: instruction                                               #
+data: addChart id=7 type=chart xMin=-10 xMax=10 yMin=-30 yMax=30 #
+                                                                 # Add 2nd chart to page. It will occupy the full width.
+                                                                 # It will be below the 1st chart.
+event: instruction                                               #
+data: addChart id=1 type=chart xMin=0 xMax=5 yMin=-20 yMax=20    #
+                                                                 # Add 3rd chart to page. It will occupy the full width.
+                                                                 # It will be below the 2nd chart.
+event: instruction                                               #
+data: addData id=3 x=0 y=10                                      #
+                                                                 # Add point to the 1st chart.
+event: instruction                                               #
+data: addData id=1 x=0 y=-5                                      #
+                                                                 # Add point to the 3rd chart.
+event: instruction                                               #
+data: addData id=3 x=1 y=-5                                      #
+                                                                 # Add another point to the 1st chart.
+event: instruction                                               #
+data: addData id=3 x=2 y=5                                       #
+                                                                 # Add another point to the 1st chart.
+event: instruction                                               #
+data: addData id=7 x=2 y=5                                       #
+                                                                 # Add point to the 2nd chart.
+event: instruction                                               #
+data: addData id=7 x=3 y=16                                      #
+                                                                 # Add another point to the 2nd chart.
+event: instruction                                               #
+event: done                                                      #
+data:                                                            #
+                                                                 # Close the connection here. Do not reset the page. So,
+                                                                 # the final page will have 3 charts containing a total
+                                                                 # of 6 points.
+
+
+Bonus tasks:
+
+1.
+
+Add 1st chart (as before)
+
+|        Chart 1        |          # Add first chart of full width
+
+Add 2nd chart in same row
+
+|  Chart 1  |  Chart 2  |          # Each chart will be 50% of page width
+
+When 3th chart is to be added, change to 2-row layout.
+
+|  Chart 1  |  Chart 2  |          #
+|        Chart 3        |          # Add third chart of full width on 2nd row
+
+|  Chart 1  |  Chart 2  |          #
+|  Chart 3  |  Chart 4  |          # Each chart will be 50% of page width
+
+When 5th chart is to be added, change to 3-row layout.
+
+|  Chart 1  |  Chart 2  |          #
+|  Chart 3  |  Chart 4  |          #
+|        Chart 5        |          # Add fifth chart of full width on 3nd row
+
+2.
+
+Add error logging. Errors can be of the following types:
+
+Unsupported event
+
+Unsupported instruction (for instruction event)
+
+For addChart instruction:
+
+id is missing or empty
+id is duplicate (since last reset)
+type is missing or empty
+type is unsupported
+mandatory parameter (based on type) is missing
+
+For addData instruction:
+
+id is missing or empty
+id does not exist
+mandatory parameter (based on type) is missing
+
+Note: the error event must be logged and ignored. Processing of the next event
+must continue.
