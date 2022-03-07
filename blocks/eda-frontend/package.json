@@ -17,6 +17,7 @@
     "canvg": "^3.0.6",
     "chart.js": "^2.9.3",
     "chartjs-plugin-colorschemes": "^0.4.0",
+    "css-select": "^4.2.1",
     "file-saver": "^2.0.2",
     "follow-redirects": "^1.14.9",
     "glob-parent": "^6.0.2",
