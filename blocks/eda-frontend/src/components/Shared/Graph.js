@@ -2,13 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
-import 'chartjs-plugin-colorschemes'
 import { Queue } from '../../utils/Queue'
 
-let statusDone = false
+let myIntervals = []
 
 export function setStatusDone () {
-  statusDone = true
+  myIntervals.forEach(clearInterval)
+  myIntervals = []
 }
 
 class Graph extends React.Component {
@@ -35,15 +35,9 @@ class Graph extends React.Component {
                 while (!pointList.isEmpty()) {
                   const point = pointList.peek()
                   const x = parseFloat(point[1])
-                  let timediff = (starttime + x * 1000) - Date.now()
+                  const timediff = starttime + x * 1000 - Date.now()
                   if (timediff > 0) {
-                    if (timediff < 1000) {
-                      timediff *= 5
-                      if (timediff > 1000) {
-                        timediff = 1000
-                      }
-                    }
-                    setTimeout(addPoints, timediff)
+                    chart.redraw()
                     return
                   }
                   const y = parseFloat(point[2])
@@ -51,19 +45,21 @@ class Graph extends React.Component {
                   pointList.dequeue()
                 }
                 chart.redraw()
-                if (!pointList.isEmpty() || !statusDone) {
-                  setTimeout(addPoints, 1000)
-                }
               }
               addPoints()
+              myIntervals.push(setInterval(addPoints, 500))
             }
           },
           type: datapoint.datapointType,
+          showAxes: true,
           animation: false,
           zoomType: 'xy'
         },
         colorAxis: {
           dataClasses: datapoint.datapointDataClasses
+        },
+        lang: {
+          noData: 'No data to display'
         },
         legend: {
           enabled: false
@@ -98,9 +94,11 @@ class Graph extends React.Component {
             }
           }
         },
-        series: [{
-          data: []
-        }],
+        series: [
+          {
+            data: []
+          }
+        ],
         title: {
           text: datapoint.datapointTitle
         },
@@ -124,10 +122,12 @@ class Graph extends React.Component {
           },
           min: parseFloat(datapoint.datapointYMin),
           max: parseFloat(datapoint.datapointYMax),
-          plotLines: [{
-            width: 2,
-            color: '#808080'
-          }]
+          plotLines: [
+            {
+              width: 2,
+              color: '#808080'
+            }
+          ]
         }
       }
     }
