@@ -35,7 +35,7 @@ class Graph extends React.Component {
                 while (!pointList.isEmpty()) {
                   const point = pointList.peek()
                   const x = parseFloat(point[1])
-                  let timediff = starttime + x * 1000 - Date.now()
+                  const timediff = starttime + x * 1000 - Date.now()
                   if (timediff > 0) {
                     chart.redraw()
                     return
