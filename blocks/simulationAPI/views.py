@@ -1,7 +1,6 @@
 import os
 import time
 import uuid
-from celery.result import AsyncResult
 from celery.utils.log import get_task_logger
 from django.http import StreamingHttpResponse
 from rest_framework import status
@@ -14,7 +13,6 @@ from rest_framework.views import APIView
 from simulationAPI.models import TaskFile
 from simulationAPI.negotiation import IgnoreClientContentNegotiation
 from simulationAPI.serializers import TaskSerializer
-from simulationAPI.tasks import process_task
 
 
 SCILAB_INSTANCE_TIMEOUT_INTERVAL = 300
@@ -50,10 +48,12 @@ class XmlUploader(APIView):
         if serializer.is_valid():
             serializer.save()
             task_id = serializer.data['task_id']
-            celery_task = process_task.apply_async(
-                kwargs={'task_id': str(task_id)}, task_id=str(task_id))
+            file_obj = TaskFile.objects.get(task_id=task_id)
+            file_obj.log_name = '/tmp/blocks-tmp/scilab-log.txt'
+            file_obj.returncode = 0
+            file_obj.save()
             response_data = {
-                'state': celery_task.state,
+                'state': 'PROGRESS',
                 'details': serializer.data,
             }
             return Response(response_data)
@@ -76,10 +76,9 @@ class CeleryResultView(APIView):
         if not isinstance(task_id, uuid.UUID):
             raise ValidationError('Invalid uuid format')
 
-        celery_result = AsyncResult(str(task_id))
         response_data = {
-            'state': celery_result.state,
-            'details': celery_result.info
+            'state': 'STREAMING',
+            'details': {'current_process': 'Processed Xml, Streaming Output'}
         }
         return Response(response_data)
 
