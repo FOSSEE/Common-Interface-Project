@@ -4,11 +4,10 @@ import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import { Queue } from '../../utils/Queue'
 
-let myIntervals = []
+let statusDone = false
 
 export function setStatusDone () {
-  myIntervals.forEach(clearInterval)
-  myIntervals = []
+  statusDone = true
 }
 
 class Graph extends React.Component {
@@ -22,6 +21,7 @@ class Graph extends React.Component {
     super(props)
     const datapoint = props.datapoint
     const pointList = this.pointList
+    let myInterval = null
     this.state = {
       options: {
         chart: {
@@ -45,9 +45,11 @@ class Graph extends React.Component {
                   pointList.dequeue()
                 }
                 chart.redraw()
+                if (pointList.isEmpty() && statusDone) {
+                  clearInterval(myInterval)
+                }
               }
-              addPoints()
-              myIntervals.push(setInterval(addPoints, 500))
+              myInterval = setInterval(addPoints, 450)
             }
           },
           type: datapoint.datapointType,
