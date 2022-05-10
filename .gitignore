@@ -1,5 +1,6 @@
 *.pem
 *.pyc
+*.sqlite3
 blocks/blocks/*/migrations/*.py
 blocks/*/migrations/*.py
 blocks/env*/

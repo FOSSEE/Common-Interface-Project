@@ -93,12 +93,8 @@ WSGI_APPLICATION = 'blocks.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': os.environ.get('SQL_ENGINE', 'django.db.backends.mysql'),
-        'HOST': os.environ.get('SQL_HOST', 'localhost'),
-        'PORT': os.environ.get('SQL_PORT', '3306'),
-        'USER': os.environ.get('SQL_USER', 'blocks'),
-        'PASSWORD': os.environ.get('SQL_PASSWORD', 'stereo@129'),
-        'NAME': os.environ.get('SQL_DATABASE', 'xcosblocks'),
+        'ENGINE': os.environ.get('SQL_ENGINE', 'django.db.backends.sqlite3'),
+        'NAME': os.environ.get('SQL_DATABASE', 'xcosblocks.sqlite3'),
     }
 }
 
