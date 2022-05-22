@@ -677,6 +677,15 @@ export default function SimulationScreen ({ open, close }) {
     }
     return arrayData
   }
+  useEffect(() => {
+    for(var i=0;i<noOfGraphs;i++)
+    {
+      if(chartIdList.current[figureId] !== undefined)
+      {
+        chartIdList.current[figureId].reflow();
+      }
+    }
+  },[datapointsRef.current])
 
   const typography1 = 'SOMETHING WENT WRONG. Please Check The Simulation Parameters.'
   const typography2 = 'SOMETHING WENT WRONG. Please Check The Simulation Parameters And ' + process.env.REACT_APP_DIAGRAM_NAME + '.'
@@ -744,51 +753,6 @@ export default function SimulationScreen ({ open, close }) {
                             ))
                             : <div />
                           }
-                        {/* {
-                          (noOfGraphs >=1 )
-                            ? <Graph
-                              key={0}
-                              ref={el => { graphsRef.current[0] = el }}
-                              datapoint={datapointsRef.current[0]}
-                            />
-                            : <div />
-                        }
-                        {
-                          (noOfGraphs >= 2)
-                            ? <Graph
-                              key={1}
-                              ref={el => { graphsRef.current[1] = el }}
-                              datapoint={datapointsRef.current[1]}
-                            />
-                            : <div />
-                        }
-                        {
-                          (noOfGraphs >= 3)
-                            ? <Graph
-                              key={2}
-                              ref={el => { graphsRef.current[2] = el }}
-                              datapoint={datapointsRef.current[2]}
-                            />
-                            : <div />
-                        }
-                         {
-                          (noOfGraphs >= 4)
-                            ? <Graph
-                              key={3}
-                              ref={el => { graphsRef.current[3] = el }}
-                              datapoint={datapointsRef.current[3]}
-                            />
-                            : <div />
-                        }
-                         {
-                          (noOfGraphs >= 5)
-                            ? <Graph
-                              key={4}
-                              ref={el => { graphsRef.current[4] = el }}
-                              datapoint={datapointsRef.current[4]}
-                            />
-                            : <div />
-                       } */}
                       </Paper>
                     </Grid>
                     : (result.isGraph === 'true') ? <span>{typography1}</span> : <span />
