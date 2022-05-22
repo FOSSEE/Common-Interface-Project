@@ -716,23 +716,16 @@ export default function SimulationScreen ({ open, close }) {
                           GRAPH OUTPUT
                         </Typography>
                         {
-                          (noOfGraphs >= 1)
-                            ? <Graph
-                              key={0}
-                              ref={el => { graphsRef.current[0] = el }}
-                              datapoint={datapointsRef.current[0]}
+                          noOfGraphs !== 0
+                            ? datapointsRef.current.map((element, i) => (
+                              <Graph
+                              key={i}
+                              ref={el => { graphsRef.current[i] = el }}
+                              datapoint={element}
                             />
+                            ))
                             : <div />
-                        }
-                        {
-                          (noOfGraphs >= 2)
-                            ? <Graph
-                              key={1}
-                              ref={el => { graphsRef.current[1] = el }}
-                              datapoint={datapointsRef.current[1]}
-                            />
-                            : <div />
-                        }
+                          }
                       </Paper>
                     </Grid>
                     : (result.isGraph === 'true') ? <span>{typography1}</span> : <span />
