@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useEffect, useRef, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import {
@@ -63,6 +64,8 @@ export default function SimulationScreen ({ open, close }) {
   const [noOfGraphs, setNoOfGraphs] = useState(0)
   const chartIdCount = useRef(0)
   const chartIdList = useRef({})
+  const [count,setcount]=useState(0);
+  const [cp,setcp]=useState(1);
 
   // Keep track of RANGE of each graph(chart)
   const range = useRef([])
@@ -93,7 +96,22 @@ export default function SimulationScreen ({ open, close }) {
         console.log('cannot add point', id, point, chartIdList)
       }
     }
-
+    const newchart =(figureId, noOfGraph, xmin, xmax, ymin, ymax, typeChart, titleText, colorAxis)=>{
+    const temp = [];
+    temp.push(chartIdList.current[figureId])
+    console.log(chartIdList.current[figureId])
+    const found= temp.find(element => element == chartIdList.current[figureId] );
+    if(found == undefined)
+    {
+      ()=>{setcount(count + 1);}
+      ()=>{setcp(cp+1);}
+      createNewChart(figureId, noOfGraph, xmin, xmax, ymin, ymax, typeChart, titleText, colorAxis)
+    }
+    else
+    {
+      addPointToGraph(id,point)
+    }
+    }
     // Function to create a new chart
     const createNewChart = (id, noOfGraph, xmin, xmax, ymin, ymax, typeChart, titleText, colorAxis = null) => {
       /*
@@ -416,7 +434,7 @@ export default function SimulationScreen ({ open, close }) {
           createNewChart3d(figureId, noOfGraph, xmin, xmax, ymin, ymax, zmin, zmax, typeChart, titleText, alpha, theta)
         } else if (block < 5 || block === 9 || block === 11 || block === 12 || block === 23) {
           // sink block is not CSCOPXY
-          createNewChart(figureId, noOfGraph, xmin, xmax, ymin, ymax, typeChart, titleText, colorAxis)
+          newchart(figureId, noOfGraph, xmin, xmax, ymin, ymax, typeChart, titleText, colorAxis)
           range.current[chartIdList.current[figureId]] = parseFloat(xmax)
         }
       }
@@ -716,7 +734,18 @@ export default function SimulationScreen ({ open, close }) {
                           GRAPH OUTPUT
                         </Typography>
                         {
-                          (noOfGraphs >= 1)
+                          (noOfGraphs!=0)?
+                            datapointsRef.current.map((element,i)=>(
+                              <Graph
+                              key={i}
+                              ref={el => { graphsRef.current[i] = el }}
+                              datapoint={datapointsRef.current[i]}
+                            />
+                            ))
+                            : <div />
+                          }
+                        {/* {
+                          (noOfGraphs >=1 )
                             ? <Graph
                               key={0}
                               ref={el => { graphsRef.current[0] = el }}
@@ -733,6 +762,33 @@ export default function SimulationScreen ({ open, close }) {
                             />
                             : <div />
                         }
+                        {
+                          (noOfGraphs >= 3)
+                            ? <Graph
+                              key={2}
+                              ref={el => { graphsRef.current[2] = el }}
+                              datapoint={datapointsRef.current[2]}
+                            />
+                            : <div />
+                        }
+                         {
+                          (noOfGraphs >= 4)
+                            ? <Graph
+                              key={3}
+                              ref={el => { graphsRef.current[3] = el }}
+                              datapoint={datapointsRef.current[3]}
+                            />
+                            : <div />
+                        }
+                         {
+                          (noOfGraphs >= 5)
+                            ? <Graph
+                              key={4}
+                              ref={el => { graphsRef.current[4] = el }}
+                              datapoint={datapointsRef.current[4]}
+                            />
+                            : <div />
+                       } */}
                       </Paper>
                     </Grid>
                     : (result.isGraph === 'true') ? <span>{typography1}</span> : <span />
