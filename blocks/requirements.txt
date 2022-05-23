@@ -9,6 +9,7 @@ cffi==1.14.5
 chardet==3.0.4
 click==8.0.3
 click-didyoumean==0.0.3
+click-plugins==1.1.1
 click-repl==0.2.0
 cssselect2==0.4.1
 defusedxml==0.7.1
