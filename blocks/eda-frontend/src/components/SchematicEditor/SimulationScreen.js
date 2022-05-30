@@ -1,6 +1,8 @@
 /* eslint-disable */
 import React, { useState, useEffect, useRef, useCallback } from 'react'
 import PropTypes from 'prop-types'
+import Highcharts from 'highcharts'
+import HighchartsReact from 'highcharts-react-official'
 import {
   AppBar,
   Button,
@@ -64,8 +66,6 @@ export default function SimulationScreen ({ open, close }) {
   const [noOfGraphs, setNoOfGraphs] = useState(0)
   const chartIdCount = useRef(0)
   const chartIdList = useRef({})
-  const [count,setcount]=useState(0);
-  const [cp,setcp]=useState(1);
 
   // Keep track of RANGE of each graph(chart)
   const range = useRef([])
@@ -99,13 +99,12 @@ export default function SimulationScreen ({ open, close }) {
     const newchart =(figureId, noOfGraph, xmin, xmax, ymin, ymax, typeChart, titleText, colorAxis)=>{
     const temp = [];
     temp.push(chartIdList.current[figureId])
-    console.log(chartIdList.current[figureId])
     const found= temp.find(element => element == chartIdList.current[figureId] );
     if(found == undefined)
     {
-      ()=>{setcount(count + 1);}
-      ()=>{setcp(cp+1);}
+
       createNewChart(figureId, noOfGraph, xmin, xmax, ymin, ymax, typeChart, titleText, colorAxis)
+      setNoOfGraphs(graph=> graph + 1)
     }
     else
     {
@@ -124,7 +123,6 @@ export default function SimulationScreen ({ open, close }) {
        * typeChart - type of chart to be drawn,
        * titleText - title to be given to the chart
        */
-
       // convert String values to desired datatype
       xmin = parseFloat(xmin)
       xmax = parseFloat(xmax)
@@ -677,25 +675,23 @@ export default function SimulationScreen ({ open, close }) {
     }
     return arrayData
   }
-  useEffect(() => {
-    for(var i=0;i<noOfGraphs;i++)
-    {
-      if(chartIdList.current[figureId] !== undefined)
-      {
-        chartIdList.current[figureId].reflow();
-      }
-    }
-  },[datapointsRef.current])
-
   const typography1 = 'SOMETHING WENT WRONG. Please Check The Simulation Parameters.'
   const typography2 = 'SOMETHING WENT WRONG. Please Check The Simulation Parameters And ' + process.env.REACT_APP_DIAGRAM_NAME + '.'
-  return (
+  useEffect(() => {
+    for (var i = 0; i < chartIdCount; i++) {
+      if ((chartIdCount.current%2 ==1)){
+        Highcharts.charts[i].reflow();
+      }
+    }
+  }, [chartIdCount.current]);
+return (
     <div>
       <Dialog
         fullScreen open={open} onClose={close} TransitionComponent={Transition} PaperProps={{
           style: {
             backgroundColor: '#4d4d4d',
-            boxShadow: 'none'
+            boxShadow: 'none',
+            display:'inline-flex'
           }
         }}
       >
@@ -715,10 +711,17 @@ export default function SimulationScreen ({ open, close }) {
         <Container maxWidth='lg' className={classes.header}>
           <Grid
             container
-            spacing={3}
-            direction='row'
-            justify='center'
-            alignItems='center'
+            // spacing={3}
+            // // direction='row'
+            // direction={'row'}
+            // justify='center'
+            // alignItems='center'
+            // flexWrap='wrap'
+            display='inline-flex'
+            direction="row"
+            justify="flex-start"
+            alignItems="flex-end"
+            spacing={1}
           >
             {/* Card to display simulation result screen header */}
             <Grid item xs={12} sm={12}>
@@ -737,13 +740,14 @@ export default function SimulationScreen ({ open, close }) {
               ? <>
                 {
                   (result.isGraph === 'true')
-                    ? <Grid item xs={12} sm={12}>
+                    ?(chartIdCount.current%2==1)?
+                     <Grid item style={{ width: '100%' }} display='inline-flex' class='graph'>
                       <Paper className={classes.paper}>
                         <Typography variant='h4' align='center' gutterBottom>
                           GRAPH OUTPUT
                         </Typography>
-                        {
-                          (noOfGraphs!=0)?
+                       {
+                          
                             datapointsRef.current.map((element,i)=>(
                               <Graph
                               key={i}
@@ -751,10 +755,30 @@ export default function SimulationScreen ({ open, close }) {
                               datapoint={datapointsRef.current[i]}
                             />
                             ))
-                            : <div />
+                            
                           }
                       </Paper>
                     </Grid>
+                    :
+                    (chartIdCount.current%2==0)?
+                     <Grid item style={{ width: '50%' }} display='inline-flex' class='graph'>
+                      <Paper className={classes.paper}>
+                        <Typography variant='h4' align='center' gutterBottom>
+                          GRAPH OUTPUT
+                        </Typography>
+                       {
+                          
+                            datapointsRef.current.map((element,i)=>(
+                              <Graph
+                              key={i}
+                              ref={el => { graphsRef.current[i] = el }}
+                              datapoint={datapointsRef.current[i]}
+                            />
+                            ))
+                          }
+                      </Paper>
+                    </Grid>
+                    : <div />
                     : (result.isGraph === 'true') ? <span>{typography1}</span> : <span />
                 }
 
