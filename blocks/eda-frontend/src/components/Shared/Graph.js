@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react'
 import PropTypes from 'prop-types'
 import Highcharts from 'highcharts'
@@ -145,7 +146,7 @@ class Graph extends React.Component {
 }
 
 Graph.propTypes = {
-  datapoint: PropTypes.object
+  datapoint: PropTypes.object,
 }
 
 export default Graph
