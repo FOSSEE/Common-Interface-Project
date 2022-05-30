@@ -49,7 +49,7 @@ class XmlUploader(APIView):
             serializer.save()
             task_id = serializer.data['task_id']
             file_obj = TaskFile.objects.get(task_id=task_id)
-            file_obj.log_name = 'T:\\STUDY\\ME\\FOSSEE XCOS\\Common-Interface-Project\\sample-data\\scilab-log.txt.5.mixed'
+            file_obj.log_name = '/tmp/blocks-tmp/scilab-log.txt'
             file_obj.returncode = 0
             file_obj.save()
             response_data = {
@@ -175,9 +175,9 @@ class StreamView(APIView):
             if log_name is None:
                 logger.warning('log_name is None')
                 return None
-            # if log_name[0] != '/':
-            #     logger.warning('Invalid log_name format')
-            #     return None
+            if log_name[0] != '/':
+                logger.warning('Invalid log_name format')
+                return None
             if not os.path.isfile(log_name):
                 logger.warning('log file does not exist')
                 return None
