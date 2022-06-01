@@ -216,7 +216,8 @@ class StreamView(APIView):
             lastline = ''
             lineno = 0
             line = None
-            endtime = time.time() + SCILAB_INSTANCE_TIMEOUT_INTERVAL
+            starttime = time.time()
+            endtime = starttime + SCILAB_INSTANCE_TIMEOUT_INTERVAL
             log_size = 0
             figure_list = []
 
@@ -239,6 +240,11 @@ class StreamView(APIView):
                     lastline = line
                     log_size += len(line)
                     if state == DATA:
+                        words = line.split()
+                        if len(words) == 15 and words[-1] == 'CSCOPE':
+                            interval = starttime + float(words[8]) - time.time() - 0.1
+                            if interval > 0:
+                                time.sleep(interval)
                         yield "event: log\ndata: %s\n\n" % line
                 else:
                     self.duplicatelineno += 1
