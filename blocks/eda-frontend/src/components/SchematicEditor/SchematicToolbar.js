@@ -1,3 +1,4 @@
+/* eslint new-cap: ["error", {"newIsCapExceptionPattern": "^mx"}] */
 import React from 'react'
 import PropTypes from 'prop-types'
 import Canvg from 'canvg'
@@ -27,7 +28,7 @@ import beautify from 'xml-beautifier'
 import mxGraphFactory from 'mxgraph'
 
 import { NetlistModal, HelpScreen, ImageExportDialog, OpenSchDialog } from './ToolbarExtension'
-import { ZoomIn, ZoomOut, ZoomAct, DeleteComp, PrintPreview, Rotate, GenerateNetList, Undo, Redo, Save, ClearGrid } from './Helper/ToolbarTools'
+import { editorZoomIn, editorZoomOut, editorZoomAct, deleteComp, PrintPreview, Rotate, generateNetList, editorUndo, editorRedo, saveXml, ClearGrid } from './Helper/ToolbarTools'
 import { useSelector, useDispatch } from 'react-redux'
 import { toggleSimulate, closeCompProperties, setSchXmlData, saveSchematic, openLocalSch } from '../../redux/actions/index'
 
@@ -100,7 +101,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
   const [netlist, genNetlist] = React.useState('')
 
   const handleClickOpen = () => {
-    const compNetlist = GenerateNetList()
+    const compNetlist = generateNetList()
     const netlist = netfile.title + '\n\n' +
       compNetlist.models + '\n' +
       compNetlist.main + '\n' +
@@ -127,7 +128,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
 
   // Handle Delete component
   const handleDeleteComp = () => {
-    DeleteComp()
+    deleteComp()
     dispatch(closeCompProperties())
   }
 
@@ -272,7 +273,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
       handleSnacClick()
     } else {
       const description = schSave.description
-      const xml = Save(description)
+      const xml = saveXml(description)
       dispatch(setSchXmlData(xml))
       const title = schSave.title
       exportImage('PNG')
@@ -286,7 +287,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
 
   // Save Schematics Locally
   const handleLocalSchSave = () => {
-    const blob = new Blob([beautify(Save(schSave.description))], { type: 'application/xml' })
+    const blob = new Blob([beautify(saveXml(schSave.description))], { type: 'application/xml' })
     const evt = new MouseEvent('click', {
       view: window,
       bubbles: false,
@@ -406,12 +407,12 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
       <span className={classes.pipe}>|</span>
 
       <Tooltip title='Undo'>
-        <IconButton color='inherit' className={classes.tools} size='small' onClick={Undo}>
+        <IconButton color='inherit' className={classes.tools} size='small' onClick={editorUndo}>
           <UndoIcon fontSize='small' />
         </IconButton>
       </Tooltip>
       <Tooltip title='Redo'>
-        <IconButton color='inherit' className={classes.tools} size='small' onClick={Redo}>
+        <IconButton color='inherit' className={classes.tools} size='small' onClick={editorRedo}>
           <RedoIcon fontSize='small' />
         </IconButton>
       </Tooltip>
@@ -423,17 +424,17 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
       <span className={classes.pipe}>|</span>
 
       <Tooltip title='Zoom In'>
-        <IconButton color='inherit' className={classes.tools} size='small' onClick={ZoomIn}>
+        <IconButton color='inherit' className={classes.tools} size='small' onClick={editorZoomIn}>
           <ZoomInIcon fontSize='small' />
         </IconButton>
       </Tooltip>
       <Tooltip title='Zoom Out'>
-        <IconButton color='inherit' className={classes.tools} size='small' onClick={ZoomOut}>
+        <IconButton color='inherit' className={classes.tools} size='small' onClick={editorZoomOut}>
           <ZoomOutIcon fontSize='small' />
         </IconButton>
       </Tooltip>
       <Tooltip title='Default Size'>
-        <IconButton color='inherit' className={classes.tools} size='small' onClick={ZoomAct}>
+        <IconButton color='inherit' className={classes.tools} size='small' onClick={editorZoomAct}>
           <SettingsOverscanIcon fontSize='small' />
         </IconButton>
       </Tooltip>
