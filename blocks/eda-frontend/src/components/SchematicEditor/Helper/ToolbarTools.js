@@ -1,3 +1,4 @@
+/* eslint new-cap: ["error", {"newIsCapExceptionPattern": "^mx"}] */
 import 'mxgraph/javascript/src/css/common.css'
 
 import mxGraphFactory from 'mxgraph'
@@ -19,7 +20,7 @@ const {
   mxPoint
 } = new mxGraphFactory()
 
-export default function ToolbarTools (grid, unredo) {
+export default function toolbarTools (grid, unredo) {
   graph = grid
 
   undoManager = new mxUndoManager()
@@ -31,8 +32,8 @@ export default function ToolbarTools (grid, unredo) {
 }
 
 // SAVE
-export function Save (description = '') {
-  XMLWireConnections()
+export function saveXml (description = '') {
+  xmlWireConnections()
   const enc = new mxCodec(mxUtils.createXmlDocument())
   const model = graph.getModel()
   const firstCell = model.cells[0]
@@ -44,32 +45,32 @@ export function Save (description = '') {
 }
 
 // UNDO
-export function Undo () {
+export function editorUndo () {
   undoManager.undo()
 }
 
 // REDO
-export function Redo () {
+export function editorRedo () {
   undoManager.redo()
 }
 
 // Zoom IN
-export function ZoomIn () {
+export function editorZoomIn () {
   graph.zoomIn()
 }
 
 // ZOOM OUT
-export function ZoomOut () {
+export function editorZoomOut () {
   graph.zoomOut()
 }
 
 // ZOOM ACTUAL
-export function ZoomAct () {
+export function editorZoomAct () {
   graph.zoomActual()
 }
 
 // DELETE COMPONENT
-export function DeleteComp () {
+export function deleteComp () {
   graph.removeCells()
 }
 
@@ -195,7 +196,8 @@ export function ErcCheck () {
     }
   }
 }
-function ErcCheckNets () {
+
+function ercCheckNets () {
   const NoAddition = 'No ' + process.env.REACT_APP_BLOCK_NAME + ' added'
   const list = graph.getModel().cells // mapping the grid
   let vertexCount = 0
@@ -237,14 +239,14 @@ function ErcCheckNets () {
 }
 
 // GENERATE NETLIST
-export function GenerateNetList () {
+export function generateNetList () {
   let c = 1
   const spiceModels = ''
   const netlist = {
     componentlist: [],
     nodelist: []
   }
-  const erc = ErcCheckNets()
+  const erc = ercCheckNets()
   let k = ''
   if (erc === false) {
     alert('ERC check failed')
@@ -331,6 +333,7 @@ export function GenerateNetList () {
   }
   return netobj
 }
+
 function annotate (graph) {
   return graph.getModel().cells
 }
@@ -341,6 +344,7 @@ export function renderXML () {
   const xmlDoc = mxUtils.parseXml(xml)
   parseXmlToGraph(xmlDoc, graph)
 }
+
 function parseXmlToGraph (xmlDoc, graph) {
   const cells = xmlDoc.documentElement.children[0].children
   const parent = graph.getDefaultParent()
@@ -474,7 +478,7 @@ export function renderGalleryXML (xml) {
   parseXmlToGraph(xmlDoc, graph)
 }
 
-function XMLWireConnections () {
+function xmlWireConnections () {
   const erc = true
   if (erc === false) {
     alert('ERC check failed')
