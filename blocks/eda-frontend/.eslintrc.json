@@ -26,12 +26,6 @@
     "plugins": [
         "react"
     ],
-    "rules": {
-        "new-cap": "warn",
-        "no-new": "warn",
-        "no-unused-vars": "warn",
-        "react/prop-types": "warn"
-    },
     "settings": {
         "react": {
             "version": "latest"

@@ -1,3 +1,4 @@
+/* eslint new-cap: ["error", {"newIsCapExceptionPattern": "^mx"}] */
 import 'mxgraph/javascript/src/css/common.css'
 
 import mxGraphFactory from 'mxgraph'
@@ -6,9 +7,9 @@ import dot from '../../../static/dot.gif'
 import blockstyle from '../../../static/style.json'
 import { getCompProperties, closeCompProperties } from '../../../redux/actions/index'
 
-import ToolbarTools from './ToolbarTools.js'
-import KeyboardShorcuts from './KeyboardShorcuts.js'
-import { SideBar } from './SideBar.js'
+import toolbarTools from './ToolbarTools.js'
+import keyboardShortcuts from './KeyboardShortcuts.js'
+import { sideBar } from './SideBar.js'
 
 let graph
 
@@ -117,7 +118,7 @@ export default function LoadGrid (container, sidebar, outline) {
     graph.setEnterStopsCellEditing(true)
 
     // Adds rubberband selection
-    new mxRubberband(graph)
+    new mxRubberband(graph) // eslint-disable-line no-new
 
     // Alternative solution for implementing connection points without child cells.
     // This can be extended as shown in portrefs.html example to allow for per-port
@@ -229,10 +230,10 @@ export default function LoadGrid (container, sidebar, outline) {
     style.rounded = '1'
     style.strokeWidth = strokeWidth
 
-    SideBar(graph, sidebar)
-    KeyboardShorcuts(graph)
+    sideBar(graph, sidebar)
+    keyboardShortcuts(graph)
     // NetlistInfoFunct(graph)
-    ToolbarTools(graph)
+    toolbarTools(graph)
 
     store.subscribe(() => {
       const id = store.getState().componentPropertiesReducer.id

@@ -1,3 +1,4 @@
+/* eslint new-cap: ["error", {"newIsCapExceptionPattern": "^mx"}] */
 import 'mxgraph/javascript/src/css/common.css'
 
 import mxGraphFactory from 'mxgraph'
@@ -12,7 +13,7 @@ const {
 
 let graph
 
-export function SideBar (getGraph) {
+export function sideBar (getGraph) {
   graph = getGraph
 }
 

@@ -16,7 +16,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { setResultTitle, setResultTaskId } from '../../redux/actions/index'
-import { Save } from './Helper/ToolbarTools'
+import { saveXml } from './Helper/ToolbarTools'
 import SimulationScreen from './SimulationScreen'
 import api from '../../utils/Api'
 
@@ -115,7 +115,7 @@ export default function SimulationProperties () {
   }
 
   const startSimulate = (type) => {
-    const compNetlist = Save()
+    const compNetlist = saveXml()
     switch (type) {
       case 'Transient':
         dispatch(setResultTitle('Transient Analysis Output'))

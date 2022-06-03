@@ -1,7 +1,8 @@
+/* eslint new-cap: ["error", {"newIsCapExceptionPattern": "^mx"}] */
 import 'mxgraph/javascript/src/css/common.css'
 
 import mxGraphFactory from 'mxgraph'
-import { Undo, Redo, ZoomIn, ZoomOut, ZoomAct } from './ToolbarTools'
+import { editorUndo, editorRedo, editorZoomIn, editorZoomOut, editorZoomAct } from './ToolbarTools'
 
 const {
   mxKeyHandler,
@@ -9,7 +10,7 @@ const {
   mxClient
 } = new mxGraphFactory()
 
-export default function KeyboardShortcuts (graph) {
+export default function keyboardShortcuts (graph) {
   const keyHandler = new mxKeyHandler(graph)
 
   keyHandler.getFunction = function (evt) {
@@ -30,35 +31,35 @@ export default function KeyboardShortcuts (graph) {
   // Undo - Ctrl + Z
   keyHandler.bindControlKey(90, function (evt) {
     if (graph.isEnabled()) {
-      Undo()
+      editorUndo()
     }
   })
 
   // Redo - Ctrl + A
   keyHandler.bindControlKey(65, function (evt) {
     if (graph.isEnabled()) {
-      Redo()
+      editorRedo()
     }
   })
 
   // Zoom In - Ctrl + I
   keyHandler.bindControlKey(73, function (evt) {
     if (graph.isEnabled()) {
-      ZoomIn()
+      editorZoomIn()
     }
   })
 
   // Zoom Out - Ctrl + O
   keyHandler.bindControlKey(79, function (evt) {
     if (graph.isEnabled()) {
-      ZoomOut()
+      editorZoomOut()
     }
   })
 
   // Zoom Out - Ctrl + Y
   keyHandler.bindControlKey(89, function (evt) {
     if (graph.isEnabled()) {
-      ZoomAct()
+      editorZoomAct()
     }
   })
 }
