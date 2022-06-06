@@ -169,21 +169,21 @@ class StreamView(APIView):
             file_obj = TaskFile.objects.get(task_id=task_id)
             log_name = file_obj.log_name
             returncode = file_obj.returncode
-            if log_name is None and returncode is None:
-                time.sleep(LOOK_DELAY)
-                continue
             if log_name is None:
+                if returncode is None:
+                    time.sleep(LOOK_DELAY)
+                    continue
                 logger.warning('log_name is None')
-                return None
-            if log_name[0] != '/':
-                logger.warning('Invalid log_name format')
                 return None
             if not os.path.isfile(log_name):
                 logger.warning('log file does not exist')
                 return None
-            if os.stat(log_name).st_size == 0 and returncode is None:
-                time.sleep(LOOK_DELAY)
-                continue
+            if os.stat(log_name).st_size == 0:
+                if returncode is None:
+                    time.sleep(LOOK_DELAY)
+                    continue
+                logger.warning('log file is empty')
+                return None
             return log_name
 
     def handle_duplicate_lines(self):
@@ -201,12 +201,6 @@ class StreamView(APIView):
         log_name = self.get_log_name(task_id)
         if log_name is None:
             yield "event: ERROR\ndata: no log file found\n\n"
-            return
-
-        if os.stat(log_name).st_size == 0 and \
-                returncode is not None:
-            logger.warning('log file is empty')
-            yield "event: ERROR\ndata: log file is empty\n\n"
             return
 
         with open(log_name, 'r') as log_file:
