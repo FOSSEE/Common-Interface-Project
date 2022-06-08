@@ -67,7 +67,7 @@ export function NetlistModal ({ open, close, netlist }) {
       <DialogContent dividers>
         <DialogContentText id='generate-netlist-description'>
           {typography2}<br /><br />
-          <TextareaAutosize aria-label='empty textarea' rowsMin={20} rowsMax={50} style={{ minWidth: '500px' }} value={netlist} />
+          <TextareaAutosize aria-label='empty textarea' minRows={20} maxRows={50} style={{ minWidth: '500px' }} value={netlist} />
         </DialogContentText>
       </DialogContent>
       <DialogActions>
