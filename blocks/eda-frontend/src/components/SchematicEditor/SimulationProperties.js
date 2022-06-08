@@ -6,9 +6,9 @@ import {
   TextField,
   InputAdornment,
   MenuItem,
-  ExpansionPanel,
-  ExpansionPanelSummary,
-  ExpansionPanelDetails,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
   Typography
 } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
@@ -148,15 +148,15 @@ export default function SimulationProperties () {
 
           {/* Transient Analysis */}
           <ListItem className={classes.simulationOptions} divider>
-            <ExpansionPanel>
-              <ExpansionPanelSummary
+            <Accordion>
+              <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls='panel1a-content'
                 id='panel1a-header'
               >
                 <Typography className={classes.heading}>Transient Analysis</Typography>
-              </ExpansionPanelSummary>
-              <ExpansionPanelDetails>
+              </AccordionSummary>
+              <AccordionDetails>
                 <form className={classes.propertiesBox} noValidate autoComplete='off'>
                   <List>
                     <ListItem>
@@ -238,8 +238,8 @@ export default function SimulationProperties () {
                     </ListItem>
                   </List>
                 </form>
-              </ExpansionPanelDetails>
-            </ExpansionPanel>
+              </AccordionDetails>
+            </Accordion>
           </ListItem>
 
           <ListItem style={isSimRes ? {} : { display: 'none' }} onClick={handleSimulateOpen}>
