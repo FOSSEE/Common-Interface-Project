@@ -1,8 +1,6 @@
-/* eslint-disable */
 import React, { useState, useEffect, useRef, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import Highcharts from 'highcharts'
-import HighchartsReact from 'highcharts-react-official'
 import {
   AppBar,
   Button,
@@ -19,7 +17,6 @@ import { makeStyles } from '@material-ui/core/styles'
 import CloseIcon from '@material-ui/icons/Close'
 import { useSelector, useDispatch } from 'react-redux'
 import $ from 'jquery'
-import './App.css'
 
 import Graph, { setStatusDone } from '../Shared/Graph'
 import { setResultGraph } from '../../redux/actions/index'
@@ -67,8 +64,6 @@ export default function SimulationScreen ({ open, close }) {
   const [noOfGraphs, setNoOfGraphs] = useState(0)
   const chartIdCount = useRef(0)
   const chartIdList = useRef({})
-  const [count,setcount]=useState(0);
-  const [cp,setcp]=useState(1);
 
   // Keep track of RANGE of each graph(chart)
   const range = useRef([])
@@ -99,22 +94,7 @@ export default function SimulationScreen ({ open, close }) {
         console.log('cannot add point', id, point, chartIdList)
       }
     }
-    const newchart =(figureId, noOfGraph, xmin, xmax, ymin, ymax, typeChart, titleText, colorAxis)=>{
-    const temp = [];
-    temp.push(chartIdList.current[figureId])
-    console.log(chartIdCount.current)
-    const found= temp.find(element => element == chartIdList.current[figureId] );
-    if(found == undefined)
-    {
 
-      createNewChart(figureId, noOfGraph, xmin, xmax, ymin, ymax, typeChart, titleText, colorAxis)
-      setNoOfGraphs(graph=> graph + 1)
-    }
-    else
-    {
-      addPointToGraph(id,point)
-    }
-    }
     // Function to create a new chart
     const createNewChart = (id, noOfGraph, xmin, xmax, ymin, ymax, typeChart, titleText, colorAxis = null) => {
       /*
@@ -127,6 +107,7 @@ export default function SimulationScreen ({ open, close }) {
        * typeChart - type of chart to be drawn,
        * titleText - title to be given to the chart
        */
+
       // convert String values to desired datatype
       xmin = parseFloat(xmin)
       xmax = parseFloat(xmax)
@@ -436,7 +417,7 @@ export default function SimulationScreen ({ open, close }) {
           createNewChart3d(figureId, noOfGraph, xmin, xmax, ymin, ymax, zmin, zmax, typeChart, titleText, alpha, theta)
         } else if (block < 5 || block === 9 || block === 11 || block === 12 || block === 23) {
           // sink block is not CSCOPXY
-          newchart(figureId, noOfGraph, xmin, xmax, ymin, ymax, typeChart, titleText, colorAxis)
+          createNewChart(figureId, noOfGraph, xmin, xmax, ymin, ymax, typeChart, titleText, colorAxis)
           range.current[chartIdList.current[figureId]] = parseFloat(xmax)
         }
       }
@@ -651,6 +632,14 @@ export default function SimulationScreen ({ open, close }) {
 
   useEffect(() => getSimulationResult(taskId), [taskId, getSimulationResult])
 
+  useEffect(() => {
+    for (let i = 0; i < Highcharts.charts.length; i++) {
+      if (Highcharts.charts[i] !== undefined) {
+        Highcharts.charts[i].reflow()
+      }
+    }
+  }, [chartIdCount.current])
+
   /*
    * Function to display values of all affich blocks
    * displayParameter : Contains the data which is display as data of affich
@@ -679,15 +668,9 @@ export default function SimulationScreen ({ open, close }) {
     }
     return arrayData
   }
+
   const typography1 = 'SOMETHING WENT WRONG. Please Check The Simulation Parameters.'
   const typography2 = 'SOMETHING WENT WRONG. Please Check The Simulation Parameters And ' + process.env.REACT_APP_DIAGRAM_NAME + '.'
-  useEffect(() => {
-    for (var i = 0; i < Highcharts.charts.length; i++) {
-      if (Highcharts.charts[i] !== undefined) {
-        Highcharts.charts[i].reflow();
-      }
-    }
-  }, [chartIdCount.current]);
   return (
     <div>
       <Dialog
@@ -736,47 +719,33 @@ export default function SimulationScreen ({ open, close }) {
               ? <>
                 {
                   (result.isGraph === 'true')
-                    ?(chartIdCount.current%2==1)?
-                     <div className="grid-item">
-                      <Paper className={classes.paper}>
-                        <Typography variant='h4' align='center' gutterBottom>
-                          GRAPH OUTPUT
-                        </Typography>
-                       {
-                          
-                            datapointsRef.current.map((element,i)=>(
-                              <Graph
-                              key={i}
-                              ref={el => { graphsRef.current[i] = el }}
-                              datapoint={datapointsRef.current[i]}
-                            />
-                            ))
-                            
-                          }
-                      </Paper>
-                    </div>
-                    :
-                    (chartIdCount.current%2==0)?
-                     <div className="grid-item">
-                      <Paper className={classes.paper}>
-                        <Typography variant='h4' align='center' gutterBottom>
-                          GRAPH OUTPUT
-                        </Typography>
-                       {
-                          
-                            datapointsRef.current.map((element,i)=>(
-                              <Graph
-                              key={i}
-                              ref={el => { graphsRef.current[i] = el }}
-                              datapoint={datapointsRef.current[i]}
-                            />
-                            ))
-                          }
-                      </Paper>
-                    </div>
-                    : <div />
+                    ? <>
+                      <Grid item xs={12} sm={12}>
+                        <Paper className={classes.paper}>
+                          <Typography variant='h4' align='center' gutterBottom>
+                            GRAPH OUTPUT
+                          </Typography>
+                        </Paper>
+                      </Grid>
+                      {
+                        noOfGraphs !== 0
+                          ? datapointsRef.current.map((element, i, arr) => {
+                            const gridSize = (arr.length - 1 === i && i % 2 === 0) ? 12 : 6
+                            return (
+                              <Grid item key={i} xs={gridSize}>
+                                <Graph
+                                  ref={el => { graphsRef.current[i] = el }}
+                                  datapoint={element}
+                                />
+                              </Grid>
+                            )
+                          })
+                          : <div />
+                      }
+                      </>
                     : (result.isGraph === 'true') ? <span>{typography1}</span> : <span />
                 }
+
                 {/* Display text result */}
                 {
                   (result.isGraph === 'false')
@@ -799,7 +768,7 @@ export default function SimulationScreen ({ open, close }) {
               </Grid>
             }
           </Grid>
-        </Container> 
+        </Container>
       </Dialog>
     </div>
   )
