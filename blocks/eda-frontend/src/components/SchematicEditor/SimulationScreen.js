@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react'
 import PropTypes from 'prop-types'
+import Highcharts from 'highcharts'
 import {
   AppBar,
   Button,
@@ -631,6 +632,14 @@ export default function SimulationScreen ({ open, close }) {
 
   useEffect(() => getSimulationResult(taskId), [taskId, getSimulationResult])
 
+  useEffect(() => {
+    for (let i = 0; i < Highcharts.charts.length; i++) {
+      if (Highcharts.charts[i] !== undefined) {
+        Highcharts.charts[i].reflow()
+      }
+    }
+  }, [chartIdCount.current])
+
   /*
    * Function to display values of all affich blocks
    * displayParameter : Contains the data which is display as data of affich
@@ -710,24 +719,30 @@ export default function SimulationScreen ({ open, close }) {
               ? <>
                 {
                   (result.isGraph === 'true')
-                    ? <Grid item xs={12} sm={12}>
-                      <Paper className={classes.paper}>
-                        <Typography variant='h4' align='center' gutterBottom>
-                          GRAPH OUTPUT
-                        </Typography>
-                        {
-                          noOfGraphs !== 0
-                            ? datapointsRef.current.map((element, i) => (
-                              <Graph
-                              key={i}
-                              ref={el => { graphsRef.current[i] = el }}
-                              datapoint={element}
-                            />
-                            ))
-                            : <div />
-                          }
-                      </Paper>
-                    </Grid>
+                    ? <>
+                      <Grid item xs={12} sm={12}>
+                        <Paper className={classes.paper}>
+                          <Typography variant='h4' align='center' gutterBottom>
+                            GRAPH OUTPUT
+                          </Typography>
+                        </Paper>
+                      </Grid>
+                      {
+                        noOfGraphs !== 0
+                          ? datapointsRef.current.map((element, i, arr) => {
+                            const gridSize = (arr.length - 1 === i && i % 2 === 0) ? 12 : 6
+                            return (
+                              <Grid item key={i} xs={gridSize}>
+                                <Graph
+                                  ref={el => { graphsRef.current[i] = el }}
+                                  datapoint={element}
+                                />
+                              </Grid>
+                            )
+                          })
+                          : <div />
+                      }
+                      </>
                     : (result.isGraph === 'true') ? <span>{typography1}</span> : <span />
                 }
 
