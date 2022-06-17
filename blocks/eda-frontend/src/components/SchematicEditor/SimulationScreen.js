@@ -58,12 +58,11 @@ export default function SimulationScreen ({ open, close }) {
   const stitle = useSelector(state => state.netlistReducer.title)
   const taskId = useSelector(state => state.simulationReducer.taskId)
   const [isResult, setIsResult] = useState(false)
-  const [logs, setlog] = useState(false)
   const graphsRef = useRef([])
   const datapointsRef = useRef([])
   const timeoutRef = useRef(null)
   const [noOfGraphs, setNoOfGraphs] = useState(0)
-  const [error, seterror] = useState(0)
+  const [error, setError] = useState('')
   const chartIdCount = useRef(0)
   const chartIdList = useRef({})
 
@@ -85,8 +84,6 @@ export default function SimulationScreen ({ open, close }) {
       if (loglines > 0) {
         console.log(loglines, 'log lines')
         loglines = 0
-      } else if (loglines === 0) {
-        setlog(true)
       }
     }
 
@@ -573,7 +570,7 @@ export default function SimulationScreen ({ open, close }) {
     sse.addEventListener('ERROR', e => {
       printloglines()
       console.log('ERROR', e)
-      seterror(1)
+      setError('Error in simulation: ' + e.data)
       sse.close()
     }, false)
     sse.addEventListener('MESSAGE', e => {
@@ -675,8 +672,7 @@ export default function SimulationScreen ({ open, close }) {
   }
 
   const typography1 = 'SOMETHING WENT WRONG. Please Check The Simulation Parameters.'
-  const typography2 = 'PLease Wait The Graph is Rendering with' + process.env.REACT_APP_DIAGRAM_NAME + '.'
-  const typography3 = 'NO LOG LINES FOUND'
+  const typography2 = 'Please Wait. The Graph is Rendering with ' + process.env.REACT_APP_DIAGRAM_NAME + '.'
   return (
     <div>
       <Dialog
@@ -753,23 +749,11 @@ export default function SimulationScreen ({ open, close }) {
                 }
                 {/* Diplay of Simulation parameter Not present */}
                 {
-                  (error === 1)
+                  (error !== '')
                     ? <Grid item xs={12} sm={12}>
                     <Paper className={classes.paper}>
                       <Typography variant='h4' align='center' gutterBottom>
-                        {typography1}
-                      </Typography>
-                    </Paper>
-                  </Grid>
-                    : <span />
-                }
-                 {/* Diplay of No log lines Present */}
-                 {
-                  (logs === true)
-                    ? <Grid item xs={12} sm={12}>
-                    <Paper className={classes.paper}>
-                      <Typography variant='h4' align='center' gutterBottom>
-                        {typography3}
+                        {error}
                       </Typography>
                     </Paper>
                   </Grid>
