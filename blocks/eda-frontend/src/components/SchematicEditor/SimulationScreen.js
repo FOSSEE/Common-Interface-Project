@@ -62,6 +62,7 @@ export default function SimulationScreen ({ open, close }) {
   const datapointsRef = useRef([])
   const timeoutRef = useRef(null)
   const [noOfGraphs, setNoOfGraphs] = useState(0)
+  const [error, setError] = useState('')
   const chartIdCount = useRef(0)
   const chartIdList = useRef({})
 
@@ -569,6 +570,7 @@ export default function SimulationScreen ({ open, close }) {
     sse.addEventListener('ERROR', e => {
       printloglines()
       console.log('ERROR', e)
+      setError('Error in simulation: ' + e.data)
       sse.close()
     }, false)
     sse.addEventListener('MESSAGE', e => {
@@ -670,7 +672,7 @@ export default function SimulationScreen ({ open, close }) {
   }
 
   const typography1 = 'SOMETHING WENT WRONG. Please Check The Simulation Parameters.'
-  const typography2 = 'SOMETHING WENT WRONG. Please Check The Simulation Parameters And ' + process.env.REACT_APP_DIAGRAM_NAME + '.'
+  const typography2 = 'Please Wait. The Graph is Rendering with ' + process.env.REACT_APP_DIAGRAM_NAME + '.'
   return (
     <div>
       <Dialog
@@ -743,9 +745,20 @@ export default function SimulationScreen ({ open, close }) {
                           : <div />
                       }
                       </>
-                    : (result.isGraph === 'true') ? <span>{typography1}</span> : <span />
+                    : (result.isGraph === 'false') ? <span>{typography1}</span> : <span />
                 }
-
+                {/* Diplay of Simulation parameter Not present */}
+                {
+                  (error !== '')
+                    ? <Grid item xs={12} sm={12}>
+                    <Paper className={classes.paper}>
+                      <Typography variant='h4' align='center' gutterBottom>
+                        {error}
+                      </Typography>
+                    </Paper>
+                  </Grid>
+                    : <span />
+                }
                 {/* Display text result */}
                 {
                   (result.isGraph === 'false')
