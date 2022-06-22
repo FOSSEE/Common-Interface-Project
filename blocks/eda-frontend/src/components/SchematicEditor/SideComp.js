@@ -11,8 +11,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1.5),
     padding: theme.spacing(1.5),
     border: '1px solid blue',
-    borderRadius: '5px',
-    position: 'absolute'
+    borderRadius: '5px'
   }
 }))
 
