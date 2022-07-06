@@ -701,7 +701,7 @@ export default function SimulationScreen ({ open, close }) {
             container
             spacing={3}
             direction='row'
-            justify='center'
+            justifyContent='center'
             alignItems='center'
           >
             {/* Card to display simulation result screen header */}

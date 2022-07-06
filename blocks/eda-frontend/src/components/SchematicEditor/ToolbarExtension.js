@@ -146,7 +146,7 @@ export function HelpScreen ({ open, close }) {
             container
             spacing={3}
             direction='row'
-            justify='center'
+            justifyContent='center'
             alignItems='center'
           >
 

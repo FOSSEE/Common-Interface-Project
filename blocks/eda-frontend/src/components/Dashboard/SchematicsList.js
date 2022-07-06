@@ -78,7 +78,7 @@ export default function SchematicsList () {
       <Grid
         container
         direction='row'
-        justify='flex-start'
+        justifyContent='flex-start'
         alignItems='flex-start'
         alignContent='center'
         spacing={3}
