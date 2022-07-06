@@ -121,7 +121,7 @@ export default function Gallery () {
         <Grid
           container
           direction='row'
-          justify='flex-start'
+          justifyContent='flex-start'
           alignItems='flex-start'
           alignContent='center'
           spacing={3}
