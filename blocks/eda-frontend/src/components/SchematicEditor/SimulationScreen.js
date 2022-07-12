@@ -5,7 +5,6 @@ import { AppBar, Button, Container, Dialog, Grid, IconButton, Paper, Slide, Tool
 import { makeStyles } from '@material-ui/core/styles'
 import CloseIcon from '@material-ui/icons/Close'
 import { useSelector, useDispatch } from 'react-redux'
-import $ from 'jquery'
 
 import Graph, { setStatusDone } from '../Shared/Graph'
 import { setResultGraph } from '../../redux/actions/index'
@@ -103,6 +102,11 @@ export default function SimulationScreen ({ open, close }) {
       xmax = parseFloat(xmax)
       ymin = parseFloat(ymin)
       ymax = parseFloat(ymax)
+      const zmin = null
+      const zmax = null
+      const alpha = null
+      const beta = null
+      const radius = 1
 
       // default value of pointpadding added for ceventscope
       let pointWidth = 0.1
@@ -131,12 +135,17 @@ export default function SimulationScreen ({ open, close }) {
         datapointTitle: titleText,
         datapointXMin: xmin,
         datapointYMin: ymin,
+        datapointZMin: zmin,
         datapointXMax: xmax,
         datapointYMax: ymax,
+        datapointZMax: zmax,
         datapointPointRange: pointRange,
         datapointLineWidth: lineWidth,
         datapointPointWidth: pointWidth,
-        datapointDataClasses: colorAxis
+        datapointDataClasses: colorAxis,
+        datapointAlpha: alpha,
+        datapointBeta: beta,
+        datapointRadius: radius
       }
       datapointsRef.current[chartIdCount.current] = datapoint
       chartIdCount.current = chartIdCount.current + 1
@@ -170,124 +179,39 @@ export default function SimulationScreen ({ open, close }) {
       // Assigning angle theta of 3D block to beta angle of highchart ( Can be
       // modified later)
       const beta = theta
+      const pointWidth = 0.1
+      const pointRange = null
+      const colorAxis = null
+
       let lineWidth = 1
       let radius = 1
       if (titleText.substring(0, 9) === 'CANIMXY3D') {
         lineWidth = 0
         radius = 3
       }
-      $('#charts').append("<div id='chart-" + id.toString() + "' style = 'height:200px'></div>")
 
-      const elem = $('#chart-' + id.toString())
-      // change graph height if block has only 1 output graph
-      if (noOfGraph === 1) {
-        elem.css('height', '400px')
+      chartIdList.current[id] = chartIdCount.current
+      const datapoint = {
+        datapointId: id,
+        datapointType: typeChart,
+        datapointTitle: titleText,
+        datapointXMin: xmin,
+        datapointYMin: ymin,
+        datapointZMin: zmin,
+        datapointXMax: xmax,
+        datapointYMax: ymax,
+        datapointZMax: zmax,
+        datapointPointRange: pointRange,
+        datapointLineWidth: lineWidth,
+        datapointPointWidth: pointWidth,
+        datapointDataClasses: colorAxis,
+        datapointAlpha: alpha,
+        datapointBeta: beta,
+        datapointRadius: radius
       }
-
-      elem.highcharts({
-        chart: {
-          type: typeChart,
-          zoomtype: 'xy',
-          options3d: {
-            enabled: true,
-            alpha,
-            beta,
-            depth: 100,
-            viewDistance: 100,
-            frame: {
-              bottom: {
-                size: 0,
-                color: '#FFFFFF'
-              },
-              back: {
-                size: 0,
-                color: '#FFFFFF'
-              },
-              side: {
-                size: 0,
-                color: '#FFFFFF'
-              }
-            }
-          }
-        },
-        title: {
-          text: titleText
-        },
-        tooltip: {
-          enabled: false
-        },
-        yAxis: {
-          // Manipulation for showing z axis vertically instead of Y axis
-          // (only for 3D graph).
-          min: zmin,
-          max: zmax,
-          gridLineWidth: 1,
-          tickInterval: 1,
-          title: {
-            rotation: 0,
-            style: {
-              fontWeight: 'bold',
-              fontSize: '15px'
-            },
-            text: 'z'
-          }
-        },
-        xAxis: {
-          min: xmin,
-          max: xmax,
-          tickInterval: 1,
-          gridLineWidth: 1,
-          title: {
-            style: {
-              fontWeight: 'bold',
-              fontSize: '15px'
-            },
-            text: 'x' // title for X for differentiating axis
-          }
-        },
-        zAxis: {
-          // Manipulation for showing y axis values in place of z axis (only
-          // for 3D graph).
-          min: ymin,
-          max: ymax,
-          tickInterval: 1,
-          gridLineWidth: 1,
-          title: {
-            rotation: 300,
-            margin: -30,
-            style: {
-              fontWeight: 'bold',
-              fontSize: '15px'
-            },
-            text: 'y'
-          }
-        },
-        plotOptions: {
-          marker: {
-            enabled: false
-          },
-          series: {
-            lineWidth,
-            states: {
-              hover: {
-                lineWidth
-              }
-            }
-          },
-          scatter: {
-            marker: {
-              radius,
-              states: {
-                hover: {
-                  enabled: true,
-                  lineColor: 'rgb(100,100,100)'
-                }
-              }
-            }
-          }
-        },
-        series: []
-      })
+      datapointsRef.current[chartIdCount.current] = datapoint
+      chartIdCount.current = chartIdCount.current + 1
+      setNoOfGraphs(nog => nog + 1)
     }
 
     // To create coloraxis array which will be passed to cmatview chart for heatmap creation
@@ -640,7 +564,7 @@ export default function SimulationScreen ({ open, close }) {
   function createAffichDisplaytext (displayParameter, blockId) {
     // updating html data of div html for each time change according to each
     // affich
-    $('#affichdata-' + blockId).html(displayParameter)
+    // $('#affichdata-' + blockId).html(displayParameter)
   }
 
   // Gets data (array with x , y and coloraxis values) to be passed to chart points
