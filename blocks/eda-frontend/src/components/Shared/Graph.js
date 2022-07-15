@@ -66,7 +66,28 @@ class Graph extends React.Component {
           type: datapoint.datapointType,
           showAxes: true,
           animation: false,
-          zoomType: 'xy'
+          zoomType: 'xy',
+          options3d: {
+            enabled: true,
+            alpha: datapoint.datapointAlpha,
+            beta: datapoint.datapointBeta,
+            depth: 100,
+            viewDistance: 100,
+            frame: {
+              bottom: {
+                size: 0,
+                color: '#FFFFFF'
+              },
+              back: {
+                size: 0,
+                color: '#FFFFFF'
+              },
+              side: {
+                size: 0,
+                color: '#FFFFFF'
+              }
+            }
+          }
         },
         colorAxis: {
           dataClasses: datapoint.datapointDataClasses
@@ -97,7 +118,7 @@ class Graph extends React.Component {
           },
           scatter: {
             marker: {
-              radius: 1,
+              radius: datapoint.datapointRadius,
               states: {
                 hover: {
                   enabled: true,
@@ -120,9 +141,13 @@ class Graph extends React.Component {
         },
         xAxis: {
           title: {
+            style: {
+              fontWeight: 'bold',
+              fontSize: '15px'
+            },
             text: 'x'
           },
-          tickInterval: 2,
+          gridLineWidth: 1,
           startOnTick: true,
           endOnTick: true,
           showLastLabel: true,
@@ -131,8 +156,14 @@ class Graph extends React.Component {
         },
         yAxis: {
           title: {
+            rotation: 0,
+            style: {
+              fontWeight: 'bold',
+              fontSize: '15px'
+            },
             text: 'y'
           },
+          gridLineWidth: 1,
           min: parseFloat(datapoint.datapointYMin),
           max: parseFloat(datapoint.datapointYMax),
           plotLines: [
@@ -141,6 +172,20 @@ class Graph extends React.Component {
               color: '#808080'
             }
           ]
+        },
+        zAxis: {
+          title: {
+            rotation: 300,
+            margin: -30,
+            style: {
+              fontWeight: 'bold',
+              fontSize: '15px'
+            },
+            text: 'z'
+          },
+          gridLineWidth: 1,
+          min: parseFloat(datapoint.datapointZMin),
+          max: parseFloat(datapoint.datapointZMax)
         }
       }
     }
