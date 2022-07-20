@@ -89,6 +89,10 @@ export default function SimulationScreen ({ open, close }) {
 
     const addPointToGraph = (id, point) => {
       const refId = chartIdList.current[id]
+      if (point[1] > datapointsRef.current[refId].datapointXMax) {
+        datapointsRef.current[refId].datapointXMax = point[1] + 2
+        datapointsRef.current[refId].datapointXMin = datapointsRef.current[refId].datapointXMin + 2
+      }
       if (graphsRef.current[refId] !== undefined) {
         graphsRef.current[refId].addPointToQueue(id, point)
       } else {
