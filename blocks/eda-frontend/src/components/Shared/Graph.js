@@ -31,10 +31,21 @@ class Graph extends React.Component {
               const chart = this
               const series = this.series[0]
               const starttime = Date.now()
+
               function addPoints () {
                 while (!pointList.isEmpty()) {
+                  const xmax = datapoint.datapointXMax
                   const point = pointList.peek()
                   const x = parseFloat(point[1])
+                  if (x > xmax) {
+                    datapoint.datapointXMax = datapoint.datapointXMax + 4
+                    datapoint.datapointXMin = datapoint.datapointXMin + 4
+                    chart.xAxis[0].update({
+                      max: datapoint.datapointXMax,
+                      min: datapoint.datapointXMin
+                    })
+                    chart.redraw()
+                  }
                   const timediff = starttime + x * 1000 - Date.now()
                   if (timediff > 0) {
                     chart.redraw()
