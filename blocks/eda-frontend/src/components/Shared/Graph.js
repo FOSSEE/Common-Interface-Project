@@ -34,15 +34,15 @@ class Graph extends React.Component {
 
               function addPoints () {
                 while (!pointList.isEmpty()) {
-                  const xmax = datapoint.datapointXMax
+                  const xmax = chart.xAxis[0].max
+                  const xmin = chart.xAxis[0].min
+                  const xshift = (xmax - xmin) * 0.2
                   const point = pointList.peek()
                   const x = parseFloat(point[1])
                   if (x > xmax) {
-                    datapoint.datapointXMax = datapoint.datapointXMax + 4
-                    datapoint.datapointXMin = datapoint.datapointXMin + 4
                     chart.xAxis[0].update({
-                      max: datapoint.datapointXMax,
-                      min: datapoint.datapointXMin
+                      max: xmax + xshift,
+                      min: xmin + xshift
                     })
                     chart.redraw()
                   }
