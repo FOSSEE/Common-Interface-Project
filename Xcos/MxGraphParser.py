@@ -130,6 +130,7 @@ for root in model:
 ET.SubElement(outdiagram, 'mxCell')
 
 outtree = ET.ElementTree(outdiagram)
+ET.indent(outtree)
 outfile = basename + '.xcos'
 outtree.write(outfile, encoding='UTF-8', xml_declaration=True)
 sys.exit(0)
