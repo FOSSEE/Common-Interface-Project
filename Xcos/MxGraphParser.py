@@ -8,6 +8,8 @@ import traceback
 import xml.etree.ElementTree as ET
 import defusedxml.ElementTree as goodET
 
+from blocks import *
+
 if len(sys.argv) != 2:
     print("Usage: %s filename.xml" % sys.argv[0])
     sys.exit(1)
@@ -44,7 +46,6 @@ for root in model:
         sys.exit(2)
     outroot = ET.SubElement(outmodel, 'root')
 
-    a1 = ''
     blocks = {}
     EIV = {}
     IIV = {}
@@ -52,8 +53,10 @@ for root in model:
     EOV = {}
     IOV = {}
     COM = {}
+    IDLIST = {}
     links = {}
     sourceLinks = {}
+    componentOrdering = 0
     for cell in list(root):
         try:
             attrib = cell.attrib
@@ -74,46 +77,48 @@ for root in model:
 
             if cell_type == 'Component':
                 style = attrib['style']
-                outnode = ET.SubElement(outroot, style)
+                componentOrdering += 1
                 parameter_values = cell.find('./Object[@as="parameter_values"]')
                 if parameter_values is not None:
                     parameter_values = parameter_values.attrib
                     parameters = []
-                    for i in range(40):
+                    for i in range(100):
                         parameter = 'p%03d_value' % i
                         if parameter in parameter_values:
                             parameters.append(parameter_values[parameter])
                         else:
                             break
-                    a1 += 'BP%s = list(%s);\n' % (attribid, ', '.join(parameters))
-                    a1 += 'SV%s = list();\n' % attribid
-                    EIV[attribid] = []
-                    IIV[attribid] = []
-                    CON[attribid] = []
-                    EOV[attribid] = []
-                    IOV[attribid] = []
-                    COM[attribid] = []
+                EIV[attribid] = []
+                IIV[attribid] = []
+                CON[attribid] = []
+                EOV[attribid] = []
+                IOV[attribid] = []
+                COM[attribid] = []
+                IDLIST[attribid] = cell_type
+                globals()[style](outroot, attribid, componentOrdering)
             elif 'vertex' in attrib:
                 style = attrib['style']
                 ParentComponent = attrib['ParentComponent']
-                if style in ['ExplicitInputPort', 'ImplicitInputPort',
-                             'ControlPort']:
-                    a1 += 'P%s = 0;\n' % attribid
                 if style == 'ExplicitInputPort':
-                    EIV[ParentComponent].append('P%s' % attribid)
+                    styleArray = EIV[ParentComponent]
                 elif style == 'ImplicitInputPort':
-                    IIV[ParentComponent].append('P%s' % attribid)
+                    styleArray = IIV[ParentComponent]
                 elif style == 'ControlPort':
-                    CON[ParentComponent].append('P%s' % attribid)
+                    styleArray = CON[ParentComponent]
                 elif style == 'ExplicitOutputPort':
-                    EOV[ParentComponent].append('P%s' % attribid)
+                    styleArray = EOV[ParentComponent]
                 elif style == 'ImplicitOutputPort':
-                    IOV[ParentComponent].append('P%s' % attribid)
+                    styleArray = IOV[ParentComponent]
                 elif style == 'CommandPort':
-                    COM[ParentComponent].append('P%s' % attribid)
+                    styleArray = COM[ParentComponent]
+                styleArray.append(attribid)
+                ordering = len(styleArray)
+                IDLIST[attribid] = style
+                globals()[style](outroot, attribid, ParentComponent, ordering)
             elif 'edge' in attrib:
                 links['P' + attrib['sourceVertex']] = 'P' + attrib['targetVertex']
                 links['P' + attrib['targetVertex']] = 'P' + attrib['sourceVertex']
+                IDLIST[attribid] = 'link'
         except BaseException:
             traceback.print_exc()
 
@@ -127,7 +132,10 @@ for root in model:
         for sourceLink in sourceLinks:
             pass
 
-ET.SubElement(outdiagram, 'mxCell')
+outnode = ET.SubElement(outdiagram, 'mxCell')
+outnode.set('as', 'defaultParent')
+outnode.set('id', str(1))
+outnode.set('parent', str(0))
 
 outtree = ET.ElementTree(outdiagram)
 ET.indent(outtree)
