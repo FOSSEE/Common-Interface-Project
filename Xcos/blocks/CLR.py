@@ -1,4 +1,4 @@
-def CLR(outroot, attribid, ordering):
+def CLR(outroot, attribid, ordering, geometry):
     func_name = 'CLR'
 
     outnode = addNode(outroot, 'BasicBlock', dependsOnT=1, **{'id': attribid},
@@ -42,4 +42,6 @@ def CLR(outroot, attribid, ordering):
         scilabClass='ScilabList')
 
     node = addNode(outnode, 'mxGeometry', **{'as': 'geometry'},
-        height='40.0', width='60.0', x='310.0', y='170.0')
+        height=geometry['height'], width=geometry['width'], x=geometry['x'], y=geometry['y'])
+
+    return outnode

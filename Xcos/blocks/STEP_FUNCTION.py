@@ -1,4 +1,4 @@
-def STEP_FUNCTION(outroot, attribid, ordering):
+def STEP_FUNCTION(outroot, attribid, ordering, geometry):
     func_name = 'STEP_FUNCTION'
 
     outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
@@ -597,4 +597,6 @@ def STEP_FUNCTION(outroot, attribid, ordering):
         scilabClass='ScilabList')
 
     node = addNode(outnode, 'mxGeometry', **{'as': 'geometry'},
-        height='40.0', width='40.0', x='100.0', y='160.0')
+        height=geometry['height'], width=geometry['width'], x=geometry['x'], y=geometry['y'])
+
+    return outnode

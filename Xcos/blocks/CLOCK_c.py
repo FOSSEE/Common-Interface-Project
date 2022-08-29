@@ -1,4 +1,4 @@
-def CLOCK_c(outroot, attribid, ordering):
+def CLOCK_c(outroot, attribid, ordering, geometry):
     func_name = 'CLOCK_c'
 
     outnode = addNode(outroot, 'BasicBlock', blockType='h', **{'id': attribid},
@@ -803,4 +803,6 @@ def CLOCK_c(outroot, attribid, ordering):
         scilabClass='ScilabList')
 
     node = addNode(outnode, 'mxGeometry', **{'as': 'geometry'},
-        height='40.0', width='40.0', x='430.0', y='60.0')
+        height=geometry['height'], width=geometry['width'], x=geometry['x'], y=geometry['y'])
+
+    return outnode

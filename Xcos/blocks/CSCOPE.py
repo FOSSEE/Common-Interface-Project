@@ -1,4 +1,4 @@
-def CSCOPE(outroot, attribid, ordering):
+def CSCOPE(outroot, attribid, ordering, geometry):
     func_name = 'CSCOPE'
 
     outnode = addNode(outroot, 'BasicBlock', dependsOnU=1, **{'id': attribid},
@@ -56,4 +56,6 @@ def CSCOPE(outroot, attribid, ordering):
         scilabClass='ScilabList')
 
     node = addNode(outnode, 'mxGeometry', **{'as': 'geometry'},
-        height='40.0', width='40.0', x='430.0', y='170.0')
+        height=geometry['height'], width=geometry['width'], x=geometry['x'], y=geometry['y'])
+
+    return outnode

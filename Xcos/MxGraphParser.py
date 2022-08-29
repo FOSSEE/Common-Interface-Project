@@ -46,7 +46,6 @@ for root in model:
         sys.exit(2)
     outroot = ET.SubElement(outmodel, 'root')
 
-    blocks = {}
     EIV = {}
     IIV = {}
     CON = {}
@@ -54,13 +53,18 @@ for root in model:
     IOV = {}
     COM = {}
     IDLIST = {}
-    links = {}
-    sourceLinks = {}
     componentOrdering = 0
+    nextattribid = 0
+    nextAttribForSplit = 10000
+    edgeDict = {}
+    edgeDict2 = {}
+    splitList = []
     for cell in list(root):
         try:
             attrib = cell.attrib
             attribid = attrib['id']
+            if nextattribid <= int(attribid):
+                nextattribid = int(attribid) + 1
 
             if attribid == '0':
                 outnode = ET.SubElement(outroot, 'mxCell')
@@ -77,6 +81,11 @@ for root in model:
 
             if cell_type == 'Component':
                 style = attrib['style']
+                componentGeometry = {}
+                componentGeometry['height'] = 40
+                componentGeometry['width'] = 40
+                componentGeometry['x'] = 0
+                componentGeometry['y'] = 0
                 componentOrdering += 1
                 parameter_values = cell.find('./Object[@as="parameter_values"]')
                 if parameter_values is not None:
@@ -88,6 +97,12 @@ for root in model:
                             parameters.append(parameter_values[parameter])
                         else:
                             break
+                mxGeometry = cell.find('mxGeometry')
+                if mxGeometry is not None:
+                    componentGeometry['height'] = mxGeometry.attrib['height']
+                    componentGeometry['width'] = mxGeometry.attrib['width']
+                    componentGeometry['x'] = mxGeometry.attrib['x']
+                    componentGeometry['y'] = mxGeometry.attrib['y']
                 EIV[attribid] = []
                 IIV[attribid] = []
                 CON[attribid] = []
@@ -95,9 +110,14 @@ for root in model:
                 IOV[attribid] = []
                 COM[attribid] = []
                 IDLIST[attribid] = cell_type
-                globals()[style](outroot, attribid, componentOrdering)
+                globals()[style](outroot, attribid, componentOrdering, componentGeometry)
             elif 'vertex' in attrib:
                 style = attrib['style']
+                geometry = {}
+                geometry['height'] = 40
+                geometry['width'] = 40
+                geometry['x'] = 0
+                geometry['y'] = 0
                 ParentComponent = attrib['ParentComponent']
                 if style == 'ExplicitInputPort':
                     styleArray = EIV[ParentComponent]
@@ -112,25 +132,175 @@ for root in model:
                 elif style == 'CommandPort':
                     styleArray = COM[ParentComponent]
                 styleArray.append(attribid)
+                mxGeometry = cell.find('mxGeometry')
+                if mxGeometry is not None:
+                    geometry['height'] = mxGeometry.attrib['height']
+                    geometry['width'] = mxGeometry.attrib['width']
+                    geometry['x'] = mxGeometry.attrib.get('x', 0)
+                    geometry['y'] = mxGeometry.attrib.get('y', 0)
+                    if mxGeometry.attrib.get('relative', '0') == '1':
+                        geometry['x'] = float(componentGeometry['x']) + float(componentGeometry['width']) * float(geometry['x'])
+                        geometry['y'] = float(componentGeometry['y']) + float(componentGeometry['height']) * float(geometry['y'])
                 ordering = len(styleArray)
                 IDLIST[attribid] = style
-                globals()[style](outroot, attribid, ParentComponent, ordering)
+                globals()[style](outroot, attribid, ParentComponent, ordering, geometry)
             elif 'edge' in attrib:
-                links['P' + attrib['sourceVertex']] = 'P' + attrib['targetVertex']
-                links['P' + attrib['targetVertex']] = 'P' + attrib['sourceVertex']
-                IDLIST[attribid] = 'link'
+                sourceVertex = attrib['sourceVertex']
+                targetVertex = attrib['targetVertex']
+                sourceType = IDLIST[sourceVertex]
+                targetType = IDLIST[targetVertex]
+
+                # switch vertices if required
+                if sourceType in ['ExplicitInputPort', 'ImplicitInputPort', 'ControlPort'] and targetType in ['ExplicitOutputPort', 'ExplicitLink', 'ImplicitOutputPort', 'ImplicitLink', 'CommandPort', 'CommandControlLink']:
+                    (sourceVertex, targetVertex) = (targetVertex, sourceVertex)
+                    (sourceType, targetType) = (targetType, sourceType)
+                elif sourceType in ['ExplicitInputPort', 'ExplicitLink', 'ImplicitInputPort', 'ImplicitLink', 'ControlPort', 'CommandControlLink'] and targetType in ['ExplicitOutputPort', 'ImplicitOutputPort', 'CommandPort']:
+                    (sourceVertex, targetVertex) = (targetVertex, sourceVertex)
+                    (sourceType, targetType) = (targetType, sourceType)
+
+                style = None
+                addSplit = False
+                if sourceType in ['ExplicitInputPort', 'ExplicitOutputPort', 'ImplicitInputPort', 'ImplicitOutputPort', 'CommandPort', 'ControlPort'] and targetType == sourceType:
+                    print('cannot connect two ports of', sourceType, 'and', targetType)
+                elif sourceType in ['ExplicitOutputPort'] and targetType in ['ExplicitInputPort']:
+                    style = 'ExplicitLink'
+                elif sourceType in ['ExplicitOutputPort', 'ExplicitLink'] and targetType in ['ExplicitInputPort', 'ExplicitLink']:
+                    addSplit = True
+                elif sourceType in ['ImplicitOutputPort'] and targetType in ['ImplicitInputPort']:
+                    style = 'ImplicitLink'
+                elif sourceType in ['ImplicitOutputPort', 'ImplicitLink'] and targetType in ['ImplicitInputPort', 'ImplicitLink']:
+                    addSplit = True
+                elif sourceType in ['CommandPort'] and targetType in ['ControlPort']:
+                    style = 'CommandControlLink'
+                elif sourceType in ['CommandPort', 'CommandControlLink'] and targetType in ['ControlPort', 'CommandControlLink']:
+                    addSplit = True
+                else:
+                    print(attribid, 'Unknown combination of', sourceType, 'and', targetType)
+                    continue
+
+                if style is not None:
+                    edgeDict[attribid] = (style, sourceVertex, targetVertex, sourceType, targetType)
+                    edgeDict2[attribid] = (style, sourceVertex, targetVertex, sourceType, targetType)
+                    IDLIST[attribid] = style
+                if addSplit:
+                    mxGeometry = cell.find('mxGeometry')
+                    if mxGeometry is not None:
+                        mxPoint = mxGeometry.find('mxPoint')
+                        if mxPoint is not None:
+                            geometry = {}
+                            geometry['width'] = mxPoint.attrib.get('width', '7')
+                            geometry['height'] = mxPoint.attrib.get('height', '7')
+                            geometry['x'] = mxPoint.attrib.get('x', '0')
+                            geometry['y'] = mxPoint.attrib.get('y', '0')
+                            splitList.append((attribid, sourceVertex, targetVertex, sourceType, targetType, geometry))
+                            try:
+                                del edgeDict[sourceVertex]
+                            except:
+                                pass
+                            try:
+                                del edgeDict[targetVertex]
+                            except:
+                                pass
         except BaseException:
             traceback.print_exc()
 
-        for attribid in blocks:
-            for i, aid in enumerate(EOV[attribid]):
-                sourceLinks[aid] = 1
-            for i, aid in enumerate(IOV[attribid]):
-                sourceLinks[aid] = 1
-            for i, aid in enumerate(COM[attribid]):
-                sourceLinks[aid] = 1
-        for sourceLink in sourceLinks:
-            pass
+for (attribid, sourceVertex, targetVertex, sourceType, targetType, geometry) in splitList:
+    componentOrdering += 1
+    SplitBlock(outroot, nextattribid, componentOrdering, geometry)
+    splitblockid = nextattribid
+    nextattribid += 1
+    inputCount = 0
+    outputCount = 0
+    if sourceType == 'ExplicitOutputPort':
+        (inputCount, outputCount, nextattribid, nextAttribForSplit) = addExplicitInputPortForSplit(outroot, splitblockid, sourceVertex, targetVertex, sourceType, targetType, edgeDict, inputCount, outputCount, nextattribid, nextAttribForSplit)
+        (style2, sourceVertex2, targetVertex2, sourceType2, targetType2) = edgeDict2[targetVertex]
+        (inputCount, outputCount, nextattribid, nextAttribForSplit) = addExplicitInputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, edgeDict, inputCount, outputCount, nextattribid, nextAttribForSplit)
+        (inputCount, outputCount, nextattribid, nextAttribForSplit) = addExplicitOutputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, edgeDict, inputCount, outputCount, nextattribid, nextAttribForSplit)
+    elif sourceType == 'ImplicitOutputPort':
+        geometry = {}
+        geometry['width'] = 8
+        geometry['height'] = 8
+        geometry['x'] = -8
+        geometry['y'] = -4
+        inputCount += 1
+        ImplicitInputPort(outroot, nextattribid, splitblockid, inputCount, geometry, forSplitBlock=True)
+        portid = nextattribid
+        nextattribid += 1
+        linkid = nextAttribForSplit
+        nextAttribForSplit += 1
+        (style2, sourceVertex2, targetVertex2, sourceType2, targetType2) = edgeDict2[sourceVertex]
+    elif sourceType == 'ControlPort':
+        geometry = {}
+        geometry['width'] = 8
+        geometry['height'] = 8
+        geometry['x'] = -4
+        geometry['y'] = -8
+        inputCount += 1
+        CommandPort(outroot, nextattribid, splitblockid, inputCount, geometry, forSplitBlock=True)
+        portid = nextattribid
+        nextattribid += 1
+        linkid = nextAttribForSplit
+        nextAttribForSplit += 1
+        (style2, sourceVertex2, targetVertex2, sourceType2, targetType2) = edgeDict2[sourceVertex]
+    if targetType == 'ExplicitInputPort':
+        (style2, sourceVertex2, targetVertex2, sourceType2, targetType2) = edgeDict2[sourceVertex]
+        (inputCount, outputCount, nextattribid, nextAttribForSplit) = addExplicitInputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, edgeDict, inputCount, outputCount, nextattribid, nextAttribForSplit)
+        (inputCount, outputCount, nextattribid, nextAttribForSplit) = addExplicitOutputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, edgeDict, inputCount, outputCount, nextattribid, nextAttribForSplit)
+        (inputCount, outputCount, nextattribid, nextAttribForSplit) = addExplicitOutputPortForSplit(outroot, splitblockid, sourceVertex, targetVertex, sourceType, targetType, edgeDict, inputCount, outputCount, nextattribid, nextAttribForSplit)
+    elif targetType == 'ImplicitInputPort':
+        geometry = {}
+        geometry['width'] = 8
+        geometry['height'] = 8
+        geometry['x'] = 7
+        geometry['y'] = -4
+        outputCount += 1
+        ImplicitOutputPort(outroot, nextattribid, splitblockid, outputCount, geometry, forSplitBlock=True)
+        portid = nextattribid
+        nextattribid += 1
+        linkid = nextAttribForSplit
+        nextAttribForSplit += 1
+        (style2, sourceVertex2, targetVertex2, sourceType2, targetType2) = edgeDict2[targetVertex]
+        geometry = {}
+        geometry['width'] = 8
+        geometry['height'] = 8
+        geometry['x'] = -8
+        geometry['y'] = -4
+        inputCount += 1
+        ImplicitInputPort(outroot, nextattribid, splitblockid, inputCount, geometry, forSplitBlock=True)
+        portid = nextattribid
+        nextattribid += 1
+        linkid = nextAttribForSplit
+        nextAttribForSplit += 1
+        geometry = {}
+        geometry['width'] = 8
+        geometry['height'] = 8
+        geometry['x'] = 7
+        geometry['y'] = -4
+        outputCount += 1
+        ImplicitOutputPort(outroot, nextattribid, splitblockid, outputCount, geometry, forSplitBlock=True)
+        portid = nextattribid
+        nextattribid += 1
+        linkid = nextAttribForSplit
+        nextAttribForSplit += 1
+    elif targetType == 'CommandPort':
+        geometry = {}
+        geometry['width'] = 8
+        geometry['height'] = 8
+        geometry['x'] = -4
+        geometry['y'] = 7
+        outputCount += 1
+        ControlPort(outroot, nextattribid, splitblockid, outputCount, geometry, forSplitBlock=True)
+        portid = nextattribid
+        nextattribid += 1
+        linkid = nextAttribForSplit
+        nextAttribForSplit += 1
+        (style2, sourceVertex2, targetVertex2, sourceType2, targetType2) = edgeDict2[targetVertex]
+
+for (attribid, (style, sourceVertex, targetVertex, sourceType, targetType)) in edgeDict.items():
+    if int(attribid) >= 10000:
+        attribid = nextattribid
+        nextattribid += 1
+    globals()[style](outroot, attribid, sourceVertex, targetVertex)
 
 outnode = ET.SubElement(outdiagram, 'mxCell')
 outnode.set('as', 'defaultParent')

@@ -1,4 +1,4 @@
-def BIGSOM_f(outroot, attribid, ordering):
+def BIGSOM_f(outroot, attribid, ordering, geometry):
     func_name = 'BIGSOM_f'
 
     outnode = addNode(outroot, 'BigSom', dependsOnU=1, **{'id': attribid},
@@ -31,4 +31,6 @@ def BIGSOM_f(outroot, attribid, ordering):
         scilabClass='ScilabList')
 
     node = addNode(outnode, 'mxGeometry', **{'as': 'geometry'},
-        height='60.0', width='40.0', x='200.0', y='160.0')
+        height=geometry['height'], width=geometry['width'], x=geometry['x'], y=geometry['y'])
+
+    return outnode
