@@ -303,9 +303,9 @@ for (attribid, (style, sourceVertex, targetVertex, sourceType, targetType)) in e
     globals()[style](outroot, attribid, sourceVertex, targetVertex)
 
 outnode = ET.SubElement(outdiagram, 'mxCell')
-outnode.set('as', 'defaultParent')
 outnode.set('id', str(1))
 outnode.set('parent', str(0))
+outnode.set('as', 'defaultParent')
 
 outtree = ET.ElementTree(outdiagram)
 ET.indent(outtree)

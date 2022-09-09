@@ -8,7 +8,7 @@ def STEP_FUNCTION(outroot, attribid, ordering, geometry):
     node = addDataNode(outnode, 'ScilabDouble', **{'as': 'exprs'}, height=0, width=0)
 
     node = addNode(outnode, 'Array', **{'as': 'realParameters'},
-        scilabClass='ScilabMList', varName='')
+        scilabClass='ScilabMList')
 
     innode = addDataNode(node, 'ScilabString', height=1, width=5)
     addDataData(innode, 'diagram')
@@ -109,7 +109,7 @@ def STEP_FUNCTION(outroot, attribid, ordering, geometry):
 
     innode = addNode(node, 'Array', scilabClass='ScilabList')
 
-    in2node = addNode(innode, 'Array', scilabClass='ScilabMList', varName='')
+    in2node = addNode(innode, 'Array', scilabClass='ScilabMList')
 
     in3node = addDataNode(in2node, 'ScilabString', height=1, width=5)
     addDataData(in3node, 'Block')
@@ -118,7 +118,7 @@ def STEP_FUNCTION(outroot, attribid, ordering, geometry):
     addDataData(in3node, 'gui')
     addDataData(in3node, 'doc')
 
-    in3node = addNode(in2node, 'Array', scilabClass='ScilabMList', varName='')
+    in3node = addNode(in2node, 'Array', scilabClass='ScilabMList')
 
     in4node = addDataNode(in3node, 'ScilabString', height=1, width=19)
     addDataData(in4node, 'graphics')
@@ -200,7 +200,7 @@ def STEP_FUNCTION(outroot, attribid, ordering, geometry):
     in4node = addDataNode(in3node, 'ScilabString', height=1, width=1)
     addDataData(in4node, 'STEP')
 
-    in3node = addNode(in2node, 'Array', scilabClass='ScilabMList', varName='')
+    in3node = addNode(in2node, 'Array', scilabClass='ScilabMList')
 
     in4node = addDataNode(in3node, 'ScilabString', height=1, width=24)
     addDataData(in4node, 'model')
@@ -303,7 +303,7 @@ def STEP_FUNCTION(outroot, attribid, ordering, geometry):
     in4node = addDataNode(in3node, 'ScilabString', height=1, width=1)
     addDataData(in4node, '101')
 
-    in2node = addNode(innode, 'Array', scilabClass='ScilabMList', varName='')
+    in2node = addNode(innode, 'Array', scilabClass='ScilabMList')
 
     in3node = addDataNode(in2node, 'ScilabString', height=1, width=5)
     addDataData(in3node, 'Block')
@@ -312,7 +312,7 @@ def STEP_FUNCTION(outroot, attribid, ordering, geometry):
     addDataData(in3node, 'gui')
     addDataData(in3node, 'doc')
 
-    in3node = addNode(in2node, 'Array', scilabClass='ScilabMList', varName='')
+    in3node = addNode(in2node, 'Array', scilabClass='ScilabMList')
 
     in4node = addDataNode(in3node, 'ScilabString', height=1, width=19)
     addDataData(in4node, 'graphics')
@@ -390,7 +390,7 @@ def STEP_FUNCTION(outroot, attribid, ordering, geometry):
     in4node = addDataNode(in3node, 'ScilabString', height=1, width=1)
     addDataData(in4node, 'OUT_f')
 
-    in3node = addNode(in2node, 'Array', scilabClass='ScilabMList', varName='')
+    in3node = addNode(in2node, 'Array', scilabClass='ScilabMList')
 
     in4node = addDataNode(in3node, 'ScilabString', height=1, width=24)
     addDataData(in4node, 'model')
@@ -484,7 +484,7 @@ def STEP_FUNCTION(outroot, attribid, ordering, geometry):
     in4node = addDataNode(in3node, 'ScilabString', height=1, width=1)
     addDataData(in4node, '102')
 
-    in2node = addNode(innode, 'Array', scilabClass='ScilabMList', varName='')
+    in2node = addNode(innode, 'Array', scilabClass='ScilabMList')
 
     in3node = addDataNode(in2node, 'ScilabString', height=1, width=8)
     addDataData(in3node, 'Link')
@@ -525,7 +525,7 @@ def STEP_FUNCTION(outroot, attribid, ordering, geometry):
     addDataData(in3node, 1.0)
     addDataData(in3node, 1.0)
 
-    in2node = addNode(innode, 'Array', scilabClass='ScilabMList', varName='')
+    in2node = addNode(innode, 'Array', scilabClass='ScilabMList')
 
     in3node = addDataNode(in2node, 'ScilabString', height=1, width=8)
     addDataData(in3node, 'Link')

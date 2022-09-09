@@ -11,7 +11,7 @@ def CLR(outroot, attribid, ordering, geometry):
 
     node = addDataNode(outnode, 'ScilabDouble', **{'as': 'realParameters'}, height=9, width=1)
     addDataData(node, 0.0)
-    addDataData(node, -0.0)
+    addDataData(node, 0.0)
     addDataData(node, 1.0)
     addDataData(node, -5.0)
     addDataData(node, 0.0)
