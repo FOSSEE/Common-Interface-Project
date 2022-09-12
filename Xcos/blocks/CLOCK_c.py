@@ -1,4 +1,4 @@
-def CLOCK_c(outroot, attribid, ordering, geometry):
+def CLOCK_c(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CLOCK_c'
 
     outnode = addNode(outroot, 'BasicBlock', blockType='h', **{'id': attribid},

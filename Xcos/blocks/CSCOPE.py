@@ -1,4 +1,4 @@
-def CSCOPE(outroot, attribid, ordering, geometry):
+def CSCOPE(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CSCOPE'
 
     outnode = addNode(outroot, 'BasicBlock', dependsOnU=1, **{'id': attribid},

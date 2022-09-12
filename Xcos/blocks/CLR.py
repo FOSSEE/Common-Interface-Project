@@ -1,4 +1,4 @@
-def CLR(outroot, attribid, ordering, geometry):
+def CLR(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CLR'
 
     outnode = addNode(outroot, 'BasicBlock', dependsOnT=1, **{'id': attribid},

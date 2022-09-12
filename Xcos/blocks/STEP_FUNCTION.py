@@ -1,4 +1,4 @@
-def STEP_FUNCTION(outroot, attribid, ordering, geometry):
+def STEP_FUNCTION(outroot, attribid, ordering, geometry, parameters):
     func_name = 'STEP_FUNCTION'
 
     outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},

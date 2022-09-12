@@ -88,9 +88,9 @@ for root in model:
                 componentGeometry['y'] = 0
                 componentOrdering += 1
                 parameter_values = cell.find('./Object[@as="parameter_values"]')
+                parameters = []
                 if parameter_values is not None:
                     parameter_values = parameter_values.attrib
-                    parameters = []
                     for i in range(100):
                         parameter = 'p%03d_value' % i
                         if parameter in parameter_values:
@@ -110,7 +110,7 @@ for root in model:
                 IOV[attribid] = []
                 COM[attribid] = []
                 IDLIST[attribid] = cell_type
-                globals()[style](outroot, attribid, componentOrdering, componentGeometry)
+                globals()[style](outroot, attribid, componentOrdering, componentGeometry, parameters)
             elif 'vertex' in attrib:
                 style = attrib['style']
                 geometry = {}
