@@ -44,7 +44,6 @@ def ExecXml(file_obj):
         current_dir = settings.MEDIA_ROOT+'/'+str(file_obj.file_id)
         # Make Unique Directory for simulation to run
         Path(current_dir).mkdir(parents=True, exist_ok=True)
-        os.chdir(current_dir)
         (xcosfilebase, __) = os.path.splitext(file_path)
         xcosfile = xcosfilebase + '.xcos'
         logger.info('will run %s %s', 'MxGraphParser', file_path)
@@ -69,7 +68,6 @@ def ExecXml(file_obj):
             os.dup2(logfilefd, LOGFILEFD)
             os.close(logfilefd)
 
-        log_name = '/tmp/blocks-tmp/scilab-log.txt' # FIXME: remove this line
         file_obj.log_name = log_name
         file_obj.save()
 
@@ -90,7 +88,6 @@ def ExecXml(file_obj):
         cmd = "try;"
         cmd += "chdir('%s');" % current_dir
         cmd += "loadXcosLibs();"
-        xcosfile = '/tmp/blocks-tmp/Ex3_1.xcos' # FIXME: remove this line
         cmd += "importXcosDiagram('%s');" % xcosfile
         cmd += "xcos_simulate(scs_m,4);"
         cmd += SCILAB_END
