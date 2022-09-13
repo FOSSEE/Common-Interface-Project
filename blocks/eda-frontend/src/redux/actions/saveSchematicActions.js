@@ -9,7 +9,7 @@ export const setSchTitle = (title) => (dispatch) => {
   dispatch({
     type: actions.SET_SCH_TITLE,
     payload: {
-      title: title
+      title
     }
   })
 }
@@ -18,7 +18,7 @@ export const setSchDescription = (description) => (dispatch) => {
   dispatch({
     type: actions.SET_SCH_DESCRIPTION,
     payload: {
-      description: description
+      description
     }
   })
 }
@@ -27,7 +27,7 @@ export const setSchXmlData = (xmlData) => (dispatch) => {
   dispatch({
     type: actions.SET_SCH_XML_DATA,
     payload: {
-      xmlData: xmlData
+      xmlData
     }
   })
 }
@@ -38,7 +38,7 @@ export const saveSchematic = (title, description, xml, base64) => (dispatch, get
     data_dump: xml,
     base64_image: base64,
     name: title,
-    description: description
+    description
   }
 
   // Get token from localstorage

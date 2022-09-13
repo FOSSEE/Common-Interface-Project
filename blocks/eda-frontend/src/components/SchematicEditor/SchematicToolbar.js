@@ -326,7 +326,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
             setMessage('Unsupported app name error !')
             handleSnacClick()
           } else {
-            const obj = { data_dump: dataDump, title: title, description: description }
+            const obj = { data_dump: dataDump, title, description }
             if (obj.data_dump === undefined || obj.title === undefined || obj.description === undefined) {
               setMessage('Unsupported file error !')
               handleSnacClick()

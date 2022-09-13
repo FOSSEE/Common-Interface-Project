@@ -5,7 +5,7 @@ export const setNetlist = (netlist) => (dispatch) => {
   dispatch({
     type: actions.SET_NETLIST,
     payload: {
-      netlist: netlist
+      netlist
     }
   })
 }
@@ -15,7 +15,7 @@ export const setTitle = (title) => (dispatch) => {
   dispatch({
     type: actions.SET_TITLE,
     payload: {
-      title: title
+      title
     }
   })
 }
@@ -25,7 +25,7 @@ export const setModel = (model) => (dispatch) => {
   dispatch({
     type: actions.SET_MODEL,
     payload: {
-      model: model
+      model
     }
   })
 }

@@ -17,7 +17,7 @@ export default function schematicEditorReducer (state = InitialState, action) {
         collapse[element.id] = false
         components[element.id] = []
       })
-      return { ...state, libraries: action.payload, collapse: collapse, components: components }
+      return { ...state, libraries: action.payload, collapse, components }
     }
 
     case actions.TOGGLE_COLLAPSE: {

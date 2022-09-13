@@ -84,7 +84,7 @@ export const fetchComponentImages = () => (dispatch) => {
 export const toggleCollapse = (id) => (dispatch) => {
   dispatch({
     type: actions.TOGGLE_COLLAPSE,
-    payload: { id: id }
+    payload: { id }
   })
 }
 

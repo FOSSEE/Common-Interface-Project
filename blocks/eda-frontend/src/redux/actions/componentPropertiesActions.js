@@ -10,7 +10,7 @@ export const getCompProperties = (block) => (dispatch) => {
         dispatch({
           type: actions.GET_COMP_PROPERTIES,
           payload: {
-            block: block,
+            block,
             name: block.style,
             parameter_values: block.parameter_values,
             compProperties: res.data[0]
@@ -33,7 +33,7 @@ export const setCompProperties = (block, parameterValues) => (dispatch) => {
         dispatch({
           type: actions.SET_COMP_PROPERTIES,
           payload: {
-            block: block,
+            block,
             parameter_values: parameterValues,
             displayProperties: res.data
           }

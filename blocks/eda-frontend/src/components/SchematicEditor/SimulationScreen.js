@@ -201,8 +201,8 @@ export default function SimulationScreen ({ open, close }) {
           zoomtype: 'xy',
           options3d: {
             enabled: true,
-            alpha: alpha,
-            beta: beta,
+            alpha,
+            beta,
             depth: 100,
             viewDistance: 100,
             frame: {
@@ -278,16 +278,16 @@ export default function SimulationScreen ({ open, close }) {
             enabled: false
           },
           series: {
-            lineWidth: lineWidth,
+            lineWidth,
             states: {
               hover: {
-                lineWidth: lineWidth
+                lineWidth
               }
             }
           },
           scatter: {
             marker: {
-              radius: radius,
+              radius,
               states: {
                 hover: {
                   enabled: true,

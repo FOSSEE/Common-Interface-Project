@@ -109,7 +109,7 @@ function createDraggablePointsChartSigbuilder (graphParameters, pointsHistory, x
             draggableY: true,
             showInLegend: false,
             data: graphParameters.graphPoints,
-            step: step,
+            step,
             name: stepname
         }]
     })
