@@ -9,5 +9,3 @@ def SplitBlock(outroot, attribid, ordering, geometry):
         height=geometry['height'], width=geometry['width'], x=geometry['x'], y=geometry['y'])
 
     return outnode
-
-

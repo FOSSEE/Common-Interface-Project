@@ -1,12 +1,10 @@
 import xml.etree.ElementTree as ET
 
-
 def addNode(node, subNodeType, **kwargs):
     subNode = ET.SubElement(node, subNodeType)
     for (key, value) in kwargs.items():
         subNode.set(key, str(value))
     return subNode
-
 
 def addData(node, column, line, value, isReal=False):
     data = ET.SubElement(node, 'data')
@@ -23,7 +21,6 @@ DATA_WIDTH = 0
 DATA_LINE = 0
 DATA_COLUMN = 0
 
-
 def addDataNode(node, subNodeType, **kwargs):
     global DATA_HEIGHT, DATA_WIDTH, DATA_LINE, DATA_COLUMN
     DATA_HEIGHT = kwargs['height']
@@ -32,7 +29,6 @@ def addDataNode(node, subNodeType, **kwargs):
     DATA_COLUMN = 0
     subNode = addNode(node, subNodeType, **kwargs)
     return subNode
-
 
 def addDataData(node, value, isReal=False):
     global DATA_HEIGHT, DATA_WIDTH, DATA_LINE, DATA_COLUMN

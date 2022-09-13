@@ -8,7 +8,7 @@ import traceback
 import xml.etree.ElementTree as ET
 import defusedxml.ElementTree as goodET
 
-from blocks import *
+from xcosblocks import *
 
 if len(sys.argv) != 2:
     print("Usage: %s filename.xml" % sys.argv[0])

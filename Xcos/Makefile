@@ -1,11 +1,17 @@
-all : blocks/__init__.py
+SRCFILES := $(sort $(wildcard common/*.py))
+SRCFILES += $(sort $(wildcard blocks/*.py))
+SRCFILES += $(sort $(wildcard ports/*.py))
+SRCFILES += $(sort $(wildcard links/*.py))
 
-SRCFILES := $(sort $(filter-out blocks/__init__.py, $(wildcard blocks/*.py)))
+TARGET := xcosblocks.py
 
-blocks/__init__.py : $(SRCFILES)
+all : $(TARGET)
+
+$(TARGET) : $(SRCFILES)
 	@echo Making $@ ...
 	@for f in $^; do \
 	    echo "### $$f"; \
+	    echo; \
 	    cat "$$f"; \
 	    echo; \
 	done > $@

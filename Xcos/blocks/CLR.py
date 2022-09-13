@@ -6,17 +6,17 @@ def CLR(outroot, attribid, ordering, geometry, parameters):
         simulationFunctionName='csslti4', simulationFunctionType='C_OR_FORTRAN', style=func_name)
 
     node = addDataNode(outnode, 'ScilabString', **{'as': 'exprs'}, height=2, width=1)
-    addDataData(node, '1')
-    addDataData(node, 's*(s+5)')
+    addDataData(node, parameters[0])
+    addDataData(node, parameters[1])
 
     node = addDataNode(outnode, 'ScilabDouble', **{'as': 'realParameters'}, height=9, width=1)
     addDataData(node, 0.0)
     addDataData(node, 0.0)
-    addDataData(node, 1.0)
-    addDataData(node, -5.0)
     addDataData(node, 0.0)
-    addDataData(node, 1.0)
-    addDataData(node, 1.0)
+    addDataData(node, 0.0)
+    addDataData(node, 0.0)
+    addDataData(node, 0.0)
+    addDataData(node, 0.0)
     addDataData(node, 0.0)
     addDataData(node, 0.0)
 

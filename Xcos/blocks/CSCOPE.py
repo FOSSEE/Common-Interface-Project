@@ -10,8 +10,8 @@ def CSCOPE(outroot, attribid, ordering, geometry, parameters):
     addDataData(node, '-1')
     addDataData(node, '[]')
     addDataData(node, '[600;400]')
-    addDataData(node, '-15')
-    addDataData(node, '15')
+    addDataData(node, parameters[4])
+    addDataData(node, parameters[5])
     addDataData(node, '30')
     addDataData(node, '20')
     addDataData(node, '0')
@@ -19,8 +19,8 @@ def CSCOPE(outroot, attribid, ordering, geometry, parameters):
 
     node = addDataNode(outnode, 'ScilabDouble', **{'as': 'realParameters'}, height=4, width=1)
     addDataData(node, 0.0)
-    addDataData(node, -15.0)
-    addDataData(node, 15.0)
+    addDataData(node, parameters[4], True)
+    addDataData(node, parameters[5], True)
     addDataData(node, 30.0)
 
     node = addDataNode(outnode, 'ScilabDouble', **{'as': 'integerParameters'}, height=15, width=1)
