@@ -58,8 +58,8 @@ export const loadUser = () => (dispatch, getState) => {
 // Handle api call for user login
 export const login = (username, password, toUrl) => {
   const body = {
-    password: password,
-    username: username
+    password,
+    username
   }
 
   return function (dispatch) {
@@ -107,9 +107,9 @@ export const login = (username, password, toUrl) => {
 // Handle api call for user sign up
 export const signUp = (email, username, password, history) => (dispatch) => {
   const body = {
-    email: email,
-    username: username,
-    password: password
+    email,
+    username,
+    password
   }
 
   // add headers
