@@ -195,11 +195,11 @@ for root in model:
                             splitList.append((attribid, sourceVertex, targetVertex, sourceType, targetType, geometry))
                             try:
                                 del edgeDict[sourceVertex]
-                            except:
+                            except KeyError:
                                 pass
                             try:
                                 del edgeDict[targetVertex]
-                            except:
+                            except KeyError:
                                 pass
         except BaseException:
             traceback.print_exc()
