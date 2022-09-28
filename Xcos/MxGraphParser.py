@@ -28,7 +28,7 @@ tree = goodET.parse(filename)
 
 model = tree.getroot()
 if model.tag != 'mxGraphModel':
-    print('Not mxGraphModel')
+    print(model.tag, '!= mxGraphModel')
     sys.exit(2)
 outdiagram = ET.Element('XcosDiagram')
 outdiagram.set('background', '-1')

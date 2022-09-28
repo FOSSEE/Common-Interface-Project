@@ -66,6 +66,7 @@ class BlockParameterFilterSet(FilterSet):
         model = BlockParameter
         fields = {
             'block': ['exact'],
+            'block__name': ['exact'],
         }
 
 

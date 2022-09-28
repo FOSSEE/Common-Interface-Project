@@ -364,7 +364,7 @@ class BlockPrefixParameter(CommonBlockParameter):
 
     def __str__(self):
         """String for representing the Model object."""
-        return self.name
+        return self.blockprefix.name
 
 
 class Block(CommonBlock):
@@ -401,7 +401,7 @@ class BlockParameter(CommonBlockParameter):
 
     def __str__(self):
         """String for representing the Model object."""
-        return self.name
+        return self.block.name
 
 
 class BlockPort(models.Model):

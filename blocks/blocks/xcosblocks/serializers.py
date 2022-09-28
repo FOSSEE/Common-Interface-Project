@@ -296,7 +296,8 @@ class ErrorSerializer(serializers.Serializer):
 
 
 class SetBlockParameterSerializer(serializers.Serializer):
-    block_id = serializers.IntegerField()
+    block = serializers.CharField(max_length=100, required=True,
+                                       allow_blank=False, trim_whitespace=True)
     p000_value = serializers.CharField(max_length=100, required=False,
                                        allow_blank=True, trim_whitespace=True)
     p001_value = serializers.CharField(max_length=100, required=False,
@@ -379,8 +380,8 @@ class SetBlockParameterSerializer(serializers.Serializer):
                                        allow_blank=True, trim_whitespace=True)
 
     def getblockportserializer(self):
-        block = Block.objects.get(id=self.data['block_id'])
-        blockports = BlockPort.objects.filter(block=self.data['block_id'])
+        block = Block.objects.get(name=self.data['block'])
+        blockports = BlockPort.objects.filter(block=block.id)
 
         display_parameter = block.initial_display_parameter
         blockport_set = list(blockports.values())
