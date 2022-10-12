@@ -1,6 +1,7 @@
 *.pem
 *.pyc
 *.sqlite3
+__pycache__/
 blocks/blocks/*/migrations/*.py
 blocks/*/migrations/*.py
 blocks/env*/
@@ -9,3 +10,4 @@ scilab-log-*.txt
 tags
 Xcos/U*.sci
 Xcos/*.xml
+Xcos/xcosblocks.py

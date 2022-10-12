@@ -116,7 +116,6 @@ for model in diagram:
                     outnode.set('vertex', str(1))
                     outnode.set('connectable', str(0))
                     outnode.set('CellType', 'Component')
-                    outnode.set('block_id', str(0))
                     outnode.set('blockprefix', 'XCOS')
                     outnode.set('sourceVertex', str(0))
                     outnode.set('targetVertex', str(0))
