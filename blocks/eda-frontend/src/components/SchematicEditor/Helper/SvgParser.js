@@ -32,10 +32,8 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
 
   const v1 = graph.insertVertex(parent, null, null, x, y, width, height, blockName)
   v1.CellType = 'Component'
-  v1.block_id = component.id
   v1.blockprefix = component.blockprefix.name
   v1.displayProperties = {
-    blockport_set: component.blockport_set,
     display_parameter: component.initial_display_parameter
   }
   const parameterValues = {}

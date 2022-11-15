@@ -1,15 +1,5 @@
 import React from 'react'
-import {
-  Hidden,
-  Divider,
-  Avatar,
-  List,
-  Typography,
-  ListItem,
-  InputBase,
-  ListItemText,
-  ListItemAvatar
-} from '@material-ui/core'
+import { Avatar, Divider, Hidden, InputBase, List, ListItem, ListItemAvatar, ListItemText, Typography } from '@material-ui/core'
 import { Link as RouterLink } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import { deepPurple } from '@material-ui/core/colors'

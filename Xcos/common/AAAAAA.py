@@ -1,3 +1,4 @@
+import re
 import xml.etree.ElementTree as ET
 
 def addNode(node, subNodeType, **kwargs):

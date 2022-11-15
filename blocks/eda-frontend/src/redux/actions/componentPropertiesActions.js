@@ -3,7 +3,7 @@ import * as actions from './actions'
 
 // Actions for listing stored component properites on double click on component
 export const getCompProperties = (block) => (dispatch) => {
-  const url = 'block_parameters/?block=' + parseInt(block.block_id)
+  const url = 'block_parameters/?block__name=' + block.style
   api.get(url)
     .then(
       (res) => {
@@ -25,7 +25,7 @@ export const getCompProperties = (block) => (dispatch) => {
 export const setCompProperties = (block, parameterValues) => (dispatch) => {
   const url = 'setblockparameter'
   const filteredParameterValues = Object.fromEntries(Object.entries(parameterValues).filter(([k, v]) => v != null))
-  const data = { block_id: block.block_id, ...filteredParameterValues }
+  const data = { block: block.style, ...filteredParameterValues }
   api.post(url, data)
     .then(
       (res) => {

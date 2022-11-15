@@ -367,7 +367,6 @@ function parseXmlToGraph (xmlDoc, graph) {
         v1 = graph.insertVertex(parent, vertexId, null, xPos, yPos, width, height, style)
         v1.connectable = 0
         v1.CellType = 'Component'
-        v1.block_id = Number(cellAttrs.block_id.value)
         v1.blockprefix = cellAttrs.blockprefix.value
         const blockportSet = []
         const cellChildrenBlockportSet = cellChildren[1].children[0]
@@ -383,7 +382,6 @@ function parseXmlToGraph (xmlDoc, graph) {
           }
         }
         v1.displayProperties = {
-          blockport_set: blockportSet,
           display_parameter: cellChildren[1].attributes.display_parameter.value
         }
         const parameterValues = {}

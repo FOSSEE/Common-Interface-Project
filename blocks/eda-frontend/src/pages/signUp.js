@@ -1,18 +1,18 @@
 // User Sign Up / Register page.
 import React, { useState } from 'react'
 import {
-  Container,
-  Grid,
-  Button,
-  Typography,
-  Link,
-  Checkbox,
-  FormControlLabel,
-  TextField,
-  Card,
   Avatar,
+  Button,
+  Card,
+  Checkbox,
+  Container,
+  FormControlLabel,
+  Grid,
+  IconButton,
   InputAdornment,
-  IconButton
+  Link,
+  TextField,
+  Typography
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
