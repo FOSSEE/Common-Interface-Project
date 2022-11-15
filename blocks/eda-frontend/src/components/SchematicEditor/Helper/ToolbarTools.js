@@ -382,7 +382,6 @@ function parseXmlToGraph (xmlDoc, graph) {
           }
         }
         v1.displayProperties = {
-          blockport_set: blockportSet,
           display_parameter: cellChildren[1].attributes.display_parameter.value
         }
         const parameterValues = {}
