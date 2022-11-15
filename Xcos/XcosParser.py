@@ -8,7 +8,7 @@ import traceback
 import xml.etree.ElementTree as ET
 import defusedxml.ElementTree as goodET
 
-# from xcosblocks import *
+from xcosblocks import *
 
 if len(sys.argv) != 2:
     print("Usage: %s filename.xcos" % sys.argv[0])
@@ -33,7 +33,6 @@ if diagram.tag != 'XcosDiagram':
 
 for model in diagram:
     if model.tag == 'mxCell' and model.attrib['as'] == 'defaultParent':
-        print(model.tag, model.attrib)
         continue
 
     if model.tag != 'mxGraphModel':
@@ -60,15 +59,17 @@ for model in diagram:
         edgeDict = {}
         edgeDict2 = {}
         splitList = []
+        splitBlockList = []
         for cell in list(root):
             try:
+                tag = cell.tag
                 attrib = cell.attrib
                 attribid = attrib['id']
 
                 if attribid == '0' or attribid == '0:1:0':
-                    outattribid = 0
+                    parentattribid = attribid
                     outnode = ET.SubElement(outroot, 'mxCell')
-                    outnode.set('id', str(outattribid))
+                    outnode.set('id', attribid)
                     outnode.set('appname', 'Xcos')
                     outnode.set('description', '')
                     outnode.set('CellType', 'Unknown')
@@ -85,9 +86,9 @@ for model in diagram:
                     continue
 
                 if attribid == '1' or attribid == '0:2:0':
-                    outattribid = 1
+                    childattribid = attribid
                     outnode = ET.SubElement(outroot, 'mxCell')
-                    outnode.set('id', str(outattribid))
+                    outnode.set('id', attribid)
                     outnode.set('CellType', 'Unknown')
                     outnode.set('sourceVertex', str(0))
                     outnode.set('targetVertex', str(0))
@@ -101,18 +102,20 @@ for model in diagram:
                     node.set('as', 'displayProperties')
                     continue
 
+                if tag == 'SplitBlock':
+                    print('SplitBlock', attribid)
+                    splitBlockList.append(attribid)
+                    continue
+
                 try:
                     interfaceFunctionName = attrib['interfaceFunctionName']
-                except KeyError:
-                    print('KeyError in', attrib)
+                except KeyError as e:
                     interfaceFunctionName = None
 
                 if interfaceFunctionName is not None:
-                    outattribid += 1
-
                     outnode = ET.SubElement(outroot, 'mxCell')
                     outnode.set('style', interfaceFunctionName)
-                    outnode.set('id', str(outattribid))
+                    outnode.set('id', attribid)
                     outnode.set('vertex', str(1))
                     outnode.set('connectable', str(0))
                     outnode.set('CellType', 'Component')
@@ -122,89 +125,90 @@ for model in diagram:
                     outnode.set('tarx', str(0))
                     outnode.set('tary', str(0))
 
-                    componentGeometry = {}
-                    componentGeometry['height'] = 40
-                    componentGeometry['width'] = 40
-                    componentGeometry['x'] = 0
-                    componentGeometry['y'] = 0
                     mxGeometry = cell.find('mxGeometry')
-                    if mxGeometry is not None:
-                        componentGeometry['height'] = mxGeometry.attrib['height']
-                        componentGeometry['width'] = mxGeometry.attrib['width']
-                        componentGeometry['x'] = mxGeometry.attrib['x']
-                        componentGeometry['y'] = mxGeometry.attrib['y']
-
                     outMxGeometry = ET.SubElement(outnode, 'mxGeometry')
-                    outMxGeometry.set('x', componentGeometry['x'])
-                    outMxGeometry.set('y', componentGeometry['y'])
-                    outMxGeometry.set('width', componentGeometry['width'])
-                    outMxGeometry.set('height', componentGeometry['height'])
+                    outMxGeometry.set('x', mxGeometry.attrib['x'] if mxGeometry is not None else str(0))
+                    outMxGeometry.set('y', mxGeometry.attrib['y'] if mxGeometry is not None else str(0))
+                    outMxGeometry.set('width', mxGeometry.attrib['width'] if mxGeometry is not None else str(40))
+                    outMxGeometry.set('height', mxGeometry.attrib['height'] if mxGeometry is not None else str(40))
+                    if mxGeometry is not None and mxGeometry.attrib.get('relative', '0') != '0':
+                        outMxGeometry.set('relative', mxGeometry.attrib['relative'])
                     outMxGeometry.set('as', 'geometry')
+
+                    try:
+                        (parameters, display_parameter) = globals()['get_from_' + interfaceFunctionName](cell)
+                    except BaseException as e:
+                        print(repr(e), 'in', tag, attrib)
+                        (parameters, display_parameter) = ([], '')
+
+                    outObject = ET.SubElement(outnode, 'Object')
+                    for i in range(0, 20):
+                        outObject.set(f'p{i:03d}_value', parameters[i] if i < len(parameters) else '')
+                    outObject.set('as', 'parameter_values')
+
+                    outObject = ET.SubElement(outnode, 'Object')
+                    outObject.set('display_parameter', display_parameter)
+                    outObject.set('as', 'displayProperties')
                     continue
-                    style = attrib['style']
-                elif 'vertex' in attrib:
-                    style = attrib['style']
-                    geometry = {}
-                    geometry['height'] = 40
-                    geometry['width'] = 40
-                    geometry['x'] = 0
-                    geometry['y'] = 0
-                    ParentComponent = attrib['ParentComponent']
-                    if style == 'ExplicitInputPort':
-                        styleArray = EIV[ParentComponent]
-                    elif style == 'ImplicitInputPort':
-                        styleArray = IIV[ParentComponent]
-                    elif style == 'ControlPort':
-                        styleArray = CON[ParentComponent]
-                    elif style == 'ExplicitOutputPort':
-                        styleArray = EOV[ParentComponent]
-                    elif style == 'ImplicitOutputPort':
-                        styleArray = IOV[ParentComponent]
-                    elif style == 'CommandPort':
-                        styleArray = COM[ParentComponent]
-                    styleArray.append(attribid)
+                elif tag.endswith('Port'):
+                    ParentComponent = attrib['parent']
+                    IDLIST[attribid] = tag
+
+                    outnode = ET.SubElement(outroot, 'mxCell')
+                    outnode.set('style', tag)
+                    outnode.set('id', attribid)
+                    outnode.set('vertex', str(1))
+                    outnode.set('CellType', 'Pin')
+                    outnode.set('ParentComponent', ParentComponent)
+                    outnode.set('sourceVertex', str(0))
+                    outnode.set('targetVertex', str(0))
+                    outnode.set('tarx', str(0))
+                    outnode.set('tary', str(0))
+
                     mxGeometry = cell.find('mxGeometry')
-                    if mxGeometry is not None:
-                        geometry['height'] = mxGeometry.attrib['height']
-                        geometry['width'] = mxGeometry.attrib['width']
-                        geometry['x'] = mxGeometry.attrib.get('x', 0)
-                        geometry['y'] = mxGeometry.attrib.get('y', 0)
-                        if mxGeometry.attrib.get('relative', '0') == '1':
-                            geometry['x'] = float(componentGeometry['x']) + float(componentGeometry['width']) * float(geometry['x'])
-                            geometry['y'] = float(componentGeometry['y']) + float(componentGeometry['height']) * float(geometry['y'])
-                    ordering = len(styleArray)
-                    IDLIST[attribid] = style
-                    globals()[style](outroot, attribid, ParentComponent, ordering, geometry)
-                elif 'edge' in attrib:
-                    sourceVertex = attrib['sourceVertex']
-                    targetVertex = attrib['targetVertex']
+                    outMxGeometry = ET.SubElement(outnode, 'mxGeometry')
+                    outMxGeometry.set('x', mxGeometry.attrib['x'] if mxGeometry is not None else str(0))
+                    outMxGeometry.set('y', mxGeometry.attrib['y'] if mxGeometry is not None else str(0))
+                    outMxGeometry.set('width', mxGeometry.attrib['width'] if mxGeometry is not None else str(40))
+                    outMxGeometry.set('height', mxGeometry.attrib['height'] if mxGeometry is not None else str(40))
+                    if mxGeometry is not None and mxGeometry.attrib.get('relative', '0') != '0':
+                        outMxGeometry.set('relative', mxGeometry.attrib['relative'])
+                    outMxGeometry.set('as', 'geometry')
+
+                    outObject = ET.SubElement(outnode, 'Object')
+                    outObject.set('as', 'parameter_values')
+
+                    outObject = ET.SubElement(outnode, 'Object')
+                    outObject.set('as', 'displayProperties')
+                    continue
+                elif tag.endswith('Link'):
+                    sourceVertex = attrib['source']
+                    targetVertex = attrib['target']
                     sourceType = IDLIST[sourceVertex]
                     targetType = IDLIST[targetVertex]
+                    print('sourceType=', sourceType, 'targetType=',targetType)
+
+                    sourcePorts = ['ExplicitOutputPort', 'ImplicitOutputPort', 'CommandPort']
+                    targetPorts = ['ExplicitInputPort', 'ImplicitInputPort', 'ControlPort']
+                    links = ['ExplicitLink', 'ImplicitLink', 'CommandControlLink']
 
                     # switch vertices if required
-                    if sourceType in ['ExplicitInputPort', 'ImplicitInputPort', 'ControlPort'] and targetType in ['ExplicitOutputPort', 'ExplicitLink', 'ImplicitOutputPort', 'ImplicitLink', 'CommandPort', 'CommandControlLink']:
+                    if sourceType in targetPorts and targetType in [*sourcePorts, *links]:
                         (sourceVertex, targetVertex) = (targetVertex, sourceVertex)
                         (sourceType, targetType) = (targetType, sourceType)
-                    elif sourceType in ['ExplicitInputPort', 'ExplicitLink', 'ImplicitInputPort', 'ImplicitLink', 'ControlPort', 'CommandControlLink'] and targetType in ['ExplicitOutputPort', 'ImplicitOutputPort', 'CommandPort']:
+                    elif sourceType in [*targetPorts, *links] and targetType in sourcePorts:
                         (sourceVertex, targetVertex) = (targetVertex, sourceVertex)
                         (sourceType, targetType) = (targetType, sourceType)
 
                     style = None
-                    addSplit = False
                     if sourceType in ['ExplicitInputPort', 'ExplicitOutputPort', 'ImplicitInputPort', 'ImplicitOutputPort', 'CommandPort', 'ControlPort'] and targetType == sourceType:
                         print('cannot connect two ports of', sourceType, 'and', targetType)
                     elif sourceType in ['ExplicitOutputPort'] and targetType in ['ExplicitInputPort']:
                         style = 'ExplicitLink'
-                    elif sourceType in ['ExplicitOutputPort', 'ExplicitLink'] and targetType in ['ExplicitInputPort', 'ExplicitLink']:
-                        addSplit = True
                     elif sourceType in ['ImplicitOutputPort'] and targetType in ['ImplicitInputPort']:
                         style = 'ImplicitLink'
-                    elif sourceType in ['ImplicitOutputPort', 'ImplicitLink'] and targetType in ['ImplicitInputPort', 'ImplicitLink']:
-                        addSplit = True
                     elif sourceType in ['CommandPort'] and targetType in ['ControlPort']:
                         style = 'CommandControlLink'
-                    elif sourceType in ['CommandPort', 'CommandControlLink'] and targetType in ['ControlPort', 'CommandControlLink']:
-                        addSplit = True
                     else:
                         print(attribid, 'Unknown combination of', sourceType, 'and', targetType)
                         continue
@@ -213,25 +217,8 @@ for model in diagram:
                         edgeDict[attribid] = (style, sourceVertex, targetVertex, sourceType, targetType)
                         edgeDict2[attribid] = (style, sourceVertex, targetVertex, sourceType, targetType)
                         IDLIST[attribid] = style
-                    if addSplit:
-                        mxGeometry = cell.find('mxGeometry')
-                        if mxGeometry is not None:
-                            mxPoint = mxGeometry.find('mxPoint')
-                            if mxPoint is not None:
-                                geometry = {}
-                                geometry['width'] = mxPoint.attrib.get('width', '7')
-                                geometry['height'] = mxPoint.attrib.get('height', '7')
-                                geometry['x'] = mxPoint.attrib.get('x', '0')
-                                geometry['y'] = mxPoint.attrib.get('y', '0')
-                                splitList.append((attribid, sourceVertex, targetVertex, sourceType, targetType, geometry))
-                                try:
-                                    del edgeDict[sourceVertex]
-                                except KeyError:
-                                    pass
-                                try:
-                                    del edgeDict[targetVertex]
-                                except KeyError:
-                                    pass
+            except KeyError as e:
+                print(repr(e), 'in', tag, attrib)
             except BaseException:
                 traceback.print_exc()
 
@@ -332,11 +319,6 @@ for model in diagram:
             attribid = nextattribid
             nextattribid += 1
         globals()[style](outroot, attribid, sourceVertex, targetVertex)
-
-outnode = ET.SubElement(outmodel, 'mxCell')
-outnode.set('id', str(1))
-outnode.set('parent', str(0))
-outnode.set('as', 'defaultParent')
 
 outtree = ET.ElementTree(outmodel)
 ET.indent(outtree)

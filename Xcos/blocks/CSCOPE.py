@@ -59,3 +59,12 @@ def CSCOPE(outroot, attribid, ordering, geometry, parameters):
         height=geometry['height'], width=geometry['width'], x=geometry['x'], y=geometry['y'])
 
     return outnode
+
+def get_from_CSCOPE(cell):
+    scilabString = cell.find('./ScilabString[@as="exprs"]')
+    parameters = []
+    display_parameter = ''
+    for data in scilabString:
+        value = data.attrib.get('value')
+        parameters.append(value)
+    return (parameters, display_parameter)
