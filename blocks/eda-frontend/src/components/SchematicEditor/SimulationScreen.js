@@ -6,9 +6,11 @@ import { makeStyles } from '@material-ui/core/styles'
 import CloseIcon from '@material-ui/icons/Close'
 import { useSelector, useDispatch } from 'react-redux'
 
-import Graph, { setStatusDone } from '../Shared/Graph'
+import Graph, { setStatusDone, setStatusClosed } from '../Shared/Graph'
 import { setResultGraph } from '../../redux/actions/index'
 import api from '../../utils/Api'
+
+let sse = null
 
 const Transition = React.forwardRef(function Transition (props, ref) {
   return <Slide direction='up' ref={ref} {...props} />
@@ -36,6 +38,14 @@ const useStyles = makeStyles((theme) => ({
 
 export function setGraphStatusDone () {
   setStatusDone()
+}
+
+export function setGraphStatusClosed () {
+  if (sse !== null) {
+    sse.close()
+    sse = null
+  }
+  setStatusClosed()
 }
 
 // Screen to display simulation result in graph or text format
@@ -229,7 +239,7 @@ export default function SimulationScreen ({ open, close }) {
       return colorAxisArray
     }
 
-    const sse = new EventSource('/api/' + streamingUrl, { withCredentials: true })
+    sse = new EventSource('/api/' + streamingUrl, { withCredentials: true })
     sse.addEventListener('log', e => {
       ++loglines
 
@@ -239,7 +249,7 @@ export default function SimulationScreen ({ open, close }) {
       const block = parseInt(data[0])
       const figureId = (block === 2) ? data[4] : data[2] // For CMSCOPE
       let noOfGraph
-      if (block === 5 || block === 10) { // For 3D-SCOPE blocks
+      if (block === 5 || block === 10) { // For CANIMXY3D or CSCOPXY3D
         noOfGraph = data[11]
       } else if (block === 11) { // For BARXY
         noOfGraph = data[12]
@@ -257,7 +267,7 @@ export default function SimulationScreen ({ open, close }) {
         xmax = data[12]
         ymin = data[13]
         ymax = data[14]
-      } else if (block === 5 || block === 10) { // For 3D-SCOPE blocks
+      } else if (block === 5 || block === 10) { // For CSCOPXY3D or CANIMXY3D
         xmin = data[12]
         xmax = data[13]
         ymin = data[14]
@@ -274,12 +284,12 @@ export default function SimulationScreen ({ open, close }) {
         xmax = data[8]
         ymin = 0
         ymax = data[10]
-      } else if (block === 23) { // For CEVENTSCOPE
+      } else if (block === 23) { // For CEVSCPE
         xmin = 0
         xmax = data[11]
         ymin = 0
         ymax = 1
-      } else {
+      } else { // For CSCOPE or CMSCOPE
         xmin = 0
         xmax = data[13]
         ymin = data[11]
@@ -287,7 +297,7 @@ export default function SimulationScreen ({ open, close }) {
       }
       let alpha = null
       let theta = null
-      if (block === 5 || block === 10) { // For 3D-SCOPE blocks
+      if (block === 5 || block === 10) { // For CSCOPXY3D or CANIMXY3D
         alpha = data[18]
         theta = data[19]
       }
@@ -301,7 +311,7 @@ export default function SimulationScreen ({ open, close }) {
         typeChart = 'scatter'
       } else if (block === 12) { // For CMATVIEW
         typeChart = 'heatmap'
-      } else if (block === 23) { // For CEVENTSCOPE
+      } else if (block === 23) { // For CEVSCPE
         typeChart = 'column'
       } else {
         typeChart = 'line'
@@ -309,17 +319,17 @@ export default function SimulationScreen ({ open, close }) {
       let titleText
       if (block === 4) { // For CSCOPXY
         titleText = data[15] + '-' + data[2]
-      } else if (block === 5) { // For 3D-SCOPE block
+      } else if (block === 5) { // For CSCOPXY3D
         titleText = data[20] + '-' + data[2]
       } else if (block === 9) { // For CANIMXY
         titleText = data[16] + '-' + data[2]
-      } else if (block === 10) { // For 3D-SCOPE block
+      } else if (block === 10) { // For CANIMXY3D
         titleText = data[21] + '-' + data[2]
       } else if (block === 11) { // For BARXY
         titleText = data[13] + '-' + figureId
       } else if (block === 12) { // For CMATVIEW
         titleText = data[data.length - 1] + '-' + figureId
-      } else if (block === 23) { // For CEVENTSCOPE
+      } else if (block === 23) { // For CEVSCPE
         titleText = data[12] + '-' + data[2]
       } else {
         titleText = data[14] + '-' + data[2]
@@ -336,8 +346,7 @@ export default function SimulationScreen ({ open, close }) {
         }
       }
 
-      // For BARXY
-      if (block === 11) {
+      if (block === 11) { // For BARXY
         const x1 = parseFloat(data[4])
         const y1 = parseFloat(data[5])
         const x2 = parseFloat(data[6])
@@ -390,44 +399,40 @@ export default function SimulationScreen ({ open, close }) {
       } else if (block < 5 || block === 9 || block === 23 || block === 12) {
         // added new condition for ceventscope
         // process data for 2D-SCOPE blocks
-        const lineId = parseInt(data[6])
         const x = parseFloat(data[8])
         const y = parseFloat(data[9])
         // store 2d-data
         if (block !== 12) {
-          addPointToGraph(figureId, [lineId, x, y])
+          addPointToGraph(figureId, [x, y])
         } else {
           const values = getPointsForData(data, data[8], data[10])
           cmatviewCounter++ // to count lines from log
           if (cmatviewCounter === 1) {
             // Only add points of line 1, so that no delay in chart appearance)
-            addPointToGraph(figureId, [lineId, values])
+            addPointToGraph(figureId, [values])
           } else if (cmatviewCounter < 16) {
             // Only add points of line which are multiple of 5, till 15 like 5 10 15 (this is to reduce load on browser)
             const count = cmatviewCounter % 5
             if (count === 0) {
-              addPointToGraph(figureId, [lineId, values])
+              addPointToGraph(figureId, [values])
             }
           } else {
             // Only add points of line which are multiple of 10 but after 16 like 20 30 ... (this is to reduce load on browser)
             const count = cmatviewCounter % 10
             if (count === 0) {
-              addPointToGraph(figureId, [lineId, values])
+              addPointToGraph(figureId, [values])
             }
           }
         }
         // store block number for chart creation
-      } else if (block === 5 || block === 10) {
-        // process data for 3D-SCOPE blocks
-        const lineId = parseInt(data[6])
+      } else if (block === 5 || block === 10) { // For CSCOPXY3D or CANIMXY3D
         const x = parseFloat(data[8])
         const y = parseFloat(data[9])
         const z = parseFloat(data[10])
         // store 3d-data
-        addPointToGraph(figureId, [lineId, x, y, z])
+        addPointToGraph(figureId, [x, y, z])
         // store block number for chart creation
-      } else if (block === 13) {
-        // process data for CMAT3D blocks
+      } else if (block === 13) { // For CMAT3D
         // const blockUid = data[2]
         // const m = data[8]
         // const n = data[10]
@@ -440,9 +445,7 @@ export default function SimulationScreen ({ open, close }) {
         // const alpha = data[24]
         // const theta = data[26]
         // Chart function need to be written
-      } else if (block === 20) {
-        // Process data for Affich_m block
-
+      } else if (block === 20) { // For AFFICH_m
         // store length of data for each line
         const lengthOfData = data.length
         const blockId = data[2] // to store block id of affichm block
@@ -478,6 +481,7 @@ export default function SimulationScreen ({ open, close }) {
       printloglines()
       console.log('DONE')
       sse.close()
+      sse = null
       setGraphStatusDone()
     }, false)
     sse.addEventListener('ERROR', e => {
@@ -485,11 +489,13 @@ export default function SimulationScreen ({ open, close }) {
       console.log('ERROR', e)
       setError('Error in simulation: ' + e.data)
       sse.close()
+      sse = null
     }, false)
     sse.addEventListener('MESSAGE', e => {
       printloglines()
       console.log('MESSAGE', e)
       sse.close()
+      sse = null
     }, false)
   }, [taskId, chartIdList])
 

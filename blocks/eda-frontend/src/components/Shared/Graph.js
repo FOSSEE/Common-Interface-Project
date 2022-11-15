@@ -5,9 +5,14 @@ import HighchartsReact from 'highcharts-react-official'
 import { Queue } from '../../utils/Queue'
 
 let statusDone = false
+let statusClosed = false
 
 export function setStatusDone () {
   statusDone = true
+}
+
+export function setStatusClosed () {
+  statusClosed = true
 }
 
 class Graph extends React.Component {
@@ -34,29 +39,31 @@ class Graph extends React.Component {
 
               function addPoints () {
                 while (!pointList.isEmpty()) {
+                  if (statusClosed) {
+                    clearInterval(myInterval)
+                    return
+                  }
                   const xmax = chart.xAxis[0].max
                   const xmin = chart.xAxis[0].min
                   const xshift = (xmax - xmin) * 0.2
                   const point = pointList.peek()
-                  const x = parseFloat(point[1])
+                  const x = parseFloat(point[0])
                   if (x > xmax) {
                     chart.xAxis[0].update({
                       max: xmax + xshift,
                       min: xmin + xshift
                     })
-                    chart.redraw()
                   }
                   const timediff = starttime + x * 1000 - Date.now()
                   if (timediff > 0) {
                     chart.redraw()
                     return
                   }
-                  const y = parseFloat(point[2])
-                  series.addPoint([x, y])
+                  series.addPoint(point)
                   pointList.dequeue()
                 }
                 chart.redraw()
-                if (pointList.isEmpty() && statusDone) {
+                if ((pointList.isEmpty() && statusDone) || statusClosed) {
                   clearInterval(myInterval)
                 }
               }

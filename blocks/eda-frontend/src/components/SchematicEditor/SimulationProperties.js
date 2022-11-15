@@ -17,7 +17,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { setResultTitle, setResultTaskId } from '../../redux/actions/index'
 import { saveXml } from './Helper/ToolbarTools'
-import SimulationScreen from './SimulationScreen'
+import SimulationScreen, { setGraphStatusClosed } from './SimulationScreen'
 import api from '../../utils/Api'
 
 const useStyles = makeStyles((theme) => ({
@@ -73,6 +73,7 @@ export default function SimulationProperties () {
   }
 
   const handleSimulateClose = () => {
+    setGraphStatusClosed()
     setSimulateOpen(false)
   }
 
