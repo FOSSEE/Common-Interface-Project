@@ -1,17 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {
-  Button,
-  Typography,
-  Card,
-  CardActionArea,
-  CardActions,
-  CardContent,
-  CardMedia,
-  CardHeader,
-  Tooltip,
-  Snackbar
-} from '@material-ui/core'
+import { Button, Card, CardActionArea, CardActions, CardContent, CardHeader, CardMedia, Snackbar, Tooltip, Typography } from '@material-ui/core'
 import ShareIcon from '@material-ui/icons/Share'
 import { makeStyles } from '@material-ui/core/styles'
 import { Link as RouterLink } from 'react-router-dom'

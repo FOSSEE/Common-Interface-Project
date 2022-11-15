@@ -1,18 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import Highcharts from 'highcharts'
-import {
-  AppBar,
-  Button,
-  Container,
-  Dialog,
-  Grid,
-  IconButton,
-  Paper,
-  Slide,
-  Toolbar,
-  Typography
-} from '@material-ui/core'
+import { AppBar, Button, Container, Dialog, Grid, IconButton, Paper, Slide, Toolbar, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import CloseIcon from '@material-ui/icons/Close'
 import { useSelector, useDispatch } from 'react-redux'

@@ -1,10 +1,6 @@
 import React from 'react'
 
-import {
-  AppBar, Button, Toolbar, Typography, Link, IconButton, Avatar, Menu, ListItemText,
-  Fade,
-  MenuItem
-} from '@material-ui/core'
+import { AppBar, Avatar, Button, Fade, IconButton, Link, ListItemText, Menu, MenuItem, Toolbar, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { deepPurple } from '@material-ui/core/colors'
 import { Link as RouterLink, useHistory } from 'react-router-dom'

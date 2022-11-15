@@ -2,26 +2,26 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useHistory, Link as RouterLink } from 'react-router-dom'
 import {
-  Toolbar,
-  Typography,
-  IconButton,
-  Button,
-  Input,
-  Hidden,
-  Link,
   Avatar,
-  Menu,
-  Fade,
-  MenuItem,
-  ListItemText,
+  Button,
   Dialog,
-  DialogTitle,
-  DialogContent,
   DialogActions,
+  DialogContent,
   DialogContentText,
+  DialogTitle,
+  Fade,
   FormControlLabel,
+  Hidden,
+  IconButton,
+  Input,
+  Link,
+  ListItemText,
+  Menu,
+  MenuItem,
+  Snackbar,
   Switch,
-  Snackbar
+  Toolbar,
+  Typography
 } from '@material-ui/core'
 import { useSelector, useDispatch } from 'react-redux'
 import ShareIcon from '@material-ui/icons/Share'

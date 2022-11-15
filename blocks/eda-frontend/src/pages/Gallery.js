@@ -1,18 +1,7 @@
 // Main layout for gallery page.
 import React from 'react'
 import PropTypes from 'prop-types'
-import {
-  Card,
-  Grid,
-  Button,
-  Typography,
-  CardActions,
-  CardContent,
-  Container,
-  CssBaseline,
-  CardActionArea,
-  CardMedia
-} from '@material-ui/core'
+import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Container, CssBaseline, Grid, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { Link as RouterLink } from 'react-router-dom'
 import GallerySchSample from '../utils/GallerySchSample'
