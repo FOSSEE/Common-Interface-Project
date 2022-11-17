@@ -33,7 +33,11 @@ export default function toolbarTools (grid, unredo) {
 
 // SAVE
 export function saveXml (description = '') {
-  xmlWireConnections()
+  try {
+    xmlWireConnections()
+  } catch (e) {
+    console.log('error', e)
+  }
   const enc = new mxCodec(mxUtils.createXmlDocument())
   const model = graph.getModel()
   const firstCell = model.cells[0]
@@ -477,44 +481,32 @@ export function renderGalleryXML (xml) {
 }
 
 function xmlWireConnections () {
-  const erc = true
-  if (erc === false) {
-    alert('ERC check failed')
-  } else {
-    const list = graph.getModel().cells
-    for (const property in list) {
-      if (list[property].CellType === 'Component' && list[property].blockprefix !== 'PWR') {
-        const component = list[property]
+  const list = graph.getModel().cells
+  for (const component of Object.values(list)) {
+    const children = component.children
+    if (component.CellType !== 'Component' || component.blockprefix === 'PWR' || children === null) {
+      continue
+    }
 
-        if (component.children !== null) {
-          for (const child in component.children) {
-            const pin = component.children[child]
-            if (pin.vertex === true) {
-              try {
-                if (pin.edges !== null && pin.edges.length !== 0) {
-                  for (const wire in pin.edges) {
-                    if (pin.edges[wire].source !== null && pin.edges[wire].target !== null) {
-                      if (pin.edges[wire].source.edge === true) {
-                        pin.edges[wire].sourceVertex = pin.edges[wire].source.id
-                        pin.edges[wire].targetVertex = pin.edges[wire].target.id
-                      } else if (pin.edges[wire].target.edge === true) {
-                        pin.edges[wire].sourceVertex = pin.edges[wire].source.id
-                        pin.edges[wire].targetVertex = pin.edges[wire].target.id
-                        pin.edges[wire].tarx = pin.edges[wire].geometry.targetPoint.x
-                        pin.edges[wire].tary = pin.edges[wire].geometry.targetPoint.y
-                      } else {
-                        pin.edges[wire].node = '.' + pin.edges[wire].source.value
-                        pin.edges[wire].sourceVertex = pin.edges[wire].source.id
-                        pin.edges[wire].targetVertex = pin.edges[wire].target.id
-                      }
-                    }
-                    console.log('Check the wires here', pin.edges[wire].sourceVertex, pin.edges[wire].targetVertex)
-                  }
-                }
-              } catch (e) { console.log('error', e) }
-            }
-          }
+    for (const pin of Object.values(children)) {
+      if (pin.vertex !== true || pin.edges === null || pin.edges.length === 0) {
+        continue
+      }
+
+      for (const edge of Object.values(pin.edges)) {
+        if (edge.source === null || edge.target === null) {
+          continue
         }
+
+        edge.sourceVertex = edge.source.id
+        edge.targetVertex = edge.target.id
+        if (edge.target.edge === true) {
+          edge.tarx = edge.geometry.targetPoint.x
+          edge.tary = edge.geometry.targetPoint.y
+        } else if (edge.source.edge !== true) {
+          edge.node = '.' + edge.source.value
+        }
+        console.log('Check the wires here', edge.sourceVertex, edge.targetVertex)
       }
     }
   }

@@ -239,15 +239,7 @@ export default function SimulationScreen ({ open, close }) {
       return colorAxisArray
     }
 
-    sse = new EventSource('/api/' + streamingUrl, { withCredentials: true })
-    sse.addEventListener('log', e => {
-      ++loglines
-
-      const data = e.data.split(' ')
-
-      // store block info. from the data line
-      const block = parseInt(data[0])
-      const figureId = (block === 2) ? data[4] : data[2] // For CMSCOPE
+    const getNoOfGraph = (block, data) => {
       let noOfGraph
       if (block === 5 || block === 10) { // For CANIMXY3D or CSCOPXY3D
         noOfGraph = data[11]
@@ -256,6 +248,10 @@ export default function SimulationScreen ({ open, close }) {
       } else {
         noOfGraph = data[10]
       }
+      return noOfGraph
+    }
+
+    const getMinMaxValues = (block, data) => {
       let xmin
       let xmax
       let ymin
@@ -295,16 +291,28 @@ export default function SimulationScreen ({ open, close }) {
         ymin = data[11]
         ymax = data[12]
       }
+      return { xmin, xmax, ymin, ymax, zmin, zmax }
+    }
+
+    const getAngleValues = (block, data) => {
       let alpha = null
       let theta = null
       if (block === 5 || block === 10) { // For CSCOPXY3D or CANIMXY3D
         alpha = data[18]
         theta = data[19]
       }
+      return { alpha, theta }
+    }
+
+    const getColorAxis = (block, figureId) => {
       let colorAxis = null
       if (block === 12) { // For CMATVIEW
         colorAxis = getColorAxisForPoints(figureId)
       }
+      return colorAxis
+    }
+
+    const getTypeChart = (block) => {
       // set default chart type
       let typeChart
       if (block === 4 || block === 5 || block === 9 || block === 10) { // For CSCOPXY or CANIMXY
@@ -316,6 +324,10 @@ export default function SimulationScreen ({ open, close }) {
       } else {
         typeChart = 'line'
       }
+      return typeChart
+    }
+
+    const getTitleText = (block, figureId, data) => {
       let titleText
       if (block === 4) { // For CSCOPXY
         titleText = data[15] + '-' + data[2]
@@ -334,143 +346,189 @@ export default function SimulationScreen ({ open, close }) {
       } else {
         titleText = data[14] + '-' + data[2]
       }
+      return titleText
+    }
+
+    const createChart = (block, figureId, noOfGraph, xmin, xmax, ymin, ymax, zmin, zmax, alpha, theta, colorAxis, typeChart, titleText) => {
+      if (block === 5 || block === 10) {
+        // process data for 3D-SCOPE blocks
+        createNewChart3d(figureId, noOfGraph, xmin, xmax, ymin, ymax, zmin, zmax, typeChart, titleText, alpha, theta)
+      } else if (block < 5 || block === 9 || block === 11 || block === 12 || block === 23) {
+        // sink block is not CSCOPXY
+        createNewChart(figureId, noOfGraph, xmin, xmax, ymin, ymax, typeChart, titleText, colorAxis)
+        range.current[chartIdList.current[figureId]] = parseFloat(xmax)
+      }
+    }
+
+    const addPointTo11 = (block, figureId, data) => {
+      const x1 = parseFloat(data[4])
+      const y1 = parseFloat(data[5])
+      const x2 = parseFloat(data[6])
+      const y2 = parseFloat(data[7])
+
+      pnts.push([x1, y1])
+      pnts.push([x2, y2])
+
+      // Ending condition for blocks not having a dataline for 'Ending'
+      if (pnts.length === this.finalIntegrationTime * 10 - 1) {
+        const xhr = new XMLHttpRequest()
+        xhr.open('GET', '/endBlock/' + figureId, true)
+        xhr.send()
+      }
+    }
+
+    const addPointTo21 = (block, figureId, data) => {
+      // handle writec_f and writeau_f
+      // create a form and add the filename to it
+      const form = new FormData()
+      form.append('path', data[4])
+      const xhr = new XMLHttpRequest()
+      xhr.responseType = 'blob'
+      // sending form to get file for download
+      xhr.open('POST', '/downloadfile', true)
+      xhr.onload = function () {
+        if (this.status === 200) {
+          // blob data type to receive the file
+          const blob = this.response
+          const url = window.URL.createObjectURL(blob)
+          // popup for download option of the file
+          const anchor = document.createElement('a')
+          document.body.appendChild(anchor)
+          anchor.style = 'display: none'
+          anchor.href = url
+          if (block === 21) {
+            anchor.download = 'writec-' + taskId + '.datas'
+          } else {
+            anchor.download = 'audio-' + taskId + '.au'
+          }
+          anchor.click()
+          document.body.removeChild(anchor)
+          window.URL.revokeObjectURL(url)
+        }
+      }
+      xhr.send(form)
+      const xhr2 = new XMLHttpRequest()
+      xhr2.open('POST', '/deletefile')
+      xhr2.onload = function () {
+      }
+      xhr2.send(form)
+    }
+
+    const addPointTo9 = (block, figureId, data) => {
+      // added new condition for ceventscope
+      // process data for 2D-SCOPE blocks
+      const x = parseFloat(data[8])
+      const y = parseFloat(data[9])
+      // store 2d-data
+      if (block !== 12) {
+        addPointToGraph(figureId, [x, y])
+      } else {
+        const values = getPointsForData(data, data[8], data[10])
+        cmatviewCounter++ // to count lines from log
+        if (cmatviewCounter === 1) {
+          // Only add points of line 1, so that no delay in chart appearance)
+          addPointToGraph(figureId, [values])
+        } else if (cmatviewCounter < 16) {
+          // Only add points of line which are multiple of 5, till 15 like 5 10 15 (this is to reduce load on browser)
+          const count = cmatviewCounter % 5
+          if (count === 0) {
+            addPointToGraph(figureId, [values])
+          }
+        } else {
+          // Only add points of line which are multiple of 10 but after 16 like 20 30 ... (this is to reduce load on browser)
+          const count = cmatviewCounter % 10
+          if (count === 0) {
+            addPointToGraph(figureId, [values])
+          }
+        }
+      }
+      // store block number for chart creation
+    }
+
+    const addPointTo5 = (block, figureId, data) => {
+      const x = parseFloat(data[8])
+      const y = parseFloat(data[9])
+      const z = parseFloat(data[10])
+      // store 3d-data
+      addPointToGraph(figureId, [x, y, z])
+      // store block number for chart creation
+    }
+
+    const addPointTo13 = (block, figureId, data) => {
+      // const blockUid = data[2]
+      // const m = data[8]
+      // const n = data[10]
+      // const xmin = data[12]
+      // const xmax = data[14]
+      // const ymin = data[16]
+      // const ymax = data[18]
+      // const zmin = data[20]
+      // const zmax = data[22]
+      // const alpha = data[24]
+      // const theta = data[26]
+      // Chart function need to be written
+    }
+
+    const addPointTo20 = (block, figureId, data) => {
+      // store length of data for each line
+      const lengthOfData = data.length
+      const blockId = data[2] // to store block id of affichm block
+      const columns = data[5] // gets column of matrix
+
+      // below code creates a html code which is table with data in that
+      // (To display it as matrix)
+      let p = '<b>Value of Block : ' + data[lengthOfData - 1] + '-' + blockId + "</b> (Refer to label on block)<br><br><table style='width:100%'><tr>"
+      let count = 1
+      for (let k = 6; k < lengthOfData - 1; k++) {
+        if (data[k].length !== 0) {
+          p += '<td>'
+          p += data[k]
+          if (count % columns === 0) {
+            // to break into new column of table
+            p += '</td></tr><tr>'
+          } else {
+            p += '</td>'
+          }
+          count++
+        }
+      }
+      p += '</table>'
+      // to send data to display result
+      createAffichDisplaytext(p, blockId)
+    }
+
+    sse = new EventSource('/api/' + streamingUrl, { withCredentials: true })
+    sse.addEventListener('log', e => {
+      ++loglines
+
+      const data = e.data.split(' ')
+
+      // store block info. from the data line
+      const block = parseInt(data[0])
+      const figureId = (block === 2) ? data[4] : data[2] // For CMSCOPE
+      const noOfGraph = getNoOfGraph(block, data)
+      const { xmin, xmax, ymin, ymax, zmin, zmax } = getMinMaxValues(block, data)
+      const { alpha, theta } = getAngleValues(block, data)
+      const colorAxis = getColorAxis(block, figureId)
+      const typeChart = getTypeChart(block)
+      const titleText = getTitleText(block, figureId, data)
 
       if (chartIdList.current[figureId] === undefined) {
-        if (block === 5 || block === 10) {
-          // process data for 3D-SCOPE blocks
-          createNewChart3d(figureId, noOfGraph, xmin, xmax, ymin, ymax, zmin, zmax, typeChart, titleText, alpha, theta)
-        } else if (block < 5 || block === 9 || block === 11 || block === 12 || block === 23) {
-          // sink block is not CSCOPXY
-          createNewChart(figureId, noOfGraph, xmin, xmax, ymin, ymax, typeChart, titleText, colorAxis)
-          range.current[chartIdList.current[figureId]] = parseFloat(xmax)
-        }
+        createChart(block, figureId, noOfGraph, xmin, xmax, ymin, ymax, zmin, zmax, alpha, theta, colorAxis, typeChart, titleText)
       }
 
       if (block === 11) { // For BARXY
-        const x1 = parseFloat(data[4])
-        const y1 = parseFloat(data[5])
-        const x2 = parseFloat(data[6])
-        const y2 = parseFloat(data[7])
-
-        pnts.push([x1, y1])
-        pnts.push([x2, y2])
-
-        // Ending condition for blocks not having a dataline for 'Ending'
-        if (pnts.length === this.finalIntegrationTime * 10 - 1) {
-          const xhr = new XMLHttpRequest()
-          xhr.open('GET', '/endBlock/' + figureId, true)
-          xhr.send()
-        }
+        addPointTo11(block, figureId, data)
       } else if (block === 21 || block === 22) {
-        // handle writec_f and writeau_f
-        // create a form and add the filename to it
-        const form = new FormData()
-        form.append('path', data[4])
-        const xhr = new XMLHttpRequest()
-        xhr.responseType = 'blob'
-        // sending form to get file for download
-        xhr.open('POST', '/downloadfile', true)
-        xhr.onload = function () {
-          if (this.status === 200) {
-            // blob data type to receive the file
-            const blob = this.response
-            const url = window.URL.createObjectURL(blob)
-            // popup for download option of the file
-            const anchor = document.createElement('a')
-            document.body.appendChild(anchor)
-            anchor.style = 'display: none'
-            anchor.href = url
-            if (block === 21) {
-              anchor.download = 'writec-' + taskId + '.datas'
-            } else {
-              anchor.download = 'audio-' + taskId + '.au'
-            }
-            anchor.click()
-            document.body.removeChild(anchor)
-            window.URL.revokeObjectURL(url)
-          }
-        }
-        xhr.send(form)
-        const xhr2 = new XMLHttpRequest()
-        xhr2.open('POST', '/deletefile')
-        xhr2.onload = function () {
-        }
-        xhr2.send(form)
+        addPointTo21(block, figureId, data)
       } else if (block < 5 || block === 9 || block === 23 || block === 12) {
-        // added new condition for ceventscope
-        // process data for 2D-SCOPE blocks
-        const x = parseFloat(data[8])
-        const y = parseFloat(data[9])
-        // store 2d-data
-        if (block !== 12) {
-          addPointToGraph(figureId, [x, y])
-        } else {
-          const values = getPointsForData(data, data[8], data[10])
-          cmatviewCounter++ // to count lines from log
-          if (cmatviewCounter === 1) {
-            // Only add points of line 1, so that no delay in chart appearance)
-            addPointToGraph(figureId, [values])
-          } else if (cmatviewCounter < 16) {
-            // Only add points of line which are multiple of 5, till 15 like 5 10 15 (this is to reduce load on browser)
-            const count = cmatviewCounter % 5
-            if (count === 0) {
-              addPointToGraph(figureId, [values])
-            }
-          } else {
-            // Only add points of line which are multiple of 10 but after 16 like 20 30 ... (this is to reduce load on browser)
-            const count = cmatviewCounter % 10
-            if (count === 0) {
-              addPointToGraph(figureId, [values])
-            }
-          }
-        }
-        // store block number for chart creation
+        addPointTo9(block, figureId, data)
       } else if (block === 5 || block === 10) { // For CSCOPXY3D or CANIMXY3D
-        const x = parseFloat(data[8])
-        const y = parseFloat(data[9])
-        const z = parseFloat(data[10])
-        // store 3d-data
-        addPointToGraph(figureId, [x, y, z])
-        // store block number for chart creation
+        addPointTo5(block, figureId, data)
       } else if (block === 13) { // For CMAT3D
-        // const blockUid = data[2]
-        // const m = data[8]
-        // const n = data[10]
-        // const xmin = data[12]
-        // const xmax = data[14]
-        // const ymin = data[16]
-        // const ymax = data[18]
-        // const zmin = data[20]
-        // const zmax = data[22]
-        // const alpha = data[24]
-        // const theta = data[26]
-        // Chart function need to be written
+        addPointTo13(block, figureId, data)
       } else if (block === 20) { // For AFFICH_m
-        // store length of data for each line
-        const lengthOfData = data.length
-        const blockId = data[2] // to store block id of affichm block
-        const columns = data[5] // gets column of matrix
-
-        // below code creates a html code which is table with data in that
-        // (To display it as matrix)
-        let p = '<b>Value of Block : ' + data[lengthOfData - 1] + '-' + blockId + "</b> (Refer to label on block)<br><br><table style='width:100%'><tr>"
-        let count = 1
-        for (let k = 6; k < lengthOfData - 1; k++) {
-          if (data[k].length !== 0) {
-            p += '<td>'
-            p += data[k]
-            if (count % columns === 0) {
-              // to break into new column of table
-              p += '</td></tr><tr>'
-            } else {
-              p += '</td>'
-            }
-            count++
-          }
-        }
-        p += '</table>'
-        // to send data to display result
-        createAffichDisplaytext(p, blockId)
+        addPointTo20(block, figureId, data)
       }
     }, false)
     sse.addEventListener('duplicate', e => {
