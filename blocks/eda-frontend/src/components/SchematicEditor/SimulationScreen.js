@@ -239,15 +239,7 @@ export default function SimulationScreen ({ open, close }) {
       return colorAxisArray
     }
 
-    sse = new EventSource('/api/' + streamingUrl, { withCredentials: true })
-    sse.addEventListener('log', e => {
-      ++loglines
-
-      const data = e.data.split(' ')
-
-      // store block info. from the data line
-      const block = parseInt(data[0])
-      const figureId = (block === 2) ? data[4] : data[2] // For CMSCOPE
+    const getNoOfGraph = (block, data) => {
       let noOfGraph
       if (block === 5 || block === 10) { // For CANIMXY3D or CSCOPXY3D
         noOfGraph = data[11]
@@ -256,6 +248,10 @@ export default function SimulationScreen ({ open, close }) {
       } else {
         noOfGraph = data[10]
       }
+      return noOfGraph
+    }
+
+    const getMinMaxValues = (block, data) => {
       let xmin
       let xmax
       let ymin
@@ -295,16 +291,28 @@ export default function SimulationScreen ({ open, close }) {
         ymin = data[11]
         ymax = data[12]
       }
+      return { xmin, xmax, ymin, ymax, zmin, zmax }
+    }
+
+    const getAngleValues = (block, data) => {
       let alpha = null
       let theta = null
       if (block === 5 || block === 10) { // For CSCOPXY3D or CANIMXY3D
         alpha = data[18]
         theta = data[19]
       }
+      return { alpha, theta }
+    }
+
+    const getColorAxis = (block, figureId) => {
       let colorAxis = null
       if (block === 12) { // For CMATVIEW
         colorAxis = getColorAxisForPoints(figureId)
       }
+      return colorAxis
+    }
+
+    const getTypeChart = (block) => {
       // set default chart type
       let typeChart
       if (block === 4 || block === 5 || block === 9 || block === 10) { // For CSCOPXY or CANIMXY
@@ -316,6 +324,10 @@ export default function SimulationScreen ({ open, close }) {
       } else {
         typeChart = 'line'
       }
+      return typeChart
+    }
+
+    const getTitleText = (block, figureId, data) => {
       let titleText
       if (block === 4) { // For CSCOPXY
         titleText = data[15] + '-' + data[2]
@@ -334,6 +346,24 @@ export default function SimulationScreen ({ open, close }) {
       } else {
         titleText = data[14] + '-' + data[2]
       }
+      return titleText
+    }
+
+    sse = new EventSource('/api/' + streamingUrl, { withCredentials: true })
+    sse.addEventListener('log', e => {
+      ++loglines
+
+      const data = e.data.split(' ')
+
+      // store block info. from the data line
+      const block = parseInt(data[0])
+      const figureId = (block === 2) ? data[4] : data[2] // For CMSCOPE
+      const noOfGraph = getNoOfGraph(block, data)
+      const { xmin, xmax, ymin, ymax, zmin, zmax } = getMinMaxValues(block, data)
+      const { alpha, theta } = getAngleValues(block, data)
+      const colorAxis = getColorAxis(block, figureId)
+      const typeChart = getTypeChart(block)
+      const titleText = getTitleText(block, figureId, data)
 
       if (chartIdList.current[figureId] === undefined) {
         if (block === 5 || block === 10) {
