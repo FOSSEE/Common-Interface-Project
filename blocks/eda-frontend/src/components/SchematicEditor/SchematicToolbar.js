@@ -1,7 +1,7 @@
 /* eslint new-cap: ["error", {"newIsCapExceptionPattern": "^mx"}] */
 import React from 'react'
 import PropTypes from 'prop-types'
-import Canvg from 'canvg'
+import { Canvg } from 'canvg'
 import { IconButton, Tooltip, Snackbar } from '@material-ui/core'
 import AddBoxOutlinedIcon from '@material-ui/icons/AddBoxOutlined'
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
