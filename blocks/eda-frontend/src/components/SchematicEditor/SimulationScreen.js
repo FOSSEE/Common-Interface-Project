@@ -12,6 +12,66 @@ import api from '../../utils/Api'
 
 let sse = null
 
+const SinkBlocks = {
+  CSCOPE: 1,
+  CMSCOPE: 2,
+  CFSCOPE: 3,
+  CSCOPXY: 4,
+  CSCOPXY3D: 5,
+  CANIMXY: 9,
+  CANIMXY3D: 10,
+  BARXY: 11,
+  CMATVIEW: 12,
+  CMAT3D: 13,
+  AFFICH_m: 20,
+  WRITEC_f: 21,
+  WRITEAU_f: 22,
+  CEVSCPE: 23
+}
+
+const BLOCKSXY = [
+  SinkBlocks.CSCOPXY,
+  SinkBlocks.CANIMXY
+]
+
+const BLOCKSXY3D = [
+  SinkBlocks.CSCOPXY3D,
+  SinkBlocks.CANIMXY3D
+]
+
+const BLOCKSWRITE = [
+  SinkBlocks.WRITEC_f,
+  SinkBlocks.WRITEAU_f
+]
+
+const BLOCKSSCATTER = [
+  SinkBlocks.CSCOPXY,
+  SinkBlocks.CSCOPXY3D,
+  SinkBlocks.CANIMXY,
+  SinkBlocks.CANIMXY3D
+]
+
+const BLOCKSCHART = [
+  SinkBlocks.CSCOPE,
+  SinkBlocks.CMSCOPE,
+  SinkBlocks.CFSCOPE,
+  SinkBlocks.CSCOPXY,
+  SinkBlocks.CANIMXY,
+  SinkBlocks.BARXY,
+  SinkBlocks.CMATVIEW,
+  SinkBlocks.CEVSCPE
+]
+
+const BLOCKSPOINT = [
+  SinkBlocks.CSCOPE,
+  SinkBlocks.CMSCOPE,
+  SinkBlocks.CFSCOPE,
+  SinkBlocks.CSCOPXY,
+  SinkBlocks.CANIMXY,
+  SinkBlocks.CMATVIEW,
+  SinkBlocks.CEVSCPE
+]
+
 const Transition = React.forwardRef(function Transition (props, ref) {
   return <Slide direction='up' ref={ref} {...props} />
 })
@@ -241,9 +301,9 @@ export default function SimulationScreen ({ open, close }) {
 
     const getNoOfGraph = (block, data) => {
       let noOfGraph
-      if (block === 5 || block === 10) { // For CANIMXY3D or CSCOPXY3D
+      if (BLOCKSXY3D.includes(block)) {
         noOfGraph = data[11]
-      } else if (block === 11) { // For BARXY
+      } else if (block === SinkBlocks.BARXY) {
         noOfGraph = data[12]
       } else {
         noOfGraph = data[10]
@@ -258,34 +318,34 @@ export default function SimulationScreen ({ open, close }) {
       let ymax
       let zmin = null
       let zmax = null
-      if (block === 4 || block === 9) { // For CSCOPXY or CANIMXY
+      if (BLOCKSXY.includes(block)) {
         xmin = data[11]
         xmax = data[12]
         ymin = data[13]
         ymax = data[14]
-      } else if (block === 5 || block === 10) { // For CSCOPXY3D or CANIMXY3D
+      } else if (BLOCKSXY3D.includes(block)) {
         xmin = data[12]
         xmax = data[13]
         ymin = data[14]
         ymax = data[15]
         zmin = data[16]
         zmax = data[17]
-      } else if (block === 11) { // For BARXY
+      } else if (block === SinkBlocks.BARXY) {
         xmin = data[8]
         xmax = data[9]
         ymin = data[10]
         ymax = data[11]
-      } else if (block === 12) { // For CMATVIEW
+      } else if (block === SinkBlocks.CMATVIEW) {
         xmin = 0
         xmax = data[8]
         ymin = 0
         ymax = data[10]
-      } else if (block === 23) { // For CEVSCPE
+      } else if (block === SinkBlocks.CEVSCPE) {
         xmin = 0
         xmax = data[11]
         ymin = 0
         ymax = 1
-      } else { // For CSCOPE or CMSCOPE
+      } else {
         xmin = 0
         xmax = data[13]
         ymin = data[11]
@@ -297,7 +357,7 @@ export default function SimulationScreen ({ open, close }) {
     const getAngleValues = (block, data) => {
       let alpha = null
       let theta = null
-      if (block === 5 || block === 10) { // For CSCOPXY3D or CANIMXY3D
+      if (BLOCKSXY3D.includes(block)) {
         alpha = data[18]
         theta = data[19]
       }
@@ -306,7 +366,7 @@ export default function SimulationScreen ({ open, close }) {
 
     const getColorAxis = (block, figureId) => {
       let colorAxis = null
-      if (block === 12) { // For CMATVIEW
+      if (block === SinkBlocks.CMATVIEW) {
         colorAxis = getColorAxisForPoints(figureId)
       }
       return colorAxis
@@ -315,11 +375,11 @@ export default function SimulationScreen ({ open, close }) {
     const getTypeChart = (block) => {
       // set default chart type
       let typeChart
-      if (block === 4 || block === 5 || block === 9 || block === 10) { // For CSCOPXY or CANIMXY
+      if (BLOCKSSCATTER.includes(block)) {
         typeChart = 'scatter'
-      } else if (block === 12) { // For CMATVIEW
+      } else if (block === SinkBlocks.CMATVIEW) {
         typeChart = 'heatmap'
-      } else if (block === 23) { // For CEVSCPE
+      } else if (block === SinkBlocks.CEVSCPE) {
         typeChart = 'column'
       } else {
         typeChart = 'line'
@@ -329,19 +389,19 @@ export default function SimulationScreen ({ open, close }) {
 
     const getTitleText = (block, figureId, data) => {
       let titleText
-      if (block === 4) { // For CSCOPXY
+      if (block === SinkBlocks.CSCOPXY) {
         titleText = data[15] + '-' + data[2]
-      } else if (block === 5) { // For CSCOPXY3D
+      } else if (block === SinkBlocks.CSCOPXY3D) {
         titleText = data[20] + '-' + data[2]
-      } else if (block === 9) { // For CANIMXY
+      } else if (block === SinkBlocks.CANIMXY) {
         titleText = data[16] + '-' + data[2]
-      } else if (block === 10) { // For CANIMXY3D
+      } else if (block === SinkBlocks.CANIMXY3D) {
         titleText = data[21] + '-' + data[2]
-      } else if (block === 11) { // For BARXY
+      } else if (block === SinkBlocks.BARXY) {
         titleText = data[13] + '-' + figureId
-      } else if (block === 12) { // For CMATVIEW
+      } else if (block === SinkBlocks.CMATVIEW) {
         titleText = data[data.length - 1] + '-' + figureId
-      } else if (block === 23) { // For CEVSCPE
+      } else if (block === SinkBlocks.CEVSCPE) {
         titleText = data[12] + '-' + data[2]
       } else {
         titleText = data[14] + '-' + data[2]
@@ -350,10 +410,10 @@ export default function SimulationScreen ({ open, close }) {
     }
 
     const createChart = (block, figureId, noOfGraph, xmin, xmax, ymin, ymax, zmin, zmax, alpha, theta, colorAxis, typeChart, titleText) => {
-      if (block === 5 || block === 10) {
+      if (BLOCKSXY3D.includes(block)) {
         // process data for 3D-SCOPE blocks
         createNewChart3d(figureId, noOfGraph, xmin, xmax, ymin, ymax, zmin, zmax, typeChart, titleText, alpha, theta)
-      } else if (block < 5 || block === 9 || block === 11 || block === 12 || block === 23) {
+      } else if (BLOCKSCHART.includes(block)) {
         // sink block is not CSCOPXY
         createNewChart(figureId, noOfGraph, xmin, xmax, ymin, ymax, typeChart, titleText, colorAxis)
         range.current[chartIdList.current[figureId]] = parseFloat(xmax)
@@ -396,7 +456,7 @@ export default function SimulationScreen ({ open, close }) {
           document.body.appendChild(anchor)
           anchor.style = 'display: none'
           anchor.href = url
-          if (block === 21) {
+          if (block === SinkBlocks.WRITEC_f) {
             anchor.download = 'writec-' + taskId + '.datas'
           } else {
             anchor.download = 'audio-' + taskId + '.au'
@@ -505,7 +565,7 @@ export default function SimulationScreen ({ open, close }) {
 
       // store block info. from the data line
       const block = parseInt(data[0])
-      const figureId = (block === 2) ? data[4] : data[2] // For CMSCOPE
+      const figureId = (block === SinkBlocks.CMSCOPE) ? data[4] : data[2]
       const noOfGraph = getNoOfGraph(block, data)
       const { xmin, xmax, ymin, ymax, zmin, zmax } = getMinMaxValues(block, data)
       const { alpha, theta } = getAngleValues(block, data)
@@ -517,17 +577,17 @@ export default function SimulationScreen ({ open, close }) {
         createChart(block, figureId, noOfGraph, xmin, xmax, ymin, ymax, zmin, zmax, alpha, theta, colorAxis, typeChart, titleText)
       }
 
-      if (block === 11) { // For BARXY
+      if (block === SinkBlocks.BARXY) {
         addPointTo11(block, figureId, data)
-      } else if (block === 21 || block === 22) {
+      } else if (BLOCKSWRITE.includes(block)) {
         addPointTo21(block, figureId, data)
-      } else if (block < 5 || block === 9 || block === 23 || block === 12) {
+      } else if (BLOCKSPOINT.includes(block)) {
         addPointTo9(block, figureId, data)
-      } else if (block === 5 || block === 10) { // For CSCOPXY3D or CANIMXY3D
+      } else if (BLOCKSXY3D.includes(block)) {
         addPointTo5(block, figureId, data)
-      } else if (block === 13) { // For CMAT3D
+      } else if (block === SinkBlocks.CMAT3D) {
         addPointTo13(block, figureId, data)
-      } else if (block === 20) { // For AFFICH_m
+      } else if (block === SinkBlocks.AFFICH_m) {
         addPointTo20(block, figureId, data)
       }
     }, false)
