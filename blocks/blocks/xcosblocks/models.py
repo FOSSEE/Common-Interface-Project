@@ -426,3 +426,149 @@ class BlockPort(models.Model):
             models.UniqueConstraint(fields=['block', 'port_order'],
                                     name='unique_block_port_order')
         ]
+
+
+class BlockExprs(models.Model):
+    id = models.AutoField(primary_key=True)
+    block = models.ForeignKey(Block, on_delete=models.PROTECT)
+
+    p000 = models.CharField(max_length=100, blank=True, null=True)
+    p000_type = models.ForeignKey(ParameterDataType, on_delete=models.PROTECT,
+                                  related_name='+', blank=True, null=True)
+    p000_value_initial = models.CharField(max_length=100,
+                                          blank=True, null=True)
+    p000_xml = models.CharField(max_length=300, blank=True, null=True)
+    
+    p001 = models.CharField(max_length=100, blank=True, null=True)
+    p001_type = models.ForeignKey(ParameterDataType, on_delete=models.PROTECT,
+                                  related_name='+', blank=True, null=True)
+    p001_value_initial = models.CharField(max_length=100,
+                                          blank=True, null=True)
+    p001_xml = models.CharField(max_length=300, blank=True, null=True)
+    
+    p002 = models.CharField(max_length=100, blank=True, null=True)
+    p002_type = models.ForeignKey(ParameterDataType, on_delete=models.PROTECT,
+                                  related_name='+', blank=True, null=True)
+    p002_value_initial = models.CharField(max_length=100,
+                                          blank=True, null=True)
+    p002_xml = models.CharField(max_length=300, blank=True, null=True)
+    
+    p003 = models.CharField(max_length=100, blank=True, null=True)
+    p003_type = models.ForeignKey(ParameterDataType, on_delete=models.PROTECT,
+                                  related_name='+', blank=True, null=True)
+    p003_value_initial = models.CharField(max_length=100,
+                                          blank=True, null=True)
+    p003_xml = models.CharField(max_length=300, blank=True, null=True)
+    
+    p004 = models.CharField(max_length=100, blank=True, null=True)
+    p004_type = models.ForeignKey(ParameterDataType, on_delete=models.PROTECT,
+                                  related_name='+', blank=True, null=True)
+    p004_value_initial = models.CharField(max_length=100,
+                                          blank=True, null=True)
+    p004_xml = models.CharField(max_length=300, blank=True, null=True)
+    
+    p005 = models.CharField(max_length=100, blank=True, null=True)
+    p005_type = models.ForeignKey(ParameterDataType, on_delete=models.PROTECT,
+                                  related_name='+', blank=True, null=True)
+    p005_value_initial = models.CharField(max_length=100,
+                                          blank=True, null=True)
+    p005_xml = models.CharField(max_length=300, blank=True, null=True)
+    
+    p006 = models.CharField(max_length=100, blank=True, null=True)
+    p006_type = models.ForeignKey(ParameterDataType, on_delete=models.PROTECT,
+                                  related_name='+', blank=True, null=True)
+    p006_value_initial = models.CharField(max_length=100,
+                                          blank=True, null=True)
+    p006_xml = models.CharField(max_length=300, blank=True, null=True)
+    
+    p007 = models.CharField(max_length=100, blank=True, null=True)
+    p007_type = models.ForeignKey(ParameterDataType, on_delete=models.PROTECT,
+                                  related_name='+', blank=True, null=True)
+    p007_value_initial = models.CharField(max_length=100,
+                                          blank=True, null=True)
+    p007_xml = models.CharField(max_length=300, blank=True, null=True)
+    
+    p008 = models.CharField(max_length=100, blank=True, null=True)
+    p008_type = models.ForeignKey(ParameterDataType, on_delete=models.PROTECT,
+                                  related_name='+', blank=True, null=True)
+    p008_value_initial = models.CharField(max_length=100,
+                                          blank=True, null=True)
+    p008_xml = models.CharField(max_length=300, blank=True, null=True)
+    
+    p009 = models.CharField(max_length=100, blank=True, null=True)
+    p009_type = models.ForeignKey(ParameterDataType, on_delete=models.PROTECT,
+                                  related_name='+', blank=True, null=True)
+    p009_value_initial = models.CharField(max_length=100,
+                                          blank=True, null=True)
+    p009_xml = models.CharField(max_length=300, blank=True, null=True)
+    
+    p010 = models.CharField(max_length=100, blank=True, null=True)
+    p010_type = models.ForeignKey(ParameterDataType, on_delete=models.PROTECT,
+                                  related_name='+', blank=True, null=True)
+    p010_value_initial = models.CharField(max_length=100,
+                                          blank=True, null=True)
+    p010_xml = models.CharField(max_length=300, blank=True, null=True)
+    
+    p011 = models.CharField(max_length=100, blank=True, null=True)
+    p011_type = models.ForeignKey(ParameterDataType, on_delete=models.PROTECT,
+                                  related_name='+', blank=True, null=True)
+    p011_value_initial = models.CharField(max_length=100,
+                                          blank=True, null=True)
+    p011_xml = models.CharField(max_length=300, blank=True, null=True)
+    
+    p012 = models.CharField(max_length=100, blank=True, null=True)
+    p012_type = models.ForeignKey(ParameterDataType, on_delete=models.PROTECT,
+                                  related_name='+', blank=True, null=True)
+    p012_value_initial = models.CharField(max_length=100,
+                                          blank=True, null=True)
+    p012_xml = models.CharField(max_length=300, blank=True, null=True)
+    
+    p013 = models.CharField(max_length=100, blank=True, null=True)
+    p013_type = models.ForeignKey(ParameterDataType, on_delete=models.PROTECT,
+                                  related_name='+', blank=True, null=True)
+    p013_value_initial = models.CharField(max_length=100,
+                                          blank=True, null=True)
+    p013_xml = models.CharField(max_length=300, blank=True, null=True)
+    
+    p014 = models.CharField(max_length=100, blank=True, null=True)
+    p014_type = models.ForeignKey(ParameterDataType, on_delete=models.PROTECT,
+                                  related_name='+', blank=True, null=True)
+    p014_value_initial = models.CharField(max_length=100,
+                                          blank=True, null=True)
+    p014_xml = models.CharField(max_length=300, blank=True, null=True)
+    
+    p015 = models.CharField(max_length=100, blank=True, null=True)
+    p015_type = models.ForeignKey(ParameterDataType, on_delete=models.PROTECT,
+                                  related_name='+', blank=True, null=True)
+    p015_value_initial = models.CharField(max_length=100,
+                                          blank=True, null=True)
+    p015_xml = models.CharField(max_length=300, blank=True, null=True)
+    
+    p016 = models.CharField(max_length=100, blank=True, null=True)
+    p016_type = models.ForeignKey(ParameterDataType, on_delete=models.PROTECT,
+                                  related_name='+', blank=True, null=True)
+    p016_value_initial = models.CharField(max_length=100,
+                                          blank=True, null=True)
+    p016_xml = models.CharField(max_length=300, blank=True, null=True)
+    
+    p017 = models.CharField(max_length=100, blank=True, null=True)
+    p017_type = models.ForeignKey(ParameterDataType, on_delete=models.PROTECT,
+                                  related_name='+', blank=True, null=True)
+    p017_value_initial = models.CharField(max_length=100,
+                                          blank=True, null=True)
+    p017_xml = models.CharField(max_length=300, blank=True, null=True)
+    
+    p018 = models.CharField(max_length=100, blank=True, null=True)
+    p018_type = models.ForeignKey(ParameterDataType, on_delete=models.PROTECT,
+                                  related_name='+', blank=True, null=True)
+    p018_value_initial = models.CharField(max_length=100,
+                                          blank=True, null=True)
+    p018_xml = models.CharField(max_length=300, blank=True, null=True)
+    
+    p019 = models.CharField(max_length=100, blank=True, null=True)
+    p019_type = models.ForeignKey(ParameterDataType, on_delete=models.PROTECT,
+                                  related_name='+', blank=True, null=True)
+    p019_value_initial = models.CharField(max_length=100,
+                                          blank=True, null=True)
+    p019_xml = models.CharField(max_length=300, blank=True, null=True)
+    
