@@ -9,41 +9,6 @@ def CLR(outroot, attribid, ordering, geometry, parameters):
     addDataData(node, parameters[0])
     addDataData(node, parameters[1])
 
-    node = addDataNode(outnode, 'ScilabDouble', **{'as': 'realParameters'}, height=9, width=1)
-    addDataData(node, 0.0)
-    addDataData(node, 0.0)
-    addDataData(node, 0.0)
-    addDataData(node, 0.0)
-    addDataData(node, 0.0)
-    addDataData(node, 0.0)
-    addDataData(node, 0.0)
-    addDataData(node, 0.0)
-    addDataData(node, 0.0)
-
-    node = addDataNode(outnode, 'ScilabDouble', **{'as': 'integerParameters'}, height=0, width=0)
-
-    node = addNode(outnode, 'Array', **{'as': 'objectsParameters'},
-        scilabClass='ScilabList')
-
-    node = addDataNode(outnode, 'ScilabDouble', **{'as': 'nbZerosCrossing'}, height=1, width=1)
-    addDataData(node, 0.0)
-
-    node = addDataNode(outnode, 'ScilabDouble', **{'as': 'nmode'}, height=1, width=1)
-    addDataData(node, 0.0)
-
-    node = addDataNode(outnode, 'ScilabDouble', **{'as': 'state'}, height=2, width=1)
-    addDataData(node, 0.0)
-    addDataData(node, 0.0)
-
-    node = addNode(outnode, 'Array', **{'as': 'oDState'},
-        scilabClass='ScilabList')
-
-    node = addNode(outnode, 'Array', **{'as': 'equations'},
-        scilabClass='ScilabList')
-
-    node = addNode(outnode, 'mxGeometry', **{'as': 'geometry'},
-        height=geometry['height'], width=geometry['width'], x=geometry['x'], y=geometry['y'])
-
     return outnode
 
 def get_from_CLR(cell):
