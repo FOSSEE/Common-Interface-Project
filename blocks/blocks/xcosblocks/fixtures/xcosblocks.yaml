@@ -48713,10 +48713,10 @@
     p013_type: 7
     p013_value_initial: n
     p013_xml: Array
-    p014: ''
-    p014_type: null
+    p014: Function definition in C
+    p014_type: 6
     p014_value_initial: ''
-    p014_xml: ''
+    p014_xml: Array[exprs]->2nd ScilabString
     p015: ''
     p015_type: null
     p015_value_initial: ''
