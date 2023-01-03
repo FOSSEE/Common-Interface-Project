@@ -1,10 +1,12 @@
 *.pem
 *.pyc
 *.sqlite3
+*.swp
 __pycache__/
 blocks/blocks/*/migrations/*.py
 blocks/*/migrations/*.py
 blocks/env*/
+.DS_Store
 .env
 scilab-log-*.txt
 tags
