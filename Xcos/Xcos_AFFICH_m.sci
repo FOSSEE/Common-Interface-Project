@@ -17,7 +17,7 @@ function [explicit_output_vector, implicit_output_vector, command_vector, new_st
         state_vector = list(0);
     end
 
-    last_time =  state_vector(1);
+    last_time = state_vector(1);
     if inherit ~= 0 then
         control = 1;
         if time < minimum_time then
