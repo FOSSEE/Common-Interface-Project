@@ -1,26 +1,16 @@
 def SourceP(outroot, attribid, ordering, geometry, parameters):
     func_name = 'SourceP'
-    outnode = addNode(outroot,
-                      'BasicBlock',
-                      **{'id': attribid},
+
+    outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
                       parent=1,
-        interfaceFunctionName=func_name,
+                      interfaceFunctionName=func_name,
                       ordering=ordering,
-                      blockType = 'c',
+                      blockType='c',
                       dependsOnU=1,
-        simulationFunctionName='Source',
+                      simulationFunctionName='Source',
                       simulationFunctionType='DEFAULT',
-                      style=func_name
-                      )
-    node = addDataNode(outnode, 'ScilabString',
-                       **{'as': 'exprs'},
-                       height=4,
-                       width=1)
-    addDataData(node, parameters[0])
-    addDataData(node, parameters[1])
-    addDataData(node, parameters[2])
-    addDataData(node, parameters[3])
-    
-    
+                      style=func_name)
+
+    node = addExprsNode(outnode, 'ScilabString', 4, parameters)
 
     return outnode

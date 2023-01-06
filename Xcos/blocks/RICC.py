@@ -1,22 +1,16 @@
 def RICC(outroot, attribid, ordering, geometry, parameters):
     func_name = 'RICC'
-    outnode = addNode(outroot,
-                      'BasicBlock',
-                      **{'id': attribid},
+
+    outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
                       parent=1,
-        interfaceFunctionName=func_name,
+                      interfaceFunctionName=func_name,
                       ordering=ordering,
-                      blockType = 'c',
+                      blockType='c',
                       dependsOnU=1,
-        simulationFunctionName='ricc_m',
+                      simulationFunctionName='ricc_m',
                       simulationFunctionType='C_OR_FORTRAN',
-                      style=func_name
-                      )
-    node = addDataNode(outnode, 'ScilabString',
-                       **{'as': 'exprs'},
-                       height=2,
-                       width=1)
-    addDataData(node, parameters[0])
-    addDataData(node, parameters[1])
+                      style=func_name)
+
+    node = addExprsNode(outnode, 'ScilabString', 2, parameters)
 
     return outnode
