@@ -1,25 +1,16 @@
 def VsourceAC(outroot, attribid, ordering, geometry, parameters):
     func_name = 'VsourceAC'
 
-    outnode = addNode(outroot,
-                      'BasicBlock',
-                      **{'id': attribid},
+    outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
                       parent=1,
-        interfaceFunctionName=func_name,
+                      interfaceFunctionName=func_name,
                       ordering=ordering,
-                      blockType = 'c',
+                      blockType='c',
                       dependsOnU=1,
-        simulationFunctionName='VsourceAC',
+                      simulationFunctionName='VsourceAC',
                       simulationFunctionType='DEFAULT',
-                      style=func_name
-                      )
+                      style=func_name)
 
-    node = addDataNode(outnode, 'ScilabString',
-                       **{'as': 'exprs'},
-                       height=2,
-                       width=1)
-    addDataData(node, parameters[0])
-    addDataData(node, parameters[1])
-    
+    node = addExprsNode(outnode, 'ScilabString', 2, parameters)
 
     return outnode

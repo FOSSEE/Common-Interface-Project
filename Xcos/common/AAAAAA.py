@@ -1,11 +1,13 @@
 import re
 import xml.etree.ElementTree as ET
 
+
 def addNode(node, subNodeType, **kwargs):
     subNode = ET.SubElement(node, subNodeType)
     for (key, value) in kwargs.items():
         subNode.set(key, str(value))
     return subNode
+
 
 def addData(node, column, line, value, isReal=False):
     data = ET.SubElement(node, 'data')
@@ -17,10 +19,12 @@ def addData(node, column, line, value, isReal=False):
         data.set('value', value)
     return data
 
+
 DATA_HEIGHT = 0
 DATA_WIDTH = 0
 DATA_LINE = 0
 DATA_COLUMN = 0
+
 
 def addDataNode(node, subNodeType, **kwargs):
     global DATA_HEIGHT, DATA_WIDTH, DATA_LINE, DATA_COLUMN
@@ -31,13 +35,38 @@ def addDataNode(node, subNodeType, **kwargs):
     subNode = addNode(node, subNodeType, **kwargs)
     return subNode
 
+
 def addDataData(node, value, isReal=False):
     global DATA_HEIGHT, DATA_WIDTH, DATA_LINE, DATA_COLUMN
     if DATA_LINE >= DATA_HEIGHT or DATA_COLUMN >= DATA_WIDTH:
-        print('Invalid: height=', DATA_HEIGHT, ',width=', DATA_WIDTH, ',line=', DATA_LINE, ',column=', DATA_COLUMN)
+        print('Invalid: height=', DATA_HEIGHT, ',width=', DATA_WIDTH,
+              ',line=', DATA_LINE, ',column=', DATA_COLUMN)
     data = addData(node, DATA_COLUMN, DATA_LINE, value, isReal)
     if DATA_LINE < DATA_HEIGHT - 1:
         DATA_LINE += 1
     else:
         DATA_COLUMN += 1
     return data
+
+
+def addExprsNode(node, subNodeType, height, parameters):
+    width = 1 if height > 0 else 0
+    subNode = addDataNode(node, subNodeType, **{'as': 'exprs'}, height=height, width=width)
+    for i in range(height):
+        addDataData(subNode, parameters[i])
+    return subNode
+
+
+def addExprsArrayNode(node, subSubNodeType, height, parameters, codeLines):
+    subNode = addDataNode(node, 'Array', **{'as': 'exprs'}, scilabClass='ScilabList')
+
+    subSubNode = addDataNode(subNode, subSubNodeType, height=height, width=1)
+    for i in range(height):
+        addDataData(subSubNode, parameters[i])
+
+    codeHeight = len(codeLines)
+    subSubNode = addDataNode(subNode, 'ScilabString', height=codeHeight, width=1)
+    for i in range(codeHeight):
+        addDataData(subSubNode, codeLines[i])
+
+    return subNode

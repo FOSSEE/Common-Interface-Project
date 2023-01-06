@@ -1,19 +1,16 @@
 def SRFLIPFLOP(outroot, attribid, ordering, geometry, parameters):
     func_name = 'SRFLIPFLOP'
-    outnode = addNode(outroot,
-                      'BasicBlock',
-                      **{'id': attribid},
+
+    outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
                       parent=1,
-        interfaceFunctionName=func_name,
+                      interfaceFunctionName=func_name,
                       ordering=ordering,
-                      blockType = 'h',
+                      blockType='h',
                       dependsOnU=1,
-        simulationFunctionName='csuper',
+                      simulationFunctionName='csuper',
                       simulationFunctionType='DEFAULT',
-                      style=func_name
-                      )
-    node = addDataNode(outnode, 'ScilabDouble',
-                       **{'as': 'exprs'},
-                       height=0,
-                       width=0)
+                      style=func_name)
+
+    node = addExprsNode(outnode, 'ScilabDouble', 0, parameters)
+
     return outnode

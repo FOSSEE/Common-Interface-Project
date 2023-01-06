@@ -1,19 +1,15 @@
 def PID(outroot, attribid, ordering, geometry, parameters):
     func_name = 'PID'
-    outnode = addNode(outroot,
-                      'BasicBlock',
-                      **{'id': attribid},
+
+    outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
                       parent=1,
-        interfaceFunctionName=func_name,
+                      interfaceFunctionName=func_name,
                       ordering=ordering,
-                      blockType = 'h',
-        simulationFunctionName='csuper',
+                      blockType='h',
+                      simulationFunctionName='csuper',
                       simulationFunctionType='DEFAULT',
-                      style=func_name
-                      )
-    node = addDataNode(outnode, 'ScilabDouble',
-                       **{'as': 'exprs'},
-                       height=0,
-                       width=0)
+                      style=func_name)
+
+    node = addExprsNode(outnode, 'ScilabDouble', 0, parameters)
 
     return outnode

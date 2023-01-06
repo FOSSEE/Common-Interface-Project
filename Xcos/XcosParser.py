@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-import datetime
 import os
 import re
 import sys
@@ -186,7 +185,7 @@ for model in diagram:
                     targetVertex = attrib['target']
                     sourceType = IDLIST[sourceVertex]
                     targetType = IDLIST[targetVertex]
-                    print('sourceType=', sourceType, 'targetType=',targetType)
+                    print('sourceType=', sourceType, 'targetType=', targetType)
 
                     sourcePorts = ['ExplicitOutputPort', 'ImplicitOutputPort', 'CommandPort']
                     targetPorts = ['ExplicitInputPort', 'ImplicitInputPort', 'ControlPort']

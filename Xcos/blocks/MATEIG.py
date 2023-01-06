@@ -1,28 +1,21 @@
 def MATEIG(outroot, attribid, ordering, geometry, parameters):
     func_name = 'MATEIG'
-    data_type = ['mat_','matz_']
-    decomposition_type = ['vps','vpv']
-    simulation_func_name = data_type[int(parameters[0])-1] + decomposition_type[int(parameters[1])-1]
-    outnode = addNode(outroot,
-                      'BasicBlock',
-                      **{'id': attribid},
+
+    data_type = ['', 'mat_', 'matz_']
+    decomposition_type = ['', 'vps', 'vpv']
+
+    simulation_func_name = data_type[int(parameters[0])] + decomposition_type[int(parameters[1])]
+
+    outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
                       parent=1,
-        interfaceFunctionName=func_name,
-                      blockType = 'c',
+                      interfaceFunctionName=func_name,
+                      blockType='c',
                       dependsOnU=1,
                       ordering=ordering,
-        simulationFunctionName=simulation_func_name,
+                      simulationFunctionName=simulation_func_name,
                       simulationFunctionType='C_OR_FORTRAN',
-                      style=func_name
-                      )
-    node = addDataNode(outnode, 'ScilabString',
-                       **{'as': 'exprs'},
-                       height=2,
-                       width=1)
-    
-    for i in range(2):
-        addDataData(node, parameters[i])
-    
-    
+                      style=func_name)
+
+    node = addExprsNode(outnode, 'ScilabString', 2, parameters)
 
     return outnode

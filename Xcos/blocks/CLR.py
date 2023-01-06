@@ -2,14 +2,18 @@ def CLR(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CLR'
 
     outnode = addNode(outroot, 'BasicBlock', dependsOnT=1, **{'id': attribid},
-        interfaceFunctionName=func_name, ordering=ordering, parent=1, blockType='c',
-        simulationFunctionName='csslti4', simulationFunctionType='C_OR_FORTRAN', style=func_name)
+                      interfaceFunctionName=func_name,
+                      ordering=ordering,
+                      parent=1,
+                      blockType='c',
+                      simulationFunctionName='csslti4',
+                      simulationFunctionType='C_OR_FORTRAN',
+                      style=func_name)
 
-    node = addDataNode(outnode, 'ScilabString', **{'as': 'exprs'}, height=2, width=1)
-    addDataData(node, parameters[0])
-    addDataData(node, parameters[1])
+    node = addExprsNode(outnode, 'ScilabString', 2, parameters)
 
     return outnode
+
 
 def get_from_CLR(cell):
     scilabString = cell.find('./ScilabString[@as="exprs"]')
