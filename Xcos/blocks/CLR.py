@@ -2,7 +2,7 @@ def CLR(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CLR'
 
     outnode = addNode(outroot, 'BasicBlock', dependsOnT=1, **{'id': attribid},
-        interfaceFunctionName=func_name, ordering=ordering, parent=1,
+        interfaceFunctionName=func_name, ordering=ordering, parent=1, blockType='c',
         simulationFunctionName='csslti4', simulationFunctionType='C_OR_FORTRAN', style=func_name)
 
     node = addDataNode(outnode, 'ScilabString', **{'as': 'exprs'}, height=2, width=1)
