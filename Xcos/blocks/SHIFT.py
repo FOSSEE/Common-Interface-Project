@@ -1,17 +1,21 @@
 def SHIFT(outroot, attribid, ordering, geometry, parameters):
     func_name = 'SHIFT'
 
-    data_type = ['', '', '', 'shift_32_', 'shift_16_', 'shift_8_', 'shift_32_', 'shift_16_', 'shift_8_']
+    data_type = ['', '', '',
+                 'shift_32_', 'shift_16_', 'shift_8_',
+                 'shift_32_', 'shift_16_', 'shift_8_']
     shift_type = ['A', 'C']
+    para1 = int(parameters[0])
     bits_to_shift = int(parameters[1])
+    para3 = int(parameters[2])
 
     simulation_func_name = ''
     if bits_to_shift != 0:
-        simulation_func_name = simulation_func_name + data_type[int(parameters[0])]
+        simulation_func_name = simulation_func_name + data_type[para1]
         if bits_to_shift > 0:
-            simulation_func_name = simulation_func_name + 'L' + shift_type[int(parameters[2])]
+            simulation_func_name = simulation_func_name + 'L' + shift_type[para3]
         else:
-            simulation_func_name = simulation_func_name + 'R' + shift_type[int(parameters[2])]
+            simulation_func_name = simulation_func_name + 'R' + shift_type[para3]
     else:
         simulation_func_name = 'shift_32_LA'
 

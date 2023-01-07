@@ -2,8 +2,9 @@ def BITCLEAR(outroot, attribid, ordering, geometry, parameters):
     func_name = 'BITCLEAR'
 
     datatype = ['', '', '', '32', '16', '8', '32', '16', '8']
+    para1 = int(float(parameters[0]))
 
-    simulation_func_name = 'bit_clear_' + datatype[int(float(parameters[0]))]
+    simulation_func_name = 'bit_clear_' + datatype[para1]
 
     outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
                       interfaceFunctionName=func_name,

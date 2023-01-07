@@ -28,6 +28,7 @@ def get_from_CLR(cell):
             (v1, v2) = (v2, re.sub(r'\([^()]*\)', r'', v2))
         if i == 1:
             display_parameter += '/'
-        display_parameter += '(' + value + ')' if re.search(r'[^ 0-9a-zA-Z^*/]', v2) else value
+        display_parameter += '(' + value + ')' if re.search(r'[^ 0-9a-zA-Z^*/]',
+                                                            v2) else value
         i += 1
     return (parameters, display_parameter)

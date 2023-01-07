@@ -51,7 +51,8 @@ def addDataData(node, value, isReal=False):
 
 def addExprsNode(node, subNodeType, height, parameters):
     width = 1 if height > 0 else 0
-    subNode = addDataNode(node, subNodeType, **{'as': 'exprs'}, height=height, width=width)
+    subNode = addDataNode(node, subNodeType, **{'as': 'exprs'},
+                          height=height, width=width)
     for i in range(height):
         addDataData(subNode, parameters[i])
     return subNode

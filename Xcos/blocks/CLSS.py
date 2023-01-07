@@ -1,8 +1,10 @@
 def CLSS(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CLSS'
 
+    para4 = int(float(parameters[3]))
+
     depends_u = 1
-    if int(float(parameters[3])) == 0:
+    if para4 == 0:
         depends_u = 0
 
     outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},

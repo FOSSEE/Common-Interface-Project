@@ -1,14 +1,17 @@
 def CUMSUM(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CUMSUM'
 
+    para1 = int(parameters[0])
+    para2 = int(parameters[1])
+
     datatype = ''
-    if int(parameters[0]) == 1:
+    if para1 == 1:
         datatype = 'z'
 
     sum = 'm'
-    if int(parameters[1]) == 1:
+    if para2 == 1:
         sum = 'r'
-    elif int(parameters[1]) == 2:
+    elif para2 == 2:
         sum = 'c'
 
     simulation_func_name = 'cumsum' + datatype + '_' + sum

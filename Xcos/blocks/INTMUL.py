@@ -2,13 +2,16 @@ def INTMUL(outroot, attribid, ordering, geometry, parameters):
     func_name = 'INTMUL'
 
     datatype = ['', '', '', 'i32', 'i16', 'i8', 'ui32', 'ui16', 'ui8']
+    para1 = int(float(parameters[0]))
+    para2 = int(float(parameters[1]))
+
     overflow = 'n'
-    if int(float(parameters[1])) == 1:
+    if para2 == 1:
         overflow = 's'
-    elif int(float(parameters[1])) == 2:
+    elif para2 == 2:
         overflow = 'e'
 
-    simulation_func_name = 'matmul_' + datatype[int(float(parameters[0]))] + overflow
+    simulation_func_name = 'matmul_' + datatype[para1] + overflow
 
     outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
                       interfaceFunctionName=func_name,

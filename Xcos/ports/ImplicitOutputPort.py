@@ -7,9 +7,9 @@ def ImplicitOutputPort(outroot, attribid, parentattribid, ordering, geometry,
                           **{'id': attribid}, ordering=ordering, parent=parentattribid,
                           style=func_name, visible=0)
     elif addDataLines:
-        outnode = addNode(outroot, func_name, dataColumns=1, dataLines=1, dataType='REAL_MATRIX',
-                          **{'id': attribid}, ordering=ordering, parent=parentattribid,
-                          style=func_name, value=value)
+        outnode = addNode(outroot, func_name, dataColumns=1, dataLines=1,
+                          dataType='REAL_MATRIX', **{'id': attribid}, ordering=ordering,
+                          parent=parentattribid, style=func_name, value=value)
     else:
         outnode = addNode(outroot, func_name, dataColumns=1, dataType='REAL_MATRIX',
                           **{'id': attribid}, ordering=ordering, parent=parentattribid,

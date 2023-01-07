@@ -3,8 +3,10 @@ def EXTTRI(outroot, attribid, ordering, geometry, parameters):
 
     extration_type = ['', 'exttril', 'exttriu', 'extdiag']
     data_type = ['', '', 'z']
+    para1 = int(parameters[0])
+    para2 = int(parameters[1])
 
-    simulation_func_name = extration_type[int(parameters[1])] + data_type[int(parameters[0])]
+    simulation_func_name = extration_type[para2] + data_type[para1]
 
     outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
                       interfaceFunctionName=func_name,

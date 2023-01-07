@@ -3,8 +3,10 @@ def MATEIG(outroot, attribid, ordering, geometry, parameters):
 
     data_type = ['', 'mat_', 'matz_']
     decomposition_type = ['', 'vps', 'vpv']
+    para1 = int(parameters[0])
+    para2 = int(parameters[1])
 
-    simulation_func_name = data_type[int(parameters[0])] + decomposition_type[int(parameters[1])]
+    simulation_func_name = data_type[para1] + decomposition_type[para2]
 
     outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
                       parent=1,

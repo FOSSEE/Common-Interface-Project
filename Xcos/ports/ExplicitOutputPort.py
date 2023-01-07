@@ -7,9 +7,9 @@ def ExplicitOutputPort(outroot, attribid, parentattribid, ordering, geometry,
                           **{'id': attribid}, ordering=ordering, parent=parentattribid,
                           style=func_name, visible=0)
     elif addDataLines:
-        outnode = addNode(outroot, func_name, dataColumns=1, dataLines=1, dataType='REAL_MATRIX',
-                          **{'id': attribid}, ordering=ordering, parent=parentattribid,
-                          style=func_name, value=value)
+        outnode = addNode(outroot, func_name, dataColumns=1, dataLines=1,
+                          dataType='REAL_MATRIX', **{'id': attribid}, ordering=ordering,
+                          parent=parentattribid, style=func_name, value=value)
     else:
         outnode = addNode(outroot, func_name, dataColumns=1, dataType='REAL_MATRIX',
                           **{'id': attribid}, ordering=ordering, parent=parentattribid,
@@ -31,7 +31,8 @@ def addExplicitOutputPortForSplit(outroot, splitBlock, sourceVertex, targetVerte
     geometry['height'] = 8
     geometry['x'] = 7
     geometry['y'] = -4
-    ExplicitOutputPort(outroot, nextAttrib, splitBlock, outputCount, geometry, forSplitBlock=True)
+    ExplicitOutputPort(outroot, nextAttrib, splitBlock, outputCount, geometry,
+                       forSplitBlock=True)
     edgeDict[nextAttribForSplit] = ('ExplicitLink', nextAttrib, targetVertex,
                                     'ExplicitOutputPort', targetType)
     nextAttrib += 1

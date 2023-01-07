@@ -1,8 +1,10 @@
 def TOWS_c(outroot, attribid, ordering, geometry, parameters):
     func_name = 'TOWS_c'
 
+    para3 = int(parameters[2])
+
     b_type = ''
-    if int(parameters[2]) == 1:
+    if para3 == 1:
         b_type = 'x'
     else:
         b_type = 'd'
