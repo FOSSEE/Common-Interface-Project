@@ -15,14 +15,22 @@ def CLOCK_c(outroot, attribid, ordering, geometry, parameters):
 
 
 def get_from_CLOCK_c(cell):
-    realParameters = cell.find('./Array[@as="realParameters"]')
-    scilabList = realParameters.find('./Array[@scilabClass="ScilabList"]')
-    scilabMLists = scilabList.findall('./Array[@scilabClass="ScilabMList"]')
-    scilabMList2 = scilabMLists[1].find('./Array[@scilabClass="ScilabMList"]')
-    scilabString = scilabMList2.find('./ScilabString[@height="2"]')
+    scilabString = cell.find('./ScilabString[@as="exprs"]')
+
     parameters = []
-    display_parameter = ''
     for data in scilabString:
         value = data.attrib.get('value')
         parameters.append(value)
-    return (parameters, display_parameter)
+
+    display_parameter = ''
+
+    eiv = ''
+    iiv = ''
+    con = ''
+    eov = ''
+    iov = ''
+    com = ''
+
+    ports = [eiv, iiv, con, eov, iov, com]
+
+    return (parameters, display_parameter, ports)

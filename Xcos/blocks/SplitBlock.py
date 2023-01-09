@@ -18,5 +18,16 @@ def SplitBlock(outroot, attribid, ordering, geometry):
 
 def get_from_SplitBlock(cell):
     parameters = []
+
     display_parameter = ''
-    return (parameters, display_parameter)
+
+    eiv = ''
+    iiv = ''
+    con = ''
+    eov = ''
+    iov = ''
+    com = ''
+
+    ports = [eiv, iiv, con, eov, iov, com]
+
+    return (parameters, display_parameter, ports)
