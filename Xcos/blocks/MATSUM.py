@@ -3,8 +3,10 @@ def MATSUM(outroot, attribid, ordering, geometry, parameters):
 
     data_type = ['', 'mat_', 'matz_']
     sum_along = ['sum', 'sumc', 'suml']
+    para1 = int(parameters[0])
+    para2 = int(parameters[1])
 
-    simulation_func_name = data_type[int(parameters[0])] + sum_along[int(parameters[1])]
+    simulation_func_name = data_type[para1] + sum_along[para2]
 
     outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
                       parent=1,

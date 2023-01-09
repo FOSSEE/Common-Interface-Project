@@ -59,14 +59,16 @@ def addExprsNode(node, subNodeType, height, parameters):
 
 
 def addExprsArrayNode(node, subSubNodeType, height, parameters, codeLines):
-    subNode = addDataNode(node, 'Array', **{'as': 'exprs'}, scilabClass='ScilabList')
+    subNode = addDataNode(node, 'Array', **{'as': 'exprs'},
+                          scilabClass='ScilabList')
 
     subSubNode = addDataNode(subNode, subSubNodeType, height=height, width=1)
     for i in range(height):
         addDataData(subSubNode, parameters[i])
 
     codeHeight = len(codeLines)
-    subSubNode = addDataNode(subNode, 'ScilabString', height=codeHeight, width=1)
+    subSubNode = addDataNode(subNode, 'ScilabString',
+                             height=codeHeight, width=1)
     for i in range(codeHeight):
         addDataData(subSubNode, codeLines[i])
 
