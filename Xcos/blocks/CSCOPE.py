@@ -10,7 +10,7 @@ def CSCOPE(outroot, attribid, ordering, geometry, parameters):
                       simulationFunctionType='C_OR_FORTRAN',
                       style=func_name)
 
-    node = addExprsNode(outnode, 'ScilabString', 10, parameters)
+    addExprsNode(outnode, 'ScilabString', 10, parameters)
 
     return outnode
 

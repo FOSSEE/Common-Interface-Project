@@ -10,7 +10,7 @@ def CLR(outroot, attribid, ordering, geometry, parameters):
                       simulationFunctionType='C_OR_FORTRAN',
                       style=func_name)
 
-    node = addExprsNode(outnode, 'ScilabString', 2, parameters)
+    addExprsNode(outnode, 'ScilabString', 2, parameters)
 
     return outnode
 
@@ -18,7 +18,6 @@ def CLR(outroot, attribid, ordering, geometry, parameters):
 def get_from_CLR(cell):
     scilabString = cell.find('./ScilabString[@as="exprs"]')
 
-    i = 0
     parameters = []
     for data in scilabString:
         value = data.attrib.get('value')

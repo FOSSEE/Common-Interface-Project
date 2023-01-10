@@ -11,7 +11,7 @@ def PNP(outroot, attribid, ordering, geometry, parameters):
                       simulationFunctionType='DEFAULT',
                       style=func_name)
 
-    node = addExprsNode(outnode, 'ScilabString', 17, parameters)
+    addExprsNode(outnode, 'ScilabString', 17, parameters)
 
     return outnode
 
@@ -33,6 +33,6 @@ def get_from_PNP(cell):
     iov = ''
     com = ''
 
-    ports = [eiv, iiv, con, eov, eov, com]
+    ports = [eiv, iiv, con, eov, iov, com]
 
     return (parameters, display_parameter, ports)

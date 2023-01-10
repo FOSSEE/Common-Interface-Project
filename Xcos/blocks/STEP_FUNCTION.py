@@ -10,7 +10,7 @@ def STEP_FUNCTION(outroot, attribid, ordering, geometry, parameters):
                       simulationFunctionType='DEFAULT',
                       style=func_name)
 
-    node = addExprsNode(outnode, 'ScilabDouble', 0, parameters)
+    addExprsNode(outnode, 'ScilabDouble', 0, parameters)
 
     return outnode
 

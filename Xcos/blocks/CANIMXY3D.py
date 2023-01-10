@@ -10,7 +10,7 @@ def CANIMXY3D(outroot, attribid, ordering, geometry, parameters):
                       style=func_name,
                       blockType='d')
 
-    node = addExprsNode(outnode, 'ScilabString', 11, parameters)
+    addExprsNode(outnode, 'ScilabString', 11, parameters)
 
     return outnode
 
@@ -32,6 +32,6 @@ def get_from_CANIMXY3D(cell):
     iov = ''
     com = ''
 
-    ports = [eiv, iiv, con, eov, eov, com]
+    ports = [eiv, iiv, con, eov, iov, com]
 
     return (parameters, display_parameter, ports)

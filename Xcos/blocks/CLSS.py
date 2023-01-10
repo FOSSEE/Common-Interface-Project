@@ -18,7 +18,7 @@ def CLSS(outroot, attribid, ordering, geometry, parameters):
                       simulationFunctionType='C_OR_FORTRAN',
                       style=func_name)
 
-    node = addExprsNode(outnode, 'ScilabString', 5, parameters)
+    addExprsNode(outnode, 'ScilabString', 5, parameters)
 
     return outnode
 
@@ -40,6 +40,6 @@ def get_from_CLSS(cell):
     iov = ''
     com = ''
 
-    ports = [eiv, iiv, con, eov, eov, com]
+    ports = [eiv, iiv, con, eov, iov, com]
 
     return (parameters, display_parameter, ports)

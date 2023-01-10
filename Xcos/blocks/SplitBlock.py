@@ -9,9 +9,9 @@ def SplitBlock(outroot, attribid, ordering, geometry):
                       value='',
                       vertex=1)
 
-    node = addNode(outnode, 'mxGeometry', **{'as': 'geometry'},
-                   height=geometry['height'], width=geometry['width'],
-                   x=geometry['x'], y=geometry['y'])
+    addNode(outnode, 'mxGeometry', **{'as': 'geometry'},
+            height=geometry['height'], width=geometry['width'],
+            x=geometry['x'], y=geometry['y'])
 
     return outnode
 

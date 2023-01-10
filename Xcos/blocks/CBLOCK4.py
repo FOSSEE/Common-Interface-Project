@@ -35,7 +35,7 @@ def CBLOCK4(outroot, attribid, ordering, geometry, parameters):
                       simulationFunctionType=simulation_func_type,
                       style=func_name)
 
-    node = addExprsArrayNode(outnode, 'ScilabString', 19, parameters, codeLines)
+    addExprsArrayNode(outnode, 'ScilabString', 19, parameters, codeLines)
 
     return outnode
 
@@ -57,6 +57,6 @@ def get_from_CBLOCK4(cell):
     iov = ''
     com = ''
 
-    ports = [eiv, iiv, con, eov, eov, com]
+    ports = [eiv, iiv, con, eov, iov, com]
 
     return (parameters, display_parameter, ports)

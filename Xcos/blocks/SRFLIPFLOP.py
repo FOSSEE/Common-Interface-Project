@@ -11,7 +11,7 @@ def SRFLIPFLOP(outroot, attribid, ordering, geometry, parameters):
                       simulationFunctionType='DEFAULT',
                       style=func_name)
 
-    node = addExprsNode(outnode, 'ScilabDouble', 0, parameters)
+    addExprsNode(outnode, 'ScilabDouble', 0, parameters)
 
     return outnode
 
@@ -33,6 +33,6 @@ def get_from_SRFLIPFLOP(cell):
     iov = ''
     com = ''
 
-    ports = [eiv, iiv, con, eov, eov, com]
+    ports = [eiv, iiv, con, eov, iov, com]
 
     return (parameters, display_parameter, ports)

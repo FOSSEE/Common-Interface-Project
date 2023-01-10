@@ -10,7 +10,7 @@ def RFILE_f(outroot, attribid, ordering, geometry, parameters):
                       simulationFunctionType='DEFAULT',
                       style=func_name)
 
-    node = addExprsNode(outnode, 'ScilabString', 5, parameters)
+    addExprsNode(outnode, 'ScilabString', 5, parameters)
 
     return outnode
 
@@ -32,6 +32,6 @@ def get_from_RFILE_f(cell):
     iov = ''
     com = ''
 
-    ports = [eiv, iiv, con, eov, eov, com]
+    ports = [eiv, iiv, con, eov, iov, com]
 
     return (parameters, display_parameter, ports)

@@ -4,6 +4,6 @@ def ExplicitLink(outroot, attribid, sourceVertex, targetVertex):
     outnode = addNode(outroot, func_name, **{'id': attribid},
                       parent=1, source=sourceVertex, target=targetVertex)
 
-    node = addNode(outnode, 'mxGeometry', **{'as': 'geometry'})
+    addNode(outnode, 'mxGeometry', **{'as': 'geometry'})
 
     return outnode

@@ -12,7 +12,7 @@ def DEBUG(outroot, attribid, ordering, geometry, parameters):
                       simulationFunctionType=func_name,
                       style=func_name)
 
-    node = addExprsArrayNode(outnode, 'ScilabString', 1, [''], codeLines)
+    addExprsArrayNode(outnode, 'ScilabString', 1, [''], codeLines)
 
     return outnode
 
@@ -34,6 +34,6 @@ def get_from_DEBUG(cell):
     iov = ''
     com = ''
 
-    ports = [eiv, iiv, con, eov, eov, com]
+    ports = [eiv, iiv, con, eov, iov, com]
 
     return (parameters, display_parameter, ports)

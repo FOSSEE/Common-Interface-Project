@@ -10,7 +10,7 @@ def AFFICH_m(outroot, attribid, ordering, geometry, parameters):
                       style=func_name,
                       blockType='c')
 
-    node = addExprsNode(outnode, 'ScilabString', 7, parameters)
+    addExprsNode(outnode, 'ScilabString', 7, parameters)
 
     return outnode
 
@@ -32,6 +32,6 @@ def get_from_AFFICH_m(cell):
     iov = ''
     com = ''
 
-    ports = [eiv, iiv, con, eov, eov, com]
+    ports = [eiv, iiv, con, eov, iov, com]
 
     return (parameters, display_parameter, ports)

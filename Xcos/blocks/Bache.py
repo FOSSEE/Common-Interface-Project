@@ -11,7 +11,7 @@ def Bache(outroot, attribid, ordering, geometry, parameters):
                       style=func_name,
                       blockType='c')
 
-    node = addExprsNode(outnode, 'ScilabString', 9, parameters)
+    addExprsNode(outnode, 'ScilabString', 9, parameters)
 
     return outnode
 
@@ -33,6 +33,6 @@ def get_from_Bache(cell):
     iov = ''
     com = ''
 
-    ports = [eiv, iiv, con, eov, eov, com]
+    ports = [eiv, iiv, con, eov, iov, com]
 
     return (parameters, display_parameter, ports)

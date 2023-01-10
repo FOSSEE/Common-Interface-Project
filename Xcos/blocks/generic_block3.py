@@ -20,7 +20,7 @@ def generic_block3(outroot, attribid, ordering, geometry, parameters):
                       simulationFunctionType='C_OR_FORTRAN',
                       style=func_name)
 
-    node = addExprsNode(outnode, 'ScilabString', 19, parameters)
+    addExprsNode(outnode, 'ScilabString', 19, parameters)
 
     return outnode
 
@@ -42,6 +42,6 @@ def get_from_generic_block3(cell):
     iov = ''
     com = ''
 
-    ports = [eiv, iiv, con, eov, eov, com]
+    ports = [eiv, iiv, con, eov, iov, com]
 
     return (parameters, display_parameter, ports)

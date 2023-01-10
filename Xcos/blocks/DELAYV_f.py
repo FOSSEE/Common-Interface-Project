@@ -10,7 +10,7 @@ def DELAYV_f(outroot, attribid, ordering, geometry, parameters):
                       simulationFunctionType='TYPE_1',
                       style=func_name)
 
-    node = addExprsNode(outnode, 'ScilabString', 3, parameters)
+    addExprsNode(outnode, 'ScilabString', 3, parameters)
 
     return outnode
 
@@ -32,6 +32,6 @@ def get_from_DELAYV_f(cell):
     iov = ''
     com = ''
 
-    ports = [eiv, iiv, con, eov, eov, com]
+    ports = [eiv, iiv, con, eov, iov, com]
 
     return (parameters, display_parameter, ports)

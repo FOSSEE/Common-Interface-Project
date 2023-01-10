@@ -10,7 +10,7 @@ def GOTO(outroot, attribid, ordering, geometry, parameters):
                       simulationFunctionType='DEFAULT',
                       style=func_name)
 
-    node = addExprsNode(outnode, 'ScilabString', 2, parameters)
+    addExprsNode(outnode, 'ScilabString', 2, parameters)
 
     return outnode
 
@@ -32,6 +32,6 @@ def get_from_GOTO(cell):
     iov = ''
     com = ''
 
-    ports = [eiv, iiv, con, eov, eov, com]
+    ports = [eiv, iiv, con, eov, iov, com]
 
     return (parameters, display_parameter, ports)

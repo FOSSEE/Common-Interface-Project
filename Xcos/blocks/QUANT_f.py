@@ -15,7 +15,7 @@ def QUANT_f(outroot, attribid, ordering, geometry, parameters):
                       simulationFunctionType='DEFAULT',
                       style=func_name)
 
-    node = addExprsNode(outnode, 'ScilabString', 2, parameters)
+    addExprsNode(outnode, 'ScilabString', 2, parameters)
 
     return outnode
 
@@ -37,6 +37,6 @@ def get_from_QUANT_f(cell):
     iov = ''
     com = ''
 
-    ports = [eiv, iiv, con, eov, eov, com]
+    ports = [eiv, iiv, con, eov, iov, com]
 
     return (parameters, display_parameter, ports)

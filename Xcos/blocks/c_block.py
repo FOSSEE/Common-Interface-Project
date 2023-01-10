@@ -14,7 +14,7 @@ def c_block(outroot, attribid, ordering, geometry, parameters):
                       style=func_name,
                       blockType='c')
 
-    node = addExprsArrayNode(outnode, 'ScilabString', 4, parameters, codeLines)
+    addExprsArrayNode(outnode, 'ScilabString', 4, parameters, codeLines)
 
     return outnode
 
@@ -36,6 +36,6 @@ def get_from_c_block(cell):
     iov = ''
     com = ''
 
-    ports = [eiv, iiv, con, eov, eov, com]
+    ports = [eiv, iiv, con, eov, iov, com]
 
     return (parameters, display_parameter, ports)

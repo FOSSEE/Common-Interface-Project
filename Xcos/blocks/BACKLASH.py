@@ -11,7 +11,7 @@ def BACKLASH(outroot, attribid, ordering, geometry, parameters):
                       style=func_name,
                       blockType='c')
 
-    node = addExprsNode(outnode, 'ScilabString', 3, parameters)
+    addExprsNode(outnode, 'ScilabString', 3, parameters)
 
     return outnode
 
@@ -33,6 +33,6 @@ def get_from_BACKLASH(cell):
     iov = ''
     com = ''
 
-    ports = [eiv, iiv, con, eov, eov, com]
+    ports = [eiv, iiv, con, eov, iov, com]
 
     return (parameters, display_parameter, ports)

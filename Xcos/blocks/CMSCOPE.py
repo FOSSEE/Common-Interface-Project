@@ -12,7 +12,7 @@ def CMSCOPE(outroot, attribid, ordering, geometry, parameters):
                       style=func_name,
                       value=parameters[10])
 
-    node = addExprsNode(outnode, 'ScilabString', 11, parameters)
+    addExprsNode(outnode, 'ScilabString', 11, parameters)
 
     return outnode
 
@@ -34,6 +34,6 @@ def get_from_CMSCOPE(cell):
     iov = ''
     com = ''
 
-    ports = [eiv, iiv, con, eov, eov, com]
+    ports = [eiv, iiv, con, eov, iov, com]
 
     return (parameters, display_parameter, ports)

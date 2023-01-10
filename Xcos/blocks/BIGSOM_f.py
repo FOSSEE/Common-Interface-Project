@@ -11,7 +11,7 @@ def BIGSOM_f(outroot, attribid, ordering, geometry, parameters):
                       blockType='c',
                       value='+')
 
-    node = addExprsNode(outnode, 'ScilabString', 1, parameters)
+    addExprsNode(outnode, 'ScilabString', 1, parameters)
 
     return outnode
 

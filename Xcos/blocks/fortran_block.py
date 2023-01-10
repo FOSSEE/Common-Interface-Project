@@ -14,7 +14,7 @@ def fortran_block(outroot, attribid, ordering, geometry, parameters):
                       simulationFunctionType='DYNAMIC_FORTRAN_1',
                       style=func_name)
 
-    node = addExprsArrayNode(outnode, 'ScilabString', 4, parameters, codeLines)
+    addExprsArrayNode(outnode, 'ScilabString', 4, parameters, codeLines)
 
     return outnode
 
@@ -36,6 +36,6 @@ def get_from_fortran_block(cell):
     iov = ''
     com = ''
 
-    ports = [eiv, iiv, con, eov, eov, com]
+    ports = [eiv, iiv, con, eov, iov, com]
 
     return (parameters, display_parameter, ports)

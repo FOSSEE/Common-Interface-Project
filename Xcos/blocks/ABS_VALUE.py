@@ -10,7 +10,7 @@ def ABS_VALUE(outroot, attribid, ordering, geometry, parameters):
                       style=func_name,
                       blockType='c')
 
-    node = addExprsNode(outnode, 'ScilabString', 1, parameters)
+    addExprsNode(outnode, 'ScilabString', 1, parameters)
 
     return outnode
 
@@ -32,6 +32,6 @@ def get_from_ABS_VALUE(cell):
     iov = ''
     com = ''
 
-    ports = [eiv, iiv, con, eov, eov, com]
+    ports = [eiv, iiv, con, eov, iov, com]
 
     return (parameters, display_parameter, ports)
