@@ -16,12 +16,7 @@ def CLR(outroot, attribid, ordering, geometry, parameters):
 
 
 def get_from_CLR(cell):
-    scilabString = cell.find('./ScilabString[@as="exprs"]')
-
-    parameters = []
-    for data in scilabString:
-        value = data.attrib.get('value')
-        parameters.append(value)
+    parameters = getParametersFromExprsNode(cell)
 
     value = parameters[0]
     (v1, v2) = (value, re.sub(r'\([^()]*\)', r'', value))

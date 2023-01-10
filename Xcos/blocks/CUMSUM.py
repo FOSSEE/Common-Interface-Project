@@ -32,12 +32,7 @@ def CUMSUM(outroot, attribid, ordering, geometry, parameters):
 
 
 def get_from_CUMSUM(cell):
-    scilabString = cell.find('./ScilabString[@as="exprs"]')
-
-    parameters = []
-    for data in scilabString:
-        value = data.attrib.get('value')
-        parameters.append(value)
+    parameters = getParametersFromExprsNode(cell)
 
     display_parameter = ''
 

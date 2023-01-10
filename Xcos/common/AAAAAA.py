@@ -73,3 +73,14 @@ def addExprsArrayNode(node, subSubNodeType, height, parameters, codeLines):
         addDataData(subSubNode, codeLines[i])
 
     return subNode
+
+
+def getParametersFromExprsNode(node, subNodeType='ScilabString'):
+    scilabString = node.find('./' + subNodeType + '[@as="exprs"]')
+
+    parameters = []
+    for data in scilabString:
+        value = data.attrib.get('value')
+        parameters.append(value)
+
+    return parameters
