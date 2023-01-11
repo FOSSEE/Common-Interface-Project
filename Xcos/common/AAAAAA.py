@@ -76,11 +76,15 @@ def addExprsArrayNode(node, subSubNodeType, height, parameters, codeLines):
 
 
 def getParametersFromExprsNode(node, subNodeType='ScilabString'):
-    scilabString = node.find('./' + subNodeType + '[@as="exprs"]')
+    tag = subNodeType + '[@as="exprs"]'
+    subNodes = node.find('./' + tag)
 
     parameters = []
-    for data in scilabString:
-        value = data.attrib.get('value')
-        parameters.append(value)
+    if subNodes is not None:
+        for data in subNodes:
+            value = data.attrib.get('value')
+            parameters.append(value)
+    else:
+        print(tag, ': Not found')
 
     return parameters
