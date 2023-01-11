@@ -10,13 +10,13 @@ def TKSCALE(outroot, attribid, ordering, geometry, parameters):
                       simulationFunctionType='SCILAB',
                       style=func_name)
 
-    addExprsNode(outnode, 'ScilabString', 3, parameters)
+    addExprsNode(outnode, TYPE_STRING, 3, parameters)
 
     return outnode
 
 
 def get_from_TKSCALE(cell):
-    parameters = getParametersFromExprsNode(cell)
+    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
     display_parameter = ''
 

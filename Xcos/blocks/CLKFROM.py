@@ -11,13 +11,13 @@ def CLKFROM(outroot, attribid, ordering, geometry, parameters):
                       style=func_name,
                       value='From')
 
-    addExprsNode(outnode, 'ScilabString', 1, parameters)
+    addExprsNode(outnode, TYPE_STRING, 1, parameters)
 
     return outnode
 
 
 def get_from_CLKFROM(cell):
-    parameters = getParametersFromExprsNode(cell)
+    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
     display_parameter = ''
 

@@ -9,13 +9,13 @@ def EVTGEN_f(outroot, attribid, ordering, geometry, parameters):
                       simulationFunctionType='DEFAULT',
                       style=func_name)
 
-    addExprsNode(outnode, 'ScilabString', 1, parameters)
+    addExprsNode(outnode, TYPE_STRING, 1, parameters)
 
     return outnode
 
 
 def get_from_EVTGEN_f(cell):
-    parameters = getParametersFromExprsNode(cell)
+    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
     display_parameter = ''
 

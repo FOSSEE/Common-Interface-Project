@@ -11,13 +11,13 @@ def RATELIMITER(outroot, attribid, ordering, geometry, parameters):
                       simulationFunctionType='C_OR_FORTRAN',
                       style=func_name)
 
-    addExprsNode(outnode, 'ScilabString', 2, parameters)
+    addExprsNode(outnode, TYPE_STRING, 2, parameters)
 
     return outnode
 
 
 def get_from_RATELIMITER(cell):
-    parameters = getParametersFromExprsNode(cell)
+    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
     display_parameter = ''
 

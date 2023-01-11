@@ -11,13 +11,13 @@ def IFTHEL_f(outroot, attribid, ordering, geometry, parameters):
                       simulationFunctionType='IFTHENELSE',
                       style=func_name)
 
-    addExprsNode(outnode, 'ScilabString', 2, parameters)
+    addExprsNode(outnode, TYPE_STRING, 2, parameters)
 
     return outnode
 
 
 def get_from_IFTHEL_f(cell):
-    parameters = getParametersFromExprsNode(cell)
+    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
     display_parameter = ''
 

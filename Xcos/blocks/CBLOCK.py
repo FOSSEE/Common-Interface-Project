@@ -35,7 +35,7 @@ def CBLOCK(outroot, attribid, ordering, geometry, parameters):
                       simulationFunctionType=simulation_func_type,
                       style=func_name)
 
-    addExprsArrayNode(outnode, 'ScilabString', 14, parameters, codeLines)
+    addExprsArrayNode(outnode, TYPE_STRING, 14, parameters, codeLines)
 
     return outnode
 

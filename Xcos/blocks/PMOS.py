@@ -11,13 +11,13 @@ def PMOS(outroot, attribid, ordering, geometry, parameters):
                       simulationFunctionType='DEFAULT',
                       style=func_name)
 
-    addExprsNode(outnode, 'ScilabString', 9, parameters)
+    addExprsNode(outnode, TYPE_STRING, 9, parameters)
 
     return outnode
 
 
 def get_from_PMOS(cell):
-    parameters = getParametersFromExprsNode(cell)
+    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
     display_parameter = ''
 

@@ -10,13 +10,13 @@ def Diode(outroot, attribid, ordering, geometry, parameters):
                       simulationFunctionType='DEFAULT',
                       style=func_name)
 
-    addExprsNode(outnode, 'ScilabString', 4, parameters)
+    addExprsNode(outnode, TYPE_STRING, 4, parameters)
 
     return outnode
 
 
 def get_from_Diode(cell):
-    parameters = getParametersFromExprsNode(cell)
+    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
     display_parameter = ''
 

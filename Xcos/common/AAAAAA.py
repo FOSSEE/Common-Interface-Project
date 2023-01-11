@@ -1,6 +1,12 @@
 import re
 import xml.etree.ElementTree as ET
 
+TYPE_ARRAY = 'Array'
+TYPE_DOUBLE = 'ScilabDouble'
+TYPE_STRING = 'ScilabString'
+
+CLASS_LIST = 'ScilabList'
+
 
 def addNode(node, subNodeType, **kwargs):
     subNode = ET.SubElement(node, subNodeType)
@@ -59,15 +65,15 @@ def addExprsNode(node, subNodeType, height, parameters):
 
 
 def addExprsArrayNode(node, subSubNodeType, height, parameters, codeLines):
-    subNode = addDataNode(node, 'Array', **{'as': 'exprs'},
-                          scilabClass='ScilabList')
+    subNode = addDataNode(node, TYPE_ARRAY, **{'as': 'exprs'},
+                          scilabClass=CLASS_LIST)
 
     subSubNode = addDataNode(subNode, subSubNodeType, height=height, width=1)
     for i in range(height):
         addDataData(subSubNode, parameters[i])
 
     codeHeight = len(codeLines)
-    subSubNode = addDataNode(subNode, 'ScilabString',
+    subSubNode = addDataNode(subNode, TYPE_STRING,
                              height=codeHeight, width=1)
     for i in range(codeHeight):
         addDataData(subSubNode, codeLines[i])
@@ -75,7 +81,7 @@ def addExprsArrayNode(node, subSubNodeType, height, parameters, codeLines):
     return subNode
 
 
-def getParametersFromExprsNode(node, subNodeType='ScilabString'):
+def getParametersFromExprsNode(node, subNodeType):
     tag = subNodeType + '[@as="exprs"]'
     subNodes = node.find('./' + tag)
 

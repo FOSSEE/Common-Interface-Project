@@ -11,13 +11,13 @@ def SELECT_m(outroot, attribid, ordering, geometry, parameters):
                       simulationFunctionType='C_OR_FORTRAN',
                       style=func_name)
 
-    addExprsNode(outnode, 'ScilabString', 3, parameters)
+    addExprsNode(outnode, TYPE_STRING, 3, parameters)
 
     return outnode
 
 
 def get_from_SELECT_m(cell):
-    parameters = getParametersFromExprsNode(cell)
+    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
     display_parameter = ''
 

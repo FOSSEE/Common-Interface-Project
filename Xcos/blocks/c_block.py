@@ -14,7 +14,7 @@ def c_block(outroot, attribid, ordering, geometry, parameters):
                       style=func_name,
                       blockType='c')
 
-    addExprsArrayNode(outnode, 'ScilabString', 4, parameters, codeLines)
+    addExprsArrayNode(outnode, TYPE_STRING, 4, parameters, codeLines)
 
     return outnode
 

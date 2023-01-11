@@ -11,13 +11,13 @@ def ZCROSS_f(outroot, attribid, ordering, geometry, parameters):
                       simulationFunctionType='TYPE_1',
                       style=func_name)
 
-    addExprsNode(outnode, 'ScilabString', 1, parameters)
+    addExprsNode(outnode, TYPE_STRING, 1, parameters)
 
     return outnode
 
 
 def get_from_ZCROSS_f(cell):
-    parameters = getParametersFromExprsNode(cell)
+    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
     display_parameter = ''
 

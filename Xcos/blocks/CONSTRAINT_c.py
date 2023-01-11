@@ -11,13 +11,13 @@ def CONSTRAINT_c(outroot, attribid, ordering, geometry, parameters):
                       simulationFunctionType='IMPLICIT_C_OR_FORTRAN',
                       style=func_name)
 
-    addExprsNode(outnode, 'ScilabString', 1, parameters)
+    addExprsNode(outnode, TYPE_STRING, 1, parameters)
 
     return outnode
 
 
 def get_from_CONSTRAINT_c(cell):
-    parameters = getParametersFromExprsNode(cell)
+    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
     display_parameter = ''
 

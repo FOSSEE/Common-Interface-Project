@@ -19,13 +19,13 @@ def LOGICAL_OP(outroot, attribid, ordering, geometry, parameters):
                       simulationFunctionType='C_OR_FORTRAN',
                       style=func_name)
 
-    addExprsNode(outnode, 'ScilabString', 4, parameters)
+    addExprsNode(outnode, TYPE_STRING, 4, parameters)
 
     return outnode
 
 
 def get_from_LOGICAL_OP(cell):
-    parameters = getParametersFromExprsNode(cell)
+    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
     display_parameter = ''
 

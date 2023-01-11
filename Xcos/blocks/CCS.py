@@ -10,13 +10,13 @@ def CCS(outroot, attribid, ordering, geometry, parameters):
                       simulationFunctionType='C_OR_FORTRAN',
                       style=func_name)
 
-    addExprsNode(outnode, 'ScilabString', 0, parameters)
+    addExprsNode(outnode, TYPE_STRING, 0, parameters)
 
     return outnode
 
 
 def get_from_CCS(cell):
-    parameters = getParametersFromExprsNode(cell)
+    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
     display_parameter = ''
 

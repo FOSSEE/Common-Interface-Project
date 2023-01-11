@@ -10,13 +10,13 @@ def AFFICH_m(outroot, attribid, ordering, geometry, parameters):
                       style=func_name,
                       blockType='c')
 
-    addExprsNode(outnode, 'ScilabString', 7, parameters)
+    addExprsNode(outnode, TYPE_STRING, 7, parameters)
 
     return outnode
 
 
 def get_from_AFFICH_m(cell):
-    parameters = getParametersFromExprsNode(cell)
+    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
     display_parameter = ''
 

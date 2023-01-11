@@ -10,13 +10,13 @@ def BPLATFORM(outroot, attribid, ordering, geometry, parameters):
                       style=func_name,
                       blockType='d')
 
-    addExprsNode(outnode, 'ScilabString', 7, parameters)
+    addExprsNode(outnode, TYPE_STRING, 7, parameters)
 
     return outnode
 
 
 def get_from_BPLATFORM(cell):
-    parameters = getParametersFromExprsNode(cell)
+    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
     display_parameter = ''
 

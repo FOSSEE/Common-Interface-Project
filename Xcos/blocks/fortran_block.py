@@ -14,7 +14,7 @@ def fortran_block(outroot, attribid, ordering, geometry, parameters):
                       simulationFunctionType='DYNAMIC_FORTRAN_1',
                       style=func_name)
 
-    addExprsArrayNode(outnode, 'ScilabString', 4, parameters, codeLines)
+    addExprsArrayNode(outnode, TYPE_STRING, 4, parameters, codeLines)
 
     return outnode
 

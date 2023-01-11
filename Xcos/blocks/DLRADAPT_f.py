@@ -10,13 +10,13 @@ def DLRADAPT_f(outroot, attribid, ordering, geometry, parameters):
                       simulationFunctionType='DEFAULT',
                       style=func_name)
 
-    addExprsNode(outnode, 'ScilabString', 6, parameters)
+    addExprsNode(outnode, TYPE_STRING, 6, parameters)
 
     return outnode
 
 
 def get_from_DLRADAPT_f(cell):
-    parameters = getParametersFromExprsNode(cell)
+    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
     display_parameter = ''
 

@@ -12,7 +12,7 @@ def DEBUG(outroot, attribid, ordering, geometry, parameters):
                       simulationFunctionType=func_name,
                       style=func_name)
 
-    addExprsArrayNode(outnode, 'ScilabString', 1, [''], codeLines)
+    addExprsArrayNode(outnode, TYPE_STRING, 1, [''], codeLines)
 
     return outnode
 

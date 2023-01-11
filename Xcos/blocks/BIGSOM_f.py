@@ -11,13 +11,13 @@ def BIGSOM_f(outroot, attribid, ordering, geometry, parameters):
                       blockType='c',
                       value='+')
 
-    addExprsNode(outnode, 'ScilabString', 1, parameters)
+    addExprsNode(outnode, TYPE_STRING, 1, parameters)
 
     return outnode
 
 
 def get_from_BIGSOM_f(cell):
-    parameters = getParametersFromExprsNode(cell)
+    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
     display_parameter = ''
 

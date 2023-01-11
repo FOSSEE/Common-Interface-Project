@@ -9,13 +9,13 @@ def ENDBLK(outroot, attribid, ordering, geometry, parameters):
                       simulationFunctionType='DEFAULT',
                       style=func_name)
 
-    addExprsNode(outnode, 'ScilabDouble', 0, parameters)
+    addExprsNode(outnode, TYPE_DOUBLE, 0, parameters)
 
     return outnode
 
 
 def get_from_ENDBLK(cell):
-    parameters = getParametersFromExprsNode(cell)
+    parameters = getParametersFromExprsNode(cell, TYPE_DOUBLE)
 
     display_parameter = ''
 

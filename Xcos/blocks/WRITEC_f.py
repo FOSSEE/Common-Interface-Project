@@ -11,13 +11,13 @@ def WRITEC_f(outroot, attribid, ordering, geometry, parameters):
                       simulationFunctionType='TYPE_2',
                       style=func_name)
 
-    addExprsNode(outnode, 'ScilabString', 5, parameters)
+    addExprsNode(outnode, TYPE_STRING, 5, parameters)
 
     return outnode
 
 
 def get_from_WRITEC_f(cell):
-    parameters = getParametersFromExprsNode(cell)
+    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
     display_parameter = ''
 

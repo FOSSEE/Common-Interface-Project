@@ -12,13 +12,13 @@ def CMSCOPE(outroot, attribid, ordering, geometry, parameters):
                       style=func_name,
                       value=parameters[10])
 
-    addExprsNode(outnode, 'ScilabString', 11, parameters)
+    addExprsNode(outnode, TYPE_STRING, 11, parameters)
 
     return outnode
 
 
 def get_from_CMSCOPE(cell):
-    parameters = getParametersFromExprsNode(cell)
+    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
     display_parameter = ''
 
