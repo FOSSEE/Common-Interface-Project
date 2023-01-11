@@ -1,7 +1,7 @@
 def IN_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'IN_f'
 
-    outnode = addNode(outroot, 'ExplicitInBlock', **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_EXPLICIT_IN, **{'id': attribid},
                       interfaceFunctionName=func_name,
                       ordering=ordering,
                       parent=1,

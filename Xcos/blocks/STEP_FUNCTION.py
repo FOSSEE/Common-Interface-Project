@@ -1,7 +1,7 @@
 def STEP_FUNCTION(outroot, attribid, ordering, geometry, parameters):
     func_name = 'STEP_FUNCTION'
 
-    outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
                       interfaceFunctionName=func_name,
                       ordering=ordering,
                       parent=1,

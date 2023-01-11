@@ -1,7 +1,7 @@
 def RFILE_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'RFILE_f'
 
-    outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
                       parent=1,
                       interfaceFunctionName=func_name,
                       ordering=ordering,

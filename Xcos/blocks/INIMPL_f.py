@@ -1,7 +1,7 @@
 def INIMPL_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'INIMPL_f'
 
-    outnode = addNode(outroot, 'ImplicitInBlock', **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_IMPLICIT_IN, **{'id': attribid},
                       interfaceFunctionName=func_name,
                       ordering=ordering,
                       parent=1,

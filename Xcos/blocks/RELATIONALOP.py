@@ -8,7 +8,7 @@ def RELATIONALOP(outroot, attribid, ordering, geometry, parameters):
     if para3 >= 3:
         simulation_func_name = simulation_func_name + data_type[para3]
 
-    outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
                       parent=1,
                       interfaceFunctionName=func_name,
                       blockType='c',

@@ -1,7 +1,7 @@
 def CLOCK_c(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CLOCK_c'
 
-    outnode = addNode(outroot, 'BasicBlock', blockType='h', **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC, blockType='h', **{'id': attribid},
                       interfaceFunctionName=func_name,
                       ordering=ordering,
                       parent=1,

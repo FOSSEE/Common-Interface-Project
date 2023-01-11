@@ -7,6 +7,18 @@ TYPE_STRING = 'ScilabString'
 
 CLASS_LIST = 'ScilabList'
 
+BLOCK_AFFICHE = 'AfficheBlock'
+BLOCK_BASIC = 'BasicBlock'
+BLOCK_BIGSOM = 'BigSom'
+BLOCK_EVENT_IN = 'EventInBlock'
+BLOCK_EVENT_OUT = 'EventOutBlock'
+BLOCK_EXPLICIT_IN = 'ExplicitInBlock'
+BLOCK_EXPLICIT_OUT = 'ExplicitOutBlock'
+BLOCK_IMPLICIT_IN = 'ImplicitInBlock'
+BLOCK_IMPLICIT_OUT = 'ImplicitOutBlock'
+BLOCK_PRODUCT = 'Product'
+BLOCK_SUMMATION = 'Summation'
+
 
 def addNode(node, subNodeType, **kwargs):
     subNode = ET.SubElement(node, subNodeType)

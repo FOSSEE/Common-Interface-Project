@@ -1,10 +1,11 @@
 def DOLLAR_m(outroot, attribid, ordering, geometry, parameters):
     func_name = 'DOLLAR_m'
 
-    outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
                       interfaceFunctionName=func_name,
                       blockType='d',
-                      ordering=ordering, parent=1,
+                      ordering=ordering,
+                      parent=1,
                       simulationFunctionName='dollar4',
                       simulationFunctionType='C_OR_FORTRAN',
                       style=func_name)

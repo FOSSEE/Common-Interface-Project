@@ -1,7 +1,7 @@
 def ABS_VALUE(outroot, attribid, ordering, geometry, parameters):
     func_name = 'ABS_VALUE'
 
-    outnode = addNode(outroot, 'BasicBlock', dependsOnU=1, **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC, dependsOnU=1, **{'id': attribid},
                       interfaceFunctionName=func_name,
                       ordering=ordering,
                       parent=1,

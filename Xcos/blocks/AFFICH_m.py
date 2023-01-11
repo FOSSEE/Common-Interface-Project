@@ -1,7 +1,7 @@
 def AFFICH_m(outroot, attribid, ordering, geometry, parameters):
     func_name = 'AFFICH_m'
 
-    outnode = addNode(outroot, 'AfficheBlock', dependsOnU=1, **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_AFFICHE, dependsOnU=1, **{'id': attribid},
                       interfaceFunctionName=func_name,
                       ordering=ordering,
                       parent=1,

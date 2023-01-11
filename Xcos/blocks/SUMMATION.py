@@ -11,7 +11,7 @@ def SUMMATION(outroot, attribid, ordering, geometry, parameters):
     else:
         simulation_func_name = 'summation' + data_type[para1] + overflow[para3]
 
-    outnode = addNode(outroot, 'Summation', **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_SUMMATION, **{'id': attribid},
                       parent=1,
                       interfaceFunctionName=func_name,
                       ordering=ordering,

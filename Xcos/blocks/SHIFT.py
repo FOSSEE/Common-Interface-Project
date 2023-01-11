@@ -19,7 +19,7 @@ def SHIFT(outroot, attribid, ordering, geometry, parameters):
     else:
         simulation_func_name = 'shift_32_LA'
 
-    outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
                       parent=1,
                       interfaceFunctionName=func_name,
                       ordering=ordering,

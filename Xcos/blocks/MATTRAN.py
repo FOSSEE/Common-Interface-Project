@@ -10,7 +10,7 @@ def MATTRAN(outroot, attribid, ordering, geometry, parameters):
     else:
         simulation_func_name = data_type[para1]
 
-    outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
                       parent=1,
                       interfaceFunctionName=func_name,
                       blockType='c',

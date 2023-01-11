@@ -1,10 +1,11 @@
 def DEADBAND(outroot, attribid, ordering, geometry, parameters):
     func_name = 'DEADBAND'
 
-    outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
                       dependsOnU=1,
                       interfaceFunctionName=func_name,
-                      ordering=ordering, parent=1,
+                      ordering=ordering,
+                      parent=1,
                       blockType='c',
                       simulationFunctionName='deadband',
                       simulationFunctionType='C_OR_FORTRAN',

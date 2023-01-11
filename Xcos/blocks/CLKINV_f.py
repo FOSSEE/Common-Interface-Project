@@ -1,7 +1,7 @@
 def CLKINV_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CLKINV_f'
 
-    outnode = addNode(outroot, 'EventInBlock', **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_EVENT_IN, **{'id': attribid},
                       interfaceFunctionName=func_name,
                       ordering=ordering,
                       parent=1,

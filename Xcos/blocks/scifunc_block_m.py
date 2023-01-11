@@ -1,7 +1,7 @@
 def scifunc_block_m(outroot, attribid, ordering, geometry, parameters):
     func_name = 'scifunc_block_m'
 
-    outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
                       interfaceFunctionName=func_name,
                       ordering=ordering,
                       parent=1,

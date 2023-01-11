@@ -7,7 +7,7 @@ def CLSS(outroot, attribid, ordering, geometry, parameters):
     if para4 == 0:
         depends_u = 0
 
-    outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
                       interfaceFunctionName=func_name,
                       ordering=ordering,
                       parent=1,

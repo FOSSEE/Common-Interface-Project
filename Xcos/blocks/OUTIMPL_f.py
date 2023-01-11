@@ -1,7 +1,7 @@
 def OUTIMPL_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'OUTIMPL_f'
 
-    outnode = addNode(outroot, 'ImplicitOutBlock', **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_IMPLICIT_OUT, **{'id': attribid},
                       parent=1,
                       interfaceFunctionName=func_name,
                       ordering=ordering,

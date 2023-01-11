@@ -1,11 +1,12 @@
 def EVTVARDLY(outroot, attribid, ordering, geometry, parameters):
     func_name = 'EVTVARDLY'
 
-    outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
                       interfaceFunctionName=func_name,
                       blockType='c',
                       dependsOnU=1,
-                      ordering=ordering, parent=1,
+                      ordering=ordering,
+                      parent=1,
                       simulationFunctionName='evtvardly',
                       simulationFunctionType='C_OR_FORTRAN',
                       style=func_name)

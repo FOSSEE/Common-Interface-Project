@@ -1,7 +1,7 @@
 def CLKOUTV_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CLKOUTV_f'
 
-    outnode = addNode(outroot, 'EventOutBlock', **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_EVENT_OUT, **{'id': attribid},
                       interfaceFunctionName=func_name,
                       ordering=ordering,
                       parent=1,

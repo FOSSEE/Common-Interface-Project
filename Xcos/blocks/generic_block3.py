@@ -9,7 +9,7 @@ def generic_block3(outroot, attribid, ordering, geometry, parameters):
     if parameters[17] == 'y':
         depends_u = 1
 
-    outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
                       interfaceFunctionName=func_name,
                       ordering=ordering,
                       parent=1,

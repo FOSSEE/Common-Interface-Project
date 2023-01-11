@@ -1,7 +1,7 @@
 def M_SWITCH(outroot, attribid, ordering, geometry, parameters):
     func_name = 'M_SWITCH'
 
-    outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
                       parent=1,
                       interfaceFunctionName=func_name,
                       blockType='c',

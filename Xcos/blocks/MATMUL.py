@@ -32,7 +32,7 @@ def MATMUL(outroot, attribid, ordering, geometry, parameters):
         else:
             simulation_func_name = 'matbyscal'
 
-    outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
                       parent=1,
                       interfaceFunctionName=func_name,
                       dependsOnU=1,

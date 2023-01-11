@@ -1,7 +1,7 @@
 def CSCOPXY3D(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CSCOPXY3D'
 
-    outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
                       interfaceFunctionName=func_name,
                       ordering=ordering,
                       parent=1,

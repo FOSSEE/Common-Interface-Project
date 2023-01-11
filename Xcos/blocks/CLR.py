@@ -1,7 +1,7 @@
 def CLR(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CLR'
 
-    outnode = addNode(outroot, 'BasicBlock', dependsOnT=1, **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC, dependsOnT=1, **{'id': attribid},
                       interfaceFunctionName=func_name,
                       ordering=ordering,
                       parent=1,

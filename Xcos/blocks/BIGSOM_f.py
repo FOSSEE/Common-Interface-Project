@@ -1,7 +1,7 @@
 def BIGSOM_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'BIGSOM_f'
 
-    outnode = addNode(outroot, 'BigSom', dependsOnU=1, **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BIGSOM, dependsOnU=1, **{'id': attribid},
                       interfaceFunctionName=func_name,
                       ordering=ordering,
                       parent=1,

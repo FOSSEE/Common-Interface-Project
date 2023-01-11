@@ -4,10 +4,11 @@ def DEBUG(outroot, attribid, ordering, geometry, parameters):
     code = parameters[0]
     codeLines = code.split('\n')
 
-    outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
                       interfaceFunctionName=func_name,
                       blockType='d',
-                      ordering=ordering, parent=1,
+                      ordering=ordering,
+                      parent=1,
                       simulationFunctionName='%debug_scicos',
                       simulationFunctionType=func_name,
                       style=func_name)

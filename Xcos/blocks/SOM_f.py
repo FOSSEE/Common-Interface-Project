@@ -1,7 +1,7 @@
 def SOM_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'SOM_f'
 
-    outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
                       interfaceFunctionName=func_name,
                       ordering=ordering,
                       parent=1,

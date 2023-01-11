@@ -9,7 +9,7 @@ def TOWS_c(outroot, attribid, ordering, geometry, parameters):
     else:
         b_type = 'd'
 
-    outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
                       parent=1,
                       interfaceFunctionName=func_name,
                       ordering=ordering,

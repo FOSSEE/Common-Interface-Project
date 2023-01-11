@@ -24,7 +24,7 @@ def CBLOCK4(outroot, attribid, ordering, geometry, parameters):
     code = parameters[19]
     codeLines = code.split('\n')
 
-    outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
                       interfaceFunctionName=func_name,
                       ordering=ordering,
                       parent=1,

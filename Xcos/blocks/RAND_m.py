@@ -5,7 +5,7 @@ def RAND_m(outroot, attribid, ordering, geometry, parameters):
 
     simulation_func_name = data_type[int(parameters[0])]
 
-    outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
                       parent=1,
                       interfaceFunctionName=func_name,
                       blockType='d',

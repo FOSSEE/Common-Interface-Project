@@ -1,11 +1,12 @@
 def DLRADAPT_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'DLRADAPT_f'
 
-    outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
                       interfaceFunctionName=func_name,
                       blockType='d',
                       dependsOnU=1,
-                      ordering=ordering, parent=1,
+                      ordering=ordering,
+                      parent=1,
                       simulationFunctionName='dlradp',
                       simulationFunctionType='DEFAULT',
                       style=func_name)

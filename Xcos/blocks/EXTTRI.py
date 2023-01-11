@@ -8,11 +8,12 @@ def EXTTRI(outroot, attribid, ordering, geometry, parameters):
 
     simulation_func_name = extration_type[para2] + data_type[para1]
 
-    outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
                       interfaceFunctionName=func_name,
                       blockType='c',
                       dependsOnU=1,
-                      ordering=ordering, parent=1,
+                      ordering=ordering,
+                      parent=1,
                       simulationFunctionName=simulation_func_name,
                       simulationFunctionType='C_OR_FORTRAN',
                       style=func_name)

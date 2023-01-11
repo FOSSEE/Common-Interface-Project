@@ -3,7 +3,7 @@ def TrigFun(outroot, attribid, ordering, geometry, parameters):
 
     simulation_func_name = str(parameters[0]) + '_blk'
 
-    outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
                       parent=1,
                       interfaceFunctionName=func_name,
                       ordering=ordering,

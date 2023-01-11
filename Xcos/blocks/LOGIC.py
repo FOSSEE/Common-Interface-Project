@@ -1,7 +1,7 @@
 def LOGIC(outroot, attribid, ordering, geometry, parameters):
     func_name = 'LOGIC'
 
-    outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
                       parent=1,
                       interfaceFunctionName=func_name,
                       blockType='c',

@@ -1,7 +1,7 @@
 def PRODUCT(outroot, attribid, ordering, geometry, parameters):
     func_name = 'PRODUCT'
 
-    outnode = addNode(outroot, 'Product', **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_PRODUCT, **{'id': attribid},
                       parent=1,
                       interfaceFunctionName=func_name,
                       ordering=ordering,

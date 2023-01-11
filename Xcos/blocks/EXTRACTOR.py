@@ -1,11 +1,12 @@
 def EXTRACTOR(outroot, attribid, ordering, geometry, parameters):
     func_name = 'EXTRACTOR'
 
-    outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
                       interfaceFunctionName=func_name,
                       blockType='c',
                       dependsOnU=1,
-                      ordering=ordering, parent=1,
+                      ordering=ordering,
+                      parent=1,
                       simulationFunctionName='extractor',
                       simulationFunctionType='C_OR_FORTRAN',
                       style=func_name)

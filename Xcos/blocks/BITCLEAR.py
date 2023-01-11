@@ -6,7 +6,7 @@ def BITCLEAR(outroot, attribid, ordering, geometry, parameters):
 
     simulation_func_name = 'bit_clear_' + datatype[para1]
 
-    outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
                       interfaceFunctionName=func_name,
                       ordering=ordering,
                       parent=1,

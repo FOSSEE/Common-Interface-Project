@@ -6,7 +6,7 @@ def BITSET(outroot, attribid, ordering, geometry, parameters):
 
     simulation_func_name = 'bit_set_' + datatype[para1]
 
-    outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
                       interfaceFunctionName=func_name,
                       ordering=ordering,
                       parent=1,

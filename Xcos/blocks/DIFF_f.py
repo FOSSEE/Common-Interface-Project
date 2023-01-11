@@ -1,11 +1,12 @@
 def DIFF_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'DIFF_f'
 
-    outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
                       interfaceFunctionName=func_name,
                       dependsOnT=1,
                       blockType='c',
-                      ordering=ordering, parent=1,
+                      ordering=ordering,
+                      parent=1,
                       simulationFunctionName='diffblk',
                       simulationFunctionType='OLDBLOCKS',
                       style=func_name)

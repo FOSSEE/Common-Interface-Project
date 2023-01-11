@@ -1,7 +1,7 @@
 def CSCOPE(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CSCOPE'
 
-    outnode = addNode(outroot, 'BasicBlock', dependsOnU=1, **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC, dependsOnU=1, **{'id': attribid},
                       interfaceFunctionName=func_name,
                       ordering=ordering,
                       parent=1,

@@ -1,7 +1,7 @@
 def PerteDP(outroot, attribid, ordering, geometry, parameters):
     func_name = 'PerteDP'
 
-    outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
                       parent=1,
                       interfaceFunctionName=func_name,
                       ordering=ordering,

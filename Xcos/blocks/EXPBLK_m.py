@@ -1,11 +1,12 @@
 def EXPBLK_m(outroot, attribid, ordering, geometry, parameters):
     func_name = 'EXPBLK_m'
 
-    outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
                       interfaceFunctionName=func_name,
                       blockType='c',
                       dependsOnU=1,
-                      ordering=ordering, parent=1,
+                      ordering=ordering,
+                      parent=1,
                       simulationFunctionName='expblk_m',
                       simulationFunctionType='C_OR_FORTRAN',
                       style=func_name)

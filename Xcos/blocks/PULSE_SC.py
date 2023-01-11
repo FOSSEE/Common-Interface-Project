@@ -1,7 +1,7 @@
 def PULSE_SC(outroot, attribid, ordering, geometry, parameters):
     func_name = 'PULSE_SC'
 
-    outnode = addNode(outroot, 'BasicBlock', **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
                       parent=1,
                       interfaceFunctionName=func_name,
                       ordering=ordering,
