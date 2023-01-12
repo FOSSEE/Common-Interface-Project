@@ -16,15 +16,16 @@ def CUMSUM(outroot, attribid, ordering, geometry, parameters):
 
     simulation_func_name = 'cumsum' + datatype + '_' + sum
 
-    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
-                      interfaceFunctionName=func_name,
+    outnode = addNode(outroot, BLOCK_BASIC,
+                      **{'id': attribid},
                       ordering=ordering,
                       parent=1,
-                      dependsOnU=1,
-                      blockType='c',
+                      interfaceFunctionName=func_name,
                       simulationFunctionName=simulation_func_name,
                       simulationFunctionType='C_OR_FORTRAN',
-                      style=func_name)
+                      style=func_name,
+                      blockType='c',
+                      dependsOnU=1)
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)
 

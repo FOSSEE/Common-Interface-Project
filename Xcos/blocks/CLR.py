@@ -1,14 +1,16 @@
 def CLR(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CLR'
 
-    outnode = addNode(outroot, BLOCK_BASIC, dependsOnT=1, **{'id': attribid},
-                      interfaceFunctionName=func_name,
+    outnode = addNode(outroot, BLOCK_BASIC,
+                      **{'id': attribid},
                       ordering=ordering,
                       parent=1,
-                      blockType='c',
+                      interfaceFunctionName=func_name,
                       simulationFunctionName='csslti4',
                       simulationFunctionType='C_OR_FORTRAN',
-                      style=func_name)
+                      style=func_name,
+                      blockType='c',
+                      dependsOnT=1)
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)
 

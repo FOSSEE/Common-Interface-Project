@@ -1,10 +1,11 @@
 def CANIMXY(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CANIMXY'
 
-    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
-                      interfaceFunctionName=func_name,
+    outnode = addNode(outroot, BLOCK_BASIC,
+                      **{'id': attribid},
                       ordering=ordering,
                       parent=1,
+                      interfaceFunctionName=func_name,
                       simulationFunctionName='canimxy',
                       simulationFunctionType='C_OR_FORTRAN',
                       style=func_name,

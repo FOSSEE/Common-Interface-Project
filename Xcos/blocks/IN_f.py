@@ -1,14 +1,15 @@
 def IN_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'IN_f'
 
-    outnode = addNode(outroot, BLOCK_EXPLICIT_IN, **{'id': attribid},
-                      interfaceFunctionName=func_name,
+    outnode = addNode(outroot, BLOCK_EXPLICIT_IN,
+                      **{'id': attribid},
                       ordering=ordering,
                       parent=1,
-                      blockType='c',
+                      interfaceFunctionName=func_name,
                       simulationFunctionName='input',
                       simulationFunctionType='DEFAULT',
-                      style=func_name)
+                      style=func_name,
+                      blockType='c')
 
     addExprsNode(outnode, TYPE_STRING, 3, parameters)
 

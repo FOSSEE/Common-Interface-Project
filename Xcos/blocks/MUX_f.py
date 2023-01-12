@@ -1,15 +1,16 @@
 def MUX_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'MUX_f'
 
-    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC,
+                      **{'id': attribid},
+                      ordering=ordering,
                       parent=1,
                       interfaceFunctionName=func_name,
-                      ordering=ordering,
-                      blockType='c',
-                      dependsOnU=1,
                       simulationFunctionName='mux',
                       simulationFunctionType='TYPE_1',
-                      style=func_name)
+                      style=func_name,
+                      blockType='c',
+                      dependsOnU=1)
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
 

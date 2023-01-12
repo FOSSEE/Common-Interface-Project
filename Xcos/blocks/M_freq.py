@@ -1,14 +1,15 @@
 def M_freq(outroot, attribid, ordering, geometry, parameters):
     func_name = 'M_freq'
 
-    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC,
+                      **{'id': attribid},
+                      ordering=ordering,
                       parent=1,
                       interfaceFunctionName=func_name,
-                      blockType='d',
-                      ordering=ordering,
                       simulationFunctionName='m_frequ',
                       simulationFunctionType='C_OR_FORTRAN',
-                      style=func_name)
+                      style=func_name,
+                      blockType='d')
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)
 

@@ -1,14 +1,15 @@
 def SampleCLK(outroot, attribid, ordering, geometry, parameters):
     func_name = 'SampleCLK'
 
-    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC,
+                      **{'id': attribid},
+                      ordering=ordering,
                       parent=1,
                       interfaceFunctionName=func_name,
-                      ordering=ordering,
-                      blockType='d',
                       simulationFunctionName='sampleclk',
                       simulationFunctionType='DEFAULT',
-                      style=func_name)
+                      style=func_name,
+                      blockType='d')
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)
 

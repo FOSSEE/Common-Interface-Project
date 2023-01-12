@@ -1,16 +1,17 @@
 def SWITCH_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'SWITCH_f'
 
-    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC,
+                      **{'id': attribid},
+                      ordering=ordering,
                       parent=1,
                       interfaceFunctionName=func_name,
-                      ordering=ordering,
-                      blockType='c',
-                      dependsOnU=1,
-                      dependsOnT=1,
                       simulationFunctionName='switchn',
                       simulationFunctionType='TYPE_2',
-                      style=func_name)
+                      style=func_name,
+                      blockType='c',
+                      dependsOnU=1,
+                      dependsOnT=1)
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)
 

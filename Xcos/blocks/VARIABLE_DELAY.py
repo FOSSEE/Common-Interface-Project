@@ -1,14 +1,15 @@
 def VARIABLE_DELAY(outroot, attribid, ordering, geometry, parameters):
     func_name = 'VARIABLE_DELAY'
 
-    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC,
+                      **{'id': attribid},
+                      ordering=ordering,
                       parent=1,
                       interfaceFunctionName=func_name,
-                      ordering=ordering,
-                      blockType='d',
                       simulationFunctionName='variable_delay',
                       simulationFunctionType='C_OR_FORTRAN',
-                      style=func_name)
+                      style=func_name,
+                      blockType='d')
 
     addExprsNode(outnode, TYPE_STRING, 3, parameters)
 

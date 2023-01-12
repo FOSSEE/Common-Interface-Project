@@ -1,15 +1,16 @@
 def CURV_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CURV_f'
 
-    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
-                      interfaceFunctionName=func_name,
+    outnode = addNode(outroot, BLOCK_BASIC,
+                      **{'id': attribid},
                       ordering=ordering,
                       parent=1,
-                      dependsOnT=1,
-                      blockType='c',
+                      interfaceFunctionName=func_name,
                       simulationFunctionName='intplt',
                       simulationFunctionType='DEFAULT',
-                      style=func_name)
+                      style=func_name,
+                      blockType='c',
+                      dependsOnT=1)
 
     addExprsNode(outnode, TYPE_DOUBLE, 0, parameters)
 

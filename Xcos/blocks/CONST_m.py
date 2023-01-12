@@ -1,14 +1,15 @@
 def CONST_m(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CONST_m'
 
-    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
-                      interfaceFunctionName=func_name,
+    outnode = addNode(outroot, BLOCK_BASIC,
+                      **{'id': attribid},
                       ordering=ordering,
                       parent=1,
-                      blockType='d',
+                      interfaceFunctionName=func_name,
                       simulationFunctionName='cstblk4_m',
                       simulationFunctionType='C_OR_FORTRAN',
-                      style=func_name)
+                      style=func_name,
+                      blockType='d')
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
 

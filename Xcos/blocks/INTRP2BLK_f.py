@@ -1,15 +1,16 @@
 def INTRP2BLK_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'INTRP2BLK_f'
 
-    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
-                      interfaceFunctionName=func_name,
+    outnode = addNode(outroot, BLOCK_BASIC,
+                      **{'id': attribid},
                       ordering=ordering,
                       parent=1,
-                      dependsOnU=1,
-                      blockType='c',
+                      interfaceFunctionName=func_name,
                       simulationFunctionName='intrp2',
                       simulationFunctionType='TYPE_1',
-                      style=func_name)
+                      style=func_name,
+                      blockType='c',
+                      dependsOnU=1)
 
     addExprsNode(outnode, TYPE_STRING, 3, parameters)
 

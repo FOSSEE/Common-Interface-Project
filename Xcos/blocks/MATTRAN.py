@@ -10,15 +10,16 @@ def MATTRAN(outroot, attribid, ordering, geometry, parameters):
     else:
         simulation_func_name = data_type[para1]
 
-    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC,
+                      **{'id': attribid},
+                      ordering=ordering,
                       parent=1,
                       interfaceFunctionName=func_name,
-                      blockType='c',
-                      dependsOnU=1,
-                      ordering=ordering,
                       simulationFunctionName=simulation_func_name,
                       simulationFunctionType='C_OR_FORTRAN',
-                      style=func_name)
+                      style=func_name,
+                      blockType='c',
+                      dependsOnU=1)
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)
 

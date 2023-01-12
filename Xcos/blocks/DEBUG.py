@@ -4,14 +4,15 @@ def DEBUG(outroot, attribid, ordering, geometry, parameters):
     code = parameters[0]
     codeLines = code.split('\n')
 
-    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
-                      interfaceFunctionName=func_name,
-                      blockType='d',
+    outnode = addNode(outroot, BLOCK_BASIC,
+                      **{'id': attribid},
                       ordering=ordering,
                       parent=1,
+                      interfaceFunctionName=func_name,
                       simulationFunctionName='%debug_scicos',
                       simulationFunctionType=func_name,
-                      style=func_name)
+                      style=func_name,
+                      blockType='d')
 
     addExprsArrayNode(outnode, TYPE_STRING, 1, [''], codeLines)
 

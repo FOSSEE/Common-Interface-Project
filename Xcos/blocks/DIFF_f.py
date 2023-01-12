@@ -1,15 +1,16 @@
 def DIFF_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'DIFF_f'
 
-    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
-                      interfaceFunctionName=func_name,
-                      dependsOnT=1,
-                      blockType='c',
+    outnode = addNode(outroot, BLOCK_BASIC,
+                      **{'id': attribid},
                       ordering=ordering,
                       parent=1,
+                      interfaceFunctionName=func_name,
                       simulationFunctionName='diffblk',
                       simulationFunctionType='OLDBLOCKS',
-                      style=func_name)
+                      style=func_name,
+                      blockType='c',
+                      dependsOnT=1)
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)
 

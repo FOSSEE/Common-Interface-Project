@@ -1,15 +1,16 @@
 def PRODUCT(outroot, attribid, ordering, geometry, parameters):
     func_name = 'PRODUCT'
 
-    outnode = addNode(outroot, BLOCK_PRODUCT, **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_PRODUCT,
+                      **{'id': attribid},
+                      ordering=ordering,
                       parent=1,
                       interfaceFunctionName=func_name,
-                      ordering=ordering,
-                      blockType='c',
-                      dependsOnU=1,
                       simulationFunctionName='product',
                       simulationFunctionType='C_OR_FORTRAN',
-                      style=func_name)
+                      style=func_name,
+                      blockType='c',
+                      dependsOnU=1)
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)
 

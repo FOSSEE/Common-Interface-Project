@@ -1,15 +1,16 @@
 def BACKLASH(outroot, attribid, ordering, geometry, parameters):
     func_name = 'BACKLASH'
 
-    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
-                      interfaceFunctionName=func_name,
+    outnode = addNode(outroot, BLOCK_BASIC,
+                      **{'id': attribid},
                       ordering=ordering,
                       parent=1,
-                      dependsOnU=1,
+                      interfaceFunctionName=func_name,
                       simulationFunctionName='backlash',
                       simulationFunctionType='C_OR_FORTRAN',
                       style=func_name,
-                      blockType='c')
+                      blockType='c',
+                      dependsOnU=1)
 
     addExprsNode(outnode, TYPE_STRING, 3, parameters)
 

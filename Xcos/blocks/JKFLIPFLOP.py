@@ -1,15 +1,16 @@
 def JKFLIPFLOP(outroot, attribid, ordering, geometry, parameters):
     func_name = 'JKFLIPFLOP'
 
-    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
-                      interfaceFunctionName=func_name,
+    outnode = addNode(outroot, BLOCK_BASIC,
+                      **{'id': attribid},
                       ordering=ordering,
                       parent=1,
-                      dependsOnU=1,
-                      blockType='h',
+                      interfaceFunctionName=func_name,
                       simulationFunctionName='csuper',
                       simulationFunctionType='DEFAULT',
-                      style=func_name)
+                      style=func_name,
+                      blockType='h',
+                      dependsOnU=1)
 
     addExprsNode(outnode, TYPE_DOUBLE, 0, parameters)
 

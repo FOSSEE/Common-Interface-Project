@@ -1,15 +1,16 @@
 def SineVoltage(outroot, attribid, ordering, geometry, parameters):
     func_name = 'SineVoltage'
 
-    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC,
+                      **{'id': attribid},
+                      ordering=ordering,
                       parent=1,
                       interfaceFunctionName=func_name,
-                      ordering=ordering,
-                      blockType='c',
-                      dependsOnU=1,
                       simulationFunctionName='SineVoltage',
                       simulationFunctionType='DEFAULT',
-                      style=func_name)
+                      style=func_name,
+                      blockType='c',
+                      dependsOnU=1)
 
     addExprsNode(outnode, TYPE_STRING, 5, parameters)
 

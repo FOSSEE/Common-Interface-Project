@@ -8,14 +8,15 @@ def REGISTER(outroot, attribid, ordering, geometry, parameters):
     if para2 >= 3:
         simulation_func_name = simulation_func_name + data_type[para2]
 
-    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC,
+                      **{'id': attribid},
+                      ordering=ordering,
                       parent=1,
                       interfaceFunctionName=func_name,
-                      blockType='d',
-                      ordering=ordering,
                       simulationFunctionName=simulation_func_name,
                       simulationFunctionType='C_OR_FORTRAN',
-                      style=func_name)
+                      style=func_name,
+                      blockType='d')
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)
 

@@ -1,14 +1,15 @@
 def DELAY_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'DELAY_f'
 
-    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
-                      interfaceFunctionName=func_name,
-                      blockType='h',
+    outnode = addNode(outroot, BLOCK_BASIC,
+                      **{'id': attribid},
                       ordering=ordering,
                       parent=1,
+                      interfaceFunctionName=func_name,
                       simulationFunctionName='csuper',
                       simulationFunctionType='DEFAULT',
-                      style=func_name)
+                      style=func_name,
+                      blockType='h')
 
     addExprsNode(outnode, TYPE_DOUBLE, 0, parameters)
 

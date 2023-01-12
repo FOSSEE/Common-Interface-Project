@@ -17,14 +17,31 @@ BLOCK_EXPLICIT_OUT = 'ExplicitOutBlock'
 BLOCK_IMPLICIT_IN = 'ImplicitInBlock'
 BLOCK_IMPLICIT_OUT = 'ImplicitOutBlock'
 BLOCK_PRODUCT = 'Product'
+BLOCK_SPLIT = 'SplitBlock'
 BLOCK_SUMMATION = 'Summation'
 
 
 def addNode(node, subNodeType, **kwargs):
     subNode = ET.SubElement(node, subNodeType)
     for (key, value) in kwargs.items():
-        subNode.set(key, str(value))
+        if value is not None:
+            subNode.set(key, str(value))
     return subNode
+
+
+def addOutNode(node, subNodeType,
+               attribid, ordering, parent,
+               interface_func_name, simulation_func_name, simulation_func_type,
+               style, blockType,
+               **kwargs):
+    newkwargs = {'id': attribid, 'ordering': ordering, 'parent': parent,
+                 'interfaceFunctionName': interface_func_name,
+                 'simulationFunctionName': simulation_func_name,
+                 'simulationFunctionType': simulation_func_type,
+                 'style': style, 'blockType': blockType}
+    newkwargs.update(kwargs)
+
+    return addNode(node, subNodeType, **newkwargs)
 
 
 def addData(node, column, line, value, isReal=False):

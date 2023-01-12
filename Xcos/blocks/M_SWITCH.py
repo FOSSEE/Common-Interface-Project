@@ -1,15 +1,16 @@
 def M_SWITCH(outroot, attribid, ordering, geometry, parameters):
     func_name = 'M_SWITCH'
 
-    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC,
+                      **{'id': attribid},
+                      ordering=ordering,
                       parent=1,
                       interfaceFunctionName=func_name,
-                      blockType='c',
-                      dependsOnU=1,
-                      ordering=ordering,
                       simulationFunctionName='mswitch',
                       simulationFunctionType='C_OR_FORTRAN',
-                      style=func_name)
+                      style=func_name,
+                      blockType='c',
+                      dependsOnU=1)
 
     addExprsNode(outnode, TYPE_STRING, 3, parameters)
 

@@ -1,14 +1,15 @@
 def GotoTagVisibility(outroot, attribid, ordering, geometry, parameters):
     func_name = 'GotoTagVisibility'
 
-    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
-                      interfaceFunctionName=func_name,
+    outnode = addNode(outroot, BLOCK_BASIC,
+                      **{'id': attribid},
                       ordering=ordering,
                       parent=1,
-                      blockType='c',
+                      interfaceFunctionName=func_name,
                       simulationFunctionName='gototagvisibility',
                       simulationFunctionType='DEFAULT',
-                      style=func_name)
+                      style=func_name,
+                      blockType='c')
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
 

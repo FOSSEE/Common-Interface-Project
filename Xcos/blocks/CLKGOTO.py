@@ -1,14 +1,15 @@
 def CLKGOTO(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CLKGOTO'
 
-    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
-                      interfaceFunctionName=func_name,
+    outnode = addNode(outroot, BLOCK_BASIC,
+                      **{'id': attribid},
                       ordering=ordering,
                       parent=1,
-                      blockType='d',
+                      interfaceFunctionName=func_name,
                       simulationFunctionName='clkgoto',
                       simulationFunctionType='DEFAULT',
                       style=func_name,
+                      blockType='d',
                       value='Goto')
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)

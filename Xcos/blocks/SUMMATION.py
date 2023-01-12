@@ -11,15 +11,16 @@ def SUMMATION(outroot, attribid, ordering, geometry, parameters):
     else:
         simulation_func_name = 'summation' + data_type[para1] + overflow[para3]
 
-    outnode = addNode(outroot, BLOCK_SUMMATION, **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_SUMMATION,
+                      **{'id': attribid},
+                      ordering=ordering,
                       parent=1,
                       interfaceFunctionName=func_name,
-                      ordering=ordering,
-                      blockType='c',
-                      dependsOnU=1,
                       simulationFunctionName=simulation_func_name,
                       simulationFunctionType='C_OR_FORTRAN',
-                      style=func_name)
+                      style=func_name,
+                      blockType='c',
+                      dependsOnU=1)
 
     addExprsNode(outnode, TYPE_STRING, 3, parameters)
 

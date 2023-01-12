@@ -1,15 +1,16 @@
 def BOUNCE(outroot, attribid, ordering, geometry, parameters):
     func_name = 'BOUNCE'
 
-    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
-                      interfaceFunctionName=func_name,
+    outnode = addNode(outroot, BLOCK_BASIC,
+                      **{'id': attribid},
                       ordering=ordering,
                       parent=1,
-                      dependsOnT=1,
+                      interfaceFunctionName=func_name,
                       simulationFunctionName='bounce_ball',
                       simulationFunctionType='C_OR_FORTRAN',
                       style=func_name,
-                      blockType='c')
+                      blockType='c',
+                      dependsOnT=1)
 
     addExprsNode(outnode, TYPE_STRING, 7, parameters)
 

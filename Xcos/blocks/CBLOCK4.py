@@ -24,16 +24,17 @@ def CBLOCK4(outroot, attribid, ordering, geometry, parameters):
     code = parameters[19]
     codeLines = code.split('\n')
 
-    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
-                      interfaceFunctionName=func_name,
+    outnode = addNode(outroot, BLOCK_BASIC,
+                      **{'id': attribid},
                       ordering=ordering,
                       parent=1,
-                      dependsOnU=depends_u,
-                      dependsOnT=depends_t,
-                      blockType='c',
+                      interfaceFunctionName=func_name,
                       simulationFunctionName=parameters[0],
                       simulationFunctionType=simulation_func_type,
-                      style=func_name)
+                      style=func_name,
+                      blockType='c',
+                      dependsOnU=depends_u,
+                      dependsOnT=depends_t)
 
     addExprsArrayNode(outnode, TYPE_STRING, 19, parameters, codeLines)
 

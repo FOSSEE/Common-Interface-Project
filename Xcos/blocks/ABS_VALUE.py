@@ -1,14 +1,16 @@
 def ABS_VALUE(outroot, attribid, ordering, geometry, parameters):
     func_name = 'ABS_VALUE'
 
-    outnode = addNode(outroot, BLOCK_BASIC, dependsOnU=1, **{'id': attribid},
-                      interfaceFunctionName=func_name,
+    outnode = addNode(outroot, BLOCK_BASIC,
+                      **{'id': attribid},
                       ordering=ordering,
                       parent=1,
+                      interfaceFunctionName=func_name,
                       simulationFunctionName='absolute_value',
                       simulationFunctionType='C_OR_FORTRAN',
                       style=func_name,
-                      blockType='c')
+                      blockType='c',
+                      dependsOnU=1)
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
 

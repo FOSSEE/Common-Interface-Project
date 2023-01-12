@@ -1,15 +1,16 @@
 def NPN(outroot, attribid, ordering, geometry, parameters):
     func_name = 'NPN'
 
-    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC,
+                      **{'id': attribid},
+                      ordering=ordering,
                       parent=1,
                       interfaceFunctionName=func_name,
-                      ordering=ordering,
-                      blockType='c',
-                      dependsOnT=1,
                       simulationFunctionName='NPN',
                       simulationFunctionType='DEFAULT',
-                      style=func_name)
+                      style=func_name,
+                      blockType='c',
+                      dependsOnT=1)
 
     addExprsNode(outnode, TYPE_STRING, 17, parameters)
 

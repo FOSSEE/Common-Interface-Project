@@ -1,14 +1,16 @@
 def AFFICH_m(outroot, attribid, ordering, geometry, parameters):
     func_name = 'AFFICH_m'
 
-    outnode = addNode(outroot, BLOCK_AFFICHE, dependsOnU=1, **{'id': attribid},
-                      interfaceFunctionName=func_name,
+    outnode = addNode(outroot, BLOCK_AFFICHE,
+                      **{'id': attribid},
                       ordering=ordering,
                       parent=1,
+                      interfaceFunctionName=func_name,
                       simulationFunctionName='affich2',
                       simulationFunctionType='C_OR_FORTRAN',
                       style=func_name,
-                      blockType='c')
+                      blockType='c',
+                      dependsOnU=1)
 
     addExprsNode(outnode, TYPE_STRING, 7, parameters)
 

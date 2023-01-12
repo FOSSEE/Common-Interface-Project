@@ -1,14 +1,15 @@
 def MFCLCK_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'MFCLCK_f'
 
-    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC,
+                      **{'id': attribid},
+                      ordering=ordering,
                       parent=1,
                       interfaceFunctionName=func_name,
-                      ordering=ordering,
-                      blockType='d',
                       simulationFunctionName='mfclck',
                       simulationFunctionType='DEFAULT',
-                      style=func_name)
+                      style=func_name,
+                      blockType='d')
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)
 

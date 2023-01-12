@@ -1,15 +1,16 @@
 def GENERAL_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'GENERAL_f'
 
-    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
-                      interfaceFunctionName=func_name,
+    outnode = addNode(outroot, BLOCK_BASIC,
+                      **{'id': attribid},
                       ordering=ordering,
                       parent=1,
-                      dependsOnU=1,
-                      blockType='z',
+                      interfaceFunctionName=func_name,
                       simulationFunctionName='zcross',
                       simulationFunctionType='TYPE_1',
-                      style=func_name)
+                      style=func_name,
+                      blockType='z',
+                      dependsOnU=1)
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)
 

@@ -1,15 +1,16 @@
 def Gyrator(outroot, attribid, ordering, geometry, parameters):
     func_name = 'Gyrator'
 
-    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
-                      interfaceFunctionName=func_name,
+    outnode = addNode(outroot, BLOCK_BASIC,
+                      **{'id': attribid},
                       ordering=ordering,
                       parent=1,
-                      dependsOnT=1,
-                      blockType='c',
+                      interfaceFunctionName=func_name,
                       simulationFunctionName='Gyrator',
                       simulationFunctionType='DEFAULT',
-                      style=func_name)
+                      style=func_name,
+                      blockType='c',
+                      dependsOnT=1)
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)
 

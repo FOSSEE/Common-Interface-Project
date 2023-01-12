@@ -1,10 +1,11 @@
 def BPLATFORM(outroot, attribid, ordering, geometry, parameters):
     func_name = 'BPLATFORM'
 
-    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
-                      interfaceFunctionName=func_name,
+    outnode = addNode(outroot, BLOCK_BASIC,
+                      **{'id': attribid},
                       ordering=ordering,
                       parent=1,
+                      interfaceFunctionName=func_name,
                       simulationFunctionName='bplatform2',
                       simulationFunctionType='SCILAB',
                       style=func_name,

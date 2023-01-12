@@ -4,15 +4,16 @@ def c_block(outroot, attribid, ordering, geometry, parameters):
     code = parameters[4]
     codeLines = code.split('\n')
 
-    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
-                      interfaceFunctionName=func_name,
+    outnode = addNode(outroot, BLOCK_BASIC,
+                      **{'id': attribid},
                       ordering=ordering,
                       parent=1,
-                      dependsOnU=1,
+                      interfaceFunctionName=func_name,
                       simulationFunctionName=parameters[3],
                       simulationFunctionType='DYNAMIC_C_1',
                       style=func_name,
-                      blockType='c')
+                      blockType='c',
+                      dependsOnU=1)
 
     addExprsArrayNode(outnode, TYPE_STRING, 4, parameters, codeLines)
 

@@ -1,15 +1,16 @@
 def LOGBLK_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'LOGBLK_f'
 
-    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
-                      interfaceFunctionName=func_name,
+    outnode = addNode(outroot, BLOCK_BASIC,
+                      **{'id': attribid},
                       ordering=ordering,
                       parent=1,
-                      dependsOnU=1,
-                      blockType='c',
+                      interfaceFunctionName=func_name,
                       simulationFunctionName='logblk',
                       simulationFunctionType='DEFAULT',
-                      style=func_name)
+                      style=func_name,
+                      blockType='c',
+                      dependsOnU=1)
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
 

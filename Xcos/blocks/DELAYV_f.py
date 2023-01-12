@@ -1,15 +1,16 @@
 def DELAYV_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'DELAYV_f'
 
-    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
-                      interfaceFunctionName=func_name,
-                      dependsOnU=1,
-                      blockType='d',
+    outnode = addNode(outroot, BLOCK_BASIC,
+                      **{'id': attribid},
                       ordering=ordering,
                       parent=1,
+                      interfaceFunctionName=func_name,
                       simulationFunctionName='delayv',
                       simulationFunctionType='TYPE_1',
-                      style=func_name)
+                      style=func_name,
+                      blockType='d',
+                      dependsOnU=1)
 
     addExprsNode(outnode, TYPE_STRING, 3, parameters)
 

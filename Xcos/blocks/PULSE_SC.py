@@ -1,14 +1,15 @@
 def PULSE_SC(outroot, attribid, ordering, geometry, parameters):
     func_name = 'PULSE_SC'
 
-    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_BASIC,
+                      **{'id': attribid},
+                      ordering=ordering,
                       parent=1,
                       interfaceFunctionName=func_name,
-                      ordering=ordering,
-                      blockType='h',
                       simulationFunctionName='csuper',
                       simulationFunctionType='DEFAULT',
-                      style=func_name)
+                      style=func_name,
+                      blockType='h')
 
     addExprsNode(outnode, TYPE_STRING, 4, parameters)
 

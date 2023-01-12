@@ -1,15 +1,16 @@
 def IFTHEL_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'IFTHEL_f'
 
-    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
-                      interfaceFunctionName=func_name,
+    outnode = addNode(outroot, BLOCK_BASIC,
+                      **{'id': attribid},
                       ordering=ordering,
                       parent=1,
-                      dependsOnU=1,
-                      blockType='l',
+                      interfaceFunctionName=func_name,
                       simulationFunctionName='ifthel',
                       simulationFunctionType='IFTHENELSE',
-                      style=func_name)
+                      style=func_name,
+                      blockType='l',
+                      dependsOnU=1)
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)
 

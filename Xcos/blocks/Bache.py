@@ -1,15 +1,16 @@
 def Bache(outroot, attribid, ordering, geometry, parameters):
     func_name = 'Bache'
 
-    outnode = addNode(outroot, BLOCK_BASIC, **{'id': attribid},
-                      interfaceFunctionName=func_name,
+    outnode = addNode(outroot, BLOCK_BASIC,
+                      **{'id': attribid},
                       ordering=ordering,
                       parent=1,
-                      dependsOnU=1,
+                      interfaceFunctionName=func_name,
                       simulationFunctionName='Bache',
                       simulationFunctionType='DEFAULT',
                       style=func_name,
-                      blockType='c')
+                      blockType='c',
+                      dependsOnU=1)
 
     addExprsNode(outnode, TYPE_STRING, 9, parameters)
 

@@ -1,12 +1,15 @@
 def SplitBlock(outroot, attribid, ordering, geometry):
-    func_name = 'SplitBlock'
-
-    outnode = addNode(outroot, func_name, connectable=0, **{'id': attribid},
+    outnode = addNode(outroot, BLOCK_SPLIT,
+                      **{'id': attribid},
                       ordering=ordering,
                       parent=1,
+                      interfaceFunctionName=None,
+                      simulationFunctionName=None,
                       simulationFunctionType='DEFAULT',
                       style='',
+                      blockType=None,
                       value='',
+                      connectable=0,
                       vertex=1)
 
     addNode(outnode, 'mxGeometry', **{'as': 'geometry'},
