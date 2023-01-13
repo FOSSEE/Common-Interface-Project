@@ -1,15 +1,10 @@
 def FROMMO(outroot, attribid, ordering, geometry, parameters):
     func_name = 'FROMMO'
 
-    outnode = addNode(outroot, BLOCK_BASIC,
-                      **{'id': attribid},
-                      ordering=ordering,
-                      parent=1,
-                      interfaceFunctionName=func_name,
-                      simulationFunctionName='frommo',
-                      simulationFunctionType='DEFAULT',
-                      style=func_name,
-                      blockType='c')
+    outnode = addOutNode(outroot, BLOCK_BASIC,
+                         attribid, ordering, 1,
+                         func_name, 'frommo', 'DEFAULT',
+                         func_name, 'c')
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
 

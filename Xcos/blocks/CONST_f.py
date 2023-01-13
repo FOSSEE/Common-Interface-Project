@@ -1,15 +1,10 @@
 def CONST_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CONST_f'
 
-    outnode = addNode(outroot, BLOCK_BASIC,
-                      **{'id': attribid},
-                      ordering=ordering,
-                      parent=1,
-                      interfaceFunctionName=func_name,
-                      simulationFunctionName='cstblk',
-                      simulationFunctionType='TYPE_1',
-                      style=func_name,
-                      blockType='d')
+    outnode = addOutNode(outroot, BLOCK_BASIC,
+                         attribid, ordering, 1,
+                         func_name, 'cstblk', 'TYPE_1',
+                         func_name, 'd')
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
 

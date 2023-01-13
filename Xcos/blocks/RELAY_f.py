@@ -1,17 +1,12 @@
 def RELAY_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'RELAY_f'
 
-    outnode = addNode(outroot, BLOCK_BASIC,
-                      **{'id': attribid},
-                      ordering=ordering,
-                      parent=1,
-                      interfaceFunctionName=func_name,
-                      simulationFunctionName='relay',
-                      simulationFunctionType='TYPE_2',
-                      style=func_name,
-                      blockType='c',
-                      dependsOnU=1,
-                      dependsOnT=1)
+    outnode = addOutNode(outroot, BLOCK_BASIC,
+                         attribid, ordering, 1,
+                         func_name, 'relay', 'TYPE_2',
+                         func_name, 'c',
+                         dependsOnU=1,
+                         dependsOnT=1)
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)
 

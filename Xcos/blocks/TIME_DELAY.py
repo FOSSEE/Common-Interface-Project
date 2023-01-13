@@ -1,16 +1,11 @@
 def TIME_DELAY(outroot, attribid, ordering, geometry, parameters):
     func_name = 'TIME_DELAY'
 
-    outnode = addNode(outroot, BLOCK_BASIC,
-                      **{'id': attribid},
-                      ordering=ordering,
-                      parent=1,
-                      interfaceFunctionName=func_name,
-                      simulationFunctionName='time_delay',
-                      simulationFunctionType='C_OR_FORTRAN',
-                      style=func_name,
-                      blockType='x',
-                      dependsOnT=1)
+    outnode = addOutNode(outroot, BLOCK_BASIC,
+                         attribid, ordering, 1,
+                         func_name, 'time_delay', 'C_OR_FORTRAN',
+                         func_name, 'x',
+                         dependsOnT=1)
 
     addExprsNode(outnode, TYPE_STRING, 3, parameters)
 

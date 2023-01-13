@@ -9,17 +9,12 @@ def generic_block3(outroot, attribid, ordering, geometry, parameters):
     if parameters[17] == 'y':
         depends_u = 1
 
-    outnode = addNode(outroot, BLOCK_BASIC,
-                      **{'id': attribid},
-                      ordering=ordering,
-                      parent=1,
-                      interfaceFunctionName=func_name,
-                      simulationFunctionName=parameters[0],
-                      simulationFunctionType='C_OR_FORTRAN',
-                      style=func_name,
-                      blockType='c',
-                      dependsOnU=depends_u,
-                      dependsOnT=depends_t)
+    outnode = addOutNode(outroot, BLOCK_BASIC,
+                         attribid, ordering, 1,
+                         func_name, parameters[0], 'C_OR_FORTRAN',
+                         func_name, 'c',
+                         dependsOnU=depends_u,
+                         dependsOnT=depends_t)
 
     addExprsNode(outnode, TYPE_STRING, 19, parameters)
 

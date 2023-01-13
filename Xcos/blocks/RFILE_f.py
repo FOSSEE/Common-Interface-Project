@@ -1,15 +1,10 @@
 def RFILE_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'RFILE_f'
 
-    outnode = addNode(outroot, BLOCK_BASIC,
-                      **{'id': attribid},
-                      ordering=ordering,
-                      parent=1,
-                      interfaceFunctionName=func_name,
-                      simulationFunctionName='readf',
-                      simulationFunctionType='DEFAULT',
-                      style=func_name,
-                      blockType='d')
+    outnode = addOutNode(outroot, BLOCK_BASIC,
+                         attribid, ordering, 1,
+                         func_name, 'readf', 'DEFAULT',
+                         func_name, 'd')
 
     addExprsNode(outnode, TYPE_STRING, 5, parameters)
 

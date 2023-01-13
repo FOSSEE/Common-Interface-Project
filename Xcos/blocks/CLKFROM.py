@@ -1,16 +1,11 @@
 def CLKFROM(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CLKFROM'
 
-    outnode = addNode(outroot, BLOCK_BASIC,
-                      **{'id': attribid},
-                      ordering=ordering,
-                      parent=1,
-                      interfaceFunctionName=func_name,
-                      simulationFunctionName='clkfrom',
-                      simulationFunctionType='DEFAULT',
-                      style=func_name,
-                      blockType='d',
-                      value='From')
+    outnode = addOutNode(outroot, BLOCK_BASIC,
+                         attribid, ordering, 1,
+                         func_name, 'clkfrom', 'DEFAULT',
+                         func_name, 'd',
+                         value='From')
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
 

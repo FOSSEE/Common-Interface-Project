@@ -1,15 +1,10 @@
 def EVTDLY_c(outroot, attribid, ordering, geometry, parameters):
     func_name = 'EVTDLY_c'
 
-    outnode = addNode(outroot, BLOCK_BASIC,
-                      **{'id': attribid},
-                      ordering=ordering,
-                      parent=1,
-                      interfaceFunctionName=func_name,
-                      simulationFunctionName='evtdly4',
-                      simulationFunctionType='C_OR_FORTRAN',
-                      style=func_name,
-                      blockType='d')
+    outnode = addOutNode(outroot, BLOCK_BASIC,
+                         attribid, ordering, 1,
+                         func_name, 'evtdly4', 'C_OR_FORTRAN',
+                         func_name, 'd')
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)
 

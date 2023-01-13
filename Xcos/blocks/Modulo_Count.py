@@ -1,15 +1,10 @@
 def Modulo_Count(outroot, attribid, ordering, geometry, parameters):
     func_name = 'Modulo_Count'
 
-    outnode = addNode(outroot, BLOCK_BASIC,
-                      **{'id': attribid},
-                      ordering=ordering,
-                      parent=1,
-                      interfaceFunctionName=func_name,
-                      simulationFunctionName='modulo_count',
-                      simulationFunctionType='C_OR_FORTRAN',
-                      style=func_name,
-                      blockType='c')
+    outnode = addOutNode(outroot, BLOCK_BASIC,
+                         attribid, ordering, 1,
+                         func_name, 'modulo_count', 'C_OR_FORTRAN',
+                         func_name, 'c')
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)
 

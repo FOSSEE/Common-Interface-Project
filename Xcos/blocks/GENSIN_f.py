@@ -1,16 +1,11 @@
 def GENSIN_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'GENSIN_f'
 
-    outnode = addNode(outroot, BLOCK_BASIC,
-                      **{'id': attribid},
-                      ordering=ordering,
-                      parent=1,
-                      interfaceFunctionName=func_name,
-                      simulationFunctionName='gensin',
-                      simulationFunctionType='DEFAULT',
-                      style=func_name,
-                      blockType='c',
-                      dependsOnT=1)
+    outnode = addOutNode(outroot, BLOCK_BASIC,
+                         attribid, ordering, 1,
+                         func_name, 'gensin', 'DEFAULT',
+                         func_name, 'c',
+                         dependsOnT=1)
 
     addExprsNode(outnode, TYPE_STRING, 3, parameters)
 

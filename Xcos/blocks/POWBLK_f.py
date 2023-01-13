@@ -1,16 +1,11 @@
 def POWBLK_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'POWBLK_f'
 
-    outnode = addNode(outroot, BLOCK_BASIC,
-                      **{'id': attribid},
-                      ordering=ordering,
-                      parent=1,
-                      interfaceFunctionName=func_name,
-                      simulationFunctionName='powblk',
-                      simulationFunctionType='DEFAULT',
-                      style=func_name,
-                      blockType='c',
-                      dependsOnU=1)
+    outnode = addOutNode(outroot, BLOCK_BASIC,
+                         attribid, ordering, 1,
+                         func_name, 'powblk', 'DEFAULT',
+                         func_name, 'c',
+                         dependsOnU=1)
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
 

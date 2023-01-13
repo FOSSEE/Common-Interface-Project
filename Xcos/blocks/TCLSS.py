@@ -1,16 +1,11 @@
 def TCLSS(outroot, attribid, ordering, geometry, parameters):
     func_name = 'TCLSS'
 
-    outnode = addNode(outroot, BLOCK_BASIC,
-                      **{'id': attribid},
-                      ordering=ordering,
-                      parent=1,
-                      interfaceFunctionName=func_name,
-                      simulationFunctionName='tcslti4',
-                      simulationFunctionType='C_OR_FORTRAN',
-                      style=func_name,
-                      blockType='c',
-                      dependsOnT=1)
+    outnode = addOutNode(outroot, BLOCK_BASIC,
+                         attribid, ordering, 1,
+                         func_name, 'tcslti4', 'C_OR_FORTRAN',
+                         func_name, 'c',
+                         dependsOnT=1)
 
     addExprsNode(outnode, TYPE_STRING, 5, parameters)
 

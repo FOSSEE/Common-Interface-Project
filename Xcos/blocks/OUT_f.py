@@ -1,15 +1,10 @@
 def OUT_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'OUT_f'
 
-    outnode = addNode(outroot, BLOCK_EXPLICIT_OUT,
-                      **{'id': attribid},
-                      ordering=ordering,
-                      parent=1,
-                      interfaceFunctionName=func_name,
-                      simulationFunctionName='output',
-                      simulationFunctionType='DEFAULT',
-                      style=func_name,
-                      blockType='c')
+    outnode = addOutNode(outroot, BLOCK_EXPLICIT_OUT,
+                         attribid, ordering, 1,
+                         func_name, 'output', 'DEFAULT',
+                         func_name, 'c')
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
 

@@ -1,15 +1,10 @@
 def CLKINV_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CLKINV_f'
 
-    outnode = addNode(outroot, BLOCK_EVENT_IN,
-                      **{'id': attribid},
-                      ordering=ordering,
-                      parent=1,
-                      interfaceFunctionName=func_name,
-                      simulationFunctionName='input',
-                      simulationFunctionType='DEFAULT',
-                      style=func_name,
-                      blockType='d')
+    outnode = addOutNode(outroot, BLOCK_EVENT_IN,
+                         attribid, ordering, 1,
+                         func_name, 'input', 'DEFAULT',
+                         func_name, 'd')
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
 

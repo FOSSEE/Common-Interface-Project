@@ -1,15 +1,10 @@
 def CLKOUTV_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CLKOUTV_f'
 
-    outnode = addNode(outroot, BLOCK_EVENT_OUT,
-                      **{'id': attribid},
-                      ordering=ordering,
-                      parent=1,
-                      interfaceFunctionName=func_name,
-                      simulationFunctionName='output',
-                      simulationFunctionType='DEFAULT',
-                      style=func_name,
-                      blockType='d')
+    outnode = addOutNode(outroot, BLOCK_EVENT_OUT,
+                         attribid, ordering, 1,
+                         func_name, 'output', 'DEFAULT',
+                         func_name, 'd')
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
 

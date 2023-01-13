@@ -1,15 +1,10 @@
 def CurrentSensor(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CurrentSensor'
 
-    outnode = addNode(outroot, BLOCK_BASIC,
-                      **{'id': attribid},
-                      ordering=ordering,
-                      parent=1,
-                      interfaceFunctionName=func_name,
-                      simulationFunctionName='cscope',
-                      simulationFunctionType='C_OR_FORTRAN',
-                      style=func_name,
-                      blockType='c')
+    outnode = addOutNode(outroot, BLOCK_BASIC,
+                         attribid, ordering, 1,
+                         func_name, 'cscope', 'C_OR_FORTRAN',
+                         func_name, 'c')
 
     addExprsNode(outnode, TYPE_STRING, 0, parameters)
 

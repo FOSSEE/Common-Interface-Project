@@ -1,15 +1,10 @@
 def DOLLAR_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'DOLLAR_f'
 
-    outnode = addNode(outroot, BLOCK_BASIC,
-                      **{'id': attribid},
-                      ordering=ordering,
-                      parent=1,
-                      interfaceFunctionName=func_name,
-                      simulationFunctionName='dollar',
-                      simulationFunctionType='DEFAULT',
-                      style=func_name,
-                      blockType='d')
+    outnode = addOutNode(outroot, BLOCK_BASIC,
+                         attribid, ordering, 1,
+                         func_name, 'dollar', 'DEFAULT',
+                         func_name, 'd')
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)
 

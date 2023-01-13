@@ -1,15 +1,10 @@
 def INIMPL_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'INIMPL_f'
 
-    outnode = addNode(outroot, BLOCK_IMPLICIT_IN,
-                      **{'id': attribid},
-                      ordering=ordering,
-                      parent=1,
-                      interfaceFunctionName=func_name,
-                      simulationFunctionName='inimpl',
-                      simulationFunctionType='DEFAULT',
-                      style=func_name,
-                      blockType='c')
+    outnode = addOutNode(outroot, BLOCK_IMPLICIT_IN,
+                         attribid, ordering, 1,
+                         func_name, 'inimpl', 'DEFAULT',
+                         func_name, 'c')
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
 

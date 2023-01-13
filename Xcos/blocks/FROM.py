@@ -1,15 +1,10 @@
 def FROM(outroot, attribid, ordering, geometry, parameters):
     func_name = 'FROM'
 
-    outnode = addNode(outroot, BLOCK_BASIC,
-                      **{'id': attribid},
-                      ordering=ordering,
-                      parent=1,
-                      interfaceFunctionName=func_name,
-                      simulationFunctionName='from',
-                      simulationFunctionType='DEFAULT',
-                      style=func_name,
-                      blockType='c')
+    outnode = addOutNode(outroot, BLOCK_BASIC,
+                         attribid, ordering, 1,
+                         func_name, 'from', 'DEFAULT',
+                         func_name, 'c')
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
 

@@ -9,15 +9,10 @@ def TOWS_c(outroot, attribid, ordering, geometry, parameters):
     else:
         b_type = 'd'
 
-    outnode = addNode(outroot, BLOCK_BASIC,
-                      **{'id': attribid},
-                      ordering=ordering,
-                      parent=1,
-                      interfaceFunctionName=func_name,
-                      simulationFunctionName='tows_c',
-                      simulationFunctionType='C_OR_FORTRAN',
-                      style=func_name,
-                      blockType=b_type)
+    outnode = addOutNode(outroot, BLOCK_BASIC,
+                         attribid, ordering, 1,
+                         func_name, 'tows_c', 'C_OR_FORTRAN',
+                         func_name, b_type)
 
     addExprsNode(outnode, TYPE_STRING, 3, parameters)
 

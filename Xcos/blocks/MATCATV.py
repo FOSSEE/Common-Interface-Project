@@ -1,16 +1,11 @@
 def MATCATV(outroot, attribid, ordering, geometry, parameters):
     func_name = 'MATCATV'
 
-    outnode = addNode(outroot, BLOCK_BASIC,
-                      **{'id': attribid},
-                      ordering=ordering,
-                      parent=1,
-                      interfaceFunctionName=func_name,
-                      simulationFunctionName='mat_catv',
-                      simulationFunctionType='C_OR_FORTRAN',
-                      style=func_name,
-                      blockType='c',
-                      dependsOnU=1)
+    outnode = addOutNode(outroot, BLOCK_BASIC,
+                         attribid, ordering, 1,
+                         func_name, 'mat_catv', 'C_OR_FORTRAN',
+                         func_name, 'c',
+                         dependsOnU=1)
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
 

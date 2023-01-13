@@ -1,16 +1,11 @@
 def DEMUX(outroot, attribid, ordering, geometry, parameters):
     func_name = 'DEMUX'
 
-    outnode = addNode(outroot, BLOCK_BASIC,
-                      **{'id': attribid},
-                      ordering=ordering,
-                      parent=1,
-                      interfaceFunctionName=func_name,
-                      simulationFunctionName='multiplex',
-                      simulationFunctionType='C_OR_FORTRAN',
-                      style=func_name,
-                      blockType='c',
-                      dependsOnU=1)
+    outnode = addOutNode(outroot, BLOCK_BASIC,
+                         attribid, ordering, 1,
+                         func_name, 'multiplex', 'C_OR_FORTRAN',
+                         func_name, 'c',
+                         dependsOnU=1)
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
 

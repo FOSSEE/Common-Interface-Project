@@ -1,15 +1,10 @@
 def TKSCALE(outroot, attribid, ordering, geometry, parameters):
     func_name = 'TKSCALE'
 
-    outnode = addNode(outroot, BLOCK_BASIC,
-                      **{'id': attribid},
-                      ordering=ordering,
-                      parent=1,
-                      interfaceFunctionName=func_name,
-                      simulationFunctionName='tkscaleblk',
-                      simulationFunctionType='SCILAB',
-                      style=func_name,
-                      blockType='d')
+    outnode = addOutNode(outroot, BLOCK_BASIC,
+                         attribid, ordering, 1,
+                         func_name, 'tkscaleblk', 'SCILAB',
+                         func_name, 'd')
 
     addExprsNode(outnode, TYPE_STRING, 3, parameters)
 

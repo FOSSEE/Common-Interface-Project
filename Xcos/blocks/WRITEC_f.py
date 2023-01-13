@@ -1,16 +1,11 @@
 def WRITEC_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'WRITEC_f'
 
-    outnode = addNode(outroot, BLOCK_BASIC,
-                      **{'id': attribid},
-                      ordering=ordering,
-                      parent=1,
-                      interfaceFunctionName=func_name,
-                      simulationFunctionName='writec',
-                      simulationFunctionType='TYPE_2',
-                      style=func_name,
-                      blockType='d',
-                      dependsOnU=1)
+    outnode = addOutNode(outroot, BLOCK_BASIC,
+                         attribid, ordering, 1,
+                         func_name, 'writec', 'TYPE_2',
+                         func_name, 'd',
+                         dependsOnU=1)
 
     addExprsNode(outnode, TYPE_STRING, 5, parameters)
 

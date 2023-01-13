@@ -1,16 +1,11 @@
 def AUTOMAT(outroot, attribid, ordering, geometry, parameters):
     func_name = 'AUTOMAT'
 
-    outnode = addNode(outroot, BLOCK_BASIC,
-                      **{'id': attribid},
-                      ordering=ordering,
-                      parent=1,
-                      interfaceFunctionName=func_name,
-                      simulationFunctionName='automat',
-                      simulationFunctionType='IMPLICIT_C_OR_FORTRAN',
-                      style=func_name,
-                      blockType='c',
-                      dependsOnT=1)
+    outnode = addOutNode(outroot, BLOCK_BASIC,
+                         attribid, ordering, 1,
+                         func_name, 'automat', 'IMPLICIT_C_OR_FORTRAN',
+                         func_name, 'c',
+                         dependsOnT=1)
 
     addExprsNode(outnode, TYPE_STRING, 7, parameters)
 

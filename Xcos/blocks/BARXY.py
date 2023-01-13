@@ -1,16 +1,11 @@
 def BARXY(outroot, attribid, ordering, geometry, parameters):
     func_name = 'BARXY'
 
-    outnode = addNode(outroot, BLOCK_BASIC,
-                      **{'id': attribid},
-                      ordering=ordering,
-                      parent=1,
-                      interfaceFunctionName=func_name,
-                      simulationFunctionName='BARXY_sim',
-                      simulationFunctionType='SCILAB',
-                      style=func_name,
-                      blockType='d',
-                      dependsOnU=1)
+    outnode = addOutNode(outroot, BLOCK_BASIC,
+                         attribid, ordering, 1,
+                         func_name, 'BARXY_sim', 'SCILAB',
+                         func_name, 'd',
+                         dependsOnU=1)
 
     addExprsNode(outnode, TYPE_STRING, 5, parameters)
 

@@ -1,15 +1,10 @@
 def CANIMXY(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CANIMXY'
 
-    outnode = addNode(outroot, BLOCK_BASIC,
-                      **{'id': attribid},
-                      ordering=ordering,
-                      parent=1,
-                      interfaceFunctionName=func_name,
-                      simulationFunctionName='canimxy',
-                      simulationFunctionType='C_OR_FORTRAN',
-                      style=func_name,
-                      blockType='d')
+    outnode = addOutNode(outroot, BLOCK_BASIC,
+                         attribid, ordering, 1,
+                         func_name, 'canimxy', 'C_OR_FORTRAN',
+                         func_name, 'd')
 
     addExprsNode(outnode, TYPE_STRING, 11, parameters)
 

@@ -7,17 +7,12 @@ def CLSS(outroot, attribid, ordering, geometry, parameters):
     if para4 == 0:
         depends_u = 0
 
-    outnode = addNode(outroot, BLOCK_BASIC,
-                      **{'id': attribid},
-                      ordering=ordering,
-                      parent=1,
-                      interfaceFunctionName=func_name,
-                      simulationFunctionName='csslti4',
-                      simulationFunctionType='C_OR_FORTRAN',
-                      style=func_name,
-                      blockType='c',
-                      dependsOnU=depends_u,
-                      dependsOnT=1)
+    outnode = addOutNode(outroot, BLOCK_BASIC,
+                         attribid, ordering, 1,
+                         func_name, 'csslti4', 'C_OR_FORTRAN',
+                         func_name, 'c',
+                         dependsOnU=depends_u,
+                         dependsOnT=1)
 
     addExprsNode(outnode, TYPE_STRING, 5, parameters)
 

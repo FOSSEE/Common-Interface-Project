@@ -1,16 +1,11 @@
 def ESELECT_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'ESELECT_f'
 
-    outnode = addNode(outroot, BLOCK_BASIC,
-                      **{'id': attribid},
-                      ordering=ordering,
-                      parent=1,
-                      interfaceFunctionName=func_name,
-                      simulationFunctionName='eselect',
-                      simulationFunctionType='ESELECT',
-                      style=func_name,
-                      blockType='l',
-                      dependsOnU=1)
+    outnode = addOutNode(outroot, BLOCK_BASIC,
+                         attribid, ordering, 1,
+                         func_name, 'eselect', 'ESELECT',
+                         func_name, 'l',
+                         dependsOnU=1)
 
     addExprsNode(outnode, TYPE_STRING, 3, parameters)
 

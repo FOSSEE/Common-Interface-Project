@@ -1,15 +1,10 @@
 def FROMWSB(outroot, attribid, ordering, geometry, parameters):
     func_name = 'FROMWSB'
 
-    outnode = addNode(outroot, BLOCK_BASIC,
-                      **{'id': attribid},
-                      ordering=ordering,
-                      parent=1,
-                      interfaceFunctionName=func_name,
-                      simulationFunctionName='csuper',
-                      simulationFunctionType='DEFAULT',
-                      style=func_name,
-                      blockType='h')
+    outnode = addOutNode(outroot, BLOCK_BASIC,
+                         attribid, ordering, 1,
+                         func_name, 'csuper', 'DEFAULT',
+                         func_name, 'h')
 
     addExprsNode(outnode, TYPE_DOUBLE, 0, parameters)
 
