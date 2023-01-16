@@ -6,7 +6,7 @@ def RELATIONALOP(outroot, attribid, ordering, geometry, parameters):
     para3 = int(parameters[2])
 
     if para3 >= 3:
-        simulation_func_name = simulation_func_name + data_type[para3]
+        simulation_func_name = 'relational_op' + data_type[para3]
     else:
         simulation_func_name = 'relational_op'
 

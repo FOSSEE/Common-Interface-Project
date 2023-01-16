@@ -6,7 +6,7 @@ def REGISTER(outroot, attribid, ordering, geometry, parameters):
     para2 = int(parameters[1])
 
     if para2 >= 3:
-        simulation_func_name = simulation_func_name + data_type[para2]
+        simulation_func_name = 'delay4' + data_type[para2]
     else:
         simulation_func_name = 'delay4'
 
