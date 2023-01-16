@@ -4,7 +4,7 @@ def READC_f(outroot, attribid, ordering, geometry, parameters):
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
                          func_name, 'readc', 'TYPE_2',
-                         func_name, 'd')
+                         func_name, BLOCKTYPE_D)
 
     addExprsNode(outnode, TYPE_STRING, 8, parameters)
 

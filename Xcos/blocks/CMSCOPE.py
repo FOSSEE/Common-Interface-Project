@@ -4,8 +4,8 @@ def CMSCOPE(outroot, attribid, ordering, geometry, parameters):
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
                          func_name, 'cmscope', 'C_OR_FORTRAN',
-                         func_name, 'c',
-                         dependsOnU=1,
+                         func_name, BLOCKTYPE_C,
+                         dependsOnU='1',
                          value=parameters[10])
 
     addExprsNode(outnode, TYPE_STRING, 11, parameters)

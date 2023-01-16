@@ -4,7 +4,7 @@ def OUT_f(outroot, attribid, ordering, geometry, parameters):
     outnode = addOutNode(outroot, BLOCK_EXPLICIT_OUT,
                          attribid, ordering, 1,
                          func_name, 'output', 'DEFAULT',
-                         func_name, 'c')
+                         func_name, BLOCKTYPE_C)
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
 

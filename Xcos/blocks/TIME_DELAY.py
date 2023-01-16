@@ -4,8 +4,8 @@ def TIME_DELAY(outroot, attribid, ordering, geometry, parameters):
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
                          func_name, 'time_delay', 'C_OR_FORTRAN',
-                         func_name, 'x',
-                         dependsOnT=1)
+                         func_name, BLOCKTYPE_X,
+                         dependsOnT='1')
 
     addExprsNode(outnode, TYPE_STRING, 3, parameters)
 

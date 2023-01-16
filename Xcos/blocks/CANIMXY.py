@@ -4,7 +4,7 @@ def CANIMXY(outroot, attribid, ordering, geometry, parameters):
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
                          func_name, 'canimxy', 'C_OR_FORTRAN',
-                         func_name, 'd')
+                         func_name, BLOCKTYPE_D)
 
     addExprsNode(outnode, TYPE_STRING, 11, parameters)
 

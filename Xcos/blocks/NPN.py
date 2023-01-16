@@ -4,8 +4,8 @@ def NPN(outroot, attribid, ordering, geometry, parameters):
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
                          func_name, 'NPN', 'DEFAULT',
-                         func_name, 'c',
-                         dependsOnT=1)
+                         func_name, BLOCKTYPE_C,
+                         dependsOnT='1')
 
     addExprsNode(outnode, TYPE_STRING, 17, parameters)
 

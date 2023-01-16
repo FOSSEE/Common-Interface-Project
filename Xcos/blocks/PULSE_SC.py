@@ -4,7 +4,7 @@ def PULSE_SC(outroot, attribid, ordering, geometry, parameters):
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
                          func_name, 'csuper', 'DEFAULT',
-                         func_name, 'h')
+                         func_name, BLOCKTYPE_H)
 
     addExprsNode(outnode, TYPE_STRING, 4, parameters)
 

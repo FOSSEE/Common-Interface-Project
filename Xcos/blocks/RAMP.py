@@ -4,8 +4,8 @@ def RAMP(outroot, attribid, ordering, geometry, parameters):
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
                          func_name, 'ramp', 'C_OR_FORTRAN',
-                         func_name, 'c',
-                         dependsOnT=1)
+                         func_name, BLOCKTYPE_C,
+                         dependsOnT='1')
 
     addExprsNode(outnode, TYPE_STRING, 3, parameters)
 

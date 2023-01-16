@@ -4,8 +4,8 @@ def WRITEC_f(outroot, attribid, ordering, geometry, parameters):
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
                          func_name, 'writec', 'TYPE_2',
-                         func_name, 'd',
-                         dependsOnU=1)
+                         func_name, BLOCKTYPE_D,
+                         dependsOnU='1')
 
     addExprsNode(outnode, TYPE_STRING, 5, parameters)
 

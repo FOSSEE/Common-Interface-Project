@@ -4,8 +4,8 @@ def EXPBLK_m(outroot, attribid, ordering, geometry, parameters):
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
                          func_name, 'expblk_m', 'C_OR_FORTRAN',
-                         func_name, 'c',
-                         dependsOnU=1)
+                         func_name, BLOCKTYPE_C,
+                         dependsOnU='1')
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
 

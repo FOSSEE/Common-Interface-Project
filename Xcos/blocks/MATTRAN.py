@@ -2,6 +2,7 @@ def MATTRAN(outroot, attribid, ordering, geometry, parameters):
     func_name = 'MATTRAN'
 
     data_type = ['', 'mattran_m', 'matztran_m']
+
     para1 = int(parameters[0])
     para2 = int(parameters[1])
 
@@ -13,8 +14,8 @@ def MATTRAN(outroot, attribid, ordering, geometry, parameters):
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
                          func_name, simulation_func_name, 'C_OR_FORTRAN',
-                         func_name, 'c',
-                         dependsOnU=1)
+                         func_name, BLOCKTYPE_C,
+                         dependsOnU='1')
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)
 

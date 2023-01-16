@@ -5,11 +5,11 @@ def MATMUL(outroot, attribid, ordering, geometry, parameters):
                  'matmul_i32', 'matmul_i16', 'matmul_i8',
                  'matmul_ui32', 'matmul_ui16', 'matmul_ui8']
     overflow = ['n', 's', 'e']
+
     para1 = int(float(parameters[0]))
     para2 = int(float(parameters[1]))
     para3 = int(float(parameters[2]))
 
-    simulation_func_name = ''
     if para2 == 1:
         if para1 == 1 or para1 == 2:
             simulation_func_name = data_type[para1]
@@ -29,14 +29,18 @@ def MATMUL(outroot, attribid, ordering, geometry, parameters):
         if para1 != 2:
             if para3 == 1 or para3 == 2:
                 simulation_func_name = 'matbyscal_' + overflow[para3]
+            else:
+                simulation_func_name = ''
         else:
             simulation_func_name = 'matbyscal'
+    else:
+        simulation_func_name = ''
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
                          func_name, simulation_func_name, 'C_OR_FORTRAN',
-                         func_name, 'c',
-                         dependsOnU=1)
+                         func_name, BLOCKTYPE_C,
+                         dependsOnU='1')
 
     addExprsNode(outnode, TYPE_STRING, 3, parameters)
 

@@ -4,8 +4,8 @@ def PMOS(outroot, attribid, ordering, geometry, parameters):
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
                          func_name, 'PMOS', 'DEFAULT',
-                         func_name, 'c',
-                         dependsOnU=1)
+                         func_name, BLOCKTYPE_C,
+                         dependsOnU='1')
 
     addExprsNode(outnode, TYPE_STRING, 9, parameters)
 

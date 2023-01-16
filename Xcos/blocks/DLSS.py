@@ -4,7 +4,7 @@ def DLSS(outroot, attribid, ordering, geometry, parameters):
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
                          func_name, 'dsslti4', 'C_OR_FORTRAN',
-                         func_name, 'd')
+                         func_name, BLOCKTYPE_D)
 
     addExprsNode(outnode, TYPE_STRING, 5, parameters)
 

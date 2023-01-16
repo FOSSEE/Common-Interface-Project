@@ -4,23 +4,25 @@ def CUMSUM(outroot, attribid, ordering, geometry, parameters):
     para1 = int(parameters[0])
     para2 = int(parameters[1])
 
-    datatype = ''
     if para1 == 1:
         datatype = 'z'
+    else:
+        datatype = ''
 
-    sum = 'm'
     if para2 == 1:
         sum = 'r'
     elif para2 == 2:
         sum = 'c'
+    else:
+        sum = 'm'
 
     simulation_func_name = 'cumsum' + datatype + '_' + sum
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
                          func_name, simulation_func_name, 'C_OR_FORTRAN',
-                         func_name, 'c',
-                         dependsOnU=1)
+                         func_name, BLOCKTYPE_C,
+                         dependsOnU='1')
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)
 

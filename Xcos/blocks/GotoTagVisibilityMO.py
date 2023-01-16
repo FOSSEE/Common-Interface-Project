@@ -4,7 +4,7 @@ def GotoTagVisibilityMO(outroot, attribid, ordering, geometry, parameters):
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
                          func_name, 'gototagvisibilitymo', 'DEFAULT',
-                         func_name, 'c')
+                         func_name, BLOCKTYPE_C)
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
 

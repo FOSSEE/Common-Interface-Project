@@ -4,8 +4,8 @@ def IFTHEL_f(outroot, attribid, ordering, geometry, parameters):
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
                          func_name, 'ifthel', 'IFTHENELSE',
-                         func_name, 'l',
-                         dependsOnU=1)
+                         func_name, BLOCKTYPE_L,
+                         dependsOnU='1')
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)
 

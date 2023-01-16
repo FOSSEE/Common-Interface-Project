@@ -5,19 +5,20 @@ def INTMUL(outroot, attribid, ordering, geometry, parameters):
     para1 = int(float(parameters[0]))
     para2 = int(float(parameters[1]))
 
-    overflow = 'n'
     if para2 == 1:
         overflow = 's'
     elif para2 == 2:
         overflow = 'e'
+    else:
+        overflow = 'n'
 
     simulation_func_name = 'matmul_' + datatype[para1] + overflow
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
                          func_name, simulation_func_name, 'C_OR_FORTRAN',
-                         func_name, 'c',
-                         dependsOnU=1)
+                         func_name, BLOCKTYPE_C,
+                         dependsOnU='1')
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)
 

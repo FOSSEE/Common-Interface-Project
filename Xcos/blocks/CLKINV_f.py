@@ -4,7 +4,7 @@ def CLKINV_f(outroot, attribid, ordering, geometry, parameters):
     outnode = addOutNode(outroot, BLOCK_EVENT_IN,
                          attribid, ordering, 1,
                          func_name, 'input', 'DEFAULT',
-                         func_name, 'd')
+                         func_name, BLOCKTYPE_D)
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
 

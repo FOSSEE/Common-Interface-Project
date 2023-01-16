@@ -3,11 +3,10 @@ def TOWS_c(outroot, attribid, ordering, geometry, parameters):
 
     para3 = int(parameters[2])
 
-    b_type = ''
     if para3 == 1:
-        b_type = 'x'
+        b_type = BLOCKTYPE_X
     else:
-        b_type = 'd'
+        b_type = BLOCKTYPE_D
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,

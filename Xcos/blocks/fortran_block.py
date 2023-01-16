@@ -7,8 +7,8 @@ def fortran_block(outroot, attribid, ordering, geometry, parameters):
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
                          func_name, parameters[3], 'DYNAMIC_FORTRAN_1',
-                         func_name, 'c',
-                         dependsOnU=1)
+                         func_name, BLOCKTYPE_C,
+                         dependsOnU='1')
 
     addExprsArrayNode(outnode, TYPE_STRING, 4, parameters, codeLines)
 

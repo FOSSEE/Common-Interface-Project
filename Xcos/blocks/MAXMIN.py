@@ -4,7 +4,7 @@ def MAXMIN(outroot, attribid, ordering, geometry, parameters):
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
                          func_name, 'minmax', 'C_OR_FORTRAN',
-                         func_name, 'c',
+                         func_name, BLOCKTYPE_C,
                          dependsOnU='1')
 
     addExprsNode(outnode, TYPE_STRING, 3, parameters)

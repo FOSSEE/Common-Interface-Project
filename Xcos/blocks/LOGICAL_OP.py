@@ -2,18 +2,21 @@ def LOGICAL_OP(outroot, attribid, ordering, geometry, parameters):
     func_name = 'LOGICAL_OP'
 
     d_type = ['', '', '', 'i32', 'i16', 'i8', 'ui32', 'ui16', 'ui8']
+
     para3 = int(float(parameters[2]))
-    datatype = ''
+
     if para3 != 1:
         datatype = '_' + d_type[para3]
+    else:
+        datatype = ''
 
     simulation_func_name = 'logicalop' + datatype
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
                          func_name, simulation_func_name, 'C_OR_FORTRAN',
-                         func_name, 'c',
-                         dependsOnU=1)
+                         func_name, BLOCKTYPE_C,
+                         dependsOnU='1')
 
     addExprsNode(outnode, TYPE_STRING, 4, parameters)
 

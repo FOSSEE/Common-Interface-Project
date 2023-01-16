@@ -4,7 +4,7 @@ def CLKGOTO(outroot, attribid, ordering, geometry, parameters):
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
                          func_name, 'clkgoto', 'DEFAULT',
-                         func_name, 'd',
+                         func_name, BLOCKTYPE_D,
                          value='Goto')
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)

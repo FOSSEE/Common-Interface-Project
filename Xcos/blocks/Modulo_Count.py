@@ -4,7 +4,7 @@ def Modulo_Count(outroot, attribid, ordering, geometry, parameters):
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
                          func_name, 'modulo_count', 'C_OR_FORTRAN',
-                         func_name, 'c')
+                         func_name, BLOCKTYPE_C)
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)
 

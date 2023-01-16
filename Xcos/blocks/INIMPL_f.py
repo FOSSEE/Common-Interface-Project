@@ -4,7 +4,7 @@ def INIMPL_f(outroot, attribid, ordering, geometry, parameters):
     outnode = addOutNode(outroot, BLOCK_IMPLICIT_IN,
                          attribid, ordering, 1,
                          func_name, 'inimpl', 'DEFAULT',
-                         func_name, 'c')
+                         func_name, BLOCKTYPE_C)
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
 

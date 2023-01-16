@@ -1,18 +1,20 @@
 def generic_block3(outroot, attribid, ordering, geometry, parameters):
     func_name = 'generic_block3'
 
-    depends_t = 0
-    if parameters[18] == 'y':
-        depends_t = 1
-
-    depends_u = 0
     if parameters[17] == 'y':
-        depends_u = 1
+        depends_u = '1'
+    else:
+        depends_u = '0'
+
+    if parameters[18] == 'y':
+        depends_t = '1'
+    else:
+        depends_t = '0'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
                          func_name, parameters[0], 'C_OR_FORTRAN',
-                         func_name, 'c',
+                         func_name, BLOCKTYPE_C,
                          dependsOnU=depends_u,
                          dependsOnT=depends_t)
 

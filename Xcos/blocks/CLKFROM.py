@@ -4,7 +4,7 @@ def CLKFROM(outroot, attribid, ordering, geometry, parameters):
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
                          func_name, 'clkfrom', 'DEFAULT',
-                         func_name, 'd',
+                         func_name, BLOCKTYPE_D,
                          value='From')
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)

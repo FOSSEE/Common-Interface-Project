@@ -20,6 +20,13 @@ BLOCK_PRODUCT = 'Product'
 BLOCK_SPLIT = 'SplitBlock'
 BLOCK_SUMMATION = 'Summation'
 
+BLOCKTYPE_C = 'c'
+BLOCKTYPE_D = 'd'
+BLOCKTYPE_H = 'h'
+BLOCKTYPE_L = 'l'
+BLOCKTYPE_X = 'x'
+BLOCKTYPE_Z = 'z'
+
 
 def addNode(node, subNodeType, **kwargs):
     subNode = ET.SubElement(node, subNodeType)

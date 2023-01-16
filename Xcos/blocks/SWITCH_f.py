@@ -4,9 +4,9 @@ def SWITCH_f(outroot, attribid, ordering, geometry, parameters):
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
                          func_name, 'switchn', 'TYPE_2',
-                         func_name, 'c',
-                         dependsOnU=1,
-                         dependsOnT=1)
+                         func_name, BLOCKTYPE_C,
+                         dependsOnU='1',
+                         dependsOnT='1')
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)
 
