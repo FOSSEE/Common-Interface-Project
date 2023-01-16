@@ -6,7 +6,7 @@ def DEBUG(outroot, attribid, ordering, geometry, parameters):
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
-                         func_name, '%debug_scicos', func_name,
+                         func_name, '%debug_scicos', 'DEBUG',
                          func_name, BLOCKTYPE_D)
 
     addExprsArrayNode(outnode, TYPE_STRING, 1, [''], codeLines)
