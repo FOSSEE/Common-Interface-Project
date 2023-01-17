@@ -9,8 +9,8 @@ def DLR(outroot, attribid, ordering, geometry, parameters):
     num_exponents = []
     den_exponents = []
 
-    num_matches = re.findall('z\s*\^\s*\d+|z',num_str)
-    den_matches = re.findall('z\s*\^\s*\d+|z',den_str)
+    num_matches = re.findall(r'z\s*\^\s*\d+|z', num_str)
+    den_matches = re.findall(r'z\s*\^\s*\d+|z', den_str)
 
     if len(num_matches) == 0 and len(den_matches) == 0:
         depends_on_flag = 1
@@ -40,7 +40,7 @@ def DLR(outroot, attribid, ordering, geometry, parameters):
                          func_name, 'dsslti4', 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_D,
                          dependsOnU = depends_on_flag)
-    
+ 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)
 
     return outnode
