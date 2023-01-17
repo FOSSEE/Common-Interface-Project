@@ -35,21 +35,13 @@ def DLR(outroot, attribid, ordering, geometry, parameters):
         if max(num_exponents) == max(den_exponents):
             depends_on_flag = 1
 
-    outnode = addNode(outroot, 'BasicBlock',
-                      **{'id': attribid},
-                    interfaceFunctionName=func_name,
-                    blockType='d',
-                    ordering=ordering, parent=1,
-                    dependsOnU = depends_on_flag,
-                    simulationFunctionName='dsslti4',
-                    simulationFunctionType='C_OR_FORTRAN',
-                    style=func_name
-                      )
-
-    node = addDataNode(outnode, 'ScilabString', **{'as': 'exprs'},height=2,width=1)
+    outnode = addOutNode(outroot, BLOCK_BASIC,
+                         attribid, ordering, 1,
+                         func_name, 'dsslti4', 'C_OR_FORTRAN',
+                         func_name, BLOCKTYPE_D,
+                         dependsOnU = depends_on_flag)
     
-    for i in range(2):
-        addDataData(node,parameters[i])
+    addExprsNode(outnode, TYPE_STRING, 2, parameters)
 
     return outnode
 
