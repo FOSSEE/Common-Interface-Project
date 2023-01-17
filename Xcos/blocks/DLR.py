@@ -39,8 +39,8 @@ def DLR(outroot, attribid, ordering, geometry, parameters):
                          attribid, ordering, 1,
                          func_name, 'dsslti4', 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_D,
-                         dependsOnU = depends_on_flag)
- 
+                         dependsOnU=depends_on_flag)
+
     addExprsNode(outnode, TYPE_STRING, 2, parameters)
 
     return outnode
