@@ -3,16 +3,17 @@ def COSBLK_f(outroot, attribid, ordering, geometry, parameters):
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
-                         func_name, 'cscope', 'C_OR_FORTRAN',
-                         func_name, BLOCKTYPE_C)
+                         func_name, 'cosblk', 'DEFAULT',
+                         func_name, BLOCKTYPE_C,
+                         dependsOnU='1')
 
-    addExprsNode(outnode, TYPE_STRING, 0, parameters)
+    addExprsNode(outnode, TYPE_DOUBLE, 0, parameters)
 
     return outnode
 
 
 def get_from_COSBLK_f(cell):
-    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
+    parameters = getParametersFromExprsNode(cell, TYPE_DOUBLE)
 
     display_parameter = ''
 
