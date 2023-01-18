@@ -1,5 +1,6 @@
 def CURV_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CURV_f'
+    para = parameters[0].split(' ')
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
@@ -8,6 +9,12 @@ def CURV_f(outroot, attribid, ordering, geometry, parameters):
                          dependsOnT='1')
 
     addExprsNode(outnode, TYPE_DOUBLE, 0, parameters)
+    
+    node = addNode(outnode, TYPE_STRING, height=1, width=len(para))
+
+    for i in range(len(para)):
+
+        addData(node, i, 0, para[i])
 
     return outnode
 
