@@ -63,6 +63,9 @@ export const login = (username, password, toUrl) => {
   }
 
   return function (dispatch) {
+    const allowedUrls = [
+      "/editor"
+    ]
     api.post('auth/token/login/', body)
       .then((res) => {
         if (res.status === 200) {
@@ -73,6 +76,9 @@ export const login = (username, password, toUrl) => {
             }
           })
           if (toUrl === '') {
+            dispatch(loadUser())
+          } else if (!allowedUrls.includes(toUrl)) {
+            console.log('Not redirecting to', toUrl)
             dispatch(loadUser())
           } else {
             window.open(toUrl, '_self')
