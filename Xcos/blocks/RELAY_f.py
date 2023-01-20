@@ -18,9 +18,9 @@ def get_from_RELAY_f(cell):
 
     display_parameter = ''
 
-    eiv = ''
+    eiv = int(float(parameters[0]))
     iiv = ''
-    con = ''
+    con = int(float(parameters[0]))
     eov = ''
     iov = ''
     com = ''

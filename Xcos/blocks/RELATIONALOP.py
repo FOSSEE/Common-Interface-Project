@@ -24,7 +24,8 @@ def RELATIONALOP(outroot, attribid, ordering, geometry, parameters):
 def get_from_RELATIONALOP(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
-    display_parameter = ''
+    operators = ['==', '~=', '<', '<=', '>', '>=']
+    display_parameter = operators[int(float(parameters[0]))]
 
     eiv = ''
     iiv = ''

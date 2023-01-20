@@ -15,13 +15,14 @@ def get_from_M_freq(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
     display_parameter = ''
+    inputs = parameters[0].split(';')
 
     eiv = ''
     iiv = ''
     con = ''
     eov = ''
     iov = ''
-    com = ''
+    com = (len(inputs)**2)-1
 
     ports = [eiv, iiv, con, eov, iov, com]
 

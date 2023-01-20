@@ -17,9 +17,9 @@ def get_from_SELECT_m(cell):
 
     display_parameter = ''
 
-    eiv = ''
+    eiv = int(float(parameters[1]))
     iiv = ''
-    con = ''
+    con = int(float(parameters[1]))
     eov = ''
     iov = ''
     com = ''

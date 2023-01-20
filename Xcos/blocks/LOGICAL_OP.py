@@ -26,9 +26,10 @@ def LOGICAL_OP(outroot, attribid, ordering, geometry, parameters):
 def get_from_LOGICAL_OP(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
-    display_parameter = ''
+    logical_operators = ['AND', 'OR', 'NAND', 'NOR', 'XOR', 'NOT']
+    display_parameter = logical_operators[int(float(parameters[1]))]
 
-    eiv = ''
+    eiv = int(float(parameters[0]))
     iiv = ''
     con = ''
     eov = ''

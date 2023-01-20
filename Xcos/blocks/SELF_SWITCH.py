@@ -14,7 +14,8 @@ def SELF_SWITCH(outroot, attribid, ordering, geometry, parameters):
 def get_from_SELF_SWITCH(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
-    display_parameter = ''
+    style = cell.attrib.get('style')
+    display_parameter = 'on' if style == 'SELF_SWITCH_ON' else 'off'
 
     eiv = ''
     iiv = ''

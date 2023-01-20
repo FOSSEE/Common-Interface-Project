@@ -14,7 +14,7 @@ def OUTIMPL_f(outroot, attribid, ordering, geometry, parameters):
 def get_from_OUTIMPL_f(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
-    display_parameter = ''
+    display_parameter = parameters[0]
 
     eiv = ''
     iiv = ''

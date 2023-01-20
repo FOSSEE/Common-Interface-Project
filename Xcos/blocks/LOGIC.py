@@ -16,10 +16,11 @@ def get_from_LOGIC(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
     display_parameter = ''
+    inputs = parameters[0].split(';')
 
-    eiv = ''
+    eiv = int(math.log2(len(inputs)))
     iiv = ''
-    con = ''
+    con = 1 if parameters[1] == '0' else 0
     eov = ''
     iov = ''
     com = ''

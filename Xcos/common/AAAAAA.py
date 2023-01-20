@@ -1,5 +1,6 @@
 import re
 import xml.etree.ElementTree as ET
+import math
 
 TYPE_ARRAY = 'Array'
 TYPE_DOUBLE = 'ScilabDouble'

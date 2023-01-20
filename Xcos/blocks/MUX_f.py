@@ -17,7 +17,7 @@ def get_from_MUX_f(cell):
 
     display_parameter = ''
 
-    eiv = ''
+    eiv = int(float(parameters[0]))
     iiv = ''
     con = ''
     eov = ''

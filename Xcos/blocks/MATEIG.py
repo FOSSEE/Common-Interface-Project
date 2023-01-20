@@ -27,7 +27,7 @@ def get_from_MATEIG(cell):
     eiv = ''
     iiv = ''
     con = ''
-    eov = ''
+    eov = int(parameters[1])
     iov = ''
     com = ''
 

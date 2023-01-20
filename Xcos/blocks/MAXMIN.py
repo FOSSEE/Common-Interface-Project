@@ -15,9 +15,9 @@ def MAXMIN(outroot, attribid, ordering, geometry, parameters):
 def get_from_MAXMIN(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
-    display_parameter = ''
+    display_parameter = 'MIN' if parameters[0] == '1' else 'MAX'
 
-    eiv = ''
+    eiv = 1 if parameters[1] == '1' else 2
     iiv = ''
     con = ''
     eov = ''

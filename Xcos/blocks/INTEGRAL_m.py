@@ -17,9 +17,9 @@ def get_from_INTEGRAL_m(cell):
 
     display_parameter = ''
 
-    eiv = ''
+    eiv = 2 if parameters[1] == '1' else 1
     iiv = ''
-    con = ''
+    con = 1 if parameters[1] == '1' else 0
     eov = ''
     iov = ''
     com = ''

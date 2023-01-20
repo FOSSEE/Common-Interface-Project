@@ -6,7 +6,7 @@ def AFFICH_m(outroot, attribid, ordering, geometry, parameters):
                          func_name, 'affich2', 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')
-    
+
     addExprsNode(outnode, TYPE_STRING, 7, parameters)
 
     return outnode

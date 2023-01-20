@@ -16,9 +16,9 @@ def SWITCH_f(outroot, attribid, ordering, geometry, parameters):
 def get_from_SWITCH_f(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
-    display_parameter = ''
+    display_parameter = 'Static: ' + parameters[1]
 
-    eiv = ''
+    eiv = int(float(parameters[0]))
     iiv = ''
     con = ''
     eov = ''

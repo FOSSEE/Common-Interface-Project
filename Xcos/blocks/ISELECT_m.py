@@ -19,8 +19,8 @@ def get_from_ISELECT_m(cell):
 
     eiv = ''
     iiv = ''
-    con = ''
-    eov = ''
+    con = int(float(parameters[1]))
+    eov = int(float(parameters[1]))
     iov = ''
     com = ''
 
