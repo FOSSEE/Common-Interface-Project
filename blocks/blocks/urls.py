@@ -27,5 +27,4 @@ urlpatterns = [
 
     # libAPI routes
     path('api/', include('blocks.xcosblocks.urls')),
-    path('', include('frontend.urls')),
 ]
