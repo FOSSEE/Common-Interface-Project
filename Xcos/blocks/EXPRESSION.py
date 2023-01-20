@@ -7,7 +7,7 @@ def EXPRESSION(outroot, attribid, ordering, geometry, parameters):
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')
 
-    addExprsNode(outnode, TYPE_STRING, 0, parameters)
+    addExprsNode(outnode, TYPE_STRING, 3, parameters)
 
     return outnode
 

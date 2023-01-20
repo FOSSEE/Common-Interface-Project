@@ -10,7 +10,7 @@ def Flowmeter(outroot, attribid, ordering, geometry, parameters):
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
 
-    return 
+    return outnode
 
 
 def get_from_Flowmeter(cell):
