@@ -7,7 +7,7 @@ def EXPRESSION(outroot, attribid, ordering, geometry, parameters):
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')
 
-    addExprsNode(outnode, TYPE_STRING, 3, parameters)
+    addExprsNode(outnode, TYPE_STRING, 0, parameters)
 
     return outnode
 
@@ -15,7 +15,7 @@ def EXPRESSION(outroot, attribid, ordering, geometry, parameters):
 def get_from_EXPRESSION(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
-    display_parameter = ''
+    display_parameter = 'Expression:\n' + parameters[1]
 
     eiv = ''
     iiv = ''

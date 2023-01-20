@@ -20,7 +20,7 @@ def get_from_DEMUX_f(cell):
     eiv = ''
     iiv = ''
     con = ''
-    eov = ''
+    eov = int(float(parameters[0]))
     iov = ''
     com = ''
 

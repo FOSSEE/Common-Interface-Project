@@ -17,7 +17,7 @@ def DEBUG(outroot, attribid, ordering, geometry, parameters):
 def get_from_DEBUG(cell):
     parameters = getParametersFromExprsNode(cell)
 
-    display_parameter = ''
+    display_parameter = 'Debug:\n' + parameters[0].split('\n')[0]
 
     eiv = ''
     iiv = ''

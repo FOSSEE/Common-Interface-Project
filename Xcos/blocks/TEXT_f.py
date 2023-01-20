@@ -1,18 +1,17 @@
 def TEXT_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'TEXT_f'
 
-    outnode = addOutNode(outroot, BLOCK_BASIC,
+    outnode = addOutNode(outroot, BLOCK_TEXT,
                          attribid, ordering, 1,
-                         func_name, 'cscope', 'C_OR_FORTRAN',
-                         func_name, BLOCKTYPE_C)
-
-    addExprsNode(outnode, TYPE_STRING, 0, parameters)
+                         func_name, None, None,
+                         func_name, None,
+                         value=parameters[0])
 
     return outnode
 
 
 def get_from_TEXT_f(cell):
-    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
+    parameters = [cell.attrib['value']]
 
     display_parameter = ''
 

@@ -19,7 +19,7 @@ def get_from_IFTHEL_f(cell):
 
     eiv = ''
     iiv = ''
-    con = ''
+    con = 1 if float(parameters[0]) == 1.0 else 0
     eov = ''
     iov = ''
     com = ''

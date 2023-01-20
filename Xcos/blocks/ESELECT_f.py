@@ -19,10 +19,10 @@ def get_from_ESELECT_f(cell):
 
     eiv = ''
     iiv = ''
-    con = ''
+    con = 0 if float(parameters[1]) == 0.0 else 1
     eov = ''
     iov = ''
-    com = ''
+    com = int(float(parameters[0]))
 
     ports = [eiv, iiv, con, eov, iov, com]
 

@@ -1,13 +1,16 @@
 def Ground(outroot, attribid, ordering, geometry, parameters):
     func_name = 'Ground'
-    parameters = [""]
-    outnode = addOutNode(outroot, BLOCK_GROUND,
+    parameters = ['1']
+
+    outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
-                         func_name, 'Ground', 'DEFAULT',
+                         func_name, 'Flowmeter', 'DEFAULT',
                          func_name, BLOCKTYPE_C,
-                         dependsOnU='1')
+                         dependsOnT='1')
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
+
+    return 
 
     return outnode
 

@@ -14,7 +14,7 @@ def FROMMO(outroot, attribid, ordering, geometry, parameters):
 def get_from_FROMMO(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
-    display_parameter = ''
+    display_parameter = parameters[0]
 
     eiv = ''
     iiv = ''

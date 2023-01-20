@@ -14,7 +14,7 @@ def Counter(outroot, attribid, ordering, geometry, parameters):
 def get_from_Counter(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
-    display_parameter = ''
+    display_parameter = 'Counter\n' + parameters[0] + " --> " + parameters[1]
 
     eiv = ''
     iiv = ''

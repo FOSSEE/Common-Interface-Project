@@ -1,18 +1,18 @@
 def VoltageSensor(outroot, attribid, ordering, geometry, parameters):
     func_name = 'VoltageSensor'
 
-    outnode = addOutNode(outroot, BLOCK_BASIC,
+    outnode = addOutNode(outroot, BLOCK_VOLTAGESENSOR,
                          attribid, ordering, 1,
-                         func_name, 'cscope', 'C_OR_FORTRAN',
+                         func_name, 'VoltageSensor', 'DEFAULT',
                          func_name, BLOCKTYPE_C)
 
-    addExprsNode(outnode, TYPE_STRING, 0, parameters)
+    addExprsNode(outnode, TYPE_DOUBLE, 0, parameters)
 
     return outnode
 
 
 def get_from_VoltageSensor(cell):
-    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
+    parameters = getParametersFromExprsNode(cell, TYPE_DOUBLE)
 
     display_parameter = ''
 

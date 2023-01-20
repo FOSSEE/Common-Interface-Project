@@ -15,7 +15,7 @@ def CONSTRAINT2_c(outroot, attribid, ordering, geometry, parameters):
 def get_from_CONSTRAINT2_c(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
-    display_parameter = ''
+    display_parameter = 'x == ' + parameters[0] + '\nx\' == ' + parameters[1]
 
     eiv = ''
     iiv = ''
