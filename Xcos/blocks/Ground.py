@@ -1,12 +1,13 @@
 def Ground(outroot, attribid, ordering, geometry, parameters):
     func_name = 'Ground'
-
-    outnode = addOutNode(outroot, BLOCK_BASIC,
+    parameters = [""]
+    outnode = addOutNode(outroot, BLOCK_GROUND,
                          attribid, ordering, 1,
-                         func_name, 'cscope', 'C_OR_FORTRAN',
-                         func_name, BLOCKTYPE_C)
+                         func_name, 'Ground', 'DEFAULT',
+                         func_name, BLOCKTYPE_C,
+                         dependsOnU='1')
 
-    addExprsNode(outnode, TYPE_STRING, 0, parameters)
+    addExprsNode(outnode, TYPE_STRING, 1, parameters)
 
     return outnode
 
