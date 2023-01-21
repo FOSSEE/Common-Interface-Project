@@ -35,7 +35,7 @@ def EXTRACTBITS(outroot, attribid, ordering, geometry, parameters):
 def get_from_EXTRACTBITS(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
-    display_parameter = ''
+    display_parameter = 'Extract Bits ' + parameters[1]
 
     eiv = ''
     iiv = ''

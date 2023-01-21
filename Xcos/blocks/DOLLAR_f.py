@@ -18,7 +18,7 @@ def get_from_DOLLAR_f(cell):
 
     eiv = ''
     iiv = ''
-    con = ''
+    con = 1 if float(parameters[1]) == 0.0 else 0
     eov = ''
     iov = ''
     com = ''

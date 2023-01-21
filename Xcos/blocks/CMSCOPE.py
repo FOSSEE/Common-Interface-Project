@@ -17,10 +17,11 @@ def get_from_CMSCOPE(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
     display_parameter = ''
+    input = parameters[0].split(' ')
 
-    eiv = ''
+    eiv = len(input)
     iiv = ''
-    con = ''
+    con = 1 if int(float(parameters[9])) == 0 else 0
     eov = ''
     iov = ''
     com = ''

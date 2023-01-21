@@ -14,7 +14,7 @@ def FROMWSB(outroot, attribid, ordering, geometry, parameters):
 def get_from_FROMWSB(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_DOUBLE)
 
-    display_parameter = ''
+    display_parameter = 'From workspace\n [ ' + parameters[0] + ' ]'
 
     eiv = ''
     iiv = ''

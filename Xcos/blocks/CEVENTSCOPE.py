@@ -18,7 +18,7 @@ def get_from_CEVENTSCOPE(cell):
 
     eiv = ''
     iiv = ''
-    con = ''
+    con = int(float(parameters[0]))
     eov = ''
     iov = ''
     com = ''

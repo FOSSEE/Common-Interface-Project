@@ -21,6 +21,8 @@ BLOCK_PRODUCT = 'Product'
 BLOCK_ROUND = 'RoundBlock'
 BLOCK_SPLIT = 'SplitBlock'
 BLOCK_SUMMATION = 'Summation'
+BLOCK_TEXT = 'TextBlock'
+BLOCK_VOLTAGESENSOR = 'VoltageSensorBlock'
 
 BLOCKTYPE_C = 'c'
 BLOCKTYPE_D = 'd'

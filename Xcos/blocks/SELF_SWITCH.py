@@ -1,18 +1,28 @@
 def SELF_SWITCH(outroot, attribid, ordering, geometry, parameters):
     func_name = 'SELF_SWITCH'
+    if parameters[0] == 'on':
+        style = func_name + '_ON'
+    else:
+        style = func_name + '_OFF'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
-                         func_name, 'cscope', 'C_OR_FORTRAN',
-                         func_name, BLOCKTYPE_C)
+                         func_name, 'csuper', 'DEFAULT',
+                         style, BLOCKTYPE_H)
 
-    addExprsNode(outnode, TYPE_STRING, 0, parameters)
+    addExprsNode(outnode, TYPE_DOUBLE, 0, parameters)
 
     return outnode
 
 
 def get_from_SELF_SWITCH(cell):
-    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
+    style = cell.attrib['style']
+    if style == 'SELF_SWITCH_ON':
+        value = 'on'
+    else:
+        value = 'off'
+
+    parameters = [value]
 
     display_parameter = ''
 

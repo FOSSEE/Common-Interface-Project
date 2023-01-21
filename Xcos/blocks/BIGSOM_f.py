@@ -17,8 +17,9 @@ def get_from_BIGSOM_f(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
     display_parameter = ''
+    inputs = parameters[0].split(';')
 
-    eiv = ''
+    eiv = len(inputs)
     iiv = ''
     con = ''
     eov = ''

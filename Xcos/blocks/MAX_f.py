@@ -1,12 +1,14 @@
 def MAX_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'MAX_f'
+    parameters = [' ']
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
-                         func_name, 'cscope', 'C_OR_FORTRAN',
-                         func_name, BLOCKTYPE_C)
+                         func_name, 'maxblk', 'DEFAULT',
+                         func_name, BLOCKTYPE_C,
+                         dependsOnU='1')
 
-    addExprsNode(outnode, TYPE_STRING, 0, parameters)
+    addExprsNode(outnode, TYPE_STRING, 1, parameters)
 
     return outnode
 

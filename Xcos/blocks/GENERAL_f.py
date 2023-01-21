@@ -22,7 +22,7 @@ def get_from_GENERAL_f(cell):
     con = ''
     eov = ''
     iov = ''
-    com = ''
+    com = int(float(parameters[1]))
 
     ports = [eiv, iiv, con, eov, iov, com]
 

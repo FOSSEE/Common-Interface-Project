@@ -14,7 +14,7 @@ def EVTGEN_f(outroot, attribid, ordering, geometry, parameters):
 def get_from_EVTGEN_f(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
-    display_parameter = ''
+    display_parameter = 'Event at\n time' + parameters[0]
 
     eiv = ''
     iiv = ''

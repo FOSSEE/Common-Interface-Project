@@ -19,7 +19,7 @@ def get_from_CSCOPE(cell):
 
     eiv = ''
     iiv = ''
-    con = ''
+    con = 1 if int(float(parameters[8])) == 0 else 0
     eov = ''
     iov = ''
     com = ''

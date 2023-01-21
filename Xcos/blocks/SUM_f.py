@@ -1,18 +1,19 @@
 def SUM_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'SUM_f'
 
-    outnode = addOutNode(outroot, BLOCK_BASIC,
+    outnode = addOutNode(outroot, BLOCK_ROUND,
                          attribid, ordering, 1,
-                         func_name, 'cscope', 'C_OR_FORTRAN',
-                         func_name, BLOCKTYPE_C)
+                         func_name, 'plusblk', 'TYPE_2',
+                         func_name, BLOCKTYPE_C,
+                         dependsOnU='1')
 
-    addExprsNode(outnode, TYPE_STRING, 0, parameters)
+    addExprsNode(outnode, TYPE_DOUBLE, 0, parameters)
 
     return outnode
 
 
 def get_from_SUM_f(cell):
-    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
+    parameters = getParametersFromExprsNode(cell, TYPE_DOUBLE)
 
     display_parameter = ''
 
