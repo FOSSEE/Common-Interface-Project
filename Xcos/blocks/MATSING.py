@@ -27,7 +27,7 @@ def get_from_MATSING(cell):
     eiv = ''
     iiv = ''
     con = ''
-    eov = ''
+    eov = 3 if parameters[1] == '2' else 1
     iov = ''
     com = ''
 

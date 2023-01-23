@@ -15,7 +15,7 @@ def SineVoltage(outroot, attribid, ordering, geometry, parameters):
 def get_from_SineVoltage(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
-    display_parameter = ''
+    display_parameter = parameters[0] + ' V\n'+'~ ' + parameters[0]
 
     eiv = ''
     iiv = ''

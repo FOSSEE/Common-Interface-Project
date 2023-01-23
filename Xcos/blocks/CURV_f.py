@@ -9,7 +9,7 @@ def CURV_f(outroot, attribid, ordering, geometry, parameters):
                          dependsOnT='1')
 
     addExprsNode(outnode, TYPE_DOUBLE, 0, parameters)
-    
+
     node = addNode(outnode, TYPE_STRING, height=1, width=len(para))
 
     for i in range(len(para)):

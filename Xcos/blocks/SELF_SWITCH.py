@@ -24,7 +24,8 @@ def get_from_SELF_SWITCH(cell):
 
     parameters = [value]
 
-    display_parameter = ''
+    style = cell.attrib.get('style')
+    display_parameter = 'on' if style == 'SELF_SWITCH_ON' else 'off'
 
     eiv = ''
     iiv = ''

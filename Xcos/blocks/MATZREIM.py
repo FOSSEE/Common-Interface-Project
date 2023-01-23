@@ -21,10 +21,10 @@ def get_from_MATZREIM(cell):
 
     display_parameter = ''
 
-    eiv = ''
+    eiv = int(parameters[0])
     iiv = ''
     con = ''
-    eov = ''
+    eov = 2 if parameters[0] == '1' else 1
     iov = ''
     com = ''
 

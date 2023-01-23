@@ -27,8 +27,9 @@ def get_from_SUMMATION(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
     display_parameter = ''
+    inputs = parameters[1].split(';')
 
-    eiv = ''
+    eiv = len(inputs)
     iiv = ''
     con = ''
     eov = ''

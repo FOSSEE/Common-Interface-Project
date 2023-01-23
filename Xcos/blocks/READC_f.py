@@ -16,12 +16,16 @@ def get_from_READC_f(cell):
 
     display_parameter = ''
 
+    temp = parameters[0]
+    temp = temp.replace('[', '')
+    temp = temp.replace(']', '')
+
     eiv = ''
     iiv = ''
     con = ''
     eov = ''
     iov = ''
-    com = ''
+    com = 1 if len(temp) > 0 else 0
 
     ports = [eiv, iiv, con, eov, iov, com]
 
