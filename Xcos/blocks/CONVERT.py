@@ -15,13 +15,14 @@ def CONVERT(outroot, attribid, ordering, geometry, parameters):
 def get_from_CONVERT(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
-    types = ['decim.', 'decim.', 'int32', 'int16', 'int8', 'uint32', 'uint16', 'uint8']
+    types = ['decim.', 'decim.', 'int32', 'int16',
+             'int8', 'uint32', 'uint16', 'uint8']
     input_t = int(float(parameters[0]))
     output_t = int(float(parameters[1]))
 
-    input_type = types[input_t-1] 
+    input_type = types[input_t-1]
     output_type = types[output_t-1]
-    
+
     display_parameter = 'CONVERT\n' + input_type + '\n=>\n' + output_type
 
     eiv = ''

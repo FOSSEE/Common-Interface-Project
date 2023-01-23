@@ -15,7 +15,7 @@ def Resistor(outroot, attribid, ordering, geometry, parameters):
 def get_from_Resistor(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
-    display_parameter = ''
+    display_parameter = si_format(parameters[0]) + 'Ω'
 
     eiv = ''
     iiv = ''

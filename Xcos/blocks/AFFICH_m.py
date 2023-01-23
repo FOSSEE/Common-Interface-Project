@@ -19,7 +19,7 @@ def get_from_AFFICH_m(cell):
 
     eiv = ''
     iiv = ''
-    con = ''
+    con = 1 if parameters[6] == '0' else 0
     eov = ''
     iov = ''
     com = ''

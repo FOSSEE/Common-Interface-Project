@@ -15,7 +15,7 @@ def Inductor(outroot, attribid, ordering, geometry, parameters):
 def get_from_Inductor(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
-    display_parameter = ''
+    display_parameter = si_format(parameters[0]) + 'H'
 
     eiv = ''
     iiv = ''
