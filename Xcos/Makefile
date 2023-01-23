@@ -1,3 +1,5 @@
+SHELL := /bin/bash
+
 SRCFILES := $(sort $(wildcard common/*.py))
 SRCFILES += $(sort $(wildcard blocks/*.py))
 SRCFILES += $(sort $(wildcard ports/*.py))
@@ -21,5 +23,11 @@ $(TARGET) : $(SRCFILES)
 flake8 : $(TARGET)
 	flake8 --statistics $(TARGET)
 
-srcflake8 : $(SRCFILES)
-	flake8 $(SRCFILES)
+.xcosblocks.txt : $(TARGET) parsexcosblocks.awk
+	@echo Making $@ ...
+	@./parsexcosblocks.awk $(TARGET) > $@
+
+srcflake8 : $(TARGET) .xcosblocks.txt usexcosblocks.awk
+	@echo 'flake8 common/*.py blocks/*.py ports/*.py links/*.py'
+	@flake8 $(TARGET) | ./usexcosblocks.awk .xcosblocks.txt -; \
+	    exit $${PIPESTATUS[0]}

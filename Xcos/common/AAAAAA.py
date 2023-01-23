@@ -147,9 +147,8 @@ VALUE = 'value'
 
 
 def si_format(num):
-
     lower_limit = -11
-    upper_limit = 9
+    upper_limit = 15
     number = float(num)
     si_form = '{:.1e}'.format(number)
     neg_prefixes = (
@@ -161,7 +160,9 @@ def si_format(num):
     pos_prefixes = (
                 {SIGN: '', LOWER_LIMIT: 1, UPPER_LIMIT: 3, VALUE: 1},
                 {SIGN: 'k', LOWER_LIMIT: 4, UPPER_LIMIT: 6, VALUE: 1E3},
-                {SIGN: 'M', LOWER_LIMIT: 7, UPPER_LIMIT: 9, VALUE: 1E6}
+                {SIGN: 'M', LOWER_LIMIT: 7, UPPER_LIMIT: 9, VALUE: 1E6},
+                {SIGN: 'G', LOWER_LIMIT: 10, UPPER_LIMIT: 12, VALUE: 1E9},
+                {SIGN: 'T', LOWER_LIMIT: 13, UPPER_LIMIT: 15, VALUE: 1E12}
                 )
     splits = si_form.split('e')
     base = float(splits[0])
