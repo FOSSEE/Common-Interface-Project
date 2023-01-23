@@ -15,7 +15,7 @@ def Capacitor(outroot, attribid, ordering, geometry, parameters):
 def get_from_Capacitor(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
-    display_parameter = ''
+    display_parameter = si_format(parameters[0]) + 'F'
 
     eiv = ''
     iiv = ''
