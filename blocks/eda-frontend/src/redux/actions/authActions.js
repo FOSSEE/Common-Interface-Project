@@ -64,7 +64,7 @@ export const login = (username, password, toUrl) => {
 
   return function (dispatch) {
     const allowedUrls = [
-      "/editor"
+      '/editor'
     ]
     api.post('auth/token/login/', body)
       .then((res) => {
