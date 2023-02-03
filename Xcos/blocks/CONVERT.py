@@ -23,7 +23,7 @@ def get_from_CONVERT(cell):
     input_type = types[input_t-1]
     output_type = types[output_t-1]
 
-    display_parameter = 'CONVERT\n' + input_type + '\n=>\n' + output_type
+    display_parameter = input_type + ',' + output_type
 
     eiv = ''
     iiv = ''

@@ -557,7 +557,7 @@
     "spacing": 13,
     "gradientColor": "white",
     "rounded": 1,
-    "displayedLabel": "From workspace"
+    "displayedLabel": "From workspace<BR>[ %s ]"
   },
   "DERIV": {
     "shape": "label",
@@ -1038,7 +1038,7 @@
     "spacing": 13,
     "gradientColor": "white",
     "rounded": 1,
-    "displayedLabel": "u^a"
+    "displayedLabel": "u^%s"
   },
   "INVBLK": {
     "shape": "label",
@@ -1129,7 +1129,7 @@
     "spacing": 13,
     "gradientColor": "white",
     "rounded": 1,
-    "displayedLabel": "a^u"
+    "displayedLabel": "%s^u"
   },
   "PROD_f": {
     "shape": "ellipse",
@@ -1234,7 +1234,7 @@
     "spacing": 13,
     "gradientColor": "white",
     "rounded": 1,
-    "displayedLabel": "Trig function"
+    "displayedLabel": "%s"
   },
   "PRODUCT": {
     "shape": "label",
@@ -1260,7 +1260,7 @@
     "spacing": 13,
     "gradientColor": "white",
     "rounded": 1,
-    "displayedLabel": "MIN / MAX"
+    "displayedLabel": "MIN / MAX<BR>%s"
   },
   "ABS_VALUE": {
     "shape": "label",
@@ -1339,7 +1339,7 @@
     "spacing": 13,
     "gradientColor": "white",
     "rounded": 1,
-    "displayedLabel": "x  == %s<br/>x' == %s"
+    "displayedLabel": "x  == %s<BR>x' == %s"
   },
   "MBLOCK": {
     "shape": "label",
@@ -1443,7 +1443,7 @@
     "spacing": 13,
     "gradientColor": "white",
     "rounded": 1,
-    "displayedLabel": "Convert to"
+    "displayedLabel": "CONVERT<BR>%s<BR>=><BR>%s"
   },
   "EXTRACTBITS": {
     "shape": "label",
@@ -1482,7 +1482,7 @@
     "spacing": 13,
     "gradientColor": "white",
     "rounded": 1,
-    "displayedLabel": "Arithmetic<BR>         shift %s"
+    "displayedLabel": "Arithmetic<BR>shift %s"
   },
   "LOGIC": {
     "shape": "label",
@@ -2497,7 +2497,8 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "/django_static/blocks/SWITCH.svg"
+    "image": "/django_static/blocks/SWITCH.svg",
+    "displayedLabel": "Static: %s"
   },
   "SWITCH2_m": {
     "shape": "label",
@@ -2838,7 +2839,8 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "/django_static/blocks/Capacitor.svg"
+    "image": "/django_static/blocks/Capacitor.svg",
+    "displayedLabel": "%sF"
   },
   "Ground": {
     "shape": "label",
@@ -2864,7 +2866,7 @@
     "spacing": 13,
     "gradientColor": "white",
     "rounded": 1,
-    "displayedLabel": "1 V<br/>~ %s"
+    "displayedLabel": "1 V<BR>~ %s"
   },
   "ConstantVoltage": {
     "shape": "label",
@@ -2877,7 +2879,8 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "/django_static/blocks/ConstantVoltage.svg"
+    "image": "/django_static/blocks/ConstantVoltage.svg",
+    "displayedLabel": "%sV"
   },
   "Inductor": {
     "shape": "label",
@@ -2890,7 +2893,8 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "/django_static/blocks/Inductor.svg"
+    "image": "/django_static/blocks/Inductor.svg",
+    "displayedLabel": "%sH"
   },
   "PotentialSensor": {
     "shape": "label",
@@ -2942,7 +2946,8 @@
     "gradientColor": "white",
     "rounded": 1,
     "imageBorder": "black",
-    "image": "/django_static/blocks/Resistor.svg"
+    "image": "/django_static/blocks/Resistor.svg",
+    "displayedLabel": "%sΩ"
   },
   "VoltageSensor": {
     "shape": "label",
@@ -2982,7 +2987,7 @@
     "gradientColor": "white",
     "rounded": 1,
     "textAlign": "center",
-    "displayedLabel": "%s V<br/>~ %s"
+    "displayedLabel": "%s V<BR>~ %s"
   },
   "NPN": {
     "shape": "label",
@@ -3021,7 +3026,7 @@
     "spacing": 13,
     "gradientColor": "white",
     "rounded": 1,
-    "displayedLabel": "%s V<br/>~"
+    "displayedLabel": "%s V<BR>~ %s"
   },
   "Switch": {
     "shape": "label",
@@ -3259,7 +3264,7 @@
     "spacing": 13,
     "gradientColor": "white",
     "rounded": 1,
-    "displayedLabel": "Automaton<BR>         nM=2, nX=1"
+    "displayedLabel": "Automaton<BR>%s modes | %s states"
   },
   "SPLIT_f": {
     "shape": "rectangle",

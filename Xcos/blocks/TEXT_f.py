@@ -13,7 +13,7 @@ def TEXT_f(outroot, attribid, ordering, geometry, parameters):
 def get_from_TEXT_f(cell):
     parameters = [cell.attrib['value']]
 
-    display_parameter = ''
+    display_parameter = parameters[0]
 
     eiv = ''
     iiv = ''

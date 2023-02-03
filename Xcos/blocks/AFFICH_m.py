@@ -15,7 +15,7 @@ def AFFICH_m(outroot, attribid, ordering, geometry, parameters):
 def get_from_AFFICH_m(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
-    display_parameter = ''
+    display_parameter = print_affich_m_by_param(parameters[0], parameters[5])
 
     eiv = ''
     iiv = ''

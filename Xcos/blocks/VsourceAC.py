@@ -15,7 +15,7 @@ def VsourceAC(outroot, attribid, ordering, geometry, parameters):
 def get_from_VsourceAC(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
-    display_parameter = parameters[0] + ' V\n'+'~ ' + parameters[1]
+    display_parameter = parameters[0] + ',' + parameters[1]
 
     eiv = ''
     iiv = ''

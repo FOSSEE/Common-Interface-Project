@@ -20,7 +20,7 @@ def BITSET(outroot, attribid, ordering, geometry, parameters):
 def get_from_BITSET(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
-    display_parameter = ''
+    display_parameter = parameters[1]
 
     eiv = ''
     iiv = ''

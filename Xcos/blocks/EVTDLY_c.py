@@ -14,7 +14,7 @@ def EVTDLY_c(outroot, attribid, ordering, geometry, parameters):
 def get_from_EVTDLY_c(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
-    display_parameter = 'Delay: ' + parameters[0]
+    display_parameter = parameters[0]
 
     eiv = ''
     iiv = ''

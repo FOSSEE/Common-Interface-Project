@@ -14,7 +14,7 @@ def ConstantVoltage(outroot, attribid, ordering, geometry, parameters):
 def get_from_ConstantVoltage(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
-    display_parameter = si_format(parameters[0]) + 'V'
+    display_parameter = si_format(parameters[0])
 
     eiv = ''
     iiv = ''

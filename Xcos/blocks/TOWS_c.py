@@ -21,7 +21,7 @@ def TOWS_c(outroot, attribid, ordering, geometry, parameters):
 def get_from_TOWS_c(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
-    display_parameter = 'To workspace\n'+parameters[1]+' ['+parameters[0]+']'
+    display_parameter = parameters[1] + ',' + parameters[0]
 
     eiv = ''
     iiv = ''

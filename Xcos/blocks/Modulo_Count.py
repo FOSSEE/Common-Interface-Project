@@ -14,7 +14,7 @@ def Modulo_Count(outroot, attribid, ordering, geometry, parameters):
 def get_from_Modulo_Count(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
-    display_parameter = 'Counter\nModulo ' + parameters[1]
+    display_parameter = parameters[1]
 
     eiv = ''
     iiv = ''

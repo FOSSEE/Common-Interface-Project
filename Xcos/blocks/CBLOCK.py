@@ -36,7 +36,7 @@ def CBLOCK(outroot, attribid, ordering, geometry, parameters):
 def get_from_CBLOCK(cell):
     parameters = getParametersFromExprsNode(cell)
 
-    display_parameter = 'C block 2:\n' + parameters[0]
+    display_parameter = parameters[0]
 
     eiv = ''
     iiv = ''

@@ -574,7 +574,7 @@
     blockprefix: 1
     main_category: 2
     block_name: CLR
-    initial_display_parameter: 1/(1+s)
+    initial_display_parameter: 1,1+s
     block_image_path: palettes/CLR.png
     block_width: 60
     block_height: 40
@@ -647,7 +647,7 @@
     blockprefix: 1
     main_category: 2
     block_name: CLSS
-    initial_display_parameter: xd = Ax+ Bu, y = Cx + Du
+    initial_display_parameter: ''
     block_image_path: palettes/CLSS.png
     block_width: 80
     block_height: 40
@@ -720,7 +720,7 @@
     blockprefix: 1
     main_category: 2
     block_name: DERIV
-    initial_display_parameter: du/dt
+    initial_display_parameter: ''
     block_image_path: palettes/DERIV.png
     block_width: 40
     block_height: 40
@@ -793,7 +793,7 @@
     blockprefix: 1
     main_category: 2
     block_name: INTEGRAL_f
-    initial_display_parameter: 1/s
+    initial_display_parameter: ''
     block_image_path: palettes/INTEGRAL_f.png
     block_width: 40
     block_height: 40
@@ -940,7 +940,7 @@
     blockprefix: 1
     main_category: 2
     block_name: PDE
-    initial_display_parameter: PDE
+    initial_display_parameter: ''
     block_image_path: palettes/PDE.png
     block_width: 60
     block_height: 60
@@ -1014,7 +1014,7 @@
     blockprefix: 1
     main_category: 2
     block_name: PID
-    initial_display_parameter: PID
+    initial_display_parameter: ''
     block_image_path: palettes/PID.png
     block_width: 40
     block_height: 40
@@ -1087,7 +1087,7 @@
     blockprefix: 1
     main_category: 2
     block_name: TCLSS
-    initial_display_parameter: Jump (A,B,C,D)
+    initial_display_parameter: ''
     block_image_path: palettes/TCLSS.png
     block_width: 60
     block_height: 40
@@ -1161,7 +1161,7 @@
     blockprefix: 1
     main_category: 2
     block_name: TIME_DELAY
-    initial_display_parameter: Continuous fix delay
+    initial_display_parameter: ''
     block_image_path: palettes/TIME_DELAY.png
     block_width: 70
     block_height: 40
@@ -1234,7 +1234,7 @@
     blockprefix: 1
     main_category: 2
     block_name: VARIABLE_DELAY
-    initial_display_parameter: Variable Delay
+    initial_display_parameter: ''
     block_image_path: palettes/VARIABLE_DELAY.png
     block_width: 60
     block_height: 40
@@ -1307,7 +1307,7 @@
     blockprefix: 1
     main_category: 3
     block_name: BACKLASH
-    initial_display_parameter: Backlash
+    initial_display_parameter: ''
     block_image_path: palettes/BACKLASH.png
     block_width: 60
     block_height: 40
@@ -1600,7 +1600,7 @@
     blockprefix: 1
     main_category: 3
     block_name: RATELIMITER
-    initial_display_parameter: Rate limiter
+    initial_display_parameter: ''
     block_image_path: palettes/RATELIMITER.png
     block_width: 70
     block_height: 40
@@ -1747,7 +1747,7 @@
     blockprefix: 1
     main_category: 4
     block_name: AUTOMAT
-    initial_display_parameter: Automaton nM=2, nX=1
+    initial_display_parameter: 2,1
     block_image_path: palettes/AUTOMAT.png
     block_width: 80
     block_height: 40
@@ -1820,7 +1820,7 @@
     blockprefix: 1
     main_category: 4
     block_name: DELAY_f
-    initial_display_parameter: Delay
+    initial_display_parameter: ''
     block_image_path: palettes/DELAY_f.png
     block_width: 40
     block_height: 40
@@ -1893,7 +1893,7 @@
     blockprefix: 1
     main_category: 3
     block_name: DELAYV_f
-    initial_display_parameter: Variable delay
+    initial_display_parameter: ''
     block_image_path: palettes/DELAYV_f.png
     block_width: 60
     block_height: 40
@@ -1967,7 +1967,7 @@
     blockprefix: 1
     main_category: 4
     block_name: DLR
-    initial_display_parameter: 1/(1+z)
+    initial_display_parameter: 1,1+z
     block_image_path: palettes/DLR.png
     block_width: 60
     block_height: 40
@@ -2040,7 +2040,7 @@
     blockprefix: 1
     main_category: 4
     block_name: DLRADAPT_f
-    initial_display_parameter: N (z,p)/D (z,p)
+    initial_display_parameter: ''
     block_image_path: palettes/DLRADAPT_f.png
     block_width: 40
     block_height: 40
@@ -2113,7 +2113,7 @@
     blockprefix: 1
     main_category: 4
     block_name: DLSS
-    initial_display_parameter: x = Ax+Bu, y = Cx+Du
+    initial_display_parameter: ''
     block_image_path: palettes/DLSS.png
     block_width: 80
     block_height: 40
@@ -2186,7 +2186,7 @@
     blockprefix: 1
     main_category: 4
     block_name: DOLLAR
-    initial_display_parameter: 1/z
+    initial_display_parameter: ''
     block_image_path: palettes/DOLLAR.png
     block_width: 40
     block_height: 40
@@ -2259,7 +2259,7 @@
     blockprefix: 1
     main_category: 4
     block_name: DOLLAR_f
-    initial_display_parameter: 1/z
+    initial_display_parameter: ''
     block_image_path: palettes/DOLLAR_f.png
     block_width: 40
     block_height: 40
@@ -2333,7 +2333,7 @@
     blockprefix: 1
     main_category: 4
     block_name: DOLLAR_m
-    initial_display_parameter: 1/z
+    initial_display_parameter: ''
     block_image_path: palettes/DOLLAR_m.png
     block_width: 40
     block_height: 40
@@ -2406,7 +2406,7 @@
     blockprefix: 1
     main_category: 4
     block_name: REGISTER
-    initial_display_parameter: Shift register
+    initial_display_parameter: ''
     block_image_path: palettes/REGISTER.png
     block_width: 60
     block_height: 40
@@ -2479,7 +2479,7 @@
     blockprefix: 1
     main_category: 4
     block_name: SAMPHOLD_m
-    initial_display_parameter: S / H
+    initial_display_parameter: ''
     block_image_path: palettes/SAMPHOLD_m.png
     block_width: 40
     block_height: 40
@@ -2553,7 +2553,7 @@
     blockprefix: 1
     main_category: 5
     block_name: INTRP2BLK_f
-    initial_display_parameter: Interp 2
+    initial_display_parameter: ''
     block_image_path: palettes/INTRP2BLK_f.png
     block_width: 60
     block_height: 40
@@ -2626,7 +2626,7 @@
     blockprefix: 1
     main_category: 5
     block_name: INTRPLBLK_f
-    initial_display_parameter: Interp
+    initial_display_parameter: ''
     block_image_path: palettes/INTRPLBLK_f.png
     block_width: 40
     block_height: 40
@@ -2992,7 +2992,7 @@
     blockprefix: 1
     main_category: 6
     block_name: CLKGotoTagVisibility
-    initial_display_parameter: '{A}'
+    initial_display_parameter: A
     block_image_path: palettes/CLKGotoTagVisibility.png
     block_width: 40
     block_height: 40
@@ -3138,7 +3138,7 @@
     blockprefix: 1
     main_category: 6
     block_name: EDGE_TRIGGER
-    initial_display_parameter: Edge tigger
+    initial_display_parameter: ''
     block_image_path: palettes/EDGE_TRIGGER.png
     block_width: 60
     block_height: 40
@@ -3211,7 +3211,7 @@
     blockprefix: 1
     main_category: 6
     block_name: END_c
-    initial_display_parameter: END
+    initial_display_parameter: ''
     block_image_path: palettes/END_c.png
     block_width: 40
     block_height: 40
@@ -3285,7 +3285,7 @@
     blockprefix: 1
     main_category: 6
     block_name: ENDBLK
-    initial_display_parameter: END
+    initial_display_parameter: ''
     block_image_path: palettes/ENDBLK.png
     block_width: 40
     block_height: 40
@@ -3359,7 +3359,7 @@
     blockprefix: 1
     main_category: 6
     block_name: ESELECT_f
-    initial_display_parameter: Event select
+    initial_display_parameter: ''
     block_image_path: palettes/ESELECT_f.png
     block_width: 80
     block_height: 40
@@ -3432,7 +3432,7 @@
     blockprefix: 1
     main_category: 6
     block_name: EVTDLY_c
-    initial_display_parameter: 'Delay: 0.1'
+    initial_display_parameter: '0.1'
     block_image_path: palettes/EVTDLY_c.png
     block_width: 60
     block_height: 40
@@ -3505,7 +3505,7 @@
     blockprefix: 1
     main_category: 6
     block_name: EVTGEN_f
-    initial_display_parameter: Event at time 0
+    initial_display_parameter: '0'
     block_image_path: palettes/EVTGEN_f.png
     block_width: 60
     block_height: 40
@@ -3578,7 +3578,7 @@
     blockprefix: 1
     main_category: 6
     block_name: EVTVARDLY
-    initial_display_parameter: Event delay
+    initial_display_parameter: ''
     block_image_path: palettes/EVTVARDLY.png
     block_width: 60
     block_height: 40
@@ -3651,7 +3651,7 @@
     blockprefix: 1
     main_category: 6
     block_name: Extract_Activation
-    initial_display_parameter: Extract Activation
+    initial_display_parameter: ''
     block_image_path: palettes/Extract_Activation.png
     block_width: 60
     block_height: 40
@@ -3724,7 +3724,7 @@
     blockprefix: 1
     main_category: 6
     block_name: freq_div
-    initial_display_parameter: Frequency division
+    initial_display_parameter: ''
     block_image_path: palettes/freq_div.png
     block_width: 60
     block_height: 40
@@ -3797,7 +3797,7 @@
     blockprefix: 1
     main_category: 6
     block_name: HALT_f
-    initial_display_parameter: HALT
+    initial_display_parameter: ''
     block_image_path: palettes/HALT_f.png
     block_width: 40
     block_height: 40
@@ -3871,7 +3871,7 @@
     blockprefix: 1
     main_category: 6
     block_name: IFTHEL_f
-    initial_display_parameter: if n>0 then else
+    initial_display_parameter: ''
     block_image_path: palettes/IFTHEL_f.png
     block_width: 60
     block_height: 60
@@ -3944,7 +3944,7 @@
     blockprefix: 1
     main_category: 6
     block_name: M_freq
-    initial_display_parameter: Multiple frequency
+    initial_display_parameter: ''
     block_image_path: palettes/M_freq.png
     block_width: 60
     block_height: 40
@@ -4017,7 +4017,7 @@
     blockprefix: 1
     main_category: 6
     block_name: MCLOCK_f
-    initial_display_parameter: 2freq clock f/n f
+    initial_display_parameter: ''
     block_image_path: palettes/MCLOCK_f.png
     block_width: 60
     block_height: 40
@@ -4090,7 +4090,7 @@
     blockprefix: 1
     main_category: 6
     block_name: MFCLCK_f
-    initial_display_parameter: M. freq clock
+    initial_display_parameter: ''
     block_image_path: palettes/MFCLCK_f.png
     block_width: 60
     block_height: 40
@@ -4236,7 +4236,7 @@
     blockprefix: 1
     main_category: 7
     block_name: ABS_VALUE
-    initial_display_parameter: ABS
+    initial_display_parameter: ''
     block_image_path: palettes/ABS_VALUE.png
     block_width: 40
     block_height: 40
@@ -4383,7 +4383,7 @@
     blockprefix: 1
     main_category: 7
     block_name: COSBLK_f
-    initial_display_parameter: cos
+    initial_display_parameter: ''
     block_image_path: palettes/COSBLK_f.png
     block_width: 40
     block_height: 40
@@ -4456,7 +4456,7 @@
     blockprefix: 1
     main_category: 7
     block_name: EXPBLK_m
-    initial_display_parameter: a^u
+    initial_display_parameter: '%e'
     block_image_path: palettes/EXPBLK_m.png
     block_width: 40
     block_height: 40
@@ -4748,7 +4748,7 @@
     blockprefix: 1
     main_category: 7
     block_name: INVBLK
-    initial_display_parameter: 1/u
+    initial_display_parameter: ''
     block_image_path: palettes/INVBLK.png
     block_width: 40
     block_height: 40
@@ -4821,7 +4821,7 @@
     blockprefix: 1
     main_category: 7
     block_name: LOGBLK_f
-    initial_display_parameter: LOG
+    initial_display_parameter: ''
     block_image_path: palettes/LOGBLK_f.png
     block_width: 40
     block_height: 40
@@ -4894,7 +4894,7 @@
     blockprefix: 1
     main_category: 7
     block_name: MAX_f
-    initial_display_parameter: MAX
+    initial_display_parameter: ''
     block_image_path: palettes/MAX_f.png
     block_width: 40
     block_height: 40
@@ -5040,7 +5040,7 @@
     blockprefix: 1
     main_category: 7
     block_name: MIN_f
-    initial_display_parameter: MIN
+    initial_display_parameter: ''
     block_image_path: palettes/MIN_f.png
     block_width: 40
     block_height: 40
@@ -5113,7 +5113,7 @@
     blockprefix: 1
     main_category: 7
     block_name: POWBLK_f
-    initial_display_parameter: u ^ a
+    initial_display_parameter: '1.5'
     block_image_path: palettes/POWBLK_f.png
     block_width: 40
     block_height: 40
@@ -5333,7 +5333,7 @@
     blockprefix: 1
     main_category: 7
     block_name: SIGNUM
-    initial_display_parameter: SIGN
+    initial_display_parameter: ''
     block_image_path: palettes/SIGNUM.png
     block_width: 40
     block_height: 40
@@ -5406,7 +5406,7 @@
     blockprefix: 1
     main_category: 7
     block_name: SINBLK_f
-    initial_display_parameter: SIN
+    initial_display_parameter: ''
     block_image_path: palettes/SINBLK_f.png
     block_width: 40
     block_height: 40
@@ -5698,7 +5698,7 @@
     blockprefix: 1
     main_category: 7
     block_name: TANBLK_f
-    initial_display_parameter: TAN
+    initial_display_parameter: ''
     block_image_path: palettes/TANBLK_f.png
     block_width: 40
     block_height: 40
@@ -5771,7 +5771,7 @@
     blockprefix: 1
     main_category: 7
     block_name: TrigFun
-    initial_display_parameter: Trig function
+    initial_display_parameter: sin
     block_image_path: palettes/TrigFun.png
     block_width: 80
     block_height: 40
@@ -5844,7 +5844,7 @@
     blockprefix: 1
     main_category: 8
     block_name: CUMSUM
-    initial_display_parameter: CUMSUM
+    initial_display_parameter: ''
     block_image_path: palettes/CUMSUM.png
     block_width: 60
     block_height: 40
@@ -5917,7 +5917,7 @@
     blockprefix: 1
     main_category: 8
     block_name: EXTRACT
-    initial_display_parameter: EXTRACT
+    initial_display_parameter: ''
     block_image_path: palettes/EXTRACT.png
     block_width: 60
     block_height: 40
@@ -5990,7 +5990,7 @@
     blockprefix: 1
     main_category: 8
     block_name: EXTTRI
-    initial_display_parameter: Tri/Diag Extraction
+    initial_display_parameter: ''
     block_image_path: palettes/EXTTRI.png
     block_width: 60
     block_height: 40
@@ -6063,7 +6063,7 @@
     blockprefix: 1
     main_category: 8
     block_name: MATBKSL
-    initial_display_parameter: AB
+    initial_display_parameter: ''
     block_image_path: palettes/MATBKSL.png
     block_width: 40
     block_height: 40
@@ -6136,7 +6136,7 @@
     blockprefix: 1
     main_category: 8
     block_name: MATCATH
-    initial_display_parameter: Horiz cat
+    initial_display_parameter: ''
     block_image_path: palettes/MATCATH.png
     block_width: 40
     block_height: 60
@@ -6209,7 +6209,7 @@
     blockprefix: 1
     main_category: 8
     block_name: MATCATV
-    initial_display_parameter: Vert Cat
+    initial_display_parameter: ''
     block_image_path: palettes/MATCATV.png
     block_width: 40
     block_height: 60
@@ -6282,7 +6282,7 @@
     blockprefix: 1
     main_category: 8
     block_name: MATDET
-    initial_display_parameter: DET
+    initial_display_parameter: ''
     block_image_path: palettes/MATDET.png
     block_width: 40
     block_height: 40
@@ -6355,7 +6355,7 @@
     blockprefix: 1
     main_category: 8
     block_name: MATDIAG
-    initial_display_parameter: DIAG
+    initial_display_parameter: ''
     block_image_path: palettes/MATDIAG.png
     block_width: 40
     block_height: 40
@@ -6428,7 +6428,7 @@
     blockprefix: 1
     main_category: 8
     block_name: MATDIV
-    initial_display_parameter: A/B
+    initial_display_parameter: ''
     block_image_path: palettes/MATDIV.png
     block_width: 40
     block_height: 40
@@ -6501,7 +6501,7 @@
     blockprefix: 1
     main_category: 8
     block_name: MATEIG
-    initial_display_parameter: EIG
+    initial_display_parameter: ''
     block_image_path: palettes/MATEIG.png
     block_width: 40
     block_height: 40
@@ -6574,7 +6574,7 @@
     blockprefix: 1
     main_category: 8
     block_name: MATEXPM
-    initial_display_parameter: EXPM
+    initial_display_parameter: ''
     block_image_path: palettes/MATEXPM.png
     block_width: 40
     block_height: 40
@@ -6647,7 +6647,7 @@
     blockprefix: 1
     main_category: 8
     block_name: MATINV
-    initial_display_parameter: INV
+    initial_display_parameter: ''
     block_image_path: palettes/MATINV.png
     block_width: 40
     block_height: 40
@@ -6720,7 +6720,7 @@
     blockprefix: 1
     main_category: 8
     block_name: MATLU
-    initial_display_parameter: LU
+    initial_display_parameter: ''
     block_image_path: palettes/MATLU.png
     block_width: 40
     block_height: 40
@@ -6793,7 +6793,7 @@
     blockprefix: 1
     main_category: 7
     block_name: MATMAGPHI
-    initial_display_parameter: Mag & Phi
+    initial_display_parameter: ''
     block_image_path: palettes/MATMAGPHI.png
     block_width: 60
     block_height: 40
@@ -6867,7 +6867,7 @@
     blockprefix: 1
     main_category: 8
     block_name: MATMUL
-    initial_display_parameter: MATMUL
+    initial_display_parameter: ''
     block_image_path: palettes/MATMUL.png
     block_width: 60
     block_height: 40
@@ -6940,7 +6940,7 @@
     blockprefix: 1
     main_category: 8
     block_name: MATPINV
-    initial_display_parameter: PINV
+    initial_display_parameter: ''
     block_image_path: palettes/MATPINV.png
     block_width: 40
     block_height: 40
@@ -7013,7 +7013,7 @@
     blockprefix: 1
     main_category: 8
     block_name: MATRESH
-    initial_display_parameter: RESHAPE
+    initial_display_parameter: ''
     block_image_path: palettes/MATRESH.png
     block_width: 60
     block_height: 40
@@ -7086,7 +7086,7 @@
     blockprefix: 1
     main_category: 8
     block_name: MATSING
-    initial_display_parameter: SVD
+    initial_display_parameter: ''
     block_image_path: palettes/MATSING.png
     block_width: 40
     block_height: 40
@@ -7159,7 +7159,7 @@
     blockprefix: 1
     main_category: 8
     block_name: MATSUM
-    initial_display_parameter: MATSUM
+    initial_display_parameter: ''
     block_image_path: palettes/MATSUM.png
     block_width: 60
     block_height: 40
@@ -7232,7 +7232,7 @@
     blockprefix: 1
     main_category: 8
     block_name: MATTRAN
-    initial_display_parameter: MATTRAN
+    initial_display_parameter: ''
     block_image_path: palettes/MATTRAN.png
     block_width: 60
     block_height: 40
@@ -7305,7 +7305,7 @@
     blockprefix: 1
     main_category: 8
     block_name: MATZCONJ
-    initial_display_parameter: CONJ
+    initial_display_parameter: ''
     block_image_path: palettes/MATZCONJ.png
     block_width: 40
     block_height: 40
@@ -7378,7 +7378,7 @@
     blockprefix: 1
     main_category: 7
     block_name: MATZREIM
-    initial_display_parameter: Re & Im
+    initial_display_parameter: ''
     block_image_path: palettes/MATZREIM.png
     block_width: 60
     block_height: 40
@@ -7452,7 +7452,7 @@
     blockprefix: 1
     main_category: 8
     block_name: RICC
-    initial_display_parameter: RICC
+    initial_display_parameter: ''
     block_image_path: palettes/RICC.png
     block_width: 40
     block_height: 40
@@ -7525,7 +7525,7 @@
     blockprefix: 1
     main_category: 8
     block_name: ROOTCOEF
-    initial_display_parameter: ROOT COEF
+    initial_display_parameter: ''
     block_image_path: palettes/ROOTCOEF.png
     block_width: 60
     block_height: 40
@@ -7598,7 +7598,7 @@
     blockprefix: 1
     main_category: 7
     block_name: SQRT
-    initial_display_parameter: SQRT
+    initial_display_parameter: ''
     block_image_path: palettes/SQRT.png
     block_width: 40
     block_height: 40
@@ -7672,7 +7672,7 @@
     blockprefix: 1
     main_category: 8
     block_name: SUBMAT
-    initial_display_parameter: SUBMAT
+    initial_display_parameter: ''
     block_image_path: palettes/SUBMAT.png
     block_width: 50
     block_height: 40
@@ -7745,7 +7745,7 @@
     blockprefix: 1
     main_category: 9
     block_name: Capacitor
-    initial_display_parameter: ''
+    initial_display_parameter: 10 m
     block_image_path: palettes/Capacitor.png
     block_width: 40
     block_height: 22
@@ -7891,7 +7891,7 @@
     blockprefix: 1
     main_category: 9
     block_name: ConstantVoltage
-    initial_display_parameter: ''
+    initial_display_parameter: 10 m
     block_image_path: palettes/ConstantVoltage.png
     block_width: 30
     block_height: 22
@@ -8402,7 +8402,7 @@
     blockprefix: 1
     main_category: 9
     block_name: Inductor
-    initial_display_parameter: ''
+    initial_display_parameter: 10 μ
     block_image_path: palettes/Inductor.png
     block_width: 40
     block_height: 18
@@ -8913,7 +8913,7 @@
     blockprefix: 1
     main_category: 9
     block_name: Resistor
-    initial_display_parameter: ''
+    initial_display_parameter: 10 m
     block_image_path: palettes/Resistor.png
     block_width: 40
     block_height: 20
@@ -8986,7 +8986,7 @@
     blockprefix: 1
     main_category: 9
     block_name: SineVoltage
-    initial_display_parameter: 1 V
+    initial_display_parameter: 1,1
     block_image_path: palettes/SineVoltage.png
     block_width: 40
     block_height: 40
@@ -9278,7 +9278,7 @@
     blockprefix: 1
     main_category: 9
     block_name: VsourceAC
-    initial_display_parameter: 220 V ~50
+    initial_display_parameter: 220,50
     block_image_path: palettes/VsourceAC.png
     block_width: 40
     block_height: 40
@@ -9351,7 +9351,7 @@
     blockprefix: 1
     main_category: 9
     block_name: VVsourceAC
-    initial_display_parameter: 1 V ~ 20
+    initial_display_parameter: '50'
     block_image_path: palettes/VVsourceAC.png
     block_width: 40
     block_height: 40
@@ -9424,7 +9424,7 @@
     blockprefix: 1
     main_category: 10
     block_name: BITCLEAR
-    initial_display_parameter: Clear bit 0
+    initial_display_parameter: '0'
     block_image_path: palettes/BITCLEAR.png
     block_width: 80
     block_height: 40
@@ -9497,7 +9497,7 @@
     blockprefix: 1
     main_category: 10
     block_name: BITSET
-    initial_display_parameter: Set bit 0
+    initial_display_parameter: '0'
     block_image_path: palettes/BITSET.png
     block_width: 80
     block_height: 40
@@ -9570,7 +9570,7 @@
     blockprefix: 1
     main_category: 10
     block_name: CONVERT
-    initial_display_parameter: Convert to
+    initial_display_parameter: decim,int32
     block_image_path: palettes/CONVERT.png
     block_width: 60
     block_height: 40
@@ -9790,7 +9790,7 @@
     blockprefix: 1
     main_category: 10
     block_name: EXTRACTBITS
-    initial_display_parameter: Extract Bits 1
+    initial_display_parameter: '1'
     block_image_path: palettes/EXTRACTBITS.png
     block_width: 80
     block_height: 40
@@ -9863,7 +9863,7 @@
     blockprefix: 1
     main_category: 10
     block_name: INTMUL
-    initial_display_parameter: INTMUL
+    initial_display_parameter: ''
     block_image_path: palettes/INTMUL.png
     block_width: 40
     block_height: 40
@@ -10009,7 +10009,7 @@
     blockprefix: 1
     main_category: 10
     block_name: LOGIC
-    initial_display_parameter: LOGIC
+    initial_display_parameter: ''
     block_image_path: palettes/LOGIC.png
     block_width: 40
     block_height: 40
@@ -10082,7 +10082,7 @@
     blockprefix: 1
     main_category: 10
     block_name: SHIFT
-    initial_display_parameter: Arithmetic shift 0
+    initial_display_parameter: '0'
     block_image_path: palettes/SHIFT.png
     block_width: 60
     block_height: 40
@@ -10155,7 +10155,7 @@
     blockprefix: 1
     main_category: 10
     block_name: SRFLIPFLOP
-    initial_display_parameter: S   Q, R   !Q
+    initial_display_parameter: ''
     block_image_path: palettes/SRFLIPFLOP.png
     block_width: 40
     block_height: 60
@@ -10228,7 +10228,7 @@
     blockprefix: 1
     main_category: 12
     block_name: GENERAL_f
-    initial_display_parameter: GENERAL
+    initial_display_parameter: ''
     block_image_path: palettes/GENERAL_f.png
     block_width: 60
     block_height: 40
@@ -10301,7 +10301,7 @@
     blockprefix: 1
     main_category: 12
     block_name: NEGTOPOS_f
-    initial_display_parameter: '- to +'
+    initial_display_parameter: ''
     block_image_path: palettes/NEGTOPOS_f.png
     block_width: 40
     block_height: 40
@@ -10374,7 +10374,7 @@
     blockprefix: 1
     main_category: 12
     block_name: POSTONEG_f
-    initial_display_parameter: + to -
+    initial_display_parameter: ''
     block_image_path: palettes/POSTONEG_f.png
     block_width: 40
     block_height: 40
@@ -10447,7 +10447,7 @@
     blockprefix: 1
     main_category: 12
     block_name: ZCROSS_f
-    initial_display_parameter: Zcross
+    initial_display_parameter: ''
     block_image_path: palettes/ZCROSS_f.png
     block_width: 40
     block_height: 40
@@ -10815,7 +10815,7 @@
     blockprefix: 1
     main_category: 13
     block_name: EXTRACTOR
-    initial_display_parameter: Extractor
+    initial_display_parameter: ''
     block_image_path: palettes/EXTRACTOR.png
     block_width: 60
     block_height: 40
@@ -11326,7 +11326,7 @@
     blockprefix: 1
     main_category: 13
     block_name: ISELECT_m
-    initial_display_parameter: Selector
+    initial_display_parameter: ''
     block_image_path: palettes/ISELECT_m.png
     block_width: 60
     block_height: 40
@@ -11693,7 +11693,7 @@
     blockprefix: 1
     main_category: 13
     block_name: RELAY_f
-    initial_display_parameter: Relay
+    initial_display_parameter: ''
     block_image_path: palettes/RELAY_f.png
     block_width: 40
     block_height: 40
@@ -11766,7 +11766,7 @@
     blockprefix: 1
     main_category: 13
     block_name: SCALAR2VECTOR
-    initial_display_parameter: SCALAR to VECTOR
+    initial_display_parameter: ''
     block_image_path: palettes/SCALAR2VECTOR.png
     block_width: 60
     block_height: 40
@@ -11839,7 +11839,7 @@
     blockprefix: 1
     main_category: 13
     block_name: SELECT_m
-    initial_display_parameter: Selector
+    initial_display_parameter: ''
     block_image_path: palettes/SELECT_m.png
     block_width: 60
     block_height: 40
@@ -11985,7 +11985,7 @@
     blockprefix: 1
     main_category: 13
     block_name: SWITCH_f
-    initial_display_parameter: ''
+    initial_display_parameter: '1'
     block_image_path: palettes/SWITCH_f.png
     block_width: 40
     block_height: 40
@@ -12132,7 +12132,7 @@
     blockprefix: 1
     main_category: 15
     block_name: CONSTRAINT_c
-    initial_display_parameter: x == 0
+    initial_display_parameter: '0'
     block_image_path: palettes/CONSTRAINT_c.png
     block_width: 60
     block_height: 40
@@ -12205,7 +12205,7 @@
     blockprefix: 1
     main_category: 15
     block_name: CONSTRAINT2_c
-    initial_display_parameter: x == 0,  x' == 0
+    initial_display_parameter: 0,0
     block_image_path: palettes/CONSTRAINT2_c.png
     block_width: 60
     block_height: 40
@@ -12278,7 +12278,7 @@
     blockprefix: 1
     main_category: 15
     block_name: DIFF_f
-    initial_display_parameter: S
+    initial_display_parameter: ''
     block_image_path: palettes/DIFF_f.png
     block_width: 40
     block_height: 40
@@ -12351,7 +12351,7 @@
     blockprefix: 1
     main_category: 16
     block_name: TEXT_f
-    initial_display_parameter: '...'
+    initial_display_parameter: Text
     block_image_path: palettes/TEXT_f.png
     block_width: 40
     block_height: 40
@@ -13158,7 +13158,7 @@
     blockprefix: 1
     main_category: 17
     block_name: CSCOPXY
-    initial_display_parameter: x, y
+    initial_display_parameter: ''
     block_image_path: palettes/CSCOPXY.png
     block_width: 40
     block_height: 40
@@ -13232,7 +13232,7 @@
     blockprefix: 1
     main_category: 17
     block_name: CSCOPXY3D
-    initial_display_parameter: x, y, z
+    initial_display_parameter: ''
     block_image_path: palettes/CSCOPXY3D.png
     block_width: 40
     block_height: 40
@@ -13454,7 +13454,7 @@
     blockprefix: 1
     main_category: 17
     block_name: TOWS_c
-    initial_display_parameter: To workspace A [128]
+    initial_display_parameter: A,128
     block_image_path: palettes/TOWS_c.png
     block_width: 80
     block_height: 40
@@ -13527,7 +13527,7 @@
     blockprefix: 1
     main_category: 17
     block_name: TRASH_f
-    initial_display_parameter: Trash
+    initial_display_parameter: ''
     block_image_path: palettes/TRASH_f.png
     block_width: 40
     block_height: 40
@@ -13600,7 +13600,7 @@
     blockprefix: 1
     main_category: 17
     block_name: WRITEAU_f
-    initial_display_parameter: Write AU to /dev/audio
+    initial_display_parameter: ''
     block_image_path: palettes/WRITEAU_f.png
     block_width: 80
     block_height: 40
@@ -13673,7 +13673,7 @@
     blockprefix: 1
     main_category: 17
     block_name: WRITEC_f
-    initial_display_parameter: Write to C binary file
+    initial_display_parameter: ''
     block_image_path: palettes/WRITEC_f.png
     block_width: 80
     block_height: 40
@@ -14114,7 +14114,7 @@
     blockprefix: 1
     main_category: 18
     block_name: Counter
-    initial_display_parameter: Counter 0 --> 2
+    initial_display_parameter: 0,2
     block_image_path: palettes/Counter.png
     block_width: 60
     block_height: 40
@@ -14187,7 +14187,7 @@
     blockprefix: 1
     main_category: 18
     block_name: CURV_f
-    initial_display_parameter: Curve
+    initial_display_parameter: ''
     block_image_path: palettes/CURV_f.png
     block_width: 40
     block_height: 40
@@ -14260,7 +14260,7 @@
     blockprefix: 1
     main_category: 18
     block_name: FROMWSB
-    initial_display_parameter: From workspace
+    initial_display_parameter: Z
     block_image_path: palettes/FROMWSB.png
     block_width: 100
     block_height: 40
@@ -14628,7 +14628,7 @@
     blockprefix: 1
     main_category: 18
     block_name: Modulo_Count
-    initial_display_parameter: Counter Modulo 3
+    initial_display_parameter: '3'
     block_image_path: palettes/Modulo_Count.png
     block_width: 60
     block_height: 40
@@ -14847,7 +14847,7 @@
     blockprefix: 1
     main_category: 18
     block_name: RAND_m
-    initial_display_parameter: Random generator
+    initial_display_parameter: ''
     block_image_path: palettes/RAND_m.png
     block_width: 60
     block_height: 40
@@ -14920,7 +14920,7 @@
     blockprefix: 1
     main_category: 18
     block_name: READAU_f
-    initial_display_parameter: Read from .au sound file
+    initial_display_parameter: ''
     block_image_path: palettes/READAU_f.png
     block_width: 100
     block_height: 40
@@ -14993,7 +14993,7 @@
     blockprefix: 1
     main_category: 18
     block_name: READC_f
-    initial_display_parameter: Read from C binary file
+    initial_display_parameter: ''
     block_image_path: palettes/READC_f.png
     block_width: 80
     block_height: 40
@@ -15066,7 +15066,7 @@
     blockprefix: 1
     main_category: 18
     block_name: RFILE_f
-    initial_display_parameter: Read from input file
+    initial_display_parameter: ''
     block_image_path: palettes/RFILE_f.png
     block_width: 60
     block_height: 40
@@ -15286,7 +15286,7 @@
     blockprefix: 1
     main_category: 18
     block_name: Sigbuilder
-    initial_display_parameter: Signal Builder
+    initial_display_parameter: ''
     block_image_path: palettes/Sigbuilder.png
     block_width: 60
     block_height: 40
@@ -15505,7 +15505,7 @@
     blockprefix: 1
     main_category: 18
     block_name: TKSCALE
-    initial_display_parameter: TK Scale
+    initial_display_parameter: ''
     block_image_path: palettes/TKSCALE.png
     block_width: 60
     block_height: 40
@@ -15870,7 +15870,7 @@
     blockprefix: 1
     main_category: 19
     block_name: SourceP
-    initial_display_parameter: S
+    initial_display_parameter: ''
     block_image_path: palettes/SourceP.png
     block_width: 50
     block_height: 40
@@ -16016,7 +16016,7 @@
     blockprefix: 1
     main_category: 20
     block_name: BOUNCE
-    initial_display_parameter: Bouncing balls
+    initial_display_parameter: ''
     block_image_path: palettes/BOUNCE.png
     block_width: 60
     block_height: 40
@@ -16235,7 +16235,7 @@
     blockprefix: 1
     main_category: 21
     block_name: c_block
-    initial_display_parameter: 'C block : toto'
+    initial_display_parameter: toto
     block_image_path: palettes/c_block.png
     block_width: 60
     block_height: 40
@@ -16308,7 +16308,7 @@
     blockprefix: 1
     main_category: 21
     block_name: CBLOCK
-    initial_display_parameter: 'C block 2: toto'
+    initial_display_parameter: toto
     block_image_path: palettes/CBLOCK.png
     block_width: 80
     block_height: 40
@@ -16381,7 +16381,7 @@
     blockprefix: 1
     main_category: 21
     block_name: CBLOCK4
-    initial_display_parameter: 'C block 4: toto'
+    initial_display_parameter: toto
     block_image_path: palettes/CBLOCK4.png
     block_width: 80
     block_height: 40
@@ -16454,7 +16454,7 @@
     blockprefix: 1
     main_category: 21
     block_name: DEBUG
-    initial_display_parameter: 'Debug : xcos_debug_gui(flag, block);'
+    initial_display_parameter: xcos_debug_gui(flag, block);
     block_image_path: palettes/DEBUG.png
     block_width: 160
     block_height: 40
@@ -16527,7 +16527,7 @@
     blockprefix: 1
     main_category: 21
     block_name: EXPRESSION
-    initial_display_parameter: 'Expression : (u1>0)*sin(u2)^2'
+    initial_display_parameter: (u1>0)*sin(u2)^2
     block_image_path: palettes/EXPRESSION.png
     block_width: 100
     block_height: 40
@@ -16600,7 +16600,7 @@
     blockprefix: 1
     main_category: 21
     block_name: fortran_block
-    initial_display_parameter: 'Fortran block: forty'
+    initial_display_parameter: forty
     block_image_path: palettes/fortran_block.png
     block_width: 80
     block_height: 40
@@ -16673,7 +16673,7 @@
     blockprefix: 1
     main_category: 21
     block_name: generic_block3
-    initial_display_parameter: 'native block : sinblk'
+    initial_display_parameter: sinblk
     block_image_path: palettes/generic_block3.png
     block_width: 80
     block_height: 40
@@ -16746,7 +16746,7 @@
     blockprefix: 1
     main_category: 21
     block_name: MBLOCK
-    initial_display_parameter: Modelica generic
+    initial_display_parameter: ''
     block_image_path: palettes/MBLOCK.png
     block_width: 60
     block_height: 40
@@ -16819,7 +16819,7 @@
     blockprefix: 1
     main_category: 21
     block_name: scifunc_block_m
-    initial_display_parameter: 'Function: y1=sin(u1)'
+    initial_display_parameter: y1=sin(u1)
     block_image_path: palettes/scifunc_block_m.png
     block_width: 80
     block_height: 40

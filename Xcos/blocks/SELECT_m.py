@@ -15,7 +15,7 @@ def SELECT_m(outroot, attribid, ordering, geometry, parameters):
 def get_from_SELECT_m(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
-    display_parameter = ''
+    display_parameter = parameters[10]
 
     eiv = int(float(parameters[1]))
     iiv = ''

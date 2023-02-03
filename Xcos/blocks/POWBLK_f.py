@@ -15,7 +15,7 @@ def POWBLK_f(outroot, attribid, ordering, geometry, parameters):
 def get_from_POWBLK_f(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
-    display_parameter = 'u ^ ' + parameters[0]
+    display_parameter = parameters[0]
 
     eiv = ''
     iiv = ''

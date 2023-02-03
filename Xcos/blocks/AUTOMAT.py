@@ -14,9 +14,7 @@ def AUTOMAT(outroot, attribid, ordering, geometry, parameters):
 
 def get_from_AUTOMAT(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
-    modes = parameters[0] + ' modes'
-    states = parameters[2] + ' states'
-    display_parameter = 'Automaton\n' + modes + ' | ' + states
+    display_parameter = parameters[0] + ',' + parameters[2]
 
     eiv = int(float(parameters[0]))
     iiv = ''

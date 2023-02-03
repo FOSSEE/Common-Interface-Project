@@ -1,0 +1,228 @@
+Block Names,Display Label,Initial Explicit Input Ports,Initial Implicit Input Ports,Initial Control Ports,Initial Explicit Output Ports,Initial Implicit Output Ports,Initial Command Ports,Initial Display Parameter,Variable Explicit Input Ports,Variable Implicit Input Ports,Variable Control Ports,Variable Explicit Output Ports,Variable Implicit Output Ports,Variable Command Ports,Variable Display Parameter
+ABS_VALUE,,1,0,0,1,0,0,,,,,,,,
+AFFICH_m,%s,1,0,1,0,0,0,0.0,,,(ScilabString[exprs] -> data[6][0]) == 0,,,,0.0
+ANDBLK,,0,0,2,0,0,1,,,,,,,,
+ANDLOG_f,,0,0,2,1,0,0,,,,,,,,
+AUTOMAT,Automaton<BR>%s modes | %s states,2,0,0,2,0,1,"2,1",ScilabString[exprs] -> data[0][0],,,,,,"parameters[0],parameters[2]"
+Bache,,0,2,0,1,2,0,,,,,,,,
+BACKLASH,,1,0,0,1,0,0,,,,,,,,
+BARXY,,2,0,1,0,0,0,,,,,,,,
+BIGSOM_f,,2,0,0,1,0,0,,ScilabString[exprs] -> data[0][0],,,,,,
+BITCLEAR,Clear bit %s,1,0,0,1,0,0,0,,,,,,,parameters[1]
+BITSET,Set bit %s,1,0,0,1,0,0,0,,,,,,,parameters[1]
+BOUNCE,,0,0,0,2,0,0,,,,,,,,
+BOUNCEXY,,2,0,1,0,0,0,,,,,,,,
+BPLATFORM,,2,0,1,0,0,0,,,,,,,,
+c_block,C block:<BR>%s,1,0,0,1,0,0,toto,,,,,,,parameters[3]
+CANIMXY,,2,0,1,0,0,0,,,,,,,,
+CANIMXY3D,,3,0,1,0,0,0,,,,,,,,
+Capacitor,%sF,0,1,0,0,1,0,10 m,,,,,,,format(parameters[0])
+CBLOCK,C block 2:<BR>%s,1,0,0,1,0,0,toto,,,(Array[exprs]->1st ScilabString ->  data[4][0]) ==1,,,(Array[exprs]->1st ScilabString ->  data[5][0]) ==1,parameters[0]
+CBLOCK4,C block 4:<BR>%s,1,0,0,1,0,0,toto,,,(Array[exprs]->1st ScilabString ->  data[6][0]) ==1,,,(Array[exprs]->1st ScilabString ->  data[7][0]) ==1,parameters[0]
+CCS,,1,1,0,0,1,0,,,,,,,,
+CEVENTSCOPE,,0,0,1,0,0,0,,,,ScilabString[exprs] -> data[0][0],,,,
+CFSCOPE,,0,0,1,0,0,0,,,,,,,,
+CLINDUMMY_f,,0,0,0,0,0,0,,,,,,,,
+CLKFROM,%s,0,0,0,0,0,1,A,,,,,,,parameters[0]
+CLKGOTO,%s,0,0,1,0,0,0,A,,,,,,,parameters[0]
+CLKGotoTagVisibility,{%s},0,0,0,0,0,0,A,,,,,,,parameters[0]
+CLKINV_f,%s,0,0,0,0,0,1,1,,,,,,,parameters[0]
+CLKOUTV_f,%s,0,0,1,0,0,0,1,,,,,,,parameters[0]
+CLKSOMV_f,,0,0,3,0,0,1,,,,,,,,
+CLOCK_c,,0,0,0,0,0,1,,,,,,,,
+CLR,%s<BR><HR>%s,1,0,0,1,0,0,"1,1+s",,,,,,,"parameters[0],parameters[1]"
+CLSS,,1,0,0,1,0,0,,,,,,,,
+CMAT3D,,1,0,1,0,0,0,,,,,,,,
+CMATVIEW,,1,0,1,0,0,0,,,,,,,,
+CMSCOPE,,2,0,1,0,0,0,,len(ScilabString[exprs] -> data[0][0]),,(ScilabString[exprs] -> data[9][0]) == 0,,,,
+CONST,%s,0,0,0,1,0,0,1,,,,,,,parameters[0]
+CONST_f,%s,0,0,0,1,0,0,1,,,,,,,parameters[0]
+CONST_m,%s,0,0,0,1,0,0,1,,,,,,,parameters[0]
+ConstantVoltage,%sV,0,1,0,0,1,0,10 m,,,,,,,format(parameters[0])
+CONSTRAINT_c,x == %s,1,0,0,1,0,0,0,,,,,,,parameters[0]
+CONSTRAINT2_c,x  == %s<BR>x' == %s,1,0,0,2,0,0,"0,0",,,,,,,"parameters[0],parameters[1]"
+CONVERT,CONVERT<BR>%s<BR>=><BR>%s,1,0,0,1,0,0,"decim,int32",,,,,,,"typeformat(parameters[0]),typeformat(parameters[1])"
+COSBLK_f,,1,0,0,1,0,0,,,,,,,,
+Counter,Counter<BR>%s &#8594; %s,0,0,1,1,0,0,"0,2",,,,,,,"parameters[0],parameters[1]"
+CSCOPE,,1,0,1,0,0,0,,,,(ScilabString[exprs] -> data[8][0]) == 0,,,,
+CSCOPXY,,2,0,1,0,0,0,,,,,,,,
+CSCOPXY3D,,3,0,1,0,0,0,,,,,,,,
+CUMSUM,,1,0,0,1,0,0,,,,,,,,
+CurrentSensor,,0,1,0,1,1,0,,,,,,,,
+CURV_f,,0,0,0,1,0,0,,,,,,,,
+CVS,,1,1,0,0,1,0,,,,,,,,
+DEADBAND,,1,0,0,1,0,0,,,,,,,,
+DEBUG,Debug:<BR>%s,0,0,0,0,0,0,"xcos_debug_gui(flag, block);",,,,,,,parameters[0]
+DELAY_f,,1,0,0,1,0,0,,,,,,,,
+DELAYV_f,,2,0,1,1,0,2,,,,,,,,
+DEMUX,,1,0,0,2,0,0,,,,,ScilabString[exprs] -> data[0][0]],,,
+DEMUX_f,,1,0,0,2,0,0,,,,,ScilabString[exprs] -> data[0][0]],,,
+DERIV,,1,0,0,1,0,0,,,,,,,,
+DFLIPFLOP,,3,0,0,2,0,0,,,,,,,,
+DIFF_f,,1,0,0,1,0,0,,,,,,,,
+Diode,,0,1,0,0,1,0,,,,,,,,
+DLATCH,,2,0,0,2,0,0,,,,,,,,
+DLR,%s<BR><HR>%s,1,0,1,1,0,0,"1,1+z",,,,,,,"parameters[0],parameters[1]"
+DLRADAPT_f,,2,0,1,1,0,0,,,,,,,,
+DLSS,,1,0,1,1,0,0,,,,,,,,
+DOLLAR,,1,0,1,1,0,0,,,,(ScilabString[exprs] -> data[1][0]) == 0,,,,
+DOLLAR_f,,1,0,1,1,0,0,,,,(ScilabString[exprs] -> data[1][0]) == 0,,,,
+DOLLAR_m,,1,0,1,1,0,0,,,,(ScilabString[exprs] -> data[1][0]) == 0,,,,
+EDGE_TRIGGER,,1,0,0,0,0,1,,,,,,,,
+END_c,,0,0,1,0,0,1,,,,,,,,
+ENDBLK,,0,0,0,0,0,0,,,,,,,,
+ESELECT_f,,1,0,1,0,0,2,,,,(ScilabString[exprs] -> data[1][0]) == 0,,,ScilabString[exprs] -> data[0][0]],
+EVTDLY_c,Delay: %s,0,0,1,0,0,1,0.1,,,,,,,parameters[0]
+EVTGEN_f,Event at<BR>         time %s,0,0,0,0,0,1,0,,,,,,,parameters[0]
+EVTVARDLY,,1,0,1,0,0,1,,,,,,,,
+EXPBLK_m,%s^u,1,0,0,1,0,0,%e,,,,,,,parameters[0]
+EXPRESSION,Expression:<BR>%s,2,0,0,1,0,0,(u1>0)*sin(u2)^2,,,,,,,parameters[1]
+EXTRACT,,1,0,0,1,0,0,,,,,,,,
+Extract_Activation,,1,0,0,0,0,1,,,,,,,,
+EXTRACTBITS,Extract Bits %s,1,0,0,1,0,0,1,,,,,,,parameters[1]
+EXTRACTOR,,1,0,0,1,0,0,,,,,,,,
+EXTTRI,,1,0,0,1,0,0,,,,,,,,
+Flowmeter,,0,1,0,1,1,0,,,,,,,,
+fortran_block,Fortran block:<BR>%s,1,0,0,1,0,0,forty,,,,,,,parameters[3]
+freq_div,,0,0,1,0,0,1,,,,,,,,
+FROM,%s,0,0,0,1,0,0,A,,,,,,,parameters[0]
+FROMMO,%s,0,0,0,0,1,0,A,,,,,,,parameters[0]
+FROMWSB,From workspace<BR>[ %s ],0,0,0,1,0,0,Z,,,,,,,parameters[0]
+GAIN_f,%s,1,0,0,1,0,0,1,,,,,,,parameters[0]
+GAINBLK,%s,1,0,0,1,0,0,1,,,,,,,parameters[0]
+GAINBLK_f,%s,1,0,0,1,0,0,1,,,,,,,parameters[0]
+GENERAL_f,,1,0,0,0,0,1,,,,,,,ScilabString[exprs] -> data[1][0],
+generic_block3,native block:<BR>%s,1,0,0,1,0,0,sinblk,,,ScilabString[exprs] -> data[6][0],,,ScilabString[exprs] -> data[7][0],parameters[0]
+GENSIN_f,,0,0,0,1,0,0,,,,,,,,
+GENSQR_f,,0,0,1,1,0,0,,,,,,,,
+GOTO,%s,1,0,0,0,0,0,A,,,,,,,parameters[0]
+GOTOMO,%s,0,1,0,0,0,0,A,,,,,,,parameters[0]
+GotoTagVisibility,"<FONT SIZE=\""6\"">{%s}</FONT>",0,0,0,0,0,0,A,,,,,,,parameters[0]
+GotoTagVisibilityMO,"<FONT SIZE=\""6\"">{%s}</FONT>",0,0,0,0,0,0,A,,,,,,,parameters[0]
+Ground,,0,1,0,0,0,0,,,,,,,,
+Gyrator,,0,2,0,0,2,0,,,,,,,,
+HALT_f,,0,0,1,0,0,0,,,,,,,,
+HYSTHERESIS,,1,0,0,1,0,0,,,,,,,,
+IdealTransformer,,0,2,0,0,2,0,,,,,,,,
+IFTHEL_f,,1,0,1,0,0,2,,,,(ScilabString[exprs] -> data[0][0]) == 1,,,,
+IN_f,%s,0,0,0,1,0,0,1,,,,,,,parameters[0]
+Inductor,%sH,0,1,0,0,1,0,10 μ,,,,,,,format(parameters[0])
+INIMPL_f,%s,0,0,0,0,1,0,1,,,,,,,parameters[0]
+INTEGRAL_f,,1,0,0,1,0,0,,,,,,,,
+INTEGRAL_m,,1,0,0,1,0,0,,2 if (ScilabString[exprs] -> data[1][0]) == 1 else 1,,(ScilabString[exprs] -> data[1][0]) == 1,,,,
+INTMUL,,2,0,0,1,0,0,,,,,,,,
+INTRP2BLK_f,,2,0,0,1,0,0,,,,,,,,
+INTRPLBLK_f,,1,0,0,1,0,0,,,,,,,,
+INVBLK,,1,0,0,1,0,0,,,,,,,,
+ISELECT_m,,1,0,2,2,0,0,,,,ScilabString[exprs] -> data[1][0],ScilabString[exprs] -> data[1][0],,,
+JKFLIPFLOP,,3,0,0,2,0,0,,,,,,,,
+LOGBLK_f,,1,0,0,1,0,0,,,,,,,,
+LOGIC,,2,0,1,1,0,0,,log2(ScilabString[exprs] -> data[0][0])),,(ScilabString[exprs] -> data[1][0]) == 0,,,,
+LOGICAL_OP,%s,2,0,0,1,0,0,AND,ScilabString[exprs] -> data[0][0],,,,,,logicalformat(parameters[0])
+LOOKUP_f,,1,0,0,1,0,0,,,,,,,,
+M_freq,,0,0,1,0,0,3,,,,,,,2 ^ len(ScilabString[exprs] -> data[0][0]) - 1 ,
+M_SWITCH,,3,0,0,1,0,0,,ScilabString[exprs] -> data[0][0] + 1,,,,,,
+MATBKSL,,2,0,0,1,0,0,,,,,,,,
+MATCATH,,2,0,0,1,0,0,,ScilabString[exprs] -> data[0][0],,,,,,
+MATCATV,,2,0,0,1,0,0,,ScilabString[exprs] -> data[0][0],,,,,,
+MATDET,,1,0,0,1,0,0,,,,,,,,
+MATDIAG,,1,0,0,1,0,0,,,,,,,,
+MATDIV,,2,0,0,1,0,0,,,,,,,,
+MATEIG,,1,0,0,1,0,0,,,,,ScilabString[exprs] -> data[1][0],,,
+MATEXPM,,1,0,0,1,0,0,,,,,,,,
+MATINV,,1,0,0,1,0,0,,,,,,,,
+MATLU,,1,0,0,2,0,0,,,,,,,,
+MATMAGPHI,,1,0,0,2,0,0,,ScilabString[exprs] -> data[0][0],,,3 - ScilabString[exprs] -> data[0][0],,,
+MATMUL,,2,0,0,1,0,0,,,,,,,,
+MATPINV,,1,0,0,1,0,0,,,,,,,,
+MATRESH,,1,0,0,1,0,0,,,,,,,,
+MATSING,,1,0,0,1,0,0,,,,,3 if (ScilabString[exprs] -> data[0][0]) == '2' else 1,,,
+MATSUM,,1,0,0,1,0,0,,,,,,,,
+MATTRAN,,1,0,0,1,0,0,,,,,,,,
+MATZCONJ,,1,0,0,1,0,0,,,,,,,,
+MATZREIM,,1,0,0,2,0,0,,ScilabString[exprs] -> data[0][0],,,3 - ScilabString[exprs] -> data[0][0],,,
+MAX_f,,1,0,0,1,0,0,,,,,,,,
+MAXMIN,MIN / MAX<BR>%s,2,0,0,1,0,0,MAX,ScilabString[exprs] -> data[1][0],,,,,,maxminformat(parameters[0])
+MBLOCK,,0,1,0,1,1,0,,,,,,,,
+MCLOCK_f,,0,0,0,0,0,2,,,,,,,,
+MFCLCK_f,,0,0,1,0,0,2,,,,,,,,
+MIN_f,,1,0,0,1,0,0,,,,,,,,
+Modulo_Count,Counter<BR>Modulo %s,0,0,1,1,0,0,3,,,,,,,parameters[1]
+MUX,,2,0,0,1,0,0,,ScilabString[exprs] -> data[0][0],,,,,,
+MUX_f,,2,0,0,1,0,0,,ScilabString[exprs] -> data[0][0],,,,,,
+NEGTOPOS_f,,1,0,0,0,0,1,,,,,,,,
+NMOS,,0,1,0,0,3,0,,,,,,,,
+NPN,,0,1,0,0,2,0,,,,,,,,
+NRMSOM_f,,2,0,0,1,0,0,,ScilabString[exprs] -> data[0][0],,,,,,
+OpAmp,,0,2,0,0,1,0,,,,,,,,
+OUT_f,%s,1,0,0,0,0,0,1,,,,,,,parameters[0]
+OUTIMPL_f,%s,0,1,0,0,0,0,1,,,,,,,parameters[0]
+PDE,,5,0,0,2,0,0,,,,,,,,
+PerteDP,,0,1,0,0,1,0,,,,,,,,
+PID,,1,0,0,1,0,0,,,,,,,,
+PMOS,,0,0,0,0,3,0,,,,,,,,
+PNP,,0,1,0,0,2,0,,,,,,,,
+POSTONEG_f,,1,0,0,0,0,1,,,,,,,,
+PotentialSensor,,0,1,0,1,0,0,,,,,,,,
+POWBLK_f,u^%s,1,0,0,1,0,0,1.5,,,,,,,parameters[0]
+PROD_f,,2,0,0,1,0,0,,,,,,,,
+PRODUCT,,2,0,0,1,0,0,,len(ScilabString[exprs] -> data[0][0]),,,,,,
+PuitsP,,0,1,0,0,0,0,,,,,,,,
+PULSE_SC,,0,0,0,1,0,0,,,,,,,,
+QUANT_f,,1,0,0,1,0,0,,,,,,,,
+RAMP,,0,0,0,1,0,0,,,,,,,,
+RAND_m,,0,0,1,1,0,0,,,,,,,,
+RATELIMITER,,1,0,0,1,0,0,,,,,,,,
+READAU_f,,0,0,1,1,0,0,,,,,,,,
+READC_f,,0,0,1,1,0,0,,,,,,,int(ScilabString[exprs] -> data[0][0]) > 0,
+REGISTER,,1,0,1,1,0,0,,,,,,,,
+RELATIONALOP,%s,2,0,0,1,0,0,<,,,,,,,relationalformat(parameters[0])
+RELAY_f,,2,0,2,1,0,0,,ScilabString[exprs] -> data[0][0],,ScilabString[exprs] -> data[0][0],,,,
+Resistor,%sΩ,0,1,0,0,1,0,10 m,,,,,,,format(parameters[0])
+RFILE_f,,0,0,1,1,0,0,,,,,,,int(ScilabString[exprs] -> data[0][0]) > 0,
+RICC,,3,0,0,1,0,0,,,,,,,,
+ROOTCOEF,,1,0,0,1,0,0,,,,,,,,
+SAMPHOLD_m,,1,0,1,1,0,0,,,,,,,,
+SampleCLK,,0,0,0,0,0,1,,,,,,,,
+SATURATION,,1,0,0,1,0,0,,,,,,,,
+SAWTOOTH_f,,0,0,1,1,0,0,,,,,,,,
+SCALAR2VECTOR,,1,0,0,1,0,0,,,,,,,,
+scifunc_block_m,Function:<BR>%s,1,0,0,1,0,0,y1=sin(u1),,,,,,,parameters[10]
+SELECT_m,,2,0,2,1,0,0,,ScilabString[exprs] -> data[1][0],,ScilabString[exprs] -> data[1][0],,,,
+SELF_SWITCH,,1,0,0,1,0,0,,,,,,,,
+SHIFT,Arithmetic<BR>shift %s,1,0,0,1,0,0,0,,,,,,,parameters[1]
+Sigbuilder,,0,0,0,1,0,1,,,,,,,,
+SIGNUM,,1,0,0,1,0,0,,,,,,,,
+SINBLK_f,,1,0,0,1,0,0,,,,,,,,
+SineVoltage,%s V<BR>~ %s,0,1,0,0,1,0,"1,1",,,,,,,"parameters[0],parameters[0]"
+SOM_f,,3,0,0,1,0,0,,,,,,,,
+SourceP,,0,0,0,0,1,0,,,,,,,,
+SQRT,,1,0,0,1,0,0,,,,,,,,
+SRFLIPFLOP,,2,0,0,2,0,0,,,,,,,,
+STEP_FUNCTION,,0,0,0,1,0,0,,,,,,,,
+SUBMAT,,1,0,0,1,0,0,,,,,,,,
+SUM_f,,3,0,0,1,0,0,,,,,,,,
+SUMMATION,,2,0,0,1,0,0,,len(ScilabString[exprs] -> data[1][0]),,,,,,
+SUPER_f,,1,0,0,1,0,0,,,,,,,,
+Switch,,1,1,0,0,1,0,,,,,,,,
+SWITCH_f,Static: %s,2,0,0,1,0,0,1,ScilabString[exprs] -> data[0][0],,,,,,parameters[1]
+SWITCH2_m,,3,0,0,1,0,0,,,,,,,,
+TANBLK_f,,1,0,0,1,0,0,,,,,,,,
+TCLSS,,2,0,1,1,0,0,,,,,,,,
+TEXT_f,<BR>%s,0,0,0,0,0,0,Text,,,,,,,parameters[0]
+TIME_DELAY,,1,0,0,1,0,0,,,,,,,,
+TIME_f,,0,0,0,1,0,0,,,,,,,,
+TKSCALE,,0,0,1,1,0,0,,,,,,,,
+TOWS_c,To workspace<BR>%s [%s],1,0,1,0,0,0,"A,128",,,(ScilabString[exprs] -> data[2][0]) == 0,,,,"parameters[1],parameters[0]"
+TRASH_f,,1,0,1,0,0,0,,,,,,,,
+TrigFun,%s,1,0,0,1,0,0,sin,,,,,,,parameters[0]
+VanneReglante,,1,1,0,0,1,0,,,,,,,,
+VARIABLE_DELAY,,2,0,0,1,0,0,,,,,,,,
+VariableResistor,,1,1,0,0,1,0,,,,,,,,
+VirtualCLK0,,0,0,1,0,0,0,,,,,,,,
+VoltageSensor,,0,1,0,1,1,0,,,,,,,,
+VsourceAC,%s V<BR>~ %s,0,1,0,0,1,0,"220,50",,,,,,,"parameters[0],parameters[1]"
+VVsourceAC,1 V<BR>~ %s,1,1,0,1,0,0,50,,,,,,,parameters[0]
+WRITEAU_f,,1,0,1,0,0,0,,,,,,,,
+WRITEC_f,,1,0,1,0,0,0,,,,,,,,
+ZCROSS_f,,1,0,0,0,0,1,,,,,,,,

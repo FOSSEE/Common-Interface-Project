@@ -14,7 +14,7 @@ def CLKGotoTagVisibility(outroot, attribid, ordering, geometry, parameters):
 def get_from_CLKGotoTagVisibility(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
-    display_parameter = '{' + parameters[0] + '}'
+    display_parameter = parameters[0]
 
     eiv = ''
     iiv = ''

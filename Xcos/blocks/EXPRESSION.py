@@ -15,7 +15,7 @@ def EXPRESSION(outroot, attribid, ordering, geometry, parameters):
 def get_from_EXPRESSION(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
-    display_parameter = 'Expression:\n' + parameters[1]
+    display_parameter = parameters[1]
 
     eiv = ''
     iiv = ''

@@ -26,7 +26,7 @@ def generic_block3(outroot, attribid, ordering, geometry, parameters):
 def get_from_generic_block3(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
-    display_parameter = 'native block:\n' + parameters[0]
+    display_parameter = parameters[0]
 
     eiv = ''
     iiv = ''

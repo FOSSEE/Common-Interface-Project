@@ -18,7 +18,7 @@ def fortran_block(outroot, attribid, ordering, geometry, parameters):
 def get_from_fortran_block(cell):
     parameters = getParametersFromExprsNode(cell)
 
-    display_parameter = 'Fortran block:\n' + parameters[3]
+    display_parameter = parameters[3]
 
     eiv = ''
     iiv = ''

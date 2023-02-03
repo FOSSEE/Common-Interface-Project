@@ -15,7 +15,7 @@ def EXPBLK_m(outroot, attribid, ordering, geometry, parameters):
 def get_from_EXPBLK_m(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
-    display_parameter = parameters[0] + '^u'
+    display_parameter = parameters[0]
 
     eiv = ''
     iiv = ''

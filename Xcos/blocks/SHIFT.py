@@ -32,7 +32,7 @@ def SHIFT(outroot, attribid, ordering, geometry, parameters):
 def get_from_SHIFT(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
-    display_parameter = 'Arithmetic\nshift ' + parameters[1]
+    display_parameter = parameters[1]
 
     eiv = ''
     iiv = ''

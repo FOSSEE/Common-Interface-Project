@@ -179,3 +179,22 @@ def si_format(num):
                 if exp >= p.get(LOWER_LIMIT) and exp <= p.get(UPPER_LIMIT):
                     return str(round(number/p.get(VALUE)))+' '+p.get(SIGN)
 
+
+def print_affich_m(rows, columns, prec):
+    s = '<TABLE>'
+    for i in range(rows):
+        s += '<TR>'
+        for j in range(columns):
+            s += '<TD>{:.{prec}f}</TD>'.format(0.0, prec=prec)
+        s += '</TR>'
+    s += '</TABLE>'
+    return s
+
+
+def print_affich_m_by_param(p0, p5):
+    s = re.sub(r' *[\[\]] *', r'', p0)
+    rc = re.split(' *[;,] *', s)
+    rows = int(rc[0])
+    columns = int(rc[1])
+    prec = int(p5)
+    return print_affich_m(rows, columns, prec)
