@@ -198,3 +198,10 @@ def print_affich_m_by_param(p0, p5):
     columns = int(rc[1])
     prec = int(p5)
     return print_affich_m(rows, columns, prec)
+
+
+def get_value_min(value):
+    (v1, v2) = (value, re.sub(r'\([^()]*\)', r'', value))
+    while v1 != v2:
+        (v1, v2) = (v2, re.sub(r'\([^()]*\)', r'', v2))
+    return '(' + value + ')' if re.search(r'[^ 0-9a-zA-Z^*/]', v2) else value

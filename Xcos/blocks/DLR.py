@@ -49,16 +49,8 @@ def DLR(outroot, attribid, ordering, geometry, parameters):
 def get_from_DLR(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
-    value = parameters[0]
-    (v1, v2) = (value, re.sub(r'\([^()]*\)', r'', value))
-    while v1 != v2:
-        (v1, v2) = (v2, re.sub(r'\([^()]*\)', r'', v2))
-    dp1 = '(' + value + ')' if re.search(r'[^ 0-9a-zA-Z^*/]', v2) else value
-    value = parameters[1]
-    (v1, v2) = (value, re.sub(r'\([^()]*\)', r'', value))
-    while v1 != v2:
-        (v1, v2) = (v2, re.sub(r'\([^()]*\)', r'', v2))
-    dp2 = '(' + value + ')' if re.search(r'[^ 0-9a-zA-Z^*/]', v2) else value
+    dp1 = get_value_min(parameters[0])
+    dp2 = get_value_min(parameters[1])
     display_parameter = dp1 + ',' + dp2
 
     eiv = ''
