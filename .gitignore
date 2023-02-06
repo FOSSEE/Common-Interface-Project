@@ -14,3 +14,4 @@ tags
 Xcos/U*.sci
 Xcos/*.xml
 Xcos/xcosblocks.py
+blocks/blocks/xcosblocks/xcosblocks.py

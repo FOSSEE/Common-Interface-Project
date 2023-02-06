@@ -1,13 +1,19 @@
 SHELL := /bin/bash
 
+BLOCKDIR := ../blocks/blocks/xcosblocks
+
 SRCFILES := $(sort $(wildcard common/*.py))
 SRCFILES += $(sort $(wildcard blocks/*.py))
 SRCFILES += $(sort $(wildcard ports/*.py))
 SRCFILES += $(sort $(wildcard links/*.py))
 
 TARGET := xcosblocks.py
+TARGET2 := $(BLOCKDIR)/$(TARGET)
 
-all : $(TARGET)
+all : $(TARGET) $(TARGET2)
+
+$(TARGET2) : $(TARGET)
+	cp -f $< $@
 
 $(TARGET) : $(SRCFILES)
 	@echo Making $@ ...

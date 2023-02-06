@@ -48,6 +48,12 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
 
   const blockports = component.blockport_set
   const ports = blockports.length
+  v1.explicitInputPorts = 0
+  v1.implicitInputPorts = 0
+  v1.explicitOutputPorts = 0
+  v1.implicitOutputPorts = 0
+  v1.controlPorts = 0
+  v1.commandPorts = 0
   for (let i = 0; i < ports; i++) {
     const blockport = blockports[i]
     if (!allowedPart.includes(blockport.port_part)) { continue }
@@ -62,22 +68,34 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
     let pointY
     switch (portOrientation) {
       case 'ExplicitInputPort':
+        pointX = -portSize
+        pointY = -portSize / 2
+        v1.explicitInputPorts += 1
+        break
       case 'ImplicitInputPort':
         pointX = -portSize
         pointY = -portSize / 2
+        v1.implicitInputPorts += 1
         break
       case 'ControlPort':
         pointX = -portSize / 2
         pointY = -portSize
+        v1.controlPorts += 1
         break
       case 'ExplicitOutputPort':
+        pointX = 0
+        pointY = -portSize / 2
+        v1.explicitOutputPorts += 1
+        break
       case 'ImplicitOutputPort':
         pointX = 0
         pointY = -portSize / 2
+        v1.implicitOutputPorts += 1
         break
       case 'CommandPort':
         pointX = -portSize / 2
         pointY = 0
+        v1.commandPorts += 1
         break
       default:
         pointX = -portSize / 2
