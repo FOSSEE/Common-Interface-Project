@@ -42,6 +42,33 @@ function configureStylesheet (graph) {
   graph.stylesheet.styles = blockstyle
 }
 
+function styleToObject (style) {
+  // To add semicolon at the end if it isn't already present.
+  if (style[style.length - 1] !== ';') {
+    style = style + ';'
+  }
+  const defaultStyle = style.substring(0, style.indexOf(';'))
+  const styleObject = {
+    default: defaultStyle
+  }
+
+  let remainingStyle = style.substring(style.indexOf(';') + 1)
+  while (remainingStyle.length > 0) {
+    const indexOfKeyValue = remainingStyle.indexOf(';')
+
+    const indexOfKey = remainingStyle.indexOf('=')
+    if (indexOfKey > 0 && indexOfKey < indexOfKeyValue) {
+      const key = remainingStyle.substring(0, indexOfKey)
+      const value = remainingStyle.substring(indexOfKey + 1, indexOfKeyValue)
+      styleObject[key] = value
+    }
+
+    remainingStyle = remainingStyle.substring(indexOfKeyValue + 1)
+  }
+
+  return styleObject
+}
+
 export default function LoadGrid (container, sidebar, outline) {
   // Checks if the browser is supported
   if (!mxClient.isBrowserSupported()) {
@@ -150,33 +177,80 @@ export default function LoadGrid (container, sidebar, outline) {
     // Adds a special tooltip for edges
     graph.setTooltips(true)
 
-    const getTooltipForCell = graph.getTooltipForCell
     graph.getTooltipForCell = function (cell) {
-      let tip = ''
-
+      let text = null
       if (cell != null) {
-        const src = this.getModel().getTerminal(cell, true)
-
-        if (src != null) {
-          tip += this.getTooltipForCell(src) + ' '
+        const attribute = cell.style
+        if (attribute == null) {
+          return ''
         }
 
-        const parent = this.getModel().getParent(cell)
-
-        if (this.getModel().isVertex(parent)) {
-          tip += this.getTooltipForCell(parent) + '.'
+        const styleObject = styleToObject(attribute)
+        let flip
+        let mirror
+        if (styleObject.stencilFlipV == null) {
+          flip = false
+        } else {
+          flip = (styleObject.stencilFlipV !== '0')
+        }
+        if (styleObject.stencilFlipH == null) {
+          mirror = false
+        } else {
+          mirror = (styleObject.stencilFlipH !== '0')
         }
 
-        tip += getTooltipForCell.apply(this, arguments)
+        const inputPorts = cell.explicitInputPorts + cell.implicitInputPorts
+        const outputPorts = cell.explicitOutputPorts + cell.implicitOutputPorts
+        const controlPorts = cell.controlPorts
+        const commandPorts = cell.commandPorts
+        const geometry = cell.geometry
 
-        const trg = this.getModel().getTerminal(cell, false)
+        text = 'Block Name: ' + attribute + '\n' +
+            'Simulation: ' + attribute + '\n' +
+            'UID: ' + cell.id + '\n' +
+            'Style: ' + cell.style + '\n' +
+            'Flip: ' + flip + '\n' +
+            'Mirror: ' + mirror + '\n' +
+            'Input Ports: ' + inputPorts + '\n' +
+            'Output Ports: ' + outputPorts + '\n' +
+            'Control Ports: ' + controlPorts + '\n' +
+            'Command Ports: ' + commandPorts + '\n' +
+            'x: ' + geometry.x + '\n' +
+            'y: ' + geometry.y + '\n' +
+            'w: ' + geometry.width + '\n' +
+            'h: ' + geometry.height + '\n'
+      }
+      return text
+    }
 
-        if (trg != null) {
-          tip += ' ' + this.getTooltipForCell(trg)
-        }
+    graph.convertValueToString = function (cell) {
+      const attribute = cell.style
+      if (attribute == null) {
+        return ''
       }
 
-      return tip
+      const stylesheet = graph.getStylesheet()
+      const style = stylesheet.styles[attribute]
+      let displayedLabel = style.displayedLabel
+      if (displayedLabel == null) {
+        return cell.getAttribute('label', '')
+      }
+
+      const displayParameter = cell.displayProperties.display_parameter
+      if (displayParameter == null) {
+        return displayedLabel
+      }
+
+      // for setting label for affichm
+      if (attribute === 'AFFICH_m') {
+        return displayedLabel.replace('%s', displayParameter + '-' + cell.id)
+      }
+
+      const displayParameters = displayParameter.split(',')
+      for (const lbl of displayParameters) {
+        displayedLabel = displayedLabel.replace('%s', lbl)
+      }
+      return displayedLabel
     }
 
     // Switch for black background and bright styles
@@ -211,7 +285,7 @@ export default function LoadGrid (container, sidebar, outline) {
     style.fontSize = '9'
     style.movable = '0'
     style.strokeWidth = strokeWidth
-    // style['rounded'] = '1'
+    // style.rounded = '1'
 
     // Sets join node size
     style.startSize = joinNodeSize
@@ -219,9 +293,9 @@ export default function LoadGrid (container, sidebar, outline) {
 
     style = graph.getStylesheet().getDefaultVertexStyle()
     style.gradientDirection = 'south'
-    // style['gradientColor'] = '#909090'
+    // style.gradientColor = '#909090'
     style.strokeColor = strokeColor
-    // style['fillColor'] = '#e0e0e0'
+    // style.fillColor = '#e0e0e0'
     style.fillColor = 'none'
     style.fontColor = fontColor
     style.fontStyle = '1'
