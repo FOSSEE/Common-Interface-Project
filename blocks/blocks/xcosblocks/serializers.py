@@ -85,6 +85,7 @@ class BlockSerializer(serializers.ModelSerializer):
             'categories',
             'block_name',
             'initial_display_parameter',
+            'simulation_function',
             'block_image_path',
             'block_width',
             'block_height',
@@ -384,6 +385,7 @@ class SetBlockParameterSerializer(serializers.Serializer):
         blockports = BlockPort.objects.filter(block=block.id)
 
         display_parameter = block.initial_display_parameter
+        simulation_function = block.simulation_function
         blockport_set = list(blockports.values())
 
         # TODO: change values depending on block name

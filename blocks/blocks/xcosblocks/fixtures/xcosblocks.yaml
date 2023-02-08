@@ -356,6 +356,7 @@
     main_category: 1
     block_name: LOGICAL_OP
     initial_display_parameter: AND
+    simulation_function: logicalop
     block_image_path: palettes/LOGICAL_OP.png
     block_width: 40
     block_height: 40
@@ -429,6 +430,7 @@
     main_category: 1
     block_name: RELATIONALOP
     initial_display_parameter: <
+    simulation_function: relationalop
     block_image_path: palettes/RELATIONALOP.png
     block_width: 40
     block_height: 40
@@ -502,6 +504,7 @@
     main_category: 2
     block_name: CLINDUMMY_f
     initial_display_parameter: ''
+    simulation_function: cdummy
     block_image_path: palettes/CLINDUMMY_f.png
     block_width: 60
     block_height: 40
@@ -575,6 +578,7 @@
     main_category: 2
     block_name: CLR
     initial_display_parameter: 1,1+s
+    simulation_function: csslti4
     block_image_path: palettes/CLR.png
     block_width: 60
     block_height: 40
@@ -648,6 +652,7 @@
     main_category: 2
     block_name: CLSS
     initial_display_parameter: ''
+    simulation_function: csslti4
     block_image_path: palettes/CLSS.png
     block_width: 80
     block_height: 40
@@ -721,6 +726,7 @@
     main_category: 2
     block_name: DERIV
     initial_display_parameter: ''
+    simulation_function: deriv
     block_image_path: palettes/DERIV.png
     block_width: 40
     block_height: 40
@@ -794,6 +800,7 @@
     main_category: 2
     block_name: INTEGRAL_f
     initial_display_parameter: ''
+    simulation_function: integr
     block_image_path: palettes/INTEGRAL_f.png
     block_width: 40
     block_height: 40
@@ -868,6 +875,7 @@
     main_category: 2
     block_name: INTEGRAL_m
     initial_display_parameter: ''
+    simulation_function: integral_func
     block_image_path: palettes/INTEGRAL_m.png
     block_width: 40
     block_height: 40
@@ -941,6 +949,7 @@
     main_category: 2
     block_name: PDE
     initial_display_parameter: ''
+    simulation_function: cscope
     block_image_path: palettes/PDE.png
     block_width: 60
     block_height: 60
@@ -1015,6 +1024,7 @@
     main_category: 2
     block_name: PID
     initial_display_parameter: ''
+    simulation_function: csuper
     block_image_path: palettes/PID.png
     block_width: 40
     block_height: 40
@@ -1088,6 +1098,7 @@
     main_category: 2
     block_name: TCLSS
     initial_display_parameter: ''
+    simulation_function: tcslti4
     block_image_path: palettes/TCLSS.png
     block_width: 60
     block_height: 40
@@ -1162,6 +1173,7 @@
     main_category: 2
     block_name: TIME_DELAY
     initial_display_parameter: ''
+    simulation_function: time_delay
     block_image_path: palettes/TIME_DELAY.png
     block_width: 70
     block_height: 40
@@ -1235,6 +1247,7 @@
     main_category: 2
     block_name: VARIABLE_DELAY
     initial_display_parameter: ''
+    simulation_function: variable_delay
     block_image_path: palettes/VARIABLE_DELAY.png
     block_width: 60
     block_height: 40
@@ -1308,6 +1321,7 @@
     main_category: 3
     block_name: BACKLASH
     initial_display_parameter: ''
+    simulation_function: backlash
     block_image_path: palettes/BACKLASH.png
     block_width: 60
     block_height: 40
@@ -1381,6 +1395,7 @@
     main_category: 3
     block_name: DEADBAND
     initial_display_parameter: ''
+    simulation_function: deadband
     block_image_path: palettes/DEADBAND.png
     block_width: 40
     block_height: 40
@@ -1454,6 +1469,7 @@
     main_category: 3
     block_name: HYSTHERESIS
     initial_display_parameter: ''
+    simulation_function: hystheresis
     block_image_path: palettes/HYSTHERESIS.png
     block_width: 40
     block_height: 40
@@ -1527,6 +1543,7 @@
     main_category: 3
     block_name: QUANT_f
     initial_display_parameter: ''
+    simulation_function: qzrnd
     block_image_path: palettes/QUANT_f.png
     block_width: 40
     block_height: 40
@@ -1601,6 +1618,7 @@
     main_category: 3
     block_name: RATELIMITER
     initial_display_parameter: ''
+    simulation_function: ratelimiter
     block_image_path: palettes/RATELIMITER.png
     block_width: 70
     block_height: 40
@@ -1674,6 +1692,7 @@
     main_category: 3
     block_name: SATURATION
     initial_display_parameter: ''
+    simulation_function: satur
     block_image_path: palettes/SATURATION.png
     block_width: 40
     block_height: 40
@@ -1748,6 +1767,7 @@
     main_category: 4
     block_name: AUTOMAT
     initial_display_parameter: 2,1
+    simulation_function: automat
     block_image_path: palettes/AUTOMAT.png
     block_width: 80
     block_height: 40
@@ -1821,6 +1841,7 @@
     main_category: 4
     block_name: DELAY_f
     initial_display_parameter: ''
+    simulation_function: csuper
     block_image_path: palettes/DELAY_f.png
     block_width: 40
     block_height: 40
@@ -1894,6 +1915,7 @@
     main_category: 3
     block_name: DELAYV_f
     initial_display_parameter: ''
+    simulation_function: delayv
     block_image_path: palettes/DELAYV_f.png
     block_width: 60
     block_height: 40
@@ -1968,6 +1990,7 @@
     main_category: 4
     block_name: DLR
     initial_display_parameter: 1,1+z
+    simulation_function: dsslti4
     block_image_path: palettes/DLR.png
     block_width: 60
     block_height: 40
@@ -2041,6 +2064,7 @@
     main_category: 4
     block_name: DLRADAPT_f
     initial_display_parameter: ''
+    simulation_function: dlradp
     block_image_path: palettes/DLRADAPT_f.png
     block_width: 40
     block_height: 40
@@ -2114,6 +2138,7 @@
     main_category: 4
     block_name: DLSS
     initial_display_parameter: ''
+    simulation_function: dsslti4
     block_image_path: palettes/DLSS.png
     block_width: 80
     block_height: 40
@@ -2187,6 +2212,7 @@
     main_category: 4
     block_name: DOLLAR
     initial_display_parameter: ''
+    simulation_function: dollar4
     block_image_path: palettes/DOLLAR.png
     block_width: 40
     block_height: 40
@@ -2260,6 +2286,7 @@
     main_category: 4
     block_name: DOLLAR_f
     initial_display_parameter: ''
+    simulation_function: dollar
     block_image_path: palettes/DOLLAR_f.png
     block_width: 40
     block_height: 40
@@ -2334,6 +2361,7 @@
     main_category: 4
     block_name: DOLLAR_m
     initial_display_parameter: ''
+    simulation_function: dollar4
     block_image_path: palettes/DOLLAR_m.png
     block_width: 40
     block_height: 40
@@ -2407,6 +2435,7 @@
     main_category: 4
     block_name: REGISTER
     initial_display_parameter: ''
+    simulation_function: delay4
     block_image_path: palettes/REGISTER.png
     block_width: 60
     block_height: 40
@@ -2480,6 +2509,7 @@
     main_category: 4
     block_name: SAMPHOLD_m
     initial_display_parameter: ''
+    simulation_function: samphold4_m
     block_image_path: palettes/SAMPHOLD_m.png
     block_width: 40
     block_height: 40
@@ -2554,6 +2584,7 @@
     main_category: 5
     block_name: INTRP2BLK_f
     initial_display_parameter: ''
+    simulation_function: intrp2
     block_image_path: palettes/INTRP2BLK_f.png
     block_width: 60
     block_height: 40
@@ -2627,6 +2658,7 @@
     main_category: 5
     block_name: INTRPLBLK_f
     initial_display_parameter: ''
+    simulation_function: intrpl
     block_image_path: palettes/INTRPLBLK_f.png
     block_width: 40
     block_height: 40
@@ -2700,6 +2732,7 @@
     main_category: 5
     block_name: LOOKUP_f
     initial_display_parameter: ''
+    simulation_function: lookup
     block_image_path: palettes/LOOKUP_f.png
     block_width: 40
     block_height: 40
@@ -2773,6 +2806,7 @@
     main_category: 6
     block_name: ANDBLK
     initial_display_parameter: ''
+    simulation_function: csuper
     block_image_path: palettes/ANDBLK.png
     block_width: 40
     block_height: 40
@@ -2847,6 +2881,7 @@
     main_category: 6
     block_name: ANDLOG_f
     initial_display_parameter: ''
+    simulation_function: andlog
     block_image_path: palettes/ANDLOG_f.png
     block_width: 60
     block_height: 60
@@ -2920,6 +2955,7 @@
     main_category: 6
     block_name: CEVENTSCOPE
     initial_display_parameter: ''
+    simulation_function: cevscpe
     block_image_path: palettes/CEVENTSCOPE.png
     block_width: 40
     block_height: 40
@@ -2993,6 +3029,7 @@
     main_category: 6
     block_name: CLKGotoTagVisibility
     initial_display_parameter: A
+    simulation_function: clkgototagvisibility
     block_image_path: palettes/CLKGotoTagVisibility.png
     block_width: 40
     block_height: 40
@@ -3066,6 +3103,7 @@
     main_category: 6
     block_name: CLKSOMV_f
     initial_display_parameter: ''
+    simulation_function: sum
     block_image_path: palettes/CLKSOMV_f.png
     block_width: 40
     block_height: 40
@@ -3139,6 +3177,7 @@
     main_category: 6
     block_name: EDGE_TRIGGER
     initial_display_parameter: ''
+    simulation_function: csuper
     block_image_path: palettes/EDGE_TRIGGER.png
     block_width: 60
     block_height: 40
@@ -3212,6 +3251,7 @@
     main_category: 6
     block_name: END_c
     initial_display_parameter: ''
+    simulation_function: scicosexit
     block_image_path: palettes/END_c.png
     block_width: 40
     block_height: 40
@@ -3286,6 +3326,7 @@
     main_category: 6
     block_name: ENDBLK
     initial_display_parameter: ''
+    simulation_function: csuper
     block_image_path: palettes/ENDBLK.png
     block_width: 40
     block_height: 40
@@ -3360,6 +3401,7 @@
     main_category: 6
     block_name: ESELECT_f
     initial_display_parameter: ''
+    simulation_function: eselect
     block_image_path: palettes/ESELECT_f.png
     block_width: 80
     block_height: 40
@@ -3433,6 +3475,7 @@
     main_category: 6
     block_name: EVTDLY_c
     initial_display_parameter: '0.1'
+    simulation_function: evtdly4
     block_image_path: palettes/EVTDLY_c.png
     block_width: 60
     block_height: 40
@@ -3506,6 +3549,7 @@
     main_category: 6
     block_name: EVTGEN_f
     initial_display_parameter: '0'
+    simulation_function: trash
     block_image_path: palettes/EVTGEN_f.png
     block_width: 60
     block_height: 40
@@ -3579,6 +3623,7 @@
     main_category: 6
     block_name: EVTVARDLY
     initial_display_parameter: ''
+    simulation_function: evtvardly
     block_image_path: palettes/EVTVARDLY.png
     block_width: 60
     block_height: 40
@@ -3652,6 +3697,7 @@
     main_category: 6
     block_name: Extract_Activation
     initial_display_parameter: ''
+    simulation_function: csuper
     block_image_path: palettes/Extract_Activation.png
     block_width: 60
     block_height: 40
@@ -3725,6 +3771,7 @@
     main_category: 6
     block_name: freq_div
     initial_display_parameter: ''
+    simulation_function: csuper
     block_image_path: palettes/freq_div.png
     block_width: 60
     block_height: 40
@@ -3798,6 +3845,7 @@
     main_category: 6
     block_name: HALT_f
     initial_display_parameter: ''
+    simulation_function: hltblk
     block_image_path: palettes/HALT_f.png
     block_width: 40
     block_height: 40
@@ -3872,6 +3920,7 @@
     main_category: 6
     block_name: IFTHEL_f
     initial_display_parameter: ''
+    simulation_function: ifthel
     block_image_path: palettes/IFTHEL_f.png
     block_width: 60
     block_height: 60
@@ -3945,6 +3994,7 @@
     main_category: 6
     block_name: M_freq
     initial_display_parameter: ''
+    simulation_function: m_frequ
     block_image_path: palettes/M_freq.png
     block_width: 60
     block_height: 40
@@ -4018,6 +4068,7 @@
     main_category: 6
     block_name: MCLOCK_f
     initial_display_parameter: ''
+    simulation_function: csuper
     block_image_path: palettes/MCLOCK_f.png
     block_width: 60
     block_height: 40
@@ -4091,6 +4142,7 @@
     main_category: 6
     block_name: MFCLCK_f
     initial_display_parameter: ''
+    simulation_function: mfclck
     block_image_path: palettes/MFCLCK_f.png
     block_width: 60
     block_height: 40
@@ -4164,6 +4216,7 @@
     main_category: 6
     block_name: VirtualCLK0
     initial_display_parameter: ''
+    simulation_function: vrtclk0
     block_image_path: palettes/VirtualCLK0.png
     block_width: 40
     block_height: 40
@@ -4237,6 +4290,7 @@
     main_category: 7
     block_name: ABS_VALUE
     initial_display_parameter: ''
+    simulation_function: absolute_value
     block_image_path: palettes/ABS_VALUE.png
     block_width: 40
     block_height: 40
@@ -4310,6 +4364,7 @@
     main_category: 7
     block_name: BIGSOM_f
     initial_display_parameter: ''
+    simulation_function: sum
     block_image_path: palettes/BIGSOM_f.png
     block_width: 40
     block_height: 60
@@ -4384,6 +4439,7 @@
     main_category: 7
     block_name: COSBLK_f
     initial_display_parameter: ''
+    simulation_function: cosblk
     block_image_path: palettes/COSBLK_f.png
     block_width: 40
     block_height: 40
@@ -4457,6 +4513,7 @@
     main_category: 7
     block_name: EXPBLK_m
     initial_display_parameter: '%e'
+    simulation_function: expblk_m
     block_image_path: palettes/EXPBLK_m.png
     block_width: 40
     block_height: 40
@@ -4530,6 +4587,7 @@
     main_category: 7
     block_name: GAIN_f
     initial_display_parameter: '1'
+    simulation_function: gain
     block_image_path: palettes/GAIN_f.png
     block_width: 40
     block_height: 40
@@ -4603,6 +4661,7 @@
     main_category: 7
     block_name: GAINBLK
     initial_display_parameter: '1'
+    simulation_function: gainblk
     block_image_path: palettes/GAINBLK.png
     block_width: 40
     block_height: 40
@@ -4676,6 +4735,7 @@
     main_category: 7
     block_name: GAINBLK_f
     initial_display_parameter: '1'
+    simulation_function: gain
     block_image_path: palettes/GAINBLK_f.png
     block_width: 40
     block_height: 40
@@ -4749,6 +4809,7 @@
     main_category: 7
     block_name: INVBLK
     initial_display_parameter: ''
+    simulation_function: invblk4
     block_image_path: palettes/INVBLK.png
     block_width: 40
     block_height: 40
@@ -4822,6 +4883,7 @@
     main_category: 7
     block_name: LOGBLK_f
     initial_display_parameter: ''
+    simulation_function: logblk
     block_image_path: palettes/LOGBLK_f.png
     block_width: 40
     block_height: 40
@@ -4895,6 +4957,7 @@
     main_category: 7
     block_name: MAX_f
     initial_display_parameter: ''
+    simulation_function: maxblk
     block_image_path: palettes/MAX_f.png
     block_width: 40
     block_height: 40
@@ -4968,6 +5031,7 @@
     main_category: 7
     block_name: MAXMIN
     initial_display_parameter: MAX
+    simulation_function: minmax
     block_image_path: palettes/MAXMIN.png
     block_width: 40
     block_height: 40
@@ -5041,6 +5105,7 @@
     main_category: 7
     block_name: MIN_f
     initial_display_parameter: ''
+    simulation_function: minblk
     block_image_path: palettes/MIN_f.png
     block_width: 40
     block_height: 40
@@ -5114,6 +5179,7 @@
     main_category: 7
     block_name: POWBLK_f
     initial_display_parameter: '1.5'
+    simulation_function: powblk
     block_image_path: palettes/POWBLK_f.png
     block_width: 40
     block_height: 40
@@ -5187,6 +5253,7 @@
     main_category: 7
     block_name: PROD_f
     initial_display_parameter: ''
+    simulation_function: prod
     block_image_path: palettes/PROD_f.png
     block_width: 20
     block_height: 20
@@ -5260,6 +5327,7 @@
     main_category: 7
     block_name: PRODUCT
     initial_display_parameter: ''
+    simulation_function: product
     block_image_path: palettes/PRODUCT.png
     block_width: 40
     block_height: 60
@@ -5334,6 +5402,7 @@
     main_category: 7
     block_name: SIGNUM
     initial_display_parameter: ''
+    simulation_function: signum
     block_image_path: palettes/SIGNUM.png
     block_width: 40
     block_height: 40
@@ -5407,6 +5476,7 @@
     main_category: 7
     block_name: SINBLK_f
     initial_display_parameter: ''
+    simulation_function: sinblk
     block_image_path: palettes/SINBLK_f.png
     block_width: 40
     block_height: 40
@@ -5480,6 +5550,7 @@
     main_category: 7
     block_name: SOM_f
     initial_display_parameter: ''
+    simulation_function: sum
     block_image_path: palettes/SOM_f.png
     block_width: 40
     block_height: 40
@@ -5553,6 +5624,7 @@
     main_category: 7
     block_name: SUM_f
     initial_display_parameter: ''
+    simulation_function: plusblk
     block_image_path: palettes/SUM_f.png
     block_width: 20
     block_height: 20
@@ -5626,6 +5698,7 @@
     main_category: 7
     block_name: SUMMATION
     initial_display_parameter: ''
+    simulation_function: summation
     block_image_path: palettes/SUMMATION.png
     block_width: 40
     block_height: 60
@@ -5699,6 +5772,7 @@
     main_category: 7
     block_name: TANBLK_f
     initial_display_parameter: ''
+    simulation_function: tanblk
     block_image_path: palettes/TANBLK_f.png
     block_width: 40
     block_height: 40
@@ -5772,6 +5846,7 @@
     main_category: 7
     block_name: TrigFun
     initial_display_parameter: sin
+    simulation_function: sin_blk
     block_image_path: palettes/TrigFun.png
     block_width: 80
     block_height: 40
@@ -5845,6 +5920,7 @@
     main_category: 8
     block_name: CUMSUM
     initial_display_parameter: ''
+    simulation_function: cumsum_m
     block_image_path: palettes/CUMSUM.png
     block_width: 60
     block_height: 40
@@ -5918,6 +5994,7 @@
     main_category: 8
     block_name: EXTRACT
     initial_display_parameter: ''
+    simulation_function: extract
     block_image_path: palettes/EXTRACT.png
     block_width: 60
     block_height: 40
@@ -5991,6 +6068,7 @@
     main_category: 8
     block_name: EXTTRI
     initial_display_parameter: ''
+    simulation_function: exttril
     block_image_path: palettes/EXTTRI.png
     block_width: 60
     block_height: 40
@@ -6064,6 +6142,7 @@
     main_category: 8
     block_name: MATBKSL
     initial_display_parameter: ''
+    simulation_function: mat_bksl
     block_image_path: palettes/MATBKSL.png
     block_width: 40
     block_height: 40
@@ -6137,6 +6216,7 @@
     main_category: 8
     block_name: MATCATH
     initial_display_parameter: ''
+    simulation_function: mat_cath
     block_image_path: palettes/MATCATH.png
     block_width: 40
     block_height: 60
@@ -6210,6 +6290,7 @@
     main_category: 8
     block_name: MATCATV
     initial_display_parameter: ''
+    simulation_function: mat_catv
     block_image_path: palettes/MATCATV.png
     block_width: 40
     block_height: 60
@@ -6283,6 +6364,7 @@
     main_category: 8
     block_name: MATDET
     initial_display_parameter: ''
+    simulation_function: mat_det
     block_image_path: palettes/MATDET.png
     block_width: 40
     block_height: 40
@@ -6356,6 +6438,7 @@
     main_category: 8
     block_name: MATDIAG
     initial_display_parameter: ''
+    simulation_function: mat_diag
     block_image_path: palettes/MATDIAG.png
     block_width: 40
     block_height: 40
@@ -6429,6 +6512,7 @@
     main_category: 8
     block_name: MATDIV
     initial_display_parameter: ''
+    simulation_function: mat_div
     block_image_path: palettes/MATDIV.png
     block_width: 40
     block_height: 40
@@ -6502,6 +6586,7 @@
     main_category: 8
     block_name: MATEIG
     initial_display_parameter: ''
+    simulation_function: mat_vps
     block_image_path: palettes/MATEIG.png
     block_width: 40
     block_height: 40
@@ -6575,6 +6660,7 @@
     main_category: 8
     block_name: MATEXPM
     initial_display_parameter: ''
+    simulation_function: mat_expm
     block_image_path: palettes/MATEXPM.png
     block_width: 40
     block_height: 40
@@ -6648,6 +6734,7 @@
     main_category: 8
     block_name: MATINV
     initial_display_parameter: ''
+    simulation_function: mat_inv
     block_image_path: palettes/MATINV.png
     block_width: 40
     block_height: 40
@@ -6721,6 +6808,7 @@
     main_category: 8
     block_name: MATLU
     initial_display_parameter: ''
+    simulation_function: mat_lu
     block_image_path: palettes/MATLU.png
     block_width: 40
     block_height: 40
@@ -6794,6 +6882,7 @@
     main_category: 7
     block_name: MATMAGPHI
     initial_display_parameter: ''
+    simulation_function: matz_abs
     block_image_path: palettes/MATMAGPHI.png
     block_width: 60
     block_height: 40
@@ -6868,6 +6957,7 @@
     main_category: 8
     block_name: MATMUL
     initial_display_parameter: ''
+    simulation_function: matmul_m
     block_image_path: palettes/MATMUL.png
     block_width: 60
     block_height: 40
@@ -6941,6 +7031,7 @@
     main_category: 8
     block_name: MATPINV
     initial_display_parameter: ''
+    simulation_function: mat_pinv
     block_image_path: palettes/MATPINV.png
     block_width: 40
     block_height: 40
@@ -7014,6 +7105,7 @@
     main_category: 8
     block_name: MATRESH
     initial_display_parameter: ''
+    simulation_function: mat_reshape
     block_image_path: palettes/MATRESH.png
     block_width: 60
     block_height: 40
@@ -7087,6 +7179,7 @@
     main_category: 8
     block_name: MATSING
     initial_display_parameter: ''
+    simulation_function: mat_sing
     block_image_path: palettes/MATSING.png
     block_width: 40
     block_height: 40
@@ -7160,6 +7253,7 @@
     main_category: 8
     block_name: MATSUM
     initial_display_parameter: ''
+    simulation_function: mat_sum
     block_image_path: palettes/MATSUM.png
     block_width: 60
     block_height: 40
@@ -7233,6 +7327,7 @@
     main_category: 8
     block_name: MATTRAN
     initial_display_parameter: ''
+    simulation_function: mattran_m
     block_image_path: palettes/MATTRAN.png
     block_width: 60
     block_height: 40
@@ -7306,6 +7401,7 @@
     main_category: 8
     block_name: MATZCONJ
     initial_display_parameter: ''
+    simulation_function: matz_conj
     block_image_path: palettes/MATZCONJ.png
     block_width: 40
     block_height: 40
@@ -7379,6 +7475,7 @@
     main_category: 7
     block_name: MATZREIM
     initial_display_parameter: ''
+    simulation_function: matz_reim
     block_image_path: palettes/MATZREIM.png
     block_width: 60
     block_height: 40
@@ -7453,6 +7550,7 @@
     main_category: 8
     block_name: RICC
     initial_display_parameter: ''
+    simulation_function: ricc_m
     block_image_path: palettes/RICC.png
     block_width: 40
     block_height: 40
@@ -7526,6 +7624,7 @@
     main_category: 8
     block_name: ROOTCOEF
     initial_display_parameter: ''
+    simulation_function: root_coef
     block_image_path: palettes/ROOTCOEF.png
     block_width: 60
     block_height: 40
@@ -7599,6 +7698,7 @@
     main_category: 7
     block_name: SQRT
     initial_display_parameter: ''
+    simulation_function: mat_sqrt
     block_image_path: palettes/SQRT.png
     block_width: 40
     block_height: 40
@@ -7673,6 +7773,7 @@
     main_category: 8
     block_name: SUBMAT
     initial_display_parameter: ''
+    simulation_function: submat
     block_image_path: palettes/SUBMAT.png
     block_width: 50
     block_height: 40
@@ -7746,6 +7847,7 @@
     main_category: 9
     block_name: Capacitor
     initial_display_parameter: 10 m
+    simulation_function: Capacitor
     block_image_path: palettes/Capacitor.png
     block_width: 40
     block_height: 22
@@ -7819,6 +7921,7 @@
     main_category: 9
     block_name: CCS
     initial_display_parameter: ''
+    simulation_function: CCS
     block_image_path: palettes/CCS.png
     block_width: 42
     block_height: 60
@@ -7892,6 +7995,7 @@
     main_category: 9
     block_name: ConstantVoltage
     initial_display_parameter: 10 m
+    simulation_function: ConstantVoltage
     block_image_path: palettes/ConstantVoltage.png
     block_width: 30
     block_height: 22
@@ -7965,6 +8069,7 @@
     main_category: 9
     block_name: CurrentSensor
     initial_display_parameter: ''
+    simulation_function: CurrentSensor
     block_image_path: palettes/CurrentSensor.png
     block_width: 40
     block_height: 40
@@ -8038,6 +8143,7 @@
     main_category: 9
     block_name: CVS
     initial_display_parameter: ''
+    simulation_function: CVS
     block_image_path: palettes/CVS.png
     block_width: 42
     block_height: 60
@@ -8111,6 +8217,7 @@
     main_category: 9
     block_name: Diode
     initial_display_parameter: ''
+    simulation_function: Diode
     block_image_path: palettes/Diode.png
     block_width: 40
     block_height: 20
@@ -8184,6 +8291,7 @@
     main_category: 9
     block_name: Ground
     initial_display_parameter: ''
+    simulation_function: Ground
     block_image_path: palettes/Ground.png
     block_width: 20
     block_height: 20
@@ -8257,6 +8365,7 @@
     main_category: 9
     block_name: Gyrator
     initial_display_parameter: ''
+    simulation_function: Gyrator
     block_image_path: palettes/Gyrator.png
     block_width: 40
     block_height: 40
@@ -8330,6 +8439,7 @@
     main_category: 9
     block_name: IdealTransformer
     initial_display_parameter: ''
+    simulation_function: IdealTransformer
     block_image_path: palettes/IdealTransformer.png
     block_width: 40
     block_height: 40
@@ -8403,6 +8513,7 @@
     main_category: 9
     block_name: Inductor
     initial_display_parameter: 10 μ
+    simulation_function: Inductor
     block_image_path: palettes/Inductor.png
     block_width: 40
     block_height: 18
@@ -8476,6 +8587,7 @@
     main_category: 9
     block_name: NMOS
     initial_display_parameter: ''
+    simulation_function: NMOS
     block_image_path: palettes/NMOS.png
     block_width: 40
     block_height: 40
@@ -8549,6 +8661,7 @@
     main_category: 9
     block_name: NPN
     initial_display_parameter: ''
+    simulation_function: NPN
     block_image_path: palettes/NPN.png
     block_width: 40
     block_height: 40
@@ -8622,6 +8735,7 @@
     main_category: 9
     block_name: OpAmp
     initial_display_parameter: ''
+    simulation_function: OpAmp
     block_image_path: palettes/OpAmp.png
     block_width: 60
     block_height: 100
@@ -8695,6 +8809,7 @@
     main_category: 9
     block_name: PMOS
     initial_display_parameter: ''
+    simulation_function: PMOS
     block_image_path: palettes/PMOS.png
     block_width: 40
     block_height: 40
@@ -8768,6 +8883,7 @@
     main_category: 9
     block_name: PNP
     initial_display_parameter: ''
+    simulation_function: PNP
     block_image_path: palettes/PNP.png
     block_width: 40
     block_height: 40
@@ -8841,6 +8957,7 @@
     main_category: 9
     block_name: PotentialSensor
     initial_display_parameter: ''
+    simulation_function: PotentialSensor
     block_image_path: palettes/PotentialSensor.png
     block_width: 40
     block_height: 40
@@ -8914,6 +9031,7 @@
     main_category: 9
     block_name: Resistor
     initial_display_parameter: 10 m
+    simulation_function: resistor
     block_image_path: palettes/Resistor.png
     block_width: 40
     block_height: 20
@@ -8987,6 +9105,7 @@
     main_category: 9
     block_name: SineVoltage
     initial_display_parameter: 1,1
+    simulation_function: SineVoltage
     block_image_path: palettes/SineVoltage.png
     block_width: 40
     block_height: 40
@@ -9060,6 +9179,7 @@
     main_category: 9
     block_name: Switch
     initial_display_parameter: ''
+    simulation_function: Switch
     block_image_path: palettes/Switch.png
     block_width: 40
     block_height: 40
@@ -9133,6 +9253,7 @@
     main_category: 9
     block_name: VariableResistor
     initial_display_parameter: ''
+    simulation_function: VariableResistor
     block_image_path: palettes/VariableResistor.png
     block_width: 40
     block_height: 40
@@ -9206,6 +9327,7 @@
     main_category: 9
     block_name: VoltageSensor
     initial_display_parameter: ''
+    simulation_function: VoltageSensor
     block_image_path: palettes/VoltageSensor.png
     block_width: 40
     block_height: 40
@@ -9279,6 +9401,7 @@
     main_category: 9
     block_name: VsourceAC
     initial_display_parameter: 220,50
+    simulation_function: VsourceAC
     block_image_path: palettes/VsourceAC.png
     block_width: 40
     block_height: 40
@@ -9352,6 +9475,7 @@
     main_category: 9
     block_name: VVsourceAC
     initial_display_parameter: '50'
+    simulation_function: VVsourceAC
     block_image_path: palettes/VVsourceAC.png
     block_width: 40
     block_height: 40
@@ -9425,6 +9549,7 @@
     main_category: 10
     block_name: BITCLEAR
     initial_display_parameter: '0'
+    simulation_function: bit_clear_32
     block_image_path: palettes/BITCLEAR.png
     block_width: 80
     block_height: 40
@@ -9498,6 +9623,7 @@
     main_category: 10
     block_name: BITSET
     initial_display_parameter: '0'
+    simulation_function: bit_set_32
     block_image_path: palettes/BITSET.png
     block_width: 80
     block_height: 40
@@ -9571,6 +9697,7 @@
     main_category: 10
     block_name: CONVERT
     initial_display_parameter: decim,int32
+    simulation_function: convert
     block_image_path: palettes/CONVERT.png
     block_width: 60
     block_height: 40
@@ -9645,6 +9772,7 @@
     main_category: 10
     block_name: DFLIPFLOP
     initial_display_parameter: ''
+    simulation_function: csuper
     block_image_path: palettes/DFLIPFLOP.png
     block_width: 40
     block_height: 60
@@ -9718,6 +9846,7 @@
     main_category: 10
     block_name: DLATCH
     initial_display_parameter: ''
+    simulation_function: csuper
     block_image_path: palettes/DLATCH.png
     block_width: 40
     block_height: 60
@@ -9791,6 +9920,7 @@
     main_category: 10
     block_name: EXTRACTBITS
     initial_display_parameter: '1'
+    simulation_function: extract_bit_32_UH0
     block_image_path: palettes/EXTRACTBITS.png
     block_width: 80
     block_height: 40
@@ -9864,6 +9994,7 @@
     main_category: 10
     block_name: INTMUL
     initial_display_parameter: ''
+    simulation_function: matmul_i32n
     block_image_path: palettes/INTMUL.png
     block_width: 40
     block_height: 40
@@ -9937,6 +10068,7 @@
     main_category: 10
     block_name: JKFLIPFLOP
     initial_display_parameter: ''
+    simulation_function: csuper
     block_image_path: palettes/JKFLIPFLOP.png
     block_width: 40
     block_height: 60
@@ -10010,6 +10142,7 @@
     main_category: 10
     block_name: LOGIC
     initial_display_parameter: ''
+    simulation_function: logic
     block_image_path: palettes/LOGIC.png
     block_width: 40
     block_height: 40
@@ -10083,6 +10216,7 @@
     main_category: 10
     block_name: SHIFT
     initial_display_parameter: '0'
+    simulation_function: shift_32_LA
     block_image_path: palettes/SHIFT.png
     block_width: 60
     block_height: 40
@@ -10156,6 +10290,7 @@
     main_category: 10
     block_name: SRFLIPFLOP
     initial_display_parameter: ''
+    simulation_function: csuper
     block_image_path: palettes/SRFLIPFLOP.png
     block_width: 40
     block_height: 60
@@ -10229,6 +10364,7 @@
     main_category: 12
     block_name: GENERAL_f
     initial_display_parameter: ''
+    simulation_function: zcross
     block_image_path: palettes/GENERAL_f.png
     block_width: 60
     block_height: 40
@@ -10302,6 +10438,7 @@
     main_category: 12
     block_name: NEGTOPOS_f
     initial_display_parameter: ''
+    simulation_function: zcross
     block_image_path: palettes/NEGTOPOS_f.png
     block_width: 40
     block_height: 40
@@ -10375,6 +10512,7 @@
     main_category: 12
     block_name: POSTONEG_f
     initial_display_parameter: ''
+    simulation_function: zcross
     block_image_path: palettes/POSTONEG_f.png
     block_width: 40
     block_height: 40
@@ -10448,6 +10586,7 @@
     main_category: 12
     block_name: ZCROSS_f
     initial_display_parameter: ''
+    simulation_function: zcross
     block_image_path: palettes/ZCROSS_f.png
     block_width: 40
     block_height: 40
@@ -10521,6 +10660,7 @@
     main_category: 6
     block_name: CLKFROM
     initial_display_parameter: A
+    simulation_function: clkfrom
     block_image_path: palettes/CLKFROM.png
     block_width: 40
     block_height: 20
@@ -10595,6 +10735,7 @@
     main_category: 6
     block_name: CLKGOTO
     initial_display_parameter: A
+    simulation_function: clkgoto
     block_image_path: palettes/CLKGOTO.png
     block_width: 40
     block_height: 20
@@ -10669,6 +10810,7 @@
     main_category: 13
     block_name: DEMUX
     initial_display_parameter: ''
+    simulation_function: multiplex
     block_image_path: palettes/DEMUX.png
     block_width: 10
     block_height: 40
@@ -10743,6 +10885,7 @@
     main_category: 13
     block_name: DEMUX_f
     initial_display_parameter: ''
+    simulation_function: demux
     block_image_path: palettes/DEMUX_f.png
     block_width: 10
     block_height: 40
@@ -10816,6 +10959,7 @@
     main_category: 13
     block_name: EXTRACTOR
     initial_display_parameter: ''
+    simulation_function: extractor
     block_image_path: palettes/EXTRACTOR.png
     block_width: 60
     block_height: 40
@@ -10889,6 +11033,7 @@
     main_category: 13
     block_name: FROM
     initial_display_parameter: A
+    simulation_function: from
     block_image_path: palettes/FROM.png
     block_width: 40
     block_height: 20
@@ -10962,6 +11107,7 @@
     main_category: 13
     block_name: FROMMO
     initial_display_parameter: A
+    simulation_function: frommo
     block_image_path: palettes/FROMMO.png
     block_width: 40
     block_height: 20
@@ -11035,6 +11181,7 @@
     main_category: 13
     block_name: GOTO
     initial_display_parameter: A
+    simulation_function: goto
     block_image_path: palettes/GOTO.png
     block_width: 40
     block_height: 20
@@ -11108,6 +11255,7 @@
     main_category: 13
     block_name: GOTOMO
     initial_display_parameter: A
+    simulation_function: gotomo
     block_image_path: palettes/GOTOMO.png
     block_width: 40
     block_height: 20
@@ -11181,6 +11329,7 @@
     main_category: 13
     block_name: GotoTagVisibility
     initial_display_parameter: A
+    simulation_function: gototagvisibility
     block_image_path: palettes/GotoTagVisibility.png
     block_width: 40
     block_height: 40
@@ -11254,6 +11403,7 @@
     main_category: 13
     block_name: GotoTagVisibilityMO
     initial_display_parameter: A
+    simulation_function: gototagvisibilitymo
     block_image_path: palettes/GotoTagVisibilityMO.png
     block_width: 40
     block_height: 40
@@ -11327,6 +11477,7 @@
     main_category: 13
     block_name: ISELECT_m
     initial_display_parameter: ''
+    simulation_function: selector_m
     block_image_path: palettes/ISELECT_m.png
     block_width: 60
     block_height: 40
@@ -11400,6 +11551,7 @@
     main_category: 13
     block_name: M_SWITCH
     initial_display_parameter: ''
+    simulation_function: mswitch
     block_image_path: palettes/M_SWITCH.png
     block_width: 50
     block_height: 40
@@ -11473,6 +11625,7 @@
     main_category: 13
     block_name: MUX
     initial_display_parameter: ''
+    simulation_function: multiplex
     block_image_path: palettes/MUX.png
     block_width: 10
     block_height: 40
@@ -11547,6 +11700,7 @@
     main_category: 13
     block_name: MUX_f
     initial_display_parameter: ''
+    simulation_function: mux
     block_image_path: palettes/MUX_f.png
     block_width: 10
     block_height: 40
@@ -11620,6 +11774,7 @@
     main_category: 13
     block_name: NRMSOM_f
     initial_display_parameter: ''
+    simulation_function: junk
     block_image_path: palettes/NRMSOM_f.png
     block_width: 4
     block_height: 40
@@ -11694,6 +11849,7 @@
     main_category: 13
     block_name: RELAY_f
     initial_display_parameter: ''
+    simulation_function: relay
     block_image_path: palettes/RELAY_f.png
     block_width: 40
     block_height: 40
@@ -11767,6 +11923,7 @@
     main_category: 13
     block_name: SCALAR2VECTOR
     initial_display_parameter: ''
+    simulation_function: scalar2vector
     block_image_path: palettes/SCALAR2VECTOR.png
     block_width: 60
     block_height: 40
@@ -11840,6 +11997,7 @@
     main_category: 13
     block_name: SELECT_m
     initial_display_parameter: ''
+    simulation_function: selector_m
     block_image_path: palettes/SELECT_m.png
     block_width: 60
     block_height: 40
@@ -11913,6 +12071,7 @@
     main_category: 13
     block_name: SELF_SWITCH
     initial_display_parameter: ''
+    simulation_function: csuper
     block_image_path: palettes/SELF_SWITCH.png
     block_width: 40
     block_height: 40
@@ -11986,6 +12145,7 @@
     main_category: 13
     block_name: SWITCH_f
     initial_display_parameter: '1'
+    simulation_function: switchn
     block_image_path: palettes/SWITCH_f.png
     block_width: 40
     block_height: 40
@@ -12059,6 +12219,7 @@
     main_category: 13
     block_name: SWITCH2_m
     initial_display_parameter: ''
+    simulation_function: switch2_m
     block_image_path: palettes/SWITCH2_m.png
     block_width: 40
     block_height: 40
@@ -12133,6 +12294,7 @@
     main_category: 15
     block_name: CONSTRAINT_c
     initial_display_parameter: '0'
+    simulation_function: constraint_c
     block_image_path: palettes/CONSTRAINT_c.png
     block_width: 60
     block_height: 40
@@ -12206,6 +12368,7 @@
     main_category: 15
     block_name: CONSTRAINT2_c
     initial_display_parameter: 0,0
+    simulation_function: constraint_c
     block_image_path: palettes/CONSTRAINT2_c.png
     block_width: 60
     block_height: 40
@@ -12279,6 +12442,7 @@
     main_category: 15
     block_name: DIFF_f
     initial_display_parameter: ''
+    simulation_function: diffblk
     block_image_path: palettes/DIFF_f.png
     block_width: 40
     block_height: 40
@@ -12352,6 +12516,7 @@
     main_category: 16
     block_name: TEXT_f
     initial_display_parameter: Text
+    simulation_function: ''
     block_image_path: palettes/TEXT_f.png
     block_width: 40
     block_height: 40
@@ -12426,6 +12591,7 @@
     main_category: 17
     block_name: AFFICH_m
     initial_display_parameter: '0.0'
+    simulation_function: affich2
     block_image_path: palettes/AFFICH_m.png
     block_width: 60
     block_height: 40
@@ -12499,6 +12665,7 @@
     main_category: 17
     block_name: BARXY
     initial_display_parameter: ''
+    simulation_function: BARXY_sim
     block_image_path: palettes/BARXY.png
     block_width: 40
     block_height: 40
@@ -12572,6 +12739,7 @@
     main_category: 17
     block_name: CANIMXY
     initial_display_parameter: ''
+    simulation_function: canimxy
     block_image_path: palettes/CANIMXY.png
     block_width: 40
     block_height: 40
@@ -12645,6 +12813,7 @@
     main_category: 17
     block_name: CANIMXY3D
     initial_display_parameter: ''
+    simulation_function: canimxy3d
     block_image_path: palettes/CANIMXY3D.png
     block_width: 40
     block_height: 40
@@ -12718,6 +12887,7 @@
     main_category: 17
     block_name: CFSCOPE
     initial_display_parameter: ''
+    simulation_function: cfscope
     block_image_path: palettes/CFSCOPE.png
     block_width: 40
     block_height: 40
@@ -12791,6 +12961,7 @@
     main_category: 6
     block_name: CLKOUTV_f
     initial_display_parameter: '1'
+    simulation_function: output
     block_image_path: palettes/CLKOUTV_f.png
     block_width: 20
     block_height: 20
@@ -12866,6 +13037,7 @@
     main_category: 17
     block_name: CMAT3D
     initial_display_parameter: ''
+    simulation_function: cmat3d
     block_image_path: palettes/CMAT3D.png
     block_width: 40
     block_height: 40
@@ -12939,6 +13111,7 @@
     main_category: 17
     block_name: CMATVIEW
     initial_display_parameter: ''
+    simulation_function: cmatview
     block_image_path: palettes/CMATVIEW.png
     block_width: 40
     block_height: 40
@@ -13012,6 +13185,7 @@
     main_category: 17
     block_name: CMSCOPE
     initial_display_parameter: ''
+    simulation_function: cmscope
     block_image_path: palettes/CMSCOPE.png
     block_width: 40
     block_height: 40
@@ -13086,6 +13260,7 @@
     main_category: 17
     block_name: CSCOPE
     initial_display_parameter: ''
+    simulation_function: cscope
     block_image_path: palettes/CSCOPE.png
     block_width: 40
     block_height: 40
@@ -13159,6 +13334,7 @@
     main_category: 17
     block_name: CSCOPXY
     initial_display_parameter: ''
+    simulation_function: cscopxy
     block_image_path: palettes/CSCOPXY.png
     block_width: 40
     block_height: 40
@@ -13233,6 +13409,7 @@
     main_category: 17
     block_name: CSCOPXY3D
     initial_display_parameter: ''
+    simulation_function: cscopxy3d
     block_image_path: palettes/CSCOPXY3D.png
     block_width: 40
     block_height: 40
@@ -13306,6 +13483,7 @@
     main_category: 11
     block_name: OUT_f
     initial_display_parameter: '1'
+    simulation_function: output
     block_image_path: palettes/OUT_f.png
     block_width: 20
     block_height: 20
@@ -13381,6 +13559,7 @@
     main_category: 11
     block_name: OUTIMPL_f
     initial_display_parameter: '1'
+    simulation_function: outimpl
     block_image_path: palettes/OUTIMPL_f.png
     block_width: 20
     block_height: 20
@@ -13455,6 +13634,7 @@
     main_category: 17
     block_name: TOWS_c
     initial_display_parameter: A,128
+    simulation_function: tows_c
     block_image_path: palettes/TOWS_c.png
     block_width: 80
     block_height: 40
@@ -13528,6 +13708,7 @@
     main_category: 17
     block_name: TRASH_f
     initial_display_parameter: ''
+    simulation_function: trash
     block_image_path: palettes/TRASH_f.png
     block_width: 40
     block_height: 40
@@ -13601,6 +13782,7 @@
     main_category: 17
     block_name: WRITEAU_f
     initial_display_parameter: ''
+    simulation_function: writeau
     block_image_path: palettes/WRITEAU_f.png
     block_width: 80
     block_height: 40
@@ -13674,6 +13856,7 @@
     main_category: 17
     block_name: WRITEC_f
     initial_display_parameter: ''
+    simulation_function: writec
     block_image_path: palettes/WRITEC_f.png
     block_width: 80
     block_height: 40
@@ -13747,6 +13930,7 @@
     main_category: 11
     block_name: CLKINV_f
     initial_display_parameter: '1'
+    simulation_function: input
     block_image_path: palettes/CLKINV_f.png
     block_width: 20
     block_height: 20
@@ -13821,6 +14005,7 @@
     main_category: 6
     block_name: CLOCK_c
     initial_display_parameter: ''
+    simulation_function: csuper
     block_image_path: palettes/CLOCK_c.png
     block_width: 40
     block_height: 40
@@ -13895,6 +14080,7 @@
     main_category: 18
     block_name: CONST
     initial_display_parameter: '1'
+    simulation_function: cstblk4
     block_image_path: palettes/CONST.png
     block_width: 40
     block_height: 40
@@ -13968,6 +14154,7 @@
     main_category: 18
     block_name: CONST_f
     initial_display_parameter: '1'
+    simulation_function: cstblk
     block_image_path: palettes/CONST_f.png
     block_width: 40
     block_height: 40
@@ -14041,6 +14228,7 @@
     main_category: 18
     block_name: CONST_m
     initial_display_parameter: '1'
+    simulation_function: cstblk4_m
     block_image_path: palettes/CONST_m.png
     block_width: 40
     block_height: 40
@@ -14115,6 +14303,7 @@
     main_category: 18
     block_name: Counter
     initial_display_parameter: 0,2
+    simulation_function: counter
     block_image_path: palettes/Counter.png
     block_width: 60
     block_height: 40
@@ -14188,6 +14377,7 @@
     main_category: 18
     block_name: CURV_f
     initial_display_parameter: ''
+    simulation_function: intplt
     block_image_path: palettes/CURV_f.png
     block_width: 40
     block_height: 40
@@ -14261,6 +14451,7 @@
     main_category: 18
     block_name: FROMWSB
     initial_display_parameter: Z
+    simulation_function: csuper
     block_image_path: palettes/FROMWSB.png
     block_width: 100
     block_height: 40
@@ -14334,6 +14525,7 @@
     main_category: 18
     block_name: GENSIN_f
     initial_display_parameter: ''
+    simulation_function: gensin
     block_image_path: palettes/GENSIN_f.png
     block_width: 60
     block_height: 40
@@ -14407,6 +14599,7 @@
     main_category: 18
     block_name: GENSQR_f
     initial_display_parameter: ''
+    simulation_function: gensqr
     block_image_path: palettes/GENSQR_f.png
     block_width: 60
     block_height: 40
@@ -14480,6 +14673,7 @@
     main_category: 11
     block_name: IN_f
     initial_display_parameter: '1'
+    simulation_function: input
     block_image_path: palettes/IN_f.png
     block_width: 20
     block_height: 20
@@ -14555,6 +14749,7 @@
     main_category: 11
     block_name: INIMPL_f
     initial_display_parameter: '1'
+    simulation_function: inimpl
     block_image_path: palettes/INIMPL_f.png
     block_width: 20
     block_height: 20
@@ -14629,6 +14824,7 @@
     main_category: 18
     block_name: Modulo_Count
     initial_display_parameter: '3'
+    simulation_function: modulo_count
     block_image_path: palettes/Modulo_Count.png
     block_width: 60
     block_height: 40
@@ -14702,6 +14898,7 @@
     main_category: 18
     block_name: PULSE_SC
     initial_display_parameter: ''
+    simulation_function: csuper
     block_image_path: palettes/PULSE_SC.png
     block_width: 60
     block_height: 40
@@ -14775,6 +14972,7 @@
     main_category: 18
     block_name: RAMP
     initial_display_parameter: ''
+    simulation_function: ramp
     block_image_path: palettes/RAMP.png
     block_width: 40
     block_height: 40
@@ -14848,6 +15046,7 @@
     main_category: 18
     block_name: RAND_m
     initial_display_parameter: ''
+    simulation_function: rndblk_m
     block_image_path: palettes/RAND_m.png
     block_width: 60
     block_height: 40
@@ -14921,6 +15120,7 @@
     main_category: 18
     block_name: READAU_f
     initial_display_parameter: ''
+    simulation_function: readau
     block_image_path: palettes/READAU_f.png
     block_width: 100
     block_height: 40
@@ -14994,6 +15194,7 @@
     main_category: 18
     block_name: READC_f
     initial_display_parameter: ''
+    simulation_function: readc
     block_image_path: palettes/READC_f.png
     block_width: 80
     block_height: 40
@@ -15067,6 +15268,7 @@
     main_category: 18
     block_name: RFILE_f
     initial_display_parameter: ''
+    simulation_function: readf
     block_image_path: palettes/RFILE_f.png
     block_width: 60
     block_height: 40
@@ -15140,6 +15342,7 @@
     main_category: 6
     block_name: SampleCLK
     initial_display_parameter: ''
+    simulation_function: sampleclk
     block_image_path: palettes/SampleCLK.png
     block_width: 40
     block_height: 40
@@ -15214,6 +15417,7 @@
     main_category: 18
     block_name: SAWTOOTH_f
     initial_display_parameter: ''
+    simulation_function: sawtth
     block_image_path: palettes/SAWTOOTH_f.png
     block_width: 60
     block_height: 40
@@ -15287,6 +15491,7 @@
     main_category: 18
     block_name: Sigbuilder
     initial_display_parameter: ''
+    simulation_function: csuper
     block_image_path: palettes/Sigbuilder.png
     block_width: 60
     block_height: 40
@@ -15360,6 +15565,7 @@
     main_category: 18
     block_name: STEP_FUNCTION
     initial_display_parameter: ''
+    simulation_function: csuper
     block_image_path: palettes/STEP_FUNCTION.png
     block_width: 40
     block_height: 40
@@ -15433,6 +15639,7 @@
     main_category: 18
     block_name: TIME_f
     initial_display_parameter: ''
+    simulation_function: timblk
     block_image_path: palettes/TIME_f.png
     block_width: 40
     block_height: 40
@@ -15506,6 +15713,7 @@
     main_category: 18
     block_name: TKSCALE
     initial_display_parameter: ''
+    simulation_function: tkscaleblk
     block_image_path: palettes/TKSCALE.png
     block_width: 60
     block_height: 40
@@ -15579,6 +15787,7 @@
     main_category: 19
     block_name: Bache
     initial_display_parameter: ''
+    simulation_function: Bache
     block_image_path: palettes/Bache.png
     block_width: 40
     block_height: 40
@@ -15652,6 +15861,7 @@
     main_category: 19
     block_name: Flowmeter
     initial_display_parameter: ''
+    simulation_function: Flowmeter
     block_image_path: palettes/Flowmeter.png
     block_width: 40
     block_height: 40
@@ -15725,6 +15935,7 @@
     main_category: 19
     block_name: PerteDP
     initial_display_parameter: ''
+    simulation_function: PerteDP
     block_image_path: palettes/PerteDP.png
     block_width: 40
     block_height: 20
@@ -15798,6 +16009,7 @@
     main_category: 19
     block_name: PuitsP
     initial_display_parameter: ''
+    simulation_function: Puits
     block_image_path: palettes/PuitsP.png
     block_width: 50
     block_height: 40
@@ -15871,6 +16083,7 @@
     main_category: 19
     block_name: SourceP
     initial_display_parameter: ''
+    simulation_function: Source
     block_image_path: palettes/SourceP.png
     block_width: 50
     block_height: 40
@@ -15944,6 +16157,7 @@
     main_category: 19
     block_name: VanneReglante
     initial_display_parameter: ''
+    simulation_function: VanneReglante
     block_image_path: palettes/VanneReglante.png
     block_width: 40
     block_height: 40
@@ -16017,6 +16231,7 @@
     main_category: 20
     block_name: BOUNCE
     initial_display_parameter: ''
+    simulation_function: bounce_ball
     block_image_path: palettes/BOUNCE.png
     block_width: 60
     block_height: 40
@@ -16090,6 +16305,7 @@
     main_category: 20
     block_name: BOUNCEXY
     initial_display_parameter: ''
+    simulation_function: bouncexy
     block_image_path: palettes/BOUNCEXY.png
     block_width: 40
     block_height: 40
@@ -16163,6 +16379,7 @@
     main_category: 20
     block_name: BPLATFORM
     initial_display_parameter: ''
+    simulation_function: bplatform2
     block_image_path: palettes/BPLATFORM.png
     block_width: 40
     block_height: 40
@@ -16236,6 +16453,7 @@
     main_category: 21
     block_name: c_block
     initial_display_parameter: toto
+    simulation_function: toto
     block_image_path: palettes/c_block.png
     block_width: 60
     block_height: 40
@@ -16309,6 +16527,7 @@
     main_category: 21
     block_name: CBLOCK
     initial_display_parameter: toto
+    simulation_function: toto
     block_image_path: palettes/CBLOCK.png
     block_width: 80
     block_height: 40
@@ -16382,6 +16601,7 @@
     main_category: 21
     block_name: CBLOCK4
     initial_display_parameter: toto
+    simulation_function: toto
     block_image_path: palettes/CBLOCK4.png
     block_width: 80
     block_height: 40
@@ -16455,6 +16675,7 @@
     main_category: 21
     block_name: DEBUG
     initial_display_parameter: xcos_debug_gui(flag, block);
+    simulation_function: '%debug_scicos'
     block_image_path: palettes/DEBUG.png
     block_width: 160
     block_height: 40
@@ -16528,6 +16749,7 @@
     main_category: 21
     block_name: EXPRESSION
     initial_display_parameter: (u1>0)*sin(u2)^2
+    simulation_function: evaluate_expr
     block_image_path: palettes/EXPRESSION.png
     block_width: 100
     block_height: 40
@@ -16601,6 +16823,7 @@
     main_category: 21
     block_name: fortran_block
     initial_display_parameter: forty
+    simulation_function: forty
     block_image_path: palettes/fortran_block.png
     block_width: 80
     block_height: 40
@@ -16674,6 +16897,7 @@
     main_category: 21
     block_name: generic_block3
     initial_display_parameter: sinblk
+    simulation_function: sinblk
     block_image_path: palettes/generic_block3.png
     block_width: 80
     block_height: 40
@@ -16747,6 +16971,7 @@
     main_category: 21
     block_name: MBLOCK
     initial_display_parameter: ''
+    simulation_function: cscope
     block_image_path: palettes/MBLOCK.png
     block_width: 60
     block_height: 40
@@ -16820,6 +17045,7 @@
     main_category: 21
     block_name: scifunc_block_m
     initial_display_parameter: y1=sin(u1)
+    simulation_function: cscope
     block_image_path: palettes/scifunc_block_m.png
     block_width: 80
     block_height: 40
@@ -16893,6 +17119,7 @@
     main_category: 11
     block_name: SUPER_f
     initial_display_parameter: ''
+    simulation_function: cscope
     block_image_path: palettes/SUPER_f.png
     block_width: 40
     block_height: 40

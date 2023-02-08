@@ -379,6 +379,8 @@ class Block(CommonBlock):
                                   unique=True, null=True)
     initial_display_parameter = models.CharField(max_length=100,
                                                  blank=True, null=True)
+    simulation_function = models.CharField(max_length=100,
+                                           blank=True, null=True)
     block_image_path = models.CharField(max_length=100,
                                         blank=True, null=True)
     block_width = models.IntegerField(default=40)
