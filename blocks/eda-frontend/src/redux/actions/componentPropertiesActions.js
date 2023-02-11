@@ -13,6 +13,7 @@ export const getCompProperties = (block) => (dispatch) => {
             block,
             name: block.style,
             parameter_values: block.parameter_values,
+            displayProperties: block.displayProperties,
             compProperties: res.data[0]
           }
         })

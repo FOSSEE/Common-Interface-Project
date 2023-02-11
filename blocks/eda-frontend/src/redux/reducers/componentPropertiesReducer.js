@@ -19,6 +19,7 @@ export default function componentPropertiesReducer (state = InitialState, action
         name: action.payload.name,
         parameter_values: action.payload.parameter_values,
         isPropertiesWindowOpen: true,
+        displayProperties: action.payload.displayProperties,
         compProperties: action.payload.compProperties
       }
     }

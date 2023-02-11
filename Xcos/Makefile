@@ -12,9 +12,6 @@ TARGET2 := $(BLOCKDIR)/$(TARGET)
 
 all : $(TARGET) $(TARGET2)
 
-$(TARGET2) : $(TARGET)
-	cp -f $< $@
-
 $(TARGET) : $(SRCFILES)
 	@echo Making $@ ...
 	@for f in $^; do \
@@ -33,7 +30,11 @@ flake8 : $(TARGET)
 	@echo Making $@ ...
 	@./parsexcosblocks.awk $(TARGET) > $@
 
-srcflake8 : $(TARGET) .xcosblocks.txt usexcosblocks.awk
+.srcflake8 : $(TARGET) .xcosblocks.txt usexcosblocks.awk
 	@echo 'flake8 common/*.py blocks/*.py ports/*.py links/*.py'
 	@flake8 $(TARGET) | ./usexcosblocks.awk .xcosblocks.txt -; \
 	    exit $${PIPESTATUS[0]}
+	touch $@
+
+$(TARGET2) : .srcflake8
+	cp -f $(TARGET) $@

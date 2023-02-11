@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { setCompProperties } from '../../redux/actions/index'
 import { ListItem, ListItemText, Button, TextField } from '@material-ui/core'
+import { refresh } from './Helper/ComponentDrag'
 
 export default function ComponentProperties () {
   // compProperties that are displayed on the right side bar when user clicks on a component on the grid.
@@ -12,12 +13,20 @@ export default function ComponentProperties () {
   const name = useSelector(state => state.componentPropertiesReducer.name)
   const parameterValues = useSelector(state => state.componentPropertiesReducer.parameter_values)
   const [val, setVal] = useState(parameterValues)
+  const displayProperties = useSelector(state => state.componentPropertiesReducer.displayProperties)
 
   const dispatch = useDispatch()
 
   React.useEffect(() => {
     setVal(parameterValues)
-  }, [parameterValues])
+    const dp = displayProperties.display_parameter
+    if (block != null && dp != null && dp !== '') {
+      block.displayProperties = {
+        display_parameter: dp
+      }
+      refresh()
+    }
+  }, [parameterValues, displayProperties])
 
   const getInputValues = (evt) => {
     const value = evt.target.value

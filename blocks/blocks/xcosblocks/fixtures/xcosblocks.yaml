@@ -12590,7 +12590,7 @@
     blockprefix: 1
     main_category: 17
     block_name: AFFICH_m
-    initial_display_parameter: '0.0'
+    initial_display_parameter: AFFICH_m
     simulation_function: affich2
     block_image_path: palettes/AFFICH_m.png
     block_width: 60

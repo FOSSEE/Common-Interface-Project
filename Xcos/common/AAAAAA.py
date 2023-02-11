@@ -123,16 +123,33 @@ def addExprsArrayNode(node, subSubNodeType, height, parameters, codeLines):
 
 
 def getParametersFromExprsNode(node, subNodeType):
-    tag = subNodeType + '[@as="exprs"]'
-    subNodes = node.find('./' + tag)
-
     parameters = []
-    if subNodes is not None:
-        for data in subNodes:
-            value = data.attrib.get('value')
-            parameters.append(value)
+
+    if isinstance(node, dict):
+        lastindex = None
+        for i in range(100):
+            parameter = 'p%03d_value' % i
+            if parameter in node:
+                value = node[parameter]
+                parameters.append(value)
+                if value != '':
+                    lastindex = None
+                elif lastindex is None:
+                    lastindex = i
+            else:
+                break
+        if lastindex is not None:
+            del parameters[lastindex:]
     else:
-        print(tag, ': Not found')
+        tag = subNodeType + '[@as="exprs"]'
+        subNodes = node.find('./' + tag)
+
+        if subNodes is not None:
+            for data in subNodes:
+                value = data.attrib.get('value')
+                parameters.append(value)
+        else:
+            print(tag, ': Not found')
 
     return parameters
 
@@ -204,4 +221,4 @@ def get_value_min(value):
     (v1, v2) = (value, re.sub(r'\([^()]*\)', r'', value))
     while v1 != v2:
         (v1, v2) = (v2, re.sub(r'\([^()]*\)', r'', v2))
-    return '(' + value + ')' if re.search(r'[^ 0-9a-zA-Z^*/]', v2) else value
+    return re.sub(r'\^ *([a-zA-Z0-9]+|\([^()]*\)) *', r'<SUP>\1</SUP>', v1)

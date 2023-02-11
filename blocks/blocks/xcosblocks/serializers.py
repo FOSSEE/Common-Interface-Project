@@ -3,6 +3,8 @@ from rest_framework import serializers
 from .models import BlockType, Category, ParameterDataType, BlockPrefix, \
     BlockPrefixParameter, Block, BlockParameter, BlockPort
 
+from .xcosblocks import *
+
 
 class BlockTypeSerializer(serializers.ModelSerializer):
     class Meta:
@@ -381,22 +383,25 @@ class SetBlockParameterSerializer(serializers.Serializer):
                                        allow_blank=True, trim_whitespace=True)
 
     def getblockportserializer(self):
-        block = Block.objects.get(name=self.data['block'])
-        blockports = BlockPort.objects.filter(block=block.id)
+        data = self.data
+        name = data['block']
 
-        display_parameter = block.initial_display_parameter
-        simulation_function = block.simulation_function
-        blockport_set = list(blockports.values())
-
-        # TODO: change values depending on block name
+        (parameters, display_parameter, ports) = \
+            globals()['get_from_' + name](data)
+        simulation_function = ''
 
         return SetBlockPortSerializer(data={
+            'parameters': parameters,
             'display_parameter': display_parameter,
-            'blockport_set': blockport_set,
+            'simulation_function': simulation_function,
+            'ports': ports,
         })
 
 
 class SetBlockPortSerializer(serializers.Serializer):
+    parameters = serializers.StringRelatedField(many=True)
     display_parameter = serializers.CharField(
         max_length=100, allow_blank=True, trim_whitespace=True)
-    blockport_set = BlockPortSerializer()
+    simulation_function = serializers.CharField(
+        max_length=100, allow_blank=True, trim_whitespace=True)
+    ports = serializers.StringRelatedField(many=True)

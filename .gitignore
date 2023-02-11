@@ -2,6 +2,7 @@
 *.pyc
 *.sqlite3
 *.swp
+.srcflake8
 .xcosblocks.txt
 __pycache__/
 blocks/blocks/*/migrations/*.py

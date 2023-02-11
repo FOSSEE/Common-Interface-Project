@@ -69,6 +69,10 @@ function styleToObject (style) {
   return styleObject
 }
 
+export function refresh () {
+  graph.refresh()
+}
+
 export default function LoadGrid (container, sidebar, outline) {
   // Checks if the browser is supported
   if (!mxClient.isBrowserSupported()) {
@@ -206,7 +210,7 @@ export default function LoadGrid (container, sidebar, outline) {
         const geometry = cell.geometry
 
         text = 'Block Name: ' + attribute + '\n' +
-            'Simulation: ' + attribute + '\n' +
+            'Simulation: ' + cell.simulationFunction + '\n' +
             'UID: ' + cell.id + '\n' +
             'Style: ' + cell.style + '\n' +
             'Flip: ' + flip + '\n' +
@@ -221,6 +225,10 @@ export default function LoadGrid (container, sidebar, outline) {
             'h: ' + geometry.height + '\n'
       }
       return text
+    }
+
+    graph.isHtmlLabel = function (cell) {
+      return !this.isSwimlane(cell)
     }
 
     graph.convertValueToString = function (cell) {
@@ -239,11 +247,6 @@ export default function LoadGrid (container, sidebar, outline) {
       const displayParameter = cell.displayProperties.display_parameter
       if (displayParameter == null) {
         return displayedLabel
-      }
-
-      // for setting label for affichm
-      if (attribute === 'AFFICH_m') {
-        return displayedLabel.replace('%s', displayParameter + '-' + cell.id)
       }
 
       const displayParameters = displayParameter.split(',')

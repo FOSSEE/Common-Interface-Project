@@ -54,6 +54,7 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
   v1.implicitOutputPorts = 0
   v1.controlPorts = 0
   v1.commandPorts = 0
+  v1.simulationFunction = component.simulation_function
   for (let i = 0; i < ports; i++) {
     const blockport = blockports[i]
     if (!allowedPart.includes(blockport.port_part)) { continue }
