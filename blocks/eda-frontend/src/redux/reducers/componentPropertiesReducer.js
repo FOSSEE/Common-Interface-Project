@@ -1,5 +1,5 @@
 import * as actions from '../actions/actions'
-import { editorZoomAct } from '../../components/SchematicEditor/Helper/ToolbarTools.js'
+import { editorZoomAct } from '../../components/SchematicEditor/Helper/ToolbarTools'
 
 const InitialState = {
   block: null,

@@ -4,7 +4,7 @@ import { List, ListItemText, Tooltip, Popover } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
 import './Helper/SchematicEditor.css'
-import { AddComponent } from './Helper/SideBar.js'
+import { AddComponent } from './Helper/SideBar'
 
 const useStyles = makeStyles((theme) => ({
   popupInfo: {

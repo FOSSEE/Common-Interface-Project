@@ -7,9 +7,9 @@ import dot from '../../../static/dot.gif'
 import blockstyle from '../../../static/style.json'
 import { getCompProperties, closeCompProperties } from '../../../redux/actions/index'
 
-import toolbarTools from './ToolbarTools.js'
-import keyboardShortcuts from './KeyboardShortcuts.js'
-import { sideBar } from './SideBar.js'
+import toolbarTools from './ToolbarTools'
+import keyboardShortcuts from './KeyboardShortcuts'
+import { sideBar } from './SideBar'
 
 let graph
 
