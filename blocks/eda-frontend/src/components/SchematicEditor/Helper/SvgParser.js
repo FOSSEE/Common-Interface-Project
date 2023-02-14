@@ -25,7 +25,6 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
   const allowedDmg = [0, 1]
 
   const blockName = component.block_name
-  const pins = []
   // make the component images smaller by scaling
   const width = component.block_width / defaultScale
   const height = component.block_height / defaultScale
@@ -55,6 +54,14 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
   v1.controlPorts = 0
   v1.commandPorts = 0
   v1.simulationFunction = component.simulation_function
+  v1.pins = {
+    explicitInputPorts: [],
+    implicitInputPorts: [],
+    controlPorts: [],
+    explicitOutputPorts: [],
+    implicitOutputPorts: [],
+    commandPorts: []
+  }
   for (let i = 0; i < ports; i++) {
     const blockport = blockports[i]
     if (!allowedPart.includes(blockport.port_part)) { continue }
@@ -67,40 +74,48 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
     const portOrientation = blockport.port_orientation
     let pointX
     let pointY
+    let pins
     switch (portOrientation) {
       case 'ExplicitInputPort':
         pointX = -portSize
         pointY = -portSize / 2
         v1.explicitInputPorts += 1
+        pins = v1.pins.explicitInputPorts
         break
       case 'ImplicitInputPort':
         pointX = -portSize
         pointY = -portSize / 2
         v1.implicitInputPorts += 1
+        pins = v1.pins.implicitInputPorts
         break
       case 'ControlPort':
         pointX = -portSize / 2
         pointY = -portSize
         v1.controlPorts += 1
+        pins = v1.pins.controlPorts
         break
       case 'ExplicitOutputPort':
         pointX = 0
         pointY = -portSize / 2
         v1.explicitOutputPorts += 1
+        pins = v1.pins.explicitOutputPorts
         break
       case 'ImplicitOutputPort':
         pointX = 0
         pointY = -portSize / 2
         v1.implicitOutputPorts += 1
+        pins = v1.pins.implicitOutputPorts
         break
       case 'CommandPort':
         pointX = -portSize / 2
         pointY = 0
         v1.commandPorts += 1
+        pins = v1.pins.commandPorts
         break
       default:
         pointX = -portSize / 2
         pointY = -portSize / 2
+        pins = null
         break
     }
     const point = new mxPoint(pointX, pointY)
@@ -110,6 +125,8 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
     vp.geometry.offset = point
     vp.CellType = 'Pin'
     vp.ParentComponent = v1.id
-    pins[i] = vp
+    if (pins != null) {
+      pins.push(vp)
+    }
   }
 }

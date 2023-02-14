@@ -11,7 +11,7 @@ import toolbarTools from './ToolbarTools'
 import keyboardShortcuts from './KeyboardShortcuts'
 import { sideBar } from './SideBar'
 
-let graph
+export let graph
 
 const {
   mxGraph,
@@ -67,10 +67,6 @@ function styleToObject (style) {
   }
 
   return styleObject
-}
-
-export function refresh () {
-  graph.refresh()
 }
 
 export default function LoadGrid (container, sidebar, outline) {

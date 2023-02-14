@@ -1,8 +1,16 @@
+/* eslint new-cap: ["error", {"newIsCapExceptionPattern": "^mx"}] */
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { setCompProperties } from '../../redux/actions/index'
+import mxGraphFactory from 'mxgraph'
 import { ListItem, ListItemText, Button, TextField } from '@material-ui/core'
-import { refresh } from './Helper/ComponentDrag'
+
+import { setCompProperties } from '../../redux/actions/index'
+import { graph } from './Helper/ComponentDrag'
+import { portSize } from './Helper/SvgParser'
+
+const {
+  mxPoint
+} = new mxGraphFactory()
 
 export default function ComponentProperties () {
   // compProperties that are displayed on the right side bar when user clicks on a component on the grid.
@@ -19,12 +27,92 @@ export default function ComponentProperties () {
 
   React.useEffect(() => {
     setVal(parameterValues)
-    const dp = displayProperties.display_parameter
-    if (block != null && dp != null && dp !== '') {
-      block.displayProperties = {
-        display_parameter: dp
+    let refreshDisplay = false
+    if (block != null && displayProperties != null) {
+      const dp = displayProperties.display_parameter
+      if (dp != null && dp !== '') {
+        block.displayProperties = {
+          display_parameter: dp
+        }
+        refreshDisplay = true
       }
-      refresh()
+      // make the component images smaller by scaling
+      if (Array.isArray(displayProperties.ports)) {
+        let [eiv, iiv, con, eov, iov, com] = displayProperties.ports
+        if (eiv !== '' || iiv !== '') {
+          if (eiv === '') {
+            eiv = block.explicitInputPorts
+          }
+          if (iiv === '') {
+            iiv = block.implicitInputPorts
+          }
+          if (eiv !== block.explicitInputPorts || iiv !== block.implicitInputPorts) {
+            const pointX = -portSize
+            const pointY = -portSize / 2
+            const portOrientation = 'ExplicitInputPort'
+            const pins = block.pins.explicitInputPorts
+            for (let i = 0; i < Math.min(eiv, block.explicitInputPorts); i++) {
+              const xPos = 0
+              const yPos = 1 - (2 * i + 1) / (2 * (eiv + iiv))
+              pins[i].geometry.x = xPos
+              pins[i].geometry.y = yPos
+            }
+            for (let i = block.explicitInputPorts; i < eiv; i++) {
+              const xPos = 0
+              const yPos = 1 - (2 * i + 1) / (2 * (eiv + iiv))
+              const point = new mxPoint(pointX, pointY)
+              const vp = graph.insertVertex(block, null, null, xPos, yPos, portSize, portSize, portOrientation)
+              vp.geometry.relative = true
+              vp.geometry.offset = point
+              vp.CellType = 'Pin'
+              vp.ParentComponent = block.id
+              pins.push(vp)
+            }
+            if (eiv < block.explicitInputPorts) {
+              const cells = pins.slice(eiv, block.explicitInputPorts)
+              graph.removeCells(cells, true)
+              for (let i = block.explicitInputPorts - 1; i >= eiv; i--) {
+                pins.pop()
+              }
+            }
+            block.explicitInputPorts = eiv
+            for (let i = 0; i < Math.min(iiv, block.implicitInputPorts); i++) {
+              console.log('moving input port', eiv + i)
+            }
+            for (let i = block.implicitInputPorts; i < iiv; i++) {
+              console.log('adding input port', eiv + i)
+            }
+            for (let i = iiv; i < block.implicitInputPorts; i++) {
+              console.log('deleting input port', eiv + i)
+            }
+            refreshDisplay = true
+          }
+        }
+        if (con !== '') {
+          if (con !== block.controlPorts) {
+            console.log('changing control ports')
+          }
+        }
+        if (eov !== '' || iov !== '') {
+          if (eov === '') {
+            eov = block.explicitOutputPorts
+          }
+          if (iov === '') {
+            iov = block.implicitOutputPorts
+          }
+          if (eov !== block.explicitOutputPorts || iov !== block.implicitOutputPorts) {
+            console.log('changing output ports')
+          }
+        }
+        if (com !== '') {
+          if (com !== block.commandPorts) {
+            console.log('changing command ports')
+          }
+        }
+      }
+      if (refreshDisplay) {
+        graph.refresh()
+      }
     }
   }, [parameterValues, displayProperties])
 
