@@ -5,7 +5,7 @@
   max-height: 48px;
   margin-left: auto;
   padding: 3px;
-  z-index: 10000;
+  z-index: 10000 !important;
 }
 
 .compImage:hover {
