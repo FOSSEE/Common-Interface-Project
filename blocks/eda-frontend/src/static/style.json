@@ -1038,7 +1038,7 @@
     "spacing": 13,
     "gradientColor": "white",
     "rounded": 1,
-    "displayedLabel": "u^%s"
+    "displayedLabel": "u<SUP>%s</SUP>"
   },
   "INVBLK": {
     "shape": "label",
@@ -1129,7 +1129,7 @@
     "spacing": 13,
     "gradientColor": "white",
     "rounded": 1,
-    "displayedLabel": "%s^u"
+    "displayedLabel": "%s<SUP>u</SUP>"
   },
   "PROD_f": {
     "shape": "ellipse",

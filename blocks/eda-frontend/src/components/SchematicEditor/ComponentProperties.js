@@ -12,6 +12,105 @@ const {
   mxPoint
 } = new mxGraphFactory()
 
+function getXY (portOrientation, offsetPorts, newTotalPorts, i, block) {
+  let xPos
+  let yPos
+  let pointX
+  let pointY
+  let ports
+  let pins
+  switch (portOrientation) {
+    case 'ExplicitInputPort':
+      xPos = 0
+      yPos = 1 - (2 * i + 1) / (2 * newTotalPorts)
+      pointX = -portSize
+      pointY = -portSize / 2
+      ports = 'explicitInputPorts'
+      pins = block.pins.explicitInputPorts
+      break
+    case 'ImplicitInputPort':
+      xPos = 0
+      yPos = 1 - (2 * (offsetPorts + i) + 1) / (2 * newTotalPorts)
+      pointX = -portSize
+      pointY = -portSize / 2
+      ports = 'implicitInputPorts'
+      pins = block.pins.implicitInputPorts
+      break
+    case 'ControlPort':
+      xPos = (2 * i + 1) / (2 * newTotalPorts)
+      yPos = 0
+      pointX = -portSize / 2
+      pointY = -portSize
+      ports = 'controlPorts'
+      pins = block.pins.controlPorts
+      break
+    case 'ExplicitOutputPort':
+      xPos = 1
+      yPos = 1 - (2 * i + 1) / (2 * newTotalPorts)
+      pointX = 0
+      pointY = -portSize / 2
+      ports = 'explicitOutputPorts'
+      pins = block.pins.explicitOutputPorts
+      break
+    case 'ImplicitOutputPort':
+      xPos = 1
+      yPos = 1 - (2 * (offsetPorts + i) + 1) / (2 * newTotalPorts)
+      pointX = 0
+      pointY = -portSize / 2
+      ports = 'implicitOutputPorts'
+      pins = block.pins.implicitOutputPorts
+      break
+    case 'CommandPort':
+      xPos = (2 * i + 1) / (2 * newTotalPorts)
+      yPos = 1
+      pointX = -portSize / 2
+      pointY = 0
+      ports = 'commandPorts'
+      pins = block.pins.commandPorts
+      break
+    default:
+      xPos = 0
+      yPos = 0
+      pointX = -portSize / 2
+      pointY = -portSize / 2
+      ports = null
+      pins = null
+      break
+  }
+  return { xPos, yPos, pointX, pointY, ports, pins }
+}
+
+function adjustPorts (newPorts, offsetPorts, newTotalPorts, oldPorts, block, portOrientation) {
+  for (let i = 0; i < Math.min(newPorts, oldPorts); i++) {
+    console.log('moving port', i)
+    const { xPos, yPos, pins } = getXY(portOrientation, offsetPorts, newTotalPorts, i, block)
+    pins[i].geometry.x = xPos
+    pins[i].geometry.y = yPos
+  }
+  for (let i = oldPorts; i < newPorts; i++) {
+    console.log('adding port', i)
+    const { xPos, yPos, pointX, pointY, ports, pins } = getXY(portOrientation, offsetPorts, newTotalPorts, i, block)
+    const point = new mxPoint(pointX, pointY)
+    const vp = graph.insertVertex(block, null, null, xPos, yPos, portSize, portSize, portOrientation)
+    vp.geometry.relative = true
+    vp.geometry.offset = point
+    vp.CellType = 'Pin'
+    vp.ParentComponent = block.id
+    pins.push(vp)
+    block[ports] += 1
+  }
+  if (newPorts < oldPorts) {
+    const { ports, pins } = getXY(portOrientation, offsetPorts, newTotalPorts, 0, block)
+    const cells = pins.slice(newPorts, oldPorts)
+    graph.removeCells(cells, true)
+    for (let i = oldPorts - 1; i >= newPorts; i--) {
+      console.log('deleting port', i)
+      pins.pop()
+      block[ports] -= 1
+    }
+  }
+}
+
 export default function ComponentProperties () {
   // compProperties that are displayed on the right side bar when user clicks on a component on the grid.
 
@@ -47,50 +146,17 @@ export default function ComponentProperties () {
             iiv = block.implicitInputPorts
           }
           if (eiv !== block.explicitInputPorts || iiv !== block.implicitInputPorts) {
-            const pointX = -portSize
-            const pointY = -portSize / 2
-            const portOrientation = 'ExplicitInputPort'
-            const pins = block.pins.explicitInputPorts
-            for (let i = 0; i < Math.min(eiv, block.explicitInputPorts); i++) {
-              const xPos = 0
-              const yPos = 1 - (2 * i + 1) / (2 * (eiv + iiv))
-              pins[i].geometry.x = xPos
-              pins[i].geometry.y = yPos
-            }
-            for (let i = block.explicitInputPorts; i < eiv; i++) {
-              const xPos = 0
-              const yPos = 1 - (2 * i + 1) / (2 * (eiv + iiv))
-              const point = new mxPoint(pointX, pointY)
-              const vp = graph.insertVertex(block, null, null, xPos, yPos, portSize, portSize, portOrientation)
-              vp.geometry.relative = true
-              vp.geometry.offset = point
-              vp.CellType = 'Pin'
-              vp.ParentComponent = block.id
-              pins.push(vp)
-            }
-            if (eiv < block.explicitInputPorts) {
-              const cells = pins.slice(eiv, block.explicitInputPorts)
-              graph.removeCells(cells, true)
-              for (let i = block.explicitInputPorts - 1; i >= eiv; i--) {
-                pins.pop()
-              }
-            }
-            block.explicitInputPorts = eiv
-            for (let i = 0; i < Math.min(iiv, block.implicitInputPorts); i++) {
-              console.log('moving input port', eiv + i)
-            }
-            for (let i = block.implicitInputPorts; i < iiv; i++) {
-              console.log('adding input port', eiv + i)
-            }
-            for (let i = iiv; i < block.implicitInputPorts; i++) {
-              console.log('deleting input port', eiv + i)
-            }
+            console.log('changing input ports')
+            adjustPorts(eiv, 0, eiv + iiv, block.explicitInputPorts, block, 'ExplicitInputPort')
+            adjustPorts(iiv, eiv, eiv + iiv, block.implicitInputPorts, block, 'ImplicitInputPort')
             refreshDisplay = true
           }
         }
         if (con !== '') {
           if (con !== block.controlPorts) {
             console.log('changing control ports')
+            adjustPorts(con, 0, con, block.controlPorts, block, 'ControlPort')
+            refreshDisplay = true
           }
         }
         if (eov !== '' || iov !== '') {
@@ -102,11 +168,16 @@ export default function ComponentProperties () {
           }
           if (eov !== block.explicitOutputPorts || iov !== block.implicitOutputPorts) {
             console.log('changing output ports')
+            adjustPorts(eov, 0, eov + iov, block.explicitOutputPorts, block, 'ExplicitOutputPort')
+            adjustPorts(iov, eov, eov + iov, block.implicitOutputPorts, block, 'ImplicitOutputPort')
+            refreshDisplay = true
           }
         }
         if (com !== '') {
           if (com !== block.commandPorts) {
             console.log('changing command ports')
+            adjustPorts(com, 0, com, block.commandPorts, block, 'CommandPort')
+            refreshDisplay = true
           }
         }
       }
