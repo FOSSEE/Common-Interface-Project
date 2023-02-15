@@ -1,8 +1,29 @@
 import api from '../../utils/Api'
 import * as actions from './actions'
 
+// Actions for setting isLoading
+const loadingGetCompProperties = (block, isLoading) => (dispatch) => {
+  dispatch({
+    type: actions.LOADING_GET_COMP_PROPERTIES,
+    payload: {
+      name: block.style,
+      isLoading
+    }
+  })
+}
+
+const loadingSetCompProperties = (isLoading) => (dispatch) => {
+  dispatch({
+    type: actions.LOADING_SET_COMP_PROPERTIES,
+    payload: {
+      isLoading
+    }
+  })
+}
+
 // Actions for listing stored component properites on double click on component
 export const getCompProperties = (block) => (dispatch) => {
+  dispatch(loadingGetCompProperties(block, true))
   const url = 'block_parameters/?block__name=' + block.style
   api.get(url)
     .then(
@@ -19,11 +40,15 @@ export const getCompProperties = (block) => (dispatch) => {
         })
       }
     )
-    .catch((err) => { console.error(err) })
+    .catch((err) => {
+      console.error(err)
+      dispatch(loadingGetCompProperties(block, false))
+    })
 }
 
 // Actions for updating entered component properites on clicking set parameters
 export const setCompProperties = (block, parameterValues) => (dispatch) => {
+  dispatch(loadingSetCompProperties(true))
   const url = 'setblockparameter'
   const filteredParameterValues = Object.fromEntries(Object.entries(parameterValues).filter(([k, v]) => v != null))
   const data = { block: block.style, ...filteredParameterValues }
@@ -41,7 +66,10 @@ export const setCompProperties = (block, parameterValues) => (dispatch) => {
         })
       }
     )
-    .catch((err) => { console.error(err) })
+    .catch((err) => {
+      console.error(err)
+      dispatch(loadingSetCompProperties(false))
+    })
 }
 
 // Handling hiding of compProperties sidebar

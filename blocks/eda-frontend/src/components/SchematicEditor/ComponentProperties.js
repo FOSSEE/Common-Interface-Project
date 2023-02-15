@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import mxGraphFactory from 'mxgraph'
 import { ListItem, ListItemText, Button, TextField } from '@material-ui/core'
+import Loader from 'react-loader-spinner'
 
 import { setCompProperties } from '../../redux/actions/index'
 import { graph } from './Helper/ComponentDrag'
@@ -121,6 +122,7 @@ export default function ComponentProperties () {
   const parameterValues = useSelector(state => state.componentPropertiesReducer.parameter_values)
   const [val, setVal] = useState(parameterValues)
   const displayProperties = useSelector(state => state.componentPropertiesReducer.displayProperties)
+  const isLoading = useSelector(state => state.componentPropertiesReducer.isLoading)
 
   const dispatch = useDispatch()
 
@@ -202,11 +204,20 @@ export default function ComponentProperties () {
   const link1 = name + ' Parameters'
   const link2 = 'Set ' + process.env.REACT_APP_BLOCK_NAME + ' Parameters'
   const link3 = 'No ' + name + ' Parameters'
+  const link4 = 'Getting ' + name + ' Parameters'
   return (
     <div style={isOpen ? {} : { display: 'none' }}>
 
+      <Loader
+        type='TailSpin'
+        color='#F44336'
+        height={100}
+        width={100}
+        visible={isLoading}
+      />
+
       <ListItem>
-        {compProperties !== undefined ? <ListItemText primary={link1} /> : <ListItemText primary={link3} />}
+        {compProperties !== undefined ? <ListItemText primary={link1} /> : isLoading ? <ListItemText primary={link4} /> : <ListItemText primary={link3} />}
       </ListItem>
 
       {
