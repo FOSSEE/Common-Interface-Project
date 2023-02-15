@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import {
   AppBar,
@@ -38,7 +38,7 @@ import { fetchSchematics, fetchSchematic, loadGallery } from '../../redux/action
 import GallerySchSample from '../../utils/GallerySchSample'
 import { blue } from '@material-ui/core/colors'
 
-const Transition = React.forwardRef(function Transition (props, ref) {
+const Transition = forwardRef(function Transition (props, ref) {
   return <Slide direction='up' ref={ref} {...props} />
 })
 
@@ -381,8 +381,8 @@ ImageExportDialog.propTypes = {
 // Dialog box to open saved Schematics
 export function OpenSchDialog (props) {
   const { open, close, openLocal } = props
-  const [isLocal, setisLocal] = React.useState(true)
-  const [isGallery, setisGallery] = React.useState(false)
+  const [isLocal, setisLocal] = useState(true)
+  const [isGallery, setisGallery] = useState(false)
   const schSave = useSelector(state => state.saveSchematicReducer)
   const auth = useSelector(state => state.authReducer)
   const schematics = useSelector(state => state.dashboardReducer.schematics)

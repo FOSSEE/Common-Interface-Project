@@ -1,5 +1,5 @@
 // User Sign Up / Register page.
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   Avatar,
   Button,
@@ -52,7 +52,7 @@ export default function SignUp () {
   const dispatch = useDispatch()
   const homeURL = `${window.location.protocol}\\\\${window.location.host}/`
 
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(authDefault())
     document.title = 'Sign Up - ' + process.env.REACT_APP_NAME
   }, [dispatch])

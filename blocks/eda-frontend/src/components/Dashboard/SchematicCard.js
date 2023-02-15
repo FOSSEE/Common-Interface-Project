@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Button, Card, CardActionArea, CardActions, CardContent, CardHeader, CardMedia, Snackbar, Tooltip, Typography } from '@material-ui/core'
 import ShareIcon from '@material-ui/icons/Share'
@@ -107,7 +107,7 @@ export default function SchematicCard ({ sch }) {
   const classes = useStyles()
 
   // To handle delete schematic snackbar
-  const [snacOpen, setSnacOpen] = React.useState(false)
+  const [snacOpen, setSnacOpen] = useState(false)
 
   const handleSnacClick = () => {
     setSnacOpen(true)

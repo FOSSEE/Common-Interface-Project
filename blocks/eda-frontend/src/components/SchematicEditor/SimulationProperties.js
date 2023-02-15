@@ -66,7 +66,7 @@ export default function SimulationProperties () {
     })
   }
 
-  const [simulateOpen, setSimulateOpen] = React.useState(false)
+  const [simulateOpen, setSimulateOpen] = useState(false)
 
   const handleSimulateOpen = () => {
     setSimulateOpen(true)

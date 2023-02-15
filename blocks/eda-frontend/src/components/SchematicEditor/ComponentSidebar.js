@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import api from '../../utils/Api'
 import { Collapse, Hidden, IconButton, InputAdornment, List, ListItem, ListItemIcon, TextField, Tooltip } from '@material-ui/core'
@@ -49,7 +49,7 @@ export default function ComponentSidebar ({ compRef }) {
   const [searchedComponentList, setSearchedComponents] = useState([])
   const searchOption = 'NAME'
 
-  const timeoutId = React.useRef()
+  const timeoutId = useRef()
 
   const handleSearchText = (evt) => {
     if (searchText.length === 0) {
@@ -62,7 +62,7 @@ export default function ComponentSidebar ({ compRef }) {
     // call api from here. and set the result to searchedComponentList.
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     // if the user keeps typing, stop the API call!
     clearTimeout(timeoutId.current)
     setSearchedComponents([])

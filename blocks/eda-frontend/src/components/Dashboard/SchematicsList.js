@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Button, Card, CardActions, CardContent, Grid, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { Link as RouterLink } from 'react-router-dom'
@@ -61,7 +61,7 @@ export default function SchematicsList () {
   const dispatch = useDispatch()
 
   // For Fetching Saved Schematics
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(fetchSchematics())
   }, [dispatch])
 

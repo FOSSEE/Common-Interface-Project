@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import { useHistory, Link as RouterLink } from 'react-router-dom'
 import {
@@ -103,7 +103,7 @@ function Header () {
   const classes = useStyles()
   const auth = store.getState().authReducer
   const schSave = useSelector(state => state.saveSchematicReducer)
-  const [anchorEl, setAnchorEl] = React.useState(null)
+  const [anchorEl, setAnchorEl] = useState(null)
 
   const dispatch = useDispatch()
 
@@ -121,8 +121,8 @@ function Header () {
   }
 
   // handle notification snackbar open and close with message
-  const [snacOpen, setSnacOpen] = React.useState(false)
-  const [message, setMessage] = React.useState('')
+  const [snacOpen, setSnacOpen] = useState(false)
+  const [message, setMessage] = useState('')
 
   const handleSnacClick = () => {
     setSnacOpen(true)
@@ -136,7 +136,7 @@ function Header () {
   }
 
   // handle schematic Share Dialog box
-  const [openShare, setShareOpen] = React.useState(false)
+  const [openShare, setShareOpen] = useState(false)
 
   const handleShareOpen = () => {
     setShareOpen(true)
@@ -147,7 +147,7 @@ function Header () {
   }
 
   // change saved schematic share status
-  const [shared, setShared] = React.useState(schSave.isShared)
+  const [shared, setShared] = useState(schSave.isShared)
 
   useEffect(() => {
     setShared(schSave.isShared)
@@ -180,7 +180,7 @@ function Header () {
   }
 
   // handle Copy Share Url
-  const textAreaRef = React.useRef(null)
+  const textAreaRef = useRef(null)
 
   function copyToClipboard (e) {
     textAreaRef.current.select()

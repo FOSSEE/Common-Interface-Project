@@ -1,5 +1,5 @@
 // Page to display Page Not Found (i.e. 404) error.
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { Container, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
 export default function NotFound () {
   const classes = useStyles()
 
-  React.useEffect(() => {
+  useEffect(() => {
     document.title = 'Not Found - EDA '
   })
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { AppBar, IconButton, Toolbar } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 // Common layout for Dashboard and Schematic Editor
 function Layout ({ header, resToolbar, sidebar }) {
   const classes = useStyles()
-  const [mobileOpen, setMobileOpen] = React.useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)

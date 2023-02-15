@@ -1,5 +1,5 @@
 // User Login / Sign In page.
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 
 import {
@@ -55,7 +55,7 @@ export default function SignIn (props) {
   const dispatch = useDispatch()
   const homeURL = `${window.location.protocol}\\\\${window.location.host}/`
 
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(authDefault())
     document.title = 'Login - ' + process.env.REACT_APP_NAME
     if (props.location.search !== '') {

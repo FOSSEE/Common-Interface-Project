@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Avatar, Divider, Hidden, InputBase, List, ListItem, ListItemAvatar, ListItemText, Typography } from '@material-ui/core'
 import { Link as RouterLink } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
@@ -44,7 +44,7 @@ export default function DashSidebar (props) {
   const dispatch = useDispatch()
 
   // For Fetching Saved Schematics
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(fetchSchematics())
   }, [dispatch])
 

@@ -1,5 +1,5 @@
 /* eslint new-cap: ["error", {"newIsCapExceptionPattern": "^mx"}] */
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Canvg } from 'canvg'
 import { IconButton, Tooltip, Snackbar } from '@material-ui/core'
@@ -97,8 +97,8 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
   const dispatch = useDispatch()
 
   // Netlist Modal Control
-  const [open, setOpen] = React.useState(false)
-  const [netlist, genNetlist] = React.useState('')
+  const [open, setOpen] = useState(false)
+  const [netlist, genNetlist] = useState('')
 
   const handleClickOpen = () => {
     const compNetlist = generateNetList()
@@ -116,7 +116,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
   }
 
   // Control Help dialog window
-  const [helpOpen, setHelpOpen] = React.useState(false)
+  const [helpOpen, setHelpOpen] = useState(false)
 
   const handleHelpOpen = () => {
     setHelpOpen(true)
@@ -133,8 +133,8 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
   }
 
   // Handle Notification Snackbar
-  const [snacOpen, setSnacOpen] = React.useState(false)
-  const [message, setMessage] = React.useState('')
+  const [snacOpen, setSnacOpen] = useState(false)
+  const [message, setMessage] = useState('')
 
   const handleSnacClick = () => {
     setSnacOpen(true)
@@ -238,7 +238,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
     a.dispatchEvent(evt)
   }
 
-  const [imgopen, setImgOpen] = React.useState(false)
+  const [imgopen, setImgOpen] = useState(false)
 
   const handleImgClickOpen = () => {
     setImgOpen(true)
@@ -344,7 +344,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
   }
 
   // Control Help dialog window open and close
-  const [schOpen, setSchOpen] = React.useState(false)
+  const [schOpen, setSchOpen] = useState(false)
 
   const handleSchDialOpen = () => {
     setSchOpen(true)

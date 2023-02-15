@@ -1,5 +1,5 @@
 // Main Layout for Schemaic Editor page.
-import React, { useEffect } from 'react'
+import React, { createRef, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { CssBaseline } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
@@ -28,11 +28,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SchematicEditor (props) {
   const classes = useStyles()
-  const compRef = React.createRef()
-  const gridRef = React.createRef()
-  const outlineRef = React.createRef()
+  const compRef = createRef()
+  const gridRef = createRef()
+  const outlineRef = createRef()
   const dispatch = useDispatch()
-  const [mobileOpen, setMobileOpen] = React.useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)

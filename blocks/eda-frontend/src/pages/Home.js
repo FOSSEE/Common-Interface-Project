@@ -1,5 +1,5 @@
 // Main layout for home page.
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Home () {
   const classes = useStyles()
 
-  React.useEffect(() => {
+  useEffect(() => {
     document.title = process.env.REACT_APP_NAME
   })
 

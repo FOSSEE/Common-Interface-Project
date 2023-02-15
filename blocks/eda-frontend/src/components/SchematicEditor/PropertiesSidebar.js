@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Hidden, List, ListItem, ListItemText, TextField, MenuItem, TextareaAutosize } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
@@ -55,8 +55,8 @@ const pageLayout = [
 function GridProperties ({ gridRef }) {
   const classes = useStyles()
 
-  const [gridSize, setGridSize] = React.useState('A4')
-  const [gridLayout, setGridLayout] = React.useState('L')
+  const [gridSize, setGridSize] = useState('A4')
+  const [gridLayout, setGridLayout] = useState('L')
 
   const handleSizeChange = (event) => {
     setGridSize(event.target.value)
@@ -121,7 +121,7 @@ export default function PropertiesSidebar ({ gridRef, outlineRef }) {
   const isOpen = useSelector(state => state.componentPropertiesReducer.isPropertiesWindowOpen)
   const schSave = useSelector(state => state.saveSchematicReducer)
 
-  const [description, setDescription] = React.useState(schSave.description)
+  const [description, setDescription] = useState(schSave.description)
 
   const dispatch = useDispatch()
 

@@ -1,5 +1,5 @@
 /* eslint new-cap: ["error", {"newIsCapExceptionPattern": "^mx"}] */
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import mxGraphFactory from 'mxgraph'
 import { ListItem, ListItemText, Button, TextField } from '@material-ui/core'
@@ -124,7 +124,7 @@ export default function ComponentProperties () {
 
   const dispatch = useDispatch()
 
-  React.useEffect(() => {
+  useEffect(() => {
     setVal(parameterValues)
     let refreshDisplay = false
     if (block != null && displayProperties != null) {
