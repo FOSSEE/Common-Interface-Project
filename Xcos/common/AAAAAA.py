@@ -221,4 +221,9 @@ def get_value_min(value):
     (v1, v2) = (value, re.sub(r'\([^()]*\)', r'', value))
     while v1 != v2:
         (v1, v2) = (v2, re.sub(r'\([^()]*\)', r'', v2))
-    return re.sub(r'\^ *([a-zA-Z0-9]+|\([^()]*\)) *', r'<SUP>\1</SUP>', v1)
+    return get_number_power(v1)
+
+
+def get_number_power(value):
+    return re.sub(r'(\^|\*\*) *([a-zA-Z0-9]+|\([^()]*\)) *', r'<SUP>\2</SUP>',
+                  value)
