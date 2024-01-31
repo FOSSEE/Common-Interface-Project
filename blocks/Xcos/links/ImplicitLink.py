@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def ImplicitLink(outroot, attribid, sourceVertex, targetVertex):
     func_name = 'ImplicitLink'
 

@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def Modulo_Count(outroot, attribid, ordering, geometry, parameters):
     func_name = 'Modulo_Count'
 

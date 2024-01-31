@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def Bache(outroot, attribid, ordering, geometry, parameters):
     func_name = 'Bache'
 

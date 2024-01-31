@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def POWBLK_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'POWBLK_f'
 

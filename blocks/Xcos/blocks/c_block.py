@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def c_block(outroot, attribid, ordering, geometry, parameters):
     func_name = 'c_block'
 

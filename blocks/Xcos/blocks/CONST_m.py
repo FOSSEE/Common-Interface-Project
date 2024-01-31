@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def CONST_m(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CONST_m'
 

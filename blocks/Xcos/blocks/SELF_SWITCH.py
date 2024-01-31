@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def SELF_SWITCH(outroot, attribid, ordering, geometry, parameters):
     func_name = 'SELF_SWITCH'
     if parameters[0] == 'on':

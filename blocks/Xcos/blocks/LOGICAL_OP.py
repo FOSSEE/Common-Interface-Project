@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def LOGICAL_OP(outroot, attribid, ordering, geometry, parameters):
     func_name = 'LOGICAL_OP'
 

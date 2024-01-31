@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def TrigFun(outroot, attribid, ordering, geometry, parameters):
     func_name = 'TrigFun'
 

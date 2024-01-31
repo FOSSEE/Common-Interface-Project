@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def PROD_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'PROD_f'
 

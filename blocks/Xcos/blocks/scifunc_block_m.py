@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def scifunc_block_m(outroot, attribid, ordering, geometry, parameters):
     func_name = 'scifunc_block_m'
 

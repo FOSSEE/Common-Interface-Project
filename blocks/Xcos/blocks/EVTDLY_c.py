@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def EVTDLY_c(outroot, attribid, ordering, geometry, parameters):
     func_name = 'EVTDLY_c'
 

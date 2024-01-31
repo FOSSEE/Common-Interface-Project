@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def CONSTRAINT_c(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CONSTRAINT_c'
 

@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def ISELECT_m(outroot, attribid, ordering, geometry, parameters):
     func_name = 'ISELECT_m'
 

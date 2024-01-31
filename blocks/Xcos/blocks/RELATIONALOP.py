@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def RELATIONALOP(outroot, attribid, ordering, geometry, parameters):
     func_name = 'RELATIONALOP'
 

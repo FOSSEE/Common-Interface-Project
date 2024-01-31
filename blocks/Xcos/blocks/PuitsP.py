@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def PuitsP(outroot, attribid, ordering, geometry, parameters):
     func_name = 'PuitsP'
 

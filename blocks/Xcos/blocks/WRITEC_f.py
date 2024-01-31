@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def WRITEC_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'WRITEC_f'
 

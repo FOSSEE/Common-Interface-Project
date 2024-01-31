@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def GAIN_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'GAIN_f'
 

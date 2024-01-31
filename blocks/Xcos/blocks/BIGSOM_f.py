@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def BIGSOM_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'BIGSOM_f'
 

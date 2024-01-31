@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def SINBLK_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'SINBLK_f'
     parameters = [' ']

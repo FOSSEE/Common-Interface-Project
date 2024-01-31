@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def PULSE_SC(outroot, attribid, ordering, geometry, parameters):
     func_name = 'PULSE_SC'
 

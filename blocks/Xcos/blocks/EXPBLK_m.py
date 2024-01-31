@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def EXPBLK_m(outroot, attribid, ordering, geometry, parameters):
     func_name = 'EXPBLK_m'
 

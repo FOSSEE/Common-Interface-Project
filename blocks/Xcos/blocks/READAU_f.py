@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def READAU_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'READAU_f'
 

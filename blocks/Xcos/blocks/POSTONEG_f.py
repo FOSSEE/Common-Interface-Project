@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def POSTONEG_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'POSTONEG_f'
 

@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def TIME_DELAY(outroot, attribid, ordering, geometry, parameters):
     func_name = 'TIME_DELAY'
 

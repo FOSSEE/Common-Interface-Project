@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def MBLOCK(outroot, attribid, ordering, geometry, parameters):
     func_name = 'MBLOCK'
 

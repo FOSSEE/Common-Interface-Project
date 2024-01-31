@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def LOOKUP_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'LOOKUP_f'
     para = parameters[0].split(' ')

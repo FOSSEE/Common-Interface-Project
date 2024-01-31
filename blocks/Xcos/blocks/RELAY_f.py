@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def RELAY_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'RELAY_f'
 

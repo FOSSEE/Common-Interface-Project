@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def CMSCOPE(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CMSCOPE'
 

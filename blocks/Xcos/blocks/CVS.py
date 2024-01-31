@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def CVS(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CVS'
 

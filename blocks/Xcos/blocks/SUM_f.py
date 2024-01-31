@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def SUM_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'SUM_f'
 

@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def TOWS_c(outroot, attribid, ordering, geometry, parameters):
     func_name = 'TOWS_c'
 

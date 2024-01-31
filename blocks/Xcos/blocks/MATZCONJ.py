@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def MATZCONJ(outroot, attribid, ordering, geometry, parameters):
     func_name = 'MATZCONJ'
 

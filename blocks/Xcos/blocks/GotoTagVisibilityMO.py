@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def GotoTagVisibilityMO(outroot, attribid, ordering, geometry, parameters):
     func_name = 'GotoTagVisibilityMO'
 

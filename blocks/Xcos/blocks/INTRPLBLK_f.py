@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def INTRPLBLK_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'INTRPLBLK_f'
 

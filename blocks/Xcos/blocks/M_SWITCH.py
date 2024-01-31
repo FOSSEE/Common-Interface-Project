@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def M_SWITCH(outroot, attribid, ordering, geometry, parameters):
     func_name = 'M_SWITCH'
 

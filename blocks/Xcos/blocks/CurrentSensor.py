@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def CurrentSensor(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CurrentSensor'
 

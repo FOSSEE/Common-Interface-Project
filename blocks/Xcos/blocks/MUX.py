@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def MUX(outroot, attribid, ordering, geometry, parameters):
     func_name = 'MUX'
 

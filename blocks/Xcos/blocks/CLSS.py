@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def CLSS(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CLSS'
 

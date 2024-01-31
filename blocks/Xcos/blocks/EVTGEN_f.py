@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def EVTGEN_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'EVTGEN_f'
 

@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def GENERAL_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'GENERAL_f'
 

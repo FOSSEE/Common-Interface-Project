@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def EDGE_TRIGGER(outroot, attribid, ordering, geometry, parameters):
     func_name = 'EDGE_TRIGGER'
 

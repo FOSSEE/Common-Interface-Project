@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def CLINDUMMY_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CLINDUMMY_f'
 

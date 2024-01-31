@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def INTEGRAL_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'INTEGRAL_f'
 

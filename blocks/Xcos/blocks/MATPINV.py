@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def MATPINV(outroot, attribid, ordering, geometry, parameters):
     func_name = 'MATPINV'
 

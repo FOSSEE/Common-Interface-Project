@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def SWITCH2_m(outroot, attribid, ordering, geometry, parameters):
     func_name = 'SWITCH2_m'
 

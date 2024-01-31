@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def SIGNUM(outroot, attribid, ordering, geometry, parameters):
     func_name = 'SIGNUM'
 

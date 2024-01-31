@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def DIFF_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'DIFF_f'
 

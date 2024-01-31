@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def ABS_VALUE(outroot, attribid, ordering, geometry, parameters):
     func_name = 'ABS_VALUE'
 

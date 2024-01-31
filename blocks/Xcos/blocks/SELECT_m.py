@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def SELECT_m(outroot, attribid, ordering, geometry, parameters):
     func_name = 'SELECT_m'
 

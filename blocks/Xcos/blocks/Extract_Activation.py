@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def Extract_Activation(outroot, attribid, ordering, geometry, parameters):
     func_name = 'Extract_Activation'
 

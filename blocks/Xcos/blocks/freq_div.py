@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def freq_div(outroot, attribid, ordering, geometry, parameters):
     func_name = 'freq_div'
 

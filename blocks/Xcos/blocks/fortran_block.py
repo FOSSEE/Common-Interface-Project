@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def fortran_block(outroot, attribid, ordering, geometry, parameters):
     func_name = 'fortran_block'
 

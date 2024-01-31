@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def Resistor(outroot, attribid, ordering, geometry, parameters):
     func_name = 'Resistor'
 

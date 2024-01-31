@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def VARIABLE_DELAY(outroot, attribid, ordering, geometry, parameters):
     func_name = 'VARIABLE_DELAY'
 

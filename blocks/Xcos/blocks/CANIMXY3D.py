@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def CANIMXY3D(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CANIMXY3D'
 

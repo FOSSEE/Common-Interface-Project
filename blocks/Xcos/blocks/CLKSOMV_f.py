@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def CLKSOMV_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CLKSOMV_f'
 

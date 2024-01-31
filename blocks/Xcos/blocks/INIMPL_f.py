@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def INIMPL_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'INIMPL_f'
 

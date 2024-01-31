@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def AFFICH_m(outroot, attribid, ordering, geometry, parameters):
     func_name = 'AFFICH_m'
 

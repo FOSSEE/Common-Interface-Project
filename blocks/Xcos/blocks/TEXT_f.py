@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def TEXT_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'TEXT_f'
 

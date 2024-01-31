@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def CLKGotoTagVisibility(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CLKGotoTagVisibility'
 

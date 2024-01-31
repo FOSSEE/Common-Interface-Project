@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def GENSIN_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'GENSIN_f'
 

@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def EXTRACT(outroot, attribid, ordering, geometry, parameters):
     func_name = 'EXTRACT'
 

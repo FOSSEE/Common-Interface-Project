@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def INVBLK(outroot, attribid, ordering, geometry, parameters):
     func_name = 'INVBLK'
 

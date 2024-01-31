@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def ExplicitLink(outroot, attribid, sourceVertex, targetVertex):
     func_name = 'ExplicitLink'
 

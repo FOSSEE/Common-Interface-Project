@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def EXPRESSION(outroot, attribid, ordering, geometry, parameters):
     func_name = 'EXPRESSION'
 

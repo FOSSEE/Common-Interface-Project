@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def END_c(outroot, attribid, ordering, geometry, parameters):
     func_name = 'END_c'
 

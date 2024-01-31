@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def SCALAR2VECTOR(outroot, attribid, ordering, geometry, parameters):
     func_name = 'SCALAR2VECTOR'
 

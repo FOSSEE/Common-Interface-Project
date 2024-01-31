@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def CLKINV_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CLKINV_f'
 

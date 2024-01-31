@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def SplitBlock(outroot, attribid, ordering, geometry):
     outnode = addOutNode(outroot, BLOCK_SPLIT,
                          attribid, ordering, 1,

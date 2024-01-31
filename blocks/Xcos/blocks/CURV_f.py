@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def CURV_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CURV_f'
     para = parameters[0].split(' ')

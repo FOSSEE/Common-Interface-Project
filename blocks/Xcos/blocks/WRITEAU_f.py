@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def WRITEAU_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'WRITEAU_f'
 

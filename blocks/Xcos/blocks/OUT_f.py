@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def OUT_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'OUT_f'
 

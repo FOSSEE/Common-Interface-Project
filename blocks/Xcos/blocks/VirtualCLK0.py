@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def VirtualCLK0(outroot, attribid, ordering, geometry, parameters):
     func_name = 'VirtualCLK0'
 

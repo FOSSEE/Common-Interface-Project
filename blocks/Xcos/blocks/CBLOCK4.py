@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def CBLOCK4(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CBLOCK4'
 

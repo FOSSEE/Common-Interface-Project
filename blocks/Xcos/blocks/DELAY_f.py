@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def DELAY_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'DELAY_f'
 

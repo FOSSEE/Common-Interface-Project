@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def MAX_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'MAX_f'
     parameters = [' ']

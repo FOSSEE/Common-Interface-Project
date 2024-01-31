@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def NRMSOM_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'NRMSOM_f'
 

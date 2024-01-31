@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def CommandControlLink(outroot, attribid, sourceVertex, targetVertex):
     func_name = 'CommandControlLink'
 

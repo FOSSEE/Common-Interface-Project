@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def generic_block3(outroot, attribid, ordering, geometry, parameters):
     func_name = 'generic_block3'
 

@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def MATTRAN(outroot, attribid, ordering, geometry, parameters):
     func_name = 'MATTRAN'
 

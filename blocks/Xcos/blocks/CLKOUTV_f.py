@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def CLKOUTV_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CLKOUTV_f'
 

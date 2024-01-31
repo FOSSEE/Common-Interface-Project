@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def STEP_FUNCTION(outroot, attribid, ordering, geometry, parameters):
     func_name = 'STEP_FUNCTION'
 

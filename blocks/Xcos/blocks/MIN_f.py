@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def MIN_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'MIN_f'
     parameters = ['-1']

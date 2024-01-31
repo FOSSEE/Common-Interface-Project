@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def COSBLK_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'COSBLK_f'
 

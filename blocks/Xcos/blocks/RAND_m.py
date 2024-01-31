@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def RAND_m(outroot, attribid, ordering, geometry, parameters):
     func_name = 'RAND_m'
 

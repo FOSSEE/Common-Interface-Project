@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def GENSQR_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'GENSQR_f'
 

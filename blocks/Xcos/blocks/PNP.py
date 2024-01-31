@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def PNP(outroot, attribid, ordering, geometry, parameters):
     func_name = 'PNP'
 

@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def MATMUL(outroot, attribid, ordering, geometry, parameters):
     func_name = 'MATMUL'
 

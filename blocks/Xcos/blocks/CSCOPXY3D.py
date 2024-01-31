@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def CSCOPXY3D(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CSCOPXY3D'
 

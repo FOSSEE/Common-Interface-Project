@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def Inductor(outroot, attribid, ordering, geometry, parameters):
     func_name = 'Inductor'
 

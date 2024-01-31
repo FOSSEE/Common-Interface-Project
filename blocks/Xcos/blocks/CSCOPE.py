@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def CSCOPE(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CSCOPE'
 

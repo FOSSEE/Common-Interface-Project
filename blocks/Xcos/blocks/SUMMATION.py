@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def SUMMATION(outroot, attribid, ordering, geometry, parameters):
     func_name = 'SUMMATION'
 

@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def SOM_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'SOM_f'
     parameters = ['1', '[1;1;1]']

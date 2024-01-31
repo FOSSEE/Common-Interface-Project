@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def RFILE_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'RFILE_f'
 

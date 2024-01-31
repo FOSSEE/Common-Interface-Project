@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def GAINBLK_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'GAINBLK_f'
 

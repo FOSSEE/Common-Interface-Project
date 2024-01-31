@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def ImplicitInputPort(outroot, attribid, parentattribid, ordering, geometry,
                       addDataLines=False, value='', forSplitBlock=False):
     func_name = 'ImplicitInputPort'

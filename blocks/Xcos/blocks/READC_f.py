@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def READC_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'READC_f'
 

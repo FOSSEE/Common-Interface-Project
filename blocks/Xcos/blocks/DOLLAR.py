@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def DOLLAR(outroot, attribid, ordering, geometry, parameters):
     func_name = 'DOLLAR'
 

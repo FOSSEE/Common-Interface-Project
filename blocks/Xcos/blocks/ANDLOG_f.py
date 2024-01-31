@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def ANDLOG_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'ANDLOG_f'
 

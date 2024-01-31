@@ -1,3 +1,5 @@
+from common.AAAAAA import *
+
 def LOGBLK_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'LOGBLK_f'
 
