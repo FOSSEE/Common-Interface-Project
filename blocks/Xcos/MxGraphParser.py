@@ -145,10 +145,14 @@ for root in model:
                 IDLIST[attribid] = style
                 globals()[style](outroot, attribid, ParentComponent, ordering, geometry)
             elif 'edge' in attrib:
+                
                 sourceVertex = attrib['sourceVertex']
                 targetVertex = attrib['targetVertex']
                 sourceType = IDLIST[sourceVertex]
+                # print(IDLIST)
                 targetType = IDLIST[targetVertex]
+                # targetType = IDLIST.get(targetVertex, None)
+
 
                 # switch vertices if required
                 if sourceType in ['ExplicitInputPort', 'ImplicitInputPort', 'ControlPort'] and targetType in ['ExplicitOutputPort', 'ExplicitLink', 'ImplicitOutputPort', 'ImplicitLink', 'CommandPort', 'CommandControlLink']:
@@ -160,16 +164,17 @@ for root in model:
 
                 style = None
                 addSplit = False
-                if sourceType in ['ExplicitInputPort', 'ExplicitOutputPort', 'ImplicitInputPort', 'ImplicitOutputPort', 'CommandPort', 'ControlPort'] and targetType == sourceType:
+                if sourceType in ['ExplicitInputPort', 'ExplicitOutputPort', 'CommandPort', 'ControlPort'] and targetType == sourceType:
                     print('cannot connect two ports of', sourceType, 'and', targetType)
                 elif sourceType in ['ExplicitOutputPort'] and targetType in ['ExplicitInputPort']:
                     style = 'ExplicitLink'
                 elif sourceType in ['ExplicitOutputPort', 'ExplicitLink'] and targetType in ['ExplicitInputPort', 'ExplicitLink']:
                     addSplit = True
-                elif sourceType in ['ImplicitOutputPort'] and targetType in ['ImplicitInputPort']:
+                elif sourceType in ['ImplicitOutputPort', 'ImplicitInputPort'] and targetType in ['ImplicitInputPort', 'ImplicitOutputPort']:
                     style = 'ImplicitLink'
-                elif sourceType in ['ImplicitOutputPort', 'ImplicitLink'] and targetType in ['ImplicitInputPort', 'ImplicitLink']:
+                elif sourceType in ['ImplicitOutputPort', 'ImplicitLink', 'ImplicitInputPort'] and targetType in ['ImplicitInputPort', 'ImplicitLink', 'ImplicitOutputPort']:
                     addSplit = True
+                    style= 'ImplicitLink'
                 elif sourceType in ['CommandPort'] and targetType in ['ControlPort']:
                     style = 'CommandControlLink'
                 elif sourceType in ['CommandPort', 'CommandControlLink'] and targetType in ['ControlPort', 'CommandControlLink']:
@@ -178,6 +183,7 @@ for root in model:
                     print(attribid, 'Unknown combination of', sourceType, 'and', targetType)
                     continue
 
+                # print(attribid,style)
                 if style is not None:
                     edgeDict[attribid] = (style, sourceVertex, targetVertex, sourceType, targetType)
                     edgeDict2[attribid] = (style, sourceVertex, targetVertex, sourceType, targetType)
@@ -228,7 +234,8 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, geometry) in 
         nextattribid += 1
         linkid = nextAttribForSplit
         nextAttribForSplit += 1
-        (style2, sourceVertex2, targetVertex2, sourceType2, targetType2) = edgeDict2[sourceVertex]
+        # (style2, sourceVertex2, targetVertex2, sourceType2, targetType2) = edgeDict2[sourceVertex]
+        (style2, sourceVertex2, targetVertex2, sourceType2, targetType2) = edgeDict2.get(sourceVertex, (None, None, None, None, None))
     elif sourceType == 'ControlPort':
         geometry = {}
         geometry['width'] = 8
@@ -259,7 +266,8 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, geometry) in 
         nextattribid += 1
         linkid = nextAttribForSplit
         nextAttribForSplit += 1
-        (style2, sourceVertex2, targetVertex2, sourceType2, targetType2) = edgeDict2[targetVertex]
+        # (style2, sourceVertex2, targetVertex2, sourceType2, targetType2) = edgeDict2[targetVertex]
+        (style2, sourceVertex2, targetVertex2, sourceType2, targetType2) = edgeDict2.get(targetVertex, (None, None, None, None, None))
         geometry = {}
         geometry['width'] = 8
         geometry['height'] = 8
