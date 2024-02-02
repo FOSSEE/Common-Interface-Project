@@ -32,6 +32,19 @@ BLOCKTYPE_L = 'l'
 BLOCKTYPE_X = 'x'
 BLOCKTYPE_Z = 'z'
 
+TYPE_INTEGER = 'ScilabInteger'
+CLASS_TLIST = 'ScilabTList'
+GEOMETRY = 'mxGeometry'
+AS_REAL_PARAM = 'realParameters'
+AS_INT_PARAM = 'integerParameters'
+AS_NBZERO = 'nbZerosCrossing'
+AS_NMODE = 'nmode'
+AS_STATE = 'state'
+AS_DSTATE = 'dState'
+AS_OBJ_PARAM = 'objectsParameters'
+AS_ODSTATE = 'oDState'
+AS_EQUATIONS = 'equations'
+
 
 def addNode(node, subNodeType, **kwargs):
     subNode = ET.SubElement(node, subNodeType)
@@ -39,6 +52,60 @@ def addNode(node, subNodeType, **kwargs):
         if value is not None:
             subNode.set(key, str(value))
     return subNode
+
+
+def addObjNode(node, subNodeType, scilabClass, type, parameters):
+    subNode = addDNode(node, subNodeType,
+                       **{'as': type}, scilabClass=scilabClass)
+    return subNode
+
+
+def addPrecisionNode(node, subNodeType, type, height, parameters):
+    width = 1 if height > 0 else 0
+    subNode = addAsDataNode(node,
+                            subNodeType, type, height, width,
+                            parameters, intPrecision='sci_int32')
+    return subNode
+
+
+def addTypeNode(node, subNodeType, type, height, parameters):
+    width = 1 if height > 0 else 0
+    subNode = addAsDataNode(node, subNodeType, type, height, width, parameters)
+    return subNode
+
+
+# equations node start
+def addArrayNode(node, scilabClass, **kwargs):
+    kwargs['scilabClass'] = scilabClass
+    return addDNode(node, 'Array', **kwargs)
+
+
+def addScilabStringNode(node, width, parameters):
+    scilabStringNode = addDataNode(node, 'ScilabString', height=1, width=width)
+    for i, param in enumerate(parameters):
+        addDataData(scilabStringNode, param)
+
+
+def addScilabDoubleNode(node, realParts, width):
+    scilabDoubleNode = addDataNode(node, 'ScilabDouble', height=1, width=width)
+    for i, realPart in enumerate(realParts):
+        addDData(scilabDoubleNode, realPart, line=0, column=i)
+
+
+def addDData(parent, realPart, line=None, column=None):
+    data_attributes = {'realPart': str(realPart)}
+    if line is not None:
+        data_attributes['line'] = str(line)
+    if column is not None:
+        data_attributes['column'] = str(column)
+    ET.SubElement(parent, 'data', **data_attributes)
+# equations node ends
+
+
+def addgeometryNode(node, subNodeType, height, width, x, y):
+    geometryNode = addDtNode(node, subNodeType, **{'as': 'geometry'},
+                             height=height, width=width, x=x, y=y)
+    return geometryNode
 
 
 def addOutNode(node, subNodeType,
@@ -52,7 +119,6 @@ def addOutNode(node, subNodeType,
                  'simulationFunctionType': simulation_func_type,
                  'style': style, 'blockType': blockType}
     newkwargs.update(kwargs)
-
     return addNode(node, subNodeType, **newkwargs)
 
 
@@ -79,6 +145,26 @@ def addDataNode(node, subNodeType, **kwargs):
     DATA_WIDTH = kwargs['width']
     DATA_LINE = 0
     DATA_COLUMN = 0
+    subNode = addNode(node, subNodeType, **kwargs)
+    return subNode
+
+
+def addAsDataNode(node, subNodeType, a, height, width, parameters, **kwargs):
+    newkwargs = {'as': a, 'height': height, 'width': width}
+    newkwargs.update(kwargs)
+    subNode = addDataNode(node, subNodeType, **newkwargs)
+
+    for param in parameters:
+        addDataData(subNode, param)
+
+
+def addDNode(node, subNodeType, **kwargs):
+    subNode = addNode(node, subNodeType, **kwargs)
+    return subNode
+
+
+# for x & y in mxgeometry
+def addDtNode(node, subNodeType, **kwargs):
     subNode = addNode(node, subNodeType, **kwargs)
     return subNode
 
@@ -227,3 +313,9 @@ def get_value_min(value):
 def get_number_power(value):
     return re.sub(r'(\^|\*\*) *([a-zA-Z0-9]+|\([^()]*\)) *', r'<SUP>\2</SUP>',
                   value)
+
+
+def format_real_number(parameter):
+    real_number = float(parameter.replace('*10^', 'e').replace('10^', '1e'))
+    formatted_number = "{:.1E}".format(real_number)
+    return [formatted_number]
