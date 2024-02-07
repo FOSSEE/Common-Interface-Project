@@ -34,8 +34,10 @@ outdiagram = ET.Element('XcosDiagram')
 outdiagram.set('background', '-1')
 outdiagram.set('finalIntegrationTime', '30.0')   # TODO: From POST
 outdiagram.set('title', title)
-dt = datetime.datetime(2016, 4, 6, 20, 40)
-comment = ET.Comment(dt.strftime('Xcos - 1.0 - scilab-5.5.2 - %Y%m%d %H%M'))
+# dt = datetime.datetime(2016, 4, 6, 20, 40)
+# comment = ET.Comment(dt.strftime('Xcos - 1.0 - scilab-5.5.2 - %Y%m%d %H%M'))
+dt = datetime.datetime(2021, 7, 15, 15, 31)
+comment = ET.Comment(dt.strftime('Xcos - 2.0 - scilab-6.1.1 - %Y%m%d %H%M'))
 outdiagram.append(comment)
 outmodel = ET.SubElement(outdiagram, 'mxGraphModel')
 outmodel.set('as', 'model')
@@ -188,6 +190,7 @@ for root in model:
                     edgeDict[attribid] = (style, sourceVertex, targetVertex, sourceType, targetType)
                     edgeDict2[attribid] = (style, sourceVertex, targetVertex, sourceType, targetType)
                     IDLIST[attribid] = style
+                    
                 if addSplit:
                     mxGeometry = cell.find('mxGeometry')
                     if mxGeometry is not None:
@@ -198,6 +201,7 @@ for root in model:
                             geometry['height'] = mxPoint.attrib.get('height', '7')
                             geometry['x'] = mxPoint.attrib.get('x', '0')
                             geometry['y'] = mxPoint.attrib.get('y', '0')
+                            
                             splitList.append((attribid, sourceVertex, targetVertex, sourceType, targetType, geometry))
                             try:
                                 del edgeDict[sourceVertex]

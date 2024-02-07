@@ -27,7 +27,7 @@ $(TARGET) : $(SRCFILES)
 	@for f in $^; do \
 	    echo "# BEGIN $$f"; \
 	    echo; \
-	    grep -v "from common.AAAAAA" "$$f"; \
+	    grep -v "from .* import" "$$f"; \
 	    echo; \
 	    echo "# END $$f"; \
 	done > $@

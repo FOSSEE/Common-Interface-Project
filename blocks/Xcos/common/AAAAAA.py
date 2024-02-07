@@ -5,9 +5,7 @@ import math
 TYPE_ARRAY = 'Array'
 TYPE_DOUBLE = 'ScilabDouble'
 TYPE_STRING = 'ScilabString'
-
 CLASS_LIST = 'ScilabList'
-
 BLOCK_AFFICHE = 'AfficheBlock'
 BLOCK_BASIC = 'BasicBlock'
 BLOCK_BIGSOM = 'BigSom'
@@ -44,6 +42,16 @@ AS_DSTATE = 'dState'
 AS_OBJ_PARAM = 'objectsParameters'
 AS_ODSTATE = 'oDState'
 AS_EQUATIONS = 'equations'
+TYPE_SUPER = 'SuperBlockDiagram'
+TYPE_ADD = 'add'
+TYPE_MODEL = 'mxGraphModel'
+AS_MODEL = 'model'
+TYPE_ROOT = 'root'
+TYPE_MXCELL = 'mxCell'
+TYPE_EVENTOUT = 'EventOutBlock'
+TYPE_CNTRL = 'ControlPort'
+TYPE_CMD = 'CommandPort'
+TYPE_LINK = 'CommandControlLink'
 
 
 def addNode(node, subNodeType, **kwargs):
@@ -238,6 +246,137 @@ def getParametersFromExprsNode(node, subNodeType):
             print(tag, ': Not found')
 
     return parameters
+
+
+# Super Block Diagram
+def addSuperNode(node, subNodeType,
+                 a, background, gridEnabled,
+                 title, **kwargs):
+    newkwargs = {'as': a, 'background': background,
+                 'gridEnabled': gridEnabled,
+                 'title': title
+                 }
+    newkwargs.update(kwargs)
+    return addNode(node, subNodeType, **newkwargs)
+
+
+def addSuperBlkNode(node, subNodeType,
+                    a, scilabClass,
+                    **kwargs):
+    newkwargs = {'as': a, 'scilabClass': scilabClass
+                 }
+    newkwargs.update(kwargs)
+    return addNode(node, subNodeType, **newkwargs)
+
+
+def superAddNode(node, subNodeType,
+                 value,
+                 **kwargs):
+    newkwargs = {'value': value
+                 }
+    newkwargs.update(kwargs)
+    return addNode(node, subNodeType, **newkwargs)
+
+
+def addmxGraphModelNode(node, subNodeType,
+                        a,
+                        **kwargs):
+    newkwargs = {'as': a
+                 }
+    newkwargs.update(kwargs)
+    return addNode(node, subNodeType, **newkwargs)
+
+
+def addmxCellNode(node, subNodeType,
+                  id, a,
+                  **kwargs):
+    newkwargs = {'id': id, 'as': a
+                 }
+    newkwargs.update(kwargs)
+    return addNode(node, subNodeType, **newkwargs)
+
+
+def addEventOutBlock(node, subNodeType,
+                     id, parent,
+                     interfaceFunctionName,
+                     simulationFunctionName,
+                     simulationFunctionType,
+                     style, blockType,
+                     dependsOnU, dependsOnT,
+                     **kwargs):
+    newkwargs = {'id': id, 'parent': parent,
+                 'interfaceFunctionName': interfaceFunctionName,
+                 'simulationFunctionName':
+                 simulationFunctionName,
+                 'simulationFunctionType':
+                 simulationFunctionType,
+                 'style': style,
+                 'blockType': blockType,
+                 'dependsOnU': dependsOnU,
+                 'dependsOnT': dependsOnT}
+    newkwargs.update(kwargs)
+    return addNode(node, subNodeType, **newkwargs)
+
+
+def addPort(node, subNodeType,
+            id, parent, ordering,
+            dataType, dataColumns, dataLines, initialState,
+            style, value,
+            **kwargs):
+    newkwargs = {'id': id, 'parent': parent,
+                 'ordering': ordering,
+                 'dataType': dataType,
+                 'dataColumns': dataColumns,
+                 'dataLines': dataLines,
+                 'initialState': initialState,
+                 'style': style, 'value': value}
+    newkwargs.update(kwargs)
+    return addNode(node, subNodeType, **newkwargs)
+
+
+def addLink(node, subNodeType,
+            id, parent,
+            source, target,
+            style, value,
+            **kwargs):
+    newkwargs = {'id': id, 'parent': parent,
+                 'source': source,
+                 'target': target,
+                 'style': style, 'value': value}
+    newkwargs.update(kwargs)
+    return addNode(node, subNodeType, **newkwargs)
+
+
+def addGeoNode(node, subNodeType,
+               a,
+               **kwargs):
+    newkwargs = {'as': a}
+    newkwargs.update(kwargs)
+    return addNode(node, subNodeType, **newkwargs)
+
+
+def addmxPointNode(node, subNodeType,
+                   a, x, y,
+                   **kwargs):
+    newkwargs = {'as': a, 'x': x, 'y': y}
+    newkwargs.update(kwargs)
+    return addNode(node, subNodeType, **newkwargs)
+
+
+def addPointNode(node, subNodeType,
+                 x, y,
+                 **kwargs):
+    newkwargs = {'x': x, 'y': y}
+    newkwargs.update(kwargs)
+    return addNode(node, subNodeType, **newkwargs)
+
+
+def addArray(node, subNodeType,
+             a,
+             **kwargs):
+    newkwargs = {'as': a}
+    newkwargs.update(kwargs)
+    return addNode(node, subNodeType, **newkwargs)
 
 # Convert number into scientific notation
 # Used by blocks Capacitor,ConstantVoltage,Inductor and Resistor
