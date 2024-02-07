@@ -16,12 +16,13 @@ def ImplicitOutputPort(outroot, attribid, parentattribid, ordering, geometry,
                           style=func_name, value=value)
     else:
         outnode = addNode(outroot, func_name, dataColumns=1,
-                          dataType='REAL_MATRIX', **{'id': attribid},
+                          initialState="-1.0", dataType='REAL_MATRIX',
+                          **{'id': attribid},
                           ordering=ordering, parent=parentattribid,
                           style=func_name, value=value)
 
-    addNode(outnode, 'mxGeometry', **{'as': 'geometry'},
-            height=geometry['height'], width=geometry['width'],
-            x=geometry['x'], y=geometry['y'])
+    # addNode(outnode, 'mxGeometry', **{'as': 'geometry'},
+    #         height=geometry['height'], width=geometry['width'],
+    #         x=geometry['x'], y=geometry['y'])
 
     return outnode

@@ -1,19 +1,19 @@
 from common.AAAAAA import *
 
-def EVTDLY_c(outroot, attribid, ordering, geometry, parameters):
-    func_name = 'EVTDLY_c'
+def CLKOUT_f(outroot, attribid, ordering, geometry, parameters):
+    func_name = 'CLKOUT_f'
 
-    outnode = addOutNode(outroot, BLOCK_BASIC,
+    outnode = addOutNode(outroot, BLOCK_EVENT_OUT,
                          attribid, ordering, 1,
-                         func_name, 'evtdly4', 'C_OR_FORTRAN',
+                         func_name, 'output', 'DEFAULT',
                          func_name, BLOCKTYPE_D)
 
-    addExprsNode(outnode, TYPE_STRING, 2, parameters)
+    addExprsNode(outnode, TYPE_STRING, 1, parameters)
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0,
                 [])
-    addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 0, [])
-    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
     array = ['0']
+    addPrecisionNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 1, array)
+    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NBZERO, 1, array)
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NMODE, 1, array)
     addTypeNode(outnode, TYPE_DOUBLE, AS_STATE, 0, [])
@@ -26,7 +26,7 @@ def EVTDLY_c(outroot, attribid, ordering, geometry, parameters):
     return outnode
 
 
-def get_from_EVTDLY_c(cell):
+def get_from_CLKOUT_f(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
     display_parameter = parameters[0]
