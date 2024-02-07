@@ -10,7 +10,7 @@ from tempfile import mkstemp
 from django.conf import settings
 
 logger = get_task_logger(__name__)
-MxGraphParser = os.path.join(settings.BASE_DIR, '../Xcos/MxGraphParser.py')
+MxGraphParser = os.path.join(settings.BASE_DIR, 'Xcos/MxGraphParser.py')
 SCILAB_DIR = os.path.abspath(settings.SCILAB_DIR)
 SCILAB = os.path.join(SCILAB_DIR, 'bin', 'scilab-adv-cli')
 # handle scilab startup
