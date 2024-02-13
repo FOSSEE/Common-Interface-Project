@@ -52,6 +52,7 @@ TYPE_EVENTOUT = 'EventOutBlock'
 TYPE_CNTRL = 'ControlPort'
 TYPE_CMD = 'CommandPort'
 TYPE_LINK = 'CommandControlLink'
+AS_VALUE = 'OpAmp'
 
 
 def addNode(node, subNodeType, **kwargs):
@@ -106,6 +107,7 @@ def addDData(parent, realPart, line=None, column=None):
         data_attributes['line'] = str(line)
     if column is not None:
         data_attributes['column'] = str(column)
+
     ET.SubElement(parent, 'data', **data_attributes)
 # equations node ends
 
@@ -164,6 +166,7 @@ def addAsDataNode(node, subNodeType, a, height, width, parameters, **kwargs):
 
     for param in parameters:
         addDataData(subNode, param)
+    return subNode
 
 
 def addDNode(node, subNodeType, **kwargs):
@@ -378,6 +381,55 @@ def addArray(node, subNodeType,
     newkwargs.update(kwargs)
     return addNode(node, subNodeType, **newkwargs)
 
+
+# OpAmp
+def addSciStringNode(node, height, parameters):
+    scilabStringNode = addDataNode(node, 'ScilabString', height=height, width=1)
+    for i in range(height):
+        addDataData(scilabStringNode, parameters[i])
+
+
+def addScilabDBNode(node, height):
+    addDataNode(node, 'ScilabDouble', height=height, width=0)
+
+
+# Sine Voltage
+def addTNode(node, subNodeType, type, width, parameters):
+    height = 1 if width > 0 else 0
+    subNode = addAsDataNode(node, subNodeType, type, height, width, parameters)
+    return subNode
+
+
+def addSciDBNode(node, subNodeType, type, width, realParts):
+    height = 1 if width > 0 else 0
+    subNode = addAsDataNode(node, subNodeType, type, height, width, realParts)
+    return subNode
+
+
+# CSCope
+def addPrecNode(node, subNodeType, type, width, parameters):
+    height = 1 if width > 0 else 0
+    subNode = addAsDataNode(node,
+                            subNodeType, type, height, width,
+                            parameters, intPrecision='sci_int32')
+    return subNode
+
+
+def strarray(parameter):
+    param = list(map(str, parameter[0].split(" ")))
+    params = parameter[3][1:8].split(";")
+    parameters = param + params + parameter
+    parameters.pop(10)
+    parameters.pop(12)
+    parameters = parameters[0:15]
+    return parameters
+# def addExprsNode(node, subNodeType, height, parameters):
+#     width = 1 if height > 0 else 0
+#     subNode = addDataNode(node, subNodeType, **{'as': 'exprs'},
+#                           height=height, width=width)
+#     for i in range(height):
+#         addDataData(subNode, parameters[i])
+#     return subNode
 # Convert number into scientific notation
 # Used by blocks Capacitor,ConstantVoltage,Inductor and Resistor
 
