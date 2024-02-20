@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import mxGraphFactory from 'mxgraph'
 import { ListItem, ListItemText, Button, TextField } from '@material-ui/core'
-import Loader from 'react-loader-spinner'
+import { TailSpin } from 'react-loader-spinner'
 
 import { setCompProperties } from '../../redux/actions/index'
 import { graph } from './Helper/ComponentDrag'
@@ -208,8 +208,7 @@ export default function ComponentProperties () {
   return (
     <div style={isOpen ? {} : { display: 'none' }}>
 
-      <Loader
-        type='TailSpin'
+      <TailSpin
         color='#F44336'
         height={100}
         width={100}

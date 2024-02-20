@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import api from '../../utils/Api'
 import { Collapse, Hidden, IconButton, InputAdornment, List, ListItem, ListItemIcon, TextField, Tooltip } from '@material-ui/core'
-import Loader from 'react-loader-spinner'
+import { TailSpin } from 'react-loader-spinner'
 import SearchIcon from '@material-ui/icons/Search'
 
 import { makeStyles } from '@material-ui/core/styles'
@@ -166,8 +166,7 @@ export default function ComponentSidebar ({ compRef }) {
 
             <ListItem>
 
-              <Loader
-                type='TailSpin'
+              <TailSpin
                 color='#F44336'
                 height={100}
                 width={100}
