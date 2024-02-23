@@ -224,10 +224,11 @@ export default function ComponentProperties () {
           if (keyName.match(/^p[0-9]*_value$/)) {
             const rootKeyName = keyName.substr(0, 4)
             const typeId = rootKeyName + '_type'
+            const helpId = rootKeyName + '_help'
             if (compProperties !== undefined && compProperties[rootKeyName] !== null && compProperties[typeId] !== null) {
               return (
                 <ListItem key={i}>
-                  <TextField id={keyName} label={compProperties[rootKeyName]} value={val[keyName] || ''} size='small' variant='outlined' onChange={getInputValues} />
+                  <TextField id={keyName} label={compProperties[rootKeyName]} value={val[keyName] || ''} helperText={compProperties[helpId]} size='small' variant='outlined' onChange={getInputValues} />
                 </ListItem>
               )
             }
