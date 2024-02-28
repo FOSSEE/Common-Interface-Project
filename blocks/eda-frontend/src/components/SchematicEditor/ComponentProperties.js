@@ -112,6 +112,61 @@ function adjustPorts (newPorts, offsetPorts, newTotalPorts, oldPorts, block, por
   }
 }
 
+const getHelperText = (value) => {
+  switch (value) {
+    case 1:
+      return 'boolean is expected'
+    case 2:
+      return 'integer is expected'
+    case 3:
+      return 'double is expected'
+    case 4:
+      return 'double with scale is expected'
+    case 5:
+      return 'complex is expected'
+    case 6:
+      return 'string is expected'
+    case 7:
+      return 'yesno is expected'
+    case 8:
+      return 'filename is expected'
+    case 9:
+      return 'vector of booleans is expected'
+    case 10:
+      return 'vector of integers is expected'
+    case 11:
+      return 'vector of doubles is expected'
+    case 12:
+      return 'vector of doubles with scale is expected'
+    case 13:
+      return 'vector of complexes is expected'
+    case 14:
+      return 'vector of strings is expected'
+    case 15:
+      return 'vector of yesnoes is expected'
+    case 16:
+      return 'vector of filenames is expected'
+    case 17:
+      return 'array of booleans is expected'
+    case 18:
+      return 'array of integers is expected'
+    case 19:
+      return 'array of doubles is expected'
+    case 20:
+      return 'array of doubles with scale is expected'
+    case 21:
+      return 'array of complexes is expected'
+    case 22:
+      return 'array of strings is expected'
+    case 23:
+      return 'array of yesnoes is expected'
+    case 24:
+      return 'array of filenames is expected'
+    default:
+      return ''
+  }
+}
+
 export default function ComponentProperties () {
   // compProperties that are displayed on the right side bar when user clicks on a component on the grid.
 
@@ -123,8 +178,8 @@ export default function ComponentProperties () {
   const [val, setVal] = useState(parameterValues)
   const displayProperties = useSelector(state => state.componentPropertiesReducer.displayProperties)
   const isLoading = useSelector(state => state.componentPropertiesReducer.isLoading)
-
   const dispatch = useDispatch()
+  const [errorFields, setErrorFields] = useState({})
 
   useEffect(() => {
     setVal(parameterValues)
@@ -191,9 +246,34 @@ export default function ComponentProperties () {
 
   const getInputValues = (evt) => {
     const value = evt.target.value
+    const fieldName = evt.target.id
+    const fieldRoot = fieldName.substr(0, 4)
+    const typeId = fieldRoot + '_type'
+    const fieldType = compProperties && compProperties[typeId]
+    let isValid = true
+    switch (fieldType) {
+      case 1: // boolean
+        // For boolean type, consider 0 as false and 1 as true
+        isValid = value === '0' || value === '1'
+        break
+      case 2: // integer
+        // For integer type, check if the input is a valid number
+        isValid = !isNaN(value) && Number.isInteger(Number(value))
+        break
+      // Add more cases for other types as needed
+      default:
+        // For other types, no specific validation
+        isValid = true
+    }
+    // Update error state for the field
+    setErrorFields(prevState => ({
+      ...prevState,
+      [fieldName]: !isValid
+    }))
+    // Update the value in the state
     setVal({
       ...val,
-      [evt.target.id]: value
+      [fieldName]: value
     })
   }
 
@@ -225,15 +305,19 @@ export default function ComponentProperties () {
             const rootKeyName = keyName.substr(0, 4)
             const typeId = rootKeyName + '_type'
             const helpId = rootKeyName + '_help'
-            if (compProperties !== undefined && compProperties[rootKeyName] !== null && compProperties[typeId] !== null) {
+            const compType = compProperties && compProperties[typeId]
+            const compHelp = compProperties && compProperties[helpId]
+            const helperText = errorFields[keyName]
+              ? getHelperText(compType)
+              : compHelp
+            if (compProperties && compProperties[rootKeyName] !== null && compType !== null && val[keyName] !== null) {
               return (
                 <ListItem key={i}>
-                  <TextField id={keyName} label={compProperties[rootKeyName]} value={val[keyName] || ''} helperText={compProperties[helpId]} size='small' variant='outlined' onChange={getInputValues} />
+                  <TextField id={keyName} label={compProperties[rootKeyName]} value={val[keyName] || ''} helperText={helperText} error={errorFields[keyName]} size='small' variant='outlined' onChange={getInputValues} />
                 </ListItem>
               )
             }
           }
-
           return ''
         })
       }
