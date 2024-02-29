@@ -139,8 +139,8 @@ const errorText = {
   24: 'array of filenames is expected',
 }
 
-const getErrorText = (value) => {
-  return errorText[value] || ''
+const getErrorText = (compType) => {
+  return errorText[compType] || ''
 }
 
 export default function ComponentProperties () {
@@ -291,7 +291,6 @@ export default function ComponentProperties () {
             const helperText = error
               ? getErrorText(compType)
               : compHelp
-            console.log(error, errorFields[keyName]);
             if (compProperties && compProperties[rootKeyName] !== null && compType !== null) {
               return (
                 <ListItem key={i}>
