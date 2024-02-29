@@ -260,6 +260,10 @@ export default function ComponentProperties () {
         // For integer type, check if the input is a valid number
         isValid = !isNaN(value) && Number.isInteger(Number(value))
         break
+        case 3: // double
+        // For double type, check if the input is a valid number
+        isValid = !isNaN(value) && !Number.isNaN(parseFloat(value))
+        break
       // Add more cases for other types as needed
       default:
         // For other types, no specific validation
@@ -310,7 +314,7 @@ export default function ComponentProperties () {
             const helperText = errorFields[keyName]
               ? getHelperText(compType)
               : compHelp
-            if (compProperties && compProperties[rootKeyName] !== null && compType !== null && val[keyName] !== null) {
+            if (compProperties && compProperties[rootKeyName] !== null && compType !== null) {
               return (
                 <ListItem key={i}>
                   <TextField id={keyName} label={compProperties[rootKeyName]} value={val[keyName] || ''} helperText={helperText} error={errorFields[keyName]} size='small' variant='outlined' onChange={getInputValues} />
