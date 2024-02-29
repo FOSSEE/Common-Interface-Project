@@ -112,59 +112,35 @@ function adjustPorts (newPorts, offsetPorts, newTotalPorts, oldPorts, block, por
   }
 }
 
-const getHelperText = (value) => {
-  switch (value) {
-    case 1:
-      return 'boolean is expected'
-    case 2:
-      return 'integer is expected'
-    case 3:
-      return 'double is expected'
-    case 4:
-      return 'double with scale is expected'
-    case 5:
-      return 'complex is expected'
-    case 6:
-      return 'string is expected'
-    case 7:
-      return 'yesno is expected'
-    case 8:
-      return 'filename is expected'
-    case 9:
-      return 'vector of booleans is expected'
-    case 10:
-      return 'vector of integers is expected'
-    case 11:
-      return 'vector of doubles is expected'
-    case 12:
-      return 'vector of doubles with scale is expected'
-    case 13:
-      return 'vector of complexes is expected'
-    case 14:
-      return 'vector of strings is expected'
-    case 15:
-      return 'vector of yesnoes is expected'
-    case 16:
-      return 'vector of filenames is expected'
-    case 17:
-      return 'array of booleans is expected'
-    case 18:
-      return 'array of integers is expected'
-    case 19:
-      return 'array of doubles is expected'
-    case 20:
-      return 'array of doubles with scale is expected'
-    case 21:
-      return 'array of complexes is expected'
-    case 22:
-      return 'array of strings is expected'
-    case 23:
-      return 'array of yesnoes is expected'
-    case 24:
-      return 'array of filenames is expected'
-    default:
-      return ''
-  }
+const errorText = {
+  1: 'boolean is expected',
+  2: 'integer is expected',
+  3: 'double is expected',
+  4: 'double with scale is expected',
+  5: 'complex is expected',
+  6: 'string is expected',
+  7: 'yesno is expected',
+  8: 'filename is expected',
+  9: 'vector of booleans is expected',
+  10: 'vector of integers is expected',
+  11: 'vector of doubles is expected',
+  12: 'vector of doubles with scale is expected',
+  13: 'vector of complexes is expected',
+  14: 'vector of strings is expected',
+  15: 'vector of yesnoes is expected',
+  16: 'vector of filenames is expected',
+  17: 'array of booleans is expected',
+  18: 'array of integers is expected',
+  19: 'array of doubles is expected',
+  20: 'array of doubles with scale is expected',
+  21: 'array of complexes is expected',
+  22: 'array of strings is expected',
+  23: 'array of yesnoes is expected',
+  24: 'array of filenames is expected',
+}
+
+const getErrorText = (value) => {
+  return errorText[value] || ''
 }
 
 export default function ComponentProperties () {
@@ -270,10 +246,10 @@ export default function ComponentProperties () {
         isValid = true
     }
     // Update error state for the field
-    setErrorFields(prevState => ({
-      ...prevState,
+    setErrorFields({
+      ...errorFields,
       [fieldName]: !isValid
-    }))
+    })
     // Update the value in the state
     setVal({
       ...val,
@@ -311,13 +287,15 @@ export default function ComponentProperties () {
             const helpId = rootKeyName + '_help'
             const compType = compProperties && compProperties[typeId]
             const compHelp = compProperties && compProperties[helpId]
-            const helperText = errorFields[keyName]
-              ? getHelperText(compType)
+            const error = errorFields[keyName]
+            const helperText = error
+              ? getErrorText(compType)
               : compHelp
+            console.log(error, errorFields[keyName]);
             if (compProperties && compProperties[rootKeyName] !== null && compType !== null) {
               return (
                 <ListItem key={i}>
-                  <TextField id={keyName} label={compProperties[rootKeyName]} value={val[keyName] || ''} helperText={helperText} error={errorFields[keyName]} size='small' variant='outlined' onChange={getInputValues} />
+                  <TextField id={keyName} label={compProperties[rootKeyName]} value={val[keyName] || ''} helperText={helperText} error={error} size='small' variant='outlined' onChange={getInputValues} />
                 </ListItem>
               )
             }
