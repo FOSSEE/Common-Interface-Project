@@ -136,7 +136,7 @@ const errorText = {
   21: 'array of complexes is expected',
   22: 'array of strings is expected',
   23: 'array of yesnoes is expected',
-  24: 'array of filenames is expected',
+  24: 'array of filenames is expected'
 }
 
 const getErrorText = (compType) => {
@@ -236,7 +236,7 @@ export default function ComponentProperties () {
         // For integer type, check if the input is a valid number
         isValid = !isNaN(value) && Number.isInteger(Number(value))
         break
-        case 3: // double
+      case 3: // double
         // For double type, check if the input is a valid number
         isValid = !isNaN(value) && !Number.isNaN(parseFloat(value))
         break
