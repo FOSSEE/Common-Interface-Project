@@ -5,10 +5,13 @@ import io
 from rest_framework.parsers import JSONParser
 from rest_framework.viewsets import ReadOnlyModelViewSet
 
-from .models import Category, Block, BlockParameter, BlockPort
+from .models import Category, Block, BlockParameter, BlockPort, \
+    NewBlock, NewBlockParameter, NewBlockPort
 from .serializers import CategorySerializer, BlockSerializer, \
     BlockParameterSerializer, BlockPortSerializer, ErrorSerializer, \
-    SetBlockParameterSerializer
+    SetBlockParameterSerializer, \
+    NewBlockSerializer, NewBlockParameterSerializer, NewBlockPortSerializer, \
+    SetNewBlockParameterSerializer
 
 
 class CategoryFilterSet(FilterSet):
@@ -124,5 +127,97 @@ def set_block_parameter(request):
             return JsonResponse(errorserializer, safe=False)
     else:
         serializer = SetBlockParameterSerializer()
+
+    return JsonResponse(serializer.data)
+
+
+class NewBlockFilterSet(FilterSet):
+    class Meta:
+        model = NewBlock
+        fields = {
+            'id': ['exact'],
+            'name': ['istartswith'],
+            'categories': ['exact'],
+        }
+
+
+class NewBlockViewSet(ReadOnlyModelViewSet):
+    """
+     Listing All Block Details
+    """
+    queryset = NewBlock.objects.all().order_by('name')
+    queryset = NewBlockSerializer.prefetch_category(queryset)
+    queryset = NewBlockSerializer.prefetch_newblockport(queryset)
+    queryset = NewBlockSerializer.prefetch_newblockparameter(queryset)
+    serializer_class = NewBlockSerializer
+    filter_backends = [
+        DjangoFilterBackend
+    ]
+    filterset_class = NewBlockFilterSet
+
+
+class NewBlockParameterFilterSet(FilterSet):
+    class Meta:
+        model = NewBlockParameter
+        fields = {
+            'block': ['exact'],
+            'block__name': ['exact'],
+        }
+
+
+class NewBlockParameterViewSet(ReadOnlyModelViewSet):
+    """
+     Listing All Block Parameter Details
+    """
+    queryset = NewBlockParameter.objects.all()
+    serializer_class = NewBlockParameterSerializer
+    filter_backends = [
+        DjangoFilterBackend
+    ]
+    filterset_class = NewBlockParameterFilterSet
+
+
+class NewBlockPortFilterSet(FilterSet):
+    class Meta:
+        model = NewBlockPort
+        fields = {
+            'block': ['exact'],
+        }
+
+
+class NewBlockPortViewSet(ReadOnlyModelViewSet):
+    """
+     Listing All Block Port Details
+    """
+    queryset = NewBlockPort.objects.all()
+    serializer_class = NewBlockPortSerializer
+    filter_backends = [
+        DjangoFilterBackend
+    ]
+    filterset_class = NewBlockPortFilterSet
+
+
+def set_newblockparameter(request):
+    if request.method == 'POST':
+        stream = io.BytesIO(request.body)
+        data = JSONParser().parse(stream)
+        serializer = SetNewBlockParameterSerializer(data=data)
+        if serializer.is_valid():
+            # process the data to get port
+            try:
+                port = serializer.getnewblockportserializer()
+                return JsonResponse(port.initial_data)
+            except Exception as e:
+                error = 'getnewblockportserializer error: %s' % str(e)
+                errorserializer = ErrorSerializer(data={
+                    'code': 500, 'error': error})
+                return JsonResponse(errorserializer, safe=False)
+        else:
+            error = 'getnewblockportserializer errors: %s' % serializer.errors
+            errorserializer = ErrorSerializer(data={
+                'code': 500, 'error': error})
+            return JsonResponse(errorserializer, safe=False)
+    else:
+        serializer = SetNewBlockParameterSerializer()
 
     return JsonResponse(serializer.data)

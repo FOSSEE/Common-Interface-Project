@@ -1,9 +1,9 @@
 from rest_framework import serializers
 
 from .models import BlockType, Category, ParameterDataType, BlockPrefix, \
-    BlockPrefixParameter, Block, BlockParameter, BlockPort
+    BlockPrefixParameter, Block, BlockParameter, BlockPort, \
+    NewBlock, NewBlockParameter, NewBlockPort
 
-from .models import CommonBlockParameterTemp, BlockTemp
 from .xcosblocks import *
 
 
@@ -468,17 +468,100 @@ class SetBlockPortSerializer(serializers.Serializer):
     ports = serializers.StringRelatedField(many=True)
 
 
-class CommonBlockParameterTemp(serializers.ModelSerializer):
+class NewBlockPortSerializer(serializers.ModelSerializer):
     class Meta:
-        model = CommonBlockParameterTemp
-        fields = [ 'id', 'label', 'type', 'help','value', 'block', 'block_param_id']
+        model = NewBlockPort
+        fields = [
+            'id',
+            'block',
+            'port_order',
+            'port_name',
+            'port_number',
+            'port_x',
+            'port_y',
+            'port_orientation',
+            'port_part',
+            'port_dmg',
+            'port_type',
+        ]
 
-class BlockTemp(serializers.ModelSerializer):
+
+class NewBlockParameterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = NewBlockParameter
+        fields = [
+            'id',
+            'block',
+            'p_order',
+            'p_label',
+            'p_type',
+            'p_help',
+            'p_value_initial'
+        ]
+
+
+class NewBlockSerializer(serializers.ModelSerializer):
     blockprefix = BlockPrefixSerializer()
     main_category = CategorySerializer()
     categories = CategorySerializer(many=True)
-    blockport_set = BlockPortSerializer(many=True)
+    newblockport_set = NewBlockPortSerializer(many=True)
+    newblockparameter_set = NewBlockParameterSerializer(many=True)
+
     class Meta:
-        model = BlockTemp
-        fields = [ 'id','name', 'blockprefix', 'main_category', 'categories', 'block_name', 'initial_display_parameter',
-                  'simulation_function', 'block_image_path', 'block_width', 'block_height']
+        model = NewBlock
+        fields = [
+            'id',
+            'name',
+            'blockprefix',
+            'main_category',
+            'categories',
+            'block_name',
+            'initial_display_parameter',
+            'simulation_function',
+            'block_image_path',
+            'block_width',
+            'block_height',
+            'newblockport_set',
+            'newblockparameter_set',
+        ]
+
+    @staticmethod
+    def prefetch_category(queryset):
+        return queryset.prefetch_related('categories')
+
+    @staticmethod
+    def prefetch_newblockport(queryset):
+        return queryset.prefetch_related('newblockport_set')
+
+    @staticmethod
+    def prefetch_newblockparameter(queryset):
+        return queryset.prefetch_related('newblockparameter_set')
+
+
+class SetNewBlockParameterSerializer(serializers.Serializer):
+    block = serializers.CharField(max_length=100, required=True,
+                                       allow_blank=False, trim_whitespace=True)
+
+    def getnewblockportserializer(self):
+        data = self.data
+        name = data['block']
+
+        (parameters, display_parameter, ports) = \
+            globals()['get_from_' + name](data)
+        simulation_function = ''
+
+        return SetNewBlockPortSerializer(data={
+            'parameters': parameters,
+            'display_parameter': display_parameter,
+            'simulation_function': simulation_function,
+            'ports': ports,
+        })
+
+
+class SetNewBlockPortSerializer(serializers.Serializer):
+    parameters = serializers.StringRelatedField(many=True)
+    display_parameter = serializers.CharField(
+        max_length=100, allow_blank=True, trim_whitespace=True)
+    simulation_function = serializers.CharField(
+        max_length=100, allow_blank=True, trim_whitespace=True)
+    ports = serializers.StringRelatedField(many=True)

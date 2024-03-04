@@ -1,5 +1,4 @@
 from django.db import models
-from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 class BlockType(models.Model):
@@ -491,7 +490,7 @@ class BlockPort(models.Model):
         ]
 
 
-class BlockTemp(models.Model):
+class NewBlock(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
     blockprefix = models.ForeignKey(BlockPrefix, default=1,
@@ -517,23 +516,50 @@ class BlockTemp(models.Model):
     class Meta:
         constraints = [
             models.UniqueConstraint(fields=['main_category', 'name'],
-                                    name='unique_category_name')
+                                    name='unique_main_category_name')
         ]
 
-class CommonBlockParameterTemp(models.Model):
-    block_param_id = models.IntegerField(validators=[MinValueValidator(0),MaxValueValidator(60)]) # 0 to 60
-    label = models.CharField(max_length=100, blank=True, null=True) #p000
-    type = models.ForeignKey(ParameterDataType, on_delete=models.PROTECT,
-                                  related_name='+', blank=True, null=True) #p000_type
-    help = models.CharField(max_length=100, blank=True, null=True) #p000_help
-    block = models.ForeignKey(BlockTemp, on_delete=models.CASCADE, related_name='+', blank=True, null=True) #p000_block
-    value = models.CharField(max_length=100, blank=True, null=True) #p000_value_initial
+
+class NewBlockParameter(models.Model):
+    id = models.AutoField(primary_key=True)
+    block = models.ForeignKey(NewBlock, on_delete=models.PROTECT)
+    p_order = models.IntegerField()
+    p_label = models.CharField(max_length=100, blank=False)
+    p_type = models.ForeignKey(ParameterDataType, on_delete=models.PROTECT,
+                               related_name='+')
+    p_help = models.CharField(max_length=100, blank=True, null=True)
+    p_value_initial = models.CharField(max_length=100, blank=True)
+
     def __str__(self):
         """String for representing the Model object."""
-        return self.name
-    
+        return self.block.name
+
     class Meta:
         constraints = [
-            models.UniqueConstraint(fields=['block_id', 'block'],
-                                    name='unique_block_parameter_name')
+            models.UniqueConstraint(fields=['block', 'p_order'],
+                                    name='unique_block_p_order')
+        ]
+
+
+class NewBlockPort(models.Model):
+    id = models.AutoField(primary_key=True)
+    block = models.ForeignKey(NewBlock, on_delete=models.PROTECT)
+    port_order = models.IntegerField()
+    port_name = models.CharField(max_length=100)
+    port_number = models.CharField(max_length=10)
+    port_x = models.IntegerField(default=1)
+    port_y = models.IntegerField(default=1)
+    port_orientation = models.CharField(max_length=100)
+    port_part = models.IntegerField(default=1)
+    port_dmg = models.IntegerField(default=1)
+    port_type = models.CharField(max_length=100)
+
+    def __str__(self):
+        """String for representing the Model object."""
+        return '%s %s' % (self.block.name, self.port_order)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['block', 'port_order'],
+                                    name='unique_blocktemp_port_order')
         ]
