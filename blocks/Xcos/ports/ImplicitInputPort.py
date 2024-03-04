@@ -21,8 +21,4 @@ def ImplicitInputPort(outroot, attribid, parentattribid, ordering, geometry,
                           ordering=ordering, parent=parentattribid,
                           style=func_name, value=value)
 
-    # addNode(outnode, 'mxGeometry', **{'as': 'geometry'},
-    #         height=geometry['height'], width=geometry['width'],
-    #         x=geometry['x'], y=geometry['y'])
-
     return outnode

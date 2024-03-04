@@ -34,8 +34,6 @@ outdiagram = ET.Element('XcosDiagram')
 outdiagram.set('background', '-1')
 outdiagram.set('finalIntegrationTime', '30.0')   # TODO: From POST
 outdiagram.set('title', title)
-# dt = datetime.datetime(2016, 4, 6, 20, 40)
-# comment = ET.Comment(dt.strftime('Xcos - 1.0 - scilab-5.5.2 - %Y%m%d %H%M'))
 dt = datetime.datetime(2021, 7, 15, 15, 31)
 comment = ET.Comment(dt.strftime('Xcos - 2.0 - scilab-6.1.1 - %Y%m%d %H%M'))
 outdiagram.append(comment)
@@ -151,9 +149,7 @@ for root in model:
                 sourceVertex = attrib['sourceVertex']
                 targetVertex = attrib['targetVertex']
                 sourceType = IDLIST[sourceVertex]
-                # print(IDLIST)
                 targetType = IDLIST[targetVertex]
-                # targetType = IDLIST.get(targetVertex, None)
 
 
                 # switch vertices if required
@@ -185,7 +181,6 @@ for root in model:
                     print(attribid, 'Unknown combination of', sourceType, 'and', targetType)
                     continue
 
-                # print(attribid,style)
                 if style is not None:
                     edgeDict[attribid] = (style, sourceVertex, targetVertex, sourceType, targetType)
                     edgeDict2[attribid] = (style, sourceVertex, targetVertex, sourceType, targetType)
@@ -238,7 +233,6 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, geometry) in 
         nextattribid += 1
         linkid = nextAttribForSplit
         nextAttribForSplit += 1
-        # (style2, sourceVertex2, targetVertex2, sourceType2, targetType2) = edgeDict2[sourceVertex]
         (style2, sourceVertex2, targetVertex2, sourceType2, targetType2) = edgeDict2.get(sourceVertex, (None, None, None, None, None))
     elif sourceType == 'ControlPort':
         geometry = {}
@@ -270,7 +264,6 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, geometry) in 
         nextattribid += 1
         linkid = nextAttribForSplit
         nextAttribForSplit += 1
-        # (style2, sourceVertex2, targetVertex2, sourceType2, targetType2) = edgeDict2[targetVertex]
         (style2, sourceVertex2, targetVertex2, sourceType2, targetType2) = edgeDict2.get(targetVertex, (None, None, None, None, None))
         geometry = {}
         geometry['width'] = 8

@@ -423,13 +423,8 @@ def strarray(parameter):
     parameters.pop(12)
     parameters = parameters[0:15]
     return parameters
-# def addExprsNode(node, subNodeType, height, parameters):
-#     width = 1 if height > 0 else 0
-#     subNode = addDataNode(node, subNodeType, **{'as': 'exprs'},
-#                           height=height, width=width)
-#     for i in range(height):
-#         addDataData(subNode, parameters[i])
-#     return subNode
+
+
 # Convert number into scientific notation
 # Used by blocks Capacitor,ConstantVoltage,Inductor and Resistor
 
