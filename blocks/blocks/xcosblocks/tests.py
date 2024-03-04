@@ -29,8 +29,7 @@ class CategoryTestCase(TestCase):
         print()
 
         categories = Category.objects.all().order_by('sort_order')
-        allblocks = Block.objects.all() \
-                .order_by('name')
+        allblocks = Block.objects.all().order_by('name')
         for category in categories:
             blocks = allblocks.filter(categories=category)
             print(category.id, category, len(blocks))
@@ -43,11 +42,9 @@ class CategoryTestCase(TestCase):
 
         namestring = 'A'
         allblocks = Block.objects.filter(name__istartswith=namestring)
-        categories = Category.objects.filter(block__in=allblocks).distinct()  \
-            .order_by('sort_order')
+        categories = Category.objects.filter(block__in=allblocks).distinct().order_by('sort_order')
         for category in categories:
-            blocks = allblocks.filter(categories=category) \
-                .order_by('name')
+            blocks = allblocks.filter(categories=category).order_by('name')
             print(category.id, category, len(blocks))
             if PRINT_BLOCKS:
                 for block in blocks:

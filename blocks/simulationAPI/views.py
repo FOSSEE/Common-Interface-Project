@@ -117,7 +117,6 @@ def parse_line(line, lineno):
         return (None, NOLINE)
 
 
-
 def get_line_and_state(file, figure_list, lineno, incomplete_line):
     '''
     Function to get a new line from file

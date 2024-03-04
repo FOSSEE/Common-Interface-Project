@@ -33,7 +33,7 @@ $(TARGET) : $(SRCFILES)
 	done > $@
 
 flake8 : $(TARGET)
-	flake8 --statistics $(TARGET)
+	flake8 --statistics
 
 .xcosblocks.txt : $(TARGET) Xcos/parsexcosblocks.awk
 	@echo Making $@ ...

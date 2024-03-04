@@ -360,7 +360,7 @@ class ErrorSerializer(serializers.Serializer):
 
 class SetBlockParameterSerializer(serializers.Serializer):
     block = serializers.CharField(max_length=100, required=True,
-                                       allow_blank=False, trim_whitespace=True)
+                                  allow_blank=False, trim_whitespace=True)
     p000_value = serializers.CharField(max_length=100, required=False,
                                        allow_blank=True, trim_whitespace=True)
     p001_value = serializers.CharField(max_length=100, required=False,

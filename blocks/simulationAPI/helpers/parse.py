@@ -14,10 +14,10 @@ def extract_data_from_ngspice_output(pathToFile):
 
             curernt_headers = []
             total_number_of_tables = 0
-            if('=' in f_contents[0]):
+            if '=' in f_contents[0]:
                 graph = False
 
-            if(not graph):
+            if not graph:
                 json_data = {"data": [], "graph": "false"}
                 for line in f_contents:
                     contents_of_line = line.split()
@@ -28,12 +28,12 @@ def extract_data_from_ngspice_output(pathToFile):
                 for line in f_contents:
                     contents_of_line = line.split()
 
-                    if('Index' in contents_of_line):
+                    if 'Index' in contents_of_line:
                         # line_set = remove_duplicate_items_from_list(
                         #     contents_of_line)
                         line_set = contents_of_line
 
-                        if(line_set != curernt_headers):
+                        if line_set != curernt_headers:
                             curernt_headers = line_set
                             json_data["data"].append(
                                 {"labels": [], "x": [], "y": []})
@@ -48,7 +48,7 @@ def extract_data_from_ngspice_output(pathToFile):
 
                     else:
                         m = re.match('[0-9]+', line)
-                        if(m):
+                        if m:
                             index = len(json_data["data"]) - 1
                             data = json_data["data"][index]
                             data["x"].append(contents_of_line[1])

@@ -18,17 +18,14 @@ class Task(models.Model):
 
 
 class TaskFile(models.Model):
-    file_id = models.UUIDField(
-        primary_key=True, default=uuid.uuid4, editable=False)
-    file = models.FileField(
-        storage=FileSystemStorage(location=settings.MEDIA_ROOT))
+    file_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    file = models.FileField(storage=FileSystemStorage(location=settings.MEDIA_ROOT))
     app_name = models.CharField(max_length=100, blank=True, null=True)
     parameters = models.TextField(blank=True, null=True)
     upload_time = models.DateTimeField(auto_now=True)
     log_name = models.CharField(max_length=500, blank=True, null=True)
     returncode = models.IntegerField(blank=True, null=True)
-    task = models.OneToOneField(Task, on_delete=models.CASCADE,
-                             related_name='file')
+    task = models.OneToOneField(Task, on_delete=models.CASCADE, related_name='file')
 
     def save(self, *args, **kwargs):
         super(TaskFile, self).save(*args, **kwargs)
