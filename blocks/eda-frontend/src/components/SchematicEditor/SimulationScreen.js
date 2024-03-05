@@ -154,6 +154,30 @@ export default function SimulationScreen ({ open, close }) {
       }
     }
 
+    const createChartData = (id, typeChart, titleText, xmin, xmax, ymin, ymax, zmin, zmax, pointRange, lineWidth, pointWidth, colorAxis, alpha, beta, radius) => {
+      chartIdList.current[id] = chartIdCount.current
+      const datapoint = {
+        datapointId: id,
+        datapointType: typeChart,
+        datapointTitle: titleText,
+        datapointXMin: xmin,
+        datapointYMin: ymin,
+        datapointZMin: zmin,
+        datapointXMax: xmax,
+        datapointYMax: ymax,
+        datapointZMax: zmax,
+        datapointPointRange: pointRange,
+        datapointLineWidth: lineWidth,
+        datapointPointWidth: pointWidth,
+        datapointDataClasses: colorAxis,
+        datapointAlpha: alpha,
+        datapointBeta: beta,
+        datapointRadius: radius
+      }
+      datapointsRef.current[chartIdCount.current] = datapoint
+      chartIdCount.current = chartIdCount.current + 1
+      setNoOfGraphs(nog => nog + 1)
+    }
     // Function to create a new chart
     const createNewChart = (id, noOfGraph, xmin, xmax, ymin, ymax, typeChart, titleText, colorAxis = null) => {
       /*
@@ -198,28 +222,10 @@ export default function SimulationScreen ({ open, close }) {
         pointRange = 0.05
       }
 
-      chartIdList.current[id] = chartIdCount.current
-      const datapoint = {
-        datapointId: id,
-        datapointType: typeChart,
-        datapointTitle: titleText,
-        datapointXMin: xmin,
-        datapointYMin: ymin,
-        datapointZMin: zmin,
-        datapointXMax: xmax,
-        datapointYMax: ymax,
-        datapointZMax: zmax,
-        datapointPointRange: pointRange,
-        datapointLineWidth: lineWidth,
-        datapointPointWidth: pointWidth,
-        datapointDataClasses: colorAxis,
-        datapointAlpha: alpha,
-        datapointBeta: beta,
-        datapointRadius: radius
-      }
-      datapointsRef.current[chartIdCount.current] = datapoint
-      chartIdCount.current = chartIdCount.current + 1
-      setNoOfGraphs(nog => nog + 1)
+      createChartData(
+        id, typeChart, titleText, xmin, xmax, ymin, ymax, zmin, zmax,
+        pointRange, lineWidth, pointWidth, colorAxis, alpha, beta, radius
+      )
     }
 
     // Function to create a new 3d-chart
@@ -260,28 +266,10 @@ export default function SimulationScreen ({ open, close }) {
         radius = 3
       }
 
-      chartIdList.current[id] = chartIdCount.current
-      const datapoint = {
-        datapointId: id,
-        datapointType: typeChart,
-        datapointTitle: titleText,
-        datapointXMin: xmin,
-        datapointYMin: ymin,
-        datapointZMin: zmin,
-        datapointXMax: xmax,
-        datapointYMax: ymax,
-        datapointZMax: zmax,
-        datapointPointRange: pointRange,
-        datapointLineWidth: lineWidth,
-        datapointPointWidth: pointWidth,
-        datapointDataClasses: colorAxis,
-        datapointAlpha: alpha,
-        datapointBeta: beta,
-        datapointRadius: radius
-      }
-      datapointsRef.current[chartIdCount.current] = datapoint
-      chartIdCount.current = chartIdCount.current + 1
-      setNoOfGraphs(nog => nog + 1)
+      createChartData(
+        id, typeChart, titleText, xmin, xmax, ymin, ymax, zmin, zmax,
+        pointRange, lineWidth, pointWidth, colorAxis, alpha, beta, radius
+      )
     }
 
     // To create coloraxis array which will be passed to cmatview chart for heatmap creation
