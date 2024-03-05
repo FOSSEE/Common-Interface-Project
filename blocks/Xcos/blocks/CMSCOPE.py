@@ -11,6 +11,21 @@ def CMSCOPE(outroot, attribid, ordering, geometry, parameters):
                          value=parameters[10])
 
     addExprsNode(outnode, TYPE_STRING, 11, parameters)
+    addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM,
+                 7, realParts=[0.0, 10.0, 10.0, 0.0, 2.0, 0.0, 2.0])
+    addSciDBNode(outnode, TYPE_DOUBLE, AS_INT_PARAM,
+                 12, realParts=[-1.0, 2.0, 20.0, -1.0, -1.0, -1.0, -1.0, 1.0, 1.0, 1.0, 3.0, 0.0])
+    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
+    addSciDBNode(outnode, TYPE_DOUBLE, AS_NBZERO,
+                 1, realParts=[0.0])
+    addSciDBNode(outnode, TYPE_DOUBLE, AS_NMODE,
+                 1, realParts=[0.0])
+
+    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE, parameters)
+    addObjNode(outnode, TYPE_ARRAY,
+               CLASS_LIST, AS_EQUATIONS, parameters)
+    addgeometryNode(outnode, GEOMETRY, geometry['height'],
+                    geometry['width'], geometry['x'], geometry['y'])
 
     return outnode
 
