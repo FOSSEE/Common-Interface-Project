@@ -3,6 +3,7 @@ from rest_framework import serializers
 from .models import BlockType, Category, ParameterDataType, BlockPrefix, \
     BlockPrefixParameter, Block, BlockParameter, BlockPort
 
+from .models import CommonBlockParameterTemp, BlockTemp
 from .xcosblocks import *
 
 
@@ -465,3 +466,19 @@ class SetBlockPortSerializer(serializers.Serializer):
     simulation_function = serializers.CharField(
         max_length=100, allow_blank=True, trim_whitespace=True)
     ports = serializers.StringRelatedField(many=True)
+
+
+class CommonBlockParameterTemp(serializers.ModelSerializer):
+    class Meta:
+        model = CommonBlockParameterTemp
+        fields = [ 'id', 'label', 'type', 'help','value', 'block', 'block_param_id']
+
+class BlockTemp(serializers.ModelSerializer):
+    blockprefix = BlockPrefixSerializer()
+    main_category = CategorySerializer()
+    categories = CategorySerializer(many=True)
+    blockport_set = BlockPortSerializer(many=True)
+    class Meta:
+        model = BlockTemp
+        fields = [ 'id','name', 'blockprefix', 'main_category', 'categories', 'block_name', 'initial_display_parameter',
+                  'simulation_function', 'block_image_path', 'block_width', 'block_height']
