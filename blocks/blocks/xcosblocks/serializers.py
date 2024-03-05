@@ -486,17 +486,23 @@ class NewBlockPortSerializer(serializers.ModelSerializer):
         ]
 
 
+class NewBlockParameterValueSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = NewBlockParameter
+        fields = [
+            'p_order',
+            'p_value_initial',
+        ]
+
+
 class NewBlockParameterSerializer(serializers.ModelSerializer):
     class Meta:
         model = NewBlockParameter
         fields = [
-            'id',
-            'block',
             'p_order',
             'p_label',
             'p_type',
             'p_help',
-            'p_value_initial'
         ]
 
 
@@ -505,7 +511,7 @@ class NewBlockSerializer(serializers.ModelSerializer):
     main_category = CategorySerializer()
     categories = CategorySerializer(many=True)
     newblockport_set = NewBlockPortSerializer(many=True)
-    newblockparameter_set = NewBlockParameterSerializer(many=True)
+    newblockparameter_set = NewBlockParameterValueSerializer(many=True)
 
     class Meta:
         model = NewBlock
@@ -530,11 +536,11 @@ class NewBlockSerializer(serializers.ModelSerializer):
         return queryset.prefetch_related('categories')
 
     @staticmethod
-    def prefetch_newblockport(queryset):
+    def prefetch_blockport(queryset):
         return queryset.prefetch_related('newblockport_set')
 
     @staticmethod
-    def prefetch_newblockparameter(queryset):
+    def prefetch_blockparameter(queryset):
         return queryset.prefetch_related('newblockparameter_set')
 
 
@@ -542,7 +548,7 @@ class SetNewBlockParameterSerializer(serializers.Serializer):
     block = serializers.CharField(max_length=100, required=True,
                                        allow_blank=False, trim_whitespace=True)
 
-    def getnewblockportserializer(self):
+    def getblockportserializer(self):
         data = self.data
         name = data['block']
 

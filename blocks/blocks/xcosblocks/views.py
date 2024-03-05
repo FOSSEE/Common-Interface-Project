@@ -147,8 +147,8 @@ class NewBlockViewSet(ReadOnlyModelViewSet):
     """
     queryset = NewBlock.objects.all().order_by('name')
     queryset = NewBlockSerializer.prefetch_category(queryset)
-    queryset = NewBlockSerializer.prefetch_newblockport(queryset)
-    queryset = NewBlockSerializer.prefetch_newblockparameter(queryset)
+    queryset = NewBlockSerializer.prefetch_blockport(queryset)
+    queryset = NewBlockSerializer.prefetch_blockparameter(queryset)
     serializer_class = NewBlockSerializer
     filter_backends = [
         DjangoFilterBackend
@@ -197,7 +197,7 @@ class NewBlockPortViewSet(ReadOnlyModelViewSet):
     filterset_class = NewBlockPortFilterSet
 
 
-def set_newblockparameter(request):
+def set_newblockparameters(request):
     if request.method == 'POST':
         stream = io.BytesIO(request.body)
         data = JSONParser().parse(stream)
@@ -205,15 +205,15 @@ def set_newblockparameter(request):
         if serializer.is_valid():
             # process the data to get port
             try:
-                port = serializer.getnewblockportserializer()
+                port = serializer.getblockportserializer()
                 return JsonResponse(port.initial_data)
             except Exception as e:
-                error = 'getnewblockportserializer error: %s' % str(e)
+                error = 'getblockportserializer error: %s' % str(e)
                 errorserializer = ErrorSerializer(data={
                     'code': 500, 'error': error})
                 return JsonResponse(errorserializer, safe=False)
         else:
-            error = 'getnewblockportserializer errors: %s' % serializer.errors
+            error = 'getblockportserializer errors: %s' % serializer.errors
             errorserializer = ErrorSerializer(data={
                 'code': 500, 'error': error})
             return JsonResponse(errorserializer, safe=False)
