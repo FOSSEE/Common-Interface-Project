@@ -169,7 +169,7 @@ class NewBlockParameterViewSet(ReadOnlyModelViewSet):
     """
      Listing All Block Parameter Details
     """
-    queryset = NewBlockParameter.objects.all()
+    queryset = NewBlockParameter.objects.all().order_by('block_id', 'p_order')
     serializer_class = NewBlockParameterSerializer
     filter_backends = [
         DjangoFilterBackend

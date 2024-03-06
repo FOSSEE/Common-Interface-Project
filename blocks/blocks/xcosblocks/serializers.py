@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from django.db.models import Prefetch
 
 from .models import BlockType, Category, ParameterDataType, BlockPrefix, \
     BlockPrefixParameter, Block, BlockParameter, BlockPort, \
@@ -490,7 +491,6 @@ class NewBlockParameterValueSerializer(serializers.ModelSerializer):
     class Meta:
         model = NewBlockParameter
         fields = [
-            'p_order',
             'p_value_initial',
         ]
 
@@ -499,7 +499,6 @@ class NewBlockParameterSerializer(serializers.ModelSerializer):
     class Meta:
         model = NewBlockParameter
         fields = [
-            'p_order',
             'p_label',
             'p_type',
             'p_help',
@@ -537,7 +536,9 @@ class NewBlockSerializer(serializers.ModelSerializer):
 
     @staticmethod
     def prefetch_blockparameter(queryset):
-        return queryset.prefetch_related('newblockparameter_set')
+        return queryset.prefetch_related(Prefetch(
+            'newblockparameter_set',
+            NewBlockParameter.objects.order_by('block_id', 'p_order')))
 
     @staticmethod
     def prefetch_blockport(queryset):
@@ -546,7 +547,7 @@ class NewBlockSerializer(serializers.ModelSerializer):
 
 class SetNewBlockParameterSerializer(serializers.Serializer):
     block = serializers.CharField(max_length=100, required=True,
-                                       allow_blank=False, trim_whitespace=True)
+                                  allow_blank=False, trim_whitespace=True)
 
     def getblockportserializer(self):
         data = self.data
