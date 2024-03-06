@@ -510,8 +510,8 @@ class NewBlockSerializer(serializers.ModelSerializer):
     blockprefix = BlockPrefixSerializer()
     main_category = CategorySerializer()
     categories = CategorySerializer(many=True)
-    newblockport_set = NewBlockPortSerializer(many=True)
     newblockparameter_set = NewBlockParameterValueSerializer(many=True)
+    newblockport_set = NewBlockPortSerializer(many=True)
 
     class Meta:
         model = NewBlock
@@ -527,8 +527,8 @@ class NewBlockSerializer(serializers.ModelSerializer):
             'block_image_path',
             'block_width',
             'block_height',
-            'newblockport_set',
             'newblockparameter_set',
+            'newblockport_set',
         ]
 
     @staticmethod
@@ -536,12 +536,12 @@ class NewBlockSerializer(serializers.ModelSerializer):
         return queryset.prefetch_related('categories')
 
     @staticmethod
-    def prefetch_blockport(queryset):
-        return queryset.prefetch_related('newblockport_set')
-
-    @staticmethod
     def prefetch_blockparameter(queryset):
         return queryset.prefetch_related('newblockparameter_set')
+
+    @staticmethod
+    def prefetch_blockport(queryset):
+        return queryset.prefetch_related('newblockport_set')
 
 
 class SetNewBlockParameterSerializer(serializers.Serializer):

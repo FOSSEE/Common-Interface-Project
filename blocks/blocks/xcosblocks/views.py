@@ -147,8 +147,8 @@ class NewBlockViewSet(ReadOnlyModelViewSet):
     """
     queryset = NewBlock.objects.all().order_by('name')
     queryset = NewBlockSerializer.prefetch_category(queryset)
-    queryset = NewBlockSerializer.prefetch_blockport(queryset)
     queryset = NewBlockSerializer.prefetch_blockparameter(queryset)
+    queryset = NewBlockSerializer.prefetch_blockport(queryset)
     serializer_class = NewBlockSerializer
     filter_backends = [
         DjangoFilterBackend
