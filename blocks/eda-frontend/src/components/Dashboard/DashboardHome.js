@@ -22,13 +22,14 @@ const useStyles = makeStyles((theme) => ({
 function MainCard () {
   const classes = useStyles()
   const auth = useSelector(state => state.authReducer)
+  const dashboard = process.env.REACT_APP_NAME
   const button = 'My ' + process.env.REACT_APP_DIAGRAMS_NAME
 
   return (
     <Card className={classes.mainHead}>
       <CardContent>
         <Typography className={classes.title} gutterBottom>
-          Welcome to your EDA Dashboard
+          Welcome to your {dashboard} Dashboard
         </Typography>
         <Typography variant='h5' component='h2'>
           Welcome {auth.user.username}...

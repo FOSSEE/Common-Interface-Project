@@ -12,9 +12,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function NotFound () {
   const classes = useStyles()
+  const name = process.env.REACT_APP_NAME
 
   useEffect(() => {
-    document.title = 'Not Found - EDA '
+    document.title = 'Not Found - ' + name
   })
 
   return (
