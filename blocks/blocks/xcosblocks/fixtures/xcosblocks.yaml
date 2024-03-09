@@ -61890,8 +61890,8 @@
     block: 1
     p_order: 2
     p_label: Datatype
-    p_type: 3
-    p_help: 1=double, 3=int32
+    p_type: 2
+    p_help: 1=double, 3=int32, 4, 5, 6, 7, 8
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 4
@@ -61916,7 +61916,7 @@
   fields:
     block: 2
     p_order: 1
-    p_label: Use zero-crossing
+    p_label: Use zero-crossing?
     p_type: 1
     p_help: 0=no, 1=yes
     p_value_initial: '0'
@@ -61927,7 +61927,7 @@
     p_order: 2
     p_label: Datatype
     p_type: 2
-    p_help: 1=double, 3=int32
+    p_help: 1=double, 3=int32, 4, 5, 6, 7, 8
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 8
@@ -61935,8 +61935,8 @@
     block: 4
     p_order: 0
     p_label: Numerator
-    p_type: 3
-    p_help: null
+    p_type: 6
+    p_help: s
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 9
@@ -61944,8 +61944,8 @@
     block: 4
     p_order: 1
     p_label: Denominator
-    p_type: 3
-    p_help: null
+    p_type: 6
+    p_help: s
     p_value_initial: 1+s
 - model: xcosblocks.newblockparameter
   pk: 10
@@ -61953,7 +61953,7 @@
     block: 5
     p_order: 0
     p_label: A matrix
-    p_type: 3
+    p_type: 19
     p_help: null
     p_value_initial: '-1'
 - model: xcosblocks.newblockparameter
@@ -61962,7 +61962,7 @@
     block: 5
     p_order: 1
     p_label: B matrix
-    p_type: 3
+    p_type: 19
     p_help: null
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
@@ -61971,7 +61971,7 @@
     block: 5
     p_order: 2
     p_label: C matrix
-    p_type: 3
+    p_type: 19
     p_help: null
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
@@ -61980,7 +61980,7 @@
     block: 5
     p_order: 3
     p_label: D matrix
-    p_type: 3
+    p_type: 19
     p_help: null
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
@@ -61989,7 +61989,7 @@
     block: 5
     p_order: 4
     p_label: initial state
-    p_type: 3
+    p_type: 19
     p_help: null
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
@@ -62015,7 +62015,7 @@
   fields:
     block: 8
     p_order: 1
-    p_label: with re-initialization
+    p_label: With re-initialization?
     p_type: 1
     p_help: null
     p_value_initial: '0'
@@ -62024,7 +62024,7 @@
   fields:
     block: 8
     p_order: 2
-    p_label: with saturation
+    p_label: With saturation?
     p_type: 1
     p_help: null
     p_value_initial: '0'
@@ -62079,7 +62079,7 @@
     block: 11
     p_order: 0
     p_label: A matrix
-    p_type: 3
+    p_type: 19
     p_help: null
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
@@ -62088,7 +62088,7 @@
     block: 11
     p_order: 1
     p_label: B matrix
-    p_type: 3
+    p_type: 19
     p_help: null
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
@@ -62097,7 +62097,7 @@
     block: 11
     p_order: 2
     p_label: C matrix
-    p_type: 3
+    p_type: 19
     p_help: null
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
@@ -62106,7 +62106,7 @@
     block: 11
     p_order: 3
     p_label: D matrix
-    p_type: 3
+    p_type: 19
     p_help: null
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
@@ -62115,7 +62115,7 @@
     block: 11
     p_order: 4
     p_label: Initial state
-    p_type: 3
+    p_type: 19
     p_help: null
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
@@ -62142,7 +62142,7 @@
     block: 12
     p_order: 2
     p_label: Buffer size
-    p_type: 3
+    p_type: 2
     p_help: null
     p_value_initial: '1024'
 - model: xcosblocks.newblockparameter
@@ -62195,7 +62195,7 @@
   fields:
     block: 14
     p_order: 2
-    p_label: Use zero crossing
+    p_label: Use zero-crossing?
     p_type: 1
     p_help: 0=no, 1=yes
     p_value_initial: '1'
@@ -62204,7 +62204,7 @@
   fields:
     block: 15
     p_order: 0
-    p_label: End of dead band
+    p_label: Upper limit
     p_type: 3
     p_help: null
     p_value_initial: '0.5'
@@ -62213,7 +62213,7 @@
   fields:
     block: 15
     p_order: 1
-    p_label: Start of dead band
+    p_label: Lower limit
     p_type: 3
     p_help: null
     p_value_initial: '-0.5'
@@ -62222,16 +62222,16 @@
   fields:
     block: 15
     p_order: 2
-    p_label: zero crossing
+    p_label: Use zero-crossing?
     p_type: 1
-    p_help: 0:no, 1:yes
+    p_help: 0=no, 1=yes
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 41
   fields:
     block: 16
     p_order: 0
-    p_label: switch on at
+    p_label: Switch on at
     p_type: 2
     p_help: null
     p_value_initial: '1'
@@ -62240,7 +62240,7 @@
   fields:
     block: 16
     p_order: 1
-    p_label: switch off at
+    p_label: Switch off at
     p_type: 2
     p_help: null
     p_value_initial: '0'
@@ -62249,7 +62249,7 @@
   fields:
     block: 16
     p_order: 2
-    p_label: output when on
+    p_label: Output when on
     p_type: 2
     p_help: null
     p_value_initial: '1'
@@ -62258,7 +62258,7 @@
   fields:
     block: 16
     p_order: 3
-    p_label: output when off
+    p_label: Output when off
     p_type: 2
     p_help: null
     p_value_initial: '0'
@@ -62267,9 +62267,9 @@
   fields:
     block: 16
     p_order: 4
-    p_label: use zero crossing
+    p_label: Use zero-crossing?
     p_type: 1
-    p_help: null
+    p_help: 0=no, 1=yes
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 46
@@ -62294,18 +62294,18 @@
   fields:
     block: 18
     p_order: 0
-    p_label: max slope
-    p_type: 2
-    p_help: null
-    p_value_initial: '0'
+    p_label: Maximal slope
+    p_type: 3
+    p_help: '> 0'
+    p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 49
   fields:
     block: 18
     p_order: 1
-    p_label: min slope
-    p_type: 2
-    p_help: null
+    p_label: Minimal slope
+    p_type: 3
+    p_help: < 0
     p_value_initial: '-1'
 - model: xcosblocks.newblockparameter
   pk: 50
@@ -62313,7 +62313,7 @@
     block: 19
     p_order: 0
     p_label: Upper limit
-    p_type: 2
+    p_type: 3
     p_help: null
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
@@ -62330,25 +62330,25 @@
   fields:
     block: 19
     p_order: 2
-    p_label: zero crossing
+    p_label: Use zero-crossing?
     p_type: 1
-    p_help: null
+    p_help: 0=no, 1=yes
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 53
   fields:
     block: 20
     p_order: 0
-    p_label: Number Mode
+    p_label: Number of finite-state modes
     p_type: 2
-    p_help: finite state
+    p_help: null
     p_value_initial: '2'
 - model: xcosblocks.newblockparameter
   pk: 54
   fields:
     block: 20
     p_order: 1
-    p_label: Initial Mode
+    p_label: Initial mode
     p_type: 2
     p_help: null
     p_value_initial: '1'
@@ -62357,7 +62357,7 @@
   fields:
     block: 20
     p_order: 2
-    p_label: Number of continuous timestates
+    p_label: Number of continuous-time states
     p_type: 2
     p_help: null
     p_value_initial: '1'
@@ -62366,8 +62366,8 @@
   fields:
     block: 20
     p_order: 3
-    p_label: Continuous time states initial value
-    p_type: 2
+    p_label: Continuous-time states initial value
+    p_type: 3
     p_help: null
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
@@ -62375,8 +62375,8 @@
   fields:
     block: 20
     p_order: 4
-    p_label: Xproperties of continuous time states in each mode
-    p_type: 10
+    p_label: Xproperties of continuous-time states in each mode
+    p_type: 11
     p_help: null
     p_value_initial: '[1;1]'
 - model: xcosblocks.newblockparameter
@@ -62384,18 +62384,18 @@
   fields:
     block: 20
     p_order: 5
-    p_label: Jump from Mode 1:[..;M_final(Guard=In(1).i);..]
+    p_label: Jump from Mode 1
     p_type: 2
-    p_help: null
+    p_help: ..;M_final(Guard=In(1).i);..
     p_value_initial: '2'
 - model: xcosblocks.newblockparameter
   pk: 59
   fields:
     block: 20
     p_order: 6
-    p_label: Jump from Mode 2:[..;M_final(Guard=In(1).i);..]
+    p_label: Jump from Mode 2
     p_type: 2
-    p_help: null
+    p_help: ..;M_final(Guard=In(2).i);..
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 60
@@ -62412,7 +62412,7 @@
     block: 21
     p_order: 1
     p_label: Register initial state
-    p_type: 10
+    p_type: 11
     p_help: null
     p_value_initial: 0;0;0;0;0;0;0;0;0;0
 - model: xcosblocks.newblockparameter
@@ -62430,7 +62430,7 @@
     block: 22
     p_order: 1
     p_label: Register initial condition
-    p_type: 10
+    p_type: 11
     p_help: null
     p_value_initial: 0;0;0;0;0;0;0;0;0;0
 - model: xcosblocks.newblockparameter
@@ -62439,8 +62439,8 @@
     block: 22
     p_order: 2
     p_label: Max delay
-    p_type: 2
-    p_help: null
+    p_type: 3
+    p_help: '> 0'
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 65
@@ -62448,7 +62448,7 @@
     block: 23
     p_order: 0
     p_label: Numerator
-    p_type: 3
+    p_type: 6
     p_help: z
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
@@ -62457,7 +62457,7 @@
     block: 23
     p_order: 1
     p_label: Denominator
-    p_type: 3
+    p_type: 6
     p_help: z
     p_value_initial: 1+z
 - model: xcosblocks.newblockparameter
@@ -62466,7 +62466,7 @@
     block: 24
     p_order: 0
     p_label: Vector of p mesh points
-    p_type: 10
+    p_type: 11
     p_help: null
     p_value_initial: '[0;1]'
 - model: xcosblocks.newblockparameter
@@ -62475,8 +62475,8 @@
     block: 24
     p_order: 1
     p_label: Numerator roots
-    p_type: 10
-    p_help: one line for each mesh
+    p_type: 21
+    p_help: one row for each mesh
     p_value_initial: '[]'
 - model: xcosblocks.newblockparameter
   pk: 69
@@ -62484,8 +62484,8 @@
     block: 24
     p_order: 2
     p_label: Denominator roots
-    p_type: 10
-    p_help: one line for each mesh
+    p_type: 21
+    p_help: one row for each mesh
     p_value_initial: '[0.2+%i*0.8,0.2-%i*0.8;0.3+%i*0.7,0.3-%i*0.7]'
 - model: xcosblocks.newblockparameter
   pk: 70
@@ -62493,7 +62493,7 @@
     block: 24
     p_order: 3
     p_label: Vector of gain at mesh points
-    p_type: 10
+    p_type: 11
     p_help: null
     p_value_initial: '[1;1]'
 - model: xcosblocks.newblockparameter
@@ -62501,8 +62501,8 @@
   fields:
     block: 24
     p_order: 4
-    p_label: past inputs
-    p_type: 10
+    p_label: Past inputs
+    p_type: 11
     p_help: Num degree values
     p_value_initial: '[]'
 - model: xcosblocks.newblockparameter
@@ -62510,8 +62510,8 @@
   fields:
     block: 24
     p_order: 5
-    p_label: past outputs
-    p_type: 10
+    p_label: Past outputs
+    p_type: 11
     p_help: Den degree values
     p_value_initial: '[0;0]'
 - model: xcosblocks.newblockparameter
@@ -62520,7 +62520,7 @@
     block: 25
     p_order: 0
     p_label: A matrix
-    p_type: 2
+    p_type: 19
     p_help: null
     p_value_initial: '-1'
 - model: xcosblocks.newblockparameter
@@ -62529,7 +62529,7 @@
     block: 25
     p_order: 1
     p_label: B matrix
-    p_type: 2
+    p_type: 19
     p_help: null
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
@@ -62538,7 +62538,7 @@
     block: 25
     p_order: 2
     p_label: C matrix
-    p_type: 2
+    p_type: 19
     p_help: null
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
@@ -62547,7 +62547,7 @@
     block: 25
     p_order: 3
     p_label: D matrix
-    p_type: 2
+    p_type: 19
     p_help: null
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
@@ -62556,7 +62556,7 @@
     block: 25
     p_order: 4
     p_label: Initial state
-    p_type: 2
+    p_type: 19
     p_help: null
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
@@ -62565,7 +62565,7 @@
     block: 26
     p_order: 0
     p_label: initial condition
-    p_type: 2
+    p_type: 3
     p_help: null
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
@@ -62573,9 +62573,9 @@
   fields:
     block: 26
     p_order: 1
-    p_label: Inherit
+    p_label: Inherit?
     p_type: 1
-    p_help: no:0, yes:1
+    p_help: 0=no, 1=yes
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
   pk: 80
@@ -62583,7 +62583,7 @@
     block: 27
     p_order: 0
     p_label: initial condition
-    p_type: 2
+    p_type: 3
     p_help: null
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
@@ -62591,9 +62591,9 @@
   fields:
     block: 27
     p_order: 1
-    p_label: Inherit
+    p_label: Inherit?
     p_type: 1
-    p_help: no:0, yes:1
+    p_help: 0=no, 1=yes
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
   pk: 82
@@ -62601,7 +62601,7 @@
     block: 28
     p_order: 0
     p_label: initial condition
-    p_type: 2
+    p_type: 3
     p_help: null
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
@@ -62609,9 +62609,9 @@
   fields:
     block: 28
     p_order: 1
-    p_label: Inherit
+    p_label: Inherit?
     p_type: 1
-    p_help: no:0, yes:1
+    p_help: 0=no, 1=yes
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
   pk: 84
@@ -62619,7 +62619,7 @@
     block: 29
     p_order: 0
     p_label: Register initial condition
-    p_type: 10
+    p_type: 11
     p_help: null
     p_value_initial: 0;0;0;0;0;0;0;0;0;0
 - model: xcosblocks.newblockparameter
@@ -62629,7 +62629,7 @@
     p_order: 1
     p_label: Datatype
     p_type: 2
-    p_help: 1=double, 3=int32
+    p_help: 1=double, 3=int32, 4, 5, 6, 7, 8
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 86
@@ -62638,15 +62638,15 @@
     p_order: 0
     p_label: Datatype
     p_type: 2
-    p_help: 1=real double 2=Complex 3=int32...
+    p_help: 1=real double, 2=complex, 3=int32, 4, 5, 6, 7, 8
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 87
   fields:
     block: 31
     p_order: 0
-    p_label: X coord
-    p_type: 10
+    p_label: X coordinates
+    p_type: 11
     p_help: null
     p_value_initial: '[0;1]'
 - model: xcosblocks.newblockparameter
@@ -62654,8 +62654,8 @@
   fields:
     block: 31
     p_order: 1
-    p_label: Y coord
-    p_type: 10
+    p_label: Y coordinates
+    p_type: 11
     p_help: null
     p_value_initial: '[0;1]'
 - model: xcosblocks.newblockparameter
@@ -62664,7 +62664,7 @@
     block: 31
     p_order: 2
     p_label: Z values
-    p_type: 10
+    p_type: 19
     p_help: null
     p_value_initial: '[0,1;1,2]'
 - model: xcosblocks.newblockparameter
@@ -62672,8 +62672,8 @@
   fields:
     block: 32
     p_order: 0
-    p_label: X coord
-    p_type: 10
+    p_label: X coordinates
+    p_type: 11
     p_help: null
     p_value_initial: '[0;1]'
 - model: xcosblocks.newblockparameter
@@ -62681,8 +62681,8 @@
   fields:
     block: 32
     p_order: 1
-    p_label: Y coord
-    p_type: 10
+    p_label: Y coordinates
+    p_type: 11
     p_help: null
     p_value_initial: '[0;1]'
 - model: xcosblocks.newblockparameter
@@ -62690,7 +62690,7 @@
   fields:
     block: 33
     p_order: 0
-    p_label: xmin
+    p_label: Xmin
     p_type: 3
     p_help: null
     p_value_initial: '-2.4'
@@ -62699,7 +62699,7 @@
   fields:
     block: 33
     p_order: 1
-    p_label: xmax
+    p_label: Xmax
     p_type: 3
     p_help: null
     p_value_initial: '2.4'
@@ -62708,7 +62708,7 @@
   fields:
     block: 33
     p_order: 2
-    p_label: ymin
+    p_label: Ymin
     p_type: 3
     p_help: null
     p_value_initial: '-1.2'
@@ -62717,7 +62717,7 @@
   fields:
     block: 33
     p_order: 3
-    p_label: ymax
+    p_label: Ymax
     p_type: 3
     p_help: null
     p_value_initial: '1.2'
@@ -62735,9 +62735,9 @@
   fields:
     block: 36
     p_order: 1
-    p_label: color(>0) or mark(<0)
-    p_type: 2
-    p_help: null
+    p_label: Curves styles
+    p_type: 10
+    p_help: Colors > 0 | marks < 0
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 98
@@ -62746,7 +62746,7 @@
     p_order: 2
     p_label: Output window number
     p_type: 2
-    p_help: null
+    p_help: -1 for automatic
     p_value_initial: '-1'
 - model: xcosblocks.newblockparameter
   pk: 99
@@ -62780,7 +62780,7 @@
   fields:
     block: 37
     p_order: 0
-    p_label: GoToTag
+    p_label: Goto Tag
     p_type: 6
     p_help: null
     p_value_initial: A
@@ -62789,9 +62789,9 @@
   fields:
     block: 39
     p_order: 0
-    p_label: rising(1), falling(-1), both(0)
+    p_label: Rising, falling, or both
     p_type: 2
-    p_help: null
+    p_help: 1=rising, -1=falling, 0=both
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
   pk: 104
@@ -62810,7 +62810,7 @@
     p_label: Final simulation time
     p_type: 3
     p_help: null
-    p_value_initial: '1.00E+08'
+    p_value_initial: 1E8
 - model: xcosblocks.newblockparameter
   pk: 106
   fields:
@@ -62825,16 +62825,16 @@
   fields:
     block: 42
     p_order: 1
-    p_label: Inherit
+    p_label: Inherit?
     p_type: 1
-    p_help: 0=yes, 1=no
+    p_help: 0=no, 1=yes
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 108
   fields:
     block: 42
     p_order: 2
-    p_label: Use zero-crossing
+    p_label: Use zero-crossing?
     p_type: 1
     p_help: 0=no, 1=yes
     p_value_initial: '0'
@@ -62845,7 +62845,7 @@
     p_order: 0
     p_label: Delay
     p_type: 3
-    p_help: null
+    p_help: delay between an input event and the generated output event
     p_value_initial: '0.1'
 - model: xcosblocks.newblockparameter
   pk: 110
@@ -62854,7 +62854,8 @@
     p_order: 1
     p_label: Date of initial output event
     p_type: 2
-    p_help: null
+    p_help: the date of this event, set to a negative value to mind only the input
+      events
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
   pk: 111
@@ -62862,7 +62863,7 @@
     block: 44
     p_order: 0
     p_label: Event Time
-    p_type: 2
+    p_type: 3
     p_help: null
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
@@ -62871,8 +62872,8 @@
     block: 45
     p_order: 0
     p_label: Initial event firing time
-    p_type: 2
-    p_help: <0 if absent
+    p_type: 3
+    p_help: < 0 if none
     p_value_initial: '-1'
 - model: xcosblocks.newblockparameter
   pk: 113
@@ -62889,7 +62890,7 @@
     block: 47
     p_order: 1
     p_label: Division factor
-    p_type: 2
+    p_type: 3
     p_help: null
     p_value_initial: '3'
 - model: xcosblocks.newblockparameter
@@ -62906,16 +62907,16 @@
   fields:
     block: 49
     p_order: 0
-    p_label: Inherit
+    p_label: Inherit?
     p_type: 1
-    p_help: 0=yes, 1=no
+    p_help: 0=no, 1=yes
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 117
   fields:
     block: 49
     p_order: 1
-    p_label: Use zero-crossing
+    p_label: Use zero-crossing?
     p_type: 1
     p_help: 0=no, 1=yes
     p_value_initial: '1'
@@ -62942,7 +62943,7 @@
   fields:
     block: 51
     p_order: 0
-    p_label: basic period
+    p_label: Basic period
     p_type: 3
     p_help: 1/f
     p_value_initial: '0.1'
@@ -62951,7 +62952,7 @@
   fields:
     block: 51
     p_order: 1
-    p_label: multiply by
+    p_label: Multiply by
     p_type: 2
     p_help: n
     p_value_initial: '2'
@@ -62960,7 +62961,7 @@
   fields:
     block: 52
     p_order: 0
-    p_label: basic period
+    p_label: Basic period
     p_type: 3
     p_help: 1/f
     p_value_initial: '0.1'
@@ -62969,7 +62970,7 @@
   fields:
     block: 52
     p_order: 1
-    p_label: multiply by
+    p_label: Multiply by
     p_type: 2
     p_help: n
     p_value_initial: '2'
@@ -62978,16 +62979,16 @@
   fields:
     block: 54
     p_order: 0
-    p_label: use zero crossing ?
+    p_label: Use zero-crossing?
     p_type: 1
-    p_help: 0/1
+    p_help: 0=no, 1=yes
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 125
   fields:
     block: 55
     p_order: 0
-    p_label: Inputs port sign/gain
+    p_label: Inputs ports signs / gain
     p_type: 11
     p_help: null
     p_value_initial: '[1;1]'
@@ -62998,7 +62999,7 @@
     p_order: 0
     p_label: a
     p_type: 3
-    p_help: '>0'
+    p_help: '> 0'
     p_value_initial: '%e'
 - model: xcosblocks.newblockparameter
   pk: 127
@@ -63023,9 +63024,9 @@
   fields:
     block: 59
     p_order: 1
-    p_label: Do On Overflow
+    p_label: Do on overflow
     p_type: 2
-    p_help: 0=Nothing 1=Saturate 2=Error
+    p_help: 0=nothing, 1=saturate, 2=error
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
   pk: 130
@@ -63043,7 +63044,7 @@
     p_order: 0
     p_label: Basis
     p_type: 3
-    p_help: '>1'
+    p_help: '> 1'
     p_value_initial: '%e'
 - model: xcosblocks.newblockparameter
   pk: 132
@@ -63059,7 +63060,7 @@
   fields:
     block: 64
     p_order: 2
-    p_label: Use zero-crossing
+    p_label: Use zero-crossing?
     p_type: 1
     p_help: 0=no, 1=yes
     p_value_initial: '1'
@@ -63068,7 +63069,7 @@
   fields:
     block: 66
     p_order: 0
-    p_label: to the power of
+    p_label: To the power of
     p_type: 3
     p_help: null
     p_value_initial: '1.5'
@@ -63079,14 +63080,14 @@
     p_order: 0
     p_label: Number of inputs or sign vector
     p_type: 10
-    p_help: null
+    p_help: multiplication is set with +1, division with -1
     p_value_initial: '[1;-1]'
 - model: xcosblocks.newblockparameter
   pk: 136
   fields:
     block: 68
     p_order: 1
-    p_label: Error on divide by zero
+    p_label: Error on divide by zero?
     p_type: 1
     p_help: 0=no, 1=yes
     p_value_initial: '1'
@@ -63095,7 +63096,7 @@
   fields:
     block: 69
     p_order: 0
-    p_label: Use zero-crossing
+    p_label: Use zero-crossing?
     p_type: 1
     p_help: 0=no, 1=yes
     p_value_initial: '1'
@@ -63106,7 +63107,7 @@
     p_order: 0
     p_label: Datatype
     p_type: 2
-    p_help: 1=real double, 2=complex, 3=int32
+    p_help: 1=real double, 2=complex, 3=int32, 4, 5, 6, 7, 8
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 139
@@ -63133,7 +63134,8 @@
     p_order: 0
     p_label: Function
     p_type: 6
-    p_help: null
+    p_help: Choose among sin, cos, tan, asin, acos, atan, sinh, cosh, tanh, asinh,
+      acosh, atanh
     p_value_initial: sin
 - model: xcosblocks.newblockparameter
   pk: 142
@@ -63160,7 +63162,7 @@
     p_order: 0
     p_label: Datatype
     p_type: 2
-    p_help: 1=real double 2=Complex
+    p_help: 1=real double, 2=complex
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 145
@@ -63187,7 +63189,7 @@
     p_order: 0
     p_label: Datatype
     p_type: 2
-    p_help: 1=real double 2=Complex
+    p_help: 1=real double, 2=complex
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 148
@@ -63196,7 +63198,7 @@
     p_order: 1
     p_label: extraction type
     p_type: 2
-    p_help: 1=lower 2=upper 3=diagonal
+    p_help: 1=lower, 2=upper, 3=diagonal
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 149
@@ -63212,7 +63214,7 @@
   fields:
     block: 80
     p_order: 0
-    p_label: number of inputs
+    p_label: Number of inputs
     p_type: 2
     p_help: null
     p_value_initial: '2'
@@ -63221,7 +63223,7 @@
   fields:
     block: 81
     p_order: 0
-    p_label: number of inputs
+    p_label: Number of inputs
     p_type: 2
     p_help: null
     p_value_initial: '2'
@@ -63268,7 +63270,7 @@
     p_order: 1
     p_label: Decomposition type
     p_type: 2
-    p_help: 1=eig values, 2=eig values+eig vectors
+    p_help: 1=eig values, 2=eig values + eig vectors
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 157
@@ -63302,9 +63304,9 @@
   fields:
     block: 89
     p_order: 0
-    p_label: decomposition type
+    p_label: Conversion code
     p_type: 2
-    p_help: 1=Complex2MAG&PHI 2=MAG&PHI2Complex
+    p_help: 1=complex->(mag,phi), 2=(mag,phi)->complex
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 161
@@ -63313,7 +63315,7 @@
     p_order: 0
     p_label: Datatype
     p_type: 2
-    p_help: 1=real double, 2=complex, 3=int32
+    p_help: 1=real double, 2=complex, 3=int32, 4, 5, 6, 7, 8
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 162
@@ -63322,7 +63324,7 @@
     p_order: 1
     p_label: Multiplication rule
     p_type: 2
-    p_help: 1, 2, 3
+    p_help: 1=matrix by matrix, 2=matrix by matrix element wise, 3=matrix by scalar
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 163
@@ -63385,7 +63387,7 @@
     p_order: 1
     p_label: Decomposition type
     p_type: 2
-    p_help: 1=singular values, 2=sing values+matrix U & V
+    p_help: 1=singular values, 2=singular values + matrix U & V
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 170
@@ -63428,9 +63430,9 @@
   fields:
     block: 97
     p_order: 0
-    p_label: decomposition type
+    p_label: Conversion type
     p_type: 2
-    p_help: 1=Complex2Real&Imag 2=Real&Imag2Complex
+    p_help: 1=complex->(real,imag), 2=(real,imag)->complex
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 175
@@ -63439,16 +63441,16 @@
     p_order: 0
     p_label: Type
     p_type: 2
-    p_help: 1=cont, 2=disc
+    p_help: 1=continuous, 2=discontinuous
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 176
   fields:
     block: 98
     p_order: 1
-    p_label: Model (1=schr, 2=sign(cont)/inv(disc))
+    p_label: Model
     p_type: 2
-    p_help: null
+    p_help: 1=schr, 2=sign(continuous) inv(discontinuous)
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 177
@@ -63536,7 +63538,7 @@
   fields:
     block: 102
     p_order: 0
-    p_label: C
+    p_label: Capacitance
     p_type: 3
     p_help: F
     p_value_initial: '0.01'
@@ -63545,18 +63547,18 @@
   fields:
     block: 102
     p_order: 1
-    p_label: Initial Voltage
-    p_type: 2
-    p_help: null
+    p_label: Initial voltage
+    p_type: 3
+    p_help: V
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
   pk: 188
   fields:
     block: 104
     p_order: 0
-    p_label: V
+    p_label: Voltage
     p_type: 3
-    p_help: volt
+    p_help: V
     p_value_initial: '0.01'
 - model: xcosblocks.newblockparameter
   pk: 189
@@ -63574,7 +63576,7 @@
     p_order: 1
     p_label: Voltage equivalent to temperature
     p_type: 3
-    p_help: Volt
+    p_help: V
     p_value_initial: '0.04'
 - model: xcosblocks.newblockparameter
   pk: 191
@@ -63582,7 +63584,7 @@
     block: 107
     p_order: 2
     p_label: Max exponent for linear continuation
-    p_type: 3
+    p_type: 2
     p_help: null
     p_value_initial: '15'
 - model: xcosblocks.newblockparameter
@@ -63601,7 +63603,7 @@
     p_order: 0
     p_label: G1
     p_type: 3
-    p_help: null
+    p_help: gyration conductance
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 194
@@ -63610,23 +63612,23 @@
     p_order: 1
     p_label: G2
     p_type: 3
-    p_help: null
+    p_help: gyration conductance
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 195
   fields:
     block: 110
     p_order: 0
-    p_label: N
+    p_label: 'N: Turn ratio'
     p_type: 3
-    p_help: null
+    p_help: N1/N2
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 196
   fields:
     block: 111
     p_order: 0
-    p_label: L
+    p_label: Inductance
     p_type: 3
     p_help: H
     p_value_initial: '0.00001'
@@ -63635,36 +63637,36 @@
   fields:
     block: 112
     p_order: 0
-    p_label: Width [m]
+    p_label: Width
     p_type: 3
-    p_help: null
+    p_help: m
     p_value_initial: '0.00002'
 - model: xcosblocks.newblockparameter
   pk: 198
   fields:
     block: 112
     p_order: 1
-    p_label: Length [m]
+    p_label: Length
     p_type: 3
-    p_help: null
+    p_help: m
     p_value_initial: '0.000006'
 - model: xcosblocks.newblockparameter
   pk: 199
   fields:
     block: 112
     p_order: 2
-    p_label: Transconductance parameter [A/]
+    p_label: Transconductance parameter
     p_type: 3
-    p_help: V*V
+    p_help: A/(V*V)
     p_value_initial: '0.000041'
 - model: xcosblocks.newblockparameter
   pk: 200
   fields:
     block: 112
     p_order: 3
-    p_label: Zero bias threshold voltage [V]
+    p_label: Zero bias threshold voltage
     p_type: 3
-    p_help: null
+    p_help: V
     p_value_initial: '0.8'
 - model: xcosblocks.newblockparameter
   pk: 201
@@ -63689,27 +63691,27 @@
   fields:
     block: 112
     p_order: 6
-    p_label: Narrowing of channel [m]
+    p_label: Narrowing of channel
     p_type: 3
-    p_help: null
+    p_help: m
     p_value_initial: '-0.0000025'
 - model: xcosblocks.newblockparameter
   pk: 204
   fields:
     block: 112
     p_order: 7
-    p_label: Shortening of channel [m]
+    p_label: Shortening of channel
     p_type: 3
-    p_help: null
+    p_help: m
     p_value_initial: '-0.0000015'
 - model: xcosblocks.newblockparameter
   pk: 205
   fields:
     block: 112
     p_order: 8
-    p_label: Drain-Source-Resistance [Ohm]
+    p_label: Drain-source-resistance
     p_type: 3
-    p_help: null
+    p_help: ohm
     p_value_initial: '10000000'
 - model: xcosblocks.newblockparameter
   pk: 206
@@ -63737,15 +63739,15 @@
     p_label: 'ls : Transport saturation current'
     p_type: 3
     p_help: null
-    p_value_initial: '1.00E-16'
+    p_value_initial: 1E-16
 - model: xcosblocks.newblockparameter
   pk: 209
   fields:
     block: 113
     p_order: 3
-    p_label: 'Vak : Early voltage , 1/Volt'
+    p_label: 'Vak : Early voltage (inverse)'
     p_type: 3
-    p_help: inverse
+    p_help: 1/V
     p_value_initial: '0.02'
 - model: xcosblocks.newblockparameter
   pk: 210
@@ -63755,7 +63757,7 @@
     p_label: 'Tauf : Ideal forward transit time'
     p_type: 3
     p_help: null
-    p_value_initial: '1.20E-10'
+    p_value_initial: '1.2E-10'
 - model: xcosblocks.newblockparameter
   pk: 211
   fields:
@@ -63764,34 +63766,34 @@
     p_label: 'Taur : Ideal reverse transit time'
     p_type: 3
     p_help: null
-    p_value_initial: '5.00E-09'
+    p_value_initial: 5E-9
 - model: xcosblocks.newblockparameter
   pk: 212
   fields:
     block: 113
     p_order: 6
-    p_label: 'Ccs : Collector-substrat  cap.'
+    p_label: 'Ccs : Collector-substrat (ground) cap'
     p_type: 3
-    p_help: ground
-    p_value_initial: '1.00E-12'
+    p_help: null
+    p_value_initial: 1E-12
 - model: xcosblocks.newblockparameter
   pk: 213
   fields:
     block: 113
     p_order: 7
-    p_label: 'Cje : Base-emitter zero bias depletion cap.'
+    p_label: 'Cje : Base-emitter zero bias depletion cap'
     p_type: 3
     p_help: null
-    p_value_initial: '4.00E-13'
+    p_value_initial: 4E-13
 - model: xcosblocks.newblockparameter
   pk: 214
   fields:
     block: 113
     p_order: 8
-    p_label: 'Cjc : Base coll. zero bias depletion cap.'
+    p_label: 'Cjc : Base-collector zero bias depletion cap'
     p_type: 3
     p_help: null
-    p_value_initial: '5.00E-13'
+    p_value_initial: 5E-13
 - model: xcosblocks.newblockparameter
   pk: 215
   fields:
@@ -63806,7 +63808,7 @@
   fields:
     block: 113
     p_order: 10
-    p_label: 'Me : Base emmiter gradation exponent'
+    p_label: 'Me : Base-emitter gradation exponent'
     p_type: 3
     p_help: null
     p_value_initial: '0.4'
@@ -63815,7 +63817,7 @@
   fields:
     block: 113
     p_order: 11
-    p_label: 'Phic : Base collector diffusion voltage'
+    p_label: 'Phic : Base-collector diffusion voltage'
     p_type: 3
     p_help: null
     p_value_initial: '0.8'
@@ -63827,25 +63829,25 @@
     p_label: 'Mc : Base-collector gradation exponent'
     p_type: 3
     p_help: null
-    p_value_initial: '0.33'
+    p_value_initial: '0.333'
 - model: xcosblocks.newblockparameter
   pk: 219
   fields:
     block: 113
     p_order: 13
-    p_label: 'Gbc : Base collector conductance'
+    p_label: 'Gbc : Base-collector conductance'
     p_type: 3
     p_help: null
-    p_value_initial: '1.00E-15'
+    p_value_initial: 1E-15
 - model: xcosblocks.newblockparameter
   pk: 220
   fields:
     block: 113
     p_order: 14
-    p_label: 'Gbe : Base emitter conductance'
+    p_label: 'Gbe : Base-emitter conductance'
     p_type: 3
     p_help: null
-    p_value_initial: '1.00E-15'
+    p_value_initial: 1E-15
 - model: xcosblocks.newblockparameter
   pk: 221
   fields:
@@ -63860,45 +63862,45 @@
   fields:
     block: 113
     p_order: 16
-    p_label: 'EminMax : If x> EminMax, the exp function is linearized'
+    p_label: 'EMinMax : If x > EMinMax, the exp(x) function is linearized'
     p_type: 3
-    p_help: x
+    p_help: null
     p_value_initial: '40'
 - model: xcosblocks.newblockparameter
   pk: 223
   fields:
     block: 115
     p_order: 0
-    p_label: Width[m]
+    p_label: Width
     p_type: 3
-    p_help: null
+    p_help: m
     p_value_initial: '0.00005'
 - model: xcosblocks.newblockparameter
   pk: 224
   fields:
     block: 115
     p_order: 1
-    p_label: Length [m]
+    p_label: Length
     p_type: 3
-    p_help: null
+    p_help: m
     p_value_initial: '0.000006'
 - model: xcosblocks.newblockparameter
   pk: 225
   fields:
     block: 115
     p_order: 2
-    p_label: Transconductance parameter [ A/ ]
+    p_label: Transconductance parameter
     p_type: 3
-    p_help: V*V
+    p_help: A/(V*V)
     p_value_initial: '0.0000105'
 - model: xcosblocks.newblockparameter
   pk: 226
   fields:
     block: 115
     p_order: 3
-    p_label: Zero bias threshold voltage [V]
+    p_label: Zero bias threshold voltage
     p_type: 3
-    p_help: null
+    p_help: V
     p_value_initial: '-1'
 - model: xcosblocks.newblockparameter
   pk: 227
@@ -63925,7 +63927,7 @@
     p_order: 6
     p_label: Narrowing of channel
     p_type: 3
-    p_help: null
+    p_help: m
     p_value_initial: '-0.0000025'
 - model: xcosblocks.newblockparameter
   pk: 230
@@ -63934,7 +63936,7 @@
     p_order: 7
     p_label: Shortening of channel
     p_type: 3
-    p_help: null
+    p_help: m
     p_value_initial: '-0.0000021'
 - model: xcosblocks.newblockparameter
   pk: 231
@@ -63971,15 +63973,15 @@
     p_label: 'Is : Transport saturation current'
     p_type: 3
     p_help: null
-    p_value_initial: '1.00E-16'
+    p_value_initial: 1E-16
 - model: xcosblocks.newblockparameter
   pk: 235
   fields:
     block: 116
     p_order: 3
-    p_label: 'Vak : Early Voltage'
+    p_label: 'Vak : Early voltage (inverse)'
     p_type: 3
-    p_help: inverse
+    p_help: null
     p_value_initial: '0.02'
 - model: xcosblocks.newblockparameter
   pk: 236
@@ -63989,7 +63991,7 @@
     p_label: 'Tauf : Ideal forward transit time'
     p_type: 3
     p_help: null
-    p_value_initial: '1.20E-10'
+    p_value_initial: '1.2E-10'
 - model: xcosblocks.newblockparameter
   pk: 237
   fields:
@@ -63998,34 +64000,34 @@
     p_label: 'Taur : Ideal reverse transit time'
     p_type: 3
     p_help: null
-    p_value_initial: '5.00E-09'
+    p_value_initial: 5E-9
 - model: xcosblocks.newblockparameter
   pk: 238
   fields:
     block: 116
     p_order: 6
-    p_label: 'Ccs : Collector substract cap'
+    p_label: 'Ccs : Collector-substrat (ground) cap'
     p_type: 3
     p_help: null
-    p_value_initial: '1.00E-12'
+    p_value_initial: 1E-12
 - model: xcosblocks.newblockparameter
   pk: 239
   fields:
     block: 116
     p_order: 7
-    p_label: 'Cje : Base emitter zero bias depletion cap'
+    p_label: 'Cje : Base-emitter zero bias depletion cap'
     p_type: 3
     p_help: null
-    p_value_initial: '4.00E-13'
+    p_value_initial: 4E-13
 - model: xcosblocks.newblockparameter
   pk: 240
   fields:
     block: 116
     p_order: 8
-    p_label: 'Cjc : Base-coll zero bias depletion cap'
+    p_label: 'Cjc : Base-collector zero bias depletion cap'
     p_type: 3
     p_help: null
-    p_value_initial: '5.00E-13'
+    p_value_initial: 5E-13
 - model: xcosblocks.newblockparameter
   pk: 241
   fields:
@@ -64040,7 +64042,7 @@
   fields:
     block: 116
     p_order: 10
-    p_label: 'Me : Base emmiter gradation exponent'
+    p_label: 'Me : Base-emitter gradation exponent'
     p_type: 3
     p_help: null
     p_value_initial: '0.4'
@@ -64049,7 +64051,7 @@
   fields:
     block: 116
     p_order: 11
-    p_label: 'Phic : Base collector diffusion voltage'
+    p_label: 'Phic : Base-collector diffusion voltage'
     p_type: 3
     p_help: null
     p_value_initial: '0.8'
@@ -64067,10 +64069,10 @@
   fields:
     block: 116
     p_order: 13
-    p_label: 'Gbc : Base collector conductance'
+    p_label: 'Gbc : Base-collector conductance'
     p_type: 3
     p_help: null
-    p_value_initial: '1.00E-15'
+    p_value_initial: 1E-15
 - model: xcosblocks.newblockparameter
   pk: 246
   fields:
@@ -64079,7 +64081,7 @@
     p_label: 'Gbe : Base emitter conductance'
     p_type: 3
     p_help: null
-    p_value_initial: '1.00E-15'
+    p_value_initial: 1E-15
 - model: xcosblocks.newblockparameter
   pk: 247
   fields:
@@ -64094,9 +64096,9 @@
   fields:
     block: 116
     p_order: 16
-    p_label: 'EminMax : If x> EminMax, the exp function is linearized'
+    p_label: 'EMinMax : If x > EMinMax, the exp(x) function is linearized'
     p_type: 3
-    p_help: x
+    p_help: null
     p_value_initial: '40'
 - model: xcosblocks.newblockparameter
   pk: 249
@@ -64114,14 +64116,14 @@
     p_order: 0
     p_label: Amplitude
     p_type: 3
-    p_help: Volt
+    p_help: V
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 251
   fields:
     block: 119
     p_order: 1
-    p_label: phase
+    p_label: Phase
     p_type: 3
     p_help: rad
     p_value_initial: '0'
@@ -64139,10 +64141,10 @@
   fields:
     block: 119
     p_order: 3
-    p_label: Voltageoffset
+    p_label: Voltage offset
     p_type: 3
     p_help: V
-    p_value_initial: '`'
+    p_value_initial: '0'
 - model: xcosblocks.newblockparameter
   pk: 254
   fields:
@@ -64157,18 +64159,18 @@
   fields:
     block: 120
     p_order: 0
-    p_label: Resistance in On state
+    p_label: Resistance in on state
     p_type: 3
-    p_help: Ohm
+    p_help: ohm
     p_value_initial: '0.01'
 - model: xcosblocks.newblockparameter
   pk: 256
   fields:
     block: 120
     p_order: 1
-    p_label: Resistance in Off state
+    p_label: Resistance in off state
     p_type: 3
-    p_help: Ohm
+    p_help: ohm
     p_value_initial: '100000'
 - model: xcosblocks.newblockparameter
   pk: 257
@@ -64204,7 +64206,7 @@
     p_order: 0
     p_label: Datatype
     p_type: 2
-    p_help: 3=int32, 4=int16, 5=int8
+    p_help: 3=int32, 4=int16, 5=int8, 6, 7, 8
     p_value_initial: '3'
 - model: xcosblocks.newblockparameter
   pk: 261
@@ -64222,7 +64224,7 @@
     p_order: 0
     p_label: Datatype
     p_type: 2
-    p_help: 3=int32, 4=int16, 5=int8
+    p_help: 3=int32, 4=int16, 5=int8, 6, 7, 8
     p_value_initial: '3'
 - model: xcosblocks.newblockparameter
   pk: 263
@@ -64240,7 +64242,7 @@
     p_order: 0
     p_label: Input type
     p_type: 2
-    p_help: 1:double, 3:int32, 4:int16, 5:int8,..
+    p_help: 1|2=double, 3=int32, 4=int16, 5=int8, 6, 7, 8
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 265
@@ -64249,7 +64251,7 @@
     p_order: 1
     p_label: Output type
     p_type: 2
-    p_help: 1:double, 3:int32, 4:int16, 5:int8,..
+    p_help: 1|2=double, 3=int32, 4=int16, 5=int8, 6, 7, 8
     p_value_initial: '3'
 - model: xcosblocks.newblockparameter
   pk: 266
@@ -64258,16 +64260,16 @@
     p_order: 2
     p_label: Do on overflow
     p_type: 2
-    p_help: ' 0:Nothing, 1:Saturate, 2:Error'
+    p_help: 0=nothing, 1=saturate, 2=error
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
   pk: 267
   fields:
     block: 130
     p_order: 0
-    p_label: Data Type
+    p_label: Datatype
     p_type: 2
-    p_help: 3:int32, 4:int16, 5:int8, ...
+    p_help: 3=int32, 4=int16, 5=int8, 6, 7, 8
     p_value_initial: '3'
 - model: xcosblocks.newblockparameter
   pk: 268
@@ -64283,7 +64285,7 @@
   fields:
     block: 130
     p_order: 2
-    p_label: Number of Bits or Index of Bit
+    p_label: Number of bits or index of bit
     p_type: 10
     p_help: null
     p_value_initial: '0'
@@ -64292,44 +64294,44 @@
   fields:
     block: 130
     p_order: 3
-    p_label: Treat Bit Field as an Integer
+    p_label: Treat bit field as an integer?
     p_type: 1
-    p_help: 0:No, 1:Yes
+    p_help: 0=no, 1=yes
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
   pk: 271
   fields:
     block: 131
     p_order: 0
-    p_label: Data Type
+    p_label: Datatype
     p_type: 2
-    p_help: 3:int32, 4:int16, 5:int8,..
+    p_help: 3=int32, 4=int16, 5=int8, 6, 7, 8
     p_value_initial: '3'
 - model: xcosblocks.newblockparameter
   pk: 272
   fields:
     block: 131
     p_order: 1
-    p_label: Do on Overflow
+    p_label: Do on overflow
     p_type: 2
-    p_help: 0:Nothing, 1:Saturate, 2:Error
+    p_help: 0=nothing, 1=saturate, 2=error
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
   pk: 273
   fields:
     block: 132
     p_order: 0
-    p_label: Initial Value
+    p_label: Initial value
     p_type: 6
-    p_help: null
+    p_help: int8(0), int8(1)
     p_value_initial: int8(0)
 - model: xcosblocks.newblockparameter
   pk: 274
   fields:
     block: 133
     p_order: 0
-    p_label: Truth Table
-    p_type: 10
+    p_label: Truth table
+    p_type: 18
     p_help: matrix of outputs
     p_value_initial: '[0;0;0;1]'
 - model: xcosblocks.newblockparameter
@@ -64337,45 +64339,45 @@
   fields:
     block: 133
     p_order: 1
-    p_label: Accepts Inherited Events
+    p_label: Inherit?
     p_type: 1
-    p_help: 0:No, 1:Yes
+    p_help: 0=no, 1=yes
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
   pk: 276
   fields:
     block: 134
     p_order: 0
-    p_label: Data Type
+    p_label: Datatype
     p_type: 2
-    p_help: 3:int32, 4:int16, 5:int8,...
+    p_help: 3=int32, 4=int16, 5=int8, 6, 7, 8
     p_value_initial: '3'
 - model: xcosblocks.newblockparameter
   pk: 277
   fields:
     block: 134
     p_order: 1
-    p_label: Number of Bits to Shift Left
+    p_label: Number of bits to shift left
     p_type: 2
-    p_help: Negative number to shift right
+    p_help: negative number to shift right
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
   pk: 278
   fields:
     block: 134
     p_order: 2
-    p_label: Shift Type
+    p_label: Shift type
     p_type: 1
-    p_help: '0: Arithmetic, 1: Circular'
+    p_help: 0=arithmetic, 1=circular
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
   pk: 279
   fields:
     block: 135
     p_order: 0
-    p_label: Initial Value
+    p_label: Initial value
     p_type: 6
-    p_help: null
+    p_help: int8(0), int8(1)
     p_value_initial: int8(0)
 - model: xcosblocks.newblockparameter
   pk: 280
@@ -64427,17 +64429,17 @@
   fields:
     block: 141
     p_order: 1
-    p_label: Tag Visibility
+    p_label: Tag visibility
     p_type: 2
-    p_help: 1=Local, 2=Scoped, 3=Global
+    p_help: 1=local, 2=scoped, 3=global
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 286
   fields:
     block: 142
     p_order: 0
-    p_label: number of output ports or vector of sizes
-    p_type: 2
+    p_label: Number of output ports or vector of sizes
+    p_type: 10
     p_help: null
     p_value_initial: '2'
 - model: xcosblocks.newblockparameter
@@ -64445,8 +64447,8 @@
   fields:
     block: 143
     p_order: 0
-    p_label: number of output ports or vector of sizes
-    p_type: 2
+    p_label: Number of output ports or vector of sizes
+    p_type: 10
     p_help: null
     p_value_initial: '2'
 - model: xcosblocks.newblockparameter
@@ -64454,8 +64456,8 @@
   fields:
     block: 144
     p_order: 0
-    p_label: indices to extract
-    p_type: 3
+    p_label: Indices to extract
+    p_type: 10
     p_help: null
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
@@ -64490,9 +64492,9 @@
   fields:
     block: 147
     p_order: 1
-    p_label: Tag Visibility
+    p_label: Tag visibility
     p_type: 2
-    p_help: 1=Local 2=scoped 3=global
+    p_help: 1=local, 2=scoped, 3=global
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 293
@@ -64510,14 +64512,14 @@
     p_order: 1
     p_label: Tag Visibility
     p_type: 2
-    p_help: 1=Local 2=scoped 3=global
+    p_help: 1=local, 2=scoped, 3=global
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 295
   fields:
     block: 149
     p_order: 0
-    p_label: GotoTag
+    p_label: Goto tag
     p_type: 6
     p_help: null
     p_value_initial: A
@@ -64526,7 +64528,7 @@
   fields:
     block: 150
     p_order: 0
-    p_label: GotoTag
+    p_label: Goto tag
     p_type: 6
     p_help: null
     p_value_initial: A
@@ -64536,16 +64538,16 @@
     block: 151
     p_order: 0
     p_label: Datatype
-    p_type: 3
-    p_help: 1=real double 2=Complex 3=int32...
+    p_type: 2
+    p_help: 1=real double, 2=complex, 3=int32, 4, 5, 6, 7, 8
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 298
   fields:
     block: 151
     p_order: 1
-    p_label: number of outputs
-    p_type: 3
+    p_label: Number of outputs
+    p_type: 2
     p_help: null
     p_value_initial: '2'
 - model: xcosblocks.newblockparameter
@@ -64553,7 +64555,7 @@
   fields:
     block: 151
     p_order: 2
-    p_label: initial connected output
+    p_label: Initial connected output
     p_type: 2
     p_help: null
     p_value_initial: '1'
@@ -64562,8 +64564,8 @@
   fields:
     block: 152
     p_order: 0
-    p_label: number of inputs
-    p_type: 3
+    p_label: Number of inputs
+    p_type: 2
     p_help: null
     p_value_initial: '2'
 - model: xcosblocks.newblockparameter
@@ -64571,26 +64573,26 @@
   fields:
     block: 152
     p_order: 1
-    p_label: zero base indexing , otherwise 1
+    p_label: zero base indexing?
     p_type: 1
-    p_help: '0'
+    p_help: 0=yes, 1=no
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 302
   fields:
     block: 152
     p_order: 2
-    p_label: 'rounding rule : int(0),round (1), ceil (2), floor (3)  '
+    p_label: Rounding rule
     p_type: 2
-    p_help: null
+    p_help: 0=int, 1=round, 2=ceil, 3=floor
     p_value_initial: '3'
 - model: xcosblocks.newblockparameter
   pk: 303
   fields:
     block: 153
     p_order: 0
-    p_label: number of input ports or vector of sizes
-    p_type: 2
+    p_label: Number of input ports or vector of sizes
+    p_type: 10
     p_help: null
     p_value_initial: '2'
 - model: xcosblocks.newblockparameter
@@ -64598,8 +64600,8 @@
   fields:
     block: 154
     p_order: 0
-    p_label: number of input ports or vector of sizes
-    p_type: 3
+    p_label: Number of input ports or vector of sizes
+    p_type: 10
     p_help: null
     p_value_initial: '2'
 - model: xcosblocks.newblockparameter
@@ -64607,8 +64609,8 @@
   fields:
     block: 155
     p_order: 0
-    p_label: number of inputs
-    p_type: 3
+    p_label: Number of inputs
+    p_type: 2
     p_help: null
     p_value_initial: '2'
 - model: xcosblocks.newblockparameter
@@ -64616,8 +64618,8 @@
   fields:
     block: 156
     p_order: 0
-    p_label: number of inputs
-    p_type: 3
+    p_label: Number of inputs
+    p_type: 2
     p_help: null
     p_value_initial: '2'
 - model: xcosblocks.newblockparameter
@@ -64625,8 +64627,8 @@
   fields:
     block: 156
     p_order: 1
-    p_label: initial connected input
-    p_type: 3
+    p_label: Initial connected input
+    p_type: 2
     p_help: null
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
@@ -64634,9 +64636,9 @@
   fields:
     block: 157
     p_order: 0
-    p_label: size of output
-    p_type: 3
-    p_help: '-1: if don''t know'
+    p_label: Size of output
+    p_type: 2
+    p_help: -1=don't know
     p_value_initial: '-1'
 - model: xcosblocks.newblockparameter
   pk: 309
@@ -64644,16 +64646,16 @@
     block: 158
     p_order: 0
     p_label: Datatype
-    p_type: 3
-    p_help: 1=real double 2=Complex 3=int32..
+    p_type: 2
+    p_help: 1=real double, 2=complex, 3=int32, 4, 5, 6, 7, 8
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 310
   fields:
     block: 158
     p_order: 1
-    p_label: number of inputs
-    p_type: 3
+    p_label: Number of inputs
+    p_type: 2
     p_help: null
     p_value_initial: '2'
 - model: xcosblocks.newblockparameter
@@ -64661,8 +64663,8 @@
   fields:
     block: 158
     p_order: 2
-    p_label: initial connected input
-    p_type: 3
+    p_label: Initial connected input
+    p_type: 2
     p_help: null
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
@@ -64670,8 +64672,8 @@
   fields:
     block: 160
     p_order: 0
-    p_label: number of inputs
-    p_type: 3
+    p_label: Number of inputs
+    p_type: 2
     p_help: null
     p_value_initial: '2'
 - model: xcosblocks.newblockparameter
@@ -64679,8 +64681,8 @@
   fields:
     block: 160
     p_order: 1
-    p_label: connected input
-    p_type: 3
+    p_label: Connected input
+    p_type: 2
     p_help: null
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
@@ -64689,24 +64691,24 @@
     block: 161
     p_order: 0
     p_label: Datatype
-    p_type: 3
-    p_help: 1=real double 2=complex 3=int32..
+    p_type: 2
+    p_help: 1=real double, 2=complex, 3=int32, 4, 5, 6, 7, 8
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 315
   fields:
     block: 161
     p_order: 1
-    p_label: 'pass first input if: u2>=a(0), u2>a(1), u2~=a(2)'
+    p_label: Pass first input if
     p_type: 2
-    p_help: null
+    p_help: 0:u2>=a, 1:u2>a, 2:u2~=a
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
   pk: 316
   fields:
     block: 161
     p_order: 2
-    p_label: threshold a
+    p_label: Threshold a
     p_type: 3
     p_help: null
     p_value_initial: '0'
@@ -64715,9 +64717,9 @@
   fields:
     block: 161
     p_order: 3
-    p_label: 'use zero crossing: yes(1),no(0)'
+    p_label: Use zero-crossing?
     p_type: 1
-    p_help: null
+    p_help: 0=no, 1=yes
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 318
@@ -64725,7 +64727,7 @@
     block: 162
     p_order: 0
     p_label: Initial guess values
-    p_type: 3
+    p_type: 11
     p_help: null
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
@@ -64734,7 +64736,7 @@
     block: 163
     p_order: 0
     p_label: Initial guess values of state x
-    p_type: 3
+    p_type: 11
     p_help: null
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
@@ -64743,7 +64745,7 @@
     block: 163
     p_order: 1
     p_label: Initial guess values of derivative x'
-    p_type: 3
+    p_type: 11
     p_help: null
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
@@ -64751,9 +64753,9 @@
   fields:
     block: 163
     p_order: 2
-    p_label: 'Id(i)=1: If x''(i) is present in the feedback, else Id(i)=0'
-    p_type: 1
-    p_help: null
+    p_label: id values
+    p_type: 9
+    p_help: 1=x'(i) is present in the feedback, else 0
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
   pk: 322
@@ -64769,7 +64771,7 @@
   fields:
     block: 164
     p_order: 1
-    p_label: Initial Derivative
+    p_label: Initial derivative
     p_type: 3
     p_help: null
     p_value_initial: '0'
@@ -64788,7 +64790,7 @@
     block: 166
     p_order: 1
     p_label: Font number
-    p_type: 3
+    p_type: 2
     p_help: null
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
@@ -64797,7 +64799,7 @@
     block: 166
     p_order: 2
     p_label: Font size
-    p_type: 3
+    p_type: 2
     p_help: null
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
@@ -64806,7 +64808,7 @@
     block: 166
     p_order: 3
     p_label: Color
-    p_type: 3
+    p_type: 2
     p_help: null
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
@@ -64816,14 +64818,14 @@
     p_order: 4
     p_label: Total number of digits
     p_type: 2
-    p_help: '>3'
+    p_help: '> 3'
     p_value_initial: '5'
 - model: xcosblocks.newblockparameter
   pk: 329
   fields:
     block: 166
     p_order: 5
-    p_label: Number of frational part digits
+    p_label: Number of fractional part digits
     p_type: 2
     p_help: null
     p_value_initial: '1'
@@ -64832,7 +64834,7 @@
   fields:
     block: 166
     p_order: 6
-    p_label: Inherit
+    p_label: Inherit?
     p_type: 1
     p_help: 0=no, 1=yes
     p_value_initial: '0'
@@ -64878,7 +64880,7 @@
     block: 167
     p_order: 4
     p_label: Segs Thickness
-    p_type: 3
+    p_type: 2
     p_help: null
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
@@ -64887,7 +64889,7 @@
     block: 168
     p_order: 0
     p_label: Number of curves
-    p_type: 3
+    p_type: 2
     p_help: null
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
@@ -64895,9 +64897,9 @@
   fields:
     block: 168
     p_order: 1
-    p_label: 'Curves styles: colors>0 | marks <0'
-    p_type: 3
-    p_help: null
+    p_label: Curves styles
+    p_type: 10
+    p_help: Colors > 0 | marks < 0
     p_value_initial: '-4'
 - model: xcosblocks.newblockparameter
   pk: 338
@@ -64905,7 +64907,7 @@
     block: 168
     p_order: 2
     p_label: Curves thicknesses | marks sizes
-    p_type: 3
+    p_type: 10
     p_help: null
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
@@ -64914,8 +64916,8 @@
     block: 168
     p_order: 3
     p_label: Output window number
-    p_type: 3
-    p_help: null
+    p_type: 2
+    p_help: -1 for automatic
     p_value_initial: '-1'
 - model: xcosblocks.newblockparameter
   pk: 340
@@ -64923,7 +64925,7 @@
     block: 168
     p_order: 4
     p_label: Output window position
-    p_type: 11
+    p_type: 10
     p_help: null
     p_value_initial: '[]'
 - model: xcosblocks.newblockparameter
@@ -64932,7 +64934,7 @@
     block: 168
     p_order: 5
     p_label: Output window sizes
-    p_type: 11
+    p_type: 10
     p_help: null
     p_value_initial: '[]'
 - model: xcosblocks.newblockparameter
@@ -64977,7 +64979,7 @@
     block: 168
     p_order: 10
     p_label: Buffer size
-    p_type: 3
+    p_type: 2
     p_help: null
     p_value_initial: '2'
 - model: xcosblocks.newblockparameter
@@ -64986,7 +64988,7 @@
     block: 169
     p_order: 0
     p_label: Number of curves
-    p_type: 3
+    p_type: 2
     p_help: null
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
@@ -64994,17 +64996,17 @@
   fields:
     block: 169
     p_order: 1
-    p_label: color(>0) or mark(<0)
-    p_type: 3
-    p_help: null
+    p_label: Curves styles
+    p_type: 10
+    p_help: Colors > 0 | marks < 0
     p_value_initial: 1 2 3 4 5 6 7 13
 - model: xcosblocks.newblockparameter
   pk: 349
   fields:
     block: 169
     p_order: 2
-    p_label: line or mark size
-    p_type: 3
+    p_label: Curves thicknesses | marks sizes
+    p_type: 10
     p_help: null
     p_value_initial: 1 1 1 1 1 1 1 1
 - model: xcosblocks.newblockparameter
@@ -65013,8 +65015,8 @@
     block: 169
     p_order: 3
     p_label: Output window number
-    p_type: 3
-    p_help: null
+    p_type: 2
+    p_help: -1 for automatic
     p_value_initial: '-1'
 - model: xcosblocks.newblockparameter
   pk: 351
@@ -65022,7 +65024,7 @@
     block: 169
     p_order: 4
     p_label: Output window position
-    p_type: 11
+    p_type: 10
     p_help: null
     p_value_initial: '[]'
 - model: xcosblocks.newblockparameter
@@ -65031,7 +65033,7 @@
     block: 169
     p_order: 5
     p_label: Output window sizes
-    p_type: 11
+    p_type: 10
     p_help: null
     p_value_initial: '[]'
 - model: xcosblocks.newblockparameter
@@ -65040,7 +65042,7 @@
     block: 169
     p_order: 6
     p_label: Xmin and Xmax
-    p_type: 3
+    p_type: 11
     p_help: null
     p_value_initial: -15 15
 - model: xcosblocks.newblockparameter
@@ -65049,7 +65051,7 @@
     block: 169
     p_order: 7
     p_label: Ymin and Ymax
-    p_type: 3
+    p_type: 11
     p_help: null
     p_value_initial: -15 15
 - model: xcosblocks.newblockparameter
@@ -65058,7 +65060,7 @@
     block: 169
     p_order: 8
     p_label: Zmin and Zmax
-    p_type: 3
+    p_type: 11
     p_help: null
     p_value_initial: -15 15
 - model: xcosblocks.newblockparameter
@@ -65067,7 +65069,7 @@
     block: 169
     p_order: 9
     p_label: Alpha and Theta
-    p_type: 3
+    p_type: 11
     p_help: null
     p_value_initial: 50 280
 - model: xcosblocks.newblockparameter
@@ -65076,7 +65078,7 @@
     block: 169
     p_order: 10
     p_label: Buffer size
-    p_type: 3
+    p_type: 2
     p_help: null
     p_value_initial: '2'
 - model: xcosblocks.newblockparameter
@@ -65084,9 +65086,9 @@
   fields:
     block: 170
     p_order: 0
-    p_label: 'Curves style: colors>0 | marks<0'
+    p_label: Curves styles
     p_type: 10
-    p_help: null
+    p_help: Colors > 0 | marks < 0
     p_value_initial: 1 3 5 7 9 11 13 15
 - model: xcosblocks.newblockparameter
   pk: 359
@@ -65095,7 +65097,7 @@
     p_order: 1
     p_label: Output window number
     p_type: 2
-    p_help: null
+    p_help: -1 for automatic
     p_value_initial: '-1'
 - model: xcosblocks.newblockparameter
   pk: 360
@@ -65103,7 +65105,7 @@
     block: 170
     p_order: 2
     p_label: Output window position
-    p_type: 11
+    p_type: 10
     p_help: null
     p_value_initial: '[]'
 - model: xcosblocks.newblockparameter
@@ -65112,7 +65114,7 @@
     block: 170
     p_order: 3
     p_label: Output window sizes
-    p_type: 11
+    p_type: 10
     p_help: null
     p_value_initial: '[600;400]'
 - model: xcosblocks.newblockparameter
@@ -65148,7 +65150,7 @@
     block: 170
     p_order: 7
     p_label: Buffer size
-    p_type: 3
+    p_type: 2
     p_help: null
     p_value_initial: '2'
 - model: xcosblocks.newblockparameter
@@ -65157,7 +65159,7 @@
     block: 170
     p_order: 8
     p_label: Links to view
-    p_type: 3
+    p_type: 2
     p_help: null
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
@@ -65175,7 +65177,7 @@
     block: 172
     p_order: 0
     p_label: Bounds vector X
-    p_type: 3
+    p_type: 11
     p_help: null
     p_value_initial: '-1'
 - model: xcosblocks.newblockparameter
@@ -65184,7 +65186,7 @@
     block: 172
     p_order: 1
     p_label: Bounds vector Y
-    p_type: 3
+    p_type: 11
     p_help: null
     p_value_initial: '-1'
 - model: xcosblocks.newblockparameter
@@ -65192,8 +65194,8 @@
   fields:
     block: 172
     p_order: 2
-    p_label: ColorMap
-    p_type: 10
+    p_label: Colormap
+    p_type: 6
     p_help: null
     p_value_initial: jetcolormap(25)
 - model: xcosblocks.newblockparameter
@@ -65219,8 +65221,8 @@
   fields:
     block: 173
     p_order: 0
-    p_label: ColorMap
-    p_type: 10
+    p_label: Colormap
+    p_type: 6
     p_help: null
     p_value_initial: jetcolormap(25)
 - model: xcosblocks.newblockparameter
@@ -65229,7 +65231,7 @@
     block: 173
     p_order: 1
     p_label: Minimum level range
-    p_type: 3
+    p_type: 2
     p_help: null
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
@@ -65238,7 +65240,7 @@
     block: 173
     p_order: 2
     p_label: Maximum level range
-    p_type: 3
+    p_type: 2
     p_help: null
     p_value_initial: '100'
 - model: xcosblocks.newblockparameter
@@ -65247,7 +65249,7 @@
     block: 174
     p_order: 0
     p_label: Input ports size
-    p_type: 11
+    p_type: 10
     p_help: null
     p_value_initial: 1 1
 - model: xcosblocks.newblockparameter
@@ -65255,9 +65257,9 @@
   fields:
     block: 174
     p_order: 1
-    p_label: Drawing colors or mark
-    p_type: 11
-    p_help: null
+    p_label: Curves styles
+    p_type: 10
+    p_help: Colors > 0 | marks < 0
     p_value_initial: 1 3 5 7 9 11 13 15
 - model: xcosblocks.newblockparameter
   pk: 378
@@ -65265,8 +65267,8 @@
     block: 174
     p_order: 2
     p_label: Output window number
-    p_type: 3
-    p_help: null
+    p_type: 2
+    p_help: -1 for automatic
     p_value_initial: '-1'
 - model: xcosblocks.newblockparameter
   pk: 379
@@ -65274,7 +65276,7 @@
     block: 174
     p_order: 3
     p_label: Output window position
-    p_type: 11
+    p_type: 10
     p_help: null
     p_value_initial: '[]'
 - model: xcosblocks.newblockparameter
@@ -65283,7 +65285,7 @@
     block: 174
     p_order: 4
     p_label: Output window sizes
-    p_type: 11
+    p_type: 10
     p_help: null
     p_value_initial: '[]'
 - model: xcosblocks.newblockparameter
@@ -65292,7 +65294,7 @@
     block: 174
     p_order: 5
     p_label: Ymin vector
-    p_type: 3
+    p_type: 11
     p_help: null
     p_value_initial: -1 -5
 - model: xcosblocks.newblockparameter
@@ -65301,7 +65303,7 @@
     block: 174
     p_order: 6
     p_label: Ymax vector
-    p_type: 3
+    p_type: 11
     p_help: null
     p_value_initial: 1 5
 - model: xcosblocks.newblockparameter
@@ -65309,8 +65311,8 @@
   fields:
     block: 174
     p_order: 7
-    p_label: Refresh Period
-    p_type: 3
+    p_label: Refresh periods
+    p_type: 11
     p_help: null
     p_value_initial: 30 30
 - model: xcosblocks.newblockparameter
@@ -65319,7 +65321,7 @@
     block: 174
     p_order: 8
     p_label: Buffer size
-    p_type: 3
+    p_type: 2
     p_help: null
     p_value_initial: '20'
 - model: xcosblocks.newblockparameter
@@ -65327,9 +65329,9 @@
   fields:
     block: 174
     p_order: 9
-    p_label: Accept herited events
+    p_label: Inherit?
     p_type: 1
-    p_help: null
+    p_help: 0=no, 1=yes
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
   pk: 386
@@ -65338,16 +65340,16 @@
     p_order: 10
     p_label: Name of scope
     p_type: 6
-    p_help: null
-    p_value_initial: Empty
+    p_help: label id
+    p_value_initial: ''
 - model: xcosblocks.newblockparameter
   pk: 387
   fields:
     block: 175
     p_order: 0
-    p_label: Color(>0) or mark(<0)vector(8 entries)
-    p_type: 11
-    p_help: null
+    p_label: Curve style
+    p_type: 10
+    p_help: Colors > 0 | marks < 0
     p_value_initial: 1 3 5 7 9 11 13 15
 - model: xcosblocks.newblockparameter
   pk: 388
@@ -65355,8 +65357,8 @@
     block: 175
     p_order: 1
     p_label: Output window number
-    p_type: 3
-    p_help: null
+    p_type: 2
+    p_help: -1 for automatic
     p_value_initial: '-1'
 - model: xcosblocks.newblockparameter
   pk: 389
@@ -65364,7 +65366,7 @@
     block: 175
     p_order: 2
     p_label: Output window position
-    p_type: 11
+    p_type: 10
     p_help: null
     p_value_initial: '[]'
 - model: xcosblocks.newblockparameter
@@ -65373,7 +65375,7 @@
     block: 175
     p_order: 3
     p_label: Output window sizes
-    p_type: 11
+    p_type: 10
     p_help: null
     p_value_initial: '[600;400]'
 - model: xcosblocks.newblockparameter
@@ -65409,7 +65411,7 @@
     block: 175
     p_order: 7
     p_label: Buffer size
-    p_type: 3
+    p_type: 2
     p_help: null
     p_value_initial: '20'
 - model: xcosblocks.newblockparameter
@@ -65417,9 +65419,9 @@
   fields:
     block: 175
     p_order: 8
-    p_label: Accept herited events 0/1
+    p_label: Inherit?
     p_type: 1
-    p_help: null
+    p_help: 0=no, 1=yes
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
   pk: 396
@@ -65428,15 +65430,15 @@
     p_order: 9
     p_label: Name of scope
     p_type: 6
-    p_help: null
-    p_value_initial: Empty
+    p_help: label id
+    p_value_initial: ''
 - model: xcosblocks.newblockparameter
   pk: 397
   fields:
     block: 176
     p_order: 0
     p_label: Number of curves
-    p_type: 3
+    p_type: 2
     p_help: null
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
@@ -65444,17 +65446,17 @@
   fields:
     block: 176
     p_order: 1
-    p_label: color(>0) or mark(<0)
-    p_type: 3
-    p_help: null
+    p_label: Curves styles
+    p_type: 10
+    p_help: Colors > 0 | marks < 0
     p_value_initial: '4'
 - model: xcosblocks.newblockparameter
   pk: 399
   fields:
     block: 176
     p_order: 2
-    p_label: line or mark size
-    p_type: 3
+    p_label: Curves thicknesses | marks sizes
+    p_type: 10
     p_help: null
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
@@ -65463,7 +65465,7 @@
     block: 176
     p_order: 3
     p_label: Output window number
-    p_type: 3
+    p_type: 2
     p_help: null
     p_value_initial: '-1'
 - model: xcosblocks.newblockparameter
@@ -65472,7 +65474,7 @@
     block: 176
     p_order: 4
     p_label: Output window position
-    p_type: 11
+    p_type: 10
     p_help: null
     p_value_initial: '[]'
 - model: xcosblocks.newblockparameter
@@ -65480,8 +65482,8 @@
   fields:
     block: 176
     p_order: 5
-    p_label: Output window size
-    p_type: 11
+    p_label: Output window sizes
+    p_type: 10
     p_help: null
     p_value_initial: '[600;400]'
 - model: xcosblocks.newblockparameter
@@ -65526,7 +65528,7 @@
     block: 176
     p_order: 10
     p_label: Buffer size
-    p_type: 3
+    p_type: 2
     p_help: null
     p_value_initial: '2'
 - model: xcosblocks.newblockparameter
@@ -65535,7 +65537,7 @@
     block: 177
     p_order: 0
     p_label: Number of curves
-    p_type: 3
+    p_type: 2
     p_help: null
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
@@ -65543,17 +65545,17 @@
   fields:
     block: 177
     p_order: 1
-    p_label: color(>0) or mark(<0)
-    p_type: 3
-    p_help: null
+    p_label: Curves styles
+    p_type: 10
+    p_help: Colors > 0 | marks < 0
     p_value_initial: 1 2 3 4 5 6 7 13
 - model: xcosblocks.newblockparameter
   pk: 410
   fields:
     block: 177
     p_order: 2
-    p_label: line or mark size
-    p_type: 3
+    p_label: Curves thicknesses | marks sizes
+    p_type: 10
     p_help: null
     p_value_initial: 1 1 1 1 1 1 1 1
 - model: xcosblocks.newblockparameter
@@ -65562,8 +65564,8 @@
     block: 177
     p_order: 3
     p_label: Output window number
-    p_type: 3
-    p_help: null
+    p_type: 2
+    p_help: -1 for automatic
     p_value_initial: '-1'
 - model: xcosblocks.newblockparameter
   pk: 412
@@ -65571,7 +65573,7 @@
     block: 177
     p_order: 4
     p_label: Output window position
-    p_type: 11
+    p_type: 10
     p_help: null
     p_value_initial: '[]'
 - model: xcosblocks.newblockparameter
@@ -65580,7 +65582,7 @@
     block: 177
     p_order: 5
     p_label: Output window size
-    p_type: 11
+    p_type: 10
     p_help: null
     p_value_initial: '[600;400]'
 - model: xcosblocks.newblockparameter
@@ -65589,7 +65591,7 @@
     block: 177
     p_order: 6
     p_label: Xmin and Xmax
-    p_type: 3
+    p_type: 11
     p_help: null
     p_value_initial: -15 15
 - model: xcosblocks.newblockparameter
@@ -65598,7 +65600,7 @@
     block: 177
     p_order: 7
     p_label: Ymin and Ymax
-    p_type: 3
+    p_type: 11
     p_help: null
     p_value_initial: -15 15
 - model: xcosblocks.newblockparameter
@@ -65607,7 +65609,7 @@
     block: 177
     p_order: 8
     p_label: Zmin and Zmax
-    p_type: 3
+    p_type: 11
     p_help: null
     p_value_initial: -15 15
 - model: xcosblocks.newblockparameter
@@ -65616,7 +65618,7 @@
     block: 177
     p_order: 9
     p_label: Alpha and Theta
-    p_type: 3
+    p_type: 11
     p_help: null
     p_value_initial: 50 280
 - model: xcosblocks.newblockparameter
@@ -65625,7 +65627,7 @@
     block: 177
     p_order: 10
     p_label: Buffer size
-    p_type: 3
+    p_type: 2
     p_help: null
     p_value_initial: '2'
 - model: xcosblocks.newblockparameter
@@ -65634,7 +65636,7 @@
     block: 178
     p_order: 0
     p_label: Port number
-    p_type: 3
+    p_type: 2
     p_help: null
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
@@ -65669,16 +65671,16 @@
   fields:
     block: 180
     p_order: 2
-    p_label: Inherit
+    p_label: Inherit?
     p_type: 1
-    p_help: no:0, yes:1
+    p_help: 0=no, 1=yes
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
   pk: 424
   fields:
     block: 182
     p_order: 0
-    p_label: Buffer Size
+    p_label: Buffer size
     p_type: 2
     p_help: null
     p_value_initial: '2'
@@ -65687,17 +65689,17 @@
   fields:
     block: 182
     p_order: 1
-    p_label: Swap Mode
+    p_label: Swap mode?
     p_type: 1
-    p_help: 0:No,1:Yes
+    p_help: 0=no, 1=yes
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
   pk: 426
   fields:
     block: 183
     p_order: 0
-    p_label: Input Size
-    p_type: 3
+    p_label: Input size
+    p_type: 2
     p_help: null
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
@@ -65705,7 +65707,7 @@
   fields:
     block: 183
     p_order: 1
-    p_label: Output File Name
+    p_label: Output filename
     p_type: 8
     p_help: null
     p_value_initial: foo
@@ -65714,7 +65716,7 @@
   fields:
     block: 183
     p_order: 2
-    p_label: Output Format
+    p_label: Output format
     p_type: 6
     p_help: null
     p_value_initial: c
@@ -65723,8 +65725,8 @@
   fields:
     block: 183
     p_order: 3
-    p_label: Buffer Size
-    p_type: 3
+    p_label: Buffer size
+    p_type: 2
     p_help: null
     p_value_initial: '2'
 - model: xcosblocks.newblockparameter
@@ -65732,9 +65734,9 @@
   fields:
     block: 183
     p_order: 4
-    p_label: Swap Mode
+    p_label: Swap mode?
     p_type: 1
-    p_help: 0:No,1:Yes
+    p_help: 0=no, 1=yes
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
   pk: 431
@@ -65742,7 +65744,7 @@
     block: 184
     p_order: 0
     p_label: Port Number
-    p_type: 3
+    p_type: 2
     p_help: null
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
@@ -65759,7 +65761,7 @@
   fields:
     block: 185
     p_order: 1
-    p_label: Initialisation Time
+    p_label: Initialisation time
     p_type: 3
     p_help: null
     p_value_initial: '0.1'
@@ -65768,7 +65770,7 @@
   fields:
     block: 186
     p_order: 0
-    p_label: Constant
+    p_label: Value
     p_type: 3
     p_help: null
     p_value_initial: '1'
@@ -65777,18 +65779,18 @@
   fields:
     block: 187
     p_order: 0
-    p_label: Constant
-    p_type: 3
-    p_help: null
+    p_label: Value
+    p_type: 19
+    p_help: scalar | vector | matrix
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 436
   fields:
     block: 188
     p_order: 0
-    p_label: Constant value
-    p_type: 3
-    p_help: null
+    p_label: Value
+    p_type: 19
+    p_help: scalar | vector | matrix
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 437
@@ -65796,7 +65798,7 @@
     block: 189
     p_order: 0
     p_label: Minimum
-    p_type: 3
+    p_type: 2
     p_help: null
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
@@ -65805,7 +65807,7 @@
     block: 189
     p_order: 1
     p_label: Maximum
-    p_type: 3
+    p_type: 2
     p_help: null
     p_value_initial: '2'
 - model: xcosblocks.newblockparameter
@@ -65815,44 +65817,44 @@
     p_order: 2
     p_label: Rule
     p_type: 2
-    p_help: ' 1:increment, 2:Decrement'
+    p_help: 1=increment, 2=decrement
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 440
   fields:
     block: 190
     p_order: 0
-    p_label: xmin
+    p_label: Xmin
     p_type: 3
     p_help: null
-    p_value_initial: ''
+    p_value_initial: '0'
 - model: xcosblocks.newblockparameter
   pk: 441
   fields:
     block: 190
     p_order: 1
-    p_label: xmax
+    p_label: Xmax
     p_type: 3
     p_help: null
-    p_value_initial: ''
+    p_value_initial: '2'
 - model: xcosblocks.newblockparameter
   pk: 442
   fields:
     block: 190
     p_order: 2
-    p_label: ymin
+    p_label: Ymin
     p_type: 3
     p_help: null
-    p_value_initial: ''
+    p_value_initial: '-5'
 - model: xcosblocks.newblockparameter
   pk: 443
   fields:
     block: 190
     p_order: 3
-    p_label: ymax
+    p_label: Ymax
     p_type: 3
     p_help: null
-    p_value_initial: ''
+    p_value_initial: '5'
 - model: xcosblocks.newblockparameter
   pk: 444
   fields:
@@ -65867,7 +65869,7 @@
   fields:
     block: 191
     p_order: 1
-    p_label: Interpolation Method
+    p_label: Interpolation method
     p_type: 2
     p_help: null
     p_value_initial: '1'
@@ -65876,9 +65878,9 @@
   fields:
     block: 191
     p_order: 2
-    p_label: Enable zero crossing ?
+    p_label: Use zero-crossing?
     p_type: 1
-    p_help: 0:No, 1:Yes
+    p_help: 0=no, 1=yes
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 447
@@ -65887,14 +65889,14 @@
     p_order: 3
     p_label: Output at end
     p_type: 2
-    p_help: 0:Zero, 1:Hold, 2:Repeat
+    p_help: 0=zero, 1=hold, 2=repeat
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
   pk: 448
   fields:
     block: 192
     p_order: 0
-    p_label: Magnitude
+    p_label: Amplitude
     p_type: 3
     p_help: null
     p_value_initial: '1'
@@ -65940,8 +65942,8 @@
     block: 194
     p_order: 1
     p_label: Output size
-    p_type: 11
-    p_help: '[-1,-2] for inherit'
+    p_type: 10
+    p_help: '[-1 -2] for inherit'
     p_value_initial: '[-1 -2]'
 - model: xcosblocks.newblockparameter
   pk: 454
@@ -65949,7 +65951,7 @@
     block: 194
     p_order: 2
     p_label: Output type
-    p_type: 3
+    p_type: 2
     p_help: -1 for inherit
     p_value_initial: '-1'
 - model: xcosblocks.newblockparameter
@@ -65957,7 +65959,7 @@
   fields:
     block: 195
     p_order: 0
-    p_label: Port Number
+    p_label: Port number
     p_type: 2
     p_help: null
     p_value_initial: '1'
@@ -65966,8 +65968,8 @@
   fields:
     block: 196
     p_order: 0
-    p_label: Initial State
-    p_type: 3
+    p_label: Initial state
+    p_type: 2
     p_help: zero or positive number
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
@@ -65975,8 +65977,8 @@
   fields:
     block: 196
     p_order: 1
-    p_label: Upper Limit
-    p_type: 3
+    p_label: Upper limit
+    p_type: 2
     p_help: positive number
     p_value_initial: '3'
 - model: xcosblocks.newblockparameter
@@ -65984,16 +65986,16 @@
   fields:
     block: 197
     p_order: 0
-    p_label: 'Phase delay  :'
+    p_label: Phase delay
     p_type: 3
-    p_help: secs
+    p_help: s
     p_value_initial: '0.1'
 - model: xcosblocks.newblockparameter
   pk: 459
   fields:
     block: 197
     p_order: 1
-    p_label: 'Pulse Width  :'
+    p_label: Pulse width
     p_type: 3
     p_help: '% of period'
     p_value_initial: '30'
@@ -66002,9 +66004,9 @@
   fields:
     block: 197
     p_order: 2
-    p_label: 'Period  :'
+    p_label: Period
     p_type: 3
-    p_help: secs
+    p_help: s
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 461
@@ -66029,7 +66031,7 @@
   fields:
     block: 198
     p_order: 1
-    p_label: Start Time
+    p_label: Start time
     p_type: 3
     p_help: null
     p_value_initial: '0'
@@ -66038,7 +66040,7 @@
   fields:
     block: 198
     p_order: 2
-    p_label: Initial Value
+    p_label: Initial value
     p_type: 3
     p_help: null
     p_value_initial: '0'
@@ -66049,16 +66051,17 @@
     p_order: 0
     p_label: Datatype
     p_type: 2
-    p_help: 1=real double 2=complex
+    p_help: 1=real double, 2=complex
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 466
   fields:
     block: 199
     p_order: 1
-    p_label: flag
+    p_label: Flag
     p_type: 1
-    p_help: null
+    p_help: 0=uniform distribution with A min and A+B max, 1=normal distribution with
+      A mean and B deviation
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
   pk: 467
@@ -66068,7 +66071,7 @@
     p_label: A
     p_type: 3
     p_help: null
-    p_value_initial: '1'
+    p_value_initial: '0'
 - model: xcosblocks.newblockparameter
   pk: 468
   fields:
@@ -66083,16 +66086,16 @@
   fields:
     block: 199
     p_order: 4
-    p_label: SEED
-    p_type: 11
+    p_label: Seed
+    p_type: 10
     p_help: null
-    p_value_initial: '[2211,3303270]'
+    p_value_initial: '[2113248,7560437]'
 - model: xcosblocks.newblockparameter
   pk: 470
   fields:
     block: 200
     p_order: 0
-    p_label: Input File Name
+    p_label: Input filename
     p_type: 8
     p_help: null
     p_value_initial: test.au
@@ -66102,7 +66105,7 @@
     block: 200
     p_order: 1
     p_label: Buffer size
-    p_type: 3
+    p_type: 2
     p_help: null
     p_value_initial: '20'
 - model: xcosblocks.newblockparameter
@@ -66110,16 +66113,16 @@
   fields:
     block: 200
     p_order: 2
-    p_label: Swap Mode
+    p_label: Swap mode?
     p_type: 1
-    p_help: 0:No, 1:Yes
+    p_help: 0=no, 1=yes
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
   pk: 473
   fields:
     block: 201
     p_order: 0
-    p_label: Time Record Selection
+    p_label: Time record selection
     p_type: 10
     p_help: null
     p_value_initial: '[]'
@@ -66128,7 +66131,7 @@
   fields:
     block: 201
     p_order: 1
-    p_label: Outputs Record Selection
+    p_label: Outputs record selection
     p_type: 2
     p_help: null
     p_value_initial: '1'
@@ -66137,7 +66140,7 @@
   fields:
     block: 201
     p_order: 2
-    p_label: Input File Name
+    p_label: Input filename
     p_type: 8
     p_help: null
     p_value_initial: foo
@@ -66146,7 +66149,7 @@
   fields:
     block: 201
     p_order: 3
-    p_label: Input Format
+    p_label: Input format
     p_type: 6
     p_help: null
     p_value_initial: d
@@ -66155,8 +66158,8 @@
   fields:
     block: 201
     p_order: 4
-    p_label: Record Size
-    p_type: 3
+    p_label: Record size
+    p_type: 2
     p_help: null
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
@@ -66164,8 +66167,8 @@
   fields:
     block: 201
     p_order: 5
-    p_label: Buffer Size
-    p_type: 3
+    p_label: Buffer size
+    p_type: 2
     p_help: null
     p_value_initial: '20'
 - model: xcosblocks.newblockparameter
@@ -66173,8 +66176,8 @@
   fields:
     block: 201
     p_order: 6
-    p_label: Initial Record Index
-    p_type: 3
+    p_label: Initial record index
+    p_type: 2
     p_help: null
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
@@ -66182,16 +66185,16 @@
   fields:
     block: 201
     p_order: 7
-    p_label: Swap Mode
+    p_label: Swap mode?
     p_type: 1
-    p_help: 0:No, 1:Yes
+    p_help: 0=no, 1=yes
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
   pk: 481
   fields:
     block: 202
     p_order: 0
-    p_label: Time Record Selection
+    p_label: Time record selection
     p_type: 10
     p_help: null
     p_value_initial: '[]'
@@ -66200,8 +66203,8 @@
   fields:
     block: 202
     p_order: 1
-    p_label: Outputs Record Selection
-    p_type: 3
+    p_label: Outputs record selection
+    p_type: 2
     p_help: null
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
@@ -66209,8 +66212,8 @@
   fields:
     block: 202
     p_order: 2
-    p_label: Input File Name
-    p_type: 6
+    p_label: Input filename
+    p_type: 8
     p_help: null
     p_value_initial: foo
 - model: xcosblocks.newblockparameter
@@ -66218,7 +66221,7 @@
   fields:
     block: 202
     p_order: 3
-    p_label: Input Format
+    p_label: Input format
     p_type: 6
     p_help: null
     p_value_initial: (7(e10.3,1x))
@@ -66227,8 +66230,8 @@
   fields:
     block: 202
     p_order: 4
-    p_label: Buffer Size
-    p_type: 3
+    p_label: Buffer size
+    p_type: 2
     p_help: null
     p_value_initial: '2'
 - model: xcosblocks.newblockparameter
@@ -66254,8 +66257,8 @@
   fields:
     block: 205
     p_order: 0
-    p_label: Spline Method
-    p_type: 3
+    p_label: Spline method
+    p_type: 2
     p_help: 0..7
     p_value_initial: '3'
 - model: xcosblocks.newblockparameter
@@ -66281,7 +66284,7 @@
   fields:
     block: 205
     p_order: 3
-    p_label: Periodic signal ?
+    p_label: Periodic signal?
     p_type: 7
     p_help: y/n
     p_value_initial: y
@@ -66290,7 +66293,7 @@
   fields:
     block: 205
     p_order: 4
-    p_label: Launch graphic window ?
+    p_label: Launch graphic window?
     p_type: 7
     p_help: y/n
     p_value_initial: n
@@ -66299,7 +66302,7 @@
   fields:
     block: 206
     p_order: 0
-    p_label: Step Time
+    p_label: Step time
     p_type: 3
     p_help: null
     p_value_initial: '1'
@@ -66308,7 +66311,7 @@
   fields:
     block: 206
     p_order: 1
-    p_label: Initial Value
+    p_label: Initial value
     p_type: 3
     p_help: null
     p_value_initial: '0'
@@ -66317,7 +66320,7 @@
   fields:
     block: 206
     p_order: 2
-    p_label: Final Value
+    p_label: Final value
     p_type: 3
     p_help: null
     p_value_initial: '1'
@@ -66353,16 +66356,16 @@
   fields:
     block: 209
     p_order: 0
-    p_label: 'Pressure at the reservoir surface : Patm'
+    p_label: 'Pressure at the reservoir surface: Patm'
     p_type: 3
-    p_help: pa
+    p_help: Pa
     p_value_initial: '101300'
 - model: xcosblocks.newblockparameter
   pk: 500
   fields:
     block: 209
     p_order: 1
-    p_label: 'Reservoir section : A'
+    p_label: 'Reservoir section: A'
     p_type: 3
     p_help: m2
     p_value_initial: '1'
@@ -66389,7 +66392,7 @@
   fields:
     block: 209
     p_order: 4
-    p_label: 'Altitude of outlet connection #1: zs1'
+    p_label: 'Altitude of output connection #1: zs1'
     p_type: 3
     p_help: m
     p_value_initial: '40'
@@ -66398,7 +66401,7 @@
   fields:
     block: 209
     p_order: 5
-    p_label: 'Altitude of outlet connection #2: zs2'
+    p_label: 'Altitude of output connection #2: zs2'
     p_type: 3
     p_help: m
     p_value_initial: '0'
@@ -66407,7 +66410,7 @@
   fields:
     block: 209
     p_order: 6
-    p_label: 'Starting fluid altitude : z0'
+    p_label: 'Starting fluid altitude: z0'
     p_type: 3
     p_help: m
     p_value_initial: '30'
@@ -66416,7 +66419,7 @@
   fields:
     block: 209
     p_order: 7
-    p_label: 'Initial fluid temperature : T0'
+    p_label: 'Initial fluid temperature: T0'
     p_type: 3
     p_help: K
     p_value_initial: '290'
@@ -66425,7 +66428,7 @@
   fields:
     block: 209
     p_order: 8
-    p_label: 'If >0, fixed fluid density : p_rho'
+    p_label: 'If > 0, fixed fluid density: p_rho'
     p_type: 3
     p_help: kg/m3
     p_value_initial: '0'
@@ -66434,7 +66437,7 @@
   fields:
     block: 211
     p_order: 0
-    p_label: 'Tube length: L'
+    p_label: 'Pipe length: L'
     p_type: 3
     p_help: m
     p_value_initial: '10'
@@ -66443,7 +66446,7 @@
   fields:
     block: 211
     p_order: 1
-    p_label: 'Internal tube diameter: D'
+    p_label: 'Pipe internal diameter: D'
     p_type: 3
     p_help: m
     p_value_initial: '0.2'
@@ -66452,7 +66455,7 @@
   fields:
     block: 211
     p_order: 2
-    p_label: 'Coefficient of pressure loss-friction : lambda'
+    p_label: 'Coefficient of loss of load-friction: lambda'
     p_type: 3
     p_help: S.U
     p_value_initial: '0.03'
@@ -66461,7 +66464,7 @@
   fields:
     block: 211
     p_order: 3
-    p_label: 'Pipe inlet altitude: z1'
+    p_label: 'Altitude of pipe''s inlet: z1'
     p_type: 3
     p_help: m
     p_value_initial: '0'
@@ -66470,7 +66473,7 @@
   fields:
     block: 211
     p_order: 4
-    p_label: 'Pipe outlet altitude: z2'
+    p_label: 'Altitude of pipe''s outlet: z2'
     p_type: 3
     p_help: m
     p_value_initial: '0'
@@ -66479,16 +66482,16 @@
   fields:
     block: 211
     p_order: 5
-    p_label: 'If> 0, imposed density fu fluid: p_rho'
+    p_label: 'If > 0, fixed fluid density: p_rho'
     p_type: 3
-    p_help: kg / m3
+    p_help: kg/m3
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
   pk: 514
   fields:
     block: 212
     p_order: 0
-    p_label: 'Source pressure : P0'
+    p_label: 'Pressure of the source: P0'
     p_type: 3
     p_help: Pa
     p_value_initial: '100000'
@@ -66497,7 +66500,7 @@
   fields:
     block: 212
     p_order: 1
-    p_label: 'Source temperature : T0'
+    p_label: 'Temperature of the source: T0'
     p_type: 3
     p_help: K
     p_value_initial: '290'
@@ -66506,7 +66509,7 @@
   fields:
     block: 212
     p_order: 2
-    p_label: 'Source specific enthalpy : H0'
+    p_label: 'Specific enthalpy of the source: H0'
     p_type: 3
     p_help: J/kg
     p_value_initial: '100000'
@@ -66515,16 +66518,16 @@
   fields:
     block: 212
     p_order: 3
-    p_label: 'Condition: 1=fixed temperature / 2=fixed enthalpy'
+    p_label: Condition
     p_type: 2
-    p_help: null
+    p_help: 1=fixed temperature, 2=fixed enthalpy
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 518
   fields:
     block: 213
     p_order: 0
-    p_label: 'Pressure : P0'
+    p_label: 'Pressure: P0'
     p_type: 3
     p_help: Pa
     p_value_initial: '300000'
@@ -66533,7 +66536,7 @@
   fields:
     block: 213
     p_order: 1
-    p_label: 'Temperature : T0'
+    p_label: 'Temperature: T0'
     p_type: 3
     p_help: K
     p_value_initial: '290'
@@ -66542,7 +66545,7 @@
   fields:
     block: 213
     p_order: 2
-    p_label: 'Specific enthalpy : H0'
+    p_label: 'Specific enthalpy: H0'
     p_type: 3
     p_help: J/kg
     p_value_initial: '100000'
@@ -66551,9 +66554,9 @@
   fields:
     block: 213
     p_order: 3
-    p_label: 'Condition: 1=fixed temperature / 2=fixed enthalpy'
-    p_type: 3
-    p_help: null
+    p_label: Condition
+    p_type: 2
+    p_help: 1=fixed temperature, 2=fixed enthalpy
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 522
@@ -66581,7 +66584,7 @@
     p_label: Mass
     p_type: 11
     p_help: null
-    p_value_initial: '[1;1;]'
+    p_value_initial: '[1;1]'
 - model: xcosblocks.newblockparameter
   pk: 525
   fields:
@@ -66659,8 +66662,8 @@
   fields:
     block: 216
     p_order: 0
-    p_label: colors
-    p_type: 11
+    p_label: Colors
+    p_type: 10
     p_help: null
     p_value_initial: '[1;2]'
 - model: xcosblocks.newblockparameter
@@ -66668,7 +66671,7 @@
   fields:
     block: 216
     p_order: 1
-    p_label: radii
+    p_label: Radii
     p_type: 11
     p_help: null
     p_value_initial: '[1;1]'
@@ -66677,17 +66680,17 @@
   fields:
     block: 216
     p_order: 2
-    p_label: window number
-    p_type: 3
-    p_help: ' -1 for automatic'
+    p_label: Window number
+    p_type: 2
+    p_help: -1 for automatic
     p_value_initial: '-1'
 - model: xcosblocks.newblockparameter
   pk: 536
   fields:
     block: 216
     p_order: 3
-    p_label: animation mode
-    p_type: 3
+    p_label: Animation mode
+    p_type: 1
     p_help: 0,1
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
@@ -66731,7 +66734,7 @@
   fields:
     block: 217
     p_order: 0
-    p_label: pendulum length
+    p_label: Pendulum length
     p_type: 3
     p_help: null
     p_value_initial: '2'
@@ -66740,7 +66743,7 @@
   fields:
     block: 217
     p_order: 1
-    p_label: cart size
+    p_label: Cart size
     p_type: 3
     p_help: square side
     p_value_initial: '2'
@@ -66749,7 +66752,7 @@
   fields:
     block: 217
     p_order: 2
-    p_label: slope
+    p_label: Slope
     p_type: 3
     p_help: null
     p_value_initial: '0'
@@ -66794,8 +66797,8 @@
   fields:
     block: 218
     p_order: 0
-    p_label: input ports sizes
-    p_type: 3
+    p_label: Input port sizes
+    p_type: 10
     p_help: null
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
@@ -66803,8 +66806,8 @@
   fields:
     block: 218
     p_order: 1
-    p_label: output port sizes
-    p_type: 3
+    p_label: Output port sizes
+    p_type: 10
     p_help: null
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
@@ -66821,7 +66824,7 @@
   fields:
     block: 218
     p_order: 3
-    p_label: function name
+    p_label: Function name
     p_type: 6
     p_help: null
     p_value_initial: toto
@@ -66839,7 +66842,7 @@
   fields:
     block: 219
     p_order: 1
-    p_label: Is block implicit
+    p_label: Is block implicit?
     p_type: 7
     p_help: y, n
     p_value_initial: n
@@ -66848,8 +66851,8 @@
   fields:
     block: 219
     p_order: 2
-    p_label: Input ports sizes
-    p_type: 2
+    p_label: Input port sizes
+    p_type: 10
     p_help: null
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
@@ -66857,8 +66860,8 @@
   fields:
     block: 219
     p_order: 3
-    p_label: Output ports sizes
-    p_type: 2
+    p_label: Output port sizes
+    p_type: 10
     p_help: null
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
@@ -66866,18 +66869,18 @@
   fields:
     block: 219
     p_order: 4
-    p_label: Input event ports sizes
+    p_label: Input event port sizes
     p_type: 10
-    p_help: '[], 1'
+    p_help: '[] or 1'
     p_value_initial: '[]'
 - model: xcosblocks.newblockparameter
   pk: 557
   fields:
     block: 219
     p_order: 5
-    p_label: Output events ports sizes
+    p_label: Output event port sizes
     p_type: 10
-    p_help: '[], 1'
+    p_help: '[] or 1'
     p_value_initial: '[]'
 - model: xcosblocks.newblockparameter
   pk: 558
@@ -66893,7 +66896,7 @@
   fields:
     block: 219
     p_order: 7
-    p_label: Number of zero-crossings
+    p_label: Number of zero crossing surfaces
     p_type: 2
     p_help: null
     p_value_initial: '0'
@@ -66931,7 +66934,7 @@
     p_order: 11
     p_label: Initial firing vector
     p_type: 10
-    p_help: <0 for no firing
+    p_help: < 0 for no firing
     p_value_initial: '[]'
 - model: xcosblocks.newblockparameter
   pk: 564
@@ -66965,7 +66968,7 @@
   fields:
     block: 220
     p_order: 1
-    p_label: Is block implicit
+    p_label: Is block implicit?
     p_type: 7
     p_help: y, n
     p_value_initial: n
@@ -66974,7 +66977,7 @@
   fields:
     block: 220
     p_order: 2
-    p_label: Input ports sizes
+    p_label: Input port sizes
     p_type: 10
     p_help: null
     p_value_initial: '[1,1]'
@@ -66983,7 +66986,7 @@
   fields:
     block: 220
     p_order: 3
-    p_label: Input ports type
+    p_label: Input port type
     p_type: 2
     p_help: null
     p_value_initial: '1'
@@ -66992,7 +66995,7 @@
   fields:
     block: 220
     p_order: 4
-    p_label: Output ports sizes
+    p_label: Output port sizes
     p_type: 10
     p_help: null
     p_value_initial: '[1,1]'
@@ -67001,7 +67004,7 @@
   fields:
     block: 220
     p_order: 5
-    p_label: Output ports type
+    p_label: Output port type
     p_type: 2
     p_help: null
     p_value_initial: '1'
@@ -67010,18 +67013,18 @@
   fields:
     block: 220
     p_order: 6
-    p_label: Input event ports sizes
+    p_label: Input event port sizes
     p_type: 10
-    p_help: '[], 1'
+    p_help: '[] or 1'
     p_value_initial: '[]'
 - model: xcosblocks.newblockparameter
   pk: 573
   fields:
     block: 220
     p_order: 7
-    p_label: Output events ports sizes
+    p_label: Output event port sizes
     p_type: 10
-    p_help: '[], 1'
+    p_help: '[] or 1'
     p_value_initial: '[]'
 - model: xcosblocks.newblockparameter
   pk: 574
@@ -67073,7 +67076,7 @@
   fields:
     block: 220
     p_order: 13
-    p_label: Object paramters list
+    p_label: Object parameters list
     p_type: 6
     p_help: null
     p_value_initial: list()
@@ -67091,7 +67094,7 @@
   fields:
     block: 220
     p_order: 15
-    p_label: Number of zero-crossings
+    p_label: Number of zero crossings
     p_type: 2
     p_help: null
     p_value_initial: '0'
@@ -67102,7 +67105,7 @@
     p_order: 16
     p_label: Initial firing vector
     p_type: 10
-    p_help: <0 for no firing
+    p_help: < 0 for no firing
     p_value_initial: '[]'
 - model: xcosblocks.newblockparameter
   pk: 583
@@ -67127,17 +67130,16 @@
   fields:
     block: 221
     p_order: 0
-    p_label: Enter scilab instructions for debugging. Inputs are block and flag, output
-      is block
+    p_label: Enter scilab instructions for debugging
     p_type: 6
-    p_help: null
+    p_help: Inputs are block and flag. Output is block.
     p_value_initial: xcos_debug_gui(flag,block);
 - model: xcosblocks.newblockparameter
   pk: 586
   fields:
     block: 222
     p_order: 0
-    p_label: number of inputs
+    p_label: Number of inputs
     p_type: 2
     p_help: null
     p_value_initial: '2'
@@ -67146,7 +67148,7 @@
   fields:
     block: 222
     p_order: 1
-    p_label: scilab expression
+    p_label: Scilab expression
     p_type: 6
     p_help: null
     p_value_initial: (u1>0)*sin(u2)^2
@@ -67155,17 +67157,17 @@
   fields:
     block: 222
     p_order: 2
-    p_label: use zero-crossing
+    p_label: Use zero-crossing?
     p_type: 2
-    p_help: 0:no, 1 yes
+    p_help: 0=no, 1=yes
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
   pk: 589
   fields:
     block: 223
     p_order: 0
-    p_label: input ports sizes
-    p_type: 3
+    p_label: Input port sizes
+    p_type: 10
     p_help: null
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
@@ -67173,8 +67175,8 @@
   fields:
     block: 223
     p_order: 1
-    p_label: output port sizes
-    p_type: 3
+    p_label: Output port sizes
+    p_type: 10
     p_help: null
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
@@ -67191,7 +67193,7 @@
   fields:
     block: 223
     p_order: 3
-    p_label: function name
+    p_label: Function name
     p_type: 6
     p_help: null
     p_value_initial: forty
@@ -67210,7 +67212,7 @@
     block: 224
     p_order: 1
     p_label: Function type
-    p_type: 3
+    p_type: 2
     p_help: 0,1,2,..
     p_value_initial: '4'
 - model: xcosblocks.newblockparameter
@@ -67218,8 +67220,8 @@
   fields:
     block: 224
     p_order: 2
-    p_label: Input ports sizes
-    p_type: 11
+    p_label: Input port sizes
+    p_type: 10
     p_help: null
     p_value_initial: '[1,1]'
 - model: xcosblocks.newblockparameter
@@ -67227,8 +67229,8 @@
   fields:
     block: 224
     p_order: 3
-    p_label: Input ports type
-    p_type: 3
+    p_label: Input port type
+    p_type: 2
     p_help: null
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
@@ -67237,7 +67239,7 @@
     block: 224
     p_order: 4
     p_label: Output port sizes
-    p_type: 11
+    p_type: 10
     p_help: null
     p_value_initial: '[1,1]'
 - model: xcosblocks.newblockparameter
@@ -67245,8 +67247,8 @@
   fields:
     block: 224
     p_order: 5
-    p_label: Output ports type
-    p_type: 3
+    p_label: Output port type
+    p_type: 2
     p_help: null
     p_value_initial: '1'
 - model: xcosblocks.newblockparameter
@@ -67254,18 +67256,18 @@
   fields:
     block: 224
     p_order: 6
-    p_label: Input event ports sizes
-    p_type: 11
-    p_help: null
+    p_label: Input event port sizes
+    p_type: 10
+    p_help: '[] or 1'
     p_value_initial: '[]'
 - model: xcosblocks.newblockparameter
   pk: 600
   fields:
     block: 224
     p_order: 7
-    p_label: Output events ports sizes
-    p_type: 11
-    p_help: null
+    p_label: Output event port sizes
+    p_type: 10
+    p_help: '[] or 1'
     p_value_initial: '[]'
 - model: xcosblocks.newblockparameter
   pk: 601
@@ -67291,7 +67293,7 @@
     block: 224
     p_order: 10
     p_label: Initial object state
-    p_type: 11
+    p_type: 6
     p_help: null
     p_value_initial: list()
 - model: xcosblocks.newblockparameter
@@ -67309,7 +67311,7 @@
     block: 224
     p_order: 12
     p_label: Integer parameters vector
-    p_type: 11
+    p_type: 10
     p_help: null
     p_value_initial: '[]'
 - model: xcosblocks.newblockparameter
@@ -67318,7 +67320,7 @@
     block: 224
     p_order: 13
     p_label: Object parameters list
-    p_type: 11
+    p_type: 6
     p_help: null
     p_value_initial: list()
 - model: xcosblocks.newblockparameter
@@ -67327,7 +67329,7 @@
     block: 224
     p_order: 14
     p_label: Number of modes
-    p_type: 3
+    p_type: 2
     p_help: null
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
@@ -67336,7 +67338,7 @@
     block: 224
     p_order: 15
     p_label: Number of zero crossings
-    p_type: 3
+    p_type: 2
     p_help: null
     p_value_initial: '0'
 - model: xcosblocks.newblockparameter
@@ -67345,8 +67347,8 @@
     block: 224
     p_order: 16
     p_label: Initial firing vector
-    p_type: 3
-    p_help: <0 for no firing
+    p_type: 11
+    p_help: < 0 for no firing
     p_value_initial: '[]'
 - model: xcosblocks.newblockparameter
   pk: 610
@@ -67366,6 +67368,186 @@
     p_type: 7
     p_help: y or n
     p_value_initial: n
+- model: xcosblocks.newblockparameter
+  pk: 612
+  fields:
+    block: 61
+    p_order: 0
+    p_label: Error on divide by zero?
+    p_type: 1
+    p_help: 0=no, 1=yes
+    p_value_initial: '1'
+- model: xcosblocks.newblockparameter
+  pk: 613
+  fields:
+    block: 64
+    p_order: 0
+    p_label: Minimum or maximum
+    p_type: 2
+    p_help: 1=min, 2=max
+    p_value_initial: '2'
+- model: xcosblocks.newblockparameter
+  pk: 614
+  fields:
+    block: 159
+    p_order: 0
+    p_label: Switch position
+    p_type: 1
+    p_help: 0=off, 1=on
+    p_value_initial: '0'
+- model: xcosblocks.newblockparameter
+  pk: 615
+  fields:
+    block: 165
+    p_order: 0
+    p_label: Text
+    p_type: 6
+    p_help: null
+    p_value_initial: Text
+- model: xcosblocks.newblockparameter
+  pk: 616
+  fields:
+    block: 225
+    p_order: 0
+    p_label: Input variables
+    p_type: 6
+    p_help: null
+    p_value_initial: '"u1"'
+- model: xcosblocks.newblockparameter
+  pk: 617
+  fields:
+    block: 225
+    p_order: 1
+    p_label: Input variable types
+    p_type: 6
+    p_help: null
+    p_value_initial: '"I"'
+- model: xcosblocks.newblockparameter
+  pk: 618
+  fields:
+    block: 225
+    p_order: 2
+    p_label: Output variables
+    p_type: 14
+    p_help: null
+    p_value_initial: '["y1";"y2"]'
+- model: xcosblocks.newblockparameter
+  pk: 619
+  fields:
+    block: 225
+    p_order: 3
+    p_label: Output variable types
+    p_type: 14
+    p_help: null
+    p_value_initial: '["I";"E"]'
+- model: xcosblocks.newblockparameter
+  pk: 620
+  fields:
+    block: 225
+    p_order: 4
+    p_label: Parameters in Modelica
+    p_type: 14
+    p_help: null
+    p_value_initial: '["R";"L"]'
+- model: xcosblocks.newblockparameter
+  pk: 621
+  fields:
+    block: 225
+    p_order: 5
+    p_label: Parameter properties
+    p_type: 11
+    p_help: null
+    p_value_initial: '[0;0]'
+- model: xcosblocks.newblockparameter
+  pk: 622
+  fields:
+    block: 225
+    p_order: 6
+    p_label: Function name
+    p_type: 6
+    p_help: null
+    p_value_initial: generic
+- model: xcosblocks.newblockparameter
+  pk: 623
+  fields:
+    block: 226
+    p_order: 0
+    p_label: Input port sizes
+    p_type: 10
+    p_help: null
+    p_value_initial: '[1,1]'
+- model: xcosblocks.newblockparameter
+  pk: 624
+  fields:
+    block: 226
+    p_order: 1
+    p_label: Output port sizes
+    p_type: 10
+    p_help: null
+    p_value_initial: '[1,1]'
+- model: xcosblocks.newblockparameter
+  pk: 625
+  fields:
+    block: 226
+    p_order: 2
+    p_label: Input event port sizes
+    p_type: 10
+    p_help: null
+    p_value_initial: '[]'
+- model: xcosblocks.newblockparameter
+  pk: 626
+  fields:
+    block: 226
+    p_order: 3
+    p_label: Output event port sizes
+    p_type: 10
+    p_help: null
+    p_value_initial: '[]'
+- model: xcosblocks.newblockparameter
+  pk: 627
+  fields:
+    block: 226
+    p_order: 4
+    p_label: Initial continuous state
+    p_type: 11
+    p_help: null
+    p_value_initial: '[]'
+- model: xcosblocks.newblockparameter
+  pk: 628
+  fields:
+    block: 226
+    p_order: 5
+    p_label: Initial discrete state
+    p_type: 11
+    p_help: null
+    p_value_initial: '[]'
+- model: xcosblocks.newblockparameter
+  pk: 629
+  fields:
+    block: 226
+    p_order: 6
+    p_label: System parameter vector
+    p_type: 11
+    p_help: null
+    p_value_initial: '[]'
+- model: xcosblocks.newblockparameter
+  pk: 630
+  fields:
+    block: 226
+    p_order: 7
+    p_label: Initial firing vector
+    p_type: 11
+    p_help: < 0 for no firing
+    p_value_initial: '[]'
+- model: xcosblocks.newblockparameter
+  pk: 631
+  fields:
+    block: 226
+    p_order: 8
+    p_label: Is block always active?
+    p_type: 1
+    p_help: 0=no, 1=yes
+    p_value_initial: '0'
 - model: xcosblocks.newblockport
   pk: 1
   fields:
