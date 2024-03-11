@@ -291,9 +291,9 @@ def addmxGraphModelNode(node, subNodeType,
 
 
 def addmxCellNode(node, subNodeType,
-                  id, a,
+                  id,
                   **kwargs):
-    newkwargs = {'id': id, 'as': a
+    newkwargs = {'id': id
                  }
     newkwargs.update(kwargs)
     return addNode(node, subNodeType, **newkwargs)
