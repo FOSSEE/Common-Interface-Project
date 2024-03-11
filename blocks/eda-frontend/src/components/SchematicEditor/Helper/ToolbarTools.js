@@ -399,6 +399,7 @@ function parseXmlToGraph (xmlDoc, graph) {
           }
         }
         v1.parameter_values = parameterValues
+        // Todo set v1.errorFields
         v1.explicitInputPorts = 0
         v1.implicitInputPorts = 0
         v1.explicitOutputPorts = 0

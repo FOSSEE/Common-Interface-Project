@@ -47,7 +47,7 @@ export const getCompProperties = (block) => (dispatch) => {
 }
 
 // Actions for updating entered component properites on clicking set parameters
-export const setCompProperties = (block, parameterValues) => (dispatch) => {
+export const setCompProperties = (block, parameterValues, errorFields) => (dispatch) => {
   dispatch(loadingSetCompProperties(true))
   const url = 'setblockparameter'
   const filteredParameterValues = Object.fromEntries(Object.entries(parameterValues).filter(([k, v]) => v != null))
@@ -56,11 +56,14 @@ export const setCompProperties = (block, parameterValues) => (dispatch) => {
     .then(
       (res) => {
         block.parameter_values = filteredParameterValues
+        block.errorFields = errorFields
+        console.log(block)
         dispatch({
           type: actions.SET_COMP_PROPERTIES,
           payload: {
             block,
             parameter_values: parameterValues,
+            errorFields: errorFields,
             displayProperties: res.data
           }
         })

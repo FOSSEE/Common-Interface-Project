@@ -49,6 +49,7 @@ export default function componentPropertiesReducer (state = InitialState, action
         ...state,
         block: action.payload.block,
         parameter_values: action.payload.parameter_values,
+        errorFields: action.payload.errorFields,
         isPropertiesWindowOpen: false,
         displayProperties: action.payload.displayProperties,
         isLoading: false

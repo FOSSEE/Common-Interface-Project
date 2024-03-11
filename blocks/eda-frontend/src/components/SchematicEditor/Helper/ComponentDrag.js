@@ -86,6 +86,7 @@ export default function LoadGrid (container, sidebar, outline) {
     mxCell.prototype.node = null
     mxCell.prototype.CompObject = null
     mxCell.prototype.parameter_values = {}
+    mxCell.prototype.errorFields = {}
     mxCell.prototype.displayProperties = {}
     mxCell.prototype.sourceVertex = false
     mxCell.prototype.targetVertex = false
