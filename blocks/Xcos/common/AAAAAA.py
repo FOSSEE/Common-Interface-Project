@@ -299,6 +299,15 @@ def addmxCellNode(node, subNodeType,
     return addNode(node, subNodeType, **newkwargs)
 
 
+def addNodemxCell(node, subNodeType, a,
+                  id,
+                  **kwargs):
+    newkwargs = {'as': a, 'id': id
+                 }
+    newkwargs.update(kwargs)
+    return addNode(node, subNodeType, **newkwargs)
+
+
 def addEventOutBlock(node, subNodeType,
                      id, parent,
                      interfaceFunctionName,

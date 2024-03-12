@@ -1,19 +1,20 @@
 from common.AAAAAA import *
 
-def OUT_f(outroot, attribid, ordering, geometry, parameters):
-    func_name = 'OUT_f'
+def STEP(outroot, attribid, ordering, geometry, parameters):
+    func_name = 'STEP'
 
-    outnode = addOutNode(outroot, BLOCK_EXPLICIT_OUT,
+    outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
-                         func_name, 'output', 'DEFAULT',
-                         func_name, BLOCKTYPE_C)
+                         func_name, 'step_func', 'C_OR_FORTRAN',
+                         func_name, BLOCKTYPE_C,
+                         dependsOnT='1', dependsOnU='0')
 
-    addExprsNode(outnode, TYPE_STRING, 1, parameters)
-    addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0,
-                [])
-    array = ['0']
-    addPrecisionNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 1, array)
+    addExprsNode(outnode, TYPE_STRING, 3, parameters)
+    addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM,
+                 2, realParts=[0.0, 0.0])
+    addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 0, [])
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
+    array = ['0']
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NBZERO, 1, array)
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NMODE, 1, array)
     addTypeNode(outnode, TYPE_DOUBLE, AS_STATE, 0, [])
@@ -28,7 +29,7 @@ def OUT_f(outroot, attribid, ordering, geometry, parameters):
     return outnode
 
 
-def get_from_OUT_f(cell):
+def get_from_STEP(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
     display_parameter = parameters[0]
