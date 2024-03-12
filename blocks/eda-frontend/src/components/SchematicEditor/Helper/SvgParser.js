@@ -42,6 +42,7 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
     parameterValues[p] = component[pinitial]
   }
   v1.parameter_values = parameterValues
+  v1.errorFields = {}
 
   v1.setConnectable(false)
 

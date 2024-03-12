@@ -220,7 +220,7 @@ export default function ComponentProperties () {
         graph.refresh()
       }
     }
-  }, [parameterValues, displayProperties, block])
+  }, [parameterValues, errorFields1, displayProperties, block])
 
   const getInputValues = (evt) => {
     const value = evt.target.value.trim() // Trim to remove leading and trailing whitespace

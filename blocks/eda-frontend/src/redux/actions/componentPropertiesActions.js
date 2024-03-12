@@ -34,6 +34,7 @@ export const getCompProperties = (block) => (dispatch) => {
             block,
             name: block.style,
             parameter_values: block.parameter_values,
+            errorFields: block.errorFields,
             displayProperties: block.displayProperties,
             compProperties: res.data[0]
           }
@@ -57,13 +58,12 @@ export const setCompProperties = (block, parameterValues, errorFields) => (dispa
       (res) => {
         block.parameter_values = filteredParameterValues
         block.errorFields = errorFields
-        console.log(block)
         dispatch({
           type: actions.SET_COMP_PROPERTIES,
           payload: {
             block,
             parameter_values: parameterValues,
-            errorFields: errorFields,
+            errorFields,
             displayProperties: res.data
           }
         })

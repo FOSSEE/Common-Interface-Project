@@ -317,6 +317,7 @@ export default function LoadGrid (container, sidebar, outline) {
       const c = cellList[id]
       if (c !== undefined) {
         c.parameter_values = parameterValues
+        c.errorFields = {}
         c.displayProperties = displayProperties
       }
     })
