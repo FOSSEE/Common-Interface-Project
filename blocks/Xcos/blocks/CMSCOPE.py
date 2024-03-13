@@ -14,7 +14,7 @@ def CMSCOPE(outroot, attribid, ordering, geometry, parameters):
     addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM,
                  7, realParts=[0.0, 10.0, 10.0, 0.0, 2.0, 0.0, 2.0])
     array = ['-1', '2', '20', '-1', '-1', '-1', '-1', '1', '1', '1', '3', '0']
-    addPrecisionNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 12, array)
+    addPrecNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 12, array)
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
     array = ['0']
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NBZERO, 1, array)

@@ -11,7 +11,7 @@ def CSCOPE(outroot, attribid, ordering, geometry, parameters):
 
     addExprsNode(outnode, TYPE_STRING, 10, parameters)
     addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM,
-                 4, realParts=[0.0, 1.0, 3.0, 10.0])
+                 4, realParts=[0.0, -15.0, 15.0, 30.0])
 
     param = strarray(parameters)
     addPrecNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 15, param)
