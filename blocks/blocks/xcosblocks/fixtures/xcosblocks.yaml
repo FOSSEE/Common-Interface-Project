@@ -1553,7 +1553,7 @@
 - model: xcosblocks.block
   pk: 18
   fields:
-    p000_value_initial: '0'
+    p000_value_initial: '1'
     p001_value_initial: '-1'
     p002_value_initial: ''
     p003_value_initial: ''
@@ -3261,7 +3261,7 @@
 - model: xcosblocks.block
   pk: 41
   fields:
-    p000_value_initial: '1.00E+08'
+    p000_value_initial: 1E8
     p001_value_initial: ''
     p002_value_initial: ''
     p003_value_initial: ''
@@ -8598,19 +8598,19 @@
   fields:
     p000_value_initial: '50'
     p001_value_initial: '0.1'
-    p002_value_initial: '1.00E-16'
+    p002_value_initial: 1E-16
     p003_value_initial: '0.02'
-    p004_value_initial: '1.20E-10'
-    p005_value_initial: '5.00E-09'
-    p006_value_initial: '1.00E-12'
-    p007_value_initial: '4.00E-13'
-    p008_value_initial: '5.00E-13'
+    p004_value_initial: '1.2E-10'
+    p005_value_initial: 5E-9
+    p006_value_initial: 1E-12
+    p007_value_initial: 4E-13
+    p008_value_initial: 5E-13
     p009_value_initial: '0.8'
     p010_value_initial: '0.4'
     p011_value_initial: '0.8'
-    p012_value_initial: '0.33'
-    p013_value_initial: '1.00E-15'
-    p014_value_initial: '1.00E-15'
+    p012_value_initial: '0.333'
+    p013_value_initial: 1E-15
+    p014_value_initial: 1E-15
     p015_value_initial: '0.02585'
     p016_value_initial: '40'
     p017_value_initial: ''
@@ -8820,19 +8820,19 @@
   fields:
     p000_value_initial: '50'
     p001_value_initial: '0.1'
-    p002_value_initial: '1.00E-16'
+    p002_value_initial: 1E-16
     p003_value_initial: '0.02'
-    p004_value_initial: '1.20E-10'
-    p005_value_initial: '5.00E-09'
-    p006_value_initial: '1.00E-12'
-    p007_value_initial: '4.00E-13'
-    p008_value_initial: '5.00E-13'
+    p004_value_initial: '1.2E-10'
+    p005_value_initial: 5E-9
+    p006_value_initial: 1E-12
+    p007_value_initial: 4E-13
+    p008_value_initial: 5E-13
     p009_value_initial: '0.8'
     p010_value_initial: '0.4'
     p011_value_initial: '0.8'
     p012_value_initial: '0.333'
-    p013_value_initial: '1.00E-15'
-    p014_value_initial: '1.00E-15'
+    p013_value_initial: 1E-15
+    p014_value_initial: 1E-15
     p015_value_initial: '0.02585'
     p016_value_initial: '40'
     p017_value_initial: ''
@@ -9043,7 +9043,7 @@
     p000_value_initial: '1'
     p001_value_initial: '0'
     p002_value_initial: '1'
-    p003_value_initial: '`'
+    p003_value_initial: '0'
     p004_value_initial: '0'
     p005_value_initial: ''
     p006_value_initial: ''
@@ -12006,7 +12006,7 @@
 - model: xcosblocks.block
   pk: 159
   fields:
-    p000_value_initial: ''
+    p000_value_initial: '0'
     p001_value_initial: ''
     p002_value_initial: ''
     p003_value_initial: ''
@@ -12451,7 +12451,7 @@
 - model: xcosblocks.block
   pk: 165
   fields:
-    p000_value_initial: ''
+    p000_value_initial: Text
     p001_value_initial: ''
     p002_value_initial: ''
     p003_value_initial: ''
@@ -13130,7 +13130,7 @@
     p007_value_initial: 30 30
     p008_value_initial: '20'
     p009_value_initial: '0'
-    p010_value_initial: Empty
+    p010_value_initial: ''
     p011_value_initial: ''
     p012_value_initial: ''
     p013_value_initial: ''
@@ -13204,7 +13204,7 @@
     p006_value_initial: '30'
     p007_value_initial: '20'
     p008_value_initial: '0'
-    p009_value_initial: Empty
+    p009_value_initial: ''
     p010_value_initial: ''
     p011_value_initial: ''
     p012_value_initial: ''
@@ -14312,10 +14312,10 @@
 - model: xcosblocks.block
   pk: 190
   fields:
-    p000_value_initial: ''
-    p001_value_initial: ''
-    p002_value_initial: ''
-    p003_value_initial: ''
+    p000_value_initial: '0'
+    p001_value_initial: '2'
+    p002_value_initial: '-5'
+    p003_value_initial: '5'
     p004_value_initial: ''
     p005_value_initial: ''
     p006_value_initial: ''
@@ -14983,9 +14983,9 @@
   fields:
     p000_value_initial: '1'
     p001_value_initial: '0'
-    p002_value_initial: '1'
+    p002_value_initial: '0'
     p003_value_initial: '1'
-    p004_value_initial: '[2211,3303270]'
+    p004_value_initial: '[2113248,7560437]'
     p005_value_initial: ''
     p006_value_initial: ''
     p007_value_initial: ''
@@ -16166,7 +16166,7 @@
 - model: xcosblocks.block
   pk: 215
   fields:
-    p000_value_initial: '[1;1;]'
+    p000_value_initial: '[1;1]'
     p001_value_initial: '[1;1]'
     p002_value_initial: '[0;5;0;5]'
     p003_value_initial: '[2;2.5]'
@@ -16906,13 +16906,13 @@
 - model: xcosblocks.block
   pk: 225
   fields:
-    p000_value_initial: ''
-    p001_value_initial: ''
-    p002_value_initial: ''
-    p003_value_initial: ''
-    p004_value_initial: ''
-    p005_value_initial: ''
-    p006_value_initial: ''
+    p000_value_initial: '"u1"'
+    p001_value_initial: '"I"'
+    p002_value_initial: '["y1";"y2"]'
+    p003_value_initial: '["I";"E"]'
+    p004_value_initial: '["R";"L"]'
+    p005_value_initial: '[0;0]'
+    p006_value_initial: generic
     p007_value_initial: ''
     p008_value_initial: ''
     p009_value_initial: ''
@@ -17129,9 +17129,9 @@
 - model: xcosblocks.blockparameter
   pk: 1
   fields:
-    p000: use zero crossing ?
+    p000: Use zero-crossing?
     p000_type: 1
-    p000_help: 0/1
+    p000_help: 0=no, 1=yes
     p001: ''
     p001_type: null
     p001_help: null
@@ -17317,21 +17317,21 @@
     p000_type: 11
     p000_help: null
     p001: Font number
-    p001_type: 3
+    p001_type: 2
     p001_help: null
     p002: Font size
-    p002_type: 3
+    p002_type: 2
     p002_help: null
     p003: Color
-    p003_type: 3
+    p003_type: 2
     p003_help: null
     p004: Total number of digits
     p004_type: 2
-    p004_help: '>3'
-    p005: Number of frational part digits
+    p004_help: '> 3'
+    p005: Number of fractional part digits
     p005_type: 2
     p005_help: null
-    p006: Inherit
+    p006: Inherit?
     p006_type: 1
     p006_help: 0=no, 1=yes
     p007: ''
@@ -17497,27 +17497,27 @@
 - model: xcosblocks.blockparameter
   pk: 5
   fields:
-    p000: Number Mode
+    p000: Number of finite-state modes
     p000_type: 2
-    p000_help: finite state
-    p001: Initial Mode
+    p000_help: null
+    p001: Initial mode
     p001_type: 2
     p001_help: null
-    p002: Number of continuous timestates
+    p002: Number of continuous-time states
     p002_type: 2
     p002_help: null
-    p003: Continuous time states initial value
-    p003_type: 2
+    p003: Continuous-time states initial value
+    p003_type: 3
     p003_help: null
-    p004: Xproperties of continuous time states in each mode
-    p004_type: 10
+    p004: Xproperties of continuous-time states in each mode
+    p004_type: 11
     p004_help: null
-    p005: Jump from Mode 1:[..;M_final(Guard=In(1).i);..]
+    p005: Jump from Mode 1
     p005_type: 2
-    p005_help: null
-    p006: Jump from Mode 2:[..;M_final(Guard=In(1).i);..]
+    p005_help: ..;M_final(Guard=In(1).i);..
+    p006: Jump from Mode 2
     p006_type: 2
-    p006_help: null
+    p006_help: ..;M_final(Guard=In(2).i);..
     p007: ''
     p007_type: null
     p007_help: null
@@ -17681,10 +17681,10 @@
 - model: xcosblocks.blockparameter
   pk: 6
   fields:
-    p000: 'Pressure at the reservoir surface : Patm'
+    p000: 'Pressure at the reservoir surface: Patm'
     p000_type: 3
-    p000_help: pa
-    p001: 'Reservoir section : A'
+    p000_help: Pa
+    p001: 'Reservoir section: A'
     p001_type: 3
     p001_help: m2
     p002: 'Altitude of input connection #1: ze1'
@@ -17693,19 +17693,19 @@
     p003: 'Altitude of input connection #2: ze2'
     p003_type: 3
     p003_help: m
-    p004: 'Altitude of outlet connection #1: zs1'
+    p004: 'Altitude of output connection #1: zs1'
     p004_type: 3
     p004_help: m
-    p005: 'Altitude of outlet connection #2: zs2'
+    p005: 'Altitude of output connection #2: zs2'
     p005_type: 3
     p005_help: m
-    p006: 'Starting fluid altitude : z0'
+    p006: 'Starting fluid altitude: z0'
     p006_type: 3
     p006_help: m
-    p007: 'Initial fluid temperature : T0'
+    p007: 'Initial fluid temperature: T0'
     p007_type: 3
     p007_help: K
-    p008: 'If >0, fixed fluid density : p_rho'
+    p008: 'If > 0, fixed fluid density: p_rho'
     p008_type: 3
     p008_help: kg/m3
     p009: ''
@@ -17871,7 +17871,7 @@
     p001: Gap
     p001_type: 3
     p001_help: null
-    p002: Use zero crossing
+    p002: Use zero-crossing?
     p002_type: 1
     p002_help: 0=no, 1=yes
     p003: ''
@@ -18062,7 +18062,7 @@
     p003_type: 3
     p003_help: null
     p004: Segs Thickness
-    p004_type: 3
+    p004_type: 2
     p004_help: null
     p005: ''
     p005_type: null
@@ -18233,7 +18233,7 @@
 - model: xcosblocks.blockparameter
   pk: 9
   fields:
-    p000: Inputs port sign/gain
+    p000: Inputs ports signs / gain
     p000_type: 11
     p000_help: null
     p001: ''
@@ -18419,7 +18419,7 @@
   fields:
     p000: Datatype
     p000_type: 2
-    p000_help: 3=int32, 4=int16, 5=int8
+    p000_help: 3=int32, 4=int16, 5=int8, 6, 7, 8
     p001: Index of bit
     p001_type: 2
     p001_help: 0 is least significant
@@ -18603,7 +18603,7 @@
   fields:
     p000: Datatype
     p000_type: 2
-    p000_help: 3=int32, 4=int16, 5=int8
+    p000_help: 3=int32, 4=int16, 5=int8, 6, 7, 8
     p001: Index of bit
     p001_type: 2
     p001_help: 0 is least significant
@@ -18969,17 +18969,17 @@
 - model: xcosblocks.blockparameter
   pk: 13
   fields:
-    p000: colors
-    p000_type: 11
+    p000: Colors
+    p000_type: 10
     p000_help: null
-    p001: radii
+    p001: Radii
     p001_type: 11
     p001_help: null
-    p002: window number
-    p002_type: 3
-    p002_help: ' -1 for automatic'
-    p003: animation mode
-    p003_type: 3
+    p002: Window number
+    p002_type: 2
+    p002_help: -1 for automatic
+    p003: Animation mode
+    p003_type: 1
     p003_help: 0,1
     p004: Xmin
     p004_type: 3
@@ -19153,13 +19153,13 @@
 - model: xcosblocks.blockparameter
   pk: 14
   fields:
-    p000: pendulum length
+    p000: Pendulum length
     p000_type: 3
     p000_help: null
-    p001: cart size
+    p001: Cart size
     p001_type: 3
     p001_help: square side
-    p002: slope
+    p002: Slope
     p002_type: 3
     p002_help: null
     p003: Xmin
@@ -19337,16 +19337,16 @@
 - model: xcosblocks.blockparameter
   pk: 15
   fields:
-    p000: input ports sizes
-    p000_type: 3
+    p000: Input port sizes
+    p000_type: 10
     p000_help: null
-    p001: output port sizes
-    p001_type: 3
+    p001: Output port sizes
+    p001_type: 10
     p001_help: null
     p002: System parameters vector
     p002_type: 11
     p002_help: null
-    p003: function name
+    p003: Function name
     p003_type: 6
     p003_help: null
     p004: ''
@@ -19522,22 +19522,22 @@
   pk: 16
   fields:
     p000: Number of curves
-    p000_type: 3
+    p000_type: 2
     p000_help: null
-    p001: 'Curves styles: colors>0 | marks <0'
-    p001_type: 3
-    p001_help: null
+    p001: Curves styles
+    p001_type: 10
+    p001_help: Colors > 0 | marks < 0
     p002: Curves thicknesses | marks sizes
-    p002_type: 3
+    p002_type: 10
     p002_help: null
     p003: Output window number
-    p003_type: 3
-    p003_help: null
+    p003_type: 2
+    p003_help: -1 for automatic
     p004: Output window position
-    p004_type: 11
+    p004_type: 10
     p004_help: null
     p005: Output window sizes
-    p005_type: 11
+    p005_type: 10
     p005_help: null
     p006: Xmin
     p006_type: 3
@@ -19552,7 +19552,7 @@
     p009_type: 3
     p009_help: null
     p010: Buffer size
-    p010_type: 3
+    p010_type: 2
     p010_help: null
     p011: ''
     p011_type: null
@@ -19706,37 +19706,37 @@
   pk: 17
   fields:
     p000: Number of curves
-    p000_type: 3
+    p000_type: 2
     p000_help: null
-    p001: color(>0) or mark(<0)
-    p001_type: 3
-    p001_help: null
-    p002: line or mark size
-    p002_type: 3
+    p001: Curves styles
+    p001_type: 10
+    p001_help: Colors > 0 | marks < 0
+    p002: Curves thicknesses | marks sizes
+    p002_type: 10
     p002_help: null
     p003: Output window number
-    p003_type: 3
-    p003_help: null
+    p003_type: 2
+    p003_help: -1 for automatic
     p004: Output window position
-    p004_type: 11
+    p004_type: 10
     p004_help: null
     p005: Output window sizes
-    p005_type: 11
+    p005_type: 10
     p005_help: null
     p006: Xmin and Xmax
-    p006_type: 3
+    p006_type: 11
     p006_help: null
     p007: Ymin and Ymax
-    p007_type: 3
+    p007_type: 11
     p007_help: null
     p008: Zmin and Zmax
-    p008_type: 3
+    p008_type: 11
     p008_help: null
     p009: Alpha and Theta
-    p009_type: 3
+    p009_type: 11
     p009_help: null
     p010: Buffer size
-    p010_type: 3
+    p010_type: 2
     p010_help: null
     p011: ''
     p011_type: null
@@ -19889,12 +19889,12 @@
 - model: xcosblocks.blockparameter
   pk: 18
   fields:
-    p000: C
+    p000: Capacitance
     p000_type: 3
     p000_help: F
-    p001: Initial Voltage
-    p001_type: 2
-    p001_help: null
+    p001: Initial voltage
+    p001_type: 3
+    p001_help: V
     p002: ''
     p002_type: null
     p002_help: null
@@ -20076,25 +20076,25 @@
     p000: Simulation function
     p000_type: 6
     p000_help: null
-    p001: Is block implicit
+    p001: Is block implicit?
     p001_type: 7
     p001_help: y, n
-    p002: Input ports sizes
-    p002_type: 2
+    p002: Input port sizes
+    p002_type: 10
     p002_help: null
-    p003: Output ports sizes
-    p003_type: 2
+    p003: Output port sizes
+    p003_type: 10
     p003_help: null
-    p004: Input event ports sizes
+    p004: Input event port sizes
     p004_type: 10
-    p004_help: '[], 1'
-    p005: Output events ports sizes
+    p004_help: '[] or 1'
+    p005: Output event port sizes
     p005_type: 10
-    p005_help: '[], 1'
+    p005_help: '[] or 1'
     p006: Initial continuous state
     p006_type: 10
     p006_help: null
-    p007: Number of zero-crossings
+    p007: Number of zero crossing surfaces
     p007_type: 2
     p007_help: null
     p008: Initial discrete state
@@ -20108,7 +20108,7 @@
     p010_help: null
     p011: Initial firing vector
     p011_type: 10
-    p011_help: <0 for no firing
+    p011_help: < 0 for no firing
     p012: Direct feedthrough
     p012_type: 7
     p012_help: y, n
@@ -20260,27 +20260,27 @@
     p000: Simulation function
     p000_type: 6
     p000_help: null
-    p001: Is block implicit
+    p001: Is block implicit?
     p001_type: 7
     p001_help: y, n
-    p002: Input ports sizes
+    p002: Input port sizes
     p002_type: 10
     p002_help: null
-    p003: Input ports type
+    p003: Input port type
     p003_type: 2
     p003_help: null
-    p004: Output ports sizes
+    p004: Output port sizes
     p004_type: 10
     p004_help: null
-    p005: Output ports type
+    p005: Output port type
     p005_type: 2
     p005_help: null
-    p006: Input event ports sizes
+    p006: Input event port sizes
     p006_type: 10
-    p006_help: '[], 1'
-    p007: Output events ports sizes
+    p006_help: '[] or 1'
+    p007: Output event port sizes
     p007_type: 10
-    p007_help: '[], 1'
+    p007_help: '[] or 1'
     p008: Initial continuous state
     p008_type: 11
     p008_help: null
@@ -20296,18 +20296,18 @@
     p012: Integer parameters vector
     p012_type: 10
     p012_help: null
-    p013: Object paramters list
+    p013: Object parameters list
     p013_type: 6
     p013_help: null
     p014: Number of modes
     p014_type: 2
     p014_help: null
-    p015: Number of zero-crossings
+    p015: Number of zero crossings
     p015_type: 2
     p015_help: null
     p016: Initial firing vector
     p016_type: 10
-    p016_help: <0 for no firing
+    p016_help: < 0 for no firing
     p017: Direct feedthrough
     p017_type: 7
     p017_help: y, n
@@ -20444,12 +20444,12 @@
     p000: Number of event inputs
     p000_type: 2
     p000_help: null
-    p001: color(>0) or mark(<0)
-    p001_type: 2
-    p001_help: null
+    p001: Curves styles
+    p001_type: 10
+    p001_help: Colors > 0 | marks < 0
     p002: Output window number
     p002_type: 2
-    p002_help: null
+    p002_help: -1 for automatic
     p003: Output window position
     p003_type: 10
     p003_help: null
@@ -20625,17 +20625,17 @@
 - model: xcosblocks.blockparameter
   pk: 23
   fields:
-    p000: 'Curves style: colors>0 | marks<0'
+    p000: Curves styles
     p000_type: 10
-    p000_help: null
+    p000_help: Colors > 0 | marks < 0
     p001: Output window number
     p001_type: 2
-    p001_help: null
+    p001_help: -1 for automatic
     p002: Output window position
-    p002_type: 11
+    p002_type: 10
     p002_help: null
     p003: Output window sizes
-    p003_type: 11
+    p003_type: 10
     p003_help: null
     p004: Ymin
     p004_type: 3
@@ -20647,10 +20647,10 @@
     p006_type: 3
     p006_help: null
     p007: Buffer size
-    p007_type: 3
+    p007_type: 2
     p007_help: null
     p008: Links to view
-    p008_type: 3
+    p008_type: 2
     p008_help: null
     p009: ''
     p009_type: null
@@ -20996,9 +20996,9 @@
     p000: Tag
     p000_type: 6
     p000_help: null
-    p001: Tag Visibility
+    p001: Tag visibility
     p001_type: 2
-    p001_help: 1=Local, 2=Scoped, 3=Global
+    p001_help: 1=local, 2=scoped, 3=global
     p002: ''
     p002_type: null
     p002_help: null
@@ -21177,7 +21177,7 @@
 - model: xcosblocks.blockparameter
   pk: 27
   fields:
-    p000: GoToTag
+    p000: Goto Tag
     p000_type: 6
     p000_help: null
     p001: ''
@@ -21362,7 +21362,7 @@
   pk: 28
   fields:
     p000: Port Number
-    p000_type: 3
+    p000_type: 2
     p000_help: null
     p001: ''
     p001_type: null
@@ -21732,7 +21732,7 @@
     p000: Period
     p000_type: 3
     p000_help: null
-    p001: Initialisation Time
+    p001: Initialisation time
     p001_type: 3
     p001_help: null
     p002: ''
@@ -21914,11 +21914,11 @@
   pk: 32
   fields:
     p000: Numerator
-    p000_type: 3
-    p000_help: null
+    p000_type: 6
+    p000_help: s
     p001: Denominator
-    p001_type: 3
-    p001_help: null
+    p001_type: 6
+    p001_help: s
     p002: ''
     p002_type: null
     p002_help: null
@@ -22098,19 +22098,19 @@
   pk: 33
   fields:
     p000: A matrix
-    p000_type: 3
+    p000_type: 19
     p000_help: null
     p001: B matrix
-    p001_type: 3
+    p001_type: 19
     p001_help: null
     p002: C matrix
-    p002_type: 3
+    p002_type: 19
     p002_help: null
     p003: D matrix
-    p003_type: 3
+    p003_type: 19
     p003_help: null
     p004: initial state
-    p004_type: 3
+    p004_type: 19
     p004_help: null
     p005: ''
     p005_type: null
@@ -22282,13 +22282,13 @@
   pk: 34
   fields:
     p000: Bounds vector X
-    p000_type: 3
+    p000_type: 11
     p000_help: null
     p001: Bounds vector Y
-    p001_type: 3
+    p001_type: 11
     p001_help: null
-    p002: ColorMap
-    p002_type: 10
+    p002: Colormap
+    p002_type: 6
     p002_help: null
     p003: Zmin
     p003_type: 3
@@ -22465,14 +22465,14 @@
 - model: xcosblocks.blockparameter
   pk: 35
   fields:
-    p000: ColorMap
-    p000_type: 10
+    p000: Colormap
+    p000_type: 6
     p000_help: null
     p001: Minimum level range
-    p001_type: 3
+    p001_type: 2
     p001_help: null
     p002: Maximum level range
-    p002_type: 3
+    p002_type: 2
     p002_help: null
     p003: ''
     p003_type: null
@@ -22650,38 +22650,38 @@
   pk: 36
   fields:
     p000: Input ports size
-    p000_type: 11
+    p000_type: 10
     p000_help: null
-    p001: Drawing colors or mark
-    p001_type: 11
-    p001_help: null
+    p001: Curves styles
+    p001_type: 10
+    p001_help: Colors > 0 | marks < 0
     p002: Output window number
-    p002_type: 3
-    p002_help: null
+    p002_type: 2
+    p002_help: -1 for automatic
     p003: Output window position
-    p003_type: 11
+    p003_type: 10
     p003_help: null
     p004: Output window sizes
-    p004_type: 11
+    p004_type: 10
     p004_help: null
     p005: Ymin vector
-    p005_type: 3
+    p005_type: 11
     p005_help: null
     p006: Ymax vector
-    p006_type: 3
+    p006_type: 11
     p006_help: null
-    p007: Refresh Period
-    p007_type: 3
+    p007: Refresh periods
+    p007_type: 11
     p007_help: null
     p008: Buffer size
-    p008_type: 3
+    p008_type: 2
     p008_help: null
-    p009: Accept herited events
+    p009: Inherit?
     p009_type: 1
-    p009_help: null
+    p009_help: 0=no, 1=yes
     p010: Name of scope
     p010_type: 6
-    p010_help: null
+    p010_help: label id
     p011: ''
     p011_type: null
     p011_help: null
@@ -22833,7 +22833,7 @@
 - model: xcosblocks.blockparameter
   pk: 37
   fields:
-    p000: Constant
+    p000: Value
     p000_type: 3
     p000_help: null
     p001: ''
@@ -23017,9 +23017,9 @@
 - model: xcosblocks.blockparameter
   pk: 38
   fields:
-    p000: Constant
-    p000_type: 3
-    p000_help: null
+    p000: Value
+    p000_type: 19
+    p000_help: scalar | vector | matrix
     p001: ''
     p001_type: null
     p001_help: null
@@ -23201,9 +23201,9 @@
 - model: xcosblocks.blockparameter
   pk: 39
   fields:
-    p000: Constant value
-    p000_type: 3
-    p000_help: null
+    p000: Value
+    p000_type: 19
+    p000_help: scalar | vector | matrix
     p001: ''
     p001_type: null
     p001_help: null
@@ -23385,9 +23385,9 @@
 - model: xcosblocks.blockparameter
   pk: 40
   fields:
-    p000: V
+    p000: Voltage
     p000_type: 3
-    p000_help: volt
+    p000_help: V
     p001: ''
     p001_type: null
     p001_help: null
@@ -23570,7 +23570,7 @@
   pk: 41
   fields:
     p000: Initial guess values
-    p000_type: 3
+    p000_type: 11
     p000_help: null
     p001: ''
     p001_type: null
@@ -23754,14 +23754,14 @@
   pk: 42
   fields:
     p000: Initial guess values of state x
-    p000_type: 3
+    p000_type: 11
     p000_help: null
     p001: Initial guess values of derivative x'
-    p001_type: 3
+    p001_type: 11
     p001_help: null
-    p002: 'Id(i)=1: If x''(i) is present in the feedback, else Id(i)=0'
-    p002_type: 1
-    p002_help: null
+    p002: id values
+    p002_type: 9
+    p002_help: 1=x'(i) is present in the feedback, else 0
     p003: ''
     p003_type: null
     p003_help: null
@@ -23939,13 +23939,13 @@
   fields:
     p000: Input type
     p000_type: 2
-    p000_help: 1:double, 3:int32, 4:int16, 5:int8,..
+    p000_help: 1|2=double, 3=int32, 4=int16, 5=int8, 6, 7, 8
     p001: Output type
     p001_type: 2
-    p001_help: 1:double, 3:int32, 4:int16, 5:int8,..
+    p001_help: 1|2=double, 3=int32, 4=int16, 5=int8, 6, 7, 8
     p002: Do on overflow
     p002_type: 2
-    p002_help: ' 0:Nothing, 1:Saturate, 2:Error'
+    p002_help: 0=nothing, 1=saturate, 2=error
     p003: ''
     p003_type: null
     p003_help: null
@@ -24122,14 +24122,14 @@
   pk: 45
   fields:
     p000: Minimum
-    p000_type: 3
+    p000_type: 2
     p000_help: null
     p001: Maximum
-    p001_type: 3
+    p001_type: 2
     p001_help: null
     p002: Rule
     p002_type: 2
-    p002_help: ' 1:increment, 2:Decrement'
+    p002_help: 1=increment, 2=decrement
     p003: ''
     p003_type: null
     p003_help: null
@@ -24305,17 +24305,17 @@
 - model: xcosblocks.blockparameter
   pk: 46
   fields:
-    p000: Color(>0) or mark(<0)vector(8 entries)
-    p000_type: 11
-    p000_help: null
+    p000: Curve style
+    p000_type: 10
+    p000_help: Colors > 0 | marks < 0
     p001: Output window number
-    p001_type: 3
-    p001_help: null
+    p001_type: 2
+    p001_help: -1 for automatic
     p002: Output window position
-    p002_type: 11
+    p002_type: 10
     p002_help: null
     p003: Output window sizes
-    p003_type: 11
+    p003_type: 10
     p003_help: null
     p004: Ymin
     p004_type: 3
@@ -24327,14 +24327,14 @@
     p006_type: 3
     p006_help: null
     p007: Buffer size
-    p007_type: 3
+    p007_type: 2
     p007_help: null
-    p008: Accept herited events 0/1
+    p008: Inherit?
     p008_type: 1
-    p008_help: null
+    p008_help: 0=no, 1=yes
     p009: Name of scope
     p009_type: 6
-    p009_help: null
+    p009_help: label id
     p010: ''
     p010_type: null
     p010_help: null
@@ -24490,22 +24490,22 @@
   pk: 47
   fields:
     p000: Number of curves
-    p000_type: 3
+    p000_type: 2
     p000_help: null
-    p001: color(>0) or mark(<0)
-    p001_type: 3
-    p001_help: null
-    p002: line or mark size
-    p002_type: 3
+    p001: Curves styles
+    p001_type: 10
+    p001_help: Colors > 0 | marks < 0
+    p002: Curves thicknesses | marks sizes
+    p002_type: 10
     p002_help: null
     p003: Output window number
-    p003_type: 3
+    p003_type: 2
     p003_help: null
     p004: Output window position
-    p004_type: 11
+    p004_type: 10
     p004_help: null
-    p005: Output window size
-    p005_type: 11
+    p005: Output window sizes
+    p005_type: 10
     p005_help: null
     p006: Xmin
     p006_type: 3
@@ -24520,7 +24520,7 @@
     p009_type: 3
     p009_help: null
     p010: Buffer size
-    p010_type: 3
+    p010_type: 2
     p010_help: null
     p011: ''
     p011_type: null
@@ -24674,37 +24674,37 @@
   pk: 48
   fields:
     p000: Number of curves
-    p000_type: 3
+    p000_type: 2
     p000_help: null
-    p001: color(>0) or mark(<0)
-    p001_type: 3
-    p001_help: null
-    p002: line or mark size
-    p002_type: 3
+    p001: Curves styles
+    p001_type: 10
+    p001_help: Colors > 0 | marks < 0
+    p002: Curves thicknesses | marks sizes
+    p002_type: 10
     p002_help: null
     p003: Output window number
-    p003_type: 3
-    p003_help: null
+    p003_type: 2
+    p003_help: -1 for automatic
     p004: Output window position
-    p004_type: 11
+    p004_type: 10
     p004_help: null
     p005: Output window size
-    p005_type: 11
+    p005_type: 10
     p005_help: null
     p006: Xmin and Xmax
-    p006_type: 3
+    p006_type: 11
     p006_help: null
     p007: Ymin and Ymax
-    p007_type: 3
+    p007_type: 11
     p007_help: null
     p008: Zmin and Zmax
-    p008_type: 3
+    p008_type: 11
     p008_help: null
     p009: Alpha and Theta
-    p009_type: 3
+    p009_type: 11
     p009_help: null
     p010: Buffer size
-    p010_type: 3
+    p010_type: 2
     p010_help: null
     p011: ''
     p011_type: null
@@ -25041,16 +25041,16 @@
 - model: xcosblocks.blockparameter
   pk: 51
   fields:
-    p000: xmin
+    p000: Xmin
     p000_type: 3
     p000_help: null
-    p001: xmax
+    p001: Xmax
     p001_type: 3
     p001_help: null
-    p002: ymin
+    p002: Ymin
     p002_type: 3
     p002_help: null
-    p003: ymax
+    p003: Ymax
     p003_type: 3
     p003_help: null
     p004: ''
@@ -25225,15 +25225,15 @@
 - model: xcosblocks.blockparameter
   pk: 53
   fields:
-    p000: End of dead band
+    p000: Upper limit
     p000_type: 3
     p000_help: null
-    p001: Start of dead band
+    p001: Lower limit
     p001_type: 3
     p001_help: null
-    p002: zero crossing
+    p002: Use zero-crossing?
     p002_type: 1
-    p002_help: 0:no, 1:yes
+    p002_help: 0=no, 1=yes
     p003: ''
     p003_type: null
     p003_help: null
@@ -25409,10 +25409,9 @@
 - model: xcosblocks.blockparameter
   pk: 54
   fields:
-    p000: Enter scilab instructions for debugging. Inputs are block and flag, output
-      is block
+    p000: Enter scilab instructions for debugging
     p000_type: 6
-    p000_help: null
+    p000_help: Inputs are block and flag. Output is block.
     p001: ''
     p001_type: null
     p001_help: null
@@ -25598,7 +25597,7 @@
     p000_type: 3
     p000_help: null
     p001: Register initial state
-    p001_type: 10
+    p001_type: 11
     p001_help: null
     p002: ''
     p002_type: null
@@ -25782,11 +25781,11 @@
     p000_type: 2
     p000_help: null
     p001: Register initial condition
-    p001_type: 10
+    p001_type: 11
     p001_help: null
     p002: Max delay
-    p002_type: 2
-    p002_help: null
+    p002_type: 3
+    p002_help: '> 0'
     p003: ''
     p003_type: null
     p003_help: null
@@ -25962,8 +25961,8 @@
 - model: xcosblocks.blockparameter
   pk: 57
   fields:
-    p000: number of output ports or vector of sizes
-    p000_type: 2
+    p000: Number of output ports or vector of sizes
+    p000_type: 10
     p000_help: null
     p001: ''
     p001_type: null
@@ -26146,8 +26145,8 @@
 - model: xcosblocks.blockparameter
   pk: 58
   fields:
-    p000: number of output ports or vector of sizes
-    p000_type: 2
+    p000: Number of output ports or vector of sizes
+    p000_type: 10
     p000_help: null
     p001: ''
     p001_type: null
@@ -26333,7 +26332,7 @@
     p000: Initial state
     p000_type: 3
     p000_help: null
-    p001: Initial Derivative
+    p001: Initial derivative
     p001_type: 3
     p001_help: null
     p002: ''
@@ -26519,9 +26518,9 @@
     p000_help: A
     p001: Voltage equivalent to temperature
     p001_type: 3
-    p001_help: Volt
+    p001_help: V
     p002: Max exponent for linear continuation
-    p002_type: 3
+    p002_type: 2
     p002_help: null
     p003: R
     p003_type: 3
@@ -26699,10 +26698,10 @@
   pk: 64
   fields:
     p000: Numerator
-    p000_type: 3
+    p000_type: 6
     p000_help: z
     p001: Denominator
-    p001_type: 3
+    p001_type: 6
     p001_help: z
     p002: ''
     p002_type: null
@@ -26883,22 +26882,22 @@
   pk: 65
   fields:
     p000: Vector of p mesh points
-    p000_type: 10
+    p000_type: 11
     p000_help: null
     p001: Numerator roots
-    p001_type: 10
-    p001_help: one line for each mesh
+    p001_type: 21
+    p001_help: one row for each mesh
     p002: Denominator roots
-    p002_type: 10
-    p002_help: one line for each mesh
+    p002_type: 21
+    p002_help: one row for each mesh
     p003: Vector of gain at mesh points
-    p003_type: 10
+    p003_type: 11
     p003_help: null
-    p004: past inputs
-    p004_type: 10
+    p004: Past inputs
+    p004_type: 11
     p004_help: Num degree values
-    p005: past outputs
-    p005_type: 10
+    p005: Past outputs
+    p005_type: 11
     p005_help: Den degree values
     p006: ''
     p006_type: null
@@ -27067,19 +27066,19 @@
   pk: 66
   fields:
     p000: A matrix
-    p000_type: 2
+    p000_type: 19
     p000_help: null
     p001: B matrix
-    p001_type: 2
+    p001_type: 19
     p001_help: null
     p002: C matrix
-    p002_type: 2
+    p002_type: 19
     p002_help: null
     p003: D matrix
-    p003_type: 2
+    p003_type: 19
     p003_help: null
     p004: Initial state
-    p004_type: 2
+    p004_type: 19
     p004_help: null
     p005: ''
     p005_type: null
@@ -27251,11 +27250,11 @@
   pk: 67
   fields:
     p000: initial condition
-    p000_type: 2
+    p000_type: 3
     p000_help: null
-    p001: Inherit
+    p001: Inherit?
     p001_type: 1
-    p001_help: no:0, yes:1
+    p001_help: 0=no, 1=yes
     p002: ''
     p002_type: null
     p002_help: null
@@ -27435,11 +27434,11 @@
   pk: 68
   fields:
     p000: initial condition
-    p000_type: 2
+    p000_type: 3
     p000_help: null
-    p001: Inherit
+    p001: Inherit?
     p001_type: 1
-    p001_help: no:0, yes:1
+    p001_help: 0=no, 1=yes
     p002: ''
     p002_type: null
     p002_help: null
@@ -27619,11 +27618,11 @@
   pk: 69
   fields:
     p000: initial condition
-    p000_type: 2
+    p000_type: 3
     p000_help: null
-    p001: Inherit
+    p001: Inherit?
     p001_type: 1
-    p001_help: no:0, yes:1
+    p001_help: 0=no, 1=yes
     p002: ''
     p002_type: null
     p002_help: null
@@ -27802,9 +27801,9 @@
 - model: xcosblocks.blockparameter
   pk: 70
   fields:
-    p000: rising(1), falling(-1), both(0)
+    p000: Rising, falling, or both
     p000_type: 2
-    p000_help: null
+    p000_help: 1=rising, -1=falling, 0=both
     p001: ''
     p001_type: null
     p001_help: null
@@ -28357,10 +28356,10 @@
     p000: Number of output event ports
     p000_type: 2
     p000_help: null
-    p001: Inherit
+    p001: Inherit?
     p001_type: 1
-    p001_help: 0=yes, 1=no
-    p002: Use zero-crossing
+    p001_help: 0=no, 1=yes
+    p002: Use zero-crossing?
     p002_type: 1
     p002_help: 0=no, 1=yes
     p003: ''
@@ -28540,10 +28539,11 @@
   fields:
     p000: Delay
     p000_type: 3
-    p000_help: null
+    p000_help: delay between an input event and the generated output event
     p001: Date of initial output event
     p001_type: 2
-    p001_help: null
+    p001_help: the date of this event, set to a negative value to mind only the input
+      events
     p002: ''
     p002_type: null
     p002_help: null
@@ -28723,7 +28723,7 @@
   pk: 75
   fields:
     p000: Event Time
-    p000_type: 2
+    p000_type: 3
     p000_help: null
     p001: ''
     p001_type: null
@@ -28907,8 +28907,8 @@
   pk: 76
   fields:
     p000: Initial event firing time
-    p000_type: 2
-    p000_help: <0 if absent
+    p000_type: 3
+    p000_help: < 0 if none
     p001: ''
     p001_type: null
     p001_help: null
@@ -29092,7 +29092,7 @@
   fields:
     p000: a
     p000_type: 3
-    p000_help: '>0'
+    p000_help: '> 0'
     p001: ''
     p001_type: null
     p001_help: null
@@ -29274,15 +29274,15 @@
 - model: xcosblocks.blockparameter
   pk: 78
   fields:
-    p000: number of inputs
+    p000: Number of inputs
     p000_type: 2
     p000_help: null
-    p001: scilab expression
+    p001: Scilab expression
     p001_type: 6
     p001_help: null
-    p002: use zero-crossing
+    p002: Use zero-crossing?
     p002_type: 2
-    p002_help: 0:no, 1 yes
+    p002_help: 0=no, 1=yes
     p003: ''
     p003_type: null
     p003_help: null
@@ -29460,7 +29460,7 @@
   fields:
     p000: Datatype
     p000_type: 2
-    p000_help: 1=real double 2=Complex
+    p000_help: 1=real double, 2=complex
     p001: Lines to extract
     p001_type: 10
     p001_help: null
@@ -29642,18 +29642,18 @@
 - model: xcosblocks.blockparameter
   pk: 81
   fields:
-    p000: Data Type
+    p000: Datatype
     p000_type: 2
-    p000_help: 3:int32, 4:int16, 5:int8, ...
+    p000_help: 3=int32, 4=int16, 5=int8, 6, 7, 8
     p001: Bits to extract
     p001_type: 2
     p001_help: null
-    p002: Number of Bits or Index of Bit
+    p002: Number of bits or index of bit
     p002_type: 10
     p002_help: null
-    p003: Treat Bit Field as an Integer
+    p003: Treat bit field as an integer?
     p003_type: 1
-    p003_help: 0:No, 1:Yes
+    p003_help: 0=no, 1=yes
     p004: ''
     p004_type: null
     p004_help: null
@@ -29826,8 +29826,8 @@
 - model: xcosblocks.blockparameter
   pk: 82
   fields:
-    p000: indices to extract
-    p000_type: 3
+    p000: Indices to extract
+    p000_type: 10
     p000_help: null
     p001: ''
     p001_type: null
@@ -30012,10 +30012,10 @@
   fields:
     p000: Datatype
     p000_type: 2
-    p000_help: 1=real double 2=Complex
+    p000_help: 1=real double, 2=complex
     p001: extraction type
     p001_type: 2
-    p001_help: 1=lower 2=upper 3=diagonal
+    p001_help: 1=lower, 2=upper, 3=diagonal
     p002: ''
     p002_type: null
     p002_help: null
@@ -30194,16 +30194,16 @@
 - model: xcosblocks.blockparameter
   pk: 85
   fields:
-    p000: input ports sizes
-    p000_type: 3
+    p000: Input port sizes
+    p000_type: 10
     p000_help: null
-    p001: output port sizes
-    p001_type: 3
+    p001: Output port sizes
+    p001_type: 10
     p001_help: null
     p002: System parameters vector
     p002_type: 11
     p002_help: null
-    p003: function name
+    p003: Function name
     p003_type: 6
     p003_help: null
     p004: ''
@@ -30382,7 +30382,7 @@
     p000_type: 2
     p000_help: 0 to division factor -1
     p001: Division factor
-    p001_type: 2
+    p001_type: 3
     p001_help: null
     p002: ''
     p002_type: null
@@ -30933,15 +30933,15 @@
     p000: Variable name
     p000_type: 6
     p000_help: null
-    p001: Interpolation Method
+    p001: Interpolation method
     p001_type: 2
     p001_help: null
-    p002: Enable zero crossing ?
+    p002: Use zero-crossing?
     p002_type: 1
-    p002_help: 0:No, 1:Yes
+    p002_help: 0=no, 1=yes
     p003: Output at end
     p003_type: 2
-    p003_help: 0:Zero, 1:Hold, 2:Repeat
+    p003_help: 0=zero, 1=hold, 2=repeat
     p004: ''
     p004_type: null
     p004_help: null
@@ -31301,9 +31301,9 @@
     p000: Gain
     p000_type: 3
     p000_help: null
-    p001: Do On Overflow
+    p001: Do on overflow
     p001_type: 2
-    p001_help: 0=Nothing 1=Saturate 2=Error
+    p001_help: 0=nothing, 1=saturate, 2=error
     p002: ''
     p002_type: null
     p002_help: null
@@ -31854,26 +31854,26 @@
     p000_type: 6
     p000_help: null
     p001: Function type
-    p001_type: 3
+    p001_type: 2
     p001_help: 0,1,2,..
-    p002: Input ports sizes
-    p002_type: 11
+    p002: Input port sizes
+    p002_type: 10
     p002_help: null
-    p003: Input ports type
-    p003_type: 3
+    p003: Input port type
+    p003_type: 2
     p003_help: null
     p004: Output port sizes
-    p004_type: 11
+    p004_type: 10
     p004_help: null
-    p005: Output ports type
-    p005_type: 3
+    p005: Output port type
+    p005_type: 2
     p005_help: null
-    p006: Input event ports sizes
-    p006_type: 11
-    p006_help: null
-    p007: Output events ports sizes
-    p007_type: 11
-    p007_help: null
+    p006: Input event port sizes
+    p006_type: 10
+    p006_help: '[] or 1'
+    p007: Output event port sizes
+    p007_type: 10
+    p007_help: '[] or 1'
     p008: Initial continuous state
     p008_type: 11
     p008_help: null
@@ -31881,26 +31881,26 @@
     p009_type: 11
     p009_help: null
     p010: Initial object state
-    p010_type: 11
+    p010_type: 6
     p010_help: null
     p011: Real parameters vector
     p011_type: 11
     p011_help: null
     p012: Integer parameters vector
-    p012_type: 11
+    p012_type: 10
     p012_help: null
     p013: Object parameters list
-    p013_type: 11
+    p013_type: 6
     p013_help: null
     p014: Number of modes
-    p014_type: 3
+    p014_type: 2
     p014_help: null
     p015: Number of zero crossings
-    p015_type: 3
+    p015_type: 2
     p015_help: null
     p016: Initial firing vector
-    p016_type: 3
-    p016_help: <0 for no firing
+    p016_type: 11
+    p016_help: < 0 for no firing
     p017: Direct feedthrough
     p017_type: 7
     p017_help: y or n
@@ -32034,7 +32034,7 @@
 - model: xcosblocks.blockparameter
   pk: 95
   fields:
-    p000: Magnitude
+    p000: Amplitude
     p000_type: 3
     p000_help: null
     p001: Frequency
@@ -32405,9 +32405,9 @@
     p000: Tag
     p000_type: 6
     p000_help: null
-    p001: Tag Visibility
+    p001: Tag visibility
     p001_type: 2
-    p001_help: 1=Local 2=scoped 3=global
+    p001_help: 1=local, 2=scoped, 3=global
     p002: ''
     p002_type: null
     p002_help: null
@@ -32591,7 +32591,7 @@
     p000_help: null
     p001: Tag Visibility
     p001_type: 2
-    p001_help: 1=Local 2=scoped 3=global
+    p001_help: 1=local, 2=scoped, 3=global
     p002: ''
     p002_type: null
     p002_help: null
@@ -32770,7 +32770,7 @@
 - model: xcosblocks.blockparameter
   pk: 99
   fields:
-    p000: GotoTag
+    p000: Goto tag
     p000_type: 6
     p000_help: null
     p001: ''
@@ -32954,7 +32954,7 @@
 - model: xcosblocks.blockparameter
   pk: 100
   fields:
-    p000: GotoTag
+    p000: Goto tag
     p000_type: 6
     p000_help: null
     p001: ''
@@ -33140,10 +33140,10 @@
   fields:
     p000: G1
     p000_type: 3
-    p000_help: null
+    p000_help: gyration conductance
     p001: G2
     p001_type: 3
-    p001_help: null
+    p001_help: gyration conductance
     p002: ''
     p002_type: null
     p002_help: null
@@ -33506,21 +33506,21 @@
 - model: xcosblocks.blockparameter
   pk: 104
   fields:
-    p000: switch on at
+    p000: Switch on at
     p000_type: 2
     p000_help: null
-    p001: switch off at
+    p001: Switch off at
     p001_type: 2
     p001_help: null
-    p002: output when on
+    p002: Output when on
     p002_type: 2
     p002_help: null
-    p003: output when off
+    p003: Output when off
     p003_type: 2
     p003_help: null
-    p004: use zero crossing
+    p004: Use zero-crossing?
     p004_type: 1
-    p004_help: null
+    p004_help: 0=no, 1=yes
     p005: ''
     p005_type: null
     p005_help: null
@@ -33690,9 +33690,9 @@
 - model: xcosblocks.blockparameter
   pk: 105
   fields:
-    p000: N
+    p000: 'N: Turn ratio'
     p000_type: 3
-    p000_help: null
+    p000_help: N1/N2
     p001: ''
     p001_type: null
     p001_help: null
@@ -33874,10 +33874,10 @@
 - model: xcosblocks.blockparameter
   pk: 106
   fields:
-    p000: Inherit
+    p000: Inherit?
     p000_type: 1
-    p000_help: 0=yes, 1=no
-    p001: Use zero-crossing
+    p000_help: 0=no, 1=yes
+    p001: Use zero-crossing?
     p001_type: 1
     p001_help: 0=no, 1=yes
     p002: ''
@@ -34062,10 +34062,10 @@
     p000_type: 2
     p000_help: null
     p001: Output size
-    p001_type: 11
-    p001_help: '[-1,-2] for inherit'
+    p001_type: 10
+    p001_help: '[-1 -2] for inherit'
     p002: Output type
-    p002_type: 3
+    p002_type: 2
     p002_help: -1 for inherit
     p003: ''
     p003_type: null
@@ -34242,7 +34242,7 @@
 - model: xcosblocks.blockparameter
   pk: 108
   fields:
-    p000: L
+    p000: Inductance
     p000_type: 3
     p000_help: H
     p001: ''
@@ -34426,7 +34426,7 @@
 - model: xcosblocks.blockparameter
   pk: 109
   fields:
-    p000: Port Number
+    p000: Port number
     p000_type: 2
     p000_help: null
     p001: ''
@@ -34797,10 +34797,10 @@
     p000: Initial condition
     p000_type: 3
     p000_help: null
-    p001: with re-initialization
+    p001: With re-initialization?
     p001_type: 1
     p001_help: null
-    p002: with saturation
+    p002: With saturation?
     p002_type: 1
     p002_help: null
     p003: Upper limit
@@ -34978,12 +34978,12 @@
 - model: xcosblocks.blockparameter
   pk: 112
   fields:
-    p000: Data Type
+    p000: Datatype
     p000_type: 2
-    p000_help: 3:int32, 4:int16, 5:int8,..
-    p001: Do on Overflow
+    p000_help: 3=int32, 4=int16, 5=int8, 6, 7, 8
+    p001: Do on overflow
     p001_type: 2
-    p001_help: 0:Nothing, 1:Saturate, 2:Error
+    p001_help: 0=nothing, 1=saturate, 2=error
     p002: ''
     p002_type: null
     p002_help: null
@@ -35162,14 +35162,14 @@
 - model: xcosblocks.blockparameter
   pk: 113
   fields:
-    p000: X coord
-    p000_type: 10
+    p000: X coordinates
+    p000_type: 11
     p000_help: null
-    p001: Y coord
-    p001_type: 10
+    p001: Y coordinates
+    p001_type: 11
     p001_help: null
     p002: Z values
-    p002_type: 10
+    p002_type: 19
     p002_help: null
     p003: ''
     p003_type: null
@@ -35346,11 +35346,11 @@
 - model: xcosblocks.blockparameter
   pk: 114
   fields:
-    p000: X coord
-    p000_type: 10
+    p000: X coordinates
+    p000_type: 11
     p000_help: null
-    p001: Y coord
-    p001_type: 10
+    p001: Y coordinates
+    p001_type: 11
     p001_help: null
     p002: ''
     p002_type: null
@@ -35531,12 +35531,12 @@
   pk: 116
   fields:
     p000: Datatype
-    p000_type: 3
-    p000_help: 1=real double 2=Complex 3=int32...
-    p001: number of outputs
-    p001_type: 3
+    p000_type: 2
+    p000_help: 1=real double, 2=complex, 3=int32, 4, 5, 6, 7, 8
+    p001: Number of outputs
+    p001_type: 2
     p001_help: null
-    p002: initial connected output
+    p002: Initial connected output
     p002_type: 2
     p002_help: null
     p003: ''
@@ -35714,9 +35714,9 @@
 - model: xcosblocks.blockparameter
   pk: 117
   fields:
-    p000: Initial Value
+    p000: Initial value
     p000_type: 6
-    p000_help: null
+    p000_help: int8(0), int8(1)
     p001: ''
     p001_type: null
     p001_help: null
@@ -35900,7 +35900,7 @@
   fields:
     p000: Basis
     p000_type: 3
-    p000_help: '>1'
+    p000_help: '> 1'
     p001: ''
     p001_type: null
     p001_help: null
@@ -36082,12 +36082,12 @@
 - model: xcosblocks.blockparameter
   pk: 119
   fields:
-    p000: Truth Table
-    p000_type: 10
+    p000: Truth table
+    p000_type: 18
     p000_help: matrix of outputs
-    p001: Accepts Inherited Events
+    p001: Inherit?
     p001_type: 1
-    p001_help: 0:No, 1:Yes
+    p001_help: 0=no, 1=yes
     p002: ''
     p002_type: null
     p002_help: null
@@ -36273,8 +36273,8 @@
     p001_type: 2
     p001_help: 0=AND, 1=OR, 2=NAND, 3=NOR, 4=XOR, 5=NOT
     p002: Datatype
-    p002_type: 3
-    p002_help: 1=double, 3=int32
+    p002_type: 2
+    p002_help: 1=double, 3=int32, 4, 5, 6, 7, 8
     p003: Bitwise rule
     p003_type: 1
     p003_help: 0=no, 1=yes
@@ -36450,16 +36450,16 @@
 - model: xcosblocks.blockparameter
   pk: 121
   fields:
-    p000: xmin
+    p000: Xmin
     p000_type: 3
     p000_help: null
-    p001: xmax
+    p001: Xmax
     p001_type: 3
     p001_help: null
-    p002: ymin
+    p002: Ymin
     p002_type: 3
     p002_help: null
-    p003: ymax
+    p003: Ymax
     p003_type: 3
     p003_help: null
     p004: ''
@@ -36818,15 +36818,15 @@
 - model: xcosblocks.blockparameter
   pk: 123
   fields:
-    p000: number of inputs
-    p000_type: 3
+    p000: Number of inputs
+    p000_type: 2
     p000_help: null
-    p001: zero base indexing , otherwise 1
+    p001: zero base indexing?
     p001_type: 1
-    p001_help: '0'
-    p002: 'rounding rule : int(0),round (1), ceil (2), floor (3)  '
+    p001_help: 0=yes, 1=no
+    p002: Rounding rule
     p002_type: 2
-    p002_help: null
+    p002_help: 0=int, 1=round, 2=ceil, 3=floor
     p003: ''
     p003_type: null
     p003_help: null
@@ -37186,7 +37186,7 @@
 - model: xcosblocks.blockparameter
   pk: 125
   fields:
-    p000: number of inputs
+    p000: Number of inputs
     p000_type: 2
     p000_help: null
     p001: ''
@@ -37370,7 +37370,7 @@
 - model: xcosblocks.blockparameter
   pk: 126
   fields:
-    p000: number of inputs
+    p000: Number of inputs
     p000_type: 2
     p000_help: null
     p001: ''
@@ -38111,7 +38111,7 @@
     p000_help: 1=real double, 2=complex
     p001: Decomposition type
     p001_type: 2
-    p001_help: 1=eig values, 2=eig values+eig vectors
+    p001_help: 1=eig values, 2=eig values + eig vectors
     p002: ''
     p002_type: null
     p002_help: null
@@ -38842,9 +38842,9 @@
 - model: xcosblocks.blockparameter
   pk: 134
   fields:
-    p000: decomposition type
+    p000: Conversion code
     p000_type: 2
-    p000_help: 1=Complex2MAG&PHI 2=MAG&PHI2Complex
+    p000_help: 1=complex->(mag,phi), 2=(mag,phi)->complex
     p001: ''
     p001_type: null
     p001_help: null
@@ -39028,10 +39028,10 @@
   fields:
     p000: Datatype
     p000_type: 2
-    p000_help: 1=real double, 2=complex, 3=int32
+    p000_help: 1=real double, 2=complex, 3=int32, 4, 5, 6, 7, 8
     p001: Multiplication rule
     p001_type: 2
-    p001_help: 1, 2, 3
+    p001_help: 1=matrix by matrix, 2=matrix by matrix element wise, 3=matrix by scalar
     p002: Do on overflow
     p002_type: 2
     p002_help: 0=nothing, 1=saturate, 2=error
@@ -39583,7 +39583,7 @@
     p000_help: 1=real double, 2=complex
     p001: Decomposition type
     p001_type: 2
-    p001_help: 1=singular values, 2=sing values+matrix U & V
+    p001_help: 1=singular values, 2=singular values + matrix U & V
     p002: ''
     p002_type: null
     p002_help: null
@@ -40130,9 +40130,9 @@
 - model: xcosblocks.blockparameter
   pk: 142
   fields:
-    p000: decomposition type
+    p000: Conversion type
     p000_type: 2
-    p000_help: 1=Complex2Real&Imag 2=Real&Imag2Complex
+    p000_help: 1=complex->(real,imag), 2=(real,imag)->complex
     p001: ''
     p001_type: null
     p001_help: null
@@ -40314,13 +40314,13 @@
 - model: xcosblocks.blockparameter
   pk: 144
   fields:
-    p000: ''
+    p000: Minimum or maximum
     p000_type: 2
     p000_help: 1=min, 2=max
     p001: Number of input vectors
     p001_type: 2
     p001_help: 1, 2
-    p002: Use zero-crossing
+    p002: Use zero-crossing?
     p002_type: 1
     p002_help: 0=no, 1=yes
     p003: ''
@@ -40498,10 +40498,10 @@
 - model: xcosblocks.blockparameter
   pk: 146
   fields:
-    p000: basic period
+    p000: Basic period
     p000_type: 3
     p000_help: 1/f
-    p001: multiply by
+    p001: Multiply by
     p001_type: 2
     p001_help: n
     p002: ''
@@ -40682,10 +40682,10 @@
 - model: xcosblocks.blockparameter
   pk: 147
   fields:
-    p000: basic period
+    p000: Basic period
     p000_type: 3
     p000_help: 1/f
-    p001: multiply by
+    p001: Multiply by
     p001_type: 2
     p001_help: n
     p002: ''
@@ -40866,11 +40866,11 @@
 - model: xcosblocks.blockparameter
   pk: 149
   fields:
-    p000: Initial State
-    p000_type: 3
+    p000: Initial state
+    p000_type: 2
     p000_help: zero or positive number
-    p001: Upper Limit
-    p001_type: 3
+    p001: Upper limit
+    p001_type: 2
     p001_help: positive number
     p002: ''
     p002_type: null
@@ -41050,8 +41050,8 @@
 - model: xcosblocks.blockparameter
   pk: 150
   fields:
-    p000: number of input ports or vector of sizes
-    p000_type: 2
+    p000: Number of input ports or vector of sizes
+    p000_type: 10
     p000_help: null
     p001: ''
     p001_type: null
@@ -41234,8 +41234,8 @@
 - model: xcosblocks.blockparameter
   pk: 151
   fields:
-    p000: number of input ports or vector of sizes
-    p000_type: 3
+    p000: Number of input ports or vector of sizes
+    p000_type: 10
     p000_help: null
     p001: ''
     p001_type: null
@@ -41418,33 +41418,33 @@
 - model: xcosblocks.blockparameter
   pk: 153
   fields:
-    p000: Width [m]
+    p000: Width
     p000_type: 3
-    p000_help: null
-    p001: Length [m]
+    p000_help: m
+    p001: Length
     p001_type: 3
-    p001_help: null
-    p002: Transconductance parameter [A/]
+    p001_help: m
+    p002: Transconductance parameter
     p002_type: 3
-    p002_help: V*V
-    p003: Zero bias threshold voltage [V]
+    p002_help: A/(V*V)
+    p003: Zero bias threshold voltage
     p003_type: 3
-    p003_help: null
+    p003_help: V
     p004: Bulk threshold parameter
     p004_type: 3
     p004_help: null
     p005: Reduction of pinch-off region
     p005_type: 3
     p005_help: null
-    p006: Narrowing of channel [m]
+    p006: Narrowing of channel
     p006_type: 3
-    p006_help: null
-    p007: Shortening of channel [m]
+    p006_help: m
+    p007: Shortening of channel
     p007_type: 3
-    p007_help: null
-    p008: Drain-Source-Resistance [Ohm]
+    p007_help: m
+    p008: Drain-source-resistance
     p008_type: 3
-    p008_help: null
+    p008_help: ohm
     p009: ''
     p009_type: null
     p009_help: null
@@ -41611,48 +41611,48 @@
     p002: 'ls : Transport saturation current'
     p002_type: 3
     p002_help: null
-    p003: 'Vak : Early voltage , 1/Volt'
+    p003: 'Vak : Early voltage (inverse)'
     p003_type: 3
-    p003_help: inverse
+    p003_help: 1/V
     p004: 'Tauf : Ideal forward transit time'
     p004_type: 3
     p004_help: null
     p005: 'Taur : Ideal reverse transit time'
     p005_type: 3
     p005_help: null
-    p006: 'Ccs : Collector-substrat  cap.'
+    p006: 'Ccs : Collector-substrat (ground) cap'
     p006_type: 3
-    p006_help: ground
-    p007: 'Cje : Base-emitter zero bias depletion cap.'
+    p006_help: null
+    p007: 'Cje : Base-emitter zero bias depletion cap'
     p007_type: 3
     p007_help: null
-    p008: 'Cjc : Base coll. zero bias depletion cap.'
+    p008: 'Cjc : Base-collector zero bias depletion cap'
     p008_type: 3
     p008_help: null
     p009: 'Phie : Base-emitter diffusion voltage'
     p009_type: 3
     p009_help: null
-    p010: 'Me : Base emmiter gradation exponent'
+    p010: 'Me : Base-emitter gradation exponent'
     p010_type: 3
     p010_help: null
-    p011: 'Phic : Base collector diffusion voltage'
+    p011: 'Phic : Base-collector diffusion voltage'
     p011_type: 3
     p011_help: null
     p012: 'Mc : Base-collector gradation exponent'
     p012_type: 3
     p012_help: null
-    p013: 'Gbc : Base collector conductance'
+    p013: 'Gbc : Base-collector conductance'
     p013_type: 3
     p013_help: null
-    p014: 'Gbe : Base emitter conductance'
+    p014: 'Gbe : Base-emitter conductance'
     p014_type: 3
     p014_help: null
     p015: 'Vt : Voltage equivalent of temperature'
     p015_type: 3
     p015_help: null
-    p016: 'EminMax : If x> EminMax, the exp function is linearized'
+    p016: 'EMinMax : If x > EMinMax, the exp(x) function is linearized'
     p016_type: 3
-    p016_help: x
+    p016_help: null
     p017: ''
     p017_type: null
     p017_help: null
@@ -41786,8 +41786,8 @@
 - model: xcosblocks.blockparameter
   pk: 155
   fields:
-    p000: number of inputs
-    p000_type: 3
+    p000: Number of inputs
+    p000_type: 2
     p000_help: null
     p001: ''
     p001_type: null
@@ -41971,7 +41971,7 @@
   pk: 157
   fields:
     p000: Port number
-    p000_type: 3
+    p000_type: 2
     p000_help: null
     p001: ''
     p001_type: null
@@ -42338,24 +42338,24 @@
 - model: xcosblocks.blockparameter
   pk: 160
   fields:
-    p000: 'Tube length: L'
+    p000: 'Pipe length: L'
     p000_type: 3
     p000_help: m
-    p001: 'Internal tube diameter: D'
+    p001: 'Pipe internal diameter: D'
     p001_type: 3
     p001_help: m
-    p002: 'Coefficient of pressure loss-friction : lambda'
+    p002: 'Coefficient of loss of load-friction: lambda'
     p002_type: 3
     p002_help: S.U
-    p003: 'Pipe inlet altitude: z1'
+    p003: 'Altitude of pipe''s inlet: z1'
     p003_type: 3
     p003_help: m
-    p004: 'Pipe outlet altitude: z2'
+    p004: 'Altitude of pipe''s outlet: z2'
     p004_type: 3
     p004_help: m
-    p005: 'If> 0, imposed density fu fluid: p_rho'
+    p005: 'If > 0, fixed fluid density: p_rho'
     p005_type: 3
-    p005_help: kg / m3
+    p005_help: kg/m3
     p006: ''
     p006_type: null
     p006_help: null
@@ -42706,18 +42706,18 @@
 - model: xcosblocks.blockparameter
   pk: 162
   fields:
-    p000: Width[m]
+    p000: Width
     p000_type: 3
-    p000_help: null
-    p001: Length [m]
+    p000_help: m
+    p001: Length
     p001_type: 3
-    p001_help: null
-    p002: Transconductance parameter [ A/ ]
+    p001_help: m
+    p002: Transconductance parameter
     p002_type: 3
-    p002_help: V*V
-    p003: Zero bias threshold voltage [V]
+    p002_help: A/(V*V)
+    p003: Zero bias threshold voltage
     p003_type: 3
-    p003_help: null
+    p003_help: V
     p004: Bulk threshold parameter
     p004_type: 3
     p004_help: null
@@ -42726,10 +42726,10 @@
     p005_help: null
     p006: Narrowing of channel
     p006_type: 3
-    p006_help: null
+    p006_help: m
     p007: Shortening of channel
     p007_type: 3
-    p007_help: null
+    p007_help: m
     p008: Drain source resistance
     p008_type: 3
     p008_help: ohm
@@ -42899,37 +42899,37 @@
     p002: 'Is : Transport saturation current'
     p002_type: 3
     p002_help: null
-    p003: 'Vak : Early Voltage'
+    p003: 'Vak : Early voltage (inverse)'
     p003_type: 3
-    p003_help: inverse
+    p003_help: null
     p004: 'Tauf : Ideal forward transit time'
     p004_type: 3
     p004_help: null
     p005: 'Taur : Ideal reverse transit time'
     p005_type: 3
     p005_help: null
-    p006: 'Ccs : Collector substract cap'
+    p006: 'Ccs : Collector-substrat (ground) cap'
     p006_type: 3
     p006_help: null
-    p007: 'Cje : Base emitter zero bias depletion cap'
+    p007: 'Cje : Base-emitter zero bias depletion cap'
     p007_type: 3
     p007_help: null
-    p008: 'Cjc : Base-coll zero bias depletion cap'
+    p008: 'Cjc : Base-collector zero bias depletion cap'
     p008_type: 3
     p008_help: null
     p009: 'Phie : Base-emitter diffusion voltage'
     p009_type: 3
     p009_help: null
-    p010: 'Me : Base emmiter gradation exponent'
+    p010: 'Me : Base-emitter gradation exponent'
     p010_type: 3
     p010_help: null
-    p011: 'Phic : Base collector diffusion voltage'
+    p011: 'Phic : Base-collector diffusion voltage'
     p011_type: 3
     p011_help: null
     p012: 'Mc : Base-collector gradation exponent'
     p012_type: 3
     p012_help: null
-    p013: 'Gbc : Base collector conductance'
+    p013: 'Gbc : Base-collector conductance'
     p013_type: 3
     p013_help: null
     p014: 'Gbe : Base emitter conductance'
@@ -42938,9 +42938,9 @@
     p015: 'Vt : Voltage equivalent of temperature'
     p015_type: 3
     p015_help: null
-    p016: 'EminMax : If x> EminMax, the exp function is linearized'
+    p016: 'EMinMax : If x > EMinMax, the exp(x) function is linearized'
     p016_type: 3
-    p016_help: x
+    p016_help: null
     p017: ''
     p017_type: null
     p017_help: null
@@ -43074,7 +43074,7 @@
 - model: xcosblocks.blockparameter
   pk: 166
   fields:
-    p000: to the power of
+    p000: To the power of
     p000_type: 3
     p000_help: null
     p001: ''
@@ -43260,8 +43260,8 @@
   fields:
     p000: Number of inputs or sign vector
     p000_type: 10
-    p000_help: null
-    p001: Error on divide by zero
+    p000_help: multiplication is set with +1, division with -1
+    p001: Error on divide by zero?
     p001_type: 1
     p001_help: 0=no, 1=yes
     p002: ''
@@ -43442,18 +43442,18 @@
 - model: xcosblocks.blockparameter
   pk: 169
   fields:
-    p000: 'Source pressure : P0'
+    p000: 'Pressure of the source: P0'
     p000_type: 3
     p000_help: Pa
-    p001: 'Source temperature : T0'
+    p001: 'Temperature of the source: T0'
     p001_type: 3
     p001_help: K
-    p002: 'Source specific enthalpy : H0'
+    p002: 'Specific enthalpy of the source: H0'
     p002_type: 3
     p002_help: J/kg
-    p003: 'Condition: 1=fixed temperature / 2=fixed enthalpy'
+    p003: Condition
     p003_type: 2
-    p003_help: null
+    p003_help: 1=fixed temperature, 2=fixed enthalpy
     p004: ''
     p004_type: null
     p004_help: null
@@ -43626,15 +43626,15 @@
 - model: xcosblocks.blockparameter
   pk: 170
   fields:
-    p000: 'Phase delay  :'
+    p000: Phase delay
     p000_type: 3
-    p000_help: secs
-    p001: 'Pulse Width  :'
+    p000_help: s
+    p001: Pulse width
     p001_type: 3
     p001_help: '% of period'
-    p002: 'Period  :'
+    p002: Period
     p002_type: 3
-    p002_help: secs
+    p002_help: s
     p003: Amplitude
     p003_type: 3
     p003_help: null
@@ -43997,10 +43997,10 @@
     p000: Slope
     p000_type: 3
     p000_help: null
-    p001: Start Time
+    p001: Start time
     p001_type: 3
     p001_help: null
-    p002: Initial Value
+    p002: Initial value
     p002_type: 3
     p002_help: null
     p003: ''
@@ -44180,18 +44180,19 @@
   fields:
     p000: Datatype
     p000_type: 2
-    p000_help: 1=real double 2=complex
-    p001: flag
+    p000_help: 1=real double, 2=complex
+    p001: Flag
     p001_type: 1
-    p001_help: null
+    p001_help: 0=uniform distribution with A min and A+B max, 1=normal distribution
+      with A mean and B deviation
     p002: A
     p002_type: 3
     p002_help: null
     p003: B
     p003_type: 3
     p003_help: null
-    p004: SEED
-    p004_type: 11
+    p004: Seed
+    p004_type: 10
     p004_help: null
     p005: ''
     p005_type: null
@@ -44362,12 +44363,12 @@
 - model: xcosblocks.blockparameter
   pk: 174
   fields:
-    p000: max slope
-    p000_type: 2
-    p000_help: null
-    p001: min slope
-    p001_type: 2
-    p001_help: null
+    p000: Maximal slope
+    p000_type: 3
+    p000_help: '> 0'
+    p001: Minimal slope
+    p001_type: 3
+    p001_help: < 0
     p002: ''
     p002_type: null
     p002_help: null
@@ -44546,15 +44547,15 @@
 - model: xcosblocks.blockparameter
   pk: 175
   fields:
-    p000: Input File Name
+    p000: Input filename
     p000_type: 8
     p000_help: null
     p001: Buffer size
-    p001_type: 3
+    p001_type: 2
     p001_help: null
-    p002: Swap Mode
+    p002: Swap mode?
     p002_type: 1
-    p002_help: 0:No, 1:Yes
+    p002_help: 0=no, 1=yes
     p003: ''
     p003_type: null
     p003_help: null
@@ -44730,30 +44731,30 @@
 - model: xcosblocks.blockparameter
   pk: 176
   fields:
-    p000: Time Record Selection
+    p000: Time record selection
     p000_type: 10
     p000_help: null
-    p001: Outputs Record Selection
+    p001: Outputs record selection
     p001_type: 2
     p001_help: null
-    p002: Input File Name
+    p002: Input filename
     p002_type: 8
     p002_help: null
-    p003: Input Format
+    p003: Input format
     p003_type: 6
     p003_help: null
-    p004: Record Size
-    p004_type: 3
+    p004: Record size
+    p004_type: 2
     p004_help: null
-    p005: Buffer Size
-    p005_type: 3
+    p005: Buffer size
+    p005_type: 2
     p005_help: null
-    p006: Initial Record Index
-    p006_type: 3
+    p006: Initial record index
+    p006_type: 2
     p006_help: null
-    p007: Swap Mode
+    p007: Swap mode?
     p007_type: 1
-    p007_help: 0:No, 1:Yes
+    p007_help: 0=no, 1=yes
     p008: ''
     p008_type: null
     p008_help: null
@@ -44915,11 +44916,11 @@
   pk: 177
   fields:
     p000: Register initial condition
-    p000_type: 10
+    p000_type: 11
     p000_help: null
     p001: Datatype
     p001_type: 2
-    p001_help: 1=double, 3=int32
+    p001_help: 1=double, 3=int32, 4, 5, 6, 7, 8
     p002: ''
     p002_type: null
     p002_help: null
@@ -45101,12 +45102,12 @@
     p000: Operator
     p000_type: 2
     p000_help: 0:==, 1:~=, 2:<, 3:<=, 4:>, 5:>=
-    p001: Use zero-crossing
+    p001: Use zero-crossing?
     p001_type: 1
     p001_help: 0=no, 1=yes
     p002: Datatype
     p002_type: 2
-    p002_help: 1=double, 3=int32
+    p002_help: 1=double, 3=int32, 4, 5, 6, 7, 8
     p003: ''
     p003_type: null
     p003_help: null
@@ -45282,11 +45283,11 @@
 - model: xcosblocks.blockparameter
   pk: 179
   fields:
-    p000: number of inputs
-    p000_type: 3
+    p000: Number of inputs
+    p000_type: 2
     p000_help: null
-    p001: initial connected input
-    p001_type: 3
+    p001: Initial connected input
+    p001_type: 2
     p001_help: null
     p002: ''
     p002_type: null
@@ -45650,20 +45651,20 @@
 - model: xcosblocks.blockparameter
   pk: 181
   fields:
-    p000: Time Record Selection
+    p000: Time record selection
     p000_type: 10
     p000_help: null
-    p001: Outputs Record Selection
-    p001_type: 3
+    p001: Outputs record selection
+    p001_type: 2
     p001_help: null
-    p002: Input File Name
-    p002_type: 6
+    p002: Input filename
+    p002_type: 8
     p002_help: null
-    p003: Input Format
+    p003: Input format
     p003_type: 6
     p003_help: null
-    p004: Buffer Size
-    p004_type: 3
+    p004: Buffer size
+    p004_type: 2
     p004_help: null
     p005: ''
     p005_type: null
@@ -45836,10 +45837,10 @@
   fields:
     p000: Type
     p000_type: 2
-    p000_help: 1=cont, 2=disc
-    p001: Model (1=schr, 2=sign(cont)/inv(disc))
+    p000_help: 1=continuous, 2=discontinuous
+    p001: Model
     p001_type: 2
-    p001_help: null
+    p001_help: 1=schr, 2=sign(continuous) inv(discontinuous)
     p002: ''
     p002_type: null
     p002_help: null
@@ -46204,7 +46205,7 @@
   fields:
     p000: Datatype
     p000_type: 2
-    p000_help: 1=real double 2=Complex 3=int32...
+    p000_help: 1=real double, 2=complex, 3=int32, 4, 5, 6, 7, 8
     p001: ''
     p001_type: null
     p001_help: null
@@ -46571,14 +46572,14 @@
   pk: 186
   fields:
     p000: Upper limit
-    p000_type: 2
+    p000_type: 3
     p000_help: null
     p001: Lower limit
     p001_type: 3
     p001_help: null
-    p002: zero crossing
+    p002: Use zero-crossing?
     p002_type: 1
-    p002_help: null
+    p002_help: 0=no, 1=yes
     p003: ''
     p003_type: null
     p003_help: null
@@ -46754,9 +46755,9 @@
 - model: xcosblocks.blockparameter
   pk: 188
   fields:
-    p000: size of output
-    p000_type: 3
-    p000_help: '-1: if don''t know'
+    p000: Size of output
+    p000_type: 2
+    p000_help: -1=don't know
     p001: ''
     p001_type: null
     p001_help: null
@@ -46939,13 +46940,13 @@
   pk: 190
   fields:
     p000: Datatype
-    p000_type: 3
-    p000_help: 1=real double 2=Complex 3=int32..
-    p001: number of inputs
-    p001_type: 3
+    p000_type: 2
+    p000_help: 1=real double, 2=complex, 3=int32, 4, 5, 6, 7, 8
+    p001: Number of inputs
+    p001_type: 2
     p001_help: null
-    p002: initial connected input
-    p002_type: 3
+    p002: Initial connected input
+    p002_type: 2
     p002_help: null
     p003: ''
     p003_type: null
@@ -47122,15 +47123,15 @@
 - model: xcosblocks.blockparameter
   pk: 192
   fields:
-    p000: Data Type
+    p000: Datatype
     p000_type: 2
-    p000_help: 3:int32, 4:int16, 5:int8,...
-    p001: Number of Bits to Shift Left
+    p000_help: 3=int32, 4=int16, 5=int8, 6, 7, 8
+    p001: Number of bits to shift left
     p001_type: 2
-    p001_help: Negative number to shift right
-    p002: Shift Type
+    p001_help: negative number to shift right
+    p002: Shift type
     p002_type: 1
-    p002_help: '0: Arithmetic, 1: Circular'
+    p002_help: 0=arithmetic, 1=circular
     p003: ''
     p003_type: null
     p003_help: null
@@ -47306,8 +47307,8 @@
 - model: xcosblocks.blockparameter
   pk: 193
   fields:
-    p000: Spline Method
-    p000_type: 3
+    p000: Spline method
+    p000_type: 2
     p000_help: 0..7
     p001: x
     p001_type: 11
@@ -47315,10 +47316,10 @@
     p002: y
     p002_type: 11
     p002_help: null
-    p003: Periodic signal ?
+    p003: Periodic signal?
     p003_type: 7
     p003_help: y/n
-    p004: Launch graphic window ?
+    p004: Launch graphic window?
     p004_type: 7
     p004_help: y/n
     p005: ''
@@ -47490,7 +47491,7 @@
 - model: xcosblocks.blockparameter
   pk: 194
   fields:
-    p000: Use zero-crossing
+    p000: Use zero-crossing?
     p000_type: 1
     p000_help: 0=no, 1=yes
     p001: ''
@@ -47676,14 +47677,14 @@
   fields:
     p000: Amplitude
     p000_type: 3
-    p000_help: Volt
-    p001: phase
+    p000_help: V
+    p001: Phase
     p001_type: 3
     p001_help: rad
     p002: Frequency
     p002_type: 3
     p002_help: Hz
-    p003: Voltageoffset
+    p003: Voltage offset
     p003_type: 3
     p003_help: V
     p004: Time offset
@@ -47858,18 +47859,18 @@
 - model: xcosblocks.blockparameter
   pk: 198
   fields:
-    p000: 'Pressure : P0'
+    p000: 'Pressure: P0'
     p000_type: 3
     p000_help: Pa
-    p001: 'Temperature : T0'
+    p001: 'Temperature: T0'
     p001_type: 3
     p001_help: K
-    p002: 'Specific enthalpy : H0'
+    p002: 'Specific enthalpy: H0'
     p002_type: 3
     p002_help: J/kg
-    p003: 'Condition: 1=fixed temperature / 2=fixed enthalpy'
-    p003_type: 3
-    p003_help: null
+    p003: Condition
+    p003_type: 2
+    p003_help: 1=fixed temperature, 2=fixed enthalpy
     p004: ''
     p004_type: null
     p004_help: null
@@ -48226,9 +48227,9 @@
 - model: xcosblocks.blockparameter
   pk: 200
   fields:
-    p000: Initial Value
+    p000: Initial value
     p000_type: 6
-    p000_help: null
+    p000_help: int8(0), int8(1)
     p001: ''
     p001_type: null
     p001_help: null
@@ -48410,13 +48411,13 @@
 - model: xcosblocks.blockparameter
   pk: 201
   fields:
-    p000: Step Time
+    p000: Step time
     p000_type: 3
     p000_help: null
-    p001: Initial Value
+    p001: Initial value
     p001_type: 3
     p001_help: null
-    p002: Final Value
+    p002: Final value
     p002_type: 3
     p002_help: null
     p003: ''
@@ -48780,7 +48781,7 @@
   fields:
     p000: Datatype
     p000_type: 2
-    p000_help: 1=real double, 2=complex, 3=int32
+    p000_help: 1=real double, 2=complex, 3=int32, 4, 5, 6, 7, 8
     p001: Number of inputs or sign vector
     p001_type: 10
     p001_help: of +1, -1
@@ -48962,12 +48963,12 @@
 - model: xcosblocks.blockparameter
   pk: 206
   fields:
-    p000: Resistance in On state
+    p000: Resistance in on state
     p000_type: 3
-    p000_help: Ohm
-    p001: Resistance in Off state
+    p000_help: ohm
+    p001: Resistance in off state
     p001_type: 3
-    p001_help: Ohm
+    p001_help: ohm
     p002: ''
     p002_type: null
     p002_help: null
@@ -49146,11 +49147,11 @@
 - model: xcosblocks.blockparameter
   pk: 207
   fields:
-    p000: number of inputs
-    p000_type: 3
+    p000: Number of inputs
+    p000_type: 2
     p000_help: null
-    p001: connected input
-    p001_type: 3
+    p001: Connected input
+    p001_type: 2
     p001_help: null
     p002: ''
     p002_type: null
@@ -49331,17 +49332,17 @@
   pk: 208
   fields:
     p000: Datatype
-    p000_type: 3
-    p000_help: 1=real double 2=complex 3=int32..
-    p001: 'pass first input if: u2>=a(0), u2>a(1), u2~=a(2)'
+    p000_type: 2
+    p000_help: 1=real double, 2=complex, 3=int32, 4, 5, 6, 7, 8
+    p001: Pass first input if
     p001_type: 2
-    p001_help: null
-    p002: threshold a
+    p001_help: 0:u2>=a, 1:u2>a, 2:u2~=a
+    p002: Threshold a
     p002_type: 3
     p002_help: null
-    p003: 'use zero crossing: yes(1),no(0)'
+    p003: Use zero-crossing?
     p003_type: 1
-    p003_help: null
+    p003_help: 0=no, 1=yes
     p004: ''
     p004_type: null
     p004_help: null
@@ -49515,19 +49516,19 @@
   pk: 210
   fields:
     p000: A matrix
-    p000_type: 3
+    p000_type: 19
     p000_help: null
     p001: B matrix
-    p001_type: 3
+    p001_type: 19
     p001_help: null
     p002: C matrix
-    p002_type: 3
+    p002_type: 19
     p002_help: null
     p003: D matrix
-    p003_type: 3
+    p003_type: 19
     p003_help: null
     p004: Initial state
-    p004_type: 3
+    p004_type: 19
     p004_help: null
     p005: ''
     p005_type: null
@@ -49705,7 +49706,7 @@
     p001_type: 3
     p001_help: null
     p002: Buffer size
-    p002_type: 3
+    p002_type: 2
     p002_help: null
     p003: ''
     p003_type: null
@@ -50072,9 +50073,9 @@
     p001: Scilab variable name
     p001_type: 6
     p001_help: null
-    p002: Inherit
+    p002: Inherit?
     p002_type: 1
-    p002_help: no:0, yes:1
+    p002_help: 0=no, 1=yes
     p003: ''
     p003_type: null
     p003_help: null
@@ -50252,7 +50253,8 @@
   fields:
     p000: Function
     p000_type: 6
-    p000_help: null
+    p000_help: Choose among sin, cos, tan, asin, acos, atan, sinh, cosh, tanh, asinh,
+      acosh, atanh
     p001: ''
     p001_type: null
     p001_help: null
@@ -51170,12 +51172,12 @@
 - model: xcosblocks.blockparameter
   pk: 225
   fields:
-    p000: Buffer Size
+    p000: Buffer size
     p000_type: 2
     p000_help: null
-    p001: Swap Mode
+    p001: Swap mode?
     p001_type: 1
-    p001_help: 0:No,1:Yes
+    p001_help: 0=no, 1=yes
     p002: ''
     p002_type: null
     p002_help: null
@@ -51354,21 +51356,21 @@
 - model: xcosblocks.blockparameter
   pk: 226
   fields:
-    p000: Input Size
-    p000_type: 3
+    p000: Input size
+    p000_type: 2
     p000_help: null
-    p001: Output File Name
+    p001: Output filename
     p001_type: 8
     p001_help: null
-    p002: Output Format
+    p002: Output format
     p002_type: 6
     p002_help: null
-    p003: Buffer Size
-    p003_type: 3
+    p003: Buffer size
+    p003_type: 2
     p003_help: null
-    p004: Swap Mode
+    p004: Swap mode?
     p004_type: 1
-    p004_help: 0:No,1:Yes
+    p004_help: 0=no, 1=yes
     p005: ''
     p005_type: null
     p005_help: null
