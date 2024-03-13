@@ -296,6 +296,7 @@ export default function ComponentProperties () {
             if (compProperties && compProperties[rootKeyName] !== null && compType !== null) {
               return (
                 <ListItem key={i}>
+                  {console.log('Value for key', keyName, ':', val[keyName])}
                   <TextField id={keyName} label={compProperties[rootKeyName]} value={val[keyName] || ''} helperText={helperText} error={error} size='small' variant='outlined' onChange={getInputValues} />
                 </ListItem>
               )
