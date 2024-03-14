@@ -13130,7 +13130,7 @@
     p007_value_initial: 30 30
     p008_value_initial: '20'
     p009_value_initial: '0'
-    p010_value_initial: ''
+    p010_value_initial: (empty)
     p011_value_initial: ''
     p012_value_initial: ''
     p013_value_initial: ''
@@ -13204,7 +13204,7 @@
     p006_value_initial: '30'
     p007_value_initial: '20'
     p008_value_initial: '0'
-    p009_value_initial: ''
+    p009_value_initial: (empty)
     p010_value_initial: ''
     p011_value_initial: ''
     p012_value_initial: ''
@@ -65343,7 +65343,7 @@
     p_label: Name of scope
     p_type: 6
     p_help: label id
-    p_value_initial: ''
+    p_value_initial: (empty)
 - model: xcosblocks.newblockparameter
   pk: 387
   fields:
@@ -65433,7 +65433,7 @@
     p_label: Name of scope
     p_type: 6
     p_help: label id
-    p_value_initial: ''
+    p_value_initial: (empty)
 - model: xcosblocks.newblockparameter
   pk: 397
   fields:
