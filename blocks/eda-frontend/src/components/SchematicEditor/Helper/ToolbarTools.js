@@ -44,6 +44,8 @@ export function saveXml (description = '') {
   firstCell.appname = process.env.REACT_APP_NAME
   firstCell.description = description
   const node = enc.encode(model)
+  const pins = node.querySelectorAll("Object[as='errorFields'],Object[as='pins']")
+  pins.forEach(pin => { pin.remove() })
   const value = mxUtils.getXml(node)
   return value
 }
