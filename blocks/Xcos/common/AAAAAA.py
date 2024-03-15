@@ -22,6 +22,7 @@ BLOCK_SPLIT = 'SplitBlock'
 BLOCK_SUMMATION = 'Summation'
 BLOCK_TEXT = 'TextBlock'
 BLOCK_VOLTAGESENSOR = 'VoltageSensorBlock'
+BLOCK_SUPER = 'SuperBlock'
 
 BLOCKTYPE_C = 'c'
 BLOCKTYPE_D = 'd'
@@ -303,6 +304,15 @@ def addNodemxCell(node, subNodeType, a,
                   id,
                   **kwargs):
     newkwargs = {'as': a, 'id': id
+                 }
+    newkwargs.update(kwargs)
+    return addNode(node, subNodeType, **newkwargs)
+
+
+def addmxCell(node, subNodeType,
+              id,
+              **kwargs):
+    newkwargs = {'id': id
                  }
     newkwargs.update(kwargs)
     return addNode(node, subNodeType, **newkwargs)
