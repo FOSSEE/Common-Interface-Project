@@ -2,7 +2,7 @@
 import 'mxgraph/javascript/src/css/common.css'
 
 import mxGraphFactory from 'mxgraph'
-import { portSize, parameterCount, getParameter } from './SvgParser'
+import { portSize, getParameter } from './SvgParser'
 import store from '../../../redux/store'
 import { setModel, setNetlist } from '../../../redux/actions/index'
 
@@ -392,6 +392,10 @@ function parseXmlToGraph (xmlDoc, graph) {
         }
         const parameterValues = {}
         const cellChildrenAttributes = cellChildren[2].attributes
+        const pattern = /^p[0-9]{3}_value$/
+        const parameterCount = Object.values(cellChildrenAttributes).filter((value) => {
+          return pattern.test(value.name)
+        }).length
         if (cellChildrenAttributes !== undefined) {
           for (let i = 0; i < parameterCount; i++) {
             const p = getParameter(i) + '_value'

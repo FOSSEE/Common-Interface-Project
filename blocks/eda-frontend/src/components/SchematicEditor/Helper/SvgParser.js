@@ -10,7 +10,6 @@ const {
 // we need to divide the svg width and height by the same number in order to maintain the aspect ratio.
 export const defaultScale = parseFloat(process.env.REACT_APP_BLOCK_SCALE)
 export const portSize = parseFloat(process.env.REACT_APP_PORT_SIZE)
-export const parameterCount = 40
 
 export function getParameter (i) {
   if (i < 10) { return 'p00' + i.toString() } else if (i < 100) { return 'p0' + i.toString() } else { return 'p' + i.toString() }
@@ -25,6 +24,7 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
   const allowedDmg = [0, 1]
 
   const blockName = component.block_name
+  const parameterCount = component.newblockparameter_set.length
   // make the component images smaller by scaling
   const width = component.block_width / defaultScale
   const height = component.block_height / defaultScale
