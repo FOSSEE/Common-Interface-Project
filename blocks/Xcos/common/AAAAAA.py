@@ -54,6 +54,7 @@ TYPE_CNTRL = 'ControlPort'
 TYPE_CMD = 'CommandPort'
 TYPE_LINK = 'CommandControlLink'
 AS_VALUE = 'OpAmp'
+TYPE_EXPLICITOUTPORT = 'ExplicitOutputPort'
 
 
 def addNode(node, subNodeType, **kwargs):
@@ -350,6 +351,19 @@ def addPort(node, subNodeType,
                  'dataType': dataType,
                  'dataColumns': dataColumns,
                  'dataLines': dataLines,
+                 'initialState': initialState,
+                 'style': style, 'value': value}
+    newkwargs.update(kwargs)
+    return addNode(node, subNodeType, **newkwargs)
+
+
+def adPort(node, subNodeType,
+           id, parent, ordering,
+           initialState,
+           style, value,
+           **kwargs):
+    newkwargs = {'id': id, 'parent': parent,
+                 'ordering': ordering,
                  'initialState': initialState,
                  'style': style, 'value': value}
     newkwargs.update(kwargs)

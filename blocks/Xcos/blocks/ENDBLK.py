@@ -52,6 +52,10 @@ def ENDBLK(outroot, attribid, ordering, geometry, parameters):
 
     END_c(root, block_id[2], ordering, geometry, parameters)
 
+    addNodemxCell(SuperBlockDiagram, TYPE_MXCELL, a='defaultParent',
+                  id=block_id[1],
+                  parent=block_id[0])
+
     return outnode
 
 
