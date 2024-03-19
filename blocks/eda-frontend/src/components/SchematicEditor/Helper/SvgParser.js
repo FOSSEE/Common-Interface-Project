@@ -38,9 +38,7 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
   const parameterValues = {}
   for (let i = 0; i < parameterCount; i++) {
     const p = getParameter(i) + '_value'
-    // const pinitial = p + '_initial'
-    // parameterValues[p] = component[pinitial]
-    parameterValues[p] = component?.newblockparameter_set[i]?.p_value_initial
+    parameterValues[p] = component.newblockparameter_set[i].p_value_initial
   }
   v1.parameter_values = parameterValues
   v1.errorFields = {}
