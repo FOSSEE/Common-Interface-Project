@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-BLOCKDIR := ../blocks/blocks/xcosblocks
+BLOCKDIR := blocks/xcosblocks
 
 SRCFILES := $(sort $(wildcard Xcos/common/*.py))
 SRCFILES += $(sort $(wildcard Xcos/blocks/*.py))
