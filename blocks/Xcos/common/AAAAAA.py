@@ -439,6 +439,15 @@ def addSciDBNode(node, subNodeType, type, width, realParts):
     return subNode
 
 
+# DOLLAR_m
+def addScilabIntNode(node, width, parameters):
+    height = 1 if width > 0 else 0
+    subNode = addDataNode(node, 'ScilabInteger', height, width=width, intPrecision='sci_int8')
+    for i, param in enumerate(parameters):
+        addDataData(subNode, param)
+    return subNode
+
+
 # CSCope
 def addPrecNode(node, subNodeType, type, width, parameters):
     height = 1 if width > 0 else 0
