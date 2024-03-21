@@ -46,7 +46,6 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
   v1.setConnectable(false)
 
   const blockports = component.newblockport_set
-  console.log(component)
   const ports = blockports.length
   v1.explicitInputPorts = 0
   v1.implicitInputPorts = 0

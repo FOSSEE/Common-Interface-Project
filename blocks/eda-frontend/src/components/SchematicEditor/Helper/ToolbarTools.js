@@ -392,11 +392,11 @@ function parseXmlToGraph (xmlDoc, graph) {
         }
         const parameterValues = {}
         const cellChildrenAttributes = cellChildren[2].attributes
-        const pattern = /^p[0-9]{3}_value$/
-        const parameterCount = Object.values(cellChildrenAttributes).filter((value) => {
-          return pattern.test(value.name)
-        }).length
         if (cellChildrenAttributes !== undefined) {
+          const pattern = /^p[0-9]{3}_value$/
+          const parameterCount = Object.values(cellChildrenAttributes).filter((value) => {
+            return pattern.test(value.name)
+          }).length
           for (let i = 0; i < parameterCount; i++) {
             const p = getParameter(i) + '_value'
             if (cellChildrenAttributes[p] !== undefined) {
