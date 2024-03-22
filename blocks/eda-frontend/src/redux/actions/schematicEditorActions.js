@@ -46,7 +46,7 @@ export const fetchComponents = (libraryId) => (dispatch) => {
   //   "p039_value_initial": null,
   // },
 // ] -- Multiple dicts in array
-  const url = 'blocks/?categories=' + parseInt(libraryId)
+  const url = 'newblocks/?categories=' + parseInt(libraryId)
   api.get(url)
     .then(
       (res) => {

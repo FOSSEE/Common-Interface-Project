@@ -74,7 +74,7 @@ export default function ComponentSidebar ({ compRef }) {
       // call api here
       setLoading(true)
 
-      api.get(`blocks/?${searchOptions[searchOption]}=${searchText}`)
+      api.get(`newblocks/?${searchOptions[searchOption]}=${searchText}`)
         .then(
           (res) => {
             if (res.data.length === 0) {
