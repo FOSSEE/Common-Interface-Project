@@ -1,0 +1,17 @@
+--- blocks/Dockerfile	2024-03-22 13:29:04.368574427 +0530
++++ blocks/Dockerfile.1	2024-03-22 20:47:14.630043479 +0530
+@@ -121,7 +121,7 @@
+ COPY . .
+ 
+ # Configure venv and sqlite3
+-RUN ./install.sh
++RUN ./install.sh prod
+ 
+ # Cleanup
+ RUN apt-get autoremove -qq --purge gawk python3-pip python3-venv wget xz-utils
+@@ -172,4 +172,4 @@
+ 
+ WORKDIR ${XCOS_DIR}
+ 
+-CMD ["./run.sh"]
++CMD ["./run.sh", "prod"]

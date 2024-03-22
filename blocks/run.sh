@@ -9,7 +9,11 @@ service redis-server start
 celery -A blocks.celery_tasks worker --loglevel INFO --concurrency 1 &
 
 cd eda-frontend
-npm start &
+if test "$1" = 'prod'; then
+    serve -l 3500 -n -s --no-port-switching build &
+else
+    npm start &
+fi
 
 cd ..
 python manage.py runserver
