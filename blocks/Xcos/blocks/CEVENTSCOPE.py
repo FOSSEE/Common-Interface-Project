@@ -11,7 +11,6 @@ def CEVENTSCOPE(outroot, attribid, ordering, geometry, parameters):
     addExprsNode(outnode, TYPE_STRING, 6, parameters)
     addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM,
                  1, realParts=[30.0])
-    # addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 0, [])
     array = ["-1", "1", "1", "-1", "-1", "600", "400"]
     addPrecNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 7, array)
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)

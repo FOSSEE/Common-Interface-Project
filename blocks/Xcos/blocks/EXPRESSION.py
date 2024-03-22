@@ -12,7 +12,6 @@ def EXPRESSION(outroot, attribid, ordering, geometry, parameters):
     addExprsNode(outnode, TYPE_STRING, 3, parameters)
     addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM,
                  2, realParts=[5.0, 2000.0])
-    # addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 0, [])
     array = ["6", "1", "6", "2", "2", "1", "5", "3", "5", "99", "5", "104", "5", "3"]
     addPrecNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 14, array)
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)

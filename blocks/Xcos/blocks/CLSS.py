@@ -28,7 +28,6 @@ def CLSS(outroot, attribid, ordering, geometry, parameters):
     array = ['0']
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NBZERO, 1, array)
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NMODE, 1, array)
-    # addTypeNode(outnode, TYPE_DOUBLE, AS_STATE, 0, [])
     addSciDBNode(outnode, TYPE_DOUBLE, AS_STATE,
                  3, realParts=[0.0, 0.0, 1.0])
     addTypeNode(outnode, TYPE_DOUBLE, AS_DSTATE, 0, [])

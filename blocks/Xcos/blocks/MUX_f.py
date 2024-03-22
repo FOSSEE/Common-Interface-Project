@@ -12,7 +12,6 @@ def MUX_f(outroot, attribid, ordering, geometry, parameters):
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
     addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM,
                  0, [])
-    # addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 1, parameters[0])
     array = ['0']
     addPrecisionNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 1, array)
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)

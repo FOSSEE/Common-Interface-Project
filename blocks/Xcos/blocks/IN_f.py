@@ -8,7 +8,6 @@ def IN_f(outroot, attribid, ordering, geometry, parameters):
                          func_name, 'input', 'DEFAULT',
                          func_name, BLOCKTYPE_C)
 
-    # addExprsNode(outnode, TYPE_STRING, 3, parameters)
     addExprsNode(outnode, TYPE_STRING, 2, parameters)
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0, [])
     array = ['0']

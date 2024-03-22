@@ -18,7 +18,6 @@ def TOWS_c(outroot, attribid, ordering, geometry, parameters):
     addExprsNode(outnode, TYPE_STRING, 3, parameters)
     addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM,
                  0, [])
-    # addTypeNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 4, parameters)
     array = ['128', '2', '117', '49']
     addPrecNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 4, array)
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)

@@ -10,7 +10,6 @@ def LOGBLK_f(outroot, attribid, ordering, geometry, parameters):
                          dependsOnU='1')
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
-    # addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0, [])
     addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM,
                  1, realParts=[2.718281828459045])
     addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 0, [])
