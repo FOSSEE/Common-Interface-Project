@@ -17,7 +17,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Install pre-requisites
 RUN apt-get update -qq && \
-  apt-get install -qq --no-install-recommends gcc g++ libgfortran5 make nginx openjdk-8-jre python3 sqlite3 tzdata && \
+  apt-get install -qq --no-install-recommends gcc g++ libgfortran5 make nginx openjdk-8-jre python3 redis sqlite3 tzdata && \
   apt-get clean -qq && \
   rm -f /var/lib/apt/lists/*_*
 

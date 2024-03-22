@@ -20,6 +20,8 @@ python manage.py loaddata -v0 xcosblocks
 
 sed -i \
     -e "s/\\(SCILAB_DIR = \\).*/\\1'\/usr\/local'/" \
+    -e "s/\\(CELERY_BROKER_URL = \\).*/\\1'redis:\\/\\/localhost:6379\\/1'/" \
+    -e "s/\\(CELERY_RESULT_BACKEND = \\).*/\\1'redis:\\/\\/localhost:6379\\/1'/" \
     blocks/settings.py
 
 sed -i -e '/^\s*location \/ {/,/^\s*}/c\
