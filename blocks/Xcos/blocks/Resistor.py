@@ -8,7 +8,7 @@ def Resistor(outroot, attribid, ordering, geometry, parameters):
                          func_name, 'resistor', 'DEFAULT',
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')
-    print(parameters)
+
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
     addScilabDNode(outnode, AS_REAL_PARAM,
                  width=1, realParts=[format_real_number(parameters[0])])
@@ -44,7 +44,7 @@ def Resistor(outroot, attribid, ordering, geometry, parameters):
 
     innerNode = addArrayNode(innerArrayNode,
                              scilabClass="ScilabList")
-    addScilabDoubleNode(innerNode, width=1, realParts=["5.0"])
+    addScilabDoubleNode(innerNode, width=1, realParts=[format_real_number(parameters[0])])
     addgeometryNode(outnode, GEOMETRY, geometry['height'],
                     geometry['width'], geometry['x'], geometry['y'])
 
