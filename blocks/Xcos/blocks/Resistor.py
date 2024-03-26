@@ -11,8 +11,8 @@ def Resistor(outroot, attribid, ordering, geometry, parameters):
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
     addScilabDNode(outnode, AS_REAL_PARAM,
-                 width=1, realParts=[format_real_number(parameters[0])])
-                
+                   width=1, realParts=[format_real_number(parameters[0])])
+
     array = ['0']
     addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 0,
                 [])

@@ -105,8 +105,22 @@ def addScilabDNode(node, type, realParts, width):
     return scilabDoubleNode
 
 
+def addNodeScilabDB(node, type, realParts, height):
+    width = 1 if height > 0 else 0
+    scilabDoubleNode = addADataNode(node, 'ScilabDouble', type, height, width, realParts)
+    for i, realPart in enumerate(realParts):
+        addDData(scilabDoubleNode, realPart, line=0, column=i)
+    return scilabDoubleNode
+
+
 def addScilabDoubleNode(node, realParts, width):
     scilabDoubleNode = addDataNode(node, 'ScilabDouble', height=1, width=width)
+    for i, realPart in enumerate(realParts):
+        addDData(scilabDoubleNode, realPart, line=0, column=i)
+
+
+def addNodeScilabDouble(node, realParts, height):
+    scilabDoubleNode = addDataNode(node, 'ScilabDouble', height=height, width=1)
     for i, realPart in enumerate(realParts):
         addDData(scilabDoubleNode, realPart, line=0, column=i)
 
@@ -457,7 +471,8 @@ def addSciDBNode(node, subNodeType, type, width, realParts):
 # DOLLAR_m
 def addScilabIntNode(node, width, parameters):
     height = 1 if width > 0 else 0
-    subNode = addDataNode(node, 'ScilabInteger', height=height, width=width, intPrecision='sci_int8')
+    subNode = addDataNode(node, 'ScilabInteger', height=height, width=width,
+                          intPrecision='sci_int8')
     for i, param in enumerate(parameters):
         addDataData(subNode, param)
     return subNode
@@ -466,7 +481,8 @@ def addScilabIntNode(node, width, parameters):
 # Logic
 def addSciIntNode(node, height, parameters):
     width = 1 if height > 0 else 0
-    subNode = addDataNode(node, 'ScilabInteger', height=height, width=width, intPrecision='sci_int8')
+    subNode = addDataNode(node, 'ScilabInteger', height=height, width=width,
+                          intPrecision='sci_int8')
     for i, param in enumerate(parameters):
         addDataData(subNode, param)
     return subNode
