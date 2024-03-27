@@ -79,6 +79,15 @@ def addPrecisionNode(node, subNodeType, type, height, parameters):
     return subNode
 
 
+# BITSET
+def addNodePrecision(node, subNodeType, height, parameters):
+    width = 1 if height > 0 else 0
+    subNode = addDataNode(node, subNodeType, height=1, width=width, intPrecision='sci_uint32')
+    for i, param in enumerate(parameters):
+        addDataData(subNode, param)
+    return subNode
+
+
 def addTypeNode(node, subNodeType, type, height, parameters):
     width = 1 if height > 0 else 0
     subNode = addAsDataNode(node, subNodeType, type, height, width, parameters)

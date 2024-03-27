@@ -8,7 +8,7 @@ def NPN(outroot, attribid, ordering, geometry, parameters):
                          func_name, 'NPN', 'DEFAULT',
                          func_name, BLOCKTYPE_C,
                          dependsOnT='1')
-    print(parameters)
+
     addExprsNode(outnode, TYPE_STRING, 17, parameters)
     addNodeScilabDB(outnode, AS_REAL_PARAM, height=17, realParts=[
                     format_real_number(parameters[0]), format_real_number(parameters[1]),
