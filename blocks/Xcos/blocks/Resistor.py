@@ -10,8 +10,9 @@ def Resistor(outroot, attribid, ordering, geometry, parameters):
                          dependsOnU='1')
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
-    addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM,
-                 1, realParts=[10000.0])
+    addScilabDNode(outnode, AS_REAL_PARAM,
+                   width=1, realParts=[format_real_number(parameters[0])])
+
     array = ['0']
     addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 0,
                 [])
@@ -43,7 +44,7 @@ def Resistor(outroot, attribid, ordering, geometry, parameters):
 
     innerNode = addArrayNode(innerArrayNode,
                              scilabClass="ScilabList")
-    addScilabDoubleNode(innerNode, width=1, realParts=["10000.0"])
+    addScilabDoubleNode(innerNode, width=1, realParts=[format_real_number(parameters[0])])
     addgeometryNode(outnode, GEOMETRY, geometry['height'],
                     geometry['width'], geometry['x'], geometry['y'])
 

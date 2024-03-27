@@ -53,10 +53,10 @@ def CLOCK_c(outroot, attribid, ordering, geometry, parameters):
                                        TYPE_MODEL, a="model")
     root = addNode(mxGraphModel, TYPE_ROOT)
     addmxCellNode(root, TYPE_MXCELL,
-                  id=block_id[0], a='')
+                  id=block_id[0])
     addmxCellNode(root, TYPE_MXCELL,
                   id=block_id[0],
-                  parent=block_id[0], a='')
+                  parent=block_id[0])
 
     # Create the EventOutBlock node inside the root tag
     CLKOUT_f(root, block_id[1], ordering, geometry, parameters)
@@ -136,10 +136,10 @@ def CLOCK_c(outroot, attribid, ordering, geometry, parameters):
     addPointNode(ArrayNode, 'mxPoint', x="60.0", y="170.0")
     addmxPointNode(gemotryNode, 'mxPoint', a="targetPoint",
                    x="0.0", y="-4.0")
-    addmxCellNode(SuperBlockDiagram, TYPE_MXCELL,
-                  id=block_id[0],
-                  parent=block_id[0],
-                  a="defaultParent")
+
+    addNodemxCell(SuperBlockDiagram, TYPE_MXCELL, a='defaultParent',
+                  id=block_id[1],
+                  parent=block_id[0])
 
     return outnode
 

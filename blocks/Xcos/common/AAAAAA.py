@@ -22,6 +22,7 @@ BLOCK_SPLIT = 'SplitBlock'
 BLOCK_SUMMATION = 'Summation'
 BLOCK_TEXT = 'TextBlock'
 BLOCK_VOLTAGESENSOR = 'VoltageSensorBlock'
+BLOCK_SUPER = 'SuperBlock'
 
 BLOCKTYPE_C = 'c'
 BLOCKTYPE_D = 'd'
@@ -53,6 +54,7 @@ TYPE_CNTRL = 'ControlPort'
 TYPE_CMD = 'CommandPort'
 TYPE_LINK = 'CommandControlLink'
 AS_VALUE = 'OpAmp'
+TYPE_EXPLICITOUTPORT = 'ExplicitOutputPort'
 
 
 def addNode(node, subNodeType, **kwargs):
@@ -77,6 +79,15 @@ def addPrecisionNode(node, subNodeType, type, height, parameters):
     return subNode
 
 
+# BITSET
+def addNodePrecision(node, subNodeType, height, parameters):
+    width = 1 if height > 0 else 0
+    subNode = addDataNode(node, subNodeType, height=1, width=width, intPrecision='sci_uint32')
+    for i, param in enumerate(parameters):
+        addDataData(subNode, param)
+    return subNode
+
+
 def addTypeNode(node, subNodeType, type, height, parameters):
     width = 1 if height > 0 else 0
     subNode = addAsDataNode(node, subNodeType, type, height, width, parameters)
@@ -95,8 +106,30 @@ def addScilabStringNode(node, width, parameters):
         addDataData(scilabStringNode, param)
 
 
+def addScilabDNode(node, type, realParts, width):
+    height = 1 if width > 0 else 0
+    scilabDoubleNode = addADataNode(node, 'ScilabDouble', type, height, width, realParts)
+    for i, realPart in enumerate(realParts):
+        addDData(scilabDoubleNode, realPart, line=0, column=i)
+    return scilabDoubleNode
+
+
+def addNodeScilabDB(node, type, realParts, height):
+    width = 1 if height > 0 else 0
+    scilabDoubleNode = addADataNode(node, 'ScilabDouble', type, height, width, realParts)
+    for i, realPart in enumerate(realParts):
+        addDData(scilabDoubleNode, realPart, line=0, column=i)
+    return scilabDoubleNode
+
+
 def addScilabDoubleNode(node, realParts, width):
     scilabDoubleNode = addDataNode(node, 'ScilabDouble', height=1, width=width)
+    for i, realPart in enumerate(realParts):
+        addDData(scilabDoubleNode, realPart, line=0, column=i)
+
+
+def addNodeScilabDouble(node, realParts, height):
+    scilabDoubleNode = addDataNode(node, 'ScilabDouble', height=height, width=1)
     for i, realPart in enumerate(realParts):
         addDData(scilabDoubleNode, realPart, line=0, column=i)
 
@@ -166,6 +199,13 @@ def addAsDataNode(node, subNodeType, a, height, width, parameters, **kwargs):
 
     for param in parameters:
         addDataData(subNode, param)
+    return subNode
+
+
+def addADataNode(node, subNodeType, a, height, width, parameters, **kwargs):
+    newkwargs = {'as': a, 'height': height, 'width': width}
+    newkwargs.update(kwargs)
+    subNode = addDataNode(node, subNodeType, **newkwargs)
     return subNode
 
 
@@ -291,9 +331,27 @@ def addmxGraphModelNode(node, subNodeType,
 
 
 def addmxCellNode(node, subNodeType,
-                  id, a,
+                  id,
                   **kwargs):
-    newkwargs = {'id': id, 'as': a
+    newkwargs = {'id': id
+                 }
+    newkwargs.update(kwargs)
+    return addNode(node, subNodeType, **newkwargs)
+
+
+def addNodemxCell(node, subNodeType, a,
+                  id,
+                  **kwargs):
+    newkwargs = {'as': a, 'id': id
+                 }
+    newkwargs.update(kwargs)
+    return addNode(node, subNodeType, **newkwargs)
+
+
+def addmxCell(node, subNodeType,
+              id,
+              **kwargs):
+    newkwargs = {'id': id
                  }
     newkwargs.update(kwargs)
     return addNode(node, subNodeType, **newkwargs)
@@ -331,6 +389,19 @@ def addPort(node, subNodeType,
                  'dataType': dataType,
                  'dataColumns': dataColumns,
                  'dataLines': dataLines,
+                 'initialState': initialState,
+                 'style': style, 'value': value}
+    newkwargs.update(kwargs)
+    return addNode(node, subNodeType, **newkwargs)
+
+
+def adPort(node, subNodeType,
+           id, parent, ordering,
+           initialState,
+           style, value,
+           **kwargs):
+    newkwargs = {'id': id, 'parent': parent,
+                 'ordering': ordering,
                  'initialState': initialState,
                  'style': style, 'value': value}
     newkwargs.update(kwargs)
@@ -403,6 +474,26 @@ def addTNode(node, subNodeType, type, width, parameters):
 def addSciDBNode(node, subNodeType, type, width, realParts):
     height = 1 if width > 0 else 0
     subNode = addAsDataNode(node, subNodeType, type, height, width, realParts)
+    return subNode
+
+
+# DOLLAR_m
+def addScilabIntNode(node, width, parameters):
+    height = 1 if width > 0 else 0
+    subNode = addDataNode(node, 'ScilabInteger', height=height, width=width,
+                          intPrecision='sci_int8')
+    for i, param in enumerate(parameters):
+        addDataData(subNode, param)
+    return subNode
+
+
+# Logic
+def addSciIntNode(node, height, parameters):
+    width = 1 if height > 0 else 0
+    subNode = addDataNode(node, 'ScilabInteger', height=height, width=width,
+                          intPrecision='sci_int8')
+    for i, param in enumerate(parameters):
+        addDataData(subNode, param)
     return subNode
 
 

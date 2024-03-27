@@ -1,5 +1,9 @@
 from common.AAAAAA import *
 
+block_id = ['-64ce6d85:145ef6f2b50:-7ee7', '-64ce6d85:145ef6f2b51:-7ee7',
+            '-64ce6d85:145ef6f2b4f:-7f54']
+
+
 def CLKOUTV_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CLKOUTV_f'
 
@@ -9,6 +13,24 @@ def CLKOUTV_f(outroot, attribid, ordering, geometry, parameters):
                          func_name, BLOCKTYPE_D)
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
+    addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0,
+                [])
+    array = ['0']
+    addPrecisionNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 1, array)
+    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
+    addPrecisionNode(outnode, TYPE_INTEGER, AS_NBZERO, 1, array)
+    addPrecisionNode(outnode, TYPE_INTEGER, AS_NMODE, 1, array)
+    addTypeNode(outnode, TYPE_DOUBLE, AS_STATE, 0, [])
+    addTypeNode(outnode, TYPE_DOUBLE, AS_DSTATE, 0, [])
+    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE, parameters)
+    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_EQUATIONS, parameters)
+    addgeometryNode(outnode, GEOMETRY, geometry['height'],
+                    geometry['width'], geometry['x'], geometry['y'])
+    mxcell = addmxCell(outnode, TYPE_MXCELL,
+                       id=block_id[1], style="noLabel=0;opacity=0;",
+                       connectable="0", value="Text", vertex="1")
+    addgeometryNode(mxcell, GEOMETRY, geometry['height'],
+                    geometry['width'], geometry['x'], geometry['y'])
 
     return outnode
 
