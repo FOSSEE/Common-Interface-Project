@@ -25,6 +25,8 @@ def NPN(outroot, attribid, ordering, geometry, parameters):
 
     addNodeScilabDB(outnode, AS_NBZERO, height=1, realParts=[0.0])
     addNodeScilabDB(outnode, AS_NMODE, height=1, realParts=[0.0])
+    addTypeNode(outnode, TYPE_DOUBLE, AS_STATE, 0, [])
+    addTypeNode(outnode, TYPE_DOUBLE, AS_DSTATE, 0, [])
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE, parameters)
     equationsArrayNode = addArrayNode(outnode, scilabClass="ScilabTList",
                                       **{'as': 'equations'})
