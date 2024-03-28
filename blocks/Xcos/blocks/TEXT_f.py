@@ -9,6 +9,9 @@ def TEXT_f(outroot, attribid, ordering, geometry, parameters):
                          func_name, None,
                          value=parameters[0])
 
+    addgeometryNode(outnode, GEOMETRY, geometry['height'],
+                    geometry['width'], geometry['x'], geometry['y'])
+
     return outnode
 
 
