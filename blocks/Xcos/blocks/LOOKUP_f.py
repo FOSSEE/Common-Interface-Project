@@ -2,7 +2,6 @@ from common.AAAAAA import *
 
 def LOOKUP_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'LOOKUP_f'
-    # para = parameters[0].split(' ')
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
@@ -11,11 +10,6 @@ def LOOKUP_f(outroot, attribid, ordering, geometry, parameters):
                          dependsOnU='1')
 
     addExprsNode(outnode, TYPE_DOUBLE, 0, parameters)
-
-    # node = addNode(outnode, TYPE_STRING, height=1, width=len(para))
-
-    # for i in range(len(para)):
-    #     addData(node, i, 0, para[i])
     addScilabDNode(outnode, AS_REAL_PARAM, width=8, realParts=[-1.9999999999999998,
                    -1.0163934426229506, 0.9945355191256833,
                    2.0, 5.008695652173915, 1.003188405797102,

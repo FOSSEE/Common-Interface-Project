@@ -17,7 +17,7 @@ def RELATIONALOP(outroot, attribid, ordering, geometry, parameters):
                          func_name, simulation_func_name, 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')
-    print(parameters)
+
     addExprsNode(outnode, TYPE_STRING, 3, parameters)
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0, [])
     param = [parameters[0]]
