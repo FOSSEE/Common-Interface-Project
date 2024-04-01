@@ -236,7 +236,7 @@ export default function LoadGrid (container, sidebar, outline) {
 
       const stylesheet = graph.getStylesheet()
       const style = stylesheet.styles[attribute]
-      let displayedLabel = style.displayedLabel
+      let displayedLabel = style?.displayedLabel
       if (displayedLabel == null) {
         return cell.getAttribute('label', '')
       }
