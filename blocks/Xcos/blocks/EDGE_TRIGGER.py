@@ -8,6 +8,15 @@ block_id = ['3dd766ce:16069f39bc0:-7d61', '3dd766ce:16069f39bc1:-7d61',
             '3dd766ce:16069f39bbf:-7d34', '3dd766ce:16069f39bbf:-7d31',
             '3dd766ce:16069f39bbf:-7d2d', '3dd766ce:16069f39bbf:-7d2b']
 
+port_id = ['3971fa90:18e982d0153:-7f1d', '3971fa90:18e982d0153:-7f1b',
+           '3971fa90:18e982d0153:-7f18', '3971fa90:18e982d0153:-7f17',
+           '3971fa90:18e982d0153:-7f16', '3971fa90:18e982d0153:-7f13',
+           '3971fa90:18e982d0153:-7f11']
+
+link_id = ['-63efee48:189fd5ed04e:-73d5', '-63efee48:189fd5ed04e:-73d4',
+           '-63efee48:189fd5ed04e:-73d3', '128c18ea:1383ab8277e:-748d'
+           ]
+
 
 def EDGE_TRIGGER(outroot, attribid, ordering, geometry, parameters):
     func_name = 'EDGE_TRIGGER'
@@ -54,11 +63,101 @@ def EDGE_TRIGGER(outroot, attribid, ordering, geometry, parameters):
 
     EDGETRIGGER(root, block_id[2], ordering, geometry, parameters)
 
+    addPort(root, TYPE_EXPLICITINPORT, id=port_id[0],
+            parent=block_id[2], ordering="1",
+            dataType="INT8_MATRIX", dataColumns="1",
+            dataLines="1", initialState="0.0",
+            style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+            value="")
+
+    addPort(root, TYPE_EXPLICITOUTPORT, id=port_id[1],
+            parent=block_id[2], ordering="1",
+            dataType="INT8_MATRIX", dataColumns="1",
+            dataLines="1", initialState="0.0",
+            style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+            value="")
+
     IFTHEL_f(root, block_id[3], ordering, geometry, parameters)
+
+    addPort(root, TYPE_EXPLICITINPORT, id=port_id[2],
+            parent=block_id[3], ordering="1",
+            dataType="INT8_MATRIX", dataColumns="1",
+            dataLines="1", initialState="0.0",
+            style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+            value="")
+
+    addPort(root, TYPE_CMD, id=port_id[3],
+            parent=block_id[3], ordering="1",
+            dataType="REAL_MATRIX", dataColumns="1",
+            dataLines="-1", initialState="0.0",
+            style="CommandPort", value="")
+
+    addPort(root, TYPE_CMD, id=port_id[4],
+            parent=block_id[3], ordering="1",
+            dataType="REAL_MATRIX", dataColumns="1",
+            dataLines="-1", initialState="0.0",
+            style="CommandPort", value="")
 
     IN_f(root, block_id[4], ordering, geometry, parameters)
 
+    addPort(root, TYPE_EXPLICITOUTPORT, id=port_id[5],
+            parent=block_id[4], ordering="1",
+            dataType="INT8_MATRIX", dataColumns="1",
+            dataLines="1", initialState="0.0",
+            style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+            value="")
+
     CLKOUTV_f(root, block_id[5], ordering, geometry, parameters)
+
+    addPort(root, TYPE_CNTRL, id=port_id[6],
+            parent=block_id[5], ordering="1",
+            dataType="REAL_MATRIX", dataColumns="1",
+            dataLines="-1", initialState="0.0",
+            style="ControlPort", value="")
+
+    CCLink = addLink(root, TYPE_LINK, id=link_id[0],
+                     parent=link_id[3],
+                     source=port_id[5],
+                     target=port_id[1],
+                     style="CommandControlLink", value="")
+    gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="sourcePoint", x="0.0", y="11.0")
+    addArray(gemotryNode, TYPE_ARRAY, a="points")
+    # addPointNode(ArrayNode, 'mxPoint',
+    #              x="100.70999999999998", y="40.0")
+    # addPointNode(ArrayNode, 'mxPoint', x="60.0",
+    #              y="40.0")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="targetPoint", x="20.0", y="-4.0")
+
+    CCLink = addLink(root, TYPE_EXLINK, id=link_id[0],
+                     parent=link_id[3],
+                     source=port_id[5],
+                     target=port_id[1],
+                     style="ExplicitLink", value="")
+    gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="sourcePoint", x="0.0", y="11.0")
+    addArray(gemotryNode, TYPE_ARRAY, a="points")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="targetPoint", x="20.0", y="-4.0")
+
+    CCLink = addLink(root, TYPE_EXLINK, id=link_id[0],
+                     parent=link_id[3],
+                     source=port_id[5],
+                     target=port_id[1],
+                     style="ExplicitLink", value="")
+    gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="sourcePoint", x="0.0", y="11.0")
+    addArray(gemotryNode, TYPE_ARRAY, a="points")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="targetPoint", x="20.0", y="-4.0")
+
+    addNodemxCell(SuperBlockDiagram, TYPE_MXCELL,
+                       id=block_id[1], a="defaultParent",
+                       parent=block_id[2])
 
     return outnode
 

@@ -53,8 +53,10 @@ TYPE_EVENTOUT = 'EventOutBlock'
 TYPE_CNTRL = 'ControlPort'
 TYPE_CMD = 'CommandPort'
 TYPE_LINK = 'CommandControlLink'
+TYPE_EXLINK = 'ExplicitLink'
 AS_VALUE = 'OpAmp'
 TYPE_EXPLICITOUTPORT = 'ExplicitOutputPort'
+TYPE_EXPLICITINPORT = 'ExplicitInputPort'
 
 
 def addNode(node, subNodeType, **kwargs):
@@ -238,7 +240,8 @@ def addExprsNode(node, subNodeType, height, parameters):
     subNode = addDataNode(node, subNodeType, **{'as': 'exprs'},
                           height=height, width=width)
     for i in range(height):
-        addDataData(subNode, parameters[i])
+        if i < len(parameters):
+            addDataData(subNode, parameters[i])
     return subNode
 
 

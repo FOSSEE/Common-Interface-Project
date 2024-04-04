@@ -1,36 +1,32 @@
 from common.AAAAAA import *
 
-block_id = ['-64ce6d85:145ef6f2b50:-7ee7', '-64ce6d85:145ef6f2b51:-7ee7',
-            '-64ce6d85:145ef6f2b4f:-7f54']
+def SPLIT_f(outroot, attribid, ordering, geometry, parameters):
+    func_name = 'SPLIT_f'
 
-
-def CLKOUTV_f(outroot, attribid, ordering, geometry, parameters):
-    func_name = 'CLKOUTV_f'
-
-    outnode = addOutNode(outroot, BLOCK_EVENT_OUT,
+    outnode = addOutNode(outroot, BLOCK_SPLIT,
                          attribid, ordering, 1,
-                         func_name, 'output', 'DEFAULT',
-                         func_name, BLOCKTYPE_D)
+                         func_name, 'lsplit', 'DEFAULT',
+                         func_name, BLOCKTYPE_C)
 
-    addExprsNode(outnode, TYPE_STRING, 1, parameters)
-    addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0,
-                [])
-    array = ['0']
-    addPrecisionNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 1, array)
+    addExprsNode(outnode, TYPE_STRING, 0, [])
+    addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0, [])
+    addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 0, [])
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
+    array = ['0']
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NBZERO, 1, array)
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NMODE, 1, array)
     addTypeNode(outnode, TYPE_DOUBLE, AS_STATE, 0, [])
     addTypeNode(outnode, TYPE_DOUBLE, AS_DSTATE, 0, [])
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE, parameters)
-    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_EQUATIONS, parameters)
+    addArrayNode(outnode, scilabClass="ScilabList",
+                                      **{'as': 'equations'})
     addgeometryNode(outnode, GEOMETRY, geometry['height'],
                     geometry['width'], geometry['x'], geometry['y'])
 
     return outnode
 
 
-def get_from_CLKOUTV_f(cell):
+def get_from_SPLIT_f(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
     display_parameter = parameters[0]
