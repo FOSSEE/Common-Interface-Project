@@ -4,7 +4,7 @@ import { Link as RouterLink } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import { deepPurple } from '@material-ui/core/colors'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchSchematics } from '../../redux/actions/index'
+import { fetchSchematics } from '../../redux/slices/dashboardSlice'
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {

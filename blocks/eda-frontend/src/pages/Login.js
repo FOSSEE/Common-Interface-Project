@@ -22,7 +22,7 @@ import Visibility from '@material-ui/icons/Visibility'
 import VisibilityOff from '@material-ui/icons/VisibilityOff'
 import { Link as RouterLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { login, authDefault, googleLogin } from '../redux/actions/index'
+import { login, authDefault, googleLogin } from '../redux/slices/index'
 import google from '../static/google.png'
 
 const useStyles = makeStyles((theme) => ({

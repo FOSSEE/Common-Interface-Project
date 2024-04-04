@@ -12,7 +12,7 @@ import CloseIcon from '@material-ui/icons/Close'
 
 import './Helper/SchematicEditor.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchLibraries, toggleCollapse, fetchComponents, fetchComponentImages, toggleSimulate } from '../../redux/actions/index'
+import { fetchLibraries, toggleCollapse, fetchComponents, fetchComponentImages, toggleSimulate } from '../../redux/slices/schematicEditorSlice'
 import SideComp from './SideComp'
 import SimulationProperties from './SimulationProperties'
 const COMPONENTS_PER_ROW = 3

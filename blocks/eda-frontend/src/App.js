@@ -14,7 +14,7 @@ import Dashboard from './pages/Dashboard'
 import SignUp from './pages/signUp'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { loadUser } from './redux/actions/index'
+import { loadUser } from './redux/slices/authSlice'
 
 // Controls Private routes, this are accessible for authenticated users.  [ e.g : dashboard ]
 // and restricted routes disabled for authenticated users. [ e.g : login , signup ]

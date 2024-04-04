@@ -7,7 +7,7 @@ import CloseIcon from '@material-ui/icons/Close'
 import { useSelector, useDispatch } from 'react-redux'
 
 import Graph, { setStatusDone, setStatusClosed } from '../Shared/Graph'
-import { setResultGraph } from '../../redux/actions/index'
+import { setResultGraph } from '../../redux/slices/index'
 import api from '../../utils/Api'
 
 let sse = null

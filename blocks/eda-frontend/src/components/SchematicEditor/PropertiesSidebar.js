@@ -4,7 +4,7 @@ import { Hidden, List, ListItem, ListItemText, TextField, MenuItem, TextareaAuto
 import { makeStyles } from '@material-ui/core/styles'
 import ComponentProperties from './ComponentProperties'
 import { useSelector, useDispatch } from 'react-redux'
-import { setSchDescription } from '../../redux/actions/index'
+import { setSchDescription } from '../../redux/slices/index'
 
 import './Helper/SchematicEditor.css'
 

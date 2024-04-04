@@ -13,7 +13,7 @@ import RightSidebar from '../components/SchematicEditor/RightSidebar'
 import PropertiesSidebar from '../components/SchematicEditor/PropertiesSidebar'
 import LoadGrid from '../components/SchematicEditor/Helper/ComponentDrag'
 import '../components/SchematicEditor/Helper/SchematicEditor.css'
-import { fetchSchematic, loadGallery } from '../redux/actions/index'
+import { fetchSchematic, loadGallery } from '../redux/slices/index'
 import { useDispatch } from 'react-redux'
 
 const useStyles = makeStyles((theme) => ({

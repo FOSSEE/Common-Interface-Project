@@ -5,7 +5,7 @@ import mxGraphFactory from 'mxgraph'
 import store from '../../../redux/store'
 import dot from '../../../static/dot.gif'
 import blockstyle from '../../../static/style.json'
-import { getCompProperties, closeCompProperties } from '../../../redux/actions/index'
+import { getCompProperties, closeCompProperties } from '../../../redux/slices/index'
 
 import toolbarTools from './ToolbarTools'
 import keyboardShortcuts from './KeyboardShortcuts'
