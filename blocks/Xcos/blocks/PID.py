@@ -1,4 +1,39 @@
+from blocks.INTEGRAL_m import INTEGRAL_m
+from blocks.SUMMATION import SUMMATION
+from blocks.GAINBLK import GAINBLK
+from blocks.DERIV import DERIV
+from blocks.SPLIT_f import SPLIT_f
+from blocks.OUT_f import OUT_f
+from blocks.IN_f import IN_f
 from common.AAAAAA import *
+
+block_id = ['6b605de6:1633f6b31f1:-7d97', '6b605de6:1633f6b31f2:-7d97',
+            '6b605de6:1633f6b31f0:-7f4c', '6b605de6:1633f6b31f0:-7f49',
+            '6b605de6:1633f6b31f0:-7f44', '6b605de6:1633f6b31f0:-7f41',
+            '6b605de6:1633f6b31f0:-7f3e', '6b605de6:1633f6b31f0:-7f3b',
+            '6b605de6:1633f6b31f0:-7f38', '6b605de6:1633f6b31f0:-7f33',
+            '6b605de6:1633f6b31f0:-7f2e', '6b605de6:1633f6b31f0:-7f2c']
+
+port_id = ['308251dc:18e83696037:-7ebd', '308251dc:18e83696037:-7ebb',
+           '308251dc:18e83696037:-7eb8', '308251dc:18e83696037:-7eb6',
+           '308251dc:18e83696037:-7eb4', '308251dc:18e83696037:-7eb2',
+           '308251dc:18e83696037:-7eaf', '308251dc:18e83696037:-7ead',
+           '308251dc:18e83696037:-7eaa', '308251dc:18e83696037:-7ea8',
+           '308251dc:18e83696037:-7ea5', '308251dc:18e83696037:-7ea3',
+           '308251dc:18e83696037:-7ea0', '308251dc:18e83696037:-7e9e',
+           '308251dc:18e83696037:-7e9b', '308251dc:18e83696037:-7e99',
+           '308251dc:18e83696037:-7e97', '308251dc:18e83696037:-7e95',
+           '308251dc:18e83696037:-7e92', '308251dc:18e83696037:-7e90',
+           '308251dc:18e83696037:-7e8e', '308251dc:18e83696037:-7e8c',
+           '308251dc:18e83696037:-7e89', '308251dc:18e83696037:-7e86']
+
+link_id = ['308251dc:18e83696037:-7e85', '308251dc:18e83696037:-7e84',
+           '308251dc:18e83696037:-7e83', '308251dc:18e83696037:-7e82',
+           '308251dc:18e83696037:-7e81', '308251dc:18e83696037:-7e80',
+           '308251dc:18e83696037:-7e7f', '308251dc:18e83696037:-7e7e',
+           '308251dc:18e83696037:-7e7d', '308251dc:18e83696037:-7e7c',
+           '308251dc:18e83696037:-7e7b']
+
 
 def PID(outroot, attribid, ordering, geometry, parameters):
     func_name = 'PID'
@@ -9,6 +44,365 @@ def PID(outroot, attribid, ordering, geometry, parameters):
                          func_name, BLOCKTYPE_H)
 
     addExprsNode(outnode, TYPE_DOUBLE, 0, parameters)
+    addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0, [])
+    addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 0, [])
+    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
+    array = ['0']
+    addPrecisionNode(outnode, TYPE_INTEGER, AS_NBZERO, 1, array)
+    addPrecisionNode(outnode, TYPE_INTEGER, AS_NMODE, 1, array)
+    addTypeNode(outnode, TYPE_DOUBLE, AS_STATE, 0, [])
+    addTypeNode(outnode, TYPE_DOUBLE, AS_DSTATE, 0, [])
+    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE, parameters)
+    addObjNode(outnode, TYPE_ARRAY,
+               CLASS_LIST, AS_EQUATIONS, parameters)
+    addgeometryNode(outnode, GEOMETRY, geometry['height'],
+                    geometry['width'], geometry['x'], geometry['y'])
+
+    # Create the SuperBlockDiagram element
+    SuperBlockDiagram = addSuperNode(outnode, TYPE_SUPER,
+                                     a="child",
+                                     background="-1",
+                                     gridEnabled="1",
+                                     title="")
+
+    Array = addSuperBlkNode(SuperBlockDiagram, TYPE_ARRAY,
+                            a="context",
+                            scilabClass="String[]")
+    superAddNode(Array, TYPE_ADD, value="")
+
+    mxGraphModel = addmxGraphModelNode(SuperBlockDiagram,
+                                       TYPE_MODEL, a="model")
+    root = addNode(mxGraphModel, TYPE_ROOT)
+    addmxCellNode(root, TYPE_MXCELL,
+                  id=block_id[0])
+    addmxCellNode(root, TYPE_MXCELL,
+                  id=block_id[1],
+                  parent=block_id[0])
+
+    array = ['0', '0', '0', '1', '-1']
+    INTEGRAL_m(root, block_id[2], ordering, geometry, array)
+
+    addPort(root, TYPE_EXPLICITINPORT, id=port_id[0],
+            parent=block_id[2], ordering="1",
+            dataType="REAL_MATRIX", dataColumns="1",
+            dataLines="1", initialState="0.0",
+            style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+            value="")
+
+    addPort(root, TYPE_EXPLICITOUTPORT, id=port_id[1],
+            parent=block_id[2], ordering="1",
+            dataType="INT8_MATRIX", dataColumns="1",
+            dataLines="1", initialState="0.0",
+            style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+            value="")
+
+    SUMMATION(root, block_id[3], ordering, geometry, parameters)
+
+    addPort(root, TYPE_EXPLICITINPORT, id=port_id[2],
+            parent=block_id[3], ordering="1",
+            dataType="REAL_MATRIX", dataColumns="1",
+            dataLines="1", initialState="0.0",
+            style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+            value="")
+
+    addPort(root, TYPE_EXPLICITINPORT, id=port_id[3],
+            parent=block_id[3], ordering="1",
+            dataType="REAL_MATRIX", dataColumns="1",
+            dataLines="1", initialState="0.0",
+            style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+            value="")
+
+    addPort(root, TYPE_EXPLICITINPORT, id=port_id[4],
+            parent=block_id[3], ordering="1",
+            dataType="REAL_MATRIX", dataColumns="1",
+            dataLines="1", initialState="0.0",
+            style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+            value="")
+
+    addPort(root, TYPE_EXPLICITOUTPORT, id=port_id[5],
+            parent=block_id[3], ordering="1",
+            dataType="REAL_MATRIX", dataColumns="1",
+            dataLines="1", initialState="0.0",
+            style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+            value="")
+
+    GAINBLK(root, block_id[4], ordering, geometry, parameters[0])
+
+    addPort(root, TYPE_EXPLICITINPORT, id=port_id[6],
+            parent=block_id[4], ordering="1",
+            dataType="REAL_MATRIX", dataColumns="1",
+            dataLines="1", initialState="0.0",
+            style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+            value="")
+
+    addPort(root, TYPE_EXPLICITOUTPORT, id=port_id[7],
+            parent=block_id[4], ordering="1",
+            dataType="INT8_MATRIX", dataColumns="1",
+            dataLines="1", initialState="0.0",
+            style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+            value="")
+
+    DERIV(root, block_id[5], ordering, geometry, parameters[0])
+
+    addPort(root, TYPE_EXPLICITINPORT, id=port_id[8],
+            parent=block_id[5], ordering="1",
+            dataType="REAL_MATRIX", dataColumns="1",
+            dataLines="1", initialState="0.0",
+            style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+            value="")
+
+    addPort(root, TYPE_EXPLICITOUTPORT, id=port_id[9],
+            parent=block_id[5], ordering="1",
+            dataType="REAL_MATRIX", dataColumns="1",
+            dataLines="1", initialState="0.0",
+            style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+            value="")
+
+    GAINBLK(root, block_id[6], ordering, geometry, parameters[0])
+
+    addPort(root, TYPE_EXPLICITINPORT, id=port_id[10],
+            parent=block_id[6], ordering="1",
+            dataType="REAL_MATRIX", dataColumns="1",
+            dataLines="1", initialState="0.0",
+            style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+            value="")
+
+    addPort(root, TYPE_EXPLICITOUTPORT, id=port_id[11],
+            parent=block_id[6], ordering="1",
+            dataType="REAL_MATRIX", dataColumns="1",
+            dataLines="1", initialState="0.0",
+            style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+            value="")
+
+    GAINBLK(root, block_id[7], ordering, geometry, parameters[0])
+
+    addPort(root, TYPE_EXPLICITINPORT, id=port_id[12],
+            parent=block_id[7], ordering="1",
+            dataType="REAL_MATRIX", dataColumns="1",
+            dataLines="1", initialState="0.0",
+            style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+            value="")
+
+    addPort(root, TYPE_EXPLICITOUTPORT, id=port_id[13],
+            parent=block_id[7], ordering="1",
+            dataType="REAL_MATRIX", dataColumns="1",
+            dataLines="1", initialState="0.0",
+            style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+            value="")
+
+    SPLIT_f(root, block_id[8], ordering, geometry, ['0'])
+
+    addPort(root, TYPE_EXPLICITINPORT, id=port_id[14],
+            parent=block_id[8], ordering="1",
+            dataType="REAL_MATRIX", dataColumns="1",
+            dataLines="1", initialState="0.0",
+            style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+            value="")
+
+    addPort(root, TYPE_EXPLICITOUTPORT, id=port_id[15],
+            parent=block_id[8], ordering="1",
+            dataType="REAL_MATRIX", dataColumns="1",
+            dataLines="1", initialState="0.0",
+            style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+            value="")
+
+    addPort(root, TYPE_EXPLICITOUTPORT, id=port_id[16],
+            parent=block_id[8], ordering="1",
+            dataType="REAL_MATRIX", dataColumns="1",
+            dataLines="1", initialState="0.0",
+            style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+            value="")
+
+    addPort(root, TYPE_EXPLICITOUTPORT, id=port_id[17],
+            parent=block_id[8], ordering="1",
+            dataType="REAL_MATRIX", dataColumns="1",
+            dataLines="1", initialState="0.0",
+            style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+            value="")
+
+    SPLIT_f(root, block_id[9], ordering, geometry, ['0'])
+
+    addPort(root, TYPE_EXPLICITINPORT, id=port_id[18],
+            parent=block_id[9], ordering="1",
+            dataType="REAL_MATRIX", dataColumns="1",
+            dataLines="1", initialState="0.0",
+            style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+            value="")
+
+    addPort(root, TYPE_EXPLICITOUTPORT, id=port_id[19],
+            parent=block_id[9], ordering="1",
+            dataType="REAL_MATRIX", dataColumns="1",
+            dataLines="1", initialState="0.0",
+            style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+            value="")
+
+    addPort(root, TYPE_EXPLICITOUTPORT, id=port_id[20],
+            parent=block_id[9], ordering="1",
+            dataType="REAL_MATRIX", dataColumns="1",
+            dataLines="1", initialState="0.0",
+            style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+            value="")
+
+    addPort(root, TYPE_EXPLICITOUTPORT, id=port_id[21],
+            parent=block_id[9], ordering="1",
+            dataType="REAL_MATRIX", dataColumns="1",
+            dataLines="1", initialState="0.0",
+            style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+            value="")
+
+    array = ['1']
+    OUT_f(root, block_id[10], ordering, geometry, array)
+
+    adPort(root, TYPE_EXPLICITINPORT, id=port_id[22],
+           parent=block_id[10], ordering="1",
+           initialState="0.0",
+           style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+           value="")
+
+    array = ['1']
+    IN_f(root, block_id[11], ordering, geometry, array)
+
+    adPort(root, TYPE_EXPLICITOUTPORT, id=port_id[23],
+           parent=block_id[11], ordering="1",
+           initialState="0.0",
+           style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+           value="")
+
+    CCLink = addLink(root, TYPE_EXLINK, id=link_id[0],
+                     parent=block_id[1],
+                     source=port_id[23],
+                     target=port_id[18],
+                     style="ExplicitLink", value="")
+    gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="sourcePoint", x="0.0", y="11.0")
+    addArray(gemotryNode, TYPE_ARRAY, a="points")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="targetPoint", x="20.0", y="-4.0")
+
+    CCLink = addLink(root, TYPE_EXLINK, id=link_id[1],
+                     parent=block_id[1],
+                     source=port_id[5],
+                     target=port_id[22],
+                     style="ExplicitLink", value="")
+    gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="sourcePoint", x="0.0", y="11.0")
+    addArray(gemotryNode, TYPE_ARRAY, a="points")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="targetPoint", x="20.0", y="-4.0")
+
+    CCLink = addLink(root, TYPE_EXLINK, id=link_id[2],
+                     parent=block_id[1],
+                     source=port_id[20],
+                     target=port_id[6],
+                     style="ExplicitLink", value="")
+    gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="sourcePoint", x="0.0", y="11.0")
+    addArray(gemotryNode, TYPE_ARRAY, a="points")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="targetPoint", x="20.0", y="-4.0")
+
+    CCLink = addLink(root, TYPE_EXLINK, id=link_id[3],
+                     parent=block_id[1],
+                     source=port_id[19],
+                     target=port_id[14],
+                     style="ExplicitLink", value="")
+    gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="sourcePoint", x="0.0", y="11.0")
+    addArray(gemotryNode, TYPE_ARRAY, a="points")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="targetPoint", x="20.0", y="-4.0")
+
+    CCLink = addLink(root, TYPE_EXLINK, id=link_id[4],
+                     parent=block_id[1],
+                     source=port_id[16],
+                     target=port_id[12],
+                     style="ExplicitLink", value="")
+    gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="sourcePoint", x="0.0", y="11.0")
+    addArray(gemotryNode, TYPE_ARRAY, a="points")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="targetPoint", x="20.0", y="-4.0")
+
+    CCLink = addLink(root, TYPE_EXLINK, id=link_id[5],
+                     parent=block_id[1],
+                     source=port_id[15],
+                     target=port_id[10],
+                     style="ExplicitLink", value="")
+    gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="sourcePoint", x="0.0", y="11.0")
+    addArray(gemotryNode, TYPE_ARRAY, a="points")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="targetPoint", x="20.0", y="-4.0")
+
+    CCLink = addLink(root, TYPE_EXLINK, id=link_id[6],
+                     parent=block_id[1],
+                     source=port_id[9],
+                     target=port_id[4],
+                     style="ExplicitLink", value="")
+    gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="sourcePoint", x="0.0", y="11.0")
+    addArray(gemotryNode, TYPE_ARRAY, a="points")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="targetPoint", x="20.0", y="-4.0")
+
+    CCLink = addLink(root, TYPE_EXLINK, id=link_id[7],
+                     parent=block_id[1],
+                     source=port_id[7],
+                     target=port_id[2],
+                     style="ExplicitLink", value="")
+    gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="sourcePoint", x="0.0", y="11.0")
+    addArray(gemotryNode, TYPE_ARRAY, a="points")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="targetPoint", x="20.0", y="-4.0")
+
+    CCLink = addLink(root, TYPE_EXLINK, id=link_id[8],
+                     parent=block_id[1],
+                     source=port_id[1],
+                     target=port_id[3],
+                     style="ExplicitLink", value="")
+    gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="sourcePoint", x="0.0", y="11.0")
+    addArray(gemotryNode, TYPE_ARRAY, a="points")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="targetPoint", x="20.0", y="-4.0")
+
+    CCLink = addLink(root, TYPE_EXLINK, id=link_id[9],
+                     parent=block_id[1],
+                     source=port_id[13],
+                     target=port_id[8],
+                     style="ExplicitLink", value="")
+    gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="sourcePoint", x="0.0", y="11.0")
+    addArray(gemotryNode, TYPE_ARRAY, a="points")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="targetPoint", x="20.0", y="-4.0")
+
+    CCLink = addLink(root, TYPE_EXLINK, id=link_id[10],
+                     parent=block_id[1],
+                     source=port_id[11],
+                     target=port_id[0],
+                     style="ExplicitLink", value="")
+    gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="sourcePoint", x="0.0", y="11.0")
+    addArray(gemotryNode, TYPE_ARRAY, a="points")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="targetPoint", x="20.0", y="-4.0")
+
+    addNodemxCell(SuperBlockDiagram, TYPE_MXCELL,
+                  id=block_id[1], a="defaultParent",
+                  parent=block_id[0])
 
     return outnode
 
