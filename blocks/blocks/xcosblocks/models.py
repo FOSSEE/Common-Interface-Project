@@ -411,7 +411,7 @@ class CommonBlockParameter(models.Model):
 
 class BlockPrefix(CommonBlock):
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
 
     def __str__(self):
         """String for representing the Model object."""
@@ -459,7 +459,7 @@ class Block(CommonBlock):
 
 class BlockParameter(CommonBlockParameter):
     id = models.AutoField(primary_key=True)
-    block = models.ForeignKey(Block, on_delete=models.PROTECT)
+    block = models.OneToOneField(Block, on_delete=models.PROTECT)
 
     def __str__(self):
         """String for representing the Model object."""
