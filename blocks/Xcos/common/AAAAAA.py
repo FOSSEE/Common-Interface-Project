@@ -57,6 +57,7 @@ TYPE_EXLINK = 'ExplicitLink'
 AS_VALUE = 'OpAmp'
 TYPE_EXPLICITOUTPORT = 'ExplicitOutputPort'
 TYPE_EXPLICITINPORT = 'ExplicitInputPort'
+AS_EXPRS = 'exprs'
 
 
 def addNode(node, subNodeType, **kwargs):
@@ -106,6 +107,12 @@ def addScilabStringNode(node, width, parameters):
     scilabStringNode = addDataNode(node, 'ScilabString', height=1, width=width)
     for i, param in enumerate(parameters):
         addDataData(scilabStringNode, param)
+
+
+def addScilabBoolNode(node, width, parameters):
+    scilabBooleanNode = addDataNode(node, 'ScilabBoolean', height=1, width=width)
+    for i, param in enumerate(parameters):
+        addDataData(scilabBooleanNode, param)
 
 
 def addScilabDNode(node, type, realParts, width):
