@@ -9,8 +9,8 @@ export const fetchSchematics = createAsyncThunk(
       const token = getState().auth.token
       const config = {
         headers: {
-          'Content-Type': 'application/json',
-        },
+          'Content-Type': 'application/json'
+        }
       }
 
       if (token) {
@@ -33,8 +33,8 @@ export const deleteSchematic = createAsyncThunk(
       const token = getState().auth.token
       const config = {
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
       }
 
       if (token) {
@@ -56,7 +56,7 @@ const dashboardSlice = createSlice({
   initialState: {
     schematics: [],
     isLoading: false,
-    error: null,
+    error: null
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -73,7 +73,7 @@ const dashboardSlice = createSlice({
         state.isLoading = false
         state.error = action.payload
       })
-  },
+  }
 })
 
 export default dashboardSlice.reducer

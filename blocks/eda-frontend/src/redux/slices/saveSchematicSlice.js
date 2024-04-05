@@ -4,6 +4,11 @@ import api from '../../utils/Api'
 import GallerySchSample from '../../utils/GallerySchSample'
 import { setTitle } from './index'
 
+// Define clearDetails function separately
+export const clearDetails = () => ({
+  type: 'saveSchematic/clearDetails'
+})
+
 const saveSchematicSlice = createSlice({
   name: 'saveSchematic',
   initialState: {
@@ -33,11 +38,7 @@ const saveSchematicSlice = createSlice({
       state.isShared = true
       state.details = action.payload
     },
-    // clearDetails (state) {
-    //   state.isSaved = null
-    //   state.isShared = null
-    //   state.details = {}
-    // },
+    // clearDetails reducer remains unchanged
     loadGallery (state, action) {
       state.isSaved = null
       state.isShared = null
@@ -52,7 +53,6 @@ export const {
   setSchXmlData,
   setSchSaved,
   setSchShared,
-  // clearDetails,
   loadGallery
 } = saveSchematicSlice.actions
 
@@ -158,7 +158,7 @@ export const loadGalleryAsync = (Id) => (dispatch) => {
 export const openLocalSch = (obj) => (dispatch) => {
   const data = obj
 
-  // dispatch(clearDetails())
+  dispatch(clearDetails())
   dispatch(setTitle('* ' + data.title))
   dispatch(setSchTitle(data.title))
   dispatch(setSchDescription(data.description))
