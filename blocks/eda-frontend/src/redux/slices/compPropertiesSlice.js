@@ -54,13 +54,13 @@ const compPropertiesSlice = createSlice({
   name: 'compProperties',
   initialState,
   reducers: {
-    loadingGetCompProperties(state, action) {
+    loadingGetCompProperties (state, action) {
       state.isLoading = action.payload
     },
-    loadingSetCompProperties(state, action) {
+    loadingSetCompProperties (state, action) {
       state.isLoading = action.payload
     },
-    closeCompProperties(state) {
+    closeCompProperties (state) {
       state.isPropertiesWindowOpen = false
       // You may want to add other state updates here as well
     }

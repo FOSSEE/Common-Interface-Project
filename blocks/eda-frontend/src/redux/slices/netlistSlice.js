@@ -10,13 +10,13 @@ const netlistSlice = createSlice({
     controlBlock: ''
   },
   reducers: {
-    setNetlist(state, action) {
+    setNetlist (state, action) {
       state.netlist = action.payload.netlist
     },
-    setTitle(state, action) {
+    setTitle (state, action) {
       state.title = action.payload.title
     },
-    setModel(state, action) {
+    setModel (state, action) {
       state.model = action.payload.model
     }
   }

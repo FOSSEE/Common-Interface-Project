@@ -11,20 +11,20 @@ const simulationSlice = createSlice({
     taskId: ''
   },
   reducers: {
-    setResultTitle(state, action) {
+    setResultTitle (state, action) {
       state.title = action.payload.title
     },
-    setResultGraph(state, action) {
+    setResultGraph (state, action) {
       state.isSimRes = true
       state.isGraph = true
       state.graph = action.payload.graph
     },
-    setResultText(state, action) {
+    setResultText (state, action) {
       state.isSimRes = true
       state.isGraph = false
       state.text = action.payload.text
     },
-    setResultTaskId(state, action) {
+    setResultTaskId (state, action) {
       state.taskId = action.payload.taskId
     }
   }

@@ -51,7 +51,7 @@ const schematicEditorSlice = createSlice({
     components: {}
   },
   reducers: {
-    toggleCollapse(state, action) {
+    toggleCollapse (state, action) {
       const existingState = state.collapse[action.payload.id]
       state.collapse = Object.keys(state.collapse).reduce((accObj, parseObj) => {
         accObj[parseObj] = false
@@ -59,7 +59,7 @@ const schematicEditorSlice = createSlice({
       }, {})
       state.collapse[action.payload.id] = !existingState
     },
-    toggleSimulate(state) {
+    toggleSimulate (state) {
       state.isSimulate = !state.isSimulate
     }
   },
