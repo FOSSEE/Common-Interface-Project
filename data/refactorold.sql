@@ -4,11 +4,11 @@ FROM (SELECT block_id, p_order, p_value_initial FROM xcosblocks_newblockparamete
 WHERE N.block_id = xcosblocks_block.id
 AND N.p_order = 0;
 
-INSERT OR IGNORE INTO xcosblocks_blockparameter (
-    block_id, p000, p000_help, p000_type_id
-) SELECT block_id, p_label, p_help, p_type_id
+DELETE FROM xcosblocks_blockparameter;
+DELETE FROM SQLITE_SEQUENCE WHERE name = 'xcosblocks_blockparameter';
+INSERT INTO xcosblocks_blockparameter (block_id)
+SELECT DISTINCT block_id
 FROM xcosblocks_newblockparameter
-WHERE p_order = 0
 ORDER BY block_id;
 
 UPDATE xcosblocks_blockparameter
