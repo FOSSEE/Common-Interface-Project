@@ -75,7 +75,7 @@ export function Header () {
       {/* Display relative link to other pages */}
       <nav>
         {
-          (auth.isAuthenticated
+          (auth?.isAuthenticated
             ? (<>
               <Link
                 variant='button'
@@ -145,7 +145,7 @@ export function Header () {
 
       {/* Display login option or user menu as per authenticated status */}
       {
-        (!auth.isAuthenticated
+        (!auth?.isAuthenticated
           ? <Button
             size='small'
             component={RouterLink}

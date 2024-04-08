@@ -385,7 +385,7 @@ export function OpenSchDialog (props) {
   const [isGallery, setisGallery] = useState(false)
   const schSave = useSelector(state => state.saveSchematicReducer)
   const auth = useSelector(state => state.authReducer)
-  const schematics = useSelector(state => state.dashboardReducer.schematics)
+  const schematics = useSelector(state => state.dashboardReducer?.schematics)
 
   function getDate (jsonDate) {
     const json = jsonDate
@@ -524,7 +524,7 @@ export function OpenSchDialog (props) {
         <Button variant={isGallery ? 'outlined' : 'text'} onClick={() => { setisLocal(false); setisGallery(true) }} color='secondary'>
           Gallery
         </Button>
-        {auth.isAuthenticated !== true
+        {auth?.isAuthenticated !== true
           ? <></>
           : <Button variant={!isGallery & !isLocal ? 'outlined' : 'text'} onClick={() => { dispatch(fetchSchematics()); setisLocal(false); setisGallery(false) }} color='secondary'>
             on Cloud

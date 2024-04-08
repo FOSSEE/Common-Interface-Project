@@ -146,16 +146,16 @@ const getErrorText = (compType) => {
 export default function ComponentProperties () {
   // compProperties that are displayed on the right side bar when user clicks on a component on the grid.
 
-  const compProperties = useSelector(state => state.componentPropertiesReducer.compProperties)
-  const isOpen = useSelector(state => state.componentPropertiesReducer.isPropertiesWindowOpen)
-  const block = useSelector(state => state.componentPropertiesReducer.block)
-  const name = useSelector(state => state.componentPropertiesReducer.name)
-  const parameterValues = useSelector(state => state.componentPropertiesReducer.parameter_values)
+  const compProperties = useSelector(state => state.componentPropertiesReducer?.compProperties)
+  const isOpen = useSelector(state => state.componentPropertiesReducer?.isPropertiesWindowOpen)
+  const block = useSelector(state => state.componentPropertiesReducer?.block)
+  const name = useSelector(state => state.componentPropertiesReducer?.name)
+  const parameterValues = useSelector(state => state.componentPropertiesReducer?.parameter_values)
   const [val, setVal] = useState(parameterValues)
-  const displayProperties = useSelector(state => state.componentPropertiesReducer.displayProperties)
-  const isLoading = useSelector(state => state.componentPropertiesReducer.isLoading)
+  const displayProperties = useSelector(state => state.componentPropertiesReducer?.displayProperties)
+  const isLoading = useSelector(state => state.componentPropertiesReducer?.isLoading)
   const dispatch = useDispatch()
-  const errorFields1 = useSelector(state => state.componentPropertiesReducer.errorFields)
+  const errorFields1 = useSelector(state => state.componentPropertiesReducer?.errorFields)
   const [errorFields, setErrorFields] = useState(errorFields1)
 
   useEffect(() => {
