@@ -147,11 +147,11 @@ function Header () {
   }
 
   // change saved schematic share status
-  const [shared, setShared] = useState(schSave.isShared)
+  const [shared, setShared] = useState(schSave?.isShared)
 
   useEffect(() => {
     setShared(schSave.isShared)
-  }, [schSave.isShared])
+  }, [schSave?.isShared])
 
   const handleShareChange = (event) => {
     setShared(event.target.checked)
@@ -218,14 +218,14 @@ function Header () {
         <Input
           className={classes.input}
           color='secondary'
-          value={schSave.title === 'Untitled' ? 'Untitled' : schSave.title}
+          value={schSave?.title === 'Untitled' ? 'Untitled' : schSave?.title}
           onChange={titleHandler}
           inputProps={{ 'aria-label': 'SchematicTitle' }}
         />
       </Hidden>
 
       {/* Display last saved and shared option for saved schematics */}
-      {auth.isAuthenticated === true
+      {auth?.isAuthenticated === true
         ? <>
           {(schSave.isSaved === true && schSave.details.save_time !== undefined)
             ? <Typography
@@ -288,7 +288,7 @@ function Header () {
 
       {/* Display login option or user menu as per authenticated status */}
       {
-        (!auth.isAuthenticated
+        (!auth?.isAuthenticated
           ? <Button
             size='small'
             component={RouterLink}

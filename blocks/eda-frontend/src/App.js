@@ -27,7 +27,7 @@ function PrivateRoute ({ component: Component, ...rest }) {
   return (
     <Route
       {...rest} render={props => {
-        if (auth.isLoading) {
+        if (auth?.isLoading) {
           return <CircularProgress style={{ margin: '50vh 50vw' }} />
         } else if (!auth.isAuthenticated) {
           return <Redirect to='/login' />
@@ -53,9 +53,9 @@ function PublicRoute ({ component: Component, restricted, nav, ...rest }) {
   return (
     <Route
       {...rest} render={props => {
-        if (auth.isLoading) {
+        if (auth?.isLoading) {
           return <CircularProgress style={{ margin: '50vh 50vw' }} />
-        } else if (auth.isAuthenticated && restricted) {
+        } else if (auth?.isAuthenticated && restricted) {
           return <Redirect to='/dashboard' />
         } else if (nav) {
           return (<><Navbar /><Component {...props} /></>)

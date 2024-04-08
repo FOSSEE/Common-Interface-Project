@@ -7,7 +7,7 @@ export const loadUser = () => (dispatch, getState) => {
   dispatch({ type: actions.USER_LOADING })
 
   // Get token from localstorage
-  const token = getState().authReducer.token
+  const token = getState().authReducer?.token
 
   // add headers
   const config = {

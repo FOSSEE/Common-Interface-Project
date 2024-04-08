@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SimulationProperties () {
   const netfile = useSelector(state => state.netlistReducer)
-  const isSimRes = useSelector(state => state.simulationReducer.isSimRes)
+  const isSimRes = useSelector(state => state.simulationReducer?.isSimRes)
   const dispatch = useDispatch()
   const classes = useStyles()
   const [transientAnalysisControlLine, setTransientAnalysisControlLine] = useState({
