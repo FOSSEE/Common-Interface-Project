@@ -5,7 +5,7 @@ import mxGraphFactory from 'mxgraph'
 import { ListItem, ListItemText, Button, TextField } from '@material-ui/core'
 import { TailSpin } from 'react-loader-spinner'
 
-import { setCompProperties } from '../../redux/actions/index'
+import { setCompProperties } from '../../redux/slices/componentPropertiesSlice'
 import { graph } from './Helper/ComponentDrag'
 import { portSize } from './Helper/SvgParser'
 
