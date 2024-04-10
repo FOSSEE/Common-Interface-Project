@@ -278,7 +278,13 @@ export default function ComponentProperties () {
       />
 
       <ListItem>
-        {compProperties !== undefined ? <ListItemText primary={link1} /> : isLoading ? <ListItemText primary={link4} /> : <ListItemText primary={link3} />}
+        {compProperties ? 
+          (<ListItemText primary={link1} />) : 
+          (isLoading ? 
+            (<ListItemText primary={link4} />) : 
+            (<ListItemText primary={link3} />)
+          )
+        }
       </ListItem>
 
       {
