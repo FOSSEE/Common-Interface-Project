@@ -112,9 +112,9 @@ export function setGraphStatusClosed () {
 export default function SimulationScreen ({ open, close }) {
   const classes = useStyles()
   const dispatch = useDispatch()
-  const result = useSelector(state => state.simulationReducer)
-  const stitle = useSelector(state => state.netlistReducer.title)
-  const taskId = useSelector(state => state.simulationReducer.taskId)
+  const result = useSelector(state => state.oldReducers.simulationReducer)
+  const stitle = useSelector(state => state.oldReducers.netlistReducer.title)
+  const taskId = useSelector(state => state.oldReducers.simulationReducer.taskId)
   const [isResult, setIsResult] = useState(false)
   const graphsRef = useRef([])
   const datapointsRef = useRef([])
