@@ -5,7 +5,7 @@ import api from '../../utils/Api'
 const initialState = {
   block: null,
   name: '',
-  parameterValues: {},
+  parameter_values: {},
   errorFields: {},
   isPropertiesWindowOpen: false,
   compProperties: {},
@@ -27,7 +27,7 @@ export const componentPropertiesSlice = createSlice({
     getCompProperties: (state, action) => {
       state.block = action.payload.block
       state.name = action.payload.name
-      state.parameterValues = action.payload.parameter_values
+      state.parameter_values = action.payload.parameter_values
       state.errorFields = action.payload.errorFields
       state.isPropertiesWindowOpen = true
       state.displayProperties = action.payload.displayProperties
@@ -40,7 +40,7 @@ export const componentPropertiesSlice = createSlice({
     },
     setCompProperties: (state, action) => {
       state.block = action.payload.block
-      state.parameterValues = action.payload.parameter_values
+      state.parameter_values = action.payload.parameter_values
       state.errorFields = action.payload.errorFields
       state.isPropertiesWindowOpen = false
       state.displayProperties = action.payload.displayProperties

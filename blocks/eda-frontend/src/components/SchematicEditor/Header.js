@@ -150,7 +150,7 @@ function Header () {
   const [shared, setShared] = useState(schSave?.isShared)
 
   useEffect(() => {
-    setShared(schSave.isShared)
+    setShared(schSave?.isShared)
   }, [schSave?.isShared])
 
   const handleShareChange = (event) => {
