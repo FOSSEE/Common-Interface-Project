@@ -36,10 +36,10 @@ const searchOptions = {
 
 export default function ComponentSidebar ({ compRef }) {
   const classes = useStyles()
-  const libraries = useSelector(state => state.schematicEditorReducer?.libraries)
-  const collapse = useSelector(state => state.schematicEditorReducer?.collapse)
-  const components = useSelector(state => state.schematicEditorReducer?.components)
-  const isSimulate = useSelector(state => state.schematicEditorReducer?.isSimulate)
+  const libraries = useSelector(state => state.oldReducers.schematicEditorReducer?.libraries)
+  const collapse = useSelector(state => state.oldReducers.schematicEditorReducer?.collapse)
+  const components = useSelector(state => state.oldReducers.schematicEditorReducer?.components)
+  const isSimulate = useSelector(state => state.oldReducers.schematicEditorReducer?.isSimulate)
 
   const dispatch = useDispatch()
   const [isSearchedResultsEmpty, setIssearchedResultsEmpty] = useState(false)
@@ -239,7 +239,7 @@ export default function ComponentSidebar ({ compRef }) {
 }
 
 export function ComponentImages () {
-  const componentImages = useSelector(state => state.schematicEditorReducer?.component_images)
+  const componentImages = useSelector(state => state.oldReducers.schematicEditorReducer?.component_images)
 
   const dispatch = useDispatch()
 

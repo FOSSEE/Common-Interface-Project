@@ -92,9 +92,9 @@ SimpleSnackbar.propTypes = {
 
 export default function SchematicToolbar ({ mobileClose, gridRef }) {
   const classes = useStyles()
-  const netfile = useSelector(state => state.netlistReducer)
-  const auth = useSelector(state => state.authReducer)
-  const schSave = useSelector(state => state.saveSchematicReducer)
+  const netfile = useSelector(state => state.oldReducers.netlistReducer)
+  const auth = useSelector(state => state.oldReducers.authReducer)
+  const schSave = useSelector(state => state.oldReducers.saveSchematicReducer)
 
   const dispatch = useDispatch()
 

@@ -7,8 +7,6 @@
 
 // export default store
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 import { configureStore } from '@reduxjs/toolkit'
 import reducer from './reducers/index' // Your existing reducers
 import componentPropertiesReducer, { fetchCompProperties, setBlockParameter } from './slices/componentPropertiesSlice'

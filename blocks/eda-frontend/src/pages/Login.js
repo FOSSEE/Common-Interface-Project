@@ -51,7 +51,7 @@ let url = ''
 
 export default function SignIn (props) {
   const classes = useStyles()
-  const auth = useSelector(state => state.authReducer)
+  const auth = useSelector(state => state.oldReducers.authReducer)
 
   const dispatch = useDispatch()
   const homeURL = `${window.location.protocol}\\\\${window.location.host}/`
