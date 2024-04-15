@@ -7,7 +7,7 @@ def CONST_f(outroot, attribid, ordering, geometry, parameters):
                          attribid, ordering, 1,
                          func_name, 'cstblk', 'TYPE_1',
                          func_name, BLOCKTYPE_D)
-
+    print(parameters)
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
     addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM,
                  1, realParts=[1.0])

@@ -605,4 +605,4 @@ def get_number_power(value):
 def format_real_number(parameter):
     real_number = float(parameter.replace('*10^', 'e').replace('10^', '1e'))
     formatted_number = "{:.1E}".format(real_number)
-    return [formatted_number]
+    return formatted_number

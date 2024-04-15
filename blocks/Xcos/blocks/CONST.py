@@ -10,7 +10,7 @@ def CONST(outroot, attribid, ordering, geometry, parameters):
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
     addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM,
-                 1, realParts=[2.0])
+                 1, realParts=[1.0])
     addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 0, [])
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
     array = ['0']
