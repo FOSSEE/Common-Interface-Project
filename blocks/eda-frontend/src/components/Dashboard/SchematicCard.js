@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import { Link as RouterLink } from 'react-router-dom'
 import DeleteIcon from '@material-ui/icons/Delete'
 import { useDispatch } from 'react-redux'
-import { deleteSchematic } from '../../redux/actions/index'
+import { deleteSchematic } from '../../redux/slices/dashboardSlice'
 import MuiAlert from '@material-ui/lab/Alert'
 
 const useStyles = makeStyles((theme) => ({
