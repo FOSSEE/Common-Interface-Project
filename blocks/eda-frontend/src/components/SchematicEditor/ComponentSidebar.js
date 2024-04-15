@@ -12,7 +12,7 @@ import CloseIcon from '@material-ui/icons/Close'
 
 import './Helper/SchematicEditor.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchLibraries, toggleCollapse, fetchComponents, fetchComponentImages, toggleSimulate } from '../../redux/actions/index'
+import { fetchLibraries, toggleCollapse, fetchComponents, fetchComponentImages, toggleSimulate } from '../../redux/slices/schematicEditorSlice'
 import SideComp from './SideComp'
 import SimulationProperties from './SimulationProperties'
 const COMPONENTS_PER_ROW = 3
@@ -37,9 +37,9 @@ const searchOptions = {
 export default function ComponentSidebar ({ compRef }) {
   const classes = useStyles()
   const libraries = useSelector(state => state.oldReducers.schematicEditorReducer?.libraries)
-  const collapse = useSelector(state => state.oldReducers.schematicEditorReducer?.collapse)
-  const components = useSelector(state => state.oldReducers.schematicEditorReducer?.components)
-  const isSimulate = useSelector(state => state.oldReducers.schematicEditorReducer?.isSimulate)
+  const collapse = useSelector(state => state.oldReducers.schematicEditor?.collapse)
+  const components = useSelector(state => state.oldReducers.schematicEditor?.components)
+  const isSimulate = useSelector(state => state.oldReducers.schematicEditor?.isSimulate)
 
   const dispatch = useDispatch()
   const [isSearchedResultsEmpty, setIssearchedResultsEmpty] = useState(false)

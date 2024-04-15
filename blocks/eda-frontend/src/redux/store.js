@@ -10,6 +10,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import reducer from './reducers/index' // Your existing reducers
 import componentPropertiesReducer, { fetchCompProperties, setBlockParameter } from './slices/componentPropertiesSlice'
+import schematicEditorReducer from './slices/schematicEditorSlice'
 // import thunk from 'redux-thunk'
 
 // Middleware setup if needed
@@ -24,7 +25,8 @@ const store = configureStore({
     oldReducers: reducer,
 
     // Include your new RTK slice reducer
-    componentProperties: componentPropertiesReducer
+    componentProperties: componentPropertiesReducer,
+    schematicEditor: schematicEditorReducer
   }
   // middleware
 })
