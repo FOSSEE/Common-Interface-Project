@@ -30,7 +30,8 @@ import mxGraphFactory from 'mxgraph'
 import { NetlistModal, HelpScreen, ImageExportDialog, OpenSchDialog } from './ToolbarExtension'
 import { editorZoomIn, editorZoomOut, editorZoomAct, deleteComp, PrintPreview, Rotate, generateNetList, editorUndo, editorRedo, saveXml, ClearGrid } from './Helper/ToolbarTools'
 import { useSelector, useDispatch } from 'react-redux'
-import { toggleSimulate, setSchXmlData, saveSchematic, openLocalSch } from '../../redux/actions/index'
+import { setSchXmlData, saveSchematic, openLocalSch } from '../../redux/actions/index'
+import { toggleSimulate } from '../../redux/slices/schematicEditorSlice'
 import { closeCompProperties } from '../../redux/slices/componentPropertiesSlice'
 
 const {
