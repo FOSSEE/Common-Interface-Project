@@ -5,7 +5,7 @@ import { Link as RouterLink } from 'react-router-dom'
 
 import SchematicCard from './SchematicCard'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchSchematics } from '../../redux/actions/index'
+import { fetchSchematics } from '../../redux/slices/dashboardSlice'
 
 const useStyles = makeStyles({
   mainHead: {

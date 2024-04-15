@@ -34,7 +34,8 @@ import {
 import { makeStyles } from '@material-ui/core/styles'
 import CloseIcon from '@material-ui/icons/Close'
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchSchematics, fetchSchematic, loadGallery } from '../../redux/actions/index'
+import { fetchSchematic, loadGallery } from '../../redux/actions/index'
+import { fetchSchematics } from '../../redux/slices/dashboardSlice'
 import GallerySchSample from '../../utils/GallerySchSample'
 import { blue } from '@material-ui/core/colors'
 
