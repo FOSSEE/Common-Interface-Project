@@ -41,6 +41,7 @@ const schematicEditorSlice = createSlice({
     toggleCollapse (state, action) {
       const { id } = action.payload
       state.collapse = { ...state.collapse, [id]: !state.collapse[id] }
+      console.log('toggleCollapse called')
     },
     toggleSimulate (state) {
       state.isSimulate = !state.isSimulate
@@ -49,6 +50,7 @@ const schematicEditorSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchLibraries.fulfilled, (state, action) => {
+        console.log('reducer called')
         state.libraries = action.payload
         state.collapse = action.payload.reduce((acc, cur) => {
           acc[cur.id] = false
