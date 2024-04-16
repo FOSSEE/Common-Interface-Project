@@ -30,7 +30,8 @@ import { makeStyles } from '@material-ui/core/styles'
 import { deepPurple } from '@material-ui/core/colors'
 
 import logo from '../../static/favicon.ico'
-import { setTitle, logout, setSchTitle, setSchShared } from '../../redux/actions/index'
+import { logout, setSchTitle, setSchShared } from '../../redux/actions/index'
+import { setTitle } from '../../redux/slices/netlistSlice'
 import store from '../../redux/store'
 
 const useStyles = makeStyles((theme) => ({

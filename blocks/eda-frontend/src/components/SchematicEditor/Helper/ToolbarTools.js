@@ -4,7 +4,7 @@ import 'mxgraph/javascript/src/css/common.css'
 import mxGraphFactory from 'mxgraph'
 import { portSize, getParameter } from './SvgParser'
 import store from '../../../redux/store'
-import { setModel, setNetlist } from '../../../redux/actions/index'
+import { setModel, setNetlist } from '../../../redux/slices/netlistSlice'
 
 let graph
 let undoManager

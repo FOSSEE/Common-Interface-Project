@@ -47,7 +47,7 @@ const FileSaver = require('file-saver')
 
 // Dialog box to display generated netlist
 export function NetlistModal ({ open, close, netlist }) {
-  const netfile = useSelector(state => state.oldReducers.netlistReducer)
+  const netfile = useSelector(state => state.netlistReducer)
   const createNetlistFile = () => {
     const titleA = netfile.title.split(' ')[1]
     const name = process.env.REACT_APP_NAME

@@ -3,7 +3,7 @@ import queryString from 'query-string'
 import api from '../../utils/Api'
 import GallerySchSample from '../../utils/GallerySchSample'
 import { renderGalleryXML } from '../../components/SchematicEditor/Helper/ToolbarTools'
-import { setTitle } from './index'
+import { setTitle } from '../slices/netlistSlice'
 
 export const setSchTitle = (title) => (dispatch) => {
   dispatch({
