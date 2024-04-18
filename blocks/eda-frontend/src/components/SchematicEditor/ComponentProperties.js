@@ -5,7 +5,7 @@ import mxGraphFactory from 'mxgraph'
 import { ListItem, ListItemText, Button, TextField } from '@material-ui/core'
 import { TailSpin } from 'react-loader-spinner'
 
-import { setCompProperties } from '../../redux/slices/componentPropertiesSlice'
+import { setCompPropertiesAsync } from '../../redux/slices/componentPropertiesSlice'
 import { graph } from './Helper/ComponentDrag'
 import { portSize } from './Helper/SvgParser'
 
@@ -260,7 +260,7 @@ export default function ComponentProperties () {
   }
 
   const setProps = () => {
-    dispatch(setCompProperties(block, val, errorFields))
+    dispatch(setCompPropertiesAsync(block, val, errorFields))
   }
 
   const link1 = name + ' Parameters'

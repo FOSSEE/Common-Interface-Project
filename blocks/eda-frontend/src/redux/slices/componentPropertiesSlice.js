@@ -1,7 +1,7 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 import api from '../../utils/Api'
+import { editorZoomAct } from '../../components/SchematicEditor/Helper/ToolbarTools'
 
-// Define the initial state
 const initialState = {
   block: null,
   name: '',
@@ -13,7 +13,6 @@ const initialState = {
   isLoading: false
 }
 
-// Create a new RTK slice
 export const componentPropertiesSlice = createSlice({
   name: 'componentProperties',
   initialState,
@@ -25,13 +24,21 @@ export const componentPropertiesSlice = createSlice({
       state.isLoading = action.payload.isLoading
     },
     getCompProperties: (state, action) => {
-      state.block = action.payload.block
-      state.name = action.payload.name
-      state.parameter_values = action.payload.parameter_values
-      state.errorFields = action.payload.errorFields
+      const {
+        block,
+        name,
+        parameter_values,
+        errorFields,
+        displayProperties,
+        compProperties
+      } = action.payload
+      state.block = block
+      state.name = name
+      state.parameter_values = parameter_values
+      state.errorFields = errorFields
       state.isPropertiesWindowOpen = true
-      state.displayProperties = action.payload.displayProperties
-      state.compProperties = action.payload.compProperties
+      state.displayProperties = displayProperties
+      state.compProperties = compProperties
       state.isLoading = false
     },
     loadingSetCompProperties: (state, action) => {
@@ -39,69 +46,75 @@ export const componentPropertiesSlice = createSlice({
       state.isLoading = action.payload.isLoading
     },
     setCompProperties: (state, action) => {
-      state.block = action.payload.block
-      state.parameter_values = action.payload.parameter_values
-      state.errorFields = action.payload.errorFields
+      const {
+        block,
+        parameter_values,
+        errorFields,
+        displayProperties
+      } = action.payload
+      state.block = block
+      state.parameter_values = parameter_values
+      state.errorFields = errorFields
       state.isPropertiesWindowOpen = false
-      state.displayProperties = action.payload.displayProperties
+      state.displayProperties = displayProperties
       state.isLoading = false
     },
     closeCompProperties: (state) => {
+      editorZoomAct()
       state.isPropertiesWindowOpen = false
     }
   }
 })
 
-// Export the actions
-export const { loadingGetCompProperties, getCompProperties, loadingSetCompProperties, setCompProperties, closeCompProperties } = componentPropertiesSlice.actions
+export const {
+  loadingGetCompProperties,
+  getCompProperties,
+  loadingSetCompProperties,
+  setCompProperties,
+  closeCompProperties
+} = componentPropertiesSlice.actions
 
-// Create an async thunk for fetching component properties
-export const fetchCompProperties = createAsyncThunk(
-  'componentProperties/fetchCompProperties',
-  async (block, { dispatch }) => {
-    dispatch(loadingGetCompProperties({ name: block.style, isLoading: true }))
-    try {
-      const url = 'block_parameters/?block__name=' + block.style
-      const res = await api.get(url)
-      return {
+// Async action creators remain the same
+export const getCompPropertiesAsync = (block) => (dispatch) => {
+  dispatch(loadingGetCompProperties(block, true))
+  const url = 'block_parameters/?block__name=' + block.style
+  api.get(url)
+    .then((res) => {
+      dispatch(getCompProperties({
         block,
         name: block.style,
-        parameterValues: block.parameter_values,
+        parameter_values: block.parameter_values,
         errorFields: block.errorFields,
         displayProperties: block.displayProperties,
         compProperties: res.data[0]
-      }
-    } catch (err) {
+      }))
+    })
+    .catch((err) => {
       console.error(err)
-      dispatch(loadingGetCompProperties({ name: block.style, isLoading: false }))
-    }
-  }
-)
+      dispatch(loadingGetCompProperties(block, false))
+    })
+}
 
-// Create an async thunk for setting component properties
-export const setBlockParameter = createAsyncThunk(
-  'componentProperties/setBlockParameter',
-  async (block, parameterValues, errorFields, { dispatch }) => {
-    dispatch(loadingSetCompProperties({ isLoading: true }))
-    try {
-      const url = 'setblockparameter'
-      const filteredParameterValues = Object.fromEntries(Object.entries(parameterValues).filter(([k, v]) => v != null))
-      const data = { block: block.style, ...filteredParameterValues }
-      const res = await api.post(url, data)
+export const setCompPropertiesAsync = (block, parameterValues, errorFields) => (dispatch) => {
+  dispatch(loadingSetCompProperties(true))
+  const url = 'setblockparameter'
+  const filteredParameterValues = Object.fromEntries(Object.entries(parameterValues).filter(([k, v]) => v != null))
+  const data = { block: block.style, ...filteredParameterValues }
+  api.post(url, data)
+    .then((res) => {
       block.parameter_values = filteredParameterValues
       block.errorFields = errorFields
-      return {
+      dispatch(setCompProperties({
         block,
-        parameterValues,
+        parameter_values: parameterValues,
         errorFields,
         displayProperties: res.data
-      }
-    } catch (err) {
+      }))
+    })
+    .catch((err) => {
       console.error(err)
-      dispatch(loadingSetCompProperties({ isLoading: false }))
-    }
-  }
-)
+      dispatch(loadingSetCompProperties(false))
+    })
+}
 
-// Export the reducer
 export default componentPropertiesSlice.reducer
