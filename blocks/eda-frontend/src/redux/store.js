@@ -5,6 +5,8 @@ import schematicEditorReducer from './slices/schematicEditorSlice'
 import dashboardReducer from './slices/dashboardSlice'
 import netlistReducer from './slices/netlistSlice'
 import simulationReducer from './slices/simulationSlice'
+import saveSchematicReducer from './slices/saveSchematicSlice'
+
 const store = configureStore({
   reducer: {
     oldReducers: reducer,
@@ -12,7 +14,8 @@ const store = configureStore({
     schematicEditor: schematicEditorReducer,
     dashboardReducer: dashboardReducer,
     netlistReducer: netlistReducer,
-    simulationReducer: simulationReducer
+    simulationReducer: simulationReducer,
+    saveSchematicReducer: saveSchematicReducer
   }
 })
 
