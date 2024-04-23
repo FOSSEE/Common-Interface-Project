@@ -119,7 +119,7 @@ export default function PropertiesSidebar ({ gridRef, outlineRef }) {
   const classes = useStyles()
 
   const isOpen = useSelector(state => state.componentProperties?.isPropertiesWindowOpen)
-  const schSave = useSelector(state => state.oldReducers.saveSchematicReducer)
+  const schSave = useSelector(state => state.saveSchematicReducer)
 
   const [description, setDescription] = useState(schSave?.description)
 

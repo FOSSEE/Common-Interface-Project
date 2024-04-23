@@ -30,7 +30,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import { deepPurple } from '@material-ui/core/colors'
 
 import logo from '../../static/favicon.ico'
-import { logout } from '../../redux/actions/index'
+import { logout } from '../../redux/slices/authSlice'
 import { setSchTitle, setSchShared } from '../../redux/slices/saveSchematicSlice'
 import { setTitle } from '../../redux/slices/netlistSlice'
 import store from '../../redux/store'
@@ -104,7 +104,7 @@ function Header () {
   const history = useHistory()
   const classes = useStyles()
   const auth = store.getState().authReducer
-  const schSave = useSelector(state => state.oldReducers.saveSchematicReducer)
+  const schSave = useSelector(state => state.saveSchematicReducer)
   const [anchorEl, setAnchorEl] = useState(null)
 
   const dispatch = useDispatch()

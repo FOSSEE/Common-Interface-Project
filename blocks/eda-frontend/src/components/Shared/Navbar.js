@@ -6,7 +6,7 @@ import { deepPurple } from '@material-ui/core/colors'
 import { Link as RouterLink, useHistory } from 'react-router-dom'
 import logo from '../../static/favicon.ico'
 import store from '../../redux/store'
-import { logout } from '../../redux/actions/index'
+import { logout } from '../../redux/slices/authSlice'
 
 const useStyles = makeStyles((theme) => ({
   appBar: {

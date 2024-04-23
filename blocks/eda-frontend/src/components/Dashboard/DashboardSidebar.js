@@ -38,8 +38,8 @@ const useStyles = makeStyles((theme) => ({
 // Vertical Navbar for user dashboard
 export default function DashSidebar (props) {
   const classes = useStyles()
-  const auth = useSelector(state => state.oldReducers.authReducer)
-  const schematics = useSelector(state => state.oldReducers.dashboardReducer.schematics)
+  const auth = useSelector(state => state.authReducer)
+  const schematics = useSelector(state => state.dashboardReducer.schematics)
 
   const dispatch = useDispatch()
 

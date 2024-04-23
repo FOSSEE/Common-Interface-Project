@@ -20,7 +20,7 @@ import Visibility from '@material-ui/icons/Visibility'
 import VisibilityOff from '@material-ui/icons/VisibilityOff'
 import { Link as RouterLink, useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { signUp, authDefault, googleLogin, githubLogin } from '../redux/actions/index'
+import { signUp, authDefault, googleLogin } from '../redux/slices/authSlice'
 import google from '../static/google.png'
 import github from '../static/github-mark.png'
 
@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
 export default function SignUp () {
   const classes = useStyles()
 
-  const auth = useSelector(state => state.oldReducers.authReducer)
+  const auth = useSelector(state => state.authReducer)
 
   const dispatch = useDispatch()
   const homeURL = `${window.location.protocol}\\\\${window.location.host}/`
