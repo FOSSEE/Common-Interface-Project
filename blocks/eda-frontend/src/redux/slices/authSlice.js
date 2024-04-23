@@ -80,7 +80,7 @@ export default authSlice.reducer
 export const loadUser = () => (dispatch, getState) => {
   dispatch(userLoading())
 
-  const token = getState().auth.token
+  const token = getState().auth?.token
 
   const config = {
     headers: {
