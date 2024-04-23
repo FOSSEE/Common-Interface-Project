@@ -1,4 +1,0 @@
-1. Create a slice for schematicEditorAction and schematicEditorReducer 
-2. Make sure the slice that you have created is accurate and has all the variables exported. Also check for the case-sensitivity/spelling of the variables
-3. Update the store with this new slice
-4. Update all the code of useSelector
