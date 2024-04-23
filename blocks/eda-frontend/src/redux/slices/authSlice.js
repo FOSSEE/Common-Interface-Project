@@ -17,35 +17,35 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    userLoading(state) {
+    userLoading (state) {
       state.isLoading = true
     },
-    defaultStore(state) {
+    defaultStore (state) {
       state.errors = ''
       state.regErrors = ''
     },
-    signUpSuccessful(state, action) {
+    signUpSuccessful (state, action) {
       state.isRegistered = true
       state.regErrors = action.payload.data
     },
-    signUpFailed(state, action) {
+    signUpFailed (state, action) {
       state.isRegistered = false
       state.regErrors = action.payload.data
     },
-    userLoaded(state, action) {
+    userLoaded (state, action) {
       state.isAuthenticated = true
       state.isLoading = false
       state.user = action.payload.user
     },
-    loginSuccessful(state, action) {
+    loginSuccessful (state, action) {
       localStorage.setItem(token, action.payload.data.auth_token)
       state.token = action.payload.data.auth_token
       state.errors = ''
     },
-    loadingFailed(state) {
+    loadingFailed (state) {
       state.isLoading = false
     },
-    authenticationError(state, action) {
+    authenticationError (state, action) {
       localStorage.removeItem(token)
       state.errors = action.payload.data
       state.token = null
@@ -53,7 +53,7 @@ const authSlice = createSlice({
       state.isAuthenticated = false
       state.isLoading = false
     },
-    logoutSuccessful(state) {
+    logoutSuccessful (state) {
       localStorage.removeItem(token)
       state.token = null
       state.user = null
@@ -79,7 +79,7 @@ export default authSlice.reducer
 
 export const loadUser = () => (dispatch, getState) => {
   dispatch(userLoading())
-  
+
   const token = getState().auth.token
 
   const config = {
@@ -172,7 +172,7 @@ export const signUp = (email, username, password, history) => (dispatch) => {
       const res = err.response
       if (res.status === 400 || res.status === 403 || res.status === 401) {
         if (res.data.username !== undefined) {
-          if (res.data.username[0].search('already') !== -1 && res.data.username[0].search('exists') !== -1) { 
+          if (res.data.username[0].search('already') !== -1 && res.data.username[0].search('exists') !== -1) {
             dispatch(signUpFailed({ data: 'Username Already Taken.' }))
           }
         } else {
