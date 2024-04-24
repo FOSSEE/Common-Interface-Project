@@ -4,7 +4,7 @@ import queryString from 'query-string'
 import GallerySchSample from '../../utils/GallerySchSample'
 import { renderGalleryXML } from '../../components/SchematicEditor/Helper/ToolbarTools'
 import { setTitle } from './netlistSlice'
-import * as actions from '../actions/actions'
+// import * as actions from '../actions/actions'
 
 const initialState = {
   title: 'Untitled',
@@ -42,14 +42,14 @@ const saveSchematicSlice = createSlice({
     clearSchematicDetails (state) {
       return initialState
     }
-  },
-  extraReducers: (builder) => {
-    builder
-      .addCase(actions.LOAD_GALLERY, (state, action) => {
-        const data = action.payload
-        state = { ...initialState, details: data }
-      })
   }
+  // extraReducers: (builder) => {
+  //   builder
+  //     .addCase(actions.LOAD_GALLERY, (state, action) => {
+  //       const data = action.payload
+  //       state = { ...initialState, details: data }
+  //     })
+  // }
 })
 
 export const {
