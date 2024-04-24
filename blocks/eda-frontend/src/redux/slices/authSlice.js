@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import api from '../../utils/Api'
-import * as actions from '../actions/actions'
+// import * as actions from '../actions/actions'
 
 const token = process.env.REACT_APP_NAME + '_token'
 const initialState = {
@@ -213,23 +213,23 @@ export const authDefault = () => (dispatch) => {
   dispatch(defaultStore())
 }
 
-export const loginError = (message) => (dispatch) => {
-  dispatch({
-    type: actions.AUTHENTICATION_ERROR,
-    payload: {
-      data: message
-    }
-  })
-}
+// export const loginError = (message) => (dispatch) => {
+//   dispatch({
+//     type: actions.AUTHENTICATION_ERROR,
+//     payload: {
+//       data: message
+//     }
+//   })
+// }
 
-export const signupError = (message) => (dispatch) => {
-  dispatch({
-    type: actions.SIGNUP_FAILED,
-    payload: {
-      data: message
-    }
-  })
-}
+// export const signupError = (message) => (dispatch) => {
+//   dispatch({
+//     type: actions.SIGNUP_FAILED,
+//     payload: {
+//       data: message
+//     }
+//   })
+// }
 
 export const googleLogin = (host, toUrl) => {
   return function (dispatch) {
