@@ -10,9 +10,9 @@ import {
   MenuItem,
   TextField,
   Typography
-} from '@material-ui/core'
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
-import { makeStyles } from '@material-ui/core/styles'
+} from '@mui/material'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import { makeStyles } from '@mui/styles'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { setResultTitle, setResultTaskId } from '../../redux/slices/simulationSlice'

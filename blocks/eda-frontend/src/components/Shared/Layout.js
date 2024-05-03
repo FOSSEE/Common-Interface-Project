@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { AppBar, IconButton, Toolbar } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import MenuIcon from '@material-ui/icons/Menu'
+import { AppBar, IconButton, Toolbar } from '@mui/material'
+import { makeStyles } from '@mui/styles'
+import MenuIcon from '@mui/icons-material/Menu'
 
 import LayoutSidebar from './LayoutSidebar'
 
@@ -37,6 +37,7 @@ function Layout ({ header, resToolbar, sidebar }) {
         color='default'
         elevation={0}
         className={classes.appBar}
+        style={{ zIndex: 2000 }}
       >
         {header}
 

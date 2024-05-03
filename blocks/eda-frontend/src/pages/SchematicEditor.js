@@ -1,8 +1,8 @@
 // Main Layout for Schemaic Editor page.
 import React, { createRef, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import { CssBaseline } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
+import { CssBaseline } from '@mui/material'
+import { makeStyles } from '@mui/styles'
 
 import Layout from '../components/Shared/Layout'
 import Header from '../components/SchematicEditor/Header'

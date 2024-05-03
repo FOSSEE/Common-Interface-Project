@@ -22,12 +22,12 @@ import {
   Switch,
   Toolbar,
   Typography
-} from '@material-ui/core'
+} from '@mui/material'
 import { useSelector, useDispatch } from 'react-redux'
-import ShareIcon from '@material-ui/icons/Share'
-import CloseIcon from '@material-ui/icons/Close'
-import { makeStyles } from '@material-ui/core/styles'
-import { deepPurple } from '@material-ui/core/colors'
+import ShareIcon from '@mui/icons-material/Share'
+import CloseIcon from '@mui/icons-material/Close'
+import { makeStyles } from '@mui/styles'
+import { deepPurple } from '@mui/material/colors'
 
 import logo from '../../static/favicon.ico'
 import { logout } from '../../redux/slices/authSlice'
