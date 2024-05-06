@@ -13,13 +13,15 @@ import store from './redux/store'
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
 root.render(
-  <ThemeProvider theme={theme}>
-    {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-    <CssBaseline />
-    <Provider store={store}>
-       <App />
-    </Provider>
-  </ThemeProvider>
+  <React.StrictMode>
+    <ThemeProvider theme={theme}>
+      {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+      <CssBaseline />
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </ThemeProvider>
+  </React.StrictMode>
 )
 
 // If you want your app to work offline and load faster, you can change

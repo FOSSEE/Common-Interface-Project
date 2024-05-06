@@ -1,5 +1,5 @@
 // Main Layout for Schemaic Editor page.
-import React, { createRef, useEffect, useState } from 'react'
+import React, { createRef, useEffect, useState, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { CssBaseline } from '@mui/material'
 import { makeStyles } from '@mui/styles'
@@ -33,12 +33,17 @@ export default function SchematicEditor (props) {
   const outlineRef = createRef()
   const dispatch = useDispatch()
   const [mobileOpen, setMobileOpen] = useState(false)
+  const isLoaded = useRef(false)
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
   }
 
   useEffect(() => {
+    if (isLoaded.current) {
+      return
+    }
+    isLoaded.current = true
     document.title = process.env.REACT_APP_DIAGRAM_NAME + ' Editor - ' + process.env.REACT_APP_NAME
     const container = gridRef.current
     const sidebar = compRef.current
