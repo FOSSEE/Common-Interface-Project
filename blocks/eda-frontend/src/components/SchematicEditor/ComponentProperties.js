@@ -2,10 +2,10 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import mxGraphFactory from 'mxgraph'
-import { ListItem, ListItemText, Button, TextField } from '@material-ui/core'
+import { ListItem, ListItemText, Button, TextField } from '@mui/material'
 import { TailSpin } from 'react-loader-spinner'
 
-import { setCompProperties } from '../../redux/actions/index'
+import { setCompPropertiesAsync } from '../../redux/slices/componentPropertiesSlice'
 import { graph } from './Helper/ComponentDrag'
 import { portSize } from './Helper/SvgParser'
 
@@ -146,16 +146,16 @@ const getErrorText = (compType) => {
 export default function ComponentProperties () {
   // compProperties that are displayed on the right side bar when user clicks on a component on the grid.
 
-  const compProperties = useSelector(state => state.componentPropertiesReducer.compProperties)
-  const isOpen = useSelector(state => state.componentPropertiesReducer.isPropertiesWindowOpen)
-  const block = useSelector(state => state.componentPropertiesReducer.block)
-  const name = useSelector(state => state.componentPropertiesReducer.name)
-  const parameterValues = useSelector(state => state.componentPropertiesReducer.parameter_values)
+  const compProperties = useSelector(state => state.componentProperties?.compProperties)
+  const isOpen = useSelector(state => state.componentProperties?.isPropertiesWindowOpen)
+  const block = useSelector(state => state.componentProperties?.block)
+  const name = useSelector(state => state.componentProperties?.name)
+  const parameterValues = useSelector(state => state.componentProperties?.parameter_values) || {}
   const [val, setVal] = useState(parameterValues)
-  const displayProperties = useSelector(state => state.componentPropertiesReducer.displayProperties)
-  const isLoading = useSelector(state => state.componentPropertiesReducer.isLoading)
+  const displayProperties = useSelector(state => state.componentProperties?.displayProperties)
+  const isLoading = useSelector(state => state.componentProperties?.isLoading)
   const dispatch = useDispatch()
-  const errorFields1 = useSelector(state => state.componentPropertiesReducer.errorFields)
+  const errorFields1 = useSelector(state => state.componentProperties?.errorFields)
   const [errorFields, setErrorFields] = useState(errorFields1)
 
   useEffect(() => {
@@ -260,7 +260,7 @@ export default function ComponentProperties () {
   }
 
   const setProps = () => {
-    dispatch(setCompProperties(block, val, errorFields))
+    dispatch(setCompPropertiesAsync(block, val, errorFields))
   }
 
   const link1 = name + ' Parameters'
@@ -278,11 +278,11 @@ export default function ComponentProperties () {
       />
 
       <ListItem>
-        {compProperties !== undefined ? <ListItemText primary={link1} /> : isLoading ? <ListItemText primary={link4} /> : <ListItemText primary={link3} />}
+        {compProperties ? (<ListItemText primary={link1} />) : (isLoading ? (<ListItemText primary={link4} />) : (<ListItemText primary={link3} />))}
       </ListItem>
 
       {
-        Object.keys(val).map((keyName, i) => {
+        Object.keys(val || {}).map((keyName, i) => {
           if (keyName.match(/^p[0-9]*_value$/)) {
             const rootKeyName = keyName.substr(0, 4)
             const typeId = rootKeyName + '_type'

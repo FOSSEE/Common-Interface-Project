@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 
-import { AppBar, Avatar, Button, Fade, IconButton, Link, ListItemText, Menu, MenuItem, Toolbar, Typography } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import { deepPurple } from '@material-ui/core/colors'
+import { AppBar, Avatar, Button, Fade, IconButton, Link, ListItemText, Menu, MenuItem, Toolbar, Typography } from '@mui/material'
+import { makeStyles } from '@mui/styles'
+import { deepPurple } from '@mui/material/colors'
 import { Link as RouterLink, useHistory } from 'react-router-dom'
 import logo from '../../static/favicon.ico'
 import store from '../../redux/store'
-import { logout } from '../../redux/actions/index'
+import { logout } from '../../redux/slices/authSlice'
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -75,7 +75,7 @@ export function Header () {
       {/* Display relative link to other pages */}
       <nav>
         {
-          (auth.isAuthenticated
+          (auth?.isAuthenticated
             ? (<>
               <Link
                 variant='button'
@@ -145,7 +145,7 @@ export function Header () {
 
       {/* Display login option or user menu as per authenticated status */}
       {
-        (!auth.isAuthenticated
+        (!auth?.isAuthenticated
           ? <Button
             size='small'
             component={RouterLink}

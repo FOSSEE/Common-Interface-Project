@@ -1,10 +1,10 @@
 // Main layout for home page.
 import React, { useEffect } from 'react'
 
-import Button from '@material-ui/core/Button'
-import Typography from '@material-ui/core/Typography'
-import { makeStyles } from '@material-ui/core/styles'
-import Container from '@material-ui/core/Container'
+import Button from '@mui/material/Button'
+import Typography from '@mui/material/Typography'
+import { makeStyles } from '@mui/styles'
+import Container from '@mui/material/Container'
 import { Link as RouterLink } from 'react-router-dom'
 import logo from '../static/favicon.ico'
 

@@ -5,7 +5,7 @@ import mxGraphFactory from 'mxgraph'
 import store from '../../../redux/store'
 import dot from '../../../static/dot.gif'
 import blockstyle from '../../../static/style.json'
-import { getCompProperties, closeCompProperties } from '../../../redux/actions/index'
+import { getCompPropertiesAsync, closeCompProperties } from '../../../redux/slices/componentPropertiesSlice'
 
 import toolbarTools from './ToolbarTools'
 import keyboardShortcuts from './KeyboardShortcuts'
@@ -123,7 +123,7 @@ export default function LoadGrid (container, sidebar, outline) {
     graph.addListener(mxEvent.DOUBLE_CLICK, function (sender, evt) {
       const cell = evt.getProperty('cell')
       if (cell !== undefined && cell.CellType === 'Component') {
-        store.dispatch(getCompProperties(cell))
+        store.dispatch(getCompPropertiesAsync(cell))
       } else {
         store.dispatch(closeCompProperties())
       }
@@ -236,7 +236,7 @@ export default function LoadGrid (container, sidebar, outline) {
 
       const stylesheet = graph.getStylesheet()
       const style = stylesheet.styles[attribute]
-      let displayedLabel = style.displayedLabel
+      let displayedLabel = style?.displayedLabel
       if (displayedLabel == null) {
         return cell.getAttribute('label', '')
       }
@@ -310,9 +310,9 @@ export default function LoadGrid (container, sidebar, outline) {
     toolbarTools(graph)
 
     store.subscribe(() => {
-      const id = store.getState().componentPropertiesReducer.id
-      const parameterValues = store.getState().componentPropertiesReducer.parameter_values
-      const displayProperties = store.getState().componentPropertiesReducer.displayProperties
+      const id = store.getState().componentProperties.id
+      const parameterValues = store.getState().componentProperties.parameter_values
+      const displayProperties = store.getState().componentProperties.displayProperties
       const cellList = graph.getModel().cells
       const c = cellList[id]
       if (c !== undefined) {

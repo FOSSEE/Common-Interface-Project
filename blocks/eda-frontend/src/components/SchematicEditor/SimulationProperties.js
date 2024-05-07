@@ -10,12 +10,12 @@ import {
   MenuItem,
   TextField,
   Typography
-} from '@material-ui/core'
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
-import { makeStyles } from '@material-ui/core/styles'
+} from '@mui/material'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import { makeStyles } from '@mui/styles'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { setResultTitle, setResultTaskId } from '../../redux/actions/index'
+import { setResultTitle, setResultTaskId } from '../../redux/slices/simulationSlice'
 import { saveXml } from './Helper/ToolbarTools'
 import SimulationScreen, { setGraphStatusClosed } from './SimulationScreen'
 import api from '../../utils/Api'
@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SimulationProperties () {
   const netfile = useSelector(state => state.netlistReducer)
-  const isSimRes = useSelector(state => state.simulationReducer.isSimRes)
+  const isSimRes = useSelector(state => state.simulationReducer?.isSimRes)
   const dispatch = useDispatch()
   const classes = useStyles()
   const [transientAnalysisControlLine, setTransientAnalysisControlLine] = useState({

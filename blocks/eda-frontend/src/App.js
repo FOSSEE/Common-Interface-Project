@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { HashRouter, Switch, Route, Redirect } from 'react-router-dom'
-import CircularProgress from '@material-ui/core/CircularProgress'
+import CircularProgress from '@mui/material/CircularProgress'
 
 import Navbar from './components/Shared/Navbar'
 import Home from './pages/Home'
@@ -14,7 +14,7 @@ import Dashboard from './pages/Dashboard'
 import SignUp from './pages/signUp'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { loadUser } from './redux/actions/index'
+import { loadUser } from './redux/slices/authSlice'
 
 // Controls Private routes, this are accessible for authenticated users.  [ e.g : dashboard ]
 // and restricted routes disabled for authenticated users. [ e.g : login , signup ]
@@ -27,7 +27,7 @@ function PrivateRoute ({ component: Component, ...rest }) {
   return (
     <Route
       {...rest} render={props => {
-        if (auth.isLoading) {
+        if (auth?.isLoading) {
           return <CircularProgress style={{ margin: '50vh 50vw' }} />
         } else if (!auth.isAuthenticated) {
           return <Redirect to='/login' />
@@ -53,9 +53,9 @@ function PublicRoute ({ component: Component, restricted, nav, ...rest }) {
   return (
     <Route
       {...rest} render={props => {
-        if (auth.isLoading) {
+        if (auth?.isLoading) {
           return <CircularProgress style={{ margin: '50vh 50vw' }} />
-        } else if (auth.isAuthenticated && restricted) {
+        } else if (auth?.isAuthenticated && restricted) {
           return <Redirect to='/dashboard' />
         } else if (nav) {
           return (<><Navbar /><Component {...props} /></>)

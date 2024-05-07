@@ -22,15 +22,17 @@ import {
   Switch,
   Toolbar,
   Typography
-} from '@material-ui/core'
+} from '@mui/material'
 import { useSelector, useDispatch } from 'react-redux'
-import ShareIcon from '@material-ui/icons/Share'
-import CloseIcon from '@material-ui/icons/Close'
-import { makeStyles } from '@material-ui/core/styles'
-import { deepPurple } from '@material-ui/core/colors'
+import ShareIcon from '@mui/icons-material/Share'
+import CloseIcon from '@mui/icons-material/Close'
+import { makeStyles } from '@mui/styles'
+import { deepPurple } from '@mui/material/colors'
 
 import logo from '../../static/favicon.ico'
-import { setTitle, logout, setSchTitle, setSchShared } from '../../redux/actions/index'
+import { logout } from '../../redux/slices/authSlice'
+import { setSchTitle, setSchShared } from '../../redux/slices/saveSchematicSlice'
+import { setTitle } from '../../redux/slices/netlistSlice'
 import store from '../../redux/store'
 
 const useStyles = makeStyles((theme) => ({
@@ -147,11 +149,11 @@ function Header () {
   }
 
   // change saved schematic share status
-  const [shared, setShared] = useState(schSave.isShared)
+  const [shared, setShared] = useState(schSave?.isShared)
 
   useEffect(() => {
-    setShared(schSave.isShared)
-  }, [schSave.isShared])
+    setShared(schSave?.isShared)
+  }, [schSave?.isShared])
 
   const handleShareChange = (event) => {
     setShared(event.target.checked)
@@ -218,14 +220,14 @@ function Header () {
         <Input
           className={classes.input}
           color='secondary'
-          value={schSave.title === 'Untitled' ? 'Untitled' : schSave.title}
+          value={schSave?.title === 'Untitled' ? 'Untitled' : schSave?.title}
           onChange={titleHandler}
           inputProps={{ 'aria-label': 'SchematicTitle' }}
         />
       </Hidden>
 
       {/* Display last saved and shared option for saved schematics */}
-      {auth.isAuthenticated === true
+      {auth?.isAuthenticated === true
         ? <>
           {(schSave.isSaved === true && schSave.details.save_time !== undefined)
             ? <Typography
@@ -288,7 +290,7 @@ function Header () {
 
       {/* Display login option or user menu as per authenticated status */}
       {
-        (!auth.isAuthenticated
+        (!auth?.isAuthenticated
           ? <Button
             size='small'
             component={RouterLink}

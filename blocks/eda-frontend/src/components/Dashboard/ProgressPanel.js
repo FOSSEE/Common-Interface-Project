@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { Tab, Box, Tabs, AppBar, Typography, Grid } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
+import { Tab, Box, Tabs, AppBar, Typography, Grid } from '@mui/material'
+import { makeStyles } from '@mui/styles'
 import PropTypes from 'prop-types'
 
 import SchematicCard from './SchematicCard'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchSchematics } from '../../redux/actions/index'
+import { fetchSchematics } from '../../redux/slices/dashboardSlice'
 
 const useStyles = makeStyles((theme) => ({
   root: {

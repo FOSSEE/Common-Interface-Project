@@ -29,14 +29,15 @@ import {
   Toolbar,
   Tooltip,
   Typography
-} from '@material-ui/core'
+} from '@mui/material'
 
-import { makeStyles } from '@material-ui/core/styles'
-import CloseIcon from '@material-ui/icons/Close'
+import { makeStyles } from '@mui/styles'
+import CloseIcon from '@mui/icons-material/Close'
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchSchematics, fetchSchematic, loadGallery } from '../../redux/actions/index'
+import { fetchSchematic, loadGallery } from '../../redux/slices/saveSchematicSlice'
+import { fetchSchematics } from '../../redux/slices/dashboardSlice'
 import GallerySchSample from '../../utils/GallerySchSample'
-import { blue } from '@material-ui/core/colors'
+import { blue } from '@mui/material/colors'
 
 const Transition = forwardRef(function Transition (props, ref) {
   return <Slide direction='up' ref={ref} {...props} />
@@ -524,7 +525,7 @@ export function OpenSchDialog (props) {
         <Button variant={isGallery ? 'outlined' : 'text'} onClick={() => { setisLocal(false); setisGallery(true) }} color='secondary'>
           Gallery
         </Button>
-        {auth.isAuthenticated !== true
+        {auth?.isAuthenticated !== true
           ? <></>
           : <Button variant={!isGallery & !isLocal ? 'outlined' : 'text'} onClick={() => { dispatch(fetchSchematics()); setisLocal(false); setisGallery(false) }} color='secondary'>
             on Cloud
