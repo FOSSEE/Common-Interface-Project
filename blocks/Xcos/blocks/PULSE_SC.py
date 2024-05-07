@@ -58,7 +58,7 @@ def PULSE_SC(outroot, attribid, ordering, geometry, parameters):
     superAddNode(Array, TYPE_ADD,
                  value="if (W<0 | W>100) then error('Width must be between 0 and 100');end")
     superAddNode(Array, TYPE_ADD,
-                 value="if (E2 >= F) then error ('Offset must be lower than (frequency*(1-Width/100))'); end")
+                 value="if(E2>=F)then error('Offset must be lower than(freq*(1-Width/100))');end")
 
     mxGraphModel = addmxGraphModelNode(SuperBlockDiagram,
                                        TYPE_MODEL, a="model")
@@ -82,31 +82,31 @@ def PULSE_SC(outroot, attribid, ordering, geometry, parameters):
     Ground_g(root, block_id[3], ordering, geometry, parameters)
 
     adPort(root, TYPE_EXPLICITOUTPORT, id=port_id[1],
-            parent=block_id[3], ordering="1",
-            initialState="0.0",
-            style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-            value="")
+           parent=block_id[3], ordering="1",
+           initialState="0.0",
+           style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+           value="")
 
     array = ['-1', '2', '1']
     SELECT_m(root, block_id[4], ordering, geometry, array)
 
     adPort(root, TYPE_EXPLICITINPORT, id=port_id[2],
-            parent=block_id[4], ordering="1",
-            initialState="0.0",
-            style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-            value="")
+           parent=block_id[4], ordering="1",
+           initialState="0.0",
+           style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+           value="")
 
     adPort(root, TYPE_EXPLICITINPORT, id=port_id[3],
-            parent=block_id[4], ordering="1",
-            initialState="0.0",
-            style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-            value="")
+           parent=block_id[4], ordering="1",
+           initialState="0.0",
+           style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+           value="")
 
     adPort(root, TYPE_EXPLICITOUTPORT, id=port_id[4],
-            parent=block_id[4], ordering="1",
-            initialState="0.0",
-            style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-            value="")
+           parent=block_id[4], ordering="1",
+           initialState="0.0",
+           style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+           value="")
 
     addPort(root, TYPE_CNTRL, id=port_id[5],
             parent=block_id[4], ordering="1",
@@ -140,10 +140,10 @@ def PULSE_SC(outroot, attribid, ordering, geometry, parameters):
     OUT_f(root, block_id[7], ordering, geometry, array)
 
     adPort(root, TYPE_EXPLICITINPORT, id=port_id[9],
-            parent=block_id[7], ordering="1",
-            initialState="0.0",
-            style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-            value="")
+           parent=block_id[7], ordering="1",
+           initialState="0.0",
+           style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+           value="")
 
     CCLink = addLink(root, TYPE_EXLINK, id=link_id[0],
                      parent=block_id[1],
@@ -206,8 +206,8 @@ def PULSE_SC(outroot, attribid, ordering, geometry, parameters):
                    a="targetPoint", x="20.0", y="-4.0")
 
     addNodemxCell(SuperBlockDiagram, TYPE_MXCELL,
-                       id=block_id[1], a="defaultParent",
-                       parent=block_id[0])
+                  id=block_id[1], a="defaultParent",
+                  parent=block_id[0])
 
     return outnode
 

@@ -1,17 +1,17 @@
 from common.AAAAAA import *
 
-def STEP(outroot, attribid, ordering, geometry, parameters):
+def STEP(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'STEP'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'step_func', 'C_OR_FORTRAN',
-                         func_name, BLOCKTYPE_C,
-                         dependsOnT='1', dependsOnU='0')
+                         func_name, BLOCKTYPE_C, dependsOnU='0',
+                         dependsOnT='0')
 
     addExprsNode(outnode, TYPE_STRING, 3, parameters)
     addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM,
-                 2, realParts=[0.0, 0.0])
+                 2, realParts=[0.0, 1.0])
     addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 0, [])
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
     array = ['0']

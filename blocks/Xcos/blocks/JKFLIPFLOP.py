@@ -404,8 +404,8 @@ def JKFLIPFLOP(outroot, attribid, ordering, geometry, parameters):
                    a="targetPoint", x="20.0", y="-4.0")
 
     addNodemxCell(SuperBlockDiagram, TYPE_MXCELL,
-                       id=block_id[1], a="defaultParent",
-                       parent=block_id[0])
+                  id=block_id[1], a="defaultParent",
+                  parent=block_id[0])
 
     return outnode
 

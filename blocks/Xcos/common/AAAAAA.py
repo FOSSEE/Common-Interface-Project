@@ -119,7 +119,7 @@ def addScilabDNode(node, type, realParts, width):
     height = 1 if width > 0 else 0
     scilabDoubleNode = addADataNode(node, 'ScilabDouble', type, height, width, realParts)
     for i, realPart in enumerate(realParts):
-        addDData(scilabDoubleNode, realPart, line=0, column=i)
+        addDData(scilabDoubleNode, line=0, column=i, realPart=realPart)
     return scilabDoubleNode
 
 
@@ -143,14 +143,25 @@ def addNodeScilabDouble(node, realParts, height):
         addDData(scilabDoubleNode, realPart, line=0, column=i)
 
 
-def addDData(parent, realPart, line=None, column=None):
-    data_attributes = {'realPart': str(realPart)}
+# def addDData(parent, realPart, line=None, column=None):
+#     data_attributes = {'realPart': str(realPart)}
+#     if line is not None:
+#         data_attributes['line'] = str(line)
+#     if column is not None:
+#         data_attributes['column'] = str(column)
+
+#     ET.SubElement(parent, 'data', **data_attributes)
+def addDData(parent, line=None, column=None, realPart=None):
+    data_attributes = {}
     if line is not None:
         data_attributes['line'] = str(line)
     if column is not None:
         data_attributes['column'] = str(column)
+    if realPart is not None:
+        data_attributes['realPart'] = str(realPart)
 
-    ET.SubElement(parent, 'data', **data_attributes)
+    data_element = ET.Element('data', attrib=data_attributes)
+    parent.append(data_element)
 # equations node ends
 
 
@@ -176,8 +187,8 @@ def addOutNode(node, subNodeType,
 
 def addData(node, column, line, value, isReal=False):
     data = ET.SubElement(node, 'data')
-    data.set('column', str(column))
     data.set('line', str(line))
+    data.set('column', str(column))
     if type(value) == float or type(value) == int or isReal:
         data.set('realPart', str(value))
     else:
@@ -516,13 +527,18 @@ def addPrecNode(node, subNodeType, type, width, parameters):
     return subNode
 
 
+# def strarray(parameter):
+#     param = list(map(str, parameter[0].split(" ")))
+#     params = parameter[3][1:8].split(";")
+#     parameters = param + params + parameter
+#     parameters.pop(10)
+#     parameters.pop(12)
+#     parameters = parameters[0:15]
+#     return parameters
 def strarray(parameter):
     param = list(map(str, parameter[0].split(" ")))
     params = parameter[3][1:8].split(";")
-    parameters = param + params + parameter
-    parameters.pop(10)
-    parameters.pop(12)
-    parameters = parameters[0:15]
+    parameters = ['-1', '1'] + [parameter[7]] + param + ['-1', '-1'] + params
     return parameters
 
 
@@ -602,7 +618,14 @@ def get_number_power(value):
                   value)
 
 
+# def format_real_number(parameter):
+#     real_number = float(parameter.replace('*10^', 'e').replace('10^', '1e'))
+#     formatted_number = "{:.1E}".format(real_number)
+#     return [formatted_number]
 def format_real_number(parameter):
-    real_number = float(parameter.replace('*10^', 'e').replace('10^', '1e'))
-    formatted_number = "{:.1E}".format(real_number)
-    return [formatted_number]
+    if 'e' in parameter or 'E' in parameter:
+        real_number = float(parameter.replace('*10^', 'e').replace('10^', '1e'))
+        formatted_number = "{:.1E}".format(real_number)
+    else:
+        formatted_number = "{:.1f}".format(float(parameter))
+    return formatted_number

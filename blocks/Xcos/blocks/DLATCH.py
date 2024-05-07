@@ -91,10 +91,10 @@ def DLATCH(outroot, attribid, ordering, geometry, parameters):
     IFTHEL_f(root, block_id[3], ordering, geometry, array)
 
     adPort(root, TYPE_EXPLICITINPORT, id=port_id[1],
-            parent=block_id[3], ordering="1",
-            initialState="0.0",
-            style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-            value="")
+           parent=block_id[3], ordering="1",
+           initialState="0.0",
+           style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+           value="")
 
     addPort(root, TYPE_CMD, id=port_id[2],
             parent=block_id[3], ordering="1",
@@ -205,36 +205,36 @@ def DLATCH(outroot, attribid, ordering, geometry, parameters):
     IN_f(root, block_id[8], ordering, geometry, ['2'])
 
     adPort(root, TYPE_EXPLICITOUTPORT, id=port_id[16],
-            parent=block_id[8], ordering="1",
-            initialState="0.0",
-            style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-            value="")
+           parent=block_id[8], ordering="1",
+           initialState="0.0",
+           style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+           value="")
 
     IN_f(root, block_id[9], ordering, geometry, ['2'])
 
     adPort(root, TYPE_EXPLICITOUTPORT, id=port_id[17],
-            parent=block_id[9], ordering="1",
-            initialState="0.0",
-            style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-            value="")
+           parent=block_id[9], ordering="1",
+           initialState="0.0",
+           style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+           value="")
 
     array = ['2']
     OUT_f(root, block_id[10], ordering, geometry, array)
 
     adPort(root, TYPE_EXPLICITINPORT, id=port_id[18],
-            parent=block_id[10], ordering="1",
-            initialState="0.0",
-            style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-            value="")
+           parent=block_id[10], ordering="1",
+           initialState="0.0",
+           style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+           value="")
 
     array = ['1']
     OUT_f(root, block_id[11], ordering, geometry, array)
 
     adPort(root, TYPE_EXPLICITINPORT, id=port_id[19],
-            parent=block_id[11], ordering="1",
-            initialState="0.0",
-            style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-            value="")
+           parent=block_id[11], ordering="1",
+           initialState="0.0",
+           style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+           value="")
 
     CCLink = addLink(root, TYPE_EXLINK, id=link_id[0],
                      parent=block_id[1],
@@ -345,8 +345,8 @@ def DLATCH(outroot, attribid, ordering, geometry, parameters):
                    a="targetPoint", x="20.0", y="-4.0")
 
     addNodemxCell(SuperBlockDiagram, TYPE_MXCELL,
-                       id=block_id[1], a="defaultParent",
-                       parent=block_id[0])
+                  id=block_id[1], a="defaultParent",
+                  parent=block_id[0])
 
     return outnode
 

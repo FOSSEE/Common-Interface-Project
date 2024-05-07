@@ -9,52 +9,52 @@ def scifunc_block_m(outroot, attribid, ordering, geometry, parameters):
                          func_name, BLOCKTYPE_C)
 
     ArrayNode = addObjNode(outnode, TYPE_ARRAY,
-               CLASS_LIST, AS_EXPRS, parameters)
+                           CLASS_LIST, AS_EXPRS, parameters)
     additionalStringNode = addDataNode(ArrayNode,
-                                           'ScilabString',
-                                           height=9, width=1)
+                                       'ScilabString',
+                                       height=9, width=1)
     for param in parameters:
         addDataData(additionalStringNode, param)
     innerarray = addArrayNode(ArrayNode, scilabClass="ScilabList")
 
     additionalStringNode = addDataNode(innerarray,
-                                           'ScilabString',
-                                           height=1, width=1)
+                                       'ScilabString',
+                                       height=1, width=1)
     addDataData(additionalStringNode, "y1=locus2(u1)")
 
     additionalStringNode = addDataNode(innerarray,
-                                           'ScilabString',
-                                           height=1, width=1)
+                                       'ScilabString',
+                                       height=1, width=1)
     addDataData(additionalStringNode, "xd=[]")
 
     additionalStringNode = addDataNode(innerarray,
-                                           'ScilabString',
-                                           height=1, width=1)
+                                       'ScilabString',
+                                       height=1, width=1)
     addDataData(additionalStringNode, " ")
 
     additionalStringNode = addDataNode(innerarray,
-                                           'ScilabString',
-                                           height=1, width=1)
+                                       'ScilabString',
+                                       height=1, width=1)
     addDataData(additionalStringNode, " ")
 
     additionalStringNode = addDataNode(innerarray,
-                                           'ScilabString',
-                                           height=1, width=1)
+                                       'ScilabString',
+                                       height=1, width=1)
     addDataData(additionalStringNode, " ")
 
     additionalStringNode = addDataNode(innerarray,
-                                           'ScilabString',
-                                           height=1, width=1)
+                                       'ScilabString',
+                                       height=1, width=1)
     addDataData(additionalStringNode, " ")
 
     additionalStringNode = addDataNode(innerarray,
-                                           'ScilabString',
-                                           height=1, width=1)
+                                       'ScilabString',
+                                       height=1, width=1)
     addDataData(additionalStringNode, " ")
 
     additionalStringNode = addDataNode(innerarray,
-                                           'ScilabString',
-                                           height=2, width=1)
+                                       'ScilabString',
+                                       height=2, width=1)
     addDataData(additionalStringNode, " ")
     addDataData(additionalStringNode, "y1=[]")
 
@@ -65,40 +65,40 @@ def scifunc_block_m(outroot, attribid, ordering, geometry, parameters):
     addPrecisionNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 1, array)
 
     ArrayNode = addObjNode(outnode, TYPE_ARRAY,
-               CLASS_LIST, AS_OBJ_PARAM, parameters)
+                           CLASS_LIST, AS_OBJ_PARAM, parameters)
     additionalStringNode = addDataNode(ArrayNode,
-                                           'ScilabString',
-                                           height=1, width=1)
+                                       'ScilabString',
+                                       height=1, width=1)
     addDataData(additionalStringNode, "y1=locus2(u1)")
 
     additionalStringNode = addDataNode(ArrayNode,
-                                           'ScilabString',
-                                           height=1, width=1)
+                                       'ScilabString',
+                                       height=1, width=1)
     addDataData(additionalStringNode, "xd=[]")
 
     additionalStringNode = addDataNode(ArrayNode,
-                                           'ScilabString',
-                                           height=1, width=1)
+                                       'ScilabString',
+                                       height=1, width=1)
     addDataData(additionalStringNode, " ")
 
     additionalStringNode = addDataNode(ArrayNode,
-                                           'ScilabString',
-                                           height=1, width=1)
+                                       'ScilabString',
+                                       height=1, width=1)
     addDataData(additionalStringNode, " ")
 
     additionalStringNode = addDataNode(ArrayNode,
-                                           'ScilabString',
-                                           height=1, width=1)
+                                       'ScilabString',
+                                       height=1, width=1)
     addDataData(additionalStringNode, " ")
 
     additionalStringNode = addDataNode(ArrayNode,
-                                           'ScilabString',
-                                           height=1, width=1)
+                                       'ScilabString',
+                                       height=1, width=1)
     addDataData(additionalStringNode, " ")
 
     additionalStringNode = addDataNode(ArrayNode,
-                                           'ScilabString',
-                                           height=2, width=1)
+                                       'ScilabString',
+                                       height=2, width=1)
     addDataData(additionalStringNode, " ")
     addDataData(additionalStringNode, "y1=[]")
 

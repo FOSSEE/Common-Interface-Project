@@ -1,13 +1,12 @@
 from common.AAAAAA import *
 
-def SplitBlock(outroot, attribid, ordering, geometry):
+def SplitBlock(outroot, attribid, ordering, geometry, parent=1):
+    func_name = 'CLKSPLIT_f'
     outnode = addOutNode(outroot, BLOCK_SPLIT,
-                         attribid, ordering, 1,
-                         None, None, 'DEFAULT',
-                         '', None,
-                         value='',
-                         connectable=0,
-                         vertex=1)
+                         attribid, ordering, parent,
+                         func_name, 'split', 'DEFAULT',
+                         func_name, BLOCKTYPE_D, dependsOnU='0',
+                         dependsOnT='0')
     addExprsNode(outnode, TYPE_DOUBLE, 0, [])
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0,
                 [])

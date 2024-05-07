@@ -3,15 +3,20 @@ from blocks.EVTDLY_c import EVTDLY_c
 from blocks.SplitBlock import SplitBlock
 from common.AAAAAA import *
 
-block_id = ['128c18ea:1383ab8277d:-748d', '-73e75f0:167968eb73f:-7955',
-            '-73e75f0:167968eb73f:-7953', '-73e75f0:167968eb73f:-7950']
-link_id = ['-63efee48:189fd5ed04e:-73d5', '-63efee48:189fd5ed04e:-73d4',
+block_id = ['-3088270e:166584c7421:-7eee', '-3088270e:166584c7422:-7eee', '-3088270e:166584c7420:-7edf',
+            '-3088270e:166584c7420:-7edd', '-3088270e:166584c7420:-7eda', '128c18ea:1383ab8277d:-748d',
+            '-73e75f0:167968eb73f:-7955',
+            '-73e75f0:167968eb73f:-7953', '-73e75f0:167968eb73f:-7950'] # first 4 ids
+link_id = ['63290cd8:18f13db2a0d:-7fe0', '63290cd8:18f13db2a0d:-7fdf', '63290cd8:18f13db2a0d:-7fde',
+           '-63efee48:189fd5ed04e:-73d5', '-63efee48:189fd5ed04e:-73d4',
            '-63efee48:189fd5ed04e:-73d3', '128c18ea:1383ab8277e:-748d'
-           ]
-port_id = ['-63efee48:189fd5ed04e:-73dd', '-63efee48:189fd5ed04e:-73db',
+           ] # first 3 ids
+port_id = ['63290cd8:18f13db2a0d:-7fe8', '63290cd8:18f13db2a0d:-7fe6', '63290cd8:18f13db2a0d:-7fe5',
+           '63290cd8:18f13db2a0d:-7fe3', '63290cd8:18f13db2a0d:-7fe2', '63290cd8:18f13db2a0d:-7fe1',
+           '-63efee48:189fd5ed04e:-73dd', '-63efee48:189fd5ed04e:-73db',
            '-63efee48:189fd5ed04e:-73da', '-63efee48:189fd5ed04e:-73d8',
            '-63efee48:189fd5ed04e:-73d7', '-63efee48:189fd5ed04e:-73d6'
-           ]
+           ] # first 5 ids
 
 
 def CLOCK_c(outroot, attribid, ordering, geometry, parameters):
@@ -55,51 +60,51 @@ def CLOCK_c(outroot, attribid, ordering, geometry, parameters):
     addmxCellNode(root, TYPE_MXCELL,
                   id=block_id[0])
     addmxCellNode(root, TYPE_MXCELL,
-                  id=block_id[0],
+                  id=block_id[1],
                   parent=block_id[0])
 
     # Create the EventOutBlock node inside the root tag
-    CLKOUT_f(root, block_id[1], ordering, geometry, parameters)
+    CLKOUT_f(root, block_id[2], ordering, geometry, parameters, parent=block_id[1])
 
     addPort(root, TYPE_CNTRL, id=port_id[0],
-            parent=block_id[1], ordering="1",
+            parent=block_id[2], ordering="1",
             dataType="REAL_MATRIX", dataColumns="1",
             dataLines="-1", initialState="0.0",
             style="ControlPort", value="")
 
-    EVTDLY_c(root, block_id[2], ordering, geometry, parameters)
+    EVTDLY_c(root, block_id[3], ordering, geometry, parameters, parent=block_id[1])
 
     addPort(root, TYPE_CNTRL, id=port_id[1],
-            parent=block_id[2], ordering="1",
+            parent=block_id[3], ordering="1",
             dataType="REAL_MATRIX", dataColumns="1",
             dataLines="-1", initialState="0.0",
             style="ControlPort", value="")
     addPort(root, TYPE_CMD, id=port_id[2],
-            parent=block_id[2], ordering="1",
+            parent=block_id[3], ordering="1",
             dataType="REAL_MATRIX", dataColumns="1",
-            dataLines="-1", initialState="0.0",
+            dataLines="-1", initialState="0.1",
             style="CommandPort", value="")
 
-    SplitBlock(root, attribid, ordering, geometry)
+    SplitBlock(root, block_id[4], ordering, geometry, parent=block_id[1])
 
     addPort(root, TYPE_CNTRL, id=port_id[3],
-            parent=block_id[3], ordering="1",
+            parent=block_id[4], ordering="1",
             dataType="REAL_MATRIX", dataColumns="1",
             dataLines="-1", initialState="0.0",
             style="ControlPort", value="")
     addPort(root, TYPE_CMD, id=port_id[4],
-            parent=block_id[3], ordering="1",
+            parent=block_id[4], ordering="1",
             dataType="REAL_MATRIX", dataColumns="1",
             dataLines="-1", initialState="-1.0",
             style="CommandPort", value="")
     addPort(root, TYPE_CMD, id=port_id[5],
-            parent=block_id[3], ordering="2",
+            parent=block_id[4], ordering="2",
             dataType="REAL_MATRIX", dataColumns="1",
             dataLines="-1", initialState="-1.0",
             style="CommandPort", value="")
 
     CCLink = addLink(root, TYPE_LINK, id=link_id[0],
-                     parent=link_id[3],
+                     parent=block_id[1],
                      source=port_id[5],
                      target=port_id[1],
                      style="CommandControlLink", value="")
@@ -114,7 +119,7 @@ def CLOCK_c(outroot, attribid, ordering, geometry, parameters):
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
     CCLink = addLink(root, TYPE_LINK, id=link_id[1],
-                     parent=link_id[3],
+                     parent=block_id[1],
                      source=port_id[4],
                      target=port_id[0],
                      style="CommandControlLink", value="")
@@ -125,7 +130,7 @@ def CLOCK_c(outroot, attribid, ordering, geometry, parameters):
     addmxPointNode(gemotryNode, 'mxPoint', a="targetPoint",
                    x="10.0", y="-4.0")
     CCLink = addLink(root, TYPE_LINK, id=link_id[2],
-                     parent=link_id[3],
+                     parent=block_id[1],
                      source=port_id[2],
                      target=port_id[3],
                      style="CommandControlLink", value="")

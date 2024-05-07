@@ -11,10 +11,10 @@ def CSCOPE(outroot, attribid, ordering, geometry, parameters):
 
     addExprsNode(outnode, TYPE_STRING, 10, parameters)
     addScilabDNode(outnode, AS_REAL_PARAM, width=4, realParts=[
+                  format_real_number(parameters[8]),
                   format_real_number(parameters[4]),
                   format_real_number(parameters[5]),
-                  format_real_number(parameters[6]),
-                  format_real_number(parameters[8])]
+                  format_real_number(parameters[6])]
                   )
     param = strarray(parameters)
     addPrecNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 15, param)

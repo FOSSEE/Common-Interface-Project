@@ -1,21 +1,23 @@
 from common.AAAAAA import *
 
-def OUT_f(outroot, attribid, ordering, geometry, parameters):
+def OUT_f(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'OUT_f'
 
     outnode = addOutNode(outroot, BLOCK_EXPLICIT_OUT,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'output', 'DEFAULT',
-                         func_name, BLOCKTYPE_C)
+                         func_name, BLOCKTYPE_C, dependsOnU='0',
+                         dependsOnT='0')
 
-    addExprsNode(outnode, TYPE_STRING, 1, parameters)
+    addExprsNode(outnode, TYPE_STRING, 1, parameters[2])
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0,
                 [])
-    array = ['0']
+    array = ['1']
     addPrecisionNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 1, array)
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, [])
-    addPrecisionNode(outnode, TYPE_INTEGER, AS_NBZERO, 1, array)
-    addPrecisionNode(outnode, TYPE_INTEGER, AS_NMODE, 1, array)
+    arr = ['0']
+    addPrecisionNode(outnode, TYPE_INTEGER, AS_NBZERO, 1, arr)
+    addPrecisionNode(outnode, TYPE_INTEGER, AS_NMODE, 1, arr)
     addTypeNode(outnode, TYPE_DOUBLE, AS_STATE, 0, [])
     addTypeNode(outnode, TYPE_DOUBLE, AS_DSTATE, 0, [])
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE, [])

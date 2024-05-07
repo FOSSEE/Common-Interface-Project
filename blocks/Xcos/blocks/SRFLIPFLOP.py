@@ -158,37 +158,37 @@ def SRFLIPFLOP(outroot, attribid, ordering, geometry, parameters):
     OUT_f(root, block_id[5], ordering, geometry, array)
 
     adPort(root, TYPE_EXPLICITINPORT, id=port_id[11],
-            parent=block_id[5], ordering="1",
-            initialState="0.0",
-            style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-            value="")
+           parent=block_id[5], ordering="1",
+           initialState="0.0",
+           style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+           value="")
 
     array = ['1']
     IN_f(root, block_id[6], ordering, geometry, array)
 
     adPort(root, TYPE_EXPLICITOUTPORT, id=port_id[12],
-            parent=block_id[6], ordering="1",
-            initialState="0.0",
-            style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-            value="")
+           parent=block_id[6], ordering="1",
+           initialState="0.0",
+           style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+           value="")
 
     array = ['2']
     IN_f(root, block_id[7], ordering, geometry, array)
 
     adPort(root, TYPE_EXPLICITOUTPORT, id=port_id[13],
-            parent=block_id[7], ordering="1",
-            initialState="0.0",
-            style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-            value="")
+           parent=block_id[7], ordering="1",
+           initialState="0.0",
+           style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+           value="")
 
     array = ['1']
     OUT_f(root, block_id[8], ordering, geometry, array)
 
     adPort(root, TYPE_EXPLICITINPORT, id=port_id[14],
-            parent=block_id[8], ordering="1",
-            initialState="0.0",
-            style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-            value="")
+           parent=block_id[8], ordering="1",
+           initialState="0.0",
+           style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+           value="")
 
     CCLink = addLink(root, TYPE_EXLINK, id=link_id[0],
                      parent=block_id[1],
@@ -275,8 +275,8 @@ def SRFLIPFLOP(outroot, attribid, ordering, geometry, parameters):
                    a="targetPoint", x="20.0", y="-4.0")
 
     addNodemxCell(SuperBlockDiagram, TYPE_MXCELL,
-                       id=block_id[1], a="defaultParent",
-                       parent=block_id[0])
+                  id=block_id[1], a="defaultParent",
+                  parent=block_id[0])
 
     return outnode
 

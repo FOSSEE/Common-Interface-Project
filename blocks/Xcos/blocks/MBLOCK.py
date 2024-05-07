@@ -63,7 +63,7 @@ def MBLOCK(outroot, attribid, ordering, geometry, parameters):
                 " reinit(v1,v1p*0.98);", " reinit(v2,v2p*0.98);", " end when;",
                 "//-----------------------------------", "end Ball_Platform;"]
     addSciStringNode(arrayNode, height=29,
-                        parameters=StrParam)
+                     parameters=StrParam)
 
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0,
                 [])
@@ -95,7 +95,7 @@ def MBLOCK(outroot, attribid, ordering, geometry, parameters):
 
     scilabStringParameters = ["y1", "y2"]
     addSciStringNode(equationsArrayNode, height=2,
-                        parameters=scilabStringParameters)
+                     parameters=scilabStringParameters)
 
     innerNode = addArrayNode(equationsArrayNode, scilabClass="ScilabList")
 

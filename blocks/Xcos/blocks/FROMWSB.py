@@ -58,10 +58,10 @@ def FROMWSB(outroot, attribid, ordering, geometry, parameters):
     FROMWS_c(root, block_id[2], ordering, geometry, parameters)
 
     adPort(root, TYPE_EXPLICITOUTPORT, id=port_id[0],
-            parent=block_id[2], ordering="1",
-            initialState="0.0",
-            style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-            value="")
+           parent=block_id[2], ordering="1",
+           initialState="0.0",
+           style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+           value="")
 
     addPort(root, TYPE_CNTRL, id=port_id[1],
             parent=block_id[2], ordering="1",
@@ -79,10 +79,10 @@ def FROMWSB(outroot, attribid, ordering, geometry, parameters):
     OUT_f(root, block_id[3], ordering, geometry, array)
 
     adPort(root, TYPE_EXPLICITINPORT, id=port_id[3],
-            parent=block_id[3], ordering="1",
-            initialState="0.0",
-            style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-            value="")
+           parent=block_id[3], ordering="1",
+           initialState="0.0",
+           style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+           value="")
 
     CCLink = addLink(root, TYPE_EXLINK, id=link_id[0],
                      parent=block_id[1],
@@ -109,8 +109,8 @@ def FROMWSB(outroot, attribid, ordering, geometry, parameters):
                    a="targetPoint", x="20.0", y="-4.0")
 
     addNodemxCell(SuperBlockDiagram, TYPE_MXCELL,
-                       id=block_id[1], a="defaultParent",
-                       parent=block_id[0])
+                  id=block_id[1], a="defaultParent",
+                  parent=block_id[0])
 
     return outnode
 
