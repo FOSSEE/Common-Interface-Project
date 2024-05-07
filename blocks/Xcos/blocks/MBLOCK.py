@@ -8,7 +8,6 @@ def MBLOCK(outroot, attribid, ordering, geometry, parameters):
                          func_name, 'Ball_Platform', 'MODELICA',
                          func_name, BLOCKTYPE_C)
 
-    # addExprsNode(outnode, TYPE_STRING, 0, parameters)
     arrayNode = addObjNode(outnode, TYPE_ARRAY, CLASS_TLIST, AS_EXPRS, parameters)
     scilabStringParameters = ["MBLOCK", "in",
                               "intype", "out",

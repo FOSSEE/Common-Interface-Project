@@ -527,14 +527,6 @@ def addPrecNode(node, subNodeType, type, width, parameters):
     return subNode
 
 
-# def strarray(parameter):
-#     param = list(map(str, parameter[0].split(" ")))
-#     params = parameter[3][1:8].split(";")
-#     parameters = param + params + parameter
-#     parameters.pop(10)
-#     parameters.pop(12)
-#     parameters = parameters[0:15]
-#     return parameters
 def strarray(parameter):
     param = list(map(str, parameter[0].split(" ")))
     params = parameter[3][1:8].split(";")
@@ -618,10 +610,6 @@ def get_number_power(value):
                   value)
 
 
-# def format_real_number(parameter):
-#     real_number = float(parameter.replace('*10^', 'e').replace('10^', '1e'))
-#     formatted_number = "{:.1E}".format(real_number)
-#     return [formatted_number]
 def format_real_number(parameter):
     if 'e' in parameter or 'E' in parameter:
         real_number = float(parameter.replace('*10^', 'e').replace('10^', '1e'))

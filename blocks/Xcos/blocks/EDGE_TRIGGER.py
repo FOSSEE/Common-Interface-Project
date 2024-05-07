@@ -124,10 +124,6 @@ def EDGE_TRIGGER(outroot, attribid, ordering, geometry, parameters):
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
     addArray(gemotryNode, TYPE_ARRAY, a="points")
-    # addPointNode(ArrayNode, 'mxPoint',
-    #              x="100.70999999999998", y="40.0")
-    # addPointNode(ArrayNode, 'mxPoint', x="60.0",
-    #              y="40.0")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 

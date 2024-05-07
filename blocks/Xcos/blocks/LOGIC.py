@@ -8,13 +8,11 @@ def LOGIC(outroot, attribid, ordering, geometry, parameters):
                          func_name, 'logic', 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')
-    print(parameters)
     addExprsNode(outnode, TYPE_STRING, 2, parameters)
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0, [])
     addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 0, [])
     innernode = addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, [])
     array = ["0", "1", "0", "1"]
-    # addScilabIntNode(innernode, 4, array)
     addSciIntNode(innernode, 4, array)
     array = ['0']
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NBZERO, 1, array)

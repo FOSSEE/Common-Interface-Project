@@ -18,11 +18,6 @@ def CLSS(outroot, attribid, ordering, geometry, parameters):
                          dependsOnT='1')
 
     addExprsNode(outnode, TYPE_STRING, 5, parameters)
-    # addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 16, realParts=[-4.0,
-    #              -3.0, 0.0, 1.0,
-    #              0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 10.0,
-    #              40.0, 1.0, 0.0, 0.0, 0.0]
-    #              )
     addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 16, realParts=[0.0,
                  0.0, -1.0, 1.0, 0.0, -2.0, 0.0, 1.0, -4.0, 0.0,
                  0.0, 10.0, 1.0, 0.0, 0.0, 0.0]

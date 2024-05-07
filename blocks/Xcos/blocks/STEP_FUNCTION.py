@@ -87,7 +87,6 @@ def STEP_FUNCTION(outroot, attribid, ordering, geometry, parameters):
             value="")
 
     CCLink = addLink(root, TYPE_LINK, id=link_id[0],
-                #      parent=block_id[4],
                      parent=block_id[1],
                      source=port_id[2],
                      target=port_id[1],
@@ -108,7 +107,6 @@ def STEP_FUNCTION(outroot, attribid, ordering, geometry, parameters):
                    a="targetPoint", x="20.0", y="-4.0")
 
     CCLink = addLink(root, TYPE_EXLINK, id=link_id[1],
-                #      parent=block_id[4],
                      parent=block_id[1],
                      source=port_id[0],
                      target=port_id[3],
