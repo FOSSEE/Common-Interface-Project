@@ -17,7 +17,7 @@ def STEP_FUNCTION(outroot, attribid, ordering, geometry, parameters):
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
                          func_name, 'csuper', 'DEFAULT',
-                         func_name, BLOCKTYPE_C,  dependsOnU='0',
+                         func_name, BLOCKTYPE_C, dependsOnU='0',
                          dependsOnT='0')
 
     addExprsNode(outnode, TYPE_DOUBLE, 0, parameters)
