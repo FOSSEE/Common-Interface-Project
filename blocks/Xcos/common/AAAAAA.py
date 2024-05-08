@@ -143,14 +143,6 @@ def addNodeScilabDouble(node, realParts, height):
         addDData(scilabDoubleNode, realPart, line=0, column=i)
 
 
-# def addDData(parent, realPart, line=None, column=None):
-#     data_attributes = {'realPart': str(realPart)}
-#     if line is not None:
-#         data_attributes['line'] = str(line)
-#     if column is not None:
-#         data_attributes['column'] = str(column)
-
-#     ET.SubElement(parent, 'data', **data_attributes)
 def addDData(parent, line=None, column=None, realPart=None):
     data_attributes = {}
     if line is not None:
