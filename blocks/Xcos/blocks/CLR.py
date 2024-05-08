@@ -11,10 +11,9 @@ def CLR(outroot, attribid, ordering, geometry, parameters):
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)
     addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 16, realParts=[0.0,
-                 0.0, 98099.99999999997,
-                 1.0, 0.0, 981.0000000000005, 0.0, 1.0,
-                 -100.0, 0.0, 0.0, 1.0, -280.14282071831985,
-                 0.0, 0.0, 0.0]
+                 -100.0,
+                 1.0, -12.0, 0.0, 1.0, 100.0,
+                 0.0, 0.0]
                  )
     addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 0, [])
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)

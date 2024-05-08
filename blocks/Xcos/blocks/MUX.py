@@ -12,14 +12,15 @@ def MUX(outroot, attribid, ordering, geometry, parameters):
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0,
                 [])
-    array = ['0']
+    array = [parameters[0]]
     addPrecisionNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 1, array)
-    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
+    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, [])
+    array = ['0']
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NBZERO, 1, array)
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NMODE, 1, array)
     addTypeNode(outnode, TYPE_DOUBLE, AS_STATE, 0, [])
     addTypeNode(outnode, TYPE_DOUBLE, AS_DSTATE, 0, [])
-    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE, parameters)
+    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE, [])
     # Create the outer Array node for equations
     addArrayNode(outnode, scilabClass="ScilabList",
                                       **{'as': 'equations'})

@@ -21,7 +21,7 @@ def REGISTER(outroot, attribid, ordering, geometry, parameters):
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0,
                 [])
     addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 0, [])
-    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
+    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, [])
     array = ['0']
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NBZERO, 1, array)
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NMODE, 1, array)
@@ -36,9 +36,9 @@ def REGISTER(outroot, attribid, ordering, geometry, parameters):
                    format_real_number(formatted_numbers[2]),
                    format_real_number(formatted_numbers[3]),
                    format_real_number(formatted_numbers[4])])
-    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE, parameters)
+    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE, [])
     addObjNode(outnode, TYPE_ARRAY,
-               CLASS_LIST, AS_EQUATIONS, parameters)
+               CLASS_LIST, AS_EQUATIONS, [])
     addgeometryNode(outnode, GEOMETRY, geometry['height'],
                     geometry['width'], geometry['x'], geometry['y'])
 

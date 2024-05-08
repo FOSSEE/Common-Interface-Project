@@ -18,7 +18,7 @@ def GENSQR_f(outroot, attribid, ordering, geometry, parameters):
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NMODE, 1, array)
     addTypeNode(outnode, TYPE_DOUBLE, AS_STATE, 0, [])
     addSciDBNode(outnode, TYPE_DOUBLE, AS_DSTATE,
-                 1, realParts=[10.8])
+                 1, realParts=[1.0])
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE, parameters)
     addArrayNode(outnode, scilabClass="ScilabList",
                                       **{'as': 'equations'})

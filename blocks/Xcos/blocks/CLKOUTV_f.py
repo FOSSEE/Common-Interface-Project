@@ -26,11 +26,6 @@ def CLKOUTV_f(outroot, attribid, ordering, geometry, parameters):
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_EQUATIONS, parameters)
     addgeometryNode(outnode, GEOMETRY, geometry['height'],
                     geometry['width'], geometry['x'], geometry['y'])
-    mxcell = addmxCell(outnode, TYPE_MXCELL,
-                       id=block_id[1], style="noLabel=0;opacity=0;",
-                       connectable="0", value="Text", vertex="1")
-    addgeometryNode(mxcell, GEOMETRY, geometry['height'],
-                    geometry['width'], geometry['x'], geometry['y'])
 
     return outnode
 
