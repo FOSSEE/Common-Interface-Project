@@ -3,20 +3,23 @@ from blocks.EVTDLY_c import EVTDLY_c
 from blocks.SplitBlock import SplitBlock
 from common.AAAAAA import *
 
-block_id = ['-3088270e:166584c7421:-7eee', '-3088270e:166584c7422:-7eee', '-3088270e:166584c7420:-7edf',
-            '-3088270e:166584c7420:-7edd', '-3088270e:166584c7420:-7eda', '128c18ea:1383ab8277d:-748d',
-            '-73e75f0:167968eb73f:-7955',
-            '-73e75f0:167968eb73f:-7953', '-73e75f0:167968eb73f:-7950'] # first 4 ids
-link_id = ['63290cd8:18f13db2a0d:-7fe0', '63290cd8:18f13db2a0d:-7fdf', '63290cd8:18f13db2a0d:-7fde',
-           '-63efee48:189fd5ed04e:-73d5', '-63efee48:189fd5ed04e:-73d4',
-           '-63efee48:189fd5ed04e:-73d3', '128c18ea:1383ab8277e:-748d'
-           ] # first 3 ids
-port_id = ['63290cd8:18f13db2a0d:-7fe8', '63290cd8:18f13db2a0d:-7fe6', '63290cd8:18f13db2a0d:-7fe5',
-           '63290cd8:18f13db2a0d:-7fe3', '63290cd8:18f13db2a0d:-7fe2', '63290cd8:18f13db2a0d:-7fe1',
+block_id = ['-3088270e:166584c7421:-7eee', '-3088270e:166584c7422:-7eee',
+            '-3088270e:166584c7420:-7edf', '-3088270e:166584c7420:-7edd',
+            '-3088270e:166584c7420:-7eda', '128c18ea:1383ab8277d:-748d',
+            '-73e75f0:167968eb73f:-7955', '-73e75f0:167968eb73f:-7953',
+            '-73e75f0:167968eb73f:-7950']  # first 4 ids
+link_id = ['63290cd8:18f13db2a0d:-7fe0', '63290cd8:18f13db2a0d:-7fdf',
+           '63290cd8:18f13db2a0d:-7fde', '-63efee48:189fd5ed04e:-73d5',
+           '-63efee48:189fd5ed04e:-73d4', '-63efee48:189fd5ed04e:-73d3',
+           '128c18ea:1383ab8277e:-748d'
+           ]  # first 3 ids
+port_id = ['63290cd8:18f13db2a0d:-7fe8', '63290cd8:18f13db2a0d:-7fe6',
+           '63290cd8:18f13db2a0d:-7fe5', '63290cd8:18f13db2a0d:-7fe3',
+           '63290cd8:18f13db2a0d:-7fe2', '63290cd8:18f13db2a0d:-7fe1',
            '-63efee48:189fd5ed04e:-73dd', '-63efee48:189fd5ed04e:-73db',
            '-63efee48:189fd5ed04e:-73da', '-63efee48:189fd5ed04e:-73d8',
            '-63efee48:189fd5ed04e:-73d7', '-63efee48:189fd5ed04e:-73d6'
-           ] # first 5 ids
+           ]  # first 5 ids
 
 
 def CLOCK_c(outroot, attribid, ordering, geometry, parameters):
