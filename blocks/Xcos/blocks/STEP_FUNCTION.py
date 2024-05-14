@@ -2,13 +2,18 @@ from blocks.STEP import STEP
 from blocks.OUT_f import OUT_f
 from common.AAAAAA import *
 
-block_id = ['-3088270e:166584c7421:-7f30', '-3088270e:166584c7422:-7f30', '-3088270e:166584c7420:-7f2b', '-3088270e:166584c7420:-7f27', '-1e985524:130d9355381:-7ae5', '-1e985524:130d9355382:-7ae5',
+block_id = ['-3088270e:166584c7421:-7f30', '-3088270e:166584c7422:-7f30',
+            '-3088270e:166584c7420:-7f2b', '-3088270e:166584c7420:-7f27',
+            '-1e985524:130d9355381:-7ae5', '-1e985524:130d9355382:-7ae5',
             '-28bb03c0:130e63286b9:-7f9e', '-28bb03c0:130e63286b9:-7f9b',
-            '-3088270e:166584c7422:-7e77'] # first three ids
-port_id = ['63290cd8:18f13db2a0d:-7ff3', '63290cd8:18f13db2a0d:-7ff2', '63290cd8:18f13db2a0d:-7ff1', '63290cd8:18f13db2a0d:-7fee', '-6f1a4b5d:18f04c0dca9:-7ff0', '-6f1a4b5d:18f04c0dca9:-7fef',
+            '-3088270e:166584c7422:-7e77']  # first three ids
+port_id = ['63290cd8:18f13db2a0d:-7ff3', '63290cd8:18f13db2a0d:-7ff2',
+           '63290cd8:18f13db2a0d:-7ff1', '63290cd8:18f13db2a0d:-7fee',
+           '-6f1a4b5d:18f04c0dca9:-7ff0', '-6f1a4b5d:18f04c0dca9:-7fef',
            '-6f1a4b5d:18f04c0dca9:-7fee', '-6f1a4b5d:18f04c0dca9:-7feb',
-           ] # first three ids
-link_id = ['63290cd8:18f13db2a0d:-7fed', '63290cd8:18f13db2a0d:-7fec', '-6f1a4b5d:18f04c0dca9:-7fea', '-6f1a4b5d:18f04c0dca9:-7fe9']
+           ]  # first three ids
+link_id = ['63290cd8:18f13db2a0d:-7fed', '63290cd8:18f13db2a0d:-7fec',
+           '-6f1a4b5d:18f04c0dca9:-7fea', '-6f1a4b5d:18f04c0dca9:-7fe9']
 
 
 def STEP_FUNCTION(outroot, attribid, ordering, geometry, parameters):
@@ -81,10 +86,10 @@ def STEP_FUNCTION(outroot, attribid, ordering, geometry, parameters):
     OUT_f(root, block_id[3], ordering, geometry, parameters, parent=block_id[1])
 
     adPort(root, TYPE_EXPLICITINPORT, id=port_id[3],
-            parent=block_id[3], ordering="1",
-            initialState="0.0",
-            style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-            value="")
+           parent=block_id[3], ordering="1",
+           initialState="0.0",
+           style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+           value="")
 
     CCLink = addLink(root, TYPE_LINK, id=link_id[0],
                      parent=block_id[1],
