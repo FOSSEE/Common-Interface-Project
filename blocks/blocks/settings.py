@@ -37,7 +37,7 @@ ALLOWED_HOSTS = [
     'test.esimblocks.fossee.org',
 ]
 
-SCILAB_DIR = '/home/sunil/git/scilab_for_xcos_on_cloud'
+SCILAB_DIR = '../../scilab_for_xcos_on_cloud'
 
 # Application definition
 
