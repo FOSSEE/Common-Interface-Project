@@ -79,7 +79,7 @@ export default function SimulationProperties () {
 
   // Prepare Netlist to file
   const prepareNetlist = (netlist) => {
-    const titleA = netfile.title.split(' ')[1]
+    const titleA = netfile?.title?.split(' ')[1]
     const myblob = new Blob([netlist], {
       type: 'text/plain'
     })
