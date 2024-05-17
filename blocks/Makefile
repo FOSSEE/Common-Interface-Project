@@ -9,8 +9,8 @@ SRCFILES += $(sort $(wildcard Xcos/links/*.py))
 
 XCOS2XMLFILES := $(sort $(wildcard xcos2xml/head.xsl))
 XCOS2XMLFILES += $(sort $(wildcard xcos2xml/blocks/*.xsl))
-#XCOS2XMLFILES += $(sort $(wildcard xcos2xml/ports/*.xsl))
-#XCOS2XMLFILES += $(sort $(wildcard xcos2xml/links/*.xsl))
+XCOS2XMLFILES += $(sort $(wildcard xcos2xml/ports/*.xsl))
+XCOS2XMLFILES += $(sort $(wildcard xcos2xml/links/*.xsl))
 XCOS2XMLFILES += $(sort $(wildcard xcos2xml/foot.xsl))
 
 IMPORT := Xcos/xcosblocks.py
