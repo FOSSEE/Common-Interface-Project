@@ -7,11 +7,18 @@ SRCFILES += $(sort $(wildcard Xcos/blocks/*.py))
 SRCFILES += $(sort $(wildcard Xcos/ports/*.py))
 SRCFILES += $(sort $(wildcard Xcos/links/*.py))
 
+XCOS2XMLFILES := $(sort $(wildcard xcos2xml/head.xsl))
+XCOS2XMLFILES += $(sort $(wildcard xcos2xml/blocks/*.xsl))
+#XCOS2XMLFILES += $(sort $(wildcard xcos2xml/ports/*.xsl))
+#XCOS2XMLFILES += $(sort $(wildcard xcos2xml/links/*.xsl))
+XCOS2XMLFILES += $(sort $(wildcard xcos2xml/foot.xsl))
+
 IMPORT := Xcos/xcosblocks.py
 TARGET := xcosblocks.py
 TARGET2 := $(BLOCKDIR)/$(TARGET)
+TARGET3 := eda-frontend/src/static/xcos2xml.xsl
 
-all : $(IMPORT) $(TARGET) $(TARGET2)
+all : $(IMPORT) $(TARGET) $(TARGET2) $(TARGET3)
 
 $(IMPORT) : $(SRCFILES)
 	@echo Making $@ ...
@@ -47,3 +54,9 @@ flake8 : $(TARGET)
 
 $(TARGET2) : .srcflake8
 	cp -f $(TARGET) $@
+
+$(TARGET3) : $(XCOS2XMLFILES)
+	@echo Making $@ ...
+	@for f in $^; do \
+	    cat "$$f"; \
+	done > $@
