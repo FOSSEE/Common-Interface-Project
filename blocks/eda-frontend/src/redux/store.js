@@ -11,11 +11,11 @@ const store = configureStore({
   reducer: {
     componentProperties: componentPropertiesReducer,
     schematicEditor: schematicEditorReducer,
-    dashboardReducer: dashboardReducer,
-    netlistReducer: netlistReducer,
-    simulationReducer: simulationReducer,
-    saveSchematicReducer: saveSchematicReducer,
-    authReducer: authReducer
+    dashboard: dashboardReducer,
+    netlist: netlistReducer,
+    simulation: simulationReducer,
+    saveSchematic: saveSchematicReducer,
+    auth: authReducer
   }
 })
 

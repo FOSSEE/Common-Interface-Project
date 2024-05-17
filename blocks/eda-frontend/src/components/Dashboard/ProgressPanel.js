@@ -56,7 +56,7 @@ export default function ProgressPanel () {
     setValue(newValue)
   }
 
-  const schematics = useSelector(state => state.dashboardReducer.schematics)
+  const schematics = useSelector(state => state.dashboard.schematics)
 
   const dispatch = useDispatch()
 

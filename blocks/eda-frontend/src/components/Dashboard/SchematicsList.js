@@ -55,8 +55,8 @@ function MainCard () {
 
 export default function SchematicsList () {
   const classes = useStyles()
-  const auth = useSelector(state => state.authReducer)
-  const schematics = useSelector(state => state.dashboardReducer.schematics)
+  const auth = useSelector(state => state.auth)
+  const schematics = useSelector(state => state.dashboard.schematics)
   const dispatch = useDispatch()
 
   // For Fetching Saved Schematics

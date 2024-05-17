@@ -104,7 +104,7 @@ function Header () {
   const history = useHistory()
   const classes = useStyles()
   const auth = store.getState().authReducer
-  const schSave = useSelector(state => state.saveSchematicReducer)
+  const schSave = useSelector(state => state.saveSchematic)
   const [anchorEl, setAnchorEl] = useState(null)
 
   const dispatch = useDispatch()

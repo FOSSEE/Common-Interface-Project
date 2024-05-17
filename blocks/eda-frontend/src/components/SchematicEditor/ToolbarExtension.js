@@ -47,7 +47,7 @@ const FileSaver = require('file-saver')
 
 // Dialog box to display generated netlist
 export function NetlistModal ({ open, close, netlist }) {
-  const netfile = useSelector(state => state.netlistReducer)
+  const netfile = useSelector(state => state.netlist)
   const createNetlistFile = () => {
     const titleA = netfile.title.split(' ')[1]
     const name = process.env.REACT_APP_NAME
@@ -384,9 +384,9 @@ export function OpenSchDialog (props) {
   const { open, close, openLocal } = props
   const [isLocal, setisLocal] = useState(true)
   const [isGallery, setisGallery] = useState(false)
-  const schSave = useSelector(state => state.saveSchematicReducer)
-  const auth = useSelector(state => state.authReducer)
-  const schematics = useSelector(state => state.dashboardReducer.schematics)
+  const schSave = useSelector(state => state.saveSchematic)
+  const auth = useSelector(state => state.auth)
+  const schematics = useSelector(state => state.dashboard.schematics)
 
   function getDate (jsonDate) {
     const json = jsonDate

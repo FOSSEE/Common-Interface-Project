@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 // Card displaying user dashboard home page header.
 function MainCard () {
   const classes = useStyles()
-  const auth = useSelector(state => state.authReducer)
+  const auth = useSelector(state => state.auth)
   const dashboard = process.env.REACT_APP_NAME
   const button = 'My ' + process.env.REACT_APP_DIAGRAMS_NAME
 
@@ -51,7 +51,7 @@ function MainCard () {
 
 export default function DashboardHome () {
   const classes = useStyles()
-  const auth = useSelector(state => state.authReducer)
+  const auth = useSelector(state => state.auth)
   const typography = 'Track your ' + process.env.REACT_APP_SMALL_DIAGRAMS_NAME + ' status here...'
 
   return (
