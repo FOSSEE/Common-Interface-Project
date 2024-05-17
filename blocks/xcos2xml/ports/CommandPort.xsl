@@ -21,6 +21,5 @@
         <xsl:apply-templates select="node()"/>
         <Object as="parameter_values"/>
         <Object as="displayProperties"/>
-        
       </xsl:element>
     </xsl:template>

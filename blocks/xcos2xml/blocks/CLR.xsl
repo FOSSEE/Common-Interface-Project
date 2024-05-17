@@ -26,6 +26,5 @@
         <xsl:apply-templates select="node()"/>
         <Object display_parameter="100,s&lt;SUP&gt;2&lt;/SUP&gt;+ 12*s + 100" as="displayProperties"/>
         <Object p000_value="100" p001_value="s^2 + 12*s + 100" as="parameter_values"/>
-        
       </xsl:element>
     </xsl:template>

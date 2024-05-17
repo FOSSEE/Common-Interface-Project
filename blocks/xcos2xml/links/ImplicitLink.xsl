@@ -18,6 +18,5 @@
         <xsl:apply-templates />
         <Object as="parameter_values"/>
         <Object as="displayProperties"/>
-        
       </xsl:element>
     </xsl:template>
