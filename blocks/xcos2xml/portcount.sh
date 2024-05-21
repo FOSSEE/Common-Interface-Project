@@ -1,8 +1,9 @@
 #!/bin/bash
 
+sqlite3 xcosblocks.sqlite3 < xcos2xml/portcount.sql > portcount.csv
+
 while read line; do
     IFS=',' read -r block_name explicitInputPorts implicitInputPorts explicitOutputPorts implicitOutputPorts controlPorts commandPorts dummy <<< "$line"
-    echo $block_name $explicitInputPorts $implicitInputPorts $explicitOutputPorts $implicitOutputPorts $controlPorts $commandPorts
     file=xcos2xml/blocks/$block_name.xsl
     if ! test -f $file; then
         echo "$file: not found"
@@ -17,3 +18,5 @@ while read line; do
         -e "s,\\(<xsl:attribute name=\"commandPorts\">\\).*\\(</xsl:attribute>\\),\\1$commandPorts\\2," \
         $file
 done < portcount.csv
+
+rm -f portcount.csv

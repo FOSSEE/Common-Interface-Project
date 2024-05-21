@@ -1,3 +1,4 @@
+.headers off
 .mode csv
 SELECT block_name,
 (SELECT COUNT(*) FROM xcosblocks_newblockport AS blockport WHERE blockport.block_id = block.id AND port_type = 'ExplicitInputPort') AS explicitInputPorts,
@@ -6,6 +7,6 @@ SELECT block_name,
 (SELECT COUNT(*) FROM xcosblocks_newblockport AS blockport WHERE blockport.block_id = block.id AND port_type = 'ImplicitOutputPort') AS implicitOutputPorts,
 (SELECT COUNT(*) FROM xcosblocks_newblockport AS blockport WHERE blockport.block_id = block.id AND port_type = 'ControlPort') AS controlPorts,
 (SELECT COUNT(*) FROM xcosblocks_newblockport AS blockport WHERE blockport.block_id = block.id AND port_type = 'CommandPort') AS commandPorts,
-0
+0 AS dummy
 FROM xcosblocks_newblock AS block
 ORDER BY 1;
