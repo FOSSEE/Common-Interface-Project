@@ -2,7 +2,7 @@
 
 sqlite3 xcosblocks.sqlite3 < xcos2xml/portcount.sql > portcount.csv
 
-while read line; do
+while read -r line; do
     IFS=',' read -r block_name explicitInputPorts implicitInputPorts explicitOutputPorts implicitOutputPorts controlPorts commandPorts dummy <<< "$line"
     file=xcos2xml/blocks/$block_name.xsl
     if ! test -f $file; then
