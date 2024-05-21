@@ -1,4 +1,4 @@
-    <xsl:template match="BasicBlock[@interfaceFunctionName = 'ROOTCOEF']">
+    <xsl:template match="*[@interfaceFunctionName = 'ROOTCOEF']">
       <xsl:element name="mxCell">
         <xsl:attribute name="style">
           <xsl:value-of select="@style" />

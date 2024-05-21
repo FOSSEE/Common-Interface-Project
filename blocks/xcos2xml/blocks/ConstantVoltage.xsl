@@ -1,4 +1,4 @@
-    <xsl:template match="BasicBlock[@interfaceFunctionName = 'ConstantVoltage']">
+    <xsl:template match="*[@interfaceFunctionName = 'ConstantVoltage']">
       <xsl:element name="mxCell">
         <xsl:attribute name="style">
           <xsl:value-of select="@style" />

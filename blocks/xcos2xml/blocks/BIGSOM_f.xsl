@@ -1,4 +1,4 @@
-    <xsl:template match="BasicBlock[@interfaceFunctionName = 'BIGSOM_f']">
+    <xsl:template match="*[@interfaceFunctionName = 'BIGSOM_f']">
       <xsl:element name="mxCell">
         <xsl:attribute name="style">
           <xsl:value-of select="@style" />

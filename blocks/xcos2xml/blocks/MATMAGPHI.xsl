@@ -1,4 +1,4 @@
-    <xsl:template match="BasicBlock[@interfaceFunctionName = 'MATMAGPHI']">
+    <xsl:template match="*[@interfaceFunctionName = 'MATMAGPHI']">
       <xsl:element name="mxCell">
         <xsl:attribute name="style">
           <xsl:value-of select="@style" />

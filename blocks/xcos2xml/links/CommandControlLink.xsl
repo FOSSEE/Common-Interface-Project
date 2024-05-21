@@ -1,4 +1,4 @@
-    <xsl:template match="CommandControlLink[@style='CommandControlLink']">
+    <xsl:template match="*[@style='CommandControlLink']">
       <xsl:element name="mxCell">
         <xsl:attribute name="id">
           <xsl:value-of select="@id" />

@@ -1,4 +1,4 @@
-    <xsl:template match="BasicBlock[@interfaceFunctionName = 'SCALAR2VECTOR']">
+    <xsl:template match="*[@interfaceFunctionName = 'SCALAR2VECTOR']">
       <xsl:element name="mxCell">
         <xsl:attribute name="style">
           <xsl:value-of select="@style" />

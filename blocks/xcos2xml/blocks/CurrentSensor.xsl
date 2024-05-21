@@ -1,4 +1,4 @@
-    <xsl:template match="BasicBlock[@interfaceFunctionName = 'CurrentSensor']">
+    <xsl:template match="*[@interfaceFunctionName = 'CurrentSensor']">
       <xsl:element name="mxCell">
         <xsl:attribute name="style">
           <xsl:value-of select="@style" />

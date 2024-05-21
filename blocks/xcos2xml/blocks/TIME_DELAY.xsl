@@ -1,4 +1,4 @@
-    <xsl:template match="BasicBlock[@interfaceFunctionName = 'TIME_DELAY']">
+    <xsl:template match="*[@interfaceFunctionName = 'TIME_DELAY']">
       <xsl:element name="mxCell">
         <xsl:attribute name="style">
           <xsl:value-of select="@style" />

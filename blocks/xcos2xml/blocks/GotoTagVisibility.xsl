@@ -1,4 +1,4 @@
-    <xsl:template match="BasicBlock[@interfaceFunctionName = 'GotoTagVisibility']">
+    <xsl:template match="*[@interfaceFunctionName = 'GotoTagVisibility']">
       <xsl:element name="mxCell">
         <xsl:attribute name="style">
           <xsl:value-of select="@style" />

@@ -1,4 +1,4 @@
-    <xsl:template match="ImplicitInputPort[@style='ImplicitInputPort']">
+    <xsl:template match="*[@style='ImplicitInputPort']">
       <xsl:element name="mxCell">
         <xsl:attribute name="style">
           <xsl:value-of select="@style" />
