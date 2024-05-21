@@ -12,9 +12,9 @@
         <xsl:attribute name="blockprefix">XCOS</xsl:attribute>
         <xsl:attribute name="explicitInputPorts">1</xsl:attribute>
         <xsl:attribute name="implicitInputPorts">0</xsl:attribute>
-        <xsl:attribute name="explicitOutputPorts">1</xsl:attribute>
+        <xsl:attribute name="explicitOutputPorts">2</xsl:attribute>
         <xsl:attribute name="implicitOutputPorts">0</xsl:attribute>
-        <xsl:attribute name="controlPorts">0</xsl:attribute>
+        <xsl:attribute name="controlPorts">2</xsl:attribute>
         <xsl:attribute name="commandPorts">0</xsl:attribute>
         <xsl:attribute name="simulationFunction">
           <xsl:value-of select="@simulationFunctionName" />
@@ -26,6 +26,5 @@
         <xsl:apply-templates select="node()"/>
         <Object display_parameter="" as="displayProperties"/>
         <Object as="parameter_values"/>
-        
       </xsl:element>
     </xsl:template>

@@ -10,7 +10,7 @@
         <xsl:attribute name="connectable">0</xsl:attribute>
         <xsl:attribute name="CellType">Component</xsl:attribute>
         <xsl:attribute name="blockprefix">XCOS</xsl:attribute>
-        <xsl:attribute name="explicitInputPorts">1</xsl:attribute>
+        <xsl:attribute name="explicitInputPorts">3</xsl:attribute>
         <xsl:attribute name="implicitInputPorts">0</xsl:attribute>
         <xsl:attribute name="explicitOutputPorts">1</xsl:attribute>
         <xsl:attribute name="implicitOutputPorts">0</xsl:attribute>
@@ -26,6 +26,5 @@
         <xsl:apply-templates select="node()"/>
         <Object display_parameter="" as="displayProperties"/>
         <Object as="parameter_values"/>
-        
       </xsl:element>
     </xsl:template>
