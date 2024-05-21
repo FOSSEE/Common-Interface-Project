@@ -1,4 +1,4 @@
-    <xsl:template match="BasicBlock[@interfaceFunctionName = 'EDGE_TRIGGER']">
+    <xsl:template match="*[@interfaceFunctionName = 'EDGE_TRIGGER']">
       <xsl:element name="mxCell">
         <xsl:attribute name="style">
           <xsl:value-of select="@style" />

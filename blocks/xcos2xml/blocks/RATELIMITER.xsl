@@ -1,4 +1,4 @@
-    <xsl:template match="BasicBlock[@interfaceFunctionName = 'RATELIMITER']">
+    <xsl:template match="*[@interfaceFunctionName = 'RATELIMITER']">
       <xsl:element name="mxCell">
         <xsl:attribute name="style">
           <xsl:value-of select="@style" />

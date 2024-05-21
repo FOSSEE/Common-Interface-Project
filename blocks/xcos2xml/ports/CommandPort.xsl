@@ -1,4 +1,4 @@
-    <xsl:template match="CommandPort[@style='CommandPort']">
+    <xsl:template match="*[@style='CommandPort']">
       <xsl:element name="mxCell">
         <xsl:attribute name="style">
           <xsl:value-of select="@style" />

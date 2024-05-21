@@ -1,4 +1,4 @@
-    <xsl:template match="BasicBlock[@interfaceFunctionName = 'SELF_SWITCH']">
+    <xsl:template match="*[@interfaceFunctionName = 'SELF_SWITCH']">
       <xsl:element name="mxCell">
         <xsl:attribute name="style">
           <xsl:value-of select="@style" />

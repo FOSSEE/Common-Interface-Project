@@ -1,4 +1,4 @@
-    <xsl:template match="ImplicitLink[@style='ImplicitLink']">
+    <xsl:template match="*[@style='ImplicitLink']">
       <xsl:element name="mxCell">
         <xsl:attribute name="id">
           <xsl:value-of select="@id" />
