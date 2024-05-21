@@ -10,8 +10,8 @@
         <xsl:attribute name="connectable">0</xsl:attribute>
         <xsl:attribute name="CellType">Component</xsl:attribute>
         <xsl:attribute name="blockprefix">XCOS</xsl:attribute>
-        <xsl:attribute name="explicitInputPorts">1</xsl:attribute>
-        <xsl:attribute name="implicitInputPorts">0</xsl:attribute>
+        <xsl:attribute name="explicitInputPorts">0</xsl:attribute>
+        <xsl:attribute name="implicitInputPorts">1</xsl:attribute>
         <xsl:attribute name="explicitOutputPorts">1</xsl:attribute>
         <xsl:attribute name="implicitOutputPorts">0</xsl:attribute>
         <xsl:attribute name="controlPorts">0</xsl:attribute>
