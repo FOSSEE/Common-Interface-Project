@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'django_filters',
     'corsheaders',
     'rest_framework',
+    'authAPI',
     'simulationAPI',
 ]
 
@@ -85,6 +86,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'blocks.wsgi.application'
+
+AUTH_USER_MODEL = 'authAPI.User'
 
 
 # Database
