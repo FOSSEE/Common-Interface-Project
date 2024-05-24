@@ -24,8 +24,6 @@
         <xsl:attribute name="tarx">0</xsl:attribute>
         <xsl:attribute name="tary">0</xsl:attribute>
         <xsl:apply-templates select="node()"/>
-        <!-- <Object display_parameter="" as="displayProperties"/>
-        <Object as="parameter_values"/> -->
         <Object>
           <xsl:attribute name="display_parameter">
             <xsl:value-of select="*[@as='exprs']/data/@value"/>
