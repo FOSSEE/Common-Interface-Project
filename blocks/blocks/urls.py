@@ -20,6 +20,9 @@ urlpatterns = [
     path('api/admin/', admin.site.urls),
 
     # Auth API Routes
+    path('api/auth/', include('djoser.urls')),
+    path('api/auth/', include('djoser.urls.jwt')),
+    path('api/auth/', include('djoser.social.urls')),
     path('api/auth/', include('authAPI.urls')),
 
     # Simulation API Routes

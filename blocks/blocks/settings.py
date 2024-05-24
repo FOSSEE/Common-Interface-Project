@@ -48,10 +48,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blocks.xcosblocks',
     'django_filters',
     'corsheaders',
+    'djoser',
     'rest_framework',
+    'social_django',
+    'blocks.xcosblocks',
     'authAPI',
     'simulationAPI',
 ]
@@ -65,6 +67,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'blocks.urls'
@@ -120,6 +123,40 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+# Mail server config
+
+# use this for console emails
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp.gmail.com')
+# EMAIL_PORT = os.environ.get('EMAIL_PORT', 587)
+# EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'email@gmail.com')
+# EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', 'gmailpassword')
+# EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', True)
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ.get('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY', '')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET', '')
+GOOGLE_OAUTH_REDIRECT_URI = os.environ.get('GOOGLE_OAUTH_REDIRECT_URI', 'http://localhost/api/auth/google-callback')
+POST_ACTIVATE_REDIRECT_URL = os.environ.get('POST_ACTIVATE_REDIRECT_URL', 'http://localhost/')
+
+DJOSER = {
+    'LOGIN_FIELD': 'email',
+    'USER_CREATE_PASSWORD_RETYPE': True,
+    'USERNAME_CHANGED_EMAIL_CONFIRMATION': True,
+    'PASSWORD_CHANGED_EMAIL_CONFIRMATION': True,
+    'SEND_CONFIRMATION_EMAIL': True,
+    'SET_PASSWORD_RETYPE': True,
+    'PASSWORD_RESET_CONFIRM_URL': 'password/reset/confirm/{uid}/{token}',
+    'ACTIVATION_URL': 'activate/{uid}/{token}',
+    'SEND_ACTIVATION_EMAIL': True,
+    'SOCIAL_AUTH_TOKEN_STRATEGY': 'djoser.social.token.jwt.TokenStrategy',
+    'SOCIAL_AUTH_ALLOWED_REDIRECT_URIS': ['http://localhost:3000'],
+    'SERIALIZERS': {
+        'token_create': 'authAPI.serializers.TokenCreateSerializer',
+    },
+}
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -136,6 +173,8 @@ USE_TZ = True
 
 # Allow CORS for Public API
 CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOWED_ORIGINS = [i for i in os.environ.get('CORS_ALLOWED_ORIGINS', '').split(',') if i != '']
+CORS_ALLOW_CREDENTIALS = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
