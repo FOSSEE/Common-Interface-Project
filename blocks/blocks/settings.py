@@ -142,6 +142,8 @@ GOOGLE_OAUTH_REDIRECT_URI = os.environ.get('GOOGLE_OAUTH_REDIRECT_URI',
                                            'http://localhost/api/auth/google-callback')
 POST_ACTIVATE_REDIRECT_URL = os.environ.get('POST_ACTIVATE_REDIRECT_URL',
                                             'http://localhost/')
+DOMAIN = os.environ.get('EMAIL_DOMAIN', 'localhost')
+SITE_NAME = os.environ.get('EMAIL_SITE_NAME', 'Xcos')
 
 DJOSER = {
     'LOGIN_FIELD': 'email',
@@ -150,12 +152,16 @@ DJOSER = {
     'PASSWORD_CHANGED_EMAIL_CONFIRMATION': True,
     'SEND_CONFIRMATION_EMAIL': True,
     'SET_PASSWORD_RETYPE': True,
-    'PASSWORD_RESET_CONFIRM_URL': 'password/reset/confirm/{uid}/{token}',
-    'ACTIVATION_URL': 'api/auth/users/activate/{uid}/{token}',
+    'PASSWORD_RESET_CONFIRM_URL': 'api/auth/password/reset/confirm/{uid}/{token}',
+    'ACTIVATION_URL': 'api/auth/users/activate/{uid}/{token}/',
     'SEND_ACTIVATION_EMAIL': True,
     'SOCIAL_AUTH_TOKEN_STRATEGY': 'authAPI.token.TokenStrategy',
     'SOCIAL_AUTH_ALLOWED_REDIRECT_URIS': [GOOGLE_OAUTH_REDIRECT_URI],
     'SERIALIZERS': {
+        'user_create': 'authAPI.serializers.UserCreateSerializer',
+        'user': 'authAPI.serializers.UserCreateSerializer',
+        'current_user': 'authAPI.serializers.UserCreateSerializer',
+        'user_delete': 'djoser.serializers.UserDeleteSerializer',
         'token_create': 'authAPI.serializers.TokenCreateSerializer',
     },
 }

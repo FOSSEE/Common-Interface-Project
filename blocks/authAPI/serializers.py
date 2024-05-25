@@ -6,6 +6,12 @@ from djoser.conf import settings
 User = get_user_model()
 
 
+class UserCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ("id", "username", "email", "password")
+
+
 class TokenCreateSerializer(serializers.Serializer):
     password = serializers.CharField(required=False,
                                      style={"input_type": "password"})

@@ -23,7 +23,7 @@ export const SET_RESULT_GRAPH = 'SET_RESULT_GRAPH'
 export const SET_RESULT_TEXT = 'SET_RESULT_TEXT'
 export const SET_RESULT_TASK_ID = 'SET_RESULT_TASK_ID'
 
-// Actions for handling user authentication and registeration
+// Actions for handling user authentication and registration
 export const USER_LOADING = 'USER_LOADING'
 export const USER_LOADED = 'USER_LOADED'
 export const LOGIN_SUCCESSFUL = 'LOGIN_SUCCESSFUL'

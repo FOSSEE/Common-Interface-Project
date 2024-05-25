@@ -59,13 +59,16 @@ export default function SignUp () {
 
   const history = useHistory()
 
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
   const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [reenterPassword, setReenterPassword] = useState('')
   const [accept, setAccept] = useState(true)
   const [showPassword, setShowPassword] = useState(false)
   const handleClickShowPassword = () => setShowPassword(!showPassword)
   const handleMouseDownPassword = () => setShowPassword(!showPassword)
+  const [showReenterPassword, setShowReenterPassword] = useState(false)
+  const handleClickShowReenterPassword = () => setShowReenterPassword(!showReenterPassword)
+  const handleMouseDownReenterPassword = () => setShowReenterPassword(!showReenterPassword)
 
   // Function call for google oAuth sign up.
   const handleGoogleSignup = () => {
@@ -95,21 +98,8 @@ export default function SignUp () {
             margin='normal'
             required
             fullWidth
-            id='username'
-            label='Username'
-            name='username'
-            autoComplete='email'
-            value={username}
-            onChange={e => setUsername(e.target.value)}
-            autoFocus
-          />
-          <TextField
-            variant='outlined'
-            margin='normal'
-            required
-            fullWidth
             id='email'
-            label='email'
+            label='Email'
             name='email'
             type='email'
             autoComplete='email'
@@ -144,6 +134,33 @@ export default function SignUp () {
             onChange={e => setPassword(e.target.value)}
             autoComplete='current-password'
           />
+          <TextField
+            variant='outlined'
+            margin='normal'
+            required
+            fullWidth
+            name='reenterPassword'
+            label='Reenter Password'
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position='end'>
+                  <IconButton
+                    size='small'
+                    aria-label='toggle password visibility'
+                    onClick={handleClickShowReenterPassword}
+                    onMouseDown={handleMouseDownReenterPassword}
+                  >
+                    {showReenterPassword ? <Visibility fontSize='small' /> : <VisibilityOff fontSize='small' />} {/* Handle password visibility */}
+                  </IconButton>
+                </InputAdornment>
+              )
+            }}
+            type={showReenterPassword ? 'text' : 'password'}
+            id='reenterPassword'
+            value={reenterPassword}
+            onChange={e => setReenterPassword(e.target.value)}
+            autoComplete='current-password'
+          />
           <FormControlLabel
             control={<Checkbox checked={accept} onChange={e => setAccept(e.target.checked)} color='primary' />}
             label='I accept the Terms of Use & Privacy Policy'
@@ -152,7 +169,7 @@ export default function SignUp () {
             fullWidth
             variant='contained'
             color='primary'
-            onClick={() => dispatch(signUp(email, username, password, history))}
+            onClick={() => dispatch(signUp(email, password, reenterPassword, history))}
             className={classes.submit}
             disabled={!accept}
           >

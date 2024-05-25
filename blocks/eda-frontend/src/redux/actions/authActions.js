@@ -111,11 +111,12 @@ export const login = (username, password, toUrl) => {
 }
 
 // Handle api call for user sign up
-export const signUp = (email, username, password, history) => (dispatch) => {
+export const signUp = (email, password, reenterPassword, history) => (dispatch) => {
   const body = {
     email,
-    username,
-    password
+    username: email,
+    password,
+    re_password: reenterPassword
   }
 
   // add headers
@@ -140,13 +141,20 @@ export const signUp = (email, username, password, history) => (dispatch) => {
     .catch((err) => {
       const res = err.response
       if (res.status === 400 || res.status === 403 || res.status === 401) {
-        if (res.data.username !== undefined) {
-          if (res.data.username[0].search('already') !== -1 && res.data.username[0].search('exists') !== -1) { dispatch(signUpError('Username Already Taken.')) }
+        const data = res.data
+        if (data.email !== undefined) {
+          dispatch(signUpError(data.email[0]))
+        } else if (data.password !== undefined) {
+          dispatch(signUpError(data.password[0]))
+        } else if (data.re_password !== undefined) {
+          dispatch(signUpError(data.re_password[0]))
+        } else if (data.non_field_errors !== undefined) {
+          dispatch(signUpError(data.non_field_errors[0]))
         } else {
-          dispatch(signUpError('Enter Valid Credentials.'))
+          dispatch(signUpError('Enter valid credentials.'))
         }
       } else {
-        dispatch(signUpError('Something went wrong! Registeration Failed'))
+        dispatch(signUpError('Something went wrong! Registration Failed'))
       }
     })
 }
