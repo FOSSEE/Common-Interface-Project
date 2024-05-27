@@ -56,10 +56,10 @@ export const loadUser = () => (dispatch, getState) => {
 }
 
 // Handle api call for user login
-export const login = (username, password, toUrl) => {
+export const login = (email, password, toUrl) => {
   const body = {
     password,
-    username
+    email
   }
 
   return function (dispatch) {
@@ -84,12 +84,18 @@ export const login = (username, password, toUrl) => {
             window.open(toUrl, '_self')
           }
         } else if (res.status === 400 || res.status === 403 || res.status === 401) {
-          dispatch({
-            type: actions.AUTHENTICATION_ERROR,
-            payload: {
-              data: 'Incorrect Username or Password.'
-            }
-          })
+          const data = res.data
+          if (data.email !== undefined) {
+            dispatch(loginError(data.email[0]))
+          } else if (data.password !== undefined) {
+            dispatch(loginError(data.password[0]))
+          } else if (data.re_password !== undefined) {
+            dispatch(loginError(data.re_password[0]))
+          } else if (data.non_field_errors !== undefined) {
+            dispatch(loginError(data.non_field_errors[0]))
+          } else {
+            dispatch(loginError('Enter valid credentials.'))
+          }
         } else {
           dispatch({
             type: actions.LOGIN_FAILED,
@@ -102,7 +108,18 @@ export const login = (username, password, toUrl) => {
       .catch((err) => {
         const res = err.response
         if (res.status === 400 || res.status === 403 || res.status === 401) {
-          dispatch(loginError('Incorrect Username or Password.'))
+          const data = res.data
+          if (data.email !== undefined) {
+            dispatch(loginError(data.email[0]))
+          } else if (data.password !== undefined) {
+            dispatch(loginError(data.password[0]))
+          } else if (data.re_password !== undefined) {
+            dispatch(loginError(data.re_password[0]))
+          } else if (data.non_field_errors !== undefined) {
+            dispatch(loginError(data.non_field_errors[0]))
+          } else {
+            dispatch(loginError('Incorrect Username or Password.'))
+          }
         } else {
           dispatch(loginError('Something went wrong! Login Failed'))
         }
