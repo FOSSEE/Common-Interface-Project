@@ -107,7 +107,7 @@ export default function SignIn (props) {
             required
             fullWidth
             id='email'
-            label='Username'
+            label='Email'
             name='email'
             autoComplete='email'
             value={username}
