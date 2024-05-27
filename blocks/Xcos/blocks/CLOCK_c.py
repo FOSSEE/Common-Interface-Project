@@ -30,7 +30,7 @@ def CLOCK_c(outroot, attribid, ordering, geometry, parameters):
                          func_name, 'csuper', 'DEFAULT',
                          func_name, BLOCKTYPE_H)
 
-    addExprsNode(outnode, TYPE_DOUBLE, 0, parameters)
+    addExprsNode(outnode, TYPE_DOUBLE, 0, [])
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0,
                 [])
     addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 0, [])
