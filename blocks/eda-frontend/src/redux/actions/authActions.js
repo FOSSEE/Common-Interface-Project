@@ -35,31 +35,21 @@ export const loadUser = () => (dispatch, getState) => {
             }
           })
         } else if (res.status >= 400 && res.status < 500) {
-          dispatch({
-            type: actions.LOGIN_FAILED,
-            payload: {
-              data: res.data
-            }
-          })
+          dispatch(loginFailed(res.data))
         }
       }
     )
     .catch((err) => {
       console.error(err)
-      dispatch({
-        type: actions.LOGIN_FAILED,
-        payload: {
-          data: {}
-        }
-      })
+      dispatch(loginFailed({}))
     })
 }
 
 // Handle api call for user login
 export const login = (email, password, toUrl) => {
   const body = {
-    password,
-    email
+    email,
+    password
   }
 
   return function (dispatch) {
@@ -89,20 +79,13 @@ export const login = (email, password, toUrl) => {
             dispatch(loginError(data.email[0]))
           } else if (data.password !== undefined) {
             dispatch(loginError(data.password[0]))
-          } else if (data.re_password !== undefined) {
-            dispatch(loginError(data.re_password[0]))
           } else if (data.non_field_errors !== undefined) {
             dispatch(loginError(data.non_field_errors[0]))
           } else {
-            dispatch(loginError('Enter valid credentials.'))
+            dispatch(loginError('Incorrect Username or Password.'))
           }
         } else {
-          dispatch({
-            type: actions.LOGIN_FAILED,
-            payload: {
-              data: 'Something went wrong! Login Failed'
-            }
-          })
+          dispatch(loginFailed('Something went wrong! Login Failed'))
         }
       })
       .catch((err) => {
@@ -113,8 +96,6 @@ export const login = (email, password, toUrl) => {
             dispatch(loginError(data.email[0]))
           } else if (data.password !== undefined) {
             dispatch(loginError(data.password[0]))
-          } else if (data.re_password !== undefined) {
-            dispatch(loginError(data.re_password[0]))
           } else if (data.non_field_errors !== undefined) {
             dispatch(loginError(data.non_field_errors[0]))
           } else {
@@ -161,6 +142,8 @@ export const signUp = (email, password, reenterPassword, history) => (dispatch) 
         const data = res.data
         if (data.email !== undefined) {
           dispatch(signUpError(data.email[0]))
+        } else if (data.username !== undefined) {
+          dispatch(signUpError(data.username[0]))
         } else if (data.password !== undefined) {
           dispatch(signUpError(data.password[0]))
         } else if (data.re_password !== undefined) {
@@ -225,6 +208,16 @@ const loginError = (message) => (dispatch) => {
   })
 }
 
+// Redux action for display login error
+const loginFailed = (message) => (dispatch) => {
+  dispatch({
+    type: actions.LOGIN_FAILED,
+    payload: {
+      data: message
+    }
+  })
+}
+
 // Redux action for display sign up error
 const signUpError = (message) => (dispatch) => {
   dispatch({
@@ -244,12 +237,7 @@ export const googleLogin = (host, toUrl) => {
           // Open google login page
           window.open(res.data.authorization_url, '_self')
         } else {
-          dispatch({
-            type: actions.LOGIN_FAILED,
-            payload: {
-              data: 'Something went wrong! Login Failed'
-            }
-          })
+          dispatch(loginFailed('Something went wrong! Login Failed'))
         }
       })
       .then((res) => { console.log(res) })
