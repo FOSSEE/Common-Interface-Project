@@ -64,6 +64,9 @@ def GoogleOAuth2(request):
             # If User was created, set name to email
             user.username = user_info['email']
             user.save()
+        if not user.is_active:
+            user.is_active = True
+            user.save()
         token, created = Token.objects.get_or_create(user=user)
 
         protocol = 'https://' if request.is_secure() else 'http://'
