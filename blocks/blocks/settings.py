@@ -20,7 +20,6 @@ load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -97,7 +96,6 @@ WSGI_APPLICATION = 'blocks.wsgi.application'
 
 AUTH_USER_MODEL = 'authAPI.User'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
@@ -107,7 +105,6 @@ DATABASES = {
         'NAME': os.environ.get('SQL_DATABASE', 'xcosblocks.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -127,7 +124,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Mail server config
 
 # use this for console emails
@@ -144,6 +140,9 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ.get('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY', 
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET', '')
 GOOGLE_OAUTH_REDIRECT_URI = os.environ.get('GOOGLE_OAUTH_REDIRECT_URI',
                                            'http://localhost/api/auth/google-callback')
+SOCIAL_AUTH_GITHUB_KEY = os.environ.get('SOCIAL_AUTH_GITHUB_KEY', '')
+SOCIAL_AUTH_GITHUB_SECRET = os.environ.get('SOCIAL_AUTH_GITHUB_SECRET', '')
+GITHUB_OAUTH_REDIRECT_URI = os.environ.get('GITHUB_OAUTH_REDIRECT_URI', 'http://localhost/api/auth/github-callback')
 POST_ACTIVATE_REDIRECT_URL = os.environ.get('POST_ACTIVATE_REDIRECT_URL',
                                             'http://localhost/')
 DOMAIN = os.environ.get('EMAIL_DOMAIN', 'localhost')
@@ -160,7 +159,10 @@ DJOSER = {
     'ACTIVATION_URL': 'api/auth/users/activate/{uid}/{token}/',
     'SEND_ACTIVATION_EMAIL': True,
     'SOCIAL_AUTH_TOKEN_STRATEGY': 'authAPI.token.TokenStrategy',
-    'SOCIAL_AUTH_ALLOWED_REDIRECT_URIS': [GOOGLE_OAUTH_REDIRECT_URI],
+    'SOCIAL_AUTH_ALLOWED_REDIRECT_URIS': [
+        GOOGLE_OAUTH_REDIRECT_URI,
+        GITHUB_OAUTH_REDIRECT_URI,
+    ],
     'SERIALIZERS': {
         'user_create': 'authAPI.serializers.UserCreateSerializer',
         'user': 'authAPI.serializers.UserCreateSerializer',
@@ -178,6 +180,7 @@ REST_FRAMEWORK = {
 
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.github.GithubOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
 
@@ -193,7 +196,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Allow CORS for Public API
 CORS_ORIGIN_ALLOW_ALL = True
@@ -218,7 +220,6 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_IMPORTS = (
     'simulationAPI.tasks',
 )
-
 
 LOGGING = {
     'version': 1,

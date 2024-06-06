@@ -20,8 +20,9 @@ import Visibility from '@material-ui/icons/Visibility'
 import VisibilityOff from '@material-ui/icons/VisibilityOff'
 import { Link as RouterLink, useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { signUp, authDefault, googleLogin } from '../redux/actions/index'
+import { signUp, authDefault, googleLogin, githubLogin } from '../redux/actions/index'
 import google from '../static/google.png'
+import github from '../static/github-mark.png'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -74,6 +75,13 @@ export default function SignUp () {
   const handleGoogleSignup = () => {
     const host = window.location.protocol + '//' + window.location.host
     dispatch(googleLogin(host))
+  }
+
+  // Function call for github sign up.
+  const handleGithubLogin = () => {
+    const host = window.location.origin
+    const toUrl = '' // Add any redirect URL logic if needed
+    dispatch(githubLogin(host, toUrl))
   }
 
   return (
@@ -185,7 +193,17 @@ export default function SignUp () {
             onClick={handleGoogleSignup}
             className={classes.submit}
           >
-            <img alt='G' src={google} height='20' />&emsp; Sign Up With Google
+            <img alt='Google' src={google} height='20' />&emsp; Sign Up With Google
+          </Button>
+          {/* Github Sign Up option */}
+          <Button
+            fullWidth
+            variant='outlined'
+            color='primary'
+            onClick={handleGithubLogin}
+            className={classes.submit}
+          >
+            <img alt='GitHub' src={github} height='20' />&emsp; Sign Up With GitHub
           </Button>
         </form>
 
