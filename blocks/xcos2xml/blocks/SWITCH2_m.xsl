@@ -24,7 +24,19 @@
         <xsl:attribute name="tarx">0</xsl:attribute>
         <xsl:attribute name="tary">0</xsl:attribute>
         <xsl:apply-templates select="node()"/>
-        <Object display_parameter="" as="displayProperties"/>
-        <Object as="parameter_values"/>
+        <Object>
+          <xsl:attribute name="display_parameter">
+            <xsl:value-of select="@value"/>
+          </xsl:attribute>
+          <xsl:attribute name="as">displayProperties</xsl:attribute>
+        </Object>
+        <Object>
+          <xsl:for-each select="*[@as='exprs']/data">
+            <xsl:attribute name="{concat('p', format-number(position() - 1, '000'), '_value')}">
+              <xsl:value-of select="@value"/>
+            </xsl:attribute>
+          </xsl:for-each>
+          <xsl:attribute name="as">parameter_values</xsl:attribute>
+        </Object> 
       </xsl:element>
     </xsl:template>

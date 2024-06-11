@@ -90,11 +90,26 @@
                     <xsl:value-of select="@as" />
                 </xsl:attribute>
             </xsl:if>
+            <xsl:if test="@x">
+                <xsl:attribute name="x">
+                    <xsl:value-of select="@x" />
+                </xsl:attribute>
+            </xsl:if>
             <xsl:if test="@y">
                 <xsl:attribute name="y">
                     <xsl:value-of select="@y" />
                 </xsl:attribute>
             </xsl:if>
             <!-- <xsl:apply-templates /> -->
+        </xsl:element>
+    </xsl:template>
+    <xsl:template name="Array" match="Array[@as = 'points']">
+        <xsl:element name="Array">
+            <xsl:if test="@as">
+                <xsl:attribute name="as">
+                    <xsl:value-of select="@as" />
+                </xsl:attribute>
+            </xsl:if>
+            <xsl:apply-templates />
         </xsl:element>
     </xsl:template>

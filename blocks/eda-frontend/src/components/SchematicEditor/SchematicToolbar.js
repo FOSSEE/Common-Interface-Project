@@ -305,7 +305,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
   const handleLocalSchOpen = () => {
     const fileSelector = document.createElement('input')
     fileSelector.setAttribute('type', 'file')
-    fileSelector.setAttribute('accept', '.xml, application/xml')
+    fileSelector.setAttribute('accept', '.xcos, .xml, application/xml')
     fileSelector.click()
     fileSelector.addEventListener('change', function (event) {
       const file = event.target.files[0]
