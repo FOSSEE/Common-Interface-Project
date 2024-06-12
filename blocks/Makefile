@@ -16,7 +16,7 @@ XCOS2XMLFILES += $(sort $(wildcard xcos2xml/foot.xsl))
 IMPORT := Xcos/xcosblocks.py
 TARGET := xcosblocks.py
 TARGET2 := $(BLOCKDIR)/$(TARGET)
-TARGET3 := eda-frontend/src/static/xcos2xml.xsl
+TARGET3 := eda-frontend/public/xcos2xml.xsl
 
 all : $(IMPORT) $(TARGET) $(TARGET2) $(TARGET3)
 
