@@ -251,3 +251,26 @@ export const googleLogin = (host, toUrl) => {
       })
   }
 }
+
+// Api call for GitHub OAuth login or sign up
+export const githubLogin = (host, toUrl) => {
+  return function (dispatch) {
+    api.get('auth/o/github/?redirect_uri=' + host + '/api/auth/github-callback')
+      .then((res) => {
+        if (res.status === 200) {
+          // Open GitHub login page
+          window.open(res.data.authorization_url, '_self')
+        } else {
+          dispatch(loginFailed('Something went wrong! Login Failed'))
+        }
+      })
+      .catch((err) => {
+        const res = err.response
+        if (res && (res.status === 400 || res.status === 403 || res.status === 401)) {
+          dispatch(loginError('Incorrect Username or Password.'))
+        } else {
+          dispatch(loginError('Something went wrong! Login Failed'))
+        }
+      })
+  }
+}
