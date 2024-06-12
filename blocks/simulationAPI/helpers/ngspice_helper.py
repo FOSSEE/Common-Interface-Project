@@ -37,29 +37,56 @@ class CannotRunParser(Exception):
     """ Base class for exceptions in this module. """
 
 
-def ExecXml(file_obj):
+def CreateXml(file_path, parameters, file_id):
+    # file_path = file_obj.file.path
+    # print(file_obj)
+    # print('*********')
+    parameters = json.loads(parameters)
+    current_dir = settings.MEDIA_ROOT+'/'+str(file_id)
+    # Make Unique Directory for simulation to run
+    Path(current_dir).mkdir(parents=True, exist_ok=True)
+    (xcosfilebase, __) = os.path.splitext(file_path)
+    xcosfile = xcosfilebase + '.xcos'
+    logger.info('will run %s %s', 'MxGraphParser', file_path)
+    proc = subprocess.Popen([MxGraphParser, file_path],
+                            stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                            cwd=current_dir)
+    (stdout, stderr) = proc.communicate()
+
+    if proc.returncode != 0:
+        logger.error('%s error encountered', 'MxGraphParser')
+        logger.error(stderr)
+        logger.error(proc.returncode)
+        logger.error(stdout)
+        raise CannotRunParser('exited with error')
+
+    logger.info('Ran %s', 'MxGraphParser')
+    return current_dir, xcosfile, file_path
+
+def CreateXcos(file_path, parameters, file_id):
+    print('hello')
     try:
-        file_path = file_obj.file.path
-        parameters = json.loads(file_obj.parameters)
-        current_dir = settings.MEDIA_ROOT+'/'+str(file_obj.file_id)
-        # Make Unique Directory for simulation to run
-        Path(current_dir).mkdir(parents=True, exist_ok=True)
-        (xcosfilebase, __) = os.path.splitext(file_path)
-        xcosfile = xcosfilebase + '.xcos'
-        logger.info('will run %s %s', 'MxGraphParser', file_path)
-        proc = subprocess.Popen([MxGraphParser, file_path],
-                                stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-                                cwd=current_dir)
-        (stdout, stderr) = proc.communicate()
+        current_dir, xcosfile, file_path = CreateXml(file_path, parameters, file_id)
+        print(xcosfile)
+        return xcosfile
+    except BaseException as e:
+        logger.exception('Encountered Exception:')
+        logger.info('removing %s', file_path)
+        os.remove(file_path)
+        target = os.listdir(current_dir)
+        for item in target:
+            logger.info('removing %s', item)
+            os.remove(os.path.join(current_dir, item))
+        logger.info('removing %s', current_dir)
+        os.rmdir(current_dir)
+        logger.info('Deleted Files')
+        raise e
 
-        if proc.returncode != 0:
-            logger.error('%s error encountered', 'MxGraphParser')
-            logger.error(stderr)
-            logger.error(proc.returncode)
-            logger.error(stdout)
-            raise CannotRunParser('exited with error')
 
-        logger.info('Ran %s', 'MxGraphParser')
+def ExecXml(file_obj):
+    print('hellooo', file_obj)
+    try:
+        current_dir, xcosfile, file_path = CreateXml(file_obj.file.path, file_obj.parameters, file_obj.file_id)
 
         (logfilefd, log_name) = mkstemp(prefix=datetime.now().strftime(
                 'scilab-log-%Y%m%d-'), suffix='.txt', dir=current_dir)
