@@ -17,6 +17,7 @@ Token = djoser_settings.TOKEN_MODEL
 # Set up logging
 logger = logging.getLogger(__name__)
 
+
 def activate_user(request, uid, token):
     """
     Used to activate accounts,
@@ -40,7 +41,7 @@ def GoogleOAuth2(request):
     code = request.GET.get('code', None)
 
     if state is None or state == '' or code is None or code == '':
-        return HttpResponseNotFound("<h1>Page Not Found</h1>")
+        return HttpResponseNotFound('<h1>Page Not Found</h1>')
 
     client_id = settings.SOCIAL_AUTH_GOOGLE_OAUTH2_KEY
     client_secret = settings.SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET
@@ -85,7 +86,7 @@ def GitHubOAuth2(request):
     code = request.GET.get('code', None)
 
     if state is None or state == '' or code is None or code == '':
-        return HttpResponseNotFound("<h1>Page Not Found</h1>")
+        return HttpResponseNotFound('<h1>Page Not Found</h1>')
 
     client_id = settings.SOCIAL_AUTH_GITHUB_KEY
     client_secret = settings.SOCIAL_AUTH_GITHUB_SECRET
@@ -102,14 +103,14 @@ def GitHubOAuth2(request):
             code=code
         )
     except Exception as e:
-        logger.error(f"Failed to fetch token from GitHub: {e}")
-        return HttpResponseNotFound("<h1>Failed to authenticate with GitHub</h1>")
+        logger.error(f'Failed to fetch token from GitHub: {e}')
+        return HttpResponseNotFound('<h1>Failed to authenticate with GitHub</h1>')
 
     try:
         user_info = github.get('https://api.github.com/user').json()
     except Exception as e:
-        logger.error(f"Failed to get user info from GitHub: {e}")
-        return HttpResponseNotFound("<h1>Failed to get user info from GitHub</h1>")
+        logger.error(f'Failed to get user info from GitHub: {e}')
+        return HttpResponseNotFound('<h1>Failed to get user info from GitHub</h1>')
 
     primary_email = f"{user_info['id']}+{user_info['login']}@users.noreply.github.com"
 
@@ -147,7 +148,7 @@ class CustomTokenCreateView(utils.ActionViewMixin, generics.GenericAPIView):
         token = utils.login_user(self.request, serializer.user)
         token_serializer_class = TokenSerializer
         data = {
-            'auth_token': token_serializer_class(token).data["auth_token"],
+            'auth_token': token_serializer_class(token).data['auth_token'],
             'user_id': serializer.user.id
         }
         return Response(data=data, status=status.HTTP_200_OK)

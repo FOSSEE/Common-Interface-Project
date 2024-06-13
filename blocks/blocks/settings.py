@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'social_django',
     'blocks.xcosblocks',
     'authAPI',
+    'saveAPI',
     'simulationAPI',
 ]
 
@@ -142,7 +143,8 @@ GOOGLE_OAUTH_REDIRECT_URI = os.environ.get('GOOGLE_OAUTH_REDIRECT_URI',
                                            'http://localhost/api/auth/google-callback')
 SOCIAL_AUTH_GITHUB_KEY = os.environ.get('SOCIAL_AUTH_GITHUB_KEY', '')
 SOCIAL_AUTH_GITHUB_SECRET = os.environ.get('SOCIAL_AUTH_GITHUB_SECRET', '')
-GITHUB_OAUTH_REDIRECT_URI = os.environ.get('GITHUB_OAUTH_REDIRECT_URI', 'http://localhost/api/auth/github-callback')
+GITHUB_OAUTH_REDIRECT_URI = os.environ.get('GITHUB_OAUTH_REDIRECT_URI',
+                                           'http://localhost/api/auth/github-callback')
 POST_ACTIVATE_REDIRECT_URL = os.environ.get('POST_ACTIVATE_REDIRECT_URL',
                                             'http://localhost/')
 DOMAIN = os.environ.get('EMAIL_DOMAIN', 'localhost')
@@ -207,9 +209,13 @@ CORS_ALLOW_CREDENTIALS = True
 
 STATIC_URL = '/django_static/'
 
+# File Storage
+FILE_STORAGE_ROOT = os.path.join(BASE_DIR, 'file_storage')
+FILE_STORAGE_URL = '/files'
+
 # noqa For Netlist handling netlist uploads and other temp uploads
 MEDIA_URL = '/_files/'
-MEDIA_ROOT = os.path.join('/tmp', 'blocks-tmp')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # celery
 CELERY_BROKER_URL = 'redis://redis:6379/1'

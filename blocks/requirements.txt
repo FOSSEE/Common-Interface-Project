@@ -24,6 +24,7 @@ idna==3.7
 kombu==5.3.5
 mccabe==0.7.0
 oauthlib==3.2.2
+pillow==10.3.0
 prompt-toolkit==3.0.36
 pycodestyle==2.10.0
 pycparser==2.22

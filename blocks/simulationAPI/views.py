@@ -61,7 +61,8 @@ class XmlUploader(APIView):
             return Response(response_data)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
+
+
 class XmlSave(APIView):
     '''
     API for XmlSave
@@ -94,7 +95,8 @@ class XmlSave(APIView):
         with open(filename, 'r') as file:
             filecontent = file.read()
 
-        response = Response(filecontent, status=status.HTTP_200_OK, content_type='application/octet-stream')
+        response = Response(filecontent, status=status.HTTP_200_OK,
+                            content_type='application/octet-stream')
         response['Content-Disposition'] = f'attachment; filename="{os.path.basename(filename)}"'
         return response
 
