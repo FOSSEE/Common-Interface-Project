@@ -6,6 +6,9 @@ urlpatterns = [
     path('upload', simulationAPI_views.XmlUploader.as_view(),
          name='xmlUploader'),
 
+    path('save', simulationAPI_views.XmlSave.as_view(),
+         name='xmlSave'),
+
     path('status/<uuid:task_id>',
          simulationAPI_views.CeleryResultView.as_view(), name='celery_status'),
 
