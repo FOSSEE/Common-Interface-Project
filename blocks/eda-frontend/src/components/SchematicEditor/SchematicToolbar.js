@@ -31,6 +31,7 @@ import { NetlistModal, HelpScreen, ImageExportDialog, OpenSchDialog } from './To
 import { editorZoomIn, editorZoomOut, editorZoomAct, deleteComp, PrintPreview, Rotate, generateNetList, editorUndo, editorRedo, saveXml, ClearGrid } from './Helper/ToolbarTools'
 import { useSelector, useDispatch } from 'react-redux'
 import { toggleSimulate, closeCompProperties, setSchXmlData, saveSchematic, openLocalSch } from '../../redux/actions/index'
+import Api from '../../utils/Api'
 
 const {
   mxUtils
@@ -301,6 +302,45 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
     a.dispatchEvent(evt)
   }
 
+  const handleLocalSchSaveXcos = async () => {
+    try {
+      const xmlContent = beautify(saveXml(schSave.description))
+      const xmlBlob = new Blob([xmlContent], { type: 'application/xml' })
+  
+      const xmlFileName = schSave.title + '.xml'
+  
+      const formData = new FormData()
+      formData.append('file', xmlBlob, xmlFileName)
+  
+      const response = await Api.post('/simulation/save', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      })
+  
+      if (!response || response.status !== 200) {
+        throw new Error('Network response was not ok')
+      }
+      const xcosBlob = new Blob([response.data], { type: 'application/xcos' })
+  
+      const a = document.createElement('a')
+      a.setAttribute('download', schSave.title + '_' + process.env.REACT_APP_NAME + '_on_Cloud.xcos')
+      a.href = URL.createObjectURL(xcosBlob)
+      a.target = '_blank'
+      a.setAttribute('target', '_blank')
+  
+      const evt = new MouseEvent('click', {
+        view: window,
+        bubbles: false,
+        cancelable: true,
+      })
+      a.dispatchEvent(evt)
+  
+    } catch (error) {
+      console.error('There was an error!', error)
+    }
+  }
+
   // Open Locally Saved Schematic
   const handleLocalSchOpen = () => {
     const fileSelector = document.createElement('input')
@@ -377,6 +417,11 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
 
       <Tooltip title='Export'>
         <IconButton color='inherit' className={classes.tools} size='small' onClick={handleLocalSchSave}>
+          <SystemUpdateAltOutlinedIcon fontSize='small' />
+        </IconButton>
+      </Tooltip>
+      <Tooltip title='Export in xcos'>
+        <IconButton color='inherit' className={classes.tools} size='small' onClick={handleLocalSchSaveXcos}>
           <SystemUpdateAltOutlinedIcon fontSize='small' />
         </IconButton>
       </Tooltip>
