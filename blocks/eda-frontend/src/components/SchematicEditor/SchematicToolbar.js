@@ -306,36 +306,35 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
     try {
       const xmlContent = beautify(saveXml(schSave.description))
       const xmlBlob = new Blob([xmlContent], { type: 'application/xml' })
-  
+
       const xmlFileName = schSave.title + '.xml'
-  
+
       const formData = new FormData()
       formData.append('file', xmlBlob, xmlFileName)
-  
+
       const response = await Api.post('/simulation/save', formData, {
         headers: {
-          'Content-Type': 'multipart/form-data',
-        },
+          'Content-Type': 'multipart/form-data'
+        }
       })
-  
+
       if (!response || response.status !== 200) {
         throw new Error('Network response was not ok')
       }
       const xcosBlob = new Blob([response.data], { type: 'application/xcos' })
-  
+
       const a = document.createElement('a')
       a.setAttribute('download', schSave.title + '_' + process.env.REACT_APP_NAME + '_on_Cloud.xcos')
       a.href = URL.createObjectURL(xcosBlob)
       a.target = '_blank'
       a.setAttribute('target', '_blank')
-  
+
       const evt = new MouseEvent('click', {
         view: window,
         bubbles: false,
-        cancelable: true,
+        cancelable: true
       })
       a.dispatchEvent(evt)
-  
     } catch (error) {
       console.error('There was an error!', error)
     }
@@ -350,7 +349,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
     fileSelector.addEventListener('change', function (event) {
       const file = event.target.files[0]
       const filename = file.name
-      const base = '(_' + process.env.REACT_APP_NAME + '_on_Cloud)?( *\\([0-9]*\\))?\\.xml$'
+      const base = '(_' + process.env.REACT_APP_NAME + '_on_Cloud)?( *\\([0-9]*\\))?\\.(xcos|xml)$'
       const re = new RegExp(base, 'i')
       if (re.test(filename)) {
         const reader = new FileReader()
@@ -377,7 +376,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
         }
         reader.readAsText(file)
       } else {
-        setMessage('Unsupported file type error ! Select valid file.')
+        setMessage('Unsupported file type error! Select valid file.')
         handleSnacClick()
       }
     })
