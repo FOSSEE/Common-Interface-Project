@@ -36,6 +36,29 @@ def activate_user(request, uid, token):
                    })
 
 
+def get_social_user(email, request, callback, service):
+    if not email:
+        logger.error(f'Email not found for {service} user')
+        return HttpResponseNotFound('<h1>Email not found</h1>')
+
+    user, created = get_user_model().objects.get_or_create(email=email)
+    if created:
+        user.username = email
+        user.save()
+    if not user.is_active:
+        user.is_active = True
+        user.save()
+    token, created = Token.objects.get_or_create(user=user)
+
+    protocol = 'https://' if request.is_secure() else 'http://'
+    web_url = protocol + DOMAIN + '/#/dashboard'
+
+    return render(request, callback,
+                  {'token': token,
+                   'url': web_url
+                   })
+
+
 def GoogleOAuth2(request):
     state = request.GET.get('state', None)
     code = request.GET.get('code', None)
@@ -60,25 +83,7 @@ def GoogleOAuth2(request):
     user_info = google.get(
         'https://www.googleapis.com/oauth2/v1/userinfo').json()
 
-    if user_info['email']:
-        user, created = get_user_model().objects.get_or_create(
-            email=user_info['email'])
-        if created:
-            user.username = user_info['email']
-            user.save()
-        if not user.is_active:
-            user.is_active = True
-            user.save()
-        token, created = Token.objects.get_or_create(user=user)
-
-        protocol = 'https://' if request.is_secure() else 'http://'
-        web_url = protocol + DOMAIN + '/#/dashboard'
-
-        return render(request, 'google_callback.html',
-                      {
-                          "token": token,
-                          "url": web_url
-                      })
+    return get_social_user(user_info['email'], request, 'google_callback.html', 'google')
 
 
 def GitHubOAuth2(request):
@@ -114,26 +119,7 @@ def GitHubOAuth2(request):
 
     primary_email = f"{user_info['id']}+{user_info['login']}@users.noreply.github.com"
 
-    if primary_email:
-        user, created = get_user_model().objects.get_or_create(email=primary_email)
-        if created:
-            user.username = primary_email
-            user.save()
-        if not user.is_active:
-            user.is_active = True
-            user.save()
-        token, created = Token.objects.get_or_create(user=user)
-
-        protocol = 'https://' if request.is_secure() else 'http://'
-        web_url = protocol + DOMAIN + '/#/dashboard'
-
-        return render(request, 'github_callback.html', {
-            "token": token.key,
-            "url": web_url
-        })
-    else:
-        logger.error("Primary email not found for GitHub user")
-        return HttpResponseNotFound("<h1>Email not found</h1>")
+    return get_social_user(primary_email, request, 'github_callback.html', 'github')
 
 
 class CustomTokenCreateView(utils.ActionViewMixin, generics.GenericAPIView):
