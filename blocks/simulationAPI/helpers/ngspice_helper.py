@@ -19,10 +19,12 @@ SCILAB_START = (
     "clearfun('messagebox');"
     "function messagebox(msg,title,icon,buttons,modal),disp(msg),endfunction;"
     "funcprot(1);"
-    "catch;[error_message,error_number,error_line,error_func]=lasterror();disp(error_message,error_number,error_line,error_func);exit(3);end;"
+    "catch;[error_message,error_number,error_line,error_func]=lasterror();"
+    "disp(error_message,error_number,error_line,error_func);exit(3);end;"
 )
 
-SCILAB_END = "catch;[error_message,error_number,error_line,error_func]=lasterror();disp(error_message,error_number,error_line,error_func);exit(2);end;exit;"
+SCILAB_END = "catch;[error_message,error_number,error_line,error_func]=lasterror();"
+"disp(error_message,error_number,error_line,error_func);exit(2);end;exit;"
 SCILAB_CMD = [SCILAB,
               "-noatomsautoload",
               "-nogui",
@@ -38,9 +40,6 @@ class CannotRunParser(Exception):
 
 
 def CreateXml(file_path, parameters, file_id):
-    # file_path = file_obj.file.path
-    # print(file_obj)
-    # print('*********')
     parameters = json.loads(parameters)
     current_dir = settings.MEDIA_ROOT+'/'+str(file_id)
     # Make Unique Directory for simulation to run
@@ -63,11 +62,10 @@ def CreateXml(file_path, parameters, file_id):
     logger.info('Ran %s', 'MxGraphParser')
     return current_dir, xcosfile, file_path
 
+
 def CreateXcos(file_path, parameters, file_id):
-    print('hello')
     try:
         current_dir, xcosfile, file_path = CreateXml(file_path, parameters, file_id)
-        print(xcosfile)
         return xcosfile
     except BaseException as e:
         logger.exception('Encountered Exception:')
@@ -84,10 +82,10 @@ def CreateXcos(file_path, parameters, file_id):
 
 
 def ExecXml(file_obj):
-    print('hellooo', file_obj)
     try:
-        current_dir, xcosfile, file_path = CreateXml(file_obj.file.path, file_obj.parameters, file_obj.file_id)
-
+        current_dir, xcosfile, file_path = CreateXml(file_obj.file.path,
+                                                     file_obj.parameters,
+                                                     file_obj.file_id)
         (logfilefd, log_name) = mkstemp(prefix=datetime.now().strftime(
                 'scilab-log-%Y%m%d-'), suffix='.txt', dir=current_dir)
 
