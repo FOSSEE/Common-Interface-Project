@@ -31,7 +31,7 @@ import { NetlistModal, HelpScreen, ImageExportDialog, OpenSchDialog } from './To
 import { editorZoomIn, editorZoomOut, editorZoomAct, deleteComp, PrintPreview, Rotate, generateNetList, editorUndo, editorRedo, saveXml, ClearGrid } from './Helper/ToolbarTools'
 import { useSelector, useDispatch } from 'react-redux'
 import { toggleSimulate, closeCompProperties, setSchXmlData, saveSchematic, openLocalSch } from '../../redux/actions/index'
-import Api from '../../utils/Api'
+import api from '../../utils/Api'
 
 const {
   mxUtils
@@ -312,7 +312,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
       const formData = new FormData()
       formData.append('file', xmlBlob, xmlFileName)
 
-      const response = await Api.post('/simulation/save', formData, {
+      const response = await api.post('/simulation/save', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -340,6 +340,37 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
     }
   }
 
+  const xcos2xml = '/xcos2xml.xsl'
+
+  const getXsltProcessor = async () => {
+    const response = await fetch(xcos2xml)
+    const text = await response.text()
+    const parser = new DOMParser()
+    const xsl = parser.parseFromString(text, 'application/xml')
+    const processor = new XSLTProcessor()
+    processor.importStylesheet(xsl)
+    return processor
+  }
+
+  const readXmlFile = (xmlDoc, dataDump, title) => {
+    const firstCell = xmlDoc.documentElement.children[0].children[0]
+    const firstCellAttrs = firstCell.attributes
+    const appname = firstCellAttrs.appname.value
+    const description = (firstCellAttrs.description !== undefined) ? firstCellAttrs.description.value : ''
+    if (appname !== process.env.REACT_APP_NAME) {
+      setMessage('Unsupported app name error !')
+      handleSnacClick()
+    } else {
+      const obj = { data_dump: dataDump, title, description }
+      if (obj.data_dump === undefined || obj.title === undefined || obj.description === undefined) {
+        setMessage('Unsupported file error !')
+        handleSnacClick()
+      } else {
+        dispatch(openLocalSch(obj))
+      }
+    }
+  }
+
   // Open Locally Saved Schematic
   const handleLocalSchOpen = () => {
     const fileSelector = document.createElement('input')
@@ -355,23 +386,17 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
         const reader = new FileReader()
         reader.onload = function (event) {
           const title = filename.replace(re, '')
-          const dataDump = event.target.result
-          const xmlDoc = mxUtils.parseXml(dataDump)
-          const firstCell = xmlDoc.documentElement.children[0].children[0]
-          const firstCellAttrs = firstCell.attributes
-          const appname = firstCellAttrs.appname.value
-          const description = (firstCellAttrs.description !== undefined) ? firstCellAttrs.description.value : ''
-          if (appname !== process.env.REACT_APP_NAME) {
-            setMessage('Unsupported app name error !')
-            handleSnacClick()
+          let dataDump = event.target.result
+          let xmlDoc = mxUtils.parseXml(dataDump)
+          const rexcos = /\.xcos$/i
+          if (rexcos.test(filename)) {
+            getXsltProcessor().then(processor => {
+              xmlDoc = processor.transformToDocument(xmlDoc)
+              dataDump = new XMLSerializer().serializeToString(xmlDoc)
+              readXmlFile(xmlDoc, dataDump, title)
+            })
           } else {
-            const obj = { data_dump: dataDump, title, description }
-            if (obj.data_dump === undefined || obj.title === undefined || obj.description === undefined) {
-              setMessage('Unsupported file error !')
-              handleSnacClick()
-            } else {
-              dispatch(openLocalSch(obj))
-            }
+            readXmlFile(xmlDoc, dataDump, title)
           }
         }
         reader.readAsText(file)
