@@ -25,6 +25,9 @@ urlpatterns = [
     path('api/auth/', include('djoser.social.urls')),
     path('api/auth/', include('authAPI.urls')),
 
+    # Save API Routes
+    path('api/save/', include('saveAPI.urls')),
+
     # Simulation API Routes
     path('api/simulation/', include('simulationAPI.urls')),
 
