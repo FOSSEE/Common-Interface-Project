@@ -10,7 +10,12 @@
         <xsl:attribute name="connectable">0</xsl:attribute>
         <xsl:attribute name="CellType">Component</xsl:attribute>
         <xsl:attribute name="blockprefix">XCOS</xsl:attribute>
-        <xsl:attribute name="explicitInputPorts">2</xsl:attribute>
+        <!-- <xsl:attribute name="explicitInputPorts">2</xsl:attribute> -->
+        <xsl:attribute name="explicitInputPorts">
+          <xsl:variable name="value" select="(*[@as='exprs']/data/@value)" />
+          <xsl:variable name="count" select="string-length($value) - string-length(translate($value, ';', '')) + 1" />
+          <xsl:value-of select="$count" />
+        </xsl:attribute>
         <xsl:attribute name="implicitInputPorts">0</xsl:attribute>
         <xsl:attribute name="explicitOutputPorts">0</xsl:attribute>
         <xsl:attribute name="implicitOutputPorts">0</xsl:attribute>

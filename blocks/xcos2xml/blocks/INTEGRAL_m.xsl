@@ -10,7 +10,18 @@
         <xsl:attribute name="connectable">0</xsl:attribute>
         <xsl:attribute name="CellType">Component</xsl:attribute>
         <xsl:attribute name="blockprefix">XCOS</xsl:attribute>
-        <xsl:attribute name="explicitInputPorts">1</xsl:attribute>
+        <!-- <xsl:attribute name="explicitInputPorts">1</xsl:attribute> -->
+        <xsl:variable name="value" select="(*[@as='exprs']/data[2]/@value)" />
+        <xsl:attribute name="explicitInputPorts">
+          <xsl:choose>
+            <xsl:when test="$value = 1">
+              <xsl:text>2</xsl:text>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:text>1</xsl:text>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:attribute>
         <xsl:attribute name="implicitInputPorts">0</xsl:attribute>
         <xsl:attribute name="explicitOutputPorts">1</xsl:attribute>
         <xsl:attribute name="implicitOutputPorts">0</xsl:attribute>
