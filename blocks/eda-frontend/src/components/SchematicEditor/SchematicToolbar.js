@@ -150,62 +150,84 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
 
   // Image Export of Schematic Diagram
   async function exportImage (type) {
-    const svg = document.querySelector('#divGrid > svg').cloneNode(true)
-    svg.removeAttribute('style')
-    svg.setAttribute('width', gridRef.current.scrollWidth)
-    svg.setAttribute('height', gridRef.current.scrollHeight)
-    const canvas = document.createElement('canvas')
-    canvas.width = gridRef.current.scrollWidth
-    canvas.height = gridRef.current.scrollHeight
-    canvas.style.width = canvas.width + 'px'
-    canvas.style.height = canvas.height + 'px'
-    const images = svg.getElementsByTagName('image')
-    for (const image of images) {
-      let data = await fetch(image.getAttribute('xlink:href')).then((v) => {
-        return v.text()
-      })
-      data = encodeURIComponent(data)
-      image.removeAttribute('xlink:href')
-      image.setAttribute(
-        'href',
-        'data:image/svg+xml;base64,' + window.btoa(data)
-      )
-    }
-    const ctx = canvas.getContext('2d')
-    ctx.webkitImageSmoothingEnabled = true
-    ctx.msImageSmoothingEnabled = true
-    ctx.imageSmoothingEnabled = true
-    const pixelRatio = window.devicePixelRatio || 1
-    ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0)
-    return new Promise(resolve => {
-      if (type === 'SVG') {
-        const svgdata = new XMLSerializer().serializeToString(svg)
-        resolve('<?xml version="1.0" encoding="UTF-8"?>' + svgdata)
-        return
-      }
-      const v = Canvg.fromString(ctx, svg.outerHTML)
-      v.render().then(() => {
-        let image = ''
-        if (type === 'JPG') {
-          const imgdata = ctx.getImageData(0, 0, canvas.width, canvas.height)
-          for (let i = 0; i < imgdata.data.length; i += 4) {
-            if (imgdata.data[i + 3] === 0) {
-              imgdata.data[i] = 255
-              imgdata.data[i + 1] = 255
-              imgdata.data[i + 2] = 255
-              imgdata.data[i + 3] = 255
-            }
+    try {
+      const svg = document.querySelector('#divGrid > svg').cloneNode(true)
+
+      // Ensure xlink namespace is declared in the root SVG element
+      svg.setAttributeNS('http://www.w3.org/2000/xmlns/',
+        'xmlns:xlink',
+        'http://www.w3.org/1999/xlink')
+
+      svg.removeAttribute('style')
+      svg.setAttribute('width', gridRef.current.scrollWidth)
+      svg.setAttribute('height', gridRef.current.scrollHeight)
+
+      // Create a copy of the SVG for further processing if needed
+      const svgCopyForCanvg = svg.cloneNode(true)
+
+      const canvas = document.createElement('canvas')
+      canvas.width = gridRef.current.scrollWidth
+      canvas.height = gridRef.current.scrollHeight
+      canvas.style.width = canvas.width + 'px'
+      canvas.style.height = canvas.height + 'px'
+      const images = svgCopyForCanvg.getElementsByTagName('image')
+      for (const image of images) {
+        try {
+          const imageUrl = image.getAttribute('xlink:href')
+          if (imageUrl) {
+            let data = await fetch(imageUrl).then(v => v.text())
+            data = encodeURIComponent(data)
+            image.removeAttribute('xlink:href')
+            image.setAttributeNS('http://www.w3.org/1999/xlink',
+              'href',
+              'data:image/svg+xml;base64,' + window.btoa(data)
+            )
           }
-          ctx.putImageData(imgdata, 0, 0)
-          image = canvas.toDataURL('image/jpeg', 1.0)
-        } else {
-          if (type === 'PNG') {
+        } catch (err) {
+          console.error('Error fetching image data:', err)
+          throw err
+        }
+      }
+      const ctx = canvas.getContext('2d')
+      ctx.webkitImageSmoothingEnabled = true
+      ctx.msImageSmoothingEnabled = true
+      ctx.imageSmoothingEnabled = true
+      const pixelRatio = window.devicePixelRatio || 1
+      ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0)
+      return new Promise(resolve => {
+        if (type === 'SVG') {
+          const svgdata = new XMLSerializer().serializeToString(svg)
+          resolve('<?xml version="1.0" encoding="UTF-8"?>' + svgdata)
+          return
+        }
+        let svgString = svg.outerHTML
+        svgString = svgString.replace(/<hr>/g, '<hr />').replace(/<br>/g, '<br />')
+        const v = Canvg.fromString(ctx, svgString)
+        v.render().then(() => {
+          let image = ''
+          if (type === 'JPG') {
+            const imgdata = ctx.getImageData(0, 0, canvas.width, canvas.height)
+            for (let i = 0; i < imgdata.data.length; i += 4) {
+              if (imgdata.data[i + 3] === 0) {
+                imgdata.data[i] = 255
+                imgdata.data[i + 1] = 255
+                imgdata.data[i + 2] = 255
+                imgdata.data[i + 3] = 255
+              }
+            }
+            ctx.putImageData(imgdata, 0, 0)
+            image = canvas.toDataURL('image/jpeg', 1.0)
+          } else if (type === 'PNG') {
             image = canvas.toDataURL('image/png')
           }
-        }
-        resolve(image)
+          resolve(image)
+        }).catch(err => {
+          console.error('Error rendering SVG with Canvg:', err)
+        })
       })
-    })
+    } catch (err) {
+      console.error('Error in exportImage function:', err)
+    }
   }
 
   // Download JPEG, PNG exported Image
@@ -281,6 +303,11 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
         .then(res => {
           dispatch(saveSchematic(title, description, xml, res))
         })
+        .catch(err => {
+          // Debugging: Log if there is an error in exportImage
+          console.error('Error exporting image:', err)
+        })
+
       setMessage('Saved Successfully')
       handleSnacClick()
     }

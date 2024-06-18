@@ -71,7 +71,7 @@ export const saveSchematic = (title, description, xml, base64) => (dispatch, get
       .catch((err) => { console.error(err) })
   } else {
     // saving new schematic
-    api.post('save', queryString.stringify(body), config)
+    api.post('save/diagram', queryString.stringify(body), config)
       .then(
         (res) => {
           dispatch({
