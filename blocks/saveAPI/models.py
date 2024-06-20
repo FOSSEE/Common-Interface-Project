@@ -2,6 +2,7 @@ from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.core.files.storage import FileSystemStorage
 from django.db import models
+from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 import uuid
 
@@ -47,7 +48,8 @@ class Gallery(models.Model):
     def image_tag(self):
         print(file_storage)
         if self.media:
-            return mark_safe('<img src="%s" style="width: 45px; height:45px;" />' % self.media.url)
+            return format_html('<img src="{}" style="width: 45px; height:45px;" />',
+                               mark_safe(self.media.url))
         else:
             return 'No Image Found'
     image_tag.short_description = 'Image'

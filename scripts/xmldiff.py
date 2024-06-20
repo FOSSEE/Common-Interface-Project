@@ -2,6 +2,7 @@
 
 import sys
 import xml.etree.ElementTree as ET
+import defusedxml.ElementTree as goodET
 
 def remove_keys(elem):
     for key in ['x', 'y', 'height', 'width', 'style']:
@@ -10,8 +11,8 @@ def remove_keys(elem):
     return elem
 
 def compare_xml_files(file1, file2):
-    tree1 = ET.parse(file1)
-    tree2 = ET.parse(file2)
+    tree1 = goodET.parse(file1)
+    tree2 = goodET.parse(file2)
 
     root1 = tree1.getroot()
     root2 = tree2.getroot()
