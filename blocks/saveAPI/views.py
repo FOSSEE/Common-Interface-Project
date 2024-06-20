@@ -364,6 +364,18 @@ class GalleryFetchSaveDeleteView(APIView):
     parser_classes = (FormParser, JSONParser)
     methods = ['GET']
 
+    def is_owner(self):
+        if not (self.request.user and self.request.user.is_authenticated):
+            return False
+
+        # Checking user roles
+        userRoles = self.request.user.groups.all()
+        for userRole in userRoles:
+            if userRole.customgroup and userRole.customgroup.is_type_staff:
+                return True
+
+        return False
+
     @swagger_auto_schema(responses={200: GallerySerializer})
     def get(self, request, save_id):
 
@@ -386,40 +398,26 @@ class GalleryFetchSaveDeleteView(APIView):
 
     @swagger_auto_schema(responses={200: GallerySerializer})
     def post(self, request, save_id):
-
-        # Checking user roles
-        userRoles = self.request.user.groups.all()
-        staff = False
-        for userRole in userRoles:
-            if (self.request.user and self.request.user.is_authenticated and
-                    userRole.customgroup and
-                    userRole.customgroup.is_type_staff):
-                staff = True
-        if not staff:
+        if not self.is_owner():
             return Response({'error': 'Not the owner'},
                             status=status.HTTP_401_UNAUTHORIZED)
         saved_state = Gallery()
-        if not (request.data['data_dump'] and request.data['media'] and
-                request.data['save_id']):
+        data = request.data
+        if not (data['data_dump'] and data['media'] and data['save_id']):
             return Response({'error': 'not a valid POST request'},
                             status=status.HTTP_406_NOT_ACCEPTABLE)
 
         # saves to gallery
         try:
-            if 'save_id' in request.data:
-                saved_state.save_id = request.data['save_id']
-            if 'data_dump' in request.data:
-                saved_state.data_dump = request.data['data_dump']
-            if 'shared' in request.data:
-                saved_state.shared = bool(request.data['shared'])
-            if 'name' in request.data:
-                saved_state.name = request.data['name']
-            if 'description' in request.data:
-                saved_state.description = request.data['description']
-            if 'media' in request.data:
+            saved_state.save_id = data.get('save_id')
+            saved_state.data_dump = data.get('data_dump')
+            if 'shared' in data:
+                saved_state.shared = bool(data['shared'])
+            saved_state.name = data.get('name')
+            saved_state.description = data.get('description')
+            if 'media' in data:
                 img = Base64ImageField(max_length=None, use_url=True)
-                filename, content = img.update(
-                    request.data['media'])
+                filename, content = img.update(data['media'])
                 saved_state.media.save(filename, content)
             saved_state.save()
             serialized = GallerySerializer(saved_state)
@@ -430,21 +428,12 @@ class GalleryFetchSaveDeleteView(APIView):
     @swagger_auto_schema(responses={200: GallerySerializer})
     def delete(self, request, save_id):
         try:
-            # Checking user roles
-            userRoles = self.request.user.groups.all()
-            staff = False
-            for userRole in userRoles:
-                if (self.request.user and self.request.user.is_authenticated
-                    and userRole.customgroup and
-                        userRole.customgroup.is_type_staff):
-                    staff = True
-            if not staff:
+            if not self.is_owner():
                 return Response({'error': 'Not the owner'},
                                 status=status.HTTP_401_UNAUTHORIZED)
             # Deltes from gallery
             try:
-                saved_state = Gallery.objects.get(
-                    save_id=save_id)
+                saved_state = Gallery.objects.get(save_id=save_id)
             except Gallery.DoesNotExist:
                 return Response({'error': 'Does not Exist'},
                                 status=status.HTTP_404_NOT_FOUND)
