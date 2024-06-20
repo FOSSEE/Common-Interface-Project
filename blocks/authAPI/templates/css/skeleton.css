@@ -225,14 +225,6 @@ input[type="button"].button-primary:focus {
 
 /* Forms
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-input[type="email"],
-input[type="number"],
-input[type="search"],
-input[type="text"],
-input[type="tel"],
-input[type="url"],
-input[type="password"],
-textarea,
 select {
   height: 38px;
   padding: 6px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
@@ -250,6 +242,13 @@ input[type="tel"],
 input[type="url"],
 input[type="password"],
 textarea {
+  height: 38px;
+  padding: 6px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
+  background-color: #fff;
+  border: 1px solid #D1D1D1;
+  border-radius: 4px;
+  box-shadow: none;
+  box-sizing: border-box;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none; }
@@ -403,16 +402,16 @@ there.
 
 
 /* Larger than mobile */
-@media (min-width: 400px) {}
+/* @media (min-width: 400px) {} */
 
 /* Larger than phablet (also point when grid becomes active) */
-@media (min-width: 550px) {}
+/* @media (min-width: 550px) {} */
 
 /* Larger than tablet */
-@media (min-width: 750px) {}
+/* @media (min-width: 750px) {} */
 
 /* Larger than desktop */
-@media (min-width: 1000px) {}
+/* @media (min-width: 1000px) {} */
 
 /* Larger than Desktop HD */
-@media (min-width: 1200px) {}
+/* @media (min-width: 1200px) {} */
