@@ -59,7 +59,7 @@ export const saveSchematic = (title, description, xml, base64) => (dispatch, get
 
   if (schSave.isSaved) {
     //  Updating saved schemaic
-    api.post('save/' + schSave.details.save_id, queryString.stringify(body), config)
+    api.post('save/diagram/' + schSave.details.save_id, queryString.stringify(body), config)
       .then(
         (res) => {
           dispatch({

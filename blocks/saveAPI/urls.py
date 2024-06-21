@@ -20,7 +20,7 @@ urlpatterns = [
          saveAPI_views.GalleryFetchSaveDeleteView.as_view(),
          name='fetchGallerySchematic'),
 
-    path("<uuid:save_id>", saveAPI_views.DeleteDiagram.as_view(),
+    path("diagram/<uuid:save_id>", saveAPI_views.StateFetchUpdateView.as_view(),
          name="deleteDiagram"),
 
 ]
