@@ -116,7 +116,7 @@ class CopyStateView(APIView):
                 {"save_id": copy_state.save_id})
 
 
-class StateFetchUpdateView(APIView):
+class FetchSaveDiagram(APIView):
     """
     Returns Saved data for given save id ,
     Only user who saved the state can access / update it
