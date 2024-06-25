@@ -145,12 +145,10 @@ for root in model:
                 IDLIST[attribid] = style
                 globals()[style](outroot, attribid, ParentComponent, ordering, geometry)
             elif 'edge' in attrib:
-                
                 sourceVertex = attrib['sourceVertex']
                 targetVertex = attrib['targetVertex']
                 sourceType = IDLIST[sourceVertex]
                 targetType = IDLIST[targetVertex]
-
 
                 # switch vertices if required
                 if sourceType in ['ExplicitInputPort', 'ImplicitInputPort', 'ControlPort'] and targetType in ['ExplicitOutputPort', 'ExplicitLink', 'ImplicitOutputPort', 'ImplicitLink', 'CommandPort', 'CommandControlLink']:
@@ -185,7 +183,7 @@ for root in model:
                     edgeDict[attribid] = (style, sourceVertex, targetVertex, sourceType, targetType)
                     edgeDict2[attribid] = (style, sourceVertex, targetVertex, sourceType, targetType)
                     IDLIST[attribid] = style
-                    
+
                 if addSplit:
                     mxGeometry = cell.find('mxGeometry')
                     if mxGeometry is not None:
@@ -196,7 +194,7 @@ for root in model:
                             geometry['height'] = mxPoint.attrib.get('height', '7')
                             geometry['x'] = mxPoint.attrib.get('x', '0')
                             geometry['y'] = mxPoint.attrib.get('y', '0')
-                            
+
                             splitList.append((attribid, sourceVertex, targetVertex, sourceType, targetType, geometry))
                             try:
                                 del edgeDict[sourceVertex]

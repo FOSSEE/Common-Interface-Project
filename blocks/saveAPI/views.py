@@ -12,7 +12,7 @@ import traceback
 import uuid
 from .models import Gallery, StateSave
 from .serializers import Base64ImageField, GallerySerializer, \
-        SaveListSerializer, StateSaveSerializer
+    SaveListSerializer, StateSaveSerializer
 
 logger = logging.getLogger(__name__)
 

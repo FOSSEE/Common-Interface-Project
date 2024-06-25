@@ -49,7 +49,7 @@
               the iteration stop-condition. Returns 0 or 1
     $pFun   - a template reference to the function that's to be iterated
     $arg1   - an initial argument to the function
-========================================================================== 
+==========================================================================
 -->
    <xsl:template name="iterUntil">
     <xsl:param name="pCond" select="/.."/>
@@ -101,6 +101,70 @@
 ===========================================================================
 -->
 <!--
+      Template: exp
+      Purpose : Return the value of e^X
+    Parameters:
+    $pX       - the real value X, to be used as the "power" in e^X
+    $pEps     - [optional] accuracy required
+                increase the number of decimal places for greater accuracy
+                but at the expense of performance.
+==========================================================================
+-->
+   <xsl:template name="exp">
+     <xsl:param name="pX"/>
+     <xsl:param name="pEps" select=".00000001"/>
+
+     <xsl:variable name="vResult">
+       <xsl:call-template name="expIter">
+         <xsl:with-param name="pX" select="$pX"/>
+         <xsl:with-param name="pRslt" select="1 + $pX"/>
+         <xsl:with-param name="pElem" select="$pX"/>
+         <xsl:with-param name="pN" select="1"/>
+         <xsl:with-param name="pEps" select="$pEps"/>
+       </xsl:call-template>
+     </xsl:variable>
+
+     <xsl:choose>
+       <xsl:when test="$vResult >= 0">
+         <xsl:value-of select="$vResult"/>
+       </xsl:when>
+       <xsl:otherwise>0</xsl:otherwise>
+     </xsl:choose>
+
+   </xsl:template>
+
+   <xsl:template name="expIter">
+       <xsl:param name="pX"/>
+       <xsl:param name="pRslt"/>
+       <xsl:param name="pElem"/>
+       <xsl:param name="pN"/>
+       <xsl:param name="pEps"/>
+
+       <xsl:variable name="vnextN" select="$pN+1"/>
+
+       <xsl:variable name="vnewElem"
+                select="$pElem*$pX div $vnextN"/>
+
+       <xsl:variable name="vnewResult" select="$pRslt + $vnewElem"/>
+
+       <xsl:variable name="vdiffResult" select="$vnewResult - $pRslt"/>
+       <xsl:choose>
+         <xsl:when test="$vdiffResult > $pEps or $vdiffResult &lt; -$pEps">
+           <xsl:call-template name="expIter">
+             <xsl:with-param name="pX" select="$pX"/>
+             <xsl:with-param name="pRslt" select="$vnewResult"/>
+             <xsl:with-param name="pElem" select="$vnewElem"/>
+             <xsl:with-param name="pN" select="$vnextN"/>
+             <xsl:with-param name="pEps" select="$pEps"/>
+           </xsl:call-template>
+         </xsl:when>
+         <xsl:otherwise>
+           <xsl:value-of select="$vnewResult"/>
+         </xsl:otherwise>
+       </xsl:choose>
+   </xsl:template>
+
+<!--
       Template: ln
       Purpose : Return the value of ln(X)
     Parameters:
@@ -108,7 +172,7 @@
     $pEps     - [optional] accuracy required
                 increase the number of decimal places for greater accuracy
                 but at the expense of performance.
-========================================================================== 
+==========================================================================
 -->
    <xsl:template name="ln">
      <xsl:param name="pX"/>
@@ -170,7 +234,7 @@
     $pEps     - [optional] accuracy required
                 increase the number of decimal places for greater accuracy
                 but at the expense of performance.
-========================================================================== 
+==========================================================================
 -->
    <xsl:template name="log">
      <xsl:param name="pX"/>
@@ -211,7 +275,7 @@
     $pEps     - [optional] accuracy required
                 increase the number of decimal places for greater accuracy
                 but at the expense of performance.
-========================================================================== 
+==========================================================================
 -->
    <xsl:template name="log2">
      <xsl:param name="pX"/>
@@ -220,6 +284,43 @@
      <xsl:call-template name="log">
        <xsl:with-param name="pX" select="$pX"/>
        <xsl:with-param name="pBase" select="2"/>
+       <xsl:with-param name="pEps" select="$pEps"/>
+     </xsl:call-template>
+   </xsl:template>
+
+<!--
+      Template: pow
+      Purpose : Return the value of base^X (base to the power of X)
+    Parameters:
+    $pBase    - the value for the base
+    $pPower   - the real value X, to be used in calculating base^X
+    $pEps     - [optional] accuracy required
+                increase the number of decimal places for greater accuracy
+                but at the expense of performance.
+==========================================================================
+-->
+   <xsl:template name="pow">
+     <xsl:param name="pBase"/>
+     <xsl:param name="pPower"/>
+     <xsl:param name="pEps" select=".00000001"/>
+
+     <xsl:if test="not($pBase > 0)">
+       <xsl:message terminate="yes">
+         <xsl:value-of select="concat('[Error]pow: Non-positive pow base: ',
+                                      $pBase
+                                      )"/>
+       </xsl:message>
+     </xsl:if>
+
+     <xsl:variable name="vLogBase">
+       <xsl:call-template name="ln">
+         <xsl:with-param name="pX" select="$pBase"/>
+         <xsl:with-param name="pEps" select="$pEps"/>
+       </xsl:call-template>
+     </xsl:variable>
+
+     <xsl:call-template name="exp">
+       <xsl:with-param name="pX" select="$vLogBase * $pPower"/>
        <xsl:with-param name="pEps" select="$pEps"/>
      </xsl:call-template>
    </xsl:template>

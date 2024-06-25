@@ -19,7 +19,7 @@ def MAX_f(outroot, attribid, ordering, geometry, parameters):
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NMODE, 1, array)
     addTypeNode(outnode, TYPE_DOUBLE, AS_STATE, 0, [])
     addScilabDNode(outnode, AS_DSTATE, width=2, realParts=[
-                  0.0, 0.0])
+        0.0, 0.0])
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE, parameters)
     addObjNode(outnode, TYPE_ARRAY,
                CLASS_LIST, AS_EQUATIONS, parameters)

@@ -18,7 +18,7 @@ def SELECT_m(outroot, attribid, ordering, geometry, parameters):
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NMODE, 1, array)
     addTypeNode(outnode, TYPE_DOUBLE, AS_STATE, 0, [])
     addScilabDNode(outnode, AS_DSTATE, width=1, realParts=[
-                  format_real_number(parameters[0])])
+        format_real_number(parameters[0])])
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE, parameters)
     addObjNode(outnode, TYPE_ARRAY,
                CLASS_LIST, AS_EQUATIONS, parameters)

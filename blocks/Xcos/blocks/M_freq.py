@@ -39,7 +39,7 @@ def get_from_M_freq(cell):
     con = ''
     eov = ''
     iov = ''
-    com = (len(inputs)**2)-1
+    com = (len(inputs)**2) - 1
 
     ports = [eiv, iiv, con, eov, iov, com]
 

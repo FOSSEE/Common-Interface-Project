@@ -41,7 +41,7 @@ class CannotRunParser(Exception):
 
 def CreateXml(file_path, parameters, file_id):
     parameters = json.loads(parameters)
-    current_dir = settings.MEDIA_ROOT+'/'+str(file_id)
+    current_dir = settings.MEDIA_ROOT + '/' + str(file_id)
     # Make Unique Directory for simulation to run
     Path(current_dir).mkdir(parents=True, exist_ok=True)
     (xcosfilebase, __) = os.path.splitext(file_path)
@@ -87,7 +87,7 @@ def ExecXml(file_obj):
                                                      file_obj.parameters,
                                                      file_obj.file_id)
         (logfilefd, log_name) = mkstemp(prefix=datetime.now().strftime(
-                'scilab-log-%Y%m%d-'), suffix='.txt', dir=current_dir)
+            'scilab-log-%Y%m%d-'), suffix='.txt', dir=current_dir)
 
         if logfilefd != LOGFILEFD:
             os.dup2(logfilefd, LOGFILEFD)
