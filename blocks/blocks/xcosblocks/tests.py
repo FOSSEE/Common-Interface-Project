@@ -8,6 +8,8 @@ PRINT_PORTS = False
 
 
 class CategoryTestCase(TestCase):
+    fixtures = ['xcosblocks']
+
     def test_categories(self):
         category = Category.objects.get(id=1)
         print(category)
