@@ -25,7 +25,17 @@
         <xsl:attribute name="implicitInputPorts">0</xsl:attribute>
         <xsl:attribute name="explicitOutputPorts">1</xsl:attribute>
         <xsl:attribute name="implicitOutputPorts">0</xsl:attribute>
-        <xsl:attribute name="controlPorts">0</xsl:attribute>
+        <!-- <xsl:attribute name="controlPorts">0</xsl:attribute> -->
+        <xsl:attribute name="controlPorts">
+          <xsl:choose>
+            <xsl:when test="$value = 1">
+              <xsl:text>1</xsl:text>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:text>0</xsl:text>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:attribute>
         <xsl:attribute name="commandPorts">0</xsl:attribute>
         <xsl:attribute name="simulationFunction">
           <xsl:value-of select="@simulationFunctionName" />

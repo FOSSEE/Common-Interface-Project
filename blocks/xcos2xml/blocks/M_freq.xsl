@@ -15,7 +15,14 @@
         <xsl:attribute name="explicitOutputPorts">0</xsl:attribute>
         <xsl:attribute name="implicitOutputPorts">0</xsl:attribute>
         <xsl:attribute name="controlPorts">1</xsl:attribute>
-        <xsl:attribute name="commandPorts">3</xsl:attribute>
+        <!-- <xsl:attribute name="commandPorts">3</xsl:attribute> -->
+        <xsl:attribute name="commandPorts">
+          <!-- <xsl:value-of select="(*[@as='exprs']/data[1]/@value)" /> -->
+
+          <xsl:variable name="value" select="(*[@as='exprs']/data[1]/@value)" />
+          <xsl:variable name="count" select="string-length($value) - string-length(translate($value, ';, ', '')) + 1" />
+          <!-- <xsl:value-of select="number(2^$count - 1)" /> -->
+        </xsl:attribute>
         <xsl:attribute name="simulationFunction">
           <xsl:value-of select="@simulationFunctionName" />
         </xsl:attribute>

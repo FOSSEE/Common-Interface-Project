@@ -25,8 +25,30 @@
         <xsl:attribute name="tary">0</xsl:attribute>
         <xsl:apply-templates select="node()"/>
         <Object>
+          <xsl:variable name="exprsData" select="(*[@as='exprs']/data[1]/@value)" />
+          <xsl:variable name="dataValue" select="*[@as='exprs']/data[2]/@value" />
+          <xsl:variable name="displayParam1">
+            <xsl:choose>
+              <xsl:when test="$exprsData = 1">
+                <xsl:text>decim</xsl:text>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:text></xsl:text>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:variable>
+          <xsl:variable name="displayParam2">
+            <xsl:choose>
+              <xsl:when test="$dataValue = 3">
+                <xsl:text>int32</xsl:text>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:text></xsl:text>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:variable>
           <xsl:attribute name="display_parameter">
-            <xsl:value-of select="@value"/>
+            <xsl:value-of select="concat($displayParam1, ',', $displayParam2)" />
           </xsl:attribute>
           <xsl:attribute name="as">displayProperties</xsl:attribute>
         </Object>

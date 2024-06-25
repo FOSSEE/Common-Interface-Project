@@ -14,8 +14,24 @@
         <xsl:attribute name="implicitInputPorts">0</xsl:attribute>
         <xsl:attribute name="explicitOutputPorts">1</xsl:attribute>
         <xsl:attribute name="implicitOutputPorts">0</xsl:attribute>
-        <xsl:attribute name="controlPorts">0</xsl:attribute>
-        <xsl:attribute name="commandPorts">0</xsl:attribute>
+        <!-- <xsl:attribute name="controlPorts">0</xsl:attribute> -->
+        <xsl:variable name="value" select="(*[@as='exprs']/data[7]/@value)" />
+        <xsl:attribute name="controlPorts">
+          <xsl:choose>
+            <xsl:when test="$value = '[]'">
+              <xsl:text>0</xsl:text>
+            </xsl:when>
+          </xsl:choose>
+        </xsl:attribute>
+        <!-- <xsl:attribute name="commandPorts">0</xsl:attribute> -->
+        <xsl:variable name="value1" select="(*[@as='exprs']/data[8]/@value)" />
+        <xsl:attribute name="commandPorts">
+          <xsl:choose>
+            <xsl:when test="$value1 = '[]'">
+              <xsl:text>0</xsl:text>
+            </xsl:when>
+          </xsl:choose>
+        </xsl:attribute>
         <xsl:attribute name="simulationFunction">
           <xsl:value-of select="@simulationFunctionName" />
         </xsl:attribute>
@@ -26,7 +42,7 @@
         <xsl:apply-templates select="node()"/>
         <Object>
           <xsl:attribute name="display_parameter">
-            <xsl:value-of select="@value"/>
+            <xsl:value-of select="*[@as='exprs']/data[1]/@value"/>
           </xsl:attribute>
           <xsl:attribute name="as">displayProperties</xsl:attribute>
         </Object>

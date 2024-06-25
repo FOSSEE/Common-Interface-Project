@@ -12,14 +12,22 @@
         <xsl:attribute name="blockprefix">XCOS</xsl:attribute>
         <!-- <xsl:attribute name="explicitInputPorts">2</xsl:attribute> -->
         <xsl:attribute name="explicitInputPorts">
-          <xsl:variable name="value" select="(*[@as='exprs']/data/@value)" />
-          <xsl:variable name="count" select="string-length($value) - string-length(translate($value, ';', '')) + 1" />
+          <xsl:variable name="value" select="(*[@as='exprs']/data[1]/@value)" />
+          <xsl:variable name="count" select="string-length($value) - string-length(translate($value, ';, ', '')) + 1" />
           <xsl:value-of select="$count" />
         </xsl:attribute>
         <xsl:attribute name="implicitInputPorts">0</xsl:attribute>
         <xsl:attribute name="explicitOutputPorts">0</xsl:attribute>
         <xsl:attribute name="implicitOutputPorts">0</xsl:attribute>
-        <xsl:attribute name="controlPorts">1</xsl:attribute>
+        <!-- <xsl:attribute name="controlPorts">1</xsl:attribute> -->
+        <xsl:variable name="value" select="(*[@as='exprs']/data[10]/@value)" />
+        <xsl:attribute name="controlPorts">
+          <xsl:choose>
+            <xsl:when test="$value = 0">
+              <xsl:text>1</xsl:text>
+            </xsl:when>
+          </xsl:choose>
+        </xsl:attribute>
         <xsl:attribute name="commandPorts">0</xsl:attribute>
         <xsl:attribute name="simulationFunction">
           <xsl:value-of select="@simulationFunctionName" />

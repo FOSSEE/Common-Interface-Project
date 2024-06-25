@@ -14,7 +14,15 @@
         <xsl:attribute name="implicitInputPorts">0</xsl:attribute>
         <xsl:attribute name="explicitOutputPorts">0</xsl:attribute>
         <xsl:attribute name="implicitOutputPorts">0</xsl:attribute>
-        <xsl:attribute name="controlPorts">1</xsl:attribute>
+        <!-- <xsl:attribute name="controlPorts">1</xsl:attribute> -->
+        <xsl:variable name="value" select="(*[@as='exprs']/data[3]/@value)" />
+        <xsl:attribute name="controlPorts">
+          <xsl:choose>
+            <xsl:when test="$value = 0">
+              <xsl:text>1</xsl:text>
+            </xsl:when>
+          </xsl:choose>
+        </xsl:attribute>
         <xsl:attribute name="commandPorts">0</xsl:attribute>
         <xsl:attribute name="simulationFunction">
           <xsl:value-of select="@simulationFunctionName" />
@@ -25,8 +33,10 @@
         <xsl:attribute name="tary">0</xsl:attribute>
         <xsl:apply-templates select="node()"/>
         <Object>
+          <xsl:variable name="exprsData" select="*[@as='exprs']/data[2]/@value" />
+          <xsl:variable name="dataValue" select="*[@as='exprs']/data[1]/@value" />
           <xsl:attribute name="display_parameter">
-            <xsl:value-of select="@value"/>
+            <xsl:value-of select="concat($exprsData, ',', $dataValue)" />
           </xsl:attribute>
           <xsl:attribute name="as">displayProperties</xsl:attribute>
         </Object>
