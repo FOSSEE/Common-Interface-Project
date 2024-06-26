@@ -25,11 +25,11 @@
         <xsl:attribute name="tary">0</xsl:attribute>
         <xsl:apply-templates select="node()"/>
         <Object>
-          <xsl:for-each select="*[@as='exprs']/data">
-            <xsl:attribute name="display_parameter">
-              <xsl:value-of select="@value"/>
-            </xsl:attribute>
-          </xsl:for-each>
+          <xsl:variable name="exprsData" select="*[@as='exprs']/data[1]/@value" />
+          <xsl:variable name="dataValue" select="*[@as='exprs']/data[2]/@value" />
+          <xsl:attribute name="display_parameter">
+            <xsl:value-of select="concat($exprsData, ',', $dataValue)" />
+          </xsl:attribute>
           <xsl:attribute name="as">displayProperties</xsl:attribute>
         </Object>
         <Object>

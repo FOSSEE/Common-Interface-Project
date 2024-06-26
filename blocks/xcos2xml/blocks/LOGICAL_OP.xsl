@@ -13,7 +13,7 @@
         <!-- <xsl:attribute name="explicitInputPorts">2</xsl:attribute> -->
         <xsl:attribute name="explicitInputPorts">
           <xsl:variable name="value" select="(*[@as='exprs']/data/@value)" />
-          <xsl:variable name="count" select="string-length($value) - string-length(translate($value, ';', '')) + 1" />
+          <xsl:variable name="count" select="string-length($value) - string-length(translate($value, ';, ', '')) + 1" />
           <xsl:value-of select="$count" />
         </xsl:attribute>
         <xsl:attribute name="implicitInputPorts">0</xsl:attribute>
@@ -30,8 +30,16 @@
         <xsl:attribute name="tary">0</xsl:attribute>
         <xsl:apply-templates select="node()"/>
         <Object>
+          <xsl:variable name="exprsData" select="(*[@as='exprs']/data[1]/@value)" />
+          <xsl:variable name="displayParam1">
+            <xsl:choose>
+              <xsl:when test="$exprsData = 2">
+                <xsl:text>AND</xsl:text>
+              </xsl:when>
+            </xsl:choose>
+          </xsl:variable>
           <xsl:attribute name="display_parameter">
-            <xsl:value-of select="@value"/>
+            <xsl:value-of select="$displayParam1" />
           </xsl:attribute>
           <xsl:attribute name="as">displayProperties</xsl:attribute>
         </Object>

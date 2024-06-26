@@ -26,7 +26,7 @@
         <xsl:apply-templates select="node()"/>
         <Object>
           <xsl:attribute name="display_parameter">
-            <xsl:value-of select="*[@as='exprs']/data/@value"/>
+            <xsl:value-of select="*[@as='exprs']/data[1]/@value"/>
           </xsl:attribute>
           <xsl:attribute name="as">displayProperties</xsl:attribute>
         </Object>

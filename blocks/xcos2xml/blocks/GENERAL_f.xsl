@@ -15,7 +15,10 @@
         <xsl:attribute name="explicitOutputPorts">0</xsl:attribute>
         <xsl:attribute name="implicitOutputPorts">0</xsl:attribute>
         <xsl:attribute name="controlPorts">0</xsl:attribute>
-        <xsl:attribute name="commandPorts">1</xsl:attribute>
+        <!-- <xsl:attribute name="commandPorts">1</xsl:attribute> -->
+        <xsl:attribute name="commandPorts">
+          <xsl:value-of select="(*[@as='exprs']/data[2]/@value)" />
+        </xsl:attribute>
         <xsl:attribute name="simulationFunction">
           <xsl:value-of select="@simulationFunctionName" />
         </xsl:attribute>

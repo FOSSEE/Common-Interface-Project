@@ -26,7 +26,8 @@
         <xsl:apply-templates select="node()"/>
         <Object>
           <xsl:attribute name="display_parameter">
-            <xsl:value-of select="*[@as='exprs']/data/@value"/>
+            <xsl:value-of select="format-number(0.01 * 1000, '0')"/>
+                <xsl:text> m</xsl:text>
           </xsl:attribute>
           <xsl:attribute name="as">displayProperties</xsl:attribute>
         </Object>

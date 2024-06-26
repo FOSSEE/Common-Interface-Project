@@ -27,7 +27,7 @@
         <!-- Extracting the display parameter value from the data element -->
         <Object>
           <xsl:attribute name="display_parameter">
-            <xsl:value-of select="*[@as='exprs']/data/@value"/>
+            <xsl:value-of select="*[@as='exprs']/data[1]/@value"/>
           </xsl:attribute>
           <xsl:attribute name="as">displayProperties</xsl:attribute>
         </Object>
