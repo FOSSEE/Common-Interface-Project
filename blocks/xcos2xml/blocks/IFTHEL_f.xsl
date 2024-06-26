@@ -10,20 +10,42 @@
         <xsl:attribute name="connectable">0</xsl:attribute>
         <xsl:attribute name="CellType">Component</xsl:attribute>
         <xsl:attribute name="blockprefix">XCOS</xsl:attribute>
-        <xsl:attribute name="explicitInputPorts">1</xsl:attribute>
-        <xsl:attribute name="implicitInputPorts">0</xsl:attribute>
-        <xsl:attribute name="explicitOutputPorts">0</xsl:attribute>
-        <xsl:attribute name="implicitOutputPorts">0</xsl:attribute>
-        <!-- <xsl:attribute name="controlPorts">1</xsl:attribute> -->
+        <xsl:variable name="explicitInputPorts">1</xsl:variable>
+        <xsl:variable name="implicitInputPorts">0</xsl:variable>
+        <xsl:variable name="explicitOutputPorts">0</xsl:variable>
+        <xsl:variable name="implicitOutputPorts">0</xsl:variable>
+        <!-- <xsl:variable name="controlPorts">1</xsl:variable> -->
         <xsl:variable name="value" select="(*[@as='exprs']/data[1]/@value)" />
-        <xsl:attribute name="controlPorts">
+        <xsl:variable name="controlPorts">
           <xsl:choose>
             <xsl:when test="$value = 1">
               <xsl:text>1</xsl:text>
             </xsl:when>
           </xsl:choose>
+        </xsl:variable>
+        <xsl:variable name="commandPorts">2</xsl:variable>
+        <xsl:variable name="inputPortNumber">0</xsl:variable>
+        <xsl:variable name="outputPortNumber">0</xsl:variable>
+        <xsl:variable name="controlPortNumber">0</xsl:variable>
+        <xsl:variable name="commandPortNumber">0</xsl:variable>
+        <xsl:attribute name="explicitInputPorts">
+          <xsl:value-of select="$explicitInputPorts" />
         </xsl:attribute>
-        <xsl:attribute name="commandPorts">2</xsl:attribute>
+        <xsl:attribute name="implicitInputPorts">
+          <xsl:value-of select="$implicitInputPorts" />
+        </xsl:attribute>
+        <xsl:attribute name="explicitOutputPorts">
+          <xsl:value-of select="$explicitOutputPorts" />
+        </xsl:attribute>
+        <xsl:attribute name="implicitOutputPorts">
+          <xsl:value-of select="$implicitOutputPorts" />
+        </xsl:attribute>
+        <xsl:attribute name="controlPorts">
+          <xsl:value-of select="$controlPorts" />
+        </xsl:attribute>
+        <xsl:attribute name="commandPorts">
+          <xsl:value-of select="$commandPorts" />
+        </xsl:attribute>
         <xsl:attribute name="simulationFunction">
           <xsl:value-of select="@simulationFunctionName" />
         </xsl:attribute>
