@@ -29,8 +29,26 @@
           <xsl:variable name="dataValue" select="*[@as='exprs']/data[2]/@value" />
           <xsl:variable name="displayParam1">
             <xsl:choose>
-              <xsl:when test="$exprsData = 1">
+              <xsl:when test="$exprsData = 1 or $exprsData = 2">
                 <xsl:text>decim</xsl:text>
+              </xsl:when>
+              <xsl:when test="$exprsData = 3">
+                <xsl:text>int32</xsl:text>
+              </xsl:when>
+              <xsl:when test="$exprsData = 4">
+                <xsl:text>int16</xsl:text>
+              </xsl:when>
+              <xsl:when test="$exprsData = 5">
+                <xsl:text>int8</xsl:text>
+              </xsl:when>
+              <xsl:when test="$exprsData = 6">
+                <xsl:text>uint32</xsl:text>
+              </xsl:when>
+              <xsl:when test="$exprsData = 7">
+                <xsl:text>uint16</xsl:text>
+              </xsl:when>
+              <xsl:when test="$exprsData = 8">
+                <xsl:text>uint8</xsl:text>
               </xsl:when>
               <xsl:otherwise>
                 <xsl:text></xsl:text>
@@ -39,8 +57,26 @@
           </xsl:variable>
           <xsl:variable name="displayParam2">
             <xsl:choose>
+              <xsl:when test="$dataValue = 1 or $dataValue = 2">
+                <xsl:text>decim</xsl:text>
+              </xsl:when>
               <xsl:when test="$dataValue = 3">
                 <xsl:text>int32</xsl:text>
+              </xsl:when>
+              <xsl:when test="$dataValue = 4">
+                <xsl:text>int16</xsl:text>
+              </xsl:when>
+              <xsl:when test="$dataValue = 5">
+                <xsl:text>int8</xsl:text>
+              </xsl:when>
+              <xsl:when test="$dataValue = 6">
+                <xsl:text>uint32</xsl:text>
+              </xsl:when>
+              <xsl:when test="$dataValue = 7">
+                <xsl:text>uint16</xsl:text>
+              </xsl:when>
+              <xsl:when test="$dataValue = 8">
+                <xsl:text>uint8</xsl:text>
               </xsl:when>
               <xsl:otherwise>
                 <xsl:text></xsl:text>

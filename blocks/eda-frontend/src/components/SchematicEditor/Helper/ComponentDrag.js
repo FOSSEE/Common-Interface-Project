@@ -229,7 +229,7 @@ export default function LoadGrid (container, sidebar, outline) {
     }
 
     graph.convertValueToString = function (cell) {
-      const attribute = cell.style.replace(/;.*/, '')
+      const attribute = cell.style?.replace(/;.*/, '')
       if (attribute == null) {
         return ''
       }
