@@ -186,13 +186,6 @@ export function Header () {
               </MenuItem>
               <MenuItem
                 component={RouterLink}
-                to='/dashboard/profile'
-                onClick={handleClose}
-              >
-                My Profile
-              </MenuItem>
-              <MenuItem
-                component={RouterLink}
                 to='/dashboard/schematics'
                 onClick={handleClose}
               >

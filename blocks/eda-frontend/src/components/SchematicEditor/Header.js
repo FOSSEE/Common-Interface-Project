@@ -331,14 +331,6 @@ function Header () {
               <MenuItem
                 target='_blank'
                 component={RouterLink}
-                to='/dashboard/profile'
-                onClick={handleClose}
-              >
-                My Profile
-              </MenuItem>
-              <MenuItem
-                target='_blank'
-                component={RouterLink}
                 to='/dashboard/schematics'
                 onClick={handleClose}
               >
