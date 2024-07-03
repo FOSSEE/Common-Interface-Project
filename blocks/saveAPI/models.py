@@ -11,6 +11,8 @@ import uuid
 file_storage = FileSystemStorage(
     location=settings.FILE_STORAGE_ROOT, base_url=settings.FILE_STORAGE_URL)
 
+media = FileSystemStorage(
+    location=settings.MEDIA_ROOT, base_url='.')
 
 class StateSave(models.Model):
     id = models.AutoField(primary_key=True)
@@ -40,13 +42,12 @@ class Gallery(models.Model):
     name = models.CharField(max_length=100, default="Untitled")
     description = models.CharField(max_length=1000)
     media = models.ImageField(
-        upload_to='simulation_images', storage=file_storage, null=True)
+        upload_to='simulation_images', storage=media, null=True)
     shared = models.BooleanField(default=True)
     save_time = models.DateTimeField(auto_now=True)
 
     # For Django Admin Panel
     def image_tag(self):
-        print(file_storage)
         if self.media:
             return format_html('<img src="{}" style="width: 45px; height:45px;" />',
                                mark_safe(self.media.url))

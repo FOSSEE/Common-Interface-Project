@@ -51,7 +51,7 @@ export default function SchematicEditor (props) {
 
       if (cktid.substr(0, 7) === 'gallery') {
         // Loading Gallery schemaic.
-        dispatch(loadGallery(cktid.substr(7, cktid.length)))
+        dispatch(loadGallery(cktid))
       } else {
         // Loading User on-cloud saved schemaic.
         dispatch(fetchSchematic(cktid))

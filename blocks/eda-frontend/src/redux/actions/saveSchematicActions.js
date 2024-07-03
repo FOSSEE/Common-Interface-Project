@@ -154,18 +154,23 @@ export const setSchShared = (share) => (dispatch, getState) => {
 }
 
 // Action for Loading Gallery schematics
-export const loadGallery = (Id) => (dispatch, getState) => {
-  const data = GallerySchSample[Id]
+export const loadGallery = (saveId) => (dispatch, getState) => {
+  // Find the gallery schematic that matches the given save_id
+  const data = GallerySchSample.find(sample => sample.save_id === saveId)
 
-  dispatch({
-    type: actions.LOAD_GALLERY,
-    payload: data
-  })
-  dispatch(setTitle('* ' + data.name))
-  dispatch(setSchTitle(data.name))
-  dispatch(setSchDescription(data.description))
-  dispatch(setSchXmlData(data.data_dump))
-  renderGalleryXML(data.data_dump)
+  if (data) {
+    dispatch({
+      type: actions.LOAD_GALLERY,
+      payload: data
+    })
+    dispatch(setTitle('* ' + data.name))
+    dispatch(setSchTitle(data.name))
+    dispatch(setSchDescription(data.description))
+    dispatch(setSchXmlData(data.data_dump))
+    renderGalleryXML(data.data_dump)
+  } else {
+    console.error(`No gallery schematic found with save_id: ${saveId}`)
+  }
 }
 
 // Action for Loading local exported schematics
