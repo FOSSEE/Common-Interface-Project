@@ -1,8 +1,8 @@
     <xsl:template match="*[@interfaceFunctionName = 'SUMMATION']">
-    <xsl:variable name="total" select="(*[@as='exprs']/data)" />
+    <xsl:variable name="total" select="count(*[@as='exprs']/data)" />
     <xsl:variable name="parameters1">
         <xsl:choose>
-            <xsl:when test="count($total) = 1">1</xsl:when>
+            <xsl:when test="$total = 1">1</xsl:when>
             <xsl:otherwise>
               <xsl:value-of select="(*[@as='exprs']/data[1]/@value)" />
             </xsl:otherwise>
@@ -11,7 +11,7 @@
 
     <xsl:variable name="parameters2">
         <xsl:choose>
-            <xsl:when test="count($total) = 1">
+            <xsl:when test="$total = 1">
               <xsl:value-of select="(*[@as='exprs']/data[1]/@value)" />
             </xsl:when>
             <xsl:otherwise>
@@ -22,21 +22,16 @@
 
     <xsl:variable name="parameters3">
         <xsl:choose>
-            <xsl:when test="count($total) = 1">0</xsl:when>
+            <xsl:when test="$total = 1">0</xsl:when>
             <xsl:otherwise>
               <xsl:value-of select="(*[@as='exprs']/data[3]/@value)" />
             </xsl:otherwise>
         </xsl:choose>
     </xsl:variable>
 
-    <!-- <xsl:variable name="total1" select="(*[@as='exprs']/data)" /> -->
-    <!-- <xsl:variable name="value">
-    <xsl:value-of select="parameter[1]" />
-    </xsl:variable> -->
 
     <xsl:variable name="explicitInputPorts">
          
-          <!-- <xsl:variable name="count" select="string-length($parameters2) - string-length(translate($parameters2, ';,', '')) + 1" /> -->
           <xsl:value-of select="string-length($parameters2) - string-length(translate($parameters2, ';,', '')) + 1" />
         </xsl:variable>
         <xsl:variable name="implicitInputPorts">0</xsl:variable>
