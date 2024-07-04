@@ -5,4 +5,10 @@
     <xsl:template match="ScilabInteger" />
     <xsl:template match="SuperBlockDiagram" />
     <xsl:template match="ScilabString" />
+    <xsl:template match="ExplicitInputPort" />
+    <xsl:template match="ExplicitOutputPort" />
+    <xsl:template match="ImplicitInputPort" />
+    <xsl:template match="ImplicitOutputPort" />
+    <xsl:template match="CommandPort" />
+    <xsl:template match="ControlPort" />
 </xsl:stylesheet>
