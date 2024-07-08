@@ -12,11 +12,11 @@ click-plugins==1.1.1
 click-repl==0.2.0
 cryptography==42.0.7
 defusedxml==0.7.1
-Django==3.2.25
+Django==4.2.13
 django-cors-headers==3.13.0
 django-filter==22.1
 django-templated-mail==1.1.1
-djangorestframework==3.14.0
+djangorestframework==3.15.2
 djangorestframework-simplejwt==5.3.1
 djoser==2.2.2
 drf-yasg==1.21.7
