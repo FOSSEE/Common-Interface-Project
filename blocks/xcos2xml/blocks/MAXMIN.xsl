@@ -10,7 +10,6 @@
         <xsl:attribute name="connectable">0</xsl:attribute>
         <xsl:attribute name="CellType">Component</xsl:attribute>
         <xsl:attribute name="blockprefix">XCOS</xsl:attribute>
-        <!-- <xsl:variable name="explicitInputPorts">1</xsl:variable> -->
         <xsl:variable name="explicitInputPorts">
           <xsl:value-of select="(*[@as='exprs']/data[2]/@value)"/>
         </xsl:variable>
@@ -19,10 +18,6 @@
         <xsl:variable name="implicitOutputPorts">0</xsl:variable>
         <xsl:variable name="controlPorts">0</xsl:variable>
         <xsl:variable name="commandPorts">0</xsl:variable>
-        <xsl:variable name="inputPortNumber">0</xsl:variable>
-        <xsl:variable name="outputPortNumber">0</xsl:variable>
-        <xsl:variable name="controlPortNumber">0</xsl:variable>
-        <xsl:variable name="commandPortNumber">0</xsl:variable>
         <xsl:attribute name="explicitInputPorts">
           <xsl:value-of select="$explicitInputPorts" />
         </xsl:attribute>

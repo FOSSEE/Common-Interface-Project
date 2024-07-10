@@ -37,7 +37,6 @@
       <xsl:variable name="implicitOutputPorts">0</xsl:variable>
       <xsl:variable name="controlPorts">0</xsl:variable>
       <xsl:variable name="commandPorts">0</xsl:variable>
-        
       <xsl:element name="mxCell">
         <xsl:attribute name="style">
           <xsl:value-of select="@style" />
@@ -93,7 +92,6 @@
           </xsl:attribute>
           <xsl:attribute name="as">parameter_values</xsl:attribute>
         </Object>
-        
       </xsl:element>
 
       <xsl:call-template name="port">

@@ -6,7 +6,7 @@
         <xsl:param name="implicitOutputPorts" />
         <xsl:param name="controlPorts" />
         <xsl:param name="commandPorts" />
-<xsl:for-each select="key('k-in', @id)">
+        <xsl:for-each select="key('k-in', $id)">
           <xsl:element name="mxCell">
             <xsl:attribute name="style">
             <xsl:value-of select="name(.)" />
@@ -32,7 +32,7 @@
             </mxGeometry>
           </xsl:element>
         </xsl:for-each> 
-        <xsl:for-each select="key('k-out', @id)">
+        <xsl:for-each select="key('k-out', $id)">
           <xsl:element name="mxCell">
             <xsl:attribute name="style">
             <xsl:value-of select="name(.)" />
@@ -58,7 +58,7 @@
             </mxGeometry>
           </xsl:element>
         </xsl:for-each>
-        <xsl:for-each select="key('k-command', @id)">
+        <xsl:for-each select="key('k-command', $id)">
           <xsl:element name="mxCell">
             <xsl:attribute name="style">
             <xsl:value-of select="name(.)" />
@@ -84,7 +84,7 @@
             </mxGeometry>
           </xsl:element>
         </xsl:for-each>
-        <xsl:for-each select="key('k-control', @id)">
+        <xsl:for-each select="key('k-control', $id)">
           <xsl:element name="mxCell">
             <xsl:attribute name="style">
             <xsl:value-of select="name(.)" />
@@ -110,4 +110,4 @@
             </mxGeometry>
           </xsl:element>
         </xsl:for-each>
-</xsl:template>
+      </xsl:template>

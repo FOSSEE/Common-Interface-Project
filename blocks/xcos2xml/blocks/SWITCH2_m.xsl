@@ -16,10 +16,6 @@
         <xsl:variable name="implicitOutputPorts">0</xsl:variable>
         <xsl:variable name="controlPorts">0</xsl:variable>
         <xsl:variable name="commandPorts">0</xsl:variable>
-        <xsl:variable name="inputPortNumber">0</xsl:variable>
-        <xsl:variable name="outputPortNumber">0</xsl:variable>
-        <xsl:variable name="controlPortNumber">0</xsl:variable>
-        <xsl:variable name="commandPortNumber">0</xsl:variable>
         <xsl:attribute name="explicitInputPorts">
           <xsl:value-of select="$explicitInputPorts" />
         </xsl:attribute>
@@ -59,7 +55,7 @@
             </xsl:attribute>
           </xsl:for-each>
           <xsl:attribute name="as">parameter_values</xsl:attribute>
-        </Object> 
+        </Object>
       </xsl:element>
       <xsl:call-template name="port">
         <xsl:with-param name="id" select="@id"/>

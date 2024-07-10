@@ -27,10 +27,6 @@
           <xsl:variable name="integer-power" select="floor($power)"/>
           <xsl:value-of select="$integer-power - 1"/>
         </xsl:variable>
-        <xsl:variable name="inputPortNumber">0</xsl:variable>
-        <xsl:variable name="outputPortNumber">0</xsl:variable>
-        <xsl:variable name="controlPortNumber">0</xsl:variable>
-        <xsl:variable name="commandPortNumber">0</xsl:variable>
         <xsl:attribute name="explicitInputPorts">
           <xsl:value-of select="$explicitInputPorts" />
         </xsl:attribute>
