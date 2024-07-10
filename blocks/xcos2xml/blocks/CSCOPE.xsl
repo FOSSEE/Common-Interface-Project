@@ -57,4 +57,13 @@
         <Object display_parameter="" as="displayProperties"/>
         <Object p000_value="1 3 5 7 9 11 13 15" p001_value="-1" p002_value="[]" p003_value="[600;400]" p004_value="-2" p005_value="2" p006_value="30" p007_value="20" p008_value="0" p009_value="" as="parameter_values"/>
       </xsl:element>
+      <xsl:call-template name="port">
+        <xsl:with-param name="id" select="@id"/>
+        <xsl:with-param name="explicitInputPorts" select="$explicitInputPorts"/>
+        <xsl:with-param name="explicitOutputPorts" select="$explicitOutputPorts"/>
+        <xsl:with-param name="implicitInputPorts" select="$implicitInputPorts"/>
+        <xsl:with-param name="implicitOutputPorts" select="$implicitOutputPorts"/>
+        <xsl:with-param name="controlPorts" select="$controlPorts"/>
+        <xsl:with-param name="commandPorts" select="$commandPorts"/>
+      </xsl:call-template>
     </xsl:template>
