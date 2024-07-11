@@ -2,6 +2,7 @@
 <xsl:key name="k-output" match="ExplicitOutputPort" use="@parent" />
 <xsl:key name="k-srclink" match="ExplicitLink" use="@source" />
 <xsl:key name="k-tgtlink" match="ExplicitLink" use="@target" />
+<xsl:key name="k-link" match="ExplicitLink" use="@id" />
 <xsl:key name="k-exin" match="ExplicitInputPort" use="@id" />
 <xsl:key name="k-exout" match="ExplicitOutputPort" use="@id" />
 <xsl:key name="k-split" match="SplitBlock" use="@id" />
@@ -9,6 +10,11 @@
     <xsl:template match="SplitBlock">
         <xsl:for-each select="key('k-input', @id)">
             <xsl:for-each select="key('k-tgtlink', @id)">
+                <!-- <link>
+                  <xsl:attribute name="tgtlinkid">
+                    <xsl:value-of select="@id"/>
+                  </xsl:attribute>
+                </link> -->
                 <xsl:for-each select="key('k-exout', @source)">
                     <newlink id="{generate-id()}">
                         <xsl:attribute name="linkid">
@@ -16,6 +22,11 @@
                         </xsl:attribute>
                     </newlink>
                 </xsl:for-each>
+                <!-- <xsl:if test="@id = key('k-link', @id)">
+                <xsl:copy>
+                    <xsl:copy-of select="@*"/>
+                </xsl:copy>
+            </xsl:if> -->
             </xsl:for-each> 
         </xsl:for-each>
 
@@ -42,6 +53,7 @@
       <xsl:variable name="targetElement" select="//*[@id = $targetId]"/>
       <xsl:variable name="targetElemId" select="$targetElement/@parent"/>
       <xsl:variable name="parentTargetElement" select="//*[@id = $targetElemId]"/>
+
       <xsl:choose>
         <xsl:when test="name($parentElement) != 'SplitBlock' and name($parentTargetElement) != 'SplitBlock'" >
           
