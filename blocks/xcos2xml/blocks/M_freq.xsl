@@ -1,4 +1,21 @@
     <xsl:template match="*[@interfaceFunctionName = 'M_freq']">
+      <xsl:variable name="explicitInputPorts">0</xsl:variable>
+      <xsl:variable name="implicitInputPorts">0</xsl:variable>
+      <xsl:variable name="explicitOutputPorts">0</xsl:variable>
+      <xsl:variable name="implicitOutputPorts">0</xsl:variable>
+      <xsl:variable name="controlPorts">1</xsl:variable>
+      <xsl:variable name="commandPorts">
+        <xsl:variable name="value" select="(*[@as='exprs']/data[1]/@value)" />
+        <xsl:variable name="count" select="string-length($value) - string-length(translate($value, ';, ', '')) + 1" />
+        <xsl:variable name="power">
+          <xsl:call-template name="pow">
+            <xsl:with-param name="pBase" select="2"/>
+            <xsl:with-param name="pPower" select="$count"/>
+          </xsl:call-template>
+        </xsl:variable>
+        <xsl:variable name="integer-power" select="floor($power)"/>
+        <xsl:value-of select="$integer-power - 1"/>
+      </xsl:variable>
       <xsl:element name="mxCell">
         <xsl:attribute name="style">
           <xsl:value-of select="@style" />
@@ -10,23 +27,6 @@
         <xsl:attribute name="connectable">0</xsl:attribute>
         <xsl:attribute name="CellType">Component</xsl:attribute>
         <xsl:attribute name="blockprefix">XCOS</xsl:attribute>
-        <xsl:variable name="explicitInputPorts">0</xsl:variable>
-        <xsl:variable name="implicitInputPorts">0</xsl:variable>
-        <xsl:variable name="explicitOutputPorts">0</xsl:variable>
-        <xsl:variable name="implicitOutputPorts">0</xsl:variable>
-        <xsl:variable name="controlPorts">1</xsl:variable>
-        <xsl:variable name="commandPorts">
-          <xsl:variable name="value" select="(*[@as='exprs']/data[1]/@value)" />
-          <xsl:variable name="count" select="string-length($value) - string-length(translate($value, ';, ', '')) + 1" />
-          <xsl:variable name="power">
-            <xsl:call-template name="pow">
-              <xsl:with-param name="pBase" select="2"/>
-              <xsl:with-param name="pPower" select="$count"/>
-            </xsl:call-template>
-          </xsl:variable>
-          <xsl:variable name="integer-power" select="floor($power)"/>
-          <xsl:value-of select="$integer-power - 1"/>
-        </xsl:variable>
         <xsl:attribute name="explicitInputPorts">
           <xsl:value-of select="$explicitInputPorts" />
         </xsl:attribute>

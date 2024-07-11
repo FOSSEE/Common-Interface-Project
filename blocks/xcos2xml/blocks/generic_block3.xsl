@@ -1,4 +1,24 @@
     <xsl:template match="*[@interfaceFunctionName = 'generic_block3']">
+      <xsl:variable name="explicitInputPorts">1</xsl:variable>
+      <xsl:variable name="implicitInputPorts">0</xsl:variable>
+      <xsl:variable name="explicitOutputPorts">1</xsl:variable>
+      <xsl:variable name="implicitOutputPorts">0</xsl:variable>
+      <xsl:variable name="value" select="(*[@as='exprs']/data[7]/@value)" />
+      <xsl:variable name="controlPorts">
+        <xsl:choose>
+          <xsl:when test="$value = '[]'">
+            <xsl:text>0</xsl:text>
+          </xsl:when>
+        </xsl:choose>
+      </xsl:variable>
+      <xsl:variable name="value1" select="(*[@as='exprs']/data[8]/@value)" />
+      <xsl:variable name="commandPorts">
+        <xsl:choose>
+          <xsl:when test="$value1 = '[]'">
+            <xsl:text>0</xsl:text>
+          </xsl:when>
+        </xsl:choose>
+      </xsl:variable>
       <xsl:element name="mxCell">
         <xsl:attribute name="style">
           <xsl:value-of select="@style" />
@@ -10,26 +30,6 @@
         <xsl:attribute name="connectable">0</xsl:attribute>
         <xsl:attribute name="CellType">Component</xsl:attribute>
         <xsl:attribute name="blockprefix">XCOS</xsl:attribute>
-        <xsl:variable name="explicitInputPorts">1</xsl:variable>
-        <xsl:variable name="implicitInputPorts">0</xsl:variable>
-        <xsl:variable name="explicitOutputPorts">1</xsl:variable>
-        <xsl:variable name="implicitOutputPorts">0</xsl:variable>
-        <xsl:variable name="value" select="(*[@as='exprs']/data[7]/@value)" />
-        <xsl:variable name="controlPorts">
-          <xsl:choose>
-            <xsl:when test="$value = '[]'">
-              <xsl:text>0</xsl:text>
-            </xsl:when>
-          </xsl:choose>
-        </xsl:variable>
-        <xsl:variable name="value1" select="(*[@as='exprs']/data[8]/@value)" />
-        <xsl:variable name="commandPorts">
-          <xsl:choose>
-            <xsl:when test="$value1 = '[]'">
-              <xsl:text>0</xsl:text>
-            </xsl:when>
-          </xsl:choose>
-        </xsl:variable>
         <xsl:attribute name="explicitInputPorts">
           <xsl:value-of select="$explicitInputPorts" />
         </xsl:attribute>

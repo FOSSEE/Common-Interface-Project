@@ -1,4 +1,14 @@
     <xsl:template match="*[@interfaceFunctionName = 'LOGICAL_OP']">
+      <xsl:variable name="explicitInputPorts">
+        <xsl:variable name="value" select="(*[@as='exprs']/data/@value)" />
+        <xsl:variable name="count" select="string-length($value) - string-length(translate($value, ';, ', '')) + 1" />
+        <xsl:value-of select="$count" />
+      </xsl:variable>
+      <xsl:variable name="implicitInputPorts">0</xsl:variable>
+      <xsl:variable name="explicitOutputPorts">1</xsl:variable>
+      <xsl:variable name="implicitOutputPorts">0</xsl:variable>
+      <xsl:variable name="controlPorts">0</xsl:variable>
+      <xsl:variable name="commandPorts">0</xsl:variable>
       <xsl:element name="mxCell">
         <xsl:attribute name="style">
           <xsl:value-of select="@style" />
@@ -10,16 +20,6 @@
         <xsl:attribute name="connectable">0</xsl:attribute>
         <xsl:attribute name="CellType">Component</xsl:attribute>
         <xsl:attribute name="blockprefix">XCOS</xsl:attribute>
-        <xsl:variable name="explicitInputPorts">
-          <xsl:variable name="value" select="(*[@as='exprs']/data/@value)" />
-          <xsl:variable name="count" select="string-length($value) - string-length(translate($value, ';, ', '')) + 1" />
-          <xsl:value-of select="$count" />
-        </xsl:variable>
-        <xsl:variable name="implicitInputPorts">0</xsl:variable>
-        <xsl:variable name="explicitOutputPorts">1</xsl:variable>
-        <xsl:variable name="implicitOutputPorts">0</xsl:variable>
-        <xsl:variable name="controlPorts">0</xsl:variable>
-        <xsl:variable name="commandPorts">0</xsl:variable>
         <xsl:attribute name="explicitInputPorts">
           <xsl:value-of select="$explicitInputPorts" />
         </xsl:attribute>
