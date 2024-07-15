@@ -158,7 +158,47 @@ export const loadGallery = (saveId) => (dispatch, getState) => {
   // Find the gallery schematic that matches the given save_id
   const data = GallerySchSample.find(sample => sample.save_id === saveId)
 
-  if (data) {
+  if (!data) {
+    console.error(`No gallery schematic found with save_id: ${saveId}`)
+    return
+  }
+
+  // Check if the data is xcos or xml
+  const parser = new DOMParser()
+  let xmlDoc = parser.parseFromString(data.data_dump, 'application/xml')
+  const isXcos = xmlDoc.getElementsByTagName('XcosDiagram').length > 0
+
+  // Define getXsltProcessor function within loadGallery
+  const getXsltProcessor = async () => {
+    const xcos2xml = '/xcos2xml.xsl'
+    const response = await fetch(xcos2xml)
+    const text = await response.text()
+    const xsl = parser.parseFromString(text, 'application/xml')
+    const processor = new XSLTProcessor()
+    processor.importStylesheet(xsl)
+    return processor
+  }
+
+  if (isXcos) {
+    getXsltProcessor().then(processor => {
+      xmlDoc = processor.transformToDocument(xmlDoc)
+      const dataDump = new XMLSerializer().serializeToString(xmlDoc)
+
+      // Dispatch actions for xcos data
+      dispatch({
+        type: actions.LOAD_GALLERY,
+        payload: { ...data, data_dump: dataDump }
+      })
+      dispatch(setTitle('* ' + data.name))
+      dispatch(setSchTitle(data.name))
+      dispatch(setSchDescription(data.description))
+      dispatch(setSchXmlData(dataDump)) // Update with transformed XML
+      renderGalleryXML(dataDump)
+    }).catch(error => {
+      console.error('Error converting xcos to xml:', error)
+    })
+  } else {
+    // Dispatch actions for xml data
     dispatch({
       type: actions.LOAD_GALLERY,
       payload: data
@@ -168,9 +208,8 @@ export const loadGallery = (saveId) => (dispatch, getState) => {
     dispatch(setSchDescription(data.description))
     dispatch(setSchXmlData(data.data_dump))
     renderGalleryXML(data.data_dump)
-  } else {
-    console.error(`No gallery schematic found with save_id: ${saveId}`)
   }
+  window.loadGalleryComplete = true
 }
 
 // Action for Loading local exported schematics
