@@ -2,46 +2,102 @@
 <xsl:key name="k-output" match="ExplicitOutputPort" use="@parent" />
 <xsl:key name="k-srclink" match="ExplicitLink" use="@source" />
 <xsl:key name="k-tgtlink" match="ExplicitLink" use="@target" />
-<xsl:key name="k-link" match="ExplicitLink" use="@id" />
-<xsl:key name="k-exin" match="ExplicitInputPort" use="@id" />
-<xsl:key name="k-exout" match="ExplicitOutputPort" use="@id" />
-<xsl:key name="k-split" match="SplitBlock" use="@id" />
 
     <xsl:template match="SplitBlock">
-        <xsl:for-each select="key('k-input', @id)">
-            <xsl:for-each select="key('k-tgtlink', @id)">
-                <!-- <link>
-                  <xsl:attribute name="tgtlinkid">
-                    <xsl:value-of select="@id"/>
-                  </xsl:attribute>
-                </link> -->
-                <xsl:for-each select="key('k-exout', @source)">
-                    <newlink id="{generate-id()}">
-                        <xsl:attribute name="linkid">
-                            <xsl:value-of select="@id"/>
-                        </xsl:attribute>
-                    </newlink>
-                </xsl:for-each>
-                <!-- <xsl:if test="@id = key('k-link', @id)">
-                <xsl:copy>
-                    <xsl:copy-of select="@*"/>
-                </xsl:copy>
-            </xsl:if> -->
-            </xsl:for-each> 
-        </xsl:for-each>
+      <xsl:variable name="InputPorts" select="@inputPorts" />
+        <xsl:variable name="OutputPorts" select="@outputPorts" />
+        <xsl:variable name="InputPort" select="key('k-input', @id)" />
+        <xsl:variable name="OutputPort" select="key('k-output', @id)" />
+        <xsl:variable name="targetoneid" select="$InputPort/@id" />
+        <xsl:variable name="sourceoneid" select="$OutputPort/@id" />
+        <xsl:variable name="targetonelink" select="key('k-tgtlink', $targetoneid)" />
+        <xsl:variable name="sourceonelink" select="key('k-srclink', $sourceoneid)" />
+        <xsl:variable name="newidone" select="generate-id()" />
 
-        <xsl:for-each select="key('k-output', @id)">
-            <xsl:for-each select="key('k-srclink', @id)">
-                <xsl:for-each select="key('k-exin', @target)">
-                    <newlink id="{generate-id()}">
-                        <xsl:attribute name="linkid1">
-                            <xsl:value-of select="@id"/>
-                        </xsl:attribute>
-                    </newlink>
+          <xsl:element name="mxCell">
+            <xsl:attribute name="id">
+              <xsl:value-of select="$newidone" />
+            </xsl:attribute>
+            <xsl:attribute name="edge">1</xsl:attribute>
+            <xsl:attribute name="sourceVertex">
+              <xsl:value-of select="$targetonelink/@source" />
+            </xsl:attribute>
+            <xsl:attribute name="targetVertex">
+              <xsl:value-of select="$sourceonelink/@target" />
+            </xsl:attribute>
+            <xsl:attribute name="node">.null</xsl:attribute>
+            <xsl:attribute name="CellType">Unknown</xsl:attribute>
+            <xsl:attribute name="tarx">0</xsl:attribute>
+            <xsl:attribute name="tary">0</xsl:attribute>
+            <xsl:apply-templates select="node()"/>
+            <xsl:apply-templates />
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <xsl:for-each select="$sourceonelink/mxGeometry/Array/mxPoint">
+                  <xsl:copy-of select="." />
                 </xsl:for-each>
-            </xsl:for-each>
-        </xsl:for-each>
-        
+                <xsl:for-each select="$targetonelink/mxGeometry/Array/mxPoint">
+                  <xsl:copy-of select="." />
+                </xsl:for-each>
+              </Array>
+            </mxGeometry>
+            <Object as="parameter_values"/>
+            <Object as="displayProperties"/>
+          </xsl:element>
+
+        <xsl:choose>
+          <xsl:when test="$OutputPorts = 2">
+            <xsl:variable name="OutputtwoPort" select="$OutputPort[position()=2]" />
+            <xsl:variable name="sourcetwoid" select="$OutputtwoPort/@id" />
+            <xsl:variable name="sourcetwolink" select="key('k-srclink', $sourcetwoid)" />
+              <xsl:element name="mxCell">
+                <xsl:attribute name="id">
+                  <xsl:value-of select="generate-id($targetonelink)" />
+                </xsl:attribute>
+                <xsl:attribute name="edge">1</xsl:attribute>
+                <xsl:attribute name="sourceVertex">
+                  <xsl:value-of select="$newidone" />
+                </xsl:attribute>
+                <xsl:attribute name="targetVertex">
+                  <xsl:value-of select="$sourcetwolink/@target" />
+                </xsl:attribute>
+                <xsl:attribute name="node">.null</xsl:attribute>
+                <xsl:attribute name="CellType">Unknown</xsl:attribute>
+                <xsl:attribute name="tarx">0</xsl:attribute>
+                <xsl:attribute name="tary">0</xsl:attribute>
+                <xsl:apply-templates select="node()"/>
+                <xsl:apply-templates />
+                <Object as="parameter_values"/>
+                <Object as="displayProperties"/>
+              </xsl:element>
+          </xsl:when>
+
+          <xsl:otherwise>
+            <xsl:variable name="InputtwoPort" select="$InputPort[position()=2]" />
+            <xsl:variable name="targettwoid" select="$InputtwoPort/@id" />
+            <xsl:variable name="targettwolink" select="key('k-tgtlink', $targettwoid)" />
+              <xsl:element name="mxCell">
+                <xsl:attribute name="id">
+                  <xsl:value-of select="generate-id($sourceonelink)" />
+                </xsl:attribute>
+                <xsl:attribute name="edge">1</xsl:attribute>
+                <xsl:attribute name="sourceVertex">
+                  <xsl:value-of select="$targettwolink/@source" />
+                </xsl:attribute>
+                <xsl:attribute name="targetVertex">
+                  <xsl:value-of select="$newidone" />
+                </xsl:attribute>
+                <xsl:attribute name="node">.null</xsl:attribute>
+                <xsl:attribute name="CellType">Unknown</xsl:attribute>
+                <xsl:attribute name="tarx">0</xsl:attribute>
+                <xsl:attribute name="tary">0</xsl:attribute>
+                <xsl:apply-templates select="node()"/>
+                <xsl:apply-templates />
+                <Object as="parameter_values"/>
+                <Object as="displayProperties"/>
+              </xsl:element>
+          </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
 
     <xsl:template match="ExplicitLink">
@@ -59,12 +115,6 @@
           
           <xsl:copy>
             <xsl:copy-of select="@*"/>
-              <!-- <xsl:attribute name="test4">
-                <xsl:value-of select="$sourceId" />
-              </xsl:attribute>
-              <xsl:attribute name="test5">
-                <xsl:value-of select="name($sourceElement)" />
-              </xsl:attribute> -->
           </xsl:copy>
         </xsl:when>
       </xsl:choose>
@@ -82,15 +132,3 @@
         </xsl:when>
       </xsl:choose>
      </xsl:template>
-     
-     <!-- select="key('k-split', @parent)"/> --> 
-
-    <!-- <xsl:template match="*">
-        <xsl:copy>
-            <xsl:apply-templates select="@*|node()"/>
-        </xsl:copy>
-    </xsl:template>
-
-    <xsl:template match="@*">
-        <xsl:copy/>
-    </xsl:template> -->
