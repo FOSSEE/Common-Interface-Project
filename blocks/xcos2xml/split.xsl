@@ -4,15 +4,20 @@
 <xsl:key name="k-tgtlink" match="ExplicitLink" use="@target" />
 
     <xsl:template match="SplitBlock">
-      <xsl:variable name="InputPorts" select="@inputPorts" />
-        <xsl:variable name="OutputPorts" select="@outputPorts" />
+      
         <xsl:variable name="InputPort" select="key('k-input', @id)" />
         <xsl:variable name="OutputPort" select="key('k-output', @id)" />
+        <xsl:variable name="InputPorts" select="count($InputPort)" />
+        <xsl:variable name="OutputPorts" select="count($OutputPort)" />
         <xsl:variable name="targetoneid" select="$InputPort/@id" />
         <xsl:variable name="sourceoneid" select="$OutputPort/@id" />
         <xsl:variable name="targetonelink" select="key('k-tgtlink', $targetoneid)" />
         <xsl:variable name="sourceonelink" select="key('k-srclink', $sourceoneid)" />
         <xsl:variable name="newidone" select="generate-id()" />
+
+        <xsl:variable name="geometry" select="mxGeometry" />
+        <xsl:variable name="x" select="$geometry/@x" />
+        <xsl:variable name="y" select="$geometry/@y" />
 
           <xsl:element name="mxCell">
             <xsl:attribute name="id">
@@ -29,13 +34,28 @@
             <xsl:attribute name="CellType">Unknown</xsl:attribute>
             <xsl:attribute name="tarx">0</xsl:attribute>
             <xsl:attribute name="tary">0</xsl:attribute>
-            <xsl:apply-templates select="node()"/>
-            <xsl:apply-templates />
+            <xsl:attribute name="testabc">
+                  <xsl:value-of select="$InputPorts" />
+                </xsl:attribute>
+                <xsl:attribute name="testabc1">
+                  <xsl:value-of select="$OutputPorts" />
+                </xsl:attribute>
+            <!-- <xsl:apply-templates select="node()"/> -->
+            <!-- <xsl:apply-templates /> -->
             <mxGeometry relative="1" as="geometry">
               <Array as="points">
                 <xsl:for-each select="$sourceonelink/mxGeometry/Array/mxPoint">
                   <xsl:copy-of select="." />
                 </xsl:for-each>
+                <xsl:element name="mxPoint">
+                <xsl:attribute name="x">
+                    <xsl:value-of select="$x - 4" />
+                </xsl:attribute>
+                <xsl:attribute name="y">
+                    <xsl:value-of select="$y - 4" />
+                </xsl:attribute>
+               
+            </xsl:element>
                 <xsl:for-each select="$targetonelink/mxGeometry/Array/mxPoint">
                   <xsl:copy-of select="." />
                 </xsl:for-each>
@@ -51,6 +71,9 @@
             <xsl:variable name="sourcetwoid" select="$OutputtwoPort/@id" />
             <xsl:variable name="sourcetwolink" select="key('k-srclink', $sourcetwoid)" />
               <xsl:element name="mxCell">
+              <xsl:attribute name="test0">
+                  <xsl:value-of select="$sourcetwoid" />
+                </xsl:attribute>
                 <xsl:attribute name="id">
                   <xsl:value-of select="generate-id($targetonelink)" />
                 </xsl:attribute>
@@ -65,8 +88,8 @@
                 <xsl:attribute name="CellType">Unknown</xsl:attribute>
                 <xsl:attribute name="tarx">0</xsl:attribute>
                 <xsl:attribute name="tary">0</xsl:attribute>
-                <xsl:apply-templates select="node()"/>
-                <xsl:apply-templates />
+                <!-- <xsl:apply-templates select="node()"/> -->
+                <!-- <xsl:apply-templates /> -->
                 <Object as="parameter_values"/>
                 <Object as="displayProperties"/>
               </xsl:element>
@@ -77,6 +100,9 @@
             <xsl:variable name="targettwoid" select="$InputtwoPort/@id" />
             <xsl:variable name="targettwolink" select="key('k-tgtlink', $targettwoid)" />
               <xsl:element name="mxCell">
+              <xsl:attribute name="test1">
+                  <xsl:value-of select="$InputtwoPort/@id" />
+                </xsl:attribute>
                 <xsl:attribute name="id">
                   <xsl:value-of select="generate-id($sourceonelink)" />
                 </xsl:attribute>
@@ -91,8 +117,18 @@
                 <xsl:attribute name="CellType">Unknown</xsl:attribute>
                 <xsl:attribute name="tarx">0</xsl:attribute>
                 <xsl:attribute name="tary">0</xsl:attribute>
-                <xsl:apply-templates select="node()"/>
-                <xsl:apply-templates />
+                <!-- <xsl:apply-templates select="node()"/> -->
+                <!-- <xsl:apply-templates /> -->
+                <!-- <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <xsl:for-each select="$sourceonelink/mxGeometry/Array/mxPoint">
+                  <xsl:copy-of select="." />
+                </xsl:for-each>
+                <xsl:for-each select="$targetonelink/mxGeometry/Array/mxPoint">
+                  <xsl:copy-of select="." />
+                </xsl:for-each>
+              </Array>
+            </mxGeometry> -->
                 <Object as="parameter_values"/>
                 <Object as="displayProperties"/>
               </xsl:element>

@@ -24,8 +24,9 @@
           <xsl:attribute name="CellType">Unknown</xsl:attribute>
           <xsl:attribute name="tarx">0</xsl:attribute>
           <xsl:attribute name="tary">0</xsl:attribute>
-          <xsl:apply-templates select="node()"/>
-          <xsl:apply-templates />
+          <!-- <xsl:apply-templates select="node()"/> -->
+          <!-- <xsl:apply-templates /> -->
+          <mxGeometry relative="1" as="geometry" />
           <Object as="parameter_values"/>
           <Object as="displayProperties"/>
         </xsl:element>

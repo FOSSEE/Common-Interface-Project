@@ -30,6 +30,8 @@
               </xsl:attribute>
               <mxPoint x="-8" y="-4" as="offset"/>
             </mxGeometry>
+            <Object as="parameter_values"/>
+            <Object as="displayProperties"/>
           </xsl:element>
         </xsl:for-each> 
         <xsl:for-each select="key('k-out', $id)">
@@ -56,6 +58,8 @@
             </xsl:attribute>
             <mxPoint x="0" y="-4" as="offset"/>
             </mxGeometry>
+            <Object as="parameter_values"/>
+            <Object as="displayProperties"/>
           </xsl:element>
         </xsl:for-each>
         <xsl:for-each select="key('k-command', $id)">
@@ -82,6 +86,8 @@
               </xsl:attribute>
               <mxPoint x="-4" y="0" as="offset"/>
             </mxGeometry>
+            <Object as="parameter_values"/>
+            <Object as="displayProperties"/>
           </xsl:element>
         </xsl:for-each>
         <xsl:for-each select="key('k-control', $id)">
@@ -108,6 +114,8 @@
               </xsl:attribute>
               <mxPoint x="-4" y="-8" as="offset"/>
             </mxGeometry>
+            <Object as="parameter_values"/>
+            <Object as="displayProperties"/>
           </xsl:element>
         </xsl:for-each>
       </xsl:template>
