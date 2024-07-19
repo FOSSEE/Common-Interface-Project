@@ -4,6 +4,7 @@ import api from '../../utils/Api'
 import GallerySchSample from '../../utils/GallerySchSample'
 import { renderGalleryXML } from '../../components/SchematicEditor/Helper/ToolbarTools'
 import { setTitle } from './index'
+import { getXsltProcessor } from '../../utils/GalleryUtils'
 
 export const setSchTitle = (title) => (dispatch) => {
   dispatch({
@@ -168,46 +169,28 @@ export const loadGallery = (saveId) => (dispatch, getState) => {
   let xmlDoc = parser.parseFromString(data.data_dump, 'application/xml')
   const isXcos = xmlDoc.getElementsByTagName('XcosDiagram').length > 0
 
-  // Define getXsltProcessor function within loadGallery
-  const getXsltProcessor = async () => {
-    const xcos2xml = '/xcos2xml.xsl'
-    const response = await fetch(xcos2xml)
-    const text = await response.text()
-    const xsl = parser.parseFromString(text, 'application/xml')
-    const processor = new XSLTProcessor()
-    processor.importStylesheet(xsl)
-    return processor
+  const handleGalleryLoad = (dispatch, data, dataDump) => {
+    dispatch({
+      type: actions.LOAD_GALLERY,
+      payload: { ...data, data_dump: dataDump }
+    })
+    dispatch(setTitle('* ' + data.name))
+    dispatch(setSchTitle(data.name))
+    dispatch(setSchDescription(data.description))
+    dispatch(setSchXmlData(dataDump))
+    renderGalleryXML(dataDump)
   }
 
   if (isXcos) {
     getXsltProcessor().then(processor => {
       xmlDoc = processor.transformToDocument(xmlDoc)
       const dataDump = new XMLSerializer().serializeToString(xmlDoc)
-
-      // Dispatch actions for xcos data
-      dispatch({
-        type: actions.LOAD_GALLERY,
-        payload: { ...data, data_dump: dataDump }
-      })
-      dispatch(setTitle('* ' + data.name))
-      dispatch(setSchTitle(data.name))
-      dispatch(setSchDescription(data.description))
-      dispatch(setSchXmlData(dataDump)) // Update with transformed XML
-      renderGalleryXML(dataDump)
+      handleGalleryLoad(dispatch, data, dataDump)
     }).catch(error => {
       console.error('Error converting xcos to xml:', error)
     })
   } else {
-    // Dispatch actions for xml data
-    dispatch({
-      type: actions.LOAD_GALLERY,
-      payload: data
-    })
-    dispatch(setTitle('* ' + data.name))
-    dispatch(setSchTitle(data.name))
-    dispatch(setSchDescription(data.description))
-    dispatch(setSchXmlData(data.data_dump))
-    renderGalleryXML(data.data_dump)
+    handleGalleryLoad(dispatch, data, data.dataDump)
   }
   window.loadGalleryComplete = true
 }

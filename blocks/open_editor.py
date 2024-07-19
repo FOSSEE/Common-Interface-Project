@@ -7,7 +7,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from dotenv import load_dotenv
 import os
-import time
 
 # Loading the .env file
 load_dotenv()
@@ -16,45 +15,55 @@ GITHUB_USERNAME = os.environ.get('GITHUB_USERNAME', '')
 GITHUB_PASSWORD = os.environ.get('GITHUB_PASSWORD', '')
 
 # Set up the WebDriver
-driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+service = ChromeService(ChromeDriverManager().install())
+driver = webdriver.Chrome(service=service)
 wait = WebDriverWait(driver, 10)
 
 def login_with_github():
     driver.get('http://localhost/#/login')  # Replace with your actual login page URL
 
     try:
-        # Wait until the GitHub login button is clickable
         print("Waiting for the GitHub login button to be clickable...")
         github_button = wait.until(
             EC.element_to_be_clickable((By.XPATH, '//*[@id="root"]/main/div/button[2]/span[1]'))
         )
         print("GitHub login button is clickable now.")
-
-        # Click the GitHub login button
         github_button.click()
         print("Clicked the GitHub login button.")
 
-        # Switch to GitHub login page and enter credentials
         print("Waiting for GitHub login page to load...")
         wait.until(
             EC.presence_of_element_located((By.ID, 'login_field'))
         )
         print("GitHub login page loaded.")
 
-        # Enter GitHub username
         username_field = driver.find_element(By.ID, 'login_field')
-        username_field.send_keys(GITHUB_USERNAME)  # Replace with your GitHub username
+        username_field.send_keys(GITHUB_USERNAME)
 
-        # Enter GitHub password
         password_field = driver.find_element(By.ID, 'password')
-        password_field.send_keys(GITHUB_PASSWORD)  # Replace with your GitHub password
+        password_field.send_keys(GITHUB_PASSWORD)
 
-        # Submit the login form
         sign_in_button = driver.find_element(By.NAME, 'commit')
         sign_in_button.click()
         print("Submitted GitHub login form.")
 
-        # Wait for the authorization page and click 'Authorize'
+        # Wait for the 2FA page
+        try:
+            print("Waiting for the 2FA page...")
+            wait.until(
+                EC.presence_of_element_located((By.XPATH, '//*[@id="otp"]'))
+            )
+            print("2FA page loaded. Please complete the 2FA process manually.")
+
+            # Pause the script until the user completes the 2FA process
+            input("Complete the 2FA process and press Enter to continue...")
+
+            # Verification process should be completed by now
+            print("2FA process completed.")
+
+        except Exception as e:
+            print("No 2FA page detected or an error occurred:", e)
+
         print("Waiting for authorization page to load...")
         authorize_button = wait.until(
             EC.element_to_be_clickable((By.NAME, 'authorize'))
@@ -74,19 +83,9 @@ def wait_for_gallery_load():
         print(f"Error waiting for gallery load: {e}")
 
 def main():
-    # Check if the user is logged in
-    driver.get("http://localhost/#/gallery")  # Replace with your actual URL
-
-    try:
-        # Wait for an element that indicates the user is logged in (corrected XPath)
-        wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="simple-menu"]/div[3]/ul/li')))
-        print("User is logged in.")
-    except:
-        print("User is not logged in. Performing GitHub login.")
-        # If not logged in, perform GitHub login
-        login_with_github()
-        # After logging in, navigate to the gallery page
-        driver.get("http://localhost/#/gallery")
+    login_with_github()
+    # After logging in, navigate to the gallery page
+    driver.get("http://localhost/#/gallery")
 
     try:
         # Wait until the gallery page is loaded

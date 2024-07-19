@@ -32,6 +32,7 @@ import { editorZoomIn, editorZoomOut, editorZoomAct, deleteComp, PrintPreview, R
 import { useSelector, useDispatch } from 'react-redux'
 import { toggleSimulate, closeCompProperties, setSchXmlData, saveSchematic, openLocalSch } from '../../redux/actions/index'
 import api from '../../utils/Api'
+import { getXsltProcessor } from '../../utils/GalleryUtils'
 
 const {
   mxUtils
@@ -365,18 +366,6 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
     } catch (error) {
       console.error('There was an error!', error)
     }
-  }
-
-  const xcos2xml = '/xcos2xml.xsl'
-
-  const getXsltProcessor = async () => {
-    const response = await fetch(xcos2xml)
-    const text = await response.text()
-    const parser = new DOMParser()
-    const xsl = parser.parseFromString(text, 'application/xml')
-    const processor = new XSLTProcessor()
-    processor.importStylesheet(xsl)
-    return processor
   }
 
   const readXmlFile = (xmlDoc, dataDump, title) => {
