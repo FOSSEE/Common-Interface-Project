@@ -13,7 +13,9 @@ blocks/env*/
 scilab-log-*.txt
 tags
 blocks/U*.sci
+blocks/*.xcos
 blocks/*.xml
+blocks/*.xsl
 blocks/xcosblocks.py
 blocks/Xcos/xcosblocks.py
 blocks/blocks/xcosblocks/xcosblocks.py

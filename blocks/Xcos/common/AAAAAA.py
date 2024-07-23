@@ -119,7 +119,7 @@ def addScilabDNode(node, type, realParts, width):
     height = 1 if width > 0 else 0
     scilabDoubleNode = addADataNode(node, 'ScilabDouble', type, height, width, realParts)
     for i, realPart in enumerate(realParts):
-        addDData(scilabDoubleNode, line=0, column=i, realPart=realPart)
+        addDData(scilabDoubleNode, column=i, line=0, realPart=realPart)
     return scilabDoubleNode
 
 
@@ -127,23 +127,23 @@ def addNodeScilabDB(node, type, realParts, height):
     width = 1 if height > 0 else 0
     scilabDoubleNode = addADataNode(node, 'ScilabDouble', type, height, width, realParts)
     for i, realPart in enumerate(realParts):
-        addDData(scilabDoubleNode, realPart, line=0, column=i)
+        addDData(scilabDoubleNode, column=i, line=0, realPart=realPart)
     return scilabDoubleNode
 
 
 def addScilabDoubleNode(node, realParts, width):
     scilabDoubleNode = addDataNode(node, 'ScilabDouble', height=1, width=width)
     for i, realPart in enumerate(realParts):
-        addDData(scilabDoubleNode, realPart, line=0, column=i)
+        addDData(scilabDoubleNode, column=i, line=0, realPart=realPart)
 
 
 def addNodeScilabDouble(node, realParts, height):
     scilabDoubleNode = addDataNode(node, 'ScilabDouble', height=height, width=1)
     for i, realPart in enumerate(realParts):
-        addDData(scilabDoubleNode, realPart, line=0, column=i)
+        addDData(scilabDoubleNode, column=i, line=0, realPart=realPart)
 
 
-def addDData(parent, line=None, column=None, realPart=None):
+def addDData(parent, column=None, line=None, realPart=None):
     data_attributes = {}
     if line is not None:
         data_attributes['line'] = str(line)
