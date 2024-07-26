@@ -59,6 +59,7 @@ for root in model:
     edgeDict = {}
     edgeDict2 = {}
     splitList = []
+    mxPointList = {}
     for cell in list(root):
         try:
             attrib = cell.attrib
@@ -78,7 +79,7 @@ for root in model:
                 continue
 
             cell_type = attrib['CellType']
-
+            
             if cell_type == 'Component':
                 style = attrib['style']
                 componentGeometry = {}
@@ -144,11 +145,24 @@ for root in model:
                 ordering = len(styleArray)
                 IDLIST[attribid] = style
                 globals()[style](outroot, attribid, ParentComponent, ordering, geometry)
+                print("Testing Value: ", attribid, ordering, ParentComponent,geometry)
             elif 'edge' in attrib:
+                print(attrib)
+                mxGeometry = cell.find('mxGeometry')
+                print(mxGeometry)
+                array = mxGeometry.find('Array')
+                celid = cell.attrib.get('id')
+                mxPointList[celid] = array
+                print(mxPointList)
+                for points in mxPointList:
+                    value = mxPointList[points]
+                    
+
                 sourceVertex = attrib['sourceVertex']
                 targetVertex = attrib['targetVertex']
                 sourceType = IDLIST[sourceVertex]
                 targetType = IDLIST[targetVertex]
+                # print("SV:", sourceVertex, "TV:", targetVertex, "ST:", sourceType, "TT:",targetType)
 
                 # switch vertices if required
                 if sourceType in ['ExplicitInputPort', 'ImplicitInputPort', 'ControlPort'] and targetType in ['ExplicitOutputPort', 'ExplicitLink', 'ImplicitOutputPort', 'ImplicitLink', 'CommandPort', 'CommandControlLink']:
@@ -185,22 +199,34 @@ for root in model:
                     IDLIST[attribid] = style
 
                 if addSplit:
+                    for a in cell.attrib:
+                        print(a, cell.attrib.get(a) )
                     mxGeometry = cell.find('mxGeometry')
                     if mxGeometry is not None:
+                        for a in mxGeometry.attrib:
+                            print(a, mxGeometry.attrib.get(a) )
+                        for child in mxGeometry:
+                            print(child)
                         mxPoint = mxGeometry.find('mxPoint')
                         if mxPoint is not None:
+                            for b in mxPoint.attrib:
+                                print(b, mxPoint.attrib.get(b))
+                            for child in mxPoint:
+                                print(child)
                             geometry = {}
                             geometry['width'] = mxPoint.attrib.get('width', '7')
                             geometry['height'] = mxPoint.attrib.get('height', '7')
                             geometry['x'] = mxPoint.attrib.get('x', '0')
                             geometry['y'] = mxPoint.attrib.get('y', '0')
-
+                            print("Testing Value1: ", geometry)
                             splitList.append((attribid, sourceVertex, targetVertex, sourceType, targetType, geometry))
                             try:
+                                print("Source",edgeDict[sourceVertex])
                                 del edgeDict[sourceVertex]
                             except KeyError:
                                 pass
                             try:
+                                print("target",edgeDict[targetVertex])
                                 del edgeDict[targetVertex]
                             except KeyError:
                                 pass

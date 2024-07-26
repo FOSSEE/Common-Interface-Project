@@ -1,7 +1,7 @@
-<xsl:key name="k-input" match="ExplicitInputPort" use="@parent" />
-<xsl:key name="k-output" match="ExplicitOutputPort" use="@parent" />
-<xsl:key name="k-srclink" match="ExplicitLink" use="@source" />
-<xsl:key name="k-tgtlink" match="ExplicitLink" use="@target" />
+<xsl:key name="k-input" match="ExplicitInputPort | ControlPort" use="@parent" />
+<xsl:key name="k-output" match="ExplicitOutputPort | CommandPort" use="@parent" />
+<xsl:key name="k-srclink" match="ExplicitLink | CommandControlLink" use="@source" />
+<xsl:key name="k-tgtlink" match="ExplicitLink | CommandControlLink" use="@target" />
 
     <xsl:template match="SplitBlock">
       
@@ -18,8 +18,20 @@
         <xsl:variable name="geometry" select="mxGeometry" />
         <xsl:variable name="x" select="$geometry/@x" />
         <xsl:variable name="y" select="$geometry/@y" />
+        <!-- <xsl:variable name="h" select="$geometry/@height" />
+        <xsl:variable name="w" select="$geometry/@width" />
+        <xsl:value-of select="$x" />
+        <xsl:value-of select="$y" />
+        <xsl:value-of select="$h" />
+        <xsl:value-of select="$w" /> -->
 
           <xsl:element name="mxCell">
+          <!-- <xsl:attribute name="test0">
+              <xsl:value-of select="$x" />
+            </xsl:attribute>
+            <xsl:attribute name="test1">
+              <xsl:value-of select="$y" />
+            </xsl:attribute> -->
             <xsl:attribute name="id">
               <xsl:value-of select="$newidone" />
             </xsl:attribute>
@@ -34,12 +46,6 @@
             <xsl:attribute name="CellType">Unknown</xsl:attribute>
             <xsl:attribute name="tarx">0</xsl:attribute>
             <xsl:attribute name="tary">0</xsl:attribute>
-            <xsl:attribute name="testabc">
-                  <xsl:value-of select="$InputPorts" />
-                </xsl:attribute>
-                <xsl:attribute name="testabc1">
-                  <xsl:value-of select="$OutputPorts" />
-                </xsl:attribute>
             <!-- <xsl:apply-templates select="node()"/> -->
             <!-- <xsl:apply-templates /> -->
             <mxGeometry relative="1" as="geometry">
@@ -49,10 +55,10 @@
                 </xsl:for-each>
                 <xsl:element name="mxPoint">
                 <xsl:attribute name="x">
-                    <xsl:value-of select="$x - 4" />
+                    <xsl:value-of select="$x" />
                 </xsl:attribute>
                 <xsl:attribute name="y">
-                    <xsl:value-of select="$y - 4" />
+                    <xsl:value-of select="$y" />
                 </xsl:attribute>
                
             </xsl:element>
@@ -71,9 +77,6 @@
             <xsl:variable name="sourcetwoid" select="$OutputtwoPort/@id" />
             <xsl:variable name="sourcetwolink" select="key('k-srclink', $sourcetwoid)" />
               <xsl:element name="mxCell">
-              <xsl:attribute name="test0">
-                  <xsl:value-of select="$sourcetwoid" />
-                </xsl:attribute>
                 <xsl:attribute name="id">
                   <xsl:value-of select="generate-id($targetonelink)" />
                 </xsl:attribute>
@@ -100,9 +103,6 @@
             <xsl:variable name="targettwoid" select="$InputtwoPort/@id" />
             <xsl:variable name="targettwolink" select="key('k-tgtlink', $targettwoid)" />
               <xsl:element name="mxCell">
-              <xsl:attribute name="test1">
-                  <xsl:value-of select="$InputtwoPort/@id" />
-                </xsl:attribute>
                 <xsl:attribute name="id">
                   <xsl:value-of select="generate-id($sourceonelink)" />
                 </xsl:attribute>
@@ -136,7 +136,7 @@
         </xsl:choose>
     </xsl:template>
 
-    <xsl:template match="ExplicitLink">
+    <xsl:template match="ExplicitLink | CommandControlLink">
       <xsl:variable name="sourceId" select="@source"/>
       <xsl:variable name="sourceElement" select="//*[@id = $sourceId]"/>
       <xsl:variable name="sourceElemId" select="$sourceElement/@parent"/>
@@ -156,7 +156,7 @@
       </xsl:choose>
      </xsl:template>
 
-    <xsl:template match="ExplicitInputPort | ExplicitOutputPort">
+    <xsl:template match="ExplicitInputPort | ExplicitOutputPort | ControlPort | CommandPort">
       <xsl:variable name="parentId" select="@parent"/>
       <xsl:variable name="parentElement" select="//*[@id = $parentId]"/>
       <xsl:choose>

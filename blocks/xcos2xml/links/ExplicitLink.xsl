@@ -1,4 +1,4 @@
-<xsl:template match="ExplicitLink">
+<xsl:template match="ExplicitLink | CommandControlLink">
       <xsl:variable name="sourceId" select="@source" />
       <xsl:variable name="sourceParentId" select="//*[@id = $sourceId]/@parent" />
       <xsl:variable name="sourceParentName" select="name(//*[@id = $sourceParentId])" />
