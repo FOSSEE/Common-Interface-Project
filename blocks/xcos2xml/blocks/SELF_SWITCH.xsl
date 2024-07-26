@@ -42,7 +42,26 @@
         <xsl:attribute name="tarx">0</xsl:attribute>
         <xsl:attribute name="tary">0</xsl:attribute>
         <xsl:apply-templates select="node()"/>
-        <Object display_parameter="" as="displayProperties"/>
+        <!-- <Object display_parameter="" as="displayProperties"/> -->
+        <Object>
+          <!-- <xsl:variable name="exprsData" select="(*[@as='exprs']/data[1]/@value)" /> -->
+          <xsl:variable name="style1" select="@style" />
+          <xsl:variable name="displayParam1">
+            <xsl:choose>
+              <xsl:when test="$style1 = 'SELF_SWITCH_OFF'">
+                <xsl:text>off</xsl:text>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:text>on</xsl:text>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:variable>
+
+          <xsl:attribute name="display_parameter">
+            <xsl:value-of select="$displayParam1" />
+          </xsl:attribute>
+          <xsl:attribute name="as">displayProperties</xsl:attribute>
+        </Object>
         <Object as="parameter_values"/>
       </xsl:element>
       <xsl:call-template name="port">
