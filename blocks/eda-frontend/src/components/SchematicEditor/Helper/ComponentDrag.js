@@ -171,8 +171,76 @@ export default function LoadGrid (container, sidebar, outline) {
         return (geo != null) ? geo.relative : false
       }
     }
+
     mxEdgeHandler.prototype.isConnectableCell = function (cell) {
       return graph.connectionHandler.isConnectableCell(cell)
+    }
+
+    const ExplicitPort = 0
+    const ImplicitPort = 1
+    const ControlCommandPort = 2
+    const InputPort = 3
+    const OutputPort = 4
+    const SplitPort = 5
+
+    function getPortType (cell, isSplit) {
+      const style = styleToObject(cell.style).default
+      let type1, type2
+
+      // Determine if the port is explicit, implicit, control, or command
+      if (style === 'ExplicitInputPort' || style === 'ExplicitOutputPort') {
+        type1 = ExplicitPort
+      } else if (style === 'ImplicitInputPort' || style === 'ImplicitOutputPort') {
+        type1 = ImplicitPort
+      } else if (style === 'ControlPort' || style === 'CommandPort') {
+        type1 = ControlCommandPort
+      }
+
+      // Determine if the port is input or output
+      if (isSplit) {
+        type2 = SplitPort
+      } else if (style === 'ExplicitInputPort' || style === 'ImplicitInputPort' || style === 'ControlPort') {
+        type2 = InputPort
+      } else if (style === 'ExplicitOutputPort' || style === 'ImplicitOutputPort' || style === 'CommandPort') {
+        type2 = OutputPort
+      }
+
+      return { type1, type2 }
+    }
+
+    // Override the connection validation function
+    graph.connectionHandler.validateConnection = function (source, target) {
+      console.log(source, target)
+      let isSplitSource = false
+      let isSplitTarget = false
+      while (source.edge === true) {
+        source = source.source
+        isSplitSource = true
+      }
+      while (target.edge === true) {
+        target = target.target
+        isSplitTarget = true
+      }
+      const sourceType = getPortType(source, isSplitSource)
+      const targetType = getPortType(target, isSplitTarget)
+      // Rule 1: Check if source and target ports are of the same type
+      if (sourceType.type1 !== targetType.type1) {
+        return 'Types do not match'
+      }
+      // Rule 2 : Cannot connect 2 splits
+      if (sourceType.type2 === SplitPort && targetType.type2 === SplitPort) {
+        return 'cannot connect 2 splits'
+      }
+      // Rule 3: Cannot connect 2 input ports
+      if (sourceType.type1 !== ImplicitPort && sourceType.type2 === InputPort && targetType.type2 === InputPort) {
+        return 'cannot connect 2 input ports'
+      }
+      // Rule 4: cannot connect 2 output ports
+      if (sourceType.type1 !== ImplicitPort && sourceType.type2 === OutputPort && targetType.type2 === OutputPort) {
+        return 'cannot connect 2 output ports'
+      }
+
+      return null
     }
 
     // Adds a special tooltip for edges
