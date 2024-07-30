@@ -62,8 +62,18 @@ def Bache(outroot, attribid, ordering, geometry, parameters):
 
     param = ["Patm", "A", "ze1", "ze2", "zs1", "zs2", "z0", "T0", "p_rho"]
     addSciStringNode(equationsArrayNode, 9, param)
-    param1 = [parameters[0], parameters[1], parameters[2], parameters[3], parameters[4], parameters[5], parameters[6], parameters[7], parameters[8]]
-    addSciStringNode(equationsArrayNode, 9, param1)
+    # param1 = [parameters[0], parameters[1], parameters[2], parameters[3], parameters[4], parameters[5], parameters[6], parameters[7], parameters[8]]
+    # addSciStringNode(equationsArrayNode, 9, param1)
+    addNodeScilabDouble(equationsArrayNode, height=9, realParts=[
+        format_real_number(parameters[0]),
+        format_real_number(parameters[1]),
+        format_real_number(parameters[2]),
+        format_real_number(parameters[3]),
+        format_real_number(parameters[4]),
+        format_real_number(parameters[5]),
+        format_real_number(parameters[6]),
+        format_real_number(parameters[7]),
+        format_real_number(parameters[8])])
 
     addgeometryNode(outnode, GEOMETRY, geometry['height'],
                     geometry['width'], geometry['x'], geometry['y'])
