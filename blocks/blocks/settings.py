@@ -214,8 +214,8 @@ FILE_STORAGE_ROOT = os.path.join(BASE_DIR, 'file_storage')
 FILE_STORAGE_URL = '/files'
 
 # noqa For Netlist handling netlist uploads and other temp uploads
-MEDIA_URL = '/_files/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/files/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'file_storage')
 
 # celery
 CELERY_BROKER_URL = 'redis://redis:6379/1'
