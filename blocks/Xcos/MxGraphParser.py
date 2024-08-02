@@ -326,6 +326,7 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, geometry) in 
         (style2, sourceVertex2, targetVertex2, sourceType2, targetType2) = edgeDict2[targetVertex]
 
 for (attribid, (style, sourceVertex, targetVertex, sourceType, targetType)) in edgeDict.items():
+    print("testing",attribid,style, sourceVertex, targetVertex, sourceType, targetType)
     if int(attribid) >= 10000:
         attribid = nextattribid
         nextattribid += 1

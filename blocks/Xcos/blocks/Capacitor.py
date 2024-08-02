@@ -50,9 +50,9 @@ def Capacitor(outroot, attribid, ordering, geometry, parameters):
     # Add nested Array node inside innerArrayNode
     nestedArrayNode = addArrayNode(innerArrayNode,
                                    scilabClass="ScilabList")
-    addScilabDoubleNode(nestedArrayNode, width=1, realParts=["4.7E-6"])
-    addScilabDoubleNode(nestedArrayNode, width=1, realParts=["2.0"])
-    addScilabDoubleNode(innerArrayNode, width=2, realParts=["0.0", "1.0"])
+    addScilabDoubleNode(nestedArrayNode, width=1, realParts=["0.01"])
+    addScilabDoubleNode(nestedArrayNode, width=1, realParts=["0.0"])
+    addScilabDoubleNode(innerArrayNode, realParts=["0.0", "1.0"], width=2)
     addgeometryNode(outnode, GEOMETRY, geometry['height'],
                     geometry['width'], geometry['x'], geometry['y'])
     return outnode

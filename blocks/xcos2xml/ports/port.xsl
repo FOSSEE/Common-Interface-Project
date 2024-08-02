@@ -79,9 +79,9 @@
             <xsl:attribute name="targetVertex">0</xsl:attribute>
             <xsl:attribute name="tarx">0</xsl:attribute>
             <xsl:attribute name="tary">0</xsl:attribute>
-            <mxGeometry x="0" width="8" height="8" relative="1" as="geometry">
+            <mxGeometry y="1" width="8" height="8" relative="1" as="geometry">
               <xsl:variable name="numerator" select="2 * number($commandPorts) - (2 * (position() - 1) + 1)" />
-              <xsl:attribute name="y">
+              <xsl:attribute name="x">
                 <xsl:value-of select="$numerator div (2 * number($commandPorts))"/>
               </xsl:attribute>
               <mxPoint x="-4" y="0" as="offset"/>
@@ -107,9 +107,9 @@
             <xsl:attribute name="targetVertex">0</xsl:attribute>
             <xsl:attribute name="tarx">0</xsl:attribute>
             <xsl:attribute name="tary">0</xsl:attribute>
-            <mxGeometry x="0" width="8" height="8" relative="1" as="geometry">
+            <mxGeometry y="0" width="8" height="8" relative="1" as="geometry">
               <xsl:variable name="numerator" select="2 * number($controlPorts) - (2 * (position() - 1) + 1)" />
-              <xsl:attribute name="y">
+              <xsl:attribute name="x">
                 <xsl:value-of select="$numerator div (2 * number($controlPorts))"/>
               </xsl:attribute>
               <mxPoint x="-4" y="-8" as="offset"/>
