@@ -13,7 +13,8 @@ def AUTOMAT(outroot, attribid, ordering, geometry, parameters):
     addScilabDNode(outnode, AS_REAL_PARAM, width=1, realParts=[
                    format_real_number(parameters[3])
                    ])
-    addPrecNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 7, parameters)
+    param = ["2", "1", "1", "1", "1", "2", "1"]
+    addPrecNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 7, param)
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
     array = ['1']
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NBZERO, 1, array)

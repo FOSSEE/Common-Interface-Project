@@ -15,7 +15,8 @@ def CANIMXY(outroot, attribid, ordering, geometry, parameters):
                    format_real_number(parameters[8]),
                    format_real_number(parameters[9]),
                    ])
-    addPrecNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 11, parameters)
+    param = ["-1", "1", "2", "-4", "1", "0", "-1", "-1", "-1", "-1", "1"]
+    addPrecNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 11, param)
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
     array = ['0']
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NBZERO, 1, array)

@@ -15,26 +15,16 @@ def BOUNCEXY(outroot, attribid, ordering, geometry, parameters):
                    format_real_number(parameters[6]),
                    format_real_number(parameters[7])
                    ])
-    addPrecNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 4, parameters)
+    param = ["-1", "1", "1", "2"]
+    addPrecNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 4, param)
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
     array = ['0']
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NBZERO, 1, array)
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NMODE, 1, array)
     addTypeNode(outnode, TYPE_DOUBLE, AS_STATE, 0, [])
-    # addScilabDNode(outnode, AS_DSTATE, width=12, realParts=[
-    #                parameters[0],
-    #                parameters[1],
-    #                parameters[2],
-    #                parameters[3],
-    #                parameters[4],
-    #                parameters[5],
-    #                parameters[6],
-    #                parameters[7],
-    #                parameters[8],
-    #                parameters[9],
-    #                parameters[10],
-    #                parameters[11]])
-    # addTypeNode(outnode, TYPE_DOUBLE, AS_DSTATE, 0, [])
+    addScilabDNode(outnode, AS_DSTATE, width=12, realParts=[
+                   "0.0", "0.0", "2.0", "2.0", "0.0", "23040.0",
+                   "0.0", "0.0", "2.0", "2.0", "0.0", "23040.0"])
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE, parameters)
     addObjNode(outnode, TYPE_ARRAY,
                CLASS_LIST, AS_EQUATIONS, parameters)

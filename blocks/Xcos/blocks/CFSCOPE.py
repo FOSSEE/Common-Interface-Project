@@ -10,12 +10,13 @@ def CFSCOPE(outroot, attribid, ordering, geometry, parameters):
                          dependsOnU='1')
 
     addExprsNode(outnode, TYPE_STRING, 9, parameters)
-    # addScilabDNode(outnode, AS_REAL_PARAM, width=4, realParts=[
-    #                format_real_number(parameters[0]),
-    #                format_real_number(parameters[1]),
-    #                format_real_number(parameters[2]),
-    #                format_real_number(parameters[3])
-    #                ])
+    parameters[2] = "0.0"
+    addScilabDNode(outnode, AS_REAL_PARAM, width=4, realParts=[
+                   format_real_number(parameters[2]),
+                   format_real_number(parameters[4]),
+                   format_real_number(parameters[5]),
+                   format_real_number(parameters[6])
+                   ])
     addPrecNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 17, parameters)
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
     array = ['0']

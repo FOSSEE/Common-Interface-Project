@@ -17,10 +17,11 @@ def CURV_f(outroot, attribid, ordering, geometry, parameters):
     # for i in range(len(para)):
 
     #     addData(node, i, 0, para[i])
-    addScilabDNode(outnode, AS_REAL_PARAM, width=10, realParts=["0.0", "1.0", "2.0",
-    "-5.0", "5.0", "0.0", "0.0", "-5.0", "2.0", "5.0"
+    addScilabDNode(outnode, AS_REAL_PARAM, width=10, realParts=[
+                   "0.0", "1.0", "2.0", "-5.0", "5.0", "0.0",
+                   "0.0", "-5.0", "2.0", "5.0"
                    ])
-    param = ['3','2','10','2','10']
+    param = ['3', '2', '10', '2', '10']
     addPrecNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 5, param)
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
     array = ['0']
