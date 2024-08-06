@@ -10,8 +10,11 @@ def DLRADAPT_f(outroot, attribid, ordering, geometry, parameters):
                          dependsOnU='1')
 
     addExprsNode(outnode, TYPE_STRING, 6, parameters)
-    # addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0, [])
-    addPrecNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 3, parameters)
+    addScilabDNode(outnode, AS_REAL_PARAM, width=12, realParts=[
+                   "0.0", "1.0", "0.2", "0.3", "0.2", "0.3", "0.8",
+                   "0.7", "-0.8", "-0.7", "1.0", "1.0"])
+    param = [0, 2, 2]
+    addPrecNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 3, param)
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
     array = ['0']
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NBZERO, 1, array)

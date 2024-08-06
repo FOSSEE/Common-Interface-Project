@@ -18,6 +18,7 @@ def CONSTRAINT_c(outroot, attribid, ordering, geometry, parameters):
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NMODE, 1, array)
     # addTypeNode(outnode, TYPE_DOUBLE, AS_STATE, 2, [])
     addScilabDNode(outnode, AS_STATE, width=2, realParts=[
+                   format_real_number(parameters[0]),
                    format_real_number(parameters[0])])
     addTypeNode(outnode, TYPE_DOUBLE, AS_DSTATE, 0, [])
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE, parameters)
