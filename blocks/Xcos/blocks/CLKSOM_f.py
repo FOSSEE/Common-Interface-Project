@@ -1,22 +1,23 @@
 from common.AAAAAA import *
 
-def MFCLCK_f(outroot, attribid, ordering, geometry, parameters, parent=1):
-    func_name = 'MFCLCK_f'
+def CLKSOM_f(outroot, attribid, ordering, geometry, parameters, parent=1):
+    func_name = 'CLKSOM_f'
 
-    outnode = addOutNode(outroot, BLOCK_BASIC,
+    outnode = addOutNode(outroot, BLOCK_ROUND,
                          attribid, ordering, parent,
-                         func_name, 'mfclck', 'DEFAULT',
+                         func_name, 'sum', 'DEFAULT',
                          func_name, BLOCKTYPE_D, dependsOnU="0", dependsOnT="0")
 
-    addExprsNode(outnode, TYPE_STRING, 2, parameters)
-    addScilabDNode(outnode, AS_REAL_PARAM, width=1, realParts=["0.1"])
-    addPrecNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 1, parameters[1])
+    new_param = [parameters[0], parameters[0]]
+    addExprsNode(outnode, TYPE_STRING, 2, new_param)
+    addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0, [])
+    addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 0, [])
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
     array = ['0']
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NBZERO, 1, array)
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NMODE, 1, array)
     addTypeNode(outnode, TYPE_DOUBLE, AS_STATE, 0, [])
-    addScilabDNode(outnode, AS_DSTATE, width=1, realParts=["0.0"])
+    addTypeNode(outnode, TYPE_DOUBLE, AS_DSTATE, 0, [])
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE, parameters)
     addObjNode(outnode, TYPE_ARRAY,
                CLASS_LIST, AS_EQUATIONS, parameters)
@@ -26,7 +27,7 @@ def MFCLCK_f(outroot, attribid, ordering, geometry, parameters, parent=1):
     return outnode
 
 
-def get_from_MFCLCK_f(cell):
+def get_from_CLKSOM_f(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
     display_parameter = ''

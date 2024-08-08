@@ -32,8 +32,8 @@ def VVsourceAC(outroot, attribid, ordering, geometry, parameters):
 
     # Add additional ScilabString nodes to equationsArrayNode
     additionalStringNode = addDataNode(equationsArrayNode,
-                                        'ScilabString',
-                                        height=1, width=1)
+                                       'ScilabString',
+                                       height=1, width=1)
     addDataData(additionalStringNode, "VVsourceAC")
 
     additionalSciStrings = ["p", "VA"]
@@ -50,14 +50,14 @@ def VVsourceAC(outroot, attribid, ordering, geometry, parameters):
     innerArrayNode = addArrayNode(equationsArrayNode,
                                   scilabClass="ScilabList")
     innerNode = addDataNode(innerArrayNode, 'ScilabString',
-                height=1, width=1)
+                            height=1, width=1)
     addDataData(innerNode, "f")
 
     innerArrayNode1 = addArrayNode(innerArrayNode, scilabClass="ScilabList")
 
     addNodeScilabDouble(innerArrayNode1, height=1, realParts=[
                         format_real_number(parameters[0])])
-    
+
     addgeometryNode(outnode, GEOMETRY, geometry['height'],
                     geometry['width'], geometry['x'], geometry['y'])
 

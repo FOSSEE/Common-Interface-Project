@@ -36,8 +36,8 @@ def SourceP(outroot, attribid, ordering, geometry, parameters):
 
     # Add additional ScilabString nodes to equationsArrayNode
     additionalStringNode = addDataNode(equationsArrayNode,
-                                        'ScilabString',
-                                        height=1, width=1)
+                                       'ScilabString',
+                                       height=1, width=1)
     addDataData(additionalStringNode, "Source")
 
     addDataNode(equationsArrayNode, 'ScilabDouble',

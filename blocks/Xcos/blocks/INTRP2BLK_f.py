@@ -14,17 +14,17 @@ def INTRP2BLK_f(outroot, attribid, ordering, geometry, parameters):
         split_item = stripped_item.split(';')
         return split_item[:2]
 
-    result = [extract_elements(item) for item in parameters]
+    res = [extract_elements(item) for item in parameters]
 
-    def split_values(values):
+    def spl_val(values):
         split_result = []
         for value in values:
             split_result.extend(value.split(','))
         return split_result
 
-    flattened_and_split = [split_value for sublist in result for split_value in split_values(sublist)]
+    flat_and_split = [spl_val for sublist in res for spl_val in spl_val(sublist)]
     addExprsNode(outnode, TYPE_STRING, 3, parameters)
-    param = flattened_and_split
+    param = flat_and_split
     addScilabDNode(outnode, AS_REAL_PARAM, width=8, realParts=[
                    format_real_number(param[0]),
                    format_real_number(param[1]),

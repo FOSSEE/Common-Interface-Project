@@ -8,9 +8,10 @@ def CLKGotoTagVisibility(outroot, attribid, ordering, geometry, parameters):
                          func_name, 'clkgototagvisibility', 'DEFAULT',
                          func_name, BLOCKTYPE_C)
 
-    addExprsNode(outnode, TYPE_STRING, 1, parameters)
+    new_parameter = [parameters[0], '1']
+    addExprsNode(outnode, TYPE_STRING, 2, new_parameter)
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0, [])
-    addPrecNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 1, parameters)
+    addPrecNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 1, new_parameter[1])
     innerNode = addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
     param = ['A']
     addSciStringNode(innerNode, 1, param)

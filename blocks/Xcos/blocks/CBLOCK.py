@@ -10,17 +10,17 @@ def CBLOCK(outroot, attribid, ordering, geometry, parameters):
 
     simulation_func_type = 'DYNAMIC_' + type + '_4'
 
-    if parameters[12] == 'y':
+    if parameters[11] == 'y':
         depends_u = '1'
     else:
         depends_u = '0'
 
-    if parameters[13] == 'y':
+    if parameters[12] == 'y':
         depends_t = '1'
     else:
         depends_t = '0'
 
-    code = parameters[14]
+    code = parameters[13]
     codeLines = code.split('\n')
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
@@ -30,19 +30,14 @@ def CBLOCK(outroot, attribid, ordering, geometry, parameters):
                          dependsOnU=depends_u,
                          dependsOnT=depends_t)
 
-    addExprsArrayNode(outnode, TYPE_STRING, 14, parameters, codeLines)
-    addScilabDNode(outnode, AS_REAL_PARAM, width=1, realParts=[
-                   format_real_number(parameters[3])
-                   ])
-    addPrecNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 7, parameters)
+    addExprsArrayNode(outnode, TYPE_STRING, 14, parameters, codeLines, TYPE_DOUBLE, func_name)
+    addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0, [])
+    addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 0, [])
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
-    array = ['1']
+    array = ['0']
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NBZERO, 1, array)
-    arr = ['0']
-    addPrecisionNode(outnode, TYPE_INTEGER, AS_NMODE, 1, arr)
-    addScilabDNode(outnode, AS_STATE, width=2, realParts=[
-                   format_real_number(parameters[1]),
-                   format_real_number(parameters[2])])
+    addPrecisionNode(outnode, TYPE_INTEGER, AS_NMODE, 1, array)
+    addTypeNode(outnode, TYPE_DOUBLE, AS_STATE, 0, [])
     addTypeNode(outnode, TYPE_DOUBLE, AS_DSTATE, 0, [])
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE, parameters)
     addObjNode(outnode, TYPE_ARRAY,

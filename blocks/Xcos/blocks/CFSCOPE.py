@@ -17,7 +17,9 @@ def CFSCOPE(outroot, attribid, ordering, geometry, parameters):
                    format_real_number(parameters[5]),
                    format_real_number(parameters[6])
                    ])
-    addPrecNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 17, parameters)
+    param = ["-1", "1", "2", "1", "3", "5", "7", "9", "11", "13",
+             "15", "-1", "-1", "600", "400", "1", "1"]
+    addPrecNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 17, param)
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
     array = ['0']
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NBZERO, 1, array)

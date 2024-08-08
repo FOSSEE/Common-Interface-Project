@@ -2,7 +2,7 @@ from common.AAAAAA import *
 
 def CURV_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CURV_f'
-    para = parameters[0].split(' ')
+    # para = parameters[0].split(' ')
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,

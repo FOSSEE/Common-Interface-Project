@@ -31,8 +31,8 @@ def VariableResistor(outroot, attribid, ordering, geometry, parameters):
 
     # Add additional ScilabString nodes to equationsArrayNode
     additionalStringNode = addDataNode(equationsArrayNode,
-                                        'ScilabString',
-                                        height=1, width=1)
+                                       'ScilabString',
+                                       height=1, width=1)
     addDataData(additionalStringNode, "VariableResistor")
 
     additionalSciStrings = ["p", "R"]
@@ -50,9 +50,8 @@ def VariableResistor(outroot, attribid, ordering, geometry, parameters):
                                   scilabClass="ScilabList")
     addDataNode(innerArrayNode, 'ScilabDouble',
                 height=0, width=0)
-    addArrayNode(innerArrayNode,
-                                  scilabClass="ScilabList")
-    
+    addArrayNode(innerArrayNode, scilabClass="ScilabList")
+
     addgeometryNode(outnode, GEOMETRY, geometry['height'],
                     geometry['width'], geometry['x'], geometry['y'])
 

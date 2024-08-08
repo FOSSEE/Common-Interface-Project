@@ -34,8 +34,8 @@ def VanneReglante(outroot, attribid, ordering, geometry, parameters):
 
     # Add additional ScilabString nodes to equationsArrayNode
     additionalStringNode = addDataNode(equationsArrayNode,
-                                        'ScilabString',
-                                        height=1, width=1)
+                                       'ScilabString',
+                                       height=1, width=1)
     addDataData(additionalStringNode, "VanneReglante")
 
     additionalSciStrings = ["C1", "Ouv"]

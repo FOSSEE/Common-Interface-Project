@@ -13,7 +13,7 @@ def SOM_f(outroot, attribid, ordering, geometry, parameters):
     addExprsNode(outnode, TYPE_STRING, 2, parameters)
     item = parameters[1][1:-1]
     split_item = item.split(';')
-    param = [split_item[0], split_item[1], split_item[2]] 
+    param = [split_item[0], split_item[1], split_item[2]]
     addScilabDNode(outnode, AS_REAL_PARAM, width=3, realParts=[
                    format_real_number(param[0]),
                    format_real_number(param[1]),

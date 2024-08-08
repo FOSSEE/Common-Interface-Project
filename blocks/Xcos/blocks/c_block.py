@@ -3,7 +3,7 @@ from common.AAAAAA import *
 def c_block(outroot, attribid, ordering, geometry, parameters):
     func_name = 'c_block'
 
-    code = parameters[4]
+    code = parameters[3]
     codeLines = code.split('\n')
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
@@ -12,19 +12,15 @@ def c_block(outroot, attribid, ordering, geometry, parameters):
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')
 
-    addExprsArrayNode(outnode, TYPE_STRING, 4, parameters, codeLines)
-    addScilabDNode(outnode, AS_REAL_PARAM, width=1, realParts=[
-                   format_real_number(parameters[3])
-                   ])
-    addPrecNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 7, parameters)
+    addExprsArrayNode(outnode, TYPE_STRING, 4, parameters, codeLines, TYPE_ARRAY, func_name)
+    addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0, [])
+    param = ['0']
+    addPrecNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 1, param)
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
-    array = ['1']
+    array = ['0']
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NBZERO, 1, array)
-    arr = ['0']
-    addPrecisionNode(outnode, TYPE_INTEGER, AS_NMODE, 1, arr)
-    addScilabDNode(outnode, AS_STATE, width=2, realParts=[
-                   format_real_number(parameters[1]),
-                   format_real_number(parameters[2])])
+    addPrecisionNode(outnode, TYPE_INTEGER, AS_NMODE, 1, array)
+    addTypeNode(outnode, TYPE_DOUBLE, AS_STATE, 0, [])
     addTypeNode(outnode, TYPE_DOUBLE, AS_DSTATE, 0, [])
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE, parameters)
     addObjNode(outnode, TYPE_ARRAY,
