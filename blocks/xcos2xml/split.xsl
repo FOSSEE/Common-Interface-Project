@@ -8,8 +8,8 @@
 <xsl:key name="k-commandtgtlink" match="CommandControlLink" use="@target" />
 <xsl:key name="k-implicitinput" match="ImplicitInputPort | ImplicitOutputPort" use="@parent" />
 <!-- <xsl:key name="k-implicitoutput" match="ImplicitOutputPort" use="@parent" /> -->
-<xsl:key name="k-implicitsrclink" match="ImplicitLink" use="@source" />
-<xsl:key name="k-implicittgtlink" match="ImplicitLink" use="@target" />
+<xsl:key name="k-implicitsrclink" match="ImplicitLink" use="@source | @target" />
+<!-- <xsl:key name="k-implicittgtlink" match="ImplicitLink" use="@target" /> -->
 
     <xsl:template match="SplitBlock">
       
@@ -35,24 +35,17 @@
         <!-- <xsl:variable name="ImplicitOutputPort" select="key('k-implicitoutput', @id)" /> -->
         <xsl:variable name="ImplicitPorts" select="count($ImplicitPort)" />
         <!-- <xsl:variable name="ImplicitOutputPorts" select="count($ImplicitOutputPort)" /> -->
-        <xsl:variable name="targetimplicitoneid" select="$ImplicitPort/@id" />
-        <xsl:variable name="sourceimplicitoneid" select="$ImplicitPort/@id" />
-        <xsl:variable name="targetimplicitonelink" select="key('k-implicittgtlink', $targetimplicitoneid)" />
+        <xsl:variable name="targetimplicitoneid" select="$ImplicitPort[position()=1]/@id" />
+        <xsl:variable name="sourceimplicitoneid" select="$ImplicitPort[position()=2]/@id" />
+        <xsl:variable name="targetimplicitonelink" select="key('k-implicitsrclink', $targetimplicitoneid)" />
         <xsl:variable name="sourceimplicitonelink" select="key('k-implicitsrclink', $sourceimplicitoneid)" />
         <xsl:variable name="newidone" select="generate-id()" />
+        <xsl:variable name="newidonelink" select="key('k-implicitsrclink', $newidone)" />
         <xsl:element name="TEST">
         <xsl:attribute name="ABC">
             <xsl:value-of select="$ImplicitPorts" />
         </xsl:attribute>
-        <!-- <xsl:attribute name="ABC1">
-            <xsl:value-of select="$targetimplicitoneid" />
-        </xsl:attribute>
-        <xsl:attribute name="DEF">
-            <xsl:value-of select="$InputPorts" />
-        </xsl:attribute>
-        <xsl:attribute name="DEF1">
-            <xsl:value-of select="$OutputPorts" />
-        </xsl:attribute> -->
+
         </xsl:element>
         <xsl:variable name="geometry" select="mxGeometry" />
         <xsl:variable name="x" select="$geometry/@x" />
@@ -82,14 +75,14 @@
                   <xsl:for-each select="$sourceonelink/mxGeometry/Array/mxPoint">
                     <xsl:copy-of select="." />
                   </xsl:for-each>
-                  <xsl:element name="mxPoint">
+                  <!-- <xsl:element name="mxPoint">
                     <xsl:attribute name="x">
                         <xsl:value-of select="$x" />
                     </xsl:attribute>
                     <xsl:attribute name="y">
                         <xsl:value-of select="$y" />
                     </xsl:attribute>
-                  </xsl:element>
+                  </xsl:element> -->
                   <xsl:for-each select="$targetonelink/mxGeometry/Array/mxPoint">
                     <xsl:copy-of select="." />
                   </xsl:for-each>
@@ -173,14 +166,14 @@
                   <xsl:for-each select="$sourcecommandonelink/mxGeometry/Array/mxPoint">
                     <xsl:copy-of select="." />
                   </xsl:for-each>
-                  <xsl:element name="mxPoint">
+                  <!-- <xsl:element name="mxPoint">
                     <xsl:attribute name="x">
                         <xsl:value-of select="$x" />
                     </xsl:attribute>
                     <xsl:attribute name="y">
                         <xsl:value-of select="$y" />
                     </xsl:attribute>
-                  </xsl:element>
+                  </xsl:element> -->
                   <xsl:for-each select="$targetcommandonelink/mxGeometry/Array/mxPoint">
                     <xsl:copy-of select="." />
                   </xsl:for-each>
@@ -261,18 +254,18 @@
 
               <mxGeometry relative="1" as="geometry">
                 <Array as="points">
-                  <xsl:for-each select="$sourceimplicitonelink/mxGeometry/Array/mxPoint">
+                  <xsl:for-each select="$targetimplicitonelink/mxGeometry/Array/mxPoint">
                     <xsl:copy-of select="." />
                   </xsl:for-each>
-                  <xsl:element name="mxPoint">
+                  <!-- <xsl:element name="mxPoint">
                     <xsl:attribute name="x">
                         <xsl:value-of select="$x" />
                     </xsl:attribute>
                     <xsl:attribute name="y">
                         <xsl:value-of select="$y" />
                     </xsl:attribute>
-                  </xsl:element>
-                  <xsl:for-each select="$targetimplicitonelink/mxGeometry/Array/mxPoint">
+                  </xsl:element> -->
+                  <xsl:for-each select="$sourceimplicitonelink/mxGeometry/Array/mxPoint">
                     <xsl:copy-of select="." />
                   </xsl:for-each>
                 </Array>
@@ -287,6 +280,9 @@
                 <xsl:variable name="sourceimplicittwoid" select="$ImplicittwoPort/@id" />
                 <xsl:variable name="sourceimplicittwolink" select="key('k-implicitsrclink', $sourceimplicittwoid)" />
                   <xsl:element name="mxCell">
+                    <xsl:attribute name="TESTXYZ">
+                      <xsl:value-of select="$sourceimplicittwoid" />
+                    </xsl:attribute>
                     <xsl:attribute name="id">
                       <xsl:value-of select="generate-id($targetimplicitonelink)" />
                     </xsl:attribute>
@@ -301,6 +297,14 @@
                     <xsl:attribute name="CellType">Unknown</xsl:attribute>
                     <xsl:attribute name="tarx">0</xsl:attribute>
                     <xsl:attribute name="tary">0</xsl:attribute>
+                    <mxGeometry relative="1" as="geometry">
+                      <Array as="points">
+                        <xsl:for-each select="$sourceimplicittwolink/mxGeometry/Array/mxPoint">
+                          <xsl:copy-of select="." />
+                        </xsl:for-each>
+                      </Array>
+                     
+                    </mxGeometry>
                     <Object as="parameter_values"/>
                     <Object as="displayProperties"/>
                   </xsl:element>
@@ -325,6 +329,7 @@
                     <xsl:attribute name="CellType">Unknown</xsl:attribute>
                     <xsl:attribute name="tarx">0</xsl:attribute>
                     <xsl:attribute name="tary">0</xsl:attribute>
+                    
                     <Object as="parameter_values"/>
                     <Object as="displayProperties"/>
                   </xsl:element>

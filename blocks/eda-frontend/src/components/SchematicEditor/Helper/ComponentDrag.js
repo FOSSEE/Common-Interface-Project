@@ -38,11 +38,11 @@ const {
   mxImage
 } = new mxGraphFactory()
 
-function configureStylesheet (graph) {
+function configureStylesheet(graph) {
   graph.stylesheet.styles = blockstyle
 }
 
-function styleToObject (style) {
+function styleToObject(style) {
   // To add semicolon at the end if it isn't already present.
   if (style[style.length - 1] !== ';') {
     style = style + ';'
@@ -69,7 +69,7 @@ function styleToObject (style) {
   return styleObject
 }
 
-export default function LoadGrid (container, sidebar, outline) {
+export default function LoadGrid(container, sidebar, outline) {
   // Checks if the browser is supported
   if (!mxClient.isBrowserSupported()) {
     // Displays an error message if the browser is not supported.
@@ -182,6 +182,7 @@ export default function LoadGrid (container, sidebar, outline) {
       let text = null
       if (cell != null) {
         const attribute = cell.style
+        // console.log(attribute)
         if (attribute == null) {
           return ''
         }
@@ -207,19 +208,19 @@ export default function LoadGrid (container, sidebar, outline) {
         const geometry = cell.geometry
 
         text = 'Block Name: ' + attribute + '\n' +
-            'Simulation: ' + cell.simulationFunction + '\n' +
-            'UID: ' + cell.id + '\n' +
-            'Style: ' + cell.style + '\n' +
-            'Flip: ' + flip + '\n' +
-            'Mirror: ' + mirror + '\n' +
-            'Input Ports: ' + inputPorts + '\n' +
-            'Output Ports: ' + outputPorts + '\n' +
-            'Control Ports: ' + controlPorts + '\n' +
-            'Command Ports: ' + commandPorts + '\n' +
-            'x: ' + geometry.x + '\n' +
-            'y: ' + geometry.y + '\n' +
-            'w: ' + geometry.width + '\n' +
-            'h: ' + geometry.height + '\n'
+          'Simulation: ' + cell.simulationFunction + '\n' +
+          'UID: ' + cell.id + '\n' +
+          'Style: ' + cell.style + '\n' +
+          'Flip: ' + flip + '\n' +
+          'Mirror: ' + mirror + '\n' +
+          'Input Ports: ' + inputPorts + '\n' +
+          'Output Ports: ' + outputPorts + '\n' +
+          'Control Ports: ' + controlPorts + '\n' +
+          'Command Ports: ' + commandPorts + '\n' +
+          'x: ' + geometry.x + '\n' +
+          'y: ' + geometry.y + '\n' +
+          'w: ' + geometry.width + '\n' +
+          'h: ' + geometry.height + '\n'
       }
       return text
     }
@@ -236,7 +237,7 @@ export default function LoadGrid (container, sidebar, outline) {
 
       const stylesheet = graph.getStylesheet()
       const style = stylesheet.styles[attribute]
-      let displayedLabel = style.displayedLabel
+      let displayedLabel = style?.displayedLabel
       if (displayedLabel == null) {
         return cell.getAttribute('label', '')
       }
@@ -616,7 +617,7 @@ export default function LoadGrid (container, sidebar, outline) {
     return style
   }
 
-  function ResistorShape () { }
+  function ResistorShape() { }
   ResistorShape.prototype = new mxCylinder()
   ResistorShape.prototype.constructor = ResistorShape
 
