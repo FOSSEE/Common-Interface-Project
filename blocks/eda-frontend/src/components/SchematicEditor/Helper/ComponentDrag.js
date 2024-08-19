@@ -38,11 +38,11 @@ const {
   mxImage
 } = new mxGraphFactory()
 
-function configureStylesheet(graph) {
+function configureStylesheet (graph) {
   graph.stylesheet.styles = blockstyle
 }
 
-function styleToObject(style) {
+function styleToObject (style) {
   // To add semicolon at the end if it isn't already present.
   if (style[style.length - 1] !== ';') {
     style = style + ';'
@@ -69,7 +69,7 @@ function styleToObject(style) {
   return styleObject
 }
 
-export default function LoadGrid(container, sidebar, outline) {
+export default function LoadGrid (container, sidebar, outline) {
   // Checks if the browser is supported
   if (!mxClient.isBrowserSupported()) {
     // Displays an error message if the browser is not supported.
@@ -617,7 +617,7 @@ export default function LoadGrid(container, sidebar, outline) {
     return style
   }
 
-  function ResistorShape() { }
+  function ResistorShape () { }
   ResistorShape.prototype = new mxCylinder()
   ResistorShape.prototype.constructor = ResistorShape
 
