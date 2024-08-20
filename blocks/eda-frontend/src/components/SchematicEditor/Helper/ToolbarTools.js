@@ -1,6 +1,6 @@
 /* eslint new-cap: ["error", {"newIsCapExceptionPattern": "^mx"}] */
 import 'mxgraph/javascript/src/css/common.css'
-
+import { useSelector } from 'react-redux'
 import mxGraphFactory from 'mxgraph'
 import { portSize, getParameter } from './SvgParser'
 import store from '../../../redux/store'
@@ -143,7 +143,7 @@ export function PrintPreview () {
     header.style.lineHeight = (this.marginTop - 10) + 'px'
 
     const footer = header.cloneNode(true)
-    const title = store.getState().saveSchematicReducer.title
+    const title = useSelector(state => state.saveSchematic.title)
     mxUtils.write(header, title + ' - ' + process.env.REACT_APP_NAME + ' on Cloud')
     header.style.borderBottom = '1px solid blue'
     header.style.top = '0px'

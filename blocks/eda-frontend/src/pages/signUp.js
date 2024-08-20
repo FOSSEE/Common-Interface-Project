@@ -18,9 +18,9 @@ import { makeStyles } from '@material-ui/core/styles'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import Visibility from '@material-ui/icons/Visibility'
 import VisibilityOff from '@material-ui/icons/VisibilityOff'
-import { Link as RouterLink, useHistory } from 'react-router-dom'
+import { Link as RouterLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { signUp, authDefault, googleLogin } from '../redux/slices/authSlice'
+import { signUp, authDefault, googleLogin, githubLogin } from '../redux/slices/authSlice'
 import google from '../static/google.png'
 import github from '../static/github-mark.png'
 
@@ -48,7 +48,8 @@ const useStyles = makeStyles((theme) => ({
 export default function SignUp () {
   const classes = useStyles()
 
-  const auth = useSelector(state => state.auth)
+  const isRegistered = useSelector(state => state.auth.isRegistered)
+  const regErrors = useSelector(state => state.auth.regErrors)
 
   const dispatch = useDispatch()
   const homeURL = `${window.location.protocol}\\\\${window.location.host}/`
@@ -57,8 +58,6 @@ export default function SignUp () {
     dispatch(authDefault())
     document.title = 'Sign Up - ' + process.env.REACT_APP_NAME
   }, [dispatch])
-
-  const history = useHistory()
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -80,7 +79,7 @@ export default function SignUp () {
   // Function call for github sign up.
   const handleGithubLogin = () => {
     const host = window.location.origin
-    const toUrl = '' // Add any redirect URL logic if needed
+    const toUrl = ''
     dispatch(githubLogin(host, toUrl))
   }
 
@@ -96,8 +95,8 @@ export default function SignUp () {
         </Typography>
 
         {/* Display's error messages while signing in */}
-        <Typography variant='body1' align='center' style={{ marginTop: '10px' }} color={auth.isRegistered ? 'secondary' : 'error'}>
-          {auth.regErrors}
+        <Typography variant='body1' align='center' style={{ marginTop: '10px' }} color={isRegistered ? 'secondary' : 'error'}>
+          {regErrors}
         </Typography>
 
         <form className={classes.form} noValidate>
@@ -177,7 +176,7 @@ export default function SignUp () {
             fullWidth
             variant='contained'
             color='primary'
-            onClick={() => dispatch(signUp(email, password, reenterPassword, history))}
+            onClick={() => dispatch(signUp({ email, password, reenterPassword }))}
             className={classes.submit}
             disabled={!accept}
           >

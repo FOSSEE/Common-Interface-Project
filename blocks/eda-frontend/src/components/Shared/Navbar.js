@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import { useSelector } from 'react-redux'
 import { AppBar, Avatar, Button, Fade, IconButton, Link, ListItemText, Menu, MenuItem, Toolbar, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { deepPurple } from '@material-ui/core/colors'
@@ -42,7 +42,7 @@ export function Header () {
   const history = useHistory()
   const classes = useStyles()
   const [anchorEl, setAnchorEl] = useState(null)
-  const auth = store.getState().authReducer
+  const auth = useSelector(state => state.auth)
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget)

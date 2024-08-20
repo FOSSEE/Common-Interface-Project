@@ -1,6 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import api from '../../utils/Api'
-// import * as actions from '../actions/actions'
 
 const token = process.env.REACT_APP_NAME + '_token'
 const initialState = {
@@ -13,242 +12,245 @@ const initialState = {
   regErrors: ''
 }
 
+export const loadUser = createAsyncThunk(
+  'auth/loadUser',
+  async (_, { getState, rejectWithValue }) => {
+    const token = getState().auth.token
+    if (!token) {
+      return rejectWithValue('No token found')
+    }
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Token ${token}`
+      }
+    }
+
+    try {
+      const res = await api.get('auth/users/me/', config)
+      return res.data
+    } catch (err) {
+      return rejectWithValue(err.response.data || {})
+    }
+  }
+)
+
+export const login = createAsyncThunk(
+  'auth/login',
+  async ({ email, password, url }, { dispatch, rejectWithValue }) => {
+    const body = { email, password }
+    const allowedUrls = ['/editor']
+
+    try {
+      const res = await api.post('auth/token/login/', body)
+      if (res.status === 200) {
+        if (url === '') {
+          dispatch(loadUser())
+        } else if (!allowedUrls.includes(url)) {
+          dispatch(loadUser())
+        } else {
+          window.open(url, '_self')
+        }
+        return res.data
+      }
+    } catch (err) {
+      const res = err.response
+      let errorMessage = 'Something went wrong! Login Failed'
+      if (res && res.status >= 400 && res.status < 500) {
+        const data = res.data
+        if (data.email) {
+          errorMessage = data.email[0]
+        } else if (data.password) {
+          errorMessage = data.password[0]
+        } else if (data.non_field_errors) {
+          errorMessage = data.non_field_errors[0]
+        }
+      }
+      return rejectWithValue(errorMessage)
+    }
+  }
+)
+
+export const signUp = createAsyncThunk(
+  'auth/signUp',
+  async ({ email, password, reenterPassword }, { dispatch, rejectWithValue }) => {
+    const body = {
+      email,
+      username: email,
+      password,
+      re_password: reenterPassword
+    }
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+    try {
+      const res = await api.post('auth/users/', body, config)
+      if (res.status === 200 || res.status === 201) {
+        return 'Successfully Signed Up! A verification link has been sent to your email account.'
+      }
+    } catch (err) {
+      const res = err.response
+      let errorMessage = 'Something went wrong! Registration Failed'
+      if (res && res.status >= 400 && res.status < 500) {
+        const data = res.data
+        if (data.email) {
+          errorMessage = data.email[0]
+        } else if (data.username) {
+          errorMessage = data.username[0]
+        } else if (data.password) {
+          errorMessage = data.password[0]
+        } else if (data.re_password) {
+          errorMessage = data.re_password[0]
+        } else if (data.non_field_errors) {
+          errorMessage = data.non_field_errors[0]
+        }
+      }
+      return rejectWithValue(errorMessage)
+    }
+  }
+)
+
+export const logout = createAsyncThunk(
+  'auth/logout',
+  async (_, { getState, rejectWithValue }) => {
+    const token = getState().auth.token
+
+    if (!token) {
+      return rejectWithValue('No token found')
+    }
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Token ${token}`
+      }
+    }
+
+    try {
+      await api.post('auth/token/logout/', {}, config)
+      return true
+    } catch (err) {
+      return rejectWithValue(err.response.data || 'Logout failed')
+    }
+  }
+)
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    userLoading (state) {
-      state.isLoading = true
-    },
-    defaultStore (state) {
+    authDefault: (state) => {
       state.errors = ''
       state.regErrors = ''
     },
-    signUpSuccessful (state, action) {
-      state.isRegistered = true
-      state.regErrors = action.payload.data
+    setLoginError: (state, action) => {
+      state.errors = action.payload
     },
-    signUpFailed (state, action) {
-      state.isRegistered = false
-      state.regErrors = action.payload.data
-    },
-    userLoaded (state, action) {
-      state.isAuthenticated = true
-      state.isLoading = false
-      state.user = action.payload.user
-    },
-    loginSuccessful (state, action) {
-      localStorage.setItem(token, action.payload.data.auth_token)
-      state.token = action.payload.data.auth_token
-      state.errors = ''
-    },
-    loadingFailed (state) {
-      state.isLoading = false
-    },
-    authenticationError (state, action) {
-      localStorage.removeItem(token)
-      state.errors = action.payload.data
-      state.token = null
-      state.user = null
-      state.isAuthenticated = false
-      state.isLoading = false
-    },
-    logoutSuccessful (state) {
-      localStorage.removeItem(token)
-      state.token = null
-      state.user = null
-      state.isAuthenticated = false
-      state.isLoading = false
+    setSignUpError: (state, action) => {
+      state.regErrors = action.payload
     }
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(loadUser.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(loadUser.fulfilled, (state, action) => {
+        state.isAuthenticated = true
+        state.isLoading = false
+        state.user = action.payload
+      })
+      .addCase(loadUser.rejected, (state, action) => {
+        state.isLoading = false
+        state.errors = action.payload
+      })
+      .addCase(login.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(login.fulfilled, (state, action) => {
+        state.token = action.payload.auth_token
+        state.errors = ''
+        localStorage.setItem(token, action.payload.auth_token)
+      })
+      .addCase(login.rejected, (state, action) => {
+        state.isLoading = false
+        state.errors = action.payload
+      })
+      .addCase(signUp.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(signUp.fulfilled, (state, action) => {
+        state.isRegistered = true
+        state.regErrors = ''
+        state.successMessage = action.payload
+        state.isLoading = false
+      })
+      .addCase(signUp.rejected, (state, action) => {
+        state.isLoading = false
+        state.regErrors = action.payload
+      })
+      .addCase(logout.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(logout.fulfilled, (state) => {
+        state.isAuthenticated = false
+        state.token = null
+        state.user = null
+        localStorage.removeItem(token)
+      })
+      .addCase(logout.rejected, (state, action) => {
+        state.isLoading = false
+        state.errors = action.payload
+      })
   }
 })
 
-export const {
-  userLoading,
-  defaultStore,
-  signUpSuccessful,
-  signUpFailed,
-  userLoaded,
-  loginSuccessful,
-  loadingFailed,
-  authenticationError,
-  logoutSuccessful
-} = authSlice.actions
-
-export default authSlice.reducer
-
-export const loadUser = () => (dispatch, getState) => {
-  dispatch(userLoading())
-
-  const token = getState().auth?.token
-
-  const config = {
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  }
-
-  if (token) {
-    config.headers.Authorization = `Token ${token}`
-  } else {
-    dispatch(loadingFailed())
-    return
-  }
-
-  api.get('auth/users/me/', config)
-    .then((res) => {
-      if (res.status === 200) {
-        dispatch(userLoaded(res.data))
-      } else if (res.status >= 400 && res.status < 500) {
-        dispatch(authenticationError({ data: res.data }))
-      }
-    })
-    .catch((err) => {
-      console.error(err)
-      dispatch(authenticationError({ data: {} }))
-    })
-}
-
-export const login = (username, password, toUrl) => {
-  const body = {
-    password,
-    username
-  }
-
-  return function (dispatch) {
-    const allowedUrls = [
-      '/editor'
-    ]
-
-    api.post('auth/token/login/', body)
-      .then((res) => {
-        if (res.status === 200) {
-          dispatch(loginSuccessful({ data: res.data }))
-          if (toUrl === '') {
-            dispatch(loadUser())
-          } else if (!allowedUrls.includes(toUrl)) {
-            console.log('Not redirecting to', toUrl)
-            dispatch(loadUser())
-          } else {
-            window.open(toUrl, '_self')
-          }
-        } else if (res.status === 400 || res.status === 403 || res.status === 401) {
-          dispatch(authenticationError({ data: 'Incorrect Username or Password.' }))
-        } else {
-          dispatch(authenticationError({ data: 'Something went wrong! Login Failed' }))
-        }
-      })
-      .catch((err) => {
-        const res = err.response
-        if (res.status === 400 || res.status === 403 || res.status === 401) {
-          dispatch(authenticationError({ data: 'Incorrect Username or Password.' }))
-        } else {
-          dispatch(authenticationError({ data: 'Something went wrong! Login Failed' }))
-        }
-      })
-  }
-}
-
-export const signUp = (email, username, password, history) => (dispatch) => {
-  const body = {
-    email,
-    username,
-    password
-  }
-
-  const config = {
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  }
-
-  api.post('auth/users/', body, config)
-    .then((res) => {
-      if (res.status === 200 || res.status === 201) {
-        dispatch(signUpSuccessful({ data: 'Successfully Signed Up! A verification link has been sent to your email account.' }))
-      }
-    })
-    .catch((err) => {
-      const res = err.response
-      if (res.status === 400 || res.status === 403 || res.status === 401) {
-        if (res.data.username !== undefined) {
-          if (res.data.username[0].search('already') !== -1 && res.data.username[0].search('exists') !== -1) {
-            dispatch(signUpFailed({ data: 'Username Already Taken.' }))
-          }
-        } else {
-          dispatch(signUpFailed({ data: 'Enter Valid Credentials.' }))
-        }
-      } else {
-        dispatch(signUpFailed({ data: 'Something went wrong! Registeration Failed' }))
-      }
-    })
-}
-
-export const logout = (history) => (dispatch, getState) => {
-  const token = getState().auth.token
-
-  const config = {
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  }
-
-  if (token) {
-    config.headers.Authorization = `Token ${token}`
-  }
-
-  api.post('auth/token/logout/', {}, config)
-    .then((res) => {
-      if (res.status === 200 || res.status === 204) {
-        dispatch(logoutSuccessful())
-        history.push('/login')
-      }
-    })
-    .catch((err) => {
-      console.error(err)
-    })
-}
-
-export const authDefault = () => (dispatch) => {
-  dispatch(defaultStore())
-}
-
-// export const loginError = (message) => (dispatch) => {
-//   dispatch({
-//     type: actions.AUTHENTICATION_ERROR,
-//     payload: {
-//       data: message
-//     }
-//   })
-// }
-
-// export const signupError = (message) => (dispatch) => {
-//   dispatch({
-//     type: actions.SIGNUP_FAILED,
-//     payload: {
-//       data: message
-//     }
-//   })
-// }
-
-export const googleLogin = (host, toUrl) => {
+export const googleLogin = (host, url) => {
   return function (dispatch) {
     api.get('auth/o/google-oauth2/?redirect_uri=' + host + '/api/auth/google-callback')
       .then((res) => {
         if (res.status === 200) {
           window.open(res.data.authorization_url, '_self')
         } else {
-          dispatch(authenticationError({ data: 'Something went wrong! Login Failed' }))
+          dispatch(setLoginError({ data: 'Something went wrong! Login Failed' }))
         }
       })
-      .then((res) => { console.log(res) })
       .catch((err) => {
         const res = err.response
         if (res.status === 400 || res.status === 403 || res.status === 401) {
-          dispatch(authenticationError({ data: 'Incorrect Username or Password.' }))
+          dispatch(setLoginError({ data: 'Incorrect Username or Password.' }))
         } else {
-          dispatch(authenticationError({ data: 'Something went wrong! Login Failed' }))
+          dispatch(setLoginError({ data: 'Something went wrong! Login Failed' }))
         }
       })
   }
 }
+
+// Api call for GitHub OAuth login or sign up
+export const githubLogin = (host, toUrl) => {
+  return function (dispatch) {
+    api.get('auth/o/github/?redirect_uri=' + host + '/api/auth/github-callback')
+      .then((res) => {
+        if (res.status === 200) {
+          // Open GitHub login page
+          window.open(res.data.authorization_url, '_self')
+        } else {
+          dispatch(setLoginError('Something went wrong! Login Failed'))
+        }
+      })
+      .catch((err) => {
+        const res = err.response
+        if (res && (res.status === 400 || res.status === 403 || res.status === 401)) {
+          dispatch(setLoginError('Incorrect Username or Password.'))
+        } else {
+          dispatch(setLoginError('Something went wrong! Login Failed'))
+        }
+      })
+  }
+}
+
+export const { authDefault, setLoginError, setSignUpError } = authSlice.actions
+export default authSlice.reducer

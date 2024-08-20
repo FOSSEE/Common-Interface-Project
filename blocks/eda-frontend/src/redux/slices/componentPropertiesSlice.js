@@ -5,7 +5,7 @@ import { editorZoomAct } from '../../components/SchematicEditor/Helper/ToolbarTo
 const initialState = {
   block: null,
   name: '',
-  parameter_values: {},
+  parameterValues: {},
   errorFields: {},
   isPropertiesWindowOpen: false,
   compProperties: {},
@@ -27,14 +27,14 @@ export const componentPropertiesSlice = createSlice({
       const {
         block,
         name,
-        parameter_values,
+        parameterValues,
         errorFields,
         displayProperties,
         compProperties
       } = action.payload
       state.block = block
       state.name = name
-      state.parameter_values = parameter_values
+      state.parameterValues = parameterValues
       state.errorFields = errorFields
       state.isPropertiesWindowOpen = true
       state.displayProperties = displayProperties
@@ -48,12 +48,12 @@ export const componentPropertiesSlice = createSlice({
     setCompProperties: (state, action) => {
       const {
         block,
-        parameter_values,
+        parameterValues,
         errorFields,
         displayProperties
       } = action.payload
       state.block = block
-      state.parameter_values = parameter_values
+      state.parameterValues = parameterValues
       state.errorFields = errorFields
       state.isPropertiesWindowOpen = false
       state.displayProperties = displayProperties
@@ -83,7 +83,7 @@ export const getCompPropertiesAsync = (block) => (dispatch) => {
       dispatch(getCompProperties({
         block,
         name: block.style,
-        parameter_values: block.parameter_values,
+        parameterValues: block.parameterValues,
         errorFields: block.errorFields,
         displayProperties: block.displayProperties,
         compProperties: res.data[0]
@@ -102,11 +102,11 @@ export const setCompPropertiesAsync = (block, parameterValues, errorFields) => (
   const data = { block: block.style, ...filteredParameterValues }
   api.post(url, data)
     .then((res) => {
-      block.parameter_values = filteredParameterValues
+      block.parameterValues = filteredParameterValues
       block.errorFields = errorFields
       dispatch(setCompProperties({
         block,
-        parameter_values: parameterValues,
+        parameterValues: parameterValues,
         errorFields,
         displayProperties: res.data
       }))

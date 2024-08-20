@@ -103,7 +103,7 @@ SimpleSnackbar.propTypes = {
 function Header () {
   const history = useHistory()
   const classes = useStyles()
-  const auth = store.getState().authReducer
+  const auth = useSelector(state => state.auth)
   const schSave = useSelector(state => state.saveSchematic)
   const [anchorEl, setAnchorEl] = useState(null)
 

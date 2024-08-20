@@ -22,7 +22,7 @@ import Visibility from '@material-ui/icons/Visibility'
 import VisibilityOff from '@material-ui/icons/VisibilityOff'
 import { Link as RouterLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { login, authDefault, googleLogin } from '../redux/slices/authSlice'
+import { login, authDefault, googleLogin, githubLogin } from '../redux/slices/authSlice'
 import google from '../static/google.png'
 import github from '../static/github-mark.png'
 
@@ -68,7 +68,7 @@ export default function SignIn (props) {
     }
   }, [dispatch, props.location.search])
 
-  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const handleClickShowPassword = () => setShowPassword(!showPassword)
@@ -76,7 +76,7 @@ export default function SignIn (props) {
 
   // Function call for normal user login.
   const handleLogin = () => {
-    dispatch(login(username, password, url))
+    dispatch(login({ email, password, url }))
   }
 
   // Function call for google oAuth login.
@@ -105,7 +105,7 @@ export default function SignIn (props) {
 
         {/* Display's error messages while logging in */}
         <Typography variant='body1' align='center' style={{ marginTop: '10px' }} color='error'>
-          {auth.errors}
+          {auth.errors?.detail}
         </Typography>
 
         <form className={classes.form} noValidate>
@@ -118,8 +118,8 @@ export default function SignIn (props) {
             label='Email'
             name='email'
             autoComplete='email'
-            value={username}
-            onChange={e => setUsername(e.target.value)}
+            value={email}
+            onChange={e => setEmail(e.target.value)}
             autoFocus
           />
           <TextField
