@@ -72,18 +72,10 @@
 
               <mxGeometry relative="1" as="geometry">
                 <Array as="points">
-                  <xsl:for-each select="$sourceonelink/mxGeometry/Array/mxPoint">
+                  <xsl:for-each select="$targetonelink/mxGeometry/Array/mxPoint">
                     <xsl:copy-of select="." />
                   </xsl:for-each>
-                  <!-- <xsl:element name="mxPoint">
-                    <xsl:attribute name="x">
-                        <xsl:value-of select="$x" />
-                    </xsl:attribute>
-                    <xsl:attribute name="y">
-                        <xsl:value-of select="$y" />
-                    </xsl:attribute>
-                  </xsl:element> -->
-                  <xsl:for-each select="$targetonelink/mxGeometry/Array/mxPoint">
+                  <xsl:for-each select="$sourceonelink/mxGeometry/Array/mxPoint">
                     <xsl:copy-of select="." />
                   </xsl:for-each>
                 </Array>
@@ -103,15 +95,15 @@
                     </xsl:attribute>
                     <xsl:attribute name="edge">1</xsl:attribute>
                     <xsl:attribute name="sourceVertex">
-                      <xsl:value-of select="$newidone" />
+                      <xsl:value-of select="$sourcetwolink/@target" />
                     </xsl:attribute>
                     <xsl:attribute name="targetVertex">
-                      <xsl:value-of select="$sourcetwolink/@target" />
+                      <xsl:value-of select="$newidone" />
                     </xsl:attribute>
                     <xsl:attribute name="node">.null</xsl:attribute>
                     <xsl:attribute name="CellType">Unknown</xsl:attribute>
-                    <xsl:attribute name="tarx">0</xsl:attribute>
-                    <xsl:attribute name="tary">0</xsl:attribute>
+                    <xsl:attribute name="tarx"><xsl:value-of select="$x" /></xsl:attribute>
+                    <xsl:attribute name="tary"><xsl:value-of select="$y" /></xsl:attribute>
                     <Object as="parameter_values"/>
                     <Object as="displayProperties"/>
                   </xsl:element>
@@ -166,14 +158,7 @@
                   <xsl:for-each select="$sourcecommandonelink/mxGeometry/Array/mxPoint">
                     <xsl:copy-of select="." />
                   </xsl:for-each>
-                  <!-- <xsl:element name="mxPoint">
-                    <xsl:attribute name="x">
-                        <xsl:value-of select="$x" />
-                    </xsl:attribute>
-                    <xsl:attribute name="y">
-                        <xsl:value-of select="$y" />
-                    </xsl:attribute>
-                  </xsl:element> -->
+
                   <xsl:for-each select="$targetcommandonelink/mxGeometry/Array/mxPoint">
                     <xsl:copy-of select="." />
                   </xsl:for-each>
@@ -201,8 +186,8 @@
                     </xsl:attribute>
                     <xsl:attribute name="node">.null</xsl:attribute>
                     <xsl:attribute name="CellType">Unknown</xsl:attribute>
-                    <xsl:attribute name="tarx">0</xsl:attribute>
-                    <xsl:attribute name="tary">0</xsl:attribute>
+                    <xsl:attribute name="tarx"><xsl:value-of select="$x" /></xsl:attribute>
+                    <xsl:attribute name="tary"><xsl:value-of select="$y" /></xsl:attribute>
                     <Object as="parameter_values"/>
                     <Object as="displayProperties"/>
                   </xsl:element>

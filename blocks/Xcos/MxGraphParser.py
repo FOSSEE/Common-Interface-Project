@@ -40,6 +40,14 @@ outdiagram.append(comment)
 outmodel = ET.SubElement(outdiagram, 'mxGraphModel')
 outmodel.set('as', 'model')
 
+def split_array_by_point(array, point):
+    for i in range(len(array) - 1):
+        # Check if the point lies on the line segment between array[i] and array[i + 1]
+        if array[i]['y'] == array[i + 1]['y'] == point['y'] and array[i]['x'] <= point['x'] <= array[i + 1]['x']:
+            # Split the array into two parts
+            return array[:i+1] + [point], [point] + array[i+1:]
+    return array, []
+
 for root in model:
     if root.tag != 'root':
         print('Not root')
@@ -145,7 +153,7 @@ for root in model:
                 ordering = len(styleArray)
                 IDLIST[attribid] = style
                 globals()[style](outroot, attribid, ParentComponent, ordering, geometry)
-                print("Testing Value: ", attribid, ordering, ParentComponent,geometry)
+
             elif 'edge' in attrib:
                 print(attrib)
                 mxGeometry = cell.find('mxGeometry')
@@ -153,11 +161,19 @@ for root in model:
                 array = mxGeometry.find('Array')
                 celid = cell.attrib.get('id')
                 mxPointList[celid] = array
-                print(mxPointList)
+                # print(mxPointList)
                 for points in mxPointList:
                     value = mxPointList[points]
+                arrayelem = []
+                arrayElement = mxGeometry.find('Array')
+                if arrayElement is not None:
+                    for arrayChild in arrayElement:
+                        if arrayChild.tag == 'mxPoint':
+                            arrayelem.append(arrayChild.attrib)
                     
-
+                print('ARRAYELEM:', arrayelem)
+                
+                
                 sourceVertex = attrib['sourceVertex']
                 targetVertex = attrib['targetVertex']
                 sourceType = IDLIST[sourceVertex]
@@ -194,11 +210,31 @@ for root in model:
                     continue
 
                 if style is not None:
-                    edgeDict[attribid] = (style, sourceVertex, targetVertex, sourceType, targetType)
-                    edgeDict2[attribid] = (style, sourceVertex, targetVertex, sourceType, targetType)
+                    edgeDict[attribid] = (style, sourceVertex, targetVertex, sourceType, targetType, arrayelem)
+                    edgeDict2[attribid] = (style, sourceVertex, targetVertex, sourceType, targetType, arrayelem)
                     IDLIST[attribid] = style
 
+
+                # larger_array = arrayelem
+                # point = {'x': '370', 'y': '70'}
+                # larger_array = [{k: int(v) for k, v in coord.items()} for coord in larger_array]
+                # point = {k: int(v) for k, v in point.items()}
+
+                # # Split the array
+                # array1, array2 = split_array_by_point(larger_array, point)
+                # print('A1:', array1)
+                # print('A2:', array2)
                 if addSplit:
+                    try:
+                        print("SOURCEV:", edgeDict[sourceVertex])
+                        (style2, sourceVertex2, targetVertex2, sourceType2, targetType2, arrayelem) = edgeDict[sourceVertex]
+                    except KeyError:
+                        pass
+                    try:
+                        print("SOURCET:", edgeDict[targetVertex])
+                        (style2, sourceVertex2, targetVertex2, sourceType2, targetType2, arrayelem) = edgeDict[targetVertex]
+                    except KeyError:
+                        pass
                     for a in cell.attrib:
                         print(a, cell.attrib.get(a) )
                     mxGeometry = cell.find('mxGeometry')
@@ -209,16 +245,40 @@ for root in model:
                             print(child)
                         mxPoint = mxGeometry.find('mxPoint')
                         if mxPoint is not None:
+                            point = mxPoint.attrib
+                            del point['as']
+                            # print(point)
+                            larger_array = arrayelem
+                            larger_array = [{k: int(v) for k, v in coord.items()} for coord in larger_array]
+                            point = {k: int(v) for k, v in point.items()}
+
+                            # Split the array
+                            array1, array2 = split_array_by_point(larger_array, point)
+                            print('A1:', array1)
+                            print('A2:', array2)
                             for b in mxPoint.attrib:
-                                print(b, mxPoint.attrib.get(b))
+                                print('ARRAY of SPlitLink', b, mxPoint.attrib.get(b))
                             for child in mxPoint:
                                 print(child)
+
+                        
+                        # arrayElement = mxGeometry.find('Array')
+                        # if arrayElement is not None:
+                        #     for arrayChild in arrayElement:
+                        #         if arrayChild.tag == 'mxPoint':
+                        #             print('Array2:', arrayChild.attrib)
+                                    # for c in arrayChild.attrib:
+                                    #     print('ARRAY of SPlitLink', c, arrayChild.attrib.get(c))
+                                    # for child in arrayChild:
+                                    #     print(child)
+
                             geometry = {}
                             geometry['width'] = mxPoint.attrib.get('width', '7')
                             geometry['height'] = mxPoint.attrib.get('height', '7')
                             geometry['x'] = mxPoint.attrib.get('x', '0')
                             geometry['y'] = mxPoint.attrib.get('y', '0')
                             print("Testing Value1: ", geometry)
+                            
                             splitList.append((attribid, sourceVertex, targetVertex, sourceType, targetType, geometry))
                             try:
                                 print("Source",edgeDict[sourceVertex])
@@ -242,7 +302,7 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, geometry) in 
     outputCount = 0
     if sourceType == 'ExplicitOutputPort':
         (inputCount, outputCount, nextattribid, nextAttribForSplit) = addExplicitInputPortForSplit(outroot, splitblockid, sourceVertex, targetVertex, sourceType, targetType, edgeDict, inputCount, outputCount, nextattribid, nextAttribForSplit)
-        (style2, sourceVertex2, targetVertex2, sourceType2, targetType2) = edgeDict2[targetVertex]
+        (style2, sourceVertex2, targetVertex2, sourceType2, targetType2, arrayelem) = edgeDict2[targetVertex]
         (inputCount, outputCount, nextattribid, nextAttribForSplit) = addExplicitInputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, edgeDict, inputCount, outputCount, nextattribid, nextAttribForSplit)
         (inputCount, outputCount, nextattribid, nextAttribForSplit) = addExplicitOutputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, edgeDict, inputCount, outputCount, nextattribid, nextAttribForSplit)
     elif sourceType == 'ImplicitOutputPort':
@@ -272,7 +332,7 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, geometry) in 
         nextAttribForSplit += 1
         (style2, sourceVertex2, targetVertex2, sourceType2, targetType2) = edgeDict2[sourceVertex]
     if targetType == 'ExplicitInputPort':
-        (style2, sourceVertex2, targetVertex2, sourceType2, targetType2) = edgeDict2[sourceVertex]
+        (style2, sourceVertex2, targetVertex2, sourceType2, targetType2, arrayelem) = edgeDict2[sourceVertex]
         (inputCount, outputCount, nextattribid, nextAttribForSplit) = addExplicitInputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, edgeDict, inputCount, outputCount, nextattribid, nextAttribForSplit)
         (inputCount, outputCount, nextattribid, nextAttribForSplit) = addExplicitOutputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, edgeDict, inputCount, outputCount, nextattribid, nextAttribForSplit)
         (inputCount, outputCount, nextattribid, nextAttribForSplit) = addExplicitOutputPortForSplit(outroot, splitblockid, sourceVertex, targetVertex, sourceType, targetType, edgeDict, inputCount, outputCount, nextattribid, nextAttribForSplit)
