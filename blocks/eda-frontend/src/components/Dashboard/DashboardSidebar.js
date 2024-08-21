@@ -67,11 +67,11 @@ export default function DashSidebar (props) {
         >
           <ListItemAvatar>
             <Avatar className={classes.purple}>
-              {auth.user.username.charAt(0).toUpperCase()}
+              {auth.user?.username.charAt(0).toUpperCase()}
             </Avatar>
           </ListItemAvatar>
           <ListItemText
-            primary={auth.user.username}
+            primary={auth.user?.username}
             secondary={
               <>
                 <Typography

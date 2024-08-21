@@ -22,7 +22,7 @@ import Visibility from '@material-ui/icons/Visibility'
 import VisibilityOff from '@material-ui/icons/VisibilityOff'
 import { Link as RouterLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { login, authDefault, googleLogin, githubLogin } from '../redux/slices/authSlice'
+import { login, googleLogin, githubLogin } from '../redux/slices/authSlice'
 import google from '../static/google.png'
 import github from '../static/github-mark.png'
 
@@ -57,7 +57,6 @@ export default function SignIn (props) {
   const homeURL = `${window.location.protocol}\\\\${window.location.host}/`
 
   useEffect(() => {
-    dispatch(authDefault())
     document.title = 'Login - ' + process.env.REACT_APP_NAME
     if (props.location.search !== '') {
       const query = new URLSearchParams(props.location.search)
@@ -105,7 +104,7 @@ export default function SignIn (props) {
 
         {/* Display's error messages while logging in */}
         <Typography variant='body1' align='center' style={{ marginTop: '10px' }} color='error'>
-          {auth.errors?.detail}
+          {auth.errors}
         </Typography>
 
         <form className={classes.form} noValidate>

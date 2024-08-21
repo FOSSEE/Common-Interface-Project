@@ -20,7 +20,7 @@ import Visibility from '@material-ui/icons/Visibility'
 import VisibilityOff from '@material-ui/icons/VisibilityOff'
 import { Link as RouterLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { signUp, authDefault, googleLogin, githubLogin } from '../redux/slices/authSlice'
+import { signUp, googleLogin, githubLogin } from '../redux/slices/authSlice'
 import google from '../static/google.png'
 import github from '../static/github-mark.png'
 
@@ -50,12 +50,12 @@ export default function SignUp () {
 
   const isRegistered = useSelector(state => state.auth.isRegistered)
   const regErrors = useSelector(state => state.auth.regErrors)
+  const successMessage = useSelector(state => state.auth.successMessage)
 
   const dispatch = useDispatch()
   const homeURL = `${window.location.protocol}\\\\${window.location.host}/`
 
   useEffect(() => {
-    dispatch(authDefault())
     document.title = 'Sign Up - ' + process.env.REACT_APP_NAME
   }, [dispatch])
 
@@ -96,7 +96,7 @@ export default function SignUp () {
 
         {/* Display's error messages while signing in */}
         <Typography variant='body1' align='center' style={{ marginTop: '10px' }} color={isRegistered ? 'secondary' : 'error'}>
-          {regErrors}
+          {regErrors || successMessage}
         </Typography>
 
         <form className={classes.form} noValidate>

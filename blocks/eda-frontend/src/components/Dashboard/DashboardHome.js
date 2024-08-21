@@ -32,7 +32,7 @@ function MainCard () {
           Welcome to your {dashboard} Dashboard
         </Typography>
         <Typography variant='h5' component='h2'>
-          Welcome {auth.user.username}...
+          Welcome {auth.user?.username}...
         </Typography>
       </CardContent>
       <CardActions>
@@ -72,7 +72,7 @@ export default function DashboardHome () {
         <Grid item xs={12}>
           <Card style={{ padding: '7px 15px' }} className={classes.mainHead}>
             <Typography variant='subtitle1' gutterBottom>
-              Hey {auth.user.username} , {typography}
+              Hey {auth.user?.username} , {typography}
             </Typography>
           </Card>
         </Grid>

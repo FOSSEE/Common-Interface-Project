@@ -40,18 +40,10 @@ export const login = createAsyncThunk(
   'auth/login',
   async ({ email, password, url }, { dispatch, rejectWithValue }) => {
     const body = { email, password }
-    const allowedUrls = ['/editor']
 
     try {
       const res = await api.post('auth/token/login/', body)
       if (res.status === 200) {
-        if (url === '') {
-          dispatch(loadUser())
-        } else if (!allowedUrls.includes(url)) {
-          dispatch(loadUser())
-        } else {
-          window.open(url, '_self')
-        }
         return res.data
       }
     } catch (err) {
@@ -165,7 +157,6 @@ const authSlice = createSlice({
       })
       .addCase(loadUser.rejected, (state, action) => {
         state.isLoading = false
-        state.errors = action.payload
       })
       .addCase(login.pending, (state) => {
         state.isLoading = true
@@ -173,6 +164,8 @@ const authSlice = createSlice({
       .addCase(login.fulfilled, (state, action) => {
         state.token = action.payload.auth_token
         state.errors = ''
+        state.isAuthenticated = true
+        state.isLoading = false
         localStorage.setItem(token, action.payload.auth_token)
       })
       .addCase(login.rejected, (state, action) => {
@@ -199,6 +192,7 @@ const authSlice = createSlice({
         state.isAuthenticated = false
         state.token = null
         state.user = null
+        state.isLoading = false
         localStorage.removeItem(token)
       })
       .addCase(logout.rejected, (state, action) => {

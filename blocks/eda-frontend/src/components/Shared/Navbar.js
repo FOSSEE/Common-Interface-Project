@@ -165,7 +165,7 @@ export function Header () {
               onClick={handleClick}
             >
               <Avatar className={classes.purple}>
-                {auth.user.username.charAt(0).toUpperCase()}
+                {auth.user?.username.charAt(0).toUpperCase()}
               </Avatar>
             </IconButton>
             <Menu
@@ -182,7 +182,7 @@ export function Header () {
                 to='/dashboard'
                 onClick={handleClose}
               >
-                <ListItemText primary={auth.user.username} secondary={auth.user.email} />
+                <ListItemText primary={auth.user?.username} secondary={auth.user?.email} />
               </MenuItem>
               <MenuItem
                 component={RouterLink}
