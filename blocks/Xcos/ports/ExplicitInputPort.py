@@ -26,7 +26,7 @@ def ExplicitInputPort(outroot, attribid, parentattribid, ordering, geometry,
 
 def addExplicitInputPortForSplit(outroot, splitBlock, sourceVertex, targetVertex,
                                  sourceType, targetType, edgeDict, inputCount,
-                                 outputCount, nextAttrib, nextAttribForSplit):
+                                 outputCount, nextAttrib, nextAttribForSplit, arrayelem):
     inputCount += 1
     geometry = {}
     geometry['width'] = 8
@@ -36,7 +36,9 @@ def addExplicitInputPortForSplit(outroot, splitBlock, sourceVertex, targetVertex
     ExplicitInputPort(outroot, nextAttrib, splitBlock, inputCount, geometry,
                       forSplitBlock=True)
     edgeDict[nextAttribForSplit] = ('ExplicitLink', sourceVertex, nextAttrib,
-                                    sourceType, 'ExplicitInputPort')
+                                    sourceType, 'ExplicitInputPort', arrayelem)
+    print('ED:', edgeDict[nextAttribForSplit])
     nextAttrib += 1
     nextAttribForSplit += 1
+    print('ED:', inputCount, outputCount, nextAttrib, nextAttribForSplit)
     return (inputCount, outputCount, nextAttrib, nextAttribForSplit)

@@ -261,16 +261,6 @@ for root in model:
                             for child in mxPoint:
                                 print(child)
 
-                        
-                        # arrayElement = mxGeometry.find('Array')
-                        # if arrayElement is not None:
-                        #     for arrayChild in arrayElement:
-                        #         if arrayChild.tag == 'mxPoint':
-                        #             print('Array2:', arrayChild.attrib)
-                                    # for c in arrayChild.attrib:
-                                    #     print('ARRAY of SPlitLink', c, arrayChild.attrib.get(c))
-                                    # for child in arrayChild:
-                                    #     print(child)
 
                             geometry = {}
                             geometry['width'] = mxPoint.attrib.get('width', '7')
@@ -279,7 +269,7 @@ for root in model:
                             geometry['y'] = mxPoint.attrib.get('y', '0')
                             print("Testing Value1: ", geometry)
                             
-                            splitList.append((attribid, sourceVertex, targetVertex, sourceType, targetType, geometry))
+                            splitList.append((attribid, sourceVertex, targetVertex, sourceType, targetType, geometry, array1, array2))
                             try:
                                 print("Source",edgeDict[sourceVertex])
                                 del edgeDict[sourceVertex]
@@ -293,7 +283,7 @@ for root in model:
         except BaseException:
             traceback.print_exc()
 
-for (attribid, sourceVertex, targetVertex, sourceType, targetType, geometry) in splitList:
+for (attribid, sourceVertex, targetVertex, sourceType, targetType, geometry, array1, array2) in splitList:
     componentOrdering += 1
     SplitBlock(outroot, nextattribid, componentOrdering, geometry)
     splitblockid = nextattribid
@@ -333,7 +323,7 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, geometry) in 
         (style2, sourceVertex2, targetVertex2, sourceType2, targetType2) = edgeDict2[sourceVertex]
     if targetType == 'ExplicitInputPort':
         (style2, sourceVertex2, targetVertex2, sourceType2, targetType2, arrayelem) = edgeDict2[sourceVertex]
-        (inputCount, outputCount, nextattribid, nextAttribForSplit) = addExplicitInputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, edgeDict, inputCount, outputCount, nextattribid, nextAttribForSplit)
+        (inputCount, outputCount, nextattribid, nextAttribForSplit) = 1 0 21 10001 addExplicitInputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, edgeDict, inputCount, outputCount, nextattribid, nextAttribForSplit, array1)
         (inputCount, outputCount, nextattribid, nextAttribForSplit) = addExplicitOutputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, edgeDict, inputCount, outputCount, nextattribid, nextAttribForSplit)
         (inputCount, outputCount, nextattribid, nextAttribForSplit) = addExplicitOutputPortForSplit(outroot, splitblockid, sourceVertex, targetVertex, sourceType, targetType, edgeDict, inputCount, outputCount, nextattribid, nextAttribForSplit)
     elif targetType == 'ImplicitInputPort':
@@ -385,7 +375,7 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, geometry) in 
         nextAttribForSplit += 1
         (style2, sourceVertex2, targetVertex2, sourceType2, targetType2) = edgeDict2[targetVertex]
 
-for (attribid, (style, sourceVertex, targetVertex, sourceType, targetType)) in edgeDict.items():
+for (attribid, (style, sourceVertex, targetVertex, sourceType, targetType, arrayelem)) in edgeDict.items():
     print("testing",attribid,style, sourceVertex, targetVertex, sourceType, targetType)
     if int(attribid) >= 10000:
         attribid = nextattribid
