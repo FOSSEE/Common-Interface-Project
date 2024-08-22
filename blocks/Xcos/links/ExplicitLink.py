@@ -7,7 +7,6 @@ def ExplicitLink(outroot, attribid, sourceVertex, targetVertex, arrayelem):
                       parent=1, source=sourceVertex, target=targetVertex,
                       style=func_name, value='')
 
-    # print(arrayelem)
     mxGeoNode = addNode(outnode, 'mxGeometry', **{'as': 'geometry'})
     addNode(mxGeoNode, 'mxPoint', **{'as': 'sourcePoint', 'x': "0.0", 'y': "0.0"})
 

@@ -88,7 +88,7 @@ for root in model:
                 continue
 
             cell_type = attrib['CellType']
-            
+
             if cell_type == 'Component':
                 style = attrib['style']
                 componentGeometry = {}
@@ -171,9 +171,9 @@ for root in model:
                     for arrayChild in arrayElement:
                         if arrayChild.tag == 'mxPoint':
                             arrayelem.append(arrayChild.attrib)
-                    
+
                 print('ARRAYELEM:', arrayelem)
-                
+
                 sourceVertex = attrib['sourceVertex']
                 targetVertex = attrib['targetVertex']
                 sourceType = IDLIST[sourceVertex]
@@ -257,7 +257,7 @@ for root in model:
                             geometry['height'] = mxPoint.attrib.get('height', '7')
                             geometry['x'] = mxPoint.attrib.get('x', '0')
                             geometry['y'] = mxPoint.attrib.get('y', '0')
-                            
+
                             splitList.append((attribid, sourceVertex, targetVertex, sourceType, targetType, geometry, array1, array2, array3))
                             print('SPLIST', splitList)
                             try:

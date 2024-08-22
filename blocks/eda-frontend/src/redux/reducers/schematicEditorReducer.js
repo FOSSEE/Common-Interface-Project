@@ -27,7 +27,6 @@ export default function schematicEditorReducer (state = InitialState, action) {
         return accObj
       }, {})
       newCollapse[action.payload.id] = !existingState
-      // console.log('Updating collapse', action.payload.id)
       Object.assign(state.collapse, newCollapse)
       return { ...state, collapse: { ...state.collapse, newCollapse } }
     }
@@ -35,14 +34,12 @@ export default function schematicEditorReducer (state = InitialState, action) {
     case actions.FETCH_COMPONENTS: {
       const newComponents = state.components
       newComponents[action.payload.id] = action.payload.components
-      // console.log('Fetched and added ', newComponents[action.payload.id].length, 'Components')
       Object.assign(state.components, newComponents)
       return { ...state, components: { ...state.components, newComponents } }
     }
 
     case actions.COMPONENT_IMAGES: {
       const componentImages = action.payload.component_images
-      // console.log('Fetched and added ', componentImages.length, ' images')
       return { ...state, component_images: componentImages }
     }
 

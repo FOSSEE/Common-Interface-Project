@@ -95,7 +95,7 @@ export default function SimulationProperties () {
         dispatch(setResultTaskId(taskId))
       })
       .catch(function (error) {
-        console.log(error)
+        console.error(error)
       })
   }
 

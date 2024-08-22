@@ -638,7 +638,7 @@ export default function SimulationScreen ({ open, close }) {
         }
       })
       .catch(function (error) {
-        console.log(error)
+        console.error(error)
       })
   }, [dispatch, streamSimulationResult])
 

@@ -101,7 +101,6 @@ export const fetchSchematic = (saveId) => (dispatch, getState) => {
     config.headers.Authorization = `Token ${token}`
   }
 
-  // console.log('Already Saved')
   api.get('save/' + saveId, config)
     .then(
       (res) => {

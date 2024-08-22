@@ -39,5 +39,4 @@ def addExplicitOutputPortForSplit(outroot, splitBlock, sourceVertex, targetVerte
                                     'ExplicitOutputPort', targetType, arrayelem)
     nextAttrib += 1
     nextAttribForSplit += 1
-    # print(inputCount, outputCount, nextAttrib, nextAttribForSplit)
     return (inputCount, outputCount, nextAttrib, nextAttribForSplit)

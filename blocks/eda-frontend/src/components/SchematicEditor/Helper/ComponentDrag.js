@@ -182,7 +182,6 @@ export default function LoadGrid (container, sidebar, outline) {
       let text = null
       if (cell != null) {
         const attribute = cell.style
-        // console.log(attribute)
         if (attribute == null) {
           return ''
         }
@@ -424,7 +423,6 @@ export default function LoadGrid (container, sidebar, outline) {
             pt.y = p0.y
             pt.x = Math.min(pt.x, Math.max(p0.x, pe.x))
             pt.x = Math.max(pt.x, Math.min(p0.x, pe.x))
-            console.log('PT', pt)
           }
         }
       } else if (terminal != null && terminal.cell.geometry?.relative) {
@@ -481,7 +479,7 @@ export default function LoadGrid (container, sidebar, outline) {
       }
     }
   } catch (e) {
-    console.log(e)
+    console.error(e)
   }
 
   // Updates the terminal and control points in the cloned preview.

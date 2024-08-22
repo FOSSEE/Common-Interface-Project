@@ -36,7 +36,7 @@ export function saveXml (description = '') {
   try {
     xmlWireConnections()
   } catch (e) {
-    console.log('error', e)
+    console.error('error', e)
   }
   const enc = new mxCodec(mxUtils.createXmlDocument())
   const model = graph.getModel()
@@ -462,7 +462,6 @@ function parseXmlToGraph (xmlDoc, graph) {
         vp.geometry.offset = point
         vp.CellType = 'Pin'
         vp.ParentComponent = v1.id
-        // console.log("VP", vp.id, cellAttrs.id.value, v1.id)
       } else if (cellAttrs.edge) { // is edge
         const edgeId = cellAttrs.id.value
 
@@ -472,7 +471,6 @@ function parseXmlToGraph (xmlDoc, graph) {
         const targetCell = graph.getModel().getCell(target)
         console.log('CELL', sourceCell, targetCell)
         console.log('ST', source, target)
-        // console.log(graph.getModel())
         try {
           const edge = graph.insertEdge(parent, edgeId, null, sourceCell, targetCell)
           console.log('EGDE', edge)
@@ -486,7 +484,7 @@ function parseXmlToGraph (xmlDoc, graph) {
                 const yPos = Number(a.attributes.y.value)
                 console.log('xPos', xPos, yPos)
                 edge.geometry.points.push(new mxPoint(xPos, yPos))
-              } catch (e) { console.log('error', e) }
+              } catch (e) { console.error('error', e) }
             }
           }
           if (targetCell?.edge === true) {
@@ -495,7 +493,7 @@ function parseXmlToGraph (xmlDoc, graph) {
         } catch (e) {
           console.log(sourceCell)
           console.log(targetCell)
-          console.log('error', e)
+          console.error('error', e)
         }
       }
     }
