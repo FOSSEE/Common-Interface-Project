@@ -18,10 +18,11 @@ import { makeStyles } from '@material-ui/core/styles'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import Visibility from '@material-ui/icons/Visibility'
 import VisibilityOff from '@material-ui/icons/VisibilityOff'
-import { Link as RouterLink, useHistory } from 'react-router-dom'
+import { Link as RouterLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { signUp, authDefault, googleLogin } from '../redux/actions/index'
+import { signUp, googleLogin, githubLogin } from '../redux/slices/authSlice'
 import google from '../static/google.png'
+import github from '../static/github-mark.png'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -47,30 +48,39 @@ const useStyles = makeStyles((theme) => ({
 export default function SignUp () {
   const classes = useStyles()
 
-  const auth = useSelector(state => state.authReducer)
+  const isRegistered = useSelector(state => state.auth.isRegistered)
+  const regErrors = useSelector(state => state.auth.regErrors)
+  const successMessage = useSelector(state => state.auth.successMessage)
 
   const dispatch = useDispatch()
   const homeURL = `${window.location.protocol}\\\\${window.location.host}/`
 
   useEffect(() => {
-    dispatch(authDefault())
     document.title = 'Sign Up - ' + process.env.REACT_APP_NAME
   }, [dispatch])
 
-  const history = useHistory()
-
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
   const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [reenterPassword, setReenterPassword] = useState('')
   const [accept, setAccept] = useState(true)
   const [showPassword, setShowPassword] = useState(false)
   const handleClickShowPassword = () => setShowPassword(!showPassword)
   const handleMouseDownPassword = () => setShowPassword(!showPassword)
+  const [showReenterPassword, setShowReenterPassword] = useState(false)
+  const handleClickShowReenterPassword = () => setShowReenterPassword(!showReenterPassword)
+  const handleMouseDownReenterPassword = () => setShowReenterPassword(!showReenterPassword)
 
   // Function call for google oAuth sign up.
   const handleGoogleSignup = () => {
     const host = window.location.protocol + '//' + window.location.host
     dispatch(googleLogin(host))
+  }
+
+  // Function call for github sign up.
+  const handleGithubLogin = () => {
+    const host = window.location.origin
+    const toUrl = ''
+    dispatch(githubLogin(host, toUrl))
   }
 
   return (
@@ -85,8 +95,8 @@ export default function SignUp () {
         </Typography>
 
         {/* Display's error messages while signing in */}
-        <Typography variant='body1' align='center' style={{ marginTop: '10px' }} color={auth.isRegistered ? 'secondary' : 'error'}>
-          {auth.regErrors}
+        <Typography variant='body1' align='center' style={{ marginTop: '10px' }} color={isRegistered ? 'secondary' : 'error'}>
+          {regErrors || successMessage}
         </Typography>
 
         <form className={classes.form} noValidate>
@@ -95,21 +105,8 @@ export default function SignUp () {
             margin='normal'
             required
             fullWidth
-            id='username'
-            label='Username'
-            name='username'
-            autoComplete='email'
-            value={username}
-            onChange={e => setUsername(e.target.value)}
-            autoFocus
-          />
-          <TextField
-            variant='outlined'
-            margin='normal'
-            required
-            fullWidth
             id='email'
-            label='email'
+            label='Email'
             name='email'
             type='email'
             autoComplete='email'
@@ -144,6 +141,33 @@ export default function SignUp () {
             onChange={e => setPassword(e.target.value)}
             autoComplete='current-password'
           />
+          <TextField
+            variant='outlined'
+            margin='normal'
+            required
+            fullWidth
+            name='reenterPassword'
+            label='Reenter Password'
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position='end'>
+                  <IconButton
+                    size='small'
+                    aria-label='toggle password visibility'
+                    onClick={handleClickShowReenterPassword}
+                    onMouseDown={handleMouseDownReenterPassword}
+                  >
+                    {showReenterPassword ? <Visibility fontSize='small' /> : <VisibilityOff fontSize='small' />} {/* Handle password visibility */}
+                  </IconButton>
+                </InputAdornment>
+              )
+            }}
+            type={showReenterPassword ? 'text' : 'password'}
+            id='reenterPassword'
+            value={reenterPassword}
+            onChange={e => setReenterPassword(e.target.value)}
+            autoComplete='current-password'
+          />
           <FormControlLabel
             control={<Checkbox checked={accept} onChange={e => setAccept(e.target.checked)} color='primary' />}
             label='I accept the Terms of Use & Privacy Policy'
@@ -152,7 +176,7 @@ export default function SignUp () {
             fullWidth
             variant='contained'
             color='primary'
-            onClick={() => dispatch(signUp(email, username, password, history))}
+            onClick={() => dispatch(signUp({ email, password, reenterPassword }))}
             className={classes.submit}
             disabled={!accept}
           >
@@ -168,7 +192,17 @@ export default function SignUp () {
             onClick={handleGoogleSignup}
             className={classes.submit}
           >
-            <img alt='G' src={google} height='20' />&emsp; Sign Up With Google
+            <img alt='Google' src={google} height='20' />&emsp; Sign Up With Google
+          </Button>
+          {/* Github Sign Up option */}
+          <Button
+            fullWidth
+            variant='outlined'
+            color='primary'
+            onClick={handleGithubLogin}
+            className={classes.submit}
+          >
+            <img alt='GitHub' src={github} height='20' />&emsp; Sign Up With GitHub
           </Button>
         </form>
 

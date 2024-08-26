@@ -4,7 +4,7 @@ import { Link as RouterLink } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import { deepPurple } from '@material-ui/core/colors'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchSchematics } from '../../redux/actions/index'
+import { fetchSchematics } from '../../redux/slices/dashboardSlice'
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -38,8 +38,8 @@ const useStyles = makeStyles((theme) => ({
 // Vertical Navbar for user dashboard
 export default function DashSidebar (props) {
   const classes = useStyles()
-  const auth = useSelector(state => state.authReducer)
-  const schematics = useSelector(state => state.dashboardReducer.schematics)
+  const auth = useSelector(state => state.auth)
+  const schematics = useSelector(state => state.dashboard.schematics)
 
   const dispatch = useDispatch()
 
@@ -67,11 +67,11 @@ export default function DashSidebar (props) {
         >
           <ListItemAvatar>
             <Avatar className={classes.purple}>
-              {auth.user.username.charAt(0).toUpperCase()}
+              {auth.user?.username.charAt(0).toUpperCase()}
             </Avatar>
           </ListItemAvatar>
           <ListItemText
-            primary={auth.user.username}
+            primary={auth.user?.username}
             secondary={
               <>
                 <Typography

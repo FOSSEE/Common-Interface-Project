@@ -14,12 +14,12 @@ import Dashboard from './pages/Dashboard'
 import SignUp from './pages/signUp'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { loadUser } from './redux/actions/index'
+import { loadUser } from './redux/slices/authSlice'
 
 // Controls Private routes, this are accessible for authenticated users.  [ e.g : dashboard ]
 // and restricted routes disabled for authenticated users. [ e.g : login , signup ]
 function PrivateRoute ({ component: Component, ...rest }) {
-  const auth = useSelector(state => state.authReducer)
+  const auth = useSelector(state => state.auth)
   const dispatch = useDispatch()
 
   useEffect(() => dispatch(loadUser()), [dispatch])
@@ -27,7 +27,7 @@ function PrivateRoute ({ component: Component, ...rest }) {
   return (
     <Route
       {...rest} render={props => {
-        if (auth.isLoading) {
+        if (auth?.isLoading) {
           return <CircularProgress style={{ margin: '50vh 50vw' }} />
         } else if (!auth.isAuthenticated) {
           return <Redirect to='/login' />
@@ -45,7 +45,7 @@ PrivateRoute.propTypes = {
 
 // Public routes accessible to all users. [ e.g. editor, gallery ]
 function PublicRoute ({ component: Component, restricted, nav, ...rest }) {
-  const auth = useSelector(state => state.authReducer)
+  const auth = useSelector(state => state.auth)
   const dispatch = useDispatch()
 
   useEffect(() => dispatch(loadUser()), [dispatch])
@@ -53,9 +53,9 @@ function PublicRoute ({ component: Component, restricted, nav, ...rest }) {
   return (
     <Route
       {...rest} render={props => {
-        if (auth.isLoading) {
+        if (auth?.isLoading) {
           return <CircularProgress style={{ margin: '50vh 50vw' }} />
-        } else if (auth.isAuthenticated && restricted) {
+        } else if (auth?.isAuthenticated && restricted) {
           return <Redirect to='/dashboard' />
         } else if (nav) {
           return (<><Navbar /><Component {...props} /></>)

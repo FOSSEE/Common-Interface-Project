@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-
+import { useSelector } from 'react-redux'
 import { AppBar, Avatar, Button, Fade, IconButton, Link, ListItemText, Menu, MenuItem, Toolbar, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { deepPurple } from '@material-ui/core/colors'
 import { Link as RouterLink, useHistory } from 'react-router-dom'
 import logo from '../../static/favicon.ico'
 import store from '../../redux/store'
-import { logout } from '../../redux/actions/index'
+import { logout } from '../../redux/slices/authSlice'
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -42,7 +42,7 @@ export function Header () {
   const history = useHistory()
   const classes = useStyles()
   const [anchorEl, setAnchorEl] = useState(null)
-  const auth = store.getState().authReducer
+  const auth = useSelector(state => state.auth)
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget)
@@ -75,7 +75,7 @@ export function Header () {
       {/* Display relative link to other pages */}
       <nav>
         {
-          (auth.isAuthenticated
+          (auth?.isAuthenticated
             ? (<>
               <Link
                 variant='button'
@@ -145,7 +145,7 @@ export function Header () {
 
       {/* Display login option or user menu as per authenticated status */}
       {
-        (!auth.isAuthenticated
+        (!auth?.isAuthenticated
           ? <Button
             size='small'
             component={RouterLink}
@@ -165,7 +165,7 @@ export function Header () {
               onClick={handleClick}
             >
               <Avatar className={classes.purple}>
-                {auth.user.username.charAt(0).toUpperCase()}
+                {auth.user?.username.charAt(0).toUpperCase()}
               </Avatar>
             </IconButton>
             <Menu
@@ -182,7 +182,7 @@ export function Header () {
                 to='/dashboard'
                 onClick={handleClose}
               >
-                <ListItemText primary={auth.user.username} secondary={auth.user.email} />
+                <ListItemText primary={auth.user?.username} secondary={auth.user?.email} />
               </MenuItem>
               <MenuItem
                 component={RouterLink}

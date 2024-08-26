@@ -57,7 +57,7 @@ def Switch(outroot, attribid, ordering, geometry, parameters):
                                        'ScilabDouble',
                                        height=2, width=1)
     for i, realPart in enumerate(realParts):
-        addDData(additionalStringNode, realPart, line=i, column=0)
+        addDData(additionalStringNode, column=0, line=i, realPart=realPart)
 
     addgeometryNode(outnode, GEOMETRY, geometry['height'],
                     geometry['width'], geometry['x'], geometry['y'])

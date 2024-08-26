@@ -12,7 +12,7 @@ import CloseIcon from '@material-ui/icons/Close'
 
 import './Helper/SchematicEditor.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchLibraries, toggleCollapse, fetchComponents, fetchComponentImages, toggleSimulate } from '../../redux/actions/index'
+import { fetchLibraries, toggleCollapse, fetchComponents, fetchComponentImages, toggleSimulate } from '../../redux/slices/schematicEditorSlice'
 import SideComp from './SideComp'
 import SimulationProperties from './SimulationProperties'
 const COMPONENTS_PER_ROW = 3
@@ -36,10 +36,10 @@ const searchOptions = {
 
 export default function ComponentSidebar ({ compRef }) {
   const classes = useStyles()
-  const libraries = useSelector(state => state.schematicEditorReducer.libraries)
-  const collapse = useSelector(state => state.schematicEditorReducer.collapse)
-  const components = useSelector(state => state.schematicEditorReducer.components)
-  const isSimulate = useSelector(state => state.schematicEditorReducer.isSimulate)
+  const libraries = useSelector(state => state.schematicEditor.libraries)
+  const collapse = useSelector(state => state.schematicEditor.collapse)
+  const components = useSelector(state => state.schematicEditor.components)
+  const isSimulate = useSelector(state => state.schematicEditor.isSimulate)
 
   const dispatch = useDispatch()
   const [isSearchedResultsEmpty, setIssearchedResultsEmpty] = useState(false)
@@ -180,7 +180,7 @@ export default function ComponentSidebar ({ compRef }) {
 
             {/* Collapsing List Mapped by Libraries fetched by the API */}
             {searchText.length === 0 &&
-              libraries.map(
+              libraries?.map(
                 (library) => {
                   return (
                     <div key={library.id}>
@@ -239,7 +239,7 @@ export default function ComponentSidebar ({ compRef }) {
 }
 
 export function ComponentImages () {
-  const componentImages = useSelector(state => state.schematicEditorReducer.component_images)
+  const componentImages = useSelector(state => state.schematicEditor.component_images)
 
   const dispatch = useDispatch()
 

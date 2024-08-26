@@ -2,18 +2,6 @@
 
 set -e
 
-cd eda-frontend
-if test "$1" = 'prod'; then
-    npm install -g serve
-fi
-npm install --silent
-if test "$1" = 'prod'; then
-    npm run build
-    rm -rf node_modules public src
-fi
-echo 'WDS_SOCKET_PORT=8000' > .env.local
-
-cd ..
 python3 -m venv env
 . env/bin/activate
 pip install -q -U pip setuptools wheel
@@ -55,3 +43,14 @@ sed -i -e '/^\s*location \/ {/,/^\s*}/c\
                 proxy_buffering off;\
                 proxy_cache off;\
         }' /etc/nginx/sites-enabled/default
+
+cd eda-frontend
+if test "$1" = 'prod'; then
+    npm install -g serve
+fi
+npm install --silent
+if test "$1" = 'prod'; then
+    npm run build
+    rm -rf node_modules public src
+fi
+echo 'WDS_SOCKET_PORT=8000' > .env.local

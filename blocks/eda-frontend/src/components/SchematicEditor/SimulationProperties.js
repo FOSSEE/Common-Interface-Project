@@ -15,7 +15,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import { makeStyles } from '@material-ui/core/styles'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { setResultTitle, setResultTaskId } from '../../redux/actions/index'
+import { setResultTitle, setResultTaskId } from '../../redux/slices/simulationSlice'
 import { saveXml } from './Helper/ToolbarTools'
 import SimulationScreen, { setGraphStatusClosed } from './SimulationScreen'
 import api from '../../utils/Api'
@@ -42,8 +42,8 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function SimulationProperties () {
-  const netfile = useSelector(state => state.netlistReducer)
-  const isSimRes = useSelector(state => state.simulationReducer.isSimRes)
+  const netfile = useSelector(state => state.netlist)
+  const isSimRes = useSelector(state => state.simulation?.isSimRes)
   const dispatch = useDispatch()
   const classes = useStyles()
   const [transientAnalysisControlLine, setTransientAnalysisControlLine] = useState({
@@ -79,7 +79,7 @@ export default function SimulationProperties () {
 
   // Prepare Netlist to file
   const prepareNetlist = (netlist) => {
-    const titleA = netfile.title.split(' ')[1]
+    const titleA = netfile?.title?.split(' ')[1]
     const myblob = new Blob([netlist], {
       type: 'text/plain'
     })

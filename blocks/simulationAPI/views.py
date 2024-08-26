@@ -1,4 +1,5 @@
 import os
+from django.conf import settings
 import time
 import uuid
 from celery.result import AsyncResult
@@ -15,6 +16,7 @@ from simulationAPI.models import TaskFile
 from simulationAPI.negotiation import IgnoreClientContentNegotiation
 from simulationAPI.serializers import TaskSerializer
 from simulationAPI.tasks import process_task
+from simulationAPI.helpers.ngspice_helper import CreateXcos
 
 
 SCILAB_INSTANCE_TIMEOUT_INTERVAL = 300
@@ -59,6 +61,44 @@ class XmlUploader(APIView):
             return Response(response_data)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class XmlSave(APIView):
+    '''
+    API for XmlSave
+
+    Requires a multipart/form-data POST Request with Xml file in the
+    'file' parameter
+    '''
+    permission_classes = (AllowAny,)
+    parser_classes = (MultiPartParser, FormParser,)
+
+    def post(self, request, *args, **kwargs):
+        logger.info('Got POST for Xml save: data=%s', request.data)
+        file = request.FILES.get('file', None)
+        if not file:
+            return Response({"error": "No file provided"}, status=status.HTTP_400_BAD_REQUEST)
+        file_name = file.name
+        file_path = os.path.join(settings.MEDIA_ROOT, 'uploads', file_name)
+
+        # Ensure the directory exists
+        os.makedirs(os.path.dirname(file_path), exist_ok=True)
+
+        with open(file_path, 'wb+') as destination:
+            for chunk in file.chunks():
+                destination.write(chunk)
+
+        # Update the request data to include the file path
+        data = request.data.copy()
+        data['file_path'] = file_path
+        filename = CreateXcos(data['file_path'], '{}', 'abcd')
+        with open(filename, 'r') as file:
+            filecontent = file.read()
+
+        response = Response(filecontent, status=status.HTTP_200_OK,
+                            content_type='application/octet-stream')
+        response['Content-Disposition'] = f'attachment; filename="{os.path.basename(filename)}"'
+        return response
 
 
 class CeleryResultView(APIView):

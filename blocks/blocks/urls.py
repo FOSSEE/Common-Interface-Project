@@ -19,6 +19,15 @@ from django.urls import path, include
 urlpatterns = [
     path('api/admin/', admin.site.urls),
 
+    # Auth API Routes
+    path('api/auth/', include('djoser.urls')),
+    path('api/auth/', include('djoser.urls.authtoken')),
+    path('api/auth/', include('djoser.social.urls')),
+    path('api/auth/', include('authAPI.urls')),
+
+    # Save API Routes
+    path('api/save/', include('saveAPI.urls')),
+
     # Simulation API Routes
     path('api/simulation/', include('simulationAPI.urls')),
 

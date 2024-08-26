@@ -46,7 +46,7 @@ class Instructions(APIView):
                 allIdDicts[chartId] = idDict
                 event = 'instruction'
                 data = 'addChart id=%s type=%s xMin=%s xMax=%s yMin=%s yMax=%s' % (
-                        chartId, chartType, xMin, xMax, yMin, yMax)
+                       chartId, chartType, xMin, xMax, yMin, yMax)
             elif number < 100 - 2 * (1 + resets) * len(allChartIds):
                 chartId = choice(allChartIds)
                 idDict = allIdDicts[chartId]

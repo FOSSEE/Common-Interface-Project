@@ -11,11 +11,10 @@ def BARXY(outroot, attribid, ordering, geometry, parameters):
 
     addExprsNode(outnode, TYPE_STRING, 5, parameters)
     addScilabDNode(outnode, AS_REAL_PARAM, width=4, realParts=[
-                  format_real_number(parameters[0]),
-                  format_real_number(parameters[1]),
-                  format_real_number(parameters[2]),
-                  format_real_number(parameters[3])]
-                  )
+        format_real_number(parameters[0]),
+        format_real_number(parameters[1]),
+        format_real_number(parameters[2]),
+        format_real_number(parameters[3])])
     param = [parameters[4]]
     addPrecNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 1, param)
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)

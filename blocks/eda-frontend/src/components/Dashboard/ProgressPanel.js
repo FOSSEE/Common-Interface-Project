@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 
 import SchematicCard from './SchematicCard'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchSchematics } from '../../redux/actions/index'
+import { fetchSchematics } from '../../redux/slices/dashboardSlice'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -56,7 +56,7 @@ export default function ProgressPanel () {
     setValue(newValue)
   }
 
-  const schematics = useSelector(state => state.dashboardReducer.schematics)
+  const schematics = useSelector(state => state.dashboard.schematics)
 
   const dispatch = useDispatch()
 

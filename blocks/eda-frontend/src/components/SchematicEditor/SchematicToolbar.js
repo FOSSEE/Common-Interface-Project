@@ -30,7 +30,10 @@ import mxGraphFactory from 'mxgraph'
 import { NetlistModal, HelpScreen, ImageExportDialog, OpenSchDialog } from './ToolbarExtension'
 import { editorZoomIn, editorZoomOut, editorZoomAct, deleteComp, PrintPreview, Rotate, generateNetList, editorUndo, editorRedo, saveXml, ClearGrid } from './Helper/ToolbarTools'
 import { useSelector, useDispatch } from 'react-redux'
-import { toggleSimulate, closeCompProperties, setSchXmlData, saveSchematic, openLocalSch } from '../../redux/actions/index'
+import { setSchXmlData, saveSchematic, openLocalSch } from '../../redux/slices/saveSchematicSlice'
+import { toggleSimulate } from '../../redux/slices/schematicEditorSlice'
+import { closeCompProperties } from '../../redux/slices/componentPropertiesSlice'
+import api from '../../utils/Api'
 
 const {
   mxUtils
@@ -90,9 +93,9 @@ SimpleSnackbar.propTypes = {
 
 export default function SchematicToolbar ({ mobileClose, gridRef }) {
   const classes = useStyles()
-  const netfile = useSelector(state => state.netlistReducer)
-  const auth = useSelector(state => state.authReducer)
-  const schSave = useSelector(state => state.saveSchematicReducer)
+  const netfile = useSelector(state => state.netlist)
+  const auth = useSelector(state => state.auth)
+  const schSave = useSelector(state => state.saveSchematic)
 
   const dispatch = useDispatch()
 
@@ -301,43 +304,106 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
     a.dispatchEvent(evt)
   }
 
+  const handleLocalSchSaveXcos = async () => {
+    try {
+      const xmlContent = beautify(saveXml(schSave.description))
+      const xmlBlob = new Blob([xmlContent], { type: 'application/xml' })
+
+      const xmlFileName = schSave.title + '.xml'
+
+      const formData = new FormData()
+      formData.append('file', xmlBlob, xmlFileName)
+
+      const response = await api.post('/simulation/save', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
+
+      if (!response || response.status !== 200) {
+        throw new Error('Network response was not ok')
+      }
+      const xcosBlob = new Blob([response.data], { type: 'application/xcos' })
+
+      const a = document.createElement('a')
+      a.setAttribute('download', schSave.title + '_' + process.env.REACT_APP_NAME + '_on_Cloud.xcos')
+      a.href = URL.createObjectURL(xcosBlob)
+      a.target = '_blank'
+      a.setAttribute('target', '_blank')
+
+      const evt = new MouseEvent('click', {
+        view: window,
+        bubbles: false,
+        cancelable: true
+      })
+      a.dispatchEvent(evt)
+    } catch (error) {
+      console.error('There was an error!', error)
+    }
+  }
+
+  const xcos2xml = '/xcos2xml.xsl'
+
+  const getXsltProcessor = async () => {
+    const response = await fetch(xcos2xml)
+    const text = await response.text()
+    const parser = new DOMParser()
+    const xsl = parser.parseFromString(text, 'application/xml')
+    const processor = new XSLTProcessor()
+    processor.importStylesheet(xsl)
+    return processor
+  }
+
+  const readXmlFile = (xmlDoc, dataDump, title) => {
+    const firstCell = xmlDoc.documentElement.children[0].children[0]
+    const firstCellAttrs = firstCell.attributes
+    const appname = firstCellAttrs.appname.value
+    const description = (firstCellAttrs.description !== undefined) ? firstCellAttrs.description.value : ''
+    if (appname !== process.env.REACT_APP_NAME) {
+      setMessage('Unsupported app name error !')
+      handleSnacClick()
+    } else {
+      const obj = { data_dump: dataDump, title, description }
+      if (obj.data_dump === undefined || obj.title === undefined || obj.description === undefined) {
+        setMessage('Unsupported file error !')
+        handleSnacClick()
+      } else {
+        dispatch(openLocalSch(obj))
+      }
+    }
+  }
+
   // Open Locally Saved Schematic
   const handleLocalSchOpen = () => {
     const fileSelector = document.createElement('input')
     fileSelector.setAttribute('type', 'file')
-    fileSelector.setAttribute('accept', '.xml, application/xml')
+    fileSelector.setAttribute('accept', '.xcos, .xml, application/xml')
     fileSelector.click()
     fileSelector.addEventListener('change', function (event) {
       const file = event.target.files[0]
       const filename = file.name
-      const base = '(_' + process.env.REACT_APP_NAME + '_on_Cloud)?( *\\([0-9]*\\))?\\.xml$'
+      const base = '(_' + process.env.REACT_APP_NAME + '_on_Cloud)?( *\\([0-9]*\\))?\\.(xcos|xml)$'
       const re = new RegExp(base, 'i')
       if (re.test(filename)) {
         const reader = new FileReader()
         reader.onload = function (event) {
           const title = filename.replace(re, '')
-          const dataDump = event.target.result
-          const xmlDoc = mxUtils.parseXml(dataDump)
-          const firstCell = xmlDoc.documentElement.children[0].children[0]
-          const firstCellAttrs = firstCell.attributes
-          const appname = firstCellAttrs.appname.value
-          const description = (firstCellAttrs.description !== undefined) ? firstCellAttrs.description.value : ''
-          if (appname !== process.env.REACT_APP_NAME) {
-            setMessage('Unsupported app name error !')
-            handleSnacClick()
+          let dataDump = event.target.result
+          let xmlDoc = mxUtils.parseXml(dataDump)
+          const rexcos = /\.xcos$/i
+          if (rexcos.test(filename)) {
+            getXsltProcessor().then(processor => {
+              xmlDoc = processor.transformToDocument(xmlDoc)
+              dataDump = new XMLSerializer().serializeToString(xmlDoc)
+              readXmlFile(xmlDoc, dataDump, title)
+            })
           } else {
-            const obj = { data_dump: dataDump, title, description }
-            if (obj.data_dump === undefined || obj.title === undefined || obj.description === undefined) {
-              setMessage('Unsupported file error !')
-              handleSnacClick()
-            } else {
-              dispatch(openLocalSch(obj))
-            }
+            readXmlFile(xmlDoc, dataDump, title)
           }
         }
         reader.readAsText(file)
       } else {
-        setMessage('Unsupported file type error ! Select valid file.')
+        setMessage('Unsupported file type error! Select valid file.')
         handleSnacClick()
       }
     })
@@ -377,6 +443,11 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
 
       <Tooltip title='Export'>
         <IconButton color='inherit' className={classes.tools} size='small' onClick={handleLocalSchSave}>
+          <SystemUpdateAltOutlinedIcon fontSize='small' />
+        </IconButton>
+      </Tooltip>
+      <Tooltip title='Export in xcos'>
+        <IconButton color='inherit' className={classes.tools} size='small' onClick={handleLocalSchSaveXcos}>
           <SystemUpdateAltOutlinedIcon fontSize='small' />
         </IconButton>
       </Tooltip>

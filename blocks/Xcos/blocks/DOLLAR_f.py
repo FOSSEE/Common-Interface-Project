@@ -18,7 +18,7 @@ def DOLLAR_f(outroot, attribid, ordering, geometry, parameters):
     addTypeNode(outnode, TYPE_DOUBLE, AS_STATE, 0, [])
     # addTypeNode(outnode, TYPE_DOUBLE, AS_DSTATE, 1, parameters[0])
     addScilabDNode(outnode, AS_DSTATE, width=4, realParts=[
-                  format_real_number(parameters[0])])
+        format_real_number(parameters[0])])
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE, [])
     addObjNode(outnode, TYPE_ARRAY,
                CLASS_LIST, AS_EQUATIONS, parameters)

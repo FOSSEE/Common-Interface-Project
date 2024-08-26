@@ -12,10 +12,13 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+# Loading the .env file
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -48,10 +51,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blocks.xcosblocks',
     'django_filters',
     'corsheaders',
+    'djoser',
     'rest_framework',
+    'rest_framework.authtoken',
+    'social_django',
+    'blocks.xcosblocks',
+    'authAPI',
+    'saveAPI',
     'simulationAPI',
 ]
 
@@ -64,6 +72,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'blocks.urls'
@@ -86,6 +95,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'blocks.wsgi.application'
 
+AUTH_USER_MODEL = 'authAPI.User'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
@@ -96,7 +106,6 @@ DATABASES = {
         'NAME': os.environ.get('SQL_DATABASE', 'xcosblocks.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -116,6 +125,66 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Mail server config
+
+# use this for console emails
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp.gmail.com')
+# EMAIL_PORT = os.environ.get('EMAIL_PORT', 587)
+# EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'email@gmail.com')
+# EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', 'gmailpassword')
+# EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', True)
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ.get('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY', '')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET', '')
+GOOGLE_OAUTH_REDIRECT_URI = os.environ.get('GOOGLE_OAUTH_REDIRECT_URI',
+                                           'http://localhost/api/auth/google-callback')
+SOCIAL_AUTH_GITHUB_KEY = os.environ.get('SOCIAL_AUTH_GITHUB_KEY', '')
+SOCIAL_AUTH_GITHUB_SECRET = os.environ.get('SOCIAL_AUTH_GITHUB_SECRET', '')
+GITHUB_OAUTH_REDIRECT_URI = os.environ.get('GITHUB_OAUTH_REDIRECT_URI',
+                                           'http://localhost/api/auth/github-callback')
+POST_ACTIVATE_REDIRECT_URL = os.environ.get('POST_ACTIVATE_REDIRECT_URL',
+                                            'http://localhost/')
+DOMAIN = os.environ.get('EMAIL_DOMAIN', 'localhost')
+SITE_NAME = os.environ.get('EMAIL_SITE_NAME', 'Xcos')
+
+DJOSER = {
+    'LOGIN_FIELD': 'email',
+    'USER_CREATE_PASSWORD_RETYPE': True,
+    'USERNAME_CHANGED_EMAIL_CONFIRMATION': True,
+    'PASSWORD_CHANGED_EMAIL_CONFIRMATION': True,
+    'SEND_CONFIRMATION_EMAIL': True,
+    'SET_PASSWORD_RETYPE': True,
+    'PASSWORD_RESET_CONFIRM_URL': 'api/auth/password/reset/confirm/{uid}/{token}',
+    'ACTIVATION_URL': 'api/auth/users/activate/{uid}/{token}/',
+    'SEND_ACTIVATION_EMAIL': True,
+    'SOCIAL_AUTH_TOKEN_STRATEGY': 'authAPI.token.TokenStrategy',
+    'SOCIAL_AUTH_ALLOWED_REDIRECT_URIS': [
+        GOOGLE_OAUTH_REDIRECT_URI,
+        GITHUB_OAUTH_REDIRECT_URI,
+    ],
+    'SERIALIZERS': {
+        'user_create': 'authAPI.serializers.UserCreateSerializer',
+        'user': 'authAPI.serializers.UserCreateSerializer',
+        'current_user': 'authAPI.serializers.UserCreateSerializer',
+        'user_delete': 'djoser.serializers.UserDeleteSerializer',
+        'token_create': 'authAPI.serializers.TokenCreateSerializer',
+    },
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+}
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.github.GithubOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
@@ -130,18 +199,23 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Allow CORS for Public API
 CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOWED_ORIGINS = [i for i in os.environ.get('CORS_ALLOWED_ORIGINS', '').split(',') if i != '']
+CORS_ALLOW_CREDENTIALS = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/django_static/'
 
+# File Storage
+FILE_STORAGE_ROOT = os.path.join(BASE_DIR, 'file_storage')
+FILE_STORAGE_URL = '/files'
+
 # noqa For Netlist handling netlist uploads and other temp uploads
 MEDIA_URL = '/_files/'
-MEDIA_ROOT = os.path.join('/tmp', 'blocks-tmp')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # celery
 CELERY_BROKER_URL = 'redis://redis:6379/1'
@@ -152,7 +226,6 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_IMPORTS = (
     'simulationAPI.tasks',
 )
-
 
 LOGGING = {
     'version': 1,

@@ -9,14 +9,14 @@ SRCFILES += $(sort $(wildcard Xcos/links/*.py))
 
 XCOS2XMLFILES := $(sort $(wildcard xcos2xml/head.xsl))
 XCOS2XMLFILES += $(sort $(wildcard xcos2xml/blocks/*.xsl))
-#XCOS2XMLFILES += $(sort $(wildcard xcos2xml/ports/*.xsl))
-#XCOS2XMLFILES += $(sort $(wildcard xcos2xml/links/*.xsl))
+XCOS2XMLFILES += $(sort $(wildcard xcos2xml/ports/*.xsl))
+XCOS2XMLFILES += $(sort $(wildcard xcos2xml/links/*.xsl))
 XCOS2XMLFILES += $(sort $(wildcard xcos2xml/foot.xsl))
 
 IMPORT := Xcos/xcosblocks.py
 TARGET := xcosblocks.py
 TARGET2 := $(BLOCKDIR)/$(TARGET)
-TARGET3 := eda-frontend/src/static/xcos2xml.xsl
+TARGET3 := eda-frontend/public/xcos2xml.xsl
 
 all : $(IMPORT) $(TARGET) $(TARGET2) $(TARGET3)
 

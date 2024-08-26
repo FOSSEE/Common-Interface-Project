@@ -19,7 +19,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN apt-get update -qq && \
   apt-get install -qq --no-install-recommends gcc g++ libgfortran5 make nginx openjdk-8-jre python3 redis sqlite3 tzdata && \
   apt-get clean -qq && \
-  rm -f /var/lib/apt/lists/*_*
+  rm -rf /var/lib/apt/lists/*
 
 # Set timezone info
 RUN ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime && \
@@ -91,12 +91,9 @@ RUN find . -mindepth 1 -type d -empty -print0 | xargs -0 rmdir -p 2> /dev/null |
 # Cleanup
 RUN find /usr/local/share/scilab -depth -type d \( -name demos -o -name examples -o -name tests \) -print0 | \
   xargs -0 rm -rf
-RUN ls /usr/local/share/locale | grep _ | grep -v en_US | \
-  while read -r d; do \
-    find . -type d -name "$d" -print0 | xargs -r0 rm -rf; \
-  done
+RUN find /usr/local/share/locale -mindepth 1 -maxdepth 1 -type d -name \*_\* ! -name en_US -print0 | xargs -r0 rm -rf
 RUN apt-get clean -qq
-RUN rm -f /var/lib/apt/lists/*_*
+RUN rm -rf /var/lib/apt/lists/*
 RUN rm -f /etc/{passwd,shadow,group,gshadow}-
 
 # Comparison
@@ -126,7 +123,7 @@ RUN ./install.sh
 # Cleanup
 RUN apt-get autoremove -qq --purge gawk python3-pip python3-venv wget xz-utils
 RUN apt-get clean -qq
-RUN rm -f /var/lib/apt/lists/*_*
+RUN rm -rf /var/lib/apt/lists/*
 RUN rm -rf ${HOME}/.cache
 RUN rm -rf ${HOME}/.npm
 

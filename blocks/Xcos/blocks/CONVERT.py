@@ -36,8 +36,8 @@ def get_from_CONVERT(cell):
     input_t = int(float(parameters[0]))
     output_t = int(float(parameters[1]))
 
-    input_type = types[input_t-1]
-    output_type = types[output_t-1]
+    input_type = types[input_t - 1]
+    output_type = types[output_t - 1]
 
     display_parameter = input_type + ',' + output_type
 

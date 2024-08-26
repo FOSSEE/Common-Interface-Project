@@ -119,7 +119,7 @@ def addScilabDNode(node, type, realParts, width):
     height = 1 if width > 0 else 0
     scilabDoubleNode = addADataNode(node, 'ScilabDouble', type, height, width, realParts)
     for i, realPart in enumerate(realParts):
-        addDData(scilabDoubleNode, line=0, column=i, realPart=realPart)
+        addDData(scilabDoubleNode, column=i, line=0, realPart=realPart)
     return scilabDoubleNode
 
 
@@ -127,23 +127,23 @@ def addNodeScilabDB(node, type, realParts, height):
     width = 1 if height > 0 else 0
     scilabDoubleNode = addADataNode(node, 'ScilabDouble', type, height, width, realParts)
     for i, realPart in enumerate(realParts):
-        addDData(scilabDoubleNode, realPart, line=0, column=i)
+        addDData(scilabDoubleNode, column=i, line=0, realPart=realPart)
     return scilabDoubleNode
 
 
 def addScilabDoubleNode(node, realParts, width):
     scilabDoubleNode = addDataNode(node, 'ScilabDouble', height=1, width=width)
     for i, realPart in enumerate(realParts):
-        addDData(scilabDoubleNode, realPart, line=0, column=i)
+        addDData(scilabDoubleNode, column=i, line=0, realPart=realPart)
 
 
 def addNodeScilabDouble(node, realParts, height):
     scilabDoubleNode = addDataNode(node, 'ScilabDouble', height=height, width=1)
     for i, realPart in enumerate(realParts):
-        addDData(scilabDoubleNode, realPart, line=0, column=i)
+        addDData(scilabDoubleNode, column=i, line=0, realPart=realPart)
 
 
-def addDData(parent, line=None, column=None, realPart=None):
+def addDData(parent, column=None, line=None, realPart=None):
     data_attributes = {}
     if line is not None:
         data_attributes['line'] = str(line)
@@ -542,18 +542,16 @@ def si_format(num):
     number = float(num)
     si_form = '{:.1e}'.format(number)
     neg_prefixes = (
-                {SIGN: 'm', LOWER_LIMIT: -2, UPPER_LIMIT: 0, VALUE: 1E-3},
-                {SIGN: 'μ', LOWER_LIMIT: -5, UPPER_LIMIT: -3, VALUE: 1E-6},
-                {SIGN: 'n', LOWER_LIMIT: -8, UPPER_LIMIT: -6, VALUE: 1E-9},
-                {SIGN: 'p', LOWER_LIMIT: -11, UPPER_LIMIT: -9, VALUE: 1E-12}
-                )
+        {SIGN: 'm', LOWER_LIMIT: -2, UPPER_LIMIT: 0, VALUE: 1E-3},
+        {SIGN: 'μ', LOWER_LIMIT: -5, UPPER_LIMIT: -3, VALUE: 1E-6},
+        {SIGN: 'n', LOWER_LIMIT: -8, UPPER_LIMIT: -6, VALUE: 1E-9},
+        {SIGN: 'p', LOWER_LIMIT: -11, UPPER_LIMIT: -9, VALUE: 1E-12})
     pos_prefixes = (
-                {SIGN: '', LOWER_LIMIT: 1, UPPER_LIMIT: 3, VALUE: 1},
-                {SIGN: 'k', LOWER_LIMIT: 4, UPPER_LIMIT: 6, VALUE: 1E3},
-                {SIGN: 'M', LOWER_LIMIT: 7, UPPER_LIMIT: 9, VALUE: 1E6},
-                {SIGN: 'G', LOWER_LIMIT: 10, UPPER_LIMIT: 12, VALUE: 1E9},
-                {SIGN: 'T', LOWER_LIMIT: 13, UPPER_LIMIT: 15, VALUE: 1E12}
-                )
+        {SIGN: '', LOWER_LIMIT: 1, UPPER_LIMIT: 3, VALUE: 1},
+        {SIGN: 'k', LOWER_LIMIT: 4, UPPER_LIMIT: 6, VALUE: 1E3},
+        {SIGN: 'M', LOWER_LIMIT: 7, UPPER_LIMIT: 9, VALUE: 1E6},
+        {SIGN: 'G', LOWER_LIMIT: 10, UPPER_LIMIT: 12, VALUE: 1E9},
+        {SIGN: 'T', LOWER_LIMIT: 13, UPPER_LIMIT: 15, VALUE: 1E12})
     splits = si_form.split('e')
     base = float(splits[0])
     exp = int(splits[1])
@@ -563,11 +561,11 @@ def si_format(num):
         if exp <= 0:
             for p in neg_prefixes:
                 if exp >= p.get(LOWER_LIMIT) and exp <= p.get(UPPER_LIMIT):
-                    return str(round(number/p.get(VALUE)))+' '+p.get(SIGN)
+                    return str(round(number / p.get(VALUE))) + ' ' + p.get(SIGN)
         else:
             for p in pos_prefixes:
                 if exp >= p.get(LOWER_LIMIT) and exp <= p.get(UPPER_LIMIT):
-                    return str(round(number/p.get(VALUE)))+' '+p.get(SIGN)
+                    return str(round(number / p.get(VALUE))) + ' ' + p.get(SIGN)
 
 
 def print_affich_m(rows, columns, prec):
