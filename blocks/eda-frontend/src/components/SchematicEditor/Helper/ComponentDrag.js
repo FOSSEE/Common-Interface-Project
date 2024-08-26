@@ -5,7 +5,7 @@ import mxGraphFactory from 'mxgraph'
 import store from '../../../redux/store'
 import dot from '../../../static/dot.gif'
 import blockstyle from '../../../static/style.json'
-import { getCompPropertiesAsync, closeCompProperties } from '../../../redux/slices/componentPropertiesSlice'
+import { getCompProperties, closeCompProperties } from '../../../redux/slices/componentPropertiesSlice'
 
 import toolbarTools from './ToolbarTools'
 import keyboardShortcuts from './KeyboardShortcuts'
@@ -123,7 +123,7 @@ export default function LoadGrid (container, sidebar, outline) {
     graph.addListener(mxEvent.DOUBLE_CLICK, function (sender, evt) {
       const cell = evt.getProperty('cell')
       if (cell !== undefined && cell.CellType === 'Component') {
-        store.dispatch(getCompPropertiesAsync(cell))
+        store.dispatch(getCompProperties(cell))
       } else {
         store.dispatch(closeCompProperties())
       }

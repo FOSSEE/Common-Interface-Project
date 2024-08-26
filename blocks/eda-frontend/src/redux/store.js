@@ -16,7 +16,14 @@ const store = configureStore({
     simulation: simulationReducer,
     saveSchematic: saveSchematicReducer,
     auth: authReducer
-  }
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: ['componentProperties/getCompProperties'],
+        ignoredPaths: ['componentProperties.block']
+      }
+    })
 })
 
 export default store

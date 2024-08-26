@@ -13,7 +13,7 @@ const initialState = {
   isLoading: false
 }
 
-export const componentPropertiesSlice = createSlice({
+const componentPropertiesSlice = createSlice({
   name: 'componentProperties',
   initialState,
   reducers: {
@@ -24,21 +24,13 @@ export const componentPropertiesSlice = createSlice({
       state.isLoading = action.payload.isLoading
     },
     getCompProperties: (state, action) => {
-      const {
-        block,
-        name,
-        parameterValues,
-        errorFields,
-        displayProperties,
-        compProperties
-      } = action.payload
-      state.block = block
-      state.name = name
-      state.parameterValues = parameterValues
-      state.errorFields = errorFields
+      state.block = action.payload.block
+      state.name = action.payload.name
+      state.parameterValues = action.payload.parameterValues
+      state.errorFields = action.payload.errorFields
       state.isPropertiesWindowOpen = true
-      state.displayProperties = displayProperties
-      state.compProperties = compProperties
+      state.displayProperties = action.payload.displayProperties
+      state.compProperties = action.payload.compProperties
       state.isLoading = false
     },
     loadingSetCompProperties: (state, action) => {
@@ -46,17 +38,11 @@ export const componentPropertiesSlice = createSlice({
       state.isLoading = action.payload.isLoading
     },
     setCompProperties: (state, action) => {
-      const {
-        block,
-        parameterValues,
-        errorFields,
-        displayProperties
-      } = action.payload
-      state.block = block
-      state.parameterValues = parameterValues
-      state.errorFields = errorFields
+      state.block = action.payload.block
+      state.parameterValues = action.payload.parameterValues
+      state.errorFields = action.payload.errorFields
       state.isPropertiesWindowOpen = false
-      state.displayProperties = displayProperties
+      state.displayProperties = action.payload.displayProperties
       state.isLoading = false
     },
     closeCompProperties: (state) => {
@@ -66,55 +52,61 @@ export const componentPropertiesSlice = createSlice({
   }
 })
 
-export const {
-  loadingGetCompProperties,
-  getCompProperties,
-  loadingSetCompProperties,
-  setCompProperties,
-  closeCompProperties
-} = componentPropertiesSlice.actions
+export const getCompProperties = (block) => async (dispatch) => {
+  dispatch(componentPropertiesSlice.actions.loadingGetCompProperties({ name: block.style, isLoading: true }))
 
-// Async action creators remain the same
-export const getCompPropertiesAsync = (block) => (dispatch) => {
-  dispatch(loadingGetCompProperties(block, true))
-  const url = 'block_parameters/?block__name=' + block.style
-  api.get(url)
-    .then((res) => {
-      dispatch(getCompProperties({
+  try {
+    const url = `block_parameters/?block__name=${block.style}`
+    const res = await api.get(url)
+    dispatch(
+      componentPropertiesSlice.actions.getCompProperties({
         block,
         name: block.style,
         parameterValues: block.parameterValues,
         errorFields: block.errorFields,
         displayProperties: block.displayProperties,
         compProperties: res.data[0]
-      }))
-    })
-    .catch((err) => {
-      console.error(err)
-      dispatch(loadingGetCompProperties(block, false))
-    })
+      })
+    )
+  } catch (err) {
+    console.error(err)
+    dispatch(componentPropertiesSlice.actions.loadingGetCompProperties({ name: block.style, isLoading: false }))
+  }
 }
 
-export const setCompPropertiesAsync = (block, parameterValues, errorFields) => (dispatch) => {
-  dispatch(loadingSetCompProperties(true))
-  const url = 'setblockparameter'
-  const filteredParameterValues = Object.fromEntries(Object.entries(parameterValues).filter(([k, v]) => v != null))
-  const data = { block: block.style, ...filteredParameterValues }
-  api.post(url, data)
-    .then((res) => {
-      block.parameterValues = filteredParameterValues
-      block.errorFields = errorFields
-      dispatch(setCompProperties({
+export const setCompProperties = (block, parameterValues, errorFields) => async (dispatch) => {
+  dispatch(componentPropertiesSlice.actions.loadingSetCompProperties({ isLoading: true }))
+
+  try {
+    const url = 'setblockparameter'
+    const filteredParameterValues = Object.fromEntries(
+      Object.entries(parameterValues).filter(([k, v]) => v != null)
+    )
+    const data = { block: block.style, ...filteredParameterValues }
+    const res = await api.post(url, data)
+    block.parameterValues = filteredParameterValues
+    block.errorFields = errorFields
+    dispatch(
+      componentPropertiesSlice.actions.setCompProperties({
         block,
         parameterValues: parameterValues,
         errorFields,
         displayProperties: res.data
-      }))
-    })
-    .catch((err) => {
-      console.error(err)
-      dispatch(loadingSetCompProperties(false))
-    })
+      })
+    )
+  } catch (err) {
+    console.error(err)
+    dispatch(componentPropertiesSlice.actions.loadingSetCompProperties({ isLoading: false }))
+  }
 }
+
+export const closeCompProperties = () => (dispatch) => {
+  dispatch(componentPropertiesSlice.actions.closeCompProperties())
+}
+
+export const {
+  loadingGetCompProperties,
+  loadingSetCompProperties
+} = componentPropertiesSlice.actions
 
 export default componentPropertiesSlice.reducer
