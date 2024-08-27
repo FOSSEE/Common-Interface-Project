@@ -7,9 +7,7 @@
 <xsl:key name="k-commandsrclink" match="CommandControlLink" use="@source" />
 <xsl:key name="k-commandtgtlink" match="CommandControlLink" use="@target" />
 <xsl:key name="k-implicitinput" match="ImplicitInputPort | ImplicitOutputPort" use="@parent" />
-<!-- <xsl:key name="k-implicitoutput" match="ImplicitOutputPort" use="@parent" /> -->
 <xsl:key name="k-implicitsrclink" match="ImplicitLink" use="@source | @target" />
-<!-- <xsl:key name="k-implicittgtlink" match="ImplicitLink" use="@target" /> -->
 
     <xsl:template match="SplitBlock">
       
@@ -32,9 +30,7 @@
         <xsl:variable name="sourcecommandonelink" select="key('k-commandsrclink', $sourcecommandoneid)" />
 
         <xsl:variable name="ImplicitPort" select="key('k-implicitinput', @id)" />
-        <!-- <xsl:variable name="ImplicitOutputPort" select="key('k-implicitoutput', @id)" /> -->
         <xsl:variable name="ImplicitPorts" select="count($ImplicitPort)" />
-        <!-- <xsl:variable name="ImplicitOutputPorts" select="count($ImplicitOutputPort)" /> -->
         <xsl:variable name="targetimplicitoneid" select="$ImplicitPort[position()=1]/@id" />
         <xsl:variable name="sourceimplicitoneid" select="$ImplicitPort[position()=2]/@id" />
         <xsl:variable name="targetimplicitonelink" select="key('k-implicitsrclink', $targetimplicitoneid)" />
@@ -242,14 +238,6 @@
                   <xsl:for-each select="$targetimplicitonelink/mxGeometry/Array/mxPoint">
                     <xsl:copy-of select="." />
                   </xsl:for-each>
-                  <!-- <xsl:element name="mxPoint">
-                    <xsl:attribute name="x">
-                        <xsl:value-of select="$x" />
-                    </xsl:attribute>
-                    <xsl:attribute name="y">
-                        <xsl:value-of select="$y" />
-                    </xsl:attribute>
-                  </xsl:element> -->
                   <xsl:for-each select="$sourceimplicitonelink/mxGeometry/Array/mxPoint">
                     <xsl:copy-of select="." />
                   </xsl:for-each>

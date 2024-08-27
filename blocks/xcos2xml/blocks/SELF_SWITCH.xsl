@@ -42,9 +42,7 @@
         <xsl:attribute name="tarx">0</xsl:attribute>
         <xsl:attribute name="tary">0</xsl:attribute>
         <xsl:apply-templates select="node()"/>
-        <!-- <Object display_parameter="" as="displayProperties"/> -->
         <Object>
-          <!-- <xsl:variable name="exprsData" select="(*[@as='exprs']/data[1]/@value)" /> -->
           <xsl:variable name="style1" select="@style" />
           <xsl:variable name="displayParam1">
             <xsl:choose>

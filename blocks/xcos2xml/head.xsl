@@ -405,7 +405,6 @@
     <xsl:key name="k-out" match="ExplicitOutputPort | ImplicitOutputPort" use="@parent" />
     <xsl:key name="k-command" match="CommandPort" use="@parent" />
     <xsl:key name="k-control" match="ControlPort" use="@parent" />
-    <!-- kcommand kcontrol -->
     
     <xsl:template match="@*|node()">
       <xsl:copy>
@@ -506,7 +505,6 @@
                     <xsl:value-of select="@y" />
                 </xsl:attribute>
             </xsl:if>
-            <!-- <xsl:apply-templates /> -->
         </xsl:element>
     </xsl:template>
     <xsl:template name="Array" match="Array[@as = 'points']">

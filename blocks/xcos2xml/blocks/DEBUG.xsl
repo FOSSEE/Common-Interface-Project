@@ -51,8 +51,6 @@
         <Object>
           <xsl:attribute name="as">parameter_values</xsl:attribute>
         </Object>
-        <!-- <Object display_parameter="" as="displayProperties"/>
-        <Object as="parameter_values"/> -->
       </xsl:element>
       <xsl:call-template name="port">
         <xsl:with-param name="id" select="@id"/>
