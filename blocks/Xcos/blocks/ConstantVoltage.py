@@ -45,8 +45,8 @@ def ConstantVoltage(outroot, attribid, ordering, geometry, parameters):
 
     innerArrayNode = addArrayNode(innerArrayNode,
                                   scilabClass="ScilabList")
-    innerNode = addDataNode(innerArrayNode, 'ScilabDouble', height=1, width=1)
-    addScilabDoubleNode(innerNode, width=1, realParts=format_real_number(parameters[0]))
+
+    addScilabDoubleNode(innerArrayNode, width=1, realParts=["1"])
 
     addgeometryNode(outnode, GEOMETRY, geometry['height'],
                     geometry['width'], geometry['x'], geometry['y'])

@@ -182,6 +182,7 @@ export default function LoadGrid (container, sidebar, outline) {
       let text = null
       if (cell != null) {
         const attribute = cell.style
+        // console.log(attribute)
         if (attribute == null) {
           return ''
         }
@@ -207,19 +208,19 @@ export default function LoadGrid (container, sidebar, outline) {
         const geometry = cell.geometry
 
         text = 'Block Name: ' + attribute + '\n' +
-            'Simulation: ' + cell.simulationFunction + '\n' +
-            'UID: ' + cell.id + '\n' +
-            'Style: ' + cell.style + '\n' +
-            'Flip: ' + flip + '\n' +
-            'Mirror: ' + mirror + '\n' +
-            'Input Ports: ' + inputPorts + '\n' +
-            'Output Ports: ' + outputPorts + '\n' +
-            'Control Ports: ' + controlPorts + '\n' +
-            'Command Ports: ' + commandPorts + '\n' +
-            'x: ' + geometry.x + '\n' +
-            'y: ' + geometry.y + '\n' +
-            'w: ' + geometry.width + '\n' +
-            'h: ' + geometry.height + '\n'
+          'Simulation: ' + cell.simulationFunction + '\n' +
+          'UID: ' + cell.id + '\n' +
+          'Style: ' + cell.style + '\n' +
+          'Flip: ' + flip + '\n' +
+          'Mirror: ' + mirror + '\n' +
+          'Input Ports: ' + inputPorts + '\n' +
+          'Output Ports: ' + outputPorts + '\n' +
+          'Control Ports: ' + controlPorts + '\n' +
+          'Command Ports: ' + commandPorts + '\n' +
+          'x: ' + geometry.x + '\n' +
+          'y: ' + geometry.y + '\n' +
+          'w: ' + geometry.width + '\n' +
+          'h: ' + geometry.height + '\n'
       }
       return text
     }
@@ -236,7 +237,7 @@ export default function LoadGrid (container, sidebar, outline) {
 
       const stylesheet = graph.getStylesheet()
       const style = stylesheet.styles[attribute]
-      let displayedLabel = style.displayedLabel
+      let displayedLabel = style?.displayedLabel
       if (displayedLabel == null) {
         return cell.getAttribute('label', '')
       }
@@ -423,6 +424,7 @@ export default function LoadGrid (container, sidebar, outline) {
             pt.y = p0.y
             pt.x = Math.min(pt.x, Math.max(p0.x, pe.x))
             pt.x = Math.max(pt.x, Math.min(p0.x, pe.x))
+            console.log('PT', pt)
           }
         }
       } else if (terminal != null && terminal.cell.geometry?.relative) {

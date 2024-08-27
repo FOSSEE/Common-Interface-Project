@@ -362,9 +362,9 @@ function parseXmlToGraph (xmlDoc, graph) {
       const cell = cells[i]
       const cellAttrs = cell.attributes
       const cellChildren = cell.children
-      if (cellAttrs.CellType.value === 'Component') { // is component
-        const style = cellAttrs.style.value
-        const vertexId = Number(cellAttrs.id.value)
+      if (cellAttrs.CellType?.value === 'Component') { // is component
+        const style = cellAttrs.style.value.replace(/;.*/, '')
+        const vertexId = cellAttrs.id.value
         const geom = cellChildren[0].attributes
         const xPos = (geom.x !== undefined) ? Number(geom.x.value) : 0
         const yPos = (geom.y !== undefined) ? Number(geom.y.value) : 0
@@ -412,9 +412,9 @@ function parseXmlToGraph (xmlDoc, graph) {
         v1.implicitOutputPorts = 0
         v1.controlPorts = 0
         v1.commandPorts = 0
-      } else if (cellAttrs.CellType.value === 'Pin') {
-        const style = cellAttrs.style.value
-        const vertexId = Number(cellAttrs.id.value)
+      } else if (cellAttrs.CellType?.value === 'Pin') {
+        const style = cellAttrs.style.value.replace(/;.*/, '')
+        const vertexId = cellAttrs.id.value
         const geom = cellChildren[0].attributes
         const xPos = (geom.x !== undefined) ? Number(geom.x.value) : 0
         const yPos = (geom.y !== undefined) ? Number(geom.y.value) : 0
@@ -462,14 +462,20 @@ function parseXmlToGraph (xmlDoc, graph) {
         vp.geometry.offset = point
         vp.CellType = 'Pin'
         vp.ParentComponent = v1.id
+        // console.log("VP", vp.id, cellAttrs.id.value, v1.id)
       } else if (cellAttrs.edge) { // is edge
-        const edgeId = Number(cellAttrs.id.value)
-        const source = Number(cellAttrs.sourceVertex.value)
-        const target = Number(cellAttrs.targetVertex.value)
+        const edgeId = cellAttrs.id.value
+
+        const source = cellAttrs.sourceVertex.value
+        const target = cellAttrs.targetVertex.value
         const sourceCell = graph.getModel().getCell(source)
         const targetCell = graph.getModel().getCell(target)
+        console.log('CELL', sourceCell, targetCell)
+        console.log('ST', source, target)
+        // console.log(graph.getModel())
         try {
           const edge = graph.insertEdge(parent, edgeId, null, sourceCell, targetCell)
+          console.log('EGDE', edge)
           const firstChild = cellChildren[0].querySelector('Array[as=points]')
           if (firstChild !== null) {
             edge.geometry.points = []
@@ -478,11 +484,12 @@ function parseXmlToGraph (xmlDoc, graph) {
               try {
                 const xPos = Number(a.attributes.x.value)
                 const yPos = Number(a.attributes.y.value)
+                console.log('xPos', xPos, yPos)
                 edge.geometry.points.push(new mxPoint(xPos, yPos))
               } catch (e) { console.log('error', e) }
             }
           }
-          if (targetCell.edge === true) {
+          if (targetCell?.edge === true) {
             edge.geometry.setTerminalPoint(new mxPoint(Number(cellAttrs.tarx.value), Number(cellAttrs.tary.value)), false)
           }
         } catch (e) {
