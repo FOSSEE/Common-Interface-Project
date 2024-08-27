@@ -48,6 +48,9 @@
           <xsl:variable name="exprsData" select="(*[@as='exprs']/data[1]/@value)" />
           <xsl:variable name="displayParam1">
             <xsl:choose>
+              <xsl:when test="$exprsData = 1">
+                <xsl:text>MIN</xsl:text>
+              </xsl:when>
               <xsl:when test="$exprsData = 2">
                 <xsl:text>MAX</xsl:text>
               </xsl:when>

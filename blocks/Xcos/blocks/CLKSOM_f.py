@@ -1,25 +1,21 @@
 from common.AAAAAA import *
 
-def DEADBAND(outroot, attribid, ordering, geometry, parameters):
-    func_name = 'DEADBAND'
+def CLKSOM_f(outroot, attribid, ordering, geometry, parameters, parent=1):
+    func_name = 'CLKSOM_f'
 
-    outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
-                         func_name, 'deadband', 'C_OR_FORTRAN',
-                         func_name, BLOCKTYPE_C,
-                         dependsOnU='1')
+    outnode = addOutNode(outroot, BLOCK_ROUND,
+                         attribid, ordering, parent,
+                         func_name, 'sum', 'DEFAULT',
+                         func_name, BLOCKTYPE_D, dependsOnU="0", dependsOnT="0")
 
-    addExprsNode(outnode, TYPE_STRING, 3, parameters)
-    addScilabDNode(outnode, AS_REAL_PARAM, width=2, realParts=[
-                   format_real_number(parameters[0]),
-                   format_real_number(parameters[1])])
-    # addPrecNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 11, parameters)
+    new_param = [parameters[0], parameters[0]]
+    addExprsNode(outnode, TYPE_STRING, 2, new_param)
+    addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0, [])
     addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 0, [])
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
-    array = ['2']
+    array = ['0']
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NBZERO, 1, array)
-    arr = ['1']
-    addPrecisionNode(outnode, TYPE_INTEGER, AS_NMODE, 1, arr)
+    addPrecisionNode(outnode, TYPE_INTEGER, AS_NMODE, 1, array)
     addTypeNode(outnode, TYPE_DOUBLE, AS_STATE, 0, [])
     addTypeNode(outnode, TYPE_DOUBLE, AS_DSTATE, 0, [])
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE, parameters)
@@ -31,7 +27,7 @@ def DEADBAND(outroot, attribid, ordering, geometry, parameters):
     return outnode
 
 
-def get_from_DEADBAND(cell):
+def get_from_CLKSOM_f(cell):
     parameters = getParametersFromExprsNode(cell, TYPE_STRING)
 
     display_parameter = ''

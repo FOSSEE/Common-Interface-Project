@@ -196,8 +196,10 @@ DATA_COLUMN = 0
 
 def addDataNode(node, subNodeType, **kwargs):
     global DATA_HEIGHT, DATA_WIDTH, DATA_LINE, DATA_COLUMN
-    DATA_HEIGHT = kwargs['height']
-    DATA_WIDTH = kwargs['width']
+    if 'height' in kwargs:
+        DATA_HEIGHT = kwargs['height']
+    if 'width' in kwargs:
+        DATA_WIDTH = kwargs['width']
     DATA_LINE = 0
     DATA_COLUMN = 0
     subNode = addNode(node, subNodeType, **kwargs)
@@ -255,7 +257,8 @@ def addExprsNode(node, subNodeType, height, parameters):
     return subNode
 
 
-def addExprsArrayNode(node, subSubNodeType, height, parameters, codeLines):
+def addExprsArrayNode(node, subSubNodeType, height, parameters,
+                      codeLines, additionalSubNodeType, func_name):
     subNode = addDataNode(node, TYPE_ARRAY, **{'as': 'exprs'},
                           scilabClass=CLASS_LIST)
 
@@ -263,11 +266,20 @@ def addExprsArrayNode(node, subSubNodeType, height, parameters, codeLines):
     for i in range(height):
         addDataData(subSubNode, parameters[i])
 
-    codeHeight = len(codeLines)
-    subSubNode = addDataNode(subNode, TYPE_STRING,
-                             height=codeHeight, width=1)
-    for i in range(codeHeight):
-        addDataData(subSubNode, codeLines[i])
+    if additionalSubNodeType == TYPE_DOUBLE:
+        addDataNode(subNode, additionalSubNodeType, height=0, width=0)
+    elif additionalSubNodeType == TYPE_ARRAY:
+        nestedArrayNode = addDataNode(subNode, TYPE_ARRAY, scilabClass=CLASS_LIST)
+        addDataNode(nestedArrayNode, TYPE_DOUBLE, height=0, width=0)
+    elif additionalSubNodeType == TYPE_STRING:
+        if func_name == 'CONSTRAINT2_c':
+            nestedArrayNode = addDataNode(subNode, additionalSubNodeType, height=1, width=1)
+            addDataData(nestedArrayNode, '0')
+            nestedArrayNode = addDataNode(subNode, additionalSubNodeType, height=1, width=1)
+            addDataData(nestedArrayNode, '0')
+        elif func_name == 'DEBUG':
+            nestedArrayNode = addDataNode(subNode, additionalSubNodeType, height=1, width=1)
+            addDataData(nestedArrayNode, 'xcos_debug_gui(flag,block);')
 
     return subNode
 

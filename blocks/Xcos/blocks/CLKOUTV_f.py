@@ -4,13 +4,13 @@ block_id = ['-64ce6d85:145ef6f2b50:-7ee7', '-64ce6d85:145ef6f2b51:-7ee7',
             '-64ce6d85:145ef6f2b4f:-7f54']
 
 
-def CLKOUTV_f(outroot, attribid, ordering, geometry, parameters):
+def CLKOUTV_f(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'CLKOUTV_f'
 
     outnode = addOutNode(outroot, BLOCK_EVENT_OUT,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'output', 'DEFAULT',
-                         func_name, BLOCKTYPE_D)
+                         func_name, BLOCKTYPE_D, dependsOnU="0", dependsOnT="0")
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0,

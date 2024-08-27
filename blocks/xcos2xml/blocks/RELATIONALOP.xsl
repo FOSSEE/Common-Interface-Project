@@ -46,8 +46,23 @@
           <xsl:variable name="exprsData" select="(*[@as='exprs']/data[1]/@value)" />
           <xsl:variable name="displayParam1">
             <xsl:choose>
+              <xsl:when test="$exprsData = 0">
+                <xsl:text>==</xsl:text>
+              </xsl:when>
+              <xsl:when test="$exprsData = 1">
+                <xsl:text>~=</xsl:text>
+              </xsl:when>
               <xsl:when test="$exprsData = 2">
                 <xsl:text>&lt;</xsl:text>
+              </xsl:when>
+              <xsl:when test="$exprsData = 3">
+                <xsl:text>&lt;=</xsl:text>
+              </xsl:when>
+              <xsl:when test="$exprsData = 4">
+                <xsl:text>&gt;</xsl:text>
+              </xsl:when>
+              <xsl:when test="$exprsData = 5">
+                <xsl:text>&gt;=</xsl:text>
               </xsl:when>
             </xsl:choose>
           </xsl:variable>
