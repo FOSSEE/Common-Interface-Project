@@ -68,6 +68,7 @@ for root in model:
     edgeDict2 = {}
     splitList = []
     mxPointList = {}
+    blkgeometry = {}
     for cell in list(root):
         try:
             attrib = cell.attrib
@@ -119,6 +120,7 @@ for root in model:
                 IOV[attribid] = []
                 COM[attribid] = []
                 IDLIST[attribid] = cell_type
+                blkgeometry[attribid] = componentGeometry
                 globals()[style](outroot, attribid, componentOrdering, componentGeometry, parameters)
             elif 'vertex' in attrib:
                 style = attrib['style']
@@ -152,6 +154,7 @@ for root in model:
                         geometry['y'] = float(componentGeometry['y']) + float(componentGeometry['height']) * float(geometry['y'])
                 ordering = len(styleArray)
                 IDLIST[attribid] = style
+                blkgeometry[attribid] = blkgeometry[ParentComponent]
                 globals()[style](outroot, attribid, ParentComponent, ordering, geometry)
 
             elif 'edge' in attrib:
@@ -233,7 +236,7 @@ for root in model:
                         if mxPoint is not None:
                             point = mxPoint.attrib
                             del point['as']
-                            # print(point)
+                            print(point)
                             larger_array = arrayelem2
                             larger_array = [{k: int(v) for k, v in coord.items()} for coord in larger_array]
                             point = {k: int(v) for k, v in point.items()}
@@ -270,20 +273,24 @@ for root in model:
         except BaseException:
             traceback.print_exc()
 
-generatedsplitblk = {}
+dict1 = {}
 for (attribid, sourceVertex, targetVertex, sourceType, targetType, geometry, array1, array2, array3) in splitList:
     componentOrdering += 1
-    if sourceVertex in generatedsplitblk:
-        splitblockid = generatedsplitblk[sourceVertex]
-    elif targetVertex in generatedsplitblk:
-        splitblockid = generatedsplitblk[targetVertex]
+    SplitBlock(outroot, nextattribid, componentOrdering, geometry)
+    splitblockid = nextattribid
+    nextattribid += 1
+    if sourceVertex in dict1:
+        new_array1, new_array2, new_array3, new_splitblockid, new_sourceVertex, new_targetVertex, new_splitblkgeometry = dict1[sourceVertex]
+        print('DICTSV1', dict1[sourceVertex])
+    elif targetVertex in dict1:
+        new_array1, new_array2, new_array3, new_splitblockid, new_sourceVertex, new_targetVertex, new_splitblkgeometry = dict1[targetVertex]
+        print('DICTTV1', dict1[targetVertex])
     else:
-        SplitBlock(outroot, nextattribid, componentOrdering, geometry)
-        splitblockid = nextattribid
-        nextattribid += 1
-        generatedsplitblk[sourceVertex] = splitblockid
-        generatedsplitblk[targetVertex] = splitblockid
-    
+        dict1[sourceVertex] = array1, array2, array3, splitblockid, sourceVertex, targetVertex, geometry
+        print('DICTSV2', dict1[sourceVertex], sourceVertex)
+        dict1[targetVertex] = array1, array2, array3, splitblockid, sourceVertex, targetVertex, geometry
+        print('DICTTV2', dict1[targetVertex], targetVertex)
+
     inputCount = 0
     outputCount = 0
     if sourceType == 'ExplicitOutputPort':
@@ -372,10 +379,11 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, geometry, arr
         (style2, sourceVertex2, targetVertex2, sourceType2, targetType2) = edgeDict2[targetVertex]
 
 for (attribid, (style, sourceVertex, targetVertex, sourceType, targetType, array1)) in edgeDict.items():
-    print("testing",attribid,style, sourceVertex, targetVertex, sourceType, targetType)
+    print("testing",attribid,style, sourceVertex, targetVertex, sourceType, targetType, array1)
     if int(attribid) >= 10000:
         attribid = nextattribid
         nextattribid += 1
+    print('tst', attribid)   
     globals()[style](outroot, attribid, sourceVertex, targetVertex, array1)
 
 outnode = ET.SubElement(outdiagram, 'mxCell')

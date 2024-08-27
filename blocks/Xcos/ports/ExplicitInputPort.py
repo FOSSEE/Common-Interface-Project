@@ -40,5 +40,5 @@ def addExplicitInputPortForSplit(outroot, splitBlock, sourceVertex, targetVertex
     # print('ED:', edgeDict[nextAttribForSplit])
     nextAttrib += 1
     nextAttribForSplit += 1
-    print('ED:', inputCount, outputCount, nextAttrib, nextAttribForSplit)
+    # print('ED:', inputCount, outputCount, nextAttrib, nextAttribForSplit)
     return (inputCount, outputCount, nextAttrib, nextAttribForSplit)
