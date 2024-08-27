@@ -12,7 +12,6 @@ def RATELIMITER(outroot, attribid, ordering, geometry, parameters):
     addExprsNode(outnode, TYPE_STRING, 2, parameters)
     addScilabDNode(outnode, AS_REAL_PARAM, width=2, realParts=[
                    format_real_number(parameters[0]), format_real_number(parameters[1])])
-    # addPrecNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 1, parameters[1])
     addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 0, [])
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
     array = ['0']

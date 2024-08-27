@@ -2,7 +2,6 @@ from common.AAAAAA import *
 
 def CURV_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'CURV_f'
-    # para = parameters[0].split(' ')
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
@@ -12,11 +11,6 @@ def CURV_f(outroot, attribid, ordering, geometry, parameters):
 
     addExprsNode(outnode, TYPE_DOUBLE, 0, parameters)
 
-    # node = addNode(outnode, TYPE_STRING, height=1, width=len(para))
-
-    # for i in range(len(para)):
-
-    #     addData(node, i, 0, para[i])
     addScilabDNode(outnode, AS_REAL_PARAM, width=10, realParts=[
                    "0.0", "1.0", "2.0", "-5.0", "5.0", "0.0",
                    "0.0", "-5.0", "2.0", "5.0"

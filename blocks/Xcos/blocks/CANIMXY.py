@@ -21,9 +21,6 @@ def CANIMXY(outroot, attribid, ordering, geometry, parameters):
     array = ['0']
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NBZERO, 1, array)
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NMODE, 1, array)
-    # addScilabDNode(outnode, AS_STATE, width=2, realParts=[
-    #                format_real_number(parameters[1]),
-    #                format_real_number(parameters[2])])
     addTypeNode(outnode, TYPE_DOUBLE, AS_STATE, 0, [])
     addTypeNode(outnode, TYPE_DOUBLE, AS_DSTATE, 0, [])
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE, parameters)

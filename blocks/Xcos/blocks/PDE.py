@@ -8,8 +8,6 @@ def PDE(outroot, attribid, ordering, geometry, parameters):
                          func_name, 'cscope', 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_C)
 
-    # addExprsNode(outnode, TYPE_STRING, 0, parameters)
-    # addExprsArrayNode(outnode, TYPE_STRING, 4, [], [], TYPE_ARRAY)
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0, [])
     addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 0, [])
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
