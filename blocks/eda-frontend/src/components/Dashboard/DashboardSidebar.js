@@ -85,16 +85,6 @@ export default function DashSidebar (props) {
             }
           />
         </ListItem>
-
-        <ListItem
-          component={RouterLink}
-          to='/dashboard/profile'
-          className={classes.sideItem}
-          button
-          divider
-        >
-          <ListItemText primary='My Profile' />
-        </ListItem>
         <ListItem
           component={RouterLink}
           to='/dashboard/schematics'

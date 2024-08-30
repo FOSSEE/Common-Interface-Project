@@ -13,6 +13,7 @@ import uuid
 from .models import Gallery, StateSave
 from .serializers import Base64ImageField, GallerySerializer, \
     SaveListSerializer, StateSaveSerializer
+from django.db.models import OuterRef, Subquery
 
 logger = logging.getLogger(__name__)
 
@@ -115,7 +116,7 @@ class CopyStateView(APIView):
                 {"save_id": copy_state.save_id})
 
 
-class StateFetchUpdateView(APIView):
+class FetchSaveDiagram(APIView):
     """
     Returns Saved data for given save id ,
     Only user who saved the state can access / update it
@@ -282,10 +283,21 @@ class UserSavesView(APIView):
 
     @swagger_auto_schema(responses={200: StateSaveSerializer})
     def get(self, request):
-        saved_state = StateSave.objects.filter(
-            owner=self.request.user).order_by(
-            "save_id", "-save_time").distinct("save_id")
         try:
+            # Subquery to get the latest save_time for each save_id
+            latest_save_time_subquery = StateSave.objects.filter(
+                save_id=OuterRef('save_id'),
+                owner=self.request.user
+            ).order_by('-save_time').values('save_time')[:1]
+
+            # Annotate the main query with the latest save time
+            saved_state = StateSave.objects.filter(
+                owner=self.request.user
+            ).annotate(
+                latest_save_time=Subquery(latest_save_time_subquery)
+            ).order_by('save_id', '-latest_save_time')
+
+            # Serialize the data
             serialized = StateSaveSerializer(saved_state, many=True)
             return Response(serialized.data)
         except Exception:
