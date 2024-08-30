@@ -48,20 +48,6 @@ def split_array_by_point(array, point):
             return array[:i+1], array[i+1:]
     return array, []
 
-def block_on_splitblk(outroot, nextattribid, componentOrdering, geometry):
-    new_block_id = nextattribid
-    print('NEW',new_block_id)
-    componentOrdering += 1
-    
-    # Create the block with the updated geometry
-    SplitBlock(outroot, new_block_id, componentOrdering, geometry)
-    
-    # Link the new block to the previous SplitBlock
-    # create_link(outroot, previous_splitblock_id, new_block_id)
-
-    nextattribid += 1
-
-    return nextattribid, componentOrdering
 
 for root in model:
     if root.tag != 'root':
@@ -229,8 +215,8 @@ for root in model:
                 if style is None:
                     continue
 
-                edgeDict[attribid] = (style, sourceVertex, targetVertex, sourceType, targetType, arrayelem)
-                edgeDict2[attribid] = (style, sourceVertex, targetVertex, sourceType, targetType, arrayelem)
+                edgeDict[attribid] = (style, str(sourceVertex), str(targetVertex), sourceType, targetType, arrayelem)
+                edgeDict2[attribid] = (style, str(sourceVertex), str(targetVertex), sourceType, targetType, arrayelem)
                 IDLIST[attribid] = style
 
                 if addSplit:
@@ -256,15 +242,15 @@ for root in model:
                         if mxPoint is not None:
                             point = mxPoint.attrib
                             del point['as']
-                            print(point)
+                            # print(point)
                             larger_array = arrayelem2
                             larger_array = [{k: int(v) for k, v in coord.items()} for coord in larger_array]
                             point = {k: int(v) for k, v in point.items()}
 
                             # Split the array
                             array1, array2 = split_array_by_point(larger_array, point)
-                            print('A1:', array1)
-                            print('A2:', array2)
+                            # print('A1:', array1)
+                            # print('A2:', array2)
                             array3 = arrayelem
                             for b in mxPoint.attrib:
                                 print('ARRAY of SPlitLink', b, mxPoint.attrib.get(b))
@@ -294,20 +280,15 @@ for root in model:
             traceback.print_exc()
 
 dict1 = {}
-# dict2 = {}
 for (attribid, sourceVertex, targetVertex, sourceType, targetType, geometry, array1, array2, array3) in splitList:
-    # print('test', attribid, sourceVertex, targetVertex, sourceType, targetType, geometry, array1, array2, array3, nextattribid)
+    print('test', attribid, sourceVertex, targetVertex, sourceType, targetType, geometry, array1, array2, array3, nextattribid)
     componentOrdering += 1
+
     SplitBlock(outroot, nextattribid, componentOrdering, geometry)
     splitblockid = nextattribid
     nextattribid += 1
-     # Logic to add another SplitBlock linked to the previous one
-    # if splitblockid:
-    #     print('DICT00:', dict1, splitblockid)
-    #     componentOrdering += 1
-    #     block_on_splitblk(outroot, 25, componentOrdering, {'width': '7', 'height': '7', 'x': '260', 'y': '360'})
 
-    print('DICT1:', dict1, sourceVertex, splitblockid)
+    print('DICT1:', dict1, sourceVertex, targetVertex)
     if sourceVertex in dict1:
         new_array1, new_array2, new_array3, new_splitblockid, new_sourceVertex, new_targetVertex, new_splitblkgeometry, new_port1, new_port2, new_port3 = dict1[sourceVertex]
         print('DICTSV1', dict1[sourceVertex])
@@ -356,20 +337,22 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, geometry, arr
         (style2, sourceVertex2, targetVertex2, sourceType2, targetType2) = edgeDict2[sourceVertex]
     if targetType == 'ExplicitInputPort':
         (style2, sourceVertex2, targetVertex2, sourceType2, targetType2, arrayelem) = edgeDict2[sourceVertex]
-        print('ED2', edgeDict2[sourceVertex])
+        # print('ED2', edgeDict2[sourceVertex], sourceVertex)
         port1 = nextattribid
         if sourceVertex in dict1: 
-            targetVertex2 = new_port1
+            # targetVertex2 = new_port1 #8->22
+            # print('NEWPORT', targetVertex2, new_port3)
+            sourceVertex2 = new_port3  #18->24
             key_to_remove = None
             for key, value in edgeDict.items():
-                # 8 22 | 12 26
-                if value == ('ExplicitLink', sourceVertex2, new_port1, 'ExplicitOutputPort', 'ExplicitInputPort', []):
+            #     # if value[1] == str(sourceVertex2) and value[2] == str(new_port1)
+                if value[1] == str(new_port3) and value[2] == str(targetVertex2):
                     key_to_remove = key
                     break
             
             if key_to_remove is not None:
                 del edgeDict[key_to_remove]
-            
+
         (inputCount, outputCount, nextattribid, nextAttribForSplit) = addExplicitInputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, edgeDict, inputCount, outputCount, nextattribid, nextAttribForSplit, array1)
         port2 = nextattribid
         (inputCount, outputCount, nextattribid, nextAttribForSplit) = addExplicitOutputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, edgeDict, inputCount, outputCount, nextattribid, nextAttribForSplit, array2)
@@ -428,6 +411,7 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, geometry, arr
    
     dict1[sourceVertex] = array1, array2, array3, splitblockid, sourceVertex, targetVertex, geometry, port1, port2, port3
     print('DICTSV2', dict1[sourceVertex], sourceVertex)
+    dict1[attribid] = array1, array2, array3, splitblockid, sourceVertex, targetVertex, geometry, port1, port2, port3
     dict1[targetVertex] = array1, array2, array3, splitblockid, sourceVertex, targetVertex, geometry, port1, port2, port3
     print('DICTTV2', dict1[targetVertex], targetVertex)
 
