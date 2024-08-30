@@ -27,6 +27,9 @@ def ExplicitOutputPort(outroot, attribid, parentattribid, ordering, geometry,
 def addExplicitOutputPortForSplit(outroot, splitBlock, sourceVertex, targetVertex,
                                   sourceType, targetType, edgeDict, inputCount,
                                   outputCount, nextAttrib, nextAttribForSplit, arrayelem):
+    print('ExplicitOut',splitBlock, sourceVertex, targetVertex,
+                                  sourceType, targetType, edgeDict, inputCount,
+                                  outputCount, nextAttrib, nextAttribForSplit, arrayelem)
     outputCount += 1
     geometry = {}
     geometry['width'] = 8
