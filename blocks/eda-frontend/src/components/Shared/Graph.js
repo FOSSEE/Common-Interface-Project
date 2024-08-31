@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
@@ -15,7 +15,7 @@ export function setStatusClosed () {
   statusClosed = true
 }
 
-class Graph extends React.Component {
+class Graph extends Component {
   pointList = new Queue()
 
   addPointToQueue = (id, point) => {
