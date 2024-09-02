@@ -340,13 +340,13 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, geometry, arr
         # print('ED2', edgeDict2[sourceVertex], sourceVertex)
         port1 = nextattribid
         if sourceVertex in dict1: 
-            # targetVertex2 = new_port1 #8->22
+            targetVertex2 = new_port1 #8->22
             # print('NEWPORT', targetVertex2, new_port3)
-            sourceVertex2 = new_port3  #18->24
+            # sourceVertex2 = new_port3  #18->24
             key_to_remove = None
             for key, value in edgeDict.items():
-            #     # if value[1] == str(sourceVertex2) and value[2] == str(new_port1)
-                if value[1] == str(new_port3) and value[2] == str(targetVertex2):
+                if value[1] == str(sourceVertex2) and value[2] == str(new_port1):
+                # if value[1] == str(new_port3) and value[2] == str(targetVertex2):
                     key_to_remove = key
                     break
             
