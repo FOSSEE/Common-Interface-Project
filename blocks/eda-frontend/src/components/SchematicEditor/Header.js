@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import { useHistory, Link as RouterLink } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+
 import {
   Avatar,
   Button,
@@ -22,16 +24,17 @@ import {
   Switch,
   Toolbar,
   Typography
-} from '@material-ui/core'
-import { useSelector, useDispatch } from 'react-redux'
-import ShareIcon from '@material-ui/icons/Share'
-import CloseIcon from '@material-ui/icons/Close'
-import { makeStyles } from '@material-ui/core/styles'
-import { deepPurple } from '@material-ui/core/colors'
+} from '@mui/material'
+import { deepPurple } from '@mui/material/colors'
+import CloseIcon from '@mui/icons-material/Close'
+import ShareIcon from '@mui/icons-material/Share'
+import { makeStyles } from '@mui/styles'
 
 import logo from '../../static/favicon.ico'
-import { setTitle, logout, setSchTitle, setSchShared } from '../../redux/actions/index'
 import { getDateTime as getDate } from '../../utils/GalleryUtils'
+
+import store from '../../redux/store'
+import { setTitle, logout, setSchTitle, setSchShared } from '../../redux/actions/index'
 
 const useStyles = makeStyles((theme) => ({
   toolbarTitle: {

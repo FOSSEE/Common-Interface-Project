@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Drawer, Hidden, IconButton } from '@material-ui/core'
-import HighlightOffIcon from '@material-ui/icons/HighlightOff'
-import { makeStyles } from '@material-ui/core/styles'
+
+import { Drawer, Hidden, IconButton } from '@mui/material'
+import HighlightOffIcon from '@mui/icons-material/HighlightOff'
+import { makeStyles } from '@mui/styles'
 
 const drawerWidth = 250
 

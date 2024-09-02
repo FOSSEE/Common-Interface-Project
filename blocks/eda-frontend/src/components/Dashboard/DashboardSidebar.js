@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react'
-import { Avatar, Divider, Hidden, InputBase, List, ListItem, ListItemAvatar, ListItemText, Typography } from '@material-ui/core'
 import { Link as RouterLink } from 'react-router-dom'
-import { makeStyles } from '@material-ui/core/styles'
-import { deepPurple } from '@material-ui/core/colors'
 import { useDispatch, useSelector } from 'react-redux'
+
+import { Avatar, Divider, Hidden, InputBase, List, ListItem, ListItemAvatar, ListItemText, Typography } from '@mui/material'
+import { deepPurple } from '@mui/material/colors'
+import { makeStyles } from '@mui/styles'
+
 import { fetchSchematics } from '../../redux/actions/index'
 
 const useStyles = makeStyles((theme) => ({

@@ -1,7 +1,8 @@
 import React, { createRef, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import { List, ListItemText, Tooltip, Popover } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
+
+import { List, ListItemText, Tooltip, Popover } from '@mui/material'
+import { makeStyles } from '@mui/styles'
 
 import './Helper/SchematicEditor.css'
 import { AddComponent } from './Helper/SideBar'

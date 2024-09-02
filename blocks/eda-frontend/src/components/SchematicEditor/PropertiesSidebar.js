@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { Hidden, List, ListItem, ListItemText, TextField, MenuItem, TextareaAutosize } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import ComponentProperties from './ComponentProperties'
 import { useSelector, useDispatch } from 'react-redux'
-import { setSchDescription } from '../../redux/actions/index'
 
+import { Hidden, List, ListItem, ListItemText, TextField, MenuItem, TextareaAutosize } from '@mui/material'
+import { makeStyles } from '@mui/styles'
+
+import ComponentProperties from './ComponentProperties'
 import './Helper/SchematicEditor.css'
+
+import { setSchDescription } from '../../redux/actions/index'
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {

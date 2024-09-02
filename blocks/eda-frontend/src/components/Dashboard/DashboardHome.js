@@ -1,8 +1,9 @@
 import React from 'react'
-import { Button, Card, CardActions, CardContent, Grid, Typography } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
 import { Link as RouterLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+
+import { Button, Card, CardActions, CardContent, Grid, Typography } from '@mui/material'
+import { makeStyles } from '@mui/styles'
 
 import ProgressPanel from './ProgressPanel'
 

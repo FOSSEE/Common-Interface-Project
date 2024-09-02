@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-
-import { AppBar, Avatar, Button, Fade, IconButton, Link, ListItemText, Menu, MenuItem, Toolbar, Typography } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import { deepPurple } from '@material-ui/core/colors'
 import { Link as RouterLink, useHistory } from 'react-router-dom'
+
+import { AppBar, Avatar, Button, Fade, IconButton, Link, ListItemText, Menu, MenuItem, Toolbar, Typography } from '@mui/material'
+import { deepPurple } from '@mui/material/colors'
+import { makeStyles } from '@mui/styles'
+
 import logo from '../../static/favicon.ico'
+
+import store from '../../redux/store'
 import { logout } from '../../redux/actions/index'
 
 const useStyles = makeStyles((theme) => ({

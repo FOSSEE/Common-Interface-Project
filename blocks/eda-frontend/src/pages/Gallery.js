@@ -1,9 +1,11 @@
 // Main layout for gallery page.
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Container, CssBaseline, Grid, Typography } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
 import { Link as RouterLink } from 'react-router-dom'
+
+import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Container, CssBaseline, Grid, Typography } from '@mui/material'
+import { makeStyles } from '@mui/styles'
+
 import GallerySchSample from '../utils/GallerySchSample'
 
 const useStyles = makeStyles((theme) => ({

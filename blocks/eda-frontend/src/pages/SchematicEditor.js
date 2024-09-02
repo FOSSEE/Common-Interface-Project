@@ -2,8 +2,10 @@
 import React, { createRef, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { TailSpin } from 'react-loader-spinner'
-import { CssBaseline } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
+import { useDispatch, useSelector } from 'react-redux'
+
+import { CssBaseline } from '@mui/material'
+import { makeStyles } from '@mui/styles'
 
 import Layout from '../components/Shared/Layout'
 import Header from '../components/SchematicEditor/Header'
@@ -14,8 +16,8 @@ import RightSidebar from '../components/SchematicEditor/RightSidebar'
 import PropertiesSidebar from '../components/SchematicEditor/PropertiesSidebar'
 import LoadGrid from '../components/SchematicEditor/Helper/ComponentDrag'
 import '../components/SchematicEditor/Helper/SchematicEditor.css'
+
 import { fetchSchematic, loadGallery } from '../redux/actions/index'
-import { useDispatch, useSelector } from 'react-redux'
 
 const useStyles = makeStyles((theme) => ({
   root: {

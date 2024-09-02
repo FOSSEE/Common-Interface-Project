@@ -1,5 +1,7 @@
 import React, { forwardRef, useState } from 'react'
 import PropTypes from 'prop-types'
+import { useSelector, useDispatch } from 'react-redux'
+
 import {
   AppBar,
   Avatar,
@@ -29,15 +31,15 @@ import {
   Toolbar,
   Tooltip,
   Typography
-} from '@material-ui/core'
+} from '@mui/material'
+import { blue } from '@mui/material/colors'
+import CloseIcon from '@mui/icons-material/Close'
+import { makeStyles } from '@mui/styles'
 
-import { makeStyles } from '@material-ui/core/styles'
-import CloseIcon from '@material-ui/icons/Close'
-import { useSelector, useDispatch } from 'react-redux'
-import { fetchSchematics, fetchSchematic, loadGallery } from '../../redux/actions/index'
 import GallerySchSample from '../../utils/GallerySchSample'
-import { blue } from '@material-ui/core/colors'
 import { getDateTime as getDate } from '../../utils/GalleryUtils'
+
+import { fetchSchematics, fetchSchematic, loadGallery } from '../../redux/actions/index'
 
 const Transition = forwardRef(function Transition (props, ref) {
   return <Slide direction='up' ref={ref} {...props} />

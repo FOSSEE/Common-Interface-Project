@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react'
-import { Button, Card, CardActions, CardContent, Grid, Typography } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
 import { Link as RouterLink } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+
+import { Button, Card, CardActions, CardContent, Grid, Typography } from '@mui/material'
+import { makeStyles } from '@mui/styles'
 
 import SchematicCard from './SchematicCard'
-import { useDispatch, useSelector } from 'react-redux'
+
 import { fetchSchematics } from '../../redux/actions/index'
 
 const useStyles = makeStyles({

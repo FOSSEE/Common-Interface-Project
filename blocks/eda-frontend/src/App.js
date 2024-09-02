@@ -1,19 +1,19 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { HashRouter, Switch, Route, Redirect } from 'react-router-dom'
-import CircularProgress from '@material-ui/core/CircularProgress'
+import { useSelector, useDispatch } from 'react-redux'
+
+import CircularProgress from '@mui/material/CircularProgress'
 
 import Navbar from './components/Shared/Navbar'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import NotFound from './pages/NotFound'
 import SchematicEditor from './pages/SchematicEditor'
-
 import Gallery from './pages/Gallery'
 import Dashboard from './pages/Dashboard'
 import SignUp from './pages/signUp'
 
-import { useSelector, useDispatch } from 'react-redux'
 import { loadUser } from './redux/actions/index'
 
 // Controls Private routes, this are accessible for authenticated users.  [ e.g : dashboard ]

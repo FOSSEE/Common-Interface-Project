@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+
 import {
   Accordion,
   AccordionDetails,
@@ -10,15 +12,15 @@ import {
   MenuItem,
   TextField,
   Typography
-} from '@material-ui/core'
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
-import { makeStyles } from '@material-ui/core/styles'
-import { useSelector, useDispatch } from 'react-redux'
+} from '@mui/material'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import { makeStyles } from '@mui/styles'
 
-import { setResultTitle, setResultTaskId } from '../../redux/actions/index'
 import { saveXml } from './Helper/ToolbarTools'
 import SimulationScreen, { setGraphStatusClosed } from './SimulationScreen'
 import api from '../../utils/Api'
+
+import { setResultTitle, setResultTaskId } from '../../redux/actions/index'
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {

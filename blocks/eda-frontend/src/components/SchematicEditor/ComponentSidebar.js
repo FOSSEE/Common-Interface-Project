@@ -1,20 +1,22 @@
 import React, { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
-import api from '../../utils/Api'
-import { Collapse, Hidden, IconButton, InputAdornment, List, ListItem, ListItemIcon, TextField, Tooltip } from '@material-ui/core'
 import { TailSpin } from 'react-loader-spinner'
-import SearchIcon from '@material-ui/icons/Search'
-
-import { makeStyles } from '@material-ui/core/styles'
-import ExpandLess from '@material-ui/icons/ExpandLess'
-import ExpandMore from '@material-ui/icons/ExpandMore'
-import CloseIcon from '@material-ui/icons/Close'
-
-import './Helper/SchematicEditor.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchLibraries, toggleCollapse, fetchComponents, fetchComponentImages, toggleSimulate } from '../../redux/actions/index'
+
+import { Collapse, Hidden, IconButton, InputAdornment, List, ListItem, ListItemIcon, TextField, Tooltip } from '@mui/material'
+import CloseIcon from '@mui/icons-material/Close'
+import ExpandLess from '@mui/icons-material/ExpandLess'
+import ExpandMore from '@mui/icons-material/ExpandMore'
+import SearchIcon from '@mui/icons-material/Search'
+import { makeStyles } from '@mui/styles'
+
+import api from '../../utils/Api'
+import './Helper/SchematicEditor.css'
 import SideComp from './SideComp'
 import SimulationProperties from './SimulationProperties'
+
+import { fetchLibraries, toggleCollapse, fetchComponents, fetchComponentImages, toggleSimulate } from '../../redux/actions/index'
+
 const COMPONENTS_PER_ROW = 3
 
 const useStyles = makeStyles((theme) => ({

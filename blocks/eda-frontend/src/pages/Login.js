@@ -1,6 +1,8 @@
 // User Login / Sign In page.
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
+import { Link as RouterLink } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
 
 import {
   Avatar,
@@ -15,16 +17,16 @@ import {
   Link,
   TextField,
   Typography
-} from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
-import Visibility from '@material-ui/icons/Visibility'
-import VisibilityOff from '@material-ui/icons/VisibilityOff'
-import { Link as RouterLink } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
-import { login, authDefault, googleLogin, githubLogin } from '../redux/actions/index'
+} from '@mui/material'
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
+import Visibility from '@mui/icons-material/Visibility'
+import VisibilityOff from '@mui/icons-material/VisibilityOff'
+import { makeStyles } from '@mui/styles'
+
 import google from '../static/google.png'
 import github from '../static/github-mark.png'
+
+import { login, authDefault, googleLogin, githubLogin } from '../redux/actions/index'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
