@@ -38,6 +38,7 @@ function Layout ({ header, resToolbar, sidebar }) {
         color='default'
         elevation={0}
         className={classes.appBar}
+        style={{ zIndex: 2000 }}
       >
         {header}
 
