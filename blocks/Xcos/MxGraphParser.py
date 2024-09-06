@@ -44,23 +44,19 @@ def split_array_by_point(array, point):
     for i in range(len(array) - 1):
         # Check if the point lies on the line segment between array[i] and array[i + 1]
         if -40<= array[i]['y'] - point['y']<=40 and -40<= array[i + 1]['y'] - point['y']<=40 and array[i]['x'] <= point['x'] <= array[i + 1]['x']:
-            # Split the array into two parts
-            return array[:i+1], array[i+1:]
+            return  array[:i+1] + [point], [point] + array[i+1:] 
         if -40<= array[i]['x'] - point['x']<=40 and -40<= array[i + 1]['x'] - point['x']<=40 and array[i]['y'] <= point['y'] <= array[i + 1]['y']:
-            # Split the array into two parts
-            return array[:i+1], array[i+1:]
+            return  array[:i+1] + [point], [point] + array[i+1:] 
         
     return array, []
 
 def check_point_on_array(array, point):
-    print('P1', array, point)
+    # print('P1', type(array), type(point), type(array[i]), type(array[i + 1]))
     for i in range(len(array) - 1):
         # Check if the point lies on the line segment between array[i] and array[i + 1]
         if -40<= array[i]['y'] - point['y']<=40 and -40<= array[i + 1]['y'] - point['y']<=40 and array[i]['x'] <= point['x'] <= array[i + 1]['x']:
-            # Split the array into two parts
             return True, array[:i+1], array[i+1:]
         if -40<= array[i]['x'] - point['x']<=40 and -40<= array[i + 1]['x'] - point['x']<=40 and array[i]['y'] <= point['y'] <= array[i + 1]['y']:
-            # Split the array into two parts
             return True, array[:i+1], array[i+1:]
         
     return False, array, []
@@ -151,6 +147,7 @@ for root in model:
                 COM[attribid] = []
                 IDLIST[attribid] = cell_type
                 blkgeometry[attribid] = componentGeometry
+                # print('BLK:', blkgeometry)
                 globals()[style](outroot, attribid, componentOrdering, componentGeometry, parameters)
             elif 'vertex' in attrib:
                 style = attrib['style']
@@ -185,7 +182,7 @@ for root in model:
                 ordering = len(styleArray)
                 IDLIST[attribid] = style
                 blkgeometry[attribid] = blkgeometry[ParentComponent]
-                print('BLKGEO', blkgeometry[attribid])
+                # print('BLKGEO', blkgeometry[attribid])
                 globals()[style](outroot, attribid, ParentComponent, ordering, geometry)
 
             elif 'edge' in attrib:
@@ -203,12 +200,23 @@ for root in model:
                         if arrayChild.tag == 'mxPoint':
                             arrayelem.append(arrayChild.attrib)
 
-                print('ARRAYELEM:', arrayelem)
+                # print('ARRAYELEM:', arrayelem)
 
                 sourceVertex = attrib['sourceVertex']
                 targetVertex = attrib['targetVertex']
+
+                if sourceVertex in blkgeometry:
+                    x = blkgeometry[sourceVertex]['x']
+                    y = blkgeometry[sourceVertex]['y']
+                    arrayelem.append({'x': x, 'y': y})
+                if targetVertex in blkgeometry:
+                    x1 = blkgeometry[targetVertex]['x']
+                    y1 = blkgeometry[targetVertex]['y']
+                    arrayelem.append({'x': x1, 'y': y1})
+
                 sourceType = IDLIST[sourceVertex]
                 targetType = IDLIST[targetVertex]
+                print('ARRAYELEM:', arrayelem)
 
                 # switch vertices if required
                 if sourceType in ['ExplicitInputPort', 'ImplicitInputPort', 'ControlPort'] and targetType in ['ExplicitOutputPort', 'ExplicitLink', 'ImplicitOutputPort', 'ImplicitLink', 'CommandPort', 'CommandControlLink']:
@@ -281,11 +289,12 @@ for root in model:
                             larger_array = [{k: int(v) for k, v in coord.items()} for coord in larger_array]
                             point = {k: int(v) for k, v in point.items()}
 
-                            # Split the array
+                            # Split the array after adding splitblock
                             array1, array2 = split_array_by_point(larger_array, point)
                             print('A1:', array1)
                             print('A2:', array2)
-                            array3 = arrayelem
+                            array3 = arrayelem + [point]
+                            print('A3:', array3)
                             for b in mxPoint.attrib:
                                 print('ARRAY of SPlitLink', b, mxPoint.attrib.get(b), last_stored_point)
                             for child in mxPoint:
@@ -298,23 +307,24 @@ for root in model:
                             geometry['x'] = mxPoint.attrib.get('x', '0')
                             geometry['y'] = mxPoint.attrib.get('y', '0')
 
-                            splitList.append((attribid, sourceVertex, targetVertex, sourceType, targetType, geometry, array1, array2, array3, last_stored_point))
+                            splitList.append((attribid, sourceVertex, targetVertex, sourceType, targetType, geometry, larger_array, array3, last_stored_point))
                             # print('SPLIST', splitList)
-                            try:
-                                print("Source",edgeDict[sourceVertex])
-                                del edgeDict[sourceVertex]
-                            except KeyError:
-                                pass
-                            try:
-                                print("target",edgeDict[targetVertex])
-                                del edgeDict[targetVertex]
-                            except KeyError:
-                                pass
+                            # try:
+                            #     print("Source",edgeDict[sourceVertex])
+                            #     del edgeDict[sourceVertex]
+                            # except KeyError:
+                            #     pass
+                            # try:
+                            #     print("target",edgeDict[targetVertex])
+                            #     del edgeDict[targetVertex]
+                            # except KeyError:
+                            #     pass
         except BaseException:
             traceback.print_exc()
-
+print('EDGE:',edgeDict)
+dict2 = {}
 dict1 = {}
-for (attribid, sourceVertex, targetVertex, sourceType, targetType, geometry, array1, array2, array3, last_stored_point) in splitList:
+for (attribid, sourceVertex, targetVertex, sourceType, targetType, geometry, larger_array, array3, last_stored_point) in splitList:
     print('test', attribid, sourceVertex, targetVertex, sourceType, targetType, geometry, array1, array2, array3, nextattribid, last_stored_point)
     componentOrdering += 1
 
@@ -325,15 +335,10 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, geometry, arr
     # print('DICT1:', dict1, sourceVertex, targetVertex)
     if sourceVertex in dict1:
         new_array1, new_array2, new_array3, new_splitblockid, new_sourceVertex, new_targetVertex, new_splitblkgeometry, new_port1, new_port2, new_port3, new_point = dict1[sourceVertex]
-        print('DICTSV1', dict1[sourceVertex])
+        # print('DICTSV1', dict1[sourceVertex])
     elif targetVertex in dict1:
         new_array1, new_array2, new_array3, new_splitblockid, new_sourceVertex, new_targetVertex, new_splitblkgeometry, new_port1, new_port2, new_port3, new_point = dict1[targetVertex]
-        print('DICTTV1', dict1[targetVertex])
-    # else:
-        # dict1[sourceVertex] = array1, array2, array3, splitblockid, sourceVertex, targetVertex, geometry
-        # print('DICTSV2', dict1[sourceVertex], sourceVertex)
-        # dict1[targetVertex] = array1, array2, array3, splitblockid, sourceVertex, targetVertex, geometry
-        # print('DICTTV2', dict1[targetVertex], targetVertex)
+        # print('DICTTV1', dict1[targetVertex])
 
 
     inputCount = 0
@@ -373,10 +378,11 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, geometry, arr
         (style2, sourceVertex2, targetVertex2, sourceType2, targetType2, arrayelem) = edgeDict2[sourceVertex]
         # print('ED2', edgeDict2[sourceVertex], sourceVertex)
         port1 = nextattribid
-        print('D1:', dict1)
+        # print('D1:', dict1)
         if sourceVertex in dict1:
+            print('SP', array1, sourceVertex2, new_port1, array2, new_port3, targetVertex2, array3, new_port2, targetVertex2, point)
             splitpoints = splitlink_by_point(array1, sourceVertex2, new_port1, array2, new_port3, targetVertex2, array3, new_port2, targetVertex2, point)
-            print('SP', splitpoints)
+            # print('SP1:', splitpoints)
             key_to_remove = None
             for key, value in edgeDict.items():
                 if value[1] == str(splitpoints[1]) and value[2] == str(splitpoints[2]):
@@ -441,12 +447,24 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, geometry, arr
         linkid = nextAttribForSplit
         nextAttribForSplit += 1
         (style2, sourceVertex2, targetVertex2, sourceType2, targetType2) = edgeDict2[targetVertex]
-   
+    #larger_array split code
     dict1[sourceVertex] = array1, array2, array3, splitblockid, sourceVertex, targetVertex, geometry, port1, port2, port3, point
-    print('DICTSV2', dict1[sourceVertex], sourceVertex)
+    # print('DICTSV2', dict1[sourceVertex], sourceVertex)
     dict1[attribid] = array1, array2, array3, splitblockid, sourceVertex, targetVertex, geometry, port1, port2, port3, point
-    dict1[targetVertex] = array1, array2, array3, splitblockid, sourceVertex, targetVertex, geometry, port1, port2, port3, point
-    print('DICTTV2', dict1[targetVertex], targetVertex)
+    # dict1[targetVertex] = array1, array2, array3, splitblockid, sourceVertex, targetVertex, geometry, port1, port2, port3, point
+    # print('DICTTV2', dict1[targetVertex], targetVertex)
+    print('DICTIONARY:',dict1)
+    try:
+        print("Source",edgeDict[sourceVertex])
+        del edgeDict[sourceVertex]
+    except KeyError:
+        pass
+    try:
+        print("target",edgeDict[targetVertex])
+        del edgeDict[targetVertex]
+    except KeyError:
+        pass
+    print('EDGE11:',edgeDict)
 
 for (attribid, (style, sourceVertex, targetVertex, sourceType, targetType, array1)) in edgeDict.items():
     print("testing",attribid,style, sourceVertex, targetVertex, sourceType, targetType, array1)
