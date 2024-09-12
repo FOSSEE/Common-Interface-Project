@@ -181,7 +181,7 @@ def addData(node, column, line, value, isReal=False):
     data = ET.SubElement(node, 'data')
     data.set('line', str(line))
     data.set('column', str(column))
-    if type(value) == float or type(value) == int or isReal:
+    if isinstance(value, (float, int)) or isReal:
         data.set('realPart', str(value))
     else:
         data.set('value', value)
@@ -619,3 +619,10 @@ def format_real_number(parameter):
     else:
         formatted_number = "{:.1f}".format(float(parameter))
     return formatted_number
+
+
+def num2str(num):
+    """Converts a float to an integer first if it ends in .0."""
+    if num % 1 == 0:
+        num = int(num)
+    return str(num)

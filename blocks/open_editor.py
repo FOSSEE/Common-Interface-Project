@@ -19,6 +19,7 @@ service = ChromeService(ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service)
 wait = WebDriverWait(driver, 10)
 
+
 def login_with_github():
     driver.get('http://localhost/#/login')  # Replace with your actual login page URL
 
@@ -74,6 +75,7 @@ def login_with_github():
     except Exception as e:
         print(f"An error occurred during GitHub login: {e}")
 
+
 def wait_for_gallery_load():
     try:
         # Wait until the `window.loadGalleryComplete` flag is set to true
@@ -81,6 +83,7 @@ def wait_for_gallery_load():
         print("Gallery has fully loaded.")
     except Exception as e:
         print(f"Error waiting for gallery load: {e}")
+
 
 def main():
     login_with_github()
@@ -113,7 +116,7 @@ def main():
             print(snackbar_message.text)
 
             # Verify the share button is displayed
-            share_button = wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="root"]/div/header/div[1]/button[2]')))
+            wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="root"]/div/header/div[1]/button[2]')))
             print("Share button is displayed, diagram has been saved.")
 
             # Verify the "last saved" text is displayed
@@ -131,6 +134,7 @@ def main():
         # Keep the browser open until manually closed
         input("Press Enter to close the browser...")
         driver.quit()
+
 
 if __name__ == "__main__":
     main()
