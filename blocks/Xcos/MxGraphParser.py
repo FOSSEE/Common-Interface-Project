@@ -90,12 +90,7 @@ for root in model:
         sys.exit(2)
     outroot = ET.SubElement(outmodel, 'root')
 
-    EIV = {}
-    IIV = {}
-    CON = {}
-    EOV = {}
-    IOV = {}
-    COM = {}
+    portCount = {}
     IDLIST = {}
     componentOrdering = 0
     nextattribid = 0
@@ -129,12 +124,26 @@ for root in model:
             if cell_type == 'Component':
 
                 style = attrib['style']
+                componentOrdering += 1
+                portCount[attribid] = {
+                    'ExplicitInputPort': 0,
+                    'ImplicitInputPort': 0,
+                    'ControlPort': 0,
+                    'ExplicitOutputPort': 0,
+                    'ImplicitOutputPort': 0,
+                    'CommandPort': 0
+                }
                 componentGeometry = {}
                 componentGeometry['height'] = 40
                 componentGeometry['width'] = 40
                 componentGeometry['x'] = 0
                 componentGeometry['y'] = 0
-                componentOrdering += 1
+                mxGeometry = cell.find('mxGeometry')
+                if mxGeometry is not None:
+                    componentGeometry['height'] = mxGeometry.attrib['height']
+                    componentGeometry['width'] = mxGeometry.attrib['width']
+                    componentGeometry['x'] = mxGeometry.attrib['x']
+                    componentGeometry['y'] = mxGeometry.attrib['y']
                 parameter_values = cell.find('./Object[@as="parameter_values"]')
                 parameters = []
                 if parameter_values is not None:
@@ -145,86 +154,48 @@ for root in model:
                             parameters.append(parameter_values[parameter])
                         else:
                             break
-                mxGeometry = cell.find('mxGeometry')
-                if mxGeometry is not None:
-                    componentGeometry['height'] = mxGeometry.attrib['height']
-                    componentGeometry['width'] = mxGeometry.attrib['width']
-                    componentGeometry['x'] = mxGeometry.attrib['x']
-                    componentGeometry['y'] = mxGeometry.attrib['y']
-                EIV[attribid] = []
-                IIV[attribid] = []
-                CON[attribid] = []
-                EOV[attribid] = []
-                IOV[attribid] = []
-                COM[attribid] = []
+                globals()[style](outroot, attribid, componentOrdering, componentGeometry, parameters)
+
                 IDLIST[attribid] = cell_type
                 blkgeometry[attribid] = componentGeometry
-                globals()[style](outroot, attribid, componentOrdering, componentGeometry, parameters)
 
             elif 'vertex' in attrib:
 
                 style = attrib['style']
-                geometry = {}
-                geometry['height'] = 40
-                geometry['width'] = 40
-                geometry['x'] = 0
-                geometry['y'] = 0
                 ParentComponent = attrib['ParentComponent']
-                if style == 'ExplicitInputPort':
-                    styleArray = EIV[ParentComponent]
-                elif style == 'ImplicitInputPort':
-                    styleArray = IIV[ParentComponent]
-                elif style == 'ControlPort':
-                    styleArray = CON[ParentComponent]
-                elif style == 'ExplicitOutputPort':
-                    styleArray = EOV[ParentComponent]
-                elif style == 'ImplicitOutputPort':
-                    styleArray = IOV[ParentComponent]
-                elif style == 'CommandPort':
-                    styleArray = COM[ParentComponent]
-                styleArray.append(attribid)
+                portCount[ParentComponent][style] += 1
+                ordering = portCount[ParentComponent][style]
+                geometry = dict(componentGeometry)
                 mxGeometry = cell.find('mxGeometry')
                 if mxGeometry is not None:
                     geometry['height'] = mxGeometry.attrib['height']
                     geometry['width'] = mxGeometry.attrib['width']
-                    geometry['x'] = mxGeometry.attrib.get('x', 0)
-                    geometry['y'] = mxGeometry.attrib.get('y', 0)
+                    geometryX = mxGeometry.attrib.get('x', 0)
+                    geometryY = mxGeometry.attrib.get('y', 0)
                     if mxGeometry.attrib.get('relative', '0') == '1':
-                        geometry['x'] = float(componentGeometry['x']) + float(componentGeometry['width']) * float(geometry['x'])
-                        geometry['y'] = float(componentGeometry['y']) + float(componentGeometry['height']) * float(geometry['y'])
-                ordering = len(styleArray)
-                IDLIST[attribid] = style
-                blkgeometry[attribid] = blkgeometry[ParentComponent]
-                # print('BLKGEO', blkgeometry[attribid])
+                        geometryX = num2str(float(componentGeometry['x']) +
+                                            float(componentGeometry['width']) * float(geometryX))
+                        geometryY = num2str(float(componentGeometry['y']) +
+                                            float(componentGeometry['height']) * float(geometryY))
+                    geometry['x'] = geometryX
+                    geometry['y'] = geometryY
                 globals()[style](outroot, attribid, ParentComponent, ordering, geometry)
+
+                IDLIST[attribid] = style
+                blkgeometry[attribid] = geometry
 
             elif 'edge' in attrib:
 
                 mxGeometry = cell.find('mxGeometry')
-                array = mxGeometry.find('Array')
-                celid = cell.attrib.get('id')
-                mxPointList[celid] = array
-                # print(mxPointList)
-                for points in mxPointList:
-                    value = mxPointList[points]
-                arrayelem = []
+                waypoints = []
                 arrayElement = mxGeometry.find('Array')
                 if arrayElement is not None:
                     for arrayChild in arrayElement:
                         if arrayChild.tag == 'mxPoint':
-                            arrayelem.append(arrayChild.attrib)
+                            waypoints.append(arrayChild.attrib)
 
                 sourceVertex = attrib['sourceVertex']
                 targetVertex = attrib['targetVertex']
-
-                if sourceVertex in blkgeometry:
-                    x = blkgeometry[sourceVertex]['x']
-                    y = blkgeometry[sourceVertex]['y']
-                    arrayelem.append({'x': x, 'y': y})
-                if targetVertex in blkgeometry:
-                    x1 = blkgeometry[targetVertex]['x']
-                    y1 = blkgeometry[targetVertex]['y']
-                    arrayelem.append({'x': x1, 'y': y1})
 
                 sourceType = IDLIST[sourceVertex]
                 targetType = IDLIST[targetVertex]
@@ -234,10 +205,12 @@ for root in model:
                         targetType in ['ExplicitOutputPort', 'ExplicitLink', 'ImplicitOutputPort', 'ImplicitLink', 'CommandPort', 'CommandControlLink']:
                     (sourceVertex, targetVertex) = (targetVertex, sourceVertex)
                     (sourceType, targetType) = (targetType, sourceType)
+                    waypoints.reverse()
                 elif sourceType in ['ExplicitInputPort', 'ExplicitLink', 'ImplicitInputPort', 'ImplicitLink', 'ControlPort', 'CommandControlLink'] and \
                         targetType in ['ExplicitOutputPort', 'ImplicitOutputPort', 'CommandPort']:
                     (sourceVertex, targetVertex) = (targetVertex, sourceVertex)
                     (sourceType, targetType) = (targetType, sourceType)
+                    waypoints.reverse()
 
                 style = None
                 addSplit = False
@@ -274,71 +247,55 @@ for root in model:
                 if style is None:
                     continue
 
-                edgeDict[attribid] = (style, str(sourceVertex), str(targetVertex), sourceType, targetType, arrayelem)
-                edgeDict2[attribid] = (style, str(sourceVertex), str(targetVertex), sourceType, targetType, arrayelem)
+                if sourceVertex in blkgeometry:
+                    vertex = blkgeometry[sourceVertex]
+                    point = {'x': vertex['x'], 'y': vertex['y']}
+                    waypoints.insert(0, point)
+                elif 'tarx' in attrib and 'tary' in attrib:
+                    point = {'x': attrib['tarx'], 'y': attrib['tary']}
+                    waypoints.insert(0, point)
+
+                if targetVertex in blkgeometry:
+                    vertex = blkgeometry[targetVertex]
+                    point = {'x': vertex['x'], 'y': vertex['y']}
+                    waypoints.append(point)
+
                 IDLIST[attribid] = style
+                edgeDict[attribid] = (style, sourceVertex, targetVertex, sourceType, targetType, waypoints)
+                edgeDict2[attribid] = (style, sourceVertex, targetVertex, sourceType, targetType, waypoints)
 
                 if addSplit:
                     try:
-                        (style2, sourceVertex2, targetVertex2, sourceType2, targetType2, arrayelem2) = edgeDict[sourceVertex]
+                        (style2, sourceVertex2, targetVertex2, sourceType2, targetType2, waypoints2) = edgeDict[sourceVertex]
                     except KeyError:
-                        pass
-                    try:
-                        print("SOURCET:", edgeDict[targetVertex])
-                        (style2, sourceVertex2, targetVertex2, sourceType2, targetType2, arrayelem2) = edgeDict[targetVertex]
-                    except KeyError:
-                        pass
-                    for a in cell.attrib:
-                        print(a, cell.attrib.get(a) )
-                    mxGeometry = cell.find('mxGeometry')
-                    if mxGeometry is not None:
-                        for a in mxGeometry.attrib:
-                            print(a, mxGeometry.attrib.get(a) )
-                        for child in mxGeometry:
+                        (style2, sourceVertex2, targetVertex2, sourceType2, targetType2, waypoints2) = edgeDict[targetVertex]
+
+                    mxPoint = mxGeometry.find('mxPoint')
+                    if mxPoint is not None:
+                        point = mxPoint.attrib
+                        del point['as']
+                        if points1:
+                            last_stored_point = points1[-1]
+                        larger_array = waypoints2
+                        # print('LA:', larger_array)
+                        larger_array = [{k: int(v) for k, v in coord.items()} for coord in larger_array]
+                        point = {k: int(v) for k, v in point.items()}
+
+                        # Split the array after adding splitblock
+                        array1, array2 = split_array_by_point(larger_array, point)
+                        array3 = waypoints + [point]
+                        for b in mxPoint.attrib:
+                            print('ARRAY of SPlitLink', b, mxPoint.attrib.get(b), last_stored_point)
+                        for child in mxPoint:
                             print(child)
-                        mxPoint = mxGeometry.find('mxPoint')
-                        if mxPoint is not None:
-                            point = mxPoint.attrib
-                            del point['as']
-                            points1.append(point)
-                            # print('PP',points1)
-                            if points1:
-                                last_stored_point = points1[-1]
-                            larger_array = arrayelem2
-                            # print('LA:', larger_array)
-                            larger_array = [{k: int(v) for k, v in coord.items()} for coord in larger_array]
-                            point = {k: int(v) for k, v in point.items()}
 
-                            # Split the array after adding splitblock
-                            array1, array2 = split_array_by_point(larger_array, point)
-                            # print('A1:', array1)
-                            # print('A2:', array2)
-                            array3 = arrayelem + [point]
-                            # print('A3:', array3)
-                            for b in mxPoint.attrib:
-                                print('ARRAY of SPlitLink', b, mxPoint.attrib.get(b), last_stored_point)
-                            for child in mxPoint:
-                                print(child)
+                        geometry = {}
+                        geometry['width'] = mxPoint.attrib.get('width', '7')
+                        geometry['height'] = mxPoint.attrib.get('height', '7')
+                        geometry['x'] = mxPoint.attrib.get('x', '0')
+                        geometry['y'] = mxPoint.attrib.get('y', '0')
 
-
-                            geometry = {}
-                            geometry['width'] = mxPoint.attrib.get('width', '7')
-                            geometry['height'] = mxPoint.attrib.get('height', '7')
-                            geometry['x'] = mxPoint.attrib.get('x', '0')
-                            geometry['y'] = mxPoint.attrib.get('y', '0')
-
-                            splitList.append((attribid, sourceVertex, targetVertex, sourceType, targetType, geometry, larger_array, array3, last_stored_point))
-                            # print('SPLIST', splitList)
-                            # try:
-                            #     print("Source",edgeDict[sourceVertex])
-                            #     del edgeDict[sourceVertex]
-                            # except KeyError:
-                            #     pass
-                            # try:
-                            #     print("target",edgeDict[targetVertex])
-                            #     del edgeDict[targetVertex]
-                            # except KeyError:
-                            #     pass
+                        splitList.append((attribid, sourceVertex, targetVertex, sourceType, targetType, geometry, larger_array, array3, last_stored_point))
         except BaseException:
             traceback.print_exc()
 print('EDGE:', edgeDict)
@@ -366,7 +323,7 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, geometry, lar
     outputCount = 0
     if sourceType == 'ExplicitOutputPort':
         (inputCount, outputCount, nextattribid, nextAttribForSplit) = addExplicitInputPortForSplit(outroot, splitblockid, sourceVertex, targetVertex, sourceType, targetType, edgeDict, inputCount, outputCount, nextattribid, nextAttribForSplit)
-        (style2, sourceVertex2, targetVertex2, sourceType2, targetType2, arrayelem) = edgeDict2[targetVertex]
+        (style2, sourceVertex2, targetVertex2, sourceType2, targetType2, waypoints) = edgeDict2[targetVertex]
         (inputCount, outputCount, nextattribid, nextAttribForSplit) = addExplicitInputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, edgeDict, inputCount, outputCount, nextattribid, nextAttribForSplit)
         (inputCount, outputCount, nextattribid, nextAttribForSplit) = addExplicitOutputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, edgeDict, inputCount, outputCount, nextattribid, nextAttribForSplit)
     elif sourceType == 'ImplicitOutputPort':
@@ -396,7 +353,7 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, geometry, lar
         nextAttribForSplit += 1
         (style2, sourceVertex2, targetVertex2, sourceType2, targetType2) = edgeDict2[sourceVertex]
     if targetType == 'ExplicitInputPort':
-        (style2, sourceVertex2, targetVertex2, sourceType2, targetType2, arrayelem) = edgeDict2[sourceVertex]
+        (style2, sourceVertex2, targetVertex2, sourceType2, targetType2, waypoints) = edgeDict2[sourceVertex]
         print('ED2', edgeDict2[sourceVertex], sourceVertex, sourceVertex2)
         port1 = nextattribid
         # print('D1:', dict1)
