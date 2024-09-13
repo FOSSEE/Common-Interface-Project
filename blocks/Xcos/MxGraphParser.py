@@ -42,15 +42,22 @@ outmodel.set('as', 'model')
 
 
 def split_array_by_point(array, point):
+    pointX = float(point['x'])
+    pointY = float(point['y'])
     for i in range(len(array) - 1):
+        leftX = float(array[i]['x'])
+        leftY = float(array[i]['y'])
+        rightX = float(array[i + 1]['x'])
+        rightY = float(array[i + 1]['y'])
+
         # Check if the point lies on the line segment between array[i] and array[i + 1]
-        if -40 <= array[i]['y'] - point['y'] <= 40 and \
-                -40 <= array[i + 1]['y'] - point['y'] <= 40 and \
-                array[i]['x'] <= point['x'] <= array[i + 1]['x']:
+        if -40 <= leftY - pointY <= 40 and \
+                -40 <= rightY - pointY <= 40 and \
+                leftX <= pointX <= rightX:
             return array[:i + 1] + [point], [point] + array[i + 1:]
-        if -40 <= array[i]['x'] - point['x'] <= 40 and \
-                -40 <= array[i + 1]['x'] - point['x'] <= 40 and \
-                array[i]['y'] <= point['y'] <= array[i + 1]['y']:
+        if -40 <= leftX - pointX <= 40 and \
+                -40 <= rightX - pointX <= 40 and \
+                leftY <= pointY <= rightY:
             return array[:i + 1] + [point], [point] + array[i + 1:]
 
     return array, []
@@ -247,12 +254,15 @@ for root in model:
                 if style is None:
                     continue
 
+                split_point = None
+
                 if sourceVertex in blkgeometry:
                     vertex = blkgeometry[sourceVertex]
                     point = {'x': vertex['x'], 'y': vertex['y']}
                     waypoints.insert(0, point)
                 elif 'tarx' in attrib and 'tary' in attrib:
                     point = {'x': attrib['tarx'], 'y': attrib['tary']}
+                    split_point = point
                     waypoints.insert(0, point)
 
                 if targetVertex in blkgeometry:
@@ -270,40 +280,28 @@ for root in model:
                     except KeyError:
                         (style2, sourceVertex2, targetVertex2, sourceType2, targetType2, waypoints2) = edgeDict[targetVertex]
 
-                    mxPoint = mxGeometry.find('mxPoint')
-                    if mxPoint is not None:
-                        point = mxPoint.attrib
-                        del point['as']
-                        points1.append(point)
-                        if points1:
-                            last_stored_point = points1[-1]
-                        larger_array = waypoints2
-                        # print('LA:', larger_array)
-                        larger_array = [{k: int(v) for k, v in coord.items()} for coord in larger_array]
-                        point = {k: int(v) for k, v in point.items()}
+                    # Split the array after adding splitblock
+                    array1, array2 = split_array_by_point(waypoints2, split_point)
+                    array3 = waypoints
 
-                        # Split the array after adding splitblock
-                        array1, array2 = split_array_by_point(larger_array, point)
-                        array3 = waypoints + [point]
-                        for b in mxPoint.attrib:
-                            print('ARRAY of SPlitLink', b, mxPoint.attrib.get(b), last_stored_point)
-                        for child in mxPoint:
-                            print(child)
+                    geometry = {}
+                    geometry['width'] = '7'
+                    geometry['height'] = '7'
+                    geometry['x'] = split_point.get('x', '0')
+                    geometry['y'] = split_point.get('y', '0')
 
-                        geometry = {}
-                        geometry['width'] = mxPoint.attrib.get('width', '7')
-                        geometry['height'] = mxPoint.attrib.get('height', '7')
-                        geometry['x'] = mxPoint.attrib.get('x', '0')
-                        geometry['y'] = mxPoint.attrib.get('y', '0')
-
-                        splitList.append((attribid, sourceVertex, targetVertex, sourceType, targetType, geometry, larger_array, array3, last_stored_point))
+                    splitList.append((attribid, sourceVertex, targetVertex, sourceType, targetType, geometry, array1, array2, array3, split_point))
         except BaseException:
             traceback.print_exc()
-print('EDGE:', edgeDict)
-dict2 = {}
+            sys.exit(0)
+
+print('EDGES:')
+for key, value in edgeDict.items():
+    print(f'{key}: {value}')
+
 dict1 = {}
-for (attribid, sourceVertex, targetVertex, sourceType, targetType, geometry, larger_array, array3, last_stored_point) in splitList:
-    print('test', attribid, sourceVertex, targetVertex, sourceType, targetType, geometry, array1, array2, array3, nextattribid, last_stored_point)
+for (attribid, sourceVertex, targetVertex, sourceType, targetType, geometry, array1, array2, array3, split_point) in splitList:
+    print('test', attribid, sourceVertex, targetVertex, sourceType, targetType, geometry, array1, array2, array3, split_point, nextattribid)
     componentOrdering += 1
 
     SplitBlock(outroot, nextattribid, componentOrdering, geometry)
@@ -425,7 +423,6 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, geometry, lar
         linkid = nextAttribForSplit
         nextAttribForSplit += 1
         (style2, sourceVertex2, targetVertex2, sourceType2, targetType2) = edgeDict2[targetVertex]
-    # larger_array split code
     # dict1[sourceVertex] = [array1, array2, array3, splitblockid, sourceVertex, targetVertex, geometry, port1, port2, port3, point]
     # # print('DICTSV2', dict1[sourceVertex], sourceVertex)
     # dict1[attribid] = [array1, array2, array3, splitblockid, sourceVertex, targetVertex, geometry, port1, port2, port3, point]
