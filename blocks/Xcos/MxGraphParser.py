@@ -274,6 +274,7 @@ for root in model:
                     if mxPoint is not None:
                         point = mxPoint.attrib
                         del point['as']
+                        points1.append(point)
                         if points1:
                             last_stored_point = points1[-1]
                         larger_array = waypoints2
