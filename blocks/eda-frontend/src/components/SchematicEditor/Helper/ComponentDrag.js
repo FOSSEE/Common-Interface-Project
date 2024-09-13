@@ -239,6 +239,10 @@ export default function LoadGrid (container, sidebar, outline) {
       if (sourceType.type1 !== ImplicitPort && sourceType.type2 === OutputPort && targetType.type2 === OutputPort) {
         return 'cannot connect 2 output ports'
       }
+      // Rule 5: cannot connect split to output port
+      if (sourceType.type1 !== ImplicitPort && sourceType.type2 === OutputPort && targetType.type2 === SplitPort) {
+        return 'cannot connect split to output port'
+      }
 
       return null
     }
