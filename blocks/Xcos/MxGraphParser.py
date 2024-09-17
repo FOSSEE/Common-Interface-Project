@@ -103,8 +103,7 @@ for root in model:
     nextattribid = 0
     nextAttribForSplit = 10000
     edgeDict = {}
-    edgeDict2 = {}
-    splitList = []
+    edgeList = []
     mxPointList = {}
     blkgeometry = {}
     points1 = []
@@ -271,26 +270,9 @@ for root in model:
                     waypoints.append(point)
 
                 IDLIST[attribid] = style
-                edgeDict[attribid] = (style, sourceVertex, targetVertex, sourceType, targetType, waypoints)
-                edgeDict2[attribid] = (style, sourceVertex, targetVertex, sourceType, targetType, waypoints)
-
-                if addSplit:
-                    try:
-                        (style2, sourceVertex2, targetVertex2, sourceType2, targetType2, waypoints2) = edgeDict[sourceVertex]
-                    except KeyError:
-                        (style2, sourceVertex2, targetVertex2, sourceType2, targetType2, waypoints2) = edgeDict[targetVertex]
-
-                    # Split the array after adding splitblock
-                    array1, array2 = split_array_by_point(waypoints2, split_point)
-                    array3 = waypoints
-
-                    geometry = {}
-                    geometry['width'] = '7'
-                    geometry['height'] = '7'
-                    geometry['x'] = split_point.get('x', '0')
-                    geometry['y'] = split_point.get('y', '0')
-
-                    splitList.append((attribid, sourceVertex, targetVertex, sourceType, targetType, geometry, array1, array2, array3, split_point))
+                link_data = (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit)
+                edgeDict[attribid] = link_data
+                edgeList.append(link_data)
         except BaseException:
             traceback.print_exc()
             sys.exit(0)
@@ -299,59 +281,35 @@ print('EDGES:')
 for key, value in edgeDict.items():
     print(f'{key}: {value}')
 
-dict1 = {}
-for (attribid, sourceVertex, targetVertex, sourceType, targetType, geometry, array1, array2, array3, split_point) in splitList:
-    print('test', attribid, sourceVertex, targetVertex, sourceType, targetType, geometry, array1, array2, array3, split_point, nextattribid)
+newEdgeDict = {}
+for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit) in edgeList:
+    link_data = (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit)
+    print('test', attribid, sourceVertex, targetVertex, sourceType, targetType, style, addSplit)
+
+    if not addSplit:
+        newEdgeDict[attribid] = [link_data]
+        for (key, value) in newEdgeDict.items():
+            print(f'{key}: {value}')
+        continue
+
     componentOrdering += 1
 
     SplitBlock(outroot, nextattribid, componentOrdering, geometry)
     splitblockid = nextattribid
     nextattribid += 1
 
-    # print('DICT1:', dict1, sourceVertex, targetVertex)
     if sourceVertex in dict1:
         new_array1, new_array2, new_array3, new_splitblockid, new_sourceVertex, new_targetVertex, new_splitblkgeometry, temp_new_port1, temp_new_port2, new_port1, new_point = dict1[sourceVertex][0]
         new_port3 = targetVertex
         print('DICTSV111', new_port1, new_port3, sourceVertex)
     if targetVertex in dict1:
         new_array1, new_array2, new_array3, new_splitblockid, new_sourceVertex, new_targetVertex, new_splitblkgeometry, temp_new_port1, temp_new_port2, new_port2, new_point = dict1[targetVertex][0]
-        print('DICTTV1', dict1[targetVertex])
         print('DICTSV1', new_port1, new_port2, new_port3, sourceVertex)
 
     inputCount = 0
     outputCount = 0
-    if sourceType == 'ExplicitOutputPort':
-        (inputCount, outputCount, nextattribid, nextAttribForSplit) = addExplicitInputPortForSplit(outroot, splitblockid, sourceVertex, targetVertex, sourceType, targetType, edgeDict, inputCount, outputCount, nextattribid, nextAttribForSplit)
-        (style2, sourceVertex2, targetVertex2, sourceType2, targetType2, waypoints) = edgeDict2[targetVertex]
-        (inputCount, outputCount, nextattribid, nextAttribForSplit) = addExplicitInputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, edgeDict, inputCount, outputCount, nextattribid, nextAttribForSplit)
-        (inputCount, outputCount, nextattribid, nextAttribForSplit) = addExplicitOutputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, edgeDict, inputCount, outputCount, nextattribid, nextAttribForSplit)
-    elif sourceType == 'ImplicitOutputPort':
-        geometry = {}
-        geometry['width'] = 8
-        geometry['height'] = 8
-        geometry['x'] = -8
-        geometry['y'] = -4
-        inputCount += 1
-        ImplicitInputPort(outroot, nextattribid, splitblockid, inputCount, geometry, forSplitBlock=True)
-        portid = nextattribid
-        nextattribid += 1
-        linkid = nextAttribForSplit
-        nextAttribForSplit += 1
-        (style2, sourceVertex2, targetVertex2, sourceType2, targetType2) = edgeDict2.get(sourceVertex, (None, None, None, None, None))
-    elif sourceType == 'ControlPort':
-        geometry = {}
-        geometry['width'] = 8
-        geometry['height'] = 8
-        geometry['x'] = -4
-        geometry['y'] = -8
-        inputCount += 1
-        CommandPort(outroot, nextattribid, splitblockid, inputCount, geometry, forSplitBlock=True)
-        portid = nextattribid
-        nextattribid += 1
-        linkid = nextAttribForSplit
-        nextAttribForSplit += 1
-        (style2, sourceVertex2, targetVertex2, sourceType2, targetType2) = edgeDict2[sourceVertex]
-    if targetType == 'ExplicitInputPort':
+
+    if sourceType == 'ExplicitLink':
         (style2, sourceVertex2, targetVertex2, sourceType2, targetType2, waypoints) = edgeDict2[sourceVertex]
         print('ED2', edgeDict2[sourceVertex], sourceVertex, sourceVertex2)
         port1 = nextattribid
@@ -375,7 +333,7 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, geometry, arr
         port3 = nextattribid
         (inputCount, outputCount, nextattribid, nextAttribForSplit) = addExplicitOutputPortForSplit(outroot, splitblockid, sourceVertex, targetVertex, sourceType, targetType, edgeDict, inputCount, outputCount, nextattribid, nextAttribForSplit, array3)
 
-    elif targetType == 'ImplicitInputPort':
+    elif sourceType == 'ImplicitLink':
         geometry = {}
         geometry['width'] = 8
         geometry['height'] = 8
@@ -410,7 +368,8 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, geometry, arr
         nextattribid += 1
         linkid = nextAttribForSplit
         nextAttribForSplit += 1
-    elif targetType == 'CommandPort':
+
+    elif sourceType == 'CommandControlLink':
         geometry = {}
         geometry['width'] = 8
         geometry['height'] = 8
@@ -436,16 +395,6 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, geometry, arr
     dict1[attribid].append((array1, array2, array3, splitblockid, sourceVertex, targetVertex, geometry, port1, port2, port3, point))
     print('DICTIONARY:', dict1)
 
-    try:
-        print("Source", edgeDict[sourceVertex])
-        del edgeDict[sourceVertex]
-    except KeyError:
-        pass
-    try:
-        print("target", edgeDict[targetVertex])
-        del edgeDict[targetVertex]
-    except KeyError:
-        pass
     print('EDGE11:', edgeDict)
 
 for (attribid, (style, sourceVertex, targetVertex, sourceType, targetType, array1)) in edgeDict.items():
