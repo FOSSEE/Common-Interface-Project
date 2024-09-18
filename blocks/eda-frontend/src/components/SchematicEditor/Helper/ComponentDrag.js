@@ -257,7 +257,25 @@ export default function LoadGrid (container, sidebar, outline) {
       if (cell != null) {
         const attribute = cell.style
         if (attribute == null) {
-          text = 'Edge\n' +
+          let source = cell.source
+          while (source.edge === true) {
+            source = source.source
+          }
+          let style = 'Link'
+          switch (source.style) {
+            case 'ExplicitOutputPort': case 'ExplicitInputPort':
+              style = 'ExplicitLink'
+              break
+
+            case 'ImplicitOutputPort': case 'ImplicitInputPort':
+              style = 'ImplicitLink'
+              break
+
+            case 'CommandPort': case 'ControlPort':
+              style = 'CommandControlLink'
+              break
+          }
+          text = style + '\n' +
             'UID: ' + cell.id + '\n'
           return text
         }
