@@ -229,19 +229,22 @@ export default function LoadGrid (container, sidebar, outline) {
       }
       // Rule 2 : Cannot connect 2 splits
       if (sourceType.type2 === SplitPort && targetType.type2 === SplitPort) {
-        return 'cannot connect 2 splits'
+        return 'Cannot connect two links'
       }
-      // Rule 3: Cannot connect 2 input ports
-      if (sourceType.type1 !== ImplicitPort && sourceType.type2 === InputPort && targetType.type2 === InputPort) {
-        return 'cannot connect 2 input ports'
-      }
-      // Rule 4: cannot connect 2 output ports
-      if (sourceType.type1 !== ImplicitPort && sourceType.type2 === OutputPort && targetType.type2 === OutputPort) {
-        return 'cannot connect 2 output ports'
-      }
-      // Rule 5: cannot connect split to output port
-      if (sourceType.type1 !== ImplicitPort && sourceType.type2 === OutputPort && targetType.type2 === SplitPort) {
-        return 'cannot connect split to output port'
+      if (sourceType.type1 !== ImplicitPort) {
+        // Rule 3: Cannot connect 2 input ports
+        if (sourceType.type2 === InputPort && targetType.type2 === InputPort) {
+          return 'Cannot connect two input ports'
+        }
+        // Rule 4: cannot connect 2 output ports
+        if (sourceType.type2 === OutputPort && targetType.type2 === OutputPort) {
+          return 'Cannot connect two output ports'
+        }
+        // Rule 5: cannot connect split to output port
+        const ports = [OutputPort, SplitPort]
+        if (ports.includes(sourceType.type2) && ports.includes(targetType.type2)) {
+          return 'Cannot connect a link to an output port'
+        }
       }
 
       return null
