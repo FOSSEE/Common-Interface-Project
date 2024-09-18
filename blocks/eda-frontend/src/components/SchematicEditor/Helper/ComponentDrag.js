@@ -257,7 +257,9 @@ export default function LoadGrid (container, sidebar, outline) {
       if (cell != null) {
         const attribute = cell.style
         if (attribute == null) {
-          return ''
+          text = 'Edge\n' +
+            'UID: ' + cell.id + '\n'
+          return text
         }
 
         const styleObject = styleToObject(attribute)
@@ -274,26 +276,40 @@ export default function LoadGrid (container, sidebar, outline) {
           mirror = (styleObject.stencilFlipH !== '0')
         }
 
-        const inputPorts = cell.explicitInputPorts + cell.implicitInputPorts
-        const outputPorts = cell.explicitOutputPorts + cell.implicitOutputPorts
-        const controlPorts = cell.controlPorts
-        const commandPorts = cell.commandPorts
-        const geometry = cell.geometry
+        if (cell.CellType === 'Component') {
+          const inputPorts = cell.explicitInputPorts + cell.implicitInputPorts
+          const outputPorts = cell.explicitOutputPorts + cell.implicitOutputPorts
+          const controlPorts = cell.controlPorts
+          const commandPorts = cell.commandPorts
+          const geometry = cell.geometry
 
-        text = 'Block Name: ' + attribute + '\n' +
-          'Simulation: ' + cell.simulationFunction + '\n' +
-          'UID: ' + cell.id + '\n' +
-          'Style: ' + cell.style + '\n' +
-          'Flip: ' + flip + '\n' +
-          'Mirror: ' + mirror + '\n' +
-          'Input Ports: ' + inputPorts + '\n' +
-          'Output Ports: ' + outputPorts + '\n' +
-          'Control Ports: ' + controlPorts + '\n' +
-          'Command Ports: ' + commandPorts + '\n' +
-          'x: ' + geometry.x + '\n' +
-          'y: ' + geometry.y + '\n' +
-          'w: ' + geometry.width + '\n' +
-          'h: ' + geometry.height + '\n'
+          text = 'Block Name: ' + attribute + '\n' +
+            'Simulation: ' + cell.simulationFunction + '\n' +
+            'UID: ' + cell.id + '\n' +
+            'Style: ' + cell.style + '\n' +
+            'Flip: ' + flip + '\n' +
+            'Mirror: ' + mirror + '\n' +
+            'Input Ports: ' + inputPorts + '\n' +
+            'Output Ports: ' + outputPorts + '\n' +
+            'Control Ports: ' + controlPorts + '\n' +
+            'Command Ports: ' + commandPorts + '\n' +
+            'x: ' + geometry.x + '\n' +
+            'y: ' + geometry.y + '\n' +
+            'w: ' + geometry.width + '\n' +
+            'h: ' + geometry.height + '\n'
+        } else {
+          const geometry = cell.geometry
+
+          text = 'Block Name: ' + attribute + '\n' +
+            'UID: ' + cell.id + '\n' +
+            'Style: ' + cell.style + '\n' +
+            'Flip: ' + flip + '\n' +
+            'Mirror: ' + mirror + '\n' +
+            'x: ' + geometry.x + '\n' +
+            'y: ' + geometry.y + '\n' +
+            'w: ' + geometry.width + '\n' +
+            'h: ' + geometry.height + '\n'
+        }
       }
       return text
     }
