@@ -210,7 +210,6 @@ export default function LoadGrid (container, sidebar, outline) {
 
     // Override the connection validation function
     graph.connectionHandler.validateConnection = function (source, target) {
-      console.log(source, target)
       let isSplitSource = false
       let isSplitTarget = false
       while (source.edge === true) {
