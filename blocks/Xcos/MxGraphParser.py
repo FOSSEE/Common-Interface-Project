@@ -270,17 +270,19 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoi
     
     try:
         linkSegments = newEdgeDict[sourceVertex]
+        attribid2 = sourceVertex
     except KeyError:
         pass
     try:
         linkSegments = newEdgeDict[targetVertex]
+        attribid2 = targetVertex
     except KeyError:
         pass
 
     result, i, left_array, right_array = identify_segment(linkSegments, split_point)
     if not result:
         sys.exit(0)
-    (attribid2, sourceVertex2, targetVertex2, sourceType2, targetType2, style2, waypoints2, addSplit2, split_point2) = linkSegments[i]   
+    (linkid, sourceVertex2, targetVertex2, sourceType2, targetType2, style2, waypoints2, addSplit2, split_point2) = linkSegments[i]   
     print('A1:', left_array)
     print('A2:', right_array)
     array3 = waypoints
@@ -351,10 +353,13 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoi
         nextAttribForSplit += 1
         (style2, sourceVertex2, targetVertex2, sourceType2, targetType2) = newEdgeDict[targetVertex]
 
-    newEdgeDict[attribid2][i] = ((attribid2, sourceVertex2, port1, sourceType2, targetType, style2, left_array, addSplit2, split_point2))
-    newEdgeDict[attribid2].insert(i+1, (attribid2, port2, targetVertex2, sourceType, targetType2, style2, right_array, addSplit2, split_point2))
-        
-    newEdgeDict[attribid] = [(attribid, port3, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point)]
+    print('ATTRID:', attribid, attribid2)
+    newEdgeDict[attribid2][i] = ((nextAttribForSplit, sourceVertex2, port1, sourceType2, targetType, style2, left_array, addSplit2, split_point2))
+    nextAttribForSplit += 1
+    newEdgeDict[attribid2].insert(i+1, (nextAttribForSplit, port2, targetVertex2, sourceType, targetType2, style2, right_array, addSplit2, split_point2))
+    nextAttribForSplit += 1  
+    newEdgeDict[attribid] = [(nextAttribForSplit, port3, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point)]
+    nextAttribForSplit += 1
     for key, value in newEdgeDict.items():
         print('KEY:',key)
         for i, value2 in enumerate(value):
@@ -362,13 +367,14 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoi
 
 # for (attribid, (style, sourceVertex, targetVertex, sourceType, targetType, array1)) in edgeDict.items():
 #     print("testing", attribid, style, sourceVertex, targetVertex, sourceType, targetType, array1)
-for (attribid, (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point)) in edgeDict.items():
-    print("testing", attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point)
-    
-    if int(attribid) >= 10000:
-        attribid = nextattribid
-        nextattribid += 1
-    globals()[style](outroot, attribid, sourceVertex, targetVertex, waypoints)
+for key, newEdges in newEdgeDict.items():
+    print('EDGES', newEdges)
+    for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point) in newEdges:
+        print("testing", attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point)
+        if int(attribid) >= 10000:
+            attribid = nextattribid
+            nextattribid += 1
+        globals()[style](outroot, attribid, sourceVertex, targetVertex, waypoints)
 
 outnode = ET.SubElement(outdiagram, 'mxCell')
 outnode.set('id', str(1))
