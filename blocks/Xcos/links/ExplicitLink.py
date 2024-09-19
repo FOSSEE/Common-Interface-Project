@@ -1,6 +1,6 @@
 from common.AAAAAA import *
 
-def ExplicitLink(outroot, attribid, sourceVertex, targetVertex, arrayelem):
+def ExplicitLink(outroot, attribid, sourceVertex, targetVertex, waypoints):
     func_name = 'ExplicitLink'
 
     outnode = addNode(outroot, func_name, **{'id': attribid},
@@ -12,7 +12,7 @@ def ExplicitLink(outroot, attribid, sourceVertex, targetVertex, arrayelem):
 
     arrayNode = addNode(mxGeoNode, 'Array', **{'as': 'points'})
 
-    for point in arrayelem:
+    for point in waypoints:
         addNode(arrayNode, 'mxPoint', **{'x': point['x'], 'y': point['y']})
 
     addNode(mxGeoNode, 'mxPoint', **{'as': 'targetPoint', 'x': "0.0", 'y': "0.0"})
