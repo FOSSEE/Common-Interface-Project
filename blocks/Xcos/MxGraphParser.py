@@ -41,42 +41,19 @@ outmodel = ET.SubElement(outdiagram, 'mxGraphModel')
 outmodel.set('as', 'model')
 
 
-def split_array_by_point(array, point):
-    pointX = float(point['x'])
-    pointY = float(point['y'])
-    for i in range(len(array) - 1):
-        leftX = float(array[i]['x'])
-        leftY = float(array[i]['y'])
-        rightX = float(array[i + 1]['x'])
-        rightY = float(array[i + 1]['y'])
-
-        # Check if the point lies on the line segment between array[i] and array[i + 1]
-        if -40 <= leftY - pointY <= 40 and \
-                -40 <= rightY - pointY <= 40 and \
-                leftX <= pointX <= rightX:
-            return array[:i + 1] + [point], [point] + array[i + 1:]
-        if -40 <= leftX - pointX <= 40 and \
-                -40 <= rightX - pointX <= 40 and \
-                leftY <= pointY <= rightY:
-            return array[:i + 1] + [point], [point] + array[i + 1:]
-
-    return array, []
-
-
 def check_point_on_array(array, point):
     if array is None:
         return False, array, []
     for i in range(len(array) - 1):
         # Check if the point lies on the line segment between array[i] and array[i + 1]
-        if -40 <= int(array[i]['y']) - int(point['y']) <= 40 and \
-                -40 <= int(array[i + 1]['y']) - int(point['y']) <= 40 and \
-                int(array[i]['x']) <= int(point['x']) <= int(array[i + 1]['x']):
+        if -40 <= float(array[i]['y']) - float(point['y']) <= 40 and \
+                -40 <= float(array[i + 1]['y']) - float(point['y']) <= 40 and \
+                float(array[i]['x']) <= float(point['x']) <= float(array[i + 1]['x']):
             return True, array[:i + 1], array[i + 1:]
-        if -40 <= int(array[i]['x']) - int(point['x']) <= 40 and \
-                -40 <= int(array[i + 1]['x']) - int(point['x']) <= 40 and \
-                int(array[i]['y']) <= int(point['y']) <= int(array[i + 1]['y']):
+        if -40 <= float(array[i]['x']) - float(point['x']) <= 40 and \
+                -40 <= float(array[i + 1]['x']) - float(point['x']) <= 40 and \
+                float(array[i]['y']) <= float(point['y']) <= float(array[i + 1]['y']):
             return True, array[:i + 1], array[i + 1:]
-    print("ERror:", point, "does not lie on", array)
     return False, array, []
 
 def identify_segment(array, point):
@@ -88,21 +65,6 @@ def identify_segment(array, point):
     print("ERror11:", point, "does not lie on", array)
     return False, -1, array, []
 
-
-def splitlink_by_point(array1, s1, t1, array2, s2, t2, array3, s3, t3, point):
-    onarray, array4, array5 = check_point_on_array(array1, point)
-    print('testcheck1', onarray, array4, array5)
-    if onarray:
-        return array1, s1, t1, array4, array5
-    onarray, array4, array5 = check_point_on_array(array2, point)
-    print('testcheck2', onarray, array4, array5)
-    if onarray:
-        return array2, s2, t2, array4, array5
-    onarray, array4, array5 = check_point_on_array(array3, point)
-    print('testcheck3', onarray, array4, array5)
-    if onarray:
-        return array3, s3, t3, array4, array5
-    print("ERror:", point, "does not lie on 3 array")
 
 for root in model:
     if root.tag != 'root':
@@ -286,7 +248,6 @@ for root in model:
                 link_data = (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point)
                 edgeDict[attribid] = link_data
                 edgeList.append(link_data)
-                # print("EL:", edgeList)
         except BaseException:
             traceback.print_exc()
             sys.exit(0)
@@ -308,22 +269,18 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoi
 
     
     try:
-        print("SOURCEV:", newEdgeDict[sourceVertex])
         linkSegments = newEdgeDict[sourceVertex]
     except KeyError:
         pass
     try:
-        print("SOURCET:", newEdgeDict[targetVertex])
         linkSegments = newEdgeDict[targetVertex]
     except KeyError:
         pass
-    print('CNT:', len(linkSegments))
+
     result, i, left_array, right_array = identify_segment(linkSegments, split_point)
     if not result:
         sys.exit(0)
     (attribid2, sourceVertex2, targetVertex2, sourceType2, targetType2, style2, waypoints2, addSplit2, split_point2) = linkSegments[i]   
-    #remove code here
-    del newEdgeDict[attribid2][i]
     print('A1:', left_array)
     print('A2:', right_array)
     array3 = waypoints
@@ -337,14 +294,12 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoi
     inputCount = 0
     outputCount = 0
     if sourceType == 'ExplicitLink':
-        # (style2, sourceVertex2, targetVertex2, sourceType2, targetType2, waypoints) = newEdgeDict[sourceVertex]
         port1 = nextattribid
-
-        (inputCount, outputCount, nextattribid, nextAttribForSplit) = addExplicitInputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, edgeDict, inputCount, outputCount, nextattribid, nextAttribForSplit, left_array)
+        (inputCount, outputCount, nextattribid, nextAttribForSplit) = addExplicitInputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, left_array)
         port2 = nextattribid
-        (inputCount, outputCount, nextattribid, nextAttribForSplit) = addExplicitOutputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, edgeDict, inputCount, outputCount, nextattribid, nextAttribForSplit, right_array)
+        (inputCount, outputCount, nextattribid, nextAttribForSplit) = addExplicitOutputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, right_array)
         port3 = nextattribid
-        (inputCount, outputCount, nextattribid, nextAttribForSplit) = addExplicitOutputPortForSplit(outroot, splitblockid, sourceVertex, targetVertex, sourceType, targetType, edgeDict, inputCount, outputCount, nextattribid, nextAttribForSplit, array3)
+        (inputCount, outputCount, nextattribid, nextAttribForSplit) = addExplicitOutputPortForSplit(outroot, splitblockid, sourceVertex, targetVertex, sourceType, targetType, inputCount, outputCount, nextattribid, nextAttribForSplit, array3)
 
     elif sourceType == 'ImplicitLink':
         geometry = {}
@@ -395,14 +350,16 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoi
         linkid = nextAttribForSplit
         nextAttribForSplit += 1
         (style2, sourceVertex2, targetVertex2, sourceType2, targetType2) = newEdgeDict[targetVertex]
-                                    # attribid2, sourceVertex2, targetVertex2, sourceType2, targetType2, style2, waypoints2, addSplit2, split_point2
-    newEdgeDict[attribid2].append((attribid2, sourceVertex2, port1, sourceType2, targetType, style2, left_array, addSplit2, split_point2))
-    newEdgeDict[attribid2].append((attribid2, port2, targetVertex2, sourceType, targetType2, style2, right_array, addSplit2, split_point2))
+
+    newEdgeDict[attribid2][i] = ((attribid2, sourceVertex2, port1, sourceType2, targetType, style2, left_array, addSplit2, split_point2))
+    newEdgeDict[attribid2].insert(i+1, (attribid2, port2, targetVertex2, sourceType, targetType2, style2, right_array, addSplit2, split_point2))
         
-    newEdgeDict[attribid] = [(attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point)]
+    newEdgeDict[attribid] = [(attribid, port3, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point)]
+    for key, value in newEdgeDict.items():
+        print('KEY:',key)
+        for i, value2 in enumerate(value):
+            print(i, value2)
 
-
-# print('ED:', edgeDict.items())
 # for (attribid, (style, sourceVertex, targetVertex, sourceType, targetType, array1)) in edgeDict.items():
 #     print("testing", attribid, style, sourceVertex, targetVertex, sourceType, targetType, array1)
 for (attribid, (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point)) in edgeDict.items():
