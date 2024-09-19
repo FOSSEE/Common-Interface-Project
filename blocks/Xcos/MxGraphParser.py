@@ -288,7 +288,11 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoi
     array3 = waypoints
             
     componentOrdering += 1
-
+    geometry = {}
+    geometry['height'] = 7
+    geometry['width'] = 7
+    geometry['x'] = split_point['x']
+    geometry['y'] = split_point['y']
     SplitBlock(outroot, nextattribid, componentOrdering, geometry)
     splitblockid = nextattribid
     nextattribid += 1
