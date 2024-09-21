@@ -24,7 +24,7 @@ const loadingSetCompProperties = (isLoading) => (dispatch) => {
 // Actions for listing stored component properites on double click on component
 export const getCompProperties = (block) => (dispatch) => {
   dispatch(loadingGetCompProperties(block, true))
-  const url = 'block_parameters/?block__name=' + block.style
+  const url = 'newblockparameters/?block__name=' + block.style
   api.get(url)
     .then(
       (res) => {
@@ -36,7 +36,7 @@ export const getCompProperties = (block) => (dispatch) => {
             parameter_values: block.parameter_values,
             errorFields: block.errorFields,
             displayProperties: block.displayProperties,
-            compProperties: res.data[0]
+            compProperties: res.data
           }
         })
       }

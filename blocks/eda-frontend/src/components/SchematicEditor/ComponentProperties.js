@@ -278,25 +278,23 @@ export default function ComponentProperties () {
       />
 
       <ListItem>
-        {compProperties !== undefined ? <ListItemText primary={link1} /> : isLoading ? <ListItemText primary={link4} /> : <ListItemText primary={link3} />}
+        {compProperties && compProperties.length > 0 ? <ListItemText primary={link1} /> : isLoading ? <ListItemText primary={link4} /> : <ListItemText primary={link3} />}
       </ListItem>
 
       {
         Object.keys(val).map((keyName, i) => {
-          if (keyName.match(/^p[0-9]*_value$/)) {
-            const rootKeyName = keyName.substr(0, 4)
-            const typeId = rootKeyName + '_type'
-            const helpId = rootKeyName + '_help'
-            const compType = compProperties && compProperties[typeId]
-            const compHelp = compProperties && compProperties[helpId]
-            const error = errorFields && errorFields[keyName]
-            const helperText = error
-              ? getErrorText(compType)
-              : compHelp
-            if (compProperties && compProperties[rootKeyName] !== null && compType !== null) {
+          const result = keyName.match(/^p0*([1-9]*[0-9])_value$/)
+          if (result && compProperties) {
+            const rootKeyId = parseInt(result[1])
+            const compProperty = compProperties[rootKeyId]
+            if (compProperty) {
+              const error = errorFields[keyName]
+              const helperText = error
+                ? getErrorText(compProperty.p_type)
+                : compProperty.p_help
               return (
                 <ListItem key={i}>
-                  <TextField id={keyName} label={compProperties[rootKeyName]} value={val[keyName] || ''} helperText={helperText} error={error} size='small' variant='outlined' onChange={getInputValues} />
+                  <TextField id={keyName} label={compProperty.p_label} value={val[keyName] || ''} helperText={helperText} error={error} size='small' variant='outlined' onChange={getInputValues} />
                 </ListItem>
               )
             }
@@ -306,7 +304,7 @@ export default function ComponentProperties () {
       }
 
       {
-        compProperties !== undefined && <ListItem>
+        compProperties && compProperties.length > 0 && <ListItem>
           <Button size='small' variant='contained' color='primary' onClick={setProps}>{link2}</Button>
         </ListItem>
       }

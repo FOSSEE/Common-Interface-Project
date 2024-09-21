@@ -7,7 +7,7 @@ const InitialState = {
   parameter_values: {},
   errorFields: {},
   isPropertiesWindowOpen: false,
-  compProperties: {},
+  compProperties: [],
   displayProperties: {},
   isLoading: false
 }

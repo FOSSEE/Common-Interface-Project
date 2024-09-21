@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from .models import Category, Block, BlockPort
+from .models import Category, NewBlock, NewBlockPort
 
 
 PRINT_BLOCKS = False
@@ -16,7 +16,7 @@ class CategoryTestCase(TestCase):
         self.assertEqual(str(category), 'Commonly Used Blocks')
         print()
 
-        block = Block.objects.get(id=66)
+        block = NewBlock.objects.get(id=66)
         print(block)
         self.assertEqual(str(block), 'POWBLK_f')
         if PRINT_PORTS:
@@ -25,13 +25,13 @@ class CategoryTestCase(TestCase):
                 print(blockport)
         print()
 
-        blockport = BlockPort.objects.get(id=88)
+        blockport = NewBlockPort.objects.get(id=88)
         print(blockport)
         self.assertEqual(str(blockport), 'INTRPLBLK_f 1')
         print()
 
         categories = Category.objects.all().order_by('sort_order')
-        allblocks = Block.objects.all().order_by('name')
+        allblocks = NewBlock.objects.all().order_by('name')
         for category in categories:
             blocks = allblocks.filter(categories=category)
             print(category.id, category, len(blocks))
@@ -43,8 +43,8 @@ class CategoryTestCase(TestCase):
             print()
 
         namestring = 'A'
-        allblocks = Block.objects.filter(name__istartswith=namestring)
-        categories = Category.objects.filter(block__in=allblocks).distinct().order_by('sort_order')
+        allblocks = NewBlock.objects.filter(name__istartswith=namestring)
+        categories = Category.objects.filter(newblock__in=allblocks).distinct().order_by('sort_order')
         for category in categories:
             blocks = allblocks.filter(categories=category).order_by('name')
             print(category.id, category, len(blocks))
