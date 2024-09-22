@@ -427,36 +427,6 @@ class BlockPrefixParameter(CommonBlockParameter):
         return self.blockprefix.name
 
 
-class Block(CommonBlock):
-    id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=100)
-    blockprefix = models.ForeignKey(BlockPrefix, default=1,
-                                    on_delete=models.PROTECT, related_name='+')
-    main_category = models.ForeignKey(Category, null=True,
-                                      on_delete=models.PROTECT, related_name='+')
-    categories = models.ManyToManyField(Category)
-    block_name = models.CharField(max_length=200,
-                                  unique=True, null=True)
-    initial_display_parameter = models.CharField(max_length=100,
-                                                 blank=True, null=True)
-    simulation_function = models.CharField(max_length=100,
-                                           blank=True, null=True)
-    block_image_path = models.CharField(max_length=100,
-                                        blank=True, null=True)
-    block_width = models.IntegerField(default=40)
-    block_height = models.IntegerField(default=40)
-
-    def __str__(self):
-        """String for representing the Model object."""
-        return self.name
-
-    class Meta:
-        constraints = [
-            models.UniqueConstraint(fields=['main_category', 'name'],
-                                    name='unique_category_name')
-        ]
-
-
 class NewBlock(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
