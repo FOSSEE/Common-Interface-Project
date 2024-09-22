@@ -418,15 +418,6 @@ class BlockPrefix(CommonBlock):
         return self.name
 
 
-class BlockPrefixParameter(CommonBlockParameter):
-    id = models.AutoField(primary_key=True)
-    blockprefix = models.ForeignKey(BlockPrefix, on_delete=models.PROTECT)
-
-    def __str__(self):
-        """String for representing the Model object."""
-        return self.blockprefix.name
-
-
 class NewBlock(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)

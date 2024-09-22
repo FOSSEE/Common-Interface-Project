@@ -2,7 +2,6 @@ from rest_framework import serializers
 from django.db.models import Prefetch
 
 from .models import BlockType, Category, ParameterDataType, BlockPrefix, \
-    BlockPrefixParameter, \
     NewBlock, NewBlockParameter, NewBlockPort
 
 from .xcosblocks import *
@@ -43,15 +42,6 @@ class BlockPrefixSerializer(serializers.ModelSerializer):
         fields = [
             'id',
             'name',
-        ]
-
-
-class BlockPrefixParameterSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = BlockPrefixParameter
-        fields = [
-            'id',
-            'blockprefix',
         ]
 
 
