@@ -199,10 +199,10 @@ USE_L10N = True
 
 USE_TZ = True
 
-# Allow CORS for Public API
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOWED_ORIGINS = [i for i in os.environ.get('CORS_ALLOWED_ORIGINS', 'http://localhost').split(',') if i != '']
-CSRF_TRUSTED_ORIGINS = [i for i in os.environ.get('CSRF_TRUSTED_ORIGINS', 'http://localhost').split(',') if i != '']
+ALLOWED_ORIGINS = os.environ.get('ALLOWED_ORIGINS', 'http://localhost')
+TRUSTED_ORIGINS = os.environ.get('TRUSTED_ORIGINS', 'http://localhost')
+CORS_ALLOWED_ORIGINS = [i for i in ALLOWED_ORIGINS.split(',') if i != '']
+CSRF_TRUSTED_ORIGINS = [i for i in TRUSTED_ORIGINS.split(',') if i != '']
 CORS_ALLOW_CREDENTIALS = True
 
 # Static files (CSS, JavaScript, Images)
