@@ -466,30 +466,6 @@ class BlockParameter(CommonBlockParameter):
         return self.block.name
 
 
-class BlockPort(models.Model):
-    id = models.AutoField(primary_key=True)
-    block = models.ForeignKey(Block, on_delete=models.PROTECT)
-    port_order = models.IntegerField(default=1)
-    port_name = models.CharField(max_length=100)
-    port_number = models.CharField(max_length=10)
-    port_x = models.IntegerField(default=1)
-    port_y = models.IntegerField(default=1)
-    port_orientation = models.CharField(max_length=100)
-    port_part = models.IntegerField(default=1)
-    port_dmg = models.IntegerField(default=1)
-    port_type = models.CharField(max_length=100)
-
-    def __str__(self):
-        """String for representing the Model object."""
-        return '%s %s' % (self.block.name, self.port_order)
-
-    class Meta:
-        constraints = [
-            models.UniqueConstraint(fields=['block', 'port_order'],
-                                    name='unique_block_port_order')
-        ]
-
-
 class NewBlock(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
