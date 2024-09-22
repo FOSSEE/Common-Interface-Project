@@ -457,15 +457,6 @@ class Block(CommonBlock):
         ]
 
 
-class BlockParameter(CommonBlockParameter):
-    id = models.AutoField(primary_key=True)
-    block = models.OneToOneField(Block, on_delete=models.PROTECT)
-
-    def __str__(self):
-        """String for representing the Model object."""
-        return self.block.name
-
-
 class NewBlock(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
