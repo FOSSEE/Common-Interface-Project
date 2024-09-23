@@ -276,7 +276,9 @@ export default function LoadGrid (container, sidebar, outline) {
               break
           }
           text = style + '\n' +
-            'UID: ' + cell.id + '\n'
+            'UID: ' + cell.id + '\n' +
+            'Source: ' + cell.source.id + '\n' +
+            'Target: ' + cell.target.id + '\n'
           return text
         }
 
@@ -318,7 +320,7 @@ export default function LoadGrid (container, sidebar, outline) {
         } else {
           const geometry = cell.geometry
 
-          text = 'Block Name: ' + attribute + '\n' +
+          text = attribute + '\n' +
             'UID: ' + cell.id + '\n' +
             'Style: ' + cell.style + '\n' +
             'Flip: ' + flip + '\n' +

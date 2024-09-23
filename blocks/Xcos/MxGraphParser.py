@@ -41,19 +41,40 @@ outmodel = ET.SubElement(outdiagram, 'mxGraphModel')
 outmodel.set('as', 'model')
 
 
-def check_point_on_array(array, point):
+def check_point_on_array(array, point, left_right_direction=True):
     if array is None:
         return False, array, []
+
+    pointX = float(point['x'])
+    pointY = float(point['y'])
+
     for i in range(len(array) - 1):
+        leftX = float(array[i]['x'])
+        leftY = float(array[i]['y'])
+        rightX = float(array[i + 1]['x'])
+        rightY = float(array[i + 1]['y'])
+
         # Check if the point lies on the line segment between array[i] and array[i + 1]
-        if -40 <= float(array[i]['y']) - float(point['y']) <= 40 and \
-                -40 <= float(array[i + 1]['y']) - float(point['y']) <= 40 and \
-                float(array[i]['x']) <= float(point['x']) <= float(array[i + 1]['x']):
-            return True, array[:i + 1], array[i + 1:]
-        if -40 <= float(array[i]['x']) - float(point['x']) <= 40 and \
-                -40 <= float(array[i + 1]['x']) - float(point['x']) <= 40 and \
-                float(array[i]['y']) <= float(point['y']) <= float(array[i + 1]['y']):
-            return True, array[:i + 1], array[i + 1:]
+        if -40 <= leftY - pointY <= 40 and \
+                -40 <= rightY - pointY <= 40 and \
+                leftX <= pointX <= rightX:
+            return True, array[:i + 1] + [point], [point] + array[i + 1:]
+        if -40 <= leftX - pointX <= 40 and \
+                -40 <= rightX - pointX <= 40 and \
+                leftY <= pointY <= rightY:
+            return True, array[:i + 1] + [point], [point] + array[i + 1:]
+
+        if left_right_direction:
+            if -20 <= leftY - pointY <= 20:
+                print('to the left / right')
+                return True, array[:i + 1] + [point], [point] + array[i + 1:]
+        else:
+            if -20 <= leftX - pointX <= 20:
+                print('on the up / down')
+                return True, array[:i + 1] + [point], [point] + array[i + 1:]
+
+        # switch direction for the next waypoint
+        left_right_direction = not left_right_direction
     return False, array, []
 
 def identify_segment(array, point):
@@ -378,7 +399,8 @@ for key, newEdges in newEdgeDict.items():
         if int(attribid) >= 10000:
             attribid = nextattribid
             nextattribid += 1
-        globals()[style](outroot, attribid, sourceVertex, targetVertex, waypoints)
+        globals()[style](outroot, attribid, sourceVertex, targetVertex,
+                         waypoints[1:-1])
 
 outnode = ET.SubElement(outdiagram, 'mxCell')
 outnode.set('id', str(1))

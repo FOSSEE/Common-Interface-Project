@@ -412,6 +412,7 @@ function parseXmlToGraph (xmlDoc, graph) {
         v1.implicitOutputPorts = 0
         v1.controlPorts = 0
         v1.commandPorts = 0
+        v1.simulationFunction = cellAttrs.simulationFunction.value
       } else if (cellAttrs.CellType?.value === 'Pin') {
         const style = cellAttrs.style.value.replace(/;.*/, '')
         const vertexId = cellAttrs.id.value
