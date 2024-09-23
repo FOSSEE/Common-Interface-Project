@@ -20,8 +20,8 @@ BEGIN {
     implicit_input_ports = $4;
     explicit_output_ports = $5;
     implicit_output_ports = $6;
-    command_ports = $7;
     control_ports = $8;
+    command_ports = $7;
     block_width = $9;
     block_height = $10;
 
@@ -81,27 +81,27 @@ BEGIN {
         printf BLOCKPORTSCSVFORMAT, ++blockportid, category, block, port_order, port_order, port_order, port_x, port_y, port_orientation, port_part, port_dmg, port_type > BLOCKPORTSCSV;
     }
 
-    for (i = 0; i < command_ports; i++) {
-        ++port_order;
-        if (2 * i < command_ports)
-            port_x = int(block_width * ((i + 0.5) / command_ports - 0.5) - 0.5);
-        else
-            port_x = int(block_width * ((i + 0.5) / command_ports - 0.5) + 0.5);
-        port_y = int(block_height * -0.5 - 0.5);
-        port_orientation = "CommandPort";
-        port_type = "CommandPort";
-        printf BLOCKPORTSCSVFORMAT, ++blockportid, category, block, port_order, port_order, port_order, port_x, port_y, port_orientation, port_part, port_dmg, port_type > BLOCKPORTSCSV;
-    }
-
     for (i = 0; i < control_ports; i++) {
         ++port_order;
         if (2 * i < control_ports)
             port_x = int(block_width * ((i + 0.5) / control_ports - 0.5) - 0.5);
         else
             port_x = int(block_width * ((i + 0.5) / control_ports - 0.5) + 0.5);
-        port_y = int(block_height * 0.5 + 0.5);
+        port_y = int(block_height * -0.5 - 0.5);
         port_orientation = "ControlPort";
         port_type = "ControlPort";
+        printf BLOCKPORTSCSVFORMAT, ++blockportid, category, block, port_order, port_order, port_order, port_x, port_y, port_orientation, port_part, port_dmg, port_type > BLOCKPORTSCSV;
+    }
+
+    for (i = 0; i < command_ports; i++) {
+        ++port_order;
+        if (2 * i < command_ports)
+            port_x = int(block_width * ((i + 0.5) / command_ports - 0.5) - 0.5);
+        else
+            port_x = int(block_width * ((i + 0.5) / command_ports - 0.5) + 0.5);
+        port_y = int(block_height * 0.5 + 0.5);
+        port_orientation = "CommandPort";
+        port_type = "CommandPort";
         printf BLOCKPORTSCSVFORMAT, ++blockportid, category, block, port_order, port_order, port_order, port_x, port_y, port_orientation, port_part, port_dmg, port_type > BLOCKPORTSCSV;
     }
 }

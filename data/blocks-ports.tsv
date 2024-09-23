@@ -26,7 +26,7 @@
 26	Continuous time systems	TCLSS	1	1	1	-30	-10	ExplicitInputPort	1	1	ExplicitInputPort
 27	Continuous time systems	TCLSS	2	2	2	-30	10	ExplicitInputPort	1	1	ExplicitInputPort
 28	Continuous time systems	TCLSS	3	3	3	30	0	ExplicitOutputPort	1	1	ExplicitOutputPort
-29	Continuous time systems	TCLSS	4	4	4	0	20	ControlPort	1	1	ControlPort
+29	Continuous time systems	TCLSS	4	4	4	0	-20	ControlPort	1	1	ControlPort
 30	Continuous time systems	TIME_DELAY	1	1	1	-35	0	ExplicitInputPort	1	1	ExplicitInputPort
 31	Continuous time systems	TIME_DELAY	2	2	2	35	0	ExplicitOutputPort	1	1	ExplicitOutputPort
 32	Continuous time systems	VARIABLE_DELAY	1	1	1	-30	-10	ExplicitInputPort	1	1	ExplicitInputPort
@@ -48,40 +48,40 @@
 48	Discrete time systems	AUTOMAT	2	2	2	-40	10	ExplicitInputPort	1	1	ExplicitInputPort
 49	Discrete time systems	AUTOMAT	3	3	3	40	-10	ExplicitOutputPort	1	1	ExplicitOutputPort
 50	Discrete time systems	AUTOMAT	4	4	4	40	10	ExplicitOutputPort	1	1	ExplicitOutputPort
-51	Discrete time systems	AUTOMAT	5	5	5	0	-20	CommandPort	1	1	CommandPort
+51	Discrete time systems	AUTOMAT	5	5	5	0	20	CommandPort	1	1	CommandPort
 52	Discrete time systems	DELAY_f	1	1	1	-20	0	ExplicitInputPort	1	1	ExplicitInputPort
 53	Discrete time systems	DELAY_f	2	2	2	20	0	ExplicitOutputPort	1	1	ExplicitOutputPort
 54	Discontinuities	DELAYV_f	1	1	1	-30	-10	ExplicitInputPort	1	1	ExplicitInputPort
 55	Discontinuities	DELAYV_f	2	2	2	-30	10	ExplicitInputPort	1	1	ExplicitInputPort
 56	Discontinuities	DELAYV_f	3	3	3	30	0	ExplicitOutputPort	1	1	ExplicitOutputPort
-57	Discontinuities	DELAYV_f	4	4	4	-15	-20	CommandPort	1	1	CommandPort
-58	Discontinuities	DELAYV_f	5	5	5	15	-20	CommandPort	1	1	CommandPort
-59	Discontinuities	DELAYV_f	6	6	6	0	20	ControlPort	1	1	ControlPort
+57	Discontinuities	DELAYV_f	4	4	4	0	-20	ControlPort	1	1	ControlPort
+58	Discontinuities	DELAYV_f	5	5	5	-15	20	CommandPort	1	1	CommandPort
+59	Discontinuities	DELAYV_f	6	6	6	15	20	CommandPort	1	1	CommandPort
 60	Discrete time systems	DLR	1	1	1	-30	0	ExplicitInputPort	1	1	ExplicitInputPort
 61	Discrete time systems	DLR	2	2	2	30	0	ExplicitOutputPort	1	1	ExplicitOutputPort
-62	Discrete time systems	DLR	3	3	3	0	20	ControlPort	1	1	ControlPort
+62	Discrete time systems	DLR	3	3	3	0	-20	ControlPort	1	1	ControlPort
 63	Discrete time systems	DLRADAPT_f	1	1	1	-20	-10	ExplicitInputPort	1	1	ExplicitInputPort
 64	Discrete time systems	DLRADAPT_f	2	2	2	-20	10	ExplicitInputPort	1	1	ExplicitInputPort
 65	Discrete time systems	DLRADAPT_f	3	3	3	20	0	ExplicitOutputPort	1	1	ExplicitOutputPort
-66	Discrete time systems	DLRADAPT_f	4	4	4	0	20	ControlPort	1	1	ControlPort
+66	Discrete time systems	DLRADAPT_f	4	4	4	0	-20	ControlPort	1	1	ControlPort
 67	Discrete time systems	DLSS	1	1	1	-40	0	ExplicitInputPort	1	1	ExplicitInputPort
 68	Discrete time systems	DLSS	2	2	2	40	0	ExplicitOutputPort	1	1	ExplicitOutputPort
-69	Discrete time systems	DLSS	3	3	3	0	20	ControlPort	1	1	ControlPort
+69	Discrete time systems	DLSS	3	3	3	0	-20	ControlPort	1	1	ControlPort
 70	Discrete time systems	DOLLAR	1	1	1	-20	0	ExplicitInputPort	1	1	ExplicitInputPort
 71	Discrete time systems	DOLLAR	2	2	2	20	0	ExplicitOutputPort	1	1	ExplicitOutputPort
-72	Discrete time systems	DOLLAR	3	3	3	0	20	ControlPort	1	1	ControlPort
+72	Discrete time systems	DOLLAR	3	3	3	0	-20	ControlPort	1	1	ControlPort
 73	Discrete time systems	DOLLAR_f	1	1	1	-20	0	ExplicitInputPort	1	1	ExplicitInputPort
 74	Discrete time systems	DOLLAR_f	2	2	2	20	0	ExplicitOutputPort	1	1	ExplicitOutputPort
-75	Discrete time systems	DOLLAR_f	3	3	3	0	20	ControlPort	1	1	ControlPort
+75	Discrete time systems	DOLLAR_f	3	3	3	0	-20	ControlPort	1	1	ControlPort
 76	Discrete time systems	DOLLAR_m	1	1	1	-20	0	ExplicitInputPort	1	1	ExplicitInputPort
 77	Discrete time systems	DOLLAR_m	2	2	2	20	0	ExplicitOutputPort	1	1	ExplicitOutputPort
-78	Discrete time systems	DOLLAR_m	3	3	3	0	20	ControlPort	1	1	ControlPort
+78	Discrete time systems	DOLLAR_m	3	3	3	0	-20	ControlPort	1	1	ControlPort
 79	Discrete time systems	REGISTER	1	1	1	-30	0	ExplicitInputPort	1	1	ExplicitInputPort
 80	Discrete time systems	REGISTER	2	2	2	30	0	ExplicitOutputPort	1	1	ExplicitOutputPort
-81	Discrete time systems	REGISTER	3	3	3	0	20	ControlPort	1	1	ControlPort
+81	Discrete time systems	REGISTER	3	3	3	0	-20	ControlPort	1	1	ControlPort
 82	Discrete time systems	SAMPHOLD_m	1	1	1	-20	0	ExplicitInputPort	1	1	ExplicitInputPort
 83	Discrete time systems	SAMPHOLD_m	2	2	2	20	0	ExplicitOutputPort	1	1	ExplicitOutputPort
-84	Discrete time systems	SAMPHOLD_m	3	3	3	0	20	ControlPort	1	1	ControlPort
+84	Discrete time systems	SAMPHOLD_m	3	3	3	0	-20	ControlPort	1	1	ControlPort
 85	Lookup tables	INTRP2BLK_f	1	1	1	-30	-10	ExplicitInputPort	1	1	ExplicitInputPort
 86	Lookup tables	INTRP2BLK_f	2	2	2	-30	10	ExplicitInputPort	1	1	ExplicitInputPort
 87	Lookup tables	INTRP2BLK_f	3	3	3	30	0	ExplicitOutputPort	1	1	ExplicitOutputPort
@@ -89,50 +89,50 @@
 89	Lookup tables	INTRPLBLK_f	2	2	2	20	0	ExplicitOutputPort	1	1	ExplicitOutputPort
 90	Lookup tables	LOOKUP_f	1	1	1	-20	0	ExplicitInputPort	1	1	ExplicitInputPort
 91	Lookup tables	LOOKUP_f	2	2	2	20	0	ExplicitOutputPort	1	1	ExplicitOutputPort
-92	Event handling	ANDBLK	1	1	1	0	-20	CommandPort	1	1	CommandPort
-93	Event handling	ANDBLK	2	2	2	-10	20	ControlPort	1	1	ControlPort
-94	Event handling	ANDBLK	3	3	3	10	20	ControlPort	1	1	ControlPort
+92	Event handling	ANDBLK	1	1	1	-10	-20	ControlPort	1	1	ControlPort
+93	Event handling	ANDBLK	2	2	2	10	-20	ControlPort	1	1	ControlPort
+94	Event handling	ANDBLK	3	3	3	0	20	CommandPort	1	1	CommandPort
 95	Event handling	ANDLOG_f	1	1	1	30	0	ExplicitOutputPort	1	1	ExplicitOutputPort
-96	Event handling	ANDLOG_f	2	2	2	-15	30	ControlPort	1	1	ControlPort
-97	Event handling	ANDLOG_f	3	3	3	15	30	ControlPort	1	1	ControlPort
-98	Event handling	CEVENTSCOPE	1	1	1	0	20	ControlPort	1	1	ControlPort
-99	Event handling	CLKSOMV_f	1	1	1	0	-20	CommandPort	1	1	CommandPort
-100	Event handling	CLKSOMV_f	2	2	2	-13	20	ControlPort	1	1	ControlPort
-101	Event handling	CLKSOMV_f	3	3	3	0	20	ControlPort	1	1	ControlPort
-102	Event handling	CLKSOMV_f	4	4	4	13	20	ControlPort	1	1	ControlPort
+96	Event handling	ANDLOG_f	2	2	2	-15	-30	ControlPort	1	1	ControlPort
+97	Event handling	ANDLOG_f	3	3	3	15	-30	ControlPort	1	1	ControlPort
+98	Event handling	CEVENTSCOPE	1	1	1	0	-20	ControlPort	1	1	ControlPort
+99	Event handling	CLKSOMV_f	1	1	1	-13	-20	ControlPort	1	1	ControlPort
+100	Event handling	CLKSOMV_f	2	2	2	0	-20	ControlPort	1	1	ControlPort
+101	Event handling	CLKSOMV_f	3	3	3	13	-20	ControlPort	1	1	ControlPort
+102	Event handling	CLKSOMV_f	4	4	4	0	20	CommandPort	1	1	CommandPort
 103	Event handling	EDGE_TRIGGER	1	1	1	-30	0	ExplicitInputPort	1	1	ExplicitInputPort
-104	Event handling	EDGE_TRIGGER	2	2	2	0	-20	CommandPort	1	1	CommandPort
-105	Event handling	END_c	1	1	1	0	-20	CommandPort	1	1	CommandPort
-106	Event handling	END_c	2	2	2	0	20	ControlPort	1	1	ControlPort
+104	Event handling	EDGE_TRIGGER	2	2	2	0	20	CommandPort	1	1	CommandPort
+105	Event handling	END_c	1	1	1	0	-20	ControlPort	1	1	ControlPort
+106	Event handling	END_c	2	2	2	0	20	CommandPort	1	1	CommandPort
 107	Event handling	ESELECT_f	1	1	1	-40	0	ExplicitInputPort	1	1	ExplicitInputPort
-108	Event handling	ESELECT_f	2	2	2	-20	-20	CommandPort	1	1	CommandPort
-109	Event handling	ESELECT_f	3	3	3	20	-20	CommandPort	1	1	CommandPort
-110	Event handling	ESELECT_f	4	4	4	0	20	ControlPort	1	1	ControlPort
-111	Event handling	EVTDLY_c	1	1	1	0	-20	CommandPort	1	1	CommandPort
-112	Event handling	EVTDLY_c	2	2	2	0	20	ControlPort	1	1	ControlPort
-113	Event handling	EVTGEN_f	1	1	1	0	-20	CommandPort	1	1	CommandPort
+108	Event handling	ESELECT_f	2	2	2	0	-20	ControlPort	1	1	ControlPort
+109	Event handling	ESELECT_f	3	3	3	-20	20	CommandPort	1	1	CommandPort
+110	Event handling	ESELECT_f	4	4	4	20	20	CommandPort	1	1	CommandPort
+111	Event handling	EVTDLY_c	1	1	1	0	-20	ControlPort	1	1	ControlPort
+112	Event handling	EVTDLY_c	2	2	2	0	20	CommandPort	1	1	CommandPort
+113	Event handling	EVTGEN_f	1	1	1	0	20	CommandPort	1	1	CommandPort
 114	Event handling	EVTVARDLY	1	1	1	-30	0	ExplicitInputPort	1	1	ExplicitInputPort
-115	Event handling	EVTVARDLY	2	2	2	0	-20	CommandPort	1	1	CommandPort
-116	Event handling	EVTVARDLY	3	3	3	0	20	ControlPort	1	1	ControlPort
+115	Event handling	EVTVARDLY	2	2	2	0	-20	ControlPort	1	1	ControlPort
+116	Event handling	EVTVARDLY	3	3	3	0	20	CommandPort	1	1	CommandPort
 117	Event handling	Extract_Activation	1	1	1	-30	0	ExplicitInputPort	1	1	ExplicitInputPort
-118	Event handling	Extract_Activation	2	2	2	0	-20	CommandPort	1	1	CommandPort
-119	Event handling	freq_div	1	1	1	0	-20	CommandPort	1	1	CommandPort
-120	Event handling	freq_div	2	2	2	0	20	ControlPort	1	1	ControlPort
-121	Event handling	HALT_f	1	1	1	0	20	ControlPort	1	1	ControlPort
+118	Event handling	Extract_Activation	2	2	2	0	20	CommandPort	1	1	CommandPort
+119	Event handling	freq_div	1	1	1	0	-20	ControlPort	1	1	ControlPort
+120	Event handling	freq_div	2	2	2	0	20	CommandPort	1	1	CommandPort
+121	Event handling	HALT_f	1	1	1	0	-20	ControlPort	1	1	ControlPort
 122	Event handling	IFTHEL_f	1	1	1	-30	0	ExplicitInputPort	1	1	ExplicitInputPort
-123	Event handling	IFTHEL_f	2	2	2	-15	-30	CommandPort	1	1	CommandPort
-124	Event handling	IFTHEL_f	3	3	3	15	-30	CommandPort	1	1	CommandPort
-125	Event handling	IFTHEL_f	4	4	4	0	30	ControlPort	1	1	ControlPort
-126	Event handling	M_freq	1	1	1	-20	-20	CommandPort	1	1	CommandPort
-127	Event handling	M_freq	2	2	2	0	-20	CommandPort	1	1	CommandPort
-128	Event handling	M_freq	3	3	3	20	-20	CommandPort	1	1	CommandPort
-129	Event handling	M_freq	4	4	4	0	20	ControlPort	1	1	ControlPort
-130	Event handling	MCLOCK_f	1	1	1	-15	-20	CommandPort	1	1	CommandPort
-131	Event handling	MCLOCK_f	2	2	2	15	-20	CommandPort	1	1	CommandPort
-132	Event handling	MFCLCK_f	1	1	1	-15	-20	CommandPort	1	1	CommandPort
-133	Event handling	MFCLCK_f	2	2	2	15	-20	CommandPort	1	1	CommandPort
-134	Event handling	MFCLCK_f	3	3	3	0	20	ControlPort	1	1	ControlPort
-135	Event handling	VirtualCLK0	1	1	1	0	20	ControlPort	1	1	ControlPort
+123	Event handling	IFTHEL_f	2	2	2	0	-30	ControlPort	1	1	ControlPort
+124	Event handling	IFTHEL_f	3	3	3	-15	30	CommandPort	1	1	CommandPort
+125	Event handling	IFTHEL_f	4	4	4	15	30	CommandPort	1	1	CommandPort
+126	Event handling	M_freq	1	1	1	0	-20	ControlPort	1	1	ControlPort
+127	Event handling	M_freq	2	2	2	-20	20	CommandPort	1	1	CommandPort
+128	Event handling	M_freq	3	3	3	0	20	CommandPort	1	1	CommandPort
+129	Event handling	M_freq	4	4	4	20	20	CommandPort	1	1	CommandPort
+130	Event handling	MCLOCK_f	1	1	1	-15	20	CommandPort	1	1	CommandPort
+131	Event handling	MCLOCK_f	2	2	2	15	20	CommandPort	1	1	CommandPort
+132	Event handling	MFCLCK_f	1	1	1	0	-20	ControlPort	1	1	ControlPort
+133	Event handling	MFCLCK_f	2	2	2	-15	20	CommandPort	1	1	CommandPort
+134	Event handling	MFCLCK_f	3	3	3	15	20	CommandPort	1	1	CommandPort
+135	Event handling	VirtualCLK0	1	1	1	0	-20	ControlPort	1	1	ControlPort
 136	Mathematical Operations	ABS_VALUE	1	1	1	-20	0	ExplicitInputPort	1	1	ExplicitInputPort
 137	Mathematical Operations	ABS_VALUE	2	2	2	20	0	ExplicitOutputPort	1	1	ExplicitOutputPort
 138	Mathematical Operations	BIGSOM_f	1	1	1	-20	-15	ExplicitInputPort	1	1	ExplicitInputPort
@@ -338,7 +338,7 @@
 338	Integer	LOGIC	1	1	1	-20	-10	ExplicitInputPort	1	1	ExplicitInputPort
 339	Integer	LOGIC	2	2	2	-20	10	ExplicitInputPort	1	1	ExplicitInputPort
 340	Integer	LOGIC	3	3	3	20	0	ExplicitOutputPort	1	1	ExplicitOutputPort
-341	Integer	LOGIC	4	4	4	0	20	ControlPort	1	1	ControlPort
+341	Integer	LOGIC	4	4	4	0	-20	ControlPort	1	1	ControlPort
 342	Integer	SHIFT	1	1	1	-30	0	ExplicitInputPort	1	1	ExplicitInputPort
 343	Integer	SHIFT	2	2	2	30	0	ExplicitOutputPort	1	1	ExplicitOutputPort
 344	Integer	SRFLIPFLOP	1	1	1	-20	-15	ExplicitInputPort	1	1	ExplicitInputPort
@@ -346,15 +346,15 @@
 346	Integer	SRFLIPFLOP	3	3	3	20	-15	ExplicitOutputPort	1	1	ExplicitOutputPort
 347	Integer	SRFLIPFLOP	4	4	4	20	15	ExplicitOutputPort	1	1	ExplicitOutputPort
 348	Zero crossing detection	GENERAL_f	1	1	1	-30	0	ExplicitInputPort	1	1	ExplicitInputPort
-349	Zero crossing detection	GENERAL_f	2	2	2	0	-20	CommandPort	1	1	CommandPort
+349	Zero crossing detection	GENERAL_f	2	2	2	0	20	CommandPort	1	1	CommandPort
 350	Zero crossing detection	NEGTOPOS_f	1	1	1	-20	0	ExplicitInputPort	1	1	ExplicitInputPort
-351	Zero crossing detection	NEGTOPOS_f	2	2	2	0	-20	CommandPort	1	1	CommandPort
+351	Zero crossing detection	NEGTOPOS_f	2	2	2	0	20	CommandPort	1	1	CommandPort
 352	Zero crossing detection	POSTONEG_f	1	1	1	-20	0	ExplicitInputPort	1	1	ExplicitInputPort
-353	Zero crossing detection	POSTONEG_f	2	2	2	0	-20	CommandPort	1	1	CommandPort
+353	Zero crossing detection	POSTONEG_f	2	2	2	0	20	CommandPort	1	1	CommandPort
 354	Zero crossing detection	ZCROSS_f	1	1	1	-20	0	ExplicitInputPort	1	1	ExplicitInputPort
-355	Zero crossing detection	ZCROSS_f	2	2	2	0	-20	CommandPort	1	1	CommandPort
-356	Event handling	CLKFROM	1	1	1	0	-10	CommandPort	1	1	CommandPort
-357	Event handling	CLKGOTO	1	1	1	0	10	ControlPort	1	1	ControlPort
+355	Zero crossing detection	ZCROSS_f	2	2	2	0	20	CommandPort	1	1	CommandPort
+356	Event handling	CLKFROM	1	1	1	0	10	CommandPort	1	1	CommandPort
+357	Event handling	CLKGOTO	1	1	1	0	-10	ControlPort	1	1	ControlPort
 358	Signal Routing	DEMUX	1	1	1	-5	0	ExplicitInputPort	1	1	ExplicitInputPort
 359	Signal Routing	DEMUX	2	2	2	5	-10	ExplicitOutputPort	1	1	ExplicitOutputPort
 360	Signal Routing	DEMUX	3	3	3	5	10	ExplicitOutputPort	1	1	ExplicitOutputPort
@@ -370,8 +370,8 @@
 370	Signal Routing	ISELECT_m	1	1	1	-30	0	ExplicitInputPort	1	1	ExplicitInputPort
 371	Signal Routing	ISELECT_m	2	2	2	30	-10	ExplicitOutputPort	1	1	ExplicitOutputPort
 372	Signal Routing	ISELECT_m	3	3	3	30	10	ExplicitOutputPort	1	1	ExplicitOutputPort
-373	Signal Routing	ISELECT_m	4	4	4	-15	20	ControlPort	1	1	ControlPort
-374	Signal Routing	ISELECT_m	5	5	5	15	20	ControlPort	1	1	ControlPort
+373	Signal Routing	ISELECT_m	4	4	4	-15	-20	ControlPort	1	1	ControlPort
+374	Signal Routing	ISELECT_m	5	5	5	15	-20	ControlPort	1	1	ControlPort
 375	Signal Routing	M_SWITCH	1	1	1	-25	-13	ExplicitInputPort	1	1	ExplicitInputPort
 376	Signal Routing	M_SWITCH	2	2	2	-25	0	ExplicitInputPort	1	1	ExplicitInputPort
 377	Signal Routing	M_SWITCH	3	3	3	-25	13	ExplicitInputPort	1	1	ExplicitInputPort
@@ -388,15 +388,15 @@
 388	Signal Routing	RELAY_f	1	1	1	-20	-10	ExplicitInputPort	1	1	ExplicitInputPort
 389	Signal Routing	RELAY_f	2	2	2	-20	10	ExplicitInputPort	1	1	ExplicitInputPort
 390	Signal Routing	RELAY_f	3	3	3	20	0	ExplicitOutputPort	1	1	ExplicitOutputPort
-391	Signal Routing	RELAY_f	4	4	4	-10	20	ControlPort	1	1	ControlPort
-392	Signal Routing	RELAY_f	5	5	5	10	20	ControlPort	1	1	ControlPort
+391	Signal Routing	RELAY_f	4	4	4	-10	-20	ControlPort	1	1	ControlPort
+392	Signal Routing	RELAY_f	5	5	5	10	-20	ControlPort	1	1	ControlPort
 393	Signal Routing	SCALAR2VECTOR	1	1	1	-30	0	ExplicitInputPort	1	1	ExplicitInputPort
 394	Signal Routing	SCALAR2VECTOR	2	2	2	30	0	ExplicitOutputPort	1	1	ExplicitOutputPort
 395	Signal Routing	SELECT_m	1	1	1	-30	-10	ExplicitInputPort	1	1	ExplicitInputPort
 396	Signal Routing	SELECT_m	2	2	2	-30	10	ExplicitInputPort	1	1	ExplicitInputPort
 397	Signal Routing	SELECT_m	3	3	3	30	0	ExplicitOutputPort	1	1	ExplicitOutputPort
-398	Signal Routing	SELECT_m	4	4	4	-15	20	ControlPort	1	1	ControlPort
-399	Signal Routing	SELECT_m	5	5	5	15	20	ControlPort	1	1	ControlPort
+398	Signal Routing	SELECT_m	4	4	4	-15	-20	ControlPort	1	1	ControlPort
+399	Signal Routing	SELECT_m	5	5	5	15	-20	ControlPort	1	1	ControlPort
 400	Signal Routing	SELF_SWITCH	1	1	1	-20	0	ExplicitInputPort	1	1	ExplicitInputPort
 401	Signal Routing	SELF_SWITCH	2	2	2	20	0	ExplicitOutputPort	1	1	ExplicitOutputPort
 402	Signal Routing	SWITCH_f	1	1	1	-20	-10	ExplicitInputPort	1	1	ExplicitInputPort
@@ -414,80 +414,80 @@
 414	Implicit	DIFF_f	1	1	1	-20	0	ExplicitInputPort	1	1	ExplicitInputPort
 415	Implicit	DIFF_f	2	2	2	20	0	ExplicitOutputPort	1	1	ExplicitOutputPort
 416	Sinks	AFFICH_m	1	1	1	-30	0	ExplicitInputPort	1	1	ExplicitInputPort
-417	Sinks	AFFICH_m	2	2	2	0	20	ControlPort	1	1	ControlPort
+417	Sinks	AFFICH_m	2	2	2	0	-20	ControlPort	1	1	ControlPort
 418	Sinks	BARXY	1	1	1	-20	-10	ExplicitInputPort	1	1	ExplicitInputPort
 419	Sinks	BARXY	2	2	2	-20	10	ExplicitInputPort	1	1	ExplicitInputPort
-420	Sinks	BARXY	3	3	3	0	20	ControlPort	1	1	ControlPort
+420	Sinks	BARXY	3	3	3	0	-20	ControlPort	1	1	ControlPort
 421	Sinks	CANIMXY	1	1	1	-20	-10	ExplicitInputPort	1	1	ExplicitInputPort
 422	Sinks	CANIMXY	2	2	2	-20	10	ExplicitInputPort	1	1	ExplicitInputPort
-423	Sinks	CANIMXY	3	3	3	0	20	ControlPort	1	1	ControlPort
+423	Sinks	CANIMXY	3	3	3	0	-20	ControlPort	1	1	ControlPort
 424	Sinks	CANIMXY3D	1	1	1	-20	-13	ExplicitInputPort	1	1	ExplicitInputPort
 425	Sinks	CANIMXY3D	2	2	2	-20	0	ExplicitInputPort	1	1	ExplicitInputPort
 426	Sinks	CANIMXY3D	3	3	3	-20	13	ExplicitInputPort	1	1	ExplicitInputPort
-427	Sinks	CANIMXY3D	4	4	4	0	20	ControlPort	1	1	ControlPort
-428	Sinks	CFSCOPE	1	1	1	0	20	ControlPort	1	1	ControlPort
-429	Event handling	CLKOUTV_f	1	1	1	0	10	ControlPort	1	1	ControlPort
+427	Sinks	CANIMXY3D	4	4	4	0	-20	ControlPort	1	1	ControlPort
+428	Sinks	CFSCOPE	1	1	1	0	-20	ControlPort	1	1	ControlPort
+429	Event handling	CLKOUTV_f	1	1	1	0	-10	ControlPort	1	1	ControlPort
 430	Sinks	CMAT3D	1	1	1	-20	0	ExplicitInputPort	1	1	ExplicitInputPort
-431	Sinks	CMAT3D	2	2	2	0	20	ControlPort	1	1	ControlPort
+431	Sinks	CMAT3D	2	2	2	0	-20	ControlPort	1	1	ControlPort
 432	Sinks	CMATVIEW	1	1	1	-20	0	ExplicitInputPort	1	1	ExplicitInputPort
-433	Sinks	CMATVIEW	2	2	2	0	20	ControlPort	1	1	ControlPort
+433	Sinks	CMATVIEW	2	2	2	0	-20	ControlPort	1	1	ControlPort
 434	Sinks	CMSCOPE	1	1	1	-20	-10	ExplicitInputPort	1	1	ExplicitInputPort
 435	Sinks	CMSCOPE	2	2	2	-20	10	ExplicitInputPort	1	1	ExplicitInputPort
-436	Sinks	CMSCOPE	3	3	3	0	20	ControlPort	1	1	ControlPort
+436	Sinks	CMSCOPE	3	3	3	0	-20	ControlPort	1	1	ControlPort
 437	Sinks	CSCOPE	1	1	1	-20	0	ExplicitInputPort	1	1	ExplicitInputPort
-438	Sinks	CSCOPE	2	2	2	0	20	ControlPort	1	1	ControlPort
+438	Sinks	CSCOPE	2	2	2	0	-20	ControlPort	1	1	ControlPort
 439	Sinks	CSCOPXY	1	1	1	-20	-10	ExplicitInputPort	1	1	ExplicitInputPort
 440	Sinks	CSCOPXY	2	2	2	-20	10	ExplicitInputPort	1	1	ExplicitInputPort
-441	Sinks	CSCOPXY	3	3	3	0	20	ControlPort	1	1	ControlPort
+441	Sinks	CSCOPXY	3	3	3	0	-20	ControlPort	1	1	ControlPort
 442	Sinks	CSCOPXY3D	1	1	1	-20	-13	ExplicitInputPort	1	1	ExplicitInputPort
 443	Sinks	CSCOPXY3D	2	2	2	-20	0	ExplicitInputPort	1	1	ExplicitInputPort
 444	Sinks	CSCOPXY3D	3	3	3	-20	13	ExplicitInputPort	1	1	ExplicitInputPort
-445	Sinks	CSCOPXY3D	4	4	4	0	20	ControlPort	1	1	ControlPort
+445	Sinks	CSCOPXY3D	4	4	4	0	-20	ControlPort	1	1	ControlPort
 446	Port & Subsystem	OUT_f	1	1	1	-10	0	ExplicitInputPort	1	1	ExplicitInputPort
 447	Port & Subsystem	OUTIMPL_f	1	1	1	-10	0	ImplicitInputPort	1	1	ImplicitInputPort
 448	Sinks	TOWS_c	1	1	1	-40	0	ExplicitInputPort	1	1	ExplicitInputPort
-449	Sinks	TOWS_c	2	2	2	0	20	ControlPort	1	1	ControlPort
+449	Sinks	TOWS_c	2	2	2	0	-20	ControlPort	1	1	ControlPort
 450	Sinks	TRASH_f	1	1	1	-20	0	ExplicitInputPort	1	1	ExplicitInputPort
-451	Sinks	TRASH_f	2	2	2	0	20	ControlPort	1	1	ControlPort
+451	Sinks	TRASH_f	2	2	2	0	-20	ControlPort	1	1	ControlPort
 452	Sinks	WRITEAU_f	1	1	1	-40	0	ExplicitInputPort	1	1	ExplicitInputPort
-453	Sinks	WRITEAU_f	2	2	2	0	20	ControlPort	1	1	ControlPort
+453	Sinks	WRITEAU_f	2	2	2	0	-20	ControlPort	1	1	ControlPort
 454	Sinks	WRITEC_f	1	1	1	-40	0	ExplicitInputPort	1	1	ExplicitInputPort
-455	Sinks	WRITEC_f	2	2	2	0	20	ControlPort	1	1	ControlPort
-456	Port & Subsystem	CLKINV_f	1	1	1	0	-10	CommandPort	1	1	CommandPort
-457	Event handling	CLOCK_c	1	1	1	0	-20	CommandPort	1	1	CommandPort
+455	Sinks	WRITEC_f	2	2	2	0	-20	ControlPort	1	1	ControlPort
+456	Port & Subsystem	CLKINV_f	1	1	1	0	10	CommandPort	1	1	CommandPort
+457	Event handling	CLOCK_c	1	1	1	0	20	CommandPort	1	1	CommandPort
 458	Sources	CONST	1	1	1	20	0	ExplicitOutputPort	1	1	ExplicitOutputPort
 459	Sources	CONST_f	1	1	1	20	0	ExplicitOutputPort	1	1	ExplicitOutputPort
 460	Sources	CONST_m	1	1	1	20	0	ExplicitOutputPort	1	1	ExplicitOutputPort
 461	Sources	Counter	1	1	1	30	0	ExplicitOutputPort	1	1	ExplicitOutputPort
-462	Sources	Counter	2	2	2	0	20	ControlPort	1	1	ControlPort
+462	Sources	Counter	2	2	2	0	-20	ControlPort	1	1	ControlPort
 463	Sources	CURV_f	1	1	1	20	0	ExplicitOutputPort	1	1	ExplicitOutputPort
 464	Sources	FROMWSB	1	1	1	50	0	ExplicitOutputPort	1	1	ExplicitOutputPort
 465	Sources	GENSIN_f	1	1	1	30	0	ExplicitOutputPort	1	1	ExplicitOutputPort
 466	Sources	GENSQR_f	1	1	1	30	0	ExplicitOutputPort	1	1	ExplicitOutputPort
-467	Sources	GENSQR_f	2	2	2	0	20	ControlPort	1	1	ControlPort
+467	Sources	GENSQR_f	2	2	2	0	-20	ControlPort	1	1	ControlPort
 468	Port & Subsystem	IN_f	1	1	1	10	0	ExplicitOutputPort	1	1	ExplicitOutputPort
 469	Port & Subsystem	INIMPL_f	1	1	1	10	0	ImplicitOutputPort	1	1	ImplicitOutputPort
 470	Sources	Modulo_Count	1	1	1	30	0	ExplicitOutputPort	1	1	ExplicitOutputPort
-471	Sources	Modulo_Count	2	2	2	0	20	ControlPort	1	1	ControlPort
+471	Sources	Modulo_Count	2	2	2	0	-20	ControlPort	1	1	ControlPort
 472	Sources	PULSE_SC	1	1	1	30	0	ExplicitOutputPort	1	1	ExplicitOutputPort
 473	Sources	RAMP	1	1	1	20	0	ExplicitOutputPort	1	1	ExplicitOutputPort
 474	Sources	RAND_m	1	1	1	30	0	ExplicitOutputPort	1	1	ExplicitOutputPort
-475	Sources	RAND_m	2	2	2	0	20	ControlPort	1	1	ControlPort
+475	Sources	RAND_m	2	2	2	0	-20	ControlPort	1	1	ControlPort
 476	Sources	READAU_f	1	1	1	50	0	ExplicitOutputPort	1	1	ExplicitOutputPort
-477	Sources	READAU_f	2	2	2	0	20	ControlPort	1	1	ControlPort
+477	Sources	READAU_f	2	2	2	0	-20	ControlPort	1	1	ControlPort
 478	Sources	READC_f	1	1	1	40	0	ExplicitOutputPort	1	1	ExplicitOutputPort
-479	Sources	READC_f	2	2	2	0	20	ControlPort	1	1	ControlPort
+479	Sources	READC_f	2	2	2	0	-20	ControlPort	1	1	ControlPort
 480	Sources	RFILE_f	1	1	1	30	0	ExplicitOutputPort	1	1	ExplicitOutputPort
-481	Sources	RFILE_f	2	2	2	0	20	ControlPort	1	1	ControlPort
-482	Event handling	SampleCLK	1	1	1	0	-20	CommandPort	1	1	CommandPort
+481	Sources	RFILE_f	2	2	2	0	-20	ControlPort	1	1	ControlPort
+482	Event handling	SampleCLK	1	1	1	0	20	CommandPort	1	1	CommandPort
 483	Sources	SAWTOOTH_f	1	1	1	30	0	ExplicitOutputPort	1	1	ExplicitOutputPort
-484	Sources	SAWTOOTH_f	2	2	2	0	20	ControlPort	1	1	ControlPort
+484	Sources	SAWTOOTH_f	2	2	2	0	-20	ControlPort	1	1	ControlPort
 485	Sources	Sigbuilder	1	1	1	30	0	ExplicitOutputPort	1	1	ExplicitOutputPort
-486	Sources	Sigbuilder	2	2	2	0	-20	CommandPort	1	1	CommandPort
+486	Sources	Sigbuilder	2	2	2	0	20	CommandPort	1	1	CommandPort
 487	Sources	STEP_FUNCTION	1	1	1	20	0	ExplicitOutputPort	1	1	ExplicitOutputPort
 488	Sources	TIME_f	1	1	1	20	0	ExplicitOutputPort	1	1	ExplicitOutputPort
 489	Sources	TKSCALE	1	1	1	30	0	ExplicitOutputPort	1	1	ExplicitOutputPort
-490	Sources	TKSCALE	2	2	2	0	20	ControlPort	1	1	ControlPort
+490	Sources	TKSCALE	2	2	2	0	-20	ControlPort	1	1	ControlPort
 491	Thermo-Hydraulics	Bache	1	1	1	-20	-10	ImplicitInputPort	1	1	ImplicitInputPort
 492	Thermo-Hydraulics	Bache	2	2	2	-20	10	ImplicitInputPort	1	1	ImplicitInputPort
 493	Thermo-Hydraulics	Bache	3	3	3	20	-13	ExplicitOutputPort	1	1	ExplicitOutputPort
@@ -507,10 +507,10 @@
 507	Demonstration Blocks	BOUNCE	2	2	2	30	10	ExplicitOutputPort	1	1	ExplicitOutputPort
 508	Demonstration Blocks	BOUNCEXY	1	1	1	-20	-10	ExplicitInputPort	1	1	ExplicitInputPort
 509	Demonstration Blocks	BOUNCEXY	2	2	2	-20	10	ExplicitInputPort	1	1	ExplicitInputPort
-510	Demonstration Blocks	BOUNCEXY	3	3	3	0	20	ControlPort	1	1	ControlPort
+510	Demonstration Blocks	BOUNCEXY	3	3	3	0	-20	ControlPort	1	1	ControlPort
 511	Demonstration Blocks	BPLATFORM	1	1	1	-20	-10	ExplicitInputPort	1	1	ExplicitInputPort
 512	Demonstration Blocks	BPLATFORM	2	2	2	-20	10	ExplicitInputPort	1	1	ExplicitInputPort
-513	Demonstration Blocks	BPLATFORM	3	3	3	0	20	ControlPort	1	1	ControlPort
+513	Demonstration Blocks	BPLATFORM	3	3	3	0	-20	ControlPort	1	1	ControlPort
 514	User-Defined Functions	c_block	1	1	1	-30	0	ExplicitInputPort	1	1	ExplicitInputPort
 515	User-Defined Functions	c_block	2	2	2	30	0	ExplicitOutputPort	1	1	ExplicitOutputPort
 516	User-Defined Functions	CBLOCK	1	1	1	-40	0	ExplicitInputPort	1	1	ExplicitInputPort

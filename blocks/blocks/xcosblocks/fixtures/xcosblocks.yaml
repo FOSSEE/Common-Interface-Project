@@ -9500,7 +9500,7 @@
     port_name: '4'
     port_number: '4'
     port_x: 0
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -9786,7 +9786,7 @@
     port_name: '5'
     port_number: '5'
     port_x: 0
-    port_y: -20
+    port_y: 20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -9863,12 +9863,12 @@
     port_order: 4
     port_name: '4'
     port_number: '4'
-    port_x: -15
+    port_x: 0
     port_y: -20
-    port_orientation: CommandPort
+    port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
-    port_type: CommandPort
+    port_type: ControlPort
 - model: xcosblocks.newblockport
   pk: 58
   fields:
@@ -9876,8 +9876,8 @@
     port_order: 5
     port_name: '5'
     port_number: '5'
-    port_x: 15
-    port_y: -20
+    port_x: -15
+    port_y: 20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -9889,12 +9889,12 @@
     port_order: 6
     port_name: '6'
     port_number: '6'
-    port_x: 0
+    port_x: 15
     port_y: 20
-    port_orientation: ControlPort
+    port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
-    port_type: ControlPort
+    port_type: CommandPort
 - model: xcosblocks.newblockport
   pk: 60
   fields:
@@ -9929,7 +9929,7 @@
     port_name: '3'
     port_number: '3'
     port_x: 0
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -9981,7 +9981,7 @@
     port_name: '4'
     port_number: '4'
     port_x: 0
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -10020,7 +10020,7 @@
     port_name: '3'
     port_number: '3'
     port_x: 0
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -10059,7 +10059,7 @@
     port_name: '3'
     port_number: '3'
     port_x: 0
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -10098,7 +10098,7 @@
     port_name: '3'
     port_number: '3'
     port_x: 0
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -10137,7 +10137,7 @@
     port_name: '3'
     port_number: '3'
     port_x: 0
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -10176,7 +10176,7 @@
     port_name: '3'
     port_number: '3'
     port_x: 0
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -10215,7 +10215,7 @@
     port_name: '3'
     port_number: '3'
     port_x: 0
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -10318,12 +10318,12 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
+    port_x: -10
     port_y: -20
-    port_orientation: CommandPort
+    port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
-    port_type: CommandPort
+    port_type: ControlPort
 - model: xcosblocks.newblockport
   pk: 93
   fields:
@@ -10331,8 +10331,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: -10
-    port_y: 20
+    port_x: 10
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -10344,12 +10344,12 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 10
+    port_x: 0
     port_y: 20
-    port_orientation: ControlPort
+    port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
-    port_type: ControlPort
+    port_type: CommandPort
 - model: xcosblocks.newblockport
   pk: 95
   fields:
@@ -10371,7 +10371,7 @@
     port_name: '2'
     port_number: '2'
     port_x: -15
-    port_y: 30
+    port_y: -30
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -10384,7 +10384,7 @@
     port_name: '3'
     port_number: '3'
     port_x: 15
-    port_y: 30
+    port_y: -30
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -10397,7 +10397,7 @@
     port_name: '1'
     port_number: '1'
     port_x: 0
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -10409,12 +10409,12 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: 0
+    port_x: -13
     port_y: -20
-    port_orientation: CommandPort
+    port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
-    port_type: CommandPort
+    port_type: ControlPort
 - model: xcosblocks.newblockport
   pk: 100
   fields:
@@ -10422,8 +10422,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: -13
-    port_y: 20
+    port_x: 0
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -10435,8 +10435,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 0
-    port_y: 20
+    port_x: 13
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -10448,12 +10448,12 @@
     port_order: 4
     port_name: '4'
     port_number: '4'
-    port_x: 13
+    port_x: 0
     port_y: 20
-    port_orientation: ControlPort
+    port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
-    port_type: ControlPort
+    port_type: CommandPort
 - model: xcosblocks.newblockport
   pk: 103
   fields:
@@ -10475,7 +10475,7 @@
     port_name: '2'
     port_number: '2'
     port_x: 0
-    port_y: -20
+    port_y: 20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -10489,10 +10489,10 @@
     port_number: '1'
     port_x: 0
     port_y: -20
-    port_orientation: CommandPort
+    port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
-    port_type: CommandPort
+    port_type: ControlPort
 - model: xcosblocks.newblockport
   pk: 106
   fields:
@@ -10502,10 +10502,10 @@
     port_number: '2'
     port_x: 0
     port_y: 20
-    port_orientation: ControlPort
+    port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
-    port_type: ControlPort
+    port_type: CommandPort
 - model: xcosblocks.newblockport
   pk: 107
   fields:
@@ -10526,12 +10526,12 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: -20
+    port_x: 0
     port_y: -20
-    port_orientation: CommandPort
+    port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
-    port_type: CommandPort
+    port_type: ControlPort
 - model: xcosblocks.newblockport
   pk: 109
   fields:
@@ -10539,8 +10539,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 20
-    port_y: -20
+    port_x: -20
+    port_y: 20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -10552,12 +10552,12 @@
     port_order: 4
     port_name: '4'
     port_number: '4'
-    port_x: 0
+    port_x: 20
     port_y: 20
-    port_orientation: ControlPort
+    port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
-    port_type: ControlPort
+    port_type: CommandPort
 - model: xcosblocks.newblockport
   pk: 111
   fields:
@@ -10567,10 +10567,10 @@
     port_number: '1'
     port_x: 0
     port_y: -20
-    port_orientation: CommandPort
+    port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
-    port_type: CommandPort
+    port_type: ControlPort
 - model: xcosblocks.newblockport
   pk: 112
   fields:
@@ -10580,10 +10580,10 @@
     port_number: '2'
     port_x: 0
     port_y: 20
-    port_orientation: ControlPort
+    port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
-    port_type: ControlPort
+    port_type: CommandPort
 - model: xcosblocks.newblockport
   pk: 113
   fields:
@@ -10592,7 +10592,7 @@
     port_name: '1'
     port_number: '1'
     port_x: 0
-    port_y: -20
+    port_y: 20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -10619,10 +10619,10 @@
     port_number: '2'
     port_x: 0
     port_y: -20
-    port_orientation: CommandPort
+    port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
-    port_type: CommandPort
+    port_type: ControlPort
 - model: xcosblocks.newblockport
   pk: 116
   fields:
@@ -10632,10 +10632,10 @@
     port_number: '3'
     port_x: 0
     port_y: 20
-    port_orientation: ControlPort
+    port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
-    port_type: ControlPort
+    port_type: CommandPort
 - model: xcosblocks.newblockport
   pk: 117
   fields:
@@ -10657,7 +10657,7 @@
     port_name: '2'
     port_number: '2'
     port_x: 0
-    port_y: -20
+    port_y: 20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -10671,10 +10671,10 @@
     port_number: '1'
     port_x: 0
     port_y: -20
-    port_orientation: CommandPort
+    port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
-    port_type: CommandPort
+    port_type: ControlPort
 - model: xcosblocks.newblockport
   pk: 120
   fields:
@@ -10684,10 +10684,10 @@
     port_number: '2'
     port_x: 0
     port_y: 20
-    port_orientation: ControlPort
+    port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
-    port_type: ControlPort
+    port_type: CommandPort
 - model: xcosblocks.newblockport
   pk: 121
   fields:
@@ -10696,7 +10696,7 @@
     port_name: '1'
     port_number: '1'
     port_x: 0
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -10721,12 +10721,12 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: -15
+    port_x: 0
     port_y: -30
-    port_orientation: CommandPort
+    port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
-    port_type: CommandPort
+    port_type: ControlPort
 - model: xcosblocks.newblockport
   pk: 124
   fields:
@@ -10734,8 +10734,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 15
-    port_y: -30
+    port_x: -15
+    port_y: 30
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -10747,12 +10747,12 @@
     port_order: 4
     port_name: '4'
     port_number: '4'
-    port_x: 0
+    port_x: 15
     port_y: 30
-    port_orientation: ControlPort
+    port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
-    port_type: ControlPort
+    port_type: CommandPort
 - model: xcosblocks.newblockport
   pk: 126
   fields:
@@ -10760,12 +10760,12 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: -20
+    port_x: 0
     port_y: -20
-    port_orientation: CommandPort
+    port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
-    port_type: CommandPort
+    port_type: ControlPort
 - model: xcosblocks.newblockport
   pk: 127
   fields:
@@ -10773,8 +10773,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 0
-    port_y: -20
+    port_x: -20
+    port_y: 20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -10786,8 +10786,8 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 20
-    port_y: -20
+    port_x: 0
+    port_y: 20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -10799,12 +10799,12 @@
     port_order: 4
     port_name: '4'
     port_number: '4'
-    port_x: 0
+    port_x: 20
     port_y: 20
-    port_orientation: ControlPort
+    port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
-    port_type: ControlPort
+    port_type: CommandPort
 - model: xcosblocks.newblockport
   pk: 130
   fields:
@@ -10813,7 +10813,7 @@
     port_name: '1'
     port_number: '1'
     port_x: -15
-    port_y: -20
+    port_y: 20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -10826,7 +10826,7 @@
     port_name: '2'
     port_number: '2'
     port_x: 15
-    port_y: -20
+    port_y: 20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -10838,12 +10838,12 @@
     port_order: 1
     port_name: '1'
     port_number: '1'
-    port_x: -15
+    port_x: 0
     port_y: -20
-    port_orientation: CommandPort
+    port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
-    port_type: CommandPort
+    port_type: ControlPort
 - model: xcosblocks.newblockport
   pk: 133
   fields:
@@ -10851,8 +10851,8 @@
     port_order: 2
     port_name: '2'
     port_number: '2'
-    port_x: 15
-    port_y: -20
+    port_x: -15
+    port_y: 20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -10864,12 +10864,12 @@
     port_order: 3
     port_name: '3'
     port_number: '3'
-    port_x: 0
+    port_x: 15
     port_y: 20
-    port_orientation: ControlPort
+    port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
-    port_type: ControlPort
+    port_type: CommandPort
 - model: xcosblocks.newblockport
   pk: 135
   fields:
@@ -10878,7 +10878,7 @@
     port_name: '1'
     port_number: '1'
     port_x: 0
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -13556,7 +13556,7 @@
     port_name: '4'
     port_number: '4'
     port_x: 0
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -13660,7 +13660,7 @@
     port_name: '2'
     port_number: '2'
     port_x: 0
-    port_y: -20
+    port_y: 20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -13686,7 +13686,7 @@
     port_name: '2'
     port_number: '2'
     port_x: 0
-    port_y: -20
+    port_y: 20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -13712,7 +13712,7 @@
     port_name: '2'
     port_number: '2'
     port_x: 0
-    port_y: -20
+    port_y: 20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -13738,7 +13738,7 @@
     port_name: '2'
     port_number: '2'
     port_x: 0
-    port_y: -20
+    port_y: 20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -13751,7 +13751,7 @@
     port_name: '1'
     port_number: '1'
     port_x: 0
-    port_y: -10
+    port_y: 10
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -13764,7 +13764,7 @@
     port_name: '1'
     port_number: '1'
     port_x: 0
-    port_y: 10
+    port_y: -10
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -13972,7 +13972,7 @@
     port_name: '4'
     port_number: '4'
     port_x: -15
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -13985,7 +13985,7 @@
     port_name: '5'
     port_number: '5'
     port_x: 15
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -14206,7 +14206,7 @@
     port_name: '4'
     port_number: '4'
     port_x: -10
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -14219,7 +14219,7 @@
     port_name: '5'
     port_number: '5'
     port_x: 10
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -14297,7 +14297,7 @@
     port_name: '4'
     port_number: '4'
     port_x: -15
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -14310,7 +14310,7 @@
     port_name: '5'
     port_number: '5'
     port_x: 15
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -14544,7 +14544,7 @@
     port_name: '2'
     port_number: '2'
     port_x: 0
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -14583,7 +14583,7 @@
     port_name: '3'
     port_number: '3'
     port_x: 0
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -14622,7 +14622,7 @@
     port_name: '3'
     port_number: '3'
     port_x: 0
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -14674,7 +14674,7 @@
     port_name: '4'
     port_number: '4'
     port_x: 0
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -14687,7 +14687,7 @@
     port_name: '1'
     port_number: '1'
     port_x: 0
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -14700,7 +14700,7 @@
     port_name: '1'
     port_number: '1'
     port_x: 0
-    port_y: 10
+    port_y: -10
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -14726,7 +14726,7 @@
     port_name: '2'
     port_number: '2'
     port_x: 0
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -14752,7 +14752,7 @@
     port_name: '2'
     port_number: '2'
     port_x: 0
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -14791,7 +14791,7 @@
     port_name: '3'
     port_number: '3'
     port_x: 0
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -14817,7 +14817,7 @@
     port_name: '2'
     port_number: '2'
     port_x: 0
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -14856,7 +14856,7 @@
     port_name: '3'
     port_number: '3'
     port_x: 0
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -14908,7 +14908,7 @@
     port_name: '4'
     port_number: '4'
     port_x: 0
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -14960,7 +14960,7 @@
     port_name: '2'
     port_number: '2'
     port_x: 0
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -14986,7 +14986,7 @@
     port_name: '2'
     port_number: '2'
     port_x: 0
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -15012,7 +15012,7 @@
     port_name: '2'
     port_number: '2'
     port_x: 0
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -15038,7 +15038,7 @@
     port_name: '2'
     port_number: '2'
     port_x: 0
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -15051,7 +15051,7 @@
     port_name: '1'
     port_number: '1'
     port_x: 0
-    port_y: -10
+    port_y: 10
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -15064,7 +15064,7 @@
     port_name: '1'
     port_number: '1'
     port_x: 0
-    port_y: -20
+    port_y: 20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -15129,7 +15129,7 @@
     port_name: '2'
     port_number: '2'
     port_x: 0
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -15194,7 +15194,7 @@
     port_name: '2'
     port_number: '2'
     port_x: 0
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -15246,7 +15246,7 @@
     port_name: '2'
     port_number: '2'
     port_x: 0
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -15298,7 +15298,7 @@
     port_name: '2'
     port_number: '2'
     port_x: 0
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -15324,7 +15324,7 @@
     port_name: '2'
     port_number: '2'
     port_x: 0
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -15350,7 +15350,7 @@
     port_name: '2'
     port_number: '2'
     port_x: 0
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -15376,7 +15376,7 @@
     port_name: '2'
     port_number: '2'
     port_x: 0
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -15389,7 +15389,7 @@
     port_name: '1'
     port_number: '1'
     port_x: 0
-    port_y: -20
+    port_y: 20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -15415,7 +15415,7 @@
     port_name: '2'
     port_number: '2'
     port_x: 0
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -15441,7 +15441,7 @@
     port_name: '2'
     port_number: '2'
     port_x: 0
-    port_y: -20
+    port_y: 20
     port_orientation: CommandPort
     port_part: 1
     port_dmg: 1
@@ -15493,7 +15493,7 @@
     port_name: '2'
     port_number: '2'
     port_x: 0
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -15753,7 +15753,7 @@
     port_name: '3'
     port_number: '3'
     port_x: 0
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1
@@ -15792,7 +15792,7 @@
     port_name: '3'
     port_number: '3'
     port_x: 0
-    port_y: 20
+    port_y: -20
     port_orientation: ControlPort
     port_part: 1
     port_dmg: 1

@@ -69,7 +69,7 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
     if (blockport.port_name === 'NC') { continue }
 
     const xPos = 1 / 2 + blockport.port_x / defaultScale / width
-    const yPos = 1 / 2 - blockport.port_y / defaultScale / height
+    const yPos = 1 / 2 + blockport.port_y / defaultScale / height
 
     const portOrientation = blockport.port_orientation
     let pointX
