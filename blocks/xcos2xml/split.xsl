@@ -12,6 +12,7 @@
     <xsl:key name="k-implicitsrclink" match="ImplicitLink" use="@source | @target" />
 
     <xsl:template name="links">
+      <xsl:param name="linktype" />
       <xsl:param name="targetonelink" />
       <xsl:param name="sourceonelink" />
       <xsl:param name="sourcetwolink" />
@@ -111,6 +112,7 @@
           <xsl:variable name="sourcetwolink" select="key('k-srclink', $sourcetwoid)" />
 
           <xsl:call-template name="links">
+            <xsl:with-param name="linktype" select="ExplicitLink"/>
             <xsl:with-param name="targetonelink" select="$targetonelink"/>
             <xsl:with-param name="sourceonelink" select="$sourceonelink"/>
             <xsl:with-param name="sourcetwolink" select="$sourcetwolink"/>
@@ -128,6 +130,7 @@
           <xsl:variable name="sourcecommandtwolink" select="key('k-commandsrclink', $sourcecommandtwoid)" />
 
           <xsl:call-template name="links">
+            <xsl:with-param name="linktype" select="ImplicitLink"/>
             <xsl:with-param name="targetonelink" select="$targetcommandonelink"/>
             <xsl:with-param name="sourceonelink" select="$sourcecommandonelink"/>
             <xsl:with-param name="sourcetwolink" select="$sourcecommandtwolink"/>
@@ -145,6 +148,7 @@
           <xsl:variable name="sourceimplicittwolink" select="key('k-implicitsrclink', $sourceimplicittwoid)" />
 
           <xsl:call-template name="links">
+            <xsl:with-param name="linktype" select="CommandControlLink"/>
             <xsl:with-param name="targetonelink" select="$targetimplicitonelink"/>
             <xsl:with-param name="sourceonelink" select="$sourceimplicitonelink"/>
             <xsl:with-param name="sourcetwolink" select="$sourceimplicittwolink"/>
