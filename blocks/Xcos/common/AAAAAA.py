@@ -288,20 +288,7 @@ def getParametersFromExprsNode(node, subNodeType):
     parameters = []
 
     if isinstance(node, dict):
-        lastindex = None
-        for i in range(100):
-            parameter = 'p%03d_value' % i
-            if parameter in node:
-                value = node[parameter]
-                parameters.append(value)
-                if value != '':
-                    lastindex = None
-                elif lastindex is None:
-                    lastindex = i
-            else:
-                break
-        if lastindex is not None:
-            del parameters[lastindex:]
+        parameters = node['parameters']
     else:
         tag = subNodeType + '[@as="exprs"]'
         subNodes = node.find('./' + tag)

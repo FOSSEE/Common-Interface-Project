@@ -53,16 +53,16 @@ def set_block_parameter(request):
                 error = 'getblockportserializer error: %s' % str(e)
                 errorserializer = ErrorSerializer(data={
                     'code': 500, 'error': error})
-                return JsonResponse(errorserializer, safe=False)
+                return JsonResponse(errorserializer.initial_data, safe=False)
         else:
             error = 'getblockportserializer errors: %s' % serializer.errors
             errorserializer = ErrorSerializer(data={
                 'code': 500, 'error': error})
-            return JsonResponse(errorserializer, safe=False)
+            return JsonResponse(errorserializer.initial_data, safe=False)
     else:
         serializer = SetBlockParameterSerializer()
 
-    return JsonResponse(serializer.data)
+    return JsonResponse(serializer.initial_data)
 
 
 class NewBlockFilterSet(FilterSet):

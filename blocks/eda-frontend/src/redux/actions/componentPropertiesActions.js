@@ -51,12 +51,12 @@ export const getCompProperties = (block) => (dispatch) => {
 export const setCompProperties = (block, parameterValues, errorFields) => (dispatch) => {
   dispatch(loadingSetCompProperties(true))
   const url = 'setblockparameter'
-  const filteredParameterValues = Object.fromEntries(Object.entries(parameterValues).filter(([k, v]) => v != null))
-  const data = { block: block.style, ...filteredParameterValues }
+  const parameters = Object.values(parameterValues)
+  const data = { block: block.style, parameters }
   api.post(url, data)
     .then(
       (res) => {
-        block.parameter_values = filteredParameterValues
+        block.parameter_values = parameterValues
         block.errorFields = errorFields
         dispatch({
           type: actions.SET_COMP_PROPERTIES,
