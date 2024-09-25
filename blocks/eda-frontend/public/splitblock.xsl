@@ -111,33 +111,22 @@
       <xsl:variable name="targetElemId" select="$targetElement/@parent"/>
       <xsl:variable name="parentTargetElement" select="//*[@id = $targetElemId]"/>
         <xsl:variable name="SPLITLINK" select="//SplitBlock[position() = 1]"/>
-        <xsl:element name="TEST">
-        <xsl:variable name="SPLIT" select="//SplitBlock[position() = 1]"/>
-        <xsl:attribute name="ABC">
-            <xsl:value-of select="$SPLIT/@id" />
-        </xsl:attribute>
-        <xsl:attribute name="DEF">
-            <xsl:value-of select="name($parentElement)" />
-        </xsl:attribute>
-        <xsl:attribute name="KLM">
-            <xsl:value-of select="name($parentTargetElement)" />
-        </xsl:attribute>
-        </xsl:element>
-      <xsl:choose>
-        <xsl:when test="$sourceId != $SPLITLINK/@id" >
-
+        <xsl:choose>
+        <!-- Remove the link if the source or target does not match the SplitBlock's ID -->
+        <xsl:when test="$sourceElemId != $SPLITLINK/@id and $targetElemId != $SPLITLINK/@id">
+            <!-- Copy the link element and its attributes only if it should not be removed -->
             <xsl:copy>
                 <xsl:copy-of select="@*"/>
             </xsl:copy>
         </xsl:when>
-            
-
-      </xsl:choose>
+        <!-- Otherwise, the link is removed by not copying it -->
+    </xsl:choose>
     </xsl:template>
 
     <xsl:template match="ExplicitInputPort | ExplicitOutputPort | ImplicitInputPort | ImplicitOutputPort | ControlPort | CommandPort">
       <xsl:variable name="parentId" select="@parent"/>
       <xsl:variable name="parentElement" select="//*[@id = $parentId]"/>
+      <xsl:variable name="PortId" select="@id"/>
 
       <xsl:variable name="SPLIT" select="//SplitBlock[position() = 1]"/>
       <xsl:choose>
@@ -150,7 +139,5 @@
       </xsl:choose>
     </xsl:template>
 
-    <!-- <xsl:template match="SplitBlock[position() > 1]"> -->
-        <!-- Ignore all other SplitBlocks -->
-    <!-- </xsl:template> -->
+
 </xsl:stylesheet>
