@@ -9,8 +9,7 @@ def CLKOUT_f(outroot, attribid, ordering, geometry, parameters, parent=1):
                          func_name, BLOCKTYPE_D, dependsOnU='0',
                          dependsOnT='0')
 
-    new_param = ['1', parameters[1]]
-    addExprsNode(outnode, TYPE_STRING, 1, new_param)
+    addExprsNode(outnode, TYPE_STRING, 1, parameters)
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0,
                 [])
     array = ['1']
