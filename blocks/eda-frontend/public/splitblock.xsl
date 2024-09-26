@@ -53,8 +53,6 @@
             </xsl:for-each>
           </Array>
         </mxGeometry>
-        <Object as="parameter_values"/>
-        <Object as="displayProperties"/>
       </xsl:element>
 
       <xsl:element name="{$linktype}">
@@ -91,8 +89,6 @@
             </xsl:for-each>
           </Array>
         </mxGeometry>
-        <Object as="parameter_values"/>
-        <Object as="displayProperties"/>
       </xsl:element>
       
     </xsl:template>
