@@ -174,8 +174,16 @@
           <xsl:copy>
             <xsl:copy-of select="@*"/>
           </xsl:copy>
+          <xsl:attribute name="tarx">
+              <xsl:value-of select="mxGeometry/mxPoint[@x]" />
+            </xsl:attribute>
+            <xsl:attribute name="tary">
+              <xsl:value-of select="mxGeometry/mxPoint[@y]" />
+            </xsl:attribute>
         </xsl:when>
+
       </xsl:choose>
+
      </xsl:template>
 
     <xsl:template match="ExplicitInputPort | ExplicitOutputPort | ImplicitInputPort | ImplicitOutputPort | ControlPort | CommandPort">

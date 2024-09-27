@@ -25,6 +25,8 @@
       <xsl:param name="sourcetwolink" />
       <xsl:param name="x" />
       <xsl:param name="y" />
+      <xsl:param name="parent" />
+
 
       <xsl:variable name="newidone" select="generate-id()" />
 
@@ -32,17 +34,15 @@
         <xsl:attribute name="id">
           <xsl:value-of select="$newidone" />
         </xsl:attribute>
-        <xsl:attribute name="edge">1</xsl:attribute>
-        <xsl:attribute name="sourceVertex">
+        <xsl:attribute name="parent"><xsl:value-of select="$parent" /></xsl:attribute>
+        <xsl:attribute name="source">
           <xsl:value-of select="$targetonelink/@source" />
         </xsl:attribute>
-        <xsl:attribute name="targetVertex">
+        <xsl:attribute name="target">
           <xsl:value-of select="$sourceonelink/@target" />
         </xsl:attribute>
-        <xsl:attribute name="node">.null</xsl:attribute>
-        <xsl:attribute name="CellType">Unknown</xsl:attribute>
-        <xsl:attribute name="tarx">0</xsl:attribute>
-        <xsl:attribute name="tary">0</xsl:attribute>
+        <xsl:attribute name="style">ExplicitLink</xsl:attribute>
+        <xsl:attribute name="value"></xsl:attribute>
         <mxGeometry relative="1" as="geometry">
           <Array as="points">
             <xsl:for-each select="$targetonelink/mxGeometry/Array/mxPoint">
@@ -59,20 +59,15 @@
         <xsl:attribute name="id">
           <xsl:value-of select="generate-id($targetonelink)" />
         </xsl:attribute>
-        <xsl:attribute name="edge">1</xsl:attribute>
-        <xsl:attribute name="sourceVertex">
+        <xsl:attribute name="parent"><xsl:value-of select="$parent" /></xsl:attribute>
+        <xsl:attribute name="source">
           <xsl:value-of select="$sourcetwolink/@target" />
         </xsl:attribute>
-        <xsl:attribute name="targetVertex">
+        <xsl:attribute name="target">
           <xsl:value-of select="$newidone" />
         </xsl:attribute>
-        <xsl:attribute name="tarx">
-          <xsl:value-of select="$x" />
-        </xsl:attribute>
-        <xsl:attribute name="tary">
-          <xsl:value-of select="$y" />
-        </xsl:attribute>
-        <xsl:attribute name="CellType">Unknown</xsl:attribute>
+        <xsl:attribute name="style">ExplicitLink</xsl:attribute>
+        <xsl:attribute name="value"></xsl:attribute>
         <mxGeometry relative="1" as="geometry">
           <mxPoint>
             <xsl:attribute name="x">
@@ -105,6 +100,16 @@
       <xsl:variable name="geometry" select="mxGeometry" />
       <xsl:variable name="x" select="$geometry/@x" />
       <xsl:variable name="y" select="$geometry/@y" />
+      <xsl:variable name="parent" select="@parent" />
+      <xsl:element name="TEST">
+        <xsl:attribute name="ABC1">
+          <xsl:value-of select="$x" />
+        </xsl:attribute>
+        <xsl:attribute name="ABC2">
+          <xsl:value-of select="$y" />
+        </xsl:attribute>
+      </xsl:element>
+
 
       <xsl:choose>
         <xsl:when test="count($InputPort) >= 1 and count($OutputPort) >= 2">
@@ -123,6 +128,8 @@
             <xsl:with-param name="sourcetwolink" select="$sourcetwolink"/>
             <xsl:with-param name="x" select="$x"/>
             <xsl:with-param name="y" select="$y"/>
+            <xsl:with-param name="parent" select="$parent"/>
+            
           </xsl:call-template>
         </xsl:when>
 
@@ -141,6 +148,7 @@
             <xsl:with-param name="sourcetwolink" select="$sourcecommandtwolink"/>
             <xsl:with-param name="x" select="$x"/>
             <xsl:with-param name="y" select="$y"/>
+            <xsl:with-param name="parent" select="$parent"/>
           </xsl:call-template>
         </xsl:when>
 
@@ -159,6 +167,7 @@
             <xsl:with-param name="sourcetwolink" select="$sourceimplicittwolink"/>
             <xsl:with-param name="x" select="$x"/>
             <xsl:with-param name="y" select="$y"/>
+            <xsl:with-param name="parent" select="$parent"/>
           </xsl:call-template>
         </xsl:when>
       </xsl:choose>
