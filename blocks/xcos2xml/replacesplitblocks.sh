@@ -81,7 +81,7 @@ while test $count -gt 0; do
     echo "Creating $INPUT1" >&2
     cp -f "$TMPFILE2" "$INPUT1"
 
-    if let 'count!=oldcount-1'; then
+    if (( count != oldcount - 1 )); then
         echo "ERROR: $count != $oldcount - 1" >&2
         exit 2
     fi
