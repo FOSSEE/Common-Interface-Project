@@ -175,10 +175,10 @@
             <xsl:copy-of select="@*"/>
           </xsl:copy>
           <xsl:attribute name="tarx">
-              <xsl:value-of select="mxGeometry/mxPoint[@x]" />
+              <xsl:value-of select="mxGeometry/mxPoint[@as='targetPoint']/@x" />
             </xsl:attribute>
             <xsl:attribute name="tary">
-              <xsl:value-of select="mxGeometry/mxPoint[@y]" />
+              <xsl:value-of select="mxGeometry/mxPoint[@as='targetPoint']/@y" />
             </xsl:attribute>
         </xsl:when>
 
