@@ -405,7 +405,7 @@
     <xsl:key name="k-out" match="ExplicitOutputPort | ImplicitOutputPort" use="@parent" />
     <xsl:key name="k-command" match="CommandPort" use="@parent" />
     <xsl:key name="k-control" match="ControlPort" use="@parent" />
-    
+
     <xsl:template match="@*|node()">
       <xsl:copy>
          <xsl:apply-templates select="@*|node()"/>

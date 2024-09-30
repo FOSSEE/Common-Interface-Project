@@ -37,7 +37,7 @@
             <Object as="parameter_values"/>
             <Object as="displayProperties"/>
           </xsl:element>
-        </xsl:for-each> 
+        </xsl:for-each>
         <xsl:for-each select="key('k-out', $id)">
           <xsl:element name="mxCell">
             <xsl:attribute name="style">

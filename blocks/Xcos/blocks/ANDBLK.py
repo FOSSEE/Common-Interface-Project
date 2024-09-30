@@ -96,7 +96,7 @@ def ANDBLK(outroot, attribid, ordering, geometry, parameters):
             dataLines="-1", initialState="0.0",
             style="CommandPort", value="")
 
-    CLKOUT_f(root, block_id[4], ordering, geometry, ['2'])
+    CLKOUT_f(root, block_id[4], ordering, geometry, ['1'])
 
     addPort(root, TYPE_CNTRL, id=port_id[4],
             parent=block_id[4], ordering="1",
