@@ -69,6 +69,43 @@ function styleToObject (style) {
   return styleObject
 }
 
+export const ExplicitPort = 0
+export const ImplicitPort = 1
+export const ControlCommandPort = 2
+export const InputPort = 3
+export const OutputPort = 4
+export const SplitPort = 5
+
+export function getPortType (cell, isSplit = false) {
+  while (cell.edge === true) {
+    cell = cell.source
+    isSplit = true
+  }
+
+  const style = styleToObject(cell.style).default
+  let type1, type2
+
+  // Determine if the port is explicit, implicit, control, or command
+  if (style === 'ExplicitInputPort' || style === 'ExplicitOutputPort') {
+    type1 = ExplicitPort
+  } else if (style === 'ImplicitInputPort' || style === 'ImplicitOutputPort') {
+    type1 = ImplicitPort
+  } else if (style === 'ControlPort' || style === 'CommandPort') {
+    type1 = ControlCommandPort
+  }
+
+  // Determine if the port is input or output
+  if (isSplit) {
+    type2 = SplitPort
+  } else if (style === 'ExplicitInputPort' || style === 'ImplicitInputPort' || style === 'ControlPort') {
+    type2 = InputPort
+  } else if (style === 'ExplicitOutputPort' || style === 'ImplicitOutputPort' || style === 'CommandPort') {
+    type2 = OutputPort
+  }
+
+  return { type1, type2 }
+}
+
 export default function LoadGrid (container, sidebar, outline) {
   // Checks if the browser is supported
   if (!mxClient.isBrowserSupported()) {
@@ -174,38 +211,6 @@ export default function LoadGrid (container, sidebar, outline) {
 
     mxEdgeHandler.prototype.isConnectableCell = function (cell) {
       return graph.connectionHandler.isConnectableCell(cell)
-    }
-
-    const ExplicitPort = 0
-    const ImplicitPort = 1
-    const ControlCommandPort = 2
-    const InputPort = 3
-    const OutputPort = 4
-    const SplitPort = 5
-
-    function getPortType (cell, isSplit) {
-      const style = styleToObject(cell.style).default
-      let type1, type2
-
-      // Determine if the port is explicit, implicit, control, or command
-      if (style === 'ExplicitInputPort' || style === 'ExplicitOutputPort') {
-        type1 = ExplicitPort
-      } else if (style === 'ImplicitInputPort' || style === 'ImplicitOutputPort') {
-        type1 = ImplicitPort
-      } else if (style === 'ControlPort' || style === 'CommandPort') {
-        type1 = ControlCommandPort
-      }
-
-      // Determine if the port is input or output
-      if (isSplit) {
-        type2 = SplitPort
-      } else if (style === 'ExplicitInputPort' || style === 'ImplicitInputPort' || style === 'ControlPort') {
-        type2 = InputPort
-      } else if (style === 'ExplicitOutputPort' || style === 'ImplicitOutputPort' || style === 'CommandPort') {
-        type2 = OutputPort
-      }
-
-      return { type1, type2 }
     }
 
     // Override the connection validation function

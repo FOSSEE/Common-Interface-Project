@@ -8,12 +8,10 @@
     <xsl:key name="k-input" match="ExplicitInputPort" use="@parent" />
     <xsl:key name="k-output" match="ExplicitOutputPort" use="@parent" />
     <xsl:key name="k-srclink" match="ExplicitLink" use="@source | @target" />
-    <!-- <xsl:key name="k-tgtlink" match="ExplicitLink" use="@source | @target" /> -->
 
     <xsl:key name="k-control" match="ControlPort" use="@parent" />
     <xsl:key name="k-command" match="CommandPort" use="@parent" />
-    <xsl:key name="k-commandsrclink" match="CommandControlLink" use="@source" />
-    <xsl:key name="k-commandtgtlink" match="CommandControlLink" use="@target" />
+    <xsl:key name="k-commandsrclink" match="CommandControlLink" use="@source | @target" />
 
     <xsl:key name="k-implicitinput" match="ImplicitInputPort | ImplicitOutputPort" use="@parent" />
     <xsl:key name="k-implicitsrclink" match="ImplicitLink" use="@source | @target" />
@@ -149,17 +147,7 @@
           <xsl:variable name="targetonesecondlink" select="key('k-srclink', $targetonelink/@id)" />
           <xsl:variable name="sourceonesecondlink" select="key('k-srclink', $sourceonelink/@id)" />
           <xsl:variable name="sourcetwosecondlink" select="key('k-srclink', $sourcetwolink/@id)" />
-          <xsl:element name="HHH">
-            <xsl:attribute name="HHH1">
-            <xsl:value-of select="$targetoneid" />
-          </xsl:attribute>
-          <xsl:attribute name="HHH2">
-            <xsl:value-of select="$sourceoneid" />
-          </xsl:attribute>
-          <xsl:attribute name="HHH3">
-            <xsl:value-of select="$sourcetwoid" />
-          </xsl:attribute>
-          </xsl:element>
+
           <xsl:call-template name="links">
             <xsl:with-param name="linktype" select="$linktype"/>
             <xsl:with-param name="targetonelink" select="$targetonelink"/>
@@ -179,12 +167,12 @@
           <xsl:variable name="targetcommandoneid" select="$ControlPort[position()=1]/@id" />
           <xsl:variable name="sourcecommandoneid" select="$CommandPort[position()=1]/@id" />
           <xsl:variable name="sourcecommandtwoid" select="$CommandPort[position()=2]/@id" />
-          <xsl:variable name="targetcommandonelink" select="key('k-commandtgtlink', $targetcommandoneid)" />
+          <xsl:variable name="targetcommandonelink" select="key('k-commandsrclink', $targetcommandoneid)" />
           <xsl:variable name="sourcecommandonelink" select="key('k-commandsrclink', $sourcecommandoneid)" />
           <xsl:variable name="sourcecommandtwolink" select="key('k-commandsrclink', $sourcecommandtwoid)" />
           <xsl:variable name="targetonesecondlink" select="key('k-commandsrclink', $targetcommandonelink/@id)" />
-          <xsl:variable name="sourceonesecondlink" select="key('k-commandtgtlink', $sourcecommandonelink/@id)" />
-          <xsl:variable name="sourcetwosecondlink" select="key('k-commandtgtlink', $sourcecommandtwolink/@id)" />
+          <xsl:variable name="sourceonesecondlink" select="key('k-commandsrclink', $sourcecommandonelink/@id)" />
+          <xsl:variable name="sourcetwosecondlink" select="key('k-commandsrclink', $sourcecommandtwolink/@id)" />
 
           <xsl:call-template name="links">
             <xsl:with-param name="linktype" select="$linktype"/>
@@ -246,51 +234,34 @@
       <xsl:variable name="sourceElement" select="//*[@id = $sourceId]"/>
       <xsl:variable name="sourceElemId" select="$sourceElement/@parent"/>
       <xsl:variable name="parentElement" select="//*[@id = $sourceElemId]"/>
-      <xsl:variable name="targetId" select="@target"/> 
+      <xsl:variable name="targetId" select="@target"/>
       <xsl:variable name="targetElement" select="//*[@id = $targetId]"/>
       <xsl:variable name="targetElemId" select="$targetElement/@parent"/>
-      <xsl:variable name="parentTargetElement" select="//*[@id = $targetElemId]"/> 
-      <xsl:variable name="SPLITLINK" select="//SplitBlock[position() = 1]"/> 
+      <xsl:variable name="parentTargetElement" select="//*[@id = $targetElemId]"/>
+      <xsl:variable name="SPLITLINK" select="//SplitBlock[position() = 1]"/>
       <xsl:variable name="tgtsrc" select="//*[@id = $targetElement/@source]"/>
       <xsl:variable name="tgtsrcid" select="$tgtsrc/@parent"/>
-      <!-- <xsl:element name="DEF"> -->
-        <!-- <xsl:attribute name="TESTABC1">
-          <xsl:value-of select="$targetId" />
-        </xsl:attribute>
-        <xsl:attribute name="TESTABC2">
-          <xsl:value-of select="$targetElemId" />
-        </xsl:attribute> -->
-        <!-- <xsl:attribute name="TESTABC3">
-          <xsl:value-of select="$tgtsrcid" />
-        </xsl:attribute> -->
-        <!-- <xsl:attribute name="TESTABC4">
-          <xsl:value-of select="$sourceId" />
-        </xsl:attribute> -->
-        <!-- <xsl:attribute name="TESTABC5">
-          <xsl:value-of select="string-length($tgtsrcid)" />
-        </xsl:attribute> -->
 
-      <!-- </xsl:element> -->
       <xsl:choose>
         <xsl:when test="$sourceElemId != $SPLITLINK/@id and $targetElemId != $SPLITLINK/@id">
           <!-- Copy the link element and its attributes only if it should not be removed -->
           <xsl:choose>
-          <xsl:when test="string-length($tgtsrcid) > 0">
-          <xsl:choose>
-          <xsl:when test="$tgtsrcid != $SPLITLINK/@id">
-          <xsl:copy>
-            <xsl:copy-of select="@*"/>
-            <xsl:copy-of select="node()"/>
-          </xsl:copy>
-          </xsl:when>
-          </xsl:choose>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:copy>
-            <xsl:copy-of select="@*"/>
-            <xsl:copy-of select="node()"/>
-          </xsl:copy>
-          </xsl:otherwise>
+            <xsl:when test="string-length($tgtsrcid) > 0">
+              <xsl:choose>
+                <xsl:when test="$tgtsrcid != $SPLITLINK/@id">
+                  <xsl:copy>
+                    <xsl:copy-of select="@*"/>
+                    <xsl:copy-of select="node()"/>
+                  </xsl:copy>
+                </xsl:when>
+              </xsl:choose>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:copy>
+                <xsl:copy-of select="@*"/>
+                <xsl:copy-of select="node()"/>
+              </xsl:copy>
+            </xsl:otherwise>
           </xsl:choose>
         </xsl:when>
       </xsl:choose>

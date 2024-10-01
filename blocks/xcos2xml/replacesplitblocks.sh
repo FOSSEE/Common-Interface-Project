@@ -63,7 +63,7 @@ if test -n "$INPUTXML"; then
 
     # MxGraphParser creates $INPUT
     echo "Running Xcos/MxGraphParser.py $INPUTXML" >&2
-    Xcos/MxGraphParser.py "$INPUTXML"
+    Xcos/MxGraphParser.py "$INPUTXML" > /dev/null
 fi
 
 count=$( grep -c '<SplitBlock' "$INPUT" ) || :

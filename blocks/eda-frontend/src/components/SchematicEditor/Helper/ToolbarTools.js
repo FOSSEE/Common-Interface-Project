@@ -3,6 +3,7 @@ import 'mxgraph/javascript/src/css/common.css'
 
 import mxGraphFactory from 'mxgraph'
 import { portSize, getParameter } from './SvgParser'
+import { getPortType, InputPort, OutputPort, SplitPort } from './ComponentDrag'
 import store from '../../../redux/store'
 import { setModel, setNetlist } from '../../../redux/actions/index'
 
@@ -466,30 +467,44 @@ function parseXmlToGraph (xmlDoc, graph) {
       } else if (cellAttrs.edge) { // is edge
         const edgeId = cellAttrs.id.value
 
-        const source = cellAttrs.sourceVertex.value
-        const target = cellAttrs.targetVertex.value
-        const sourceCell = graph.getModel().getCell(source)
-        const targetCell = graph.getModel().getCell(target)
-        console.log('CELL', sourceCell, targetCell)
+        let source = cellAttrs.sourceVertex.value
+        let target = cellAttrs.targetVertex.value
+        let sourceCell = graph.getModel().getCell(source)
+        let targetCell = graph.getModel().getCell(target)
         console.log('ST', source, target)
+        const firstChild = cellChildren[0].querySelector('Array[as=points]')
+        const points = []
+        if (firstChild !== null) {
+          const plist = firstChild.children
+          for (const a of plist) {
+            try {
+              const point = new mxPoint(Number(a.attributes.x.value), Number(a.attributes.y.value))
+              points.push(point)
+            } catch (e) { console.error('error', e) }
+          }
+        }
+
+        const sourceType = getPortType(sourceCell)
+        const targetType = getPortType(targetCell)
+        if ([InputPort, SplitPort].includes(sourceType.type2) && [OutputPort, SplitPort].includes(targetType.type2)) {
+          console.log('switch', source, target)
+          const tmp = source
+          source = target
+          target = tmp
+          const tmpCell = sourceCell
+          sourceCell = targetCell
+          targetCell = tmpCell
+          points.reverse()
+        }
+
         try {
           const edge = graph.insertEdge(parent, edgeId, null, sourceCell, targetCell)
-          console.log('EGDE', edge)
-          const firstChild = cellChildren[0].querySelector('Array[as=points]')
-          if (firstChild !== null) {
-            edge.geometry.points = []
-            const plist = firstChild.children
-            for (const a of plist) {
-              try {
-                const xPos = Number(a.attributes.x.value)
-                const yPos = Number(a.attributes.y.value)
-                console.log('xPos', xPos, yPos)
-                edge.geometry.points.push(new mxPoint(xPos, yPos))
-              } catch (e) { console.error('error', e) }
-            }
-          }
+          edge.geometry.points = points
+          const terminalPoint = new mxPoint(Number(cellAttrs.tarx.value), Number(cellAttrs.tary.value))
           if (targetCell?.edge === true) {
-            edge.geometry.setTerminalPoint(new mxPoint(Number(cellAttrs.tarx.value), Number(cellAttrs.tary.value)), false)
+            edge.geometry.setTerminalPoint(terminalPoint, false)
+          } else if (sourceCell?.edge === true) {
+            edge.geometry.setTerminalPoint(terminalPoint, true)
           }
         } catch (e) {
           console.log(sourceCell)
