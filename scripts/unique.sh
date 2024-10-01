@@ -1,3 +1,3 @@
 #!/bin/bash
 
-./scripts/unique.awk scripts/data-categories-blocks.tsv
+./scripts/unique.awk data/data-categories-blocks.tsv
