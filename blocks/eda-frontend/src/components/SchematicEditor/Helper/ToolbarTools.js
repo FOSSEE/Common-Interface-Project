@@ -3,7 +3,7 @@ import 'mxgraph/javascript/src/css/common.css'
 
 import mxGraphFactory from 'mxgraph'
 import { portSize, getParameter } from './SvgParser'
-import { getPortType, InputPort, OutputPort, SplitPort } from './ComponentDrag'
+import { getPortType, InputPort, OutputPort } from './ComponentDrag'
 import store from '../../../redux/store'
 import { setModel, setNetlist } from '../../../redux/actions/index'
 
@@ -486,7 +486,7 @@ function parseXmlToGraph (xmlDoc, graph) {
 
         const sourceType = getPortType(sourceCell)
         const targetType = getPortType(targetCell)
-        if ([InputPort, SplitPort].includes(sourceType.type2) && [OutputPort, SplitPort].includes(targetType.type2)) {
+        if (sourceType.type2 !== OutputPort && targetType.type2 !== InputPort) {
           console.log('switch', source, target)
           const tmp = source
           source = target
