@@ -11,6 +11,8 @@ if test $# -ne 3; then
     usage
 fi
 
+make -s >&2
+
 SPLITXSL="$1"
 if test ! -f "$SPLITXSL"; then
     echo "$SPLITXSL: not found" >&2
@@ -63,7 +65,7 @@ if test -n "$INPUTXML"; then
 
     # MxGraphParser creates $INPUT
     echo "Running Xcos/MxGraphParser.py $INPUTXML" >&2
-    Xcos/MxGraphParser.py "$INPUTXML" > /dev/null
+    Xcos/MxGraphParser.py "$INPUTXML" >&2
 fi
 
 count=$( grep -c '<SplitBlock' "$INPUT" ) || :
