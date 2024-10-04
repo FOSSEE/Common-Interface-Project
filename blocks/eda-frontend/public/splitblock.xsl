@@ -32,6 +32,13 @@
       <xsl:variable name="newidtwo" select="concat($sourcetwolink/@id, generate-id($sourcetwolink))" />
 
       <xsl:element name="{$linktype}">
+        <xsl:attribute name="g1">
+            <xsl:value-of select="$x" />
+          </xsl:attribute>
+          <xsl:attribute name="g2">
+            <xsl:value-of select="$y" />
+          </xsl:attribute>
+
         <xsl:attribute name="id">
           <xsl:value-of select="$newidone" />
         </xsl:attribute>
@@ -57,13 +64,24 @@
               <xsl:copy-of select="." />
             </xsl:for-each>
           </Array>
+          <xsl:for-each select="$targetonelink/mxGeometry/mxPoint">
+            <xsl:copy>
+              <xsl:copy-of select="@*"/>
+              
+            </xsl:copy>
+          </xsl:for-each>
         </mxGeometry>
       </xsl:element>
 
       <xsl:element name="{$linktype}">
-        <xsl:attribute name="SRC">
-          <xsl:value-of select="$targetonelink/@target" />
-        </xsl:attribute>
+        
+        <xsl:attribute name="geo1">
+            <xsl:value-of select="$x" />
+          </xsl:attribute>
+          <xsl:attribute name="geo2">
+            <xsl:value-of select="$y" />
+          </xsl:attribute>
+      
         <xsl:attribute name="id">
           <xsl:value-of select="$newidtwo" />
         </xsl:attribute>
@@ -140,6 +158,8 @@
       <xsl:variable name="x" select="$geometry/@x" />
       <xsl:variable name="y" select="$geometry/@y" />
       <xsl:variable name="parent" select="@parent" />
+
+      
 
       <xsl:choose>
         <xsl:when test="count($InputPort) >= 1 and count($OutputPort) >= 2">
