@@ -4,7 +4,7 @@ import api from '../../utils/Api'
 import GallerySchSample from '../../utils/GallerySchSample'
 import { renderGalleryXML } from '../../components/SchematicEditor/Helper/ToolbarTools'
 import { setTitle } from './index'
-import { getXsltProcessor } from '../../utils/GalleryUtils'
+import { transformXcos } from '../../utils/GalleryUtils'
 
 export const setSchTitle = (title) => (dispatch) => {
   dispatch({
@@ -166,7 +166,7 @@ export const loadGallery = (saveId) => (dispatch, getState) => {
 
   // Check if the data is xcos or xml
   const parser = new DOMParser()
-  let xmlDoc = parser.parseFromString(data.data_dump, 'application/xml')
+  const xmlDoc = parser.parseFromString(data.data_dump, 'application/xml')
   const isXcos = xmlDoc.getElementsByTagName('XcosDiagram').length > 0
 
   const handleGalleryLoad = (dispatch, data, dataDump) => {
@@ -182,8 +182,7 @@ export const loadGallery = (saveId) => (dispatch, getState) => {
   }
 
   if (isXcos) {
-    getXsltProcessor().then(processor => {
-      xmlDoc = processor.transformToDocument(xmlDoc)
+    transformXcos(xmlDoc).then(xmlDoc => {
       const dataDump = new XMLSerializer().serializeToString(xmlDoc)
       handleGalleryLoad(dispatch, data, dataDump)
     }).catch(error => {

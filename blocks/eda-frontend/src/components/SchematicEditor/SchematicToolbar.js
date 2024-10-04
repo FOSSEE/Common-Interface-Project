@@ -32,7 +32,7 @@ import { editorZoomIn, editorZoomOut, editorZoomAct, deleteComp, PrintPreview, R
 import { useSelector, useDispatch } from 'react-redux'
 import { toggleSimulate, closeCompProperties, setSchXmlData, saveSchematic, openLocalSch } from '../../redux/actions/index'
 import api from '../../utils/Api'
-import { getXsltProcessor } from '../../utils/GalleryUtils'
+import { transformXcos } from '../../utils/GalleryUtils'
 
 const {
   mxUtils
@@ -403,11 +403,10 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
         reader.onload = function (event) {
           const title = filename.replace(re, '')
           let dataDump = event.target.result
-          let xmlDoc = mxUtils.parseXml(dataDump)
+          const xmlDoc = mxUtils.parseXml(dataDump)
           const rexcos = /\.xcos$/i
           if (rexcos.test(filename)) {
-            getXsltProcessor().then(processor => {
-              xmlDoc = processor.transformToDocument(xmlDoc)
+            transformXcos(xmlDoc).then(xmlDoc => {
               dataDump = new XMLSerializer().serializeToString(xmlDoc)
               readXmlFile(xmlDoc, dataDump, title)
             })

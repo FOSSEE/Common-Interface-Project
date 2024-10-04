@@ -58,7 +58,7 @@ trap "cat $TMPFILE2; rm -f $TMPFILE1 $TMPFILE2" 0 1 2 15
 
 if test -n "$INPUTXML"; then
     xmllint --format "$INPUTXML" > "$TMPFILE2"
-    if ! diff -q "$TMPFILE2" "$INPUTXML"; then
+    if ! diff -q "$TMPFILE2" "$INPUTXML" >&2; then
         cp -f "$TMPFILE2" "$INPUTXML"
         echo "$INPUTXML updated" >&2
     fi
