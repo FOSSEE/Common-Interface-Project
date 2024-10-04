@@ -549,7 +549,10 @@ function xmlWireConnections () {
         if (edge.target.edge === true) {
           edge.tarx = edge.geometry.targetPoint.x
           edge.tary = edge.geometry.targetPoint.y
-        } else if (edge.source.edge !== true) {
+        } else if (edge.source.edge === true) {
+          edge.tarx = edge.geometry.sourcePoint.x
+          edge.tary = edge.geometry.sourcePoint.y
+        } else {
           edge.node = '.' + edge.source.value
         }
         console.log('Check the wires here', edge.sourceVertex, edge.targetVertex)
