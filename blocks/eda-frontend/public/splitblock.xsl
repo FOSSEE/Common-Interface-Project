@@ -61,6 +61,9 @@
       </xsl:element>
 
       <xsl:element name="{$linktype}">
+        <xsl:attribute name="SRC">
+          <xsl:value-of select="$targetonelink/@target" />
+        </xsl:attribute>
         <xsl:attribute name="id">
           <xsl:value-of select="$newidtwo" />
         </xsl:attribute>
@@ -68,10 +71,10 @@
           <xsl:value-of select="$parent" />
         </xsl:attribute>
         <xsl:attribute name="source">
-          <xsl:value-of select="$sourcetwolink/@target" />
+          <xsl:value-of select="$newidone" />
         </xsl:attribute>
         <xsl:attribute name="target">
-          <xsl:value-of select="$newidone" />
+          <xsl:value-of select="$sourcetwolink/@target" />
         </xsl:attribute>
         <xsl:attribute name="style">
           <xsl:value-of select="$linktype" />
@@ -85,7 +88,7 @@
             <xsl:attribute name="y">
               <xsl:value-of select="$y" />
             </xsl:attribute>
-            <xsl:attribute name="as">targetPoint</xsl:attribute>
+            <xsl:attribute name="as">sourcePoint</xsl:attribute>
           </mxPoint>
           <Array as="points">
             <xsl:for-each select="$sourcetwolink/mxGeometry/Array/mxPoint">
@@ -98,25 +101,28 @@
       <xsl:for-each select="$targetonesecondlink">
         <xsl:copy>
           <xsl:copy-of select="@*"/>
-          <xsl:attribute name="target">
+          <xsl:attribute name="source">
             <xsl:value-of select="$newidone" />
           </xsl:attribute>
+          <xsl:copy-of select="node()"/>
         </xsl:copy>
       </xsl:for-each>
       <xsl:for-each select="$sourceonesecondlink">
         <xsl:copy>
           <xsl:copy-of select="@*"/>
-          <xsl:attribute name="target">
+          <xsl:attribute name="source">
             <xsl:value-of select="$newidone" />
           </xsl:attribute>
+          <xsl:copy-of select="node()"/>
         </xsl:copy>
       </xsl:for-each>
       <xsl:for-each select="$sourcetwosecondlink">
         <xsl:copy>
           <xsl:copy-of select="@*"/>
-          <xsl:attribute name="target">
+          <xsl:attribute name="source">
             <xsl:value-of select="$newidtwo" />
           </xsl:attribute>
+          <xsl:copy-of select="node()"/>
         </xsl:copy>
       </xsl:for-each>
     </xsl:template>
@@ -241,14 +247,15 @@
       <xsl:variable name="SPLITLINK" select="//SplitBlock[position() = 1]"/>
       <xsl:variable name="tgtsrc" select="//*[@id = $targetElement/@source]"/>
       <xsl:variable name="tgtsrcid" select="$tgtsrc/@parent"/>
-
+      <xsl:variable name="srctgt" select="//*[@id = $sourceElement/@target]"/>
+      <xsl:variable name="srctgtid" select="$srctgt/@parent"/>
       <xsl:choose>
         <xsl:when test="$sourceElemId != $SPLITLINK/@id and $targetElemId != $SPLITLINK/@id">
           <!-- Copy the link element and its attributes only if it should not be removed -->
           <xsl:choose>
-            <xsl:when test="string-length($tgtsrcid) > 0">
+            <xsl:when test="string-length($tgtsrcid) > 0 or string-length($srctgtid) > 0">
               <xsl:choose>
-                <xsl:when test="$tgtsrcid != $SPLITLINK/@id">
+                <xsl:when test="$tgtsrcid != $SPLITLINK/@id or $srctgtid != $SPLITLINK/@id">
                   <xsl:copy>
                     <xsl:copy-of select="@*"/>
                     <xsl:copy-of select="node()"/>

@@ -1,4 +1,4 @@
-    <xsl:key name="k-input" match="ExplicitInputPort" use="@parent" />
+    <!-- <xsl:key name="k-input" match="ExplicitInputPort" use="@parent" />
     <xsl:key name="k-output" match="ExplicitOutputPort" use="@parent" />
     <xsl:key name="k-srclink" match="ExplicitLink" use="@source" />
     <xsl:key name="k-tgtlink" match="ExplicitLink" use="@target" />
@@ -9,9 +9,9 @@
     <xsl:key name="k-commandtgtlink" match="CommandControlLink" use="@target" />
 
     <xsl:key name="k-implicitinput" match="ImplicitInputPort | ImplicitOutputPort" use="@parent" />
-    <xsl:key name="k-implicitsrclink" match="ImplicitLink" use="@source | @target" />
+    <xsl:key name="k-implicitsrclink" match="ImplicitLink" use="@source | @target" /> -->
 
-    <xsl:template name="links">
+    <!-- <xsl:template name="links">
       <xsl:param name="linktype" />
       <xsl:param name="targetonelink" />
       <xsl:param name="sourceonelink" />
@@ -87,9 +87,9 @@
         <Object as="parameter_values"/>
         <Object as="displayProperties"/>
       </xsl:element>
-    </xsl:template>
+    </xsl:template> -->
 
-    <xsl:template match="SplitBlock">
+    <!-- <xsl:template match="SplitBlock">
       <xsl:variable name="InputPort" select="key('k-input', @id)" />
       <xsl:variable name="OutputPort" select="key('k-output', @id)" />
 
@@ -157,45 +157,8 @@
           </xsl:call-template>
         </xsl:when>
       </xsl:choose>
-    </xsl:template>
+    </xsl:template> -->
 
-    <xsl:template match="ExplicitLink | CommandControlLink | ImplicitLink">
-      <xsl:variable name="sourceId" select="@source"/>
-      <xsl:variable name="sourceElement" select="//*[@id = $sourceId]"/>
-      <xsl:variable name="sourceElemId" select="$sourceElement/@parent"/>
-      <xsl:variable name="parentElement" select="//*[@id = $sourceElemId]"/>
-      <xsl:variable name="targetId" select="@target"/>
-      <xsl:variable name="targetElement" select="//*[@id = $targetId]"/>
-      <xsl:variable name="targetElemId" select="$targetElement/@parent"/>
-      <xsl:variable name="parentTargetElement" select="//*[@id = $targetElemId]"/>
+    
 
-      <xsl:choose>
-        <xsl:when test="name($parentElement) != 'SplitBlock' and name($parentTargetElement) != 'SplitBlock'" >
-          <xsl:copy>
-            <xsl:copy-of select="@*"/>
-          </xsl:copy>
-          <xsl:attribute name="tarx">
-              <xsl:value-of select="mxGeometry/mxPoint[@as='targetPoint']/@x" />
-            </xsl:attribute>
-            <xsl:attribute name="tary">
-              <xsl:value-of select="mxGeometry/mxPoint[@as='targetPoint']/@y" />
-            </xsl:attribute>
-        </xsl:when>
-
-      </xsl:choose>
-
-     </xsl:template>
-
-    <xsl:template match="ExplicitInputPort | ExplicitOutputPort | ImplicitInputPort | ImplicitOutputPort | ControlPort | CommandPort">
-      <xsl:variable name="parentId" select="@parent"/>
-      <xsl:variable name="parentElement" select="//*[@id = $parentId]"/>
-
-      <xsl:choose>
-        <xsl:when test="name($parentElement) != 'SplitBlock'" >
-          <xsl:copy>
-            <xsl:copy-of select="@*"/>
-          </xsl:copy>
-        </xsl:when>
-      </xsl:choose>
-
-    </xsl:template>
+    

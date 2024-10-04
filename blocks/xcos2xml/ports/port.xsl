@@ -1,3 +1,17 @@
+<xsl:template match="ExplicitInputPort | ExplicitOutputPort | ImplicitInputPort | ImplicitOutputPort | ControlPort | CommandPort">
+      <xsl:variable name="parentId" select="@parent"/>
+      <xsl:variable name="parentElement" select="//*[@id = $parentId]"/>
+
+      <!-- <xsl:choose> -->
+        <!-- <xsl:when test="name($parentElement) != 'SplitBlock'" > -->
+          <xsl:copy>
+            <xsl:copy-of select="@*"/>
+          </xsl:copy>
+        <!-- </xsl:when> -->
+      <!-- </xsl:choose> -->
+
+    </xsl:template>
+    
       <xsl:template name="port">
         <xsl:param name="id" />
         <xsl:param name="explicitInputPorts" />
