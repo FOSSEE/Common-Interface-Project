@@ -60,7 +60,6 @@
           <xsl:for-each select="$targetonelink/mxGeometry/mxPoint">
             <xsl:copy>
               <xsl:copy-of select="@*"/>
-              
             </xsl:copy>
           </xsl:for-each>
         </mxGeometry>
@@ -100,7 +99,7 @@
           </Array>
         </mxGeometry>
       </xsl:element>
-      <!-- foreach loop, link copy, source change  -->
+      <!-- foreach loop, link copy, source change -->
       <xsl:for-each select="$targetonesecondlink">
         <xsl:copy>
           <xsl:copy-of select="@*"/>
@@ -143,8 +142,6 @@
       <xsl:variable name="x" select="$geometry/@x" />
       <xsl:variable name="y" select="$geometry/@y" />
       <xsl:variable name="parent" select="@parent" />
-
-      
 
       <xsl:choose>
         <xsl:when test="count($InputPort) >= 1 and count($OutputPort) >= 2">
@@ -250,26 +247,21 @@
       <xsl:variable name="targetElemId" select="$targetElement/@parent"/>
       <xsl:variable name="parentTargetElement" select="//*[@id = $targetElemId]"/>
       <xsl:variable name="SPLITID" select="//SplitBlock[position() = 1]/@id"/>
-      
-     
-      
+
       <xsl:choose>
         <xsl:when test="$sourceElemId != $SPLITID and $targetElemId != $SPLITID">
-      <xsl:variable name="tgtsrcid" select="//*[@id = $targetElement/@source]/@parent"/>
-      <xsl:variable name="srctgtid" select="//*[@id = $sourceElement/@target]/@parent"/>
-      <xsl:variable name="srcsrcid" select="//*[@id = $sourceElement/@source]/@parent"/>
-      <xsl:variable name="tgttgtid" select="//*[@id = $targetElement/@target]/@parent"/>
+          <xsl:variable name="tgtsrcid" select="//*[@id = $targetElement/@source]/@parent"/>
+          <xsl:variable name="srctgtid" select="//*[@id = $sourceElement/@target]/@parent"/>
+          <xsl:variable name="srcsrcid" select="//*[@id = $sourceElement/@source]/@parent"/>
+          <xsl:variable name="tgttgtid" select="//*[@id = $targetElement/@target]/@parent"/>
 
-          <xsl:choose>              
+          <xsl:choose>
             <xsl:when test="((string-length($tgtsrcid) = 0 or $tgtsrcid != $SPLITID) and (string-length($tgttgtid) = 0 or $tgttgtid != $SPLITID)) and ((string-length($srctgtid) = 0 or $srctgtid != $SPLITID) and (string-length($srcsrcid) = 0 or $srcsrcid != $SPLITID))">
-              
-                  <xsl:copy>
-                    <xsl:copy-of select="@*"/>
-                    <xsl:copy-of select="node()"/>
-                  </xsl:copy>
-
+              <xsl:copy>
+                <xsl:copy-of select="@*"/>
+                <xsl:copy-of select="node()"/>
+              </xsl:copy>
             </xsl:when>
-
           </xsl:choose>
         </xsl:when>
       </xsl:choose>
