@@ -77,6 +77,14 @@ def check_point_on_array(array, point, left_right_direction=True):
         left_right_direction = not left_right_direction
     return False, array, []
 
+
+def get_int(s):
+    try:
+        return int(s)
+    except ValueError:
+        return -1
+
+
 def identify_segment(array, point):
     for i, segment in enumerate(array):
         print('COUNT:', len(segment))
@@ -107,8 +115,9 @@ for root in model:
         try:
             attrib = cell.attrib
             attribid = attrib['id']
-            if nextattribid <= int(attribid):
-                nextattribid = int(attribid) + 1
+            attribint = get_int(attribid)
+            if nextattribid <= attribint:
+                nextattribid = attribint + 1
 
             if attribid == '0':
                 outnode = ET.SubElement(outroot, 'mxCell')
@@ -276,19 +285,16 @@ for root in model:
 print('EDGES:')
 for key, value in edgeDict.items():
     print(f'{key}: {value}')
+print()
 
 newEdgeDict = {}
 for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point) in edgeList:
     link_data = (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point)
-    print('test', attribid, sourceVertex, targetVertex, sourceType, targetType, style, addSplit, split_point)
 
     if not addSplit:
         newEdgeDict[attribid] = [link_data]
-        for (key, value) in newEdgeDict.items():
-            print(f'{key}: {value}')
         continue
 
-    
     try:
         linkSegments = newEdgeDict[sourceVertex]
         attribid2 = sourceVertex
@@ -303,11 +309,9 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoi
     result, i, left_array, right_array = identify_segment(linkSegments, split_point)
     if not result:
         sys.exit(0)
-    (linkid, sourceVertex2, targetVertex2, sourceType2, targetType2, style2, waypoints2, addSplit2, split_point2) = linkSegments[i]   
-    print('A1:', left_array)
-    print('A2:', right_array)
+    (linkid, sourceVertex2, targetVertex2, sourceType2, targetType2, style2, waypoints2, addSplit2, split_point2) = linkSegments[i]
     array3 = waypoints
-            
+
     componentOrdering += 1
     geometry = {}
     geometry['height'] = 7
@@ -378,25 +382,18 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoi
         nextAttribForSplit += 1
         (style2, sourceVertex2, targetVertex2, sourceType2, targetType2) = newEdgeDict[targetVertex]
 
-    print('ATTRID:', attribid, attribid2)
     newEdgeDict[attribid2][i] = ((nextAttribForSplit, sourceVertex2, port1, sourceType2, targetType, style2, left_array, addSplit2, split_point2))
     nextAttribForSplit += 1
-    newEdgeDict[attribid2].insert(i+1, (nextAttribForSplit, port2, targetVertex2, sourceType, targetType2, style2, right_array, addSplit2, split_point2))
-    nextAttribForSplit += 1  
+    newEdgeDict[attribid2].insert(i + 1, (nextAttribForSplit, port2, targetVertex2, sourceType, targetType2, style2, right_array, addSplit2, split_point2))
+    nextAttribForSplit += 1
     newEdgeDict[attribid] = [(nextAttribForSplit, port3, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point)]
     nextAttribForSplit += 1
-    for key, value in newEdgeDict.items():
-        print('KEY:',key)
-        for i, value2 in enumerate(value):
-            print(i, value2)
 
-# for (attribid, (style, sourceVertex, targetVertex, sourceType, targetType, array1)) in edgeDict.items():
-#     print("testing", attribid, style, sourceVertex, targetVertex, sourceType, targetType, array1)
+print()
 for key, newEdges in newEdgeDict.items():
-    print('EDGES', newEdges)
+    print(f'{key}: {newEdges}')
     for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point) in newEdges:
-        print("testing", attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point)
-        if int(attribid) >= 10000:
+        if get_int(attribid) >= 10000:
             attribid = nextattribid
             nextattribid += 1
         globals()[style](outroot, attribid, sourceVertex, targetVertex,
