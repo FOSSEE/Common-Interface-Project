@@ -32,13 +32,6 @@
       <xsl:variable name="newidtwo" select="concat($sourcetwolink/@id, generate-id($sourcetwolink))" />
 
       <xsl:element name="{$linktype}">
-        <xsl:attribute name="g1">
-            <xsl:value-of select="$x" />
-          </xsl:attribute>
-          <xsl:attribute name="g2">
-            <xsl:value-of select="$y" />
-          </xsl:attribute>
-
         <xsl:attribute name="id">
           <xsl:value-of select="$newidone" />
         </xsl:attribute>
@@ -74,14 +67,6 @@
       </xsl:element>
 
       <xsl:element name="{$linktype}">
-        
-        <xsl:attribute name="geo1">
-            <xsl:value-of select="$x" />
-          </xsl:attribute>
-          <xsl:attribute name="geo2">
-            <xsl:value-of select="$y" />
-          </xsl:attribute>
-      
         <xsl:attribute name="id">
           <xsl:value-of select="$newidtwo" />
         </xsl:attribute>
@@ -264,31 +249,27 @@
       <xsl:variable name="targetElement" select="//*[@id = $targetId]"/>
       <xsl:variable name="targetElemId" select="$targetElement/@parent"/>
       <xsl:variable name="parentTargetElement" select="//*[@id = $targetElemId]"/>
-      <xsl:variable name="SPLITLINK" select="//SplitBlock[position() = 1]"/>
-      <xsl:variable name="tgtsrc" select="//*[@id = $targetElement/@source]"/>
-      <xsl:variable name="tgtsrcid" select="$tgtsrc/@parent"/>
-      <xsl:variable name="srctgt" select="//*[@id = $sourceElement/@target]"/>
-      <xsl:variable name="srctgtid" select="$srctgt/@parent"/>
+      <xsl:variable name="SPLITID" select="//SplitBlock[position() = 1]/@id"/>
+      
+     
+      
       <xsl:choose>
-        <xsl:when test="$sourceElemId != $SPLITLINK/@id and $targetElemId != $SPLITLINK/@id">
-          <!-- Copy the link element and its attributes only if it should not be removed -->
-          <xsl:choose>
-            <xsl:when test="string-length($tgtsrcid) > 0 or string-length($srctgtid) > 0">
-              <xsl:choose>
-                <xsl:when test="$tgtsrcid != $SPLITLINK/@id or $srctgtid != $SPLITLINK/@id">
+        <xsl:when test="$sourceElemId != $SPLITID and $targetElemId != $SPLITID">
+      <xsl:variable name="tgtsrcid" select="//*[@id = $targetElement/@source]/@parent"/>
+      <xsl:variable name="srctgtid" select="//*[@id = $sourceElement/@target]/@parent"/>
+      <xsl:variable name="srcsrcid" select="//*[@id = $sourceElement/@source]/@parent"/>
+      <xsl:variable name="tgttgtid" select="//*[@id = $targetElement/@target]/@parent"/>
+
+          <xsl:choose>              
+            <xsl:when test="((string-length($tgtsrcid) = 0 or $tgtsrcid != $SPLITID) and (string-length($tgttgtid) = 0 or $tgttgtid != $SPLITID)) and ((string-length($srctgtid) = 0 or $srctgtid != $SPLITID) and (string-length($srcsrcid) = 0 or $srcsrcid != $SPLITID))">
+              
                   <xsl:copy>
                     <xsl:copy-of select="@*"/>
                     <xsl:copy-of select="node()"/>
                   </xsl:copy>
-                </xsl:when>
-              </xsl:choose>
+
             </xsl:when>
-            <xsl:otherwise>
-              <xsl:copy>
-                <xsl:copy-of select="@*"/>
-                <xsl:copy-of select="node()"/>
-              </xsl:copy>
-            </xsl:otherwise>
+
           </xsl:choose>
         </xsl:when>
       </xsl:choose>
