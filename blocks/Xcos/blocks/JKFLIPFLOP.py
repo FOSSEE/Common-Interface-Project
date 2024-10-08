@@ -7,38 +7,9 @@ from blocks.IN_f import IN_f
 from blocks.OUT_f import OUT_f
 from common.AAAAAA import *
 
-block_id = ['3dd766ce:16069f39bc0:-7db3', '3dd766ce:16069f39bc1:-7db3',
-            '3dd766ce:16069f39bbf:-7d64', '3dd766ce:16069f39bbf:-7d61',
-            '3dd766ce:16069f39bbf:-7d5e', '3dd766ce:16069f39bbf:-7d58',
-            '3dd766ce:16069f39bbf:-7d53', '3dd766ce:16069f39bbf:-7d50',
-            '3dd766ce:16069f39bbf:-7d4b', '3dd766ce:16069f39bbf:-7d49',
-            '3dd766ce:16069f39bbf:-7d47', '3dd766ce:16069f39bbf:-7d45',
-            '3dd766ce:16069f39bbf:-7d43']
-
-port_id = ['5f0e1c8f:18e5f578986:-7f74', '5f0e1c8f:18e5f578986:-7f72',
-           '5f0e1c8f:18e5f578986:-7f6f', '5f0e1c8f:18e5f578986:-7f6e',
-           '5f0e1c8f:18e5f578986:-7f58', '5f0e1c8f:18e5f578986:-7f56',
-           '5f0e1c8f:18e5f578986:-7f54', '5f0e1c8f:18e5f578986:-7f52',
-           '5f0e1c8f:18e5f578986:-7f51', '5f0e1c8f:18e5f578986:-7f4e',
-           '5f0e1c8f:18e5f578986:-7f4c', '5f0e1c8f:18e5f578986:-7f4a',
-           '5f0e1c8f:18e5f578986:-7f48', '5f0e1c8f:18e5f578986:-7f45',
-           '5f0e1c8f:18e5f578986:-7f43', '5f0e1c8f:18e5f578986:-7f40',
-           '5f0e1c8f:18e5f578986:-7f3e', '5f0e1c8f:18e5f578986:-7f3c',
-           '5f0e1c8f:18e5f578986:-7f3a', '5f0e1c8f:18e5f578986:-7f37',
-           '5f0e1c8f:18e5f578986:-7f34', '5f0e1c8f:18e5f578986:-7f31',
-           '5f0e1c8f:18e5f578986:-7f2e', '5f0e1c8f:18e5f578986:-7f2b']
-
-link_id = ['5f0e1c8f:18e5f578986:-7f2a', '5f0e1c8f:18e5f578986:-7f29',
-           '5f0e1c8f:18e5f578986:-7f28', '5f0e1c8f:18e5f578986:-7f27',
-           '5f0e1c8f:18e5f578986:-7f26', '5f0e1c8f:18e5f578986:-7f25',
-           '5f0e1c8f:18e5f578986:-7f24', '5f0e1c8f:18e5f578986:-7f23',
-           '5f0e1c8f:18e5f578986:-7f22', '5f0e1c8f:18e5f578986:-7f21',
-           '5f0e1c8f:18e5f578986:-7f20']
-
-
 def JKFLIPFLOP(outroot, attribid, ordering, geometry, parameters):
     func_name = 'JKFLIPFLOP'
-
+    block_id, port_id, link_id = generate_id(13, 24, 11)
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
                          func_name, 'csuper', 'DEFAULT',

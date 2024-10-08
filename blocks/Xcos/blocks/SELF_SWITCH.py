@@ -4,25 +4,13 @@ from blocks.CONST_m import CONST_m
 from blocks.SWITCH_f import SWITCH_f
 from common.AAAAAA import *
 
-block_id = ['-3dc88720:16056248c41:-7e85', '-3dc88720:16056248c42:-7e85',
-            '-3dc88720:16056248c40:-7e17', '-3dc88720:16056248c40:-7e15',
-            '-3dc88720:16056248c40:-7e13', '-3dc88720:16056248c40:-7e11']
-
-port_id = ['-5c91adbd:18eac9e92a4:-7fe6', '-5c91adbd:18eac9e92a4:-7fe2',
-           '-5c91adbd:18eac9e92a4:-7fdf', '-5c91adbd:18eac9e92a4:-7fdc',
-           '-5c91adbd:18eac9e92a4:-7fda', '-5c91adbd:18eac9e92a4:-7fd8']
-
-link_id = ['-5c91adbd:18eac9e92a4:-7fd7', '-5c91adbd:18eac9e92a4:-7fd6',
-           '-5c91adbd:18eac9e92a4:-7fd5']
-
-
 def SELF_SWITCH(outroot, attribid, ordering, geometry, parameters):
     func_name = 'SELF_SWITCH'
     if parameters[0] == 'on':
         style = func_name + '_ON'
     else:
         style = func_name + '_OFF'
-
+    block_id, port_id, link_id = generate_id(6, 6, 3)
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
                          func_name, 'csuper', 'DEFAULT',

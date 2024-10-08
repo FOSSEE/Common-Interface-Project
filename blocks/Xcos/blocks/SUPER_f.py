@@ -2,13 +2,13 @@ from blocks.CLKOUTV_f import CLKOUTV_f
 from blocks.CLOCK_c import CLOCK_c
 from common.AAAAAA import *
 
-block_id = ['-64ce6d85:145ef6f2b50:-7ee7', '-64ce6d85:145ef6f2b51:-7ee7',
-            '-64ce6d85:145ef6f2b4f:-7f54']
+# block_id = ['-64ce6d85:145ef6f2b50:-7ee7', '-64ce6d85:145ef6f2b51:-7ee7',
+#             '-64ce6d85:145ef6f2b4f:-7f54']
 
 
 def SUPER_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'SUPER_f'
-
+    block_id, port_id, link_id = generate_id(3, 0, 0)
     outnode = addOutNode(outroot, BLOCK_SUPER,
                          attribid, ordering, 1,
                          func_name, 'cscope', 'C_OR_FORTRAN',

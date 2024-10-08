@@ -2,18 +2,18 @@ from blocks.FROMWS_c import FROMWS_c
 from blocks.OUT_f import OUT_f
 from common.AAAAAA import *
 
-block_id = ['51059305:16030bc407e:-7d4e', '51059305:16030bc407f:-7d4e',
-            '51059305:16030bc407d:-7d36', '51059305:16030bc407d:-7d32']
+# block_id = ['51059305:16030bc407e:-7d4e', '51059305:16030bc407f:-7d4e',
+#             '51059305:16030bc407d:-7d36', '51059305:16030bc407d:-7d32']
 
-port_id = ['5631d1e9:18ea7a6d774:-7ff3', '5631d1e9:18ea7a6d774:-7ff2',
-           '5631d1e9:18ea7a6d774:-7ff1', '5631d1e9:18ea7a6d774:-7fee']
+# port_id = ['5631d1e9:18ea7a6d774:-7ff3', '5631d1e9:18ea7a6d774:-7ff2',
+#            '5631d1e9:18ea7a6d774:-7ff1', '5631d1e9:18ea7a6d774:-7fee']
 
-link_id = ['5631d1e9:18ea7a6d774:-7fed', '5631d1e9:18ea7a6d774:-7fec']
+# link_id = ['5631d1e9:18ea7a6d774:-7fed', '5631d1e9:18ea7a6d774:-7fec']
 
 
 def FROMWSB(outroot, attribid, ordering, geometry, parameters):
     func_name = 'FROMWSB'
-
+    block_id, port_id, link_id = generate_id(4, 4, 2)
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
                          func_name, 'csuper', 'DEFAULT',

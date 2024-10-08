@@ -5,25 +5,25 @@ from blocks.SampleCLK import SampleCLK
 from blocks.OUT_f import OUT_f
 from common.AAAAAA import *
 
-block_id = ['23f170f2:16054d9b97b:-7d2e', '23f170f2:16054d9b97c:-7d2e',
-            '23f170f2:16054d9b97a:-7d2a', '23f170f2:16054d9b97a:-7d28',
-            '23f170f2:16054d9b97a:-7d26', '23f170f2:16054d9b97a:-7d20',
-            '23f170f2:16054d9b97a:-7d1e', '23f170f2:16054d9b97a:-7d1c']
+# block_id = ['23f170f2:16054d9b97b:-7d2e', '23f170f2:16054d9b97c:-7d2e',
+#             '23f170f2:16054d9b97a:-7d2a', '23f170f2:16054d9b97a:-7d28',
+#             '23f170f2:16054d9b97a:-7d26', '23f170f2:16054d9b97a:-7d20',
+#             '23f170f2:16054d9b97a:-7d1e', '23f170f2:16054d9b97a:-7d1c']
 
-port_id = ['5631d1e9:18ea7a6d774:-7fd7', '5631d1e9:18ea7a6d774:-7fd4',
-           '5631d1e9:18ea7a6d774:-7fd1', '5631d1e9:18ea7a6d774:-7fcf',
-           '5631d1e9:18ea7a6d774:-7fcd', '5631d1e9:18ea7a6d774:-7fcc',
-           '5631d1e9:18ea7a6d774:-7fcb', '5631d1e9:18ea7a6d774:-7fc9',
-           '5631d1e9:18ea7a6d774:-7fc7', '5631d1e9:18ea7a6d774:-7fc4']
+# port_id = ['5631d1e9:18ea7a6d774:-7fd7', '5631d1e9:18ea7a6d774:-7fd4',
+#            '5631d1e9:18ea7a6d774:-7fd1', '5631d1e9:18ea7a6d774:-7fcf',
+#            '5631d1e9:18ea7a6d774:-7fcd', '5631d1e9:18ea7a6d774:-7fcc',
+#            '5631d1e9:18ea7a6d774:-7fcb', '5631d1e9:18ea7a6d774:-7fc9',
+#            '5631d1e9:18ea7a6d774:-7fc7', '5631d1e9:18ea7a6d774:-7fc4']
 
-link_id = ['5631d1e9:18ea7a6d774:-7fc3', '5631d1e9:18ea7a6d774:-7fc2',
-           '5631d1e9:18ea7a6d774:-7fc1', '5631d1e9:18ea7a6d774:-7fc0',
-           '5631d1e9:18ea7a6d774:-7fbf']
+# link_id = ['5631d1e9:18ea7a6d774:-7fc3', '5631d1e9:18ea7a6d774:-7fc2',
+#            '5631d1e9:18ea7a6d774:-7fc1', '5631d1e9:18ea7a6d774:-7fc0',
+#            '5631d1e9:18ea7a6d774:-7fbf']
 
 
 def PULSE_SC(outroot, attribid, ordering, geometry, parameters):
     func_name = 'PULSE_SC'
-
+    block_id, port_id, link_id = generate_id(8, 10, 5)
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
                          func_name, 'csuper', 'DEFAULT',

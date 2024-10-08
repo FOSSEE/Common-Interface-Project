@@ -4,22 +4,22 @@ from blocks.OUT_f import OUT_f
 from blocks.CLKOUTV_f import CLKOUTV_f
 from common.AAAAAA import *
 
-block_id = ['7b47c302:1912616652e:-7fdb', '7b47c302:1912616652f:-7fdb',
-            '7b47c302:1912616652d:-7fd8', '7b47c302:1912616652d:-7fd4',
-            '7b47c302:1912616652d:-7fd0', '7b47c302:1912616652d:-7fce']
-link_id = ['7b47c302:1912616652d:-7fcc', '7b47c302:1912616652d:-7fcb',
-           '7b47c302:1912616652d:-7fca', '7b47c302:1912616652d:-7fc9'
-           ]
-port_id = ['7b47c302:1912616652d:-7fd7', '7b47c302:1912616652d:-7fd6',
-           '7b47c302:1912616652d:-7fd5', '7b47c302:1912616652d:-7fd3',
-           '7b47c302:1912616652d:-7fd2', '7b47c302:1912616652d:-7fd1',
-           '7b47c302:1912616652d:-7fcf', '7b47c302:1912616652d:-7fcd'
-           ]
+# block_id = ['7b47c302:1912616652e:-7fdb', '7b47c302:1912616652f:-7fdb',
+#             '7b47c302:1912616652d:-7fd8', '7b47c302:1912616652d:-7fd4',
+#             '7b47c302:1912616652d:-7fd0', '7b47c302:1912616652d:-7fce']
+# link_id = ['7b47c302:1912616652d:-7fcc', '7b47c302:1912616652d:-7fcb',
+#            '7b47c302:1912616652d:-7fca', '7b47c302:1912616652d:-7fc9'
+#            ]
+# port_id = ['7b47c302:1912616652d:-7fd7', '7b47c302:1912616652d:-7fd6',
+#            '7b47c302:1912616652d:-7fd5', '7b47c302:1912616652d:-7fd3',
+#            '7b47c302:1912616652d:-7fd2', '7b47c302:1912616652d:-7fd1',
+#            '7b47c302:1912616652d:-7fcf', '7b47c302:1912616652d:-7fcd'
+#            ]
 
 
 def Sigbuilder(outroot, attribid, ordering, geometry, parameters):
     func_name = 'Sigbuilder'
-
+    block_id, port_id, link_id = generate_id(6, 8, 4)
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
                          func_name, 'csuper', 'DEFAULT',

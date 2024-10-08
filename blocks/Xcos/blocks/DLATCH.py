@@ -7,34 +7,9 @@ from blocks.IN_f import IN_f
 from blocks.OUT_f import OUT_f
 from common.AAAAAA import *
 
-block_id = ['708bd936:1607397e24d:-7e0d', '708bd936:1607397e24e:-7e0d',
-            '708bd936:1607397e24c:-7e04', '708bd936:1607397e24c:-7e02',
-            '708bd936:1607397e24c:-7dfe', '708bd936:1607397e24c:-7dfa',
-            '708bd936:1607397e24c:-7df6', '708bd936:1607397e24c:-7df3',
-            '708bd936:1607397e24c:-7dee', '708bd936:1607397e24c:-7dec',
-            '708bd936:1607397e24c:-7dea', '708bd936:1607397e24c:-7de8']
-
-port_id = ['5981df00:18ea28638db:-7f8d', '5981df00:18ea28638db:-7f8a',
-           '5981df00:18ea28638db:-7f89', '5981df00:18ea28638db:-7f88',
-           '5981df00:18ea28638db:-7f85', '5981df00:18ea28638db:-7f83',
-           '5981df00:18ea28638db:-7f81', '5981df00:18ea28638db:-7f7e',
-           '5981df00:18ea28638db:-7f7c', '5981df00:18ea28638db:-7f7b',
-           '5981df00:18ea28638db:-7f78', '5981df00:18ea28638db:-7f76',
-           '5981df00:18ea28638db:-7f73', '5981df00:18ea28638db:-7f71',
-           '5981df00:18ea28638db:-7f6f', '5981df00:18ea28638db:-7f6d',
-           '5981df00:18ea28638db:-7f6a', '5981df00:18ea28638db:-7f67',
-           '5981df00:18ea28638db:-7f64', '5981df00:18ea28638db:-7f61']
-
-link_id = ['5981df00:18ea28638db:-7f60', '5981df00:18ea28638db:-7f5f',
-           '5981df00:18ea28638db:-7f5e', '5981df00:18ea28638db:-7f5d',
-           '5981df00:18ea28638db:-7f5c', '5981df00:18ea28638db:-7f5b',
-           '5981df00:18ea28638db:-7f5a', '5981df00:18ea28638db:-7f59',
-           '5981df00:18ea28638db:-7f58']
-
-
 def DLATCH(outroot, attribid, ordering, geometry, parameters):
     func_name = 'DLATCH'
-
+    block_id, port_id, link_id = generate_id(12, 20, 9)
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
                          func_name, 'csuper', 'DEFAULT',

@@ -21,7 +21,7 @@ const {
   mxPoint
 } = new mxGraphFactory()
 
-export default function toolbarTools (grid, unredo) {
+export default function toolbarTools(grid, unredo) {
   graph = grid
 
   undoManager = new mxUndoManager()
@@ -33,7 +33,7 @@ export default function toolbarTools (grid, unredo) {
 }
 
 // SAVE
-export function saveXml (description = '') {
+export function saveXml(description = '') {
   try {
     xmlWireConnections()
   } catch (e) {
@@ -52,42 +52,42 @@ export function saveXml (description = '') {
 }
 
 // UNDO
-export function editorUndo () {
+export function editorUndo() {
   undoManager.undo()
 }
 
 // REDO
-export function editorRedo () {
+export function editorRedo() {
   undoManager.redo()
 }
 
 // Zoom IN
-export function editorZoomIn () {
+export function editorZoomIn() {
   graph.zoomIn()
 }
 
 // ZOOM OUT
-export function editorZoomOut () {
+export function editorZoomOut() {
   graph.zoomOut()
 }
 
 // ZOOM ACTUAL
-export function editorZoomAct () {
+export function editorZoomAct() {
   graph.zoomActual()
 }
 
 // DELETE COMPONENT
-export function deleteComp () {
+export function deleteComp() {
   graph.removeCells()
 }
 
 // CLEAR WHOLE GRID
-export function ClearGrid () {
+export function ClearGrid() {
   graph.removeCells(graph.getChildVertices(graph.getDefaultParent()))
 }
 
 // ROTATE COMPONENT
-export function Rotate () {
+export function Rotate() {
   const view = graph.getView()
   const cell = graph.getSelectionCell()
   const state = view.getState(cell, true)
@@ -99,7 +99,7 @@ export function Rotate () {
 }
 
 // PRINT PREVIEW OF SCHEMATIC
-export function PrintPreview () {
+export function PrintPreview() {
   // Matches actual printer paper size and avoids blank pages
   const scale = 0.8
   const headerSize = 50
@@ -163,7 +163,7 @@ export function PrintPreview () {
 }
 
 // ERC CHECK FOR SCHEMATIC
-export function ErcCheck () {
+export function ErcCheck() {
   const NoAddition = 'No ' + process.env.REACT_APP_BLOCK_NAME + ' added'
   const list = graph.getModel().cells // mapping the grid
   let vertexCount = 0
@@ -204,7 +204,7 @@ export function ErcCheck () {
   }
 }
 
-function ercCheckNets () {
+function ercCheckNets() {
   const NoAddition = 'No ' + process.env.REACT_APP_BLOCK_NAME + ' added'
   const list = graph.getModel().cells // mapping the grid
   let vertexCount = 0
@@ -246,7 +246,7 @@ function ercCheckNets () {
 }
 
 // GENERATE NETLIST
-export function generateNetList () {
+export function generateNetList() {
   let c = 1
   const spiceModels = ''
   const netlist = {
@@ -341,18 +341,18 @@ export function generateNetList () {
   return netobj
 }
 
-function annotate (graph) {
+function annotate(graph) {
   return graph.getModel().cells
 }
 
-export function renderXML () {
+export function renderXML() {
   graph.view.refresh()
   const xml = 'null'
   const xmlDoc = mxUtils.parseXml(xml)
   parseXmlToGraph(xmlDoc, graph)
 }
 
-function parseXmlToGraph (xmlDoc, graph) {
+function parseXmlToGraph(xmlDoc, graph) {
   const parent = graph.getDefaultParent()
   let v1
 
@@ -480,7 +480,7 @@ function parseXmlToGraph (xmlDoc, graph) {
           let targetCell = graph.getModel().getCell(target)
           if (sourceCell == null || targetCell == null) {
             console.log('ST not found', source, target)
-            remainingcells.append(cell)
+            remainingcells.push(cell)
             continue
           }
           console.log('ST', source, target)
@@ -537,14 +537,14 @@ function parseXmlToGraph (xmlDoc, graph) {
   }
 }
 
-export function renderGalleryXML (xml) {
+export function renderGalleryXML(xml) {
   graph.removeCells(graph.getChildVertices(graph.getDefaultParent()))
   graph.view.refresh()
   const xmlDoc = mxUtils.parseXml(xml)
   parseXmlToGraph(xmlDoc, graph)
 }
 
-function xmlWireConnections () {
+function xmlWireConnections() {
   const list = graph.getModel().cells
   for (const component of Object.values(list)) {
     const children = component.children

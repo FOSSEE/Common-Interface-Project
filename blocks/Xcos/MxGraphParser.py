@@ -54,6 +54,8 @@ def check_point_on_array(array, point, left_right_direction=True):
         rightX = float(array[i + 1]['x'])
         rightY = float(array[i + 1]['y'])
 
+        print("RANGE:", pointX, pointY, leftX, leftY, rightX, rightY, left_right_direction)
+
         # Check if the point lies on the line segment between array[i] and array[i + 1]
         if -40 <= leftY - pointY <= 40 and \
                 -40 <= rightY - pointY <= 40 and \
@@ -64,14 +66,14 @@ def check_point_on_array(array, point, left_right_direction=True):
                 leftY <= pointY <= rightY:
             return True, array[:i + 1] + [point], [point] + array[i + 1:]
 
-        if left_right_direction:
-            if -20 <= leftY - pointY <= 20:
-                print('to the left / right')
-                return True, array[:i + 1] + [point], [point] + array[i + 1:]
-        else:
-            if -20 <= leftX - pointX <= 20:
-                print('on the up / down')
-                return True, array[:i + 1] + [point], [point] + array[i + 1:]
+        # if left_right_direction:
+        if -20 <= leftX - pointX <= 20:
+            print('to the left / right')
+            return True, array[:i + 1] + [point], [point] + array[i + 1:]
+        # else:
+        if -20 <= leftY - pointY <= 20:
+            print('on the up / down')
+            return True, array[:i + 1] + [point], [point] + array[i + 1:]
 
         # switch direction for the next waypoint
         left_right_direction = not left_right_direction
@@ -90,6 +92,7 @@ def identify_segment(array, point):
         print('COUNT:', len(segment))
         result, left_array, right_array = check_point_on_array(segment[6], point)
         if result:
+            print("OK")
             return result, i, left_array, right_array
     print("ERror11:", point, "does not lie on", array)
     return False, -1, array, []
@@ -153,8 +156,8 @@ for root in model:
                 if mxGeometry is not None:
                     componentGeometry['height'] = mxGeometry.attrib['height']
                     componentGeometry['width'] = mxGeometry.attrib['width']
-                    componentGeometry['x'] = mxGeometry.attrib['x']
-                    componentGeometry['y'] = mxGeometry.attrib['y']
+                    componentGeometry['x'] = mxGeometry.attrib.get('x', '0')
+                    componentGeometry['y'] = mxGeometry.attrib.get('y', '0')
                 parameter_values = cell.find('./Object[@as="parameter_values"]')
                 parameters = []
                 if parameter_values is not None:

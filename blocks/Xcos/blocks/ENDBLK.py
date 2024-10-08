@@ -1,13 +1,13 @@
 from blocks.END_c import END_c
 from common.AAAAAA import *
 
-block_id = ['-76454188:14e1ef4db89:-7d58', '-76454188:14e1ef4db8a:-7d58',
-            '-76454188:14e1ef4db88:-7d55']
+# block_id = ['-76454188:14e1ef4db89:-7d58', '-76454188:14e1ef4db8a:-7d58',
+#             '-76454188:14e1ef4db88:-7d55']
 
 
 def ENDBLK(outroot, attribid, ordering, geometry, parameters):
     func_name = 'ENDBLK'
-
+    block_id, port_id, link_id = generate_id(3, 0, 0)
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
                          func_name, 'csuper', 'DEFAULT',
