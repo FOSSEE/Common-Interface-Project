@@ -42,17 +42,15 @@ function configureStylesheet (graph) {
   graph.stylesheet.styles = blockstyle
 }
 
-function styleToObject (style) {
+export function styleToObject (style) {
   // To add semicolon at the end if it isn't already present.
   if (style[style.length - 1] !== ';') {
     style = style + ';'
   }
-  const defaultStyle = style.substring(0, style.indexOf(';'))
   const styleObject = {
-    default: defaultStyle
   }
 
-  let remainingStyle = style.substring(style.indexOf(';') + 1)
+  let remainingStyle = style
   while (remainingStyle.length > 0) {
     const indexOfKeyValue = remainingStyle.indexOf(';')
 
@@ -61,6 +59,12 @@ function styleToObject (style) {
       const key = remainingStyle.substring(0, indexOfKey)
       const value = remainingStyle.substring(indexOfKey + 1, indexOfKeyValue)
       styleObject[key] = value
+    } else {
+      const key = 'default'
+      const value = remainingStyle.substring(0, indexOfKeyValue)
+      if (value !== '' && !(key in styleObject)) {
+        styleObject[key] = value
+      }
     }
 
     remainingStyle = remainingStyle.substring(indexOfKeyValue + 1)
@@ -344,10 +348,10 @@ export default function LoadGrid (container, sidebar, outline) {
     }
 
     graph.convertValueToString = function (cell) {
-      const attribute = cell.style?.replace(/;.*/, '')
-      if (attribute == null) {
+      if (cell.style == null) {
         return ''
       }
+      const attribute = styleToObject(cell.style).default
 
       const stylesheet = graph.getStylesheet()
       const style = stylesheet.styles[attribute]

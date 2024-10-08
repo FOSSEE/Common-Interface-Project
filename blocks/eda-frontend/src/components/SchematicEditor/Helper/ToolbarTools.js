@@ -3,7 +3,7 @@ import 'mxgraph/javascript/src/css/common.css'
 
 import mxGraphFactory from 'mxgraph'
 import { portSize, getParameter } from './SvgParser'
-import { getPortType, InputPort, OutputPort } from './ComponentDrag'
+import { styleToObject, getPortType, InputPort, OutputPort } from './ComponentDrag'
 import store from '../../../redux/store'
 import { setModel, setNetlist } from '../../../redux/actions/index'
 
@@ -363,15 +363,14 @@ function parseXmlToGraph (xmlDoc, graph) {
   let cellslength = cells.length
   let remainingcells = []
   try {
+    console.log('cellslength=', cellslength)
     while (cellslength > 0 && cellslength !== oldcellslength) {
-      console.log('cellslength=', cellslength, ', oldcellslength=', oldcellslength)
-
       for (let i = 0; i < cellslength; i++) {
         const cell = cells[i]
         const cellAttrs = cell.attributes
         const cellChildren = cell.children
         if (cellAttrs.CellType?.value === 'Component') { // is component
-          const style = cellAttrs.style.value.replace(/;.*/, '')
+          const style = styleToObject(cellAttrs.style.value).default
           const vertexId = cellAttrs.id.value
           const geom = cellChildren[0].attributes
           const xPos = (geom.x !== undefined) ? Number(geom.x.value) : 0
@@ -422,7 +421,7 @@ function parseXmlToGraph (xmlDoc, graph) {
           v1.commandPorts = 0
           v1.simulationFunction = cellAttrs.simulationFunction?.value
         } else if (cellAttrs.CellType?.value === 'Pin') {
-          const style = cellAttrs.style.value.replace(/;.*/, '')
+          const style = styleToObject(cellAttrs.style.value).default
           const vertexId = cellAttrs.id.value
           const geom = cellChildren[0].attributes
           const xPos = (geom.x !== undefined) ? Number(geom.x.value) : 0
@@ -530,6 +529,7 @@ function parseXmlToGraph (xmlDoc, graph) {
       cells = remainingcells
       cellslength = remainingcells.length
       remainingcells = []
+      console.log('cellslength=', cellslength, ', oldcellslength=', oldcellslength)
     }
     graph.view.refresh()
   } finally {
