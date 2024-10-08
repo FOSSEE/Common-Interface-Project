@@ -228,42 +228,34 @@
       <xsl:variable name="parentId" select="@parent"/>
       <xsl:variable name="SPLIT" select="//SplitBlock[position() = 1]"/>
 
-      <xsl:choose>
-        <xsl:when test="$parentId != $SPLIT/@id" >
-          <xsl:copy>
-            <xsl:copy-of select="@*"/>
-          </xsl:copy>
-        </xsl:when>
-      </xsl:choose>
+      <xsl:if test="$parentId != $SPLIT/@id" >
+        <xsl:copy>
+          <xsl:copy-of select="@*"/>
+        </xsl:copy>
+      </xsl:if>
     </xsl:template>
 
     <xsl:template match="ExplicitLink | CommandControlLink | ImplicitLink">
       <xsl:variable name="sourceId" select="@source"/>
       <xsl:variable name="sourceElement" select="//*[@id = $sourceId]"/>
       <xsl:variable name="sourceElemId" select="$sourceElement/@parent"/>
-      <xsl:variable name="parentElement" select="//*[@id = $sourceElemId]"/>
       <xsl:variable name="targetId" select="@target"/>
       <xsl:variable name="targetElement" select="//*[@id = $targetId]"/>
       <xsl:variable name="targetElemId" select="$targetElement/@parent"/>
-      <xsl:variable name="parentTargetElement" select="//*[@id = $targetElemId]"/>
       <xsl:variable name="SPLITID" select="//SplitBlock[position() = 1]/@id"/>
 
-      <xsl:choose>
-        <xsl:when test="$sourceElemId != $SPLITID and $targetElemId != $SPLITID">
-          <xsl:variable name="tgtsrcid" select="//*[@id = $targetElement/@source]/@parent"/>
-          <xsl:variable name="srctgtid" select="//*[@id = $sourceElement/@target]/@parent"/>
-          <xsl:variable name="srcsrcid" select="//*[@id = $sourceElement/@source]/@parent"/>
-          <xsl:variable name="tgttgtid" select="//*[@id = $targetElement/@target]/@parent"/>
+      <xsl:if test="$sourceElemId != $SPLITID and $targetElemId != $SPLITID">
+        <xsl:variable name="tgtsrcid" select="//*[@id = $targetElement/@source]/@parent"/>
+        <xsl:variable name="srctgtid" select="//*[@id = $sourceElement/@target]/@parent"/>
+        <xsl:variable name="srcsrcid" select="//*[@id = $sourceElement/@source]/@parent"/>
+        <xsl:variable name="tgttgtid" select="//*[@id = $targetElement/@target]/@parent"/>
 
-          <xsl:choose>
-            <xsl:when test="((string-length($tgtsrcid) = 0 or $tgtsrcid != $SPLITID) and (string-length($tgttgtid) = 0 or $tgttgtid != $SPLITID)) and ((string-length($srctgtid) = 0 or $srctgtid != $SPLITID) and (string-length($srcsrcid) = 0 or $srcsrcid != $SPLITID))">
-              <xsl:copy>
-                <xsl:copy-of select="@*"/>
-                <xsl:copy-of select="node()"/>
-              </xsl:copy>
-            </xsl:when>
-          </xsl:choose>
-        </xsl:when>
-      </xsl:choose>
+        <xsl:if test="(string-length($tgtsrcid) = 0 or $tgtsrcid != $SPLITID) and (string-length($tgttgtid) = 0 or $tgttgtid != $SPLITID) and (string-length($srctgtid) = 0 or $srctgtid != $SPLITID) and (string-length($srcsrcid) = 0 or $srcsrcid != $SPLITID)">
+          <xsl:copy>
+            <xsl:copy-of select="@*"/>
+            <xsl:copy-of select="node()"/>
+          </xsl:copy>
+        </xsl:if>
+      </xsl:if>
     </xsl:template>
 </xsl:stylesheet>
