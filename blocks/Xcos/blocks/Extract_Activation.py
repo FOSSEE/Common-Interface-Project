@@ -4,23 +4,9 @@ from blocks.IN_f import IN_f
 from blocks.CLKOUTV_f import CLKOUTV_f
 from common.AAAAAA import *
 
-block_id = ['2ce97337:1607dc7797f:-7da9', '2ce97337:1607dc77980:-7da9',
-            '2ce97337:1607dc7797e:-7d3e', '2ce97337:1607dc7797e:-7d3a',
-            '2ce97337:1607dc7797e:-7d35', '2ce97337:1607dc7797e:-7d33']
-
-port_id = ['3971fa90:18e982d0153:-7f03', '3971fa90:18e982d0153:-7f02',
-           '3971fa90:18e982d0153:-7f01', '3971fa90:18e982d0153:-7eff',
-           '3971fa90:18e982d0153:-7efe', '3971fa90:18e982d0153:-7efd',
-           '3971fa90:18e982d0153:-7efc', '3971fa90:18e982d0153:-7ef9',
-           '3971fa90:18e982d0153:-7ef7']
-
-link_id = ['3971fa90:18e982d0153:-7ef6', '3971fa90:18e982d0153:-7ef5',
-           '3971fa90:18e982d0153:-7ef4', '3971fa90:18e982d0153:-7ef3']
-
-
 def Extract_Activation(outroot, attribid, ordering, geometry, parameters):
     func_name = 'Extract_Activation'
-
+    block_id, port_id, link_id = generate_id(6, 9, 4)
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
                          func_name, 'csuper', 'DEFAULT',

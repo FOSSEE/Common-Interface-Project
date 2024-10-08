@@ -1,12 +1,12 @@
 from common.AAAAAA import *
 
-block_id = ['-64ce6d85:145ef6f2b50:-7ee7', '-64ce6d85:145ef6f2b51:-7ee7',
-            '-64ce6d85:145ef6f2b4f:-7f54']
+# block_id = ['-64ce6d85:145ef6f2b50:-7ee7', '-64ce6d85:145ef6f2b51:-7ee7',
+#             '-64ce6d85:145ef6f2b4f:-7f54']
 
 
 def CLKOUTV_f(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'CLKOUTV_f'
-
+    block_id, port_id, link_id = generate_id(3, 0, 0)
     outnode = addOutNode(outroot, BLOCK_EVENT_OUT,
                          attribid, ordering, parent,
                          func_name, 'output', 'DEFAULT',

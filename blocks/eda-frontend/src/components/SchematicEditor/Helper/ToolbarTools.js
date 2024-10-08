@@ -480,7 +480,7 @@ function parseXmlToGraph (xmlDoc, graph) {
           let targetCell = graph.getModel().getCell(target)
           if (sourceCell == null || targetCell == null) {
             console.log('ST not found', source, target)
-            remainingcells.append(cell)
+            remainingcells.push(cell)
             continue
           }
           console.log('ST', source, target)

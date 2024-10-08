@@ -5,30 +5,9 @@ from blocks.OUT_f import OUT_f
 from blocks.IN_f import IN_f
 from common.AAAAAA import *
 
-block_id = ['5cc9645e:16194321244:-7fca', '5cc9645e:16194321245:-7fca',
-            '5cc9645e:16194321243:-7f75', '5cc9645e:16194321243:-7f6f',
-            '5cc9645e:16194321243:-7f6c', '5cc9645e:16194321243:-7f67',
-            '5cc9645e:16194321243:-7f65', '5cc9645e:16194321243:-7f63',
-            '5cc9645e:16194321243:-7f61']
-
-port_id = ['-5c91adbd:18eac9e92a4:-7fba', '-5c91adbd:18eac9e92a4:-7fb8',
-           '-5c91adbd:18eac9e92a4:-7fb6', '-5c91adbd:18eac9e92a4:-7fb4',
-           '-5c91adbd:18eac9e92a4:-7fb2', '-5c91adbd:18eac9e92a4:-7faf',
-           '-5c91adbd:18eac9e92a4:-7fad', '-5c91adbd:18eac9e92a4:-7faa',
-           '-5c91adbd:18eac9e92a4:-7fa8', '-5c91adbd:18eac9e92a4:-7fa6',
-           '-5c91adbd:18eac9e92a4:-7fa4', '-5c91adbd:18eac9e92a4:-7fa1',
-           '-5c91adbd:18eac9e92a4:-7f9e', '-5c91adbd:18eac9e92a4:-7f9b',
-           '-5c91adbd:18eac9e92a4:-7f98']
-
-link_id = ['-5c91adbd:18eac9e92a4:-7f97', '-5c91adbd:18eac9e92a4:-7f96',
-           '-5c91adbd:18eac9e92a4:-7f95', '-5c91adbd:18eac9e92a4:-7f94',
-           '-5c91adbd:18eac9e92a4:-7f93', '-5c91adbd:18eac9e92a4:-7f92',
-           '-5c91adbd:18eac9e92a4:-7f91']
-
-
 def SRFLIPFLOP(outroot, attribid, ordering, geometry, parameters):
     func_name = 'SRFLIPFLOP'
-
+    block_id, port_id, link_id = generate_id(9, 15, 7)
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
                          func_name, 'csuper', 'DEFAULT',

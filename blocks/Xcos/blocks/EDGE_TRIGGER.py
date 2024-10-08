@@ -4,23 +4,9 @@ from blocks.IFTHEL_f import IFTHEL_f
 from blocks.EDGETRIGGER import EDGETRIGGER
 from common.AAAAAA import *
 
-block_id = ['3dd766ce:16069f39bc0:-7d61', '3dd766ce:16069f39bc1:-7d61',
-            '3dd766ce:16069f39bbf:-7d34', '3dd766ce:16069f39bbf:-7d31',
-            '3dd766ce:16069f39bbf:-7d2d', '3dd766ce:16069f39bbf:-7d2b']
-
-port_id = ['3971fa90:18e982d0153:-7f1d', '3971fa90:18e982d0153:-7f1b',
-           '3971fa90:18e982d0153:-7f18', '3971fa90:18e982d0153:-7f17',
-           '3971fa90:18e982d0153:-7f16', '3971fa90:18e982d0153:-7f13',
-           '3971fa90:18e982d0153:-7f11']
-
-link_id = ['-63efee48:189fd5ed04e:-73d5', '-63efee48:189fd5ed04e:-73d4',
-           '-63efee48:189fd5ed04e:-73d3', '128c18ea:1383ab8277e:-748d'
-           ]
-
-
 def EDGE_TRIGGER(outroot, attribid, ordering, geometry, parameters):
     func_name = 'EDGE_TRIGGER'
-
+    block_id, port_id, link_id = generate_id(6, 7, 4)
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
                          func_name, 'csuper', 'DEFAULT',

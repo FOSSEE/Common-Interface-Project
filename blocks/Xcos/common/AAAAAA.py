@@ -1,6 +1,8 @@
 import re
 import xml.etree.ElementTree as ET
 import math
+import random
+import uuid
 
 TYPE_ARRAY = 'Array'
 TYPE_DOUBLE = 'ScilabDouble'
@@ -613,3 +615,17 @@ def num2str(num):
     if num % 1 == 0:
         num = int(num)
     return str(num)
+
+
+def generate_id(block_count, port_count, link_count):
+    def random_hex(part1, sequence):
+        part3 = f"{sequence:x}"
+        return f"{part1}:{part3}"
+
+    part1 = f"{uuid.uuid4().int >> 64 & 0xffffffff:x}"
+    all_ids = [random_hex(part1, i) for i in range(block_count + port_count + link_count)]
+    block_ids = all_ids[0:block_count]
+    port_ids = all_ids[block_count:block_count + port_count]
+    link_ids = all_ids[block_count + port_count:block_count + port_count + link_count]
+
+    return block_ids, port_ids, link_ids

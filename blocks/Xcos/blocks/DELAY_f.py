@@ -4,15 +4,15 @@ from blocks.IN_f import IN_f
 from blocks.OUT_f import OUT_f
 from common.AAAAAA import *
 
-block_id = ['18f5f971:13894cb2d90:-7f6f', '18f5f971:13894cb2d91:-7f6f',
-            '-73e75f0:167968eb73f:-7c07', '-73e75f0:167968eb73f:-7c05',
-            '-73e75f0:167968eb73f:-7c03', '-73e75f0:167968eb73f:-7bff']
-port_id = ['7a86d9c5:18e504d8baa:-7fae']
+# block_id = ['18f5f971:13894cb2d90:-7f6f', '18f5f971:13894cb2d91:-7f6f',
+#             '-73e75f0:167968eb73f:-7c07', '-73e75f0:167968eb73f:-7c05',
+#             '-73e75f0:167968eb73f:-7c03', '-73e75f0:167968eb73f:-7bff']
+# port_id = ['7a86d9c5:18e504d8baa:-7fae']
 
 
 def DELAY_f(outroot, attribid, ordering, geometry, parameters):
     func_name = 'DELAY_f'
-
+    block_id, port_id, link_id = generate_id(6, 1, 0)
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
                          func_name, 'csuper', 'DEFAULT',

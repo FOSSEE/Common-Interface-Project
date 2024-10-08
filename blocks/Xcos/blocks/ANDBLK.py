@@ -5,27 +5,9 @@ from blocks.IFTHEL_f import IFTHEL_f
 from blocks.CLKSPLIT_f import CLKSPLIT_f
 from common.AAAAAA import *
 
-block_id = ['2ce97337:1607dc7797f:-7db2', '2ce97337:1607dc77980:-7db2',
-            '2ce97337:1607dc7797e:-7d69', '2ce97337:1607dc7797e:-7d65',
-            '2ce97337:1607dc7797e:-7d63', '2ce97337:1607dc7797e:-7d61',
-            '2ce97337:1607dc7797e:-7d5f', '2ce97337:1607dc7797e:-7d5a']
-
-port_id = ['3971fa90:18e982d0153:-7f3d', '3971fa90:18e982d0153:-7f3c',
-           '3971fa90:18e982d0153:-7f3b', '3971fa90:18e982d0153:-7f39',
-           '3971fa90:18e982d0153:-7f37', '3971fa90:18e982d0153:-7f35',
-           '3971fa90:18e982d0153:-7f32', '3971fa90:18e982d0153:-7f31',
-           '3971fa90:18e982d0153:-7f30', '3971fa90:18e982d0153:-7f2f',
-           '3971fa90:18e982d0153:-7f2d', '3971fa90:18e982d0153:-7f2c',
-           '3971fa90:18e982d0153:-7f2b']
-
-link_id = ['3971fa90:18e982d0153:-7f2a', '3971fa90:18e982d0153:-7f29',
-           '3971fa90:18e982d0153:-7f28', '3971fa90:18e982d0153:-7f27',
-           '3971fa90:18e982d0153:-7f26', '3971fa90:18e982d0153:-7f25']
-
-
 def ANDBLK(outroot, attribid, ordering, geometry, parameters):
     func_name = 'ANDBLK'
-
+    block_id, port_id, link_id = generate_id(8, 13, 6)
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, 1,
                          func_name, 'csuper', 'DEFAULT',
