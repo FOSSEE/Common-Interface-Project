@@ -34,6 +34,11 @@ sed -i -e '/^\s*location \/ {/,/^\s*}/c\
                 proxy_pass http://127.0.0.1:8000;\
         }\
 \
+        location /resources/ {\
+                proxy_pass http://127.0.0.1:3500;\
+                expires 7d;\
+        }\
+\
         location /ws {\
                 proxy_pass http://127.0.0.1:3500;\
                 proxy_http_version 1.1;\
