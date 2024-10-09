@@ -1,10 +1,10 @@
-    <xsl:template match="TextBlock">
+    <xsl:template match="*[@interfaceFunctionName = 'CLOCK_f']">
       <xsl:variable name="explicitInputPorts">0</xsl:variable>
       <xsl:variable name="implicitInputPorts">0</xsl:variable>
       <xsl:variable name="explicitOutputPorts">0</xsl:variable>
       <xsl:variable name="implicitOutputPorts">0</xsl:variable>
       <xsl:variable name="controlPorts">0</xsl:variable>
-      <xsl:variable name="commandPorts">0</xsl:variable>
+      <xsl:variable name="commandPorts">1</xsl:variable>
       <xsl:element name="mxCell">
         <xsl:attribute name="style">
           <xsl:value-of select="@style" />
@@ -34,24 +34,16 @@
         <xsl:attribute name="commandPorts">
           <xsl:value-of select="$commandPorts" />
         </xsl:attribute>
-        <xsl:attribute name="simulationFunction"></xsl:attribute>
+        <xsl:attribute name="simulationFunction">
+          <xsl:value-of select="@simulationFunctionName" />
+        </xsl:attribute>
         <xsl:attribute name="sourceVertex">0</xsl:attribute>
         <xsl:attribute name="targetVertex">0</xsl:attribute>
         <xsl:attribute name="tarx">0</xsl:attribute>
         <xsl:attribute name="tary">0</xsl:attribute>
         <xsl:apply-templates select="node()"/>
-        <Object>
-          <xsl:attribute name="display_parameter">
-            <xsl:value-of select="@value"/>
-          </xsl:attribute>
-          <xsl:attribute name="as">displayProperties</xsl:attribute>
-        </Object>
-        <Object>
-            <xsl:attribute name="p000_value">
-              <xsl:value-of select="@value"/>
-            </xsl:attribute>
-          <xsl:attribute name="as">parameter_values</xsl:attribute>
-        </Object>
+        <Object display_parameter="" as="displayProperties"/>
+        <Object p000_value="0.1" p001_value="0.1" as="parameter_values"/>
       </xsl:element>
       <xsl:call-template name="port">
         <xsl:with-param name="id" select="@id"/>
