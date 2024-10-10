@@ -19,7 +19,9 @@
     <xsl:template name="links">
       <xsl:param name="linktype" />
       <xsl:param name="targetonelink" />
+      <xsl:param name="targetonelinksrcortgt" />
       <xsl:param name="sourceonelink" />
+      <xsl:param name="sourceonelinksrcortgt" />
       <xsl:param name="sourcetwolink" />
       <xsl:param name="sourcetwolinksrcortgt" />
       <xsl:param name="targetonesecondlink" />
@@ -40,10 +42,10 @@
           <xsl:value-of select="$parent" />
         </xsl:attribute>
         <xsl:attribute name="source">
-          <xsl:value-of select="$targetonelink/@source" />
+          <xsl:value-of select="$targetonelinksrcortgt" /> <!-- removed by suchita $targetonelink/@source-->
         </xsl:attribute>
         <xsl:attribute name="target">
-          <xsl:value-of select="$sourceonelink/@target" />
+          <xsl:value-of select="$sourceonelinksrcortgt" /> <!-- removed by suchita sourceonelink/@target-->
         </xsl:attribute>
         <xsl:attribute name="style">
           <xsl:value-of select="$linktype" />
@@ -160,7 +162,9 @@
           <xsl:call-template name="links">
             <xsl:with-param name="linktype" select="$linktype"/>
             <xsl:with-param name="targetonelink" select="$targetonelink"/>
+            <xsl:with-param name="targetonelinksrcortgt" select="$targetonelink/@source"/>
             <xsl:with-param name="sourceonelink" select="$sourceonelink"/>
+            <xsl:with-param name="sourceonelinksrcortgt" select="$sourceonelink/@target"/>
             <xsl:with-param name="sourcetwolink" select="$sourcetwolink"/>
             <xsl:with-param name="sourcetwolinksrcortgt" select="$sourcetwolink/@target"/>
             <xsl:with-param name="targetonesecondlink" select="$targetonesecondlink"/>
@@ -187,7 +191,9 @@
           <xsl:call-template name="links">
             <xsl:with-param name="linktype" select="$linktype"/>
             <xsl:with-param name="targetonelink" select="$targetcommandonelink"/>
+            <xsl:with-param name="targetonelinksrcortgt" select="$targetcommandonelink/@source"/>
             <xsl:with-param name="sourceonelink" select="$sourcecommandonelink"/>
+            <xsl:with-param name="sourceonelinksrcortgt" select="$sourcecommandonelink/@target"/>
             <xsl:with-param name="sourcetwolink" select="$sourcecommandtwolink"/>
             <xsl:with-param name="sourcetwolinksrcortgt" select="$sourcecommandtwolink/@target"/>
             <xsl:with-param name="targetonesecondlink" select="$targetonesecondlink"/>
@@ -210,6 +216,34 @@
           <xsl:variable name="targetonesecondlink" select="key('k-implicitsrclink', $targetimplicitonelink/@id)" />
           <xsl:variable name="sourceonesecondlink" select="key('k-implicitsrclink', $sourceimplicitonelink/@id)" />
           <xsl:variable name="sourcetwosecondlink" select="key('k-implicitsrclink', $sourceimplicittwolink/@id)" />
+          <xsl:variable name="targetonelinksort" >
+            <xsl:choose>
+              <xsl:when test="$targetimplicitoneid = $targetimplicitonelink/@source">
+                <xsl:value-of select="$targetimplicitonelink/@target"/>
+              </xsl:when>
+              <xsl:when test="$targetimplicitoneid = $targetimplicitonelink/@target">
+                <xsl:value-of select="$targetimplicitonelink/@source"/>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:text>No match found</xsl:text>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:variable>
+
+          <xsl:variable name="sourceonelinksort" >
+            <xsl:choose>
+              <xsl:when test="$sourceimplicitoneid = $sourceimplicitonelink/@source">
+                <xsl:value-of select="$sourceimplicitonelink/@target"/>
+              </xsl:when>
+              <xsl:when test="$sourceimplicitoneid = $sourceimplicitonelink/@target">
+                <xsl:value-of select="$sourceimplicitonelink/@source"/>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:text>No match found</xsl:text>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:variable>
+
           <xsl:variable name="sourcetwolinksort" >
             <xsl:choose>
               <xsl:when test="$sourceimplicittwoid = $sourceimplicittwolink/@source">
@@ -227,7 +261,9 @@
           <xsl:call-template name="links">
             <xsl:with-param name="linktype" select="$linktype"/>
             <xsl:with-param name="targetonelink" select="$targetimplicitonelink"/>
+            <xsl:with-param name="targetonelinksrcortgt" select="$targetonelinksort"/>
             <xsl:with-param name="sourceonelink" select="$sourceimplicitonelink"/>
+            <xsl:with-param name="sourceonelinksrcortgt" select="$sourceonelinksort"/>
             <xsl:with-param name="sourcetwolink" select="$sourceimplicittwolink"/>
             <xsl:with-param name="sourcetwolinksrcortgt" select="$sourcetwolinksort"/>
             <xsl:with-param name="targetonesecondlink" select="$targetonesecondlink"/>
