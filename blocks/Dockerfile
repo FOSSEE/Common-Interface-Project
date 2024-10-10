@@ -8,9 +8,7 @@ ENV HOME=/root
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 ENV JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF8
 
-ARG NODE_VERSION=v18.19.1
-ARG NODE=node-${NODE_VERSION}-linux-x64
-ARG NODE_DIR=${HOME}/${NODE}
+ARG NODE_DIR=${HOME}/node
 ENV PATH=${NODE_DIR}/bin:${PATH}
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
@@ -107,10 +105,13 @@ FROM base AS build-xcos
 RUN apt-get update -qq && \
   apt-get install -qq --no-install-recommends gawk python3-pip python3-venv wget xz-utils
 
+ARG NODE_VERSION=v18.20.2
+ARG NODE=node-${NODE_VERSION}-linux-x64
 WORKDIR ${HOME}
-RUN wget -q --no-hsts https://nodejs.org/download/release/${NODE_VERSION}/${NODE}.tar.xz
-RUN tar xf ${NODE}.tar.xz
-RUN rm -f ${NODE}.tar.xz
+RUN wget -q --no-hsts https://nodejs.org/download/release/${NODE_VERSION}/${NODE}.tar.xz && \
+  mkdir -p ${NODE_DIR} && \
+  tar xf ${NODE}.tar.xz -C ${NODE_DIR} --strip-components=1 && \
+  rm -f ${NODE}.tar.xz
 
 # Build XCos
 ARG XCOS_DIR=${HOME}/xcosblocks
