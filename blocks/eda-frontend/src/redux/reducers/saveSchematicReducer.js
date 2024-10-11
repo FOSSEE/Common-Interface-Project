@@ -5,12 +5,20 @@ const initialState = {
   description: '',
   xmlData: null,
   details: {},
+  isLoading: false,
   isSaved: null,
   isShared: null
 }
 
 export default function saveSchematicReducer (state = initialState, action) {
   switch (action.type) {
+    case actions.LOADING_DIAGRAM: {
+      return {
+        ...state,
+        isLoading: action.payload.isLoading
+      }
+    }
+
     case actions.SET_SCH_SAVED: {
       return {
         ...state,

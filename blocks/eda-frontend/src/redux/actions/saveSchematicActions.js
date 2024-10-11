@@ -6,6 +6,15 @@ import { renderGalleryXML } from '../../components/SchematicEditor/Helper/Toolba
 import { setTitle } from './index'
 import { transformXcos } from '../../utils/GalleryUtils'
 
+export const loadingDiagram = (isLoading) => (dispatch) => {
+  dispatch({
+    type: actions.LOADING_DIAGRAM,
+    payload: {
+      isLoading
+    }
+  })
+}
+
 export const setSchTitle = (title) => (dispatch) => {
   dispatch({
     type: actions.SET_SCH_TITLE,
@@ -164,6 +173,8 @@ export const loadGallery = (saveId) => (dispatch, getState) => {
     return
   }
 
+  // FIXME: issue in rendering
+  // dispatch(loadingDiagram(true))
   // Check if the data is xcos or xml
   const parser = new DOMParser()
   const xmlDoc = parser.parseFromString(data.data_dump, 'application/xml')
@@ -185,11 +196,13 @@ export const loadGallery = (saveId) => (dispatch, getState) => {
     transformXcos(xmlDoc).then(xmlDoc => {
       const dataDump = new XMLSerializer().serializeToString(xmlDoc)
       handleGalleryLoad(dispatch, data, dataDump)
+      dispatch(loadingDiagram(false))
     }).catch(error => {
       console.error('Error converting xcos to xml:', error)
     })
   } else {
     handleGalleryLoad(dispatch, data, data.dataDump)
+    dispatch(loadingDiagram(false))
   }
   window.loadGalleryComplete = true
 }

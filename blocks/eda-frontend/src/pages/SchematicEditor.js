@@ -1,6 +1,7 @@
 // Main Layout for Schemaic Editor page.
 import React, { createRef, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
+import { TailSpin } from 'react-loader-spinner'
 import { CssBaseline } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
@@ -14,7 +15,7 @@ import PropertiesSidebar from '../components/SchematicEditor/PropertiesSidebar'
 import LoadGrid from '../components/SchematicEditor/Helper/ComponentDrag'
 import '../components/SchematicEditor/Helper/SchematicEditor.css'
 import { fetchSchematic, loadGallery } from '../redux/actions/index'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,6 +34,7 @@ export default function SchematicEditor (props) {
   const outlineRef = createRef()
   const dispatch = useDispatch()
   const [mobileOpen, setMobileOpen] = useState(false)
+  const isLoading = useSelector(state => state.saveSchematicReducer.isLoading)
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
@@ -72,7 +74,14 @@ export default function SchematicEditor (props) {
       <LayoutMain>
         <div className={classes.toolbar} />
         <center>
-          <div className='grid-container A4-L' ref={gridRef} id='divGrid' />
+          <div className='grid-container A4-L' ref={gridRef} id='divGrid'>
+            <TailSpin
+              color='#F44336'
+              height={400}
+              width={400}
+              visible={isLoading}
+            />
+          </div>
         </center>
       </LayoutMain>
 

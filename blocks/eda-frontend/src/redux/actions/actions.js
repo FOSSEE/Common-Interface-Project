@@ -36,6 +36,7 @@ export const SIGNUP_FAILED = 'SIGNUP_FAILED'
 export const DEFAULT_STORE = 'DEFAULT_STORE'
 
 // Actions for saving scheamtics and loading saved, gallery and local schematics.
+export const LOADING_DIAGRAM = 'LOADING_DIAGRAM'
 export const SAVE_SCHEMATICS = 'SAVE_SCHEMATICS'
 export const SET_SCH_SAVED = 'SET_SCH_SAVED'
 export const SET_SCH_TITLE = 'SET_SCH_TITLE'
