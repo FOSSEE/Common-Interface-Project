@@ -102,8 +102,12 @@ SimpleSnackbar.propTypes = {
 function Header () {
   const history = useHistory()
   const classes = useStyles()
-  const auth = store.getState().authReducer
-  const schSave = useSelector(state => state.saveSchematicReducer)
+  const isAuthenticated = store.getState().authReducer.isAuthenticated
+  const user = store.getState().authReducer.user
+  const details = useSelector(state => state.saveSchematicReducer.details)
+  const isSaved = useSelector(state => state.saveSchematicReducer.isSaved)
+  const isShared = useSelector(state => state.saveSchematicReducer.isShared)
+  const title = useSelector(state => state.saveSchematicReducer.title)
   const [anchorEl, setAnchorEl] = useState(null)
 
   const dispatch = useDispatch()
@@ -148,11 +152,11 @@ function Header () {
   }
 
   // change saved schematic share status
-  const [shared, setShared] = useState(schSave.isShared)
+  const [shared, setShared] = useState(isShared)
 
   useEffect(() => {
-    setShared(schSave.isShared)
-  }, [schSave.isShared])
+    setShared(isShared)
+  }, [isShared])
 
   const handleShareChange = (event) => {
     setShared(event.target.checked)
@@ -160,10 +164,10 @@ function Header () {
   }
 
   const handleShare = () => {
-    if (auth.isAuthenticated !== true) {
+    if (isAuthenticated !== true) {
       setMessage('You are not Logged In')
       handleSnacClick()
-    } else if (schSave.isSaved !== true) {
+    } else if (isSaved !== true) {
       setMessage('You have not saved the circuit')
       handleSnacClick()
     } else {
@@ -210,28 +214,28 @@ function Header () {
         <Input
           className={classes.input}
           color='secondary'
-          value={schSave.title === 'Untitled' ? 'Untitled' : schSave.title}
+          value={title === 'Untitled' ? 'Untitled' : title}
           onChange={titleHandler}
           inputProps={{ 'aria-label': 'SchematicTitle' }}
         />
       </Hidden>
 
       {/* Display last saved and shared option for saved schematics */}
-      {auth.isAuthenticated === true
+      {isAuthenticated === true
         ? <>
-          {(schSave.isSaved === true && schSave.details.save_time !== undefined)
+          {(isSaved === true && details.save_time !== undefined)
             ? <Typography
               variant='body2'
               style={{ margin: '0px 15px 0px auto', paddingTop: '5px', color: '#8c8c8c' }}
             >
-              Last Saved : {getDate(schSave.details.save_time)} {/* Display last saved status for saved schematics */}
+              Last Saved : {getDate(details.save_time)} {/* Display last saved status for saved schematics */}
             </Typography>
             : <></>}
           <Button
             size='small'
             variant={shared !== true ? 'outlined' : 'contained'}
             color='primary'
-            className={schSave.isSaved === true && schSave.details.save_time !== undefined ? classes.button : classes.rightBlock}
+            className={isSaved === true && details.save_time !== undefined ? classes.button : classes.rightBlock}
             startIcon={<ShareIcon />}
             onClick={handleShare}
           >
@@ -259,7 +263,7 @@ function Header () {
             {shared === true
               ? <input
                 ref={textAreaRef}
-                value={`${window.location.protocol}\\\\${window.location.host}/eda/#/editor?id=${schSave.details.save_id}`}
+                value={`${window.location.protocol}\\\\${window.location.host}/eda/#/editor?id=${details.save_id}`}
                 readOnly
               />
               : <> Turn On sharing </>}
@@ -280,7 +284,7 @@ function Header () {
 
       {/* Display login option or user menu as per authenticated status */}
       {
-        (!auth.isAuthenticated
+        (!isAuthenticated
           ? <Button
             size='small'
             component={RouterLink}
@@ -300,7 +304,7 @@ function Header () {
               onClick={handleClick}
             >
               <Avatar className={classes.purple}>
-                {auth.user.username.charAt(0).toUpperCase()}
+                {user.username.charAt(0).toUpperCase()}
               </Avatar>
             </IconButton>
             <Menu
@@ -318,7 +322,7 @@ function Header () {
                 to='/dashboard'
                 onClick={handleClose}
               >
-                <ListItemText primary={auth.user.username} secondary={auth.user.email} />
+                <ListItemText primary={user.username} secondary={user.email} />
               </MenuItem>
               <MenuItem
                 target='_blank'

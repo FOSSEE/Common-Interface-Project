@@ -53,7 +53,8 @@ export const saveSchematic = (title, description, xml, base64) => (dispatch, get
 
   // Get token from localstorage
   const token = getState().authReducer.token
-  const schSave = getState().saveSchematicReducer
+  const details = getState().saveSchematicReducer.details
+  const isSaved = getState().saveSchematicReducer.isSaved
 
   // add headers
   const config = {
@@ -67,9 +68,9 @@ export const saveSchematic = (title, description, xml, base64) => (dispatch, get
     config.headers.Authorization = `Token ${token}`
   }
 
-  if (schSave.isSaved) {
+  if (isSaved) {
     //  Updating saved schemaic
-    api.post('save/diagram/' + schSave.details.save_id, queryString.stringify(body), config)
+    api.post('save/diagram/' + details.save_id, queryString.stringify(body), config)
       .then(
         (res) => {
           dispatch({
@@ -130,7 +131,7 @@ export const fetchSchematic = (saveId) => (dispatch, getState) => {
 export const setSchShared = (share) => (dispatch, getState) => {
   // Get token from localstorage
   const token = getState().authReducer.token
-  const schSave = getState().saveSchematicReducer
+  const details = getState().saveSchematicReducer.details
 
   // add headers
   const config = {
@@ -151,7 +152,7 @@ export const setSchShared = (share) => (dispatch, getState) => {
     isShared = 'off'
   }
 
-  api.post('save/' + schSave.details.save_id + '/sharing/' + isShared, {}, config)
+  api.post('save/' + details.save_id + '/sharing/' + isShared, {}, config)
     .then(
       (res) => {
         dispatch({

@@ -51,7 +51,7 @@ let url = ''
 
 export default function SignIn (props) {
   const classes = useStyles()
-  const auth = useSelector(state => state.authReducer)
+  const errors = useSelector(state => state.authReducer.errors)
 
   const dispatch = useDispatch()
   const homeURL = `${window.location.protocol}\\\\${window.location.host}/`
@@ -105,7 +105,7 @@ export default function SignIn (props) {
 
         {/* Display's error messages while logging in */}
         <Typography variant='body1' align='center' style={{ marginTop: '10px' }} color='error'>
-          {auth.errors}
+          {errors}
         </Typography>
 
         <form className={classes.form} noValidate>

@@ -47,9 +47,9 @@ const FileSaver = require('file-saver')
 
 // Dialog box to display generated netlist
 export function NetlistModal ({ open, close, netlist }) {
-  const netfile = useSelector(state => state.netlistReducer)
+  const title = useSelector(state => state.netlistReducer.title)
   const createNetlistFile = () => {
-    const titleA = netfile.title.split(' ')[1]
+    const titleA = title.split(' ')[1]
     const name = process.env.REACT_APP_NAME
     const blob = new Blob([netlist], { type: 'text/plain;charset=utf-8' })
     FileSaver.saveAs(blob, `${titleA}_${name}_on_Cloud.cir`)
@@ -384,8 +384,9 @@ export function OpenSchDialog (props) {
   const { open, close, openLocal } = props
   const [isLocal, setisLocal] = useState(true)
   const [isGallery, setisGallery] = useState(false)
-  const schSave = useSelector(state => state.saveSchematicReducer)
-  const auth = useSelector(state => state.authReducer)
+  const details = useSelector(state => state.saveSchematicReducer.details)
+  const isAuthenticated = useSelector(state => state.authReducer.isAuthenticated)
+  const user = useSelector(state => state.authReducer.user)
   const schematics = useSelector(state => state.dashboardReducer.schematics)
 
   const dispatch = useDispatch()
@@ -442,7 +443,7 @@ export function OpenSchDialog (props) {
                                     size='small'
                                     color='primary'
                                     onClick={() => { dispatch(loadGallery(sch.save_id.substr(7, sch.save_id.length))) }}
-                                    variant={schSave.details.save_id === undefined ? 'outlined' : schSave.details.save_id !== sch.save_id ? 'outlined' : 'contained'}
+                                    variant={details.save_id === undefined ? 'outlined' : details.save_id !== sch.save_id ? 'outlined' : 'contained'}
                                   >
                                     Launch
                                   </Button>
@@ -460,7 +461,7 @@ export function OpenSchDialog (props) {
                 {/* Listing Saved Schematics */}
                 {schematics.length === 0
                   ? <Typography variant='subtitle1' gutterBottom>
-                    Hey {auth.user.username} , {typography1}
+                    Hey {user.username} , {typography1}
                   </Typography>
                   : <TableContainer component={Paper} style={{ maxHeight: '45vh' }}>
                     <Table stickyHeader size='small' aria-label='simple table'>
@@ -494,7 +495,7 @@ export function OpenSchDialog (props) {
                                       size='small'
                                       color='primary'
                                       onClick={() => { dispatch(fetchSchematic(sch.save_id)) }}
-                                      variant={schSave.details.save_id === undefined ? 'outlined' : schSave.details.save_id !== sch.save_id ? 'outlined' : 'contained'}
+                                      variant={details.save_id === undefined ? 'outlined' : details.save_id !== sch.save_id ? 'outlined' : 'contained'}
                                     >
                                       Launch
                                     </Button>
@@ -517,7 +518,7 @@ export function OpenSchDialog (props) {
         <Button variant={isGallery ? 'outlined' : 'text'} onClick={() => { setisLocal(false); setisGallery(true) }} color='secondary'>
           Gallery
         </Button>
-        {auth.isAuthenticated !== true
+        {isAuthenticated !== true
           ? <></>
           : <Button variant={!isGallery & !isLocal ? 'outlined' : 'text'} onClick={() => { dispatch(fetchSchematics()); setisLocal(false); setisGallery(false) }} color='secondary'>
             on Cloud

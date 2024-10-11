@@ -92,9 +92,12 @@ SimpleSnackbar.propTypes = {
 
 export default function SchematicToolbar ({ mobileClose, gridRef }) {
   const classes = useStyles()
-  const netfile = useSelector(state => state.netlistReducer)
-  const auth = useSelector(state => state.authReducer)
-  const schSave = useSelector(state => state.saveSchematicReducer)
+  const controlBlock = useSelector(state => state.netlistReducer.controlBlock)
+  const controlLine = useSelector(state => state.netlistReducer.controlLine)
+  const title1 = useSelector(state => state.netlistReducer.title)
+  const isAuthenticated = useSelector(state => state.authReducer.isAuthenticated)
+  const description = useSelector(state => state.saveSchematicReducer.description)
+  const title2 = useSelector(state => state.saveSchematicReducer.title)
 
   const dispatch = useDispatch()
 
@@ -104,11 +107,11 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
 
   const handleClickOpen = () => {
     const compNetlist = generateNetList()
-    const netlist = netfile.title + '\n\n' +
+    const netlist = title1 + '\n\n' +
       compNetlist.models + '\n' +
       compNetlist.main + '\n' +
-      netfile.controlLine + '\n' +
-      netfile.controlBlock + '\n'
+      controlLine + '\n' +
+      controlBlock + '\n'
     genNetlist(netlist)
     setOpen(true)
   }
@@ -240,7 +243,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
     })
     const a = document.createElement('a')
     const ext = (type === 'PNG') ? '.png' : '.jpg'
-    a.setAttribute('download', schSave.title + '_' + process.env.REACT_APP_NAME + '_on_Cloud' + ext)
+    a.setAttribute('download', title2 + '_' + process.env.REACT_APP_NAME + '_on_Cloud' + ext)
     a.setAttribute('href', data)
     a.setAttribute('target', '_blank')
     a.dispatchEvent(evt)
@@ -255,7 +258,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
       cancelable: true
     })
     const a = document.createElement('a')
-    a.setAttribute('download', schSave.title + '_' + process.env.REACT_APP_NAME + '_on_Cloud.svg')
+    a.setAttribute('download', title2 + '_' + process.env.REACT_APP_NAME + '_on_Cloud.svg')
     a.href = URL.createObjectURL(blob)
     a.target = '_blank'
     a.setAttribute('target', '_blank')
@@ -292,17 +295,15 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
 
   // Handle Save Schematic onCloud
   const handleSchSave = () => {
-    if (auth.isAuthenticated !== true) {
+    if (isAuthenticated !== true) {
       setMessage('You are not Logged In')
       handleSnacClick()
     } else {
-      const description = schSave.description
       const xml = saveXml(description)
       dispatch(setSchXmlData(xml))
-      const title = schSave.title
       exportImage('PNG')
         .then(res => {
-          dispatch(saveSchematic(title, description, xml, res))
+          dispatch(saveSchematic(title2, description, xml, res))
         })
         .catch(err => {
           // Debugging: Log if there is an error in exportImage
@@ -316,14 +317,14 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
 
   // Save Schematics Locally
   const handleLocalSchSave = () => {
-    const blob = new Blob([beautify(saveXml(schSave.description))], { type: 'application/xml' })
+    const blob = new Blob([beautify(saveXml(description))], { type: 'application/xml' })
     const evt = new MouseEvent('click', {
       view: window,
       bubbles: false,
       cancelable: true
     })
     const a = document.createElement('a')
-    a.setAttribute('download', schSave.title + '_' + process.env.REACT_APP_NAME + '_on_Cloud.xml')
+    a.setAttribute('download', title2 + '_' + process.env.REACT_APP_NAME + '_on_Cloud.xml')
     a.href = URL.createObjectURL(blob)
     a.target = '_blank'
     a.setAttribute('target', '_blank')
@@ -332,10 +333,10 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
 
   const handleLocalSchSaveXcos = async () => {
     try {
-      const xmlContent = beautify(saveXml(schSave.description))
+      const xmlContent = beautify(saveXml(description))
       const xmlBlob = new Blob([xmlContent], { type: 'application/xml' })
 
-      const xmlFileName = schSave.title + '.xml'
+      const xmlFileName = title2 + '.xml'
 
       const formData = new FormData()
       formData.append('file', xmlBlob, xmlFileName)
@@ -352,7 +353,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
       const xcosBlob = new Blob([response.data], { type: 'application/xcos' })
 
       const a = document.createElement('a')
-      a.setAttribute('download', schSave.title + '_' + process.env.REACT_APP_NAME + '_on_Cloud.xcos')
+      a.setAttribute('download', title2 + '_' + process.env.REACT_APP_NAME + '_on_Cloud.xcos')
       a.href = URL.createObjectURL(xcosBlob)
       a.target = '_blank'
       a.setAttribute('target', '_blank')

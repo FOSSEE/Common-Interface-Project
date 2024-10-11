@@ -112,7 +112,8 @@ export function setGraphStatusClosed () {
 export default function SimulationScreen ({ open, close }) {
   const classes = useStyles()
   const dispatch = useDispatch()
-  const result = useSelector(state => state.simulationReducer)
+  const isGraph = useSelector(state => state.simulationReducer.isGraph)
+  const rtitle = useSelector(state => state.simulationReducer.title)
   const stitle = useSelector(state => state.netlistReducer.title)
   const taskId = useSelector(state => state.simulationReducer.taskId)
   const [isResult, setIsResult] = useState(false)
@@ -733,7 +734,7 @@ export default function SimulationScreen ({ open, close }) {
             <Grid item xs={12} sm={12}>
               <Paper className={classes.paper}>
                 <Typography variant='h2' align='center' gutterBottom>
-                  {result.title}
+                  {rtitle}
                 </Typography>
                 <Typography variant='h5' align='center' component='p' gutterBottom>
                   Simulation Result for {stitle} *
@@ -745,7 +746,7 @@ export default function SimulationScreen ({ open, close }) {
             {isResult === true
               ? <>
                 {
-                  (result.isGraph === 'true')
+                  (isGraph === 'true')
                     ? <>
                       <Grid item xs={12} sm={12}>
                         <Paper className={classes.paper}>
@@ -770,7 +771,7 @@ export default function SimulationScreen ({ open, close }) {
                           : <div />
                       }
                       </>
-                    : (result.isGraph === 'false') ? <span>{typography1}</span> : <span />
+                    : (isGraph === 'false') ? <span>{typography1}</span> : <span />
                 }
                 {/* Diplay of Simulation parameter Not present */}
                 {
@@ -786,7 +787,7 @@ export default function SimulationScreen ({ open, close }) {
                 }
                 {/* Display text result */}
                 {
-                  (result.isGraph === 'false')
+                  (isGraph === 'false')
                     ? <Grid item xs={12} sm={12}>
                       <Paper className={classes.paper}>
                         <Typography variant='h4' align='center' gutterBottom>

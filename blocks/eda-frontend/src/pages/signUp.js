@@ -48,7 +48,8 @@ const useStyles = makeStyles((theme) => ({
 export default function SignUp () {
   const classes = useStyles()
 
-  const auth = useSelector(state => state.authReducer)
+  const isRegistered = useSelector(state => state.authReducer.isRegistered)
+  const regErrors = useSelector(state => state.authReducer.regErrors)
 
   const dispatch = useDispatch()
   const homeURL = `${window.location.protocol}\\\\${window.location.host}/`
@@ -96,8 +97,8 @@ export default function SignUp () {
         </Typography>
 
         {/* Display's error messages while signing in */}
-        <Typography variant='body1' align='center' style={{ marginTop: '10px' }} color={auth.isRegistered ? 'secondary' : 'error'}>
-          {auth.regErrors}
+        <Typography variant='body1' align='center' style={{ marginTop: '10px' }} color={isRegistered ? 'secondary' : 'error'}>
+          {regErrors}
         </Typography>
 
         <form className={classes.form} noValidate>

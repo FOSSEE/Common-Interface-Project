@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function SimulationProperties () {
-  const netfile = useSelector(state => state.netlistReducer)
+  const title = useSelector(state => state.netlistReducer.title)
   const isSimRes = useSelector(state => state.simulationReducer.isSimRes)
   const dispatch = useDispatch()
   const classes = useStyles()
@@ -79,7 +79,7 @@ export default function SimulationProperties () {
 
   // Prepare Netlist to file
   const prepareNetlist = (netlist) => {
-    const titleA = netfile.title.split(' ')[1]
+    const titleA = title.split(' ')[1]
     const myblob = new Blob([netlist], {
       type: 'text/plain'
     })

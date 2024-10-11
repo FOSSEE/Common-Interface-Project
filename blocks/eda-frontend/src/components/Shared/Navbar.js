@@ -42,7 +42,8 @@ export function Header () {
   const history = useHistory()
   const classes = useStyles()
   const [anchorEl, setAnchorEl] = useState(null)
-  const auth = store.getState().authReducer
+  const isAuthenticated = store.getState().authReducer.isAuthenticated
+  const user = store.getState().authReducer.user
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget)
@@ -75,7 +76,7 @@ export function Header () {
       {/* Display relative link to other pages */}
       <nav>
         {
-          (auth.isAuthenticated
+          (isAuthenticated
             ? (<>
               <Link
                 variant='button'
@@ -145,7 +146,7 @@ export function Header () {
 
       {/* Display login option or user menu as per authenticated status */}
       {
-        (!auth.isAuthenticated
+        (!isAuthenticated
           ? <Button
             size='small'
             component={RouterLink}
@@ -165,7 +166,7 @@ export function Header () {
               onClick={handleClick}
             >
               <Avatar className={classes.purple}>
-                {auth.user.username.charAt(0).toUpperCase()}
+                {user.username.charAt(0).toUpperCase()}
               </Avatar>
             </IconButton>
             <Menu
@@ -182,7 +183,7 @@ export function Header () {
                 to='/dashboard'
                 onClick={handleClose}
               >
-                <ListItemText primary={auth.user.username} secondary={auth.user.email} />
+                <ListItemText primary={user.username} secondary={user.email} />
               </MenuItem>
               <MenuItem
                 component={RouterLink}

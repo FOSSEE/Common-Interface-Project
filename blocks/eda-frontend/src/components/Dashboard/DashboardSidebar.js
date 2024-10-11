@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
 // Vertical Navbar for user dashboard
 export default function DashSidebar (props) {
   const classes = useStyles()
-  const auth = useSelector(state => state.authReducer)
+  const user = useSelector(state => state.authReducer.user)
   const schematics = useSelector(state => state.dashboardReducer.schematics)
 
   const dispatch = useDispatch()
@@ -67,11 +67,11 @@ export default function DashSidebar (props) {
         >
           <ListItemAvatar>
             <Avatar className={classes.purple}>
-              {auth.user.username.charAt(0).toUpperCase()}
+              {user.username.charAt(0).toUpperCase()}
             </Avatar>
           </ListItemAvatar>
           <ListItemText
-            primary={auth.user.username}
+            primary={user.username}
             secondary={
               <>
                 <Typography

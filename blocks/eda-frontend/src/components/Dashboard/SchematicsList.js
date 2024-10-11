@@ -55,7 +55,7 @@ function MainCard () {
 
 export default function SchematicsList () {
   const classes = useStyles()
-  const auth = useSelector(state => state.authReducer)
+  const user = useSelector(state => state.authReducer.user)
   const schematics = useSelector(state => state.dashboardReducer.schematics)
 
   const dispatch = useDispatch()
@@ -97,7 +97,7 @@ export default function SchematicsList () {
           : <Grid item xs={12}>
             <Card style={{ padding: '7px 15px' }} className={classes.mainHead}>
               <Typography variant='subtitle1' gutterBottom>
-                Hey {auth.user.username} , {typography1}
+                Hey {user.username} , {typography1}
               </Typography>
             </Card>
           </Grid>}

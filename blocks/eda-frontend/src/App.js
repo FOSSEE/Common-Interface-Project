@@ -19,7 +19,8 @@ import { loadUser } from './redux/actions/index'
 // Controls Private routes, this are accessible for authenticated users.  [ e.g : dashboard ]
 // and restricted routes disabled for authenticated users. [ e.g : login , signup ]
 function PrivateRoute ({ component: Component, ...rest }) {
-  const auth = useSelector(state => state.authReducer)
+  const isAuthenticated = useSelector(state => state.authReducer.isAuthenticated)
+  const isLoading = useSelector(state => state.authReducer.isLoading)
   const dispatch = useDispatch()
 
   useEffect(() => dispatch(loadUser()), [dispatch])
@@ -27,9 +28,9 @@ function PrivateRoute ({ component: Component, ...rest }) {
   return (
     <Route
       {...rest} render={props => {
-        if (auth.isLoading) {
+        if (isLoading) {
           return <CircularProgress style={{ margin: '50vh 50vw' }} />
-        } else if (!auth.isAuthenticated) {
+        } else if (!isAuthenticated) {
           return <Redirect to='/login' />
         } else {
           return <Component {...props} />
@@ -45,7 +46,8 @@ PrivateRoute.propTypes = {
 
 // Public routes accessible to all users. [ e.g. editor, gallery ]
 function PublicRoute ({ component: Component, restricted, nav, ...rest }) {
-  const auth = useSelector(state => state.authReducer)
+  const isAuthenticated = useSelector(state => state.authReducer.isAuthenticated)
+  const isLoading = useSelector(state => state.authReducer.isLoading)
   const dispatch = useDispatch()
 
   useEffect(() => dispatch(loadUser()), [dispatch])
@@ -53,9 +55,9 @@ function PublicRoute ({ component: Component, restricted, nav, ...rest }) {
   return (
     <Route
       {...rest} render={props => {
-        if (auth.isLoading) {
+        if (isLoading) {
           return <CircularProgress style={{ margin: '50vh 50vw' }} />
-        } else if (auth.isAuthenticated && restricted) {
+        } else if (isAuthenticated && restricted) {
           return <Redirect to='/dashboard' />
         } else if (nav) {
           return (<><Navbar /><Component {...props} /></>)

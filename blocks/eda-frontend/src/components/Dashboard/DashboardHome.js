@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 // Card displaying user dashboard home page header.
 function MainCard () {
   const classes = useStyles()
-  const auth = useSelector(state => state.authReducer)
+  const user = useSelector(state => state.authReducer.user)
   const dashboard = process.env.REACT_APP_NAME
   const button = 'My ' + process.env.REACT_APP_DIAGRAMS_NAME
 
@@ -32,7 +32,7 @@ function MainCard () {
           Welcome to your {dashboard} Dashboard
         </Typography>
         <Typography variant='h5' component='h2'>
-          Welcome {auth.user.username}...
+          Welcome {user.username}...
         </Typography>
       </CardContent>
       <CardActions>
@@ -51,7 +51,7 @@ function MainCard () {
 
 export default function DashboardHome () {
   const classes = useStyles()
-  const auth = useSelector(state => state.authReducer)
+  const user = useSelector(state => state.authReducer.user)
   const typography = 'Track your ' + process.env.REACT_APP_SMALL_DIAGRAMS_NAME + ' status here...'
 
   return (
@@ -72,7 +72,7 @@ export default function DashboardHome () {
         <Grid item xs={12}>
           <Card style={{ padding: '7px 15px' }} className={classes.mainHead}>
             <Typography variant='subtitle1' gutterBottom>
-              Hey {auth.user.username} , {typography}
+              Hey {user.username} , {typography}
             </Typography>
           </Card>
         </Grid>
