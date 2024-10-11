@@ -37,6 +37,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { fetchSchematics, fetchSchematic, loadGallery } from '../../redux/actions/index'
 import GallerySchSample from '../../utils/GallerySchSample'
 import { blue } from '@material-ui/core/colors'
+import { getDateTime as getDate } from '../../utils/GalleryUtils'
 
 const Transition = forwardRef(function Transition (props, ref) {
   return <Slide direction='up' ref={ref} {...props} />
@@ -386,14 +387,6 @@ export function OpenSchDialog (props) {
   const schSave = useSelector(state => state.saveSchematicReducer)
   const auth = useSelector(state => state.authReducer)
   const schematics = useSelector(state => state.dashboardReducer.schematics)
-
-  function getDate (jsonDate) {
-    const json = jsonDate
-    const date = new Date(json)
-    const dateTimeFormat = new Intl.DateTimeFormat('en', { month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' })
-    const [{ value: month }, , { value: day }, , { value: hour }, , { value: minute }, , { value: second }] = dateTimeFormat.formatToParts(date)
-    return `${day} ${month} ${hour}:${minute}:${second}`
-  }
 
   const dispatch = useDispatch()
 

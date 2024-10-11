@@ -32,6 +32,7 @@ import { deepPurple } from '@material-ui/core/colors'
 import logo from '../../static/favicon.ico'
 import { setTitle, logout, setSchTitle, setSchShared } from '../../redux/actions/index'
 import store from '../../redux/store'
+import { getDateTime as getDate } from '../../utils/GalleryUtils'
 
 const useStyles = makeStyles((theme) => ({
   toolbarTitle: {
@@ -168,15 +169,6 @@ function Header () {
     } else {
       handleShareOpen()
     }
-  }
-
-  // handle display format of last saved status
-  function getDate (jsonDate) {
-    const json = jsonDate
-    const date = new Date(json)
-    const dateTimeFormat = new Intl.DateTimeFormat('en', { month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' })
-    const [{ value: month }, , { value: day }, , { value: hour }, , { value: minute }, , { value: second }] = dateTimeFormat.formatToParts(date)
-    return `${day} ${month} ${hour}:${minute}:${second}`
   }
 
   // handle Copy Share Url

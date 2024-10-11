@@ -8,6 +8,7 @@ import DeleteIcon from '@material-ui/icons/Delete'
 import { useDispatch } from 'react-redux'
 import { deleteSchematic } from '../../redux/actions/index'
 import MuiAlert from '@material-ui/lab/Alert'
+import { getDate } from '../../utils/GalleryUtils'
 
 const useStyles = makeStyles((theme) => ({
   media: {
@@ -91,15 +92,6 @@ function timeSince (jsonDate) {
     return interval + ' minutes'
   }
   return Math.floor(seconds) + ' seconds'
-}
-
-// Display schematic created date (e.g : Created On 29 Jun 2020)
-function getDate (jsonDate) {
-  const json = jsonDate
-  const date = new Date(json)
-  const dateTimeFormat = new Intl.DateTimeFormat('en', { year: 'numeric', month: 'short', day: '2-digit' })
-  const [{ value: month }, , { value: day }, , { value: year }] = dateTimeFormat.formatToParts(date)
-  return `${day}-${month}-${year}`
 }
 
 // Card displaying overview of onCloud saved schematic.

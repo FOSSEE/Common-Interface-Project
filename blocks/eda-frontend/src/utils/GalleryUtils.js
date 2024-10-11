@@ -41,3 +41,19 @@ export const transformXcos = async (xmlDoc) => {
   xmlDoc = processor.transformToDocument(xmlDoc)
   return xmlDoc
 }
+
+// handle display format of last saved status
+export const getDateTime = (jsonDateTime) => {
+  const date = new Date(jsonDateTime)
+  const dateTimeFormat = new Intl.DateTimeFormat('en', { month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' })
+  const [{ value: month }, , { value: day }, , { value: hour }, , { value: minute }, , { value: second }] = dateTimeFormat.formatToParts(date)
+  return `${day} ${month} ${hour}:${minute}:${second}`
+}
+
+// Display diagram created date (e.g : Created On 29 Jun 2020)
+export const getDate = (jsonDate) => {
+  const date = new Date(jsonDate)
+  const dateTimeFormat = new Intl.DateTimeFormat('en', { year: 'numeric', month: 'short', day: '2-digit' })
+  const [{ value: month }, , { value: day }, , { value: year }] = dateTimeFormat.formatToParts(date)
+  return `${day}-${month}-${year}`
+}
