@@ -16,7 +16,7 @@ export default function NotFound () {
 
   useEffect(() => {
     document.title = 'Not Found - ' + name
-  })
+  }, [])
 
   return (
     <Container maxWidth='lg' className={classes.header}>

@@ -174,8 +174,7 @@ export const loadGallery = (saveId) => (dispatch, getState) => {
     return
   }
 
-  // FIXME: issue in rendering
-  // dispatch(loadingDiagram(true))
+  dispatch(loadingDiagram(true))
   // Check if the data is xcos or xml
   const parser = new DOMParser()
   const xmlDoc = parser.parseFromString(data.data_dump, 'application/xml')

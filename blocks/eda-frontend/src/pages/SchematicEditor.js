@@ -59,7 +59,7 @@ export default function SchematicEditor (props) {
         dispatch(fetchSchematic(cktid))
       }
     }
-  }, [compRef, gridRef, outlineRef, props.location, dispatch])
+  }, [props.location.search])
 
   return (
     <div className={classes.root}>

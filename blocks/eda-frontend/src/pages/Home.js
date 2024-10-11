@@ -19,7 +19,7 @@ export default function Home () {
 
   useEffect(() => {
     document.title = process.env.REACT_APP_NAME
-  })
+  }, [])
 
   const typography1 = process.env.REACT_APP_NAME + ' on Cloud'
   const typography2 = 'Online ' + process.env.REACT_APP_NAME + ' Simulator'

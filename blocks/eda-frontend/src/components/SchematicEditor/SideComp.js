@@ -1,4 +1,4 @@
-import React, { createRef, useEffect, useRef, useState } from 'react'
+import React, { createRef, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { List, ListItemText, Tooltip, Popover } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
@@ -18,7 +18,6 @@ const useStyles = makeStyles((theme) => ({
 export default function SideComp ({ component }) {
   const classes = useStyles()
   const imageRef = createRef()
-  const isLoaded = useRef(false)
 
   const [anchorEl, setAnchorEl] = useState(null)
 
@@ -33,13 +32,9 @@ export default function SideComp ({ component }) {
   const id = open ? 'simple-popover' : undefined
 
   useEffect(() => {
-    if (isLoaded.current) {
-      return
-    }
-    isLoaded.current = true
     // Function call to make components draggable
     AddComponent(component, imageRef.current)
-  }, [imageRef, component])
+  }, [component])
 
   const link1 = process.env.REACT_APP_BLOCK_NAME + ' Name'
   const link2 = process.env.REACT_APP_CATEGORY_NAME

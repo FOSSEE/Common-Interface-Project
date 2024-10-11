@@ -26,7 +26,7 @@ export default function Dashboard () {
 
   useEffect(() => {
     document.title = 'Dashboard - ' + process.env.REACT_APP_NAME
-  })
+  }, [])
 
   return (
     <div className={classes.root}>

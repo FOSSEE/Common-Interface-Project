@@ -63,7 +63,7 @@ export default function ProgressPanel () {
   // For Fetching Saved Schematics
   useEffect(() => {
     dispatch(fetchSchematics())
-  }, [dispatch])
+  }, [])
 
   const tab = 'Recent ' + process.env.REACT_APP_DIAGRAMS_NAME
   const typography = 'You have not created any ' + process.env.REACT_APP_SMALL_DIAGRAM_NAME

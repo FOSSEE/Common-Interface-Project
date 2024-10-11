@@ -38,7 +38,7 @@ function SchematicCard ({ sch }) {
 
   useEffect(() => {
     document.title = 'Gallery - ' + process.env.REACT_APP_NAME
-  })
+  }, [])
 
   const imageName = images('./' + sch.media)
 

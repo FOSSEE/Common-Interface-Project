@@ -402,8 +402,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
       if (re.test(filename)) {
         const reader = new FileReader()
         reader.onload = function (event) {
-          // FIXME: issue in rendering
-          // dispatch(loadingDiagram(true))
+          dispatch(loadingDiagram(true))
           const title = filename.replace(re, '')
           let dataDump = event.target.result
           const xmlDoc = mxUtils.parseXml(dataDump)

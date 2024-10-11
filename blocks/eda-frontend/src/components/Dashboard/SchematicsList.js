@@ -63,7 +63,7 @@ export default function SchematicsList () {
   // For Fetching Saved Schematics
   useEffect(() => {
     dispatch(fetchSchematics())
-  }, [dispatch])
+  }, [])
 
   const typography1 = "You don't have any saved " + process.env.REACT_APP_SMALL_DIAGRAMS_NAME + '...'
   return (

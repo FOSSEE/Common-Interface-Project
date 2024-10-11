@@ -103,7 +103,7 @@ export default function ComponentSidebar ({ compRef }) {
   // For Fetching Libraries
   useEffect(() => {
     dispatch(fetchLibraries())
-  }, [dispatch])
+  }, [])
 
   // Used to chunk array
   const chunk = (array, size) => {
@@ -246,7 +246,7 @@ export function ComponentImages () {
   // For Fetching Image Paths
   useEffect(() => {
     dispatch(fetchComponentImages())
-  }, [dispatch])
+  }, [])
 
   return (
     <div>

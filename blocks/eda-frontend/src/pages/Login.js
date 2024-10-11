@@ -66,7 +66,7 @@ export default function SignIn (props) {
     } else {
       url = ''
     }
-  }, [dispatch, props.location.search])
+  }, [props.location.search])
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
