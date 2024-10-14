@@ -30,7 +30,7 @@ import mxGraphFactory from 'mxgraph'
 import { NetlistModal, HelpScreen, ImageExportDialog, OpenSchDialog } from './ToolbarExtension'
 import { editorZoomIn, editorZoomOut, editorZoomAct, deleteComp, PrintPreview, Rotate, generateNetList, editorUndo, editorRedo, saveXml, ClearGrid } from './Helper/ToolbarTools'
 import { useSelector, useDispatch } from 'react-redux'
-import { toggleSimulate, closeCompProperties, setSchXmlData, saveSchematic, openLocalSch, loadingDiagram } from '../../redux/actions/index'
+import { toggleSimulate, closeCompProperties, setSchXmlData, saveSchematic, openLocalSch, setLoadingDiagram } from '../../redux/actions/index'
 import api from '../../utils/Api'
 import { transformXcos } from '../../utils/GalleryUtils'
 
@@ -402,7 +402,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
       if (re.test(filename)) {
         const reader = new FileReader()
         reader.onload = function (event) {
-          dispatch(loadingDiagram(true))
+          dispatch(setLoadingDiagram(true))
           const title = filename.replace(re, '')
           let dataDump = event.target.result
           const xmlDoc = mxUtils.parseXml(dataDump)
@@ -411,11 +411,11 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
             transformXcos(xmlDoc).then(xmlDoc => {
               dataDump = new XMLSerializer().serializeToString(xmlDoc)
               readXmlFile(xmlDoc, dataDump, title)
-              dispatch(loadingDiagram(false))
+              dispatch(setLoadingDiagram(false))
             })
           } else {
             readXmlFile(xmlDoc, dataDump, title)
-            dispatch(loadingDiagram(false))
+            dispatch(setLoadingDiagram(false))
           }
         }
         reader.readAsText(file)
