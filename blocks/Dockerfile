@@ -121,6 +121,9 @@ COPY . .
 # Configure venv and sqlite3
 RUN ./install.sh
 
+# For localhost only
+RUN echo 'WDS_SOCKET_PORT=80' > eda-frontend/.env.local
+
 # Cleanup
 RUN apt-get autoremove -qq --purge gawk python3-pip python3-venv wget xz-utils
 RUN apt-get clean -qq
