@@ -31,7 +31,6 @@ import { deepPurple } from '@material-ui/core/colors'
 
 import logo from '../../static/favicon.ico'
 import { setTitle, logout, setSchTitle, setSchShared } from '../../redux/actions/index'
-import store from '../../redux/store'
 import { getDateTime as getDate } from '../../utils/GalleryUtils'
 
 const useStyles = makeStyles((theme) => ({
@@ -102,8 +101,8 @@ SimpleSnackbar.propTypes = {
 function Header () {
   const history = useHistory()
   const classes = useStyles()
-  const isAuthenticated = store.getState().authReducer.isAuthenticated
-  const user = store.getState().authReducer.user
+  const isAuthenticated = useSelector(state => state.authReducer.isAuthenticated)
+  const user = useSelector(state => state.authReducer.user)
   const details = useSelector(state => state.saveSchematicReducer.details)
   const isSaved = useSelector(state => state.saveSchematicReducer.isSaved)
   const isShared = useSelector(state => state.saveSchematicReducer.isShared)
@@ -333,7 +332,7 @@ function Header () {
                 {typography2}
               </MenuItem>
               <MenuItem onClick={() => {
-                store.dispatch(logout(history))
+                dispatch(logout(history))
               }}
               >
                 Logout
