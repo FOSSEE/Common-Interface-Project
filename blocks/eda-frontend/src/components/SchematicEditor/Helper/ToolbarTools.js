@@ -477,12 +477,13 @@ function parseXmlToGraph (xmlDoc, graph) {
           let target = cellAttrs.targetVertex.value
           let sourceCell = graph.getModel().getCell(source)
           let targetCell = graph.getModel().getCell(target)
+          const msgSource = (sourceCell == null) ? ' (not found)' : ''
+          const msgTarget = (targetCell == null) ? ' (not found)' : ''
+          console.log(`ST ${source}${msgSource} ${target}${msgTarget}`)
           if (sourceCell == null || targetCell == null) {
-            console.log('ST not found', source, target)
             remainingcells.push(cell)
             continue
           }
-          console.log('ST', source, target)
           const firstChild = cellChildren[0].querySelector('Array[as=points]')
           const points = []
           if (firstChild !== null) {
