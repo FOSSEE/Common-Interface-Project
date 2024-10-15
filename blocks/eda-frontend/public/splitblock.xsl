@@ -33,15 +33,17 @@
       <xsl:param name="x" />
       <xsl:param name="y" />
       <xsl:param name="parent" />
+
+
       <xsl:variable name="newidone" >
         <xsl:choose>
-          <xsl:when test="$targetonelink != 'No match found' and $sourceonelink != 'No match found'">       
+          <xsl:when test="$targetonelink/@id != '' and $sourceonelink/@id != ''">       
             <xsl:value-of select="concat($targetonelink/@id, generate-id())" />
           </xsl:when>
-          <xsl:when test="$targetonelink != 'No match found'">
+          <xsl:when test="$targetonelink/@id != ''">
             <xsl:value-of select="$targetonelink/@id" />
           </xsl:when>
-          <xsl:when test="$sourceonelink != 'No match found'">
+          <xsl:when test="$sourceonelink/@id != ''">
             <xsl:value-of select="$sourceonelink/@id" />
           </xsl:when>
           <xsl:otherwise>
@@ -51,7 +53,7 @@
       </xsl:variable>
 
 
-        <xsl:if test="$targetonelink != 'No match found' and $sourceonelink != 'No match found'">
+        <xsl:if test="$targetonelink/@id != '' and $sourceonelink/@id != ''">
 
       <xsl:element name="{$linktype}">
         <xsl:attribute name="id">
@@ -91,21 +93,34 @@
       
       <xsl:variable name="newidtwo" >
         <xsl:choose>
-          <xsl:when test="$newidone != 'No match found' and $sourcetwolink != 'No match found'">       
+          <xsl:when test="($targetonelink/@id != '' or $sourceonelink/@id != '') and $sourcetwolink/@id != ''">       
             <xsl:value-of select="concat($sourcetwolink/@id, generate-id($sourcetwolink))" />
-          </xsl:when>
-          <xsl:when test="$newidone != 'No match found'">
-            <xsl:value-of select="$newidone" />
-          </xsl:when>
-          <xsl:when test="$sourcetwolink != 'No match found'">
-            <xsl:value-of select="$sourcetwolink/@id" />
           </xsl:when>
           <xsl:otherwise>
             <xsl:text>No match found</xsl:text>
           </xsl:otherwise>
         </xsl:choose>
       </xsl:variable>
-      <xsl:if test="$newidone != 'No match found' and $sourcetwolink != 'No match found'">
+
+      <xsl:variable name="newidthree" >
+        <xsl:choose>
+          <xsl:when test="$targetonelink/@id != '' and $sourceonelink/@id != ''">       
+            <xsl:value-of select="$newidone" />
+          </xsl:when>
+          <xsl:when test="$targetonelink/@id != ''">
+            <xsl:value-of select="$targetonelinksrcortgt" />
+          </xsl:when>
+          <xsl:when test="$sourceonelink/@id != ''">
+            <xsl:value-of select="$sourceonelinksrcortgt" />
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:text>No match found</xsl:text>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:variable>
+
+      
+      <xsl:if test="$newidthree != 'No match found' and $sourcetwolink/@id != ''">
       <xsl:element name="{$linktype}">
         <xsl:attribute name="id">
           <xsl:value-of select="$newidtwo" />
@@ -114,7 +129,7 @@
           <xsl:value-of select="$parent" />
         </xsl:attribute>
         <xsl:attribute name="source">
-          <xsl:value-of select="$newidone" />
+          <xsl:value-of select="$newidthree" />
         </xsl:attribute>
         <xsl:attribute name="target">
           <xsl:value-of select="$sourcetwolinksrcortgt" />
