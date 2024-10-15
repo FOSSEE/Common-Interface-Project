@@ -2840,7 +2840,7 @@
     "rounded": 1,
     "imageBorder": "black",
     "image": "/django_static/blocks/Capacitor.svg",
-    "displayedLabel": "%sF"
+    "displayedLabel": "&nbsp;<BR>&nbsp;<BR>%sF"
   },
   "Ground": {
     "shape": "label",
@@ -2880,7 +2880,7 @@
     "rounded": 1,
     "imageBorder": "black",
     "image": "/django_static/blocks/ConstantVoltage.svg",
-    "displayedLabel": "%sV"
+    "displayedLabel": "&nbsp;<BR>&nbsp;<BR>%sV"
   },
   "Inductor": {
     "shape": "label",
@@ -2894,7 +2894,7 @@
     "rounded": 1,
     "imageBorder": "black",
     "image": "/django_static/blocks/Inductor.svg",
-    "displayedLabel": "%sH"
+    "displayedLabel": "&nbsp;<BR>&nbsp;<BR>%sH"
   },
   "PotentialSensor": {
     "shape": "label",
@@ -2947,7 +2947,7 @@
     "rounded": 1,
     "imageBorder": "black",
     "image": "/django_static/blocks/Resistor.svg",
-    "displayedLabel": "%sΩ"
+    "displayedLabel": "&nbsp;<BR>&nbsp;<BR>%sΩ"
   },
   "VoltageSensor": {
     "shape": "label",
