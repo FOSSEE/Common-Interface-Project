@@ -68,7 +68,7 @@ if test -n "$INPUTXML"; then
     Xcos/MxGraphParser.py "$INPUTXML" >&2
 fi
 
-count=$( grep -c '<SplitBlock' "$INPUT" ) || :
+count=$( grep -c '^      <SplitBlock' "$INPUT" ) || :
 INPUT1="$BASE-$count.xml"
 echo "Creating $INPUT1" >&2
 cp -f "$INPUT" "$INPUT1"
@@ -78,7 +78,7 @@ while test $count -gt 0; do
 
     xsltproc "$SPLITXSL" "$INPUT1" > "$TMPFILE1"
     xmllint --format "$TMPFILE1" > "$TMPFILE2"
-    count=$( grep -c '<SplitBlock' "$TMPFILE2" ) || :
+    count=$( grep -c '^      <SplitBlock' "$TMPFILE2" ) || :
     INPUT1="$BASE-$count.xml"
     echo "Creating $INPUT1" >&2
     cp -f "$TMPFILE2" "$INPUT1"

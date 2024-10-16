@@ -236,7 +236,7 @@
       </xsl:for-each>
     </xsl:template>
 
-    <xsl:template match="SplitBlock[position() = 1]">
+    <xsl:template match="/XcosDiagram/mxGraphModel/root/SplitBlock[position() = 1]">
       <xsl:variable name="InputPort" select="key('k-input', @id)" />
       <xsl:variable name="OutputPort" select="key('k-output', @id)" />
 
@@ -439,7 +439,7 @@
 
     <xsl:template match="ExplicitInputPort | ExplicitOutputPort | ImplicitInputPort | ImplicitOutputPort | ControlPort | CommandPort">
       <xsl:variable name="parentId" select="@parent"/>
-      <xsl:variable name="SPLIT" select="//SplitBlock[position() = 1]"/>
+      <xsl:variable name="SPLIT" select="/XcosDiagram/mxGraphModel/root/SplitBlock[position() = 1]"/>
 
       <xsl:if test="$parentId != $SPLIT/@id" >
         <xsl:copy>
@@ -455,7 +455,7 @@
       <xsl:variable name="targetId" select="@target"/>
       <xsl:variable name="targetElement" select="//*[@id = $targetId]"/>
       <xsl:variable name="targetElemId" select="$targetElement/@parent"/>
-      <xsl:variable name="SPLITID" select="//SplitBlock[position() = 1]/@id"/>
+      <xsl:variable name="SPLITID" select="/XcosDiagram/mxGraphModel/root/SplitBlock[position() = 1]/@id"/>
 
       <xsl:if test="$sourceElemId != $SPLITID and $targetElemId != $SPLITID">
         <xsl:variable name="tgtsrcid" select="//*[@id = $targetElement/@source]/@parent"/>

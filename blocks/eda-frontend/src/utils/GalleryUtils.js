@@ -20,7 +20,13 @@ const getSplitXsltProcessor = async () => {
   return processor
 }
 
-const splitBlock = /<SplitBlock /g
+const splitBlockXPathCount = 'count(/XcosDiagram/mxGraphModel/root/SplitBlock)'
+
+const countNodesByXPath = (xpath, contextNode) => {
+  const result = contextNode.evaluate(xpath, contextNode, null, XPathResult.NUMBER_TYPE, null)
+
+  return result.numberValue
+}
 
 export const transformXcos = async (xmlDoc) => {
   const splitProcessor = await getSplitXsltProcessor()
@@ -36,9 +42,7 @@ const removeOneSplit = (xmlDoc, count, splitProcessor) => {
   }
 
   xmlDoc = splitProcessor.transformToDocument(xmlDoc)
-  const dataDump = new XMLSerializer().serializeToString(xmlDoc)
-  const matches = dataDump.match(splitBlock)
-  const newCount = matches ? matches.length : 0
+  const newCount = countNodesByXPath(splitBlockXPathCount, xmlDoc)
   if (newCount !== count - 1) {
     console.error('newCount=', newCount, ', count=', count)
     throw new Error('count mismatch')
@@ -59,8 +63,7 @@ const removeSplits1 = (xmlDoc, splitProcessor) => {
     return removeNextSplit(xmlDoc, count, splitProcessor)
   }
 
-  const dataDump = new XMLSerializer().serializeToString(xmlDoc)
-  const count = dataDump.match(splitBlock).length
+  const count = countNodesByXPath(splitBlockXPathCount, xmlDoc)
   console.log('count=', count)
   if (count === 0) {
     return xmlDoc
@@ -87,8 +90,7 @@ const removeSplits = async (xmlDoc, splitProcessor, delay) => {
     })
   }
 
-  const dataDump = new XMLSerializer().serializeToString(xmlDoc)
-  const count = dataDump.match(splitBlock).length
+  const count = countNodesByXPath(splitBlockXPathCount, xmlDoc)
   console.log('count=', count)
   if (count === 0) {
     return xmlDoc
