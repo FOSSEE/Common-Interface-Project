@@ -62,15 +62,6 @@
         </xsl:choose>
       </xsl:variable>
 
-      <xsl:element name="TEST">
-        <xsl:attribute name="targetonelinkid">
-          <xsl:value-of select="$targetonelink/@id" />
-        </xsl:attribute>
-        <xsl:attribute name="sourceonelinkid">
-          <xsl:value-of select="$sourceonelink/@id" />
-        </xsl:attribute>
-      </xsl:element>
-
 <!-- generate new primary link one -->
         <xsl:if test="$targetonelink/@id != '' and $sourceonelink/@id != ''">
 
@@ -138,6 +129,18 @@
         </xsl:choose>
       </xsl:variable>
 
+      <xsl:variable name="newidfour" >
+        <xsl:choose>
+          <xsl:when test="$targetonelink/@id != '' and $sourceonelink/@id != ''">       
+            <xsl:value-of select="$newidone" />
+          </xsl:when>
+          
+          <xsl:otherwise>
+            <xsl:value-of select="$newidtwo" />
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:variable>
+
       <!-- generate new primary link two -->
       <xsl:if test="$newidthree != 'No match found' and $sourcetwolink/@id != ''">
       <xsl:element name="{$linktype}">
@@ -181,7 +184,7 @@
         <xsl:copy>
           <xsl:copy-of select="@*"/>
           <xsl:attribute name="source">
-            <xsl:value-of select="$newidone" />
+            <xsl:value-of select="$newidfour" />
           </xsl:attribute>
           <xsl:copy-of select="node()"/>
         </xsl:copy>
@@ -190,7 +193,7 @@
         <xsl:copy>
           <xsl:copy-of select="@*"/>
           <xsl:attribute name="target">
-            <xsl:value-of select="$newidone" />
+            <xsl:value-of select="$newidfour" />
           </xsl:attribute>
           <xsl:copy-of select="node()"/>
         </xsl:copy>
@@ -199,7 +202,7 @@
         <xsl:copy>
           <xsl:copy-of select="@*"/>
           <xsl:attribute name="source">
-            <xsl:value-of select="$newidone" />
+            <xsl:value-of select="$newidfour" />
           </xsl:attribute>
           <xsl:copy-of select="node()"/>
         </xsl:copy>
@@ -208,7 +211,7 @@
         <xsl:copy>
           <xsl:copy-of select="@*"/>
           <xsl:attribute name="target">
-            <xsl:value-of select="$newidone" />
+            <xsl:value-of select="$newidfour" />
           </xsl:attribute>
           <xsl:copy-of select="node()"/>
         </xsl:copy>
@@ -365,26 +368,6 @@
               </xsl:otherwise>
             </xsl:choose>
           </xsl:variable>
-          <xsl:element name="ABC">
-            <xsl:attribute name="targetonesrcsecondlink">
-          <xsl:value-of select="count($targetonesrcsecondlink)" />
-        </xsl:attribute>
-        <xsl:attribute name="targetonetgtsecondlink">
-          <xsl:value-of select="count($targetonetgtsecondlink)" />
-        </xsl:attribute>
-        <xsl:attribute name="sourceonesrcsecondlink">
-          <xsl:value-of select="count($sourceonesrcsecondlink)" />
-        </xsl:attribute>
-        <xsl:attribute name="sourceonetgtsecondlink">
-          <xsl:value-of select="count($sourceonetgtsecondlink)" />
-        </xsl:attribute>
-        <xsl:attribute name="sourcetwosrcsecondlink">
-          <xsl:value-of select="count($sourcetwosrcsecondlink)" />
-        </xsl:attribute>
-        <xsl:attribute name="sourcetwotgtsecondlink">
-          <xsl:value-of select="count($sourcetwotgtsecondlink)" />
-        </xsl:attribute>
-          </xsl:element>
 
           <xsl:variable name="sourceonelinksort" >
             <xsl:choose>
@@ -473,20 +456,7 @@
       <xsl:variable name="targetElement" select="//*[@id = $targetId]"/>
       <xsl:variable name="targetElemId" select="$targetElement/@parent"/>
       <xsl:variable name="SPLITID" select="//SplitBlock[position() = 1]/@id"/>
-      <!-- <xsl:element name="TEST">
-        <xsl:attribute name="sourceId">
-          <xsl:value-of select="$sourceId" />
-        </xsl:attribute>
-        <xsl:attribute name="targetId">
-          <xsl:value-of select="$targetId" />
-        </xsl:attribute>
-          <xsl:attribute name="sourceElemId">
-          <xsl:value-of select="$sourceElemId" />
-        </xsl:attribute>
-        <xsl:attribute name="targetElemId">
-          <xsl:value-of select="$targetElemId" />
-        </xsl:attribute>
-      </xsl:element> -->
+
       <xsl:if test="$sourceElemId != $SPLITID and $targetElemId != $SPLITID">
         <xsl:variable name="tgtsrcid" select="//*[@id = $targetElement/@source]/@parent"/>
         <xsl:variable name="srctgtid" select="//*[@id = $sourceElement/@target]/@parent"/>
