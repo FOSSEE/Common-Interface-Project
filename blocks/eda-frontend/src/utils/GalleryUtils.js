@@ -24,21 +24,7 @@ const splitBlock = /<SplitBlock /g
 
 export const transformXcos = async (xmlDoc) => {
   const splitProcessor = await getSplitXsltProcessor()
-  let dataDump = new XMLSerializer().serializeToString(xmlDoc)
-  let count = dataDump.match(splitBlock).length
-  console.log('count=', count)
-  while (count > 0) {
-    xmlDoc = splitProcessor.transformToDocument(xmlDoc)
-    dataDump = new XMLSerializer().serializeToString(xmlDoc)
-    const matches = dataDump.match(splitBlock)
-    const newCount = matches ? matches.length : 0
-    if (newCount !== count - 1) {
-      console.error('newCount=', newCount, ', count=', count)
-      throw new Error('count mismatch')
-    }
-    count = newCount
-    console.log('count=', count)
-  }
+  xmlDoc = removeSplits1(xmlDoc, splitProcessor)
   const processor = await getXsltProcessor()
   xmlDoc = processor.transformToDocument(xmlDoc)
   return xmlDoc
@@ -58,6 +44,29 @@ const removeOneSplit = (xmlDoc, count, splitProcessor) => {
     throw new Error('count mismatch')
   }
   return { xmlDoc, count: newCount }
+}
+
+const removeSplits1 = (xmlDoc, splitProcessor) => {
+  const removeNextSplit = (xmlDoc, count, splitProcessor) => {
+    const rv = removeOneSplit(xmlDoc, count, splitProcessor)
+    xmlDoc = rv.xmlDoc
+    count = rv.count
+    console.log('count=', count)
+    if (count === 0) {
+      return xmlDoc
+    }
+
+    return removeNextSplit(xmlDoc, count, splitProcessor)
+  }
+
+  const dataDump = new XMLSerializer().serializeToString(xmlDoc)
+  const count = dataDump.match(splitBlock).length
+  console.log('count=', count)
+  if (count === 0) {
+    return xmlDoc
+  }
+
+  return removeNextSplit(xmlDoc, count, splitProcessor)
 }
 
 const removeSplits = async (xmlDoc, splitProcessor, delay) => {
@@ -81,6 +90,9 @@ const removeSplits = async (xmlDoc, splitProcessor, delay) => {
   const dataDump = new XMLSerializer().serializeToString(xmlDoc)
   const count = dataDump.match(splitBlock).length
   console.log('count=', count)
+  if (count === 0) {
+    return xmlDoc
+  }
 
   return new Promise((resolve) => {
     setTimeout(() => {
