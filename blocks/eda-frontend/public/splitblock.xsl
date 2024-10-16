@@ -7,15 +7,18 @@
 
     <xsl:key name="k-input" match="ExplicitInputPort" use="@parent" />
     <xsl:key name="k-output" match="ExplicitOutputPort" use="@parent" />
+    <xsl:key name="k-link" match="ExplicitLink" use="@source | @target" />
     <xsl:key name="k-srclink" match="ExplicitLink" use="@source" />
     <xsl:key name="k-tgtlink" match="ExplicitLink" use="@target" />
 
     <xsl:key name="k-control" match="ControlPort" use="@parent" />
     <xsl:key name="k-command" match="CommandPort" use="@parent" />
+    <xsl:key name="k-commandlink" match="CommandControlLink" use="@source | @target" />
     <xsl:key name="k-commandsrclink" match="CommandControlLink" use="@source" />
     <xsl:key name="k-commandtgtlink" match="CommandControlLink" use="@target" />
 
     <xsl:key name="k-implicitinput" match="ImplicitInputPort | ImplicitOutputPort" use="@parent" />
+    <xsl:key name="k-implicitlink" match="ImplicitLink" use="@source | @target" />
     <xsl:key name="k-implicitsrclink" match="ImplicitLink" use="@source" />
     <xsl:key name="k-implicittgtlink" match="ImplicitLink" use="@target" />
 
@@ -58,6 +61,15 @@
           </xsl:otherwise>
         </xsl:choose>
       </xsl:variable>
+
+      <xsl:element name="TEST">
+        <xsl:attribute name="targetonelinkid">
+          <xsl:value-of select="$targetonelink/@id" />
+        </xsl:attribute>
+        <xsl:attribute name="sourceonelinkid">
+          <xsl:value-of select="$sourceonelink/@id" />
+        </xsl:attribute>
+      </xsl:element>
 
 <!-- generate new primary link one -->
         <xsl:if test="$targetonelink/@id != '' and $sourceonelink/@id != ''">
@@ -242,10 +254,10 @@
           <xsl:variable name="sourceoneid" select="$OutputPort[position()=1]/@id" />
           <xsl:variable name="sourcetwoid" select="$OutputPort[position()=2]/@id" />
           <xsl:variable name="sourcethreeid" select="$OutputPort[position()=3]/@id" />
-          <xsl:variable name="targetonelink" select="key('k-srclink', $targetoneid)" />
-          <xsl:variable name="sourceonelink" select="key('k-srclink', $sourceoneid)" />
-          <xsl:variable name="sourcetwolink" select="key('k-srclink', $sourcetwoid)" />
-          <xsl:variable name="sourcethreelink" select="key('k-srclink', $sourcethreeid)" />
+          <xsl:variable name="targetonelink" select="key('k-link', $targetoneid)" />
+          <xsl:variable name="sourceonelink" select="key('k-link', $sourceoneid)" />
+          <xsl:variable name="sourcetwolink" select="key('k-link', $sourcetwoid)" />
+          <xsl:variable name="sourcethreelink" select="key('k-link', $sourcethreeid)" />
           <xsl:variable name="targetonesrcsecondlink" select="key('k-srclink', $targetonelink/@id)" />
           <xsl:variable name="targetonetgtsecondlink" select="key('k-tgtlink', $targetonelink/@id)" />
           <xsl:variable name="sourceonesrcsecondlink" select="key('k-srclink', $sourceonelink/@id)" />
@@ -285,10 +297,10 @@
           <xsl:variable name="sourcecommandoneid" select="$CommandPort[position()=1]/@id" />
           <xsl:variable name="sourcecommandtwoid" select="$CommandPort[position()=2]/@id" />
           <xsl:variable name="sourcecommandthreeid" select="$CommandPort[position()=3]/@id" />
-          <xsl:variable name="targetcommandonelink" select="key('k-commandsrclink', $targetcommandoneid)" />
-          <xsl:variable name="sourcecommandonelink" select="key('k-commandsrclink', $sourcecommandoneid)" />
-          <xsl:variable name="sourcecommandtwolink" select="key('k-commandsrclink', $sourcecommandtwoid)" />
-          <xsl:variable name="sourcecommandthreelink" select="key('k-commandsrclink', $sourcecommandthreeid)" />
+          <xsl:variable name="targetcommandonelink" select="key('k-commandlink', $targetcommandoneid)" />
+          <xsl:variable name="sourcecommandonelink" select="key('k-commandlink', $sourcecommandoneid)" />
+          <xsl:variable name="sourcecommandtwolink" select="key('k-commandlink', $sourcecommandtwoid)" />
+          <xsl:variable name="sourcecommandthreelink" select="key('k-commandlink', $sourcecommandthreeid)" />
           <xsl:variable name="targetonesrcsecondlink" select="key('k-commandsrclink', $targetcommandonelink/@id)" />
           <xsl:variable name="targetonetgtsecondlink" select="key('k-commandtgtlink', $targetcommandonelink/@id)" />
           <xsl:variable name="sourceonesrcsecondlink" select="key('k-commandsrclink', $sourcecommandonelink/@id)" />
@@ -328,10 +340,10 @@
           <xsl:variable name="sourceimplicitoneid" select="$ImplicitPort[position()=2]/@id" />
           <xsl:variable name="sourceimplicittwoid" select="$ImplicitPort[position()=3]/@id" />
           <xsl:variable name="sourceimplicitthreeid" select="$ImplicitPort[position()=4]/@id" />
-          <xsl:variable name="targetimplicitonelink" select="key('k-implicitsrclink', $targetimplicitoneid)" />
-          <xsl:variable name="sourceimplicitonelink" select="key('k-implicitsrclink', $sourceimplicitoneid)" />
-          <xsl:variable name="sourceimplicittwolink" select="key('k-implicitsrclink', $sourceimplicittwoid)" />
-          <xsl:variable name="sourceimplicitthreelink" select="key('k-implicitsrclink', $sourceimplicitthreeid)" />
+          <xsl:variable name="targetimplicitonelink" select="key('k-implicitlink', $targetimplicitoneid)" />
+          <xsl:variable name="sourceimplicitonelink" select="key('k-implicitlink', $sourceimplicitoneid)" />
+          <xsl:variable name="sourceimplicittwolink" select="key('k-implicitlink', $sourceimplicittwoid)" />
+          <xsl:variable name="sourceimplicitthreelink" select="key('k-implicitlink', $sourceimplicitthreeid)" />
           <xsl:variable name="targetonesrcsecondlink" select="key('k-implicitsrclink', $targetimplicitonelink/@id)" />
           <xsl:variable name="targetonetgtsecondlink" select="key('k-implicittgtlink', $targetimplicitonelink/@id)" />
           <xsl:variable name="sourceonesrcsecondlink" select="key('k-implicitsrclink', $sourceimplicitonelink/@id)" />
@@ -353,6 +365,26 @@
               </xsl:otherwise>
             </xsl:choose>
           </xsl:variable>
+          <xsl:element name="ABC">
+            <xsl:attribute name="targetonesrcsecondlink">
+          <xsl:value-of select="count($targetonesrcsecondlink)" />
+        </xsl:attribute>
+        <xsl:attribute name="targetonetgtsecondlink">
+          <xsl:value-of select="count($targetonetgtsecondlink)" />
+        </xsl:attribute>
+        <xsl:attribute name="sourceonesrcsecondlink">
+          <xsl:value-of select="count($sourceonesrcsecondlink)" />
+        </xsl:attribute>
+        <xsl:attribute name="sourceonetgtsecondlink">
+          <xsl:value-of select="count($sourceonetgtsecondlink)" />
+        </xsl:attribute>
+        <xsl:attribute name="sourcetwosrcsecondlink">
+          <xsl:value-of select="count($sourcetwosrcsecondlink)" />
+        </xsl:attribute>
+        <xsl:attribute name="sourcetwotgtsecondlink">
+          <xsl:value-of select="count($sourcetwotgtsecondlink)" />
+        </xsl:attribute>
+          </xsl:element>
 
           <xsl:variable name="sourceonelinksort" >
             <xsl:choose>
@@ -441,7 +473,7 @@
       <xsl:variable name="targetElement" select="//*[@id = $targetId]"/>
       <xsl:variable name="targetElemId" select="$targetElement/@parent"/>
       <xsl:variable name="SPLITID" select="//SplitBlock[position() = 1]/@id"/>
-      <xsl:element name="TEST">
+      <!-- <xsl:element name="TEST">
         <xsl:attribute name="sourceId">
           <xsl:value-of select="$sourceId" />
         </xsl:attribute>
@@ -454,7 +486,7 @@
         <xsl:attribute name="targetElemId">
           <xsl:value-of select="$targetElemId" />
         </xsl:attribute>
-      </xsl:element>
+      </xsl:element> -->
       <xsl:if test="$sourceElemId != $SPLITID and $targetElemId != $SPLITID">
         <xsl:variable name="tgtsrcid" select="//*[@id = $targetElement/@source]/@parent"/>
         <xsl:variable name="srctgtid" select="//*[@id = $sourceElement/@target]/@parent"/>
