@@ -24,7 +24,10 @@ const splitBlock = /<SplitBlock /g
 
 export const transformXcos = async (xmlDoc) => {
   const splitProcessor = await getSplitXsltProcessor()
-  xmlDoc = removeSplits1(xmlDoc, splitProcessor)
+
+  // Now `removeSplits1` will execute asynchronously and not block the UI
+  xmlDoc = await removeSplits1(xmlDoc, splitProcessor)
+
   const processor = await getXsltProcessor()
   xmlDoc = processor.transformToDocument(xmlDoc)
   return xmlDoc
@@ -46,27 +49,32 @@ const removeOneSplit = (xmlDoc, count, splitProcessor) => {
   return { xmlDoc, count: newCount }
 }
 
-const removeSplits1 = (xmlDoc, splitProcessor) => {
-  const removeNextSplit = (xmlDoc, count, splitProcessor) => {
+const removeSplits1 = async (xmlDoc, splitProcessor) => {
+  const removeNextSplit = async (xmlDoc, count, splitProcessor) => {
     const rv = removeOneSplit(xmlDoc, count, splitProcessor)
     xmlDoc = rv.xmlDoc
     count = rv.count
     console.log('count=', count)
+
     if (count === 0) {
-      return xmlDoc
+      return xmlDoc // Base case, when no more splits are found
     }
 
-    return removeNextSplit(xmlDoc, count, splitProcessor)
+    // Use a timeout to yield control back to the UI for updates (e.g., spinner)
+    return new Promise((resolve) => {
+      setTimeout(async () => {
+        const result = await removeNextSplit(xmlDoc, count, splitProcessor)
+        resolve(result)
+      }, 0) // Delay of 0ms yields control to the UI but immediately resumes work
+    })
   }
 
+  // Initial data processing
   const dataDump = new XMLSerializer().serializeToString(xmlDoc)
-  const count = dataDump.match(splitBlock).length
-  console.log('count=', count)
-  if (count === 0) {
-    return xmlDoc
-  }
+  const count = (dataDump.match(splitBlock) || []).length // Ensure we handle no matches case
+  console.log('Initial count=', count)
 
-  return removeNextSplit(xmlDoc, count, splitProcessor)
+  return removeNextSplit(xmlDoc, count, splitProcessor) // Kickstart the recursive process
 }
 
 const removeSplits = async (xmlDoc, splitProcessor, delay) => {
