@@ -114,176 +114,194 @@ for root in model:
     mxPointList = {}
     blkgeometry = {}
     points1 = []
-    for cell in list(root):
-        try:
-            attrib = cell.attrib
-            attribid = attrib['id']
-            attribint = get_int(attribid)
-            if nextattribid <= attribint:
-                nextattribid = attribint + 1
+    cells = list(root)
+    remainingcells = []
+    cellslength = len(cells)
+    oldcellslength = 0
+    while cellslength > 0 and cellslength != oldcellslength :
+        for cell in cells:
+            try:
+                attrib = cell.attrib
+                attribid = attrib['id']
+                attribint = get_int(attribid)
+                if nextattribid <= attribint:
+                    nextattribid = attribint + 1
 
-            if attribid == '0':
-                outnode = ET.SubElement(outroot, 'mxCell')
-                outnode.set('id', attribid)
-                continue
-
-            if attribid == '1':
-                outnode = ET.SubElement(outroot, 'mxCell')
-                outnode.set('id', attribid)
-                outnode.set('parent', '0')
-                continue
-
-            cell_type = attrib['CellType']
-
-            if cell_type == 'Component':
-
-                style = attrib['style']
-                componentOrdering += 1
-                portCount[attribid] = {
-                    'ExplicitInputPort': 0,
-                    'ImplicitInputPort': 0,
-                    'ControlPort': 0,
-                    'ExplicitOutputPort': 0,
-                    'ImplicitOutputPort': 0,
-                    'CommandPort': 0
-                }
-                componentGeometry = {}
-                componentGeometry['height'] = 40
-                componentGeometry['width'] = 40
-                componentGeometry['x'] = 0
-                componentGeometry['y'] = 0
-                mxGeometry = cell.find('mxGeometry')
-                if mxGeometry is not None:
-                    componentGeometry['height'] = mxGeometry.attrib['height']
-                    componentGeometry['width'] = mxGeometry.attrib['width']
-                    componentGeometry['x'] = mxGeometry.attrib.get('x', '0')
-                    componentGeometry['y'] = mxGeometry.attrib.get('y', '0')
-                parameter_values = cell.find('./Object[@as="parameter_values"]')
-                parameters = []
-                if parameter_values is not None:
-                    parameter_values = parameter_values.attrib
-                    for i in range(100):
-                        parameter = 'p%03d_value' % i
-                        if parameter in parameter_values:
-                            parameters.append(parameter_values[parameter])
-                        else:
-                            break
-                globals()[style](outroot, attribid, componentOrdering, componentGeometry, parameters)
-
-                IDLIST[attribid] = cell_type
-                blkgeometry[attribid] = componentGeometry
-
-            elif 'vertex' in attrib:
-
-                style = attrib['style']
-                ParentComponent = attrib['ParentComponent']
-                portCount[ParentComponent][style] += 1
-                ordering = portCount[ParentComponent][style]
-                geometry = dict(componentGeometry)
-                mxGeometry = cell.find('mxGeometry')
-                if mxGeometry is not None:
-                    geometry['height'] = mxGeometry.attrib['height']
-                    geometry['width'] = mxGeometry.attrib['width']
-                    geometryX = mxGeometry.attrib.get('x', 0)
-                    geometryY = mxGeometry.attrib.get('y', 0)
-                    if mxGeometry.attrib.get('relative', '0') == '1':
-                        geometryX = num2str(float(componentGeometry['x']) +
-                                            float(componentGeometry['width']) * float(geometryX))
-                        geometryY = num2str(float(componentGeometry['y']) +
-                                            float(componentGeometry['height']) * float(geometryY))
-                    geometry['x'] = geometryX
-                    geometry['y'] = geometryY
-                globals()[style](outroot, attribid, ParentComponent, ordering, geometry)
-
-                IDLIST[attribid] = style
-                blkgeometry[attribid] = geometry
-
-            elif 'edge' in attrib:
-
-                mxGeometry = cell.find('mxGeometry')
-                waypoints = []
-                arrayElement = mxGeometry.find('Array')
-                if arrayElement is not None:
-                    for arrayChild in arrayElement:
-                        if arrayChild.tag == 'mxPoint':
-                            waypoints.append(arrayChild.attrib)
-
-                sourceVertex = attrib['sourceVertex']
-                targetVertex = attrib['targetVertex']
-
-                sourceType = IDLIST[sourceVertex]
-                targetType = IDLIST[targetVertex]
-
-                # switch vertices if required
-                if sourceType in ['ExplicitInputPort', 'ImplicitInputPort', 'ControlPort'] and \
-                        targetType in ['ExplicitOutputPort', 'ExplicitLink', 'ImplicitOutputPort', 'ImplicitLink', 'CommandPort', 'CommandControlLink']:
-                    (sourceVertex, targetVertex) = (targetVertex, sourceVertex)
-                    (sourceType, targetType) = (targetType, sourceType)
-                    waypoints.reverse()
-                elif sourceType in ['ExplicitInputPort', 'ExplicitLink', 'ImplicitInputPort', 'ImplicitLink', 'ControlPort', 'CommandControlLink'] and \
-                        targetType in ['ExplicitOutputPort', 'ImplicitOutputPort', 'CommandPort']:
-                    (sourceVertex, targetVertex) = (targetVertex, sourceVertex)
-                    (sourceType, targetType) = (targetType, sourceType)
-                    waypoints.reverse()
-
-                style = None
-                addSplit = False
-                if sourceType in ['ExplicitInputPort', 'ExplicitOutputPort', 'CommandPort', 'ControlPort'] and \
-                        targetType == sourceType:
-                    print(attribid, 'cannot connect two ports of', sourceType, 'and', targetType)
-                elif sourceType in ['ExplicitLink', 'ImplicitLink', 'CommandControlLink'] and \
-                        targetType == sourceType:
-                    print(attribid, 'cannot connect two links of', sourceType, 'and', targetType)
-                elif sourceType in ['ExplicitOutputPort'] and \
-                        targetType in ['ExplicitInputPort']:
-                    style = 'ExplicitLink'
-                elif sourceType in ['ExplicitOutputPort', 'ExplicitLink'] and \
-                        targetType in ['ExplicitInputPort', 'ExplicitLink']:
-                    style = 'ExplicitLink'
-                    addSplit = True
-                elif sourceType in ['ImplicitOutputPort', 'ImplicitInputPort'] and \
-                        targetType in ['ImplicitInputPort', 'ImplicitOutputPort']:
-                    style = 'ImplicitLink'
-                elif sourceType in ['ImplicitOutputPort', 'ImplicitInputPort', 'ImplicitLink'] and \
-                        targetType in ['ImplicitInputPort', 'ImplicitOutputPort', 'ImplicitLink']:
-                    style = 'ImplicitLink'
-                    addSplit = True
-                elif sourceType in ['CommandPort'] and \
-                        targetType in ['ControlPort']:
-                    style = 'CommandControlLink'
-                elif sourceType in ['CommandPort', 'CommandControlLink'] and \
-                        targetType in ['ControlPort', 'CommandControlLink']:
-                    style = 'CommandControlLink'
-                    addSplit = True
-                else:
-                    print(attribid, 'Unknown combination of', sourceType, 'and', targetType)
-
-                if style is None:
+                if attribid == '0':
+                    outnode = ET.SubElement(outroot, 'mxCell')
+                    outnode.set('id', attribid)
                     continue
 
-                split_point = None
+                if attribid == '1':
+                    outnode = ET.SubElement(outroot, 'mxCell')
+                    outnode.set('id', attribid)
+                    outnode.set('parent', '0')
+                    continue
 
-                if sourceVertex in blkgeometry:
-                    vertex = blkgeometry[sourceVertex]
-                    point = {'x': vertex['x'], 'y': vertex['y']}
-                    waypoints.insert(0, point)
-                elif 'tarx' in attrib and 'tary' in attrib:
-                    point = {'x': attrib['tarx'], 'y': attrib['tary']}
-                    split_point = point
-                    waypoints.insert(0, point)
+                cell_type = attrib['CellType']
 
-                if targetVertex in blkgeometry:
-                    vertex = blkgeometry[targetVertex]
-                    point = {'x': vertex['x'], 'y': vertex['y']}
-                    waypoints.append(point)
+                if cell_type == 'Component':
 
-                IDLIST[attribid] = style
-                link_data = (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point)
-                edgeDict[attribid] = link_data
-                edgeList.append(link_data)
-        except BaseException:
-            traceback.print_exc()
-            sys.exit(0)
+                    style = attrib['style']
+                    componentOrdering += 1
+                    portCount[attribid] = {
+                        'ExplicitInputPort': 0,
+                        'ImplicitInputPort': 0,
+                        'ControlPort': 0,
+                        'ExplicitOutputPort': 0,
+                        'ImplicitOutputPort': 0,
+                        'CommandPort': 0
+                    }
+                    componentGeometry = {}
+                    componentGeometry['height'] = 40
+                    componentGeometry['width'] = 40
+                    componentGeometry['x'] = 0
+                    componentGeometry['y'] = 0
+                    mxGeometry = cell.find('mxGeometry')
+                    if mxGeometry is not None:
+                        componentGeometry['height'] = mxGeometry.attrib['height']
+                        componentGeometry['width'] = mxGeometry.attrib['width']
+                        componentGeometry['x'] = mxGeometry.attrib.get('x', '0')
+                        componentGeometry['y'] = mxGeometry.attrib.get('y', '0')
+                    parameter_values = cell.find('./Object[@as="parameter_values"]')
+                    parameters = []
+                    if parameter_values is not None:
+                        parameter_values = parameter_values.attrib
+                        for i in range(100):
+                            parameter = 'p%03d_value' % i
+                            if parameter in parameter_values:
+                                parameters.append(parameter_values[parameter])
+                            else:
+                                break
+
+                    style = style_to_object(style)['default']
+                    globals()[style](outroot, attribid, componentOrdering, componentGeometry, parameters)
+
+                    IDLIST[attribid] = cell_type
+                    blkgeometry[attribid] = componentGeometry
+
+                elif 'vertex' in attrib:
+
+                    style = attrib['style']
+                    ParentComponent = attrib['ParentComponent']
+                    portCount[ParentComponent][style] += 1
+                    ordering = portCount[ParentComponent][style]
+                    geometry = dict(componentGeometry)
+                    mxGeometry = cell.find('mxGeometry')
+                    if mxGeometry is not None:
+                        geometry['height'] = mxGeometry.attrib['height']
+                        geometry['width'] = mxGeometry.attrib['width']
+                        geometryX = mxGeometry.attrib.get('x', 0)
+                        geometryY = mxGeometry.attrib.get('y', 0)
+                        if mxGeometry.attrib.get('relative', '0') == '1':
+                            geometryX = num2str(float(componentGeometry['x']) +
+                                                float(componentGeometry['width']) * float(geometryX))
+                            geometryY = num2str(float(componentGeometry['y']) +
+                                                float(componentGeometry['height']) * float(geometryY))
+                        geometry['x'] = geometryX
+                        geometry['y'] = geometryY
+                    globals()[style](outroot, attribid, ParentComponent, ordering, geometry)
+
+                    IDLIST[attribid] = style
+                    blkgeometry[attribid] = geometry
+
+                elif 'edge' in attrib:
+
+                    mxGeometry = cell.find('mxGeometry')
+                    waypoints = []
+                    arrayElement = mxGeometry.find('Array')
+                    if arrayElement is not None:
+                        for arrayChild in arrayElement:
+                            if arrayChild.tag == 'mxPoint':
+                                waypoints.append(arrayChild.attrib)
+
+                    sourceVertex = attrib['sourceVertex']
+                    targetVertex = attrib['targetVertex']
+                    
+                    try:
+                        sourceType = IDLIST[sourceVertex]
+                        targetType = IDLIST[targetVertex]
+                    except KeyError:
+                        remainingcells.append(cell)
+                        continue
+                    
+
+                    # switch vertices if required
+                    if sourceType in ['ExplicitInputPort', 'ImplicitInputPort', 'ControlPort'] and \
+                            targetType in ['ExplicitOutputPort', 'ExplicitLink', 'ImplicitOutputPort', 'ImplicitLink', 'CommandPort', 'CommandControlLink']:
+                        (sourceVertex, targetVertex) = (targetVertex, sourceVertex)
+                        (sourceType, targetType) = (targetType, sourceType)
+                        waypoints.reverse()
+                    elif sourceType in ['ExplicitInputPort', 'ExplicitLink', 'ImplicitInputPort', 'ImplicitLink', 'ControlPort', 'CommandControlLink'] and \
+                            targetType in ['ExplicitOutputPort', 'ImplicitOutputPort', 'CommandPort']:
+                        (sourceVertex, targetVertex) = (targetVertex, sourceVertex)
+                        (sourceType, targetType) = (targetType, sourceType)
+                        waypoints.reverse()
+
+                    style = None
+                    addSplit = False
+                    if sourceType in ['ExplicitInputPort', 'ExplicitOutputPort', 'CommandPort', 'ControlPort'] and \
+                            targetType == sourceType:
+                        print(attribid, 'cannot connect two ports of', sourceType, 'and', targetType)
+                    elif sourceType in ['ExplicitLink', 'ImplicitLink', 'CommandControlLink'] and \
+                            targetType == sourceType:
+                        print(attribid, 'cannot connect two links of', sourceType, 'and', targetType)
+                    elif sourceType in ['ExplicitOutputPort'] and \
+                            targetType in ['ExplicitInputPort']:
+                        style = 'ExplicitLink'
+                    elif sourceType in ['ExplicitOutputPort', 'ExplicitLink'] and \
+                            targetType in ['ExplicitInputPort', 'ExplicitLink']:
+                        style = 'ExplicitLink'
+                        addSplit = True
+                    elif sourceType in ['ImplicitOutputPort', 'ImplicitInputPort'] and \
+                            targetType in ['ImplicitInputPort', 'ImplicitOutputPort']:
+                        style = 'ImplicitLink'
+                    elif sourceType in ['ImplicitOutputPort', 'ImplicitInputPort', 'ImplicitLink'] and \
+                            targetType in ['ImplicitInputPort', 'ImplicitOutputPort', 'ImplicitLink']:
+                        style = 'ImplicitLink'
+                        addSplit = True
+                    elif sourceType in ['CommandPort'] and \
+                            targetType in ['ControlPort']:
+                        style = 'CommandControlLink'
+                    elif sourceType in ['CommandPort', 'CommandControlLink'] and \
+                            targetType in ['ControlPort', 'CommandControlLink']:
+                        style = 'CommandControlLink'
+                        addSplit = True
+                    else:
+                        print(attribid, 'Unknown combination of', sourceType, 'and', targetType)
+
+                    if style is None:
+                        continue
+
+                    split_point = None
+
+                    if sourceVertex in blkgeometry:
+                        vertex = blkgeometry[sourceVertex]
+                        point = {'x': vertex['x'], 'y': vertex['y']}
+                        waypoints.insert(0, point)
+                    elif 'tarx' in attrib and 'tary' in attrib:
+                        point = {'x': attrib['tarx'], 'y': attrib['tary']}
+                        split_point = point
+                        waypoints.insert(0, point)
+
+                    if targetVertex in blkgeometry:
+                        vertex = blkgeometry[targetVertex]
+                        point = {'x': vertex['x'], 'y': vertex['y']}
+                        waypoints.append(point)
+
+                    IDLIST[attribid] = style
+                    link_data = (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point)
+                    edgeDict[attribid] = link_data
+                    edgeList.append(link_data)
+            except BaseException:
+                traceback.print_exc()
+                sys.exit(0)
+        oldcellslength = cellslength
+        cells = remainingcells
+        cellslength = len(remainingcells)
+        remainingcells = []
+        print('cellslength=', cellslength, ', oldcellslength=', oldcellslength)
+            
 
 print('EDGES:')
 for key, value in edgeDict.items():
