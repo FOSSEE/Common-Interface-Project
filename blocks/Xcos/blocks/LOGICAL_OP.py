@@ -1,6 +1,7 @@
 from common.AAAAAA import *
 
-def LOGICAL_OP(outroot, attribid, ordering, geometry, parameters):
+
+def LOGICAL_OP(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'LOGICAL_OP'
 
     d_type = ['', '', '', 'i32', 'i16', 'i8', 'ui32', 'ui16', 'ui8']
@@ -15,7 +16,7 @@ def LOGICAL_OP(outroot, attribid, ordering, geometry, parameters):
     simulation_func_name = 'logicalop' + datatype
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, simulation_func_name, 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')

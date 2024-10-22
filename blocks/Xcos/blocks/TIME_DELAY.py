@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def TIME_DELAY(outroot, attribid, ordering, geometry, parameters):
+
+def TIME_DELAY(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'TIME_DELAY'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'time_delay', 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_X,
                          dependsOnT='1')

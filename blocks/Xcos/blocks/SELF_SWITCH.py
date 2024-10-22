@@ -4,7 +4,8 @@ from blocks.CONST_m import CONST_m
 from blocks.SWITCH_f import SWITCH_f
 from common.AAAAAA import *
 
-def SELF_SWITCH(outroot, attribid, ordering, geometry, parameters):
+
+def SELF_SWITCH(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'SELF_SWITCH'
     if parameters[0] == 'on':
         style = func_name + '_ON'
@@ -12,7 +13,7 @@ def SELF_SWITCH(outroot, attribid, ordering, geometry, parameters):
         style = func_name + '_OFF'
     block_id, port_id, link_id = generate_id(6, 6, 3)
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'csuper', 'DEFAULT',
                          style, BLOCKTYPE_H)
 

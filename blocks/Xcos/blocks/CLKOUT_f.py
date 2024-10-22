@@ -1,5 +1,6 @@
 from common.AAAAAA import *
 
+
 def CLKOUT_f(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'CLKOUT_f'
 

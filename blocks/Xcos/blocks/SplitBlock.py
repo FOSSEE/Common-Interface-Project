@@ -1,5 +1,6 @@
 from common.AAAAAA import *
 
+
 def SplitBlock(outroot, attribid, ordering, geometry, parent=1):
     func_name = 'CLKSPLIT_f'
     outnode = addOutNode(outroot, BLOCK_SPLIT,

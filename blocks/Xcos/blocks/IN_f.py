@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def IN_f(outroot, attribid, ordering, geometry, parameters):
+
+def IN_f(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'IN_f'
 
     outnode = addOutNode(outroot, BLOCK_EXPLICIT_IN,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'input', 'DEFAULT',
                          func_name, BLOCKTYPE_C)
 

@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def CurrentSensor(outroot, attribid, ordering, geometry, parameters):
+
+def CurrentSensor(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'CurrentSensor'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'CurrentSensor', 'DEFAULT',
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')

@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def CLKSOMV_f(outroot, attribid, ordering, geometry, parameters):
+
+def CLKSOMV_f(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'CLKSOMV_f'
 
     outnode = addOutNode(outroot, BLOCK_ROUND,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'sum', 'DEFAULT',
                          func_name, BLOCKTYPE_D)
 

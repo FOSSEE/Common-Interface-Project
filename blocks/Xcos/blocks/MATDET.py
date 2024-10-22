@@ -1,6 +1,7 @@
 from common.AAAAAA import *
 
-def MATDET(outroot, attribid, ordering, geometry, parameters):
+
+def MATDET(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'MATDET'
 
     data_type = ['', 'mat_det', 'matz_det']
@@ -8,7 +9,7 @@ def MATDET(outroot, attribid, ordering, geometry, parameters):
     simulation_func_name = data_type[int(parameters[0])]
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, simulation_func_name, 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')

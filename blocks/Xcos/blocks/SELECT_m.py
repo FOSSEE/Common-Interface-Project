@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def SELECT_m(outroot, attribid, ordering, geometry, parameters):
+
+def SELECT_m(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'SELECT_m'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'selector_m', 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')

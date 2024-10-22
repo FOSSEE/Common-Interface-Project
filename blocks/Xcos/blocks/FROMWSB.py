@@ -11,11 +11,11 @@ from common.AAAAAA import *
 # link_id = ['5631d1e9:18ea7a6d774:-7fed', '5631d1e9:18ea7a6d774:-7fec']
 
 
-def FROMWSB(outroot, attribid, ordering, geometry, parameters):
+def FROMWSB(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'FROMWSB'
     block_id, port_id, link_id = generate_id(4, 4, 2)
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'csuper', 'DEFAULT',
                          func_name, BLOCKTYPE_H)
 

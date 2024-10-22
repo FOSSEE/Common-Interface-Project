@@ -3,11 +3,12 @@ from blocks.EVTDLY_c import EVTDLY_c
 from blocks.SplitBlock import SplitBlock
 from common.AAAAAA import *
 
-def CLOCK_c(outroot, attribid, ordering, geometry, parameters):
+
+def CLOCK_c(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'CLOCK_c'
     block_id, port_id, link_id = generate_id(9, 12, 7)
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'csuper', 'DEFAULT',
                          func_name, BLOCKTYPE_H)
 

@@ -1,6 +1,7 @@
 from common.AAAAAA import *
 
-def EXTRACTBITS(outroot, attribid, ordering, geometry, parameters):
+
+def EXTRACTBITS(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'EXTRACTBITS'
 
     d_type = ['', 'UH', 'LH', 'MSB', 'LSB', 'RB']
@@ -24,7 +25,7 @@ def EXTRACTBITS(outroot, attribid, ordering, geometry, parameters):
     simulation_func_name = 'extract_bit_' + bits_extract + bit_int
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, simulation_func_name, 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')

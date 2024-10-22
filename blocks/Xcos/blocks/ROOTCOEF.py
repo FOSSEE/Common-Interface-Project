@@ -1,6 +1,7 @@
 from common.AAAAAA import *
 
-def ROOTCOEF(outroot, attribid, ordering, geometry, parameters):
+
+def ROOTCOEF(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'ROOTCOEF'
 
     data_type = ['', 'root_coef', 'rootz_coef']
@@ -8,7 +9,7 @@ def ROOTCOEF(outroot, attribid, ordering, geometry, parameters):
     simulation_func_name = data_type[int(parameters[0])]
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, simulation_func_name, 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')

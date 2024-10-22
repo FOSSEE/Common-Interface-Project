@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def CLR(outroot, attribid, ordering, geometry, parameters):
+
+def CLR(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'CLR'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'csslti4', 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_C,
                          dependsOnT='1')

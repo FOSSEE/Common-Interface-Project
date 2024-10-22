@@ -1,6 +1,7 @@
 from common.AAAAAA import *
 
-def TOWS_c(outroot, attribid, ordering, geometry, parameters):
+
+def TOWS_c(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'TOWS_c'
 
     para3 = int(parameters[2])
@@ -11,7 +12,7 @@ def TOWS_c(outroot, attribid, ordering, geometry, parameters):
         b_type = BLOCKTYPE_D
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'tows_c', 'C_OR_FORTRAN',
                          func_name, b_type)
 

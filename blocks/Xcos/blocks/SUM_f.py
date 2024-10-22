@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def SUM_f(outroot, attribid, ordering, geometry, parameters):
+
+def SUM_f(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'SUM_f'
 
     outnode = addOutNode(outroot, BLOCK_ROUND,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'plusblk', 'TYPE_2',
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')

@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def PRODUCT(outroot, attribid, ordering, geometry, parameters):
+
+def PRODUCT(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'PRODUCT'
 
     outnode = addOutNode(outroot, BLOCK_PRODUCT,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'product', 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')

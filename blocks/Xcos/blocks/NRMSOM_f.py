@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def NRMSOM_f(outroot, attribid, ordering, geometry, parameters):
+
+def NRMSOM_f(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'NRMSOM_f'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'junk', 'DEFAULT',
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')

@@ -6,11 +6,11 @@ from common.AAAAAA import *
 #             '-64ce6d85:145ef6f2b4f:-7f54']
 
 
-def SUPER_f(outroot, attribid, ordering, geometry, parameters):
+def SUPER_f(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'SUPER_f'
     block_id, port_id, link_id = generate_id(3, 0, 0)
     outnode = addOutNode(outroot, BLOCK_SUPER,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'cscope', 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_C)
 

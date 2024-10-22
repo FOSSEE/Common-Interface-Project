@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def Diode(outroot, attribid, ordering, geometry, parameters):
+
+def Diode(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'Diode'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'Diode', 'DEFAULT',
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')

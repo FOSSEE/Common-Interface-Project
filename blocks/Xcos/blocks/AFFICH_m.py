@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def AFFICH_m(outroot, attribid, ordering, geometry, parameters):
+
+def AFFICH_m(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'AFFICH_m'
 
     outnode = addOutNode(outroot, BLOCK_AFFICHE,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'affich2', 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')

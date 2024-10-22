@@ -1,13 +1,14 @@
 from common.AAAAAA import *
 
-def c_block(outroot, attribid, ordering, geometry, parameters):
+
+def c_block(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'c_block'
 
     code = parameters[3]
     codeLines = code.split('\n')
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, parameters[3], 'DYNAMIC_C_1',
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')

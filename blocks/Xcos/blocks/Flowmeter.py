@@ -1,11 +1,12 @@
 from common.AAAAAA import *
 
-def Flowmeter(outroot, attribid, ordering, geometry, parameters):
+
+def Flowmeter(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'Flowmeter'
     parameters = ['1']
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'Flowmeter', 'DEFAULT',
                          func_name, BLOCKTYPE_C,
                          dependsOnT='1')

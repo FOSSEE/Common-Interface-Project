@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def VoltageSensor(outroot, attribid, ordering, geometry, parameters):
+
+def VoltageSensor(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'VoltageSensor'
 
     outnode = addOutNode(outroot, BLOCK_VOLTAGESENSOR,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'VoltageSensor', 'DEFAULT',
                          func_name, BLOCKTYPE_C)
 

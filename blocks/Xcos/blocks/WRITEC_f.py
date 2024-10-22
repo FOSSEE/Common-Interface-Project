@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def WRITEC_f(outroot, attribid, ordering, geometry, parameters):
+
+def WRITEC_f(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'WRITEC_f'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'writec', 'TYPE_2',
                          func_name, BLOCKTYPE_D,
                          dependsOnU='1')

@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def DEMUX_f(outroot, attribid, ordering, geometry, parameters):
+
+def DEMUX_f(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'DEMUX_f'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'demux', 'TYPE_1',
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')

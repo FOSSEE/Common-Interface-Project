@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def TEXT_f(outroot, attribid, ordering, geometry, parameters):
+
+def TEXT_f(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'TEXT_f'
 
     outnode = addOutNode(outroot, BLOCK_TEXT,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, None, None,
                          func_name, None,
                          value=parameters[0])

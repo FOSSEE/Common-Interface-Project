@@ -5,11 +5,12 @@ from blocks.IFTHEL_f import IFTHEL_f
 from blocks.CLKSPLIT_f import CLKSPLIT_f
 from common.AAAAAA import *
 
-def ANDBLK(outroot, attribid, ordering, geometry, parameters):
+
+def ANDBLK(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'ANDBLK'
     block_id, port_id, link_id = generate_id(8, 13, 6)
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'csuper', 'DEFAULT',
                          func_name, BLOCKTYPE_H)
 

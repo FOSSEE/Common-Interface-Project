@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def Inductor(outroot, attribid, ordering, geometry, parameters):
+
+def Inductor(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'Inductor'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'Inductor', 'DEFAULT',
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')

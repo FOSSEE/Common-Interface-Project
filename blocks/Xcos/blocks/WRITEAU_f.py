@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def WRITEAU_f(outroot, attribid, ordering, geometry, parameters):
+
+def WRITEAU_f(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'WRITEAU_f'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'writeau', 'TYPE_2',
                          func_name, BLOCKTYPE_D,
                          dependsOnU='1')

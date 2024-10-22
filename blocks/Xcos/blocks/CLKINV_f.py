@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def CLKINV_f(outroot, attribid, ordering, geometry, parameters):
+
+def CLKINV_f(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'CLKINV_f'
 
     outnode = addOutNode(outroot, BLOCK_EVENT_IN,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'input', 'DEFAULT',
                          func_name, BLOCKTYPE_D)
 

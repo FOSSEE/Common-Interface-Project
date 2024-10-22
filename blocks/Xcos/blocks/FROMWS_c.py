@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def FROMWS_c(outroot, attribid, ordering, geometry, parameters):
+
+def FROMWS_c(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'FROMWS_c'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'fromws_c', 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_D)
 

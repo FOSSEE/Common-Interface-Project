@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def VirtualCLK0(outroot, attribid, ordering, geometry, parameters):
+
+def VirtualCLK0(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'VirtualCLK0'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'vrtclk0', 'DEFAULT',
                          func_name, BLOCKTYPE_D)
 

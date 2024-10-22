@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def CLKIN_f(outroot, attribid, ordering, geometry, parameters):
+
+def CLKIN_f(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'CLKIN_f'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'input', 'DEFAULT',
                          func_name, BLOCKTYPE_D)
 

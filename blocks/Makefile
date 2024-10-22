@@ -33,7 +33,6 @@ $(TARGET) : $(SRCFILES)
 	@echo Making $@ ...
 	@for f in $^; do \
 	    echo "# BEGIN $$f"; \
-	    echo; \
 	    grep -v "from .* import" "$$f"; \
 	    echo; \
 	    echo "# END $$f"; \

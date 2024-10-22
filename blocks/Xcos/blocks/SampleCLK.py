@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def SampleCLK(outroot, attribid, ordering, geometry, parameters):
+
+def SampleCLK(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'SampleCLK'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'sampleclk', 'DEFAULT',
                          func_name, BLOCKTYPE_D)
 

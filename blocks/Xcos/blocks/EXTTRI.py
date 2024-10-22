@@ -1,6 +1,7 @@
 from common.AAAAAA import *
 
-def EXTTRI(outroot, attribid, ordering, geometry, parameters):
+
+def EXTTRI(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'EXTTRI'
 
     extration_type = ['', 'exttril', 'exttriu', 'extdiag']
@@ -11,7 +12,7 @@ def EXTTRI(outroot, attribid, ordering, geometry, parameters):
     simulation_func_name = extration_type[para2] + data_type[para1]
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, simulation_func_name, 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')

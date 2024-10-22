@@ -5,11 +5,12 @@ from blocks.OUT_f import OUT_f
 from blocks.IN_f import IN_f
 from common.AAAAAA import *
 
-def SRFLIPFLOP(outroot, attribid, ordering, geometry, parameters):
+
+def SRFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'SRFLIPFLOP'
     block_id, port_id, link_id = generate_id(9, 15, 7)
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'csuper', 'DEFAULT',
                          func_name, BLOCKTYPE_H,
                          dependsOnU='1')

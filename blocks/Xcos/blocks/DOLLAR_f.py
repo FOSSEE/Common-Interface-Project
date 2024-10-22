@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def DOLLAR_f(outroot, attribid, ordering, geometry, parameters):
+
+def DOLLAR_f(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'DOLLAR_f'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'dollar', 'DEFAULT',
                          func_name, BLOCKTYPE_D)
 

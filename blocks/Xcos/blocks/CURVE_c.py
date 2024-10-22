@@ -1,5 +1,6 @@
 from common.AAAAAA import *
 
+
 def CURVE_c(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'CURVE_c'
 

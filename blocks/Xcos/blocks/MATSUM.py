@@ -1,6 +1,7 @@
 from common.AAAAAA import *
 
-def MATSUM(outroot, attribid, ordering, geometry, parameters):
+
+def MATSUM(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'MATSUM'
 
     data_type = ['', 'mat_', 'matz_']
@@ -11,7 +12,7 @@ def MATSUM(outroot, attribid, ordering, geometry, parameters):
     simulation_func_name = data_type[para1] + sum_along[para2]
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, simulation_func_name, 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')

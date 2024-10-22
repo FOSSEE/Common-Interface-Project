@@ -1,6 +1,7 @@
 from common.AAAAAA import *
 
-def CLSS(outroot, attribid, ordering, geometry, parameters):
+
+def CLSS(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'CLSS'
 
     para4 = int(float(parameters[3]))
@@ -11,7 +12,7 @@ def CLSS(outroot, attribid, ordering, geometry, parameters):
         depends_u = '1'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'csslti4', 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_C,
                          dependsOnU=depends_u,

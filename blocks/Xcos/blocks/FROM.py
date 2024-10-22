@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def FROM(outroot, attribid, ordering, geometry, parameters):
+
+def FROM(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'FROM'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'from', 'DEFAULT',
                          func_name, BLOCKTYPE_C)
 

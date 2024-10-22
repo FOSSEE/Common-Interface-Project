@@ -1,11 +1,12 @@
 from common.AAAAAA import *
 
-def SAWTOOTH_f(outroot, attribid, ordering, geometry, parameters):
+
+def SAWTOOTH_f(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'SAWTOOTH_f'
     parameters = [' ']
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'sawtth', 'DEFAULT',
                          func_name, BLOCKTYPE_C,
                          dependsOnT='1')

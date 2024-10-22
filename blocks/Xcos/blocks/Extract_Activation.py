@@ -4,11 +4,12 @@ from blocks.IN_f import IN_f
 from blocks.CLKOUTV_f import CLKOUTV_f
 from common.AAAAAA import *
 
-def Extract_Activation(outroot, attribid, ordering, geometry, parameters):
+
+def Extract_Activation(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'Extract_Activation'
     block_id, port_id, link_id = generate_id(6, 9, 4)
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'csuper', 'DEFAULT',
                          func_name, BLOCKTYPE_C)
 

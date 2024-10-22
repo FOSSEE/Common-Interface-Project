@@ -16,11 +16,11 @@ from common.AAAAAA import *
 #            '-6f1a4b5d:18f04c0dca9:-7fea', '-6f1a4b5d:18f04c0dca9:-7fe9']
 
 
-def STEP_FUNCTION(outroot, attribid, ordering, geometry, parameters):
+def STEP_FUNCTION(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'STEP_FUNCTION'
     block_id, port_id, link_id = generate_id(9, 8, 4)
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'csuper', 'DEFAULT',
                          func_name, BLOCKTYPE_C, dependsOnU='0',
                          dependsOnT='0')

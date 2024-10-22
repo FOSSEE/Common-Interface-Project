@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def GotoTagVisibilityMO(outroot, attribid, ordering, geometry, parameters):
+
+def GotoTagVisibilityMO(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'GotoTagVisibilityMO'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'gototagvisibilitymo', 'DEFAULT',
                          func_name, BLOCKTYPE_C)
 

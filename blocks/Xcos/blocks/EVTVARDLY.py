@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def EVTVARDLY(outroot, attribid, ordering, geometry, parameters):
+
+def EVTVARDLY(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'EVTVARDLY'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'evtvardly', 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')

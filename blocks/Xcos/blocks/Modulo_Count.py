@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def Modulo_Count(outroot, attribid, ordering, geometry, parameters):
+
+def Modulo_Count(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'Modulo_Count'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'modulo_count', 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_C)
 

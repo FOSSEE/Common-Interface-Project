@@ -1,6 +1,7 @@
 from common.AAAAAA import *
 
-def MATMUL(outroot, attribid, ordering, geometry, parameters):
+
+def MATMUL(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'MATMUL'
 
     data_type = ['', 'matmul_m', 'matzmul_m',
@@ -39,7 +40,7 @@ def MATMUL(outroot, attribid, ordering, geometry, parameters):
         simulation_func_name = ''
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, simulation_func_name, 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')

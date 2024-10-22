@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def FROMMO(outroot, attribid, ordering, geometry, parameters):
+
+def FROMMO(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'FROMMO'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'frommo', 'DEFAULT',
                          func_name, BLOCKTYPE_C)
 

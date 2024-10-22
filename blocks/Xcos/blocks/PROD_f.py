@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def PROD_f(outroot, attribid, ordering, geometry, parameters):
+
+def PROD_f(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'PROD_f'
 
     outnode = addOutNode(outroot, BLOCK_ROUND,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'prod', 'TYPE_2',
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')

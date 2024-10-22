@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def MAXMIN(outroot, attribid, ordering, geometry, parameters):
+
+def MAXMIN(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'MAXMIN'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'minmax', 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')

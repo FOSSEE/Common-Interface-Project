@@ -8,6 +8,11 @@ import traceback
 import xml.etree.ElementTree as ET
 import defusedxml.ElementTree as goodET
 
+from xcosblocks import SplitBlock
+from xcosblocks import addExplicitInputPortForSplit, addExplicitOutputPortForSplit
+from xcosblocks import ImplicitInputPort, ImplicitOutputPort
+from xcosblocks import CommandPort, ControlPort
+from xcosblocks import num2str, style_to_object
 from xcosblocks import *
 
 if len(sys.argv) != 2:

@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def CLINDUMMY_f(outroot, attribid, ordering, geometry, parameters):
+
+def CLINDUMMY_f(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'CLINDUMMY_f'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'cdummy', 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_C,
                          dependsOnT='1')

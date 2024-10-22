@@ -4,11 +4,12 @@ from blocks.IFTHEL_f import IFTHEL_f
 from blocks.EDGETRIGGER import EDGETRIGGER
 from common.AAAAAA import *
 
-def EDGE_TRIGGER(outroot, attribid, ordering, geometry, parameters):
+
+def EDGE_TRIGGER(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'EDGE_TRIGGER'
     block_id, port_id, link_id = generate_id(6, 7, 4)
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'csuper', 'DEFAULT',
                          func_name, BLOCKTYPE_C)
 

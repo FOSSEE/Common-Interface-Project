@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def Ground(outroot, attribid, ordering, geometry, parameters):
+
+def Ground(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'Ground'
     parameters = [""]
     outnode = addOutNode(outroot, BLOCK_GROUND,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'Ground', 'DEFAULT',
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')

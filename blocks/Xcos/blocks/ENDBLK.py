@@ -5,11 +5,11 @@ from common.AAAAAA import *
 #             '-76454188:14e1ef4db88:-7d55']
 
 
-def ENDBLK(outroot, attribid, ordering, geometry, parameters):
+def ENDBLK(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'ENDBLK'
     block_id, port_id, link_id = generate_id(3, 0, 0)
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'csuper', 'DEFAULT',
                          func_name, BLOCKTYPE_H)
 

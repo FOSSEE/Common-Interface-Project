@@ -1,6 +1,7 @@
 from common.AAAAAA import *
 
-def BITCLEAR(outroot, attribid, ordering, geometry, parameters):
+
+def BITCLEAR(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'BITCLEAR'
 
     datatype = ['', '', '', '32', '16', '8', '32', '16', '8']
@@ -9,7 +10,7 @@ def BITCLEAR(outroot, attribid, ordering, geometry, parameters):
     simulation_func_name = 'bit_clear_' + datatype[para1]
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, simulation_func_name, 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')

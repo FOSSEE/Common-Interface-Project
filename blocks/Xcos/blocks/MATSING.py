@@ -1,6 +1,7 @@
 from common.AAAAAA import *
 
-def MATSING(outroot, attribid, ordering, geometry, parameters):
+
+def MATSING(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'MATSING'
 
     data_type = ['', 'mat_', 'matz_']
@@ -11,7 +12,7 @@ def MATSING(outroot, attribid, ordering, geometry, parameters):
     simulation_func_name = data_type[para1] + decomposition_type[para2]
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, simulation_func_name, 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')

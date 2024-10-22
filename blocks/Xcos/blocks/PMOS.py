@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def PMOS(outroot, attribid, ordering, geometry, parameters):
+
+def PMOS(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'PMOS'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'PMOS', 'DEFAULT',
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')

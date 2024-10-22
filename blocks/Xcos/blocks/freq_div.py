@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def freq_div(outroot, attribid, ordering, geometry, parameters):
+
+def freq_div(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'freq_div'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'csuper', 'DEFAULT',
                          func_name, BLOCKTYPE_C)
 

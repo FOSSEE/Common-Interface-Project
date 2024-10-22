@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def INIMPL_f(outroot, attribid, ordering, geometry, parameters):
+
+def INIMPL_f(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'INIMPL_f'
 
     outnode = addOutNode(outroot, BLOCK_IMPLICIT_IN,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'inimpl', 'DEFAULT',
                          func_name, BLOCKTYPE_C)
 

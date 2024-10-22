@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def SourceP(outroot, attribid, ordering, geometry, parameters):
+
+def SourceP(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'SourceP'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'Source', 'DEFAULT',
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')

@@ -10,11 +10,11 @@ from common.AAAAAA import *
 # port_id = ['7a86d9c5:18e504d8baa:-7fae']
 
 
-def DELAY_f(outroot, attribid, ordering, geometry, parameters):
+def DELAY_f(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'DELAY_f'
     block_id, port_id, link_id = generate_id(6, 1, 0)
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'csuper', 'DEFAULT',
                          func_name, BLOCKTYPE_H)
 

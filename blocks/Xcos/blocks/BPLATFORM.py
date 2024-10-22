@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def BPLATFORM(outroot, attribid, ordering, geometry, parameters):
+
+def BPLATFORM(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'BPLATFORM'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'bplatform2', 'SCILAB',
                          func_name, BLOCKTYPE_D)
 

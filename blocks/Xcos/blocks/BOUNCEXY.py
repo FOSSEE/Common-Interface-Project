@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def BOUNCEXY(outroot, attribid, ordering, geometry, parameters):
+
+def BOUNCEXY(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'BOUNCEXY'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'bouncexy', 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_D)
 

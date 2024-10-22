@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def MATCATH(outroot, attribid, ordering, geometry, parameters):
+
+def MATCATH(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'MATCATH'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'mat_cath', 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')

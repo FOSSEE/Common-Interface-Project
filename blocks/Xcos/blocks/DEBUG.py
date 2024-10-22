@@ -1,13 +1,14 @@
 from common.AAAAAA import *
 
-def DEBUG(outroot, attribid, ordering, geometry, parameters):
+
+def DEBUG(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'DEBUG'
 
     code = parameters[0]
     codeLines = code.split('\n')
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, '%debug_scicos', 'DEBUG',
                          func_name, BLOCKTYPE_D)
 

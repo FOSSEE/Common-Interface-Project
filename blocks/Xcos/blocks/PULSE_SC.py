@@ -21,11 +21,11 @@ from common.AAAAAA import *
 #            '5631d1e9:18ea7a6d774:-7fbf']
 
 
-def PULSE_SC(outroot, attribid, ordering, geometry, parameters):
+def PULSE_SC(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'PULSE_SC'
     block_id, port_id, link_id = generate_id(8, 10, 5)
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'csuper', 'DEFAULT',
                          func_name, BLOCKTYPE_H)
 

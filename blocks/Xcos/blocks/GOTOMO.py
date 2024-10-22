@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def GOTOMO(outroot, attribid, ordering, geometry, parameters):
+
+def GOTOMO(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'GOTOMO'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'gotomo', 'DEFAULT',
                          func_name, BLOCKTYPE_C)
 

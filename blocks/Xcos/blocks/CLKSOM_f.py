@@ -1,5 +1,6 @@
 from common.AAAAAA import *
 
+
 def CLKSOM_f(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'CLKSOM_f'
 

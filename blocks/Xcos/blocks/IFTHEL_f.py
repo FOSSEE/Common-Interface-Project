@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def IFTHEL_f(outroot, attribid, ordering, geometry, parameters):
+
+def IFTHEL_f(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'IFTHEL_f'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'ifthel', 'IFTHENELSE',
                          func_name, BLOCKTYPE_L,
                          dependsOnU='1')

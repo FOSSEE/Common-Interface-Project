@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def NEGTOPOS_f(outroot, attribid, ordering, geometry, parameters):
+
+def NEGTOPOS_f(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'NEGTOPOS_f'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'zcross', 'TYPE_1',
                          func_name, BLOCKTYPE_Z,
                          dependsOnU='1')

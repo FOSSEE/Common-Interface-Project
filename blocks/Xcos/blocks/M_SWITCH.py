@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def M_SWITCH(outroot, attribid, ordering, geometry, parameters):
+
+def M_SWITCH(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'M_SWITCH'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'mswitch', 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')

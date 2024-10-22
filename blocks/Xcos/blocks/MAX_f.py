@@ -1,11 +1,12 @@
 from common.AAAAAA import *
 
-def MAX_f(outroot, attribid, ordering, geometry, parameters):
+
+def MAX_f(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'MAX_f'
     parameters = [' ']
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'maxblk', 'DEFAULT',
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')

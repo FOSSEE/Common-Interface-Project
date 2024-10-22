@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def CONST(outroot, attribid, ordering, geometry, parameters):
+
+def CONST(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'CONST'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'cstblk4', 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_D)
 

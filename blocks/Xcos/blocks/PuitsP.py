@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def PuitsP(outroot, attribid, ordering, geometry, parameters):
+
+def PuitsP(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'PuitsP'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'Puits', 'DEFAULT',
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')

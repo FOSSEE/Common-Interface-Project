@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def EXPRESSION(outroot, attribid, ordering, geometry, parameters):
+
+def EXPRESSION(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'EXPRESSION'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'evaluate_expr', 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')

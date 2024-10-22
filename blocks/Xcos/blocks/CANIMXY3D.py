@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def CANIMXY3D(outroot, attribid, ordering, geometry, parameters):
+
+def CANIMXY3D(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'CANIMXY3D'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'canimxy3d', 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_D)
 

@@ -1,13 +1,14 @@
 from common.AAAAAA import *
 
-def fortran_block(outroot, attribid, ordering, geometry, parameters):
+
+def fortran_block(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'fortran_block'
 
     code = parameters[3]
     codeLines = code.split('\n')
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, parameters[3], 'DYNAMIC_FORTRAN_1',
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')

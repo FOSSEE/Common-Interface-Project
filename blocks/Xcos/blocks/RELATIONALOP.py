@@ -1,6 +1,7 @@
 from common.AAAAAA import *
 
-def RELATIONALOP(outroot, attribid, ordering, geometry, parameters):
+
+def RELATIONALOP(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'RELATIONALOP'
 
     data_type = ['', '', '', '_i32', '_i16', '_i8', '_ui32', '_ui16', '_ui8']
@@ -13,7 +14,7 @@ def RELATIONALOP(outroot, attribid, ordering, geometry, parameters):
         simulation_func_name = 'relational_op'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, simulation_func_name, 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')

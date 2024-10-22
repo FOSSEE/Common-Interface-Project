@@ -1,6 +1,7 @@
 from common.AAAAAA import *
 
-def SHIFT(outroot, attribid, ordering, geometry, parameters):
+
+def SHIFT(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'SHIFT'
 
     data_type = ['', '', '',
@@ -21,7 +22,7 @@ def SHIFT(outroot, attribid, ordering, geometry, parameters):
         simulation_func_name = 'shift_32_LA'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, simulation_func_name, 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')

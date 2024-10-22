@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def END_c(outroot, attribid, ordering, geometry, parameters):
+
+def END_c(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'END_c'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'scicosexit', 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_D)
 

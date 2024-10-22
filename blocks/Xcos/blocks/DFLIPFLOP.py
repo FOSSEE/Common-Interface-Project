@@ -12,11 +12,12 @@ from blocks.SPLIT_f import SPLIT_f
 from blocks.SELECT_m import SELECT_m
 from common.AAAAAA import *
 
-def DFLIPFLOP(outroot, attribid, ordering, geometry, parameters):
+
+def DFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'DFLIPFLOP'
     block_id, port_id, link_id = generate_id(21, 52, 24)
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'csuper', 'DEFAULT',
                          func_name, BLOCKTYPE_H,
                          dependsOnU='1')

@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def Ground_g(outroot, attribid, ordering, geometry, parameters):
+
+def Ground_g(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'Ground_g'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'cstblk4_m', 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_D)
 

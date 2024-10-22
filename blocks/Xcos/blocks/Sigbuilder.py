@@ -17,11 +17,11 @@ from common.AAAAAA import *
 #            ]
 
 
-def Sigbuilder(outroot, attribid, ordering, geometry, parameters):
+def Sigbuilder(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'Sigbuilder'
     block_id, port_id, link_id = generate_id(6, 8, 4)
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'csuper', 'DEFAULT',
                          func_name, BLOCKTYPE_H, dependsOnU="0", dependsOnT="0")
 

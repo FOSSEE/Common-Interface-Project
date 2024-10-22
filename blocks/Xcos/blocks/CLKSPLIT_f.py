@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def CLKSPLIT_f(outroot, attribid, ordering, geometry, parameters):
+
+def CLKSPLIT_f(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'CLKSPLIT_f'
 
     outnode = addOutNode(outroot, BLOCK_SPLIT,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'split', 'DEFAULT',
                          func_name, BLOCKTYPE_D)
 

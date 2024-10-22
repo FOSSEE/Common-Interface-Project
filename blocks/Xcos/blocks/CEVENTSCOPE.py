@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def CEVENTSCOPE(outroot, attribid, ordering, geometry, parameters):
+
+def CEVENTSCOPE(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'CEVENTSCOPE'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'cevscpe', 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_D)
 

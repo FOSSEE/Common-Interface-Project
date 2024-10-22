@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def CFSCOPE(outroot, attribid, ordering, geometry, parameters):
+
+def CFSCOPE(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'CFSCOPE'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'cfscope', 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')

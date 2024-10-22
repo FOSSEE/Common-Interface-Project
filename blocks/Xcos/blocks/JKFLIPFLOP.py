@@ -7,11 +7,12 @@ from blocks.IN_f import IN_f
 from blocks.OUT_f import OUT_f
 from common.AAAAAA import *
 
-def JKFLIPFLOP(outroot, attribid, ordering, geometry, parameters):
+
+def JKFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'JKFLIPFLOP'
     block_id, port_id, link_id = generate_id(13, 24, 11)
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'csuper', 'DEFAULT',
                          func_name, BLOCKTYPE_H,
                          dependsOnU='1')

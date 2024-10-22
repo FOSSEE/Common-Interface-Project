@@ -1,10 +1,11 @@
 from common.AAAAAA import *
 
-def SIGNUM(outroot, attribid, ordering, geometry, parameters):
+
+def SIGNUM(outroot, attribid, ordering, geometry, parameters, parent=1):
     func_name = 'SIGNUM'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
-                         attribid, ordering, 1,
+                         attribid, ordering, parent,
                          func_name, 'signum', 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_C,
                          dependsOnU='1')

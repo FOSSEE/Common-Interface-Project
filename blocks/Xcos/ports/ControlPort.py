@@ -1,5 +1,6 @@
 from common.AAAAAA import *
 
+
 def ControlPort(outroot, attribid, parentattribid, ordering, geometry,
                 value='', forSplitBlock=False):
     func_name = 'ControlPort'
