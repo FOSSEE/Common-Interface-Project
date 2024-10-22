@@ -17,9 +17,10 @@ def CommandPort(outroot, attribid, parentattribid, ordering, geometry,
 
     return outnode
 
+
 def addCommandPortForSplit(outroot, splitBlock, sourceVertex, targetVertex,
-                                  sourceType, targetType, inputCount,
-                                  outputCount, nextAttrib, nextAttribForSplit, waypoints):
+                           sourceType, targetType, inputCount,
+                           outputCount, nextAttrib, nextAttribForSplit, waypoints):
     outputCount += 1
     geometry = {}
     geometry['width'] = 8
@@ -27,7 +28,7 @@ def addCommandPortForSplit(outroot, splitBlock, sourceVertex, targetVertex,
     geometry['x'] = 7
     geometry['y'] = -4
     CommandPort(outroot, nextAttrib, splitBlock, outputCount, geometry,
-                       forSplitBlock=True)
+                forSplitBlock=True)
     nextAttrib += 1
     nextAttribForSplit += 1
     return (inputCount, outputCount, nextAttrib, nextAttribForSplit)

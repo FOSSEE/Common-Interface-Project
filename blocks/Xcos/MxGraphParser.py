@@ -118,7 +118,8 @@ for root in model:
     remainingcells = []
     cellslength = len(cells)
     oldcellslength = 0
-    while cellslength > 0 and cellslength != oldcellslength :
+    print('cellslength=', cellslength)
+    while cellslength > 0 and cellslength != oldcellslength:
         for cell in cells:
             try:
                 attrib = cell.attrib
@@ -217,14 +218,13 @@ for root in model:
 
                     sourceVertex = attrib['sourceVertex']
                     targetVertex = attrib['targetVertex']
-                    
+
                     try:
                         sourceType = IDLIST[sourceVertex]
                         targetType = IDLIST[targetVertex]
                     except KeyError:
                         remainingcells.append(cell)
                         continue
-                    
 
                     # switch vertices if required
                     if sourceType in ['ExplicitInputPort', 'ImplicitInputPort', 'ControlPort'] and \
@@ -301,7 +301,6 @@ for root in model:
         cellslength = len(remainingcells)
         remainingcells = []
         print('cellslength=', cellslength, ', oldcellslength=', oldcellslength)
-            
 
 print('EDGES:')
 for key, value in edgeDict.items():

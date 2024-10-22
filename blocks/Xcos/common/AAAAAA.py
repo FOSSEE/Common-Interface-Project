@@ -634,13 +634,13 @@ def generate_id(block_count, port_count, link_count):
 def style_to_object(style):
     if not style.endswith(';'):
         style += ';'
-    
+
     style_object = {}
     remaining_style = style
 
     while remaining_style:
         index_of_key_value = remaining_style.find(';')
-        
+
         index_of_key = remaining_style.find('=')
         if 0 < index_of_key < index_of_key_value:
             key = remaining_style[:index_of_key]
@@ -653,5 +653,5 @@ def style_to_object(style):
                 style_object[key] = value
 
         remaining_style = remaining_style[index_of_key_value + 1:]
-    
+
     return style_object

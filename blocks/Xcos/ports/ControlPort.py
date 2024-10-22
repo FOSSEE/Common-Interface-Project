@@ -17,9 +17,10 @@ def ControlPort(outroot, attribid, parentattribid, ordering, geometry,
 
     return outnode
 
+
 def addControlPortForSplit(outroot, splitBlock, sourceVertex, targetVertex,
-                                 sourceType, targetType, inputCount,
-                                 outputCount, nextAttrib, nextAttribForSplit, waypoints):
+                           sourceType, targetType, inputCount,
+                           outputCount, nextAttrib, nextAttribForSplit, waypoints):
     inputCount += 1
     geometry = {}
     geometry['width'] = 8
@@ -27,7 +28,7 @@ def addControlPortForSplit(outroot, splitBlock, sourceVertex, targetVertex,
     geometry['x'] = -8
     geometry['y'] = -4
     ControlPort(outroot, nextAttrib, splitBlock, inputCount, geometry,
-                      forSplitBlock=True)
+                forSplitBlock=True)
     nextAttrib += 1
     nextAttribForSplit += 1
     return (inputCount, outputCount, nextAttrib, nextAttribForSplit)

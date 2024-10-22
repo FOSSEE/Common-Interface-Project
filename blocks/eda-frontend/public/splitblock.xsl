@@ -444,6 +444,7 @@
       <xsl:if test="$parentId != $SPLIT/@id" >
         <xsl:copy>
           <xsl:copy-of select="@*"/>
+          <xsl:copy-of select="node()"/>
         </xsl:copy>
       </xsl:if>
     </xsl:template>

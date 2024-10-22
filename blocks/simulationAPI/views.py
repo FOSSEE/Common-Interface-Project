@@ -223,7 +223,6 @@ class StreamView(APIView):
                     time.sleep(LOOK_DELAY)
                     continue
                 logger.warning('log file is empty')
-
                 return None
             return log_name
 
@@ -236,7 +235,6 @@ class StreamView(APIView):
         self.duplicatelineno = 0
 
     def event_stream(self, task_id):
-        print('ABC',task_id)
         if not isinstance(task_id, uuid.UUID):
             raise ValidationError('Invalid uuid format')
 

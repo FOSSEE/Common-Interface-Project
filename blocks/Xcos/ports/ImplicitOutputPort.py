@@ -23,6 +23,7 @@ def ImplicitOutputPort(outroot, attribid, parentattribid, ordering, geometry,
 
     return outnode
 
+
 def addImplicitOutputPortForSplit(outroot, splitBlock, sourceVertex, targetVertex,
                                   sourceType, targetType, inputCount,
                                   outputCount, nextAttrib, nextAttribForSplit, waypoints):
