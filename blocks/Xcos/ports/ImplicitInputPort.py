@@ -22,3 +22,18 @@ def ImplicitInputPort(outroot, attribid, parentattribid, ordering, geometry,
                           style=func_name, value=value)
 
     return outnode
+
+def addImplicitInputPortForSplit(outroot, splitBlock, sourceVertex, targetVertex,
+                                 sourceType, targetType, inputCount,
+                                 outputCount, nextAttrib, nextAttribForSplit, waypoints):
+    inputCount += 1
+    geometry = {}
+    geometry['width'] = 8
+    geometry['height'] = 8
+    geometry['x'] = -8
+    geometry['y'] = -4
+    ImplicitInputPort(outroot, nextAttrib, splitBlock, inputCount, geometry,
+                      forSplitBlock=True)
+    nextAttrib += 1
+    nextAttribForSplit += 1
+    return (inputCount, outputCount, nextAttrib, nextAttribForSplit)
