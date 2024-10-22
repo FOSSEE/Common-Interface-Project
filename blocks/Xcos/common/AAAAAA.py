@@ -80,7 +80,7 @@ def addPrecisionNode(node, subNodeType, type, height, parameters):
     width = 1 if height > 0 else 0
     subNode = addAsDataNode(node,
                             subNodeType, type, height, width,
-                            parameters, intPrecision='sci_int32')
+                            parameters, False, intPrecision='sci_int32')
     return subNode
 
 
@@ -95,7 +95,7 @@ def addNodePrecision(node, subNodeType, height, parameters):
 
 def addTypeNode(node, subNodeType, type, height, parameters):
     width = 1 if height > 0 else 0
-    subNode = addAsDataNode(node, subNodeType, type, height, width, parameters)
+    subNode = addAsDataNode(node, subNodeType, type, height, width, parameters, False)
     return subNode
 
 
@@ -161,7 +161,7 @@ def addDData(parent, column=None, line=None, realPart=None):
 
 def addgeometryNode(node, subNodeType, height, width, x, y):
     geometryNode = addDtNode(node, subNodeType, **{'as': 'geometry'},
-                             height=height, width=width, x=x, y=y)
+                             x=x, y=y, width=width, height=height)
     return geometryNode
 
 
@@ -170,12 +170,14 @@ def addOutNode(node, subNodeType,
                interface_func_name, simulation_func_name, simulation_func_type,
                style, blockType,
                **kwargs):
-    newkwargs = {'id': attribid, 'ordering': ordering, 'parent': parent,
+    newkwargs = {'id': attribid, 'parent': parent,
                  'interfaceFunctionName': interface_func_name,
-                 'simulationFunctionName': simulation_func_name,
-                 'simulationFunctionType': simulation_func_type,
-                 'style': style, 'blockType': blockType}
+                 'blockType': blockType}
     newkwargs.update(kwargs)
+    newkwargs.update({'simulationFunctionName': simulation_func_name,
+                      'simulationFunctionType': simulation_func_type,
+                      'style': style})
+    
     return addNode(node, subNodeType, **newkwargs)
 
 
@@ -208,13 +210,13 @@ def addDataNode(node, subNodeType, **kwargs):
     return subNode
 
 
-def addAsDataNode(node, subNodeType, a, height, width, parameters, **kwargs):
+def addAsDataNode(node, subNodeType, a, height, width, parameters, isReal, **kwargs):
     newkwargs = {'as': a, 'height': height, 'width': width}
     newkwargs.update(kwargs)
     subNode = addDataNode(node, subNodeType, **newkwargs)
 
     for param in parameters:
-        addDataData(subNode, param)
+        addDataData(subNode, param, isReal)
     return subNode
 
 
@@ -481,13 +483,13 @@ def addScilabDBNode(node, height):
 # Sine Voltage
 def addTNode(node, subNodeType, type, width, parameters):
     height = 1 if width > 0 else 0
-    subNode = addAsDataNode(node, subNodeType, type, height, width, parameters)
+    subNode = addAsDataNode(node, subNodeType, type, height, width, parameters, False)
     return subNode
 
 
 def addSciDBNode(node, subNodeType, type, width, realParts):
     height = 1 if width > 0 else 0
-    subNode = addAsDataNode(node, subNodeType, type, height, width, realParts)
+    subNode = addAsDataNode(node, subNodeType, type, height, width, realParts, True)
     return subNode
 
 
@@ -516,7 +518,7 @@ def addPrecNode(node, subNodeType, type, width, parameters):
     height = 1 if width > 0 else 0
     subNode = addAsDataNode(node,
                             subNodeType, type, height, width,
-                            parameters, intPrecision='sci_int32')
+                            parameters, False, intPrecision='sci_int32')
     return subNode
 
 
@@ -604,9 +606,10 @@ def get_number_power(value):
 def format_real_number(parameter):
     if 'e' in parameter or 'E' in parameter:
         real_number = float(parameter.replace('*10^', 'e').replace('10^', '1e'))
-        formatted_number = "{:.1E}".format(real_number)
+        formatted_number = "{:.10g}".format(real_number)
     else:
-        formatted_number = "{:.1f}".format(float(parameter))
+        formatted_number = "{:.10g}".format(float(parameter))
+
     return formatted_number
 
 

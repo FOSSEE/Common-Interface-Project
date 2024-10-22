@@ -8,11 +8,12 @@ def Inductor(outroot, attribid, ordering, geometry, parameters, parent=1):
                          attribid, ordering, parent,
                          func_name, 'Inductor', 'DEFAULT',
                          func_name, BLOCKTYPE_C,
-                         dependsOnU='1')
+                         dependsOnU='1', dependsOnT='0')
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
     addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM,
-                 1, realParts=[0.1])
+                 1, realParts=[format_real_number(parameters[0])
+                 ])
     addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 0, [])
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, [])
     array = ['0']
@@ -42,7 +43,7 @@ def Inductor(outroot, attribid, ordering, geometry, parameters, parent=1):
                         parameters='L')
     subnestedarray = addArrayNode(nestedArrayNode,
                                   scilabClass="ScilabList")
-    addScilabDoubleNode(subnestedarray, width=1, realParts=format_real_number(parameters[0]))
+    addScilabDoubleNode(subnestedarray, width=1, realParts=[format_real_number(parameters[0])])
 
     addgeometryNode(outnode, GEOMETRY, geometry['height'],
                     geometry['width'], geometry['x'], geometry['y'])
