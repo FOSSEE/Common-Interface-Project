@@ -10,7 +10,8 @@ def CLOCK_c(outroot, attribid, ordering, geometry, parameters, parent=1):
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'csuper', 'DEFAULT',
-                         func_name, BLOCKTYPE_H)
+                         func_name, BLOCKTYPE_H, dependsOnU='0',
+                         dependsOnT='0')
 
     addExprsNode(outnode, TYPE_DOUBLE, 0, [])
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0,

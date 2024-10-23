@@ -177,7 +177,7 @@ def addOutNode(node, subNodeType,
     newkwargs.update({'simulationFunctionName': simulation_func_name,
                       'simulationFunctionType': simulation_func_type,
                       'style': style})
-    
+
     return addNode(node, subNodeType, **newkwargs)
 
 

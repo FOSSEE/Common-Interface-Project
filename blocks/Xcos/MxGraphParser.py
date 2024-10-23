@@ -422,9 +422,10 @@ for key, newEdges in newEdgeDict.items():
                          waypoints[1:-1], parent = parentattribid)
 
 outnode = ET.SubElement(outdiagram, 'mxCell')
-outnode.set('id', str(1))
-outnode.set('parent', str(0))
 outnode.set('as', 'defaultParent')
+outnode.set('id', '0:2:0')
+outnode.set('parent', '0:1:0')
+
 
 outtree = ET.ElementTree(outdiagram)
 ET.indent(outtree)

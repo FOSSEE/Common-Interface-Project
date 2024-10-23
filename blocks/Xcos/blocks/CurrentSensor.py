@@ -8,7 +8,7 @@ def CurrentSensor(outroot, attribid, ordering, geometry, parameters, parent=1):
                          attribid, ordering, parent,
                          func_name, 'CurrentSensor', 'DEFAULT',
                          func_name, BLOCKTYPE_C,
-                         dependsOnU='1')
+                         dependsOnU='1', dependsOnT='0')
 
     addExprsNode(outnode, TYPE_DOUBLE, 0, parameters)
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0,

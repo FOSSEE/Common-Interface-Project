@@ -10,7 +10,7 @@ def OUT_f(outroot, attribid, ordering, geometry, parameters, parent=1):
                          func_name, BLOCKTYPE_C, dependsOnU='0',
                          dependsOnT='0')
 
-    addExprsNode(outnode, TYPE_STRING, 1, parameters[1:2])
+    addExprsNode(outnode, TYPE_STRING, 1, parameters[0])
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0,
                 [])
     array = ['1']

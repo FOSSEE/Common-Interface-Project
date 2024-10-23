@@ -8,13 +8,13 @@ def CMSCOPE(outroot, attribid, ordering, geometry, parameters, parent=1):
                          attribid, ordering, parent,
                          func_name, 'cmscope', 'C_OR_FORTRAN',
                          func_name, BLOCKTYPE_C,
-                         dependsOnU='1',
-                         value=parameters[10])
+                         dependsOnU='1', dependsOnT='0'
+                         )
 
     addExprsNode(outnode, TYPE_STRING, 11, parameters)
     addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM,
-                 7, realParts=[0.0, 10.0, 10.0, 0.0, 2.0, 0.0, 2.0])
-    array = ['-1', '2', '20', '-1', '-1', '-1', '-1', '1', '1', '1', '3', '0']
+                 7, realParts=[0.0, 0.25, 0.25, -15.0, 15.0, -15.0, 15.0])
+    array = ['-1', '2', '2', '-1', '-1', '-1', '-1', '1', '1', '1', '3', '0']
     addPrecNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 12, array)
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
     array = ['0']

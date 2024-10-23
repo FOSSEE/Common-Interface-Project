@@ -8,7 +8,7 @@ def Switch(outroot, attribid, ordering, geometry, parameters, parent=1):
                          attribid, ordering, parent,
                          func_name, 'Switch', 'DEFAULT',
                          func_name, BLOCKTYPE_C,
-                         dependsOnU='1')
+                         dependsOnU='1', dependsOnT='0')
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)
     addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM,
