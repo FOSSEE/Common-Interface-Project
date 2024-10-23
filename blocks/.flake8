@@ -6,4 +6,4 @@
 ignore = F401,F403,W504
 extend-exclude = docs,env*,migrations,node_modules,Xcos/common,Xcos/blocks,Xcos/ports,Xcos/links
 max-complexity = 13
-max-line-length = 100
+max-line-length = 260

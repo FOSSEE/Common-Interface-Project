@@ -10,6 +10,8 @@ import defusedxml.ElementTree as goodET
 
 from xcosblocks import SplitBlock
 from xcosblocks import addExplicitInputPortForSplit, addExplicitOutputPortForSplit
+from xcosblocks import addImplicitInputPortForSplit, addImplicitOutputPortForSplit
+from xcosblocks import addControlPortForSplit, addCommandPortForSplit
 from xcosblocks import ImplicitInputPort, ImplicitOutputPort
 from xcosblocks import CommandPort, ControlPort
 from xcosblocks import num2str, style_to_object
@@ -123,10 +125,11 @@ for root in model:
     remainingcells = []
     cellslength = len(cells)
     oldcellslength = 0
+    rootattribid = None
     parentattribid = None
     print('cellslength=', cellslength)
     while cellslength > 0 and cellslength != oldcellslength:
-        for i,cell in enumerate(cells):
+        for i, cell in enumerate(cells):
             try:
                 attrib = cell.attrib
                 attribid = attrib['id']
@@ -138,14 +141,14 @@ for root in model:
                     attribid = '0:1:0'
                     outnode = ET.SubElement(outroot, 'mxCell')
                     outnode.set('id', attribid)
-                    parentattribid = attribid
+                    rootattribid = attribid
                     continue
 
                 if i == 1 and oldcellslength == 0:
                     attribid = '0:2:0'
                     outnode = ET.SubElement(outroot, 'mxCell')
                     outnode.set('id', attribid)
-                    outnode.set('parent', parentattribid)
+                    outnode.set('parent', rootattribid)
                     parentattribid = attribid
                     continue
 
@@ -186,7 +189,7 @@ for root in model:
                                 break
 
                     style = style_to_object(style)['default']
-                    globals()[style](outroot, attribid, componentOrdering, componentGeometry, parameters, parent = parentattribid)
+                    globals()[style](outroot, attribid, componentOrdering, componentGeometry, parameters, parent=parentattribid)
 
                     IDLIST[attribid] = cell_type
                     blkgeometry[attribid] = componentGeometry
@@ -348,7 +351,7 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoi
     geometry['width'] = 7
     geometry['x'] = split_point['x']
     geometry['y'] = split_point['y']
-    SplitBlock(outroot, nextattribid, componentOrdering, geometry, parent = parentattribid)
+    SplitBlock(outroot, nextattribid, componentOrdering, geometry, parent=parentattribid)
     splitblockid = nextattribid
     nextattribid += 1
 
@@ -419,12 +422,12 @@ for key, newEdges in newEdgeDict.items():
             attribid = nextattribid
             nextattribid += 1
         globals()[style](outroot, attribid, sourceVertex, targetVertex,
-                         waypoints[1:-1], parent = parentattribid)
+                         waypoints[1:-1], parent=parentattribid)
 
 outnode = ET.SubElement(outdiagram, 'mxCell')
 outnode.set('as', 'defaultParent')
-outnode.set('id', '0:2:0')
-outnode.set('parent', '0:1:0')
+outnode.set('id', parentattribid)
+outnode.set('parent', rootattribid)
 
 
 outtree = ET.ElementTree(outdiagram)
