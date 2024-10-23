@@ -8,14 +8,14 @@ def SineVoltage(outroot, attribid, ordering, geometry, parameters, parent=1):
                          attribid, ordering, parent,
                          func_name, 'SineVoltage', 'DEFAULT',
                          func_name, BLOCKTYPE_C,
-                         dependsOnU='1')
+                         dependsOnU='1', dependsOnT='0')
 
     addExprsNode(outnode, TYPE_STRING, 5, parameters)
-    addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM,
-                 5, realParts=[1.5, 0.0, 15.92356687898089, 0.0, 0.0])
+    addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 5, realParts=[
+                 parameters[0], parameters[1], parameters[2],
+                 parameters[3], parameters[4]])
     array = ['0']
-    addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 0,
-                [])
+    addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 0, [])
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NBZERO, 1, array)
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NMODE, 1, array)
@@ -46,11 +46,11 @@ def SineVoltage(outroot, attribid, ordering, geometry, parameters, parent=1):
     addSciStringNode(innerArrayNode, height=5,
                      parameters=scilabStringParameters)
     nestedArrayNode = addArrayNode(innerArrayNode, scilabClass="ScilabList")
-    addScilabDoubleNode(nestedArrayNode, width=1, realParts=["1.5"])
-    addScilabDoubleNode(nestedArrayNode, width=1, realParts=["0.0"])
-    addScilabDoubleNode(nestedArrayNode, width=1, realParts=["15.92356687898089"])
-    addScilabDoubleNode(nestedArrayNode, width=1, realParts=["0.0"])
-    addScilabDoubleNode(nestedArrayNode, width=1, realParts=["0.0"])
+    addScilabDoubleNode(nestedArrayNode, width=1, realParts=[parameters[0]])
+    addScilabDoubleNode(nestedArrayNode, width=1, realParts=[parameters[1]])
+    addScilabDoubleNode(nestedArrayNode, width=1, realParts=[parameters[2]])
+    addScilabDoubleNode(nestedArrayNode, width=1, realParts=[parameters[3]])
+    addScilabDoubleNode(nestedArrayNode, width=1, realParts=[parameters[4]])
 
     addgeometryNode(outnode, GEOMETRY, geometry['height'],
                     geometry['width'], geometry['x'], geometry['y'])

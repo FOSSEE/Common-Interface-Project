@@ -8,7 +8,7 @@ def Ground(outroot, attribid, ordering, geometry, parameters, parent=1):
                          attribid, ordering, parent,
                          func_name, 'Ground', 'DEFAULT',
                          func_name, BLOCKTYPE_C,
-                         dependsOnU='1')
+                         dependsOnU='1', dependsOnT='0')
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0,

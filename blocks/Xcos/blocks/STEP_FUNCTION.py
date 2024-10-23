@@ -22,7 +22,7 @@ def STEP_FUNCTION(outroot, attribid, ordering, geometry, parameters, parent=1):
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'csuper', 'DEFAULT',
-                         func_name, BLOCKTYPE_C, dependsOnU='0',
+                         func_name, BLOCKTYPE_H, dependsOnU='0',
                          dependsOnT='0')
 
     addExprsNode(outnode, TYPE_DOUBLE, 0, parameters)
@@ -80,7 +80,7 @@ def STEP_FUNCTION(outroot, attribid, ordering, geometry, parameters, parent=1):
     addPort(root, TYPE_CMD, id=port_id[2],
             parent=block_id[2], ordering="1",
             dataType="REAL_MATRIX", dataColumns="1",
-            dataLines="-1", initialState="5.0",
+            dataLines="-1", initialState="0.005",
             style="CommandPort", value="")
 
     OUT_f(root, block_id[3], ordering, geometry, parameters, parent=block_id[1])
@@ -88,28 +88,8 @@ def STEP_FUNCTION(outroot, attribid, ordering, geometry, parameters, parent=1):
     adPort(root, TYPE_EXPLICITINPORT, id=port_id[3],
            parent=block_id[3], ordering="1",
            initialState="0.0",
-           style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
+           style="ExplicitInputPort;align=left;verticalAlign=middle;spacing=10.0;rotation=0",
            value="")
-
-    CCLink = addLink(root, TYPE_LINK, id=link_id[0],
-                     parent=block_id[1],
-                     source=port_id[2],
-                     target=port_id[1],
-                     style="CommandControlLink", value="")
-    gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
-    addmxPointNode(gemotryNode, 'mxPoint',
-                   a="sourcePoint", x="0.0", y="11.0")
-    arrayNode = addArray(gemotryNode, TYPE_ARRAY, a="points")
-    addPointNode(arrayNode, 'mxPoint',
-                 x="180.0", y="220.0")
-    addPointNode(arrayNode, 'mxPoint',
-                 x="140.0", y="220.0")
-    addPointNode(arrayNode, 'mxPoint',
-                 x="140.0", y="140.0")
-    addPointNode(arrayNode, 'mxPoint',
-                 x="180.0", y="140.0")
-    addmxPointNode(gemotryNode, 'mxPoint',
-                   a="targetPoint", x="20.0", y="-4.0")
 
     CCLink = addLink(root, TYPE_EXLINK, id=link_id[1],
                      parent=block_id[1],
@@ -118,10 +98,30 @@ def STEP_FUNCTION(outroot, attribid, ordering, geometry, parameters, parent=1):
                      style="ExplicitLink", value="")
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
-                   a="sourcePoint", x="0.0", y="11.0")
+                   a="sourcePoint", x="44.0", y="20.0")
     addArray(gemotryNode, TYPE_ARRAY, a="points")
     addmxPointNode(gemotryNode, 'mxPoint',
-                   a="targetPoint", x="20.0", y="-4.0")
+                   a="targetPoint", x="-4.0", y="10.0")
+
+    CCLink = addLink(root, TYPE_LINK, id=link_id[0],
+                     parent=block_id[1],
+                     source=port_id[2],
+                     target=port_id[1],
+                     style="CommandControlLink", value="")
+    gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="sourcePoint", x="20.0", y="-4.0")
+    arrayNode = addArray(gemotryNode, TYPE_ARRAY, a="points")
+    addPointNode(arrayNode, 'mxPoint',
+                 x="116.00000299999998", y="174.39289999999994")
+    addPointNode(arrayNode, 'mxPoint',
+                 x="77.47839499999999", y="174.39289999999994")
+    addPointNode(arrayNode, 'mxPoint',
+                 x="77.47839499999999", y="84.69677999999999")
+    addPointNode(arrayNode, 'mxPoint',
+                 x="116.00000299999998", y="84.69677999999999")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="targetPoint", x="20.0", y="44.0")
 
     addNodemxCell(SuperBlockDiagram, TYPE_MXCELL, a='defaultParent',
                   id=block_id[1],

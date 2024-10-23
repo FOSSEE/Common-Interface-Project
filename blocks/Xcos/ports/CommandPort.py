@@ -11,9 +11,9 @@ def CommandPort(outroot, attribid, parentattribid, ordering, geometry,
                           ordering=ordering, parent=parentattribid,
                           style=func_name, visible=0)
     else:
-        outnode = addNode(outroot, func_name, initialState="-1.0",
-                          dataType='UNKNOW_TYPE', **{'id': attribid},
-                          ordering=ordering, parent=parentattribid,
+        outnode = addNode(outroot, func_name, **{'id': attribid},
+                          parent=parentattribid, ordering=ordering,
+                          initialState="-1.0",
                           style=func_name, value=value)
 
     return outnode
