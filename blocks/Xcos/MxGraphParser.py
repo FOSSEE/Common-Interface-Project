@@ -12,8 +12,6 @@ from xcosblocks import SplitBlock
 from xcosblocks import addExplicitInputPortForSplit, addExplicitOutputPortForSplit
 from xcosblocks import addImplicitInputPortForSplit, addImplicitOutputPortForSplit
 from xcosblocks import addControlPortForSplit, addCommandPortForSplit
-from xcosblocks import ImplicitInputPort, ImplicitOutputPort
-from xcosblocks import CommandPort, ControlPort
 from xcosblocks import num2str, style_to_object
 from xcosblocks import *
 
@@ -103,6 +101,87 @@ def identify_segment(array, point):
             return result, i, left_array, right_array
     print("ERror11:", point, "does not lie on", array)
     return False, -1, array, []
+
+
+def addPort1ForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType, targetType, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, left_array):
+    if sourceType == 'ExplicitLink':
+        if sourceType2 == 'ExplicitOutputPort' or sourceType2 == 'ExplicitLink':
+            return addExplicitInputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, left_array)
+        else:
+            print('Error: (sourceType, targetType, sourceType2, targetType2) =',
+                  '(', sourceType, ',', targetType, ',', sourceType2, ',', targetType2, ')')
+    elif sourceType == 'ImplicitLink' or targetType == 'ImplicitLink':
+        if sourceType2 == 'ImplicitOutputPort':
+            return addImplicitInputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, left_array)
+        elif sourceType2 == 'ImplicitInputPort':
+            return addImplicitOutputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, left_array)
+        else:
+            print('Error: (sourceType, targetType, sourceType2, targetType2) =',
+                  '(', sourceType, ',', targetType, ',', sourceType2, ',', targetType2, ')')
+    elif sourceType == 'CommandControlLink':
+        if sourceType2 == 'CommandPort':
+            return addControlPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, left_array)
+        else:
+            print('Error: (sourceType, targetType, sourceType2, targetType2) =',
+                  '(', sourceType, ',', targetType, ',', sourceType2, ',', targetType2, ')')
+    else:
+        print('Error: (sourceType, targetType, sourceType2, targetType2) =',
+              '(', sourceType, ',', targetType, ',', sourceType2, ',', targetType2, ')')
+    return (None, None, None, None)
+
+
+def addPort2ForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType, targetType, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, right_array):
+    if sourceType == 'ExplicitLink':
+        if targetType2 == 'ExplicitInputPort' or targetType2 == 'ExplicitLink':
+            return addExplicitOutputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, right_array)
+        else:
+            print('Error: (sourceType, targetType, sourceType2, targetType2) =',
+                  '(', sourceType, ',', targetType, ',', sourceType2, ',', targetType2, ')')
+    elif sourceType == 'ImplicitLink' or targetType == 'ImplicitLink':
+        if targetType2 == 'ImplicitOutputPort':
+            return addImplicitInputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, right_array)
+        elif targetType2 == 'ImplicitInputPort':
+            return addImplicitOutputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, right_array)
+        else:
+            print('Error: (sourceType, targetType, sourceType2, targetType2) =',
+                  '(', sourceType, ',', targetType, ',', sourceType2, ',', targetType2, ')')
+    elif sourceType == 'CommandControlLink':
+        if targetType2 == 'ControlPort':
+            return addCommandPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, right_array)
+        else:
+            print('Error: (sourceType, targetType, sourceType2, targetType2) =',
+                  '(', sourceType, ',', targetType, ',', sourceType2, ',', targetType2, ')')
+    else:
+        print('Error: (sourceType, targetType, sourceType2, targetType2) =',
+              '(', sourceType, ',', targetType, ',', sourceType2, ',', targetType2, ')')
+    return (None, None, None, None)
+
+
+def addPort3ForSplit(outroot, splitblockid, sourceVertex, targetVertex, sourceType, targetType, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, array3):
+    if sourceType == 'ExplicitLink':
+        if targetType == 'ExplicitInputPort':
+            return addExplicitOutputPortForSplit(outroot, splitblockid, sourceVertex, targetVertex, sourceType, targetType, inputCount, outputCount, nextattribid, nextAttribForSplit, array3)
+        else:
+            print('Error: (sourceType, targetType, sourceType2, targetType2) =',
+                  '(', sourceType, ',', targetType, ',', sourceType2, ',', targetType2, ')')
+    elif sourceType == 'ImplicitLink' or targetType == 'ImplicitLink':
+        if targetType == 'ImplicitOutputPort' or sourceType == 'ImplicitOutputPort':
+            return addImplicitInputPortForSplit(outroot, splitblockid, sourceVertex, targetVertex, sourceType, targetType, inputCount, outputCount, nextattribid, nextAttribForSplit, array3)
+        elif targetType == 'ImplicitInputPort' or sourceType == 'ImplicitInputPort':
+            return addImplicitOutputPortForSplit(outroot, splitblockid, sourceVertex, targetVertex, sourceType, targetType, inputCount, outputCount, nextattribid, nextAttribForSplit, array3)
+        else:
+            print('Error: (sourceType, targetType, sourceType2, targetType2) =',
+                  '(', sourceType, ',', targetType, ',', sourceType2, ',', targetType2, ')')
+    elif sourceType == 'CommandControlLink':
+        if targetType == 'ControlPort':
+            return addCommandPortForSplit(outroot, splitblockid, sourceVertex, targetVertex, sourceType, targetType, inputCount, outputCount, nextattribid, nextAttribForSplit, array3)
+        else:
+            print('Error: (sourceType, targetType, sourceType2, targetType2) =',
+                  '(', sourceType, ',', targetType, ',', sourceType2, ',', targetType2, ')')
+    else:
+        print('Error: (sourceType, targetType, sourceType2, targetType2) =',
+              '(', sourceType, ',', targetType, ',', sourceType2, ',', targetType2, ')')
+    return (None, None, None, None)
 
 
 for root in model:
@@ -357,55 +436,12 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoi
 
     inputCount = 0
     outputCount = 0
-    if sourceType == 'ExplicitLink':
-        port1 = nextattribid
-        (inputCount, outputCount, nextattribid, nextAttribForSplit) = addExplicitInputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, left_array)
-        port2 = nextattribid
-        (inputCount, outputCount, nextattribid, nextAttribForSplit) = addExplicitOutputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, right_array)
-        port3 = nextattribid
-        (inputCount, outputCount, nextattribid, nextAttribForSplit) = addExplicitOutputPortForSplit(outroot, splitblockid, sourceVertex, targetVertex, sourceType, targetType, inputCount, outputCount, nextattribid, nextAttribForSplit, array3)
-
-    elif sourceType == 'ImplicitLink':
-        port1 = nextattribid
-        if sourceType2 == 'ImplicitOutputPort':
-            (inputCount, outputCount, nextattribid, nextAttribForSplit) = addImplicitInputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, left_array)
-        else:
-            (inputCount, outputCount, nextattribid, nextAttribForSplit) = addImplicitInputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, left_array)
-        port2 = nextattribid
-        if targetType2 == 'ImplicitOutputPort':
-            (inputCount, outputCount, nextattribid, nextAttribForSplit) = addImplicitOutputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, right_array)
-        else:
-            (inputCount, outputCount, nextattribid, nextAttribForSplit) = addImplicitOutputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, right_array)
-        port3 = nextattribid
-        if targetType == 'ImplicitOutputPort':
-            (inputCount, outputCount, nextattribid, nextAttribForSplit) = addImplicitOutputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, array3)
-        else:
-            (inputCount, outputCount, nextattribid, nextAttribForSplit) = addImplicitOutputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, array3)
-
-    elif targetType == 'ImplicitLink':
-        port1 = nextattribid
-        if sourceType2 == 'ImplicitOutputPort':
-            (inputCount, outputCount, nextattribid, nextAttribForSplit) = addImplicitInputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, left_array)
-        else:
-            (inputCount, outputCount, nextattribid, nextAttribForSplit) = addImplicitInputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, left_array)
-        port2 = nextattribid
-        if targetType2 == 'ImplicitOutputPort':
-            (inputCount, outputCount, nextattribid, nextAttribForSplit) = addImplicitOutputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, right_array)
-        else:
-            (inputCount, outputCount, nextattribid, nextAttribForSplit) = addImplicitOutputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, right_array)
-        port3 = nextattribid
-        if sourceType == 'ImplicitOutputPort':
-            (inputCount, outputCount, nextattribid, nextAttribForSplit) = addImplicitOutputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, array3)
-        else:
-            (inputCount, outputCount, nextattribid, nextAttribForSplit) = addImplicitOutputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, array3)
-
-    elif sourceType == 'CommandControlLink':
-        port1 = nextattribid
-        (inputCount, outputCount, nextattribid, nextAttribForSplit) = addControlPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, left_array)
-        port2 = nextattribid
-        (inputCount, outputCount, nextattribid, nextAttribForSplit) = addCommandPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, right_array)
-        port3 = nextattribid
-        (inputCount, outputCount, nextattribid, nextAttribForSplit) = addCommandPortForSplit(outroot, splitblockid, sourceVertex, targetVertex, sourceType, targetType, inputCount, outputCount, nextattribid, nextAttribForSplit, array3)
+    port1 = nextattribid
+    (inputCount, outputCount, nextattribid, nextAttribForSplit) = addPort1ForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType, targetType, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, left_array)
+    port2 = nextattribid
+    (inputCount, outputCount, nextattribid, nextAttribForSplit) = addPort2ForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType, targetType, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, right_array)
+    port3 = nextattribid
+    (inputCount, outputCount, nextattribid, nextAttribForSplit) = addPort3ForSplit(outroot, splitblockid, sourceVertex, targetVertex, sourceType, targetType, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, array3)
 
     newEdgeDict[attribid2][i] = ((nextAttribForSplit, sourceVertex2, port1, sourceType2, targetType, style2, left_array, addSplit2, split_point2))
     nextAttribForSplit += 1
