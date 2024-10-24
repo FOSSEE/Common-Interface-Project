@@ -2,25 +2,28 @@ from common.AAAAAA import *
 
 
 def ImplicitOutputPort(outroot, attribid, parentattribid, ordering, geometry,
-                       addDataLines=False, value='', forSplitBlock=False):
+                       addDataLines=False, value='', forSplitBlock=False,
+                       style=None):
     func_name = 'ImplicitOutputPort'
+    if style is None:
+        style = func_name
 
     if forSplitBlock:
         outnode = addNode(outroot, func_name, connectable=0,
                           dataType='UNKNOW_TYPE', **{'id': attribid},
                           ordering=ordering, parent=parentattribid,
-                          style=func_name, visible=0)
+                          style=style, visible=0)
     elif addDataLines:
         outnode = addNode(outroot, func_name, **{'id': attribid},
                           parent=parentattribid, ordering=ordering,
                           dataType='REAL_MATRIX', dataColumns=1,
-                          dataLines=1, style=func_name,
+                          dataLines=1, style=style,
                           value=value)
     else:
         outnode = addNode(outroot, func_name, **{'id': attribid},
                           parent=parentattribid, ordering=ordering,
                           dataType='REAL_MATRIX', dataColumns=1,
-                          initialState="-1.0", style=func_name,
+                          initialState="-1.0", style=style,
                           value=value)
 
     return outnode

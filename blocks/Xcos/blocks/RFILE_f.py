@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def RFILE_f(outroot, attribid, ordering, geometry, parameters, parent=1):
+def RFILE_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'RFILE_f'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'readf', 'DEFAULT',
-                         func_name, BLOCKTYPE_D)
+                         style, BLOCKTYPE_D)
 
     addExprsNode(outnode, TYPE_STRING, 5, parameters)
     addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0, [])

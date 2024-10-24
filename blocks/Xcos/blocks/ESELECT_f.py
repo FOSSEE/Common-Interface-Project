@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def ESELECT_f(outroot, attribid, ordering, geometry, parameters, parent=1):
+def ESELECT_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'ESELECT_f'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'eselect', 'ESELECT',
-                         func_name, BLOCKTYPE_L,
+                         style, BLOCKTYPE_L,
                          dependsOnU='1')
 
     addExprsNode(outnode, TYPE_STRING, 3, parameters)

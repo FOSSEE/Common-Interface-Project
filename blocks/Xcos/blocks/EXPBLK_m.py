@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def EXPBLK_m(outroot, attribid, ordering, geometry, parameters, parent=1):
+def EXPBLK_m(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'EXPBLK_m'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'expblk_m', 'C_OR_FORTRAN',
-                         func_name, BLOCKTYPE_C,
+                         style, BLOCKTYPE_C,
                          dependsOnU='1')
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)

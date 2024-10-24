@@ -4,13 +4,16 @@ from common.AAAAAA import *
 #             '-64ce6d85:145ef6f2b4f:-7f54']
 
 
-def CLKOUTV_f(outroot, attribid, ordering, geometry, parameters, parent=1):
+def CLKOUTV_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'CLKOUTV_f'
+    if style is None:
+        style = func_name
+
     block_id, port_id, link_id = generate_id(3, 0, 0)
     outnode = addOutNode(outroot, BLOCK_EVENT_OUT,
                          attribid, ordering, parent,
                          func_name, 'output', 'DEFAULT',
-                         func_name, BLOCKTYPE_D, dependsOnU="0", dependsOnT="0")
+                         style, BLOCKTYPE_D, dependsOnU="0", dependsOnT="0")
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0,

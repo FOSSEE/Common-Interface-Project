@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def scifunc_block_m(outroot, attribid, ordering, geometry, parameters, parent=1):
+def scifunc_block_m(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'scifunc_block_m'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'cscope', 'C_OR_FORTRAN',
-                         func_name, BLOCKTYPE_C)
+                         style, BLOCKTYPE_C)
 
     ArrayNode = addObjNode(outnode, TYPE_ARRAY,
                            CLASS_LIST, AS_EXPRS, parameters)

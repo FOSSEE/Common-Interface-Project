@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def CURVE_c(outroot, attribid, ordering, geometry, parameters, parent=1):
+def CURVE_c(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'CURVE_c'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'curve_c', 'DEFAULT',
-                         func_name, BLOCKTYPE_D, dependsOnU='0',
+                         style, BLOCKTYPE_D, dependsOnU='0',
                          dependsOnT='1')
 
     param = []

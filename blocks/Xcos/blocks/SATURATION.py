@@ -3,13 +3,16 @@ from common.AAAAAA import *
 # block_id = ['4a338342:14e1ed0625e:-7c24#identifier']
 
 
-def SATURATION(outroot, attribid, ordering, geometry, parameters, parent=1):
+def SATURATION(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'SATURATION'
+    if style is None:
+        style = func_name
+
     block_id, port_id, link_id = generate_id(1, 0, 0)
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'satur', 'C_OR_FORTRAN',
-                         func_name, BLOCKTYPE_C,
+                         style, BLOCKTYPE_C,
                          dependsOnU='1')
 
     addExprsNode(outnode, TYPE_STRING, 3, parameters)

@@ -8,13 +8,16 @@ from blocks.OUT_f import OUT_f
 from common.AAAAAA import *
 
 
-def DLATCH(outroot, attribid, ordering, geometry, parameters, parent=1):
+def DLATCH(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'DLATCH'
+    if style is None:
+        style = func_name
+
     block_id, port_id, link_id = generate_id(12, 20, 9)
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'csuper', 'DEFAULT',
-                         func_name, BLOCKTYPE_H,
+                         style, BLOCKTYPE_H,
                          dependsOnU='1')
 
     addExprsNode(outnode, TYPE_DOUBLE, 0, parameters)

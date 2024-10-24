@@ -5,13 +5,16 @@ from blocks.CLKOUTV_f import CLKOUTV_f
 from common.AAAAAA import *
 
 
-def Extract_Activation(outroot, attribid, ordering, geometry, parameters, parent=1):
+def Extract_Activation(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'Extract_Activation'
+    if style is None:
+        style = func_name
+
     block_id, port_id, link_id = generate_id(6, 9, 4)
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'csuper', 'DEFAULT',
-                         func_name, BLOCKTYPE_C)
+                         style, BLOCKTYPE_C)
 
     addExprsNode(outnode, TYPE_DOUBLE, 0, parameters)
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0,

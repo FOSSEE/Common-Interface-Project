@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def SPLIT_f(outroot, attribid, ordering, geometry, parameters, parent=1):
+def SPLIT_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'SPLIT_f'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_SPLIT,
                          attribid, ordering, parent,
                          func_name, 'lsplit', 'DEFAULT',
-                         func_name, BLOCKTYPE_C)
+                         style, BLOCKTYPE_C)
 
     addExprsNode(outnode, TYPE_STRING, 0, [])
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0, [])

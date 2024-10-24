@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def CLKSPLIT_f(outroot, attribid, ordering, geometry, parameters, parent=1):
+def CLKSPLIT_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'CLKSPLIT_f'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_SPLIT,
                          attribid, ordering, parent,
                          func_name, 'split', 'DEFAULT',
-                         func_name, BLOCKTYPE_D)
+                         style, BLOCKTYPE_D)
 
     addExprsNode(outnode, TYPE_STRING, 0, [])
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0, [])

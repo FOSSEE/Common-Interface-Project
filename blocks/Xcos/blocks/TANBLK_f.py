@@ -1,14 +1,17 @@
 from common.AAAAAA import *
 
 
-def TANBLK_f(outroot, attribid, ordering, geometry, parameters, parent=1):
+def TANBLK_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'TANBLK_f'
+    if style is None:
+        style = func_name
+
     parameters = ['-1']
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'tanblk', 'DEFAULT',
-                         func_name, BLOCKTYPE_C,
+                         style, BLOCKTYPE_C,
                          dependsOnU='1')
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)

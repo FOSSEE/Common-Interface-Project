@@ -1,8 +1,10 @@
 from common.AAAAAA import *
 
 
-def CBLOCK4(outroot, attribid, ordering, geometry, parameters, parent=1):
+def CBLOCK4(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'CBLOCK4'
+    if style is None:
+        style = func_name
 
     if parameters[1] == 'y':
         type = 'IMPLICIT'
@@ -27,7 +29,7 @@ def CBLOCK4(outroot, attribid, ordering, geometry, parameters, parent=1):
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, parameters[0], simulation_func_type,
-                         func_name, BLOCKTYPE_C,
+                         style, BLOCKTYPE_C,
                          dependsOnU=depends_u,
                          dependsOnT=depends_t)
 

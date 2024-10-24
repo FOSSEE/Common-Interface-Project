@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def MBLOCK(outroot, attribid, ordering, geometry, parameters, parent=1):
+def MBLOCK(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'MBLOCK'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'Ball_Platform', 'MODELICA',
-                         func_name, BLOCKTYPE_C)
+                         style, BLOCKTYPE_C)
 
     arrayNode = addObjNode(outnode, TYPE_ARRAY, CLASS_TLIST, AS_EXPRS, parameters)
     scilabStringParameters = ["MBLOCK", "in",

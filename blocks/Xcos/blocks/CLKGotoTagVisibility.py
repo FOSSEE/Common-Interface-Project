@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def CLKGotoTagVisibility(outroot, attribid, ordering, geometry, parameters, parent=1):
+def CLKGotoTagVisibility(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'CLKGotoTagVisibility'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'clkgototagvisibility', 'DEFAULT',
-                         func_name, BLOCKTYPE_C)
+                         style, BLOCKTYPE_C)
 
     new_parameter = [parameters[0], '1']
     addExprsNode(outnode, TYPE_STRING, 2, new_parameter)

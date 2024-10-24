@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def Diode(outroot, attribid, ordering, geometry, parameters, parent=1):
+def Diode(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'Diode'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'Diode', 'DEFAULT',
-                         func_name, BLOCKTYPE_C,
+                         style, BLOCKTYPE_C,
                          dependsOnU='1')
 
     addExprsNode(outnode, TYPE_STRING, 4, parameters)

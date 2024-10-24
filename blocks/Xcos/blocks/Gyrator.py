@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def Gyrator(outroot, attribid, ordering, geometry, parameters, parent=1):
+def Gyrator(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'Gyrator'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'Gyrator', 'DEFAULT',
-                         func_name, BLOCKTYPE_C,
+                         style, BLOCKTYPE_C,
                          dependsOnT='1')
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)

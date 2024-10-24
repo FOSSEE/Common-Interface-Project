@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def IFTHEL_f(outroot, attribid, ordering, geometry, parameters, parent=1):
+def IFTHEL_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'IFTHEL_f'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'ifthel', 'IFTHENELSE',
-                         func_name, BLOCKTYPE_L,
+                         style, BLOCKTYPE_L,
                          dependsOnU='1')
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)

@@ -1,8 +1,10 @@
 from common.AAAAAA import *
 
 
-def DLR(outroot, attribid, ordering, geometry, parameters, parent=1):
+def DLR(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'DLR'
+    if style is None:
+        style = func_name
 
     depends_on_flag = 0
 
@@ -41,7 +43,7 @@ def DLR(outroot, attribid, ordering, geometry, parameters, parent=1):
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'dsslti4', 'C_OR_FORTRAN',
-                         func_name, BLOCKTYPE_D,
+                         style, BLOCKTYPE_D,
                          dependsOnU=depends_on_flag)
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)

@@ -1,8 +1,10 @@
 from common.AAAAAA import *
 
 
-def SUMMATION(outroot, attribid, ordering, geometry, parameters, parent=1):
+def SUMMATION(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'SUMMATION'
+    if style is None:
+        style = func_name
 
     data_type = ['', '', '_z', '_i32', '_i16', '_i8', '_ui32', '_ui16', '_ui8']
     overflow = ['n', 's', 'e']
@@ -18,7 +20,7 @@ def SUMMATION(outroot, attribid, ordering, geometry, parameters, parent=1):
     outnode = addOutNode(outroot, BLOCK_SUMMATION,
                          attribid, ordering, parent,
                          func_name, simulation_func_name, 'C_OR_FORTRAN',
-                         func_name, BLOCKTYPE_C,
+                         style, BLOCKTYPE_C,
                          dependsOnU='1')
 
     if len(parameters) == 1:

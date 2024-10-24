@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def PROD_f(outroot, attribid, ordering, geometry, parameters, parent=1):
+def PROD_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'PROD_f'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_ROUND,
                          attribid, ordering, parent,
                          func_name, 'prod', 'TYPE_2',
-                         func_name, BLOCKTYPE_C,
+                         style, BLOCKTYPE_C,
                          dependsOnU='1')
 
     addExprsNode(outnode, TYPE_DOUBLE, 0, parameters)

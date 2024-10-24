@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def INTEGRAL_m(outroot, attribid, ordering, geometry, parameters, parent=1):
+def INTEGRAL_m(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'INTEGRAL_m'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'integral_func', 'C_OR_FORTRAN',
-                         func_name, BLOCKTYPE_C,
+                         style, BLOCKTYPE_C,
                          dependsOnT='1')
 
     addExprsNode(outnode, TYPE_STRING, 5, parameters)

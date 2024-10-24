@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def NEGTOPOS_f(outroot, attribid, ordering, geometry, parameters, parent=1):
+def NEGTOPOS_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'NEGTOPOS_f'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'zcross', 'TYPE_1',
-                         func_name, BLOCKTYPE_Z,
+                         style, BLOCKTYPE_Z,
                          dependsOnU='1')
 
     addExprsNode(outnode, TYPE_DOUBLE, 0, parameters)

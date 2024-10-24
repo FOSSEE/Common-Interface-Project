@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def PDE(outroot, attribid, ordering, geometry, parameters, parent=1):
+def PDE(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'PDE'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'cscope', 'C_OR_FORTRAN',
-                         func_name, BLOCKTYPE_C)
+                         style, BLOCKTYPE_C)
 
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0, [])
     addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 0, [])

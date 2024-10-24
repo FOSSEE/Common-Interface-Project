@@ -1,8 +1,10 @@
 from common.AAAAAA import *
 
 
-def generic_block3(outroot, attribid, ordering, geometry, parameters, parent=1):
+def generic_block3(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'generic_block3'
+    if style is None:
+        style = func_name
 
     if parameters[17] == 'y':
         depends_u = '1'
@@ -17,7 +19,7 @@ def generic_block3(outroot, attribid, ordering, geometry, parameters, parent=1):
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, parameters[0], 'C_OR_FORTRAN',
-                         func_name, BLOCKTYPE_C,
+                         style, BLOCKTYPE_C,
                          dependsOnU=depends_u,
                          dependsOnT=depends_t)
 

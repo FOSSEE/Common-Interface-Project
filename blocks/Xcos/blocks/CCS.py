@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def CCS(outroot, attribid, ordering, geometry, parameters, parent=1):
+def CCS(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'CCS'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'CCS', 'DEFAULT',
-                         func_name, BLOCKTYPE_C,
+                         style, BLOCKTYPE_C,
                          dependsOnT='1')
 
     addExprsNode(outnode, TYPE_DOUBLE, 0, parameters)

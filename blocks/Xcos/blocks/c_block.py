@@ -1,8 +1,10 @@
 from common.AAAAAA import *
 
 
-def c_block(outroot, attribid, ordering, geometry, parameters, parent=1):
+def c_block(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'c_block'
+    if style is None:
+        style = func_name
 
     code = parameters[3]
     codeLines = code.split('\n')
@@ -10,7 +12,7 @@ def c_block(outroot, attribid, ordering, geometry, parameters, parent=1):
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, parameters[3], 'DYNAMIC_C_1',
-                         func_name, BLOCKTYPE_C,
+                         style, BLOCKTYPE_C,
                          dependsOnU='1')
 
     addExprsArrayNode(outnode, TYPE_STRING, 4, parameters, codeLines, TYPE_ARRAY, func_name)

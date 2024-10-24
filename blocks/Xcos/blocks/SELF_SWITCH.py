@@ -5,8 +5,11 @@ from blocks.SWITCH_f import SWITCH_f
 from common.AAAAAA import *
 
 
-def SELF_SWITCH(outroot, attribid, ordering, geometry, parameters, parent=1):
+def SELF_SWITCH(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'SELF_SWITCH'
+    if style is None:
+        style = func_name
+
     if parameters[0] == 'on':
         style = func_name + '_ON'
     else:

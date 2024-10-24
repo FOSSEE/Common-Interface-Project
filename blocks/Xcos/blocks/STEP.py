@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def STEP(outroot, attribid, ordering, geometry, parameters, parent=1):
+def STEP(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'STEP'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'step_func', 'C_OR_FORTRAN',
-                         func_name, BLOCKTYPE_C, dependsOnU='0',
+                         style, BLOCKTYPE_C, dependsOnU='0',
                          dependsOnT='0')
 
     addExprsNode(outnode, TYPE_STRING, 3, parameters)

@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def SWITCH_f(outroot, attribid, ordering, geometry, parameters, parent=1):
+def SWITCH_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'SWITCH_f'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'switchn', 'TYPE_2',
-                         func_name, BLOCKTYPE_C,
+                         style, BLOCKTYPE_C,
                          dependsOnU='1',
                          dependsOnT='1')
 

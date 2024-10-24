@@ -1,8 +1,10 @@
 from common.AAAAAA import *
 
 
-def MATMUL(outroot, attribid, ordering, geometry, parameters, parent=1):
+def MATMUL(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'MATMUL'
+    if style is None:
+        style = func_name
 
     data_type = ['', 'matmul_m', 'matzmul_m',
                  'matmul_i32', 'matmul_i16', 'matmul_i8',
@@ -42,7 +44,7 @@ def MATMUL(outroot, attribid, ordering, geometry, parameters, parent=1):
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, simulation_func_name, 'C_OR_FORTRAN',
-                         func_name, BLOCKTYPE_C,
+                         style, BLOCKTYPE_C,
                          dependsOnU='1')
 
     addExprsNode(outnode, TYPE_STRING, 3, parameters)

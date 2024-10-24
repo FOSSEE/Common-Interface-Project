@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def MFCLCK_f(outroot, attribid, ordering, geometry, parameters, parent=1):
+def MFCLCK_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'MFCLCK_f'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'mfclck', 'DEFAULT',
-                         func_name, BLOCKTYPE_D, dependsOnU="0", dependsOnT="0")
+                         style, BLOCKTYPE_D, dependsOnU="0", dependsOnT="0")
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)
     addScilabDNode(outnode, AS_REAL_PARAM, width=1, realParts=["0.1"])

@@ -1,8 +1,10 @@
 from common.AAAAAA import *
 
 
-def DEBUG(outroot, attribid, ordering, geometry, parameters, parent=1):
+def DEBUG(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'DEBUG'
+    if style is None:
+        style = func_name
 
     code = parameters[0]
     codeLines = code.split('\n')
@@ -10,7 +12,7 @@ def DEBUG(outroot, attribid, ordering, geometry, parameters, parent=1):
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, '%debug_scicos', 'DEBUG',
-                         func_name, BLOCKTYPE_D)
+                         style, BLOCKTYPE_D)
 
     addExprsArrayNode(outnode, TYPE_STRING, 1, [''], codeLines, TYPE_STRING, func_name)
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0, [])

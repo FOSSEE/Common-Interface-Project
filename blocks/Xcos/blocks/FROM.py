@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def FROM(outroot, attribid, ordering, geometry, parameters, parent=1):
+def FROM(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'FROM'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'from', 'DEFAULT',
-                         func_name, BLOCKTYPE_C)
+                         style, BLOCKTYPE_C)
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0, [])

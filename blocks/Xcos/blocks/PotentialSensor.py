@@ -1,14 +1,17 @@
 from common.AAAAAA import *
 
 
-def PotentialSensor(outroot, attribid, ordering, geometry, parameters, parent=1):
+def PotentialSensor(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'PotentialSensor'
+    if style is None:
+        style = func_name
+
     parameters = ['']
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'PotentialSensor', 'DEFAULT',
-                         func_name, BLOCKTYPE_C,
+                         style, BLOCKTYPE_C,
                          dependsOnU='1')
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)

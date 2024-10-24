@@ -1,20 +1,22 @@
 from common.AAAAAA import *
 
 
-def TOWS_c(outroot, attribid, ordering, geometry, parameters, parent=1):
+def TOWS_c(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'TOWS_c'
+    if style is None:
+        style = func_name
 
     para3 = int(parameters[2])
 
     if para3 == 1:
-        b_type = BLOCKTYPE_X
+        blocktype = BLOCKTYPE_X
     else:
-        b_type = BLOCKTYPE_D
+        blocktype = BLOCKTYPE_D
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'tows_c', 'C_OR_FORTRAN',
-                         func_name, b_type)
+                         style, blocktype)
 
     addExprsNode(outnode, TYPE_STRING, 3, parameters)
     addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM,

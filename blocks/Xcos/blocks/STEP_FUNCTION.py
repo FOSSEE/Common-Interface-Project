@@ -16,13 +16,16 @@ from common.AAAAAA import *
 #            '-6f1a4b5d:18f04c0dca9:-7fea', '-6f1a4b5d:18f04c0dca9:-7fe9']
 
 
-def STEP_FUNCTION(outroot, attribid, ordering, geometry, parameters, parent=1):
+def STEP_FUNCTION(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'STEP_FUNCTION'
+    if style is None:
+        style = func_name
+
     block_id, port_id, link_id = generate_id(9, 8, 4)
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'csuper', 'DEFAULT',
-                         func_name, BLOCKTYPE_H, dependsOnU='0',
+                         style, BLOCKTYPE_H, dependsOnU='0',
                          dependsOnT='0')
 
     addExprsNode(outnode, TYPE_DOUBLE, 0, parameters)

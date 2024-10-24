@@ -1,8 +1,10 @@
 from common.AAAAAA import *
 
 
-def RAND_m(outroot, attribid, ordering, geometry, parameters, parent=1):
+def RAND_m(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'RAND_m'
+    if style is None:
+        style = func_name
 
     data_type = ['', 'rndblk_m', 'rndblkz_m']
 
@@ -11,7 +13,7 @@ def RAND_m(outroot, attribid, ordering, geometry, parameters, parent=1):
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, simulation_func_name, 'C_OR_FORTRAN',
-                         func_name, BLOCKTYPE_D)
+                         style, BLOCKTYPE_D)
 
     addExprsNode(outnode, TYPE_STRING, 5, parameters)
     addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM,

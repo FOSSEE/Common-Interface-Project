@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def VirtualCLK0(outroot, attribid, ordering, geometry, parameters, parent=1):
+def VirtualCLK0(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'VirtualCLK0'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'vrtclk0', 'DEFAULT',
-                         func_name, BLOCKTYPE_D)
+                         style, BLOCKTYPE_D)
 
     addExprsNode(outnode, TYPE_DOUBLE, 0, parameters)
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0, [])

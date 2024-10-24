@@ -4,13 +4,16 @@ from blocks.SplitBlock import SplitBlock
 from common.AAAAAA import *
 
 
-def CLOCK_c(outroot, attribid, ordering, geometry, parameters, parent=1):
+def CLOCK_c(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'CLOCK_c'
+    if style is None:
+        style = func_name
+
     block_id, port_id, link_id = generate_id(9, 12, 7)
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'csuper', 'DEFAULT',
-                         func_name, BLOCKTYPE_H, dependsOnU='0',
+                         style, BLOCKTYPE_H, dependsOnU='0',
                          dependsOnT='0')
 
     addExprsNode(outnode, TYPE_DOUBLE, 0, [])

@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def CONSTRAINT_c(outroot, attribid, ordering, geometry, parameters, parent=1):
+def CONSTRAINT_c(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'CONSTRAINT_c'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'constraint_c', 'IMPLICIT_C_OR_FORTRAN',
-                         func_name, BLOCKTYPE_C,
+                         style, BLOCKTYPE_C,
                          dependsOnT='1')
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)

@@ -1,13 +1,16 @@
 from common.AAAAAA import *
 
 
-def Ground(outroot, attribid, ordering, geometry, parameters, parent=1):
+def Ground(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'Ground'
+    if style is None:
+        style = func_name
+
     parameters = [""]
     outnode = addOutNode(outroot, BLOCK_GROUND,
                          attribid, ordering, parent,
                          func_name, 'Ground', 'DEFAULT',
-                         func_name, BLOCKTYPE_C,
+                         style, BLOCKTYPE_C,
                          dependsOnU='1', dependsOnT='0')
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)

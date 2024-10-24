@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def BOUNCEXY(outroot, attribid, ordering, geometry, parameters, parent=1):
+def BOUNCEXY(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'BOUNCEXY'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'bouncexy', 'C_OR_FORTRAN',
-                         func_name, BLOCKTYPE_D)
+                         style, BLOCKTYPE_D)
 
     addExprsNode(outnode, TYPE_STRING, 8, parameters)
     addScilabDNode(outnode, AS_REAL_PARAM, width=4, realParts=[

@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def DLSS(outroot, attribid, ordering, geometry, parameters, parent=1):
+def DLSS(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'DLSS'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'dsslti4', 'C_OR_FORTRAN',
-                         func_name, BLOCKTYPE_D)
+                         style, BLOCKTYPE_D)
 
     addExprsNode(outnode, TYPE_STRING, 5, parameters)
     addScilabDNode(outnode, AS_REAL_PARAM, width=4, realParts=[

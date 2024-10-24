@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def EVTDLY_f(outroot, attribid, ordering, geometry, parameters, parent=1):
+def EVTDLY_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'EVTDLY_f'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'evtdly4', 'C_OR_FORTRAN',
-                         func_name, BLOCKTYPE_D)
+                         style, BLOCKTYPE_D)
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)
     addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM,

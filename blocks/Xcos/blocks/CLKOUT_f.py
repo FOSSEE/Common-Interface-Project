@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def CLKOUT_f(outroot, attribid, ordering, geometry, parameters, parent=1):
+def CLKOUT_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'CLKOUT_f'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_EVENT_OUT,
                          attribid, ordering, parent,
                          func_name, 'output', 'DEFAULT',
-                         func_name, BLOCKTYPE_D, dependsOnU='0',
+                         style, BLOCKTYPE_D, dependsOnU='0',
                          dependsOnT='0')
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)

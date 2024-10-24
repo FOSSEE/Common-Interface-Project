@@ -1,8 +1,10 @@
 from common.AAAAAA import *
 
 
-def CUMSUM(outroot, attribid, ordering, geometry, parameters, parent=1):
+def CUMSUM(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'CUMSUM'
+    if style is None:
+        style = func_name
 
     para1 = int(parameters[0])
     para2 = int(parameters[1])
@@ -24,7 +26,7 @@ def CUMSUM(outroot, attribid, ordering, geometry, parameters, parent=1):
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, simulation_func_name, 'C_OR_FORTRAN',
-                         func_name, BLOCKTYPE_C,
+                         style, BLOCKTYPE_C,
                          dependsOnU='1')
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)

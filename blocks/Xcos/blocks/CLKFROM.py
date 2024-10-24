@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def CLKFROM(outroot, attribid, ordering, geometry, parameters, parent=1):
+def CLKFROM(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'CLKFROM'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'clkfrom', 'DEFAULT',
-                         func_name, BLOCKTYPE_D,
+                         style, BLOCKTYPE_D,
                          value='From')
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)

@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def MUX_f(outroot, attribid, ordering, geometry, parameters, parent=1):
+def MUX_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'MUX_f'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'mux', 'TYPE_1',
-                         func_name, BLOCKTYPE_C,
+                         style, BLOCKTYPE_C,
                          dependsOnU='1')
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)

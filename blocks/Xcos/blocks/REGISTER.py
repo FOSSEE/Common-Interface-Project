@@ -1,8 +1,10 @@
 from common.AAAAAA import *
 
 
-def REGISTER(outroot, attribid, ordering, geometry, parameters, parent=1):
+def REGISTER(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'REGISTER'
+    if style is None:
+        style = func_name
 
     data_type = ['', '', '', '_i32', '_i16', '_i8', '_ui32', '_ui16', '_ui8']
 
@@ -16,7 +18,7 @@ def REGISTER(outroot, attribid, ordering, geometry, parameters, parent=1):
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, simulation_func_name, 'C_OR_FORTRAN',
-                         func_name, BLOCKTYPE_D)
+                         style, BLOCKTYPE_D)
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0,

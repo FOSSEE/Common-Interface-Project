@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def ANDLOG_f(outroot, attribid, ordering, geometry, parameters, parent=1):
+def ANDLOG_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'ANDLOG_f'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'andlog', 'DEFAULT',
-                         func_name, BLOCKTYPE_D)
+                         style, BLOCKTYPE_D)
 
     addExprsNode(outnode, TYPE_DOUBLE, 0, parameters)
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0,

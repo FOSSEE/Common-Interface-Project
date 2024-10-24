@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def TKSCALE(outroot, attribid, ordering, geometry, parameters, parent=1):
+def TKSCALE(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'TKSCALE'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'tkscaleblk', 'SCILAB',
-                         func_name, BLOCKTYPE_D)
+                         style, BLOCKTYPE_D)
 
     addExprsNode(outnode, TYPE_STRING, 3, parameters)
     addScilabDNode(outnode, AS_REAL_PARAM, width=3, realParts=[

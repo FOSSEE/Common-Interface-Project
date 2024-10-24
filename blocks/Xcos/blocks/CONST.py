@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def CONST(outroot, attribid, ordering, geometry, parameters, parent=1):
+def CONST(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'CONST'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'cstblk4', 'C_OR_FORTRAN',
-                         func_name, BLOCKTYPE_D)
+                         style, BLOCKTYPE_D)
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
     addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM,

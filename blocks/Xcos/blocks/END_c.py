@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def END_c(outroot, attribid, ordering, geometry, parameters, parent=1):
+def END_c(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'END_c'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'scicosexit', 'C_OR_FORTRAN',
-                         func_name, BLOCKTYPE_D)
+                         style, BLOCKTYPE_D)
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0, [])

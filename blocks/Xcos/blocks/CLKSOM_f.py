@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def CLKSOM_f(outroot, attribid, ordering, geometry, parameters, parent=1):
+def CLKSOM_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'CLKSOM_f'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_ROUND,
                          attribid, ordering, parent,
                          func_name, 'sum', 'DEFAULT',
-                         func_name, BLOCKTYPE_D, dependsOnU="0", dependsOnT="0")
+                         style, BLOCKTYPE_D, dependsOnU="0", dependsOnT="0")
 
     new_param = [parameters[0], parameters[0]]
     addExprsNode(outnode, TYPE_STRING, 2, new_param)

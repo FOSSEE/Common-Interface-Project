@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def BOUNCE(outroot, attribid, ordering, geometry, parameters, parent=1):
+def BOUNCE(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'BOUNCE'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'bounce_ball', 'C_OR_FORTRAN',
-                         func_name, BLOCKTYPE_C,
+                         style, BLOCKTYPE_C,
                          dependsOnT='1')
 
     addExprsNode(outnode, TYPE_STRING, 7, parameters)

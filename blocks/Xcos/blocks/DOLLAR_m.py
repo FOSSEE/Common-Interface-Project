@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def DOLLAR_m(outroot, attribid, ordering, geometry, parameters, parent=1):
+def DOLLAR_m(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'DOLLAR_m'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'dollar4', 'C_OR_FORTRAN',
-                         func_name, BLOCKTYPE_D)
+                         style, BLOCKTYPE_D)
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0, [])

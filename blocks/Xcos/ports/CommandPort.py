@@ -2,19 +2,22 @@ from common.AAAAAA import *
 
 
 def CommandPort(outroot, attribid, parentattribid, ordering, geometry,
-                value='', forSplitBlock=False):
+                value='', forSplitBlock=False,
+                style=None):
     func_name = 'CommandPort'
+    if style is None:
+        style = func_name
 
     if forSplitBlock:
         outnode = addNode(outroot, func_name, connectable=0,
                           dataType='UNKNOW_TYPE', **{'id': attribid},
                           ordering=ordering, parent=parentattribid,
-                          style=func_name, visible=0)
+                          style=style, visible=0)
     else:
         outnode = addNode(outroot, func_name, **{'id': attribid},
                           parent=parentattribid, ordering=ordering,
                           initialState="-1.0",
-                          style=func_name, value=value)
+                          style=style, value=value)
 
     return outnode
 

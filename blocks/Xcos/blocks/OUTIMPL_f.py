@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def OUTIMPL_f(outroot, attribid, ordering, geometry, parameters, parent=1):
+def OUTIMPL_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'OUTIMPL_f'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_IMPLICIT_OUT,
                          attribid, ordering, parent,
                          func_name, 'outimpl', 'DEFAULT',
-                         func_name, BLOCKTYPE_C)
+                         style, BLOCKTYPE_C)
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
     addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0, [])

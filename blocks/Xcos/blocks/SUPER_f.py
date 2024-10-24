@@ -6,13 +6,16 @@ from common.AAAAAA import *
 #             '-64ce6d85:145ef6f2b4f:-7f54']
 
 
-def SUPER_f(outroot, attribid, ordering, geometry, parameters, parent=1):
+def SUPER_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'SUPER_f'
+    if style is None:
+        style = func_name
+
     block_id, port_id, link_id = generate_id(3, 0, 0)
     outnode = addOutNode(outroot, BLOCK_SUPER,
                          attribid, ordering, parent,
                          func_name, 'cscope', 'C_OR_FORTRAN',
-                         func_name, BLOCKTYPE_C)
+                         style, BLOCKTYPE_C)
 
     addExprsNode(outnode, TYPE_STRING, 0, parameters)
     addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM,

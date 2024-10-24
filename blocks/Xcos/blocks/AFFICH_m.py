@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def AFFICH_m(outroot, attribid, ordering, geometry, parameters, parent=1):
+def AFFICH_m(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'AFFICH_m'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_AFFICHE,
                          attribid, ordering, parent,
                          func_name, 'affich2', 'C_OR_FORTRAN',
-                         func_name, BLOCKTYPE_C,
+                         style, BLOCKTYPE_C,
                          dependsOnU='1')
 
     addExprsNode(outnode, TYPE_STRING, 7, parameters)

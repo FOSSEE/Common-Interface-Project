@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def CMSCOPE(outroot, attribid, ordering, geometry, parameters, parent=1):
+def CMSCOPE(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'CMSCOPE'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'cmscope', 'C_OR_FORTRAN',
-                         func_name, BLOCKTYPE_C,
+                         style, BLOCKTYPE_C,
                          dependsOnU='1', dependsOnT='0'
                          )
 

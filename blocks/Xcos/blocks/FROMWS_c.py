@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def FROMWS_c(outroot, attribid, ordering, geometry, parameters, parent=1):
+def FROMWS_c(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'FROMWS_c'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'fromws_c', 'C_OR_FORTRAN',
-                         func_name, BLOCKTYPE_D)
+                         style, BLOCKTYPE_D)
 
     addExprsNode(outnode, TYPE_STRING, 4, parameters)
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0,

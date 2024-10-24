@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def TRASH_f(outroot, attribid, ordering, geometry, parameters, parent=1):
+def TRASH_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'TRASH_f'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'trash', 'DEFAULT',
-                         func_name, BLOCKTYPE_D)
+                         style, BLOCKTYPE_D)
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0, [])

@@ -1,8 +1,10 @@
 from common.AAAAAA import *
 
 
-def INTMUL(outroot, attribid, ordering, geometry, parameters, parent=1):
+def INTMUL(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'INTMUL'
+    if style is None:
+        style = func_name
 
     datatype = ['', '', '', 'i32', 'i16', 'i8', 'ui32', 'ui16', 'ui8']
     para1 = int(float(parameters[0]))
@@ -20,7 +22,7 @@ def INTMUL(outroot, attribid, ordering, geometry, parameters, parent=1):
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, simulation_func_name, 'C_OR_FORTRAN',
-                         func_name, BLOCKTYPE_C,
+                         style, BLOCKTYPE_C,
                          dependsOnU='1')
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)

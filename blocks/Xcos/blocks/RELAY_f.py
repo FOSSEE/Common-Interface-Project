@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def RELAY_f(outroot, attribid, ordering, geometry, parameters, parent=1):
+def RELAY_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'RELAY_f'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'relay', 'TYPE_2',
-                         func_name, BLOCKTYPE_C,
+                         style, BLOCKTYPE_C,
                          dependsOnU='1',
                          dependsOnT='1')
 

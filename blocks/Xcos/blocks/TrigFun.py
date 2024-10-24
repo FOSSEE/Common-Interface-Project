@@ -1,15 +1,17 @@
 from common.AAAAAA import *
 
 
-def TrigFun(outroot, attribid, ordering, geometry, parameters, parent=1):
+def TrigFun(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'TrigFun'
+    if style is None:
+        style = func_name
 
     simulation_func_name = str(parameters[0]) + '_blk'
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, simulation_func_name, 'C_OR_FORTRAN',
-                         func_name, BLOCKTYPE_C,
+                         style, BLOCKTYPE_C,
                          dependsOnU='1')
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)

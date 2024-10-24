@@ -1,8 +1,10 @@
 from common.AAAAAA import *
 
 
-def EXTRACTBITS(outroot, attribid, ordering, geometry, parameters, parent=1):
+def EXTRACTBITS(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'EXTRACTBITS'
+    if style is None:
+        style = func_name
 
     d_type = ['', 'UH', 'LH', 'MSB', 'LSB', 'RB']
     type1 = ['', '', '', '32', '16', '8', 'u32', 'u16', 'u8']
@@ -27,7 +29,7 @@ def EXTRACTBITS(outroot, attribid, ordering, geometry, parameters, parent=1):
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, simulation_func_name, 'C_OR_FORTRAN',
-                         func_name, BLOCKTYPE_C,
+                         style, BLOCKTYPE_C,
                          dependsOnU='1')
 
     addExprsNode(outnode, TYPE_STRING, 4, parameters)

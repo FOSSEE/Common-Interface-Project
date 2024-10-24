@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def DIFF_f(outroot, attribid, ordering, geometry, parameters, parent=1):
+def DIFF_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'DIFF_f'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'diffblk', 'OLDBLOCKS',
-                         func_name, BLOCKTYPE_C,
+                         style, BLOCKTYPE_C,
                          dependsOnT='1')
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)

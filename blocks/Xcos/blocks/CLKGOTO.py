@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def CLKGOTO(outroot, attribid, ordering, geometry, parameters, parent=1):
+def CLKGOTO(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'CLKGOTO'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'clkgoto', 'DEFAULT',
-                         func_name, BLOCKTYPE_D,
+                         style, BLOCKTYPE_D,
                          value='Goto')
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)

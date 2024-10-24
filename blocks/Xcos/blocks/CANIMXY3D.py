@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def CANIMXY3D(outroot, attribid, ordering, geometry, parameters, parent=1):
+def CANIMXY3D(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'CANIMXY3D'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'canimxy3d', 'C_OR_FORTRAN',
-                         func_name, BLOCKTYPE_D)
+                         style, BLOCKTYPE_D)
 
     addExprsNode(outnode, TYPE_STRING, 11, parameters)
     para = []

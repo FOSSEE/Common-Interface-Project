@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def BARXY(outroot, attribid, ordering, geometry, parameters, parent=1):
+def BARXY(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'BARXY'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'BARXY_sim', 'SCILAB',
-                         func_name, BLOCKTYPE_D,
+                         style, BLOCKTYPE_D,
                          dependsOnU='1')
 
     addExprsNode(outnode, TYPE_STRING, 5, parameters)

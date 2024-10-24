@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def EDGETRIGGER(outroot, attribid, ordering, geometry, parameters, parent=1):
+def EDGETRIGGER(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'EDGETRIGGER'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'edgetrig', 'C_OR_FORTRAN',
-                         func_name, BLOCKTYPE_C)
+                         style, BLOCKTYPE_C)
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0, [])

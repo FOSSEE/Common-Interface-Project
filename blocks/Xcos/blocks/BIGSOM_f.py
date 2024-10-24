@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def BIGSOM_f(outroot, attribid, ordering, geometry, parameters, parent=1):
+def BIGSOM_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'BIGSOM_f'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BIGSOM,
                          attribid, ordering, parent,
                          func_name, 'sum', 'TYPE_2',
-                         func_name, BLOCKTYPE_C,
+                         style, BLOCKTYPE_C,
                          dependsOnU='1',
                          value='+')
 

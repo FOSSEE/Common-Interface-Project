@@ -1,8 +1,10 @@
 from common.AAAAAA import *
 
 
-def CLSS(outroot, attribid, ordering, geometry, parameters, parent=1):
+def CLSS(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'CLSS'
+    if style is None:
+        style = func_name
 
     para4 = int(float(parameters[3]))
 
@@ -14,7 +16,7 @@ def CLSS(outroot, attribid, ordering, geometry, parameters, parent=1):
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'csslti4', 'C_OR_FORTRAN',
-                         func_name, BLOCKTYPE_C,
+                         style, BLOCKTYPE_C,
                          dependsOnU=depends_u,
                          dependsOnT='1')
 

@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def MAXMIN(outroot, attribid, ordering, geometry, parameters, parent=1):
+def MAXMIN(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'MAXMIN'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'minmax', 'C_OR_FORTRAN',
-                         func_name, BLOCKTYPE_C,
+                         style, BLOCKTYPE_C,
                          dependsOnU='1')
 
     addExprsNode(outnode, TYPE_STRING, 3, parameters)

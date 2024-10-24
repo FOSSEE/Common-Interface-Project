@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def CurrentSensor(outroot, attribid, ordering, geometry, parameters, parent=1):
+def CurrentSensor(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'CurrentSensor'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'CurrentSensor', 'DEFAULT',
-                         func_name, BLOCKTYPE_C,
+                         style, BLOCKTYPE_C,
                          dependsOnU='1', dependsOnT='0')
 
     addExprsNode(outnode, TYPE_DOUBLE, 0, parameters)

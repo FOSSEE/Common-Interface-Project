@@ -6,13 +6,16 @@ from blocks.CLKSPLIT_f import CLKSPLIT_f
 from common.AAAAAA import *
 
 
-def ANDBLK(outroot, attribid, ordering, geometry, parameters, parent=1):
+def ANDBLK(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'ANDBLK'
+    if style is None:
+        style = func_name
+
     block_id, port_id, link_id = generate_id(8, 13, 6)
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'csuper', 'DEFAULT',
-                         func_name, BLOCKTYPE_H)
+                         style, BLOCKTYPE_H)
 
     addExprsNode(outnode, TYPE_DOUBLE, 0, parameters)
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0, [])

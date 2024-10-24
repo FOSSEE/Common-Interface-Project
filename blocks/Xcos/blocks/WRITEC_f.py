@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def WRITEC_f(outroot, attribid, ordering, geometry, parameters, parent=1):
+def WRITEC_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'WRITEC_f'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'writec', 'TYPE_2',
-                         func_name, BLOCKTYPE_D,
+                         style, BLOCKTYPE_D,
                          dependsOnU='1')
 
     addExprsNode(outnode, TYPE_STRING, 5, parameters)

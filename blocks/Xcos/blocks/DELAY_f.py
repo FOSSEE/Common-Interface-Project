@@ -10,13 +10,16 @@ from common.AAAAAA import *
 # port_id = ['7a86d9c5:18e504d8baa:-7fae']
 
 
-def DELAY_f(outroot, attribid, ordering, geometry, parameters, parent=1):
+def DELAY_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'DELAY_f'
+    if style is None:
+        style = func_name
+
     block_id, port_id, link_id = generate_id(6, 1, 0)
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'csuper', 'DEFAULT',
-                         func_name, BLOCKTYPE_H)
+                         style, BLOCKTYPE_H)
 
     addExprsNode(outnode, TYPE_DOUBLE, 0, parameters)
     addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM,

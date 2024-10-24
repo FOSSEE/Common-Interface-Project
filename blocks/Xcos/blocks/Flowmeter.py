@@ -1,14 +1,17 @@
 from common.AAAAAA import *
 
 
-def Flowmeter(outroot, attribid, ordering, geometry, parameters, parent=1):
+def Flowmeter(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'Flowmeter'
+    if style is None:
+        style = func_name
+
     parameters = ['1']
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'Flowmeter', 'DEFAULT',
-                         func_name, BLOCKTYPE_C,
+                         style, BLOCKTYPE_C,
                          dependsOnT='1')
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)

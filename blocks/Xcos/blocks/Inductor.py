@@ -1,13 +1,15 @@
 from common.AAAAAA import *
 
 
-def Inductor(outroot, attribid, ordering, geometry, parameters, parent=1):
+def Inductor(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'Inductor'
+    if style is None:
+        style = func_name
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'Inductor', 'DEFAULT',
-                         func_name, BLOCKTYPE_C,
+                         style, BLOCKTYPE_C,
                          dependsOnU='1', dependsOnT='0')
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
