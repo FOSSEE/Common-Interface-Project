@@ -13,25 +13,22 @@
   <!-- }}}1 -->
 
   <!-- keys {{{1 -->
-  <xsl:key name="k-input" match="ExplicitInputPort" use="@parent" />
-  <xsl:key name="k-output" match="ExplicitOutputPort" use="@parent" />
-  <xsl:key name="k-link" match="ExplicitLink" use="@source | @target" />
-  <xsl:key name="k-srclink" match="ExplicitLink" use="@source" />
-  <xsl:key name="k-tgtlink" match="ExplicitLink" use="@target" />
+  <xsl:key name="k-explicitinput" match="ExplicitInputPort" use="@parent" />
+  <xsl:key name="k-explicitoutput" match="ExplicitOutputPort" use="@parent" />
+  <xsl:key name="k-explicitlink" match="ExplicitLink" use="@source | @target" />
 
   <xsl:key name="k-control" match="ControlPort" use="@parent" />
   <xsl:key name="k-command" match="CommandPort" use="@parent" />
   <xsl:key name="k-commandlink" match="CommandControlLink" use="@source | @target" />
-  <xsl:key name="k-commandsrclink" match="CommandControlLink" use="@source" />
-  <xsl:key name="k-commandtgtlink" match="CommandControlLink" use="@target" />
 
-  <xsl:key name="k-implicitinput" match="ImplicitInputPort | ImplicitOutputPort" use="@parent" />
+  <xsl:key name="k-implicit" match="ImplicitInputPort | ImplicitOutputPort" use="@parent" />
   <xsl:key name="k-implicitlink" match="ImplicitLink" use="@source | @target" />
-  <xsl:key name="k-implicitsrclink" match="ImplicitLink" use="@source" />
-  <xsl:key name="k-implicittgtlink" match="ImplicitLink" use="@target" />
 
   <xsl:key name="k-block" match="AfficheBlock | BasicBlock | BigSom | EventInBlock | EventOutBlock | ExplicitInBlock | ExplicitOutBlock | GroundBlock | ImplicitInBlock | ImplicitOutBlock | Product | RoundBlock | SplitBlock | Summation | SuperBlock | TextBlock | VoltageSensorBlock" use="@id" />
   <xsl:key name="k-port" match="ExplicitInputPort | ExplicitOutputPort | ControlPort | CommandPort | ImplicitInputPort | ImplicitOutputPort" use="@id" />
+  <xsl:key name="k-portorlink" match="ExplicitInputPort | ExplicitOutputPort | ExplicitLink | ControlPort | CommandPort | CommandControlLink | ImplicitInputPort | ImplicitOutputPort | ImplicitLink" use="@id" />
+  <xsl:key name="k-linksrc" match="ExplicitLink | CommandControlLink | ImplicitLink" use="@source" />
+  <xsl:key name="k-linktgt" match="ExplicitLink | CommandControlLink | ImplicitLink" use="@target" />
   <!-- }}}1 -->
 
   <!-- links template {{{1 -->
@@ -69,7 +66,6 @@
     <xsl:param name="sourcetwoblocky" />
     <xsl:param name="sourcethreeblockx" />
     <xsl:param name="sourcethreeblocky" />
-
     <!-- }}} -->
 
     <!-- generate new primary link one id {{{ -->
@@ -84,9 +80,7 @@
         <xsl:when test="$sourceonelink/@id != ''">
           <xsl:value-of select="$sourceonelink/@id" />
         </xsl:when>
-        <xsl:otherwise>
-          <xsl:text>No match found</xsl:text>
-        </xsl:otherwise>
+        <xsl:otherwise>No match found</xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
     <!-- }}} -->
@@ -138,11 +132,6 @@
               <xsl:copy-of select="." />
             </xsl:for-each>
           </Array>
-          <xsl:for-each select="$targetonelink/mxGeometry/mxPoint">
-            <xsl:copy>
-              <xsl:copy-of select="@*" />
-            </xsl:copy>
-          </xsl:for-each>
         </mxGeometry>
       </xsl:element>
     </xsl:if>
@@ -154,9 +143,7 @@
         <xsl:when test="($targetonelink/@id != '' or $sourceonelink/@id != '') and $sourcetwolink/@id != ''">
           <xsl:value-of select="concat($sourcetwolink/@id, generate-id($sourcetwolink))" />
         </xsl:when>
-        <xsl:otherwise>
-          <xsl:text>No match found</xsl:text>
-        </xsl:otherwise>
+        <xsl:otherwise>No match found</xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
     <!-- }}} -->
@@ -173,9 +160,7 @@
         <xsl:when test="$sourceonelink/@id != ''">
           <xsl:value-of select="$sourceonelinksrcortgt" />
         </xsl:when>
-        <xsl:otherwise>
-          <xsl:text>No match found</xsl:text>
-        </xsl:otherwise>
+        <xsl:otherwise>No match found</xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
     <!-- }}} -->
@@ -303,20 +288,22 @@
 
   <!-- SplitBlock template {{{1 -->
   <xsl:template match="/XcosDiagram/mxGraphModel/root/SplitBlock[position() = 1]">
-    <xsl:variable name="InputPort" select="key('k-input', @id)" />
-    <xsl:variable name="OutputPort" select="key('k-output', @id)" />
+    <xsl:variable name="InputPort" select="key('k-explicitinput', @id)" />
+    <xsl:variable name="OutputPort" select="key('k-explicitoutput', @id)" />
 
     <xsl:variable name="ControlPort" select="key('k-control', @id)" />
     <xsl:variable name="CommandPort" select="key('k-command', @id)" />
 
-    <xsl:variable name="ImplicitPort" select="key('k-implicitinput', @id)" />
+    <xsl:variable name="ImplicitPort" select="key('k-implicit', @id)" />
 
+    <!-- x, y, parent: set (value) {{{ -->
     <xsl:variable name="geometry" select="mxGeometry" />
     <xsl:variable name="x" select="$geometry/@x" />
     <xsl:variable name="y" select="$geometry/@y" />
     <xsl:variable name="parent" select="@parent" />
+    <!-- }}} -->
 
-    <!-- set linktype (value) {{{ -->
+    <!-- linktype: set (value) {{{ -->
     <xsl:variable name="linktype">
       <xsl:choose>
         <xsl:when test="count($InputPort) >= 1 and count($OutputPort) >= 2">ExplicitLink</xsl:when>
@@ -326,7 +313,7 @@
     </xsl:variable>
     <!-- }}} -->
 
-    <!-- find ports connected to splitblock (value) {{{ -->
+    <!-- targetoneid, sourceoneid: find ports connected to splitblock (value) {{{ -->
     <xsl:variable name="targetoneid">
       <xsl:choose>
         <xsl:when test="count($InputPort) >= 1 and count($OutputPort) >= 2">
@@ -384,12 +371,12 @@
     </xsl:variable>
     <!-- }}} -->
 
-    <!-- find links connected to ports connected to splitblock (node-set) {{{ -->
+    <!-- targetonelink, sourceonelink: find links connected to ports connected to splitblock (node-set) {{{ -->
     <xsl:variable name="tmptargetonelink">
       <links>
         <xsl:choose>
           <xsl:when test="count($InputPort) >= 1 and count($OutputPort) >= 2">
-            <xsl:copy-of select="key('k-link', $targetoneid)" />
+            <xsl:copy-of select="key('k-explicitlink', $targetoneid)" />
           </xsl:when>
           <xsl:when test="count($ControlPort) >= 1 and count($CommandPort) >= 2">
             <xsl:copy-of select="key('k-commandlink', $targetoneid)" />
@@ -406,7 +393,7 @@
       <links>
         <xsl:choose>
           <xsl:when test="count($InputPort) >= 1 and count($OutputPort) >= 2">
-            <xsl:copy-of select="key('k-link', $sourceoneid)" />
+            <xsl:copy-of select="key('k-explicitlink', $sourceoneid)" />
           </xsl:when>
           <xsl:when test="count($ControlPort) >= 1 and count($CommandPort) >= 2">
             <xsl:copy-of select="key('k-commandlink', $sourceoneid)" />
@@ -423,7 +410,7 @@
       <links>
         <xsl:choose>
           <xsl:when test="count($InputPort) >= 1 and count($OutputPort) >= 2">
-            <xsl:copy-of select="key('k-link', $sourcetwoid)" />
+            <xsl:copy-of select="key('k-explicitlink', $sourcetwoid)" />
           </xsl:when>
           <xsl:when test="count($ControlPort) >= 1 and count($CommandPort) >= 2">
             <xsl:copy-of select="key('k-commandlink', $sourcetwoid)" />
@@ -440,7 +427,7 @@
       <links>
         <xsl:choose>
           <xsl:when test="count($InputPort) >= 1 and count($OutputPort) >= 2">
-            <xsl:copy-of select="key('k-link', $sourcethreeid)" />
+            <xsl:copy-of select="key('k-explicitlink', $sourcethreeid)" />
           </xsl:when>
           <xsl:when test="count($ControlPort) >= 1 and count($CommandPort) >= 2">
             <xsl:copy-of select="key('k-commandlink', $sourcethreeid)" />
@@ -454,145 +441,18 @@
     <xsl:variable name="sourcethreelink" select="ext:node-set($tmpsourcethreelink)/links/*" />
     <!-- }}} -->
 
-    <!-- find secondary links connected to links connected to ports connected to splitblock (node-set) {{{ -->
-    <xsl:variable name="tmptargetonesrcsecondlink">
-      <links>
-        <xsl:choose>
-          <xsl:when test="count($InputPort) >= 1 and count($OutputPort) >= 2">
-          <xsl:copy-of select="key('k-srclink', $targetonelink/@id)" />
-          </xsl:when>
-          <xsl:when test="count($ControlPort) >= 1 and count($CommandPort) >= 2">
-          <xsl:copy-of select="key('k-commandsrclink', $targetonelink/@id)" />
-          </xsl:when>
-          <xsl:when test="count($ImplicitPort) >= 3">
-          <xsl:copy-of select="key('k-implicitsrclink', $targetonelink/@id)" />
-          </xsl:when>
-        </xsl:choose>
-      </links>
-    </xsl:variable>
-    <xsl:variable name="targetonesrcsecondlink" select="ext:node-set($tmptargetonesrcsecondlink)/links/*" />
-
-    <xsl:variable name="tmptargetonetgtsecondlink">
-      <links>
-        <xsl:choose>
-          <xsl:when test="count($InputPort) >= 1 and count($OutputPort) >= 2">
-          <xsl:copy-of select="key('k-tgtlink', $targetonelink/@id)" />
-          </xsl:when>
-          <xsl:when test="count($ControlPort) >= 1 and count($CommandPort) >= 2">
-          <xsl:copy-of select="key('k-commandtgtlink', $targetonelink/@id)" />
-          </xsl:when>
-          <xsl:when test="count($ImplicitPort) >= 3">
-          <xsl:copy-of select="key('k-implicitsrclink', $targetonelink/@id)" />
-          </xsl:when>
-        </xsl:choose>
-      </links>
-    </xsl:variable>
-    <xsl:variable name="targetonetgtsecondlink" select="ext:node-set($tmptargetonetgtsecondlink)/links/*" />
-
-    <xsl:variable name="tmpsourceonesrcsecondlink">
-      <links>
-        <xsl:choose>
-          <xsl:when test="count($InputPort) >= 1 and count($OutputPort) >= 2">
-          <xsl:copy-of select="key('k-srclink', $sourceonelink/@id)" />
-          </xsl:when>
-          <xsl:when test="count($ControlPort) >= 1 and count($CommandPort) >= 2">
-          <xsl:copy-of select="key('k-commandsrclink', $sourceonelink/@id)" />
-          </xsl:when>
-          <xsl:when test="count($ImplicitPort) >= 3">
-          <xsl:copy-of select="key('k-implicitsrclink', $sourceonelink/@id)" />
-          </xsl:when>
-        </xsl:choose>
-      </links>
-    </xsl:variable>
-    <xsl:variable name="sourceonesrcsecondlink" select="ext:node-set($tmpsourceonesrcsecondlink)/links/*" />
-
-    <xsl:variable name="tmpsourceonetgtsecondlink">
-      <links>
-        <xsl:choose>
-          <xsl:when test="count($InputPort) >= 1 and count($OutputPort) >= 2">
-          <xsl:copy-of select="key('k-tgtlink', $sourceonelink/@id)" />
-          </xsl:when>
-          <xsl:when test="count($ControlPort) >= 1 and count($CommandPort) >= 2">
-          <xsl:copy-of select="key('k-commandtgtlink', $sourceonelink/@id)" />
-          </xsl:when>
-          <xsl:when test="count($ImplicitPort) >= 3">
-          <xsl:copy-of select="key('k-implicitsrclink', $sourceonelink/@id)" />
-          </xsl:when>
-        </xsl:choose>
-      </links>
-    </xsl:variable>
-    <xsl:variable name="sourceonetgtsecondlink" select="ext:node-set($tmpsourceonetgtsecondlink)/links/*" />
-
-    <xsl:variable name="tmpsourcetwosrcsecondlink">
-      <links>
-        <xsl:choose>
-          <xsl:when test="count($InputPort) >= 1 and count($OutputPort) >= 2">
-          <xsl:copy-of select="key('k-srclink', $sourcetwolink/@id)" />
-          </xsl:when>
-          <xsl:when test="count($ControlPort) >= 1 and count($CommandPort) >= 2">
-          <xsl:copy-of select="key('k-commandsrclink', $sourcetwolink/@id)" />
-          </xsl:when>
-          <xsl:when test="count($ImplicitPort) >= 3">
-          <xsl:copy-of select="key('k-implicitsrclink', $sourcetwolink/@id)" />
-          </xsl:when>
-        </xsl:choose>
-      </links>
-    </xsl:variable>
-    <xsl:variable name="sourcetwosrcsecondlink" select="ext:node-set($tmpsourcetwosrcsecondlink)/links/*" />
-
-    <xsl:variable name="tmpsourcetwotgtsecondlink">
-      <links>
-        <xsl:choose>
-          <xsl:when test="count($InputPort) >= 1 and count($OutputPort) >= 2">
-          <xsl:copy-of select="key('k-tgtlink', $sourcetwolink/@id)" />
-          </xsl:when>
-          <xsl:when test="count($ControlPort) >= 1 and count($CommandPort) >= 2">
-          <xsl:copy-of select="key('k-commandtgtlink', $sourcetwolink/@id)" />
-          </xsl:when>
-          <xsl:when test="count($ImplicitPort) >= 3">
-          <xsl:copy-of select="key('k-implicitsrclink', $sourcetwolink/@id)" />
-          </xsl:when>
-        </xsl:choose>
-      </links>
-    </xsl:variable>
-    <xsl:variable name="sourcetwotgtsecondlink" select="ext:node-set($tmpsourcetwotgtsecondlink)/links/*" />
-
-    <xsl:variable name="tmpsourcethreesrcsecondlink">
-      <links>
-        <xsl:choose>
-          <xsl:when test="count($InputPort) >= 1 and count($OutputPort) >= 2">
-          <xsl:copy-of select="key('k-srclink', $sourcethreelink/@id)" />
-          </xsl:when>
-          <xsl:when test="count($ControlPort) >= 1 and count($CommandPort) >= 2">
-          <xsl:copy-of select="key('k-commandsrclink', $sourcethreelink/@id)" />
-          </xsl:when>
-          <xsl:when test="count($ImplicitPort) >= 3">
-          <xsl:copy-of select="key('k-implicitsrclink', $sourcethreelink/@id)" />
-          </xsl:when>
-        </xsl:choose>
-      </links>
-    </xsl:variable>
-    <xsl:variable name="sourcethreesrcsecondlink" select="ext:node-set($tmpsourcethreesrcsecondlink)/links/*" />
-
-    <xsl:variable name="tmpsourcethreetgtsecondlink">
-      <links>
-        <xsl:choose>
-          <xsl:when test="count($InputPort) >= 1 and count($OutputPort) >= 2">
-          <xsl:copy-of select="key('k-tgtlink', $sourcethreelink/@id)" />
-          </xsl:when>
-          <xsl:when test="count($ControlPort) >= 1 and count($CommandPort) >= 2">
-          <xsl:copy-of select="key('k-commandtgtlink', $sourcethreelink/@id)" />
-          </xsl:when>
-          <xsl:when test="count($ImplicitPort) >= 3">
-          <xsl:copy-of select="key('k-implicitsrclink', $sourcethreelink/@id)" />
-          </xsl:when>
-        </xsl:choose>
-      </links>
-    </xsl:variable>
-    <xsl:variable name="sourcethreetgtsecondlink" select="ext:node-set($tmpsourcethreetgtsecondlink)/links/*" />
+    <!-- targetonesrcsecondlink, targetonetgtsecondlink, sourceonesrcsecondlink, sourceonetgtsecondlink: find secondary links connected to links connected to ports connected to splitblock (node-set) {{{ -->
+    <xsl:variable name="targetonesrcsecondlink" select="key('k-linksrc', $targetonelink/@id)" />
+    <xsl:variable name="targetonetgtsecondlink" select="key('k-linktgt', $targetonelink/@id)" />
+    <xsl:variable name="sourceonesrcsecondlink" select="key('k-linksrc', $sourceonelink/@id)" />
+    <xsl:variable name="sourceonetgtsecondlink" select="key('k-linktgt', $sourceonelink/@id)" />
+    <xsl:variable name="sourcetwosrcsecondlink" select="key('k-linksrc', $sourcetwolink/@id)" />
+    <xsl:variable name="sourcetwotgtsecondlink" select="key('k-linktgt', $sourcetwolink/@id)" />
+    <xsl:variable name="sourcethreesrcsecondlink" select="key('k-linksrc', $sourcethreelink/@id)" />
+    <xsl:variable name="sourcethreetgtsecondlink" select="key('k-linktgt', $sourcethreelink/@id)" />
     <!-- }}} -->
 
-    <!-- find other (tgt|src) ports connected to links connected to (src|tgt) ports connected to splitblock (value) {{{ -->
+    <!-- targetonelinksort, sourceonelinksort: find other (tgt|src) ports connected to links connected to (src|tgt) ports connected to splitblock (value) {{{ -->
     <xsl:variable name="targetonelinksort">
       <xsl:choose>
         <xsl:when test="$targetoneid = $targetonelink/@source">
@@ -601,43 +461,7 @@
         <xsl:when test="$targetoneid = $targetonelink/@target">
           <xsl:value-of select="$targetonelink/@source" />
         </xsl:when>
-        <xsl:otherwise>
-          <xsl:text>No match found</xsl:text>
-        </xsl:otherwise>
-      </xsl:choose>
-    </xsl:variable>
-
-    <xsl:variable name="targetonelinkassort">
-      <xsl:choose>
-        <xsl:when test="$targetoneid = $targetonelink/@source">sourcePoint</xsl:when>
-        <xsl:when test="$targetoneid = $targetonelink/@target">targetPoint</xsl:when>
-        <xsl:otherwise>
-          <xsl:text>No match found</xsl:text>
-        </xsl:otherwise>
-      </xsl:choose>
-    </xsl:variable>
-
-    <xsl:variable name="targetoneportsort" select="key('k-port', $targetonelinksort)" />
-    <xsl:variable name="targetoneblocksort" select="key('k-block', $targetoneportsort/@parent)" />
-    <xsl:variable name="targetoneblockx">
-      <xsl:choose>
-        <xsl:when test="$targetonelink/mxGeometry/mxPoint[@as=$targetonelinkassort]">
-          <xsl:value-of select="$targetonelink/mxGeometry/mxPoint[@as=$targetonelinkassort]/@x" />
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:value-of select="$targetoneblocksort/mxGeometry/@x" />
-        </xsl:otherwise>
-      </xsl:choose>
-    </xsl:variable>
-    
-    <xsl:variable name="targetoneblocky" >
-        <xsl:choose>
-        <xsl:when test="$targetonelink/mxGeometry/mxPoint[@as=$targetonelinkassort]">
-          <xsl:value-of select="$targetonelink/mxGeometry/mxPoint[@as=$targetonelinkassort]/@y" />
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:value-of select="$targetoneblocksort/mxGeometry/@y" />
-        </xsl:otherwise>
+        <xsl:otherwise>No match found</xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
 
@@ -649,8 +473,65 @@
         <xsl:when test="$sourceoneid = $sourceonelink/@target">
           <xsl:value-of select="$sourceonelink/@source" />
         </xsl:when>
+        <xsl:otherwise>No match found</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+
+    <xsl:variable name="sourcetwolinksort">
+      <xsl:choose>
+        <xsl:when test="$sourcetwoid = $sourcetwolink/@source">
+          <xsl:value-of select="$sourcetwolink/@target" />
+        </xsl:when>
+        <xsl:when test="$sourcetwoid = $sourcetwolink/@target">
+          <xsl:value-of select="$sourcetwolink/@source" />
+        </xsl:when>
+        <xsl:otherwise>No match found</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+
+    <xsl:variable name="sourcethreelinksort">
+      <xsl:choose>
+        <xsl:when test="$sourcethreeid = $sourcethreelink/@source">
+          <xsl:value-of select="$sourcethreelink/@target" />
+        </xsl:when>
+        <xsl:when test="$sourcethreeid = $sourcethreelink/@target">
+          <xsl:value-of select="$sourcethreelink/@source" />
+        </xsl:when>
+        <xsl:otherwise>No match found</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <!-- }}} -->
+
+    <!-- targetoneblockx, targetoneblocky, sourceoneblockx, sourceoneblocky: find x, y position of other (tgt|src) ports connected to links connected to (src|tgt) ports connected to splitblock (value) {{{ -->
+    <xsl:variable name="targetonelinkassort">
+      <xsl:choose>
+        <xsl:when test="$targetoneid = $targetonelink/@source">sourcePoint</xsl:when>
+        <xsl:when test="$targetoneid = $targetonelink/@target">targetPoint</xsl:when>
+        <xsl:otherwise>No match found</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+
+    <xsl:variable name="targetoneportsort" select="key('k-port', $targetonelinksort)" />
+    <xsl:variable name="targetoneblocksort" select="key('k-block', $targetoneportsort/@parent)" />
+
+    <xsl:variable name="targetoneblockx">
+      <xsl:choose>
+        <xsl:when test="$targetonelink/mxGeometry/mxPoint[@as=$targetonelinkassort]">
+          <xsl:value-of select="$targetonelink/mxGeometry/mxPoint[@as=$targetonelinkassort]/@x" />
+        </xsl:when>
         <xsl:otherwise>
-          <xsl:text>No match found</xsl:text>
+          <xsl:value-of select="$targetoneblocksort/mxGeometry/@x" />
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+
+    <xsl:variable name="targetoneblocky" >
+        <xsl:choose>
+        <xsl:when test="$targetonelink/mxGeometry/mxPoint[@as=$targetonelinkassort]">
+          <xsl:value-of select="$targetonelink/mxGeometry/mxPoint[@as=$targetonelinkassort]/@y" />
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="$targetoneblocksort/mxGeometry/@y" />
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
@@ -659,14 +540,13 @@
       <xsl:choose>
         <xsl:when test="$sourceoneid = $sourceonelink/@source">sourcePoint</xsl:when>
         <xsl:when test="$sourceoneid = $sourceonelink/@target">targetPoint</xsl:when>
-        <xsl:otherwise>
-          <xsl:text>No match found</xsl:text>
-        </xsl:otherwise>
+        <xsl:otherwise>No match found</xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
 
     <xsl:variable name="sourceoneportsort" select="key('k-port', $sourceonelinksort)" />
     <xsl:variable name="sourceoneblocksort" select="key('k-block', $sourceoneportsort/@parent)" />
+
     <xsl:variable name="sourceoneblockx">
       <xsl:choose>
         <xsl:when test="$sourceonelink/mxGeometry/mxPoint[@as=$sourceonelinkassort]">
@@ -677,7 +557,7 @@
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
-    
+
     <xsl:variable name="sourceoneblocky" >
         <xsl:choose>
         <xsl:when test="$sourceonelink/mxGeometry/mxPoint[@as=$sourceonelinkassort]">
@@ -693,27 +573,13 @@
       <xsl:choose>
         <xsl:when test="$sourcetwoid = $sourcetwolink/@source">sourcePoint</xsl:when>
         <xsl:when test="$sourcetwoid = $sourcetwolink/@target">targetPoint</xsl:when>
-        <xsl:otherwise>
-          <xsl:text>No match found</xsl:text>
-        </xsl:otherwise>
-      </xsl:choose>
-    </xsl:variable>
-    <xsl:variable name="sourcetwolinksort">
-      <xsl:choose>
-        <xsl:when test="$sourcetwoid = $sourcetwolink/@source">
-          <xsl:value-of select="$sourcetwolink/@target" />
-        </xsl:when>
-        <xsl:when test="$sourcetwoid = $sourcetwolink/@target">
-          <xsl:value-of select="$sourcetwolink/@source" />
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:text>No match found</xsl:text>
-        </xsl:otherwise>
+        <xsl:otherwise>No match found</xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
 
     <xsl:variable name="sourcetwoportsort" select="key('k-port', $sourcetwolinksort)" />
     <xsl:variable name="sourcetwoblocksort" select="key('k-block', $sourcetwoportsort/@parent)" />
+
     <xsl:variable name="sourcetwoblockx">
       <xsl:choose>
         <xsl:when test="$sourcetwolink/mxGeometry/mxPoint[@as=$sourcetwolinkassort]">
@@ -724,7 +590,7 @@
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
-    
+
     <xsl:variable name="sourcetwoblocky" >
         <xsl:choose>
         <xsl:when test="$sourcetwolink/mxGeometry/mxPoint[@as=$sourcetwolinkassort]">
@@ -736,27 +602,11 @@
       </xsl:choose>
     </xsl:variable>
 
-
     <xsl:variable name="sourcethreelinkassort">
       <xsl:choose>
         <xsl:when test="$sourcethreeid = $sourcethreelink/@source">sourcePoint</xsl:when>
         <xsl:when test="$sourcethreeid = $sourcethreelink/@target">targetPoint</xsl:when>
-        <xsl:otherwise>
-          <xsl:text>No match found</xsl:text>
-        </xsl:otherwise>
-      </xsl:choose>
-    </xsl:variable>
-    <xsl:variable name="sourcethreelinksort">
-      <xsl:choose>
-        <xsl:when test="$sourcethreeid = $sourcethreelink/@source">
-          <xsl:value-of select="$sourcethreelink/@target" />
-        </xsl:when>
-        <xsl:when test="$sourcethreeid = $sourcethreelink/@target">
-          <xsl:value-of select="$sourcethreelink/@source" />
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:text>No match found</xsl:text>
-        </xsl:otherwise>
+        <xsl:otherwise>No match found</xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
 
@@ -772,7 +622,7 @@
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
-    
+
     <xsl:variable name="sourcethreeblocky" >
         <xsl:choose>
         <xsl:when test="$sourcethreelink/mxGeometry/mxPoint[@as=$sourcethreelinkassort]">
@@ -785,7 +635,7 @@
     </xsl:variable>
     <!-- }}} -->
 
-    <!-- find waypoints of links connected to ports connected to splitblock (node-set) {{{ -->
+    <!-- targetonewaypoints, sourceonewaypoints: find waypoints of links connected to ports connected to splitblock (node-set) {{{ -->
     <xsl:variable name="tmptargetonewaypoints">
       <waypoints>
         <xsl:choose>
@@ -798,9 +648,7 @@
           <xsl:when test="$targetoneid = $targetonelink/@target">
             <xsl:copy-of select="$targetonelink/mxGeometry/Array/mxPoint" />
           </xsl:when>
-          <xsl:otherwise>
-            <xsl:text>No match found</xsl:text>
-          </xsl:otherwise>
+          <xsl:otherwise>No match found</xsl:otherwise>
         </xsl:choose>
       </waypoints>
     </xsl:variable>
@@ -818,9 +666,7 @@
           <xsl:when test="$sourceoneid = $sourceonelink/@source">
             <xsl:copy-of select="$sourceonelink/mxGeometry/Array/mxPoint" />
           </xsl:when>
-          <xsl:otherwise>
-            <xsl:text>No match found</xsl:text>
-          </xsl:otherwise>
+          <xsl:otherwise>No match found</xsl:otherwise>
         </xsl:choose>
       </waypoints>
     </xsl:variable>
@@ -838,9 +684,7 @@
           <xsl:when test="$sourcetwoid = $sourcetwolink/@source">
             <xsl:copy-of select="$sourcetwolink/mxGeometry/Array/mxPoint" />
           </xsl:when>
-          <xsl:otherwise>
-            <xsl:text>No match found</xsl:text>
-          </xsl:otherwise>
+          <xsl:otherwise>No match found</xsl:otherwise>
         </xsl:choose>
       </waypoints>
     </xsl:variable>
@@ -880,7 +724,6 @@
       <xsl:with-param name="sourcetwoblocky" select="$sourcetwoblocky" />
       <xsl:with-param name="sourcethreeblockx" select="$sourcethreeblockx" />
       <xsl:with-param name="sourcethreeblocky" select="$sourcethreeblocky" />
-
     </xsl:call-template>
     <!-- }}} -->
 
@@ -903,19 +746,14 @@
 
   <!-- Link template {{{1 -->
   <xsl:template match="ExplicitLink | CommandControlLink | ImplicitLink">
-    <xsl:variable name="sourceId" select="@source" />
-    <xsl:variable name="sourceElement" select="//*[@id = $sourceId]" />
-    <xsl:variable name="sourceElemId" select="$sourceElement/@parent" />
-    <xsl:variable name="targetId" select="@target" />
-    <xsl:variable name="targetElement" select="//*[@id = $targetId]" />
-    <xsl:variable name="targetElemId" select="$targetElement/@parent" />
+    <xsl:variable name="sourceElement" select="key('k-portorlink', @source)" />
+    <xsl:variable name="targetElement" select="key('k-portorlink', @target)" />
     <xsl:variable name="SPLITID" select="/XcosDiagram/mxGraphModel/root/SplitBlock[position() = 1]/@id" />
-
-    <xsl:if test="$sourceElemId != $SPLITID and $targetElemId != $SPLITID">
-      <xsl:variable name="tgtsrcid" select="//*[@id = $targetElement/@source]/@parent" />
-      <xsl:variable name="srctgtid" select="//*[@id = $sourceElement/@target]/@parent" />
-      <xsl:variable name="srcsrcid" select="//*[@id = $sourceElement/@source]/@parent" />
-      <xsl:variable name="tgttgtid" select="//*[@id = $targetElement/@target]/@parent" />
+    <xsl:if test="$sourceElement/@parent != $SPLITID and $targetElement/@parent != $SPLITID">
+      <xsl:variable name="srcsrcid" select="key('k-portorlink', $sourceElement/@source)/@parent" />
+      <xsl:variable name="srctgtid" select="key('k-portorlink', $sourceElement/@target)/@parent" />
+      <xsl:variable name="tgtsrcid" select="key('k-portorlink', $targetElement/@source)/@parent" />
+      <xsl:variable name="tgttgtid" select="key('k-portorlink', $targetElement/@target)/@parent" />
 
       <xsl:if test="(string-length($tgtsrcid) = 0 or $tgtsrcid != $SPLITID) and (string-length($tgttgtid) = 0 or $tgttgtid != $SPLITID) and (string-length($srctgtid) = 0 or $srctgtid != $SPLITID) and (string-length($srcsrcid) = 0 or $srcsrcid != $SPLITID)">
         <xsl:copy>
