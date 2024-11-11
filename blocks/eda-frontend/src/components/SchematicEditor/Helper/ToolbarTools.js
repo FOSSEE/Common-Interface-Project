@@ -672,21 +672,29 @@ function parseXmlToGraph (xmlDoc, graph) {
             const tmp = source
             source = target
             target = tmp
+            console.log('sourceCell:', sourceCell)
             const tmpCell = sourceCell
             sourceCell = targetCell
             targetCell = tmpCell
+            // const tmpsourcePoint = sourcePoint
+            // sourcePoint = targetPoint
+            // targetPoint = tmpsourcePoint
             points.reverse()
           }
 
           try {
             const edge = graph.insertEdge(parent, edgeId, null, sourceCell, targetCell)
+            console.log('Points:', points)
             edge.geometry.points = points
             const terminalPoint = new mxPoint(Number(cellAttrs.tarx.value), Number(cellAttrs.tary.value))
+            const terminalPoint2 = new mxPoint(Number(cellAttrs.tar2x.value), Number(cellAttrs.tar2y.value))
             if (targetCell?.edge === true) {
-              edge.geometry.setTerminalPoint(terminalPoint, false)
-            } else if (sourceCell?.edge === true) {
+              edge.geometry.setTerminalPoint(terminalPoint2, false)
+            }
+            if (sourceCell?.edge === true) {
               edge.geometry.setTerminalPoint(terminalPoint, true)
             }
+            console.log('edge:', edge)
           } catch (e) {
             console.log(sourceCell)
             console.log(targetCell)
@@ -731,18 +739,24 @@ function xmlWireConnections () {
         if (edge.source === null || edge.target === null) {
           continue
         }
-
+        console.log('edge.source:', edge, edge.source)
         edge.sourceVertex = edge.source.id
         edge.targetVertex = edge.target.id
-        if (edge.target.edge === true) {
-          edge.tarx = edge.geometry.targetPoint.x
-          edge.tary = edge.geometry.targetPoint.y
-        } else if (edge.source.edge === true) {
+        console.log('outside if', edge.source.edge, edge.target.edge)
+        if (edge.source.edge === true) {
+
           edge.tarx = edge.geometry.sourcePoint.x
           edge.tary = edge.geometry.sourcePoint.y
-        } else {
-          edge.node = '.' + edge.source.value
+          console.log('tarx', edge.tarx, edge.tary)
         }
+        if (edge.target.edge === true) {
+
+          edge.tar2x = edge.geometry.targetPoint.x
+          edge.tar2y = edge.geometry.targetPoint.y
+          console.log('tar2x', edge.tar2x, edge.tar2y)
+        }
+
+
         console.log('Check the wires here', edge.sourceVertex, edge.targetVertex)
       }
     }
