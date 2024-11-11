@@ -744,18 +744,15 @@ function xmlWireConnections () {
         edge.targetVertex = edge.target.id
         console.log('outside if', edge.source.edge, edge.target.edge)
         if (edge.source.edge === true) {
-
           edge.tarx = edge.geometry.sourcePoint.x
           edge.tary = edge.geometry.sourcePoint.y
           console.log('tarx', edge.tarx, edge.tary)
         }
         if (edge.target.edge === true) {
-
           edge.tar2x = edge.geometry.targetPoint.x
           edge.tar2y = edge.geometry.targetPoint.y
           console.log('tar2x', edge.tar2x, edge.tar2y)
         }
-
 
         console.log('Check the wires here', edge.sourceVertex, edge.targetVertex)
       }
