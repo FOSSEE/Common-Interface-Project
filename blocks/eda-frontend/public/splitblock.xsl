@@ -440,8 +440,8 @@
     <!-- targetoneblockx, targetoneblocky, sourceoneblockx, sourceoneblocky: find x, y position of other (tgt|src) ports connected to links connected to (src|tgt) ports connected to splitblock (value) {{{ -->
     <xsl:variable name="targetonelinkassort">
       <xsl:choose>
-        <xsl:when test="$targetoneid = $targetonelink/@source">sourcePoint</xsl:when>
-        <xsl:when test="$targetoneid = $targetonelink/@target">targetPoint</xsl:when>
+        <xsl:when test="$targetoneid = $targetonelink/@source">targetPoint</xsl:when>
+        <xsl:when test="$targetoneid = $targetonelink/@target">sourcePoint</xsl:when>
         <xsl:otherwise>No match found</xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
@@ -473,8 +473,8 @@
 
     <xsl:variable name="sourceonelinkassort">
       <xsl:choose>
-        <xsl:when test="$sourceoneid = $sourceonelink/@source">sourcePoint</xsl:when>
-        <xsl:when test="$sourceoneid = $sourceonelink/@target">targetPoint</xsl:when>
+        <xsl:when test="$sourceoneid = $sourceonelink/@source">targetPoint</xsl:when>
+        <xsl:when test="$sourceoneid = $sourceonelink/@target">sourcePoint</xsl:when>
         <xsl:otherwise>No match found</xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
@@ -506,8 +506,8 @@
 
     <xsl:variable name="sourcetwolinkassort">
       <xsl:choose>
-        <xsl:when test="$sourcetwoid = $sourcetwolink/@source">sourcePoint</xsl:when>
-        <xsl:when test="$sourcetwoid = $sourcetwolink/@target">targetPoint</xsl:when>
+        <xsl:when test="$sourcetwoid = $sourcetwolink/@source">targetPoint</xsl:when>
+        <xsl:when test="$sourcetwoid = $sourcetwolink/@target">sourcePoint</xsl:when>
         <xsl:otherwise>No match found</xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
@@ -539,8 +539,8 @@
 
     <xsl:variable name="sourcethreelinkassort">
       <xsl:choose>
-        <xsl:when test="$sourcethreeid = $sourcethreelink/@source">sourcePoint</xsl:when>
-        <xsl:when test="$sourcethreeid = $sourcethreelink/@target">targetPoint</xsl:when>
+        <xsl:when test="$sourcethreeid = $sourcethreelink/@source">targetPoint</xsl:when>
+        <xsl:when test="$sourcethreeid = $sourcethreelink/@target">sourcePoint</xsl:when>
         <xsl:otherwise>No match found</xsl:otherwise>
       </xsl:choose>
     </xsl:variable>

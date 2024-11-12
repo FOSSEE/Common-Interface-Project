@@ -470,16 +470,16 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoi
         port3 = nextattribid
         (inputCount, outputCount, nextattribid, nextAttribForSplit) = addPort3ForSplit(outroot, splitblockid, sourceVertex, targetVertex, sourceType, targetType, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, array3)
         print('nextAttribForSplit3:', nextAttribForSplit)
-        newEdgeDict[attribid2][i] = ((nextAttribForSplit, sourceVertex2, port1, sourceType2, targetType, style2, left_array, addSplit2, split_point2))
+        newEdgeDict[attribid2][i] = ((nextAttribForSplit, sourceVertex2, port1, sourceType2, targetType, style2, left_array, addSplit2, split_point, split_point2))
         nextAttribForSplit += 1
-        newEdgeDict[attribid2].insert(i + 1, (nextAttribForSplit, port2, targetVertex2, sourceType, targetType2, style2, right_array, addSplit2, split_point2))
+        newEdgeDict[attribid2].insert(i + 1, (nextAttribForSplit, port2, targetVertex2, sourceType, targetType2, style2, right_array, addSplit2, split_point, split_point2))
         nextAttribForSplit += 1
-        for (__, __, __, __, __, __, tmp_array, __, tmp_split_point) in newEdgeDict[attribid2]:
-            print('NEWEDGE2:', attribid2, tmp_array, tmp_split_point)
-        newEdgeDict[attribid] = [(nextAttribForSplit, port3, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point)]
+        for (__, __, __, __, __, __, tmp_array, __, tmp_split_point, tmp_split_point2) in newEdgeDict[attribid2]:
+            print('NEWEDGE2:', attribid2, tmp_array, tmp_split_point, tmp_split_point2)
+        newEdgeDict[attribid] = [(nextAttribForSplit, port3, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point, split_point2)]
         nextAttribForSplit += 1
-        for (__, __, __, __, __, __, tmp_array, __, tmp_split_point) in newEdgeDict[attribid]:
-            print('NEWEDGE3:', attribid, tmp_array, tmp_split_point)
+        for (__, __, __, __, __, __, tmp_array, __, tmp_split_point, tmp_split_point2) in newEdgeDict[attribid]:
+            print('NEWEDGE3:', attribid, tmp_array, tmp_split_point, tmp_split_point2)
 
 print()
 for key, newEdges in newEdgeDict.items():
