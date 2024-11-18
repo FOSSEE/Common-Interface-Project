@@ -632,7 +632,7 @@ function parseXmlToGraph (xmlDoc, graph) {
           portCount[orderingname] += 1
           let ordering
           if (cellAttrs.ordering) {
-            ordering = cellAttrs.ordering
+            ordering = cellAttrs.ordering.value
           } else {
             ordering = portCount[orderingname]
           }
