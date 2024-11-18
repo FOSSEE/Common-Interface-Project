@@ -1,12 +1,13 @@
+import os
+import sys
+from dotenv import load_dotenv
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
-from dotenv import load_dotenv
-import os
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+from webdriver_manager.chrome import ChromeDriverManager
 
 # Loading the .env file
 load_dotenv()
@@ -47,24 +48,40 @@ def login_with_github():
         sign_in_button = driver.find_element(By.NAME, 'commit')
         sign_in_button.click()
         print("Submitted GitHub login form.")
+    except Exception as e:
+        print(f"An error occurred during GitHub login: {str(e)}")
+        sys.exit(1)
 
-        # Wait for the 2FA page
-        try:
-            print("Waiting for the 2FA page...")
-            wait.until(
-                EC.presence_of_element_located((By.XPATH, '//*[@id="otp"]'))
-            )
-            print("2FA page loaded. Please complete the 2FA process manually.")
+    # Wait for the Send SMS page
+    try:
+        print("Waiting for the Send SMS button to be clickable...")
+        send_sms_button = wait.until(
+            EC.presence_of_element_located((By.XPATH, '//*[@id="login"]/div[2]/div[2]/form/button'))
+        )
+        print("Send SMS button is clickable now.")
+        send_sms_button.click()
+        print("Clicked the Send SMS button.")
+    except Exception as e:
+        print("No Send SMS page detected or an error occurred")
 
-            # Pause the script until the user completes the 2FA process
-            input("Complete the 2FA process and press Enter to continue...")
+    # Wait for the 2FA page
+    try:
+        print("Waiting for the 2FA page...")
+        wait.until(
+            EC.presence_of_element_located((By.XPATH, '//*[@id="sms_totp"]'))
+        )
+        print("2FA page loaded. Please complete the 2FA process manually.")
 
-            # Verification process should be completed by now
-            print("2FA process completed.")
+        # Pause the script until the user completes the 2FA process
+        input("Complete the 2FA process and press Enter to continue...")
 
-        except Exception as e:
-            print("No 2FA page detected or an error occurred:", e)
+        # Verification process should be completed by now
+        print("2FA process completed.")
 
+    except Exception as e:
+        print("No 2FA page detected or an error occurred")
+
+    try:
         print("Waiting for authorization page to load...")
         authorize_button = wait.until(
             EC.element_to_be_clickable((By.NAME, 'authorize'))
@@ -73,7 +90,7 @@ def login_with_github():
         print("Clicked authorize button.")
 
     except Exception as e:
-        print(f"An error occurred during GitHub login: {e}")
+        print("An error occurred during GitHub authorization")
 
 
 def wait_for_gallery_load():
@@ -82,7 +99,7 @@ def wait_for_gallery_load():
         wait.until(lambda driver: driver.execute_script('return window.loadGalleryComplete === true;'))
         print("Gallery has fully loaded.")
     except Exception as e:
-        print(f"Error waiting for gallery load: {e}")
+        print(f"Error waiting for gallery load: {str(e)}")
 
 
 def main():
