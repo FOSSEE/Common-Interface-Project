@@ -653,10 +653,10 @@ function parseXmlToGraph (xmlDoc, graph) {
         } else if (cellAttrs.edge) { // is edge
           const edgeId = cellAttrs.id.value
 
-          let source = cellAttrs.sourceVertex.value
-          let target = cellAttrs.targetVertex.value
-          let sourceCell = graph.getModel().getCell(source)
-          let targetCell = graph.getModel().getCell(target)
+          const source = cellAttrs.sourceVertex.value
+          const target = cellAttrs.targetVertex.value
+          const sourceCell = graph.getModel().getCell(source)
+          const targetCell = graph.getModel().getCell(target)
           const msgSource = (sourceCell == null) ? ' (not found)' : ''
           const msgTarget = (targetCell == null) ? ' (not found)' : ''
           console.log(`ST ${source}${msgSource} ${target}${msgTarget}`)
