@@ -478,7 +478,7 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoi
 print()
 for key, newEdges in newEdgeDict.items():
     print(f'{key}: {newEdges}')
-    for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point) in newEdges:
+    for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point, split_point2) in newEdges:
         if get_int(attribid) >= 10000:
             attribid = nextattribid
             nextattribid += 1

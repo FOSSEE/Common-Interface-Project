@@ -492,6 +492,7 @@ function parseXmlToGraph (xmlDoc, graph) {
   const parent = graph.getDefaultParent()
   let v1
   let blockrotation
+  let firstportrotation
   graph.getModel().beginUpdate()
 
   let oldcellslength = 0
@@ -517,11 +518,13 @@ function parseXmlToGraph (xmlDoc, graph) {
           }
           const style = cellAttrs.style.value
           const styleObject = styleToObject(style)
+          console.log('blckname:', styleObject)
           if (styleObject.rotation === undefined) {
             blockrotation = 0
           } else {
             blockrotation = parseInt(styleObject.rotation)
           }
+          firstportrotation = null
           const vertexId = cellAttrs.id.value
           const geom = cellChildren[0].attributes
           const xPos = (geom.x !== undefined) ? Number(geom.x.value) : 0
@@ -582,6 +585,7 @@ function parseXmlToGraph (xmlDoc, graph) {
           } else {
             portrotation = parseInt(styleObject.rotation)
           }
+
           let rotation = portrotation - blockrotation
           if (stylename === 'ControlPort' || stylename === 'CommandPort') {
             rotation -= 90
@@ -589,6 +593,13 @@ function parseXmlToGraph (xmlDoc, graph) {
           if (rotation < 0) {
             rotation += 360
           }
+          if (firstportrotation === null) {
+            firstportrotation = rotation
+          } else if (rotation !== firstportrotation) {
+            console.log('firstportrotation is not equal to rotation', firstportrotation, rotation)
+            rotation = firstportrotation
+          }
+          console.log('rotation:', rotation)
 
           const vertexId = cellAttrs.id.value
           const geom = cellChildren[0].attributes
@@ -632,7 +643,7 @@ function parseXmlToGraph (xmlDoc, graph) {
           portCount[orderingname] += 1
           let ordering
           if (cellAttrs.ordering) {
-            ordering = cellAttrs.ordering
+            ordering = cellAttrs.ordering.value
           } else {
             ordering = portCount[orderingname]
           }
@@ -642,10 +653,10 @@ function parseXmlToGraph (xmlDoc, graph) {
         } else if (cellAttrs.edge) { // is edge
           const edgeId = cellAttrs.id.value
 
-          let source = cellAttrs.sourceVertex.value
-          let target = cellAttrs.targetVertex.value
-          let sourceCell = graph.getModel().getCell(source)
-          let targetCell = graph.getModel().getCell(target)
+          const source = cellAttrs.sourceVertex.value
+          const target = cellAttrs.targetVertex.value
+          const sourceCell = graph.getModel().getCell(source)
+          const targetCell = graph.getModel().getCell(target)
           const msgSource = (sourceCell == null) ? ' (not found)' : ''
           const msgTarget = (targetCell == null) ? ' (not found)' : ''
           console.log(`ST ${source}${msgSource} ${target}${msgTarget}`)
@@ -668,18 +679,18 @@ function parseXmlToGraph (xmlDoc, graph) {
           const sourceType = getPortType(sourceCell)
           const targetType = getPortType(targetCell)
           if (sourceType.type2 !== OutputPort && targetType.type2 !== InputPort) {
-            console.log('switch', source, target)
-            const tmp = source
-            source = target
-            target = tmp
+            console.log('switch', source, target, points)
+            // const tmp = source
+            // source = target
+            // target = tmp
             console.log('sourceCell:', sourceCell)
-            const tmpCell = sourceCell
-            sourceCell = targetCell
-            targetCell = tmpCell
+            // const tmpCell = sourceCell
+            // sourceCell = targetCell
+            // targetCell = tmpCell
             // const tmpsourcePoint = sourcePoint
             // sourcePoint = targetPoint
             // targetPoint = tmpsourcePoint
-            points.reverse()
+            // points.reverse()
           }
 
           try {

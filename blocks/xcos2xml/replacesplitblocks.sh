@@ -91,6 +91,12 @@ done
 
 xsltproc "$XSL" "$INPUT1" > "$TMPFILE1"
 xmllint --format "$TMPFILE1" > "$TMPFILE2"
+INPUT1="$BASE-old.xml"
+cp -f "$TMPFILE2" "$INPUT1"
+
+
+xsltproc "eda-frontend/public/geometry.xsl" "$INPUT1" > "$TMPFILE1"
+xmllint --format "$TMPFILE1" > "$TMPFILE2"
 cp -f "$TMPFILE2" "$TMPFILE1"
 
 exit 0
