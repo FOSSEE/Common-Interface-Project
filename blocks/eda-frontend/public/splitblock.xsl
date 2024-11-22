@@ -105,23 +105,22 @@
         <mxGeometry relative="1" as="geometry">
           <mxPoint>
             <xsl:attribute name="x">
-              <xsl:value-of select="$sourceoneblockx" />
-            </xsl:attribute>
-            <xsl:attribute name="y">
-              <xsl:value-of select="$sourceoneblocky" />
-            </xsl:attribute>
-            <xsl:attribute name="as">sourcePoint</xsl:attribute>
-          </mxPoint>
-          <!-- targetPoint added by suchita -->
-          <mxPoint>
-            <xsl:attribute name="x">
               <xsl:value-of select="$targetoneblockx" />
             </xsl:attribute>
             <xsl:attribute name="y">
               <xsl:value-of select="$targetoneblocky" />
             </xsl:attribute>
-            <xsl:attribute name="as">targetPoint</xsl:attribute>
+            <xsl:attribute name="as">sourcePoint</xsl:attribute>
           </mxPoint>
+          <mxPoint>
+            <xsl:attribute name="x">
+              <xsl:value-of select="$sourceoneblockx" />
+            </xsl:attribute>
+            <xsl:attribute name="y">
+              <xsl:value-of select="$sourceoneblocky" />
+            </xsl:attribute>
+            <xsl:attribute name="as">targetPoint</xsl:attribute>
+          </mxPoint>   
           <Array as="points">
             <xsl:for-each select="$targetonewaypoints">
               <xsl:copy-of select="." />
@@ -568,6 +567,36 @@
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
+
+    <!-- <xsl:element name="variables">
+      <xsl:attribute name="targetonelinkassort">
+        <xsl:value-of select="$targetonelinkassort" />
+      </xsl:attribute>
+      <xsl:attribute name="targetoneblockx">
+        <xsl:value-of select="$targetoneblockx" />
+      </xsl:attribute>
+      <xsl:attribute name="targetoneblocky">
+        <xsl:value-of select="$targetoneblocky" />
+      </xsl:attribute>
+      <xsl:attribute name="sourceonelinkassort">
+        <xsl:value-of select="$sourceonelinkassort" />
+      </xsl:attribute>
+      <xsl:attribute name="sourceoneblockx">
+        <xsl:value-of select="$sourceoneblockx" />
+      </xsl:attribute>
+      <xsl:attribute name="sourceoneblocky">
+        <xsl:value-of select="$sourceoneblocky" />
+      </xsl:attribute>
+      <xsl:attribute name="sourcetwolinkassort">
+        <xsl:value-of select="$sourcetwolinkassort" />
+      </xsl:attribute>
+      <xsl:attribute name="sourcetwoblockx">
+        <xsl:value-of select="$sourcetwoblockx" />
+      </xsl:attribute>
+      <xsl:attribute name="sourcetwoblocky">
+        <xsl:value-of select="$sourcetwoblocky" />
+      </xsl:attribute>
+    </xsl:element> -->
     <!-- }}} -->
 
     <!-- targetonewaypoints, sourceonewaypoints: find waypoints of links connected to ports connected to splitblock (node-set) {{{ -->

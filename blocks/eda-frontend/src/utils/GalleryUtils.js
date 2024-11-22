@@ -9,6 +9,17 @@ const getXsltProcessor = async () => {
   return processor
 }
 
+const getGeometryXsltProcessor = async () => {
+  const xcos2xml = '/geometry.xsl'
+  const response = await fetch(xcos2xml)
+  const text = await response.text()
+  const parser = new DOMParser()
+  const xsl = parser.parseFromString(text, 'application/xml')
+  const processor = new XSLTProcessor()
+  processor.importStylesheet(xsl)
+  return processor
+}
+
 const getSplitXsltProcessor = async () => {
   const xcos2xml = '/splitblock.xsl'
   const response = await fetch(xcos2xml)
@@ -33,6 +44,8 @@ export const transformXcos = async (xmlDoc) => {
   xmlDoc = removeSplits1(xmlDoc, splitProcessor)
   const processor = await getXsltProcessor()
   xmlDoc = processor.transformToDocument(xmlDoc)
+  const geometryprocessor = await getGeometryXsltProcessor()
+  xmlDoc = geometryprocessor.transformToDocument(xmlDoc)
   return xmlDoc
 }
 
@@ -109,6 +122,8 @@ export const transformXcos2 = async (xmlDoc) => {
   xmlDoc = await removeSplits(xmlDoc, splitProcessor, 1)
   const processor = await getXsltProcessor()
   xmlDoc = processor.transformToDocument(xmlDoc)
+  const geometryprocessor = await getGeometryXsltProcessor()
+  xmlDoc = geometryprocessor.transformToDocument(xmlDoc)
   return xmlDoc
 }
 
