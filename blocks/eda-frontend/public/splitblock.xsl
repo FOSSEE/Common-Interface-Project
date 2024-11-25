@@ -289,6 +289,315 @@
   </xsl:template>
   <!-- }}}1 -->
 
+  <!-- checklinks template {{{1 -->
+  <xsl:template name="checklinks">
+
+    <!-- checklinks template parameters {{{ -->
+    <xsl:param name="x" />
+    <xsl:param name="y" />
+    <xsl:param name="parent" />
+
+    <xsl:param name="linktype" />
+
+    <xsl:param name="tgtonelink" />
+    <xsl:param name="tgtonelinkwaypoints" />
+    <xsl:param name="tgtoneotherportid" />
+    <xsl:param name="tgtoneotherblockx" />
+    <xsl:param name="tgtoneotherblocky" />
+    <xsl:param name="tgtonesrcsecondlink" />
+    <xsl:param name="tgtonetgtsecondlink" />
+
+    <xsl:param name="srconelink" />
+    <xsl:param name="srconelinkwaypoints" />
+    <xsl:param name="srconeotherportid" />
+    <xsl:param name="srconeotherblockx" />
+    <xsl:param name="srconeotherblocky" />
+    <xsl:param name="srconesrcsecondlink" />
+    <xsl:param name="srconetgtsecondlink" />
+
+    <xsl:param name="srctwolink" />
+    <xsl:param name="srctwolinkwaypoints" />
+    <xsl:param name="srctwootherportid" />
+    <xsl:param name="srctwootherblockx" />
+    <xsl:param name="srctwootherblocky" />
+    <xsl:param name="srctwosrcsecondlink" />
+    <xsl:param name="srctwotgtsecondlink" />
+
+    <xsl:param name="srcthreelink" />
+    <xsl:param name="srcthreelinkwaypoints" />
+    <xsl:param name="srcthreeotherportid" />
+    <xsl:param name="srcthreeotherblockx" />
+    <xsl:param name="srcthreeotherblocky" />
+    <xsl:param name="srcthreesrcsecondlink" />
+    <xsl:param name="srcthreetgtsecondlink" />
+    <!-- }}} -->
+
+    <!-- call the links template {{{ -->
+    <xsl:choose>
+      <!-- tgtonelink, srconelink {{{ -->
+      <xsl:when test="$tgtonelink/@id != '' and $srconelink/@id != ''">
+        <xsl:call-template name="links">
+          <xsl:with-param name="x" select="$x" />
+          <xsl:with-param name="y" select="$y" />
+          <xsl:with-param name="parent" select="$parent" />
+
+          <xsl:with-param name="linktype" select="$linktype" />
+
+          <xsl:with-param name="tgtonelink" select="$tgtonelink" />
+          <xsl:with-param name="tgtonelinkwaypoints" select="$tgtonelinkwaypoints" />
+          <xsl:with-param name="tgtoneotherportid" select="$tgtoneotherportid" />
+          <xsl:with-param name="tgtoneotherblockx" select="$tgtoneotherblockx" />
+          <xsl:with-param name="tgtoneotherblocky" select="$tgtoneotherblocky" />
+          <xsl:with-param name="tgtonesrcsecondlink" select="$tgtonesrcsecondlink" />
+          <xsl:with-param name="tgtonetgtsecondlink" select="$tgtonetgtsecondlink" />
+
+          <xsl:with-param name="srconelink" select="$srconelink" />
+          <xsl:with-param name="srconelinkwaypoints" select="$srconelinkwaypoints" />
+          <xsl:with-param name="srconeotherportid" select="$srconeotherportid" />
+          <xsl:with-param name="srconeotherblockx" select="$srconeotherblockx" />
+          <xsl:with-param name="srconeotherblocky" select="$srconeotherblocky" />
+          <xsl:with-param name="srconesrcsecondlink" select="$srconesrcsecondlink" />
+          <xsl:with-param name="srconetgtsecondlink" select="$srconetgtsecondlink" />
+
+          <xsl:with-param name="srctwolink" select="$srctwolink" />
+          <xsl:with-param name="srctwolinkwaypoints" select="$srctwolinkwaypoints" />
+          <xsl:with-param name="srctwootherportid" select="$srctwootherportid" />
+          <xsl:with-param name="srctwootherblockx" select="$srctwootherblockx" />
+          <xsl:with-param name="srctwootherblocky" select="$srctwootherblocky" />
+          <xsl:with-param name="srctwosrcsecondlink" select="$srctwosrcsecondlink" />
+          <xsl:with-param name="srctwotgtsecondlink" select="$srctwotgtsecondlink" />
+
+          <xsl:with-param name="srcthreelink" select="$srcthreelink" />
+          <xsl:with-param name="srcthreelinkwaypoints" select="$srcthreelinkwaypoints" />
+          <xsl:with-param name="srcthreeotherportid" select="$srcthreeotherportid" />
+          <xsl:with-param name="srcthreeotherblockx" select="$srcthreeotherblockx" />
+          <xsl:with-param name="srcthreeotherblocky" select="$srcthreeotherblocky" />
+          <xsl:with-param name="srcthreesrcsecondlink" select="$srcthreesrcsecondlink" />
+          <xsl:with-param name="srcthreetgtsecondlink" select="$srcthreetgtsecondlink" />
+        </xsl:call-template>
+      </xsl:when>
+      <!-- }}} -->
+      <!-- tgtonelink, srctwolink {{{ -->
+      <xsl:when test="$tgtonelink/@id != '' and $srctwolink/@id != ''">
+        <xsl:call-template name="links">
+          <xsl:with-param name="x" select="$x" />
+          <xsl:with-param name="y" select="$y" />
+          <xsl:with-param name="parent" select="$parent" />
+
+          <xsl:with-param name="linktype" select="$linktype" />
+
+          <xsl:with-param name="tgtonelink" select="$tgtonelink" />
+          <xsl:with-param name="tgtonelinkwaypoints" select="$tgtonelinkwaypoints" />
+          <xsl:with-param name="tgtoneotherportid" select="$tgtoneotherportid" />
+          <xsl:with-param name="tgtoneotherblockx" select="$tgtoneotherblockx" />
+          <xsl:with-param name="tgtoneotherblocky" select="$tgtoneotherblocky" />
+          <xsl:with-param name="tgtonesrcsecondlink" select="$tgtonesrcsecondlink" />
+          <xsl:with-param name="tgtonetgtsecondlink" select="$tgtonetgtsecondlink" />
+
+          <xsl:with-param name="srconelink" select="$srctwolink" />
+          <xsl:with-param name="srconelinkwaypoints" select="$srctwolinkwaypoints" />
+          <xsl:with-param name="srconeotherportid" select="$srctwootherportid" />
+          <xsl:with-param name="srconeotherblockx" select="$srctwootherblockx" />
+          <xsl:with-param name="srconeotherblocky" select="$srctwootherblocky" />
+          <xsl:with-param name="srconesrcsecondlink" select="$srctwosrcsecondlink" />
+          <xsl:with-param name="srconetgtsecondlink" select="$srctwotgtsecondlink" />
+
+          <xsl:with-param name="srctwolink" select="$srconelink" />
+          <xsl:with-param name="srctwolinkwaypoints" select="$srconelinkwaypoints" />
+          <xsl:with-param name="srctwootherportid" select="$srconeotherportid" />
+          <xsl:with-param name="srctwootherblockx" select="$srconeotherblockx" />
+          <xsl:with-param name="srctwootherblocky" select="$srconeotherblocky" />
+          <xsl:with-param name="srctwosrcsecondlink" select="$srconesrcsecondlink" />
+          <xsl:with-param name="srctwotgtsecondlink" select="$srconetgtsecondlink" />
+
+          <xsl:with-param name="srcthreelink" select="$srcthreelink" />
+          <xsl:with-param name="srcthreelinkwaypoints" select="$srcthreelinkwaypoints" />
+          <xsl:with-param name="srcthreeotherportid" select="$srcthreeotherportid" />
+          <xsl:with-param name="srcthreeotherblockx" select="$srcthreeotherblockx" />
+          <xsl:with-param name="srcthreeotherblocky" select="$srcthreeotherblocky" />
+          <xsl:with-param name="srcthreesrcsecondlink" select="$srcthreesrcsecondlink" />
+          <xsl:with-param name="srcthreetgtsecondlink" select="$srcthreetgtsecondlink" />
+        </xsl:call-template>
+      </xsl:when>
+      <!-- }}} -->
+      <!-- tgtonelink, srcthreelink {{{ -->
+      <xsl:when test="$tgtonelink/@id != '' and $srcthreelink/@id != ''">
+        <xsl:call-template name="links">
+          <xsl:with-param name="x" select="$x" />
+          <xsl:with-param name="y" select="$y" />
+          <xsl:with-param name="parent" select="$parent" />
+
+          <xsl:with-param name="linktype" select="$linktype" />
+
+          <xsl:with-param name="tgtonelink" select="$tgtonelink" />
+          <xsl:with-param name="tgtonelinkwaypoints" select="$tgtonelinkwaypoints" />
+          <xsl:with-param name="tgtoneotherportid" select="$tgtoneotherportid" />
+          <xsl:with-param name="tgtoneotherblockx" select="$tgtoneotherblockx" />
+          <xsl:with-param name="tgtoneotherblocky" select="$tgtoneotherblocky" />
+          <xsl:with-param name="tgtonesrcsecondlink" select="$tgtonesrcsecondlink" />
+          <xsl:with-param name="tgtonetgtsecondlink" select="$tgtonetgtsecondlink" />
+
+          <xsl:with-param name="srconelink" select="$srcthreelink" />
+          <xsl:with-param name="srconelinkwaypoints" select="$srcthreelinkwaypoints" />
+          <xsl:with-param name="srconeotherportid" select="$srcthreeotherportid" />
+          <xsl:with-param name="srconeotherblockx" select="$srcthreeotherblockx" />
+          <xsl:with-param name="srconeotherblocky" select="$srcthreeotherblocky" />
+          <xsl:with-param name="srconesrcsecondlink" select="$srcthreesrcsecondlink" />
+          <xsl:with-param name="srconetgtsecondlink" select="$srcthreetgtsecondlink" />
+
+          <xsl:with-param name="srctwolink" select="$srconelink" />
+          <xsl:with-param name="srctwolinkwaypoints" select="$srconelinkwaypoints" />
+          <xsl:with-param name="srctwootherportid" select="$srconeotherportid" />
+          <xsl:with-param name="srctwootherblockx" select="$srconeotherblockx" />
+          <xsl:with-param name="srctwootherblocky" select="$srconeotherblocky" />
+          <xsl:with-param name="srctwosrcsecondlink" select="$srconesrcsecondlink" />
+          <xsl:with-param name="srctwotgtsecondlink" select="$srconetgtsecondlink" />
+
+          <xsl:with-param name="srcthreelink" select="$srctwolink" />
+          <xsl:with-param name="srcthreelinkwaypoints" select="$srctwolinkwaypoints" />
+          <xsl:with-param name="srcthreeotherportid" select="$srctwootherportid" />
+          <xsl:with-param name="srcthreeotherblockx" select="$srctwootherblockx" />
+          <xsl:with-param name="srcthreeotherblocky" select="$srctwootherblocky" />
+          <xsl:with-param name="srcthreesrcsecondlink" select="$srctwosrcsecondlink" />
+          <xsl:with-param name="srcthreetgtsecondlink" select="$srctwotgtsecondlink" />
+        </xsl:call-template>
+      </xsl:when>
+      <!-- }}} -->
+      <!-- srconelink, srctwolink {{{ -->
+      <xsl:when test="$srconelink/@id != '' and $srctwolink/@id != ''">
+        <xsl:call-template name="links">
+          <xsl:with-param name="x" select="$x" />
+          <xsl:with-param name="y" select="$y" />
+          <xsl:with-param name="parent" select="$parent" />
+
+          <xsl:with-param name="linktype" select="$linktype" />
+
+          <xsl:with-param name="tgtonelink" select="$srconelink" />
+          <xsl:with-param name="tgtonelinkwaypoints" select="$srconelinkwaypoints" />
+          <xsl:with-param name="tgtoneotherportid" select="$srconeotherportid" />
+          <xsl:with-param name="tgtoneotherblockx" select="$srconeotherblockx" />
+          <xsl:with-param name="tgtoneotherblocky" select="$srconeotherblocky" />
+          <xsl:with-param name="tgtonesrcsecondlink" select="$srconesrcsecondlink" />
+          <xsl:with-param name="tgtonetgtsecondlink" select="$srconetgtsecondlink" />
+
+          <xsl:with-param name="srconelink" select="$srctwolink" />
+          <xsl:with-param name="srconelinkwaypoints" select="$srctwolinkwaypoints" />
+          <xsl:with-param name="srconeotherportid" select="$srctwootherportid" />
+          <xsl:with-param name="srconeotherblockx" select="$srctwootherblockx" />
+          <xsl:with-param name="srconeotherblocky" select="$srctwootherblocky" />
+          <xsl:with-param name="srconesrcsecondlink" select="$srctwosrcsecondlink" />
+          <xsl:with-param name="srconetgtsecondlink" select="$srctwotgtsecondlink" />
+
+          <xsl:with-param name="srctwolink" select="$tgtonelink" />
+          <xsl:with-param name="srctwolinkwaypoints" select="$tgtonelinkwaypoints" />
+          <xsl:with-param name="srctwootherportid" select="$tgtoneotherportid" />
+          <xsl:with-param name="srctwootherblockx" select="$tgtoneotherblockx" />
+          <xsl:with-param name="srctwootherblocky" select="$tgtoneotherblocky" />
+          <xsl:with-param name="srctwosrcsecondlink" select="$tgtonesrcsecondlink" />
+          <xsl:with-param name="srctwotgtsecondlink" select="$tgtonetgtsecondlink" />
+
+          <xsl:with-param name="srcthreelink" select="$srcthreelink" />
+          <xsl:with-param name="srcthreelinkwaypoints" select="$srcthreelinkwaypoints" />
+          <xsl:with-param name="srcthreeotherportid" select="$srcthreeotherportid" />
+          <xsl:with-param name="srcthreeotherblockx" select="$srcthreeotherblockx" />
+          <xsl:with-param name="srcthreeotherblocky" select="$srcthreeotherblocky" />
+          <xsl:with-param name="srcthreesrcsecondlink" select="$srcthreesrcsecondlink" />
+          <xsl:with-param name="srcthreetgtsecondlink" select="$srcthreetgtsecondlink" />
+        </xsl:call-template>
+      </xsl:when>
+      <!-- }}} -->
+      <!-- srconelink, srcthreelink {{{ -->
+      <xsl:when test="$srconelink/@id != '' and $srcthreelink/@id != ''">
+        <xsl:call-template name="links">
+          <xsl:with-param name="x" select="$x" />
+          <xsl:with-param name="y" select="$y" />
+          <xsl:with-param name="parent" select="$parent" />
+
+          <xsl:with-param name="linktype" select="$linktype" />
+
+          <xsl:with-param name="tgtonelink" select="$srconelink" />
+          <xsl:with-param name="tgtonelinkwaypoints" select="$srconelinkwaypoints" />
+          <xsl:with-param name="tgtoneotherportid" select="$srconeotherportid" />
+          <xsl:with-param name="tgtoneotherblockx" select="$srconeotherblockx" />
+          <xsl:with-param name="tgtoneotherblocky" select="$srconeotherblocky" />
+          <xsl:with-param name="tgtonesrcsecondlink" select="$srconesrcsecondlink" />
+          <xsl:with-param name="tgtonetgtsecondlink" select="$srconetgtsecondlink" />
+
+          <xsl:with-param name="srconelink" select="$srcthreelink" />
+          <xsl:with-param name="srconelinkwaypoints" select="$srcthreelinkwaypoints" />
+          <xsl:with-param name="srconeotherportid" select="$srcthreeotherportid" />
+          <xsl:with-param name="srconeotherblockx" select="$srcthreeotherblockx" />
+          <xsl:with-param name="srconeotherblocky" select="$srcthreeotherblocky" />
+          <xsl:with-param name="srconesrcsecondlink" select="$srcthreesrcsecondlink" />
+          <xsl:with-param name="srconetgtsecondlink" select="$srcthreetgtsecondlink" />
+
+          <xsl:with-param name="srctwolink" select="$tgtonelink" />
+          <xsl:with-param name="srctwolinkwaypoints" select="$tgtonelinkwaypoints" />
+          <xsl:with-param name="srctwootherportid" select="$tgtoneotherportid" />
+          <xsl:with-param name="srctwootherblockx" select="$tgtoneotherblockx" />
+          <xsl:with-param name="srctwootherblocky" select="$tgtoneotherblocky" />
+          <xsl:with-param name="srctwosrcsecondlink" select="$tgtonesrcsecondlink" />
+          <xsl:with-param name="srctwotgtsecondlink" select="$tgtonetgtsecondlink" />
+
+          <xsl:with-param name="srcthreelink" select="$srctwolink" />
+          <xsl:with-param name="srcthreelinkwaypoints" select="$srctwolinkwaypoints" />
+          <xsl:with-param name="srcthreeotherportid" select="$srctwootherportid" />
+          <xsl:with-param name="srcthreeotherblockx" select="$srctwootherblockx" />
+          <xsl:with-param name="srcthreeotherblocky" select="$srctwootherblocky" />
+          <xsl:with-param name="srcthreesrcsecondlink" select="$srctwosrcsecondlink" />
+          <xsl:with-param name="srcthreetgtsecondlink" select="$srctwotgtsecondlink" />
+        </xsl:call-template>
+      </xsl:when>
+      <!-- }}} -->
+      <!-- srctwolink, srcthreelink {{{ -->
+      <xsl:when test="$srctwolink/@id != '' and $srcthreelink/@id != ''">
+        <xsl:call-template name="links">
+          <xsl:with-param name="x" select="$x" />
+          <xsl:with-param name="y" select="$y" />
+          <xsl:with-param name="parent" select="$parent" />
+
+          <xsl:with-param name="linktype" select="$linktype" />
+
+          <xsl:with-param name="tgtonelink" select="$srctwolink" />
+          <xsl:with-param name="tgtonelinkwaypoints" select="$srctwolinkwaypoints" />
+          <xsl:with-param name="tgtoneotherportid" select="$srctwootherportid" />
+          <xsl:with-param name="tgtoneotherblockx" select="$srctwootherblockx" />
+          <xsl:with-param name="tgtoneotherblocky" select="$srctwootherblocky" />
+          <xsl:with-param name="tgtonesrcsecondlink" select="$srctwosrcsecondlink" />
+          <xsl:with-param name="tgtonetgtsecondlink" select="$srctwotgtsecondlink" />
+
+          <xsl:with-param name="srconelink" select="$srcthreelink" />
+          <xsl:with-param name="srconelinkwaypoints" select="$srcthreelinkwaypoints" />
+          <xsl:with-param name="srconeotherportid" select="$srcthreeotherportid" />
+          <xsl:with-param name="srconeotherblockx" select="$srcthreeotherblockx" />
+          <xsl:with-param name="srconeotherblocky" select="$srcthreeotherblocky" />
+          <xsl:with-param name="srconesrcsecondlink" select="$srcthreesrcsecondlink" />
+          <xsl:with-param name="srconetgtsecondlink" select="$srcthreetgtsecondlink" />
+
+          <xsl:with-param name="srctwolink" select="$tgtonelink" />
+          <xsl:with-param name="srctwolinkwaypoints" select="$tgtonelinkwaypoints" />
+          <xsl:with-param name="srctwootherportid" select="$tgtoneotherportid" />
+          <xsl:with-param name="srctwootherblockx" select="$tgtoneotherblockx" />
+          <xsl:with-param name="srctwootherblocky" select="$tgtoneotherblocky" />
+          <xsl:with-param name="srctwosrcsecondlink" select="$tgtonesrcsecondlink" />
+          <xsl:with-param name="srctwotgtsecondlink" select="$tgtonetgtsecondlink" />
+
+          <xsl:with-param name="srcthreelink" select="$srconelink" />
+          <xsl:with-param name="srcthreelinkwaypoints" select="$srconelinkwaypoints" />
+          <xsl:with-param name="srcthreeotherportid" select="$srconeotherportid" />
+          <xsl:with-param name="srcthreeotherblockx" select="$srconeotherblockx" />
+          <xsl:with-param name="srcthreeotherblocky" select="$srconeotherblocky" />
+          <xsl:with-param name="srcthreesrcsecondlink" select="$srconesrcsecondlink" />
+          <xsl:with-param name="srcthreetgtsecondlink" select="$srconetgtsecondlink" />
+        </xsl:call-template>
+      </xsl:when>
+      <!-- }}} -->
+    </xsl:choose>
+    <!-- }}} -->
+
+  </xsl:template>
+  <!-- }}}1 -->
+
   <!-- SplitBlock template {{{1 -->
   <xsl:template match="/XcosDiagram/mxGraphModel/root/SplitBlock[position() = 1]">
     <xsl:variable name="InputPort" select="key('k-explicitinput', @id)" />
@@ -679,8 +988,8 @@
     <xsl:variable name="srcthreetgtsecondlink" select="key('k-linktgt', $srcthreelink/@id)" />
     <!-- }}} -->
 
-    <!-- call the template {{{ -->
-    <xsl:call-template name="links">
+    <!-- call the checklinks template {{{ -->
+    <xsl:call-template name="checklinks">
       <xsl:with-param name="x" select="$x" />
       <xsl:with-param name="y" select="$y" />
       <xsl:with-param name="parent" select="$parent" />
