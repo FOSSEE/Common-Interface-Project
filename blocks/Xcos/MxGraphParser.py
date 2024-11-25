@@ -422,7 +422,7 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoi
     for attribid2 in sourceVertex, targetVertex:
         try:
             linkSegments = newEdgeDict[attribid2]
-            print('linkSegments:', linkSegments)
+            print('linkSegments:', attribid2, attribid2 == sourceVertex, linkSegments)
         except KeyError:
             continue
 
@@ -449,7 +449,9 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoi
         else:
             split_style = 'SPLIT_f;flip=false;mirror=false'
             func_name = 'SPLIT_f'
+        print('BEFORE Splitblock:', outroot, nextattribid, componentOrdering, geometry, parentattribid, split_style, func_name)
         SplitBlock(outroot, nextattribid, componentOrdering, geometry, parent=parentattribid, style=split_style, func_name=func_name)
+        print('AFTER Splitblock:', outroot, nextattribid, componentOrdering, geometry, parentattribid, split_style, func_name)
         splitblockid = nextattribid
         nextattribid += 1
 
@@ -460,17 +462,20 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoi
         print('nextAttribForSplit1:', nextAttribForSplit)
         port2 = nextattribid
         (inputCount, outputCount, nextattribid, nextAttribForSplit) = addPort2ForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType, targetType, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, right_array)
-        print('nextAttribForSplit2:', nextAttribForSplit)
+        print('nextAttribForSplit2:', nextAttribForSplit, sourceVertex, targetVertex)
         port3 = nextattribid
         (inputCount, outputCount, nextattribid, nextAttribForSplit) = addPort3ForSplit(outroot, splitblockid, sourceVertex, targetVertex, sourceType, targetType, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, array3)
-        print('nextAttribForSplit3:', nextAttribForSplit)
+        print('nextAttribForSplit3:', nextAttribForSplit, sourceVertex2, targetVertex2)
         newEdgeDict[attribid2][i] = ((nextAttribForSplit, sourceVertex2, port1, sourceType2, targetType, style2, left_array, addSplit2, split_point, split_point2))
         nextAttribForSplit += 1
         newEdgeDict[attribid2].insert(i + 1, (nextAttribForSplit, port2, targetVertex2, sourceType, targetType2, style2, right_array, addSplit2, split_point, split_point2))
         nextAttribForSplit += 1
         for (__, __, __, __, __, __, tmp_array, __, tmp_split_point, tmp_split_point2) in newEdgeDict[attribid2]:
             print('NEWEDGE2:', attribid2, tmp_array, tmp_split_point, tmp_split_point2)
-        newEdgeDict[attribid] = [(nextAttribForSplit, port3, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point, split_point2)]
+        if attribid2 == sourceVertex:
+            newEdgeDict[attribid] = [(nextAttribForSplit, port3, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point, split_point2)]
+        else:
+            newEdgeDict[attribid] = [(nextAttribForSplit, port3, sourceVertex, sourceType, targetType, style, waypoints, addSplit, split_point, split_point2)]
         nextAttribForSplit += 1
         for (__, __, __, __, __, __, tmp_array, __, tmp_split_point, tmp_split_point2) in newEdgeDict[attribid]:
             print('NEWEDGE3:', attribid, tmp_array, tmp_split_point, tmp_split_point2)

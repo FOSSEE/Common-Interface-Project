@@ -227,6 +227,31 @@
       </mxGeometry>
     </xsl:element>
     </xsl:if>
+
+
+    <xsl:element name="DEBUG">
+      <xsl:attribute name="tgtonelink">
+          <xsl:value-of select="$tgtonelink/@id" />
+        </xsl:attribute>
+        <xsl:attribute name="srconelink">
+          <xsl:value-of select="$srconelink/@id" />
+        </xsl:attribute>
+        <xsl:attribute name="srctwolink">
+          <xsl:value-of select="$srctwolink/@id" />
+        </xsl:attribute>
+        <xsl:attribute name="newidone">
+          <xsl:value-of select="$newidone" />
+        </xsl:attribute>
+        <xsl:attribute name="newidtwo">
+          <xsl:value-of select="$newidtwo" />
+        </xsl:attribute>
+        <xsl:attribute name="newidthree">
+          <xsl:value-of select="$newidthree" />
+        </xsl:attribute>
+        <xsl:attribute name="newidfour">
+          <xsl:value-of select="$newidfour" />
+        </xsl:attribute>
+    </xsl:element>
     <!-- }}} -->
 
     <!-- change source or target of secondary link: foreach loop, link copy, source change {{{ -->
