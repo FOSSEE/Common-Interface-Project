@@ -411,6 +411,7 @@ for key, value in edgeDict.items():
 print()
 
 newEdgeDict = {}
+LINKTOPORT = {}
 for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point, split_point2) in edgeList:
     link_data = (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point, split_point2)
     print('NEWEDGE:', attribid, waypoints, split_point, addSplit)
@@ -465,6 +466,8 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoi
         print('nextAttribForSplit2:', nextAttribForSplit, sourceVertex, targetVertex)
         port3 = nextattribid
         (inputCount, outputCount, nextattribid, nextAttribForSplit) = addPort3ForSplit(outroot, splitblockid, sourceVertex, targetVertex, sourceType, targetType, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, array3)
+        print('linkid', linkid, port3)
+        
         print('nextAttribForSplit3:', nextAttribForSplit, sourceVertex2, targetVertex2)
         newEdgeDict[attribid2][i] = ((nextAttribForSplit, sourceVertex2, port1, sourceType2, targetType, style2, left_array, addSplit2, split_point, split_point2))
         nextAttribForSplit += 1
@@ -479,11 +482,22 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoi
         nextAttribForSplit += 1
         for (__, __, __, __, __, __, tmp_array, __, tmp_split_point, tmp_split_point2) in newEdgeDict[attribid]:
             print('NEWEDGE3:', attribid, tmp_array, tmp_split_point, tmp_split_point2)
-
+        LINKTOPORT[linkid] = port3
+        
 print()
 for key, newEdges in newEdgeDict.items():
     print(f'{key}: {newEdges}')
     for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point, split_point2) in newEdges:
+        try:
+            sourceVertex = LINKTOPORT[sourceVertex]
+        except KeyError:
+            pass
+
+        try:
+            targetVertex = LINKTOPORT[targetVertex]
+        except KeyError:
+            pass
+        
         if get_int(attribid) >= 10000:
             attribid = nextattribid
             nextattribid += 1
