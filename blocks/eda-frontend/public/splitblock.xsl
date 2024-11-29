@@ -229,7 +229,7 @@
     </xsl:if>
 
 
-    <xsl:element name="DEBUG">
+    <!-- <xsl:element name="DEBUG">
       <xsl:attribute name="tgtonelink">
           <xsl:value-of select="$tgtonelink/@id" />
         </xsl:attribute>
@@ -251,7 +251,7 @@
         <xsl:attribute name="newidfour">
           <xsl:value-of select="$newidfour" />
         </xsl:attribute>
-    </xsl:element>
+    </xsl:element> -->
     <!-- }}} -->
 
     <!-- change source or target of secondary link: foreach loop, link copy, source change {{{ -->

@@ -80,6 +80,15 @@ def check_point_on_array(array, point, left_right_direction=True):
             print('on the up / down')
             return True, array[:i + 1] + [point], [point] + array[i + 1:]
 
+        # if left_right_direction:
+        if -20 <= rightX - pointX <= 20:
+            print('to the right / right')
+            return True, array[:i + 1] + [point], [point] + array[i + 1:]
+        # else:
+        if -20 <= rightY - pointY <= 20:
+            print('on the up / down')
+            return True, array[:i + 1] + [point], [point] + array[i + 1:]
+
         # switch direction for the next waypoint
         left_right_direction = not left_right_direction
     return False, array, []
@@ -94,7 +103,7 @@ def get_int(s):
 
 def identify_segment(array, point):
     for i, segment in enumerate(array):
-        print('COUNT:', len(segment))
+        print('COUNT:', segment[6])
         result, left_array, right_array = check_point_on_array(segment[6], point)
         if result:
             print("OK")
@@ -320,24 +329,29 @@ for root in model:
                     try:
                         sourceType = IDLIST[sourceVertex]
                         targetType = IDLIST[targetVertex]
+                        print('ST,TT', sourceType, targetType)
                     except KeyError:
                         remainingcells.append(cell)
                         continue
 
                     # switch vertices if required
+                    switch_split = False
                     if sourceType in ['ExplicitInputPort', 'ImplicitInputPort', 'ControlPort'] and \
                             targetType in ['ExplicitOutputPort', 'ExplicitLink', 'ImplicitOutputPort', 'ImplicitLink', 'CommandPort', 'CommandControlLink']:
                         (sourceVertex, targetVertex) = (targetVertex, sourceVertex)
                         (sourceType, targetType) = (targetType, sourceType)
                         waypoints.reverse()
+                        switch_split = True
                     elif sourceType in ['ExplicitInputPort', 'ExplicitLink', 'ImplicitInputPort', 'ImplicitLink', 'ControlPort', 'CommandControlLink'] and \
                             targetType in ['ExplicitOutputPort', 'ImplicitOutputPort', 'CommandPort']:
                         (sourceVertex, targetVertex) = (targetVertex, sourceVertex)
                         (sourceType, targetType) = (targetType, sourceType)
                         waypoints.reverse()
+                        switch_split = True
 
                     style = None
                     addSplit = False
+                    
                     if sourceType in ['ExplicitInputPort', 'ExplicitOutputPort', 'CommandPort', 'ControlPort'] and \
                             targetType == sourceType:
                         print(attribid, 'cannot connect two ports of', sourceType, 'and', targetType)
@@ -376,8 +390,13 @@ for root in model:
 
                     if 'tarx' in attrib and 'tary' in attrib and (attrib['tarx'] != '0' or attrib['tary'] != '0'):
                         point = {'x': attrib['tarx'], 'y': attrib['tary']}
-                        split_point = point
-                        waypoints.insert(0, point)
+                        if switch_split:
+                            split_point2 = point
+                            waypoints.append(point)
+                        else:
+                            split_point = point
+                            print('SPPPx:', attribid, split_point)
+                            waypoints.insert(0, point)
                     elif sourceVertex in blkgeometry:
                         vertex = blkgeometry[sourceVertex]
                         point = {'x': vertex['x'], 'y': vertex['y']}
@@ -385,8 +404,13 @@ for root in model:
 
                     if 'tar2x' in attrib and 'tar2y' in attrib and (attrib['tar2x'] != '0' or attrib['tar2y'] != '0'):
                         point = {'x': attrib['tar2x'], 'y': attrib['tar2y']}
-                        split_point2 = point
-                        waypoints.append(point)
+                        if switch_split:
+                            split_point = point
+                            waypoints.insert(0, point)
+                        else:
+                            split_point2 = point
+                            print('SPPP2x:', attribid, split_point2)
+                            waypoints.append(point)
                     elif targetVertex in blkgeometry:
                         vertex = blkgeometry[targetVertex]
                         point = {'x': vertex['x'], 'y': vertex['y']}
@@ -394,6 +418,7 @@ for root in model:
 
                     IDLIST[attribid] = style
                     link_data = (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point, split_point2)
+                    print('SPPP1:', attribid, waypoints, split_point, split_point2)
                     edgeDict[attribid] = link_data
                     edgeList.append(link_data)
             except BaseException:
@@ -414,7 +439,7 @@ newEdgeDict = {}
 LINKTOPORT = {}
 for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point, split_point2) in edgeList:
     link_data = (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point, split_point2)
-    print('NEWEDGE:', attribid, waypoints, split_point, addSplit)
+    print('NEWEDGE:', attribid, waypoints, split_point, split_point2, addSplit)
 
     if not addSplit:
         newEdgeDict[attribid] = [link_data]
@@ -423,18 +448,26 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoi
     for attribid2 in sourceVertex, targetVertex:
         try:
             linkSegments = newEdgeDict[attribid2]
-            print('linkSegments:', attribid2, attribid2 == sourceVertex, linkSegments)
+            print('linkSegments:', attribid2, sourceVertex, attribid2 == sourceVertex, targetVertex)
+            for link in linkSegments:
+                print('LINKS:', link)
         except KeyError:
             continue
 
         print('split_point:', split_point, linkSegments)
-        result, i, left_array, right_array = identify_segment(linkSegments, split_point)
+        if attribid2 == sourceVertex:
+            splitpoint = split_point
+            print('S_P:', splitpoint)
+        else:
+            splitpoint = split_point2
+            print('S_P2:', splitpoint)
+        result, i, left_array, right_array = identify_segment(linkSegments, splitpoint)
         print('LR:', left_array, right_array)
-        print('waypoints:', waypoints)
+        print('waypoints:', split_point, waypoints)
         if not result:
             sys.exit(0)
-        (linkid, sourceVertex2, targetVertex2, sourceType2, targetType2, style2, waypoints2, addSplit2, split_point, split_point2) = linkSegments[i]
-        print('SP2:', split_point2)
+        (linkid, sourceVertex2, targetVertex2, sourceType2, targetType2, style2, waypoints2, addSplit2, split_point_new, split_point2_new) = linkSegments[i]
+        print('SP2:', split_point, split_point2)
         array3 = waypoints
         print('ARRAY3:', array3)
 
@@ -442,8 +475,9 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoi
         geometry = {}
         geometry['height'] = 7
         geometry['width'] = 7
-        geometry['x'] = split_point['x']
-        geometry['y'] = split_point['y']
+        geometry['x'] = splitpoint['x']
+        geometry['y'] = splitpoint['y']
+        print('geo:', attribid2, splitpoint['x'], splitpoint['y'])
         if sourceType2 == 'ControlPort' or sourceType2 == 'CommandPort' or sourceType2 == 'CommandControlLink':
             split_style = 'CLKSPLIT_f'
             func_name = 'CLKSPLIT_f'
