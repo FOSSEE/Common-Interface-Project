@@ -510,6 +510,7 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoi
         for (__, __, __, __, __, __, tmp_array, __, tmp_split_point, tmp_split_point2) in newEdgeDict[attribid2]:
             print('NEWEDGE2:', attribid2, tmp_array, tmp_split_point, tmp_split_point2)
         if attribid2 == sourceVertex:
+            waypoints.reverse()
             newEdgeDict[attribid] = [(nextAttribForSplit, port3, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point, split_point2)]
         else:
             newEdgeDict[attribid] = [(nextAttribForSplit, port3, sourceVertex, sourceType, targetType, style, waypoints, addSplit, split_point, split_point2)]
