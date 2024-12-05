@@ -139,8 +139,11 @@ for root in model:
                     print('setting link', attribid)
                     if sourceVertex in key1:
                         key = key1[sourceVertex]
-                        key1[sourceVertex] = attribid
-                        print('replacing', sourceVertex, key, attribid)
+                        for v in graph_port[key]:
+                            key1[v] = attribid
+                        for v in graph_link[key]:
+                            key1[v] = attribid
+                        print('replacing', sourceVertex, key, attribid, graph_port[key], graph_link[key])
                         graph_port[attribid].extend(graph_port[key]) #merge
                         graph_link[attribid].extend(graph_link[key])
                         del graph_port[key]
@@ -150,8 +153,11 @@ for root in model:
 
                     if targetVertex in key1:
                         key = key1[targetVertex]
-                        key1[targetVertex] = attribid
-                        print('replacing', sourceVertex, key, attribid)
+                        for v in graph_port[key]:
+                            key1[v] = attribid
+                        for v in graph_link[key]:
+                            key1[v] = attribid
+                        print('replacing', targetVertex, key, attribid)
                         graph_port[attribid].extend(graph_port[key]) #merge
                         graph_link[attribid].extend(graph_link[key])
                         del graph_port[key]
