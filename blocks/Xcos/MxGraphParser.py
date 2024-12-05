@@ -462,7 +462,7 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoi
             splitpoint = split_point2
             print('S_P2:', splitpoint)
         result, i, left_array, right_array = identify_segment(linkSegments, splitpoint)
-        print('LR:', left_array, right_array)
+        print('LR:', i, left_array, right_array)
         print('waypoints:', split_point, waypoints)
         if not result:
             sys.exit(0)
@@ -500,26 +500,29 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoi
         print('nextAttribForSplit2:', nextAttribForSplit, sourceVertex, targetVertex)
         port3 = nextattribid
         (inputCount, outputCount, nextattribid, nextAttribForSplit) = addPort3ForSplit(outroot, splitblockid, sourceVertex, targetVertex, sourceType, targetType, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, array3)
-        print('linkid', linkid, port3)
-        
-        print('nextAttribForSplit3:', nextAttribForSplit, sourceVertex2, targetVertex2)
+        # print('linkid', linkid, port3) 
+        print('nextAttribForSplit3:', nextAttribForSplit, sourceVertex2, targetVertex2, splitblockid)
+
         newEdgeDict[attribid2][i] = ((nextAttribForSplit, sourceVertex2, port1, sourceType2, targetType, style2, left_array, addSplit2, split_point, split_point2))
         nextAttribForSplit += 1
         newEdgeDict[attribid2].insert(i + 1, (nextAttribForSplit, port2, targetVertex2, sourceType, targetType2, style2, right_array, addSplit2, split_point, split_point2))
         nextAttribForSplit += 1
-        for (__, __, __, __, __, __, tmp_array, __, tmp_split_point, tmp_split_point2) in newEdgeDict[attribid2]:
-            print('NEWEDGE2:', attribid2, tmp_array, tmp_split_point, tmp_split_point2)
+        # for (__, __, __, __, __, __, tmp_array, __, tmp_split_point, tmp_split_point2) in newEdgeDict[attribid2]:
+        #     print('NEWEDGE2:', attribid2, tmp_array, tmp_split_point, tmp_split_point2)
         if attribid2 == sourceVertex:
             waypoints.reverse()
             newEdgeDict[attribid] = [(nextAttribForSplit, port3, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point, split_point2)]
         else:
             newEdgeDict[attribid] = [(nextAttribForSplit, port3, sourceVertex, sourceType, targetType, style, waypoints, addSplit, split_point, split_point2)]
         nextAttribForSplit += 1
-        for (__, __, __, __, __, __, tmp_array, __, tmp_split_point, tmp_split_point2) in newEdgeDict[attribid]:
-            print('NEWEDGE3:', attribid, tmp_array, tmp_split_point, tmp_split_point2)
+        # for (__, __, __, __, __, __, tmp_array, __, tmp_split_point, tmp_split_point2) in newEdgeDict[attribid]:
+        #     print('NEWEDGE3:', attribid, tmp_array, tmp_split_point, tmp_split_point2)
         LINKTOPORT[linkid] = port3
+        print('LINKTOPORT', linkid, port3)
+
         
 print()
+
 for key, newEdges in newEdgeDict.items():
     print(f'{key}: {newEdges}')
     for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point, split_point2) in newEdges:
