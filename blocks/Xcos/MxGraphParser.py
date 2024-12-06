@@ -125,7 +125,7 @@ def addPort1ForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, source
         else:
             return addImplicitOutputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, left_array)
     elif sourceType == 'CommandControlLink':
-        if sourceType2 == 'CommandPort':
+        if sourceType2 == 'CommandPort' or sourceType2 == 'CommandControlLink':
             return addControlPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, left_array)
         else:
             print('Error: (sourceType, targetType, sourceType2, targetType2) =',
@@ -149,7 +149,7 @@ def addPort2ForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, source
         else:
             return addImplicitOutputPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, right_array)
     elif sourceType == 'CommandControlLink':
-        if targetType2 == 'ControlPort':
+        if targetType2 == 'ControlPort' or targetType2 == 'CommandControlLink':
             return addCommandPortForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, right_array)
         else:
             print('Error: (sourceType, targetType, sourceType2, targetType2) =',

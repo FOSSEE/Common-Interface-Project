@@ -7,6 +7,7 @@ import sys
 import traceback
 import xml.etree.ElementTree as ET
 import defusedxml.ElementTree as goodET
+import uuid
 
 from xcosblocks import SplitBlock
 from xcosblocks import addExplicitInputPortForSplit, addExplicitOutputPortForSplit
@@ -47,6 +48,73 @@ def get_int(s):
     except ValueError:
         return -1
 
+def generate_unique_id():
+    return f"{uuid.uuid4().hex[:8]}:{uuid.uuid4().hex[:8]}:{uuid.uuid4().hex[:8]}"
+
+def portType1(sType, sType2, tType2):
+    #port1
+    if sType == 'ExplicitLink':
+        if sType2 == 'ExplicitOutputPort' or sType2 == 'ExplicitLink':
+            return 'explicitInputPort'
+        else:
+            print('Error: (sourceType, sourceType2, targetType2) =',
+                '(', sType, ',', sType2, ',', tType2, ')')
+    elif sType == 'ImplicitLink':
+        if sType2 == 'ImplicitOutputPort' or tType2 == 'ImplicitOutputPort':
+            return 'implicitInputPort'
+        else:
+            return 'implicitOutputPort'
+    elif sType == 'CommandControlLink':
+        if sType2 == 'CommandPort' or sType2 == 'CommandControlLink':
+            return 'controlPort'
+        else:
+            print('Error: (sourceType, sourceType2, targetType2) =',
+                '(', sType, ',', sType2, ',', tType2, ')')
+    else:
+        print('Error: (sourceType, sourceType2, targetType2) =',
+                '(', sType, ',', sType2, ',', tType2, ')')
+
+def portType2(sType, sType2, tType2):
+    #port2
+    if sType == 'ExplicitLink':
+        if tType2 == 'ExplicitInputPort' or tType2 == 'ExplicitLink':
+            return 'explicitOutputPort'
+        else:
+            print('Error: (sourceType, sourceType2, targetType2) =',
+                '(', sType, ',', sType2, ',', tType2, ')')
+    elif sType == 'ImplicitLink':
+        if sType2 == 'ImplicitOutputPort' or tType2 == 'ImplicitOutputPort':
+            return 'implicitInputPort'
+        else:
+            return 'implicitOutputPort'
+    elif sType == 'CommandControlLink':
+        if tType2 == 'ControlPort' or tType2 == 'CommandControlLink':
+            return 'commandPort'
+        else:
+            print('Error: (sourceType, sourceType2, targetType2) =',
+                '(', sType, ',', sType2, ',', tType2, ')')
+
+def portType3(sType, tType):
+    #port3
+    if sType == 'ExplicitLink':
+        if tType == 'ExplicitInputPort':
+            return 'explicitOutputPort'
+        else:
+            print('Error: (sourceType, targetType) =',
+                '(', sType, ',', tType, ')')
+    elif sType == 'ImplicitLink':
+        if tType == 'ImplicitOutputPort':
+            return 'implicitInputPort'
+        else:
+            return 'implicitOutputPort'
+    elif sType == 'CommandControlLink':
+        if tType == 'ControlPort':
+            return 'commandPort'
+        else:
+            print('Error: (sourceType, targetType) =',
+                '(', sType, ',', tType, ')')
+
+
 def extract_points(node):
     geometry = node.find(".//mxGeometry")
     if geometry is not None:
@@ -55,9 +123,56 @@ def extract_points(node):
             for point in array.findall("mxPoint"):
                 x = point.get("x")
                 y = point.get("y")
-                points.append(x)
-                points.append(y)
-                print(f"mxPoint in removable node: x={x}, y={y}")
+                p = {'x': x, 'y': y}
+                points.append(p)
+
+def create_mxCell(
+    style, id, vertex="1", connectable="0", CellType="Component", blockprefix="XCOS",
+    explicitInputPorts="0", implicitInputPorts="0", explicitOutputPorts="0", implicitOutputPorts="0",
+    controlPorts="0", commandPorts="0", simulationFunction="split", sourceVertex="0", targetVertex="0",
+    tarx="0", tary="0", geometry=None):
+
+    mxCell = ET.Element("mxCell", {
+        "style": style,
+        "id": id,
+        "vertex": vertex,
+        "connectable": connectable,
+        "CellType": CellType,
+        "blockprefix": blockprefix,
+        "explicitInputPorts": explicitInputPorts,
+        "implicitInputPorts": implicitInputPorts,
+        "explicitOutputPorts": explicitOutputPorts,
+        "implicitOutputPorts": implicitOutputPorts,
+        "controlPorts": controlPorts,
+        "commandPorts": commandPorts,
+        "simulationFunction": simulationFunction,
+        "sourceVertex": sourceVertex,
+        "targetVertex": targetVertex,
+        "tarx": tarx,
+        "tary": tary,
+    })
+
+    if geometry:
+        x, y, width, height = geometry
+        ET.SubElement(mxCell, "mxGeometry", {
+            "x": str(x),
+            "y": str(y),
+            "width": str(width),
+            "height": str(height),
+            "as": "geometry"
+        })
+    
+    ET.SubElement(mxCell, "Object", {
+            "display_parameter=": str(),
+            "as": "displayProperties"
+        })
+    
+    ET.SubElement(mxCell, "Object", {
+            "as": "parameter_values"
+        })
+
+    return ET.tostring(mxCell, encoding="unicode")
+
 
 for root in model:
     if root.tag != 'root':
@@ -88,6 +203,7 @@ for root in model:
     removable_link = {}
     removablesort = {}
     points = []
+    split_point = None
     print('cellslength=', cellslength)
     while cellslength > 0 and cellslength != oldcellslength:
         for i, cell in enumerate(cells):
@@ -235,6 +351,7 @@ for root in model:
         remainingcells = []
         print('cellslength=', cellslength, ', oldcellslength=', oldcellslength)
 for k, port in graph_port.items():
+    port = graph_port[k]
     if len(port) > 2:
         print(f"GRAPH port: k: {k}, port: {port}")
     link = graph_link[k]
@@ -249,16 +366,57 @@ for k, port in graph_port.items():
         targetVertex = node.attrib.get('targetVertex')
         if sourceVertex in link:
             node2 = nodeList[sourceVertex]
-            root.remove(node2)
+            otherVertex = targetVertex
+            thisVertex = sourceVertex         
+
         elif targetVertex in link:
             node2 = nodeList[targetVertex]
-            root.remove(node2)
+            otherVertex = sourceVertex
+            thisVertex = targetVertex
 
+        sourceVertex2 = node2.attrib.get('sourceVertex')
+        targetVertex2 = node2.attrib.get('targetVertex') #big link 
+
+        root.remove(node2)
+        sType = IDLIST[thisVertex]
+        tType = IDLIST[otherVertex]
+        sType2 = IDLIST[sourceVertex2]
+        tType2 = IDLIST[targetVertex2]
+        print("IDLIST:", IDLIST[r_link[0]], r_link[0], IDLIST[port[0]])
+        print(sType, tType, sType2, tType2)
+        height = 7
+        width = 7
+        x = node.attrib.get('tarx')
+        y = node.attrib.get('tary')
+        split_point = {'x': x, 'y': y}
         extract_points(node)
         extract_points(node2)
-        print("POINTS:", points)
-        # SplitBlock(outroot, nextattribid, componentOrdering, geometry, parent=parentattribid, style=split_style, func_name=func_name)
+        points.append(split_point)
+        print("POINTS:", points, split_point)
+        
+        port1 = portType1(sType, sType2, tType2)
+        port2 = portType2(sType, sType2, tType2)
+        port3 = portType3(sType, tType)
+        print("PORT:", port1, port2, port3)
+        #add splitblock
+        geometry = (height, width, x, y)
+        id = generate_unique_id()
+        xml_output = create_mxCell(
+            style="SplitBlock",
+            id=id,
+            explicitInputPorts="0",
+            implicitInputPorts="1",
+            explicitOutputPorts="0",
+            implicitOutputPorts="1",
+            controlPorts="0",
+            commandPorts="0",
+            simulationFunction="split",
+            tarx="0",
+            tary="0",
+            geometry=geometry
+        )
 
+        print(xml_output)
 #key structure
 
 
