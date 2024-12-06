@@ -47,6 +47,18 @@ def get_int(s):
     except ValueError:
         return -1
 
+def extract_points(node):
+    geometry = node.find(".//mxGeometry")
+    if geometry is not None:
+        array = geometry.find(".//Array[@as='points']")
+        if array is not None:
+            for point in array.findall("mxPoint"):
+                x = point.get("x")
+                y = point.get("y")
+                points.append(x)
+                points.append(y)
+                print(f"mxPoint in removable node: x={x}, y={y}")
+
 for root in model:
     if root.tag != 'root':
         print('Not root')
@@ -55,6 +67,7 @@ for root in model:
 
     portCount = {}
     IDLIST = {}
+    nodeList = {}
     componentOrdering = 0
     nextattribid = 1
     nextAttribForSplit = 10000
@@ -72,6 +85,9 @@ for root in model:
     key1 = {}
     graph_port = {}
     graph_link = {}
+    removable_link = {}
+    removablesort = {}
+    points = []
     print('cellslength=', cellslength)
     while cellslength > 0 and cellslength != oldcellslength:
         for i, cell in enumerate(cells):
@@ -107,17 +123,20 @@ for root in model:
                     style = attrib['style']
                     stylename = style_to_object(style)['default']
                     IDLIST[attribid] = cell_type
+                    nodeList[attribid] = cell
 
                 elif 'vertex' in attrib:
 
                     style = attrib['style']
                     stylename = style_to_object(style)['default']
                     IDLIST[attribid] = stylename
-                    print(attribid, stylename)
+                    nodeList[attribid] = cell
+                    # print(attribid, stylename)
                     key1[attribid] = attribid
                     graph_port[attribid] = [attribid]
                     graph_link[attribid] = []
-                    print('setting port', attribid)
+                    removable_link[attribid] = []
+                    # print('setting port', attribid)
 
                 elif 'edge' in attrib:
 
@@ -127,63 +146,10 @@ for root in model:
                     try:
                         sourceType = IDLIST[sourceVertex]
                         targetType = IDLIST[targetVertex]
-                        print('ST,TT', sourceType, targetType)
+                        # print('ST,TT', sourceType, targetType)
                     except KeyError:
                         remainingcells.append(cell)
                         continue
-
-                    #key structure
-                    key1[attribid] = attribid
-                    graph_port[attribid] = []
-                    graph_link[attribid] = [attribid]
-                    print('setting link', attribid)
-                    if sourceVertex in key1:
-                        key = key1[sourceVertex]
-                        for v in graph_port[key]:
-                            key1[v] = attribid
-                        for v in graph_link[key]:
-                            key1[v] = attribid
-                        print('replacing', sourceVertex, key, attribid, graph_port[key], graph_link[key])
-                        graph_port[attribid].extend(graph_port[key]) #merge
-                        graph_link[attribid].extend(graph_link[key])
-                        del graph_port[key]
-                        del graph_link[key]
-                        print('extending', attribid)
-                        print('removing', key)
-
-                    if targetVertex in key1:
-                        key = key1[targetVertex]
-                        for v in graph_port[key]:
-                            key1[v] = attribid
-                        for v in graph_link[key]:
-                            key1[v] = attribid
-                        print('replacing', targetVertex, key, attribid)
-                        graph_port[attribid].extend(graph_port[key]) #merge
-                        graph_link[attribid].extend(graph_link[key])
-                        del graph_port[key]
-                        del graph_link[key]
-                        print('extending', attribid)
-                        print('removing', key)
-
-                    print('key1', len(key1))
-                    key1values = set(key1.values())
-                    print('unique keys', len(key1values))
-                    graph_port_keys = set(graph_port.keys())
-                    print('graph_port', len(graph_port_keys))
-                    port1_diff = key1values - graph_port_keys
-                    if len(port1_diff) > 0:
-                        print('dp1:', port1_diff)
-                    port1_diff2 = graph_port_keys - key1values
-                    if len(port1_diff2) > 0:
-                        print('dp2:', port1_diff2)
-                    graph_link_keys = set(graph_link.keys())
-                    print('graph_link', len(graph_link_keys))
-                    link1_diff = key1values - graph_link_keys
-                    if len(link1_diff) > 0:
-                        print('dl1:', link1_diff)
-                    link1_diff2 = graph_link_keys - key1values
-                    if len(link1_diff2) > 0:
-                        print('dl2:', link1_diff2)
 
                     style = None
                     addSplit = False
@@ -217,23 +183,81 @@ for root in model:
                         addSplit = True
                     else:
                         print(attribid, 'Unknown combination of', sourceType, 'and', targetType)
+                    #key structure
+                    key1[attribid] = attribid
+                    graph_port[attribid] = []
+                    graph_link[attribid] = [attribid]
+                    removable_link[attribid] = [attribid] if addSplit else []
+                    removablesort[attribid] = []
+
+                    if sourceVertex in key1:
+                        key = key1[sourceVertex]
+                        for v in graph_port[key]:
+                            key1[v] = attribid
+                        for v in graph_link[key]:
+                            key1[v] = attribid
+
+                        graph_port[attribid].extend(graph_port[key]) #merge
+                        graph_link[attribid].extend(graph_link[key])
+                        removable_link[attribid].extend(removable_link[key])  
+                        
+                        del graph_port[key]
+                        del graph_link[key]
+                        del removable_link[key]
+                    
+
+                    if targetVertex in key1:
+                        key = key1[targetVertex]
+                        for v in graph_port[key]:
+                            key1[v] = attribid
+                        for v in graph_link[key]:
+                            key1[v] = attribid
+                        # print('replacing', targetVertex, key, attribid)
+                        graph_port[attribid].extend(graph_port[key]) #merge
+                        graph_link[attribid].extend(graph_link[key])
+                        removable_link[attribid].extend(removable_link[key])
+
+                        del graph_port[key]
+                        del graph_link[key]
+                        del removable_link[key]
+    
 
                     IDLIST[attribid] = style
+                    nodeList[attribid] = cell
+
             except BaseException:
                 traceback.print_exc()
                 sys.exit(0)
+
         oldcellslength = cellslength
         cells = remainingcells
         cellslength = len(remainingcells)
         remainingcells = []
         print('cellslength=', cellslength, ', oldcellslength=', oldcellslength)
 for k, port in graph_port.items():
-    if len(port) > 0:
+    if len(port) > 2:
         print(f"GRAPH port: k: {k}, port: {port}")
     link = graph_link[k]
-    if len(link) > 0:
+    if len(link) > 1:
         print(f"GRAPH link: k: {k}, link: {link}")
+    r_link = removable_link[k]
+    if len(r_link) > 0:
+        node = nodeList[r_link[0]]
+        root.remove(node)
+        print(f"removable link: k: {k}, link: {r_link}")
+        sourceVertex = node.attrib.get('sourceVertex')
+        targetVertex = node.attrib.get('targetVertex')
+        if sourceVertex in link:
+            node2 = nodeList[sourceVertex]
+            root.remove(node2)
+        elif targetVertex in link:
+            node2 = nodeList[targetVertex]
+            root.remove(node2)
 
+        extract_points(node)
+        extract_points(node2)
+        print("POINTS:", points)
+        # SplitBlock(outroot, nextattribid, componentOrdering, geometry, parent=parentattribid, style=split_style, func_name=func_name)
 
 #key structure
 
