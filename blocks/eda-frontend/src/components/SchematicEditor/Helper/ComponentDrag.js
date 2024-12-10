@@ -7,6 +7,7 @@ import dot from '../../../static/dot.gif'
 import blockstyle from '../../../static/style.json'
 import { getCompProperties, closeCompProperties } from '../../../redux/actions/index'
 
+import { styleToObject } from '../../../utils/GalleryUtils'
 import toolbarTools from './ToolbarTools'
 import keyboardShortcuts from './KeyboardShortcuts'
 import { sideBar } from './SideBar'
@@ -40,37 +41,6 @@ const {
 
 function configureStylesheet (graph) {
   graph.stylesheet.styles = blockstyle
-}
-
-export function styleToObject (style) {
-  // To add semicolon at the end if it isn't already present.
-  if (style[style.length - 1] !== ';') {
-    style = style + ';'
-  }
-  const styleObject = {
-  }
-
-  let remainingStyle = style
-  while (remainingStyle.length > 0) {
-    const indexOfKeyValue = remainingStyle.indexOf(';')
-
-    const indexOfKey = remainingStyle.indexOf('=')
-    if (indexOfKey > 0 && indexOfKey < indexOfKeyValue) {
-      const key = remainingStyle.substring(0, indexOfKey)
-      const value = remainingStyle.substring(indexOfKey + 1, indexOfKeyValue)
-      styleObject[key] = value
-    } else {
-      const key = 'default'
-      const value = remainingStyle.substring(0, indexOfKeyValue)
-      if (value !== '' && !(key in styleObject)) {
-        styleObject[key] = value
-      }
-    }
-
-    remainingStyle = remainingStyle.substring(indexOfKeyValue + 1)
-  }
-
-  return styleObject
 }
 
 export const ExplicitPort = 0

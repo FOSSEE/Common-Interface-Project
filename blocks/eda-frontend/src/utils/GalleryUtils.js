@@ -142,3 +142,34 @@ export const getDate = (jsonDate) => {
   const [{ value: month }, , { value: day }, , { value: year }] = dateTimeFormat.formatToParts(date)
   return `${day}-${month}-${year}`
 }
+
+export function styleToObject (style) {
+  // To add semicolon at the end if it isn't already present.
+  if (style[style.length - 1] !== ';') {
+    style = style + ';'
+  }
+  const styleObject = {
+  }
+
+  let remainingStyle = style
+  while (remainingStyle.length > 0) {
+    const indexOfKeyValue = remainingStyle.indexOf(';')
+
+    const indexOfKey = remainingStyle.indexOf('=')
+    if (indexOfKey > 0 && indexOfKey < indexOfKeyValue) {
+      const key = remainingStyle.substring(0, indexOfKey)
+      const value = remainingStyle.substring(indexOfKey + 1, indexOfKeyValue)
+      styleObject[key] = value
+    } else {
+      const key = 'default'
+      const value = remainingStyle.substring(0, indexOfKeyValue)
+      if (value !== '' && !(key in styleObject)) {
+        styleObject[key] = value
+      }
+    }
+
+    remainingStyle = remainingStyle.substring(indexOfKeyValue + 1)
+  }
+
+  return styleObject
+}

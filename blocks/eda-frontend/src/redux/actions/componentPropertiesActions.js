@@ -1,12 +1,13 @@
 import api from '../../utils/Api'
+import { styleToObject } from '../../utils/GalleryUtils'
 import * as actions from './actions'
 
 // Actions for setting isLoading
-const loadingGetCompProperties = (block, isLoading) => (dispatch) => {
+const loadingGetCompProperties = (style, isLoading) => (dispatch) => {
   dispatch({
     type: actions.LOADING_GET_COMP_PROPERTIES,
     payload: {
-      name: block.style,
+      name: style,
       isLoading
     }
   })
@@ -23,8 +24,9 @@ const loadingSetCompProperties = (isLoading) => (dispatch) => {
 
 // Actions for listing stored component properites on double click on component
 export const getCompProperties = (block) => (dispatch) => {
-  dispatch(loadingGetCompProperties(block, true))
-  const url = 'newblockparameters/?block__name=' + block.style
+  const style = styleToObject(block.style).default
+  dispatch(loadingGetCompProperties(style, true))
+  const url = 'newblockparameters/?block__name=' + style
   api.get(url)
     .then(
       (res) => {
@@ -32,7 +34,7 @@ export const getCompProperties = (block) => (dispatch) => {
           type: actions.GET_COMP_PROPERTIES,
           payload: {
             block,
-            name: block.style,
+            name: style,
             parameter_values: block.parameter_values,
             errorFields: block.errorFields,
             displayProperties: block.displayProperties,
@@ -43,16 +45,17 @@ export const getCompProperties = (block) => (dispatch) => {
     )
     .catch((err) => {
       console.error(err)
-      dispatch(loadingGetCompProperties(block, false))
+      dispatch(loadingGetCompProperties(style, false))
     })
 }
 
 // Actions for updating entered component properites on clicking set parameters
 export const setCompProperties = (block, parameterValues, errorFields) => (dispatch) => {
+  const style = styleToObject(block.style).default
   dispatch(loadingSetCompProperties(true))
   const url = 'setblockparameter'
   const parameters = Object.values(parameterValues)
-  const data = { block: block.style, parameters }
+  const data = { block: style, parameters }
   api.post(url, data)
     .then(
       (res) => {

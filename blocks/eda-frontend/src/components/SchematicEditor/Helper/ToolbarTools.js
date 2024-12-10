@@ -3,7 +3,8 @@ import 'mxgraph/javascript/src/css/common.css'
 
 import mxGraphFactory from 'mxgraph'
 import { portSize, getParameter } from './SvgParser'
-import { styleToObject, getPortType, InputPort, OutputPort } from './ComponentDrag'
+import { getPortType, InputPort, OutputPort } from './ComponentDrag'
+import { styleToObject } from '../../../utils/GalleryUtils'
 import store from '../../../redux/store'
 import { setModel, setNetlist } from '../../../redux/actions/index'
 
