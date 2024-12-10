@@ -48,9 +48,6 @@ def get_int(s):
     except ValueError:
         return -1
 
-def generate_unique_id():
-    return f"{uuid.uuid4().hex[:8]}:{uuid.uuid4().hex[:8]}:{uuid.uuid4().hex[:8]}"
-
 def portType1(sType, sType2, tType2):
     #port1
     if sType == 'ExplicitLink':
@@ -139,12 +136,12 @@ def create_mxCell(
         "connectable": connectable,
         "CellType": CellType,
         "blockprefix": blockprefix,
-        "explicitInputPorts": explicitInputPorts,
-        "implicitInputPorts": implicitInputPorts,
-        "explicitOutputPorts": explicitOutputPorts,
-        "implicitOutputPorts": implicitOutputPorts,
-        "controlPorts": controlPorts,
-        "commandPorts": commandPorts,
+        "explicitInputPorts": str(explicitInputPorts),
+        "implicitInputPorts": str(implicitInputPorts),
+        "explicitOutputPorts": str(explicitOutputPorts),
+        "implicitOutputPorts": str(implicitOutputPorts),
+        "controlPorts": str(controlPorts),
+        "commandPorts": str(commandPorts),
         "simulationFunction": simulationFunction,
         "sourceVertex": sourceVertex,
         "targetVertex": targetVertex,
@@ -173,6 +170,89 @@ def create_mxCell(
 
     return ET.tostring(mxCell, encoding="unicode")
 
+
+def create_mxCell_port(style, id, parentComponent, ordering="1", vertex="1", cellType="Pin", 
+                  sourceVertex="0", targetVertex="0", tarx="0", tary="0", geometry=None):
+    mxcell = ET.Element('mxCell', {
+        'style': style,
+        'id': str(id),
+        'ordering': ordering,
+        'vertex': vertex,
+        'CellType': cellType,
+        'ParentComponent': str(parentComponent),
+        'sourceVertex': sourceVertex,
+        'targetVertex': targetVertex,
+        'tarx': tarx,
+        'tary': tary,
+    })
+    
+    if geometry:
+        x, y, width, height = geometry
+        mxgeometry = ET.SubElement(mxcell, 'mxGeometry', {
+            'x': str(x),
+            'y': str(y),
+            'width': str(width),
+            'height': str(height),
+            'relative': '1',
+            'as': 'geometry'
+        })
+        
+        ET.SubElement(mxgeometry, 'mxPoint', {
+            'y': '-4',
+            'as': 'offset'
+        })
+    
+        ET.SubElement(mxcell, "Object", {
+                "as": "parameter_values"
+            })
+
+        ET.SubElement(mxcell, "Object", {
+                "as": "displayProperties"
+            })
+        
+    return ET.tostring(mxcell, encoding="unicode")
+
+
+def create_mxCell_edge(id, edge="1", cellType="Unknown",
+                  sourceVertex="0", targetVertex="0", tarx="0", tary="0", tar2x="0", tar2y="0", source_point="0", target_point="0"):
+    mxcell = ET.Element('mxCell', {
+        'id': str(id),
+        'edge': edge,
+        'CellType': cellType,
+        'sourceVertex': str(sourceVertex),
+        'targetVertex': str(targetVertex),
+        'tarx': tarx,
+        'tary': tary,
+        'tar2x': tar2x,
+        'tar2y': tar2y,
+    })
+    
+    mxgeometry = ET.SubElement(mxcell, 'mxGeometry', {
+        'relative': '1',
+        'as': 'geometry'
+    })
+        
+    ET.SubElement(mxgeometry, 'mxPoint', {
+        'x': str(source_point[0]),
+        'y': str(source_point[1]),
+        'as': 'sourcePoint'
+    })
+
+    ET.SubElement(mxgeometry, 'mxPoint', {
+        'x': str(target_point[0]),
+        'y': str(target_point[1]),
+        'as': 'targetPoint'
+    })
+
+    ET.SubElement(mxcell, "Object", {
+            "as": "parameter_values"
+        })
+
+    ET.SubElement(mxcell, "Object", {
+            "as": "displayProperties"
+        })
+        
+    return ET.tostring(mxcell, encoding="unicode")
 
 for root in model:
     if root.tag != 'root':
@@ -350,6 +430,9 @@ for root in model:
         cellslength = len(remainingcells)
         remainingcells = []
         print('cellslength=', cellslength, ', oldcellslength=', oldcellslength)
+
+
+linklist = []
 for k, port in graph_port.items():
     port = graph_port[k]
     if len(port) > 2:
@@ -362,8 +445,8 @@ for k, port in graph_port.items():
         node = nodeList[r_link[0]]
         root.remove(node)
         print(f"removable link: k: {k}, link: {r_link}")
-        sourceVertex = node.attrib.get('sourceVertex')
-        targetVertex = node.attrib.get('targetVertex')
+        sourceVertex = node.attrib.get('sourceVertex') #small link
+        targetVertex = node.attrib.get('targetVertex') #small link
         if sourceVertex in link:
             node2 = nodeList[sourceVertex]
             otherVertex = targetVertex
@@ -372,10 +455,10 @@ for k, port in graph_port.items():
         elif targetVertex in link:
             node2 = nodeList[targetVertex]
             otherVertex = sourceVertex
-            thisVertex = targetVertex
+            thisVertex = targetVertex # 1
 
-        sourceVertex2 = node2.attrib.get('sourceVertex')
-        targetVertex2 = node2.attrib.get('targetVertex') #big link 
+        sourceVertex2 = node2.attrib.get('sourceVertex') #big link 2
+        targetVertex2 = node2.attrib.get('targetVertex') #big link 3
 
         root.remove(node2)
         sType = IDLIST[thisVertex]
@@ -391,32 +474,147 @@ for k, port in graph_port.items():
         split_point = {'x': x, 'y': y}
         extract_points(node)
         extract_points(node2)
-        points.append(split_point)
+        # points.append(split_point)
         print("POINTS:", points, split_point)
         
         port1 = portType1(sType, sType2, tType2)
         port2 = portType2(sType, sType2, tType2)
         port3 = portType3(sType, tType)
         print("PORT:", port1, port2, port3)
+
+        ports = [port1, port2, port3]
+        implicitInputPorts = 0
+        implicitOutputPorts = 0
+        explicitInputPorts = 0
+        explicitOutputPorts = 0
+        controlPorts = 0
+        commandPorts = 0
+
+        # Count ports
+        for port in ports:
+            if port == 'implicitInputPort':
+                implicitInputPorts += 1
+            elif port == 'implicitOutputPort':
+                implicitOutputPorts += 1
+            elif port == 'explicitInputPort':
+                explicitInputPorts += 1
+            elif port == 'explicitOutputPort':
+                explicitOutputPorts += 1
+            elif port == 'controlPort':
+                controlPorts += 1
+            elif port == 'commandPort':
+                commandPorts += 1
+
+        print('COUNTS:', explicitInputPorts, implicitInputPorts, explicitOutputPorts, implicitOutputPorts, controlPorts, )
         #add splitblock
         geometry = (height, width, x, y)
-        id = generate_unique_id()
+        block_id = str(nextattribid)
         xml_output = create_mxCell(
             style="SplitBlock",
-            id=id,
-            explicitInputPorts="0",
-            implicitInputPorts="1",
-            explicitOutputPorts="0",
-            implicitOutputPorts="1",
-            controlPorts="0",
-            commandPorts="0",
+            id=block_id,
+            explicitInputPorts=explicitInputPorts,
+            implicitInputPorts=implicitInputPorts,
+            explicitOutputPorts=explicitOutputPorts,
+            implicitOutputPorts=implicitOutputPorts,
+            controlPorts=controlPorts,
+            commandPorts=commandPorts,
             simulationFunction="split",
             tarx="0",
             tary="0",
             geometry=geometry
         )
 
+        splitblockid = nextattribid
+        nextattribid += 1
+        
+
+        print(f"Splitblock:")
         print(xml_output)
+
+        #add splitblock port       
+        p_width = "8"
+        p_height = "8"
+        count_of_ports = 3
+        port_geometry = ("1", "0.5", p_width, p_height)
+        for port in range(count_of_ports):
+            port_index = 0
+            if port == 0:
+                port_index = sourceVertex2
+            elif port == 1:
+                port_index = targetVertex2
+            else:
+                port_index = otherVertex
+            port_id = nextattribid
+            if port < explicitInputPorts:
+                port_type = "ExplicitInputPort"
+                link_type = "ExplicitLink"
+                linklist.append((link_type, port_id, port_index))
+            elif port < explicitInputPorts + implicitInputPorts:
+                port_type = "ImplicitInputPort"
+                link_type = "ImplicitLink"
+                linklist.append((link_type, port_id, port_index))
+            elif port < explicitInputPorts + implicitInputPorts + explicitOutputPorts:
+                port_type = "ExplicitOutputPort"
+                link_type = "ExplicitLink"
+                linklist.append((link_type, port_index, port_id))
+            elif port < explicitInputPorts + implicitInputPorts + explicitOutputPorts + implicitOutputPorts:
+                port_type = "ImplicitOutputPort"
+                link_type = "ImplicitLink"
+                linklist.append((link_type, port_index, port_id))
+            elif port < explicitInputPorts + implicitInputPorts + explicitOutputPorts + implicitOutputPorts + controlPorts:
+                port_type = "ControlPort"
+                link_type = "CommandControlLink"
+                linklist.append((link_type, port_id, port_index))
+            else:
+                port_type = "CommandPort"
+                link_type = "CommandControlLink"
+                linklist.append((link_type, port_index, port_id))
+            xml_output_port = create_mxCell_port(
+                style=port_type,
+                id=port_id,
+                ordering=str(port + 1),
+                parentComponent= str(splitblockid),
+                sourceVertex="0",
+                targetVertex="0",
+                tarx="0",
+                tary="0",
+                geometry=port_geometry
+            )
+
+            nextattribid += 1
+            # nextAttribForSplit += 1
+            print(f"Port {port + 1} ({port_type}):")
+            print(xml_output_port)
+
+        #add splitblock edges
+        count_of_edges = 3
+        print("TP:", linklist)
+        for edge in range(count_of_edges):
+            edge_id = nextAttribForSplit
+            tarx = node.attrib.get('tarx')
+            tary = node.attrib.get('tary')
+            tar2x = node.attrib.get('tar2x')
+            tar2y = node.attrib.get('tar2y')
+
+            link_type, source_vertex, target_vertex = linklist[edge]
+            xml_output_edge = create_mxCell_edge(
+                id=edge_id,
+                edge="1",
+                sourceVertex=source_vertex,
+                targetVertex=target_vertex,
+                tarx=tarx,
+                tary=tary,
+                tar2x=tar2x,
+                tar2y=tar2y,
+                source_point=(tarx, tary),
+                target_point=(tar2x, tar2y),
+            )
+
+            nextAttribForSplit += 1
+            print(f"Edge {edge + 1}:")
+            print(xml_output_edge)
+
+
 #key structure
 
 
