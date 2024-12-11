@@ -474,20 +474,20 @@
       <xsl:attribute name="x">
         <xsl:choose>
           <xsl:when test="@x">
-            <xsl:value-of select="format-number(@x+$originx,'#.0')" />
+            <xsl:value-of select="format-number(@x+$originx,'0.0')" />
           </xsl:when>
           <xsl:otherwise>
-            <xsl:value-of select="format-number($originx,'#.0')" />
+            <xsl:value-of select="format-number($originx,'0.0')" />
           </xsl:otherwise>
         </xsl:choose>
       </xsl:attribute>
       <xsl:attribute name="y">
         <xsl:choose>
           <xsl:when test="@y">
-            <xsl:value-of select="format-number(@y+$originy,'#.0')" />
+            <xsl:value-of select="format-number(@y+$originy,'0.0')" />
           </xsl:when>
           <xsl:otherwise>
-            <xsl:value-of select="format-number($originy,'#.0')" />
+            <xsl:value-of select="format-number($originy,'0.0')" />
           </xsl:otherwise>
         </xsl:choose>
       </xsl:attribute>
