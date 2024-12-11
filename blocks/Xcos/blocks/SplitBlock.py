@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def SplitBlock(outroot, attribid, ordering, geometry, parent=1, style=None, func_name='CLKSPLIT_f'):
+def SplitBlock(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, func_name='CLKSPLIT_f'):
     if style is None:
         style = func_name
 
