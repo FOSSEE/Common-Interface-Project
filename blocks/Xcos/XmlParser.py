@@ -32,15 +32,15 @@ model = tree.getroot()
 if model.tag != 'mxGraphModel':
     print(model.tag, '!= mxGraphModel')
     sys.exit(2)
-outdiagram = ET.Element('XcosDiagram')
-outdiagram.set('background', '-1')
-outdiagram.set('finalIntegrationTime', '30.0')   # TODO: From POST
-outdiagram.set('title', 'output_9_2_xml.xml')
-dt = datetime.datetime(2021, 7, 15, 15, 31)
-comment = ET.Comment(dt.strftime('Xcos - 2.0 - scilab-6.1.1 - %Y%m%d %H%M'))
-outdiagram.append(comment)
-outmodel = ET.SubElement(outdiagram, 'mxGraphModel')
-outmodel.set('as', 'model')
+# outdiagram = ET.Element('XcosDiagram')
+# outdiagram.set('background', '-1')
+# outdiagram.set('finalIntegrationTime', '30.0')   # TODO: From POST
+# outdiagram.set('title', 'output_9_2_xml.xml')
+# dt = datetime.datetime(2021, 7, 15, 15, 31)
+# comment = ET.Comment(dt.strftime('Xcos - 2.0 - scilab-6.1.1 - %Y%m%d %H%M'))
+# outdiagram.append(comment)
+# outmodel = ET.SubElement(outdiagram, 'mxGraphModel')
+# outmodel.set('as', 'model')
 
 def get_int(s):
     try:
@@ -160,7 +160,7 @@ def create_mxCell(
         })
     
     ET.SubElement(mxCell, "Object", {
-            "display_parameter=": str(),
+            "display_parameter": str(),
             "as": "displayProperties"
         })
     
@@ -168,7 +168,7 @@ def create_mxCell(
             "as": "parameter_values"
         })
 
-    return ET.tostring(mxCell, encoding="unicode")
+    return mxCell
 
 
 def create_mxCell_port(style, id, parentComponent, ordering="1", vertex="1", cellType="Pin", 
@@ -210,7 +210,7 @@ def create_mxCell_port(style, id, parentComponent, ordering="1", vertex="1", cel
                 "as": "displayProperties"
             })
         
-    return ET.tostring(mxcell, encoding="unicode")
+    return mxcell
 
 
 def create_mxCell_edge(id, edge="1", cellType="Unknown",
@@ -252,13 +252,13 @@ def create_mxCell_edge(id, edge="1", cellType="Unknown",
             "as": "displayProperties"
         })
         
-    return ET.tostring(mxcell, encoding="unicode")
+    return mxcell
 
 for root in model:
     if root.tag != 'root':
         print('Not root')
         sys.exit(2)
-    outroot = ET.SubElement(outmodel, 'root')
+    # outroot = ET.SubElement(outmodel, 'root')
 
     portCount = {}
     IDLIST = {}
@@ -299,16 +299,16 @@ for root in model:
 
                 if i == 0 and oldcellslength == 0:
                     attribid = '0:1:0'
-                    outnode = ET.SubElement(outroot, 'mxCell')
-                    outnode.set('id', attribid)
+                    # outnode = ET.SubElement(outroot, 'mxCell')
+                    # outnode.set('id', attribid)
                     rootattribid = attribid
                     continue
 
                 if i == 1 and oldcellslength == 0:
                     attribid = '0:2:0'
-                    outnode = ET.SubElement(outroot, 'mxCell')
-                    outnode.set('id', attribid)
-                    outnode.set('parent', rootattribid)
+                    # outnode = ET.SubElement(outroot, 'mxCell')
+                    # outnode.set('id', attribid)
+                    # outnode.set('parent', rootattribid)
                     parentattribid = attribid
                     continue
 
@@ -433,6 +433,7 @@ for root in model:
 
 
 linklist = []
+return_value = 0
 for k, port in graph_port.items():
     port = graph_port[k]
     if len(port) > 2:
@@ -442,6 +443,7 @@ for k, port in graph_port.items():
         print(f"GRAPH link: k: {k}, link: {link}")
     r_link = removable_link[k]
     if len(r_link) > 0:
+        return_value += len(r_link) - 1
         node = nodeList[r_link[0]]
         root.remove(node)
         print(f"removable link: k: {k}, link: {r_link}")
@@ -526,10 +528,8 @@ for k, port in graph_port.items():
 
         splitblockid = nextattribid
         nextattribid += 1
-        
 
-        print(f"Splitblock:")
-        print(xml_output)
+        root.append(xml_output)
 
         #add splitblock port       
         p_width = "8"
@@ -582,39 +582,36 @@ for k, port in graph_port.items():
             )
 
             nextattribid += 1
-            # nextAttribForSplit += 1
-            print(f"Port {port + 1} ({port_type}):")
-            print(xml_output_port)
 
-        #add splitblock edges
-        count_of_edges = 3
-        print("TP:", linklist)
-        for edge in range(count_of_edges):
-            edge_id = nextAttribForSplit
-            tarx = node.attrib.get('tarx')
-            tary = node.attrib.get('tary')
-            tar2x = node.attrib.get('tar2x')
-            tar2y = node.attrib.get('tar2y')
+            root.append(xml_output_port)
 
-            link_type, source_vertex, target_vertex = linklist[edge]
-            xml_output_edge = create_mxCell_edge(
-                id=edge_id,
-                edge="1",
-                sourceVertex=source_vertex,
-                targetVertex=target_vertex,
-                tarx=tarx,
-                tary=tary,
-                tar2x=tar2x,
-                tar2y=tar2y,
-                source_point=(tarx, tary),
-                target_point=(tar2x, tar2y),
-            )
+#add splitblock edges
+print("TP:", linklist)
+for edge_index, (link_type, source_vertex, target_vertex) in enumerate(linklist):
+    edge_id = nextAttribForSplit
+    tarx = node.attrib.get('tarx')
+    tary = node.attrib.get('tary')
+    tar2x = node.attrib.get('tar2x')
+    tar2y = node.attrib.get('tar2y')
 
-            nextAttribForSplit += 1
-            print(f"Edge {edge + 1}:")
-            print(xml_output_edge)
+    xml_output_edge = create_mxCell_edge(
+        id=edge_id,
+        edge="1",
+        sourceVertex=source_vertex,
+        targetVertex=target_vertex,
+        tarx=tarx,
+        tary=tary,
+        tar2x=tar2x,
+        tar2y=tar2y,
+        source_point=(tarx, tary),
+        target_point=(tar2x, tar2y),
+    )
 
+    nextAttribForSplit += 1
 
+    root.append(xml_output_edge)
+
+print("ROOT:", root)
 #key structure
 
 
@@ -622,4 +619,5 @@ for k, port in graph_port.items():
 output_path = "../blocks/modified_graph.xml"
 tree.write(output_path)
 
-print(f"Modified XML saved to: {output_path}")
+print(f"Modified XML saved to: {output_path}, {return_value}")
+sys.exit(return_value)

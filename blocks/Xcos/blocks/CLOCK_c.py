@@ -74,7 +74,7 @@ def CLOCK_c(outroot, attribid, ordering, geometry, parameters, parent=1, style=N
             dataLines="-1", initialState="0.1",
             style="CommandPort", value="")
 
-    SplitBlock(root, block_id[4], ordering, geometry, parent=block_id[1])
+    SplitBlock(root, block_id[4], ordering, geometry, [], parent=block_id[1])
 
     addPort(root, TYPE_CNTRL, id=port_id[3],
             parent=block_id[4], ordering="1",

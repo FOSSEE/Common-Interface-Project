@@ -485,7 +485,7 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoi
             split_style = 'SPLIT_f;flip=false;mirror=false'
             func_name = 'SPLIT_f'
         print('BEFORE Splitblock:', outroot, nextattribid, componentOrdering, geometry, parentattribid, split_style, func_name)
-        SplitBlock(outroot, nextattribid, componentOrdering, geometry, parent=parentattribid, style=split_style, func_name=func_name)
+        SplitBlock(outroot, nextattribid, componentOrdering, geometry, [], parent=parentattribid, style=split_style, func_name=func_name)
         print('AFTER Splitblock:', outroot, nextattribid, componentOrdering, geometry, parentattribid, split_style, func_name)
         splitblockid = nextattribid
         nextattribid += 1
