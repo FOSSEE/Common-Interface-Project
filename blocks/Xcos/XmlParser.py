@@ -61,7 +61,7 @@ def portType1(sType, sType2, tType2):
             print('Error: (sourceType, sourceType2, targetType2) =',
                 '(', sType, ',', sType2, ',', tType2, ')')
     elif sType == 'ImplicitLink':
-        if sType2 == 'ImplicitOutputPort' or tType2 == 'ImplicitOutputPort':
+        if sType2 == 'ImplicitOutputPort' or sType2 == 'ImplicitLink':
             return 'implicitInputPort'
         else:
             return 'implicitOutputPort'
@@ -84,7 +84,7 @@ def portType2(sType, sType2, tType2):
             print('Error: (sourceType, sourceType2, targetType2) =',
                 '(', sType, ',', sType2, ',', tType2, ')')
     elif sType == 'ImplicitLink':
-        if sType2 == 'ImplicitOutputPort' or tType2 == 'ImplicitOutputPort':
+        if tType2 == 'ImplicitOutputPort' or tType2 == 'ImplicitLink':
             return 'implicitInputPort'
         else:
             return 'implicitOutputPort'
@@ -98,18 +98,18 @@ def portType2(sType, sType2, tType2):
 def portType3(sType, tType):
     #port3
     if sType == 'ExplicitLink':
-        if tType == 'ExplicitInputPort':
+        if tType == 'ExplicitInputPort' or tType == 'ExplicitLink':
             return 'explicitOutputPort'
         else:
             print('Error: (sourceType, targetType) =',
                 '(', sType, ',', tType, ')')
     elif sType == 'ImplicitLink':
-        if tType == 'ImplicitOutputPort':
+        if tType == 'ImplicitOutputPort' or tType == 'ImplicitLink':
             return 'implicitInputPort'
         else:
             return 'implicitOutputPort'
     elif sType == 'CommandControlLink':
-        if tType == 'ControlPort':
+        if tType == 'ControlPort' or tType == 'CommandControlLink':
             return 'commandPort'
         else:
             print('Error: (sourceType, targetType) =',
@@ -535,7 +535,15 @@ for k, port in graph_port.items():
 
         root.append(xml_output)
 
-        #add splitblock port       
+        #add splitblock port 
+        ordering_counters = {
+            "ExplicitInputPort": 0,
+            "ImplicitInputPort": 0,
+            "ExplicitOutputPort": 0,
+            "ImplicitOutputPort": 0,
+            "ControlPort": 0,
+            "CommandPort": 0
+        }      
         p_width = "8"
         p_height = "8"
         count_of_ports = 3
@@ -552,31 +560,43 @@ for k, port in graph_port.items():
             if port < explicitInputPorts:
                 port_type = "ExplicitInputPort"
                 link_type = "ExplicitLink"
+                ordering = ordering_counters["ExplicitInputPort"] + 1
+                ordering_counters["ExplicitInputPort"] += 1
                 linklist.append((link_type, port_id, port_index))
             elif port < explicitInputPorts + implicitInputPorts:
                 port_type = "ImplicitInputPort"
                 link_type = "ImplicitLink"
+                ordering = ordering_counters["ImplicitInputPort"] + 1
+                ordering_counters["ImplicitInputPort"] += 1
                 linklist.append((link_type, port_id, port_index))
             elif port < explicitInputPorts + implicitInputPorts + explicitOutputPorts:
                 port_type = "ExplicitOutputPort"
                 link_type = "ExplicitLink"
+                ordering = ordering_counters["ExplicitOutputPort"] + 1
+                ordering_counters["ExplicitOutputPort"] += 1
                 linklist.append((link_type, port_index, port_id))
             elif port < explicitInputPorts + implicitInputPorts + explicitOutputPorts + implicitOutputPorts:
                 port_type = "ImplicitOutputPort"
                 link_type = "ImplicitLink"
+                ordering = ordering_counters["ImplicitOutputPort"] + 1
+                ordering_counters["ImplicitOutputPort"] += 1
                 linklist.append((link_type, port_index, port_id))
             elif port < explicitInputPorts + implicitInputPorts + explicitOutputPorts + implicitOutputPorts + controlPorts:
                 port_type = "ControlPort"
                 link_type = "CommandControlLink"
+                ordering = ordering_counters["ControlPort"] + 1
+                ordering_counters["ControlPort"] += 1
                 linklist.append((link_type, port_id, port_index))
             else:
                 port_type = "CommandPort"
                 link_type = "CommandControlLink"
+                ordering = ordering_counters["CommandPort"] + 1
+                ordering_counters["CommandPort"] += 1
                 linklist.append((link_type, port_index, port_id))
             xml_output_port = create_mxCell_port(
                 style=port_type,
                 id=port_id,
-                ordering=str(port + 1),
+                ordering=str(ordering),
                 parentComponent= str(splitblockid),
                 sourceVertex="0",
                 targetVertex="0",
