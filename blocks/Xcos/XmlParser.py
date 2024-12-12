@@ -42,6 +42,10 @@ if model.tag != 'mxGraphModel':
 # outmodel = ET.SubElement(outdiagram, 'mxGraphModel')
 # outmodel.set('as', 'model')
 
+def remove_dot_number(s):
+    return re.sub(r'\.\d+$', '', s)
+
+
 def get_int(s):
     try:
         return int(s)
@@ -616,7 +620,7 @@ print("ROOT:", root)
 
 
 # Save the modified XML
-output_path = "../blocks/modified_graph.xml"
+output_path = f'{remove_dot_number(basename)}.{return_value}.xml'
 tree.write(output_path)
 
 print(f"Modified XML saved to: {output_path}, {return_value}")

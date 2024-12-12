@@ -409,7 +409,7 @@
   <xsl:variable name="originx">
     <xsl:choose>
       <xsl:when test="/XcosDiagram/mxPoint[@as='origin']/@x">
-        <xsl:value-of select="//mxPoint[@as='origin']/@x" />
+        <xsl:value-of select="/XcosDiagram/mxPoint[@as='origin']/@x" />
       </xsl:when>
       <xsl:otherwise>0</xsl:otherwise>
     </xsl:choose>
@@ -417,7 +417,7 @@
   <xsl:variable name="originy">
     <xsl:choose>
       <xsl:when test="/XcosDiagram/mxPoint[@as='origin']/@y">
-        <xsl:value-of select="//mxPoint[@as='origin']/@y" />
+        <xsl:value-of select="/XcosDiagram/mxPoint[@as='origin']/@y" />
       </xsl:when>
       <xsl:otherwise>0</xsl:otherwise>
     </xsl:choose>

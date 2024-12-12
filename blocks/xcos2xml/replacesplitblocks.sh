@@ -1,14 +1,14 @@
 #!/bin/bash
 
 usage() {
-    echo "Usage:" >&2
-    echo "    $0 split-file.xsl file.xsl input-file.xcos > output-file.xml" >&2
-    echo "    $0 split-file.xsl file.xsl input-file.xml > output-file.xml" >&2
-    exit 1
+  echo "Usage:" >&2
+  echo "    $0 split-file.xsl file.xsl geometry-file.xsl input-file.xcos > output-file.xml" >&2
+  echo "    $0 split-file.xsl file.xsl geometry-file.xsl input-file.xml > output-file.xml" >&2
+  exit 1
 }
 
-if test $# -ne 3; then
-    usage
+if test $# -ne 4; then
+  usage
 fi
 
 make -s >&2
@@ -33,7 +33,17 @@ if test "${XSL%.xsl}" = "$XSL"; then
     usage
 fi
 
-INPUT="$3"
+GEOMETRYXSL="$2"
+if test ! -f "$GEOMETRYXSL"; then
+  echo "$GEOMETRYXSL: not found" >&2
+  usage
+fi
+if test "${GEOMETRYXSL%.xsl}" = "$GEOMETRYXSL"; then
+  echo "$GEOMETRYXSL: not xsl" >&2
+  usage
+fi
+
+INPUT="$4"
 if test ! -f "$INPUT"; then
     echo "$INPUT: not found" >&2
     usage
@@ -94,9 +104,8 @@ xmllint --format "$TMPFILE1" > "$TMPFILE2"
 INPUT1="$BASE-old.xml"
 cp -f "$TMPFILE2" "$INPUT1"
 
-
-xsltproc "eda-frontend/public/geometry.xsl" "$INPUT1" > "$TMPFILE1"
-xmllint --format "$TMPFILE1" > "$TMPFILE2"
+xsltproc "$GEOMETRYXSL" "$INPUT1" >"$TMPFILE1"
+xmllint --format "$TMPFILE1" >"$TMPFILE2"
 cp -f "$TMPFILE2" "$TMPFILE1"
 
 exit 0
