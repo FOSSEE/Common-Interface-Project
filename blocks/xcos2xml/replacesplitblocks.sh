@@ -2,38 +2,38 @@
 
 usage() {
   echo "Usage:" >&2
-  echo "    $0 split-file.xsl file.xsl geometry-file.xsl input-file.xcos > output-file.xml" >&2
-  echo "    $0 split-file.xsl file.xsl geometry-file.xsl input-file.xml > output-file.xml" >&2
+  echo "    $0 input-file.xcos > output-file.xml" >&2
+  echo "    $0 input-file.xml > output-file.xml" >&2
   exit 1
 }
 
-if test $# -ne 4; then
+if test $# -ne 1; then
   usage
 fi
 
 make -s >&2
 
-SPLITXSL="$1"
+SPLITXSL="eda-frontend/public/splitblock.xsl"
 if test ! -f "$SPLITXSL"; then
-    echo "$SPLITXSL: not found" >&2
-    usage
+  echo "$SPLITXSL: not found" >&2
+  usage
 fi
 if test "${SPLITXSL%.xsl}" = "$SPLITXSL"; then
-    echo "$SPLITXSL: not xsl" >&2
-    usage
+  echo "$SPLITXSL: not xsl" >&2
+  usage
 fi
 
-XSL="$2"
+XSL="eda-frontend/public/xcos2xml.xsl"
 if test ! -f "$XSL"; then
-    echo "$XSL: not found" >&2
-    usage
+  echo "$XSL: not found" >&2
+  usage
 fi
 if test "${XSL%.xsl}" = "$XSL"; then
-    echo "$XSL: not xsl" >&2
-    usage
+  echo "$XSL: not xsl" >&2
+  usage
 fi
 
-GEOMETRYXSL="$2"
+GEOMETRYXSL="eda-frontend/public/geometry.xsl"
 if test ! -f "$GEOMETRYXSL"; then
   echo "$GEOMETRYXSL: not found" >&2
   usage
@@ -43,21 +43,21 @@ if test "${GEOMETRYXSL%.xsl}" = "$GEOMETRYXSL"; then
   usage
 fi
 
-INPUT="$4"
+INPUT="$1"
 if test ! -f "$INPUT"; then
-    echo "$INPUT: not found" >&2
-    usage
+  echo "$INPUT: not found" >&2
+  usage
 fi
 if test "${INPUT%.xml}" != "$INPUT"; then
-    INPUTXML="$INPUT"
-    BASE="${INPUT%.xml}"
-    INPUT="$BASE.xcos"
+  INPUTXML="$INPUT"
+  BASE="${INPUT%.xml}"
+  INPUT="$BASE.xcos"
 elif test "${INPUT%.xcos}" != "$INPUT"; then
-    INPUTXML=
-    BASE="${INPUT%.xcos}"
+  INPUTXML=
+  BASE="${INPUT%.xcos}"
 else
-    echo "$INPUT: not xml / xcos" >&2
-    usage
+  echo "$INPUT: not xml / xcos" >&2
+  usage
 fi
 
 set -e
