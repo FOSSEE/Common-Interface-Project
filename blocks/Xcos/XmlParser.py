@@ -32,15 +32,7 @@ model = tree.getroot()
 if model.tag != 'mxGraphModel':
     print(model.tag, '!= mxGraphModel')
     sys.exit(2)
-# outdiagram = ET.Element('XcosDiagram')
-# outdiagram.set('background', '-1')
-# outdiagram.set('finalIntegrationTime', '30.0')   # TODO: From POST
-# outdiagram.set('title', 'output_9_2_xml.xml')
-# dt = datetime.datetime(2021, 7, 15, 15, 31)
-# comment = ET.Comment(dt.strftime('Xcos - 2.0 - scilab-6.1.1 - %Y%m%d %H%M'))
-# outdiagram.append(comment)
-# outmodel = ET.SubElement(outdiagram, 'mxGraphModel')
-# outmodel.set('as', 'model')
+
 
 def remove_dot_number(s):
     return re.sub(r'\.\d+$', '', s)
@@ -117,6 +109,7 @@ def portType3(sType, tType):
 
 
 def extract_points(node):
+    pts = []
     geometry = node.find(".//mxGeometry")
     if geometry is not None:
         array = geometry.find(".//Array[@as='points']")
@@ -125,7 +118,9 @@ def extract_points(node):
                 x = point.get("x")
                 y = point.get("y")
                 p = {'x': x, 'y': y}
-                points.append(p)
+                pts = p
+    return pts
+                # points.append(p)
 
 def create_mxCell(
     style, id, vertex="1", connectable="0", CellType="Component", blockprefix="XCOS",
@@ -218,7 +213,7 @@ def create_mxCell_port(style, id, parentComponent, ordering="1", vertex="1", cel
 
 
 def create_mxCell_edge(id, edge="1", cellType="Unknown",
-                  sourceVertex="0", targetVertex="0", tarx="0", tary="0", tar2x="0", tar2y="0", source_point="0", target_point="0"):
+                  sourceVertex="0", targetVertex="0", tarx="0", tary="0", tar2x="0", tar2y="0", source_point="0", target_point="0", waypoint_x="0", waypoint_y="0", array=None):
     mxcell = ET.Element('mxCell', {
         'id': str(id),
         'edge': edge,
@@ -248,6 +243,16 @@ def create_mxCell_edge(id, edge="1", cellType="Unknown",
         'as': 'targetPoint'
     })
 
+    if array:
+        ET.SubElement(mxgeometry, 'Array', {
+            'as': 'points'
+        })
+
+        ET.SubElement(mxgeometry, 'mxPoint', {
+            'x': str(waypoint_x),
+            'y': str(waypoint_y)
+        })
+
     ET.SubElement(mxcell, "Object", {
             "as": "parameter_values"
         })
@@ -257,6 +262,53 @@ def create_mxCell_edge(id, edge="1", cellType="Unknown",
         })
         
     return mxcell
+
+def check_point_on_array(array, point, left_right_direction=True):
+    if array is None:
+        return False, array, []
+
+    pointX = float(point['x'])
+    pointY = float(point['y'])
+
+    for i in range(len(array) - 1):
+        leftX = float(array[i]['x'])
+        leftY = float(array[i]['y'])
+        rightX = float(array[i + 1]['x'])
+        rightY = float(array[i + 1]['y'])
+
+        print("RANGE:", pointX, pointY, leftX, leftY, rightX, rightY, left_right_direction)
+
+        # Check if the point lies on the line segment between array[i] and array[i + 1]
+        if -40 <= leftY - pointY <= 40 and \
+                -40 <= rightY - pointY <= 40 and \
+                leftX <= pointX <= rightX:
+            return True, array[:i + 1] + [point], [point] + array[i + 1:]
+        if -40 <= leftX - pointX <= 40 and \
+                -40 <= rightX - pointX <= 40 and \
+                leftY <= pointY <= rightY:
+            return True, array[:i + 1] + [point], [point] + array[i + 1:]
+
+        # if left_right_direction:
+        if -20 <= leftX - pointX <= 20:
+            print('to the left / right')
+            return True, array[:i + 1] + [point], [point] + array[i + 1:]
+        # else:
+        if -20 <= leftY - pointY <= 20:
+            print('on the up / down')
+            return True, array[:i + 1] + [point], [point] + array[i + 1:]
+
+        # if left_right_direction:
+        if -20 <= rightX - pointX <= 20:
+            print('to the right / right')
+            return True, array[:i + 1] + [point], [point] + array[i + 1:]
+        # else:
+        if -20 <= rightY - pointY <= 20:
+            print('on the up / down')
+            return True, array[:i + 1] + [point], [point] + array[i + 1:]
+
+        # switch direction for the next waypoint
+        left_right_direction = not left_right_direction
+    return False, array, []
 
 for root in model:
     if root.tag != 'root':
@@ -274,6 +326,7 @@ for root in model:
     edgeList = []
     mxPointList = {}
     blkgeometry = {}
+    points = []
     points1 = []
     cells = list(root)
     remainingcells = []
@@ -286,7 +339,6 @@ for root in model:
     graph_link = {}
     removable_link = {}
     removablesort = {}
-    points = []
     split_point = None
     print('cellslength=', cellslength)
     while cellslength > 0 and cellslength != oldcellslength:
@@ -449,6 +501,12 @@ for k, port in graph_port.items():
     if len(r_link) > 0:
         return_value += len(r_link) - 1
         node = nodeList[r_link[0]]
+
+        tarx = node.attrib.get('tarx', '0')
+        tary = node.attrib.get('tary', '0')
+        tar2x = node.attrib.get('tar2x', '0')
+        tar2y = node.attrib.get('tar2y', '0')
+
         root.remove(node)
         print(f"removable link: k: {k}, link: {r_link}")
         sourceVertex = node.attrib.get('sourceVertex') #small link
@@ -456,11 +514,19 @@ for k, port in graph_port.items():
         if sourceVertex in link:
             node2 = nodeList[sourceVertex]
             otherVertex = targetVertex
+            otherx = node2.attrib.get('tar2x', '0')
+            othery = node2.attrib.get('tar2y', '0')
+            thisx = node2.attrib.get('tarx', '0')
+            thisy = node2.attrib.get('tary', '0')
             thisVertex = sourceVertex         
 
         elif targetVertex in link:
             node2 = nodeList[targetVertex]
             otherVertex = sourceVertex
+            otherx = node2.attrib.get('tarx', '0')
+            othery = node2.attrib.get('tary', '0')
+            thisx = node2.attrib.get('tar2x', '0')
+            thisy = node2.attrib.get('tar2y', '0')
             thisVertex = targetVertex # 1
 
         sourceVertex2 = node2.attrib.get('sourceVertex') #big link 2
@@ -475,13 +541,12 @@ for k, port in graph_port.items():
         print(sType, tType, sType2, tType2)
         height = 7
         width = 7
-        x = node.attrib.get('tarx')
-        y = node.attrib.get('tary')
-        split_point = {'x': x, 'y': y}
-        extract_points(node)
-        extract_points(node2)
+        split_point = {'x': thisx, 'y': thisy}
+        points.extract_points(node) #small link
+        points1.extract_points(node2) #big link
+        check_point_on_array(points1, split_point)
         # points.append(split_point)
-        print("POINTS:", points, split_point)
+        print("POINTS:", points, split_point, points1)
         
         port1 = portType1(sType, sType2, tType2)
         port2 = portType2(sType, sType2, tType2)
@@ -513,7 +578,7 @@ for k, port in graph_port.items():
 
         print('COUNTS:', explicitInputPorts, implicitInputPorts, explicitOutputPorts, implicitOutputPorts, controlPorts, )
         #add splitblock
-        geometry = (height, width, x, y)
+        geometry = (thisx, thisy, width, height)
         block_id = str(nextattribid)
         xml_output = create_mxCell(
             style="SplitBlock",
@@ -550,49 +615,48 @@ for k, port in graph_port.items():
         port_geometry = ("1", "0.5", p_width, p_height)
         for port in range(count_of_ports):
             port_index = 0
+            portx = 0
+            porty = 0
             if port == 0:
                 port_index = sourceVertex2
+                portx = tarx
+                porty = tary
             elif port == 1:
                 port_index = targetVertex2
+                portx = tar2x
+                porty = tar2y
             else:
                 port_index = otherVertex
+                portx = otherx
+                porty = othery
             port_id = nextattribid
             if port < explicitInputPorts:
                 port_type = "ExplicitInputPort"
                 link_type = "ExplicitLink"
-                ordering = ordering_counters["ExplicitInputPort"] + 1
-                ordering_counters["ExplicitInputPort"] += 1
-                linklist.append((link_type, port_id, port_index))
+                linklist.append((link_type, port_id, thisx, thisy, port_index, portx, porty))
             elif port < explicitInputPorts + implicitInputPorts:
                 port_type = "ImplicitInputPort"
                 link_type = "ImplicitLink"
-                ordering = ordering_counters["ImplicitInputPort"] + 1
-                ordering_counters["ImplicitInputPort"] += 1
-                linklist.append((link_type, port_id, port_index))
+                linklist.append((link_type, port_id, thisx, thisy, port_index, portx, porty))
             elif port < explicitInputPorts + implicitInputPorts + explicitOutputPorts:
                 port_type = "ExplicitOutputPort"
                 link_type = "ExplicitLink"
-                ordering = ordering_counters["ExplicitOutputPort"] + 1
-                ordering_counters["ExplicitOutputPort"] += 1
-                linklist.append((link_type, port_index, port_id))
+                linklist.append((link_type, port_index, portx, porty, port_id, thisx, thisy, ))
             elif port < explicitInputPorts + implicitInputPorts + explicitOutputPorts + implicitOutputPorts:
                 port_type = "ImplicitOutputPort"
                 link_type = "ImplicitLink"
-                ordering = ordering_counters["ImplicitOutputPort"] + 1
-                ordering_counters["ImplicitOutputPort"] += 1
-                linklist.append((link_type, port_index, port_id))
+                linklist.append((link_type, port_index, portx, porty, port_id, thisx, thisy, ))
             elif port < explicitInputPorts + implicitInputPorts + explicitOutputPorts + implicitOutputPorts + controlPorts:
                 port_type = "ControlPort"
                 link_type = "CommandControlLink"
-                ordering = ordering_counters["ControlPort"] + 1
-                ordering_counters["ControlPort"] += 1
-                linklist.append((link_type, port_id, port_index))
+                linklist.append((link_type, port_id, thisx, thisy, port_index, portx, porty))
             else:
                 port_type = "CommandPort"
                 link_type = "CommandControlLink"
-                ordering = ordering_counters["CommandPort"] + 1
-                ordering_counters["CommandPort"] += 1
-                linklist.append((link_type, port_index, port_id))
+                linklist.append((link_type, port_index, portx, porty, port_id, thisx, thisy, ))
+            ordering = ordering_counters[port_type] + 1
+            ordering_counters[port_type] += 1
+
             xml_output_port = create_mxCell_port(
                 style=port_type,
                 id=port_id,
@@ -611,24 +675,23 @@ for k, port in graph_port.items():
 
 #add splitblock edges
 print("TP:", linklist)
-for edge_index, (link_type, source_vertex, target_vertex) in enumerate(linklist):
-    edge_id = nextAttribForSplit
-    tarx = node.attrib.get('tarx')
-    tary = node.attrib.get('tary')
-    tar2x = node.attrib.get('tar2x')
-    tar2y = node.attrib.get('tar2y')
 
+for edge_index, (link_type, source_vertex, sourcex, sourcey, target_vertex, targetx, targety) in enumerate(linklist):
+    edge_id = nextAttribForSplit
     xml_output_edge = create_mxCell_edge(
         id=edge_id,
         edge="1",
         sourceVertex=source_vertex,
         targetVertex=target_vertex,
-        tarx=tarx,
-        tary=tary,
-        tar2x=tar2x,
-        tar2y=tar2y,
-        source_point=(tarx, tary),
-        target_point=(tar2x, tar2y),
+        tarx=sourcex,
+        tary=sourcey,
+        tar2x=targetx,
+        tar2y=targety,
+        source_point=(sourcex, sourcey),
+        target_point=(targetx, targety),
+        waypoint_x = "0",
+        waypoint_y = "0",
+        array = points
     )
 
     nextAttribForSplit += 1
