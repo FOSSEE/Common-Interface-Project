@@ -62,50 +62,76 @@ fi
 
 set -e
 
-TMPFILE1="$( mktemp -t XXXXXX.xml )"
-TMPFILE2="$( mktemp -t XXXXXX.xml )"
-trap "cat $TMPFILE2; rm -f $TMPFILE1 $TMPFILE2" 0 1 2 15
+TMPFILE1="$(mktemp -t XXXXXX.xml)"
+TMPFILE2="$(mktemp -t XXXXXX.xml)"
+trap "rm -f $TMPFILE1 $TMPFILE2" 0 1 2 15
 
 if test -n "$INPUTXML"; then
-    xmllint --format "$INPUTXML" > "$TMPFILE2"
-    if ! diff -q "$TMPFILE2" "$INPUTXML" >&2; then
-        cp -f "$TMPFILE2" "$INPUTXML"
-        echo "$INPUTXML updated" >&2
-    fi
+  xmllint --format "$INPUTXML" >"$TMPFILE2"
+  if ! diff -q "$TMPFILE2" "$INPUTXML" >&2; then
+    cp -f "$TMPFILE2" "$INPUTXML"
+    echo "$INPUTXML updated" >&2
+  fi
 
-    # MxGraphParser creates $INPUT
-    echo "Running Xcos/MxGraphParser.py $INPUTXML" >&2
-    Xcos/MxGraphParser.py "$INPUTXML" >&2
+  # MxGraphParser creates $INPUT
+  echo "Running Xcos/MxGraphParser.py $INPUTXML" >&2
+  Xcos/MxGraphParser.py "$INPUTXML" >&2
 fi
 
-count=$( grep -c '^      <SplitBlock' "$INPUT" ) || :
+count=$(grep -c '^      <SplitBlock' "$INPUT") || :
 INPUT1="$BASE-$count.xml"
 echo "Creating $INPUT1" >&2
 cp -f "$INPUT" "$INPUT1"
 
 while test $count -gt 0; do
-    oldcount=$count
+  oldcount=$count
 
-    xsltproc "$SPLITXSL" "$INPUT1" > "$TMPFILE1"
-    xmllint --format "$TMPFILE1" > "$TMPFILE2"
-    count=$( grep -c '^      <SplitBlock' "$TMPFILE2" ) || :
-    INPUT1="$BASE-$count.xml"
-    echo "Creating $INPUT1" >&2
-    cp -f "$TMPFILE2" "$INPUT1"
+  xsltproc "$SPLITXSL" "$INPUT1" >"$TMPFILE1"
+  xmllint --format "$TMPFILE1" >"$TMPFILE2"
+  count=$(grep -c '^      <SplitBlock' "$TMPFILE2") || :
+  INPUT1="$BASE-$count.xml"
+  echo "Creating $INPUT1" >&2
+  cp -f "$TMPFILE2" "$INPUT1"
 
-    if (( count != oldcount - 1 )); then
-        echo "ERROR: $count != $oldcount - 1" >&2
-        exit 2
-    fi
+  if ((count != oldcount - 1)); then
+    echo "ERROR: $count != $oldcount - 1" >&2
+    exit 2
+  fi
 done
 
-xsltproc "$XSL" "$INPUT1" > "$TMPFILE1"
-xmllint --format "$TMPFILE1" > "$TMPFILE2"
-INPUT1="$BASE-old.xml"
+xsltproc "$XSL" "$INPUT1" >"$TMPFILE1"
+xmllint --format "$TMPFILE1" >"$TMPFILE2"
+INPUT1="$BASE-xcos2xml.xml"
 cp -f "$TMPFILE2" "$INPUT1"
 
 xsltproc "$GEOMETRYXSL" "$INPUT1" >"$TMPFILE1"
 xmllint --format "$TMPFILE1" >"$TMPFILE2"
-cp -f "$TMPFILE2" "$TMPFILE1"
+INPUT1="$BASE-geometry.xml"
+cp -f "$TMPFILE2" "$INPUT1"
+
+echo "Running Xcos/XmlParser.py $INPUT1" >&2
+Xcos/XmlParser.py "$INPUT1" >&2 && rv=$? || rv=$?
+
+while test $rv -gt 0; do
+  oldrv=$rv
+
+  INPUT1="$BASE-geometry.$rv.xml"
+  xmllint --format "$INPUT1" >"$TMPFILE2"
+  cp -f "$TMPFILE2" "$INPUT1"
+  echo "Running Xcos/XmlParser.py $INPUT1" >&2
+  Xcos/XmlParser.py "$INPUT1" >&2 && rv=$? || rv=$?
+
+  if ((rv >= oldrv)); then
+    echo "ERROR: $rv >= $oldrv" >&2
+    exit 2
+  fi
+done
+
+INPUT1="$BASE-geometry.$rv.xml"
+xmllint --format "$INPUT1" >"$TMPFILE2"
+cp -f "$TMPFILE2" "$INPUT1"
+
+echo "Running Xcos/MxGraphParser.py $INPUT1" >&2
+Xcos/MxGraphParser.py "$INPUT1" >&2
 
 exit 0
