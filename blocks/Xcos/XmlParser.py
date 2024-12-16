@@ -321,13 +321,11 @@ def getLinkStyle(sourceVertex, sourceType, targetVertex, targetType):
             targetType in ['ExplicitOutputPort', 'ExplicitLink', 'ImplicitOutputPort', 'ImplicitLink', 'CommandPort', 'CommandControlLink']:
         (sourceVertex, targetVertex) = (targetVertex, sourceVertex)
         (sourceType, targetType) = (targetType, sourceType)
-        waypoints.reverse()
         switch_split = True
     elif sourceType in ['ExplicitInputPort', 'ExplicitLink', 'ImplicitInputPort', 'ImplicitLink', 'ControlPort', 'CommandControlLink'] and \
             targetType in ['ExplicitOutputPort', 'ImplicitOutputPort', 'CommandPort']:
         (sourceVertex, targetVertex) = (targetVertex, sourceVertex)
         (sourceType, targetType) = (targetType, sourceType)
-        waypoints.reverse()
         switch_split = True
 
     if sourceType in ['ExplicitInputPort', 'ExplicitOutputPort', 'CommandPort', 'ControlPort'] and \
@@ -368,16 +366,10 @@ for root in model:
         print('Not root')
         sys.exit(2)
 
-    portCount = {}
     IDLIST = {}
     nodeList = {}
-    componentOrdering = 0
     nextattribid = 1
     nextAttribForSplit = 10000
-    edgeDict = {}
-    edgeList = []
-    mxPointList = {}
-    blkgeometry = {}
     points = []
     points1 = []
     cells = list(root)
