@@ -311,9 +311,24 @@ def check_point_on_array(array, point, left_right_direction=True):
     return False, array, []
 
 
-def getLinkStyle(sourceType, targetType):
+def getLinkStyle(sourceVertex, sourceType, targetVertex, targetType):
+    # switch vertices if required
+    switch_split = False
     style = None
     addSplit = False
+
+    if sourceType in ['ExplicitInputPort', 'ImplicitInputPort', 'ControlPort'] and \
+            targetType in ['ExplicitOutputPort', 'ExplicitLink', 'ImplicitOutputPort', 'ImplicitLink', 'CommandPort', 'CommandControlLink']:
+        (sourceVertex, targetVertex) = (targetVertex, sourceVertex)
+        (sourceType, targetType) = (targetType, sourceType)
+        waypoints.reverse()
+        switch_split = True
+    elif sourceType in ['ExplicitInputPort', 'ExplicitLink', 'ImplicitInputPort', 'ImplicitLink', 'ControlPort', 'CommandControlLink'] and \
+            targetType in ['ExplicitOutputPort', 'ImplicitOutputPort', 'CommandPort']:
+        (sourceVertex, targetVertex) = (targetVertex, sourceVertex)
+        (sourceType, targetType) = (targetType, sourceType)
+        waypoints.reverse()
+        switch_split = True
 
     if sourceType in ['ExplicitInputPort', 'ExplicitOutputPort', 'CommandPort', 'ControlPort'] and \
             targetType == sourceType:
@@ -345,7 +360,7 @@ def getLinkStyle(sourceType, targetType):
     else:
         print(attribid, 'Unknown combination of', sourceType, 'and', targetType)
 
-    return (style, addSplit)
+    return (sourceVertex, sourceType, targetVertex, targetType, switch_split, style, addSplit)
 
 
 for root in model:
@@ -372,7 +387,6 @@ for root in model:
     rootattribid = None
     parentattribid = None
     key1 = {}
-    graph_port = {}
     graph_link = {}
     removable_link = {}
     split_point = None
@@ -411,8 +425,9 @@ for root in model:
                     style = attrib['style']
                     stylename = style_to_object(style)['default']
                     IDLIST[attribid] = stylename
+
+                    # key structure
                     key1[attribid] = attribid
-                    graph_port[attribid] = [attribid]
                     graph_link[attribid] = []
                     removable_link[attribid] = []
 
@@ -427,45 +442,35 @@ for root in model:
                         remainingcells.append(cell)
                         continue
 
-                    (style, addSplit) = getLinkStyle(sourceType, targetType)
+                    (sourceVertex, sourceType, targetVertex, targetType, switch_split, style, addSplit) = getLinkStyle(sourceVertex, sourceType, targetVertex, targetType)
+                    IDLIST[attribid] = style
 
                     # key structure
                     key1[attribid] = attribid
-                    graph_port[attribid] = []
                     graph_link[attribid] = [attribid]
                     removable_link[attribid] = [attribid] if addSplit else []
 
                     if sourceVertex in key1:
                         key = key1[sourceVertex]
-                        for v in graph_port[key]:
-                            key1[v] = attribid
                         for v in graph_link[key]:
                             key1[v] = attribid
 
-                        graph_port[attribid].extend(graph_port[key])  # merge
                         graph_link[attribid].extend(graph_link[key])
                         removable_link[attribid].extend(removable_link[key])
 
-                        del graph_port[key]
                         del graph_link[key]
                         del removable_link[key]
 
                     if targetVertex in key1:
                         key = key1[targetVertex]
-                        for v in graph_port[key]:
-                            key1[v] = attribid
                         for v in graph_link[key]:
                             key1[v] = attribid
 
-                        graph_port[attribid].extend(graph_port[key])  # merge
                         graph_link[attribid].extend(graph_link[key])
                         removable_link[attribid].extend(removable_link[key])
 
-                        del graph_port[key]
                         del graph_link[key]
                         del removable_link[key]
-
-                    IDLIST[attribid] = style
 
             except BaseException:
                 traceback.print_exc()
@@ -480,12 +485,10 @@ for root in model:
 
 linklist = []
 return_value = 0
-for k, port in graph_port.items():
-    port = graph_port[k]
-    link = graph_link[k]
-    r_link = removable_link[k]
+for k, r_link in removable_link.items():
     if len(r_link) == 0:
         continue
+    link = graph_link[k]
 
     return_value += len(r_link) - 1
     r_link_0 = r_link[0]
@@ -532,7 +535,7 @@ for k, port in graph_port.items():
     tType = IDLIST[otherVertex]
     sType2 = IDLIST[sourceVertex2]
     tType2 = IDLIST[targetVertex2]
-    print("IDLIST:", IDLIST[r_link[0]], r_link[0], IDLIST[port[0]])
+    print("IDLIST:", IDLIST[r_link[0]], r_link[0])
     print(sType, tType, sType2, tType2)
     height = 7
     width = 7
