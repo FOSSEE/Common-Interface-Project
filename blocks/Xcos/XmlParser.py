@@ -311,7 +311,7 @@ def check_point_on_array(array, point, left_right_direction=True):
     return False, array, []
 
 
-def getLinkStyle(sourceVertex, sourceType, targetVertex, targetType):
+def getLinkStyle(sourceVertex, sourceType, targetVertex, targetType, waypoints):
     # switch vertices if required
     switch_split = False
     style = None
@@ -321,11 +321,13 @@ def getLinkStyle(sourceVertex, sourceType, targetVertex, targetType):
             targetType in ['ExplicitOutputPort', 'ExplicitLink', 'ImplicitOutputPort', 'ImplicitLink', 'CommandPort', 'CommandControlLink']:
         (sourceVertex, targetVertex) = (targetVertex, sourceVertex)
         (sourceType, targetType) = (targetType, sourceType)
+        waypoints.reverse()
         switch_split = True
     elif sourceType in ['ExplicitInputPort', 'ExplicitLink', 'ImplicitInputPort', 'ImplicitLink', 'ControlPort', 'CommandControlLink'] and \
             targetType in ['ExplicitOutputPort', 'ImplicitOutputPort', 'CommandPort']:
         (sourceVertex, targetVertex) = (targetVertex, sourceVertex)
         (sourceType, targetType) = (targetType, sourceType)
+        waypoints.reverse()
         switch_split = True
 
     if sourceType in ['ExplicitInputPort', 'ExplicitOutputPort', 'CommandPort', 'ControlPort'] and \
@@ -358,7 +360,7 @@ def getLinkStyle(sourceVertex, sourceType, targetVertex, targetType):
     else:
         print(attribid, 'Unknown combination of', sourceType, 'and', targetType)
 
-    return (sourceVertex, sourceType, targetVertex, targetType, switch_split, style, addSplit)
+    return (sourceVertex, sourceType, targetVertex, targetType, switch_split, style, addSplit, waypoints)
 
 
 for root in model:
@@ -382,6 +384,8 @@ for root in model:
     graph_link = {}
     removable_link = {}
     split_point = None
+    edgeDict = {}
+    
     print('cellslength=', cellslength)
     while cellslength > 0 and cellslength != oldcellslength:
         for i, cell in enumerate(cells):
@@ -424,7 +428,13 @@ for root in model:
                     removable_link[attribid] = []
 
                 elif 'edge' in attrib:
-
+                    mxGeometry = cell.find('mxGeometry')
+                    waypoints = []
+                    arrayElement = mxGeometry.find('Array')
+                    if arrayElement is not None:
+                        for arrayChild in arrayElement:
+                            if arrayChild.tag == 'mxPoint':
+                                waypoints.append(arrayChild.attrib)
                     try:
                         sourceVertex = attrib['sourceVertex']
                         sourceType = IDLIST[sourceVertex]
@@ -434,9 +444,44 @@ for root in model:
                         remainingcells.append(cell)
                         continue
 
-                    (sourceVertex, sourceType, targetVertex, targetType, switch_split, style, addSplit) = getLinkStyle(sourceVertex, sourceType, targetVertex, targetType)
+                    (sourceVertex, sourceType, targetVertex, targetType, switch_split, style, addSplit, waypoints) = getLinkStyle(sourceVertex, sourceType, targetVertex, targetType, waypoints)
+                    
+                    split_point = None
+                    split_point2 = None
+
+                    if 'tarx' in attrib and 'tary' in attrib and (attrib['tarx'] != '0' or attrib['tary'] != '0'):
+                        point = {'x': attrib['tarx'], 'y': attrib['tary']}
+                        if switch_split:
+                            split_point2 = point
+                            waypoints.append(point)
+                        else:
+                            split_point = point
+                            print('SPPPx:', attribid, split_point)
+                            waypoints.insert(0, point)
+                    elif sourceVertex in blkgeometry:
+                        vertex = blkgeometry[sourceVertex]
+                        point = {'x': vertex['x'], 'y': vertex['y']}
+                        waypoints.insert(0, point)
+
+                    if 'tar2x' in attrib and 'tar2y' in attrib and (attrib['tar2x'] != '0' or attrib['tar2y'] != '0'):
+                        point = {'x': attrib['tar2x'], 'y': attrib['tar2y']}
+                        if switch_split:
+                            split_point = point
+                            waypoints.insert(0, point)
+                        else:
+                            split_point2 = point
+                            print('SPPP2x:', attribid, split_point2)
+                            waypoints.append(point)
+                    elif targetVertex in blkgeometry:
+                        vertex = blkgeometry[targetVertex]
+                        point = {'x': vertex['x'], 'y': vertex['y']}
+                        waypoints.append(point)
+
+                    print("WAYPOINTS:",attribid, waypoints)
                     IDLIST[attribid] = style
 
+                    link_data = (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point, split_point2)
+                    edgeDict[attribid] = link_data
                     # key structure
                     key1[attribid] = attribid
                     graph_link[attribid] = [attribid]
@@ -486,6 +531,7 @@ for k, r_link in removable_link.items():
     r_link_0 = r_link[0]
     print(f"removable link: k: {k}, link: {r_link_0}")
     node = nodeList[r_link_0]
+    link_data = edgeDict[r_link_0] # small removed link 
 
     sourceVertex = node.attrib.get('sourceVertex')  # small link
     tarx = node.attrib.get('tarx', '0')
@@ -497,6 +543,7 @@ for k, r_link in removable_link.items():
 
     if sourceVertex in link:
         node2 = nodeList[sourceVertex]
+        link_data2 = edgeDict[sourceVertex] # big removed link 
 
         otherVertex = targetVertex
         otherx = node2.attrib.get('tar2x', '0')
@@ -508,6 +555,7 @@ for k, r_link in removable_link.items():
 
     elif targetVertex in link:
         node2 = nodeList[targetVertex]
+        link_data2 = edgeDict[targetVertex] # big removed link
 
         otherVertex = sourceVertex
         otherx = node2.attrib.get('tarx', '0')
@@ -527,21 +575,24 @@ for k, r_link in removable_link.items():
     tType = IDLIST[otherVertex]
     sType2 = IDLIST[sourceVertex2]
     tType2 = IDLIST[targetVertex2]
-    print("IDLIST:", IDLIST[r_link[0]], r_link[0])
+    print("IDLIST:", link_data2, IDLIST[r_link[0]], r_link[0])
     print(sType, tType, sType2, tType2)
     height = 7
     width = 7
-    split_point = {'x': thisx, 'y': thisy}
-    points.extract_points(node)  # small link
-    points1.extract_points(node2)  # big link
-    check_point_on_array(points1, split_point)
-    # points.append(split_point)
-    print("POINTS:", points, split_point, points1)
+
+    points = waypoints  # small link
+    points1 = waypoints2  # big link
+
+    print("WAYS:", waypoints)
+    result, left_array, right_array = check_point_on_array(points1, split_point)
+    print('LR:', left_array, right_array)
+    # # points.append(split_point)
+    # print("POINTS:", points, split_point, points1)
 
     port1 = portType1(sType, sType2, tType2)
     port2 = portType2(sType, sType2, tType2)
     port3 = portType3(sType, tType)
-    print("PORT:", port1, port2, port3)
+    print("PORT:", link_data, port1, port2, port3)
 
     ports = [port1, port2, port3]
     implicitInputPorts = 0
