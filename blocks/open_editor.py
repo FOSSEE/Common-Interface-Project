@@ -61,7 +61,7 @@ def login_with_github():
         print("Send SMS button is clickable now.")
         send_sms_button.click()
         print("Clicked the Send SMS button.")
-    except Exception as e:
+    except Exception:
         print("No Send SMS page detected or an error occurred")
 
     # Wait for the 2FA page
@@ -78,7 +78,7 @@ def login_with_github():
         # Verification process should be completed by now
         print("2FA process completed.")
 
-    except Exception as e:
+    except Exception:
         print("No 2FA page detected or an error occurred")
 
     try:
@@ -89,7 +89,7 @@ def login_with_github():
         authorize_button.click()
         print("Clicked authorize button.")
 
-    except Exception as e:
+    except Exception:
         print("An error occurred during GitHub authorization")
 
 

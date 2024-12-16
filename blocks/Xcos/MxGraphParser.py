@@ -351,7 +351,7 @@ for root in model:
 
                     style = None
                     addSplit = False
-                    
+
                     if sourceType in ['ExplicitInputPort', 'ExplicitOutputPort', 'CommandPort', 'ControlPort'] and \
                             targetType == sourceType:
                         print(attribid, 'cannot connect two ports of', sourceType, 'and', targetType)
@@ -500,7 +500,6 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoi
         print('nextAttribForSplit2:', nextAttribForSplit, sourceVertex, targetVertex)
         port3 = nextattribid
         (inputCount, outputCount, nextattribid, nextAttribForSplit) = addPort3ForSplit(outroot, splitblockid, sourceVertex, targetVertex, sourceType, targetType, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, array3)
-        # print('linkid', linkid, port3) 
         print('nextAttribForSplit3:', nextAttribForSplit, sourceVertex2, targetVertex2, splitblockid)
 
         newEdgeDict[attribid2][i] = ((nextAttribForSplit, sourceVertex2, port1, sourceType2, targetType, style2, left_array, addSplit2, split_point, split_point2))
@@ -520,7 +519,7 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoi
         LINKTOPORT[linkid] = port3
         print('LINKTOPORT', linkid, port3)
 
-        
+
 print()
 
 for key, newEdges in newEdgeDict.items():
@@ -535,7 +534,7 @@ for key, newEdges in newEdgeDict.items():
             targetVertex = LINKTOPORT[targetVertex]
         except KeyError:
             pass
-        
+
         if get_int(attribid) >= 10000:
             attribid = nextattribid
             nextattribid += 1
