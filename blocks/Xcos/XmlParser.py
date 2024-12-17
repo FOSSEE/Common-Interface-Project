@@ -511,6 +511,7 @@ for root in model:
 
                     link_data = (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point, split_point2)
                     edgeDict[attribid] = link_data
+                    print("LINKDATA:", link_data)
 
                     initLinks(attribid, key1, graph_link, [attribid], removable_link, [attribid] if addSplit else [])
                     mergeLinks(sourceVertex, key1, graph_link, removable_link)
@@ -529,6 +530,7 @@ for root in model:
 
 linklist = []
 return_value = 0
+LINKTOPORT = {}
 for k, r_link in removable_link.items():
     if len(r_link) == 0:
         continue
@@ -586,7 +588,6 @@ for k, r_link in removable_link.items():
         tar2x = node2.attrib.get('tar2x', '0')
         tar2y = node2.attrib.get('tar2y', '0')
 
-    print("thisx:", tarx, tary)
     sourceVertex2 = node2.attrib.get('sourceVertex')  # big link 2
     targetVertex2 = node2.attrib.get('targetVertex')  # big link 3
 
@@ -597,7 +598,7 @@ for k, r_link in removable_link.items():
     tType = IDLIST[otherVertex]
     sType2 = IDLIST[sourceVertex2]
     tType2 = IDLIST[targetVertex2]
-    print("IDLIST:", link_data2, IDLIST[r_link[0]], r_link[0])
+    # print("IDLIST:", link_data2, IDLIST[r_link[0]], r_link[0])
     print(sType, tType, sType2, tType2)
     height = 7
     width = 7
@@ -613,7 +614,7 @@ for k, r_link in removable_link.items():
     port1 = portType1(sType, sType2, tType2)
     port2 = portType2(sType, sType2, tType2)
     port3 = portType3(sType, tType)
-    print("PORT:", link_data, port1, port2, port3)
+    # print("PORT:", link_data, port1, port2, port3)
 
     ports = [port1, port2, port3]
     implicitInputPorts = 0
@@ -638,7 +639,7 @@ for k, r_link in removable_link.items():
         elif port == 'commandPort':
             commandPorts += 1
 
-    print('COUNTS:', explicitInputPorts, implicitInputPorts, explicitOutputPorts, implicitOutputPorts, controlPorts, )
+    # print('COUNTS:', explicitInputPorts, implicitInputPorts, explicitOutputPorts, implicitOutputPorts, controlPorts, )
     # add splitblock
     geometry = (thisx, thisy, width, height)
     block_id = str(nextattribid)
@@ -696,7 +697,11 @@ for k, r_link in removable_link.items():
             waypoints = array3
             
         port_id = nextattribid
-#LINKTOPORT 
+#LINKTOPORT
+        if port == 2:
+            print("PORT_ID:", port, port_id)
+            LINKTOPORT[thisVertex] = port_id
+            print("LP:", thisVertex, port_id, otherVertex)
         if port < explicitInputPorts:
             port_type = "ExplicitInputPort"
             link_type = "ExplicitLink"
@@ -741,11 +746,25 @@ for k, r_link in removable_link.items():
         root.append(xml_output_port)
 
 # add splitblock edges
-print("TP:", linklist)
-
+print("TP:", len(linklist))
+print("LINKPORT", LINKTOPORT)
 for edge_index, (link_type, source_vertex, sourcex, sourcey, target_vertex, targetx, targety, waypoints) in enumerate(linklist):
     edge_id = nextAttribForSplit
+    print("SV, TV:", source_vertex, target_vertex)
     #LINKTOPORT update
+    try:
+        source_vertex = LINKTOPORT[source_vertex]
+    except KeyError:
+        pass
+
+    try:
+        target_vertex = LINKTOPORT[target_vertex]
+    except KeyError:
+        pass
+
+    print("SV1, TV1:", source_vertex, target_vertex)
+    
+
     xml_output_edge = create_mxCell_edge(
         id=edge_id,
         edge="1",
@@ -763,6 +782,53 @@ for edge_index, (link_type, source_vertex, sourcex, sourcey, target_vertex, targ
     nextAttribForSplit += 1
 
     root.append(xml_output_edge)
+
+cells = list(root)
+for cell in cells:
+    try:
+        attrib = cell.attrib
+        attribid = attrib['id']
+        attribint = get_int(attribid)
+        if nextattribid <= attribint:
+            nextattribid = attribint + 1
+    except KeyError:
+        continue
+
+    cell_type = attrib['CellType']
+    nodeList[attribid] = cell
+
+    if cell_type == 'Component':
+        continue
+    elif cell_type == 'Pin':
+        continue
+
+    elif 'edge' in attrib:
+        try:
+            sourceVertex = attrib['sourceVertex']
+            targetVertex = attrib['targetVertex']
+        except KeyError:
+            continue
+
+        if sourceVertex not in LINKTOPORT and targetVertex not in LINKTOPORT:
+            continue
+
+        print("REPLACING SV, TV:", sourceVertex, targetVertex)
+
+        try:
+            sourceVertex = str(LINKTOPORT[sourceVertex])
+        except KeyError:
+            pass
+
+        try:
+            targetVertex = str(LINKTOPORT[targetVertex])
+        except KeyError:
+            pass
+
+        cell.set('sourceVertex', sourceVertex)
+        cell.set('targetVertex', targetVertex)
+
+        print("REPLACE SV, TV:", sourceVertex, targetVertex)
+
 
 print("ROOT:", root)
 # key structure
