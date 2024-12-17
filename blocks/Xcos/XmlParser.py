@@ -377,7 +377,6 @@ for root in model:
     IDLIST = {}
     nodeList = {}
     nextattribid = 1
-    nextAttribForSplit = 10000
     cells = list(root)
     remainingcells = []
     cellslength = len(cells)
@@ -749,7 +748,7 @@ for k, r_link in removable_link.items():
 print("TP:", len(linklist))
 print("LINKPORT", LINKTOPORT)
 for edge_index, (link_type, source_vertex, sourcex, sourcey, target_vertex, targetx, targety, waypoints) in enumerate(linklist):
-    edge_id = nextAttribForSplit
+    edge_id = nextattribid
     print("SV, TV:", source_vertex, target_vertex)
     #LINKTOPORT update
     try:
@@ -779,18 +778,22 @@ for edge_index, (link_type, source_vertex, sourcex, sourcey, target_vertex, targ
         array=waypoints
     )
 
-    nextAttribForSplit += 1
+    nextattribid += 1
 
     root.append(xml_output_edge)
 
 cells = list(root)
-for cell in cells:
+for i, cell in enumerate(cells):
+    if i == 0:
+        continue
+    if i == 1:
+        continue
     try:
         attrib = cell.attrib
         attribid = attrib['id']
         attribint = get_int(attribid)
-        if nextattribid <= attribint:
-            nextattribid = attribint + 1
+        # if nextattribid <= attribint:
+        #     nextattribid = attribint + 1
     except KeyError:
         continue
 
