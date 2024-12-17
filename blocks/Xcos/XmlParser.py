@@ -107,21 +107,6 @@ def portType3(sType, tType):
                   '(', sType, ',', tType, ')')
 
 
-def extract_points(node):
-    pts = []
-    geometry = node.find(".//mxGeometry")
-    if geometry is not None:
-        array = geometry.find(".//Array[@as='points']")
-        if array is not None:
-            for point in array.findall("mxPoint"):
-                x = point.get("x")
-                y = point.get("y")
-                p = {'x': x, 'y': y}
-                pts.append(p)
-
-    return pts
-
-
 def create_mxCell(style, id, vertex="1", connectable="0", CellType="Component", blockprefix="XCOS",
                   explicitInputPorts="0", implicitInputPorts="0", explicitOutputPorts="0", implicitOutputPorts="0",
                   controlPorts="0", commandPorts="0", simulationFunction="split", sourceVertex="0", targetVertex="0",
@@ -372,8 +357,6 @@ for root in model:
     nodeList = {}
     nextattribid = 1
     nextAttribForSplit = 10000
-    points = []
-    points1 = []
     cells = list(root)
     remainingcells = []
     cellslength = len(cells)
@@ -430,6 +413,7 @@ for root in model:
                 elif 'edge' in attrib:
                     mxGeometry = cell.find('mxGeometry')
                     waypoints = []
+                    waypoints2 = []
                     arrayElement = mxGeometry.find('Array')
                     if arrayElement is not None:
                         for arrayChild in arrayElement:
@@ -580,14 +564,13 @@ for k, r_link in removable_link.items():
     height = 7
     width = 7
 
-    points = waypoints  # small link
-    points1 = waypoints2  # big link
+    waypoints = link_data[6]  # small link
+    waypoints2 = link_data2[6] # big link
+    split_point = link_data2[8]
 
-    print("WAYS:", waypoints)
-    result, left_array, right_array = check_point_on_array(points1, split_point)
+    result, left_array, right_array = check_point_on_array(waypoints2, split_point)
     print('LR:', left_array, right_array)
-    # # points.append(split_point)
-    # print("POINTS:", points, split_point, points1)
+    array3 = waypoints
 
     port1 = portType1(sType, sType2, tType2)
     port2 = portType2(sType, sType2, tType2)
@@ -662,39 +645,42 @@ for k, r_link in removable_link.items():
             port_index = sourceVertex2
             portx = tarx
             porty = tary
+            waypoints = left_array
         elif port == 1:
             port_index = targetVertex2
             portx = tar2x
             porty = tar2y
+            waypoints = right_array
         else:
             port_index = otherVertex
             portx = otherx
             porty = othery
+            waypoints = array3
         port_id = nextattribid
         if port < explicitInputPorts:
             port_type = "ExplicitInputPort"
             link_type = "ExplicitLink"
-            linklist.append((link_type, port_id, thisx, thisy, port_index, portx, porty))
+            linklist.append((link_type, port_id, thisx, thisy, port_index, portx, porty, waypoints))
         elif port < explicitInputPorts + implicitInputPorts:
             port_type = "ImplicitInputPort"
             link_type = "ImplicitLink"
-            linklist.append((link_type, port_id, thisx, thisy, port_index, portx, porty))
+            linklist.append((link_type, port_id, thisx, thisy, port_index, portx, porty, waypoints))
         elif port < explicitInputPorts + implicitInputPorts + explicitOutputPorts:
             port_type = "ExplicitOutputPort"
             link_type = "ExplicitLink"
-            linklist.append((link_type, port_index, portx, porty, port_id, thisx, thisy, ))
+            linklist.append((link_type, port_index, portx, porty, port_id, thisx, thisy, waypoints))
         elif port < explicitInputPorts + implicitInputPorts + explicitOutputPorts + implicitOutputPorts:
             port_type = "ImplicitOutputPort"
             link_type = "ImplicitLink"
-            linklist.append((link_type, port_index, portx, porty, port_id, thisx, thisy, ))
+            linklist.append((link_type, port_index, portx, porty, port_id, thisx, thisy, waypoints))
         elif port < explicitInputPorts + implicitInputPorts + explicitOutputPorts + implicitOutputPorts + controlPorts:
             port_type = "ControlPort"
             link_type = "CommandControlLink"
-            linklist.append((link_type, port_id, thisx, thisy, port_index, portx, porty))
+            linklist.append((link_type, port_id, thisx, thisy, port_index, portx, porty, waypoints))
         else:
             port_type = "CommandPort"
             link_type = "CommandControlLink"
-            linklist.append((link_type, port_index, portx, porty, port_id, thisx, thisy, ))
+            linklist.append((link_type, port_index, portx, porty, port_id, thisx, thisy, waypoints))
         ordering = ordering_counters[port_type] + 1
         ordering_counters[port_type] += 1
 
@@ -717,7 +703,7 @@ for k, r_link in removable_link.items():
 # add splitblock edges
 print("TP:", linklist)
 
-for edge_index, (link_type, source_vertex, sourcex, sourcey, target_vertex, targetx, targety) in enumerate(linklist):
+for edge_index, (link_type, source_vertex, sourcex, sourcey, target_vertex, targetx, targety, waypoints) in enumerate(linklist):
     edge_id = nextAttribForSplit
     xml_output_edge = create_mxCell_edge(
         id=edge_id,
