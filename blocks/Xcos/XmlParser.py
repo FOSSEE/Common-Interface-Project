@@ -9,7 +9,7 @@ import xml.etree.ElementTree as ET
 import defusedxml.ElementTree as goodET
 import uuid
 
-from xcosblocks import style_to_object
+from xcosblocks import num2str, style_to_object
 
 if len(sys.argv) != 2:
     print("Usage: %s filename.xml" % sys.argv[0])
@@ -348,6 +348,26 @@ def getLinkStyle(sourceVertex, sourceType, targetVertex, targetType, waypoints):
     return (sourceVertex, sourceType, targetVertex, targetType, switch_split, style, addSplit, waypoints)
 
 
+def initLinks(vertex, key1, graph_link, graph_value, removable_link, removable_value):
+    # key structure
+    key1[vertex] = vertex
+    graph_link[vertex] = graph_value
+    graph_link[vertex] = removable_value
+
+
+def mergeLinks(vertex, key1, graph_link, removable_link):
+    if vertex in key1:
+        key = key1[vertex]
+        for v in graph_link[key]:
+            key1[v] = attribid
+
+        graph_link[attribid].extend(graph_link[key])
+        removable_link[attribid].extend(removable_link[key])
+
+        del graph_link[key]
+        del removable_link[key]
+
+
 for root in model:
     if root.tag != 'root':
         print('Not root')
@@ -361,6 +381,7 @@ for root in model:
     remainingcells = []
     cellslength = len(cells)
     oldcellslength = 0
+    blkgeometry = {}
     rootattribid = None
     parentattribid = None
     key1 = {}
@@ -368,7 +389,7 @@ for root in model:
     removable_link = {}
     split_point = None
     edgeDict = {}
-    
+
     print('cellslength=', cellslength)
     while cellslength > 0 and cellslength != oldcellslength:
         for i, cell in enumerate(cells):
@@ -397,18 +418,43 @@ for root in model:
 
                 if cell_type == 'Component':
 
+                    componentGeometry = {}
+                    componentGeometry['height'] = 40
+                    componentGeometry['width'] = 40
+                    componentGeometry['x'] = 0
+                    componentGeometry['y'] = 0
+                    mxGeometry = cell.find('mxGeometry')
+                    if mxGeometry is not None:
+                        componentGeometry['height'] = mxGeometry.attrib['height']
+                        componentGeometry['width'] = mxGeometry.attrib['width']
+                        componentGeometry['x'] = mxGeometry.attrib.get('x', '0')
+                        componentGeometry['y'] = mxGeometry.attrib.get('y', '0')
+
                     IDLIST[attribid] = cell_type
+                    blkgeometry[attribid] = componentGeometry
 
                 elif cell_type == 'Pin':
 
+                    geometry = dict(componentGeometry)
+                    mxGeometry = cell.find('mxGeometry')
+                    if mxGeometry is not None:
+                        geometry['height'] = mxGeometry.attrib['height']
+                        geometry['width'] = mxGeometry.attrib['width']
+                        geometryX = mxGeometry.attrib.get('x', 0)
+                        geometryY = mxGeometry.attrib.get('y', 0)
+                        if mxGeometry.attrib.get('relative', '0') == '1':
+                            geometryX = num2str(float(componentGeometry['x']) +
+                                                float(componentGeometry['width']) * float(geometryX))
+                            geometryY = num2str(float(componentGeometry['y']) +
+                                                float(componentGeometry['height']) * float(geometryY))
+                        geometry['x'] = geometryX
+                        geometry['y'] = geometryY
                     style = attrib['style']
                     stylename = style_to_object(style)['default']
                     IDLIST[attribid] = stylename
+                    blkgeometry[attribid] = geometry
 
-                    # key structure
-                    key1[attribid] = attribid
-                    graph_link[attribid] = []
-                    removable_link[attribid] = []
+                    initLinks(attribid, key1, graph_link, [], removable_link, [])
 
                 elif 'edge' in attrib:
                     mxGeometry = cell.find('mxGeometry')
@@ -429,7 +475,7 @@ for root in model:
                         continue
 
                     (sourceVertex, sourceType, targetVertex, targetType, switch_split, style, addSplit, waypoints) = getLinkStyle(sourceVertex, sourceType, targetVertex, targetType, waypoints)
-                    
+
                     split_point = None
                     split_point2 = None
 
@@ -440,7 +486,6 @@ for root in model:
                             waypoints.append(point)
                         else:
                             split_point = point
-                            print('SPPPx:', attribid, split_point)
                             waypoints.insert(0, point)
                     elif sourceVertex in blkgeometry:
                         vertex = blkgeometry[sourceVertex]
@@ -454,44 +499,21 @@ for root in model:
                             waypoints.insert(0, point)
                         else:
                             split_point2 = point
-                            print('SPPP2x:', attribid, split_point2)
                             waypoints.append(point)
                     elif targetVertex in blkgeometry:
                         vertex = blkgeometry[targetVertex]
                         point = {'x': vertex['x'], 'y': vertex['y']}
                         waypoints.append(point)
 
-                    print("WAYPOINTS:",attribid, waypoints)
+                    print("WAYPOINTS:", attribid, waypoints)
                     IDLIST[attribid] = style
 
                     link_data = (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point, split_point2)
                     edgeDict[attribid] = link_data
-                    # key structure
-                    key1[attribid] = attribid
-                    graph_link[attribid] = [attribid]
-                    removable_link[attribid] = [attribid] if addSplit else []
 
-                    if sourceVertex in key1:
-                        key = key1[sourceVertex]
-                        for v in graph_link[key]:
-                            key1[v] = attribid
-
-                        graph_link[attribid].extend(graph_link[key])
-                        removable_link[attribid].extend(removable_link[key])
-
-                        del graph_link[key]
-                        del removable_link[key]
-
-                    if targetVertex in key1:
-                        key = key1[targetVertex]
-                        for v in graph_link[key]:
-                            key1[v] = attribid
-
-                        graph_link[attribid].extend(graph_link[key])
-                        removable_link[attribid].extend(removable_link[key])
-
-                        del graph_link[key]
-                        del removable_link[key]
+                    initLinks(attribid, key1, graph_link, [attribid], removable_link, [attribid] if addSplit else [])
+                    mergeLinks(sourceVertex, key1, graph_link, removable_link)
+                    mergeLinks(targetVertex, key1, graph_link, removable_link)
 
             except BaseException:
                 traceback.print_exc()
@@ -515,7 +537,7 @@ for k, r_link in removable_link.items():
     r_link_0 = r_link[0]
     print(f"removable link: k: {k}, link: {r_link_0}")
     node = nodeList[r_link_0]
-    link_data = edgeDict[r_link_0] # small removed link 
+    link_data = edgeDict[r_link_0]  # small removed link
 
     sourceVertex = node.attrib.get('sourceVertex')  # small link
     tarx = node.attrib.get('tarx', '0')
@@ -527,7 +549,7 @@ for k, r_link in removable_link.items():
 
     if sourceVertex in link:
         node2 = nodeList[sourceVertex]
-        link_data2 = edgeDict[sourceVertex] # big removed link 
+        link_data2 = edgeDict[sourceVertex]  # big removed link
 
         otherVertex = targetVertex
         otherx = node2.attrib.get('tar2x', '0')
@@ -539,7 +561,7 @@ for k, r_link in removable_link.items():
 
     elif targetVertex in link:
         node2 = nodeList[targetVertex]
-        link_data2 = edgeDict[targetVertex] # big removed link
+        link_data2 = edgeDict[targetVertex]  # big removed link
 
         otherVertex = sourceVertex
         otherx = node2.attrib.get('tarx', '0')
@@ -564,8 +586,8 @@ for k, r_link in removable_link.items():
     height = 7
     width = 7
 
-    waypoints = link_data[6]  # small link
-    waypoints2 = link_data2[6] # big link
+    waypoints = link_data[6]    # small link
+    waypoints2 = link_data2[6]  # big link
     split_point = link_data2[8]
 
     result, left_array, right_array = check_point_on_array(waypoints2, split_point)
@@ -718,7 +740,7 @@ for edge_index, (link_type, source_vertex, sourcex, sourcey, target_vertex, targ
         target_point=(targetx, targety),
         waypoint_x="0",
         waypoint_y="0",
-        array=points
+        array=None
     )
 
     nextAttribForSplit += 1
