@@ -197,7 +197,7 @@ def create_mxCell_port(style, id, parentComponent, ordering="1", vertex="1", cel
 
 
 def create_mxCell_edge(id, edge="1", cellType="Unknown",
-                       sourceVertex="0", targetVertex="0", tarx="0", tary="0", tar2x="0", tar2y="0", source_point="0", target_point="0", waypoint_x="0", waypoint_y="0", array=None):
+                       sourceVertex="0", targetVertex="0", tarx="0", tary="0", tar2x="0", tar2y="0", source_point="0", target_point="0", array=None):
     mxcell = ET.Element('mxCell', {
         'id': str(id),
         'edge': edge,
@@ -227,14 +227,14 @@ def create_mxCell_edge(id, edge="1", cellType="Unknown",
         'as': 'targetPoint'
     })
 
-    if array:
-        ET.SubElement(mxgeometry, 'Array', {
-            'as': 'points'
-        })
+    array_element = ET.SubElement(mxgeometry, 'Array', {
+        'as': 'points'
+    })
 
-        ET.SubElement(mxgeometry, 'mxPoint', {
-            'x': str(waypoint_x),
-            'y': str(waypoint_y)
+    for waypoint in waypoints[1:-1]:  
+        ET.SubElement(array_element, 'mxPoint', {
+            'x': waypoint['x'],  # Access 'x' key
+            'y': waypoint['y']   # Access 'y' key
         })
 
     ET.SubElement(mxcell, "Object", {
@@ -352,7 +352,8 @@ def initLinks(vertex, key1, graph_link, graph_value, removable_link, removable_v
     # key structure
     key1[vertex] = vertex
     graph_link[vertex] = graph_value
-    graph_link[vertex] = removable_value
+    removable_link[vertex] = removable_value
+    
 
 
 def mergeLinks(vertex, key1, graph_link, removable_link):
@@ -376,7 +377,6 @@ for root in model:
     IDLIST = {}
     nodeList = {}
     nextattribid = 1
-    nextAttribForSplit = 10000
     cells = list(root)
     remainingcells = []
     cellslength = len(cells)
@@ -510,6 +510,7 @@ for root in model:
 
                     link_data = (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point, split_point2)
                     edgeDict[attribid] = link_data
+                    print("LINKDATA:", link_data)
 
                     initLinks(attribid, key1, graph_link, [attribid], removable_link, [attribid] if addSplit else [])
                     mergeLinks(sourceVertex, key1, graph_link, removable_link)
@@ -528,6 +529,7 @@ for root in model:
 
 linklist = []
 return_value = 0
+LINKTOPORT = {}
 for k, r_link in removable_link.items():
     if len(r_link) == 0:
         continue
@@ -540,36 +542,50 @@ for k, r_link in removable_link.items():
     link_data = edgeDict[r_link_0]  # small removed link
 
     sourceVertex = node.attrib.get('sourceVertex')  # small link
-    tarx = node.attrib.get('tarx', '0')
-    tary = node.attrib.get('tary', '0')
+    
 
     targetVertex = node.attrib.get('targetVertex')  # small link
-    tar2x = node.attrib.get('tar2x', '0')
-    tar2y = node.attrib.get('tar2y', '0')
+    
 
     if sourceVertex in link:
         node2 = nodeList[sourceVertex]
         link_data2 = edgeDict[sourceVertex]  # big removed link
 
-        otherVertex = targetVertex
-        otherx = node2.attrib.get('tar2x', '0')
-        othery = node2.attrib.get('tar2y', '0')
-
         thisVertex = sourceVertex
-        thisx = node2.attrib.get('tarx', '0')
-        thisy = node2.attrib.get('tary', '0')
+        thisx = node.attrib.get('tarx', '0')
+        thisy = node.attrib.get('tary', '0')
+
+        otherVertex = targetVertex
+        otherx = node.attrib.get('tar2x', '0')
+        othery = node.attrib.get('tar2y', '0')
+
+        
+        tar2x = node2.attrib.get('tar2x', '0')
+        tar2y = node2.attrib.get('tar2y', '0')
+
+        
+        tarx = node2.attrib.get('tarx', '0')
+        tary = node2.attrib.get('tary', '0')
 
     elif targetVertex in link:
         node2 = nodeList[targetVertex]
         link_data2 = edgeDict[targetVertex]  # big removed link
 
         otherVertex = sourceVertex
-        otherx = node2.attrib.get('tarx', '0')
-        othery = node2.attrib.get('tary', '0')
+        otherx = node.attrib.get('tarx', '0')
+        othery = node.attrib.get('tary', '0')
 
-        thisVertex = targetVertex  # 1
-        thisx = node2.attrib.get('tar2x', '0')
-        thisy = node2.attrib.get('tar2y', '0')
+        thisVertex = targetVertex
+        thisx = node.attrib.get('tar2x', '0')
+        thisy = node.attrib.get('tar2y', '0')
+
+        
+        tarx = node2.attrib.get('tarx', '0')
+        tary = node2.attrib.get('tary', '0')
+
+
+        tar2x = node2.attrib.get('tar2x', '0')
+        tar2y = node2.attrib.get('tar2y', '0')
 
     sourceVertex2 = node2.attrib.get('sourceVertex')  # big link 2
     targetVertex2 = node2.attrib.get('targetVertex')  # big link 3
@@ -581,14 +597,14 @@ for k, r_link in removable_link.items():
     tType = IDLIST[otherVertex]
     sType2 = IDLIST[sourceVertex2]
     tType2 = IDLIST[targetVertex2]
-    print("IDLIST:", link_data2, IDLIST[r_link[0]], r_link[0])
+    # print("IDLIST:", link_data2, IDLIST[r_link[0]], r_link[0])
     print(sType, tType, sType2, tType2)
     height = 7
     width = 7
 
-    waypoints = link_data[6]    # small link
-    waypoints2 = link_data2[6]  # big link
-    split_point = link_data2[8]
+    waypoints = link_data[6]  # small link
+    waypoints2 = link_data2[6] # big link
+    split_point = link_data[8]
 
     result, left_array, right_array = check_point_on_array(waypoints2, split_point)
     print('LR:', left_array, right_array)
@@ -597,7 +613,7 @@ for k, r_link in removable_link.items():
     port1 = portType1(sType, sType2, tType2)
     port2 = portType2(sType, sType2, tType2)
     port3 = portType3(sType, tType)
-    print("PORT:", link_data, port1, port2, port3)
+    # print("PORT:", link_data, port1, port2, port3)
 
     ports = [port1, port2, port3]
     implicitInputPorts = 0
@@ -622,7 +638,7 @@ for k, r_link in removable_link.items():
         elif port == 'commandPort':
             commandPorts += 1
 
-    print('COUNTS:', explicitInputPorts, implicitInputPorts, explicitOutputPorts, implicitOutputPorts, controlPorts, )
+    # print('COUNTS:', explicitInputPorts, implicitInputPorts, explicitOutputPorts, implicitOutputPorts, controlPorts, )
     # add splitblock
     geometry = (thisx, thisy, width, height)
     block_id = str(nextattribid)
@@ -678,7 +694,13 @@ for k, r_link in removable_link.items():
             portx = otherx
             porty = othery
             waypoints = array3
+            
         port_id = nextattribid
+#LINKTOPORT
+        if port == 2:
+            print("PORT_ID:", port, port_id)
+            LINKTOPORT[thisVertex] = port_id
+            print("LP:", thisVertex, port_id, otherVertex)
         if port < explicitInputPorts:
             port_type = "ExplicitInputPort"
             link_type = "ExplicitLink"
@@ -723,10 +745,25 @@ for k, r_link in removable_link.items():
         root.append(xml_output_port)
 
 # add splitblock edges
-print("TP:", linklist)
-
+print("TP:", len(linklist))
+print("LINKPORT", LINKTOPORT)
 for edge_index, (link_type, source_vertex, sourcex, sourcey, target_vertex, targetx, targety, waypoints) in enumerate(linklist):
-    edge_id = nextAttribForSplit
+    edge_id = nextattribid
+    print("SV, TV:", source_vertex, target_vertex)
+    #LINKTOPORT update
+    try:
+        source_vertex = LINKTOPORT[source_vertex]
+    except KeyError:
+        pass
+
+    try:
+        target_vertex = LINKTOPORT[target_vertex]
+    except KeyError:
+        pass
+
+    print("SV1, TV1:", source_vertex, target_vertex)
+    
+
     xml_output_edge = create_mxCell_edge(
         id=edge_id,
         edge="1",
@@ -738,14 +775,63 @@ for edge_index, (link_type, source_vertex, sourcex, sourcey, target_vertex, targ
         tar2y=targety,
         source_point=(sourcex, sourcey),
         target_point=(targetx, targety),
-        waypoint_x="0",
-        waypoint_y="0",
-        array=None
+        array=waypoints
     )
 
-    nextAttribForSplit += 1
+    nextattribid += 1
 
     root.append(xml_output_edge)
+
+cells = list(root)
+for i, cell in enumerate(cells):
+    if i == 0:
+        continue
+    if i == 1:
+        continue
+    try:
+        attrib = cell.attrib
+        attribid = attrib['id']
+        attribint = get_int(attribid)
+        # if nextattribid <= attribint:
+        #     nextattribid = attribint + 1
+    except KeyError:
+        continue
+
+    cell_type = attrib['CellType']
+    nodeList[attribid] = cell
+
+    if cell_type == 'Component':
+        continue
+    elif cell_type == 'Pin':
+        continue
+
+    elif 'edge' in attrib:
+        try:
+            sourceVertex = attrib['sourceVertex']
+            targetVertex = attrib['targetVertex']
+        except KeyError:
+            continue
+
+        if sourceVertex not in LINKTOPORT and targetVertex not in LINKTOPORT:
+            continue
+
+        print("REPLACING SV, TV:", sourceVertex, targetVertex)
+
+        try:
+            sourceVertex = str(LINKTOPORT[sourceVertex])
+        except KeyError:
+            pass
+
+        try:
+            targetVertex = str(LINKTOPORT[targetVertex])
+        except KeyError:
+            pass
+
+        cell.set('sourceVertex', sourceVertex)
+        cell.set('targetVertex', targetVertex)
+
+        print("REPLACE SV, TV:", sourceVertex, targetVertex)
+
 
 print("ROOT:", root)
 # key structure
