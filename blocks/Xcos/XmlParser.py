@@ -197,7 +197,7 @@ def create_mxCell_port(style, id, parentComponent, ordering="1", vertex="1", cel
 
 
 def create_mxCell_edge(id, edge="1", cellType="Unknown",
-                       sourceVertex="0", targetVertex="0", tarx="0", tary="0", tar2x="0", tar2y="0", source_point="0", target_point="0", waypoint_x="0", waypoint_y="0", array=None):
+                       sourceVertex="0", targetVertex="0", tarx="0", tary="0", tar2x="0", tar2y="0", source_point="0", target_point="0", array=None):
     mxcell = ET.Element('mxCell', {
         'id': str(id),
         'edge': edge,
@@ -227,14 +227,14 @@ def create_mxCell_edge(id, edge="1", cellType="Unknown",
         'as': 'targetPoint'
     })
 
-    if array:
-        ET.SubElement(mxgeometry, 'Array', {
-            'as': 'points'
-        })
+    array_element = ET.SubElement(mxgeometry, 'Array', {
+        'as': 'points'
+    })
 
-        ET.SubElement(mxgeometry, 'mxPoint', {
-            'x': str(waypoint_x),
-            'y': str(waypoint_y)
+    for waypoint in waypoints[1:-1]:  
+        ET.SubElement(array_element, 'mxPoint', {
+            'x': waypoint['x'],  # Access 'x' key
+            'y': waypoint['y']   # Access 'y' key
         })
 
     ET.SubElement(mxcell, "Object", {
@@ -352,7 +352,8 @@ def initLinks(vertex, key1, graph_link, graph_value, removable_link, removable_v
     # key structure
     key1[vertex] = vertex
     graph_link[vertex] = graph_value
-    graph_link[vertex] = removable_value
+    removable_link[vertex] = removable_value
+    
 
 
 def mergeLinks(vertex, key1, graph_link, removable_link):
@@ -540,37 +541,52 @@ for k, r_link in removable_link.items():
     link_data = edgeDict[r_link_0]  # small removed link
 
     sourceVertex = node.attrib.get('sourceVertex')  # small link
-    tarx = node.attrib.get('tarx', '0')
-    tary = node.attrib.get('tary', '0')
+    
 
     targetVertex = node.attrib.get('targetVertex')  # small link
-    tar2x = node.attrib.get('tar2x', '0')
-    tar2y = node.attrib.get('tar2y', '0')
+    
 
     if sourceVertex in link:
         node2 = nodeList[sourceVertex]
         link_data2 = edgeDict[sourceVertex]  # big removed link
 
-        otherVertex = targetVertex
-        otherx = node2.attrib.get('tar2x', '0')
-        othery = node2.attrib.get('tar2y', '0')
-
         thisVertex = sourceVertex
-        thisx = node2.attrib.get('tarx', '0')
-        thisy = node2.attrib.get('tary', '0')
+        thisx = node.attrib.get('tarx', '0')
+        thisy = node.attrib.get('tary', '0')
+
+        otherVertex = targetVertex
+        otherx = node.attrib.get('tar2x', '0')
+        othery = node.attrib.get('tar2y', '0')
+
+        
+        tar2x = node2.attrib.get('tar2x', '0')
+        tar2y = node2.attrib.get('tar2y', '0')
+
+        
+        tarx = node2.attrib.get('tarx', '0')
+        tary = node2.attrib.get('tary', '0')
 
     elif targetVertex in link:
         node2 = nodeList[targetVertex]
         link_data2 = edgeDict[targetVertex]  # big removed link
 
         otherVertex = sourceVertex
-        otherx = node2.attrib.get('tarx', '0')
-        othery = node2.attrib.get('tary', '0')
+        otherx = node.attrib.get('tarx', '0')
+        othery = node.attrib.get('tary', '0')
 
-        thisVertex = targetVertex  # 1
-        thisx = node2.attrib.get('tar2x', '0')
-        thisy = node2.attrib.get('tar2y', '0')
+        thisVertex = targetVertex
+        thisx = node.attrib.get('tar2x', '0')
+        thisy = node.attrib.get('tar2y', '0')
 
+        
+        tarx = node2.attrib.get('tarx', '0')
+        tary = node2.attrib.get('tary', '0')
+
+
+        tar2x = node2.attrib.get('tar2x', '0')
+        tar2y = node2.attrib.get('tar2y', '0')
+
+    print("thisx:", tarx, tary)
     sourceVertex2 = node2.attrib.get('sourceVertex')  # big link 2
     targetVertex2 = node2.attrib.get('targetVertex')  # big link 3
 
@@ -586,9 +602,9 @@ for k, r_link in removable_link.items():
     height = 7
     width = 7
 
-    waypoints = link_data[6]    # small link
-    waypoints2 = link_data2[6]  # big link
-    split_point = link_data2[8]
+    waypoints = link_data[6]  # small link
+    waypoints2 = link_data2[6] # big link
+    split_point = link_data[8]
 
     result, left_array, right_array = check_point_on_array(waypoints2, split_point)
     print('LR:', left_array, right_array)
@@ -678,7 +694,9 @@ for k, r_link in removable_link.items():
             portx = otherx
             porty = othery
             waypoints = array3
+            
         port_id = nextattribid
+#LINKTOPORT 
         if port < explicitInputPorts:
             port_type = "ExplicitInputPort"
             link_type = "ExplicitLink"
@@ -727,6 +745,7 @@ print("TP:", linklist)
 
 for edge_index, (link_type, source_vertex, sourcex, sourcey, target_vertex, targetx, targety, waypoints) in enumerate(linklist):
     edge_id = nextAttribForSplit
+    #LINKTOPORT update
     xml_output_edge = create_mxCell_edge(
         id=edge_id,
         edge="1",
@@ -738,9 +757,7 @@ for edge_index, (link_type, source_vertex, sourcex, sourcey, target_vertex, targ
         tar2y=targety,
         source_point=(sourcex, sourcey),
         target_point=(targetx, targety),
-        waypoint_x="0",
-        waypoint_y="0",
-        array=None
+        array=waypoints
     )
 
     nextAttribForSplit += 1
