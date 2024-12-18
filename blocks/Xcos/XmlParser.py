@@ -231,7 +231,7 @@ def create_mxCell_edge(id, edge="1", cellType="Unknown",
         'as': 'points'
     })
 
-    for waypoint in waypoints[1:-1]:  
+    for waypoint in waypoints[1:-1]:
         ET.SubElement(array_element, 'mxPoint', {
             'x': waypoint['x'],  # Access 'x' key
             'y': waypoint['y']   # Access 'y' key
@@ -353,7 +353,6 @@ def initLinks(vertex, key1, graph_link, graph_value, removable_link, removable_v
     key1[vertex] = vertex
     graph_link[vertex] = graph_value
     removable_link[vertex] = removable_value
-    
 
 
 def mergeLinks(vertex, key1, graph_link, removable_link):
@@ -542,10 +541,7 @@ for k, r_link in removable_link.items():
     link_data = edgeDict[r_link_0]  # small removed link
 
     sourceVertex = node.attrib.get('sourceVertex')  # small link
-    
-
     targetVertex = node.attrib.get('targetVertex')  # small link
-    
 
     if sourceVertex in link:
         node2 = nodeList[sourceVertex]
@@ -559,11 +555,9 @@ for k, r_link in removable_link.items():
         otherx = node.attrib.get('tar2x', '0')
         othery = node.attrib.get('tar2y', '0')
 
-        
         tar2x = node2.attrib.get('tar2x', '0')
         tar2y = node2.attrib.get('tar2y', '0')
 
-        
         tarx = node2.attrib.get('tarx', '0')
         tary = node2.attrib.get('tary', '0')
 
@@ -579,10 +573,8 @@ for k, r_link in removable_link.items():
         thisx = node.attrib.get('tar2x', '0')
         thisy = node.attrib.get('tar2y', '0')
 
-        
         tarx = node2.attrib.get('tarx', '0')
         tary = node2.attrib.get('tary', '0')
-
 
         tar2x = node2.attrib.get('tar2x', '0')
         tar2y = node2.attrib.get('tar2y', '0')
@@ -602,8 +594,8 @@ for k, r_link in removable_link.items():
     height = 7
     width = 7
 
-    waypoints = link_data[6]  # small link
-    waypoints2 = link_data2[6] # big link
+    waypoints = link_data[6]    # small link
+    waypoints2 = link_data2[6]  # big link
     split_point = link_data[8]
 
     result, left_array, right_array = check_point_on_array(waypoints2, split_point)
@@ -694,9 +686,9 @@ for k, r_link in removable_link.items():
             portx = otherx
             porty = othery
             waypoints = array3
-            
+
         port_id = nextattribid
-#LINKTOPORT
+        # LINKTOPORT
         if port == 2:
             print("PORT_ID:", port, port_id)
             LINKTOPORT[thisVertex] = port_id
@@ -750,7 +742,7 @@ print("LINKPORT", LINKTOPORT)
 for edge_index, (link_type, source_vertex, sourcex, sourcey, target_vertex, targetx, targety, waypoints) in enumerate(linklist):
     edge_id = nextattribid
     print("SV, TV:", source_vertex, target_vertex)
-    #LINKTOPORT update
+    # LINKTOPORT update
     try:
         source_vertex = LINKTOPORT[source_vertex]
     except KeyError:
@@ -762,7 +754,6 @@ for edge_index, (link_type, source_vertex, sourcex, sourcey, target_vertex, targ
         pass
 
     print("SV1, TV1:", source_vertex, target_vertex)
-    
 
     xml_output_edge = create_mxCell_edge(
         id=edge_id,
@@ -784,58 +775,44 @@ for edge_index, (link_type, source_vertex, sourcex, sourcey, target_vertex, targ
 
 cells = list(root)
 for i, cell in enumerate(cells):
-    if i == 0:
-        continue
-    if i == 1:
-        continue
     try:
         attrib = cell.attrib
         attribid = attrib['id']
-        attribint = get_int(attribid)
-        # if nextattribid <= attribint:
-        #     nextattribid = attribint + 1
     except KeyError:
         continue
 
     cell_type = attrib['CellType']
-    nodeList[attribid] = cell
 
-    if cell_type == 'Component':
-        continue
-    elif cell_type == 'Pin':
+    if i < 2 or cell_type in ['Component', 'Pin'] or 'edge' not in attrib:
         continue
 
-    elif 'edge' in attrib:
-        try:
-            sourceVertex = attrib['sourceVertex']
-            targetVertex = attrib['targetVertex']
-        except KeyError:
-            continue
+    try:
+        sourceVertex = attrib['sourceVertex']
+        targetVertex = attrib['targetVertex']
+    except KeyError:
+        continue
 
-        if sourceVertex not in LINKTOPORT and targetVertex not in LINKTOPORT:
-            continue
+    if sourceVertex not in LINKTOPORT and targetVertex not in LINKTOPORT:
+        continue
 
-        print("REPLACING SV, TV:", sourceVertex, targetVertex)
+    print("REPLACING SV, TV:", sourceVertex, targetVertex)
 
-        try:
-            sourceVertex = str(LINKTOPORT[sourceVertex])
-        except KeyError:
-            pass
+    try:
+        sourceVertex = str(LINKTOPORT[sourceVertex])
+    except KeyError:
+        pass
 
-        try:
-            targetVertex = str(LINKTOPORT[targetVertex])
-        except KeyError:
-            pass
+    try:
+        targetVertex = str(LINKTOPORT[targetVertex])
+    except KeyError:
+        pass
 
-        cell.set('sourceVertex', sourceVertex)
-        cell.set('targetVertex', targetVertex)
+    cell.set('sourceVertex', sourceVertex)
+    cell.set('targetVertex', targetVertex)
 
-        print("REPLACE SV, TV:", sourceVertex, targetVertex)
-
+    print("REPLACE SV, TV:", sourceVertex, targetVertex)
 
 print("ROOT:", root)
-# key structure
-
 
 # Save the modified XML
 output_path = f'{remove_dot_number(basename)}.{return_value}.xml'
