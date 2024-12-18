@@ -296,6 +296,16 @@ def check_point_on_array(array, point, left_right_direction=True):
     return False, array, []
 
 
+def identify_segment(array, point):
+    for i, waypoint in enumerate(array):
+        result, left_array, right_array = check_point_on_array(waypoint, point)
+        if result:
+            print("OK")
+            return result, i, left_array, right_array
+    print("ERror11:", point, "does not lie on", array)
+    return False, -1, array, []
+
+
 def getLinkStyle(sourceVertex, sourceType, targetVertex, targetType, waypoints):
     # switch vertices if required
     switch_split = False
@@ -506,9 +516,10 @@ for root in model:
 
                     print("WAYPOINTS:", attribid, waypoints)
                     IDLIST[attribid] = style
-
+                
                     link_data = (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point, split_point2)
                     edgeDict[attribid] = link_data
+                        
                     print("LINKDATA:", link_data)
 
                     initLinks(attribid, key1, graph_link, [attribid], removable_link, [attribid] if addSplit else [])
@@ -597,6 +608,8 @@ for k, r_link in removable_link.items():
     waypoints = link_data[6]    # small link
     waypoints2 = link_data2[6]  # big link
     split_point = link_data[8]
+    biglinkid = link_data2[0]
+    smalllinkid = link_data[0]
 
     result, left_array, right_array = check_point_on_array(waypoints2, split_point)
     print('LR:', left_array, right_array)
@@ -630,7 +643,6 @@ for k, r_link in removable_link.items():
         elif port == 'commandPort':
             commandPorts += 1
 
-    # print('COUNTS:', explicitInputPorts, implicitInputPorts, explicitOutputPorts, implicitOutputPorts, controlPorts, )
     # add splitblock
     geometry = (thisx, thisy, width, height)
     block_id = str(nextattribid)
@@ -676,47 +688,46 @@ for k, r_link in removable_link.items():
             portx = tarx
             porty = tary
             waypoints = left_array
+            linkid = biglinkid
         elif port == 1:
             port_index = targetVertex2
             portx = tar2x
             porty = tar2y
             waypoints = right_array
+            linkid = biglinkid
         else:
             port_index = otherVertex
             portx = otherx
             porty = othery
             waypoints = array3
+            linkid = smalllinkid
 
         port_id = nextattribid
-        # LINKTOPORT
-        if port == 2:
-            print("PORT_ID:", port, port_id)
-            LINKTOPORT[thisVertex] = port_id
-            print("LP:", thisVertex, port_id, otherVertex)
+
         if port < explicitInputPorts:
             port_type = "ExplicitInputPort"
             link_type = "ExplicitLink"
-            linklist.append((link_type, port_id, thisx, thisy, port_index, portx, porty, waypoints))
+            linklist.append((link_type, port_id, thisx, thisy, port_index, portx, porty, waypoints, linkid))
         elif port < explicitInputPorts + implicitInputPorts:
             port_type = "ImplicitInputPort"
             link_type = "ImplicitLink"
-            linklist.append((link_type, port_id, thisx, thisy, port_index, portx, porty, waypoints))
+            linklist.append((link_type, port_id, thisx, thisy, port_index, portx, porty, waypoints, linkid))
         elif port < explicitInputPorts + implicitInputPorts + explicitOutputPorts:
             port_type = "ExplicitOutputPort"
             link_type = "ExplicitLink"
-            linklist.append((link_type, port_index, portx, porty, port_id, thisx, thisy, waypoints))
+            linklist.append((link_type, port_index, portx, porty, port_id, thisx, thisy, waypoints, linkid))
         elif port < explicitInputPorts + implicitInputPorts + explicitOutputPorts + implicitOutputPorts:
             port_type = "ImplicitOutputPort"
             link_type = "ImplicitLink"
-            linklist.append((link_type, port_index, portx, porty, port_id, thisx, thisy, waypoints))
+            linklist.append((link_type, port_index, portx, porty, port_id, thisx, thisy, waypoints, linkid))
         elif port < explicitInputPorts + implicitInputPorts + explicitOutputPorts + implicitOutputPorts + controlPorts:
             port_type = "ControlPort"
             link_type = "CommandControlLink"
-            linklist.append((link_type, port_id, thisx, thisy, port_index, portx, porty, waypoints))
+            linklist.append((link_type, port_id, thisx, thisy, port_index, portx, porty, waypoints, linkid))
         else:
             port_type = "CommandPort"
             link_type = "CommandControlLink"
-            linklist.append((link_type, port_index, portx, porty, port_id, thisx, thisy, waypoints))
+            linklist.append((link_type, port_index, portx, porty, port_id, thisx, thisy, waypoints, linkid))
         ordering = ordering_counters[port_type] + 1
         ordering_counters[port_type] += 1
 
@@ -737,21 +748,24 @@ for k, r_link in removable_link.items():
         root.append(xml_output_port)
 
 # add splitblock edges
-print("TP:", len(linklist))
-print("LINKPORT", LINKTOPORT)
-for edge_index, (link_type, source_vertex, sourcex, sourcey, target_vertex, targetx, targety, waypoints) in enumerate(linklist):
+# print("TP:", len(linklist))
+
+LINKWAYPOINTS = {}
+
+for edge_index, (link_type, source_vertex, sourcex, sourcey, target_vertex, targetx, targety, waypoints, linkid) in enumerate(linklist):
     edge_id = nextattribid
+    print('linkid:', linkid)
+ 
+    if linkid not in LINKTOPORT:
+        LINKTOPORT[linkid] = [edge_id]
+        LINKWAYPOINTS[linkid] = [waypoints]
+    else:
+        LINKTOPORT[linkid].append(edge_id)
+        LINKWAYPOINTS[linkid].append(waypoints)
+
+
     print("SV, TV:", source_vertex, target_vertex)
     # LINKTOPORT update
-    try:
-        source_vertex = LINKTOPORT[source_vertex]
-    except KeyError:
-        pass
-
-    try:
-        target_vertex = LINKTOPORT[target_vertex]
-    except KeyError:
-        pass
 
     print("SV1, TV1:", source_vertex, target_vertex)
 
@@ -798,15 +812,22 @@ for i, cell in enumerate(cells):
     print("REPLACING SV, TV:", sourceVertex, targetVertex)
 
     try:
-        sourceVertex = str(LINKTOPORT[sourceVertex])
+        print("waypoint of biglink:", LINKWAYPOINTS[sourceVertex])
+        print("NODE:", nodeList[sourceVertex].attrib['tarx'], nodeList[sourceVertex].attrib['tary'])
+        point = {'x': nodeList[sourceVertex].attrib['tarx'], 'y': nodeList[sourceVertex].attrib['tary']}
+        result, i, left_array, right_array = identify_segment(LINKWAYPOINTS[sourceVertex], point)
+        sourceVertex = str(LINKTOPORT[sourceVertex][i])
     except KeyError:
         pass
 
     try:
-        targetVertex = str(LINKTOPORT[targetVertex])
+        point = {'x': nodeList[targetVertex].attrib['tar2x'], 'y': nodeList[targetVertex].attrib['tar2y']}
+        result, i, left_array, right_array = identify_segment(LINKWAYPOINTS[targetVertex], point)
+        
+        targetVertex = str(LINKTOPORT[targetVertex][i])
     except KeyError:
         pass
-
+# depending upon waypoint of secondary link and link1 or link2
     cell.set('sourceVertex', sourceVertex)
     cell.set('targetVertex', targetVertex)
 
