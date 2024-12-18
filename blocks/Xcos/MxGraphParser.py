@@ -59,8 +59,6 @@ def check_point_on_array(array, point, left_right_direction=True):
         rightX = float(array[i + 1]['x'])
         rightY = float(array[i + 1]['y'])
 
-        print("RANGE:", pointX, pointY, leftX, leftY, rightX, rightY, left_right_direction)
-
         # Check if the point lies on the line segment between array[i] and array[i + 1]
         if -40 <= leftY - pointY <= 40 and \
                 -40 <= rightY - pointY <= 40 and \
@@ -106,9 +104,8 @@ def identify_segment(array, point):
         print('COUNT:', segment[6])
         result, left_array, right_array = check_point_on_array(segment[6], point)
         if result:
-            print("OK")
             return result, i, left_array, right_array
-    print("ERror11:", point, "does not lie on", array)
+    print("Error:", point, "does not lie on", array)
     return False, -1, array, []
 
 
@@ -329,7 +326,6 @@ for root in model:
                     try:
                         sourceType = IDLIST[sourceVertex]
                         targetType = IDLIST[targetVertex]
-                        print('ST,TT', sourceType, targetType)
                     except KeyError:
                         remainingcells.append(cell)
                         continue
@@ -395,7 +391,6 @@ for root in model:
                             waypoints.append(point)
                         else:
                             split_point = point
-                            print('SPPPx:', attribid, split_point)
                             waypoints.insert(0, point)
                     elif sourceVertex in blkgeometry:
                         vertex = blkgeometry[sourceVertex]
@@ -409,7 +404,6 @@ for root in model:
                             waypoints.insert(0, point)
                         else:
                             split_point2 = point
-                            print('SPPP2x:', attribid, split_point2)
                             waypoints.append(point)
                     elif targetVertex in blkgeometry:
                         vertex = blkgeometry[targetVertex]
@@ -418,7 +412,6 @@ for root in model:
 
                     IDLIST[attribid] = style
                     link_data = (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point, split_point2)
-                    print('SPPP1:', attribid, waypoints, split_point, split_point2)
                     edgeDict[attribid] = link_data
                     edgeList.append(link_data)
             except BaseException:
@@ -430,16 +423,10 @@ for root in model:
         remainingcells = []
         print('cellslength=', cellslength, ', oldcellslength=', oldcellslength)
 
-print('EDGES:')
-for key, value in edgeDict.items():
-    print(f'{key}: {value}')
-print()
-
 newEdgeDict = {}
 LINKTOPORT = {}
 for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point, split_point2) in edgeList:
     link_data = (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point, split_point2)
-    print('NEWEDGE:', attribid, waypoints, split_point, split_point2, addSplit)
 
     if not addSplit:
         newEdgeDict[attribid] = [link_data]
@@ -448,9 +435,6 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoi
     for attribid2 in sourceVertex, targetVertex:
         try:
             linkSegments = newEdgeDict[attribid2]
-            print('linkSegments:', attribid2, sourceVertex, attribid2 == sourceVertex, targetVertex)
-            for link in linkSegments:
-                print('LINKS:', link)
         except KeyError:
             continue
 
@@ -506,16 +490,12 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoi
         nextAttribForSplit += 1
         newEdgeDict[attribid2].insert(i + 1, (nextAttribForSplit, port2, targetVertex2, sourceType, targetType2, style2, right_array, addSplit2, split_point, split_point2))
         nextAttribForSplit += 1
-        # for (__, __, __, __, __, __, tmp_array, __, tmp_split_point, tmp_split_point2) in newEdgeDict[attribid2]:
-        #     print('NEWEDGE2:', attribid2, tmp_array, tmp_split_point, tmp_split_point2)
         if attribid2 == sourceVertex:
             waypoints.reverse()
             newEdgeDict[attribid] = [(nextAttribForSplit, port3, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point, split_point2)]
         else:
             newEdgeDict[attribid] = [(nextAttribForSplit, port3, sourceVertex, sourceType, targetType, style, waypoints, addSplit, split_point, split_point2)]
         nextAttribForSplit += 1
-        # for (__, __, __, __, __, __, tmp_array, __, tmp_split_point, tmp_split_point2) in newEdgeDict[attribid]:
-        #     print('NEWEDGE3:', attribid, tmp_array, tmp_split_point, tmp_split_point2)
         LINKTOPORT[linkid] = port3
         print('LINKTOPORT', linkid, port3)
 
@@ -523,7 +503,6 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoi
 print()
 
 for key, newEdges in newEdgeDict.items():
-    print(f'{key}: {newEdges}')
     for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point, split_point2) in newEdges:
         try:
             sourceVertex = LINKTOPORT[sourceVertex]

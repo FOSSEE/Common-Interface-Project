@@ -261,8 +261,6 @@ def check_point_on_array(array, point, left_right_direction=True):
         rightX = float(array[i + 1]['x'])
         rightY = float(array[i + 1]['y'])
 
-        print("RANGE:", pointX, pointY, leftX, leftY, rightX, rightY, left_right_direction)
-
         # Check if the point lies on the line segment between array[i] and array[i + 1]
         if -40 <= leftY - pointY <= 40 and \
                 -40 <= rightY - pointY <= 40 and \
@@ -300,9 +298,8 @@ def identify_segment(array, point):
     for i, waypoint in enumerate(array):
         result, left_array, right_array = check_point_on_array(waypoint, point)
         if result:
-            print("OK")
             return result, i, left_array, right_array
-    print("ERror11:", point, "does not lie on", array)
+    print("Error:", point, "does not lie on", array)
     return False, -1, array, []
 
 
@@ -514,13 +511,10 @@ for root in model:
                         point = {'x': vertex['x'], 'y': vertex['y']}
                         waypoints.append(point)
 
-                    print("WAYPOINTS:", attribid, waypoints)
                     IDLIST[attribid] = style
-                
+
                     link_data = (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point, split_point2)
                     edgeDict[attribid] = link_data
-                        
-                    print("LINKDATA:", link_data)
 
                     initLinks(attribid, key1, graph_link, [attribid], removable_link, [attribid] if addSplit else [])
                     mergeLinks(sourceVertex, key1, graph_link, removable_link)
@@ -539,7 +533,7 @@ for root in model:
 
 linklist = []
 return_value = 0
-LINKTOPORT = {}
+LINKTOLINK = {}
 for k, r_link in removable_link.items():
     if len(r_link) == 0:
         continue
@@ -600,8 +594,6 @@ for k, r_link in removable_link.items():
     tType = IDLIST[otherVertex]
     sType2 = IDLIST[sourceVertex2]
     tType2 = IDLIST[targetVertex2]
-    # print("IDLIST:", link_data2, IDLIST[r_link[0]], r_link[0])
-    print(sType, tType, sType2, tType2)
     height = 7
     width = 7
 
@@ -612,13 +604,11 @@ for k, r_link in removable_link.items():
     smalllinkid = link_data[0]
 
     result, left_array, right_array = check_point_on_array(waypoints2, split_point)
-    print('LR:', left_array, right_array)
     array3 = waypoints
 
     port1 = portType1(sType, sType2, tType2)
     port2 = portType2(sType, sType2, tType2)
     port3 = portType3(sType, tType)
-    # print("PORT:", link_data, port1, port2, port3)
 
     ports = [port1, port2, port3]
     implicitInputPorts = 0
@@ -748,26 +738,20 @@ for k, r_link in removable_link.items():
         root.append(xml_output_port)
 
 # add splitblock edges
-# print("TP:", len(linklist))
 
 LINKWAYPOINTS = {}
 
 for edge_index, (link_type, source_vertex, sourcex, sourcey, target_vertex, targetx, targety, waypoints, linkid) in enumerate(linklist):
     edge_id = nextattribid
-    print('linkid:', linkid)
- 
-    if linkid not in LINKTOPORT:
-        LINKTOPORT[linkid] = [edge_id]
+
+    if linkid not in LINKTOLINK:
+        LINKTOLINK[linkid] = [edge_id]
         LINKWAYPOINTS[linkid] = [waypoints]
     else:
-        LINKTOPORT[linkid].append(edge_id)
+        LINKTOLINK[linkid].append(edge_id)
         LINKWAYPOINTS[linkid].append(waypoints)
 
-
-    print("SV, TV:", source_vertex, target_vertex)
-    # LINKTOPORT update
-
-    print("SV1, TV1:", source_vertex, target_vertex)
+    # LINKTOLINK update
 
     xml_output_edge = create_mxCell_edge(
         id=edge_id,
@@ -806,25 +790,23 @@ for i, cell in enumerate(cells):
     except KeyError:
         continue
 
-    if sourceVertex not in LINKTOPORT and targetVertex not in LINKTOPORT:
+    if sourceVertex not in LINKTOLINK and targetVertex not in LINKTOLINK:
         continue
 
     print("REPLACING SV, TV:", sourceVertex, targetVertex)
 
     try:
-        print("waypoint of biglink:", LINKWAYPOINTS[sourceVertex])
-        print("NODE:", nodeList[sourceVertex].attrib['tarx'], nodeList[sourceVertex].attrib['tary'])
         point = {'x': nodeList[sourceVertex].attrib['tarx'], 'y': nodeList[sourceVertex].attrib['tary']}
         result, i, left_array, right_array = identify_segment(LINKWAYPOINTS[sourceVertex], point)
-        sourceVertex = str(LINKTOPORT[sourceVertex][i])
+        sourceVertex = str(LINKTOLINK[sourceVertex][i])
     except KeyError:
         pass
 
     try:
         point = {'x': nodeList[targetVertex].attrib['tar2x'], 'y': nodeList[targetVertex].attrib['tar2y']}
         result, i, left_array, right_array = identify_segment(LINKWAYPOINTS[targetVertex], point)
-        
-        targetVertex = str(LINKTOPORT[targetVertex][i])
+
+        targetVertex = str(LINKTOLINK[targetVertex][i])
     except KeyError:
         pass
 # depending upon waypoint of secondary link and link1 or link2
@@ -832,8 +814,6 @@ for i, cell in enumerate(cells):
     cell.set('targetVertex', targetVertex)
 
     print("REPLACE SV, TV:", sourceVertex, targetVertex)
-
-print("ROOT:", root)
 
 # Save the modified XML
 output_path = f'{remove_dot_number(basename)}.{return_value}.xml'
