@@ -547,7 +547,7 @@ for k, r_link in removable_link.items():
 
     sourceVertex = node.attrib.get('sourceVertex')  # small link
     targetVertex = node.attrib.get('targetVertex')  # small link
-
+    
     if sourceVertex in link:
         node2 = nodeList[sourceVertex]
         link_data2 = edgeDict[sourceVertex]  # big removed link
@@ -565,6 +565,8 @@ for k, r_link in removable_link.items():
 
         tarx = node2.attrib.get('tarx', '0')
         tary = node2.attrib.get('tary', '0')
+
+        split_point = link_data[9]
 
     elif targetVertex in link:
         node2 = nodeList[targetVertex]
@@ -584,6 +586,8 @@ for k, r_link in removable_link.items():
         tar2x = node2.attrib.get('tar2x', '0')
         tar2y = node2.attrib.get('tar2y', '0')
 
+        split_point = link_data[8]
+
     sourceVertex2 = node2.attrib.get('sourceVertex')  # big link 2
     targetVertex2 = node2.attrib.get('targetVertex')  # big link 3
 
@@ -596,14 +600,15 @@ for k, r_link in removable_link.items():
     tType2 = IDLIST[targetVertex2]
     height = 7
     width = 7
-
+    print("LINKDATA:", link_data)
     waypoints = link_data[6]    # small link
     waypoints2 = link_data2[6]  # big link
-    split_point = link_data[8]
+    # split_point = link_data[9]
     biglinkid = link_data2[0]
     smalllinkid = link_data[0]
-
+    print('waypoints2, split_point', biglinkid, waypoints2, split_point)
     result, left_array, right_array = check_point_on_array(waypoints2, split_point)
+    print('left_array, right_array:', left_array, right_array)
     array3 = waypoints
 
     port1 = portType1(sType, sType2, tType2)
@@ -772,6 +777,7 @@ for edge_index, (link_type, source_vertex, sourcex, sourcey, target_vertex, targ
     root.append(xml_output_edge)
 
 cells = list(root)
+# secondary link
 for i, cell in enumerate(cells):
     try:
         attrib = cell.attrib
@@ -793,7 +799,6 @@ for i, cell in enumerate(cells):
     if sourceVertex not in LINKTOLINK and targetVertex not in LINKTOLINK:
         continue
 
-    print("REPLACING SV, TV:", sourceVertex, targetVertex)
 
     try:
         point = {'x': nodeList[sourceVertex].attrib['tarx'], 'y': nodeList[sourceVertex].attrib['tary']}
@@ -809,11 +814,10 @@ for i, cell in enumerate(cells):
         targetVertex = str(LINKTOLINK[targetVertex][i])
     except KeyError:
         pass
-# depending upon waypoint of secondary link and link1 or link2
+
     cell.set('sourceVertex', sourceVertex)
     cell.set('targetVertex', targetVertex)
 
-    print("REPLACE SV, TV:", sourceVertex, targetVertex)
 
 # Save the modified XML
 output_path = f'{remove_dot_number(basename)}.{return_value}.xml'
