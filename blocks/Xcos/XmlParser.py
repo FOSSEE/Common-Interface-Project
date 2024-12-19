@@ -13,21 +13,21 @@ from xcosblocks import num2str, style_to_object
 
 if len(sys.argv) != 2:
     print("Usage: %s filename.xml" % sys.argv[0])
-    sys.exit(1)
+    sys.exit(101)
 
 filename = sys.argv[1]
 (basename, ext) = os.path.splitext(filename)
 
 if ext != '.xml':
     print("Usage: %s filename.xml" % sys.argv[0])
-    sys.exit(1)
+    sys.exit(101)
 
 tree = goodET.parse(filename)
 
 model = tree.getroot()
 if model.tag != 'mxGraphModel':
     print(model.tag, '!= mxGraphModel')
-    sys.exit(2)
+    sys.exit(102)
 
 
 def remove_dot_number(s):
@@ -378,7 +378,7 @@ def mergeLinks(vertex, key1, graph_link, removable_link):
 for root in model:
     if root.tag != 'root':
         print('Not root')
-        sys.exit(2)
+        sys.exit(102)
 
     IDLIST = {}
     nodeList = {}
@@ -522,7 +522,7 @@ for root in model:
 
             except BaseException:
                 traceback.print_exc()
-                sys.exit(0)
+                sys.exit(103)
 
         oldcellslength = cellslength
         cells = remainingcells
