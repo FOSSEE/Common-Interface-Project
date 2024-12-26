@@ -516,6 +516,9 @@
   </xsl:template>
   <xsl:template name="mxPoint" match="mxPoint">
     <xsl:element name="mxPoint">
+      <xsl:attribute name="testmx">
+          <xsl:value-of select="@x" />
+        </xsl:attribute>
       <xsl:if test="@as">
         <xsl:attribute name="as">
           <xsl:value-of select="@as" />
