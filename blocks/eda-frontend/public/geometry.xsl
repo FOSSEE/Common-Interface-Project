@@ -19,11 +19,11 @@
       
     <!-- variable newx -->
     <xsl:variable name="newx">
-    <xsl:choose>
+    <!-- <xsl:choose>
     <xsl:when test="(@x != '0.0' or @y != '0.0')">
         <xsl:value-of select="@x"/>
     </xsl:when>
-    <xsl:when test="(@x = '0.0' and @y = '0.0')">
+    <xsl:when test="(@x = '0.0' and @y = '0.0')"> -->
         <!-- Check for mxCell with sourceVertex -->
         
             <xsl:for-each select="key('k-cell', ancestor::mxCell/@sourceVertex)">
@@ -66,20 +66,21 @@
                             </xsl:when>
                         
                         </xsl:choose>
+
                     </xsl:for-each> 
 
                 </xsl:for-each>
             </xsl:for-each>
  
-    </xsl:when>
-    </xsl:choose>
+    <!-- </xsl:when>
+    </xsl:choose> -->
     </xsl:variable>
     <xsl:variable name="newy">
-    <xsl:choose>
+    <!-- <xsl:choose>
     <xsl:when test="(@x != '0.0' or @y != '0.0')">
         <xsl:value-of select="@y"/>
     </xsl:when>
-    <xsl:when test="(@x = '0.0' and @y = '0.0')">
+    <xsl:when test="(@x = '0.0' and @y = '0.0')"> -->
         <!-- Check for mxCell with sourceVertex -->
             <xsl:for-each select="key('k-cell', ancestor::mxCell/@sourceVertex)">
                 <xsl:variable name="ordering">
@@ -125,14 +126,40 @@
                 </xsl:for-each>
             </xsl:for-each>
  
-    </xsl:when>
-    </xsl:choose>
+    <!-- </xsl:when>
+    </xsl:choose> -->
     </xsl:variable>
-    <xsl:attribute name="x"> 
-        <xsl:value-of select="$newx"/>
+    <xsl:attribute name="x11"> 
+        <xsl:value-of select="@x"/>
+    </xsl:attribute>
+    <xsl:attribute name="width"> 
+        <xsl:value-of select="@width"/>
+    </xsl:attribute>
+    <!-- <xsl:attribute name="ordering"> 
+        <xsl:value-of select="$ordering"/>
+    </xsl:attribute>
+    <xsl:attribute name="noofport"> 
+        <xsl:value-of select="$noofport"/>
+    </xsl:attribute> -->
+    <xsl:attribute name="x">
+    <xsl:choose>
+        <xsl:when test="$newx = ''">
+            <xsl:value-of select="@x"/>
+        </xsl:when>
+        <xsl:otherwise>
+            <xsl:value-of select="$newx"/>
+        </xsl:otherwise>
+    </xsl:choose>
     </xsl:attribute>
     <xsl:attribute name="y">
-        <xsl:value-of select="$newy"/>
+        <xsl:choose>
+        <xsl:when test="$newy = ''">
+            <xsl:value-of select="@y"/>
+        </xsl:when>
+        <xsl:otherwise>
+            <xsl:value-of select="$newy"/>
+        </xsl:otherwise>
+    </xsl:choose>
     </xsl:attribute> 
     <xsl:apply-templates select="node()" />
 
@@ -146,11 +173,11 @@
       
     <!-- variable newx -->
     <xsl:variable name="newx">
-    <xsl:choose>
+    <!-- <xsl:choose>
     <xsl:when test="(@x != '0.0' or @y != '0.0')">
         <xsl:value-of select="@x"/>
     </xsl:when>
-    <xsl:when test="(@x = '0.0' and @y = '0.0')">
+    <xsl:when test="(@x = '0.0' and @y = '0.0')"> -->
         <!-- Check for mxCell with sourceVertex -->
         
             <xsl:for-each select="key('k-cell', ancestor::mxCell/@targetVertex)">
@@ -198,15 +225,15 @@
                 </xsl:for-each>
             </xsl:for-each>
  
-    </xsl:when>
-    </xsl:choose>
+    <!-- </xsl:when>
+    </xsl:choose> -->
     </xsl:variable>
     <xsl:variable name="newy">
-    <xsl:choose>
+    <!-- <xsl:choose>
     <xsl:when test="(@x != '0.0' or @y != '0.0')">
         <xsl:value-of select="@y"/>
     </xsl:when>
-    <xsl:when test="(@x = '0.0' and @y = '0.0')">
+    <xsl:when test="(@x = '0.0' and @y = '0.0')"> -->
         <!-- Check for mxCell with targetVertex -->
             <xsl:for-each select="key('k-cell', ancestor::mxCell/@targetVertex)">
                 <xsl:variable name="ordering">
@@ -252,15 +279,29 @@
                 </xsl:for-each>
             </xsl:for-each>
  
-    </xsl:when>
-    </xsl:choose>
+    <!-- </xsl:when>
+    </xsl:choose> -->
     </xsl:variable>
-    <xsl:attribute name="x"> 
-        <xsl:value-of select="$newx"/>
+    <xsl:attribute name="x">
+    <xsl:choose>
+        <xsl:when test="$newx = ''">
+            <xsl:value-of select="@x"/>
+        </xsl:when>
+        <xsl:otherwise>
+            <xsl:value-of select="$newx"/>
+        </xsl:otherwise>
+    </xsl:choose>
     </xsl:attribute>
     <xsl:attribute name="y">
-        <xsl:value-of select="$newy"/>
-    </xsl:attribute> 
+        <xsl:choose>
+        <xsl:when test="$newy = ''">
+            <xsl:value-of select="@y"/>
+        </xsl:when>
+        <xsl:otherwise>
+            <xsl:value-of select="$newy"/>
+        </xsl:otherwise>
+    </xsl:choose>
+    </xsl:attribute>  
     <xsl:apply-templates select="node()" />
 
     </xsl:copy>
@@ -270,11 +311,11 @@
     <xsl:copy>
       <xsl:apply-templates select="@*" />
       <xsl:variable name="newtarx">
-        <xsl:choose>
+        <!-- <xsl:choose>
             <xsl:when test="(@tarx != '0.0' or @tary != '0.0')">
                 <xsl:value-of select="@tarx"/>
             </xsl:when>
-            <xsl:when test="(@tarx = '0.0' and @tary = '0.0')">
+            <xsl:when test="(@tarx = '0.0' and @tary = '0.0')"> -->
                 <xsl:for-each select="key('k-cell', @sourceVertex)">
                 <xsl:variable name="ordering">
                     <xsl:value-of select="@ordering"/>
@@ -320,15 +361,15 @@
                 </xsl:for-each>
             </xsl:for-each>
  
-    </xsl:when>
-    </xsl:choose>
+    <!-- </xsl:when>
+    </xsl:choose> -->
     </xsl:variable>
     <xsl:variable name="newtary">
-    <xsl:choose>
+    <!-- <xsl:choose>
     <xsl:when test="(@tarx != '0.0' or @tary != '0.0')">
         <xsl:value-of select="@tary"/>
     </xsl:when>
-    <xsl:when test="(@tarx = '0.0' and @tary = '0.0')">
+    <xsl:when test="(@tarx = '0.0' and @tary = '0.0')"> -->
         <!-- Check for mxCell with sourceVertex -->
             <xsl:for-each select="key('k-cell', @sourceVertex)">
                 <xsl:variable name="ordering">
@@ -374,18 +415,18 @@
                 </xsl:for-each>
             </xsl:for-each>
  
-    </xsl:when>
-    </xsl:choose>
+    <!-- </xsl:when>
+    </xsl:choose> -->
     </xsl:variable>
      
 
 <!-- tar2x & tar2y -->
     <xsl:variable name="newtar2x">
-    <xsl:choose>
+    <!-- <xsl:choose>
     <xsl:when test="(@tar2x != '0.0' or @tar2y != '0.0')">
         <xsl:value-of select="@tar2x"/>
     </xsl:when>
-    <xsl:when test="(@tar2x = '0.0' and @tar2y = '0.0')">
+    <xsl:when test="(@tar2x = '0.0' and @tar2y = '0.0')"> -->
         <!-- Check for mxCell with sourceVertex -->
         
             <xsl:for-each select="key('k-cell', @targetVertex)">
@@ -433,15 +474,15 @@
                 </xsl:for-each>
             </xsl:for-each>
  
-    </xsl:when>
-    </xsl:choose>
+    <!-- </xsl:when>
+    </xsl:choose> -->
     </xsl:variable>
     <xsl:variable name="newtar2y">
-    <xsl:choose>
+    <!-- <xsl:choose>
     <xsl:when test="(@tar2x != '0.0' or @tar2y != '0.0')">
         <xsl:value-of select="@tar2y"/>
     </xsl:when>
-    <xsl:when test="(@tar2x = '0.0' and @tar2y = '0.0')">
+    <xsl:when test="(@tar2x = '0.0' and @tar2y = '0.0')"> -->
         <!-- Check for mxCell with targetVertex -->
             <xsl:for-each select="key('k-cell', @targetVertex)">
                 <xsl:variable name="ordering">
@@ -487,23 +528,77 @@
                 </xsl:for-each>
             </xsl:for-each>
  
-    </xsl:when>
-    </xsl:choose>
+    <!-- </xsl:when>
+    </xsl:choose> -->
     </xsl:variable>
 
-    <xsl:attribute name="tarx"> 
-        <xsl:value-of select="$newtarx"/>
+    <xsl:attribute name="tarx">
+        <xsl:choose>
+            <xsl:when test="$newtarx = ''">
+                <xsl:value-of select="@tarx"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="$newtarx"/>
+            </xsl:otherwise>
+        </xsl:choose> 
+        <!-- <xsl:value-of select="$newtarx"/> -->
     </xsl:attribute>
     <xsl:attribute name="tary">
-        <xsl:value-of select="$newtary"/>
+        <xsl:choose>
+            <xsl:when test="$newtary = ''">
+                <xsl:value-of select="@tary"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="$newtary"/>
+            </xsl:otherwise>
+        </xsl:choose>
+        <!-- <xsl:value-of select="$newtary"/> -->
     </xsl:attribute>
     <xsl:attribute name="tar2x"> 
-        <xsl:value-of select="$newtar2x"/>
+        <xsl:choose>
+            <xsl:when test="$newtar2x = ''">
+                <xsl:value-of select="@tar2x"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="$newtar2x"/>
+            </xsl:otherwise>
+        </xsl:choose>
+        <!-- <xsl:value-of select="$newtar2x"/> -->
     </xsl:attribute>
     <xsl:attribute name="tar2y">
-        <xsl:value-of select="$newtar2y"/>
+        <xsl:choose>
+            <xsl:when test="$newtar2y = ''">
+                <xsl:value-of select="@tar2y"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="$newtar2y"/>
+            </xsl:otherwise>
+        </xsl:choose>
+        <!-- <xsl:value-of select="$newtar2y"/> -->
     </xsl:attribute> 
     <xsl:apply-templates select="node()" />
+    
+
+    <!-- <xsl:attribute name="x">
+    <xsl:choose>
+        <xsl:when test="$newx = ''">
+            <xsl:value-of select="@x"/>
+        </xsl:when>
+        <xsl:otherwise>
+            <xsl:value-of select="$newx"/>
+        </xsl:otherwise>
+    </xsl:choose>
+    </xsl:attribute>
+    <xsl:attribute name="y">
+        <xsl:choose>
+        <xsl:when test="$newy = ''">
+            <xsl:value-of select="@y"/>
+        </xsl:when>
+        <xsl:otherwise>
+            <xsl:value-of select="$newy"/>
+        </xsl:otherwise>
+    </xsl:choose>
+    </xsl:attribute> -->
 
     </xsl:copy>
 </xsl:template>

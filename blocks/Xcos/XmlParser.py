@@ -272,20 +272,24 @@ def check_point_on_array(array, point, left_right_direction=True):
             return True, array[:i + 1] + [point], [point] + array[i + 1:]
 
         # if left_right_direction:
-        if -20 <= leftX - pointX <= 20:
+        if -20 <= leftX - pointX <= 20 and \
+                (leftY <= pointY <= rightY or leftY >= pointY >= rightY):
             print('to the left / right')
             return True, array[:i + 1] + [point], [point] + array[i + 1:]
         # else:
-        if -20 <= leftY - pointY <= 20:
+        if -20 <= leftY - pointY <= 20 and \
+                (leftX <= pointX <= rightX or leftX >= pointX >= rightX):
             print('on the up / down')
             return True, array[:i + 1] + [point], [point] + array[i + 1:]
 
         # if left_right_direction:
-        if -20 <= rightX - pointX <= 20:
+        if -20 <= rightX - pointX <= 20 and \
+                (leftY <= pointY <= rightY or leftY >= pointY >= rightY):
             print('to the right / right')
             return True, array[:i + 1] + [point], [point] + array[i + 1:]
         # else:
-        if -20 <= rightY - pointY <= 20:
+        if -20 <= rightY - pointY <= 20 and \
+                (leftX <= pointX <= rightX or leftX >= pointX >= rightX):
             print('on the up / down')
             return True, array[:i + 1] + [point], [point] + array[i + 1:]
 
