@@ -13,7 +13,7 @@
         <xsl:attribute name="tarx">
           <xsl:choose>
             <xsl:when test="mxGeometry/mxPoint[@as='sourcePoint']">
-              <xsl:value-of select="mxGeometry/mxPoint[@as='sourcePoint']/@x" />
+              <xsl:value-of select="format-number(mxGeometry/mxPoint[@as='sourcePoint']/@x+$originx,'0.0')" />
             </xsl:when>
             <xsl:otherwise>0</xsl:otherwise>
           </xsl:choose>
@@ -21,7 +21,7 @@
         <xsl:attribute name="tary">
           <xsl:choose>
             <xsl:when test="mxGeometry/mxPoint[@as='sourcePoint']">
-              <xsl:value-of select="mxGeometry/mxPoint[@as='sourcePoint']/@y" />
+              <xsl:value-of select="format-number(mxGeometry/mxPoint[@as='sourcePoint']/@y+$originy,'0.0')" />
             </xsl:when>
             <xsl:otherwise>0</xsl:otherwise>
           </xsl:choose>
@@ -29,7 +29,7 @@
         <xsl:attribute name="tar2x">
           <xsl:choose>
             <xsl:when test="mxGeometry/mxPoint[@as='targetPoint']">
-              <xsl:value-of select="mxGeometry/mxPoint[@as='targetPoint']/@x" />
+              <xsl:value-of select="format-number(mxGeometry/mxPoint[@as='targetPoint']/@x+$originx,'0.0')" />
             </xsl:when>
             <xsl:otherwise>0</xsl:otherwise>
           </xsl:choose>
@@ -37,13 +37,13 @@
         <xsl:attribute name="tar2y">
           <xsl:choose>
             <xsl:when test="mxGeometry/mxPoint[@as='targetPoint']">
-              <xsl:value-of select="mxGeometry/mxPoint[@as='targetPoint']/@y" />
+              <xsl:value-of select="format-number(mxGeometry/mxPoint[@as='targetPoint']/@y+$originy,'0.0')" />
             </xsl:when>
             <xsl:otherwise>0</xsl:otherwise>
           </xsl:choose>
         </xsl:attribute>
         <xsl:attribute name="CellType">Unknown</xsl:attribute>
-        <xsl:copy-of select="node()"/>
+        <xsl:apply-templates />
         <Object as="parameter_values"/>
         <Object as="displayProperties"/>
       </mxCell>

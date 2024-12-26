@@ -471,26 +471,18 @@
   </xsl:template>
   <xsl:template name="mxGeometry" match="mxGeometry">
     <xsl:element name="mxGeometry">
-      <xsl:attribute name="x">
-        <xsl:choose>
-          <xsl:when test="@x">
+      <xsl:if test="@x">
+          <xsl:attribute name="x">
             <xsl:value-of select="format-number(@x+$originx,'0.0')" />
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:value-of select="format-number($originx,'0.0')" />
-          </xsl:otherwise>
-        </xsl:choose>
-      </xsl:attribute>
-      <xsl:attribute name="y">
-        <xsl:choose>
-          <xsl:when test="@y">
+          </xsl:attribute>
+      </xsl:if>
+
+      <xsl:if test="@y">
+          <xsl:attribute name="y">
             <xsl:value-of select="format-number(@y+$originy,'0.0')" />
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:value-of select="format-number($originy,'0.0')" />
-          </xsl:otherwise>
-        </xsl:choose>
-      </xsl:attribute>
+          </xsl:attribute>
+      </xsl:if>
+      
       <xsl:if test="@width">
         <xsl:attribute name="width">
           <xsl:value-of select="@width" />
@@ -516,9 +508,6 @@
   </xsl:template>
   <xsl:template name="mxPoint" match="mxPoint">
     <xsl:element name="mxPoint">
-      <xsl:attribute name="testmx">
-          <xsl:value-of select="@x" />
-        </xsl:attribute>
       <xsl:if test="@as">
         <xsl:attribute name="as">
           <xsl:value-of select="@as" />
