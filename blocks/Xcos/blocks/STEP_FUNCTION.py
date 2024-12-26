@@ -54,7 +54,7 @@ def STEP_FUNCTION(outroot, attribid, ordering, geometry, parameters, parent=1, s
     Array = addSuperBlkNode(SuperBlockDiagram, TYPE_ARRAY,
                             a="context",
                             scilabClass="String[]")
-    superAddNode(Array, TYPE_ADD, value="")
+    superAddNode(Array, TYPE_ADD, value=" ")
 
     mxGraphModel = addmxGraphModelNode(SuperBlockDiagram,
                                        TYPE_MODEL, a="model")

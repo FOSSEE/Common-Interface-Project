@@ -55,12 +55,20 @@ def Switch(outroot, attribid, ordering, geometry, parameters, parent=1, style=No
     for param in additionalScilabStrings:
         addDataData(additionalStringNode, param)
 
-    realParts = ["0.01", "100000.0"]
-    additionalStringNode = addDataNode(nestedArrayNode,
-                                       'ScilabDouble',
-                                       height=2, width=1)
+    nestedNestedArrayNode = addArrayNode(nestedArrayNode,
+                                         scilabClass="ScilabList")
+    additionalDataNode = addDataNode(nestedNestedArrayNode,
+                                     'ScilabDouble',
+                                     height=1, width=1)
+    realParts = ["1.0E-5"]
     for i, realPart in enumerate(realParts):
-        addDData(additionalStringNode, column=0, line=i, realPart=realPart)
+        addDData(additionalDataNode, column=0, line=i, realPart=realPart)
+    realParts = ["1.0E8"]
+    additionalDataNode = addDataNode(nestedNestedArrayNode,
+                                     'ScilabDouble',
+                                     height=1, width=1)
+    for i, realPart in enumerate(realParts):
+        addDData(additionalDataNode, column=0, line=i, realPart=realPart)
 
     addgeometryNode(outnode, GEOMETRY, geometry['height'],
                     geometry['width'], geometry['x'], geometry['y'])

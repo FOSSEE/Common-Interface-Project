@@ -547,7 +547,7 @@ for k, r_link in removable_link.items():
 
     sourceVertex = node.attrib.get('sourceVertex')  # small link
     targetVertex = node.attrib.get('targetVertex')  # small link
-    
+
     if sourceVertex in link:
         node2 = nodeList[sourceVertex]
         link_data2 = edgeDict[sourceVertex]  # big removed link
@@ -798,7 +798,6 @@ for i, cell in enumerate(cells):
 
     if sourceVertex not in LINKTOLINK and targetVertex not in LINKTOLINK:
         continue
-
 
     try:
         point = {'x': nodeList[sourceVertex].attrib['tarx'], 'y': nodeList[sourceVertex].attrib['tary']}
