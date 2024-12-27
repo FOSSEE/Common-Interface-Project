@@ -262,35 +262,19 @@ def check_point_on_array(array, point, left_right_direction=True):
         rightY = float(array[i + 1]['y'])
 
         # Check if the point lies on the line segment between array[i] and array[i + 1]
-        if -40 <= leftY - pointY <= 40 and \
-                -40 <= rightY - pointY <= 40 and \
-                leftX <= pointX <= rightX:
-            return True, array[:i + 1] + [point], [point] + array[i + 1:]
-        if -40 <= leftX - pointX <= 40 and \
-                -40 <= rightX - pointX <= 40 and \
-                leftY <= pointY <= rightY:
+
+        pointbetweenleftrightx = leftX <= pointX <= rightX or leftX >= pointX >= rightX
+        samey = -40 <= leftY - pointY <= 40 and -40 <= rightY - pointY <= 40
+        sameleftorrighty = -20 <= leftY - pointY <= 20 or -20 <= rightY - pointY <= 20
+
+        if pointbetweenleftrightx and (samey or sameleftorrighty):
             return True, array[:i + 1] + [point], [point] + array[i + 1:]
 
-        # if left_right_direction:
-        if -20 <= leftX - pointX <= 20 and \
-                (leftY <= pointY <= rightY or leftY >= pointY >= rightY):
-            print('to the left / right')
-            return True, array[:i + 1] + [point], [point] + array[i + 1:]
-        # else:
-        if -20 <= leftY - pointY <= 20 and \
-                (leftX <= pointX <= rightX or leftX >= pointX >= rightX):
-            print('on the up / down')
-            return True, array[:i + 1] + [point], [point] + array[i + 1:]
+        pointbetweenleftrighty = leftY <= pointY <= rightY or leftY >= pointY >= rightY
+        samex = -40 <= leftX - pointX <= 40 and -40 <= rightX - pointX <= 40
+        sameleftorrightx = -20 <= leftX - pointX <= 20 or -20 <= rightX - pointX <= 20
 
-        # if left_right_direction:
-        if -20 <= rightX - pointX <= 20 and \
-                (leftY <= pointY <= rightY or leftY >= pointY >= rightY):
-            print('to the right / right')
-            return True, array[:i + 1] + [point], [point] + array[i + 1:]
-        # else:
-        if -20 <= rightY - pointY <= 20 and \
-                (leftX <= pointX <= rightX or leftX >= pointX >= rightX):
-            print('on the up / down')
+        if pointbetweenleftrighty and (samex or sameleftorrightx):
             return True, array[:i + 1] + [point], [point] + array[i + 1:]
 
         # switch direction for the next waypoint
