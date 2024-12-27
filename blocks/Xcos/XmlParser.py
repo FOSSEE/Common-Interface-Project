@@ -508,6 +508,7 @@ for root in model:
                     mergeLinks(sourceVertex, key1, graph_link, removable_link)
                     mergeLinks(targetVertex, key1, graph_link, removable_link)
 
+
             except BaseException:
                 traceback.print_exc()
                 sys.exit(103)
@@ -532,52 +533,56 @@ for k, r_link in removable_link.items():
     print(f"removable link: k: {k}, link: {r_link_0}")
     node = nodeList[r_link_0]
     link_data = edgeDict[r_link_0]  # small removed link
+    # print("#LINKDATA#:", link_data)
+    print("#NODEATTRIB#:", node.attrib)
 
-    sourceVertex = node.attrib.get('sourceVertex')  # small link
-    targetVertex = node.attrib.get('targetVertex')  # small link
+    sourceVertex = link_data[1] # small link
+    targetVertex = link_data[2] # small link
+    # sourceVertex = node.attrib.get('sourceVertex')  
+    # targetVertex = node.attrib.get('targetVertex')  
+    # print("#SV & #TV:", sourceVertex, targetVertex)
+
 
     if sourceVertex in link:
         node2 = nodeList[sourceVertex]
         link_data2 = edgeDict[sourceVertex]  # big removed link
 
         thisVertex = sourceVertex
-        thisx = node.attrib.get('tarx', '0')
-        thisy = node.attrib.get('tary', '0')
+        thisx = link_data[9]['x']
+        thisy = link_data[9]['y']
 
         otherVertex = targetVertex
-        otherx = node.attrib.get('tar2x', '0')
-        othery = node.attrib.get('tar2y', '0')
+        otherx = link_data[8]['x']
+        othery = link_data[8]['y']
 
-        tar2x = node2.attrib.get('tar2x', '0')
-        tar2y = node2.attrib.get('tar2y', '0')
-
-        tarx = node2.attrib.get('tarx', '0')
-        tary = node2.attrib.get('tary', '0')
-
-        split_point = link_data[9]
+        split_point = link_data[8]
 
     elif targetVertex in link:
         node2 = nodeList[targetVertex]
         link_data2 = edgeDict[targetVertex]  # big removed link
 
         otherVertex = sourceVertex
-        otherx = node.attrib.get('tarx', '0')
-        othery = node.attrib.get('tary', '0')
+        otherx = link_data[9]['x']
+        othery = link_data[9]['y']
 
         thisVertex = targetVertex
-        thisx = node.attrib.get('tar2x', '0')
-        thisy = node.attrib.get('tar2y', '0')
+        thisx = link_data[8]['x']
+        thisy = link_data[8]['y']
 
-        tarx = node2.attrib.get('tarx', '0')
-        tary = node2.attrib.get('tary', '0')
+        split_point = link_data[9]
 
-        tar2x = node2.attrib.get('tar2x', '0')
-        tar2y = node2.attrib.get('tar2y', '0')
+    sourceVertex2 = link_data2[1] # big link
+    targetVertex2 = link_data2[2] # big link
+    
+    tarx = link_data2[8]['x']
+    tary = link_data2[8]['y']
 
-        split_point = link_data[8]
+    tar2x = link_data2[9]['x']
+    tar2y = link_data2[9]['y']
 
-    sourceVertex2 = node2.attrib.get('sourceVertex')  # big link 2
-    targetVertex2 = node2.attrib.get('targetVertex')  # big link 3
+    print("TARX & TARY:", tarx, tary, tar2x, tar2y)
+    
+
 
     root.remove(node)
     root.remove(node2)
@@ -588,13 +593,17 @@ for k, r_link in removable_link.items():
     tType2 = IDLIST[targetVertex2]
     height = 7
     width = 7
-    print("LINKDATA:", link_data)
+    # print("LINKDATA:", link_data)
+    # print("LINKDATA2:", link_data2)
+    # print("#NODEATTRIB2#:", node2.attrib)
+    # print("@SV & @TV:", sourceVertex2, targetVertex2)
     waypoints = link_data[6]    # small link
     waypoints2 = link_data2[6]  # big link
     # split_point = link_data[9]
     biglinkid = link_data2[0]
     smalllinkid = link_data[0]
-    print('waypoints2, split_point', biglinkid, waypoints2, split_point)
+    print('waypoints2, split_point:', biglinkid, waypoints2, split_point)
+    print("SV & TV:", sourceVertex, targetVertex, sourceVertex2, targetVertex2)
     result, left_array, right_array = check_point_on_array(waypoints2, split_point)
     print('left_array, right_array:', left_array, right_array)
     array3 = waypoints
