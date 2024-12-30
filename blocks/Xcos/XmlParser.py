@@ -533,7 +533,7 @@ for k, r_link in removable_link.items():
     print(f"removable link: k: {k}, link: {r_link_0}")
     node = nodeList[r_link_0]
     link_data = edgeDict[r_link_0]  # small removed link
-    # print("#LINKDATA#:", link_data)
+    print("#LINKDATA#:", link_data)
     print("#NODEATTRIB#:", node.attrib)
 
     sourceVertex = link_data[1] # small link
@@ -548,12 +548,12 @@ for k, r_link in removable_link.items():
         link_data2 = edgeDict[sourceVertex]  # big removed link
 
         thisVertex = sourceVertex
-        thisx = link_data[9]['x']
-        thisy = link_data[9]['y']
+        thisx = link_data[8]['x']
+        thisy = link_data[8]['y']
 
         otherVertex = targetVertex
-        otherx = link_data[8]['x']
-        othery = link_data[8]['y']
+        otherx = link_data[9]['x']
+        othery = link_data[9]['y']
 
         split_point = link_data[8]
 
@@ -561,13 +561,13 @@ for k, r_link in removable_link.items():
         node2 = nodeList[targetVertex]
         link_data2 = edgeDict[targetVertex]  # big removed link
 
-        otherVertex = sourceVertex
-        otherx = link_data[9]['x']
-        othery = link_data[9]['y']
-
         thisVertex = targetVertex
-        thisx = link_data[8]['x']
-        thisy = link_data[8]['y']
+        thisx = link_data[9]['x']
+        thisy = link_data[9]['y']
+
+        otherVertex = sourceVertex
+        otherx = link_data[8]['x']
+        othery = link_data[8]['y']
 
         split_point = link_data[9]
 
@@ -591,8 +591,8 @@ for k, r_link in removable_link.items():
     tType = IDLIST[otherVertex]
     sType2 = IDLIST[sourceVertex2]
     tType2 = IDLIST[targetVertex2]
-    height = 7
-    width = 7
+    height = '7.0'
+    width = '7.0'
     # print("LINKDATA:", link_data)
     # print("LINKDATA2:", link_data2)
     # print("#NODEATTRIB2#:", node2.attrib)

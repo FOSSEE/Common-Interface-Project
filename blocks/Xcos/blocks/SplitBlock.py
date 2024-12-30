@@ -30,8 +30,9 @@ def SplitBlock(outroot, attribid, ordering, geometry, parameters, parent=1, styl
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE, [])
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_EQUATIONS, [])
     addNode(outnode, 'mxGeometry', **{'as': 'geometry'},
-            height=geometry['height'], width=geometry['width'],
-            x=geometry['x'], y=geometry['y'])
+            x=geometry['x'], y=geometry['y'],
+            width=geometry['width'], height=geometry['height']
+            )
 
     return outnode
 
