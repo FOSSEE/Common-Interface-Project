@@ -508,7 +508,6 @@ for root in model:
                     mergeLinks(sourceVertex, key1, graph_link, removable_link)
                     mergeLinks(targetVertex, key1, graph_link, removable_link)
 
-
             except BaseException:
                 traceback.print_exc()
                 sys.exit(103)
@@ -536,12 +535,9 @@ for k, r_link in removable_link.items():
     print("#LINKDATA#:", link_data)
     print("#NODEATTRIB#:", node.attrib)
 
-    sourceVertex = link_data[1] # small link
-    targetVertex = link_data[2] # small link
-    # sourceVertex = node.attrib.get('sourceVertex')  
-    # targetVertex = node.attrib.get('targetVertex')  
+    sourceVertex = link_data[1]  # small link
+    targetVertex = link_data[2]  # small link
     # print("#SV & #TV:", sourceVertex, targetVertex)
-
 
     if sourceVertex in link:
         node2 = nodeList[sourceVertex]
@@ -571,9 +567,9 @@ for k, r_link in removable_link.items():
 
         split_point = link_data[9]
 
-    sourceVertex2 = link_data2[1] # big link
-    targetVertex2 = link_data2[2] # big link
-    
+    sourceVertex2 = link_data2[1]  # big link
+    targetVertex2 = link_data2[2]  # big link
+
     tarx = link_data2[8]['x']
     tary = link_data2[8]['y']
 
@@ -581,8 +577,6 @@ for k, r_link in removable_link.items():
     tar2y = link_data2[9]['y']
 
     print("TARX & TARY:", tarx, tary, tar2x, tar2y)
-    
-
 
     root.remove(node)
     root.remove(node2)

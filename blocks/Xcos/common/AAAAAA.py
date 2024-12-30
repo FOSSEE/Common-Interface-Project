@@ -172,11 +172,11 @@ def addOutNode(node, subNodeType,
                **kwargs):
     newkwargs = {'id': attribid, 'parent': parent,
                  'interfaceFunctionName': interface_func_name,
-                 'blockType': blockType}
+                 'blockType': blockType,
+                 'simulationFunctionName': simulation_func_name,
+                 'simulationFunctionType': simulation_func_type,
+                 'style': style}
     newkwargs.update(kwargs)
-    newkwargs.update({'simulationFunctionName': simulation_func_name,
-                      'simulationFunctionType': simulation_func_type,
-                      'style': style})
 
     return addNode(node, subNodeType, **newkwargs)
 
