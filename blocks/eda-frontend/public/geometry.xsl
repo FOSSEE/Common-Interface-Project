@@ -129,18 +129,6 @@
     <!-- </xsl:when>
     </xsl:choose> -->
     </xsl:variable>
-    <xsl:attribute name="x11"> 
-        <xsl:value-of select="@x"/>
-    </xsl:attribute>
-    <xsl:attribute name="width"> 
-        <xsl:value-of select="@width"/>
-    </xsl:attribute>
-    <!-- <xsl:attribute name="ordering"> 
-        <xsl:value-of select="$ordering"/>
-    </xsl:attribute>
-    <xsl:attribute name="noofport"> 
-        <xsl:value-of select="$noofport"/>
-    </xsl:attribute> -->
     <xsl:attribute name="x">
     <xsl:choose>
         <xsl:when test="$newx = ''">
