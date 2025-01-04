@@ -10,7 +10,7 @@ from tempfile import mkstemp
 from django.conf import settings
 
 logger = get_task_logger(__name__)
-MxGraphParser = os.path.join(settings.BASE_DIR, 'Xcos/MxGraphParser.py')
+XmlToXcos = os.path.join(settings.BASE_DIR, 'Xcos/XmlToXcos.sh')
 SCILAB_DIR = os.path.abspath(settings.SCILAB_DIR)
 SCILAB = os.path.join(SCILAB_DIR, 'bin', 'scilab-adv-cli')
 # handle scilab startup
@@ -44,28 +44,24 @@ def CreateXml(file_path, parameters, file_id):
     current_dir = settings.MEDIA_ROOT + '/' + str(file_id)
     # Make Unique Directory for simulation to run
     Path(current_dir).mkdir(parents=True, exist_ok=True)
-    (xcosfilebase, __) = os.path.splitext(file_path)
-    xcosfile = xcosfilebase + '.xcos'
-    logger.info('will run %s %s', 'MxGraphParser', file_path)
-    proc = subprocess.Popen([MxGraphParser, file_path],
-                            stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-                            cwd=current_dir)
-    (stdout, stderr) = proc.communicate()
-
-    if proc.returncode != 0:
-        logger.error('%s error encountered', 'MxGraphParser')
-        logger.error(stderr)
-        logger.error(proc.returncode)
-        logger.error(stdout)
-        raise CannotRunParser('exited with error')
-
-    logger.info('Ran %s', 'MxGraphParser')
-    return current_dir, xcosfile, file_path
-
-
-def CreateXcos(file_path, parameters, file_id):
     try:
-        current_dir, xcosfile, file_path = CreateXml(file_path, parameters, file_id)
+        (xcosfilebase, __) = os.path.splitext(file_path)
+        xcosfile = xcosfilebase + '.xcos'
+        logger.info('will run %s %s', 'XmlToXcos', file_path)
+        proc = subprocess.Popen([XmlToXcos, file_path],
+                                stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        (stdout, stderr) = proc.communicate()
+
+        if proc.returncode != 0:
+            logger.error('%s error encountered', 'XmlToXcos')
+            logger.error('rv=%s', proc.returncode)
+            if stdout:
+                logger.info('Stdout:\n%s', stdout.decode())
+            if stderr:
+                logger.error('Stderr:\n%s', stderr.decode())
+            raise CannotRunParser('exited with error')
+
+        logger.info('Ran %s', 'XmlToXcos')
         return xcosfile
     except BaseException as e:
         logger.exception('Encountered Exception:')
@@ -79,6 +75,11 @@ def CreateXcos(file_path, parameters, file_id):
         os.rmdir(current_dir)
         logger.info('Deleted Files')
         raise e
+
+
+def CreateXcos(file_path, parameters, file_id):
+    xcosfile = CreateXml(file_path, parameters, file_id)
+    return xcosfile
 
 
 def ExecXml(file_obj):

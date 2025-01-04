@@ -523,215 +523,220 @@ linklist = []
 return_value = 0
 LINKTOLINK = {}
 for k, r_link in removable_link.items():
-    if len(r_link) == 0:
-        continue
-    link = graph_link[k]
+    try:
+        if len(r_link) == 0:
+            continue
+        link = graph_link[k]
 
-    return_value += len(r_link) - 1
-    r_link_0 = r_link[0]
-    print(f"removable link: k: {k}, link: {r_link_0}")
-    node = nodeList[r_link_0]
-    link_data = edgeDict[r_link_0]  # small removed link
-    print("#LINKDATA#:", link_data)
-    print("#NODEATTRIB#:", node.attrib)
+        return_value += len(r_link) - 1
+        r_link_0 = r_link[0]
+        print(f"removable link: k: {k}, link: {r_link_0}")
+        node = nodeList[r_link_0]
+        link_data = edgeDict[r_link_0]  # small removed link
+        print("#LINKDATA#:", link_data)
+        print("#NODEATTRIB#:", node.attrib)
 
-    sourceVertex = link_data[1]  # small link
-    targetVertex = link_data[2]  # small link
-    # print("#SV & #TV:", sourceVertex, targetVertex)
+        sourceVertex = link_data[1]  # small link
+        targetVertex = link_data[2]  # small link
+        # print("#SV & #TV:", sourceVertex, targetVertex)
 
-    if sourceVertex in link:
-        node2 = nodeList[sourceVertex]
-        link_data2 = edgeDict[sourceVertex]  # big removed link
+        if sourceVertex in link:
+            node2 = nodeList[sourceVertex]
+            link_data2 = edgeDict[sourceVertex]  # big removed link
 
-        thisVertex = sourceVertex
-        thisx = link_data[8]['x']
-        thisy = link_data[8]['y']
+            thisVertex = sourceVertex
+            thisx = link_data[8]['x']
+            thisy = link_data[8]['y']
 
-        otherVertex = targetVertex
-        otherx = link_data[9]['x']
-        othery = link_data[9]['y']
+            otherVertex = targetVertex
+            otherx = link_data[9]['x']
+            othery = link_data[9]['y']
 
-        split_point = link_data[8]
+            split_point = link_data[8]
 
-    elif targetVertex in link:
-        node2 = nodeList[targetVertex]
-        link_data2 = edgeDict[targetVertex]  # big removed link
+        elif targetVertex in link:
+            node2 = nodeList[targetVertex]
+            link_data2 = edgeDict[targetVertex]  # big removed link
 
-        thisVertex = targetVertex
-        thisx = link_data[9]['x']
-        thisy = link_data[9]['y']
+            thisVertex = targetVertex
+            thisx = link_data[9]['x']
+            thisy = link_data[9]['y']
 
-        otherVertex = sourceVertex
-        otherx = link_data[8]['x']
-        othery = link_data[8]['y']
+            otherVertex = sourceVertex
+            otherx = link_data[8]['x']
+            othery = link_data[8]['y']
 
-        split_point = link_data[9]
+            split_point = link_data[9]
 
-    sourceVertex2 = link_data2[1]  # big link
-    targetVertex2 = link_data2[2]  # big link
+        sourceVertex2 = link_data2[1]  # big link
+        targetVertex2 = link_data2[2]  # big link
 
-    tarx = link_data2[8]['x']
-    tary = link_data2[8]['y']
+        tarx = link_data2[8]['x']
+        tary = link_data2[8]['y']
 
-    tar2x = link_data2[9]['x']
-    tar2y = link_data2[9]['y']
+        tar2x = link_data2[9]['x']
+        tar2y = link_data2[9]['y']
 
-    print("TARX & TARY:", tarx, tary, tar2x, tar2y)
+        print("TARX & TARY:", tarx, tary, tar2x, tar2y)
 
-    root.remove(node)
-    root.remove(node2)
+        root.remove(node)
+        root.remove(node2)
 
-    sType = IDLIST[thisVertex]
-    tType = IDLIST[otherVertex]
-    sType2 = IDLIST[sourceVertex2]
-    tType2 = IDLIST[targetVertex2]
-    height = '7.0'
-    width = '7.0'
-    # print("LINKDATA:", link_data)
-    # print("LINKDATA2:", link_data2)
-    # print("#NODEATTRIB2#:", node2.attrib)
-    # print("@SV & @TV:", sourceVertex2, targetVertex2)
-    waypoints = link_data[6]    # small link
-    waypoints2 = link_data2[6]  # big link
-    # split_point = link_data[9]
-    biglinkid = link_data2[0]
-    smalllinkid = link_data[0]
-    print('waypoints2, split_point:', biglinkid, waypoints2, split_point)
-    print("SV & TV:", sourceVertex, targetVertex, sourceVertex2, targetVertex2)
-    result, left_array, right_array = check_point_on_array(waypoints2, split_point)
-    print('left_array, right_array:', left_array, right_array)
-    array3 = waypoints
+        sType = IDLIST[thisVertex]
+        tType = IDLIST[otherVertex]
+        sType2 = IDLIST[sourceVertex2]
+        tType2 = IDLIST[targetVertex2]
+        height = '7.0'
+        width = '7.0'
+        # print("LINKDATA:", link_data)
+        # print("LINKDATA2:", link_data2)
+        # print("#NODEATTRIB2#:", node2.attrib)
+        # print("@SV & @TV:", sourceVertex2, targetVertex2)
+        waypoints = link_data[6]    # small link
+        waypoints2 = link_data2[6]  # big link
+        # split_point = link_data[9]
+        biglinkid = link_data2[0]
+        smalllinkid = link_data[0]
+        print('waypoints2, split_point:', biglinkid, waypoints2, split_point)
+        print("SV & TV:", sourceVertex, targetVertex, sourceVertex2, targetVertex2)
+        result, left_array, right_array = check_point_on_array(waypoints2, split_point)
+        print('left_array, right_array:', left_array, right_array)
+        array3 = waypoints
 
-    port1 = portType1(sType, sType2, tType2)
-    port2 = portType2(sType, sType2, tType2)
-    port3 = portType3(sType, tType)
+        port1 = portType1(sType, sType2, tType2)
+        port2 = portType2(sType, sType2, tType2)
+        port3 = portType3(sType, tType)
 
-    ports = [port1, port2, port3]
-    implicitInputPorts = 0
-    implicitOutputPorts = 0
-    explicitInputPorts = 0
-    explicitOutputPorts = 0
-    controlPorts = 0
-    commandPorts = 0
+        ports = [port1, port2, port3]
+        implicitInputPorts = 0
+        implicitOutputPorts = 0
+        explicitInputPorts = 0
+        explicitOutputPorts = 0
+        controlPorts = 0
+        commandPorts = 0
 
-    # Count ports
-    for port in ports:
-        if port == 'implicitInputPort':
-            implicitInputPorts += 1
-        elif port == 'implicitOutputPort':
-            implicitOutputPorts += 1
-        elif port == 'explicitInputPort':
-            explicitInputPorts += 1
-        elif port == 'explicitOutputPort':
-            explicitOutputPorts += 1
-        elif port == 'controlPort':
-            controlPorts += 1
-        elif port == 'commandPort':
-            commandPorts += 1
+        # Count ports
+        for port in ports:
+            if port == 'implicitInputPort':
+                implicitInputPorts += 1
+            elif port == 'implicitOutputPort':
+                implicitOutputPorts += 1
+            elif port == 'explicitInputPort':
+                explicitInputPorts += 1
+            elif port == 'explicitOutputPort':
+                explicitOutputPorts += 1
+            elif port == 'controlPort':
+                controlPorts += 1
+            elif port == 'commandPort':
+                commandPorts += 1
 
-    # add splitblock
-    geometry = (thisx, thisy, width, height)
-    block_id = str(nextattribid)
-    xml_output = create_mxCell(
-        style="SplitBlock",
-        id=block_id,
-        explicitInputPorts=explicitInputPorts,
-        implicitInputPorts=implicitInputPorts,
-        explicitOutputPorts=explicitOutputPorts,
-        implicitOutputPorts=implicitOutputPorts,
-        controlPorts=controlPorts,
-        commandPorts=commandPorts,
-        simulationFunction="split",
-        tarx="0",
-        tary="0",
-        geometry=geometry
-    )
-
-    splitblockid = nextattribid
-    nextattribid += 1
-
-    root.append(xml_output)
-
-    # add splitblock port
-    ordering_counters = {
-        "ExplicitInputPort": 0,
-        "ImplicitInputPort": 0,
-        "ExplicitOutputPort": 0,
-        "ImplicitOutputPort": 0,
-        "ControlPort": 0,
-        "CommandPort": 0
-    }
-    p_width = "8"
-    p_height = "8"
-    count_of_ports = 3
-    port_geometry = ("1", "0.5", p_width, p_height)
-    for port in range(count_of_ports):
-        port_index = 0
-        portx = 0
-        porty = 0
-        if port == 0:
-            port_index = sourceVertex2
-            portx = tarx
-            porty = tary
-            waypoints = left_array
-            linkid = biglinkid
-        elif port == 1:
-            port_index = targetVertex2
-            portx = tar2x
-            porty = tar2y
-            waypoints = right_array
-            linkid = biglinkid
-        else:
-            port_index = otherVertex
-            portx = otherx
-            porty = othery
-            waypoints = array3
-            linkid = smalllinkid
-
-        port_id = nextattribid
-
-        if port < explicitInputPorts:
-            port_type = "ExplicitInputPort"
-            link_type = "ExplicitLink"
-            linklist.append((link_type, port_id, thisx, thisy, port_index, portx, porty, waypoints, linkid))
-        elif port < explicitInputPorts + implicitInputPorts:
-            port_type = "ImplicitInputPort"
-            link_type = "ImplicitLink"
-            linklist.append((link_type, port_id, thisx, thisy, port_index, portx, porty, waypoints, linkid))
-        elif port < explicitInputPorts + implicitInputPorts + explicitOutputPorts:
-            port_type = "ExplicitOutputPort"
-            link_type = "ExplicitLink"
-            linklist.append((link_type, port_index, portx, porty, port_id, thisx, thisy, waypoints, linkid))
-        elif port < explicitInputPorts + implicitInputPorts + explicitOutputPorts + implicitOutputPorts:
-            port_type = "ImplicitOutputPort"
-            link_type = "ImplicitLink"
-            linklist.append((link_type, port_index, portx, porty, port_id, thisx, thisy, waypoints, linkid))
-        elif port < explicitInputPorts + implicitInputPorts + explicitOutputPorts + implicitOutputPorts + controlPorts:
-            port_type = "ControlPort"
-            link_type = "CommandControlLink"
-            linklist.append((link_type, port_id, thisx, thisy, port_index, portx, porty, waypoints, linkid))
-        else:
-            port_type = "CommandPort"
-            link_type = "CommandControlLink"
-            linklist.append((link_type, port_index, portx, porty, port_id, thisx, thisy, waypoints, linkid))
-        ordering = ordering_counters[port_type] + 1
-        ordering_counters[port_type] += 1
-
-        xml_output_port = create_mxCell_port(
-            style=port_type,
-            id=port_id,
-            ordering=str(ordering),
-            parentComponent=str(splitblockid),
-            sourceVertex="0",
-            targetVertex="0",
+        # add splitblock
+        geometry = (thisx, thisy, width, height)
+        block_id = str(nextattribid)
+        xml_output = create_mxCell(
+            style="SplitBlock",
+            id=block_id,
+            explicitInputPorts=explicitInputPorts,
+            implicitInputPorts=implicitInputPorts,
+            explicitOutputPorts=explicitOutputPorts,
+            implicitOutputPorts=implicitOutputPorts,
+            controlPorts=controlPorts,
+            commandPorts=commandPorts,
+            simulationFunction="split",
             tarx="0",
             tary="0",
-            geometry=port_geometry
+            geometry=geometry
         )
 
+        splitblockid = nextattribid
         nextattribid += 1
 
-        root.append(xml_output_port)
+        root.append(xml_output)
+
+        # add splitblock port
+        ordering_counters = {
+            "ExplicitInputPort": 0,
+            "ImplicitInputPort": 0,
+            "ExplicitOutputPort": 0,
+            "ImplicitOutputPort": 0,
+            "ControlPort": 0,
+            "CommandPort": 0
+        }
+        p_width = "8"
+        p_height = "8"
+        count_of_ports = 3
+        port_geometry = ("1", "0.5", p_width, p_height)
+        for port in range(count_of_ports):
+            port_index = 0
+            portx = 0
+            porty = 0
+            if port == 0:
+                port_index = sourceVertex2
+                portx = tarx
+                porty = tary
+                waypoints = left_array
+                linkid = biglinkid
+            elif port == 1:
+                port_index = targetVertex2
+                portx = tar2x
+                porty = tar2y
+                waypoints = right_array
+                linkid = biglinkid
+            else:
+                port_index = otherVertex
+                portx = otherx
+                porty = othery
+                waypoints = array3
+                linkid = smalllinkid
+
+            port_id = nextattribid
+
+            if port < explicitInputPorts:
+                port_type = "ExplicitInputPort"
+                link_type = "ExplicitLink"
+                linklist.append((link_type, port_id, thisx, thisy, port_index, portx, porty, waypoints, linkid))
+            elif port < explicitInputPorts + implicitInputPorts:
+                port_type = "ImplicitInputPort"
+                link_type = "ImplicitLink"
+                linklist.append((link_type, port_id, thisx, thisy, port_index, portx, porty, waypoints, linkid))
+            elif port < explicitInputPorts + implicitInputPorts + explicitOutputPorts:
+                port_type = "ExplicitOutputPort"
+                link_type = "ExplicitLink"
+                linklist.append((link_type, port_index, portx, porty, port_id, thisx, thisy, waypoints, linkid))
+            elif port < explicitInputPorts + implicitInputPorts + explicitOutputPorts + implicitOutputPorts:
+                port_type = "ImplicitOutputPort"
+                link_type = "ImplicitLink"
+                linklist.append((link_type, port_index, portx, porty, port_id, thisx, thisy, waypoints, linkid))
+            elif port < explicitInputPorts + implicitInputPorts + explicitOutputPorts + implicitOutputPorts + controlPorts:
+                port_type = "ControlPort"
+                link_type = "CommandControlLink"
+                linklist.append((link_type, port_id, thisx, thisy, port_index, portx, porty, waypoints, linkid))
+            else:
+                port_type = "CommandPort"
+                link_type = "CommandControlLink"
+                linklist.append((link_type, port_index, portx, porty, port_id, thisx, thisy, waypoints, linkid))
+            ordering = ordering_counters[port_type] + 1
+            ordering_counters[port_type] += 1
+
+            xml_output_port = create_mxCell_port(
+                style=port_type,
+                id=port_id,
+                ordering=str(ordering),
+                parentComponent=str(splitblockid),
+                sourceVertex="0",
+                targetVertex="0",
+                tarx="0",
+                tary="0",
+                geometry=port_geometry
+            )
+
+            nextattribid += 1
+
+            root.append(xml_output_port)
+
+    except BaseException:
+        traceback.print_exc()
+        sys.exit(103)
 
 # add splitblock edges
 
