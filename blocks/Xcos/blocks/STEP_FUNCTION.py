@@ -86,7 +86,7 @@ def STEP_FUNCTION(outroot, attribid, ordering, geometry, parameters, parent=1, s
             dataLines="-1", initialState="0.005",
             style="CommandPort", value="")
 
-    OUT_f(root, block_id[3], ordering, geometry, parameters, parent=block_id[1])
+    OUT_f(root, block_id[3], ordering, geometry, ['1'], parent=block_id[1])
 
     adPort(root, TYPE_EXPLICITINPORT, id=port_id[3],
            parent=block_id[3], ordering="1",

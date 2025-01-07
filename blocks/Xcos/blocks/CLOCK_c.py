@@ -61,7 +61,7 @@ def CLOCK_c(outroot, attribid, ordering, geometry, parameters, parent=1, style=N
             dataLines="-1", initialState="0.0",
             style="ControlPort", value="")
 
-    EVTDLY_c(root, block_id[3], ordering, geometry, parameters, parent=block_id[1])
+    EVTDLY_c(root, block_id[3], ordering, geometry, ['0.0001', '0'], parent=block_id[1])
 
     addPort(root, TYPE_CNTRL, id=port_id[1],
             parent=block_id[3], ordering="1",
