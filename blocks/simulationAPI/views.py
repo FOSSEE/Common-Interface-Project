@@ -88,17 +88,21 @@ class XmlSave(APIView):
             for chunk in file.chunks():
                 destination.write(chunk)
 
-        # Update the request data to include the file path
-        data = request.data.copy()
-        data['file_path'] = file_path
-        filename = CreateXcos(data['file_path'], '{}', 'abcd')
-        with open(filename, 'r') as file:
-            filecontent = file.read()
+        try:
+            # Update the request data to include the file path
+            data = request.data.copy()
+            data['file_path'] = file_path
+            filename = CreateXcos(data['file_path'], '{}', 'abcd')
+            with open(filename, 'r') as file:
+                filecontent = file.read()
 
-        response = Response(filecontent, status=status.HTTP_200_OK,
-                            content_type='application/octet-stream')
-        response['Content-Disposition'] = f'attachment; filename="{os.path.basename(filename)}"'
-        return response
+            response = Response(filecontent, status=status.HTTP_200_OK,
+                                content_type='application/octet-stream')
+            response['Content-Disposition'] = f'attachment; filename="{os.path.basename(filename)}"'
+            return response
+        except Exception as e:
+            logger.error('Error while creating Xcos file: %s', str(e))
+            return Response({"error": "Error while creating Xcos file"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 class CeleryResultView(APIView):
