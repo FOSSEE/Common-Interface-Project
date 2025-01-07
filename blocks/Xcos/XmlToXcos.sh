@@ -30,8 +30,15 @@ trap "rm -f $TMPFILE2" 0 1 2 15
 
 rm -f "$BASE."*.xml
 
+oldrv=100
+
 echo "Running Xcos/XmlParser.py $INPUT1" >&2
 Xcos/XmlParser.py "$INPUT1" >&2 && rv=$? || rv=$?
+
+if ((rv >= oldrv)); then
+  echo "ERROR: $rv >= $oldrv" >&2
+  exit 102
+fi
 
 while test $rv -gt 0; do
   oldrv=$rv
