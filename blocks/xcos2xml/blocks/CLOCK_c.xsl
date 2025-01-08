@@ -61,8 +61,26 @@
             </xsl:otherwise>
           </xsl:choose>                          
         </xsl:variable>
+        <xsl:variable name="value2">
+          <xsl:choose>
+            <xsl:when test="SuperBlockDiagram">
+              <xsl:value-of select="SuperBlockDiagram/mxGraphModel/root
+                              /BasicBlock[@style='EVTDLY_c']
+                              /ScilabString[@height='2' and @width='1']
+                              /data[@column='0' and @line='1']/@value"/>   
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="Array[@as='realParameters']
+                                /Array[@scilabClass='ScilabList']
+                                /Array[@scilabClass='ScilabMList']
+                                /Array[@scilabClass='ScilabMList']
+                                /ScilabString[@height='2' and @width='1']
+                                /data[@column='0' and @line='1']/@value"/>
+            </xsl:otherwise>
+          </xsl:choose>                          
+        </xsl:variable>
         <Object display_parameter="" as="displayProperties"/>
-        <Object p000_value="{$value1}" p001_value="{$value1}" as="parameter_values"/>
+        <Object p000_value="{$value1}" p001_value="{$value2}" as="parameter_values"/>
       </xsl:element>
       <xsl:call-template name="port">
         <xsl:with-param name="id" select="@id"/>

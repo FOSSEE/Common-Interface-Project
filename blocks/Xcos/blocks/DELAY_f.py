@@ -64,7 +64,7 @@ def DELAY_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=N
            style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
            value="")
 
-    OUT_f(root, block_id[3], ordering, geometry, parameters)
+    OUT_f(root, block_id[3], ordering, geometry, ['1'])
 
     REGISTER_f(root, block_id[4], ordering, geometry, parameters)
 

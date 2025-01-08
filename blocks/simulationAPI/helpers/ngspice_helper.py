@@ -66,13 +66,13 @@ def CreateXml(file_path, parameters, file_id):
     except BaseException as e:
         logger.exception('Encountered Exception:')
         logger.info('removing %s', file_path)
-        # os.remove(file_path)
+        os.remove(file_path)
         target = os.listdir(current_dir)
         for item in target:
             logger.info('removing %s', item)
-            # os.remove(os.path.join(current_dir, item))
+            os.remove(os.path.join(current_dir, item))
         logger.info('removing %s', current_dir)
-        # os.rmdir(current_dir)
+        os.rmdir(current_dir)
         logger.info('Deleted Files')
         raise e
 

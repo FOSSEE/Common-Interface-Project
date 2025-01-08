@@ -410,7 +410,6 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
           if (rexcos.test(filename)) {
             transformXcos(xmlDoc).then(xmlDoc => {
               dataDump = new XMLSerializer().serializeToString(xmlDoc)
-              console.log('dataDump:', dataDump)
               readXmlFile(xmlDoc, dataDump, title)
               dispatch(setLoadingDiagram(false))
             })
