@@ -102,7 +102,7 @@ def Sigbuilder(outroot, attribid, ordering, geometry, parameters, parent=1, styl
             dataLines="1", initialState="-1.0",
             style="", value="")
 
-    param = ['0', '1', '2']
+    param = ['1']
     OUT_f(root, block_id[4], ordering, geometry, param, parent=block_id[1])
 
     adPort(root, TYPE_EXPLICITINPORT, id=port_id[6],

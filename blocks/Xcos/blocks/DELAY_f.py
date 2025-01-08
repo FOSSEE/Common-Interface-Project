@@ -56,7 +56,7 @@ def DELAY_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=N
                   id=block_id[1],
                   parent=block_id[0])
 
-    IN_f(root, block_id[2], ordering, geometry, parameters)
+    IN_f(root, block_id[2], ordering, geometry, ['1', '1'])
 
     adPort(root, TYPE_EXPLICITOUTPORT, id=port_id[0],
            parent=block_id[2], ordering="1",
@@ -64,11 +64,11 @@ def DELAY_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=N
            style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
            value="")
 
-    OUT_f(root, block_id[3], ordering, geometry, ['1'])
+    OUT_f(root, block_id[3], ordering, geometry, ['1', '1'])
 
-    REGISTER_f(root, block_id[4], ordering, geometry, parameters)
+    REGISTER_f(root, block_id[4], ordering, geometry, [parameters[1]])
 
-    EVTDLY_f(root, block_id[5], ordering, geometry, parameters)
+    EVTDLY_f(root, block_id[5], ordering, geometry, [parameters[0], '0'])
 
     addNodemxCell(SuperBlockDiagram, TYPE_MXCELL, a='defaultParent',
                   id=block_id[1],

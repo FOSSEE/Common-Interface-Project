@@ -13,7 +13,7 @@ def EVTDLY_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)
     addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM,
-                 1, realParts=[0.1])
+                 1, realParts=[parameters[0]])
     addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 0, [])
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
     array = ['0']

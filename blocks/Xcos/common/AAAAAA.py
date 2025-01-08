@@ -529,6 +529,11 @@ def strarray(parameter):
     return parameters
 
 
+def stringtoarray(parameter):
+    array = re.split(r'[;, ]+', parameter)
+    return array
+
+
 # Convert number into scientific notation
 # Used by blocks Capacitor,ConstantVoltage,Inductor and Resistor
 
