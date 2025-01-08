@@ -47,7 +47,7 @@
           <xsl:choose>
             <xsl:when test="SuperBlockDiagram">
               <xsl:value-of select="SuperBlockDiagram/mxGraphModel/root
-                              /BasicBlock[@style='STEP']
+                              /BasicBlock[@interfaceFunctionName='STEP']
                               /ScilabString[@height='3' and @width='1']
                               /data[@column='0' and @line='0']/@value"/>   
             </xsl:when>
@@ -65,7 +65,7 @@
           <xsl:choose>
             <xsl:when test="SuperBlockDiagram">
               <xsl:value-of select="SuperBlockDiagram/mxGraphModel/root
-                              /BasicBlock[@style='STEP']
+                              /BasicBlock[@interfaceFunctionName='STEP']
                               /ScilabString[@height='3' and @width='1']
                               /data[@column='0' and @line='1']/@value"/>   
             </xsl:when>
@@ -83,7 +83,7 @@
           <xsl:choose>
             <xsl:when test="SuperBlockDiagram">
               <xsl:value-of select="SuperBlockDiagram/mxGraphModel/root
-                              /BasicBlock[@style='STEP']
+                              /BasicBlock[@interfaceFunctionName='STEP']
                               /ScilabString[@height='3' and @width='1']
                               /data[@column='0' and @line='2']/@value"/>   
             </xsl:when>
