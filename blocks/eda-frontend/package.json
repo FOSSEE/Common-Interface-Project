@@ -9,7 +9,7 @@
     "@material-ui/lab": "^4.0.0-alpha.52",
     "axios": "^1.7.9",
     "canvg": "^4.0.2",
-    "file-saver": "^2.0.2",
+    "file-saver": "^2.0.5",
     "highcharts": "^11.3.0",
     "highcharts-react-official": "^3.1.0",
     "mxgraph": "^4.2.2",
