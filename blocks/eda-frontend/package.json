@@ -7,7 +7,7 @@
     "@material-ui/core": "^4.9.11",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.52",
-    "axios": "^1.7.7",
+    "axios": "^1.7.9",
     "canvg": "^4.0.2",
     "file-saver": "^2.0.2",
     "highcharts": "^11.3.0",
@@ -47,13 +47,13 @@
     ]
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.23.10",
-    "eslint": "^8.57.0",
+    "@babel/eslint-parser": "^7.25.9",
+    "eslint": "^8.57.1",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.30.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^6.6.0",
-    "eslint-plugin-react": "^7.36.1",
+    "eslint-plugin-react": "^7.37.3",
     "react-dev-utils": "^12.0.1",
     "react-scripts": "^5.0.1",
     "source-map-explorer": "^2.5.2"
