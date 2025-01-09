@@ -56,7 +56,7 @@
                                 /Array[@scilabClass='ScilabList']
                                 /Array[@scilabClass='ScilabMList']
                                 /Array[@scilabClass='ScilabMList']
-                                /ScilabString[@height='3' and @width='1']
+                                /ScilabString[@height='2' and @width='1']
                                 /data[@column='0' and @line='0']/@value"/>
             </xsl:otherwise>
           </xsl:choose>                          
@@ -73,10 +73,10 @@
             <xsl:otherwise>
               <xsl:value-of select="Array[@as='realParameters']
                                 /Array[@scilabClass='ScilabList']
+                                /Array[@scilabClass='ScilabMList'][3]
                                 /Array[@scilabClass='ScilabMList']
-                                /Array[@scilabClass='ScilabMList']
-                                /ScilabString[@height='3' and @width='1']
-                                /data[@column='0' and @line='1']/@value"/>
+                                /ScilabString[@height='1' and @width='1']
+                                /data[@column='0' and @line='0']/@value"/>
             </xsl:otherwise>
           </xsl:choose>                          
         </xsl:variable>

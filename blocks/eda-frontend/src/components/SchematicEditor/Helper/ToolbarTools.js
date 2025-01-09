@@ -6,7 +6,6 @@ import { portSize, getParameter } from './SvgParser'
 import { getPortType, InputPort, OutputPort } from './ComponentDrag'
 import { styleToObject } from '../../../utils/GalleryUtils'
 import store from '../../../redux/store'
-import { setModel, setNetlist } from '../../../redux/actions/index'
 
 let graph
 let undoManager
@@ -35,11 +34,6 @@ export default function toolbarTools (grid, unredo) {
 
 // SAVE
 export function saveXml (description = '') {
-  try {
-    xmlWireConnections()
-  } catch (e) {
-    console.error('error', e)
-  }
   const enc = new mxCodec(mxUtils.createXmlDocument())
   const model = graph.getModel()
   const firstCell = model.cells[0]
@@ -203,147 +197,6 @@ export function ErcCheck () {
       alert('ERC Check completed')
     }
   }
-}
-
-function ercCheckNets () {
-  const NoAddition = 'No ' + process.env.REACT_APP_BLOCK_NAME + ' added'
-  const list = graph.getModel().cells // mapping the grid
-  let vertexCount = 0
-  let errorCount = 0
-  let PinNC = 0
-  const ground = 0
-  for (const property in list) {
-    const cell = list[property]
-    if (cell.CellType === 'Component') {
-      for (const child in cell.children) {
-        console.log(cell.children[child])
-        const childVertex = cell.children[child]
-        if (childVertex.CellType === 'Pin' && childVertex.edges === null) {
-          graph.getSelectionCell(childVertex)
-          console.log('This pin is not connected')
-          console.log(childVertex)
-          ++PinNC
-          ++errorCount
-        }
-      }
-      ++vertexCount
-    }
-  }
-  if (vertexCount === 0) {
-    alert(NoAddition)
-    ++errorCount
-    return false
-  } else if (PinNC !== 0) {
-    alert('Pins not connected')
-    return false
-  } else if (ground === 0) {
-    alert('Ground not connected')
-    return false
-  } else {
-    if (errorCount === 0) {
-      return true
-    }
-  }
-}
-
-// GENERATE NETLIST
-export function generateNetList () {
-  let c = 1
-  const spiceModels = ''
-  const netlist = {
-    componentlist: [],
-    nodelist: []
-  }
-  const erc = ercCheckNets()
-  let k = ''
-  if (erc === false) {
-    alert('ERC check failed')
-  } else {
-    const list = annotate(graph)
-    for (const property in list) {
-      if (list[property].CellType === 'Component' && list[property].blockprefix !== 'PWR') {
-        const compobj = {
-          name: '',
-          node1: '',
-          node2: '',
-          magnitude: ''
-        }
-        const component = list[property]
-        k = k + component.blockprefix + c.toString()
-        component.value = component.blockprefix + c.toString()
-        ++c
-
-        if (component.children !== null) {
-          for (const child in component.children) {
-            const pin = component.children[child]
-            if (pin.vertex === true) {
-              if (pin.edges !== null && pin.edges.length !== 0) {
-                for (const wire in pin.edges) {
-                  if (pin.edges[wire].source !== null && pin.edges[wire].target !== null) {
-                    if (pin.edges[wire].source.edge === true) {
-                      console.log('wire')
-                      console.log(pin.edges[wire].source)
-                      console.log(pin.edges[wire].source.node)
-                      pin.edges[wire].node = pin.edges[wire].source.node
-                      pin.edges[wire].sourceVertex = pin.edges[wire].source.id
-                      pin.edges[wire].targetVertex = pin.edges[wire].target.id
-                    } else if (pin.edges[wire].target.edge === true) {
-                      console.log('wire')
-                      console.log(pin.edges[wire].target)
-                      console.log(pin.edges[wire].target.node)
-                      pin.edges[wire].node = pin.edges[wire].target.node
-                      pin.edges[wire].sourceVertex = pin.edges[wire].source.id
-                      pin.edges[wire].targetVertex = pin.edges[wire].target.id
-                      pin.edges[wire].tarx = pin.edges[wire].geometry.targetPoint.x
-                      pin.edges[wire].tary = pin.edges[wire].geometry.targetPoint.y
-                    } else {
-                      pin.edges[wire].node = '.' + pin.edges[wire].source.value
-                      console.log('comp')
-                      pin.edges[wire].sourceVertex = pin.edges[wire].source.id
-                      pin.edges[wire].targetVertex = pin.edges[wire].target.id
-
-                      pin.edges[wire].value = pin.edges[wire].node
-                    }
-                    pin.edges[wire].value = pin.edges[wire].node
-                  }
-                  console.log('Check the wires here', pin.edges[wire].sourceVertex, pin.edges[wire].targetVertex)
-                }
-                k = k + ' ' + pin.edges[0].node
-              }
-            }
-          }
-          compobj.name = component.blockprefix
-          compobj.node1 = component.children[0].edges[0].node
-          compobj.node2 = component.children[1].edges[0].node
-          compobj.magnitude = 10
-          netlist.nodelist.push(compobj.node2, compobj.node1)
-        }
-        console.log('component parameter_values', component.parameter_values)
-
-        k = k + ' \n'
-      }
-    }
-  }
-  store.dispatch(setModel(spiceModels))
-  store.dispatch(setNetlist(k))
-  graph.getModel().beginUpdate()
-  try {
-    graph.view.refresh()
-  } finally {
-    graph.getModel().endUpdate()
-  }
-  const a = new Set(netlist.nodelist)
-  console.log(netlist.nodelist)
-  console.log(a)
-  const netobj = {
-    models: spiceModels,
-    main: k
-  }
-  return netobj
-}
-
-function annotate (graph) {
-  return graph.getModel().cells
 }
 
 export function renderXML () {
@@ -696,16 +549,23 @@ function parseXmlToGraph (xmlDoc, graph) {
 
           try {
             const edge = graph.insertEdge(parent, edgeId, null, sourceCell, targetCell)
-            console.log('Points:', points)
-            edge.geometry.points = points
+            edge.tarx = cellAttrs.tarx.value
+            edge.tary = cellAttrs.tary.value
+            edge.tar2x = cellAttrs.tar2x.value
+            edge.tar2y = cellAttrs.tar2y.value
+            edge.sourceVertex = cellAttrs.sourceVertex.value
+            edge.targetVertex = cellAttrs.targetVertex.value
+
             const terminalPoint = new mxPoint(Number(cellAttrs.tarx.value), Number(cellAttrs.tary.value))
             const terminalPoint2 = new mxPoint(Number(cellAttrs.tar2x.value), Number(cellAttrs.tar2y.value))
-            if (targetCell?.edge === true) {
-              edge.geometry.setTerminalPoint(terminalPoint2, false)
-            }
-            if (sourceCell?.edge === true) {
-              edge.geometry.setTerminalPoint(terminalPoint, true)
-            }
+            // if (targetCell?.edge === true) {
+            edge.geometry.setTerminalPoint(terminalPoint2, false)
+            // }
+            // if (sourceCell?.edge === true) {
+            edge.geometry.setTerminalPoint(terminalPoint, true)
+            // }
+            edge.geometry.points = points
+            console.log('Points:', points)
             console.log('edge:', edge)
           } catch (e) {
             console.log(sourceCell)
@@ -732,42 +592,4 @@ export function renderGalleryXML (xml) {
   graph.view.refresh()
   const xmlDoc = mxUtils.parseXml(xml)
   parseXmlToGraph(xmlDoc, graph)
-}
-
-function xmlWireConnections () {
-  const list = graph.getModel().cells
-  for (const component of Object.values(list)) {
-    const children = component.children
-    if (component.CellType !== 'Component' || component.blockprefix === 'PWR' || children === null) {
-      continue
-    }
-
-    for (const pin of Object.values(children)) {
-      if (pin.vertex !== true || pin.edges === null || pin.edges.length === 0) {
-        continue
-      }
-
-      for (const edge of Object.values(pin.edges)) {
-        if (edge.source === null || edge.target === null) {
-          continue
-        }
-        console.log('edge.source:', edge, edge.source)
-        edge.sourceVertex = edge.source.id
-        edge.targetVertex = edge.target.id
-        console.log('outside if', edge.source.edge, edge.target.edge)
-        if (edge.source.edge === true) {
-          edge.tarx = edge.geometry.sourcePoint.x
-          edge.tary = edge.geometry.sourcePoint.y
-          console.log('tarx', edge.tarx, edge.tary)
-        }
-        if (edge.target.edge === true) {
-          edge.tar2x = edge.geometry.targetPoint.x
-          edge.tar2y = edge.geometry.targetPoint.y
-          console.log('tar2x', edge.tar2x, edge.tar2y)
-        }
-
-        console.log('Check the wires here', edge.sourceVertex, edge.targetVertex)
-      }
-    }
-  }
 }
