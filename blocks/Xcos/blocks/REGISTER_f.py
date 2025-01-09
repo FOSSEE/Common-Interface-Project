@@ -6,7 +6,7 @@ def REGISTER_f(outroot, attribid, ordering, geometry, parameters, parent=1, styl
     if style is None:
         style = func_name
 
-    outnode = addOutNode(outroot, BLOCK_EXPLICIT_OUT,
+    outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'output', 'DEFAULT',
                          style, BLOCKTYPE_C)
