@@ -14,7 +14,7 @@ import DeleteIcon from '@material-ui/icons/Delete'
 import SettingsOverscanIcon from '@material-ui/icons/SettingsOverscan'
 import PrintOutlinedIcon from '@material-ui/icons/PrintOutlined'
 import RotateRightIcon from '@material-ui/icons/RotateRight'
-import BorderClearIcon from '@material-ui/icons/BorderClear'
+// import BorderClearIcon from '@material-ui/icons/BorderClear'
 import { makeStyles } from '@material-ui/core/styles'
 import CloseIcon from '@material-ui/icons/Close'
 import SaveOutlinedIcon from '@material-ui/icons/SaveOutlined'
@@ -28,7 +28,7 @@ import beautify from 'xml-beautifier'
 import mxGraphFactory from 'mxgraph'
 
 import { NetlistModal, HelpScreen, ImageExportDialog, OpenSchDialog } from './ToolbarExtension'
-import { editorZoomIn, editorZoomOut, editorZoomAct, deleteComp, PrintPreview, Rotate, generateNetList, editorUndo, editorRedo, saveXml, ClearGrid } from './Helper/ToolbarTools'
+import { editorZoomIn, editorZoomOut, editorZoomAct, deleteComp, PrintPreview, Rotate, editorUndo, editorRedo, saveXml, ClearGrid } from './Helper/ToolbarTools'
 import { useSelector, useDispatch } from 'react-redux'
 import { toggleSimulate, closeCompProperties, setSchXmlData, saveSchematic, openLocalSch, setLoadingDiagram } from '../../redux/actions/index'
 import api from '../../utils/Api'
@@ -92,9 +92,6 @@ SimpleSnackbar.propTypes = {
 
 export default function SchematicToolbar ({ mobileClose, gridRef }) {
   const classes = useStyles()
-  const controlBlock = useSelector(state => state.netlistReducer.controlBlock)
-  const controlLine = useSelector(state => state.netlistReducer.controlLine)
-  const title1 = useSelector(state => state.netlistReducer.title)
   const isAuthenticated = useSelector(state => state.authReducer.isAuthenticated)
   const description = useSelector(state => state.saveSchematicReducer.description)
   const title2 = useSelector(state => state.saveSchematicReducer.title)
@@ -103,18 +100,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
 
   // Netlist Modal Control
   const [open, setOpen] = useState(false)
-  const [netlist, genNetlist] = useState('')
-
-  const handleClickOpen = () => {
-    const compNetlist = generateNetList()
-    const netlist = title1 + '\n\n' +
-      compNetlist.models + '\n' +
-      compNetlist.main + '\n' +
-      controlLine + '\n' +
-      controlBlock + '\n'
-    genNetlist(netlist)
-    setOpen(true)
-  }
+  const [netlist] = useState('')
 
   const handleClose = () => {
     setOpen(false)
@@ -484,11 +470,6 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
       <Tooltip title='Simulate'>
         <IconButton color='inherit' className={classes.tools} size='small' onClick={() => { dispatch(toggleSimulate()) }}>
           <PlayCircleOutlineIcon fontSize='small' />
-        </IconButton>
-      </Tooltip>
-      <Tooltip title='Generate Netlist'>
-        <IconButton color='inherit' className={classes.tools} size='small' onClick={handleClickOpen}>
-          <BorderClearIcon fontSize='small' />
         </IconButton>
       </Tooltip>
       <NetlistModal open={open} close={handleClose} netlist={netlist} />
