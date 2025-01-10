@@ -433,7 +433,7 @@ export default function LoadGrid (container, sidebar, outline) {
 
     // Starts connections on the background in wire-mode
     const connectionHandlerIsStartEvent = graph.connectionHandler.isStartEvent
-    graph.connectionHandler.isStartEvent = function (me) {
+    graph.connectionHandler.isStartEvent = function () {
       return checkbox.checked || connectionHandlerIsStartEvent.apply(this, arguments)
     }
 
