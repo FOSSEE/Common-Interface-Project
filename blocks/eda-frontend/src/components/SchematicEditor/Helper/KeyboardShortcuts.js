@@ -29,35 +29,35 @@ export default function keyboardShortcuts (graph) {
   // })
 
   // Undo - Ctrl + Z
-  keyHandler.bindControlKey(90, function (evt) {
+  keyHandler.bindControlKey(90, function () {
     if (graph.isEnabled()) {
       editorUndo()
     }
   })
 
   // Redo - Ctrl + A
-  keyHandler.bindControlKey(65, function (evt) {
+  keyHandler.bindControlKey(65, function () {
     if (graph.isEnabled()) {
       editorRedo()
     }
   })
 
   // Zoom In - Ctrl + I
-  keyHandler.bindControlKey(73, function (evt) {
+  keyHandler.bindControlKey(73, function () {
     if (graph.isEnabled()) {
       editorZoomIn()
     }
   })
 
   // Zoom Out - Ctrl + O
-  keyHandler.bindControlKey(79, function (evt) {
+  keyHandler.bindControlKey(79, function () {
     if (graph.isEnabled()) {
       editorZoomOut()
     }
   })
 
   // Zoom Out - Ctrl + Y
-  keyHandler.bindControlKey(89, function (evt) {
+  keyHandler.bindControlKey(89, function () {
     if (graph.isEnabled()) {
       editorZoomAct()
     }

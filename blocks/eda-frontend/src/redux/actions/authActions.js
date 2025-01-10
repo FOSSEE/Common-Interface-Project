@@ -109,7 +109,7 @@ export const login = (email, password, toUrl) => {
 }
 
 // Handle api call for user sign up
-export const signUp = (email, password, reenterPassword, history) => (dispatch) => {
+export const signUp = (email, password, reenterPassword) => (dispatch) => {
   const body = {
     email,
     username: email,
@@ -133,7 +133,6 @@ export const signUp = (email, password, reenterPassword, history) => (dispatch) 
             data: 'Successfully Signed Up! A verification link has been sent to your email account.'
           }
         })
-        // history.push('/login')
       }
     })
     .catch((err) => {
@@ -229,7 +228,7 @@ const signUpError = (message) => (dispatch) => {
 }
 
 // Api call for Google oAuth login or sign up
-export const googleLogin = (host, toUrl) => {
+export const googleLogin = (host) => {
   return function (dispatch) {
     api.get('auth/o/google-oauth2/?redirect_uri=' + host + '/api/auth/google-callback')
       .then((res) => {
@@ -253,7 +252,7 @@ export const googleLogin = (host, toUrl) => {
 }
 
 // Api call for GitHub OAuth login or sign up
-export const githubLogin = (host, toUrl) => {
+export const githubLogin = (host) => {
   return function (dispatch) {
     api.get('auth/o/github/?redirect_uri=' + host + '/api/auth/github-callback')
       .then((res) => {

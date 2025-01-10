@@ -165,7 +165,7 @@ export const setSchShared = (share) => (dispatch, getState) => {
 }
 
 // Action for Loading Gallery schematics
-export const loadGallery = (saveId) => (dispatch, getState) => {
+export const loadGallery = (saveId) => (dispatch) => {
   // Find the gallery schematic that matches the given save_id
   const data = GallerySchSample.find(sample => sample.save_id === saveId)
 
@@ -201,14 +201,14 @@ export const loadGallery = (saveId) => (dispatch, getState) => {
       console.error('Error converting xcos to xml:', error)
     })
   } else {
-    handleGalleryLoad(dispatch, data, data.dataDump)
+    handleGalleryLoad(dispatch, data, data.data_dump)
     dispatch(setLoadingDiagram(false))
   }
   window.loadGalleryComplete = true
 }
 
 // Action for Loading local exported schematics
-export const openLocalSch = (obj) => (dispatch, getState) => {
+export const openLocalSch = (obj) => (dispatch) => {
   const data = obj
 
   dispatch({ type: actions.CLEAR_DETAILS })

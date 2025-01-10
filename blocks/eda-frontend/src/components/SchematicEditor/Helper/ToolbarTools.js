@@ -21,7 +21,7 @@ const {
   mxPoint
 } = new mxGraphFactory()
 
-export default function toolbarTools (grid, unredo) {
+export default function toolbarTools (grid) {
   graph = grid
 
   undoManager = new mxUndoManager()

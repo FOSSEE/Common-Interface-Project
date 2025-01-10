@@ -231,7 +231,7 @@ export default function LoadGrid (container, sidebar, outline) {
       return null
     }
 
-    graph.addEdge = function (edge, parent, source, target, index) {
+    graph.addEdge = function (_edge, _parent, source, target) {
       if (source == null || target == null) {
         return null
       }
@@ -362,7 +362,7 @@ export default function LoadGrid (container, sidebar, outline) {
 
       // White in-place editor text color
       const mxCellEditorStartEditing = mxCellEditor.prototype.startEditing
-      mxCellEditor.prototype.startEditing = function (cell, trigger) {
+      mxCellEditor.prototype.startEditing = function () {
         mxCellEditorStartEditing.apply(this, arguments)
 
         if (this.textarea != null) {
@@ -584,7 +584,7 @@ export default function LoadGrid (container, sidebar, outline) {
   }
 
   // Updates the terminal and control points in the cloned preview.
-  mxEdgeSegmentHandler.prototype.clonePreviewState = function (point, terminal) {
+  mxEdgeSegmentHandler.prototype.clonePreviewState = function (point) {
     const clone = mxEdgeHandler.prototype.clonePreviewState.apply(this, arguments)
     clone.cell = clone.cell.clone()
 
@@ -604,7 +604,7 @@ export default function LoadGrid (container, sidebar, outline) {
   }
 
   const mxEdgeHandlerConnect = mxEdgeHandler.prototype.connect
-  mxEdgeHandler.prototype.connect = function (edge, terminal, isSource, isClone, me) {
+  mxEdgeHandler.prototype.connect = function (edge, terminal, isSource) {
     let result = null
     const model = this.graph.getModel()
 
@@ -649,7 +649,7 @@ export default function LoadGrid (container, sidebar, outline) {
     const marker = mxConnectionHandlerCreateMarker.apply(this, arguments)
 
     // Uses complete area of cell for new connections (no hotspot)
-    marker.intersects = function (state, evt) {
+    marker.intersects = function () {
       return true
     }
 
