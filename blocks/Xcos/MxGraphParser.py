@@ -441,19 +441,13 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoi
         print('split_point:', split_point, linkSegments)
         if attribid2 == sourceVertex:
             splitpoint = split_point
-            print('S_P:', splitpoint)
         else:
             splitpoint = split_point2
-            print('S_P2:', splitpoint)
         result, i, left_array, right_array = identify_segment(linkSegments, splitpoint)
-        print('LR:', i, left_array, right_array)
-        print('waypoints:', split_point, waypoints)
         if not result:
             sys.exit(0)
         (linkid, sourceVertex2, targetVertex2, sourceType2, targetType2, style2, waypoints2, addSplit2, split_point_new, split_point2_new) = linkSegments[i]
-        print('SP2:', split_point, split_point2)
         array3 = waypoints
-        print('ARRAY3:', array3)
 
         componentOrdering += 1
         geometry = {}
@@ -461,16 +455,13 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoi
         geometry['width'] = 7
         geometry['x'] = splitpoint['x']
         geometry['y'] = splitpoint['y']
-        print('geo:', attribid2, splitpoint['x'], splitpoint['y'])
         if sourceType2 == 'ControlPort' or sourceType2 == 'CommandPort' or sourceType2 == 'CommandControlLink':
             split_style = 'CLKSPLIT_f'
             func_name = 'CLKSPLIT_f'
         else:
             split_style = 'SPLIT_f;flip=false;mirror=false'
             func_name = 'SPLIT_f'
-        print('BEFORE Splitblock:', outroot, nextattribid, componentOrdering, geometry, parentattribid, split_style, func_name)
         SplitBlock(outroot, nextattribid, componentOrdering, geometry, [], parent=parentattribid, style=split_style, func_name=func_name)
-        print('AFTER Splitblock:', outroot, nextattribid, componentOrdering, geometry, parentattribid, split_style, func_name)
         splitblockid = nextattribid
         nextattribid += 1
 
@@ -478,13 +469,10 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoi
         outputCount = 0
         port1 = nextattribid
         (inputCount, outputCount, nextattribid, nextAttribForSplit) = addPort1ForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType, targetType, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, left_array)
-        print('nextAttribForSplit1:', nextAttribForSplit)
         port2 = nextattribid
         (inputCount, outputCount, nextattribid, nextAttribForSplit) = addPort2ForSplit(outroot, splitblockid, sourceVertex2, targetVertex2, sourceType, targetType, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, right_array)
-        print('nextAttribForSplit2:', nextAttribForSplit, sourceVertex, targetVertex)
         port3 = nextattribid
         (inputCount, outputCount, nextattribid, nextAttribForSplit) = addPort3ForSplit(outroot, splitblockid, sourceVertex, targetVertex, sourceType, targetType, sourceType2, targetType2, inputCount, outputCount, nextattribid, nextAttribForSplit, array3)
-        print('nextAttribForSplit3:', nextAttribForSplit, sourceVertex2, targetVertex2, splitblockid)
 
         newEdgeDict[attribid2][i] = ((nextAttribForSplit, sourceVertex2, port1, sourceType2, targetType, style2, left_array, addSplit2, split_point, split_point2))
         nextAttribForSplit += 1
@@ -497,10 +485,7 @@ for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoi
             newEdgeDict[attribid] = [(nextAttribForSplit, port3, sourceVertex, sourceType, targetType, style, waypoints, addSplit, split_point, split_point2)]
         nextAttribForSplit += 1
         LINKTOPORT[linkid] = port3
-        print('LINKTOPORT', linkid, port3)
 
-
-print()
 
 for key, newEdges in newEdgeDict.items():
     for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point, split_point2) in newEdges:

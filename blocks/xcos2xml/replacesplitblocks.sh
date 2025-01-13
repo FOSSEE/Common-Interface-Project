@@ -105,22 +105,31 @@ INPUT1="$BASE-xcos2xml.xml"
 echo "Creating $INPUT1" >&2
 cp -f "$TMPFILE2" "$INPUT1"
 
+# Change BASE
+BASE="$BASE-geometry"
+
 xsltproc "$GEOMETRYXSL" "$INPUT1" >"$TMPFILE1"
 xmllint --format "$TMPFILE1" >"$TMPFILE2"
-INPUT1="$BASE-geometry.xml"
+INPUT1="$BASE.xml"
 echo "Creating $INPUT1" >&2
 cp -f "$TMPFILE2" "$INPUT1"
 
-rm -f "$BASE-geometry."*.xml
+rm -f "$BASE."*.xml
+
+oldrv=100
 
 echo "Running Xcos/XmlParser.py $INPUT1" >&2
 Xcos/XmlParser.py "$INPUT1" >&2 && rv=$? || rv=$?
 
+if ((rv >= oldrv)); then
+  echo "ERROR: $rv >= $oldrv" >&2
+  exit 102
+fi
+
 while test $rv -gt 0; do
   oldrv=$rv
 
-  INPUT1="$BASE-geometry.$rv.xml"
-  echo "Created $INPUT1" >&2
+  INPUT1="$BASE.$rv.xml"
   xmllint --format "$INPUT1" >"$TMPFILE2"
   cp -f "$TMPFILE2" "$INPUT1"
   echo "Running Xcos/XmlParser.py $INPUT1" >&2
@@ -128,18 +137,17 @@ while test $rv -gt 0; do
 
   if ((rv >= oldrv)); then
     echo "ERROR: $rv >= $oldrv" >&2
-    exit 2
+    exit 102
   fi
 done
 
-INPUT1="$BASE-geometry.$rv.xml"
-echo "Created $INPUT1" >&2
+INPUT1="$BASE.$rv.xml"
 xmllint --format "$INPUT1" >"$TMPFILE2"
 cp -f "$TMPFILE2" "$INPUT1"
 
 echo "Running Xcos/MxGraphParser.py $INPUT1" >&2
 Xcos/MxGraphParser.py "$INPUT1" >&2
-INPUT1="$BASE-geometry.$rv.xcos"
+INPUT1="$BASE.$rv.xcos"
 echo "Created $INPUT1" >&2
 
 exit 0

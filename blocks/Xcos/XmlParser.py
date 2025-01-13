@@ -530,15 +530,11 @@ for k, r_link in removable_link.items():
 
         return_value += len(r_link) - 1
         r_link_0 = r_link[0]
-        print(f"removable link: k: {k}, link: {r_link_0}")
         node = nodeList[r_link_0]
         link_data = edgeDict[r_link_0]  # small removed link
-        print("#LINKDATA#:", link_data)
-        print("#NODEATTRIB#:", node.attrib)
 
         sourceVertex = link_data[1]  # small link
         targetVertex = link_data[2]  # small link
-        # print("#SV & #TV:", sourceVertex, targetVertex)
 
         if sourceVertex in link:
             node2 = nodeList[sourceVertex]
@@ -577,8 +573,6 @@ for k, r_link in removable_link.items():
         tar2x = link_data2[9]['x']
         tar2y = link_data2[9]['y']
 
-        print("TARX & TARY:", tarx, tary, tar2x, tar2y)
-
         root.remove(node)
         root.remove(node2)
 
@@ -588,19 +582,12 @@ for k, r_link in removable_link.items():
         tType2 = IDLIST[targetVertex2]
         height = '7.0'
         width = '7.0'
-        # print("LINKDATA:", link_data)
-        # print("LINKDATA2:", link_data2)
-        # print("#NODEATTRIB2#:", node2.attrib)
-        # print("@SV & @TV:", sourceVertex2, targetVertex2)
         waypoints = link_data[6]    # small link
         waypoints2 = link_data2[6]  # big link
         # split_point = link_data[9]
         biglinkid = link_data2[0]
         smalllinkid = link_data[0]
-        print('waypoints2, split_point:', biglinkid, waypoints2, split_point)
-        print("SV & TV:", sourceVertex, targetVertex, sourceVertex2, targetVertex2)
         result, left_array, right_array = check_point_on_array(waypoints2, split_point)
-        print('left_array, right_array:', left_array, right_array)
         array3 = waypoints
 
         port1 = portType1(sType, sType2, tType2)
@@ -818,5 +805,4 @@ for i, cell in enumerate(cells):
 output_path = f'{remove_dot_number(basename)}.{return_value}.xml'
 tree.write(output_path)
 
-print(f"Modified XML saved to: {output_path}, {return_value}")
 sys.exit(return_value)

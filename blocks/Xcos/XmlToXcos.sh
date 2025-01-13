@@ -44,7 +44,6 @@ while test $rv -gt 0; do
   oldrv=$rv
 
   INPUT1="$BASE.$rv.xml"
-  echo "Created $INPUT1" >&2
   xmllint --format "$INPUT1" >"$TMPFILE2"
   cp -f "$TMPFILE2" "$INPUT1"
   echo "Running Xcos/XmlParser.py $INPUT1" >&2
@@ -57,7 +56,6 @@ while test $rv -gt 0; do
 done
 
 INPUT1="$BASE.$rv.xml"
-echo "Created $INPUT1" >&2
 xmllint --format "$INPUT1" >"$TMPFILE2"
 cp -f "$TMPFILE2" "$INPUT1"
 
