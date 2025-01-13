@@ -42,8 +42,104 @@
         <xsl:attribute name="tarx">0</xsl:attribute>
         <xsl:attribute name="tary">0</xsl:attribute>
         <xsl:apply-templates select="node()"/>
+
+        <xsl:variable name="value1">
+          <xsl:choose>
+            <xsl:when test="SuperBlockDiagram">
+              <xsl:value-of select="SuperBlockDiagram/mxGraphModel/root
+                              /BasicBlock[@interfaceFunctionName='CURVE_c']
+                              /ScilabString[@as='exprs']
+                              /data[@column='0' and @line='0']/@value"/>   
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="Array[@as='realParameters']
+                                /Array[@scilabClass='ScilabList']
+                                /Array[@scilabClass='ScilabMList']
+                                /Array[@scilabClass='ScilabMList']
+                                /ScilabString[@height='2' and @width='1']
+                                /data[@column='0' and @line='0']/@value"/>
+            </xsl:otherwise>
+          </xsl:choose>                          
+        </xsl:variable>
+
+        <xsl:variable name="value2">
+          <xsl:choose>
+            <xsl:when test="SuperBlockDiagram">
+              <xsl:value-of select="SuperBlockDiagram/mxGraphModel/root
+                              /BasicBlock[@interfaceFunctionName='CURVE_c']
+                              /ScilabString[@as='exprs']
+                              /data[@column='0' and @line='1']/@value"/>   
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="Array[@as='realParameters']
+                                /Array[@scilabClass='ScilabList']
+                                /Array[@scilabClass='ScilabMList']
+                                /Array[@scilabClass='ScilabMList']
+                                /ScilabString[@height='2' and @width='1']
+                                /data[@column='0' and @line='0']/@value"/>
+            </xsl:otherwise>
+          </xsl:choose>                          
+        </xsl:variable>
+
+        <xsl:variable name="value3">
+          <xsl:choose>
+            <xsl:when test="SuperBlockDiagram">
+              <xsl:value-of select="SuperBlockDiagram/mxGraphModel/root
+                              /BasicBlock[@interfaceFunctionName='CURVE_c']
+                              /ScilabString[@as='exprs']
+                              /data[@column='0' and @line='2']/@value"/>   
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="Array[@as='realParameters']
+                                /Array[@scilabClass='ScilabList']
+                                /Array[@scilabClass='ScilabMList']
+                                /Array[@scilabClass='ScilabMList']
+                                /ScilabString[@height='2' and @width='1']
+                                /data[@column='0' and @line='0']/@value"/>
+            </xsl:otherwise>
+          </xsl:choose>                          
+        </xsl:variable>
+
+        <xsl:variable name="value4">
+          <xsl:choose>
+            <xsl:when test="SuperBlockDiagram">
+              <xsl:value-of select="SuperBlockDiagram/mxGraphModel/root
+                              /BasicBlock[@interfaceFunctionName='CURVE_c']
+                              /ScilabString[@as='exprs']
+                              /data[@column='0' and @line='3']/@value"/>   
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="Array[@as='realParameters']
+                                /Array[@scilabClass='ScilabList']
+                                /Array[@scilabClass='ScilabMList']
+                                /Array[@scilabClass='ScilabMList']
+                                /ScilabString[@height='2' and @width='1']
+                                /data[@column='0' and @line='0']/@value"/>
+            </xsl:otherwise>
+          </xsl:choose>                          
+        </xsl:variable>
+
+        <xsl:variable name="value5">
+          <xsl:choose>
+            <xsl:when test="SuperBlockDiagram">
+              <xsl:value-of select="SuperBlockDiagram/mxGraphModel/root
+                              /BasicBlock[@interfaceFunctionName='CURVE_c']
+                              /ScilabString[@as='exprs']
+                              /data[@column='0' and @line='4']/@value"/>   
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="Array[@as='realParameters']
+                                /Array[@scilabClass='ScilabList']
+                                /Array[@scilabClass='ScilabMList']
+                                /Array[@scilabClass='ScilabMList']
+                                /ScilabString[@height='2' and @width='1']
+                                /data[@column='0' and @line='0']/@value"/>
+            </xsl:otherwise>
+          </xsl:choose>                          
+        </xsl:variable>
+
         <Object display_parameter="" as="displayProperties"/>
-        <Object as="parameter_values"/>
+        <Object p000_value="{$value1}" p001_value="{$value2}" p002_value="{$value3}" p003_value="{$value4}" p004_value="{$value5}" as="parameter_values"/>
       </xsl:element>
       <xsl:call-template name="port">
         <xsl:with-param name="id" select="@id"/>

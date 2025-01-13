@@ -56,7 +56,7 @@ def JKFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, styl
                   id=block_id[1],
                   parent=block_id[0])
 
-    DOLLAR_m(root, block_id[2], ordering, geometry, parameters)
+    DOLLAR_m(root, block_id[2], ordering, geometry, [parameters[0], '1'])
 
     addPort(root, TYPE_EXPLICITINPORT, id=port_id[0],
             parent=block_id[2], ordering="1",
@@ -72,7 +72,7 @@ def JKFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, styl
             style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
             value="")
 
-    EDGE_TRIGGER(root, block_id[3], ordering, geometry, parameters)
+    EDGE_TRIGGER(root, block_id[3], ordering, geometry, ['-1'])
 
     addPort(root, TYPE_EXPLICITINPORT, id=port_id[2],
             parent=block_id[3], ordering="1",
@@ -210,7 +210,7 @@ def JKFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, styl
             style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
             value="")
 
-    IN_f(root, block_id[9], ordering, geometry, ['2'])
+    IN_f(root, block_id[9], ordering, geometry, ['1'])
 
     addPort(root, TYPE_EXPLICITOUTPORT, id=port_id[20],
             parent=block_id[9], ordering="1",
@@ -237,7 +237,7 @@ def JKFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, styl
             style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
             value="")
 
-    OUT_f(root, block_id[12], ordering, geometry, ['1'])
+    OUT_f(root, block_id[12], ordering, geometry, ['2'])
 
     addPort(root, TYPE_EXPLICITINPORT, id=port_id[23],
             parent=block_id[12], ordering="1",

@@ -84,7 +84,7 @@ def Sigbuilder(outroot, attribid, ordering, geometry, parameters, parent=1, styl
             dataLines="1", initialState="0.0",
             style="", value="")
 
-    SplitBlock(root, block_id[3], ordering, geometry, parent=block_id[1])
+    SplitBlock(root, block_id[3], ordering, geometry, parameters, parent=block_id[1])
 
     addPort(root, TYPE_CNTRL, id=port_id[3],
             parent=block_id[3], ordering="1",

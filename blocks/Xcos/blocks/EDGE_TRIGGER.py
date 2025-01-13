@@ -67,7 +67,7 @@ def EDGE_TRIGGER(outroot, attribid, ordering, geometry, parameters, parent=1, st
             style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
             value="")
 
-    IFTHEL_f(root, block_id[3], ordering, geometry, parameters)
+    IFTHEL_f(root, block_id[3], ordering, geometry, ['0', '0'])
 
     addPort(root, TYPE_EXPLICITINPORT, id=port_id[2],
             parent=block_id[3], ordering="1",
@@ -88,7 +88,7 @@ def EDGE_TRIGGER(outroot, attribid, ordering, geometry, parameters, parent=1, st
             dataLines="-1", initialState="0.0",
             style="CommandPort", value="")
 
-    IN_f(root, block_id[4], ordering, geometry, parameters)
+    IN_f(root, block_id[4], ordering, geometry, ['1'])
 
     addPort(root, TYPE_EXPLICITOUTPORT, id=port_id[5],
             parent=block_id[4], ordering="1",
@@ -97,7 +97,7 @@ def EDGE_TRIGGER(outroot, attribid, ordering, geometry, parameters, parent=1, st
             style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
             value="")
 
-    CLKOUTV_f(root, block_id[5], ordering, geometry, parameters)
+    CLKOUTV_f(root, block_id[5], ordering, geometry, ['1'])
 
     addPort(root, TYPE_CNTRL, id=port_id[6],
             parent=block_id[5], ordering="1",
