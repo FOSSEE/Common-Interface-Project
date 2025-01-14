@@ -76,7 +76,7 @@
                                 /Array[@scilabClass='ScilabMList']
                                 /Array[@scilabClass='ScilabMList']
                                 /ScilabString[@height='2' and @width='1']
-                                /data[@column='0' and @line='0']/@value"/>
+                                /data[@column='0' and @line='1']/@value"/>
             </xsl:otherwise>
           </xsl:choose>                          
         </xsl:variable>

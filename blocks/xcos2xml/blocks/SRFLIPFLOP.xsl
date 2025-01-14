@@ -54,7 +54,7 @@
             <xsl:otherwise>
               <xsl:value-of select="Array[@as='realParameters']
                                 /Array[@scilabClass='ScilabList']
-                                /Array[@scilabClass='ScilabMList']
+                                /Array[@scilabClass='ScilabMList'][2]
                                 /Array[@scilabClass='ScilabMList']
                                 /ScilabString[@height='2' and @width='1']
                                 /data[@column='0' and @line='0']/@value"/>

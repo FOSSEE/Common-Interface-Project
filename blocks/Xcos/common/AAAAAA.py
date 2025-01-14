@@ -613,7 +613,11 @@ def format_real_number(parameter):
         real_number = float(parameter.replace('*10^', 'e').replace('10^', '1e'))
         formatted_number = "{:.10g}".format(real_number)
     else:
-        formatted_number = "{:.10g}".format(float(parameter))
+        # formatted_number = "{:.10g}".format(float(parameter))
+        if parameter.strip() == '':
+            formatted_number = '0'
+        else:
+            formatted_number = "{:.10g}".format(float(parameter))
 
     return formatted_number
 

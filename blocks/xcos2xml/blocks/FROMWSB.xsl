@@ -56,7 +56,7 @@
                                 /Array[@scilabClass='ScilabList']
                                 /Array[@scilabClass='ScilabMList']
                                 /Array[@scilabClass='ScilabMList']
-                                /ScilabString[@height='2' and @width='1']
+                                /ScilabString[@height='4' and @width='1']
                                 /data[@column='0' and @line='0']/@value"/>
             </xsl:otherwise>
           </xsl:choose>                          
@@ -75,8 +75,8 @@
                                 /Array[@scilabClass='ScilabList']
                                 /Array[@scilabClass='ScilabMList']
                                 /Array[@scilabClass='ScilabMList']
-                                /ScilabString[@height='2' and @width='1']
-                                /data[@column='0' and @line='0']/@value"/>
+                                /ScilabString[@height='4' and @width='1']
+                                /data[@column='0' and @line='1']/@value"/>
             </xsl:otherwise>
           </xsl:choose>                          
         </xsl:variable>
@@ -94,8 +94,8 @@
                                 /Array[@scilabClass='ScilabList']
                                 /Array[@scilabClass='ScilabMList']
                                 /Array[@scilabClass='ScilabMList']
-                                /ScilabString[@height='2' and @width='1']
-                                /data[@column='0' and @line='0']/@value"/>
+                                /ScilabString[@height='4' and @width='1']
+                                /data[@column='0' and @line='2']/@value"/>
             </xsl:otherwise>
           </xsl:choose>                          
         </xsl:variable>
@@ -113,8 +113,8 @@
                                 /Array[@scilabClass='ScilabList']
                                 /Array[@scilabClass='ScilabMList']
                                 /Array[@scilabClass='ScilabMList']
-                                /ScilabString[@height='2' and @width='1']
-                                /data[@column='0' and @line='0']/@value"/>
+                                /ScilabString[@height='4' and @width='1']
+                                /data[@column='0' and @line='3']/@value"/>
             </xsl:otherwise>
           </xsl:choose>                          
         </xsl:variable>
