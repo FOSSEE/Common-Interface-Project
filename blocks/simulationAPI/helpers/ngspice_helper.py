@@ -83,10 +83,12 @@ def CreateXcos(file_path, parameters, file_id):
 
 
 def ExecXml(file_obj):
+    file_path = file_obj.file.path
+    file_id = file_obj.file_id
+    current_dir = settings.MEDIA_ROOT + '/' + str(file_id)
     try:
-        current_dir, xcosfile, file_path = CreateXml(file_obj.file.path,
-                                                     file_obj.parameters,
-                                                     file_obj.file_id)
+        xcosfile = CreateXml(file_path, file_obj.parameters,
+                             file_id)
         (logfilefd, log_name) = mkstemp(prefix=datetime.now().strftime(
             'scilab-log-%Y%m%d-'), suffix='.txt', dir=current_dir)
 

@@ -129,7 +129,7 @@ fi
 while test $rv -gt 0; do
   oldrv=$rv
 
-  INPUT1="$BASE.$rv.xml"
+  INPUT1="$BASE-$rv.xml"
   xmllint --format "$INPUT1" >"$TMPFILE2"
   cp -f "$TMPFILE2" "$INPUT1"
   echo "Running Xcos/XmlParser.py $INPUT1" >&2
@@ -141,13 +141,13 @@ while test $rv -gt 0; do
   fi
 done
 
-INPUT1="$BASE.$rv.xml"
+INPUT1="$BASE-$rv.xml"
 xmllint --format "$INPUT1" >"$TMPFILE2"
 cp -f "$TMPFILE2" "$INPUT1"
 
 echo "Running Xcos/MxGraphParser.py $INPUT1" >&2
 Xcos/MxGraphParser.py "$INPUT1" >&2
-INPUT1="$BASE.$rv.xcos"
+INPUT1="$BASE-$rv.xcos"
 echo "Created $INPUT1" >&2
 
 exit 0
