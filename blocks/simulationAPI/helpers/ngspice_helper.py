@@ -23,8 +23,10 @@ SCILAB_START = (
     "disp(error_message,error_number,error_line,error_func);exit(3);end;"
 )
 
-SCILAB_END = "catch;[error_message,error_number,error_line,error_func]=lasterror();"
-"disp(error_message,error_number,error_line,error_func);exit(2);end;exit;"
+SCILAB_END = (
+    "catch;[error_message,error_number,error_line,error_func]=lasterror();"
+    "disp(error_message,error_number,error_line,error_func);exit(2);end;exit;"
+)
 SCILAB_CMD = [SCILAB,
               "-noatomsautoload",
               "-nogui",
