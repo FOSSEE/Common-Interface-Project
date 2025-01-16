@@ -30,8 +30,8 @@ if model.tag != 'mxGraphModel':
     sys.exit(102)
 
 
-def remove_dot_number(s):
-    return re.sub(r'\.\d+$', '', s)
+def remove_hyphen_number(s):
+    return re.sub(r'-\d+$', '', s)
 
 
 def get_int(s):
@@ -802,7 +802,7 @@ for i, cell in enumerate(cells):
 
 
 # Save the modified XML
-output_path = f'{remove_dot_number(basename)}.{return_value}.xml'
+output_path = f'{remove_hyphen_number(basename)}-{return_value}.xml'
 tree.write(output_path)
 
 sys.exit(return_value)
