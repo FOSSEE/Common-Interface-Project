@@ -61,7 +61,7 @@ cp -f "$TMPFILE2" "$INPUT1"
 
 echo "Running Xcos/MxGraphParser.py $INPUT1" >&2
 Xcos/MxGraphParser.py "$INPUT1" >&2
-INPUT1="$BASE-$rv.xcos"
+INPUT1="$BASE.xcos"
 echo "Created $INPUT1" >&2
 
 exit 0
