@@ -46,6 +46,9 @@ outmodel = ET.SubElement(outdiagram, 'mxGraphModel')
 outmodel.set('as', 'model')
 
 
+def remove_hyphen_number(s):
+    return re.sub(r'-\d+$', '', s)
+
 def check_point_on_array(array, point, left_right_direction=True):
     if array is None:
         return False, array, []
@@ -513,6 +516,6 @@ outnode.set('parent', rootattribid)
 
 outtree = ET.ElementTree(outdiagram)
 ET.indent(outtree)
-outfile = basename + '.xcos'
+outfile = remove_hyphen_number(basename) + '.xcos'
 outtree.write(outfile, encoding='UTF-8', xml_declaration=True)
 sys.exit(0)
