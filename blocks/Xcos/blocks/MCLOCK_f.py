@@ -111,7 +111,7 @@ def MCLOCK_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=
             dataLines="1", initialState="-1.0",
             style="", value="")
 
-    CLKOUT_f(root, block_id[4], ordering, geometry, parameters, parent=block_id[1])
+    CLKOUT_f(root, block_id[4], ordering, geometry, ['1'], parent=block_id[1])
 
     addPort(root, TYPE_CNTRL, id=port_id[7],
             parent=block_id[4], ordering="1",
@@ -119,7 +119,7 @@ def MCLOCK_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=
             dataLines="1", initialState="0.0",
             style="", value="")
 
-    CLKOUT_f(root, block_id[5], ordering, geometry, parameters, parent=block_id[1])
+    CLKOUT_f(root, block_id[5], ordering, geometry, parameters[1], parent=block_id[1])
 
     addPort(root, TYPE_CNTRL, id=port_id[8],
             parent=block_id[5], ordering="1",
@@ -127,7 +127,7 @@ def MCLOCK_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=
             dataLines="1", initialState="0.0",
             style="", value="")
 
-    SplitBlock(root, block_id[6], ordering, geometry, parent=block_id[1])
+    SplitBlock(root, block_id[6], ordering, geometry, parameters, parent=block_id[1])
 
     addPort(root, TYPE_CNTRL, id=port_id[9],
             parent=block_id[6], ordering="1",
@@ -145,7 +145,7 @@ def MCLOCK_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=
             dataLines="1", initialState="-1.0",
             style="", value="")
 
-    SplitBlock(root, block_id[7], ordering, geometry, parent=block_id[1])
+    SplitBlock(root, block_id[7], ordering, geometry, parameters, parent=block_id[1])
 
     addPort(root, TYPE_CNTRL, id=port_id[12],
             parent=block_id[7], ordering="1",

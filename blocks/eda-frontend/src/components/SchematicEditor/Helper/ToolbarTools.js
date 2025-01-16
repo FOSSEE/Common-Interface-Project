@@ -558,12 +558,12 @@ function parseXmlToGraph (xmlDoc, graph) {
 
             const terminalPoint = new mxPoint(Number(cellAttrs.tarx.value), Number(cellAttrs.tary.value))
             const terminalPoint2 = new mxPoint(Number(cellAttrs.tar2x.value), Number(cellAttrs.tar2y.value))
-            // if (targetCell?.edge === true) {
-            edge.geometry.setTerminalPoint(terminalPoint2, false)
-            // }
-            // if (sourceCell?.edge === true) {
-            edge.geometry.setTerminalPoint(terminalPoint, true)
-            // }
+            if (targetCell?.edge === true) {
+              edge.geometry.setTerminalPoint(terminalPoint2, false)
+            }
+            if (sourceCell?.edge === true) {
+              edge.geometry.setTerminalPoint(terminalPoint, true)
+            }
             edge.geometry.points = points
             console.log('Points:', points)
             console.log('edge:', edge)

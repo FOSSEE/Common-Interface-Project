@@ -10,7 +10,11 @@ def SUMMATION(outroot, attribid, ordering, geometry, parameters, parent=1, style
     overflow = ['n', 's', 'e']
 
     para1 = int(float(parameters[0]))
-    para3 = int(float(parameters[2]))
+    # para3 = int(float(parameters[2]))
+    if len(parameters) > 2 and parameters[2].strip():
+        para3 = int(float(parameters[2]))
+    else:
+        para3 = 0
 
     if para1 == 1 or para1 == 2:
         simulation_func_name = 'summation' + data_type[para1]
@@ -27,7 +31,7 @@ def SUMMATION(outroot, attribid, ordering, geometry, parameters, parent=1, style
         new_parameters = [1, parameters[0], 0]
     else:
         new_parameters = parameters
-    addExprsNode(outnode, TYPE_STRING, 3, new_parameters)
+    addExprsNode(outnode, TYPE_STRING, 2, new_parameters)
     addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM,
                  0, [])
     array = ['1', '-1']

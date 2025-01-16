@@ -42,6 +42,26 @@
         <xsl:attribute name="tarx">0</xsl:attribute>
         <xsl:attribute name="tary">0</xsl:attribute>
         <xsl:apply-templates select="node()"/>
+
+        <xsl:variable name="value1">
+          <xsl:choose>
+            <xsl:when test="SuperBlockDiagram">
+              <xsl:value-of select="SuperBlockDiagram/mxGraphModel/root
+                              /BasicBlock[@interfaceFunctionName='SWITCH_f']
+                              /ScilabString[@as='exprs']
+                              /data[@column='0' and @line='0']/@value"/>   
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="Array[@as='realParameters']
+                                /Array[@scilabClass='ScilabList']
+                                /Array[@scilabClass='ScilabMList']
+                                /Array[@scilabClass='ScilabMList']
+                                /ScilabString[@height='2' and @width='1']
+                                /data[@column='0' and @line='0']/@value"/>
+            </xsl:otherwise>
+          </xsl:choose>                          
+        </xsl:variable>
+
         <Object>
           <xsl:variable name="style1" select="@style" />
           <xsl:variable name="displayParam1">
@@ -60,7 +80,7 @@
           </xsl:attribute>
           <xsl:attribute name="as">displayProperties</xsl:attribute>
         </Object>
-        <Object as="parameter_values"/>
+        <Object p000_value="{$value1}" as="parameter_values"/>
       </xsl:element>
       <xsl:call-template name="port">
         <xsl:with-param name="id" select="@id"/>

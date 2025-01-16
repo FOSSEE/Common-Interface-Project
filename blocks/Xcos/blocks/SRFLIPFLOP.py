@@ -91,7 +91,7 @@ def SRFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, styl
             style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
             value="")
 
-    DOLLAR_m(root, block_id[3], ordering, geometry, ['int8(0)', '1'])
+    DOLLAR_m(root, block_id[3], ordering, geometry, [parameters[0], '1'])
 
     addPort(root, TYPE_EXPLICITINPORT, id=port_id[5],
             parent=block_id[3], ordering="1",
