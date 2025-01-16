@@ -609,15 +609,13 @@ def get_number_power(value):
 
 
 def format_real_number(parameter):
-    if 'e' in parameter or 'E' in parameter:
-        real_number = float(parameter.replace('*10^', 'e').replace('10^', '1e'))
+    if parameter.strip() == '':
+        formatted_number = '0'
+    elif re.search(r'[dDeE\^]', parameter):
+        real_number = float(parameter.replace('*10^', 'e').replace('10^', '1e').replace('d', 'e').replace('D', 'e'))
         formatted_number = "{:.10g}".format(real_number)
     else:
-        # formatted_number = "{:.10g}".format(float(parameter))
-        if parameter.strip() == '':
-            formatted_number = '0'
-        else:
-            formatted_number = "{:.10g}".format(float(parameter))
+        formatted_number = "{:.10g}".format(float(parameter))
 
     return formatted_number
 

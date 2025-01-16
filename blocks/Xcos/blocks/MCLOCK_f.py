@@ -4,25 +4,6 @@ from blocks.CLKOUT_f import CLKOUT_f
 from blocks.SplitBlock import SplitBlock
 from common.AAAAAA import *
 
-# block_id = ['-6bea78c7:19120fe12cb:-7f64', '-6bea78c7:19120fe12cc:-7f64',
-#             '-6bea78c7:19120fe12ca:-7f61', '-6bea78c7:19120fe12ca:-7f5d',
-#             '-6bea78c7:19120fe12ca:-7f58', '-6bea78c7:19120fe12ca:-7f56',
-#             '-6bea78c7:19120fe12ca:-7f54', '-6bea78c7:19120fe12ca:-7f50']
-# link_id = ['-6bea78c7:19120fe12ca:-7f4c', '-6bea78c7:19120fe12ca:-7f4b',
-#            '-6bea78c7:19120fe12ca:-7f4a', '-6bea78c7:19120fe12ca:-7f49',
-#            '-6bea78c7:19120fe12ca:-7f48', '-6bea78c7:19120fe12ca:-7f47',
-#            '-6bea78c7:19120fe12ca:-7f46'
-#            ]
-# port_id = ['-6bea78c7:19120fe12ca:-7f60', '-6bea78c7:19120fe12ca:-7f5f',
-#            '-6bea78c7:19120fe12ca:-7f5e', '-6bea78c7:19120fe12ca:-7f5c',
-#            '-6bea78c7:19120fe12ca:-7f5b', '-6bea78c7:19120fe12ca:-7f5a',
-#            '-6bea78c7:19120fe12ca:-7f59', '-6bea78c7:19120fe12ca:-7f57',
-#            '-6bea78c7:19120fe12ca:-7f55', '-6bea78c7:19120fe12ca:-7f53',
-#            '-6bea78c7:19120fe12ca:-7f52', '-6bea78c7:19120fe12ca:-7f51',
-#            '-6bea78c7:19120fe12ca:-7f4f', '-6bea78c7:19120fe12ca:-7f4e',
-#            '-6bea78c7:19120fe12ca:-7f4d'
-#            ]
-
 
 def MCLOCK_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'MCLOCK_f'
@@ -119,7 +100,7 @@ def MCLOCK_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=
             dataLines="1", initialState="0.0",
             style="", value="")
 
-    CLKOUT_f(root, block_id[5], ordering, geometry, parameters[1], parent=block_id[1])
+    CLKOUT_f(root, block_id[5], ordering, geometry, [parameters[1]], parent=block_id[1])
 
     addPort(root, TYPE_CNTRL, id=port_id[8],
             parent=block_id[5], ordering="1",

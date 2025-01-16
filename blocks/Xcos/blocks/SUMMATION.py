@@ -10,7 +10,6 @@ def SUMMATION(outroot, attribid, ordering, geometry, parameters, parent=1, style
     overflow = ['n', 's', 'e']
 
     para1 = int(float(parameters[0]))
-    # para3 = int(float(parameters[2]))
     if len(parameters) > 2 and parameters[2].strip():
         para3 = int(float(parameters[2]))
     else:

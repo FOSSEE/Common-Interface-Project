@@ -20,7 +20,6 @@ def CURVE_c(outroot, attribid, ordering, geometry, parameters, parent=1, style=N
         else:
             param.append(item)
     addExprsNode(outnode, TYPE_STRING, 5, parameters)
-    print(param)
     addScilabDNode(outnode, AS_REAL_PARAM, width=4, realParts=[
                    format_real_number(param[1]),
                    format_real_number(param[2]),

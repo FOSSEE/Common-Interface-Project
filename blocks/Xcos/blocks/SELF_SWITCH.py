@@ -85,7 +85,6 @@ def SELF_SWITCH(outroot, attribid, ordering, geometry, parameters, parent=1, sty
             style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
             value="")
 
-    # array = ['2', '1']
     SWITCH_f(root, block_id[5], ordering, geometry, [parameters[0], '2'])
 
     addPort(root, TYPE_EXPLICITINPORT, id=port_id[3],
