@@ -49,6 +49,7 @@ outmodel.set('as', 'model')
 def remove_hyphen_number(s):
     return re.sub(r'-\d+$', '', s)
 
+
 def check_point_on_array(array, point, left_right_direction=True):
     if array is None:
         return False, array, []

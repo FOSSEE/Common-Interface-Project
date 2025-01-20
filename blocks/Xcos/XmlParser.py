@@ -517,8 +517,8 @@ for root in model:
     cellslength = len(cells)
     oldcellslength = 0
     blkgeometry = {}
-    rootattribid = None
-    parentattribid = None
+    rootattribid = '0:1:0'
+    parentattribid = '0:2:0'
     key1 = {}
     graph_link = {}
     removable_link = {}
@@ -529,14 +529,7 @@ for root in model:
     while cellslength > 0 and cellslength != oldcellslength:
         for i, cell in enumerate(cells):
             try:
-                if i == 0 and oldcellslength == 0:
-                    attribid = '0:1:0'
-                    rootattribid = attribid
-                    continue
-
-                if i == 1 and oldcellslength == 0:
-                    attribid = '0:2:0'
-                    parentattribid = attribid
+                if i <= 1 and oldcellslength == 0:
                     continue
 
                 attrib = cell.attrib
