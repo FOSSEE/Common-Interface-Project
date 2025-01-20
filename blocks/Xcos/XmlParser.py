@@ -41,6 +41,19 @@ def get_int(s):
         return -1
 
 
+def getNextAttribId(attribid, nextattribid):
+    attribint = get_int(attribid)
+    if nextattribid <= attribint:
+        nextattribid = attribint + 1
+    return nextattribid
+
+
+def checkRootTag(root):
+    if root.tag != 'root':
+        print('Not root')
+        sys.exit(102)
+
+
 def portType1(sType, sType2, tType2):
     # port1
     if sType == 'ExplicitLink':
@@ -108,9 +121,8 @@ def portType3(sType, tType):
 
 
 def create_mxCell(style, id, vertex="1", connectable="0", CellType="Component", blockprefix="XCOS",
-                  explicitInputPorts="0", implicitInputPorts="0", explicitOutputPorts="0", implicitOutputPorts="0",
-                  controlPorts="0", commandPorts="0", simulationFunction="split", sourceVertex="0", targetVertex="0",
-                  tarx="0", tary="0", geometry=None):
+                  explicitInputPorts="0", explicitOutputPorts="0", implicitInputPorts="0", implicitOutputPorts="0", controlPorts="0", commandPorts="0",
+                  simulationFunction="split", sourceVertex="0", targetVertex="0", tarx="0", tary="0", geometry=None):
 
     mxCell = ET.Element("mxCell", {
         "style": style,
@@ -343,14 +355,20 @@ def getLinkStyle(sourceVertex, sourceType, targetVertex, targetType, waypoints):
     return (sourceVertex, sourceType, targetVertex, targetType, switch_split, style, addSplit, waypoints)
 
 
-def initLinks(vertex, key1, graph_link, graph_value, removable_link, removable_value):
-    # key structure
-    key1[vertex] = vertex
-    graph_link[vertex] = graph_value
-    removable_link[vertex] = removable_value
+def initLinks(attribid, graph_value, removable_value, key1, graph_link, removable_link):
+    # for ports, the graph_value and the removable_value are empty lists
+    # for links, the graph_value is a list containing itself and the
+    # removable_value is a list containing itself if it has a split point and an
+    # empty list otherwise
+    key1[attribid] = attribid
+    graph_link[attribid] = graph_value
+    removable_link[attribid] = removable_value
 
 
-def mergeLinks(vertex, key1, graph_link, removable_link):
+def mergeLinks(attribid, vertex, key1, graph_link, removable_link):
+    # for links only
+    # merge the ports/links of the source/target vertex into itself
+    # also, remove the ports/links of the source/target vertex
     if vertex in key1:
         key = key1[vertex]
         for v in graph_link[key]:
@@ -363,10 +381,133 @@ def mergeLinks(vertex, key1, graph_link, removable_link):
         del removable_link[key]
 
 
+def getlinkdetails(port, sourceVertex2, targetVertex2, otherVertex, tarx, tary, tar2x, tar2y, otherx, othery,
+                   left_array, right_array, array3, biglinkid, smalllinkid):
+    if port == 0:
+        port_index = sourceVertex2
+        portx = tarx
+        porty = tary
+        waypoints = left_array
+        linkid = biglinkid
+    elif port == 1:
+        port_index = targetVertex2
+        portx = tar2x
+        porty = tar2y
+        waypoints = right_array
+        linkid = biglinkid
+    else:
+        port_index = otherVertex
+        portx = otherx
+        porty = othery
+        waypoints = array3
+        linkid = smalllinkid
+    return port_index, portx, porty, waypoints, linkid
+
+
+def addtolinklist(port, explicitInputPorts, explicitOutputPorts, implicitInputPorts, implicitOutputPorts, controlPorts, commandPorts,
+                  port_id, thisx, thisy, port_index, portx, porty, waypoints, linkid, linklist):
+    if port < explicitInputPorts:
+        port_type = "ExplicitInputPort"
+        link_type = "ExplicitLink"
+        linklist.append((link_type, port_id, thisx, thisy, port_index, portx, porty, waypoints, linkid))
+    elif port < explicitInputPorts + implicitInputPorts:
+        port_type = "ImplicitInputPort"
+        link_type = "ImplicitLink"
+        linklist.append((link_type, port_id, thisx, thisy, port_index, portx, porty, waypoints, linkid))
+    elif port < explicitInputPorts + implicitInputPorts + explicitOutputPorts:
+        port_type = "ExplicitOutputPort"
+        link_type = "ExplicitLink"
+        linklist.append((link_type, port_index, portx, porty, port_id, thisx, thisy, waypoints, linkid))
+    elif port < explicitInputPorts + implicitInputPorts + explicitOutputPorts + implicitOutputPorts:
+        port_type = "ImplicitOutputPort"
+        link_type = "ImplicitLink"
+        linklist.append((link_type, port_index, portx, porty, port_id, thisx, thisy, waypoints, linkid))
+    elif port < explicitInputPorts + implicitInputPorts + explicitOutputPorts + implicitOutputPorts + controlPorts:
+        port_type = "ControlPort"
+        link_type = "CommandControlLink"
+        linklist.append((link_type, port_id, thisx, thisy, port_index, portx, porty, waypoints, linkid))
+    else:
+        port_type = "CommandPort"
+        link_type = "CommandControlLink"
+        linklist.append((link_type, port_index, portx, porty, port_id, thisx, thisy, waypoints, linkid))
+    return port_type, link_type
+
+
+def getComponentGeometry(mxGeometry):
+    componentGeometry = {}
+    componentGeometry['height'] = 40
+    componentGeometry['width'] = 40
+    componentGeometry['x'] = 0
+    componentGeometry['y'] = 0
+    if mxGeometry is not None:
+        componentGeometry['height'] = mxGeometry.attrib['height']
+        componentGeometry['width'] = mxGeometry.attrib['width']
+        componentGeometry['x'] = mxGeometry.attrib.get('x', '0')
+        componentGeometry['y'] = mxGeometry.attrib.get('y', '0')
+    return componentGeometry
+
+
+def getPinGeometry(mxGeometry, componentGeometry):
+    geometry = dict(componentGeometry)
+    if mxGeometry is not None:
+        geometry['height'] = mxGeometry.attrib['height']
+        geometry['width'] = mxGeometry.attrib['width']
+        geometryX = mxGeometry.attrib.get('x', 0)
+        geometryY = mxGeometry.attrib.get('y', 0)
+        if mxGeometry.attrib.get('relative', '0') == '1':
+            geometryX = num2str(float(componentGeometry['x']) +
+                                float(componentGeometry['width']) * float(geometryX))
+            geometryY = num2str(float(componentGeometry['y']) +
+                                float(componentGeometry['height']) * float(geometryY))
+        geometry['x'] = geometryX
+        geometry['y'] = geometryY
+    return geometry
+
+
+def getWaypoints(mxGeometry):
+    waypoints = []
+    arrayElement = mxGeometry.find('Array')
+    if arrayElement is not None:
+        for arrayChild in arrayElement:
+            if arrayChild.tag == 'mxPoint':
+                waypoints.append(arrayChild.attrib)
+    return waypoints
+
+
+def getSplitPoints(attrib, switch_split, blkgeometry, sourceVertex, targetVertex, waypoints):
+    split_point, split_point2 = None, None
+
+    if 'tarx' in attrib and 'tary' in attrib and (attrib['tarx'] != '0' or attrib['tary'] != '0'):
+        point = {'x': attrib['tarx'], 'y': attrib['tary']}
+        if switch_split:
+            split_point2 = point
+            waypoints.append(point)
+        else:
+            split_point = point
+            waypoints.insert(0, point)
+    elif sourceVertex in blkgeometry:
+        vertex = blkgeometry[sourceVertex]
+        point = {'x': vertex['x'], 'y': vertex['y']}
+        waypoints.insert(0, point)
+
+    if 'tar2x' in attrib and 'tar2y' in attrib and (attrib['tar2x'] != '0' or attrib['tar2y'] != '0'):
+        point = {'x': attrib['tar2x'], 'y': attrib['tar2y']}
+        if switch_split:
+            split_point = point
+            waypoints.insert(0, point)
+        else:
+            split_point2 = point
+            waypoints.append(point)
+    elif targetVertex in blkgeometry:
+        vertex = blkgeometry[targetVertex]
+        point = {'x': vertex['x'], 'y': vertex['y']}
+        waypoints.append(point)
+
+    return split_point, split_point2
+
+
 for root in model:
-    if root.tag != 'root':
-        print('Not root')
-        sys.exit(102)
+    checkRootTag(root)
 
     IDLIST = {}
     nodeList = {}
@@ -398,115 +539,57 @@ for root in model:
                     parentattribid = attribid
                     continue
 
-                try:
-                    attrib = cell.attrib
-                    attribid = attrib['id']
-                    attribint = get_int(attribid)
-                    if nextattribid <= attribint:
-                        nextattribid = attribint + 1
-                except KeyError:
+                attrib = cell.attrib
+                if 'id' not in attrib:
                     continue
+                attribid = attrib['id']
+                nextattribid = getNextAttribId(attribid, nextattribid)
 
                 cell_type = attrib['CellType']
                 nodeList[attribid] = cell
+                mxGeometry = cell.find('mxGeometry')
 
                 if cell_type == 'Component':
 
-                    componentGeometry = {}
-                    componentGeometry['height'] = 40
-                    componentGeometry['width'] = 40
-                    componentGeometry['x'] = 0
-                    componentGeometry['y'] = 0
-                    mxGeometry = cell.find('mxGeometry')
-                    if mxGeometry is not None:
-                        componentGeometry['height'] = mxGeometry.attrib['height']
-                        componentGeometry['width'] = mxGeometry.attrib['width']
-                        componentGeometry['x'] = mxGeometry.attrib.get('x', '0')
-                        componentGeometry['y'] = mxGeometry.attrib.get('y', '0')
+                    componentGeometry = getComponentGeometry(mxGeometry)
 
                     IDLIST[attribid] = cell_type
                     blkgeometry[attribid] = componentGeometry
 
                 elif cell_type == 'Pin':
 
-                    geometry = dict(componentGeometry)
-                    mxGeometry = cell.find('mxGeometry')
-                    if mxGeometry is not None:
-                        geometry['height'] = mxGeometry.attrib['height']
-                        geometry['width'] = mxGeometry.attrib['width']
-                        geometryX = mxGeometry.attrib.get('x', 0)
-                        geometryY = mxGeometry.attrib.get('y', 0)
-                        if mxGeometry.attrib.get('relative', '0') == '1':
-                            geometryX = num2str(float(componentGeometry['x']) +
-                                                float(componentGeometry['width']) * float(geometryX))
-                            geometryY = num2str(float(componentGeometry['y']) +
-                                                float(componentGeometry['height']) * float(geometryY))
-                        geometry['x'] = geometryX
-                        geometry['y'] = geometryY
+                    geometry = getPinGeometry(mxGeometry, componentGeometry)
+
                     style = attrib['style']
                     stylename = style_to_object(style)['default']
                     IDLIST[attribid] = stylename
                     blkgeometry[attribid] = geometry
 
-                    initLinks(attribid, key1, graph_link, [], removable_link, [])
+                    initLinks(attribid, [], [], key1, graph_link, removable_link)
 
                 elif 'edge' in attrib:
-                    mxGeometry = cell.find('mxGeometry')
-                    waypoints = []
-                    waypoints2 = []
-                    arrayElement = mxGeometry.find('Array')
-                    if arrayElement is not None:
-                        for arrayChild in arrayElement:
-                            if arrayChild.tag == 'mxPoint':
-                                waypoints.append(arrayChild.attrib)
-                    try:
-                        sourceVertex = attrib['sourceVertex']
-                        sourceType = IDLIST[sourceVertex]
-                        targetVertex = attrib['targetVertex']
-                        targetType = IDLIST[targetVertex]
-                    except KeyError:
+                    waypoints = getWaypoints(mxGeometry)
+
+                    sourceVertex = attrib['sourceVertex']
+                    targetVertex = attrib['targetVertex']
+                    if sourceVertex not in IDLIST or targetVertex not in IDLIST:
                         remainingcells.append(cell)
                         continue
+                    sourceType = IDLIST[sourceVertex]
+                    targetType = IDLIST[targetVertex]
 
                     (sourceVertex, sourceType, targetVertex, targetType, switch_split, style, addSplit, waypoints) = getLinkStyle(sourceVertex, sourceType, targetVertex, targetType, waypoints)
 
-                    split_point = None
-                    split_point2 = None
-
-                    if 'tarx' in attrib and 'tary' in attrib and (attrib['tarx'] != '0' or attrib['tary'] != '0'):
-                        point = {'x': attrib['tarx'], 'y': attrib['tary']}
-                        if switch_split:
-                            split_point2 = point
-                            waypoints.append(point)
-                        else:
-                            split_point = point
-                            waypoints.insert(0, point)
-                    elif sourceVertex in blkgeometry:
-                        vertex = blkgeometry[sourceVertex]
-                        point = {'x': vertex['x'], 'y': vertex['y']}
-                        waypoints.insert(0, point)
-
-                    if 'tar2x' in attrib and 'tar2y' in attrib and (attrib['tar2x'] != '0' or attrib['tar2y'] != '0'):
-                        point = {'x': attrib['tar2x'], 'y': attrib['tar2y']}
-                        if switch_split:
-                            split_point = point
-                            waypoints.insert(0, point)
-                        else:
-                            split_point2 = point
-                            waypoints.append(point)
-                    elif targetVertex in blkgeometry:
-                        vertex = blkgeometry[targetVertex]
-                        point = {'x': vertex['x'], 'y': vertex['y']}
-                        waypoints.append(point)
+                    split_point, split_point2 = getSplitPoints(attrib, switch_split, blkgeometry, sourceVertex, targetVertex, waypoints)
 
                     IDLIST[attribid] = style
 
                     link_data = (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point, split_point2)
                     edgeDict[attribid] = link_data
 
-                    initLinks(attribid, key1, graph_link, [attribid], removable_link, [attribid] if addSplit else [])
-                    mergeLinks(sourceVertex, key1, graph_link, removable_link)
-                    mergeLinks(targetVertex, key1, graph_link, removable_link)
+                    initLinks(attribid, [attribid], [attribid] if addSplit else [], key1, graph_link, removable_link)
+                    mergeLinks(attribid, sourceVertex, key1, graph_link, removable_link)
+                    mergeLinks(attribid, targetVertex, key1, graph_link, removable_link)
 
             except BaseException:
                 traceback.print_exc()
@@ -595,27 +678,25 @@ for k, r_link in removable_link.items():
         port3 = portType3(sType, tType)
 
         ports = [port1, port2, port3]
-        implicitInputPorts = 0
-        implicitOutputPorts = 0
-        explicitInputPorts = 0
-        explicitOutputPorts = 0
-        controlPorts = 0
-        commandPorts = 0
+        portcount = {
+            "explicitInputPort": 0,
+            "explicitOutputPort": 0,
+            "implicitInputPort": 0,
+            "implicitOutputPort": 0,
+            "controlPort": 0,
+            "commandPort": 0
+        }
 
         # Count ports
         for port in ports:
-            if port == 'implicitInputPort':
-                implicitInputPorts += 1
-            elif port == 'implicitOutputPort':
-                implicitOutputPorts += 1
-            elif port == 'explicitInputPort':
-                explicitInputPorts += 1
-            elif port == 'explicitOutputPort':
-                explicitOutputPorts += 1
-            elif port == 'controlPort':
-                controlPorts += 1
-            elif port == 'commandPort':
-                commandPorts += 1
+            portcount[port] += 1
+
+        explicitInputPorts = portcount["explicitInputPort"]
+        explicitOutputPorts = portcount["explicitOutputPort"]
+        implicitInputPorts = portcount["implicitInputPort"]
+        implicitOutputPorts = portcount["implicitOutputPort"]
+        controlPorts = portcount["controlPort"]
+        commandPorts = portcount["commandPort"]
 
         # add splitblock
         geometry = (thisx, thisy, width, height)
@@ -657,53 +738,16 @@ for k, r_link in removable_link.items():
             port_index = 0
             portx = 0
             porty = 0
-            if port == 0:
-                port_index = sourceVertex2
-                portx = tarx
-                porty = tary
-                waypoints = left_array
-                linkid = biglinkid
-            elif port == 1:
-                port_index = targetVertex2
-                portx = tar2x
-                porty = tar2y
-                waypoints = right_array
-                linkid = biglinkid
-            else:
-                port_index = otherVertex
-                portx = otherx
-                porty = othery
-                waypoints = array3
-                linkid = smalllinkid
+            port_index, portx, porty, waypoints, linkid = getlinkdetails(port, sourceVertex2, targetVertex2, otherVertex, tarx, tary, tar2x, tar2y, otherx, othery,
+                                                                         left_array, right_array, array3, biglinkid, smalllinkid)
 
             port_id = nextattribid
 
-            if port < explicitInputPorts:
-                port_type = "ExplicitInputPort"
-                link_type = "ExplicitLink"
-                linklist.append((link_type, port_id, thisx, thisy, port_index, portx, porty, waypoints, linkid))
-            elif port < explicitInputPorts + implicitInputPorts:
-                port_type = "ImplicitInputPort"
-                link_type = "ImplicitLink"
-                linklist.append((link_type, port_id, thisx, thisy, port_index, portx, porty, waypoints, linkid))
-            elif port < explicitInputPorts + implicitInputPorts + explicitOutputPorts:
-                port_type = "ExplicitOutputPort"
-                link_type = "ExplicitLink"
-                linklist.append((link_type, port_index, portx, porty, port_id, thisx, thisy, waypoints, linkid))
-            elif port < explicitInputPorts + implicitInputPorts + explicitOutputPorts + implicitOutputPorts:
-                port_type = "ImplicitOutputPort"
-                link_type = "ImplicitLink"
-                linklist.append((link_type, port_index, portx, porty, port_id, thisx, thisy, waypoints, linkid))
-            elif port < explicitInputPorts + implicitInputPorts + explicitOutputPorts + implicitOutputPorts + controlPorts:
-                port_type = "ControlPort"
-                link_type = "CommandControlLink"
-                linklist.append((link_type, port_id, thisx, thisy, port_index, portx, porty, waypoints, linkid))
-            else:
-                port_type = "CommandPort"
-                link_type = "CommandControlLink"
-                linklist.append((link_type, port_index, portx, porty, port_id, thisx, thisy, waypoints, linkid))
-            ordering = ordering_counters[port_type] + 1
+            port_type, link_type = addtolinklist(port, explicitInputPorts, explicitOutputPorts, implicitInputPorts, implicitOutputPorts, controlPorts, commandPorts,
+                                                 port_id, thisx, thisy, port_index, portx, porty, waypoints, linkid, linklist)
+
             ordering_counters[port_type] += 1
+            ordering = ordering_counters[port_type]
 
             xml_output_port = create_mxCell_port(
                 style=port_type,
