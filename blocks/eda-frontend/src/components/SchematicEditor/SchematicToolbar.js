@@ -191,7 +191,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
           return
         }
         let svgString = svg.outerHTML
-        svgString = svgString.replace(/<hr>/g, '<hr />').replace(/<br>/g, '<br />')
+        svgString = svgString.replace(/<hr>/g, '<hr />').replace(/<br>/g, '<br />').replace(/&nbsp;/g, ' ')
         const v = Canvg.fromString(ctx, svgString)
         v.render().then(() => {
           let image = ''
@@ -290,13 +290,14 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
       exportImage('PNG')
         .then(res => {
           dispatch(saveSchematic(title2, description, xml, res))
+          setMessage('Saved Successfully')
         })
         .catch(err => {
           // Debugging: Log if there is an error in exportImage
           console.error('Error exporting image:', err)
+          setMessage('Error exporting image')
         })
 
-      setMessage('Saved Successfully')
       handleSnacClick()
     }
   }
