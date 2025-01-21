@@ -28,7 +28,7 @@ def format_js_object(data):
     description: '{escape_quotes(data["description"])}',
     media: '{escape_quotes(data["media"])}',
     shared: {str(data["shared"]).lower()}
-}}"""
+  }}"""
     return formatted
 
 
@@ -55,7 +55,7 @@ if __name__ == "__main__":
         print('const GallerySchSample = [')
 
         formatted_objects = [format_js_object(item) for item in data]
-        print(','.join(formatted_objects))
+        print(' ', ', '.join(formatted_objects))
 
         print(']')
         print()
