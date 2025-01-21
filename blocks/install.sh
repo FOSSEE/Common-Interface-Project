@@ -14,10 +14,10 @@ python manage.py migrate -v0
 python manage.py loaddata -v0 xcosblocks
 
 sed -i \
-    -e "s/\\(SCILAB_DIR = \\).*/\\1'\/usr\/local'/" \
-    -e "s/\\(CELERY_BROKER_URL = \\).*/\\1'redis:\\/\\/localhost:6379\\/1'/" \
-    -e "s/\\(CELERY_RESULT_BACKEND = \\).*/\\1'redis:\\/\\/localhost:6379\\/1'/" \
-    blocks/settings.py
+  -e "s/\\(SCILAB_DIR = \\).*/\\1'\/usr\/local'/" \
+  -e "s/\\(CELERY_BROKER_URL = \\).*/\\1'redis:\\/\\/localhost:6379\\/1'/" \
+  -e "s/\\(CELERY_RESULT_BACKEND = \\).*/\\1'redis:\\/\\/localhost:6379\\/1'/" \
+  blocks/settings.py
 
 sed -i -e '/^\s*location \/ {/,/^\s*}/c\
         location / {\
@@ -31,6 +31,10 @@ sed -i -e '/^\s*location \/ {/,/^\s*}/c\
         }\
 \
         location /django_static/ {\
+                proxy_pass http://127.0.0.1:8000;\
+        }\
+\
+        location /files/ {\
                 proxy_pass http://127.0.0.1:8000;\
         }\
 \
@@ -51,10 +55,10 @@ sed -i -e '/^\s*location \/ {/,/^\s*}/c\
 
 cd eda-frontend
 if test "$1" = 'prod'; then
-    npm install -g serve
+  npm install -g serve
 fi
 npm install --silent
 if test "$1" = 'prod'; then
-    npm run build
-    rm -rf node_modules public src
+  npm run build
+  rm -rf node_modules public src
 fi
