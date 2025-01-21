@@ -11,10 +11,10 @@ import defusedxml.ElementTree as goodET
 from xcosblocks import SplitBlock
 from xcosblocks import num2str, style_to_object
 from xcosblocks import *
-from ParseFunctions import addPort1ForSplit, addPort2ForSplit, addPort3ForSplit
-from ParseFunctions import createOutnode, checkModelTag, checkRootTag
-from ParseFunctions import getComponentGeometry, get_int, getLinkStyle, getNextAttribId, getOrdering, getorderingname, getParameters, getPinGeometry, getSplitPoints, getWaypoints
-from ParseFunctions import identify_segment, remove_hyphen_number
+from ParserFunctions import addPort1ForSplit, addPort2ForSplit, addPort3ForSplit
+from ParserFunctions import createOutnode, checkModelTag, checkRootTag
+from ParserFunctions import getComponentGeometry, get_int, getLinkStyle, getNextAttribId, getOrdering, getorderingname, getParameters, getPinGeometry, getSplitPoints, getWaypoints
+from ParserFunctions import identify_segment, remove_hyphen_number
 
 if len(sys.argv) != 2:
     print("Usage: %s filename.xml" % sys.argv[0])

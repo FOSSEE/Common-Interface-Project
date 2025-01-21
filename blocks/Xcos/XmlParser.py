@@ -10,10 +10,10 @@ import defusedxml.ElementTree as goodET
 import uuid
 
 from xcosblocks import num2str, style_to_object
-from ParseFunctions import addtolinklist
-from ParseFunctions import create_mxCell, create_mxCell_edge, create_mxCell_port, checkModelTag, check_point_on_array, checkRootTag
-from ParseFunctions import getComponentGeometry, getlinkdetails, getLinkStyle, getNextAttribId, getPinGeometry, getSplitPoints, getWaypoints
-from ParseFunctions import identify_segment, initLinks, mergeLinks, portType1, portType2, portType3, remove_hyphen_number
+from ParserFunctions import addtolinklist
+from ParserFunctions import create_mxCell, create_mxCell_edge, create_mxCell_port, checkModelTag, check_point_on_array, checkRootTag
+from ParserFunctions import getComponentGeometry, getlinkdetails, getLinkStyle, getNextAttribId, getPinGeometry, getSplitPoints, getWaypoints
+from ParserFunctions import identify_segment, initLinks, mergeLinks, portType1, portType2, portType3, remove_hyphen_number
 
 
 if len(sys.argv) != 2:
