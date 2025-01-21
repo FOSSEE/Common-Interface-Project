@@ -113,6 +113,7 @@ def main():
 
         # Find all "Launch in Editor" buttons
         buttons = driver.find_elements(By.CSS_SELECTOR, "a[target='_blank'][href*='/editor?id=']")
+        print(f"Found {len(buttons)} 'Launch in Editor' buttons.")
 
         # Click each "Launch in Editor" button and save
         for button in buttons:
@@ -146,6 +147,8 @@ def main():
 
         # Keep the browser window open
         print("All 'Launch in Editor' buttons have been clicked and saved. The browser will remain open.")
+    except Exception as e:
+        print("Error while saving diagram")
 
     finally:
         # Keep the browser open until manually closed
