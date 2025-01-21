@@ -20,6 +20,8 @@ def escape_quotes(value):
 
 
 def format_js_object(data):
+    if data['media'] is None or data['media'] == '':
+        data['media'] = 'AFFICH_Xcos_on_Cloud.png'
     # This function will format each data item into the required JavaScript object structure
     formatted = f"""{{
     save_id: '{escape_quotes(data["save_id"])}',
