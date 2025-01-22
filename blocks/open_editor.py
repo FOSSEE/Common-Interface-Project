@@ -97,7 +97,6 @@ def wait_for_gallery_load():
     try:
         # Wait until the `window.loadGalleryComplete` flag is set to true
         wait.until(lambda driver: driver.execute_script('return window.loadGalleryComplete === true;'))
-        print("Gallery has fully loaded.")
     except Exception as e:
         print(f"Error waiting for gallery load: {str(e)}")
 
@@ -113,7 +112,9 @@ def main():
 
         # Find all "Launch in Editor" buttons
         buttons = driver.find_elements(By.CSS_SELECTOR, "a[target='_blank'][href*='/editor?id=']")
-        print(f"Found {len(buttons)} 'Launch in Editor' buttons.")
+        count = len(buttons)
+        print(f"Found {count} 'Launch in Editor' buttons.")
+        savecount = 0
 
         # Click each "Launch in Editor" button and save
         for button in buttons:
@@ -131,26 +132,25 @@ def main():
 
             # Optionally, you can verify the snackbar message if needed
             snackbar_message = wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "MuiSnackbar-root")))
-            print(snackbar_message.text)
 
             # Verify the share button is displayed
             wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="root"]/div/header/div[1]/button[2]')))
-            print("Share button is displayed, diagram has been saved.")
 
             # Verify the "last saved" text is displayed
             last_saved_text = wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="root"]/div/header/div[1]/p')))
-            print("Last saved text:", last_saved_text.text)
+            savecount += 1
+            print(f"[{savecount}/{count}]: {last_saved_text.text}")
 
             # Close the editor tab/window and switch back to the gallery
             driver.close()
             driver.switch_to.window(driver.window_handles[0])
 
         # Keep the browser window open
-        print("All 'Launch in Editor' buttons have been clicked and saved. The browser will remain open.")
     except Exception as e:
         print("Error while saving diagram")
 
     finally:
+        print(f"[{savecount}/{count}] 'Launch in Editor' buttons have been clicked and saved.")
         # Keep the browser open until manually closed
         input("Press Enter to close the browser...")
         driver.quit()
