@@ -47,9 +47,11 @@ function SchematicCard ({ sch }) {
       <Card>
         <CardActionArea>
           <CardMedia
+            component="img"
             className={classes.media}
             image={imageName}
             title={sch.name}
+            style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
           />
           <CardContent>
             <Typography gutterBottom variant='h5' component='h2'>
