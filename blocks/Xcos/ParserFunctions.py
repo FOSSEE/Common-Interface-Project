@@ -404,7 +404,6 @@ def getLinkStyle(attribid, sourceVertex, sourceType, targetVertex, targetType, w
     (sourceVertex, sourceType, targetVertex, targetType, switch_split) = switchPorts(sourceVertex, sourceType, targetVertex, targetType, waypoints)
 
     style = None
-    addSplit = False
 
     if sourceType in ['ExplicitInputPort', 'ExplicitOutputPort', 'CommandPort', 'ControlPort'] and \
             targetType == sourceType:
@@ -412,29 +411,19 @@ def getLinkStyle(attribid, sourceVertex, sourceType, targetVertex, targetType, w
     elif sourceType in ['ExplicitLink', 'CommandControlLink'] and \
             targetType == sourceType:
         print(attribid, 'cannot connect two links of', sourceType, 'and', targetType)
-    elif sourceType in ['ExplicitOutputPort'] and \
-            targetType in ['ExplicitInputPort']:
-        style = 'ExplicitLink'
     elif sourceType in ['ExplicitOutputPort', 'ExplicitLink'] and \
             targetType in ['ExplicitInputPort', 'ExplicitLink']:
         style = 'ExplicitLink'
-        addSplit = True
-    elif sourceType in ['ImplicitOutputPort', 'ImplicitInputPort'] and \
-            targetType in ['ImplicitInputPort', 'ImplicitOutputPort']:
-        style = 'ImplicitLink'
     elif sourceType in ['ImplicitOutputPort', 'ImplicitInputPort', 'ImplicitLink'] and \
             targetType in ['ImplicitInputPort', 'ImplicitOutputPort', 'ImplicitLink']:
         style = 'ImplicitLink'
-        addSplit = True
-    elif sourceType in ['CommandPort'] and \
-            targetType in ['ControlPort']:
-        style = 'CommandControlLink'
     elif sourceType in ['CommandPort', 'CommandControlLink'] and \
             targetType in ['ControlPort', 'CommandControlLink']:
         style = 'CommandControlLink'
-        addSplit = True
     else:
         print(attribid, 'Unknown combination of', sourceType, 'and', targetType)
+
+    addSplit = sourceType.endswith('Link') or targetType.endswith('Link')
 
     return (sourceVertex, sourceType, targetVertex, targetType, switch_split, style, addSplit, waypoints)
 
