@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from saveAPI.models import StateSave, Gallery
+from saveAPI.models import StateSave, Gallery, BookCategory, Book
 from django.core.files.base import ContentFile
 import base64
 import six
@@ -74,3 +74,14 @@ class GallerySerializer(serializers.ModelSerializer):
                   'media',
                   'shared',
                   )
+        
+
+class BookCategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = BookCategory
+        fields = ['id', 'category_name']
+
+class BookSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Book
+        fields = ['id', 'book_name', 'category']

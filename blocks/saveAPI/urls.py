@@ -23,6 +23,12 @@ urlpatterns = [
     path("diagram/<uuid:save_id>", saveAPI_views.FetchSaveDiagram.as_view(),
          name="getDiagram"),
 
+    path('categories', saveAPI_views.BookCategoryView.as_view(),
+         name='categories'),
+
+    path('books', saveAPI_views.BookView.as_view(),
+         name='books'),
+
 ]
 
 urlpatterns += router.urls
