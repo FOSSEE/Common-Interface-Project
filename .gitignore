@@ -21,5 +21,6 @@ blocks/Xcos/xcosblocks.py
 blocks/blocks/xcosblocks/xcosblocks.py
 blocks/eda-frontend/public/xcos2xml.xsl
 blocks/eda-frontend/src/static/xcos2xml.xsl
+blocks/eda-frontend/src/utils/GallerySchSample.json
 file_storage/
 uploads/

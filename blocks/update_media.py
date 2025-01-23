@@ -1,8 +1,9 @@
-import sqlite3
-import json
 from datetime import datetime
+import json
 import os
-import subprocess
+import shutil
+import sqlite3
+
 
 def empty_table(db_path, table_name):
     """
@@ -22,17 +23,17 @@ def empty_table(db_path, table_name):
 
         # Execute the query
         cursor.execute(sql)
-        
+
         # Commit the changes
         conn.commit()
         print(f"Table '{table_name}' has been emptied successfully.")
-    
+
     except sqlite3.Error as e:
         print(f"Database error while emptying the table: {e}")
-    
+
     except ValueError as ve:
         print(ve)
-    
+
     finally:
         # Close the database connection
         if conn:
@@ -43,11 +44,12 @@ def populate_table(db_path, table_name, json_path):
     """
     Populates the specified table with data from a JSON file.
     """
+    conn = None
     try:
         # Load data from JSON file
         with open(json_path, 'r') as json_file:
             data = json.load(json_file)
-        
+
         # Connect to the database
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
@@ -65,29 +67,29 @@ def populate_table(db_path, table_name, json_path):
             # Add save_time if not present
             if 'save_time' not in record:
                 record['save_time'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            
+
             columns = ", ".join(record.keys())
             placeholders = ", ".join("?" for _ in record.values())
             sql = f"INSERT INTO {table_name} ({columns}) VALUES ({placeholders})"
-            
+
             try:
                 cursor.execute(sql, tuple(record.values()))
             except sqlite3.Error as e:
                 print(f"Failed to insert record {record}: {e}")
-        
+
         # Commit the changes
         conn.commit()
         print(f"Table '{table_name}' has been populated successfully.")
-    
+
     except sqlite3.Error as e:
         print(f"Database error while populating the table: {e}")
-    
+
     except FileNotFoundError:
         print(f"JSON file '{json_path}' not found.")
-    
+
     except ValueError as ve:
         print(ve)
-    
+
     finally:
         # Close the database connection
         if conn:
@@ -102,23 +104,20 @@ def update_media_column(db_path, table_name):
         # Connect to the database
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
-        
+
         # SQL to update the media column
-        sql = f"""
-        UPDATE {table_name}
-        SET media = save_id || '.png';
-        """
-        
+        sql = f"UPDATE {table_name} SET media = save_id || '.png';"
+
         # Execute the update query
         cursor.execute(sql)
-        
+
         # Commit the changes
         conn.commit()
         print(f"Media column in '{table_name}' updated successfully.")
-    
+
     except sqlite3.Error as e:
         print(f"An error occurred while updating the media column: {e}")
-    
+
     finally:
         # Close the database connection
         if conn:
@@ -137,7 +136,7 @@ def join_and_copy_images(db_path, statesave_table, gallery_table):
         FROM {statesave_table} AS s
         JOIN {gallery_table} AS g ON s.description = g.description;
         """
-        
+
         # Execute the query to fetch the data
         cursor.execute(sql)
         rows = cursor.fetchall()
@@ -152,21 +151,18 @@ def join_and_copy_images(db_path, statesave_table, gallery_table):
             source_path = f"file_storage/{image_path}"
             destination_path = f"eda-frontend/src/static/gallery/{media_path}"
 
-            # Command to copy the image to the media path
-            command = f"cp {source_path} {destination_path}"
-
-            # Execute the command using subprocess
+            # Copy the image to the media path
             try:
-                subprocess.run(command, shell=True, check=True)
+                shutil.copyfile(source_path, destination_path)
                 print(f"Copied {source_path} to {destination_path}")
-            except subprocess.CalledProcessError as e:
+            except Exception as e:
                 print(f"Error copying {source_path} to {destination_path}: {e}")
 
         print("All image copy operations completed.")
-    
+
     except sqlite3.Error as e:
         print(f"An error occurred while querying the database: {e}")
-    
+
     finally:
         # Close the database connection
         if conn:
@@ -176,18 +172,18 @@ def join_and_copy_images(db_path, statesave_table, gallery_table):
 # Example usage
 if __name__ == "__main__":
     # Path to your SQLite database
-    database_path = "/home/spoken/Common-Interface-Project/blocks/xcosblocks.sqlite3"
-    
+    database_path = "xcosblocks.sqlite3"
+
     # Table to work with
     table_name = "saveAPI_gallery"
     statesave_table = "saveAPI_statesave"
-    
+
     # Path to the JSON file containing the data
     json_file_path = "eda-frontend/src/utils/GallerySchSample.json"
 
     # Empty the table first
     empty_table(database_path, table_name)
-    
+
     # Populate the table with JSON data
     populate_table(database_path, table_name, json_file_path)
 

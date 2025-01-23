@@ -131,7 +131,7 @@ def main():
             ActionChains(driver).move_to_element(save_button).click().perform()
 
             # Optionally, you can verify the snackbar message if needed
-            snackbar_message = wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "MuiSnackbar-root")))
+            wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "MuiSnackbar-root")))
 
             # Verify the share button is displayed
             wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="root"]/div/header/div[1]/button[2]')))
@@ -147,7 +147,7 @@ def main():
 
         # Keep the browser window open
     except Exception as e:
-        print("Error while saving diagram")
+        print(f"Error while saving diagram: {str(e)}")
 
     finally:
         print(f"[{savecount}/{count}] 'Launch in Editor' buttons have been clicked and saved.")
