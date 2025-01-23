@@ -58,7 +58,7 @@ class Gallery(models.Model):
 
     def __str__(self):
         return self.name
-    
+
 
 class BookCategory(models.Model):
     id = models.AutoField(primary_key=True)
@@ -66,7 +66,7 @@ class BookCategory(models.Model):
 
     def __str__(self):
         return self.category_name
-    
+
 
 class Book(models.Model):
     id = models.AutoField(primary_key=True)

@@ -380,11 +380,9 @@ def getOrdering(attrib, portCount, ParentComponent, orderingname):
     return ordering
 
 
-def getLinkStyle(attribid, sourceVertex, sourceType, targetVertex, targetType, waypoints):
+def switchPorts(sourceVertex, sourceType, targetVertex, targetType, waypoints):
     # switch vertices if required
     switch_split = False
-    style = None
-    addSplit = False
 
     if sourceType in ['ExplicitInputPort', 'ImplicitInputPort', 'ControlPort'] and \
             targetType in ['ExplicitOutputPort', 'ExplicitLink', 'ImplicitOutputPort', 'ImplicitLink', 'CommandPort', 'CommandControlLink']:
@@ -398,6 +396,15 @@ def getLinkStyle(attribid, sourceVertex, sourceType, targetVertex, targetType, w
         (sourceType, targetType) = (targetType, sourceType)
         waypoints.reverse()
         switch_split = True
+
+    return (sourceType, sourceVertex, targetType, targetVertex, switch_split)
+
+
+def getLinkStyle(attribid, sourceVertex, sourceType, targetVertex, targetType, waypoints):
+    (sourceVertex, sourceType, targetVertex, targetType, switch_split) = switchPorts(sourceVertex, sourceType, targetVertex, targetType, waypoints)
+
+    style = None
+    addSplit = False
 
     if sourceType in ['ExplicitInputPort', 'ExplicitOutputPort', 'CommandPort', 'ControlPort'] and \
             targetType == sourceType:

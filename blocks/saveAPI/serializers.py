@@ -74,12 +74,13 @@ class GallerySerializer(serializers.ModelSerializer):
                   'media',
                   'shared',
                   )
-        
+
 
 class BookCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = BookCategory
         fields = ['id', 'category_name']
+
 
 class BookSerializer(serializers.ModelSerializer):
     class Meta:

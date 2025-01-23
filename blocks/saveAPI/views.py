@@ -14,7 +14,7 @@ from .models import Gallery, StateSave, BookCategory, Book
 from .serializers import Base64ImageField, GallerySerializer, \
     SaveListSerializer, StateSaveSerializer, BookCategorySerializer, \
     BookSerializer
-    
+
 from django.db.models import OuterRef, Subquery
 
 logger = logging.getLogger(__name__)
@@ -458,7 +458,7 @@ class GalleryFetchSaveDeleteView(APIView):
             return Response({'done': True})
         except Exception:
             return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        
+
 
 class BookCategoryView(APIView):
     permission_classes = (AllowAny,)
@@ -471,7 +471,7 @@ class BookCategoryView(APIView):
             return Response(serialized.data, status=status.HTTP_200_OK)
         except Exception as e:
             return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        
+
 
 class BookView(APIView):
     permission_classes = (AllowAny,)
