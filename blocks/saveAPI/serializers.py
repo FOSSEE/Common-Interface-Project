@@ -73,6 +73,7 @@ class GallerySerializer(serializers.ModelSerializer):
                   'description',
                   'media',
                   'shared',
+                  'book_id',
                   )
 
 

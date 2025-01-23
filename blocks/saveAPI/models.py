@@ -36,6 +36,24 @@ class StateSave(models.Model):
         return self.name
 
 
+class BookCategory(models.Model):
+    id = models.AutoField(primary_key=True)
+    category_name = models.CharField(max_length=500)
+
+    def __str__(self):
+        return self.category_name
+
+
+class Book(models.Model):
+    id = models.AutoField(primary_key=True)
+    book_name = models.CharField(max_length=500)
+    author_name = models.CharField(max_length=500)
+    category = models.ForeignKey(BookCategory, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.book_name
+
+
 class Gallery(models.Model):
     id = models.AutoField(primary_key=True)
     save_id = models.CharField(unique=True, max_length=500, null=False)
@@ -55,24 +73,8 @@ class Gallery(models.Model):
         else:
             return 'No Image Found'
     image_tag.short_description = 'Image'
+    book = models.ForeignKey(Book, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.name
 
-
-class BookCategory(models.Model):
-    id = models.AutoField(primary_key=True)
-    category_name = models.CharField(max_length=500)
-
-    def __str__(self):
-        return self.category_name
-
-
-class Book(models.Model):
-    id = models.AutoField(primary_key=True)
-    book_name = models.CharField(max_length=500)
-    author_name = models.CharField(max_length=500)
-    category = models.ForeignKey(BookCategory, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.book_name
