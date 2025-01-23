@@ -1,0 +1,70 @@
+- model: saveAPI.book
+  pk: 83
+  fields:
+    book_name: Modern Power System Analysis
+    author_name: D. P. Kothari And I. J. Nagrath
+    category: 15
+- model: saveAPI.book
+  pk: 154
+  fields:
+    book_name: Electric Circuits
+    author_name: M. Navhi And J. A. Edminister
+    category: 8
+- model: saveAPI.book
+  pk: 181
+  fields:
+    book_name: Basic Electronics
+    author_name: D. De
+    category: 10
+- model: saveAPI.book
+  pk: 215
+  fields:
+    book_name: Engineering Circuit Analysis
+    author_name: W. Hayt, J. Kemmerly And S. Durbin
+    category: 8
+- model: saveAPI.book
+  pk: 293
+  fields:
+    book_name: Electrical Engineering Fundamentals
+    author_name: V. Del Toro
+    category: 8
+- model: saveAPI.book
+  pk: 2048
+  fields:
+    book_name: Digital Control
+    author_name: K. M. Moudgalya
+    category: 2
+- model: saveAPI.book
+  pk: 2777
+  fields:
+    book_name: Electrical Machines
+    author_name: R. K. Srivastava
+    category: 8
+- model: saveAPI.book
+  pk: 3432
+  fields:
+    book_name: Feedback Control of Dynamic Systems
+    author_name: G. F. Franklin, J. D. Powell and A. Emami-Naeini
+    category: 2
+- model: saveAPI.book
+  pk: 3885
+  fields:
+    book_name: Control Systems
+    author_name: A Nagoor Kani
+    category: 2
+- model: saveAPI.bookcategory
+  pk: 2
+  fields:
+    category_name: Control Theory & Control Systems
+- model: saveAPI.bookcategory
+  pk: 8
+  fields:
+    category_name: Electrical Technology
+- model: saveAPI.bookcategory
+  pk: 10
+  fields:
+    category_name: Analog Electronics
+- model: saveAPI.bookcategory
+  pk: 15
+  fields:
+    category_name: Power Systems

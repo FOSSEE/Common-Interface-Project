@@ -58,3 +58,21 @@ class Gallery(models.Model):
 
     def __str__(self):
         return self.name
+    
+
+class BookCategory(models.Model):
+    id = models.AutoField(primary_key=True)
+    category_name = models.CharField(max_length=500)
+
+    def __str__(self):
+        return self.category_name
+    
+
+class Book(models.Model):
+    id = models.AutoField(primary_key=True)
+    book_name = models.CharField(max_length=500)
+    author_name = models.CharField(max_length=500)
+    category = models.ForeignKey(BookCategory, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.book_name
