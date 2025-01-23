@@ -2,9 +2,9 @@
 
 usage() {
   echo "Usage:" >&2
-  echo "    $0 input-file.xcos > output-file.xml" >&2
-  echo "    $0 input-file.xml > output-file.xml" >&2
-  exit 1
+  echo "    $0 input-file.xcos" >&2
+  echo "    $0 input-file.xml" >&2
+  exit 101
 }
 
 if test $# -ne 1; then
@@ -114,7 +114,7 @@ INPUT1="$BASE.xml"
 echo "Creating $INPUT1" >&2
 cp -f "$TMPFILE2" "$INPUT1"
 
-rm -f "$BASE."*.xml
+rm -f "$BASE-"*.xml
 
 oldrv=100
 

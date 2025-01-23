@@ -397,7 +397,7 @@ def switchPorts(sourceVertex, sourceType, targetVertex, targetType, waypoints):
         waypoints.reverse()
         switch_split = True
 
-    return (sourceType, sourceVertex, targetType, targetVertex, switch_split)
+    return (sourceVertex, sourceType, targetVertex, targetType, switch_split)
 
 
 def getLinkStyle(attribid, sourceVertex, sourceType, targetVertex, targetType, waypoints):
