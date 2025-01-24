@@ -13,7 +13,7 @@ class UserDiagrams(admin.ModelAdmin):
 
 @admin.register(Gallery)
 class GalleryDiagrams(admin.ModelAdmin):
-    list_display = ('name', 'image_tag', 'description', 'shared')
+    list_display = ('name', 'image_tag', 'description')
     list_filter = ('save_time',)
     search_fields = ('name', 'description')
     formfield_overrides = {

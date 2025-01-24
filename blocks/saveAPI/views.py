@@ -8,10 +8,11 @@ from rest_framework.parsers import FormParser, JSONParser
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView
 import traceback
 import uuid
 from .models import Gallery, StateSave, BookCategory, Book
-from .serializers import Base64ImageField, GallerySerializer, \
+from .serializers import Base64ImageField, GalleryListSerializer, GalleryDetailSerializer, \
     SaveListSerializer, StateSaveSerializer, BookCategorySerializer, \
     BookSerializer
 
@@ -354,135 +355,36 @@ class DeleteDiagram(APIView):
                             status=status.HTTP_404_NOT_FOUND)
 
 
-class GalleryView(APIView):
+class GalleryListView(ListAPIView):
     permission_classes = (AllowAny,)
-    parser_classes = (FormParser, JSONParser)
     methods = ['GET']
+    serializer_class = GalleryListSerializer
 
-    @swagger_auto_schema(responses={200: GallerySerializer})
-    def get(self, request):
-        galleryset = Gallery.objects.filter()
-        try:
-            serialized = GallerySerializer(galleryset, many=True)
-            return Response(serialized.data)
-        except Exception:
-            return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    def get_queryset(self):
+        queryset = Gallery.objects.all()
+        book_id = self.request.query_params.get('book_id')
+        if book_id:
+            queryset = queryset.filter(book_id=book_id)
+        return queryset
 
 
-class GalleryFetchSaveDeleteView(APIView):
-
-    """
-    Returns Saved data for given save id,
-    Only staff can add / delete it
-    THIS WILL ESCAPE DOUBLE QUOTES
-
-    """
-    # permission_classes = (AllowAny,)
-    parser_classes = (FormParser, JSONParser)
+class GalleryDetailView(RetrieveAPIView):
+    permission_classes = (AllowAny,)
     methods = ['GET']
-
-    def is_owner(self):
-        if not (self.request.user and self.request.user.is_authenticated):
-            return False
-
-        # Checking user roles
-        userRoles = self.request.user.groups.all()
-        for userRole in userRoles:
-            if userRole.customgroup and userRole.customgroup.is_type_staff:
-                return True
-
-        return False
-
-    @swagger_auto_schema(responses={200: GallerySerializer})
-    def get(self, request, save_id):
-
-        try:
-            saved_state = Gallery.objects.get(
-                save_id=save_id)
-        except Gallery.DoesNotExist:
-            return Response({'error': 'Does not Exist'},
-                            status=status.HTTP_404_NOT_FOUND)
-        try:
-            serialized = GallerySerializer(
-                saved_state, context={'request': request})
-            data = {}
-            data.update(serialized.data)
-            return Response(data)
-        except Exception:
-            traceback.print_exc()
-            return Response({'error': 'Not Able To Serialize'},
-                            status=status.HTTP_400_BAD_REQUEST)
-
-    @swagger_auto_schema(responses={200: GallerySerializer})
-    def post(self, request, save_id):
-        if not self.is_owner():
-            return Response({'error': 'Not the owner'},
-                            status=status.HTTP_401_UNAUTHORIZED)
-        saved_state = Gallery()
-        data = request.data
-        if not (data['data_dump'] and data['media'] and data['save_id']):
-            return Response({'error': 'not a valid POST request'},
-                            status=status.HTTP_406_NOT_ACCEPTABLE)
-
-        # saves to gallery
-        try:
-            saved_state.save_id = data.get('save_id')
-            saved_state.data_dump = data.get('data_dump')
-            if 'shared' in data:
-                saved_state.shared = bool(data['shared'])
-            saved_state.name = data.get('name')
-            saved_state.description = data.get('description')
-            if 'media' in data:
-                img = Base64ImageField(max_length=None, use_url=True)
-                filename, content = img.update(data['media'])
-                saved_state.media.save(filename, content)
-            saved_state.save()
-            serialized = GallerySerializer(saved_state)
-            return Response(serialized.data)
-        except Exception:
-            return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-    @swagger_auto_schema(responses={200: GallerySerializer})
-    def delete(self, request, save_id):
-        try:
-            if not self.is_owner():
-                return Response({'error': 'Not the owner'},
-                                status=status.HTTP_401_UNAUTHORIZED)
-            # Deltes from gallery
-            try:
-                saved_state = Gallery.objects.get(save_id=save_id)
-            except Gallery.DoesNotExist:
-                return Response({'error': 'Does not Exist'},
-                                status=status.HTTP_404_NOT_FOUND)
-            saved_state.delete()
-            return Response({'done': True})
-        except Exception:
-            return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    queryset = Gallery.objects.all()
+    serializer_class = GalleryDetailSerializer
+    lookup_field = 'save_id'
 
 
-class BookCategoryView(APIView):
+class BookCategoryView(ListAPIView):
     permission_classes = (AllowAny,)
-
-    @swagger_auto_schema(responses={200: BookCategorySerializer(many=True)})
-    def get(self, request):
-        categories = BookCategory.objects.all()
-        try:
-            serialized = BookCategorySerializer(categories, many=True)
-            return Response(serialized.data, status=status.HTTP_200_OK)
-        except Exception as e:
-            return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    methods = ['GET']
+    queryset = BookCategory.objects.all()
+    serializer_class = BookCategorySerializer
 
 
-class BookView(APIView):
+class BookView(ListAPIView):
     permission_classes = (AllowAny,)
-
-    @swagger_auto_schema(responses={200: BookSerializer(many=True)})
-    def get(self, request):
-        try:
-            books = Book.objects.annotate(example_count=Count('examples')).order_by('book_name')
-            serializer = BookSerializer(books, many=True)
-
-            return Response(serializer.data, status=status.HTTP_200_OK)
-
-        except Exception as e:
-            return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    methods = ['GET']
+    queryset = Book.objects.annotate(example_count=Count('examples')).order_by('book_name', 'author_name')
+    serializer_class = BookSerializer

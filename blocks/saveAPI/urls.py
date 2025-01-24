@@ -13,11 +13,11 @@ urlpatterns = [
     path('list', saveAPI_views.UserSavesView.as_view(),
          name='listSaves'),
 
-    path("gallery", saveAPI_views.GalleryView.as_view(),
+    path("gallery", saveAPI_views.GalleryListView.as_view(),
          name="getGallery"),
 
     path('gallery/<str:save_id>',
-         saveAPI_views.GalleryFetchSaveDeleteView.as_view(),
+         saveAPI_views.GalleryDetailView.as_view(),
          name='fetchGallerySchematic'),
 
     path("diagram/<uuid:save_id>", saveAPI_views.FetchSaveDiagram.as_view(),

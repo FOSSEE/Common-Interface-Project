@@ -62,18 +62,26 @@ class SaveListSerializer(serializers.ModelSerializer):
                   )
 
 
-class GallerySerializer(serializers.ModelSerializer):
-    media = Base64ImageField(max_length=None, use_url=True)
-
+class GalleryListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Gallery
         fields = ('save_id',
-                  'data_dump',
                   'name',
                   'description',
-                  'media',
-                  'shared',
                   'book_id',
+                  'media',
+                  )
+
+
+class GalleryDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Gallery
+        fields = ('save_id',
+                  'name',
+                  'description',
+                  'book_id',
+                  'data_dump',
+                  'media',
                   )
 
 
@@ -85,6 +93,7 @@ class BookCategorySerializer(serializers.ModelSerializer):
 
 class BookSerializer(serializers.ModelSerializer):
     example_count = serializers.IntegerField(read_only=True)
+
     class Meta:
         model = Book
         fields = ['id', 'book_name', 'author_name', 'category', 'example_count']
