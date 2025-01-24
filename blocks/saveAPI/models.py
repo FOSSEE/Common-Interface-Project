@@ -15,6 +15,24 @@ media = FileSystemStorage(
     location=settings.MEDIA_ROOT, base_url='.')
 
 
+class BookCategory(models.Model):
+    id = models.AutoField(primary_key=True)
+    category_name = models.CharField(max_length=500)
+
+    def __str__(self):
+        return self.category_name
+
+
+class Book(models.Model):
+    id = models.AutoField(primary_key=True)
+    book_name = models.CharField(max_length=500)
+    author_name = models.CharField(max_length=500)
+    category = models.ForeignKey(BookCategory, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.book_name
+    
+
 class StateSave(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=200, null=True)
@@ -32,6 +50,8 @@ class StateSave(models.Model):
     def save(self, *args, **kwargs):
         super(StateSave, self).save(*args, **kwargs)
 
+    # book = models.ForeignKey(Book, on_delete=models.CASCADE)
+
     def __str__(self):
         return self.name
 
@@ -46,6 +66,7 @@ class Gallery(models.Model):
         upload_to='simulation_images', storage=media, null=True)
     shared = models.BooleanField(default=True)
     save_time = models.DateTimeField(auto_now=True)
+    book = models.ForeignKey(Book, related_name='examples', on_delete=models.CASCADE, null=True)
 
     # For Django Admin Panel
     def image_tag(self):
@@ -55,24 +76,8 @@ class Gallery(models.Model):
         else:
             return 'No Image Found'
     image_tag.short_description = 'Image'
+    
 
     def __str__(self):
         return self.name
 
-
-class BookCategory(models.Model):
-    id = models.AutoField(primary_key=True)
-    category_name = models.CharField(max_length=500)
-
-    def __str__(self):
-        return self.category_name
-
-
-class Book(models.Model):
-    id = models.AutoField(primary_key=True)
-    book_name = models.CharField(max_length=500)
-    author_name = models.CharField(max_length=500)
-    category = models.ForeignKey(BookCategory, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.book_name

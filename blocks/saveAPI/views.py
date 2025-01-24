@@ -15,7 +15,7 @@ from .serializers import Base64ImageField, GallerySerializer, \
     SaveListSerializer, StateSaveSerializer, BookCategorySerializer, \
     BookSerializer
 
-from django.db.models import OuterRef, Subquery
+from django.db.models import Count, OuterRef, Subquery
 
 logger = logging.getLogger(__name__)
 
@@ -478,9 +478,11 @@ class BookView(APIView):
 
     @swagger_auto_schema(responses={200: BookSerializer(many=True)})
     def get(self, request):
-        books = Book.objects.all()
         try:
-            serialized = BookSerializer(books, many=True)
-            return Response(serialized.data, status=status.HTTP_200_OK)
+            books = Book.objects.annotate(example_count=Count('examples')).order_by('book_name')
+            serializer = BookSerializer(books, many=True)
+
+            return Response(serializer.data, status=status.HTTP_200_OK)
+
         except Exception as e:
             return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

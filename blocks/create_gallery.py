@@ -29,7 +29,8 @@ def format_js_object(data):
     name: '{escape_quotes(data["name"])}',
     description: '{escape_quotes(data["description"])}',
     media: '{escape_quotes(data["media"])}',
-    shared: {str(data["shared"]).lower()}
+    shared: '{str(data["shared"]).lower()}',
+    book_id: {(data["book_id"])}
   }}"""
     return formatted
 
