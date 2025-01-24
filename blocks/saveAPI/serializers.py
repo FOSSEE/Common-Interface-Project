@@ -84,6 +84,7 @@ class BookCategorySerializer(serializers.ModelSerializer):
 
 
 class BookSerializer(serializers.ModelSerializer):
+    example_count = serializers.IntegerField(read_only=True)
     class Meta:
         model = Book
-        fields = ['id', 'book_name', 'category']
+        fields = ['id', 'book_name', 'author_name', 'category', 'example_count']
