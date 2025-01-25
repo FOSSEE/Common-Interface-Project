@@ -357,7 +357,6 @@ class DeleteDiagram(APIView):
 
 class GalleryListView(ListAPIView):
     permission_classes = (AllowAny,)
-    methods = ['GET']
     serializer_class = GalleryListSerializer
 
     def get_queryset(self):
@@ -370,7 +369,6 @@ class GalleryListView(ListAPIView):
 
 class GalleryDetailView(RetrieveAPIView):
     permission_classes = (AllowAny,)
-    methods = ['GET']
     queryset = Gallery.objects.all()
     serializer_class = GalleryDetailSerializer
     lookup_field = 'save_id'
@@ -378,13 +376,11 @@ class GalleryDetailView(RetrieveAPIView):
 
 class BookCategoryView(ListAPIView):
     permission_classes = (AllowAny,)
-    methods = ['GET']
     queryset = BookCategory.objects.all()
     serializer_class = BookCategorySerializer
 
 
 class BookView(ListAPIView):
     permission_classes = (AllowAny,)
-    methods = ['GET']
     queryset = Book.objects.annotate(example_count=Count('examples')).order_by('book_name', 'author_name')
     serializer_class = BookSerializer
