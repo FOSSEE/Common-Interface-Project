@@ -4,7 +4,8 @@ import PropTypes from 'prop-types'
 import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Container, CssBaseline, Grid, Typography, FormControl, InputLabel, Select, MenuItem, Input } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { Link as RouterLink } from 'react-router-dom'
-import GallerySchSample from '../utils/GallerySchSample'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchGallery } from '../redux/actions/index'
 
 const useStyles = makeStyles((theme) => ({
   mainHead: {
@@ -47,7 +48,7 @@ function SchematicCard ({ sch }) {
       <Card>
         <CardActionArea>
           <CardMedia
-            component="img"
+            component='img'
             className={classes.media}
             image={imageName}
             title={sch.name}
@@ -132,18 +133,17 @@ const BookDropdown = ({ onBookChange }) => {
   }
 
   return (
-    <Grid container spacing={2} alignItems="center">
-      <Grid item sm={6} xs={12}>
+    <Grid container spacing={2} alignItems='center'>
+      <Grid item xs={12}>
         <FormControl fullWidth>
-          <InputLabel id="book-label">Book</InputLabel>
+          <InputLabel id='book-label'>Book</InputLabel>
           <Select
-            labelId="book-label"
+            labelId='book-label'
             value={selectedBook}
             onChange={handleChange}
-            label="Book"
+            label='Book'
           >
-            {/* Option for All Books */}
-            <MenuItem key="all-books" value="all">
+            <MenuItem key='all-books' value='all'>
               All Books ({books?.reduce((total, book) => total + (book.example_count || 0), 0)})
             </MenuItem>
             {/* Render dynamic book options */}
@@ -155,13 +155,48 @@ const BookDropdown = ({ onBookChange }) => {
           </Select>
         </FormControl>
       </Grid>
-      <Grid item sm={6} xs={12}>
+    </Grid>
+  )
+}
+
+BookDropdown.propTypes = {
+  onBookChange: PropTypes.func.isRequired
+}
+
+const SearchComponent = ({ onSearch }) => {
+  const [searchTerm, setSearchTerm] = useState('')
+  const [setFilteredResults] = useState([])
+  const [data] = useState([])
+
+  const handleSearch = (event) => {
+    const value = event.target.value.toLowerCase()
+    setSearchTerm(value)
+    onSearch(value)
+
+    // Filter results
+    if (value) {
+      const results = data.filter(
+        (item) =>
+          item.name.toLowerCase().includes(value) ||
+          item.description.toLowerCase().includes(value)
+      )
+      setFilteredResults(results)
+    } else {
+      setFilteredResults([])
+    }
+  }
+
+  return (
+    <Grid container spacing={2}>
+      <Grid item xs={12}>
         <FormControl fullWidth>
-          <InputLabel htmlFor="search-input">Search</InputLabel>
+          <InputLabel htmlFor='search-input'>Search</InputLabel>
           <Input
-            id="search-input"
-            type="text"
-            placeholder="Search books, examples..."
+            id='search-input'
+            type='text'
+            placeholder='Search books, examples...'
+            value={searchTerm}
+            onChange={handleSearch}
           />
         </FormControl>
       </Grid>
@@ -169,51 +204,76 @@ const BookDropdown = ({ onBookChange }) => {
   )
 }
 
-BookDropdown.propTypes = {
-  onBookChange: PropTypes.func.isRequired // This defines the expected type for the prop
+SearchComponent.propTypes = {
+  onSearch: PropTypes.func.isRequired
 }
 
 export default function Gallery () {
   const classes = useStyles()
+  const GallerySchSample = useSelector(state => state.dashboardReducer.gallery)
 
   // State to store the selected book ID
-  const [selectedBookId, setSelectedBookId] = useState('') // Default is empty for no selection
+  const [selectedBookId, setSelectedBookId] = useState('')
+  const [searchTerm, setSearchTerm] = useState('')
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchGallery())
+  }, [])
 
   // Handle dropdown selection change
   const handleBookChange = (bookId) => {
     setSelectedBookId(bookId)
   }
 
-  // Filter schematics based on the selected book ID
+  // Handle search term change
+  const handleSearch = (term) => {
+    setSearchTerm(term)
+  }
+
   const filteredSchematics =
+    // Filter based on selected book ID first
     selectedBookId === '' // If no book is selected, show nothing
       ? []
       : selectedBookId === 'all'
-        ? GallerySchSample // Show all schematics for "All Books"
+        ? GallerySchSample // Show all schematics for 'All Books'
         : GallerySchSample.filter((sch) => sch.book_id === parseInt(selectedBookId))
+
+  // Then, filter based on the search term (independent from book selection)
+  const finalfilteredSchematics = filteredSchematics.filter((sch) => {
+    return (
+      sch.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      sch.description.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+  })
 
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <Container maxWidth="lg" className={classes.header}>
-        <Grid
-          container
-          direction="row"
-          justifyContent="flex-start"
-          alignItems="flex-start"
-          alignContent="center"
-          spacing={3}
-        >
+      <Container maxWidth='lg' className={classes.header}>
+        <Grid container direction='row' justifyContent='flex-start' alignItems='flex-start' alignContent='center' spacing={3}>
           {/* Gallery Header */}
           <Grid item xs={12}>
             <MainCard />
           </Grid>
 
-          {/* Book Dropdown */}
-          <BookDropdown onBookChange={handleBookChange} />
+          <Grid item xs={12}>
+            <Grid container spacing={2}>
+              {/* BookDropdown */}
+              <Grid item xs={12} md={6}>
+                <BookDropdown onBookChange={handleBookChange} />
+              </Grid>
+
+              {/* SearchComponent */}
+              <Grid item xs={12} md={6}>
+                <SearchComponent onSearch={handleSearch} />
+              </Grid>
+            </Grid>
+          </Grid>
 
           {/* Display a message or blank gallery */}
-          {filteredSchematics.length === 0 ? (<Grid item xs={12}><Typography variant="h6" align="center" color="textSecondary">No schematics to display. Please select a book.</Typography></Grid>) : (filteredSchematics.map((sch) => (<Grid item xs={12} sm={6} lg={4} key={sch.save_id}><SchematicCard sch={sch} /></Grid>)))}</Grid>
+          {finalfilteredSchematics.length === 0 ? (<Grid item xs={12}><Typography variant='h6' align='center' color='textSecondary'>No schematics to display. Please select a book.</Typography></Grid>) : (finalfilteredSchematics.map((sch) => (<Grid item xs={12} sm={6} lg={4} key={sch.save_id}><SchematicCard sch={sch} /></Grid>)))}</Grid>
       </Container>
     </div>
   )

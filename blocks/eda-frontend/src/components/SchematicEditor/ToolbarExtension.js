@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from 'react'
+import React, { forwardRef, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import {
   AppBar,
@@ -34,8 +34,7 @@ import {
 import { makeStyles } from '@material-ui/core/styles'
 import CloseIcon from '@material-ui/icons/Close'
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchSchematics, fetchSchematic, loadGallery } from '../../redux/actions/index'
-import GallerySchSample from '../../utils/GallerySchSample'
+import { fetchSchematics, fetchSchematic, loadGallery, fetchGallery } from '../../redux/actions/index'
 import { blue } from '@material-ui/core/colors'
 import { getDateTime as getDate } from '../../utils/GalleryUtils'
 
@@ -388,8 +387,13 @@ export function OpenSchDialog (props) {
   const isAuthenticated = useSelector(state => state.authReducer.isAuthenticated)
   const user = useSelector(state => state.authReducer.user)
   const schematics = useSelector(state => state.dashboardReducer.schematics)
+  const GallerySchSample = useSelector(state => state.dashboardReducer.gallery)
 
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchGallery())
+  }, [])
 
   const title = 'Open ' + process.env.REACT_APP_DIAGRAM_NAME
   const typography1 = "You don't have any saved " + process.env.REACT_APP_SMALL_DIAGRAMS_NAME + '...'

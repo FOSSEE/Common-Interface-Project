@@ -1,10 +1,11 @@
+import { useEffect } from 'react'
 import * as actions from './actions'
 import queryString from 'query-string'
 import api from '../../utils/Api'
-import GallerySchSample from '../../utils/GallerySchSample'
 import { renderGalleryXML } from '../../components/SchematicEditor/Helper/ToolbarTools'
-import { setTitle } from './index'
+import { setTitle, fetchGallery } from './index'
 import { transformXcos } from '../../utils/GalleryUtils'
+import { useSelector } from 'react-redux'
 
 export const setLoadingDiagram = (isLoading) => (dispatch) => {
   dispatch({
@@ -166,6 +167,11 @@ export const setSchShared = (share) => (dispatch, getState) => {
 
 // Action for Loading Gallery schematics
 export const loadGallery = (saveId) => (dispatch) => {
+  const GallerySchSample = useSelector(state => state.dashboardReducer.gallery)
+
+  useEffect(() => {
+    dispatch(fetchGallery())
+  }, [])
   // Find the gallery schematic that matches the given save_id
   const data = GallerySchSample.find(sample => sample.save_id === saveId)
 

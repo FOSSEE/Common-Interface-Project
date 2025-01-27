@@ -48,3 +48,5 @@ export const LOAD_GALLERY = 'LOAD_GALLERY'
 
 // Action for fetching on-cloud saved schematics for authenticated user to display in dashboard
 export const FETCH_SCHEMATICS = 'FETCH_SCHEMATICS'
+export const FETCH_GALLERY = 'FETCH_GALLERY'
+export const FETCH_DIAGRAM = 'FETCH_DIAGRAM'

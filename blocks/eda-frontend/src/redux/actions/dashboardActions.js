@@ -27,6 +27,19 @@ export const fetchSchematics = () => (dispatch, getState) => {
     .catch((err) => { console.error(err) })
 }
 
+export const fetchGallery = () => (dispatch) => {
+  api.get('save/gallery')
+    .then(
+      (res) => {
+        dispatch({
+          type: actions.FETCH_GALLERY,
+          payload: res.data
+        })
+      }
+    )
+    .catch((err) => { console.error(err) })
+}
+
 // Api call for deleting saved schematic
 export const deleteSchematic = (saveId) => (dispatch, getState) => {
   const token = getState().authReducer.token
