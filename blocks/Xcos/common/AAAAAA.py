@@ -52,14 +52,19 @@ AS_MODEL = 'model'
 TYPE_ROOT = 'root'
 TYPE_MXCELL = 'mxCell'
 TYPE_EVENTOUT = 'EventOutBlock'
-TYPE_CNTRL = 'ControlPort'
-TYPE_CMD = 'CommandPort'
-TYPE_LINK = 'CommandControlLink'
-TYPE_EXLINK = 'ExplicitLink'
 AS_VALUE = 'OpAmp'
-TYPE_EXPLICITOUTPORT = 'ExplicitOutputPort'
-TYPE_EXPLICITINPORT = 'ExplicitInputPort'
 AS_EXPRS = 'exprs'
+
+PORT_EXPLICITINPUT = 'ExplicitInputPort'
+PORT_EXPLICITOUTPUT = 'ExplicitOutputPort'
+PORT_IMPLICITINPUT = 'ImplicitInputPort'
+PORT_IMPLICITOUTPUT = 'ImplicitOutputPort'
+PORT_CONTROL = 'ControlPort'
+PORT_COMMAND = 'CommandPort'
+
+LINK_EXPLICIT = 'ExplicitLink'
+LINK_IMPLICIT = 'ImplicitLink'
+LINK_COMMANDCONTROL = 'CommandControlLink'
 
 
 def addNode(node, subNodeType, **kwargs):
@@ -422,6 +427,72 @@ def adPort(node, subNodeType,
                  'style': style, 'value': value}
     newkwargs.update(kwargs)
     return addNode(node, subNodeType, **newkwargs)
+
+
+def addExplicitInputPort(root, id, parent, ordering, initialState,
+                         style="ExplicitInputPort;align=left;verticalAlign=middle;spacing=10.0;rotation=0;flip=false;mirror=false",
+                         value="",
+                         **kwargs):
+    return adPort(root, PORT_EXPLICITINPUT,
+                  id, parent, ordering,
+                  initialState,
+                  style, value,
+                  **kwargs)
+
+
+def addExplicitOutputPort(root, id, parent, ordering, initialState,
+                          style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0;flip=false;mirror=false",
+                          value="",
+                          **kwargs):
+    return adPort(root, PORT_EXPLICITOUTPUT,
+                  id, parent, ordering,
+                  initialState,
+                  style, value,
+                  **kwargs)
+
+
+def addImplicitInputPort(root, id, parent, ordering, initialState,
+                         style="ImplicitInputPort;align=left;verticalAlign=middle;spacing=10.0;rotation=0;flip=false;mirror=false",
+                         value="",
+                         **kwargs):
+    return adPort(root, PORT_IMPLICITINPUT,
+                  id, parent, ordering,
+                  initialState,
+                  style, value,
+                  **kwargs)
+
+
+def addImplicitOutputPort(root, id, parent, ordering, initialState,
+                          style="ImplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0;flip=false;mirror=false",
+                          value="",
+                          **kwargs):
+    return adPort(root, PORT_IMPLICITOUTPUT,
+                  id, parent, ordering,
+                  initialState,
+                  style, value,
+                  **kwargs)
+
+
+def addControlPort(root, id, parent, ordering, initialState,
+                   style="ControlPort;align=center;verticalAlign=top;spacing=10.0;rotation=0;flip=false;mirror=false",
+                   value="",
+                   **kwargs):
+    return adPort(root, PORT_CONTROL,
+                  id, parent, ordering,
+                  initialState,
+                  style, value,
+                  **kwargs)
+
+
+def addCommandPort(root, id, parent, ordering, initialState,
+                   style="CpmmandPort;align=center;verticalAlign=bottom;spacing=10.0;rotation=0;flip=false;mirror=false",
+                   value="",
+                   **kwargs):
+    return adPort(root, PORT_COMMAND,
+                  id, parent, ordering,
+                  initialState,
+                  style, value,
+                  **kwargs)
 
 
 def addLink(node, subNodeType,

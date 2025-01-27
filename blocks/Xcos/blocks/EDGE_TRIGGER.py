@@ -52,60 +52,21 @@ def EDGE_TRIGGER(outroot, attribid, ordering, geometry, parameters, parent=1, st
                   parent=block_id[0])
 
     EDGETRIGGER(root, block_id[2], ordering, geometry, parameters)
-
-    addPort(root, TYPE_EXPLICITINPORT, id=port_id[0],
-            parent=block_id[2], ordering="1",
-            dataType="INT8_MATRIX", dataColumns="1",
-            dataLines="1", initialState="0.0",
-            style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-            value="")
-
-    addPort(root, TYPE_EXPLICITOUTPORT, id=port_id[1],
-            parent=block_id[2], ordering="1",
-            dataType="INT8_MATRIX", dataColumns="1",
-            dataLines="1", initialState="0.0",
-            style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-            value="")
+    addExplicitInputPort(root, port_id[0], block_id[2], "1", "0.0", dataType="INT8_MATRIX", dataColumns="1", dataLines="1")
+    addExplicitOutputPort(root, port_id[1], block_id[2], "1", "0.0", dataType="INT8_MATRIX", dataColumns="1", dataLines="1")
 
     IFTHEL_f(root, block_id[3], ordering, geometry, ['0', '0'])
-
-    addPort(root, TYPE_EXPLICITINPORT, id=port_id[2],
-            parent=block_id[3], ordering="1",
-            dataType="INT8_MATRIX", dataColumns="1",
-            dataLines="1", initialState="0.0",
-            style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-            value="")
-
-    addPort(root, TYPE_CMD, id=port_id[3],
-            parent=block_id[3], ordering="1",
-            dataType="REAL_MATRIX", dataColumns="1",
-            dataLines="-1", initialState="0.0",
-            style="CommandPort", value="")
-
-    addPort(root, TYPE_CMD, id=port_id[4],
-            parent=block_id[3], ordering="1",
-            dataType="REAL_MATRIX", dataColumns="1",
-            dataLines="-1", initialState="0.0",
-            style="CommandPort", value="")
+    addExplicitInputPort(root, port_id[2], block_id[3], "1", "0.0", dataType="INT8_MATRIX", dataColumns="1", dataLines="1")
+    addCommandPort(root, port_id[3], block_id[3], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="-1")
+    addCommandPort(root, port_id[4], block_id[3], "2", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="-1")
 
     IN_f(root, block_id[4], ordering, geometry, ['1'])
-
-    addPort(root, TYPE_EXPLICITOUTPORT, id=port_id[5],
-            parent=block_id[4], ordering="1",
-            dataType="INT8_MATRIX", dataColumns="1",
-            dataLines="1", initialState="0.0",
-            style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-            value="")
+    addExplicitOutputPort(root, port_id[5], block_id[4], "1", "0.0", dataType="INT8_MATRIX", dataColumns="1", dataLines="1")
 
     CLKOUTV_f(root, block_id[5], ordering, geometry, ['1'])
+    addControlPort(root, port_id[6], block_id[5], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="-1")
 
-    addPort(root, TYPE_CNTRL, id=port_id[6],
-            parent=block_id[5], ordering="1",
-            dataType="REAL_MATRIX", dataColumns="1",
-            dataLines="-1", initialState="0.0",
-            style="ControlPort", value="")
-
-    CCLink = addLink(root, TYPE_LINK, id=link_id[0],
+    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[0],
                      parent=link_id[3],
                      source=port_id[5],
                      target=port_id[1],
@@ -117,7 +78,7 @@ def EDGE_TRIGGER(outroot, attribid, ordering, geometry, parameters, parent=1, st
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, TYPE_EXLINK, id=link_id[0],
+    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[0],
                      parent=link_id[3],
                      source=port_id[5],
                      target=port_id[1],
@@ -129,7 +90,7 @@ def EDGE_TRIGGER(outroot, attribid, ordering, geometry, parameters, parent=1, st
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, TYPE_EXLINK, id=link_id[0],
+    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[0],
                      parent=link_id[3],
                      source=port_id[5],
                      target=port_id[1],

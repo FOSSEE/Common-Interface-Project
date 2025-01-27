@@ -58,164 +58,52 @@ def DLATCH(outroot, attribid, ordering, geometry, parameters, parent=1, style=No
 
     array = ['int8(0)']
     CONST_m(root, block_id[2], ordering, geometry, array)
-
-    addPort(root, TYPE_EXPLICITOUTPORT, id=port_id[0],
-            parent=block_id[2], ordering="1",
-            dataType="INT8_MATRIX", dataColumns="1",
-            dataLines="1", initialState="0.0",
-            style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-            value="")
+    addExplicitOutputPort(root, port_id[0], block_id[2], "1", "0.0", dataType="INT8_MATRIX", dataColumns="1", dataLines="1")
 
     array = ['0', '1']
     IFTHEL_f(root, block_id[3], ordering, geometry, array)
-
-    adPort(root, TYPE_EXPLICITINPORT, id=port_id[1],
-           parent=block_id[3], ordering="1",
-           initialState="0.0",
-           style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-           value="")
-
-    addPort(root, TYPE_CMD, id=port_id[2],
-            parent=block_id[3], ordering="1",
-            dataType="REAL_MATRIX", dataColumns="1",
-            dataLines="-1", initialState="0.0",
-            style="CommandPort", value="")
-
-    addPort(root, TYPE_CMD, id=port_id[3],
-            parent=block_id[3], ordering="1",
-            dataType="REAL_MATRIX", dataColumns="1",
-            dataLines="-1", initialState="0.0",
-            style="CommandPort", value="")
+    addExplicitInputPort(root, port_id[1], block_id[3], "1", "0.0")
+    addCommandPort(root, port_id[2], block_id[3], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="-1")
+    addCommandPort(root, port_id[3], block_id[3], "2", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="-1")
 
     array = ['2', '1', '5', '0']
     LOGICAL_OP(root, block_id[4], ordering, geometry, array)
-
-    addPort(root, TYPE_EXPLICITINPORT, id=port_id[4],
-            parent=block_id[4], ordering="1",
-            dataType="INT8_MATRIX", dataColumns="1",
-            dataLines="1", initialState="0.0",
-            style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-            value="")
-
-    addPort(root, TYPE_EXPLICITINPORT, id=port_id[5],
-            parent=block_id[4], ordering="1",
-            dataType="INT8_MATRIX", dataColumns="1",
-            dataLines="1", initialState="0.0",
-            style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-            value="")
-
-    addPort(root, TYPE_EXPLICITOUTPORT, id=port_id[6],
-            parent=block_id[4], ordering="1",
-            dataType="INT8_MATRIX", dataColumns="1",
-            dataLines="1", initialState="0.0",
-            style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-            value="")
+    addExplicitInputPort(root, port_id[4], block_id[4], "1", "0.0", dataType="INT8_MATRIX", dataColumns="1", dataLines="1")
+    addExplicitInputPort(root, port_id[5], block_id[4], "2", "0.0", dataType="INT8_MATRIX", dataColumns="1", dataLines="1")
+    addExplicitOutputPort(root, port_id[6], block_id[4], "1", "0.0", dataType="INT8_MATRIX", dataColumns="1", dataLines="1")
 
     array = ['5']
     SAMPHOLD_m(root, block_id[5], ordering, geometry, array)
-
-    addPort(root, TYPE_EXPLICITINPORT, id=port_id[7],
-            parent=block_id[5], ordering="1",
-            dataType="INT8_MATRIX", dataColumns="1",
-            dataLines="1", initialState="0.0",
-            style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-            value="")
-
-    addPort(root, TYPE_EXPLICITOUTPORT, id=port_id[8],
-            parent=block_id[5], ordering="1",
-            dataType="INT8_MATRIX", dataColumns="1",
-            dataLines="1", initialState="0.0",
-            style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-            value="")
-
-    addPort(root, TYPE_CNTRL, id=port_id[9],
-            parent=block_id[5], ordering="1",
-            dataType="REAL_MATRIX", dataColumns="1",
-            dataLines="-1", initialState="0.0",
-            style="ControlPort", value="")
+    addExplicitInputPort(root, port_id[7], block_id[5], "1", "0.0", dataType="INT8_MATRIX", dataColumns="1", dataLines="1")
+    addExplicitOutputPort(root, port_id[8], block_id[5], "1", "0.0", dataType="INT8_MATRIX", dataColumns="1", dataLines="1")
+    addControlPort(root, port_id[9], block_id[5], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="-1")
 
     array = ['1', '5', '5', '0']
     LOGICAL_OP(root, block_id[6], ordering, geometry, array)
-
-    addPort(root, TYPE_EXPLICITINPORT, id=port_id[10],
-            parent=block_id[6], ordering="1",
-            dataType="INT8_MATRIX", dataColumns="1",
-            dataLines="1", initialState="0.0",
-            style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-            value="")
-
-    addPort(root, TYPE_EXPLICITOUTPORT, id=port_id[11],
-            parent=block_id[6], ordering="1",
-            dataType="INT8_MATRIX", dataColumns="1",
-            dataLines="1", initialState="0.0",
-            style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-            value="")
+    addExplicitInputPort(root, port_id[10], block_id[6], "1", "0.0", dataType="INT8_MATRIX", dataColumns="1", dataLines="1")
+    addExplicitOutputPort(root, port_id[11], block_id[6], "1", "0.0", dataType="INT8_MATRIX", dataColumns="1", dataLines="1")
 
     SPLIT_f(root, block_id[7], ordering, geometry, ['0'])
-
-    addPort(root, TYPE_EXPLICITINPORT, id=port_id[12],
-            parent=block_id[7], ordering="1",
-            dataType="INT8_MATRIX", dataColumns="1",
-            dataLines="1", initialState="0.0",
-            style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-            value="")
-
-    addPort(root, TYPE_EXPLICITOUTPORT, id=port_id[13],
-            parent=block_id[7], ordering="1",
-            dataType="INT8_MATRIX", dataColumns="1",
-            dataLines="1", initialState="0.0",
-            style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-            value="")
-
-    addPort(root, TYPE_EXPLICITOUTPORT, id=port_id[14],
-            parent=block_id[7], ordering="1",
-            dataType="INT8_MATRIX", dataColumns="1",
-            dataLines="1", initialState="0.0",
-            style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-            value="")
-
-    addPort(root, TYPE_EXPLICITOUTPORT, id=port_id[15],
-            parent=block_id[7], ordering="1",
-            dataType="INT8_MATRIX", dataColumns="1",
-            dataLines="1", initialState="0.0",
-            style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-            value="")
+    addExplicitInputPort(root, port_id[12], block_id[7], "1", "0.0", dataType="INT8_MATRIX", dataColumns="1", dataLines="1")
+    addExplicitOutputPort(root, port_id[13], block_id[7], "1", "0.0", dataType="INT8_MATRIX", dataColumns="1", dataLines="1")
+    addExplicitOutputPort(root, port_id[14], block_id[7], "2", "0.0", dataType="INT8_MATRIX", dataColumns="1", dataLines="1")
+    addExplicitOutputPort(root, port_id[15], block_id[7], "3", "0.0", dataType="INT8_MATRIX", dataColumns="1", dataLines="1")
 
     IN_f(root, block_id[8], ordering, geometry, ['2'])
-
-    adPort(root, TYPE_EXPLICITOUTPORT, id=port_id[16],
-           parent=block_id[8], ordering="1",
-           initialState="0.0",
-           style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-           value="")
+    addExplicitOutputPort(root, port_id[16], block_id[8], "1", "0.0")
 
     IN_f(root, block_id[9], ordering, geometry, ['2'])
-
-    adPort(root, TYPE_EXPLICITOUTPORT, id=port_id[17],
-           parent=block_id[9], ordering="1",
-           initialState="0.0",
-           style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-           value="")
+    addExplicitOutputPort(root, port_id[17], block_id[9], "1", "0.0")
 
     array = ['2']
     OUT_f(root, block_id[10], ordering, geometry, array)
-
-    adPort(root, TYPE_EXPLICITINPORT, id=port_id[18],
-           parent=block_id[10], ordering="1",
-           initialState="0.0",
-           style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-           value="")
+    addExplicitInputPort(root, port_id[18], block_id[10], "1", "0.0")
 
     array = ['1']
     OUT_f(root, block_id[11], ordering, geometry, array)
+    addExplicitInputPort(root, port_id[19], block_id[11], "1", "0.0")
 
-    adPort(root, TYPE_EXPLICITINPORT, id=port_id[19],
-           parent=block_id[11], ordering="1",
-           initialState="0.0",
-           style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-           value="")
-
-    CCLink = addLink(root, TYPE_EXLINK, id=link_id[0],
+    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[0],
                      parent=block_id[1],
                      source=port_id[14],
                      target=port_id[19],
@@ -227,7 +115,7 @@ def DLATCH(outroot, attribid, ordering, geometry, parameters, parent=1, style=No
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, TYPE_EXLINK, id=link_id[1],
+    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[1],
                      parent=block_id[1],
                      source=port_id[11],
                      target=port_id[18],
@@ -239,7 +127,7 @@ def DLATCH(outroot, attribid, ordering, geometry, parameters, parent=1, style=No
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, TYPE_EXLINK, id=link_id[2],
+    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[2],
                      parent=block_id[1],
                      source=port_id[17],
                      target=port_id[4],
@@ -251,7 +139,7 @@ def DLATCH(outroot, attribid, ordering, geometry, parameters, parent=1, style=No
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, TYPE_EXLINK, id=link_id[3],
+    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[3],
                      parent=block_id[1],
                      source=port_id[16],
                      target=port_id[1],
@@ -263,7 +151,7 @@ def DLATCH(outroot, attribid, ordering, geometry, parameters, parent=1, style=No
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, TYPE_EXLINK, id=link_id[4],
+    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[4],
                      parent=block_id[1],
                      source=port_id[13],
                      target=port_id[10],
@@ -275,7 +163,7 @@ def DLATCH(outroot, attribid, ordering, geometry, parameters, parent=1, style=No
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, TYPE_EXLINK, id=link_id[5],
+    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[5],
                      parent=block_id[1],
                      source=port_id[8],
                      target=port_id[12],
@@ -287,7 +175,7 @@ def DLATCH(outroot, attribid, ordering, geometry, parameters, parent=1, style=No
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, TYPE_EXLINK, id=link_id[6],
+    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[6],
                      parent=block_id[1],
                      source=port_id[0],
                      target=port_id[5],
@@ -299,7 +187,7 @@ def DLATCH(outroot, attribid, ordering, geometry, parameters, parent=1, style=No
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, TYPE_LINK, id=link_id[7],
+    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[7],
                      parent=block_id[1],
                      source=port_id[2],
                      target=port_id[9],
@@ -311,7 +199,7 @@ def DLATCH(outroot, attribid, ordering, geometry, parameters, parent=1, style=No
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, TYPE_EXLINK, id=link_id[8],
+    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[8],
                      parent=block_id[1],
                      source=port_id[6],
                      target=port_id[7],

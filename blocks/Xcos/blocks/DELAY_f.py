@@ -4,11 +4,6 @@ from blocks.IN_f import IN_f
 from blocks.OUT_f import OUT_f
 from common.AAAAAA import *
 
-# block_id = ['18f5f971:13894cb2d90:-7f6f', '18f5f971:13894cb2d91:-7f6f',
-#             '-73e75f0:167968eb73f:-7c07', '-73e75f0:167968eb73f:-7c05',
-#             '-73e75f0:167968eb73f:-7c03', '-73e75f0:167968eb73f:-7bff']
-# port_id = ['7a86d9c5:18e504d8baa:-7fae']
-
 
 def DELAY_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'DELAY_f'
@@ -57,12 +52,7 @@ def DELAY_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=N
                   parent=block_id[0])
 
     IN_f(root, block_id[2], ordering, geometry, ['1', '1'])
-
-    adPort(root, TYPE_EXPLICITOUTPORT, id=port_id[0],
-           parent=block_id[2], ordering="1",
-           initialState="0.0",
-           style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-           value="")
+    addExplicitOutputPort(root, port_id[0], block_id[2], "1", "0.0")
 
     OUT_f(root, block_id[3], ordering, geometry, ['1', '1'])
 

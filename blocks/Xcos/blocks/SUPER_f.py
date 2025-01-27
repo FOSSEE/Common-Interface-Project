@@ -1,9 +1,9 @@
-from blocks.CLKOUTV_f import CLKOUTV_f
-from blocks.CLOCK_c import CLOCK_c
+from blocks.IN_f import IN_f
+from blocks.LOGIC import LOGIC
+from blocks.OUT_f import OUT_f
+from blocks.SPLIT_f import SPLIT_f
+from blocks.TEXT_f import TEXT_f
 from common.AAAAAA import *
-
-# block_id = ['-64ce6d85:145ef6f2b50:-7ee7', '-64ce6d85:145ef6f2b51:-7ee7',
-#             '-64ce6d85:145ef6f2b4f:-7f54']
 
 
 def SUPER_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
@@ -11,7 +11,7 @@ def SUPER_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=N
     if style is None:
         style = func_name
 
-    block_id, port_id, link_id = generate_id(3, 0, 0)
+    block_id, port_id, link_id = generate_id(12, 14, 7)
     outnode = addOutNode(outroot, BLOCK_SUPER,
                          attribid, ordering, parent,
                          func_name, 'cscope', 'C_OR_FORTRAN',
@@ -53,13 +53,29 @@ def SUPER_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=N
                   id=block_id[1],
                   parent=block_id[0])
 
-    CLOCK_c(root, block_id[2], ordering, geometry, parameters)
+    LOGIC(root, block_id[2], ordering, geometry, ['[0;1;1;1]', '1'], parent=block_id[1])
+    addExplicitInputPort(root, port_id[0], block_id[2], "1", "-1.0")
+    addExplicitInputPort(root, port_id[1], block_id[2], "2", "-1.0")
+    addExplicitOutputPort(root, port_id[2], block_id[2], "1", "-1.0")
 
-    CLOCK_c(root, block_id[2], ordering, geometry, parameters)
+    LOGIC(root, block_id[3], ordering, geometry, ['[0;0;0;1]', '1'], parent=block_id[1])
 
-    CLKOUTV_f(root, block_id[1], ordering, geometry, parameters)
+    OUT_f(root, block_id[4], ordering, geometry, ['1'], parent=block_id[1])
 
-    CLKOUTV_f(root, block_id[1], ordering, geometry, parameters)
+    IN_f(root, block_id[5], ordering, geometry, ['1'], parent=block_id[1])
+
+    IN_f(root, block_id[6], ordering, geometry, ['2'], parent=block_id[1])
+
+    SPLIT_f(root, block_id[7], ordering, geometry, [], parent=block_id[1])
+
+    LOGIC(root, block_id[8], ordering, geometry, ['[1;0]', '1'], parent=block_id[1])
+
+    TEXT_f(root, block_id[9], ordering, geometry, ['NOT'], parent=block_id[1])
+
+    TEXT_f(root, block_id[10], ordering, geometry, ['AND'], parent=block_id[1])
+
+    TEXT_f(root, block_id[11], ordering, geometry, ['OR'], parent=block_id[1])
+
     addNodemxCell(SuperBlockDiagram, TYPE_MXCELL, a='defaultParent',
                   id=block_id[1],
                   parent=block_id[0])

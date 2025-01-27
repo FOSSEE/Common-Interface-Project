@@ -52,99 +52,33 @@ def MCLOCK_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=
                   parent=block_id[0])
 
     MFCLCK_f(root, block_id[2], ordering, geometry, parameters, parent=block_id[1])
-
-    addPort(root, TYPE_CNTRL, id=port_id[0],
-            parent=block_id[2], ordering="1",
-            dataType="REAL_MATRIX", dataColumns="1",
-            dataLines="1", initialState="0.0",
-            style="", value="")
-    addPort(root, TYPE_CMD, id=port_id[1],
-            parent=block_id[2], ordering="1",
-            dataType="REAL_MATRIX", dataColumns="1",
-            dataLines="1", initialState="-1.0",
-            style="", value="")
-    addPort(root, TYPE_CMD, id=port_id[2],
-            parent=block_id[2], ordering="2",
-            dataType="REAL_MATRIX", dataColumns="1",
-            dataLines="1", initialState="0.0",
-            style="", value="")
+    addControlPort(root, port_id[0], block_id[2], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
+    addCommandPort(root, port_id[1], block_id[2], "1", "-1.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
+    addCommandPort(root, port_id[2], block_id[2], "2", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
 
     CLKSOM_f(root, block_id[3], ordering, geometry, parameters, parent=block_id[1])
-
-    addPort(root, TYPE_CNTRL, id=port_id[3],
-            parent=block_id[3], ordering="1",
-            dataType="REAL_MATRIX", dataColumns="1",
-            dataLines="1", initialState="0.0",
-            style="", value="")
-    addPort(root, TYPE_CNTRL, id=port_id[4],
-            parent=block_id[3], ordering="2",
-            dataType="REAL_MATRIX", dataColumns="1",
-            dataLines="1", initialState="0.0",
-            style="", value="")
-    addPort(root, TYPE_CNTRL, id=port_id[5],
-            parent=block_id[3], ordering="3",
-            dataType="REAL_MATRIX", dataColumns="1",
-            dataLines="1", initialState="0.0",
-            style="", value="")
-    addPort(root, TYPE_CMD, id=port_id[6],
-            parent=block_id[3], ordering="1",
-            dataType="REAL_MATRIX", dataColumns="1",
-            dataLines="1", initialState="-1.0",
-            style="", value="")
+    addControlPort(root, port_id[3], block_id[3], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
+    addControlPort(root, port_id[4], block_id[3], "2", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
+    addControlPort(root, port_id[5], block_id[3], "3", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
+    addCommandPort(root, port_id[6], block_id[3], "1", "-1.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
 
     CLKOUT_f(root, block_id[4], ordering, geometry, ['1'], parent=block_id[1])
-
-    addPort(root, TYPE_CNTRL, id=port_id[7],
-            parent=block_id[4], ordering="1",
-            dataType="REAL_MATRIX", dataColumns="1",
-            dataLines="1", initialState="0.0",
-            style="", value="")
+    addControlPort(root, port_id[7], block_id[4], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
 
     CLKOUT_f(root, block_id[5], ordering, geometry, [parameters[1]], parent=block_id[1])
-
-    addPort(root, TYPE_CNTRL, id=port_id[8],
-            parent=block_id[5], ordering="1",
-            dataType="REAL_MATRIX", dataColumns="1",
-            dataLines="1", initialState="0.0",
-            style="", value="")
+    addControlPort(root, port_id[8], block_id[5], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
 
     SplitBlock(root, block_id[6], ordering, geometry, parameters, parent=block_id[1])
-
-    addPort(root, TYPE_CNTRL, id=port_id[9],
-            parent=block_id[6], ordering="1",
-            dataType="REAL_MATRIX", dataColumns="1",
-            dataLines="1", initialState="0.0",
-            style="", value="")
-    addPort(root, TYPE_CMD, id=port_id[10],
-            parent=block_id[6], ordering="1",
-            dataType="REAL_MATRIX", dataColumns="1",
-            dataLines="1", initialState="-1.0",
-            style="", value="")
-    addPort(root, TYPE_CMD, id=port_id[11],
-            parent=block_id[6], ordering="2",
-            dataType="REAL_MATRIX", dataColumns="1",
-            dataLines="1", initialState="-1.0",
-            style="", value="")
+    addControlPort(root, port_id[9], block_id[6], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
+    addCommandPort(root, port_id[10], block_id[6], "1", "-1.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
+    addCommandPort(root, port_id[11], block_id[6], "2", "-1.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
 
     SplitBlock(root, block_id[7], ordering, geometry, parameters, parent=block_id[1])
+    addControlPort(root, port_id[12], block_id[7], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
+    addCommandPort(root, port_id[13], block_id[7], "1", "-1.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
+    addCommandPort(root, port_id[14], block_id[7], "2", "-1.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
 
-    addPort(root, TYPE_CNTRL, id=port_id[12],
-            parent=block_id[7], ordering="1",
-            dataType="REAL_MATRIX", dataColumns="1",
-            dataLines="1", initialState="0.0",
-            style="", value="")
-    addPort(root, TYPE_CMD, id=port_id[13],
-            parent=block_id[7], ordering="1",
-            dataType="REAL_MATRIX", dataColumns="1",
-            dataLines="1", initialState="-1.0",
-            style="", value="")
-    addPort(root, TYPE_CMD, id=port_id[14],
-            parent=block_id[7], ordering="2",
-            dataType="REAL_MATRIX", dataColumns="1",
-            dataLines="1", initialState="-1.0",
-            style="", value="")
-
-    CCLink = addLink(root, TYPE_LINK, id=link_id[0],
+    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[0],
                      parent=block_id[1],
                      source=port_id[2],
                      target=port_id[9],
@@ -157,7 +91,7 @@ def MCLOCK_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=
                  y="169.3")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="411.9", y="169.3")
-    CCLink = addLink(root, TYPE_LINK, id=link_id[1],
+    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[1],
                      parent=block_id[1],
                      source=port_id[1],
                      target=port_id[3],
@@ -172,7 +106,7 @@ def MCLOCK_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=
                  y="155.5")
     addmxPointNode(gemotryNode, 'mxPoint', a="targetPoint",
                    x="461.8", y="161.0")
-    CCLink = addLink(root, TYPE_LINK, id=link_id[2],
+    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[2],
                      parent=block_id[1],
                      source=port_id[6],
                      target=port_id[12],
@@ -184,7 +118,7 @@ def MCLOCK_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=
     addmxPointNode(gemotryNode, 'mxPoint', a="targetPoint",
                    x="482.5", y="169.3")
 
-    CCLink = addLink(root, TYPE_LINK, id=link_id[3],
+    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[3],
                      parent=block_id[1],
                      source=port_id[10],
                      target=port_id[4],
@@ -195,7 +129,7 @@ def MCLOCK_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=
     ArrayNode = addArray(gemotryNode, TYPE_ARRAY, a="points")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="457.0", y="169.3")
-    CCLink = addLink(root, TYPE_LINK, id=link_id[4],
+    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[4],
                      parent=block_id[1],
                      source=port_id[11],
                      target=port_id[7],
@@ -207,7 +141,7 @@ def MCLOCK_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=
     addPointNode(ArrayNode, 'mxPoint', x="411.9", y="271.0")
     addmxPointNode(gemotryNode, 'mxPoint', a="targetPoint",
                    x="509.0", y="271.0")
-    CCLink = addLink(root, TYPE_LINK, id=link_id[5],
+    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[5],
                      parent=block_id[1],
                      source=port_id[13],
                      target=port_id[0],
@@ -221,7 +155,7 @@ def MCLOCK_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=
     addPointNode(ArrayNode, 'mxPoint', x="354.0", y="338.3")
     addmxPointNode(gemotryNode, 'mxPoint', a="targetPoint",
                    x="354.0", y="244.7")
-    CCLink = addLink(root, TYPE_LINK, id=link_id[6],
+    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[6],
                      parent=block_id[1],
                      source=port_id[14],
                      target=port_id[8],

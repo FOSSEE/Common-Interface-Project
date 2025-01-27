@@ -74,81 +74,30 @@ def PULSE_SC(outroot, attribid, ordering, geometry, parameters, parent=1, style=
 
     array = ['A']
     CONST_m(root, block_id[2], ordering, geometry, array)
-
-    addPort(root, TYPE_EXPLICITOUTPORT, id=port_id[0],
-            parent=block_id[2], ordering="1",
-            dataType="REAL_MATRIX", dataColumns="1",
-            dataLines="1", initialState="0.0",
-            style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-            value="")
+    addExplicitOutputPort(root, port_id[0], block_id[2], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
 
     Ground_g(root, block_id[3], ordering, geometry, parameters)
-
-    adPort(root, TYPE_EXPLICITOUTPORT, id=port_id[1],
-           parent=block_id[3], ordering="1",
-           initialState="0.0",
-           style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-           value="")
+    addExplicitOutputPort(root, port_id[1], block_id[3], "1", "0.0")
 
     array = ['-1', '2', '1']
     SELECT_m(root, block_id[4], ordering, geometry, array)
-
-    adPort(root, TYPE_EXPLICITINPORT, id=port_id[2],
-           parent=block_id[4], ordering="1",
-           initialState="0.0",
-           style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-           value="")
-
-    adPort(root, TYPE_EXPLICITINPORT, id=port_id[3],
-           parent=block_id[4], ordering="1",
-           initialState="0.0",
-           style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-           value="")
-
-    adPort(root, TYPE_EXPLICITOUTPORT, id=port_id[4],
-           parent=block_id[4], ordering="1",
-           initialState="0.0",
-           style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-           value="")
-
-    addPort(root, TYPE_CNTRL, id=port_id[5],
-            parent=block_id[4], ordering="1",
-            dataType="REAL_MATRIX", dataColumns="1",
-            dataLines="-1", initialState="0.0",
-            style="ControlPort", value="")
-
-    addPort(root, TYPE_CNTRL, id=port_id[6],
-            parent=block_id[4], ordering="1",
-            dataType="REAL_MATRIX", dataColumns="1",
-            dataLines="-1", initialState="0.0",
-            style="ControlPort", value="")
+    addExplicitInputPort(root, port_id[2], block_id[4], "1", "0.0")
+    addExplicitInputPort(root, port_id[3], block_id[4], "2", "0.0")
+    addExplicitOutputPort(root, port_id[4], block_id[4], "1", "0.0")
+    addControlPort(root, port_id[5], block_id[4], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="-1")
+    addControlPort(root, port_id[6], block_id[4], "2", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="-1")
 
     SampleCLK(root, block_id[5], ordering, geometry, parameters)
-
-    addPort(root, TYPE_CMD, id=port_id[7],
-            parent=block_id[5], ordering="1",
-            dataType="REAL_MATRIX", dataColumns="1",
-            dataLines="-1", initialState="0.0",
-            style="CommandPort", value="")
+    addCommandPort(root, port_id[7], block_id[5], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="-1")
 
     SampleCLK(root, block_id[6], ordering, geometry, parameters)
-
-    addPort(root, TYPE_CMD, id=port_id[8],
-            parent=block_id[6], ordering="1",
-            dataType="REAL_MATRIX", dataColumns="1",
-            dataLines="-1", initialState="0.0",
-            style="CommandPort", value="")
+    addCommandPort(root, port_id[8], block_id[6], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="-1")
 
     array = ['1']
     OUT_f(root, block_id[7], ordering, geometry, array)
+    addExplicitInputPort(root, port_id[9], block_id[7], "1", "0.0")
 
-    adPort(root, TYPE_EXPLICITINPORT, id=port_id[9],
-           parent=block_id[7], ordering="1",
-           initialState="0.0",
-           style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-           value="")
-
-    CCLink = addLink(root, TYPE_EXLINK, id=link_id[0],
+    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[0],
                      parent=block_id[1],
                      source=port_id[4],
                      target=port_id[9],
@@ -160,7 +109,7 @@ def PULSE_SC(outroot, attribid, ordering, geometry, parameters, parent=1, style=
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, TYPE_LINK, id=link_id[1],
+    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[1],
                      parent=block_id[1],
                      source=port_id[7],
                      target=port_id[5],
@@ -172,7 +121,7 @@ def PULSE_SC(outroot, attribid, ordering, geometry, parameters, parent=1, style=
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, TYPE_LINK, id=link_id[2],
+    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[2],
                      parent=block_id[1],
                      source=port_id[8],
                      target=port_id[6],
@@ -184,7 +133,7 @@ def PULSE_SC(outroot, attribid, ordering, geometry, parameters, parent=1, style=
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, TYPE_EXLINK, id=link_id[3],
+    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[3],
                      parent=block_id[1],
                      source=port_id[0],
                      target=port_id[3],
@@ -196,7 +145,7 @@ def PULSE_SC(outroot, attribid, ordering, geometry, parameters, parent=1, style=
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, TYPE_EXLINK, id=link_id[4],
+    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[4],
                      parent=block_id[1],
                      source=port_id[1],
                      target=port_id[2],

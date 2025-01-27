@@ -59,56 +59,22 @@ def SELF_SWITCH(outroot, attribid, ordering, geometry, parameters, parent=1, sty
 
     array = ['1']
     IN_f(root, block_id[2], ordering, geometry, array)
-
-    adPort(root, TYPE_EXPLICITOUTPORT, id=port_id[0],
-           parent=block_id[2], ordering="1",
-           initialState="0.0",
-           style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-           value="")
+    addExplicitOutputPort(root, port_id[0], block_id[2], "1", "0.0")
 
     array = ['1']
     OUT_f(root, block_id[3], ordering, geometry, array)
-
-    adPort(root, TYPE_EXPLICITINPORT, id=port_id[1],
-           parent=block_id[3], ordering="1",
-           initialState="0.0",
-           style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-           value="")
+    addExplicitInputPort(root, port_id[1], block_id[3], "1", "0.0")
 
     array = ['0']
     CONST_m(root, block_id[4], ordering, geometry, array)
-
-    addPort(root, TYPE_EXPLICITOUTPORT, id=port_id[2],
-            parent=block_id[4], ordering="1",
-            dataType="REAL_MATRIX", dataColumns="1",
-            dataLines="1", initialState="0.0",
-            style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-            value="")
+    addExplicitOutputPort(root, port_id[2], block_id[4], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
 
     SWITCH_f(root, block_id[5], ordering, geometry, [parameters[0], '2'])
+    addExplicitInputPort(root, port_id[3], block_id[5], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
+    addExplicitInputPort(root, port_id[4], block_id[5], "2", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
+    addExplicitOutputPort(root, port_id[5], block_id[5], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
 
-    addPort(root, TYPE_EXPLICITINPORT, id=port_id[3],
-            parent=block_id[5], ordering="1",
-            dataType="REAL_MATRIX", dataColumns="1",
-            dataLines="1", initialState="0.0",
-            style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-            value="")
-
-    addPort(root, TYPE_EXPLICITINPORT, id=port_id[4],
-            parent=block_id[5], ordering="1",
-            dataType="REAL_MATRIX", dataColumns="1",
-            dataLines="1", initialState="0.0",
-            style="ExplicitInputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-            value="")
-
-    addPort(root, TYPE_EXPLICITOUTPORT, id=port_id[5],
-            parent=block_id[5], ordering="1",
-            dataType="REAL_MATRIX", dataColumns="1",
-            dataLines="1", initialState="0.0",
-            style="ExplicitOutputPort;align=right;verticalAlign=middle;spacing=10.0;rotation=0",
-            value="")
-
-    CCLink = addLink(root, TYPE_EXLINK, id=link_id[0],
+    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[0],
                      parent=block_id[1],
                      source=port_id[5],
                      target=port_id[1],
@@ -120,7 +86,7 @@ def SELF_SWITCH(outroot, attribid, ordering, geometry, parameters, parent=1, sty
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, TYPE_EXLINK, id=link_id[1],
+    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[1],
                      parent=block_id[1],
                      source=port_id[2],
                      target=port_id[4],
@@ -132,7 +98,7 @@ def SELF_SWITCH(outroot, attribid, ordering, geometry, parameters, parent=1, sty
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, TYPE_EXLINK, id=link_id[2],
+    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[2],
                      parent=block_id[1],
                      source=port_id[0],
                      target=port_id[3],

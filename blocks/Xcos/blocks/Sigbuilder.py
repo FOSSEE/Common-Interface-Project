@@ -4,18 +4,6 @@ from blocks.OUT_f import OUT_f
 from blocks.CLKOUTV_f import CLKOUTV_f
 from common.AAAAAA import *
 
-# block_id = ['7b47c302:1912616652e:-7fdb', '7b47c302:1912616652f:-7fdb',
-#             '7b47c302:1912616652d:-7fd8', '7b47c302:1912616652d:-7fd4',
-#             '7b47c302:1912616652d:-7fd0', '7b47c302:1912616652d:-7fce']
-# link_id = ['7b47c302:1912616652d:-7fcc', '7b47c302:1912616652d:-7fcb',
-#            '7b47c302:1912616652d:-7fca', '7b47c302:1912616652d:-7fc9'
-#            ]
-# port_id = ['7b47c302:1912616652d:-7fd7', '7b47c302:1912616652d:-7fd6',
-#            '7b47c302:1912616652d:-7fd5', '7b47c302:1912616652d:-7fd3',
-#            '7b47c302:1912616652d:-7fd2', '7b47c302:1912616652d:-7fd1',
-#            '7b47c302:1912616652d:-7fcf', '7b47c302:1912616652d:-7fcd'
-#            ]
-
 
 def Sigbuilder(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
     func_name = 'Sigbuilder'
@@ -65,62 +53,24 @@ def Sigbuilder(outroot, attribid, ordering, geometry, parameters, parent=1, styl
                   parent=block_id[0])
 
     CURVE_c(root, block_id[2], ordering, geometry, parameters, parent=block_id[1])
-
-    addPort(root, TYPE_EXPLICITOUTPORT, id=port_id[0],
-            parent=block_id[2], ordering="1",
-            dataType="REAL_MATRIX", dataColumns="1",
-            dataLines="1", initialState="0.0",
-            style="",
-            value="")
-
-    addPort(root, TYPE_CNTRL, id=port_id[1],
-            parent=block_id[2], ordering="1",
-            dataType="REAL_MATRIX", dataColumns="1",
-            dataLines="1", initialState="0.0",
-            style="", value="")
-    addPort(root, TYPE_CMD, id=port_id[2],
-            parent=block_id[2], ordering="1",
-            dataType="REAL_MATRIX", dataColumns="1",
-            dataLines="1", initialState="0.0",
-            style="", value="")
+    addExplicitOutputPort(root, port_id[0], block_id[2], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
+    addControlPort(root, port_id[1], block_id[2], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
+    addCommandPort(root, port_id[2], block_id[2], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
 
     SplitBlock(root, block_id[3], ordering, geometry, parameters, parent=block_id[1])
-
-    addPort(root, TYPE_CNTRL, id=port_id[3],
-            parent=block_id[3], ordering="1",
-            dataType="REAL_MATRIX", dataColumns="1",
-            dataLines="1", initialState="0.0",
-            style="", value="")
-    addPort(root, TYPE_CMD, id=port_id[4],
-            parent=block_id[3], ordering="1",
-            dataType="REAL_MATRIX", dataColumns="1",
-            dataLines="1", initialState="-1.0",
-            style="", value="")
-    addPort(root, TYPE_CMD, id=port_id[5],
-            parent=block_id[3], ordering="2",
-            dataType="REAL_MATRIX", dataColumns="1",
-            dataLines="1", initialState="-1.0",
-            style="", value="")
+    addControlPort(root, port_id[3], block_id[3], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
+    addCommandPort(root, port_id[4], block_id[3], "1", "-1.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
+    addCommandPort(root, port_id[5], block_id[3], "2", "-1.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
 
     param = ['1']
     OUT_f(root, block_id[4], ordering, geometry, param, parent=block_id[1])
-
-    adPort(root, TYPE_EXPLICITINPORT, id=port_id[6],
-           parent=block_id[4], ordering="1",
-           initialState="0.0",
-           style="",
-           value="")
+    addExplicitInputPort(root, port_id[6], block_id[4], "1", "0.0")
 
     p = ['1']
     CLKOUTV_f(root, block_id[5], ordering, geometry, p, parent=block_id[1])
+    addControlPort(root, port_id[7], block_id[5], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
 
-    addPort(root, TYPE_CNTRL, id=port_id[7],
-            parent=block_id[5], ordering="1",
-            dataType="REAL_MATRIX", dataColumns="1",
-            dataLines="1", initialState="0.0",
-            style="", value="")
-
-    CCLink = addLink(root, TYPE_LINK, id=link_id[0],
+    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[0],
                      parent=block_id[1],
                      source=port_id[2],
                      target=port_id[3],
@@ -131,7 +81,7 @@ def Sigbuilder(outroot, attribid, ordering, geometry, parameters, parent=1, styl
     ArrayNode = addArray(gemotryNode, TYPE_ARRAY, a="points")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="349.49528", y="565.10704")
-    CCLink = addLink(root, TYPE_LINK, id=link_id[1],
+    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[1],
                      parent=block_id[1],
                      source=port_id[5],
                      target=port_id[1],
@@ -153,7 +103,7 @@ def Sigbuilder(outroot, attribid, ordering, geometry, parameters, parent=1, styl
     addmxPointNode(gemotryNode, 'mxPoint', a="targetPoint",
                    x="349.63473", y="651.89946")
 
-    CCLink = addLink(root, TYPE_EXLINK, id=link_id[2],
+    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[2],
                      parent=block_id[1],
                      source=port_id[0],
                      target=port_id[6],
@@ -165,7 +115,7 @@ def Sigbuilder(outroot, attribid, ordering, geometry, parameters, parent=1, styl
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="398.20616", y="626.18517")
 
-    CCLink = addLink(root, TYPE_LINK, id=link_id[3],
+    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[3],
                      parent=block_id[1],
                      source=port_id[4],
                      target=port_id[7],
