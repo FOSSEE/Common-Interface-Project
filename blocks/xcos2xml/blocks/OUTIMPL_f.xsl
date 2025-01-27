@@ -1,4 +1,4 @@
-    <xsl:template match="*[@interfaceFunctionName = 'OUTIMPL_f']">
+    <xsl:template match="ImplicitOutBlock">
       <xsl:variable name="explicitInputPorts">0</xsl:variable>
       <xsl:variable name="implicitInputPorts">1</xsl:variable>
       <xsl:variable name="explicitOutputPorts">0</xsl:variable>

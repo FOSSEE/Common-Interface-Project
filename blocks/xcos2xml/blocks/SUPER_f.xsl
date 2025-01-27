@@ -1,4 +1,4 @@
-    <xsl:template match="*[@interfaceFunctionName = 'SUPER_f']">
+    <xsl:template match="SuperBlock">
       <xsl:variable name="explicitInputPorts">1</xsl:variable>
       <xsl:variable name="implicitInputPorts">0</xsl:variable>
       <xsl:variable name="explicitOutputPorts">1</xsl:variable>
