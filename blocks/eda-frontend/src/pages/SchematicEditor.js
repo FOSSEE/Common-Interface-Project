@@ -14,7 +14,7 @@ import RightSidebar from '../components/SchematicEditor/RightSidebar'
 import PropertiesSidebar from '../components/SchematicEditor/PropertiesSidebar'
 import LoadGrid from '../components/SchematicEditor/Helper/ComponentDrag'
 import '../components/SchematicEditor/Helper/SchematicEditor.css'
-import { fetchSchematic, loadGallery } from '../redux/actions/index'
+import { fetchDiagram, fetchSchematic } from '../redux/actions/index'
 import { useDispatch, useSelector } from 'react-redux'
 
 const useStyles = makeStyles((theme) => ({
@@ -35,6 +35,7 @@ export default function SchematicEditor (props) {
   const dispatch = useDispatch()
   const [mobileOpen, setMobileOpen] = useState(false)
   const isLoading = useSelector(state => state.saveSchematicReducer.isLoading)
+  const data = useSelector(state => state.saveSchematicReducer.data)
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
@@ -53,7 +54,8 @@ export default function SchematicEditor (props) {
 
       if (cktid.substr(0, 7) === 'gallery') {
         // Loading Gallery schemaic.
-        dispatch(loadGallery(cktid))
+
+        dispatch(fetchDiagram(cktid))
       } else {
         // Loading User on-cloud saved schemaic.
         dispatch(fetchSchematic(cktid))

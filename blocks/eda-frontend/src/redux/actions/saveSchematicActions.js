@@ -1,11 +1,9 @@
-import { useEffect } from 'react'
 import * as actions from './actions'
 import queryString from 'query-string'
 import api from '../../utils/Api'
 import { renderGalleryXML } from '../../components/SchematicEditor/Helper/ToolbarTools'
-import { setTitle, fetchGallery } from './index'
+import { setTitle } from './index'
 import { transformXcos } from '../../utils/GalleryUtils'
-import { useSelector } from 'react-redux'
 
 export const setLoadingDiagram = (isLoading) => (dispatch) => {
   dispatch({
@@ -129,6 +127,16 @@ export const fetchSchematic = (saveId) => (dispatch, getState) => {
     .catch((err) => { console.error(err) })
 }
 
+export const fetchDiagram = (saveId) => (dispatch, getState) => {
+  api.get('save/gallery/' + saveId)
+    .then(
+      (res) => {
+        dispatch(loadGallery(res.data))
+      }
+    )
+    .catch((err) => { console.error(err) })
+}
+
 export const setSchShared = (share) => (dispatch, getState) => {
   // Get token from localstorage
   const token = getState().authReducer.token
@@ -166,51 +174,45 @@ export const setSchShared = (share) => (dispatch, getState) => {
 }
 
 // Action for Loading Gallery schematics
-export const loadGallery = (saveId) => (dispatch) => {
-  const GallerySchSample = useSelector(state => state.dashboardReducer.gallery)
-
-  useEffect(() => {
-    dispatch(fetchGallery())
-  }, [])
-  // Find the gallery schematic that matches the given save_id
-  const data = GallerySchSample.find(sample => sample.save_id === saveId)
-
+export const loadGallery = (data) => async (dispatch) => {
   if (!data) {
-    console.error(`No gallery schematic found with save_id: ${saveId}`)
+    console.error(`No gallery schematic found with save_id: ${data}`)
     return
   }
 
   dispatch(setLoadingDiagram(true))
-  // Check if the data is xcos or xml
-  const parser = new DOMParser()
-  const xmlDoc = parser.parseFromString(data.data_dump, 'application/xml')
-  const isXcos = xmlDoc.getElementsByTagName('XcosDiagram').length > 0
 
-  const handleGalleryLoad = (dispatch, data, dataDump) => {
-    dispatch({
-      type: actions.LOAD_GALLERY,
-      payload: { ...data, data_dump: dataDump }
-    })
-    dispatch(setTitle('* ' + data.name))
-    dispatch(setSchTitle(data.name))
-    dispatch(setSchDescription(data.description))
-    dispatch(setSchXmlData(dataDump))
-    renderGalleryXML(dataDump)
-  }
+  try {
+    // Check if the data is xcos or xml
+    const parser = new DOMParser()
+    const xmlDoc = parser.parseFromString(data.data_dump, 'application/xml')
+    const isXcos = xmlDoc.getElementsByTagName('XcosDiagram').length > 0
 
-  if (isXcos) {
-    transformXcos(xmlDoc).then(xmlDoc => {
-      const dataDump = new XMLSerializer().serializeToString(xmlDoc)
-      handleGalleryLoad(dispatch, data, dataDump)
-      dispatch(setLoadingDiagram(false))
-    }).catch(error => {
-      console.error('Error converting xcos to xml:', error)
-    })
-  } else {
-    handleGalleryLoad(dispatch, data, data.data_dump)
+    const handleGalleryLoad = (data, dataDump) => {
+      dispatch({
+        type: actions.LOAD_GALLERY,
+        payload: { ...data, data_dump: dataDump }
+      })
+      dispatch(setTitle('* ' + data.name))
+      dispatch(setSchTitle(data.name))
+      dispatch(setSchDescription(data.description))
+      dispatch(setSchXmlData(dataDump))
+      renderGalleryXML(dataDump)
+    }
+
+    if (isXcos) {
+      const transformedXml = await transformXcos(xmlDoc)
+      const dataDump = new XMLSerializer().serializeToString(transformedXml)
+      handleGalleryLoad(data, dataDump)
+    } else {
+      handleGalleryLoad(data, data.data_dump)
+    }
+  } catch (error) {
+    console.error('Error loading gallery:', error)
+  } finally {
     dispatch(setLoadingDiagram(false))
+    window.loadGalleryComplete = true
   }
-  window.loadGalleryComplete = true
 }
 
 // Action for Loading local exported schematics
