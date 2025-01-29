@@ -97,11 +97,7 @@ def PULSE_SC(outroot, attribid, ordering, geometry, parameters, parent=1, style=
     OUT_f(root, block_id[7], ordering, geometry, array)
     addExplicitInputPort(root, port_id[9], block_id[7], "1", "0.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[0],
-                     parent=block_id[1],
-                     source=port_id[4],
-                     target=port_id[9],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[0], block_id[1], port_id[4], port_id[9])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -109,11 +105,7 @@ def PULSE_SC(outroot, attribid, ordering, geometry, parameters, parent=1, style=
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[1],
-                     parent=block_id[1],
-                     source=port_id[7],
-                     target=port_id[5],
-                     style="CommandControlLink", value="")
+    CCLink = addCommandControlLink(root, link_id[1], block_id[1], port_id[7], port_id[5])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -121,11 +113,7 @@ def PULSE_SC(outroot, attribid, ordering, geometry, parameters, parent=1, style=
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[2],
-                     parent=block_id[1],
-                     source=port_id[8],
-                     target=port_id[6],
-                     style="CommandControlLink", value="")
+    CCLink = addCommandControlLink(root, link_id[2], block_id[1], port_id[8], port_id[6])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -133,11 +121,7 @@ def PULSE_SC(outroot, attribid, ordering, geometry, parameters, parent=1, style=
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[3],
-                     parent=block_id[1],
-                     source=port_id[0],
-                     target=port_id[3],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[3], block_id[1], port_id[0], port_id[3])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -145,11 +129,7 @@ def PULSE_SC(outroot, attribid, ordering, geometry, parameters, parent=1, style=
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[4],
-                     parent=block_id[1],
-                     source=port_id[1],
-                     target=port_id[2],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[4], block_id[1], port_id[1], port_id[2])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")

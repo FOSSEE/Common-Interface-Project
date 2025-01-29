@@ -65,11 +65,7 @@ def CLOCK_c(outroot, attribid, ordering, geometry, parameters, parent=1, style=N
     addCommandPort(root, port_id[4], block_id[4], "1", "-1.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="-1")
     addCommandPort(root, port_id[5], block_id[4], "2", "-1.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="-1")
 
-    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[0],
-                     parent=block_id[1],
-                     source=port_id[5],
-                     target=port_id[1],
-                     style="CommandControlLink", value="")
+    CCLink = addCommandControlLink(root, link_id[0], block_id[1], port_id[5], port_id[1])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="10.0", y="12.0")
@@ -80,22 +76,14 @@ def CLOCK_c(outroot, attribid, ordering, geometry, parameters, parent=1, style=N
                  y="58.0")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="44.0")
-    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[1],
-                     parent=block_id[1],
-                     source=port_id[4],
-                     target=port_id[0],
-                     style="CommandControlLink", value="")
+    CCLink = addCommandControlLink(root, link_id[1], block_id[1], port_id[4], port_id[0])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint', a="sourcePoint",
                    x="0.0", y="-4.0")
     ArrayNode = addArray(gemotryNode, TYPE_ARRAY, a="points")
     addmxPointNode(gemotryNode, 'mxPoint', a="targetPoint",
                    x="10.0", y="-4.0")
-    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[2],
-                     parent=block_id[1],
-                     source=port_id[2],
-                     target=port_id[3],
-                     style="CommandControlLink", value="")
+    CCLink = addCommandControlLink(root, link_id[2], block_id[1], port_id[2], port_id[3])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint', a="sourcePoint",
                    x="20.0", y="-4.0")

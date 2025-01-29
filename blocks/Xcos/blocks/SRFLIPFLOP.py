@@ -87,11 +87,7 @@ def SRFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, styl
     OUT_f(root, block_id[8], ordering, geometry, array)
     addExplicitInputPort(root, port_id[14], block_id[8], "1", "0.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[0],
-                     parent=block_id[1],
-                     source=port_id[9],
-                     target=port_id[14],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[0], block_id[1], port_id[9], port_id[14])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -99,11 +95,7 @@ def SRFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, styl
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[1],
-                     parent=block_id[1],
-                     source=port_id[13],
-                     target=port_id[2],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[1], block_id[1], port_id[13], port_id[2])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -111,11 +103,7 @@ def SRFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, styl
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[2],
-                     parent=block_id[1],
-                     source=port_id[12],
-                     target=port_id[1],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[2], block_id[1], port_id[12], port_id[1])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -123,11 +111,7 @@ def SRFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, styl
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[3],
-                     parent=block_id[1],
-                     source=port_id[4],
-                     target=port_id[11],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[3], block_id[1], port_id[4], port_id[11])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -135,11 +119,7 @@ def SRFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, styl
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[4],
-                     parent=block_id[1],
-                     source=port_id[8],
-                     target=port_id[5],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[4], block_id[1], port_id[8], port_id[5])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -147,11 +127,7 @@ def SRFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, styl
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[5],
-                     parent=block_id[1],
-                     source=port_id[6],
-                     target=port_id[0],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[5], block_id[1], port_id[6], port_id[0])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -159,11 +135,7 @@ def SRFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, styl
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[6],
-                     parent=block_id[1],
-                     source=port_id[3],
-                     target=port_id[7],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[6], block_id[1], port_id[3], port_id[7])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")

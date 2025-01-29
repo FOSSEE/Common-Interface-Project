@@ -78,11 +78,7 @@ def MCLOCK_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=
     addCommandPort(root, port_id[13], block_id[7], "1", "-1.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
     addCommandPort(root, port_id[14], block_id[7], "2", "-1.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
 
-    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[0],
-                     parent=block_id[1],
-                     source=port_id[2],
-                     target=port_id[9],
-                     style="", value="")
+    CCLink = addCommandControlLink(root, link_id[0], block_id[1], port_id[2], port_id[9])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="360.7", y="193.3")
@@ -91,11 +87,7 @@ def MCLOCK_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=
                  y="169.3")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="411.9", y="169.3")
-    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[1],
-                     parent=block_id[1],
-                     source=port_id[1],
-                     target=port_id[3],
-                     style="", value="")
+    CCLink = addCommandControlLink(root, link_id[1], block_id[1], port_id[1], port_id[3])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint', a="sourcePoint",
                    x="347.3", y="193.3")
@@ -106,11 +98,7 @@ def MCLOCK_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=
                  y="155.5")
     addmxPointNode(gemotryNode, 'mxPoint', a="targetPoint",
                    x="461.8", y="161.0")
-    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[2],
-                     parent=block_id[1],
-                     source=port_id[6],
-                     target=port_id[12],
-                     style="", value="")
+    CCLink = addCommandControlLink(root, link_id[2], block_id[1], port_id[6], port_id[12])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint', a="sourcePoint",
                    x="468.9", y="169.3")
@@ -118,22 +106,14 @@ def MCLOCK_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=
     addmxPointNode(gemotryNode, 'mxPoint', a="targetPoint",
                    x="482.5", y="169.3")
 
-    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[3],
-                     parent=block_id[1],
-                     source=port_id[10],
-                     target=port_id[4],
-                     style="", value="")
+    CCLink = addCommandControlLink(root, link_id[3], block_id[1], port_id[10], port_id[4])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="411.9", y="169.3")
     ArrayNode = addArray(gemotryNode, TYPE_ARRAY, a="points")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="457.0", y="169.3")
-    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[4],
-                     parent=block_id[1],
-                     source=port_id[11],
-                     target=port_id[7],
-                     style="", value="")
+    CCLink = addCommandControlLink(root, link_id[4], block_id[1], port_id[11], port_id[7])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint', a="sourcePoint",
                    x="411.9", y="169.3")
@@ -141,11 +121,7 @@ def MCLOCK_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=
     addPointNode(ArrayNode, 'mxPoint', x="411.9", y="271.0")
     addmxPointNode(gemotryNode, 'mxPoint', a="targetPoint",
                    x="509.0", y="271.0")
-    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[5],
-                     parent=block_id[1],
-                     source=port_id[13],
-                     target=port_id[0],
-                     style="", value="")
+    CCLink = addCommandControlLink(root, link_id[5], block_id[1], port_id[13], port_id[0])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint', a="sourcePoint",
                    x="482.5", y="169.3")
@@ -155,11 +131,7 @@ def MCLOCK_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=
     addPointNode(ArrayNode, 'mxPoint', x="354.0", y="338.3")
     addmxPointNode(gemotryNode, 'mxPoint', a="targetPoint",
                    x="354.0", y="244.7")
-    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[6],
-                     parent=block_id[1],
-                     source=port_id[14],
-                     target=port_id[8],
-                     style="", value="")
+    CCLink = addCommandControlLink(root, link_id[6], block_id[1], port_id[14], port_id[8])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint', a="sourcePoint",
                    x="482.4", y="169.3")

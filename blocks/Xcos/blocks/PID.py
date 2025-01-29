@@ -102,11 +102,7 @@ def PID(outroot, attribid, ordering, geometry, parameters, parent=1, style=None)
     IN_f(root, block_id[11], ordering, geometry, array)
     addExplicitOutputPort(root, port_id[23], block_id[11], "1", "0.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[0],
-                     parent=block_id[1],
-                     source=port_id[23],
-                     target=port_id[18],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[0], block_id[1], port_id[23], port_id[18])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -114,11 +110,7 @@ def PID(outroot, attribid, ordering, geometry, parameters, parent=1, style=None)
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[1],
-                     parent=block_id[1],
-                     source=port_id[5],
-                     target=port_id[22],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[1], block_id[1], port_id[5], port_id[22])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -126,11 +118,7 @@ def PID(outroot, attribid, ordering, geometry, parameters, parent=1, style=None)
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[2],
-                     parent=block_id[1],
-                     source=port_id[20],
-                     target=port_id[6],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[2], block_id[1], port_id[20], port_id[6])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -138,11 +126,7 @@ def PID(outroot, attribid, ordering, geometry, parameters, parent=1, style=None)
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[3],
-                     parent=block_id[1],
-                     source=port_id[19],
-                     target=port_id[14],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[3], block_id[1], port_id[19], port_id[14])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -150,11 +134,7 @@ def PID(outroot, attribid, ordering, geometry, parameters, parent=1, style=None)
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[4],
-                     parent=block_id[1],
-                     source=port_id[16],
-                     target=port_id[12],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[4], block_id[1], port_id[16], port_id[12])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -162,11 +142,7 @@ def PID(outroot, attribid, ordering, geometry, parameters, parent=1, style=None)
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[5],
-                     parent=block_id[1],
-                     source=port_id[15],
-                     target=port_id[10],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[5], block_id[1], port_id[15], port_id[10])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -174,11 +150,7 @@ def PID(outroot, attribid, ordering, geometry, parameters, parent=1, style=None)
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[6],
-                     parent=block_id[1],
-                     source=port_id[9],
-                     target=port_id[4],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[6], block_id[1], port_id[9], port_id[4])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -186,11 +158,7 @@ def PID(outroot, attribid, ordering, geometry, parameters, parent=1, style=None)
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[7],
-                     parent=block_id[1],
-                     source=port_id[7],
-                     target=port_id[2],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[7], block_id[1], port_id[7], port_id[2])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -198,11 +166,7 @@ def PID(outroot, attribid, ordering, geometry, parameters, parent=1, style=None)
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[8],
-                     parent=block_id[1],
-                     source=port_id[1],
-                     target=port_id[3],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[8], block_id[1], port_id[1], port_id[3])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -210,11 +174,7 @@ def PID(outroot, attribid, ordering, geometry, parameters, parent=1, style=None)
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[9],
-                     parent=block_id[1],
-                     source=port_id[13],
-                     target=port_id[8],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[9], block_id[1], port_id[13], port_id[8])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -222,11 +182,7 @@ def PID(outroot, attribid, ordering, geometry, parameters, parent=1, style=None)
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[10],
-                     parent=block_id[1],
-                     source=port_id[11],
-                     target=port_id[0],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[10], block_id[1], port_id[11], port_id[0])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")

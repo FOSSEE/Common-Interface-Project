@@ -104,11 +104,7 @@ def JKFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, styl
     OUT_f(root, block_id[12], ordering, geometry, ['2'])
     addExplicitInputPort(root, port_id[23], block_id[12], "1", "0.0", dataType="INT8_MATRIX", dataColumns="1", dataLines="1")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[0],
-                     parent=block_id[1],
-                     source=port_id[14],
-                     target=port_id[23],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[0], block_id[1], port_id[14], port_id[23])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -116,11 +112,7 @@ def JKFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, styl
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[1],
-                     parent=block_id[1],
-                     source=port_id[11],
-                     target=port_id[22],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[1], block_id[1], port_id[11], port_id[22])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -128,11 +120,7 @@ def JKFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, styl
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[2],
-                     parent=block_id[1],
-                     source=port_id[21],
-                     target=port_id[6],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[2], block_id[1], port_id[21], port_id[6])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -140,11 +128,7 @@ def JKFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, styl
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[3],
-                     parent=block_id[1],
-                     source=port_id[20],
-                     target=port_id[5],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[3], block_id[1], port_id[20], port_id[5])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -152,11 +136,7 @@ def JKFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, styl
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[4],
-                     parent=block_id[1],
-                     source=port_id[19],
-                     target=port_id[2],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[4], block_id[1], port_id[19], port_id[2])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -164,11 +144,7 @@ def JKFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, styl
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[5],
-                     parent=block_id[1],
-                     source=port_id[17],
-                     target=port_id[13],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[5], block_id[1], port_id[17], port_id[13])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -176,11 +152,7 @@ def JKFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, styl
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[6],
-                     parent=block_id[1],
-                     source=port_id[16],
-                     target=port_id[9],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[6], block_id[1], port_id[16], port_id[9])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -188,11 +160,7 @@ def JKFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, styl
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[7],
-                     parent=block_id[1],
-                     source=port_id[3],
-                     target=port_id[8],
-                     style="CommandControlLink", value="")
+    CCLink = addCommandControlLink(root, link_id[7], block_id[1], port_id[3], port_id[8])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -200,11 +168,7 @@ def JKFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, styl
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[8],
-                     parent=block_id[1],
-                     source=port_id[10],
-                     target=port_id[0],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[8], block_id[1], port_id[10], port_id[0])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -212,11 +176,7 @@ def JKFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, styl
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[9],
-                     parent=block_id[1],
-                     source=port_id[1],
-                     target=port_id[4],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[9], block_id[1], port_id[1], port_id[4])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -224,11 +184,7 @@ def JKFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, styl
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[10],
-                     parent=block_id[1],
-                     source=port_id[7],
-                     target=port_id[15],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[10], block_id[1], port_id[7], port_id[15])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")

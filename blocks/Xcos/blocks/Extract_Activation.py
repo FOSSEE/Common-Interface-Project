@@ -70,11 +70,7 @@ def Extract_Activation(outroot, attribid, ordering, geometry, parameters, parent
     CLKOUTV_f(root, block_id[5], ordering, geometry, ['1'])
     addControlPort(root, port_id[8], block_id[5], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="-1")
 
-    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[0],
-                     parent=block_id[1],
-                     source=port_id[6],
-                     target=port_id[8],
-                     style="CommandControlLink", value="")
+    CCLink = addCommandControlLink(root, link_id[0], block_id[1], port_id[6], port_id[8])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -82,11 +78,7 @@ def Extract_Activation(outroot, attribid, ordering, geometry, parameters, parent
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[1],
-                     parent=block_id[1],
-                     source=port_id[7],
-                     target=port_id[0],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[1], block_id[1], port_id[7], port_id[0])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -94,11 +86,7 @@ def Extract_Activation(outroot, attribid, ordering, geometry, parameters, parent
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[2],
-                     parent=block_id[1],
-                     source=port_id[2],
-                     target=port_id[4],
-                     style="CommandControlLink", value="")
+    CCLink = addCommandControlLink(root, link_id[2], block_id[1], port_id[2], port_id[4])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -106,11 +94,7 @@ def Extract_Activation(outroot, attribid, ordering, geometry, parameters, parent
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[3],
-                     parent=block_id[1],
-                     source=port_id[1],
-                     target=port_id[3],
-                     style="CommandControlLink", value="")
+    CCLink = addCommandControlLink(root, link_id[3], block_id[1], port_id[1], port_id[3])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")

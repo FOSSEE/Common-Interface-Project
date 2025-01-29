@@ -164,11 +164,7 @@ def DFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, style
     addCommandPort(root, port_id[51], block_id[21], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="-1")
     addCommandPort(root, port_id[52], block_id[21], "2", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="-1")
 
-    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[0],
-                     parent=block_id[1],
-                     source=port_id[4],
-                     target=port_id[40],
-                     style="CommandControlLink", value="")
+    CCLink = addCommandControlLink(root, link_id[0], block_id[1], port_id[4], port_id[40])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -176,11 +172,7 @@ def DFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, style
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[1],
-                     parent=block_id[1],
-                     source=port_id[51],
-                     target=port_id[39],
-                     style="CommandControlLink", value="")
+    CCLink = addCommandControlLink(root, link_id[1], block_id[1], port_id[51], port_id[39])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -188,11 +180,7 @@ def DFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, style
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[2],
-                     parent=block_id[1],
-                     source=port_id[50],
-                     target=port_id[10],
-                     style="CommandControlLink", value="")
+    CCLink = addCommandControlLink(root, link_id[2], block_id[1], port_id[50], port_id[10])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -200,11 +188,7 @@ def DFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, style
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[3],
-                     parent=block_id[1],
-                     source=port_id[47],
-                     target=port_id[37],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[3], block_id[1], port_id[47], port_id[37])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -212,11 +196,7 @@ def DFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, style
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[4],
-                     parent=block_id[1],
-                     source=port_id[46],
-                     target=port_id[6],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[4], block_id[1], port_id[46], port_id[6])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -224,11 +204,7 @@ def DFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, style
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[5],
-                     parent=block_id[1],
-                     source=port_id[43],
-                     target=port_id[16],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[5], block_id[1], port_id[43], port_id[16])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -236,11 +212,7 @@ def DFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, style
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[6],
-                     parent=block_id[1],
-                     source=port_id[42],
-                     target=port_id[11],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[6], block_id[1], port_id[42], port_id[11])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -248,11 +220,7 @@ def DFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, style
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[7],
-                     parent=block_id[1],
-                     source=port_id[38],
-                     target=port_id[41],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[7], block_id[1], port_id[38], port_id[41])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -260,11 +228,7 @@ def DFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, style
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[8],
-                     parent=block_id[1],
-                     source=port_id[9],
-                     target=port_id[36],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[8], block_id[1], port_id[9], port_id[36])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -272,11 +236,7 @@ def DFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, style
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[9],
-                     parent=block_id[1],
-                     source=port_id[28],
-                     target=port_id[23],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[9], block_id[1], port_id[28], port_id[23])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -284,11 +244,7 @@ def DFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, style
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[10],
-                     parent=block_id[1],
-                     source=port_id[35],
-                     target=port_id[27],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[10], block_id[1], port_id[35], port_id[27])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -296,11 +252,7 @@ def DFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, style
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[11],
-                     parent=block_id[1],
-                     source=port_id[34],
-                     target=port_id[1],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[11], block_id[1], port_id[34], port_id[1])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -308,11 +260,7 @@ def DFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, style
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[12],
-                     parent=block_id[1],
-                     source=port_id[31],
-                     target=port_id[25],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[12], block_id[1], port_id[31], port_id[25])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -320,11 +268,7 @@ def DFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, style
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[13],
-                     parent=block_id[1],
-                     source=port_id[30],
-                     target=port_id[20],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[13], block_id[1], port_id[30], port_id[20])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -332,11 +276,7 @@ def DFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, style
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[14],
-                     parent=block_id[1],
-                     source=port_id[22],
-                     target=port_id[29],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[14], block_id[1], port_id[22], port_id[29])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -344,11 +284,7 @@ def DFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, style
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[15],
-                     parent=block_id[1],
-                     source=port_id[24],
-                     target=port_id[2],
-                     style="CommandControlLink", value="")
+    CCLink = addCommandControlLink(root, link_id[15], block_id[1], port_id[24], port_id[2])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -356,11 +292,7 @@ def DFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, style
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[16],
-                     parent=block_id[1],
-                     source=port_id[21],
-                     target=port_id[17],
-                     style="CommandControlLink", value="")
+    CCLink = addCommandControlLink(root, link_id[16], block_id[1], port_id[21], port_id[17])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -368,11 +300,7 @@ def DFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, style
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[17],
-                     parent=block_id[1],
-                     source=port_id[19],
-                     target=port_id[49],
-                     style="CommandControlLink", value="")
+    CCLink = addCommandControlLink(root, link_id[17], block_id[1], port_id[19], port_id[49])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -380,11 +308,7 @@ def DFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, style
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[18],
-                     parent=block_id[1],
-                     source=port_id[3],
-                     target=port_id[18],
-                     style="CommandControlLink", value="")
+    CCLink = addCommandControlLink(root, link_id[18], block_id[1], port_id[3], port_id[18])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -392,11 +316,7 @@ def DFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, style
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[19],
-                     parent=block_id[1],
-                     source=port_id[12],
-                     target=port_id[15],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[19], block_id[1], port_id[12], port_id[15])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -404,11 +324,7 @@ def DFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, style
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[20],
-                     parent=block_id[1],
-                     source=port_id[14],
-                     target=port_id[5],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[20], block_id[1], port_id[14], port_id[5])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -416,11 +332,7 @@ def DFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, style
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[21],
-                     parent=block_id[1],
-                     source=port_id[13],
-                     target=port_id[33],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[21], block_id[1], port_id[13], port_id[33])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -428,11 +340,7 @@ def DFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, style
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[22],
-                     parent=block_id[1],
-                     source=port_id[0],
-                     target=port_id[45],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[22], block_id[1], port_id[0], port_id[45])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -440,11 +348,7 @@ def DFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, style
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[23],
-                     parent=block_id[1],
-                     source=port_id[7],
-                     target=port_id[8],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[23], block_id[1], port_id[7], port_id[8])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")

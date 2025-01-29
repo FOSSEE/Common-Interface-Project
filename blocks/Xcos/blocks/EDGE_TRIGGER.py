@@ -10,7 +10,7 @@ def EDGE_TRIGGER(outroot, attribid, ordering, geometry, parameters, parent=1, st
     if style is None:
         style = func_name
 
-    block_id, port_id, link_id = generate_id(6, 7, 4)
+    block_id, port_id, link_id = generate_id(6, 7, 3)
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'csuper', 'DEFAULT',
@@ -66,11 +66,7 @@ def EDGE_TRIGGER(outroot, attribid, ordering, geometry, parameters, parent=1, st
     CLKOUTV_f(root, block_id[5], ordering, geometry, ['1'])
     addControlPort(root, port_id[6], block_id[5], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="-1")
 
-    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[0],
-                     parent=link_id[3],
-                     source=port_id[5],
-                     target=port_id[1],
-                     style="CommandControlLink", value="")
+    CCLink = addCommandControlLink(root, link_id[0], block_id[1], port_id[5], port_id[1])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -78,11 +74,7 @@ def EDGE_TRIGGER(outroot, attribid, ordering, geometry, parameters, parent=1, st
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[0],
-                     parent=link_id[3],
-                     source=port_id[5],
-                     target=port_id[1],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[1], block_id[1], port_id[5], port_id[1])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -90,11 +82,7 @@ def EDGE_TRIGGER(outroot, attribid, ordering, geometry, parameters, parent=1, st
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[0],
-                     parent=link_id[3],
-                     source=port_id[5],
-                     target=port_id[1],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[2], block_id[1], port_id[5], port_id[1])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")

@@ -495,17 +495,30 @@ def addCommandPort(root, id, parent, ordering, initialState,
                   **kwargs)
 
 
-def addLink(node, subNodeType,
-            id, parent,
-            source, target,
-            style, value,
-            **kwargs):
-    newkwargs = {'id': id, 'parent': parent,
-                 'source': source,
-                 'target': target,
+def addLink(node, subNodeType, id, parent, source, target,
+            style, value, **kwargs):
+    newkwargs = {'id': id, 'parent': parent, 'source': source, 'target': target,
                  'style': style, 'value': value}
     newkwargs.update(kwargs)
     return addNode(node, subNodeType, **newkwargs)
+
+
+def addExplicitLink(node, id, parent, source, target,
+                    style=LINK_EXPLICIT, value="", **kwargs):
+    return addLink(node, LINK_EXPLICIT, id, parent, source, target,
+                   style, value, **kwargs)
+
+
+def addImplicitLink(node, id, parent, source, target,
+                    style=LINK_IMPLICIT, value="", **kwargs):
+    return addLink(node, LINK_IMPLICIT, id, parent, source, target,
+                   style, value, **kwargs)
+
+
+def addCommandControlLink(node, id, parent, source, target,
+                          style=LINK_COMMANDCONTROL, value="", **kwargs):
+    return addLink(node, LINK_COMMANDCONTROL, id, parent, source, target,
+                   style, value, **kwargs)
 
 
 def addGeoNode(node, subNodeType,

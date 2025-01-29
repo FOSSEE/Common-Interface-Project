@@ -103,11 +103,7 @@ def DLATCH(outroot, attribid, ordering, geometry, parameters, parent=1, style=No
     OUT_f(root, block_id[11], ordering, geometry, array)
     addExplicitInputPort(root, port_id[19], block_id[11], "1", "0.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[0],
-                     parent=block_id[1],
-                     source=port_id[14],
-                     target=port_id[19],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[0], block_id[1], port_id[14], port_id[19])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -115,11 +111,7 @@ def DLATCH(outroot, attribid, ordering, geometry, parameters, parent=1, style=No
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[1],
-                     parent=block_id[1],
-                     source=port_id[11],
-                     target=port_id[18],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[1], block_id[1], port_id[11], port_id[18])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -127,11 +119,7 @@ def DLATCH(outroot, attribid, ordering, geometry, parameters, parent=1, style=No
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[2],
-                     parent=block_id[1],
-                     source=port_id[17],
-                     target=port_id[4],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[2], block_id[1], port_id[17], port_id[4])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -139,11 +127,7 @@ def DLATCH(outroot, attribid, ordering, geometry, parameters, parent=1, style=No
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[3],
-                     parent=block_id[1],
-                     source=port_id[16],
-                     target=port_id[1],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[3], block_id[1], port_id[16], port_id[1])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -151,11 +135,7 @@ def DLATCH(outroot, attribid, ordering, geometry, parameters, parent=1, style=No
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[4],
-                     parent=block_id[1],
-                     source=port_id[13],
-                     target=port_id[10],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[4], block_id[1], port_id[13], port_id[10])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -163,11 +143,7 @@ def DLATCH(outroot, attribid, ordering, geometry, parameters, parent=1, style=No
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[5],
-                     parent=block_id[1],
-                     source=port_id[8],
-                     target=port_id[12],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[5], block_id[1], port_id[8], port_id[12])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -175,11 +151,7 @@ def DLATCH(outroot, attribid, ordering, geometry, parameters, parent=1, style=No
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[6],
-                     parent=block_id[1],
-                     source=port_id[0],
-                     target=port_id[5],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[6], block_id[1], port_id[0], port_id[5])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -187,11 +159,7 @@ def DLATCH(outroot, attribid, ordering, geometry, parameters, parent=1, style=No
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[7],
-                     parent=block_id[1],
-                     source=port_id[2],
-                     target=port_id[9],
-                     style="CommandControlLink", value="")
+    CCLink = addCommandControlLink(root, link_id[7], block_id[1], port_id[2], port_id[9])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -199,11 +167,7 @@ def DLATCH(outroot, attribid, ordering, geometry, parameters, parent=1, style=No
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[8],
-                     parent=block_id[1],
-                     source=port_id[6],
-                     target=port_id[7],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[8], block_id[1], port_id[6], port_id[7])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")

@@ -79,11 +79,7 @@ def ANDBLK(outroot, attribid, ordering, geometry, parameters, parent=1, style=No
     addCommandPort(root, port_id[11], block_id[7], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="-1")
     addCommandPort(root, port_id[12], block_id[7], "2", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="-1")
 
-    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[0],
-                     parent=block_id[1],
-                     source=port_id[12],
-                     target=port_id[7],
-                     style="CommandControlLink", value="")
+    CCLink = addCommandControlLink(root, link_id[0], block_id[1], port_id[12], port_id[7])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -91,11 +87,7 @@ def ANDBLK(outroot, attribid, ordering, geometry, parameters, parent=1, style=No
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[1],
-                     parent=block_id[1],
-                     source=port_id[11],
-                     target=port_id[2],
-                     style="CommandControlLink", value="")
+    CCLink = addCommandControlLink(root, link_id[1], block_id[1], port_id[11], port_id[2])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -103,11 +95,7 @@ def ANDBLK(outroot, attribid, ordering, geometry, parameters, parent=1, style=No
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[2],
-                     parent=block_id[1],
-                     source=port_id[0],
-                     target=port_id[6],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[2], block_id[1], port_id[0], port_id[6])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -115,11 +103,7 @@ def ANDBLK(outroot, attribid, ordering, geometry, parameters, parent=1, style=No
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[3],
-                     parent=block_id[1],
-                     source=port_id[8],
-                     target=port_id[4],
-                     style="CommandControlLink", value="")
+    CCLink = addCommandControlLink(root, link_id[3], block_id[1], port_id[8], port_id[4])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -127,11 +111,7 @@ def ANDBLK(outroot, attribid, ordering, geometry, parameters, parent=1, style=No
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[4],
-                     parent=block_id[1],
-                     source=port_id[5],
-                     target=port_id[10],
-                     style="CommandControlLink", value="")
+    CCLink = addCommandControlLink(root, link_id[4], block_id[1], port_id[5], port_id[10])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -139,11 +119,7 @@ def ANDBLK(outroot, attribid, ordering, geometry, parameters, parent=1, style=No
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[5],
-                     parent=block_id[1],
-                     source=port_id[3],
-                     target=port_id[1],
-                     style="CommandControlLink", value="")
+    CCLink = addCommandControlLink(root, link_id[5], block_id[1], port_id[3], port_id[1])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")

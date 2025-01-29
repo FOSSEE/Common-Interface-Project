@@ -70,22 +70,14 @@ def Sigbuilder(outroot, attribid, ordering, geometry, parameters, parent=1, styl
     CLKOUTV_f(root, block_id[5], ordering, geometry, p, parent=block_id[1])
     addControlPort(root, port_id[7], block_id[5], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
 
-    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[0],
-                     parent=block_id[1],
-                     source=port_id[2],
-                     target=port_id[3],
-                     style="", value="drawlink")
+    CCLink = addCommandControlLink(root, link_id[0], block_id[1], port_id[2], port_id[3], value="drawlink")
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="349.63473", y="600.47089")
     ArrayNode = addArray(gemotryNode, TYPE_ARRAY, a="points")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="349.49528", y="565.10704")
-    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[1],
-                     parent=block_id[1],
-                     source=port_id[5],
-                     target=port_id[1],
-                     style="", value="drawlink")
+    CCLink = addCommandControlLink(root, link_id[1], block_id[1], port_id[5], port_id[1], value="drawlink")
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint', a="sourcePoint",
                    x="349.49528", y="565.10704")
@@ -103,11 +95,7 @@ def Sigbuilder(outroot, attribid, ordering, geometry, parameters, parent=1, styl
     addmxPointNode(gemotryNode, 'mxPoint', a="targetPoint",
                    x="349.63473", y="651.89946")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[2],
-                     parent=block_id[1],
-                     source=port_id[0],
-                     target=port_id[6],
-                     style="", value="drawlink")
+    CCLink = addExplicitLink(root, link_id[2], block_id[1], port_id[0], port_id[6], value="drawlink")
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="378.20616", y="626.18517")
@@ -115,11 +103,7 @@ def Sigbuilder(outroot, attribid, ordering, geometry, parameters, parent=1, styl
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="398.20616", y="626.18517")
 
-    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[3],
-                     parent=block_id[1],
-                     source=port_id[4],
-                     target=port_id[7],
-                     style="", value="drawlink")
+    CCLink = addCommandControlLink(root, link_id[3], block_id[1], port_id[4], port_id[7], value="drawlink")
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="349.49528", y="565.10704")

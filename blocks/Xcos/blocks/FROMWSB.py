@@ -67,11 +67,7 @@ def FROMWSB(outroot, attribid, ordering, geometry, parameters, parent=1, style=N
     OUT_f(root, block_id[3], ordering, geometry, array)
     addExplicitInputPort(root, port_id[3], block_id[3], "1", "0.0")
 
-    CCLink = addLink(root, LINK_EXPLICIT, id=link_id[0],
-                     parent=block_id[1],
-                     source=port_id[0],
-                     target=port_id[3],
-                     style="ExplicitLink", value="")
+    CCLink = addExplicitLink(root, link_id[0], block_id[1], port_id[0], port_id[3])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
@@ -79,11 +75,7 @@ def FROMWSB(outroot, attribid, ordering, geometry, parameters, parent=1, style=N
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="20.0", y="-4.0")
 
-    CCLink = addLink(root, LINK_COMMANDCONTROL, id=link_id[1],
-                     parent=block_id[1],
-                     source=port_id[2],
-                     target=port_id[1],
-                     style="CommandControlLink", value="")
+    CCLink = addCommandControlLink(root, link_id[1], block_id[1], port_id[2], port_id[1])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="sourcePoint", x="0.0", y="11.0")
