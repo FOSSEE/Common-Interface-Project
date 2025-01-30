@@ -1,5 +1,5 @@
 // Main layout for gallery page.
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Container, CssBaseline, Grid, Typography, FormControl, InputLabel, Select, MenuItem, Input } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
@@ -107,22 +107,22 @@ const BookDropdown = ({ onBookChange }) => {
   const [selectedBook, setSelectedBook] = useState() // To store the selected book ID
 
   // Fetch books from the backend (optional, or use static data)
-  useEffect(() => {
-    const fetchBooks = async () => {
-      try {
-        const response = await fetch('/api/save/books') // Replace with your API endpoint
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`)
-        }
-        const data = await response.json()
-        setBooks(data) // Assuming the API returns an array of books
-      } catch (error) {
-        console.error('Error fetching books:', error)
+  const fetchBooks = useCallback(async () => {
+    try {
+      const response = await fetch('/api/save/books') // Replace with your API endpoint
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`)
       }
+      const data = await response.json()
+      setBooks(data) // Assuming the API returns an array of books
+    } catch (error) {
+      console.error('Error fetching books:', error)
     }
-
-    fetchBooks()
   }, [])
+
+  useEffect(() => {
+    fetchBooks()
+  }, [fetchBooks])
 
   // Handle dropdown selection change
   const handleChange = (event) => {
