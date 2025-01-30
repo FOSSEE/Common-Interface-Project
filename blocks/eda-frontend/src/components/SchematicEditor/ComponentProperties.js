@@ -225,7 +225,7 @@ export default function ComponentProperties () {
   const getInputValues = (evt) => {
     const value = evt.target.value.trim() // Trim to remove leading and trailing whitespace
     const fieldName = evt.target.id
-    const fieldRoot = fieldName.substr(0, 4)
+    const fieldRoot = fieldName.substring(0, 4)
     const typeId = fieldRoot + '_type'
     const fieldType = compProperties && compProperties[typeId]
     let isValid = true
@@ -242,7 +242,7 @@ export default function ComponentProperties () {
         // For double type, check if the input is a valid number
         isValid = !isNaN(value) && !Number.isNaN(parseFloat(value))
         break
-        // Add more cases for other types as needed
+      // Add more cases for other types as needed
       default:
         // For other types, no specific validation
         isValid = true

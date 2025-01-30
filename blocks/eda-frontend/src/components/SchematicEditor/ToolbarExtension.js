@@ -34,7 +34,7 @@ import {
 import { makeStyles } from '@material-ui/core/styles'
 import CloseIcon from '@material-ui/icons/Close'
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchSchematics, fetchSchematic, loadGallery, fetchGallery } from '../../redux/actions/index'
+import { fetchSchematics, fetchSchematic, fetchDiagram, fetchGallery } from '../../redux/actions/index'
 import { blue } from '@material-ui/core/colors'
 import { getDateTime as getDate } from '../../utils/GalleryUtils'
 
@@ -446,7 +446,7 @@ export function OpenSchDialog (props) {
                                   <Button
                                     size='small'
                                     color='primary'
-                                    onClick={() => { dispatch(loadGallery(sch.save_id.substr(7, sch.save_id.length))) }}
+                                    onClick={() => { dispatch(fetchDiagram(sch.save_id)) }}
                                     variant={details.save_id === undefined ? 'outlined' : details.save_id !== sch.save_id ? 'outlined' : 'contained'}
                                   >
                                     Launch

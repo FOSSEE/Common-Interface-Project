@@ -127,7 +127,7 @@ export const fetchSchematic = (saveId) => (dispatch, getState) => {
     .catch((err) => { console.error(err) })
 }
 
-export const fetchDiagram = (saveId) => (dispatch, getState) => {
+export const fetchDiagram = (saveId) => (dispatch) => {
   api.get('save/gallery/' + saveId)
     .then(
       (res) => {

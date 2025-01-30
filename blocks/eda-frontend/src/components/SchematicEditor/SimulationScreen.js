@@ -469,7 +469,7 @@ export default function SimulationScreen ({ open, close }) {
       const x = parseFloat(data[8])
       const y = parseFloat(data[9])
       // store 2d-data
-      if (block !== 12) {
+      if (block !== SinkBlocks.CMATVIEW) {
         addPointToGraph(figureId, [x, y])
       } else {
         const values = getPointsForData(data, data[8], data[10])
@@ -770,19 +770,19 @@ export default function SimulationScreen ({ open, close }) {
                           })
                           : <div />
                       }
-                      </>
+                    </>
                     : (isGraph === 'false') ? <span>{typography1}</span> : <span />
                 }
                 {/* Diplay of Simulation parameter Not present */}
                 {
                   (error !== '')
                     ? <Grid item xs={12} sm={12}>
-                    <Paper className={classes.paper}>
-                      <Typography variant='h4' align='center' gutterBottom>
-                        {error}
-                      </Typography>
-                    </Paper>
-                  </Grid>
+                      <Paper className={classes.paper}>
+                        <Typography variant='h4' align='center' gutterBottom>
+                          {error}
+                        </Typography>
+                      </Paper>
+                    </Grid>
                     : <span />
                 }
                 {/* Display text result */}

@@ -35,7 +35,6 @@ export default function SchematicEditor (props) {
   const dispatch = useDispatch()
   const [mobileOpen, setMobileOpen] = useState(false)
   const isLoading = useSelector(state => state.saveSchematicReducer.isLoading)
-  const data = useSelector(state => state.saveSchematicReducer.data)
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
@@ -52,7 +51,7 @@ export default function SchematicEditor (props) {
       const query = new URLSearchParams(props.location.search)
       const cktid = query.get('id')
 
-      if (cktid.substr(0, 7) === 'gallery') {
+      if (cktid.substring(0, 7) === 'gallery') {
         // Loading Gallery schemaic.
 
         dispatch(fetchDiagram(cktid))
