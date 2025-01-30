@@ -50,7 +50,15 @@
         <xsl:attribute name="tary">0</xsl:attribute>
         <xsl:apply-templates select="node()"/>
         <Object display_parameter="" as="displayProperties"/>
-        <Object p000_value="1 3 5 7 9 11 13 15" p001_value="-1" p002_value="[]" p003_value="[600;400]" p004_value="-2" p005_value="2" p006_value="30" p007_value="20" p008_value="0" p009_value="" as="parameter_values"/>
+        <!-- <Object p000_value="1 3 5 7 9 11 13 15" p001_value="-1" p002_value="[]" p003_value="[600;400]" p004_value="-2" p005_value="2" p006_value="30" p007_value="20" p008_value="0" p009_value="" as="parameter_values"/> -->
+        <Object>
+          <xsl:for-each select="*[@as='exprs']/data">
+            <xsl:attribute name="{concat('p', format-number(position() - 1, '000'), '_value')}">
+              <xsl:value-of select="@value"/>
+            </xsl:attribute>
+          </xsl:for-each>
+          <xsl:attribute name="as">parameter_values</xsl:attribute>
+        </Object>
       </xsl:element>
       <xsl:call-template name="port">
         <xsl:with-param name="id" select="@id"/>

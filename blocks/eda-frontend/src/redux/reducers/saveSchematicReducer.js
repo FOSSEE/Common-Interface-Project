@@ -54,6 +54,13 @@ export default function saveSchematicReducer (state = initialState, action) {
       }
     }
 
+    case actions.FETCH_DIAGRAM: {
+      return {
+        ...state,
+        data: action.payload
+      }
+    }
+
     case actions.SET_SCH_TITLE: {
       return {
         ...state,

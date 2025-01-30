@@ -1,7 +1,8 @@
 import * as actions from '../actions/actions'
 
 const InitialState = {
-  schematics: []
+  schematics: [],
+  gallery: []
 }
 
 export default function dashboardReducer (state = InitialState, action) {
@@ -10,6 +11,13 @@ export default function dashboardReducer (state = InitialState, action) {
       return {
         ...state,
         schematics: action.payload
+      }
+    }
+
+    case actions.FETCH_GALLERY: {
+      return {
+        ...state,
+        gallery: action.payload
       }
     }
 
