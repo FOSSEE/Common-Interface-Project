@@ -1,5 +1,5 @@
 // Main Layout for Schemaic Editor page.
-import React, { createRef, useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import { TailSpin } from 'react-loader-spinner'
 import { CssBaseline } from '@material-ui/core'
@@ -29,9 +29,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SchematicEditor (props) {
   const classes = useStyles()
-  const compRef = createRef()
-  const gridRef = createRef()
-  const outlineRef = createRef()
+  const compRef = useRef()
+  const gridRef = useRef()
+  const outlineRef = useRef()
   const dispatch = useDispatch()
   const [mobileOpen, setMobileOpen] = useState(false)
   const isLoading = useSelector(state => state.saveSchematicReducer.isLoading)

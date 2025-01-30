@@ -1,4 +1,4 @@
-import React, { createRef, useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import { List, ListItemText, Tooltip, Popover } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SideComp ({ component }) {
   const classes = useStyles()
-  const imageRef = createRef()
+  const imageRef = useRef()
 
   const [anchorEl, setAnchorEl] = useState(null)
 
@@ -70,16 +70,16 @@ export default function SideComp ({ component }) {
 
           {
             component.categories.length === 1 &&
-              <ListItemText>
-                <b>{link2}:</b> {component.categories[0].name}
-              </ListItemText>
+            <ListItemText>
+              <b>{link2}:</b> {component.categories[0].name}
+            </ListItemText>
           }
 
           {
             component.categories.length > 1 &&
-              <ListItemText>
-                <b>{link3}:</b> {component.categories.map((c) => <li key={c.id}>{c.name}</li>)}
-              </ListItemText>
+            <ListItemText>
+              <b>{link3}:</b> {component.categories.map((c) => <li key={c.id}>{c.name}</li>)}
+            </ListItemText>
           }
 
         </List>
