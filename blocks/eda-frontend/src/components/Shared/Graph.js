@@ -162,6 +162,7 @@ class Graph extends Component {
           max: parseFloat(datapoint.datapointXMax)
         },
         yAxis: {
+          tickInterval: (datapoint.datapointYMax - datapoint.datapointYMin) / 4,
           title: {
             rotation: 0,
             style: {
