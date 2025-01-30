@@ -14,6 +14,10 @@ load_dotenv()
 
 GITHUB_USERNAME = os.environ.get('GITHUB_USERNAME', '')
 GITHUB_PASSWORD = os.environ.get('GITHUB_PASSWORD', '')
+SKIP_COUNT = int(os.environ.get('SKIP_COUNT', '0'))
+FETCH_COUNT = int(os.environ.get('FETCH_COUNT', '100'))
+
+sys.tracebacklimit = 0
 
 # Set up the WebDriver
 service = ChromeService(ChromeDriverManager().install())
@@ -107,6 +111,13 @@ def main():
     driver.get("http://localhost/#/gallery")
 
     try:
+        wait.until(EC.presence_of_element_located((By.CLASS_NAME, "MuiSelect-root")))
+        select = driver.find_element(By.CLASS_NAME, "MuiSelect-root")
+        select.click()
+
+        option = driver.find_element(By.XPATH, "//li[contains(text(), 'All Books')]")
+        option.click()
+
         # Wait until the gallery page is loaded
         wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "a[target='_blank'][href*='/editor?id=']")))
 
@@ -117,7 +128,14 @@ def main():
         savecount = 0
 
         # Click each "Launch in Editor" button and save
-        for button in buttons:
+        for i, button in enumerate(buttons):
+            if i < SKIP_COUNT:
+                print(f"{i + 1}/{count}: Skipping ")
+                continue
+            if savecount > FETCH_COUNT:
+                print(f"{i + 1}/{count}: Skipping ")
+                break
+
             button.click()
             driver.switch_to.window(driver.window_handles[-1])  # Switch to the newly opened editor tab/window
 
@@ -130,16 +148,19 @@ def main():
             # Click the "Save" button
             ActionChains(driver).move_to_element(save_button).click().perform()
 
-            # Optionally, you can verify the snackbar message if needed
-            wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "MuiSnackbar-root")))
+            try:
+                # Optionally, you can verify the snackbar message if needed
+                wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "MuiSnackbar-root")))
 
-            # Verify the share button is displayed
-            wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="root"]/div/header/div[1]/button[2]')))
+                # Verify the share button is displayed
+                wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="root"]/div/header/div[1]/button[2]')))
 
-            # Verify the "last saved" text is displayed
-            last_saved_text = wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="root"]/div/header/div[1]/p')))
-            savecount += 1
-            print(f"[{savecount}/{count}]: {last_saved_text.text}")
+                # Verify the "last saved" text is displayed
+                last_saved_text = wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="root"]/div/header/div[1]/p')))
+                savecount += 1
+                print(f"[{i + 1}/{count}]: {last_saved_text.text}")
+            except Exception:
+                print(f"[{i + 1}/{count}]: Error while saving diagram")
 
             # Close the editor tab/window and switch back to the gallery
             driver.close()
