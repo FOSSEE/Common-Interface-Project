@@ -129,11 +129,13 @@ def main():
 
         # Click each "Launch in Editor" button and save
         for i, button in enumerate(buttons):
-            if i < SKIP_COUNT:
-                print(f"{i + 1}/{count}: Skipping ")
+            if i == SKIP_COUNT - 1:
+                print(f"[{i + 1:3d}/{count}]: Skipping ")
                 continue
-            if savecount > FETCH_COUNT:
-                print(f"{i + 1}/{count}: Skipping ")
+            if i < SKIP_COUNT:
+                continue
+            if savecount >= FETCH_COUNT:
+                print(f"[{i + 1:3d}/{count}]: Skipping ")
                 break
 
             button.click()
@@ -158,9 +160,9 @@ def main():
                 # Verify the "last saved" text is displayed
                 last_saved_text = wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="root"]/div/header/div[1]/p')))
                 savecount += 1
-                print(f"[{i + 1}/{count}]: {last_saved_text.text}")
+                print(f"[{i + 1:3d}/{count}]: {last_saved_text.text}")
             except Exception:
-                print(f"[{i + 1}/{count}]: Error while saving diagram")
+                print(f"[{i + 1:3d}/{count}]: Error while saving diagram")
 
             # Close the editor tab/window and switch back to the gallery
             driver.close()
@@ -171,7 +173,7 @@ def main():
         print(f"Error while saving diagram: {str(e)}")
 
     finally:
-        print(f"[{savecount}/{count}] 'Launch in Editor' buttons have been clicked and saved.")
+        print(f"[{savecount:3d}/{count}] 'Launch in Editor' buttons have been clicked and saved.")
         # Keep the browser open until manually closed
         input("Press Enter to close the browser...")
         driver.quit()
