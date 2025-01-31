@@ -14,9 +14,12 @@ def CMSCOPE(outroot, attribid, ordering, geometry, parameters, parent=1, style=N
                          )
 
     addExprsNode(outnode, TYPE_STRING, 11, parameters)
+    a = parameters[7].split()
+    a1 = parameters[5].split()
+    a2 = parameters[6].split()
     addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM,
-                 7, realParts=[0.0, 0.25, 0.25, -15.0, 15.0, -15.0, 15.0])
-    array = ['-1', '2', '2', '-1', '-1', '-1', '-1', '1', '1', '1', '3', '0']
+                 7, realParts=[parameters[9], a[0], a[1], a1[0], a2[0], a1[1], a2[1]])
+    array = ['-1', '2', parameters[8], '-1', '-1', '-1', '-1', '1', '1', '1', '3', '0']
     addPrecNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 12, array)
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
     array = ['0']
