@@ -252,6 +252,7 @@ class StreamView(APIView):
             self.duplicatelineno = 0
             self.duplicatelines = 0
             lastline = ''
+            lastlogtime = -1
             lineno = 0
             line = None
             starttime = time.time()
@@ -276,14 +277,21 @@ class StreamView(APIView):
                 if lastline != line:
                     self.handle_duplicate_lines()
                     lastline = line
-                    log_size += len(line)
                     if state == DATA:
                         words = line.split()
                         if len(words) == 15 and words[-1] == 'CSCOPE':
-                            interval = starttime + float(words[8]) - time.time() - 0.1
+                            logtime = float(words[8])
+                            totallogtime = float(words[-2])
+                            if logtime < lastlogtime + 0.001 * totallogtime:
+                                line = None
+                                continue
+                            lastlogtime = logtime
+                            interval = starttime + logtime - time.time() - 0.1
                             if interval > 0:
                                 time.sleep(interval)
-                        yield "event: log\ndata: %s\n\n" % line
+                        send_line = "event: log\ndata: %s\n\n" % line
+                        log_size += len(send_line)
+                        yield send_line
                 else:
                     self.duplicatelineno += 1
                 lineno += 1
