@@ -67,6 +67,8 @@ class Graph extends Component {
                   clearInterval(myInterval)
                 }
               }
+              statusDone = false
+              statusClosed = false
               myInterval = setInterval(addPoints, 450)
             }
           },
