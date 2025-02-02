@@ -34,16 +34,10 @@ def INTEGRAL_m(outroot, attribid, ordering, geometry, parameters, parent=1, styl
 
 
 def get_from_INTEGRAL_m(cell):
-    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
-
-    display_parameter = ''
+    (parameters, display_parameter, eiv, iiv, con, eov, iov, com) = getParametersFromExprsNode(cell, TYPE_STRING)
 
     eiv = 2 if parameters[1] == '1' else 1
-    iiv = ''
     con = 1 if parameters[1] == '1' else 0
-    eov = ''
-    iov = ''
-    com = ''
 
     ports = [eiv, iiv, con, eov, iov, com]
 

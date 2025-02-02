@@ -91,16 +91,9 @@ def FROMWSB(outroot, attribid, ordering, geometry, parameters, parent=1, style=N
 
 
 def get_from_FROMWSB(cell):
-    parameters = getParametersFromExprsNode(cell, TYPE_DOUBLE)
+    (parameters, display_parameter, eiv, iiv, con, eov, iov, com) = getParametersFromExprsNode(cell, TYPE_DOUBLE)
 
     display_parameter = parameters[0]
-
-    eiv = ''
-    iiv = ''
-    con = ''
-    eov = ''
-    iov = ''
-    com = ''
 
     ports = [eiv, iiv, con, eov, iov, com]
 

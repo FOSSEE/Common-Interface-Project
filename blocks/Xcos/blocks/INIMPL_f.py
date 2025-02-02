@@ -58,16 +58,9 @@ def INIMPL_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=
 
 
 def get_from_INIMPL_f(cell):
-    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
+    (parameters, display_parameter, eiv, iiv, con, eov, iov, com) = getParametersFromExprsNode(cell, TYPE_STRING)
 
     display_parameter = parameters[0]
-
-    eiv = ''
-    iiv = ''
-    con = ''
-    eov = ''
-    iov = ''
-    com = ''
 
     ports = [eiv, iiv, con, eov, iov, com]
 

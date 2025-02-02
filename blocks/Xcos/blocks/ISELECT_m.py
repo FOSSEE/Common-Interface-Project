@@ -32,16 +32,10 @@ def ISELECT_m(outroot, attribid, ordering, geometry, parameters, parent=1, style
 
 
 def get_from_ISELECT_m(cell):
-    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
+    (parameters, display_parameter, eiv, iiv, con, eov, iov, com) = getParametersFromExprsNode(cell, TYPE_STRING)
 
-    display_parameter = ''
-
-    eiv = ''
-    iiv = ''
     con = int(float(parameters[1]))
     eov = int(float(parameters[1]))
-    iov = ''
-    com = ''
 
     ports = [eiv, iiv, con, eov, iov, com]
 

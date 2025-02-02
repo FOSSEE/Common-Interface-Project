@@ -35,16 +35,10 @@ def MATZREIM(outroot, attribid, ordering, geometry, parameters, parent=1, style=
 
 
 def get_from_MATZREIM(cell):
-    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
-
-    display_parameter = ''
+    (parameters, display_parameter, eiv, iiv, con, eov, iov, com) = getParametersFromExprsNode(cell, TYPE_STRING)
 
     eiv = int(parameters[0])
-    iiv = ''
-    con = ''
     eov = 2 if parameters[0] == '1' else 1
-    iov = ''
-    com = ''
 
     ports = [eiv, iiv, con, eov, iov, com]
 

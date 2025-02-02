@@ -33,16 +33,9 @@ def DEBUG(outroot, attribid, ordering, geometry, parameters, parent=1, style=Non
 
 
 def get_from_DEBUG(cell):
-    parameters = getParametersFromExprsNode(cell)
+    (parameters, display_parameter, eiv, iiv, con, eov, iov, com) = getParametersFromExprsNode(cell, TYPE_STRING)
 
     display_parameter = parameters[0]
-
-    eiv = ''
-    iiv = ''
-    con = ''
-    eov = ''
-    iov = ''
-    com = ''
 
     ports = [eiv, iiv, con, eov, iov, com]
 

@@ -19,16 +19,11 @@ def TEXT_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=No
 
 
 def get_from_TEXT_f(cell):
+    (parameters, display_parameter, eiv, iiv, con, eov, iov, com) = getParametersFromExprsNode(None)
+
     parameters = [cell.attrib['value']]
 
     display_parameter = parameters[0]
-
-    eiv = ''
-    iiv = ''
-    con = ''
-    eov = ''
-    iov = ''
-    com = ''
 
     ports = [eiv, iiv, con, eov, iov, com]
 

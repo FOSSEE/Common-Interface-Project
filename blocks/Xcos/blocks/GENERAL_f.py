@@ -34,15 +34,8 @@ def GENERAL_f(outroot, attribid, ordering, geometry, parameters, parent=1, style
 
 
 def get_from_GENERAL_f(cell):
-    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
+    (parameters, display_parameter, eiv, iiv, con, eov, iov, com) = getParametersFromExprsNode(cell, TYPE_STRING)
 
-    display_parameter = ''
-
-    eiv = ''
-    iiv = ''
-    con = ''
-    eov = ''
-    iov = ''
     com = int(float(parameters[1]))
 
     ports = [eiv, iiv, con, eov, iov, com]

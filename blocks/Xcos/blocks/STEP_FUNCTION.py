@@ -105,16 +105,7 @@ def STEP_FUNCTION(outroot, attribid, ordering, geometry, parameters, parent=1, s
 
 
 def get_from_STEP_FUNCTION(cell):
-    parameters = getParametersFromExprsNode(cell, TYPE_DOUBLE)
-
-    display_parameter = ''
-
-    eiv = ''
-    iiv = ''
-    con = ''
-    eov = ''
-    iov = ''
-    com = ''
+    (parameters, display_parameter, eiv, iiv, con, eov, iov, com) = getParametersFromExprsNode(cell, TYPE_DOUBLE)
 
     ports = [eiv, iiv, con, eov, iov, com]
 

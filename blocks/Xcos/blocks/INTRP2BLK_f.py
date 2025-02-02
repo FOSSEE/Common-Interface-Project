@@ -56,16 +56,7 @@ def INTRP2BLK_f(outroot, attribid, ordering, geometry, parameters, parent=1, sty
 
 
 def get_from_INTRP2BLK_f(cell):
-    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
-
-    display_parameter = ''
-
-    eiv = ''
-    iiv = ''
-    con = ''
-    eov = ''
-    iov = ''
-    com = ''
+    (parameters, display_parameter, eiv, iiv, con, eov, iov, com) = getParametersFromExprsNode(cell, TYPE_STRING)
 
     ports = [eiv, iiv, con, eov, iov, com]
 

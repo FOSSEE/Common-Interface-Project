@@ -100,16 +100,7 @@ def CLOCK_c(outroot, attribid, ordering, geometry, parameters, parent=1, style=N
 
 
 def get_from_CLOCK_c(cell):
-    parameters = getParametersFromExprsNode(cell, TYPE_DOUBLE)
-
-    display_parameter = ''
-
-    eiv = ''
-    iiv = ''
-    con = ''
-    eov = ''
-    iov = ''
-    com = ''
+    (parameters, display_parameter, eiv, iiv, con, eov, iov, com) = getParametersFromExprsNode(cell, TYPE_DOUBLE)
 
     ports = [eiv, iiv, con, eov, iov, com]
 

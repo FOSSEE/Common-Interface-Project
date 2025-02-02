@@ -42,15 +42,11 @@ def generic_block3(outroot, attribid, ordering, geometry, parameters, parent=1, 
 
 
 def get_from_generic_block3(cell):
-    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
+    (parameters, display_parameter, eiv, iiv, con, eov, iov, com) = getParametersFromExprsNode(cell, TYPE_STRING)
 
     display_parameter = parameters[0]
 
-    eiv = ''
-    iiv = ''
     con = 1 if parameters[6] != '[]' and int(float(parameters[6])) == 1 else 0
-    eov = ''
-    iov = ''
     com = 1 if parameters[7] != '[]' and int(float(parameters[7])) == 1 else 0
 
     ports = [eiv, iiv, con, eov, iov, com]

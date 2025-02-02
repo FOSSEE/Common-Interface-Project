@@ -31,16 +31,9 @@ def DEMUX_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=N
 
 
 def get_from_DEMUX_f(cell):
-    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
+    (parameters, display_parameter, eiv, iiv, con, eov, iov, com) = getParametersFromExprsNode(cell, TYPE_STRING)
 
-    display_parameter = ''
-
-    eiv = ''
-    iiv = ''
-    con = ''
     eov = int(float(parameters[0]))
-    iov = ''
-    com = ''
 
     ports = [eiv, iiv, con, eov, iov, com]
 

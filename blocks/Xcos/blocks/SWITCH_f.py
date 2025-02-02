@@ -33,16 +33,11 @@ def SWITCH_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=
 
 
 def get_from_SWITCH_f(cell):
-    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
+    (parameters, display_parameter, eiv, iiv, con, eov, iov, com) = getParametersFromExprsNode(cell, TYPE_STRING)
 
     display_parameter = parameters[1]
 
     eiv = int(float(parameters[0]))
-    iiv = ''
-    con = ''
-    eov = ''
-    iov = ''
-    com = ''
 
     ports = [eiv, iiv, con, eov, iov, com]
 

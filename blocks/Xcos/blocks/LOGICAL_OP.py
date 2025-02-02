@@ -43,17 +43,12 @@ def LOGICAL_OP(outroot, attribid, ordering, geometry, parameters, parent=1, styl
 
 
 def get_from_LOGICAL_OP(cell):
-    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
+    (parameters, display_parameter, eiv, iiv, con, eov, iov, com) = getParametersFromExprsNode(cell, TYPE_STRING)
 
     logical_operators = ['AND', 'OR', 'NAND', 'NOR', 'XOR', 'NOT']
     display_parameter = logical_operators[int(float(parameters[1]))]
 
     eiv = int(float(parameters[0]))
-    iiv = ''
-    con = ''
-    eov = ''
-    iov = ''
-    com = ''
 
     ports = [eiv, iiv, con, eov, iov, com]
 

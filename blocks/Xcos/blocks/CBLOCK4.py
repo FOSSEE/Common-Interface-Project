@@ -52,15 +52,11 @@ def CBLOCK4(outroot, attribid, ordering, geometry, parameters, parent=1, style=N
 
 
 def get_from_CBLOCK4(cell):
-    parameters = getParametersFromExprsNode(cell)
+    (parameters, display_parameter, eiv, iiv, con, eov, iov, com) = getParametersFromExprsNode(cell, TYPE_STRING)
 
     display_parameter = parameters[0]
 
-    eiv = ''
-    iiv = ''
     con = 1 if parameters[6] != '[]' and int(float(parameters[6])) == 1 else 0
-    eov = ''
-    iov = ''
     com = 1 if parameters[7] != '[]' and int(float(parameters[7])) == 1 else 0
 
     ports = [eiv, iiv, con, eov, iov, com]

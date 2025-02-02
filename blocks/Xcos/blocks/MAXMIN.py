@@ -31,16 +31,11 @@ def MAXMIN(outroot, attribid, ordering, geometry, parameters, parent=1, style=No
 
 
 def get_from_MAXMIN(cell):
-    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
+    (parameters, display_parameter, eiv, iiv, con, eov, iov, com) = getParametersFromExprsNode(cell, TYPE_STRING)
 
     display_parameter = 'MIN' if parameters[0] == '1' else 'MAX'
 
     eiv = 1 if parameters[1] == '1' else 2
-    iiv = ''
-    con = ''
-    eov = ''
-    iov = ''
-    com = ''
 
     ports = [eiv, iiv, con, eov, iov, com]
 

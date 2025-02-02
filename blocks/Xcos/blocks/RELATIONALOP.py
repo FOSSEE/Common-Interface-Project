@@ -41,17 +41,10 @@ def RELATIONALOP(outroot, attribid, ordering, geometry, parameters, parent=1, st
 
 
 def get_from_RELATIONALOP(cell):
-    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
+    (parameters, display_parameter, eiv, iiv, con, eov, iov, com) = getParametersFromExprsNode(cell, TYPE_STRING)
 
     operators = ['==', '~=', '<', '<=', '>', '>=']
     display_parameter = operators[int(float(parameters[0]))]
-
-    eiv = ''
-    iiv = ''
-    con = ''
-    eov = ''
-    iov = ''
-    com = ''
 
     ports = [eiv, iiv, con, eov, iov, com]
 

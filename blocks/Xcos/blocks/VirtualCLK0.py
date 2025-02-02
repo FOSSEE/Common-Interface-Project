@@ -30,16 +30,7 @@ def VirtualCLK0(outroot, attribid, ordering, geometry, parameters, parent=1, sty
 
 
 def get_from_VirtualCLK0(cell):
-    parameters = getParametersFromExprsNode(cell, TYPE_DOUBLE)
-
-    display_parameter = ''
-
-    eiv = ''
-    iiv = ''
-    con = ''
-    eov = ''
-    iov = ''
-    com = ''
+    (parameters, display_parameter, eiv, iiv, con, eov, iov, com) = getParametersFromExprsNode(cell, TYPE_DOUBLE)
 
     ports = [eiv, iiv, con, eov, iov, com]
 

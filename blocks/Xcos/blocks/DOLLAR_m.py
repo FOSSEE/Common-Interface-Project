@@ -31,16 +31,9 @@ def DOLLAR_m(outroot, attribid, ordering, geometry, parameters, parent=1, style=
 
 
 def get_from_DOLLAR_m(cell):
-    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
+    (parameters, display_parameter, eiv, iiv, con, eov, iov, com) = getParametersFromExprsNode(cell, TYPE_STRING)
 
-    display_parameter = ''
-
-    eiv = ''
-    iiv = ''
     con = 1 if float(parameters[1]) == 0.0 else 0
-    eov = ''
-    iov = ''
-    com = ''
 
     ports = [eiv, iiv, con, eov, iov, com]
 

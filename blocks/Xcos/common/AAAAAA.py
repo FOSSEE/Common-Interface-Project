@@ -293,10 +293,12 @@ def addExprsArrayNode(node, subSubNodeType, height, parameters,
     return subNode
 
 
-def getParametersFromExprsNode(node, subNodeType):
+def getParametersFromExprsNode(node, subNodeType=TYPE_STRING):
     parameters = []
 
-    if isinstance(node, dict):
+    if node is None:
+        pass
+    elif isinstance(node, dict):
         parameters = node['parameters']
     else:
         tag = subNodeType + '[@as="exprs"]'
@@ -309,7 +311,16 @@ def getParametersFromExprsNode(node, subNodeType):
         else:
             print(tag, ': Not found')
 
-    return parameters
+    display_parameter = ''
+
+    eiv = ''
+    iiv = ''
+    con = ''
+    eov = ''
+    iov = ''
+    com = ''
+
+    return (parameters, display_parameter, eiv, iiv, con, eov, iov, com)
 
 
 # Super Block Diagram

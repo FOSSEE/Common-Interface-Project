@@ -34,16 +34,9 @@ def MUX(outroot, attribid, ordering, geometry, parameters, parent=1, style=None)
 
 
 def get_from_MUX(cell):
-    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
-
-    display_parameter = ''
+    (parameters, display_parameter, eiv, iiv, con, eov, iov, com) = getParametersFromExprsNode(cell, TYPE_STRING)
 
     eiv = int(float(parameters[0]))
-    iiv = ''
-    con = ''
-    eov = ''
-    iov = ''
-    com = ''
 
     ports = [eiv, iiv, con, eov, iov, com]
 

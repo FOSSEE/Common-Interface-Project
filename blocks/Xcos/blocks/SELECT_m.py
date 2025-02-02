@@ -32,16 +32,12 @@ def SELECT_m(outroot, attribid, ordering, geometry, parameters, parent=1, style=
 
 
 def get_from_SELECT_m(cell):
-    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
+    (parameters, display_parameter, eiv, iiv, con, eov, iov, com) = getParametersFromExprsNode(cell, TYPE_STRING)
 
     display_parameter = parameters[10]
 
     eiv = int(float(parameters[1]))
-    iiv = ''
     con = int(float(parameters[1]))
-    eov = ''
-    iov = ''
-    com = ''
 
     ports = [eiv, iiv, con, eov, iov, com]
 

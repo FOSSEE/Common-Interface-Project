@@ -38,16 +38,9 @@ def MATSING(outroot, attribid, ordering, geometry, parameters, parent=1, style=N
 
 
 def get_from_MATSING(cell):
-    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
+    (parameters, display_parameter, eiv, iiv, con, eov, iov, com) = getParametersFromExprsNode(cell, TYPE_STRING)
 
-    display_parameter = ''
-
-    eiv = ''
-    iiv = ''
-    con = ''
     eov = 3 if parameters[1] == '2' else 1
-    iov = ''
-    com = ''
 
     ports = [eiv, iiv, con, eov, iov, com]
 

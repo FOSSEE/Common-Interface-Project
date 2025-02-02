@@ -32,24 +32,15 @@ def CONVERT(outroot, attribid, ordering, geometry, parameters, parent=1, style=N
 
 
 def get_from_CONVERT(cell):
-    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
+    (parameters, display_parameter, eiv, iiv, con, eov, iov, com) = getParametersFromExprsNode(cell, TYPE_STRING)
 
     types = ['decim.', 'decim.', 'int32', 'int16',
              'int8', 'uint32', 'uint16', 'uint8']
     input_t = int(float(parameters[0]))
     output_t = int(float(parameters[1]))
-
     input_type = types[input_t - 1]
     output_type = types[output_t - 1]
-
     display_parameter = input_type + ',' + output_type
-
-    eiv = ''
-    iiv = ''
-    con = ''
-    eov = ''
-    iov = ''
-    com = ''
 
     ports = [eiv, iiv, con, eov, iov, com]
 

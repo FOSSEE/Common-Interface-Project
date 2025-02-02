@@ -35,17 +35,11 @@ def CMSCOPE(outroot, attribid, ordering, geometry, parameters, parent=1, style=N
 
 
 def get_from_CMSCOPE(cell):
-    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
+    (parameters, display_parameter, eiv, iiv, con, eov, iov, com) = getParametersFromExprsNode(cell, TYPE_STRING)
 
-    display_parameter = ''
     input = parameters[0].split(' ')
-
     eiv = len(input)
-    iiv = ''
     con = 1 if int(float(parameters[9])) == 0 else 0
-    eov = ''
-    iov = ''
-    com = ''
 
     ports = [eiv, iiv, con, eov, iov, com]
 

@@ -39,16 +39,11 @@ def TOWS_c(outroot, attribid, ordering, geometry, parameters, parent=1, style=No
 
 
 def get_from_TOWS_c(cell):
-    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
+    (parameters, display_parameter, eiv, iiv, con, eov, iov, com) = getParametersFromExprsNode(cell, TYPE_STRING)
 
     display_parameter = parameters[1] + ',' + parameters[0]
 
-    eiv = ''
-    iiv = ''
     con = 1 if parameters[2] == '0' else 0
-    eov = ''
-    iov = ''
-    com = ''
 
     ports = [eiv, iiv, con, eov, iov, com]
 

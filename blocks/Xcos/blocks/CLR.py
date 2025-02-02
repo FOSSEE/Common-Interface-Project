@@ -36,18 +36,11 @@ def CLR(outroot, attribid, ordering, geometry, parameters, parent=1, style=None)
 
 
 def get_from_CLR(cell):
-    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
+    (parameters, display_parameter, eiv, iiv, con, eov, iov, com) = getParametersFromExprsNode(cell, TYPE_STRING)
 
     dp1 = get_value_min(parameters[0])
     dp2 = get_value_min(parameters[1])
     display_parameter = dp1 + ',' + dp2
-
-    eiv = ''
-    iiv = ''
-    con = ''
-    eov = ''
-    iov = ''
-    com = ''
 
     ports = [eiv, iiv, con, eov, iov, com]
 

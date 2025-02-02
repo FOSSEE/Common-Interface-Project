@@ -32,16 +32,9 @@ def M_freq(outroot, attribid, ordering, geometry, parameters, parent=1, style=No
 
 
 def get_from_M_freq(cell):
-    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
+    (parameters, display_parameter, eiv, iiv, con, eov, iov, com) = getParametersFromExprsNode(cell, TYPE_STRING)
 
-    display_parameter = ''
     inputs = parameters[0].split(';')
-
-    eiv = ''
-    iiv = ''
-    con = ''
-    eov = ''
-    iov = ''
     com = (len(inputs)**2) - 1
 
     ports = [eiv, iiv, con, eov, iov, com]

@@ -106,23 +106,12 @@ def SELF_SWITCH(outroot, attribid, ordering, geometry, parameters, parent=1, sty
 
 
 def get_from_SELF_SWITCH(cell):
+    (parameters, display_parameter, eiv, iiv, con, eov, iov, com) = getParametersFromExprsNode(None)
+
     style = cell.attrib['style']
-    if style == 'SELF_SWITCH_ON':
-        value = 'on'
-    else:
-        value = 'off'
-
-    parameters = [value]
-
-    style = cell.attrib.get('style')
     display_parameter = 'on' if style == 'SELF_SWITCH_ON' else 'off'
 
-    eiv = ''
-    iiv = ''
-    con = ''
-    eov = ''
-    iov = ''
-    com = ''
+    parameters = [display_parameter]
 
     ports = [eiv, iiv, con, eov, iov, com]
 

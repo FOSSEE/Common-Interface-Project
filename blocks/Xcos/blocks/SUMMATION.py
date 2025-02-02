@@ -52,17 +52,10 @@ def SUMMATION(outroot, attribid, ordering, geometry, parameters, parent=1, style
 
 
 def get_from_SUMMATION(cell):
-    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
+    (parameters, display_parameter, eiv, iiv, con, eov, iov, com) = getParametersFromExprsNode(cell, TYPE_STRING)
 
-    display_parameter = ''
     inputs = parameters[1].split(';')
-
     eiv = len(inputs)
-    iiv = ''
-    con = ''
-    eov = ''
-    iov = ''
-    com = ''
 
     ports = [eiv, iiv, con, eov, iov, com]
 

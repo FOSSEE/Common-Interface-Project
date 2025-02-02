@@ -200,16 +200,7 @@ def JKFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, styl
 
 
 def get_from_JKFLIPFLOP(cell):
-    parameters = getParametersFromExprsNode(cell, TYPE_DOUBLE)
-
-    display_parameter = ''
-
-    eiv = ''
-    iiv = ''
-    con = ''
-    eov = ''
-    iov = ''
-    com = ''
+    (parameters, display_parameter, eiv, iiv, con, eov, iov, com) = getParametersFromExprsNode(cell, TYPE_DOUBLE)
 
     ports = [eiv, iiv, con, eov, iov, com]
 

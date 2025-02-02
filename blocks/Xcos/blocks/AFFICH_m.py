@@ -34,16 +34,11 @@ def AFFICH_m(outroot, attribid, ordering, geometry, parameters, parent=1, style=
 
 
 def get_from_AFFICH_m(cell):
-    parameters = getParametersFromExprsNode(cell, TYPE_STRING)
+    (parameters, display_parameter, eiv, iiv, con, eov, iov, com) = getParametersFromExprsNode(cell, TYPE_STRING)
 
     display_parameter = print_affich_m_by_param(parameters[0], parameters[5])
 
-    eiv = ''
-    iiv = ''
     con = 1 if parameters[6] == '0' else 0
-    eov = ''
-    iov = ''
-    com = ''
 
     ports = [eiv, iiv, con, eov, iov, com]
 
