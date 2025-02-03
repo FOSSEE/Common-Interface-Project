@@ -400,6 +400,63 @@
 ===========================================================================
 -->
 
+<xsl:template name="si-format">
+        <xsl:param name="num"/>
+
+        <!-- Compute absolute value manually -->
+        <xsl:variable name="absNum">
+            <xsl:choose>
+                <xsl:when test="$num &lt; 0"><xsl:value-of select="-$num"/></xsl:when>
+                <xsl:otherwise><xsl:value-of select="$num"/></xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+
+        <!-- Compute exponent -->
+        <xsl:variable name="exponent">
+            <xsl:choose>
+                <xsl:when test="$absNum = 0">0</xsl:when>
+                <xsl:otherwise>
+                    <xsl:call-template name="log">
+                        <xsl:with-param name="pX" select="$absNum"/>
+                    </xsl:call-template>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+
+        <!-- Define SI prefixes -->
+        <xsl:choose>
+            <xsl:when test="$exponent &gt;= -2 and $exponent &lt;= 0">
+                <xsl:value-of select="round($num div 1E-3)"/> m
+            </xsl:when>
+            <xsl:when test="$exponent &gt;= -5 and $exponent &lt;= -3">
+                <xsl:value-of select="round($num div 1E-6)"/> &#956;  <!-- Unicode for μ -->
+            </xsl:when>
+            <xsl:when test="$exponent &gt;= -8 and $exponent &lt;= -6">
+                <xsl:value-of select="round($num div 1E-9)"/> n
+            </xsl:when>
+            <xsl:when test="$exponent &gt;= -11 and $exponent &lt;= -9">
+                <xsl:value-of select="round($num div 1E-12)"/> p
+            </xsl:when>
+            <xsl:when test="$exponent &gt;= 1 and $exponent &lt;= 3">
+                <xsl:value-of select="round($num div 1)"/>
+            </xsl:when>
+            <xsl:when test="$exponent &gt;= 4 and $exponent &lt;= 6">
+                <xsl:value-of select="round($num div 1E3)"/> k</xsl:when>
+            <xsl:when test="$exponent &gt;= 7 and $exponent &lt;= 9">
+                <xsl:value-of select="round($num div 1E6)"/> M
+            </xsl:when>
+            <xsl:when test="$exponent &gt;= 10 and $exponent &lt;= 12">
+                <xsl:value-of select="round($num div 1E9)"/> G
+            </xsl:when>
+            <xsl:when test="$exponent &gt;= 13 and $exponent &lt;= 15">
+                <xsl:value-of select="round($num div 1E12)"/> T
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="$num"/> 10^<xsl:value-of select="$exponent"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+
   <xsl:output method="xml" indent="no" />
   <xsl:key name="k-in" match="ExplicitInputPort | ImplicitInputPort" use="@parent" />
   <xsl:key name="k-out" match="ExplicitOutputPort | ImplicitOutputPort" use="@parent" />
