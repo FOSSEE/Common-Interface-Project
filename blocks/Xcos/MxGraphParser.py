@@ -97,7 +97,10 @@ for root in model:
                     componentGeometry = getComponentGeometry(mxGeometry)
                     parameters = getParameters(cell)
 
-                    stylename = style_to_object(style)['default']
+                    # print(style_to_object(style))
+                    # stylename = style_to_object(style)['default']
+                    style_dict = style_to_object(style)
+                    stylename = style_dict.get('default', 'TEXT_f')
                     globals()[stylename](outroot, attribid, componentOrdering, componentGeometry, parameters, parent=parentattribid, style=style)
 
                     IDLIST[attribid] = cell_type

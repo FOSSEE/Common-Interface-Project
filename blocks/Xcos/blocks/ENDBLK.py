@@ -10,7 +10,7 @@ def ENDBLK(outroot, attribid, ordering, geometry, parameters, parent=1, style=No
     if style is None:
         style = func_name
 
-    block_id, port_id, link_id = generate_id(3, 0, 0)
+    block_id, port_id, link_id = generate_id(3, 2, 1)
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'csuper', 'DEFAULT',
@@ -54,6 +54,24 @@ def ENDBLK(outroot, attribid, ordering, geometry, parameters, parent=1, style=No
                   parent=block_id[0])
 
     END_c(root, block_id[2], ordering, geometry, parameters)
+    addControlPort(root, port_id[0], block_id[2], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="-1")
+    addCommandPort(root, port_id[1], block_id[2], "1", "-1.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="-1")
+
+    CCLink = addCommandControlLink(root, link_id[0], block_id[2], port_id[0], port_id[1])
+    gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="sourcePoint", x="20.0", y="44.0")
+    ArrayNode = addArray(gemotryNode, TYPE_ARRAY, a="points")
+    addPointNode(ArrayNode, 'mxPoint',
+                 x="220.0", y="254.66666000000004")
+    addPointNode(ArrayNode, 'mxPoint', x="189.73333000000002",
+                 y="254.66666000000004")
+    addPointNode(ArrayNode, 'mxPoint', x="189.73333000000002",
+                 y="183.53333000000003")
+    addPointNode(ArrayNode, 'mxPoint', x="220.0",
+                 y="183.53333000000003")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="targetPoint", x="20.0", y="-4.0")
 
     addNodemxCell(SuperBlockDiagram, TYPE_MXCELL, a='defaultParent',
                   id=block_id[1],

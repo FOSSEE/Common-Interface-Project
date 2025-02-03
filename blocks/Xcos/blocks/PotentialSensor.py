@@ -47,7 +47,7 @@ def PotentialSensor(outroot, attribid, ordering, geometry, parameters, parent=1,
     # Add nested Array node inside innerArrayNode
     nestedArrayNode = addArrayNode(equationsArrayNode,
                                    scilabClass="ScilabList")
-    addDataNode(nestedArrayNode, 'ScilabString',
+    addDataNode(nestedArrayNode, 'ScilabDouble',
                 height=0, width=0)
     addArrayNode(nestedArrayNode, scilabClass="ScilabList")
 

@@ -13,7 +13,7 @@ def CLR(outroot, attribid, ordering, geometry, parameters, parent=1, style=None)
                          dependsOnT='1')
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)
-    addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 16, realParts=[0.0,
+    addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 9, realParts=[0.0,
                  -100.0,
                  1.0, -12.0, 0.0, 1.0, 100.0,
                  0.0, 0.0]
@@ -24,7 +24,7 @@ def CLR(outroot, attribid, ordering, geometry, parameters, parent=1, style=None)
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NBZERO, 1, array)
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NMODE, 1, array)
     addSciDBNode(outnode, TYPE_DOUBLE, AS_STATE,
-                 3, realParts=[0.0, 0.0, 0.0])
+                 2, realParts=[0.0, 0.0])
     addTypeNode(outnode, TYPE_DOUBLE, AS_DSTATE, 0, [])
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE, parameters)
     addArrayNode(outnode, scilabClass="ScilabList",

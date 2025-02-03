@@ -12,8 +12,8 @@ def ConstantVoltage(outroot, attribid, ordering, geometry, parameters, parent=1,
                          style, BLOCKTYPE_C)
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
-    addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 1,
-                format_real_number(parameters[0]))
+    addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM,
+                 1, realParts=[format_real_number(parameters[0])])
     addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 0, [])
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, [])
     array = ['0']
@@ -49,7 +49,7 @@ def ConstantVoltage(outroot, attribid, ordering, geometry, parameters, parent=1,
     innerArrayNode = addArrayNode(innerArrayNode,
                                   scilabClass="ScilabList")
 
-    addScilabDoubleNode(innerArrayNode, width=1, realParts=["1"])
+    addScilabDoubleNode(innerArrayNode, width=1, realParts=[format_real_number(parameters[0])])
 
     addgeometryNode(outnode, GEOMETRY, geometry['height'],
                     geometry['width'], geometry['x'], geometry['y'])
