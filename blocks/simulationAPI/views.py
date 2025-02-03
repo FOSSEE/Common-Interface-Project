@@ -169,11 +169,11 @@ def get_line_and_state(file, figure_list, lastlogtimes,
     '''
     line = file.readline()  # read line by line from log
     if not line:            # if line is empty then return noline
-        return (incomplete_line, NOLINE)
+        return (incomplete_line, None, NOLINE)
     if incomplete_line is not None:
         line = incomplete_line + line
     if '\n' not in line:
-        return (line, NOLINE)
+        return (line, None, NOLINE)
     # every line is passed to function parse_line for getting values
     line = line.rstrip()
     (figure_id, state) = parse_line(line, lineno)
