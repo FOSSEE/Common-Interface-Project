@@ -161,7 +161,8 @@ def parse_line(line, lineno):
         return (None, NOLINE)
 
 
-def get_line_and_state(file, figure_list, lineno, incomplete_line):
+def get_line_and_state(file, figure_list, lastlogtimes,
+                       lineno, incomplete_line):
     '''
     Function to get a new line from file
     This also parses the line and appends new figures to figure List
@@ -180,6 +181,7 @@ def get_line_and_state(file, figure_list, lineno, incomplete_line):
         # New figure created
         # Add figure ID to list
         figure_list.append(figure_id)  # figure id of block is added to list
+        lastlogtimes[figure_id] = -1
         line = None
     elif state == ENDING:
         # End of figure
@@ -187,10 +189,11 @@ def get_line_and_state(file, figure_list, lineno, incomplete_line):
         # Once ending of log file/data is encountered for that block, figure id
         # will be removed
         figure_list.remove(figure_id)
+        del lastlogtimes[figure_id]
         line = None
     elif state == NOLINE:
         line = None
-    return (line, state)
+    return (line, figure_id, state)
 
 
 class StreamView(APIView):
@@ -252,17 +255,17 @@ class StreamView(APIView):
             self.duplicatelineno = 0
             self.duplicatelines = 0
             lastline = ''
-            lastlogtime = -1
             lineno = 0
             line = None
             starttime = time.time()
             endtime = starttime + SCILAB_INSTANCE_TIMEOUT_INTERVAL
             log_size = 0
             figure_list = []
+            lastlogtimes = {}
 
             while time.time() <= endtime and log_size <= MAX_LOG_SIZE:
-                (line, state) = get_line_and_state(log_file, figure_list,
-                                                   lineno, line)
+                (line, figure_id, state) = get_line_and_state(log_file, figure_list, lastlogtimes,
+                                                              lineno, line)
                 # if incomplete line, wait for the complete line
                 if state == NOLINE:
                     time.sleep(LOOK_DELAY)
@@ -282,10 +285,10 @@ class StreamView(APIView):
                         if len(words) == 15 and words[-1] == 'CSCOPE':
                             logtime = float(words[8])
                             totallogtime = float(words[-2])
-                            if logtime < lastlogtime + 0.001 * totallogtime:
+                            if logtime < lastlogtimes[figure_id] + 0.001 * totallogtime:
                                 line = None
                                 continue
-                            lastlogtime = logtime
+                            lastlogtimes[figure_id] = logtime
                             interval = starttime + logtime - time.time() - 0.1
                             if interval > 0:
                                 time.sleep(interval)
