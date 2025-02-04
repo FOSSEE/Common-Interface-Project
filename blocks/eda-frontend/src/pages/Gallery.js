@@ -240,13 +240,18 @@ export default function Gallery () {
         ? GallerySchSample // Show all schematics for 'All Books'
         : GallerySchSample.filter((sch) => sch.book_id === parseInt(selectedBookId))
 
+  const st = searchTerm.trim().toLowerCase()
+
   // Then, filter based on the search term (independent from book selection)
-  const finalfilteredSchematics = filteredSchematics.filter((sch) => {
-    return (
-      sch.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      sch.description.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-  })
+  const finalfilteredSchematics =
+    st === ''
+      ? filteredSchematics
+      : filteredSchematics.filter((sch) => {
+        return (
+          sch.name.toLowerCase().includes(st) ||
+          sch.description.toLowerCase().includes(st)
+        )
+      })
 
   return (
     <div className={classes.root}>
@@ -273,7 +278,30 @@ export default function Gallery () {
           </Grid>
 
           {/* Display a message or blank gallery */}
-          {finalfilteredSchematics.length === 0 ? (<Grid item xs={12}><Typography variant='h6' align='center' color='textSecondary'>No schematics to display. Please select a book.</Typography></Grid>) : (finalfilteredSchematics.map((sch) => (<Grid item xs={12} sm={6} lg={4} key={sch.save_id}><SchematicCard sch={sch} /></Grid>)))}</Grid>
+          {finalfilteredSchematics.length === 0
+            ? (
+              <Grid item xs={12}>
+                <Typography variant='h6' align='center' color='textSecondary'>
+                  {'No ' + process.env.REACT_APP_SMALL_DIAGRAMS_NAME + ' to display. '}
+                  {
+                    selectedBookId === ''
+                      ? 'Please select a book.'
+                      : selectedBookId === 'all'
+                        ? 'Please try another search term.'
+                        : 'Please select another book or try another search term.'
+                  }
+                </Typography>
+              </Grid>
+              )
+            : (
+                finalfilteredSchematics.map((sch) => (
+                <Grid item xs={12} sm={6} lg={4} key={sch.save_id}>
+                  <SchematicCard sch={sch} />
+                </Grid>
+                ))
+              )
+          }
+        </Grid>
       </Container>
     </div>
   )

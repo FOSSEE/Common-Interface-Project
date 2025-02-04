@@ -143,7 +143,7 @@ export const getDate = (jsonDate) => {
   return `${day}-${month}-${year}`
 }
 
-export function styleToObject (style) {
+export const styleToObject = (style) => {
   // To add semicolon at the end if it isn't already present.
   if (style[style.length - 1] !== ';') {
     style = style + ';'
