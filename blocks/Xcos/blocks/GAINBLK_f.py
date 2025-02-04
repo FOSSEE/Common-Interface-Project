@@ -13,7 +13,12 @@ def GAINBLK_f(outroot, attribid, ordering, geometry, parameters, parent=1, style
                          dependsOnU='1')
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
-    num, denom = map(float, parameters[0].split('/'))
+    # num, denom = map(float, parameters[0].split('/'))
+    if '/' in parameters[0]:
+        num, denom = map(float, parameters[0].split('/'))
+    else:
+        num = float(parameters[0])
+        denom = 1.0
     value = num / denom
     realPart = "{:.1E}".format(value).replace("E-0", "E-").replace("E+0", "E+")
     addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM,
