@@ -278,28 +278,29 @@ export default function Gallery () {
           </Grid>
 
           {/* Display a message or blank gallery */}
-          {finalfilteredSchematics.length === 0
-            ? (
-              <Grid item xs={12}>
-                <Typography variant='h6' align='center' color='textSecondary'>
-                  {'No ' + process.env.REACT_APP_SMALL_DIAGRAMS_NAME + ' to display. '}
-                  {
-                    selectedBookId === ''
-                      ? 'Please select a book.'
-                      : selectedBookId === 'all'
-                        ? 'Please try another search term.'
-                        : 'Please select another book or try another search term.'
-                  }
-                </Typography>
+          <Grid item xs={12}>
+            <Typography variant='h6' align='center' color='textSecondary'>
+              {
+                finalfilteredSchematics.length === 0
+                  ? `No ${process.env.REACT_APP_SMALL_DIAGRAMS_NAME} to display. ${selectedBookId === ''
+                    ? 'Please select a book.'
+                    : selectedBookId === 'all'
+                      ? 'Please try another search term.'
+                      : 'Please select another book or try another search term.'
+                  }`
+                  : `${finalfilteredSchematics.length} ${finalfilteredSchematics.length !== 1
+                    ? `${process.env.REACT_APP_SMALL_DIAGRAMS_NAME}`
+                    : `${process.env.REACT_APP_SMALL_DIAGRAM_NAME}`}`
+              }
+            </Typography>
+          </Grid>
+
+          {
+            finalfilteredSchematics.map((sch) => (
+              <Grid item xs={12} sm={6} lg={4} key={sch.save_id}>
+                <SchematicCard sch={sch} />
               </Grid>
-              )
-            : (
-                finalfilteredSchematics.map((sch) => (
-                <Grid item xs={12} sm={6} lg={4} key={sch.save_id}>
-                  <SchematicCard sch={sch} />
-                </Grid>
-                ))
-              )
+            ))
           }
         </Grid>
       </Container>

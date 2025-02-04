@@ -26,6 +26,9 @@
     "plugins": [
         "react"
     ],
+    "rules": {
+        "space-before-function-paren": ["error", "always"]
+    },
     "settings": {
         "react": {
             "version": "detect"
