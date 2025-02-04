@@ -92,7 +92,7 @@ class XmlSave(APIView):
             # Update the request data to include the file path
             data = request.data.copy()
             data['file_path'] = file_path
-            filename = CreateXcos(data['file_path'], '{}', 'abcd')
+            filename = CreateXcos(data['file_path'], '{}', 'saves')
             with open(filename, 'r') as file:
                 filecontent = file.read()
 
