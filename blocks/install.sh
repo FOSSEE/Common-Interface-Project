@@ -9,9 +9,9 @@ pip install -q -r requirements.txt
 pip uninstall -q -y pip wheel
 
 make -s
-python manage.py makemigrations -v0 simulationAPI xcosblocks
+python manage.py makemigrations -v0 saveAPI simulationAPI xcosblocks
 python manage.py migrate -v0
-python manage.py loaddata -v0 xcosblocks
+python manage.py loaddata -v0 saveAPI xcosblocks
 
 sed -i \
   -e "s/\\(SCILAB_DIR = \\).*/\\1'\/usr\/local'/" \

@@ -139,7 +139,7 @@ const BookDropdown = ({ onBookChange }) => {
           <InputLabel id='book-label'>Book</InputLabel>
           <Select
             labelId='book-label'
-            value={selectedBook}
+            value={selectedBook || ''}
             onChange={handleChange}
             label='Book'
           >
