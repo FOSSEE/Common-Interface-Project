@@ -106,7 +106,7 @@ const MainCard = () => {
 
 const BookDropdown = ({ onBookChange }) => {
   const [books, setBooks] = useState([]) // To store books from the backend
-  const [selectedBook, setSelectedBook] = useState() // To store the selected book ID
+  const [selectedBook, setSelectedBook] = useState('')
 
   // Fetch books from the backend (optional, or use static data)
   const fetchBooks = useCallback(() => {
@@ -198,7 +198,7 @@ const Gallery = () => {
   const GallerySchSample = useSelector(state => state.dashboardReducer.gallery)
 
   // State to store the selected book ID
-  const [selectedBookId, setSelectedBookId] = useState('')
+  const [selectedBook, setSelectedBook] = useState('')
   const [searchTerm, setSearchTerm] = useState('')
 
   const dispatch = useDispatch()
@@ -208,8 +208,8 @@ const Gallery = () => {
   }, [])
 
   // Handle dropdown selection change
-  const handleBookChange = (bookId) => {
-    setSelectedBookId(bookId)
+  const handleBookChange = (book) => {
+    setSelectedBook(book)
   }
 
   // Handle search term change
@@ -219,11 +219,11 @@ const Gallery = () => {
 
   const filteredSchematics =
     // Filter based on selected book ID first
-    selectedBookId === '' // If no book is selected, show nothing
+    selectedBook === '' // If no book is selected, show nothing
       ? []
-      : selectedBookId === 'all'
+      : selectedBook === 'all'
         ? GallerySchSample // Show all schematics for 'All Books'
-        : GallerySchSample.filter((sch) => sch.book_id === parseInt(selectedBookId))
+        : GallerySchSample.filter((sch) => sch.book_id === parseInt(selectedBook))
 
   const st = searchTerm.trim().toLowerCase()
   const galleryst = 'gallery' + st
@@ -269,9 +269,9 @@ const Gallery = () => {
             <Typography variant='h6' align='center' color='textSecondary'>
               {
                 finalfilteredSchematics.length === 0
-                  ? `No ${process.env.REACT_APP_SMALL_DIAGRAMS_NAME} to display. ${selectedBookId === ''
+                  ? `No ${process.env.REACT_APP_SMALL_DIAGRAMS_NAME} to display. ${selectedBook === ''
                     ? 'Please select a book.'
-                    : selectedBookId === 'all'
+                    : selectedBook === 'all'
                       ? 'Please try another search term.'
                       : 'Please select another book or try another search term.'
                   }`
