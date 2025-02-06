@@ -63,6 +63,12 @@ class Gallery(models.Model):
     data_dump = models.TextField(null=False)
     media = models.CharField(max_length=100, null=True)
 
+    def lcname(self):
+        return self.name.lower()
+
+    def lcdescription(self):
+        return self.description.lower()
+
     # For Django Admin Panel
     def image_tag(self):
         if self.media:

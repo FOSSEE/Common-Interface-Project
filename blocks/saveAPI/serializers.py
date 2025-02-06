@@ -70,6 +70,8 @@ class GalleryListSerializer(serializers.ModelSerializer):
                   'description',
                   'book_id',
                   'media',
+                  'lcname',
+                  'lcdescription',
                   )
 
 

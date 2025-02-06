@@ -167,7 +167,7 @@ const SearchComponent = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState('')
 
   const handleSearch = (event) => {
-    const value = event.target.value.trimStart().toLowerCase()
+    const value = event.target.value.trimStart()
     setSearchTerm(value)
     onSearch(value)
   }
@@ -235,8 +235,8 @@ const Gallery = () => {
       ? filteredSchematics
       : filteredSchematics.filter((sch) => {
         return (
-          sch.name.toLowerCase().includes(st) ||
-          sch.description.toLowerCase().includes(st) ||
+          sch.lcname.includes(st) ||
+          sch.lcdescription.includes(st) ||
           sch.save_id.startsWith(galleryst)
         )
       })
