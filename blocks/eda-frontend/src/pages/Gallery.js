@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
 const images = require.context('../static/gallery', true)
 
 // Card displaying overview of gallery sample schematics.
-function SchematicCard ({ sch }) {
+const SchematicCard = ({ sch }) => {
   const classes = useStyles()
 
   useEffect(() => {
@@ -84,7 +84,7 @@ SchematicCard.propTypes = {
 }
 
 // Card displaying gallery page header.
-function MainCard () {
+const MainCard = () => {
   const classes = useStyles()
 
   const typography = process.env.REACT_APP_NAME + ' Gallery'
@@ -126,8 +126,8 @@ const BookDropdown = ({ onBookChange }) => {
   }, [fetchBooks])
 
   // Handle dropdown selection change
-  const handleChange = (event) => {
-    const selectedValue = event.target.value
+  const handleChange = (evt) => {
+    const selectedValue = evt.target.value
     setSelectedBook(selectedValue)
     onBookChange(selectedValue) // Notify the parent component
   }
@@ -165,25 +165,11 @@ BookDropdown.propTypes = {
 
 const SearchComponent = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState('')
-  const [setFilteredResults] = useState([])
-  const [data] = useState([])
 
   const handleSearch = (event) => {
-    const value = event.target.value.toLowerCase()
+    const value = event.target.value.trimStart().toLowerCase()
     setSearchTerm(value)
     onSearch(value)
-
-    // Filter results
-    if (value) {
-      const results = data.filter(
-        (item) =>
-          item.name.toLowerCase().includes(value) ||
-          item.description.toLowerCase().includes(value)
-      )
-      setFilteredResults(results)
-    } else {
-      setFilteredResults([])
-    }
   }
 
   return (
@@ -208,7 +194,7 @@ SearchComponent.propTypes = {
   onSearch: PropTypes.func.isRequired
 }
 
-export default function Gallery () {
+const Gallery = () => {
   const classes = useStyles()
   const GallerySchSample = useSelector(state => state.dashboardReducer.gallery)
 
@@ -241,6 +227,7 @@ export default function Gallery () {
         : GallerySchSample.filter((sch) => sch.book_id === parseInt(selectedBookId))
 
   const st = searchTerm.trim().toLowerCase()
+  const galleryst = 'gallery' + st
 
   // Then, filter based on the search term (independent from book selection)
   const finalfilteredSchematics =
@@ -249,7 +236,8 @@ export default function Gallery () {
       : filteredSchematics.filter((sch) => {
         return (
           sch.name.toLowerCase().includes(st) ||
-          sch.description.toLowerCase().includes(st)
+          sch.description.toLowerCase().includes(st) ||
+          sch.save_id.startsWith(galleryst)
         )
       })
 
@@ -307,3 +295,5 @@ export default function Gallery () {
     </div>
   )
 }
+
+export default Gallery
