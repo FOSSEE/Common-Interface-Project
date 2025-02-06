@@ -5,6 +5,7 @@ import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Cont
 import { makeStyles } from '@material-ui/core/styles'
 import { Link as RouterLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+import api from '../utils/Api'
 import { fetchGallery } from '../redux/actions/index'
 
 const useStyles = makeStyles((theme) => ({
@@ -108,17 +109,15 @@ const BookDropdown = ({ onBookChange }) => {
   const [selectedBook, setSelectedBook] = useState() // To store the selected book ID
 
   // Fetch books from the backend (optional, or use static data)
-  const fetchBooks = useCallback(async () => {
-    try {
-      const response = await fetch('/api/save/books') // Replace with your API endpoint
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`)
-      }
-      const data = await response.json()
-      setBooks(data) // Assuming the API returns an array of books
-    } catch (error) {
-      console.error('Error fetching books:', error)
-    }
+  const fetchBooks = useCallback(() => {
+    api.get('save/books')
+      .then((res) => {
+        if (res.status !== 200) {
+          throw new Error(`HTTP error! Status: ${res.status}`)
+        }
+        setBooks(res.data) // Assuming the API returns an array of books
+      })
+      .catch(err => { console.error('Error fetching books:', err) })
   }, [])
 
   useEffect(() => {
