@@ -416,8 +416,9 @@
             <xsl:choose>
                 <xsl:when test="$absNum = 0">0</xsl:when>
                 <xsl:otherwise>
-                    <xsl:call-template name="log">
-                        <xsl:with-param name="pX" select="$absNum"/>
+                    <xsl:call-template name="compute-exp">
+                        <xsl:with-param name="n" select="$absNum"/>
+                        <xsl:with-param name="exp" select="0"/>
                     </xsl:call-template>
                 </xsl:otherwise>
             </xsl:choose>
@@ -453,6 +454,29 @@
             </xsl:when>
             <xsl:otherwise>
                 <xsl:value-of select="$num"/> 10^<xsl:value-of select="$exponent"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+    <!-- Recursive template to compute the exponent -->
+    <xsl:template name="compute-exp">
+        <xsl:param name="n"/>
+        <xsl:param name="exp"/>
+
+        <xsl:choose>
+            <xsl:when test="$n &lt; 1">
+                <xsl:call-template name="compute-exp">
+                    <xsl:with-param name="n" select="$n * 10"/>
+                    <xsl:with-param name="exp" select="$exp - 1"/>
+                </xsl:call-template>
+            </xsl:when>
+            <xsl:when test="$n &gt;= 10">
+                <xsl:call-template name="compute-exp">
+                    <xsl:with-param name="n" select="$n div 10"/>
+                    <xsl:with-param name="exp" select="$exp + 1"/>
+                </xsl:call-template>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="$exp"/>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
