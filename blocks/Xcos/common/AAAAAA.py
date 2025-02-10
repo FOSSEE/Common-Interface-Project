@@ -601,6 +601,34 @@ def addPrecNode(node, subNodeType, type, width, parameters):
     return subNode
 
 
+def addEquationsNode(node, scilabStringParameters=None,
+                     additionalStringsArray=None,
+                     parameterNames=None, parameters=None):
+    equationsArrayNode = addArrayNode(node, scilabClass="ScilabTList", **{'as': 'equations'})
+
+    if scilabStringParameters:
+        addScilabStringNode(equationsArrayNode, width=len(scilabStringParameters),
+                            parameters=scilabStringParameters)
+
+    if additionalStringsArray:
+        for additionalStrings in additionalStringsArray:
+            additionalStringNode = addDataNode(equationsArrayNode,
+                                               'ScilabString',
+                                               height=1, width=len(additionalStrings))
+            for param in additionalStrings:
+                addDataData(additionalStringNode, param)
+
+    if parameterNames and parameters and len(parameterNames) == len(parameters):
+        innerArrayNode = addArrayNode(equationsArrayNode,
+                                      scilabClass="ScilabList")
+        addSciStringNode(innerArrayNode, len(parameterNames), parameterNames)
+        addNodeScilabDouble(innerArrayNode, height=len(parameters), realParts=[
+            format_real_number(x) for x in parameters
+        ])
+
+    return equationsArrayNode
+
+
 def strarray(parameter):
     param = list(map(str, parameter[0].split(" ")))
     params = parameter[3][1:8].split(";")
