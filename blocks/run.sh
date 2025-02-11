@@ -16,4 +16,6 @@ else
 fi
 
 cd ..
+python manage.py migrate
+python manage.py loaddata saveAPI xcosblocks
 python manage.py runserver

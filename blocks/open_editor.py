@@ -14,8 +14,8 @@ load_dotenv()
 
 GITHUB_USERNAME = os.environ.get('GITHUB_USERNAME', '')
 GITHUB_PASSWORD = os.environ.get('GITHUB_PASSWORD', '')
-SKIP_COUNT = int(os.environ.get('SKIP_COUNT', '0'))
-FETCH_COUNT = int(os.environ.get('FETCH_COUNT', '100'))
+SKIP_COUNT = int(sys.argv[1] if len(sys.argv) > 1 else '0')
+FETCH_COUNT = int(sys.argv[2] if len(sys.argv) > 2 else '100')
 
 sys.tracebacklimit = 0
 
