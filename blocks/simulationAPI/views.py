@@ -11,6 +11,7 @@ from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from blocks.celery_tasks import app
 
 from simulationAPI.models import TaskFile
 from simulationAPI.negotiation import IgnoreClientContentNegotiation
@@ -121,11 +122,36 @@ class CeleryResultView(APIView):
             raise ValidationError('Invalid uuid format')
 
         celery_result = AsyncResult(str(task_id))
+        
         response_data = {
             'state': celery_result.state,
-            'details': celery_result.info
+            'details': str(celery_result.info)
         }
         return Response(response_data)
+    
+
+class CancelTaskView(APIView):
+    """Cancels a running Celery task."""
+    permission_classes = (AllowAny,)
+    methods = ['GET']
+
+    def get(self, request, task_id):
+        """Handles task cancellation request."""
+        if not isinstance(task_id, uuid.UUID):
+            raise ValidationError('Invalid uuid format')
+
+        # Cancel the task
+        app.control.revoke(str(task_id), terminate=True)
+
+        # Check if task was actually revoked
+        celery_result = AsyncResult(str(task_id))
+        response_data = {
+            "task_id": str(task_id),
+            "status": "CANCELLED",
+            "current_state": celery_result.state  # Should be "REVOKED"
+        }
+
+        return Response(response_data, status=status.HTTP_200_OK)
 
 
 def parse_line(line, lineno):

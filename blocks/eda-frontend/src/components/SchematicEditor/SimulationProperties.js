@@ -72,7 +72,9 @@ export default function SimulationProperties () {
     setSimulateOpen(true)
   }
 
-  const handleSimulateClose = () => {
+  const handleSimulateClose = (taskId) => {
+    const getUrl = 'simulation/cancel/' + taskId
+    api.get(getUrl)
     setGraphStatusClosed()
     setSimulateOpen(false)
   }
