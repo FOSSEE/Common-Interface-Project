@@ -120,15 +120,16 @@ class CeleryResultView(APIView):
     def get(self, request, task_id):
         if not isinstance(task_id, uuid.UUID):
             raise ValidationError('Invalid uuid format')
+        task_id = str(task_id)
 
-        celery_result = AsyncResult(str(task_id))
-        
+        celery_result = AsyncResult(task_id)
         response_data = {
+            'task_id': task_id,
             'state': celery_result.state,
             'details': str(celery_result.info)
         }
         return Response(response_data)
-    
+
 
 class CancelTaskView(APIView):
     """Cancels a running Celery task."""
@@ -139,16 +140,17 @@ class CancelTaskView(APIView):
         """Handles task cancellation request."""
         if not isinstance(task_id, uuid.UUID):
             raise ValidationError('Invalid uuid format')
+        task_id = str(task_id)
 
         # Cancel the task
-        app.control.revoke(str(task_id), terminate=True)
+        app.control.revoke(task_id, terminate=True)
 
         # Check if task was actually revoked
-        celery_result = AsyncResult(str(task_id))
+        celery_result = AsyncResult(task_id)
         response_data = {
-            "task_id": str(task_id),
-            "status": "CANCELLED",
-            "current_state": celery_result.state  # Should be "REVOKED"
+            'task_id': task_id,
+            'state': celery_result.state,
+            'details': str(celery_result.info)
         }
 
         return Response(response_data, status=status.HTTP_200_OK)

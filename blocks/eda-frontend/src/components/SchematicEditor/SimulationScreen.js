@@ -681,10 +681,10 @@ export default function SimulationScreen ({ open, close }) {
       close(taskId)
     }
 
-    window.addEventListener("beforeunload", handleTabClose)
+    window.addEventListener('beforeunload', handleTabClose)
 
     return () => {
-      window.removeEventListener("beforeunload", handleTabClose)
+      window.removeEventListener('beforeunload', handleTabClose)
     }
   }, [taskId])
 
