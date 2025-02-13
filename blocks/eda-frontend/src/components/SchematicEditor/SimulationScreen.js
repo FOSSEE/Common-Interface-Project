@@ -629,6 +629,13 @@ export default function SimulationScreen ({ open, close }) {
             }
             break
 
+          case 'REVOKED':
+            if (timeoutRef.current !== null) {
+              clearTimeout(timeoutRef.current)
+              timeoutRef.current = null
+            }
+            break
+
           default:
             console.log('unhandled case', res)
             if (timeoutRef.current !== null) {
@@ -668,6 +675,19 @@ export default function SimulationScreen ({ open, close }) {
     }
   }, [chartIdCount.current])
 
+  useEffect(() => {
+    const handleTabClose = (event) => {
+      event.preventDefault() // Prevents immediate closing in some browsers
+      close(taskId)
+    }
+
+    window.addEventListener("beforeunload", handleTabClose)
+
+    return () => {
+      window.removeEventListener("beforeunload", handleTabClose)
+    }
+  }, [taskId])
+
   /*
    * Function to display values of all affich blocks
    * displayParameter : Contains the data which is display as data of affich
@@ -702,7 +722,7 @@ export default function SimulationScreen ({ open, close }) {
   return (
     <div>
       <Dialog
-        fullScreen open={open} onClose={close} TransitionComponent={Transition} PaperProps={{
+        fullScreen open={open} onClose={() => close(taskId)} TransitionComponent={Transition} PaperProps={{
           style: {
             backgroundColor: '#4d4d4d',
             boxShadow: 'none'
@@ -711,13 +731,13 @@ export default function SimulationScreen ({ open, close }) {
       >
         <AppBar position='static' elevation={0} className={classes.appBar}>
           <Toolbar variant='dense' style={{ backgroundColor: '#404040' }}>
-            <IconButton edge='start' color='inherit' onClick={close} aria-label='close'>
+            <IconButton edge='start' color='inherit' onClick={() => close(taskId)} aria-label='close'>
               <CloseIcon />
             </IconButton>
             <Typography variant='h6' className={classes.title}>
               Simulation Result
             </Typography>
-            <Button autoFocus color='inherit' onClick={close}>
+            <Button autoFocus color='inherit' onClick={() => close(taskId)}>
               close
             </Button>
           </Toolbar>
