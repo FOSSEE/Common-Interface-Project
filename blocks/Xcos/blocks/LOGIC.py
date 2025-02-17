@@ -11,12 +11,13 @@ def LOGIC(outroot, attribid, ordering, geometry, parameters, parent=1, style=Non
                          func_name, 'logic', 'C_OR_FORTRAN',
                          style, BLOCKTYPE_C,
                          dependsOnU='1')
+
     addExprsNode(outnode, TYPE_STRING, 2, parameters)
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0, [])
     addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 0, [])
     innernode = addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, [])
-    array = ["0", "1", "0", "1"]
-    addSciIntNode(innernode, 4, array)
+    values = parameters[0].strip("[]").split(";")
+    addSciIntNode(innernode, len(values), values)
     array = ['0']
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NBZERO, 1, array)
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NMODE, 1, array)

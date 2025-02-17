@@ -14,7 +14,7 @@ def CONVERT(outroot, attribid, ordering, geometry, parameters, parent=1, style=N
 
     addExprsNode(outnode, TYPE_STRING, 3, parameters)
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0, [])
-    array = ['4']
+    array = ['18']
     addPrecisionNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 1, array)
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
     array = ['0']
