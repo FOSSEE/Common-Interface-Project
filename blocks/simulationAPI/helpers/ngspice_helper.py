@@ -1,5 +1,6 @@
 import json
 import os
+from os.path import abspath, join, splitext
 import re
 import subprocess
 from celery import current_task
@@ -10,9 +11,9 @@ from tempfile import mkstemp
 from django.conf import settings
 
 logger = get_task_logger(__name__)
-XmlToXcos = os.path.join(settings.BASE_DIR, 'Xcos/XmlToXcos.sh')
-SCILAB_DIR = os.path.abspath(settings.SCILAB_DIR)
-SCILAB = os.path.join(SCILAB_DIR, 'bin', 'scilab-adv-cli')
+XmlToXcos = join(settings.BASE_DIR, 'Xcos/XmlToXcos.sh')
+SCILAB_DIR = abspath(settings.SCILAB_DIR)
+SCILAB = join(SCILAB_DIR, 'bin', 'scilab-adv-cli')
 # handle scilab startup
 SCILAB_START = (
     "try;funcprot(0);lines(0,120);"
@@ -47,7 +48,7 @@ def CreateXml(file_path, parameters, file_id):
     # Make Unique Directory for simulation to run
     Path(current_dir).mkdir(parents=True, exist_ok=True)
     try:
-        (xcosfilebase, __) = os.path.splitext(file_path)
+        (xcosfilebase, __) = splitext(file_path)
         xcosfile = xcosfilebase + '.xcos'
         logger.info('will run %s %s', 'XmlToXcos', file_path)
         proc = subprocess.Popen([XmlToXcos, file_path],
@@ -72,7 +73,7 @@ def CreateXml(file_path, parameters, file_id):
         target = os.listdir(current_dir)
         for item in target:
             logger.info('removing %s', item)
-            os.remove(os.path.join(current_dir, item))
+            os.remove(join(current_dir, item))
         logger.info('removing %s', current_dir)
         os.rmdir(current_dir)
         logger.info('Deleted Files')
@@ -135,6 +136,7 @@ def ExecXml(file_obj):
                 out = '\n'.join(re.split(r'\n+', out, maxlines + 1)[:maxlines])
                 logger.info('out=%s', out)
         if err:
+            err = re.sub(r'Undefined variable: helpbrowser_update', '', err)
             err = err.rstrip()
             if err:
                 err = '\n'.join(re.split(r'\n+', err, maxlines + 1)[:maxlines])
@@ -151,7 +153,7 @@ def ExecXml(file_obj):
         target = os.listdir(current_dir)
         for item in target:
             logger.info('removing %s', item)
-            os.remove(os.path.join(current_dir, item))
+            os.remove(join(current_dir, item))
         logger.info('removing %s', current_dir)
         os.rmdir(current_dir)
         logger.info('Deleted Files')
