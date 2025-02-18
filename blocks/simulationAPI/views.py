@@ -269,64 +269,6 @@ class StreamView(APIView):
         yield "event: duplicate\ndata: %d\n\n" % self.duplicatelineno
         self.duplicatelineno = 0
 
-    def event_stream_loop(self, log_file):
-        # Start sending log
-        self.duplicatelineno = 0
-        self.duplicatelines = 0
-        lastline = ''
-        lineno = 0
-        line = None
-        starttime = time.time()
-        endtime = starttime + SCILAB_INSTANCE_TIMEOUT_INTERVAL
-        log_size = 0
-        figure_list = []
-        lastlogtimes = {}
-
-        while time.time() <= endtime and log_size <= MAX_LOG_SIZE:
-            (line, figure_id, state) = get_line_and_state(log_file, figure_list, lastlogtimes,
-                                                          lineno, line)
-            # if incomplete line, wait for the complete line
-            if state == NOLINE:
-                time.sleep(LOOK_DELAY)
-                continue
-
-            if not figure_list:
-                break
-            # Get the line and loop until the state is ENDING and figure_list
-            # empty. Determine if we get block id and give it to chart.js
-            if line is None:
-                continue
-            if lastline != line:
-                self.handle_duplicate_lines()
-                lastline = line
-                if state == DATA:
-                    words = line.split()
-                    if len(words) == 15 and words[-1] == 'CSCOPE':
-                        logtime = float(words[8])
-                        totallogtime = float(words[-2])
-                        if logtime < lastlogtimes[figure_id] + 0.001 * totallogtime:
-                            line = None
-                            continue
-                        lastlogtimes[figure_id] = logtime
-                        interval = starttime + logtime - time.time() - 0.1
-                        if interval > 0:
-                            time.sleep(interval)
-                    send_line = "event: log\ndata: %s\n\n" % line
-                    log_size += len(send_line)
-                    yield send_line
-            else:
-                self.duplicatelineno += 1
-            lineno += 1
-            line = None
-
-        self.handle_duplicate_lines()
-
-        if self.duplicatelines != 0:
-            logger.info('lines = %s, duplicate lines = %s, log size = %s',
-                        lineno, self.duplicatelines, log_size)
-        else:
-            logger.info('lines = %s, log size = %s', lineno, log_size)
-
     def event_stream(self, task_id):
         if not isinstance(task_id, uuid.UUID):
             raise ValidationError('Invalid uuid format')
@@ -337,7 +279,62 @@ class StreamView(APIView):
             return
 
         with open(log_name, 'r') as log_file:
-            self.event_stream_loop(log_file)
+            # Start sending log
+            self.duplicatelineno = 0
+            self.duplicatelines = 0
+            lastline = ''
+            lineno = 0
+            line = None
+            starttime = time.time()
+            endtime = starttime + SCILAB_INSTANCE_TIMEOUT_INTERVAL
+            log_size = 0
+            figure_list = []
+            lastlogtimes = {}
+
+            while time.time() <= endtime and log_size <= MAX_LOG_SIZE:
+                (line, figure_id, state) = get_line_and_state(log_file, figure_list, lastlogtimes,
+                                                              lineno, line)
+                # if incomplete line, wait for the complete line
+                if state == NOLINE:
+                    time.sleep(LOOK_DELAY)
+                    continue
+
+                if not figure_list:
+                    break
+                # Get the line and loop until the state is ENDING and figure_list
+                # empty. Determine if we get block id and give it to chart.js
+                if line is None:
+                    continue
+                if lastline != line:
+                    self.handle_duplicate_lines()
+                    lastline = line
+                    if state == DATA:
+                        words = line.split()
+                        if len(words) == 15 and words[-1] == 'CSCOPE':
+                            logtime = float(words[8])
+                            totallogtime = float(words[-2])
+                            if logtime < lastlogtimes[figure_id] + 0.001 * totallogtime:
+                                line = None
+                                continue
+                            lastlogtimes[figure_id] = logtime
+                            interval = starttime + logtime - time.time() - 0.1
+                            if interval > 0:
+                                time.sleep(interval)
+                        send_line = "event: log\ndata: %s\n\n" % line
+                        log_size += len(send_line)
+                        yield send_line
+                else:
+                    self.duplicatelineno += 1
+                lineno += 1
+                line = None
+
+            self.handle_duplicate_lines()
+
+            if self.duplicatelines != 0:
+                logger.info('lines = %s, duplicate lines = %s, log size = %s',
+                            lineno, self.duplicatelines, log_size)
+            else:
+                logger.info('lines = %s, log size = %s', lineno, log_size)
 
         # Notify Client
         yield "event: DONE\ndata: None\n\n"
