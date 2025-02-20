@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Canvg } from 'canvg'
-import { IconButton, Tooltip, Snackbar } from '@material-ui/core'
+import { Box, IconButton, Tooltip, Snackbar } from '@material-ui/core'
 import AddBoxOutlinedIcon from '@material-ui/icons/AddBoxOutlined'
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline'
@@ -425,7 +425,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
   }
 
   return (
-    <>
+    <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', padding: 1 }}>
       <Tooltip title='New'>
         <IconButton color='inherit' className={classes.tools} size='small' target='_blank' component={RouterLink} to='/editor'>
           <CreateNewFolderOutlinedIcon fontSize='small' />
@@ -537,7 +537,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
       >
         <AddBoxOutlinedIcon fontSize='small' />
       </IconButton>
-    </>
+    </Box>
   )
 }
 
