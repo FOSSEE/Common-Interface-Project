@@ -74,7 +74,7 @@
         <xsl:attribute name="tarx">0</xsl:attribute>
         <xsl:attribute name="tary">0</xsl:attribute>
 
-        <xsl:apply-templates select="node()"/>
+        <xsl:apply-templates select="mxGeometry"/>
         <Object>
           <xsl:attribute name="display_parameter">
           </xsl:attribute>

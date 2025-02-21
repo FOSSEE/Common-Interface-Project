@@ -48,7 +48,7 @@
         <xsl:attribute name="targetVertex">0</xsl:attribute>
         <xsl:attribute name="tarx">0</xsl:attribute>
         <xsl:attribute name="tary">0</xsl:attribute>
-        <xsl:apply-templates select="node()"/>
+        <xsl:apply-templates select="mxGeometry"/>
         <Object>
           <xsl:variable name="exprsData" select="*[@as='exprs']/data[2]/@value" />
           <xsl:variable name="dataValue" select="*[@as='exprs']/data[1]/@value" />
