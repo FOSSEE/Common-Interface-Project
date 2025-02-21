@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def CMATVIEW(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def CMATVIEW(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'CMATVIEW'
     if style is None:
         style = func_name

@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def MATCATH(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def MATCATH(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'MATCATH'
     if style is None:
         style = func_name

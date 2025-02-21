@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def CMSCOPE(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def CMSCOPE(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'CMSCOPE'
     if style is None:
         style = func_name

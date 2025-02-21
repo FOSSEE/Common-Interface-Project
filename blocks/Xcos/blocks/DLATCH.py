@@ -8,7 +8,7 @@ from blocks.OUT_f import OUT_f
 from common.AAAAAA import *
 
 
-def DLATCH(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def DLATCH(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'DLATCH'
     if style is None:
         style = func_name

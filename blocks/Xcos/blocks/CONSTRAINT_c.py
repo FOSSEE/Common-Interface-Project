@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def CONSTRAINT_c(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def CONSTRAINT_c(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'CONSTRAINT_c'
     if style is None:
         style = func_name

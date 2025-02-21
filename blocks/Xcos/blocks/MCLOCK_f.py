@@ -5,7 +5,7 @@ from blocks.SplitBlock import SplitBlock
 from common.AAAAAA import *
 
 
-def MCLOCK_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def MCLOCK_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'MCLOCK_f'
     if style is None:
         style = func_name

@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def Gyrator(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def Gyrator(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'Gyrator'
     if style is None:
         style = func_name

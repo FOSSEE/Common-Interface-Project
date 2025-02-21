@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def SCALAR2VECTOR(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def SCALAR2VECTOR(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'SCALAR2VECTOR'
     if style is None:
         style = func_name

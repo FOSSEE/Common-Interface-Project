@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def Inductor(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def Inductor(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'Inductor'
     if style is None:
         style = func_name

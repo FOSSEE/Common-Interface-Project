@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def scifunc_block_m(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def scifunc_block_m(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'scifunc_block_m'
     if style is None:
         style = func_name

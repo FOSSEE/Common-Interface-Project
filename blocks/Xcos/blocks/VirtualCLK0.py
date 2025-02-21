@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def VirtualCLK0(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def VirtualCLK0(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'VirtualCLK0'
     if style is None:
         style = func_name

@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def EVTVARDLY(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def EVTVARDLY(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'EVTVARDLY'
     if style is None:
         style = func_name

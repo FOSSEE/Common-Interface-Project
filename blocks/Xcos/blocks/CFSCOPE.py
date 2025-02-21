@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def CFSCOPE(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def CFSCOPE(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'CFSCOPE'
     if style is None:
         style = func_name

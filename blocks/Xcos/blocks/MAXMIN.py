@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def MAXMIN(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def MAXMIN(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'MAXMIN'
     if style is None:
         style = func_name

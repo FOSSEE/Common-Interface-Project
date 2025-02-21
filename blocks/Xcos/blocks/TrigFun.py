@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def TrigFun(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def TrigFun(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'TrigFun'
     if style is None:
         style = func_name

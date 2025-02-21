@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def Modulo_Count(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def Modulo_Count(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'Modulo_Count'
     if style is None:
         style = func_name

@@ -5,7 +5,7 @@ from blocks.OUT_f import OUT_f
 from common.AAAAAA import *
 
 
-def DELAY_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def DELAY_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'DELAY_f'
     if style is None:
         style = func_name

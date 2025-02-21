@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def MBLOCK(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def MBLOCK(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'MBLOCK'
     if style is None:
         style = func_name

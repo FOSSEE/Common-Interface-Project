@@ -3,7 +3,7 @@ from common.AAAAAA import *
 # block_id = ['4a338342:14e1ed0625e:-7c24#identifier']
 
 
-def SATURATION(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def SATURATION(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'SATURATION'
     if style is None:
         style = func_name

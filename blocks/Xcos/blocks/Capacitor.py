@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def Capacitor(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def Capacitor(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'Capacitor'
     if style is None:
         style = func_name

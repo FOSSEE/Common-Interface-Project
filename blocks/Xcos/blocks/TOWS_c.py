@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def TOWS_c(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def TOWS_c(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'TOWS_c'
     if style is None:
         style = func_name

@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def CurrentSensor(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def CurrentSensor(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'CurrentSensor'
     if style is None:
         style = func_name

@@ -5,7 +5,7 @@ from blocks.EDGETRIGGER import EDGETRIGGER
 from common.AAAAAA import *
 
 
-def EDGE_TRIGGER(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def EDGE_TRIGGER(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'EDGE_TRIGGER'
     if style is None:
         style = func_name

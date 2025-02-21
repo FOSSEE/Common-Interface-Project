@@ -8,7 +8,7 @@ from blocks.IN_f import IN_f
 from common.AAAAAA import *
 
 
-def PID(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def PID(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'PID'
     if style is None:
         style = func_name

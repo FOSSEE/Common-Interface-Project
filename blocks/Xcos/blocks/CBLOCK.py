@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def CBLOCK(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def CBLOCK(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'CBLOCK'
     if style is None:
         style = func_name

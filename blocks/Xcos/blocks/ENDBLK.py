@@ -5,7 +5,7 @@ from common.AAAAAA import *
 #             '-76454188:14e1ef4db88:-7d55']
 
 
-def ENDBLK(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def ENDBLK(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'ENDBLK'
     if style is None:
         style = func_name

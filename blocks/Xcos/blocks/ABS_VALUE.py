@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def ABS_VALUE(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def ABS_VALUE(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'ABS_VALUE'
     if style is None:
         style = func_name

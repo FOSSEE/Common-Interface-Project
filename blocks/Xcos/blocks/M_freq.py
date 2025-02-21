@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def M_freq(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def M_freq(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'M_freq'
     if style is None:
         style = func_name

@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def IdealTransformer(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def IdealTransformer(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'IdealTransformer'
     if style is None:
         style = func_name

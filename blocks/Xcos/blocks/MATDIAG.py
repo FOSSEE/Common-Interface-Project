@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def MATDIAG(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def MATDIAG(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'MATDIAG'
     if style is None:
         style = func_name

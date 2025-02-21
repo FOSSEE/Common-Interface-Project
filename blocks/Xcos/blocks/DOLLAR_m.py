@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def DOLLAR_m(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def DOLLAR_m(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'DOLLAR_m'
     if style is None:
         style = func_name

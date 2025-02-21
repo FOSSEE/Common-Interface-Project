@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def TIME_DELAY(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def TIME_DELAY(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'TIME_DELAY'
     if style is None:
         style = func_name

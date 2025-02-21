@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def CSCOPXY(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def CSCOPXY(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'CSCOPXY'
     if style is None:
         style = func_name

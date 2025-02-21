@@ -4,7 +4,7 @@ from blocks.SplitBlock import SplitBlock
 from common.AAAAAA import *
 
 
-def CLOCK_c(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def CLOCK_c(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'CLOCK_c'
     if style is None:
         style = func_name

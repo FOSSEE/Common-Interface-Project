@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def Bache(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def Bache(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'Bache'
     if style is None:
         style = func_name

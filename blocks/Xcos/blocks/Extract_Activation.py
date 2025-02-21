@@ -5,7 +5,7 @@ from blocks.CLKOUTV_f import CLKOUTV_f
 from common.AAAAAA import *
 
 
-def Extract_Activation(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def Extract_Activation(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'Extract_Activation'
     if style is None:
         style = func_name

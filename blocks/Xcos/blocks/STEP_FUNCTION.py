@@ -16,7 +16,7 @@ from common.AAAAAA import *
 #            '-6f1a4b5d:18f04c0dca9:-7fea', '-6f1a4b5d:18f04c0dca9:-7fe9']
 
 
-def STEP_FUNCTION(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def STEP_FUNCTION(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'STEP_FUNCTION'
     if style is None:
         style = func_name

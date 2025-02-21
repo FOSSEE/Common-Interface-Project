@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def MATSUM(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def MATSUM(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'MATSUM'
     if style is None:
         style = func_name

@@ -21,7 +21,7 @@ from common.AAAAAA import *
 #            '5631d1e9:18ea7a6d774:-7fbf']
 
 
-def PULSE_SC(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def PULSE_SC(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'PULSE_SC'
     if style is None:
         style = func_name

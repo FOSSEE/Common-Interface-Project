@@ -5,7 +5,7 @@ from blocks.CLKOUTV_f import CLKOUTV_f
 from common.AAAAAA import *
 
 
-def Sigbuilder(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def Sigbuilder(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'Sigbuilder'
     if style is None:
         style = func_name

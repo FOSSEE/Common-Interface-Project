@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def CVS(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def CVS(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'CVS'
     if style is None:
         style = func_name

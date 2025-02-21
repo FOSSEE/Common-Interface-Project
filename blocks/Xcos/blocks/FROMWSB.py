@@ -11,7 +11,7 @@ from common.AAAAAA import *
 # link_id = ['5631d1e9:18ea7a6d774:-7fed', '5631d1e9:18ea7a6d774:-7fec']
 
 
-def FROMWSB(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def FROMWSB(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'FROMWSB'
     if style is None:
         style = func_name

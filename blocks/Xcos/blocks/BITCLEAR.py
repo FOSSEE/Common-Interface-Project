@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def BITCLEAR(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def BITCLEAR(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'BITCLEAR'
     if style is None:
         style = func_name

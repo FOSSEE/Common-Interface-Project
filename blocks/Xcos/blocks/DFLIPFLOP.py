@@ -13,7 +13,7 @@ from blocks.SELECT_m import SELECT_m
 from common.AAAAAA import *
 
 
-def DFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def DFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'DFLIPFLOP'
     if style is None:
         style = func_name

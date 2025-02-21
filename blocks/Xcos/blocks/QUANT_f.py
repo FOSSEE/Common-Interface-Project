@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def QUANT_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def QUANT_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'QUANT_f'
     if style is None:
         style = func_name

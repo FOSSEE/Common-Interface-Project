@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def RICC(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def RICC(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'RICC'
     if style is None:
         style = func_name

@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def VsourceAC(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def VsourceAC(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'VsourceAC'
     if style is None:
         style = func_name

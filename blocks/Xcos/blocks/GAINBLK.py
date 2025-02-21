@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def GAINBLK(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def GAINBLK(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'GAINBLK'
     if style is None:
         style = func_name

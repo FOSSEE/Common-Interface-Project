@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def SWITCH2_m(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def SWITCH2_m(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'SWITCH2_m'
     if style is None:
         style = func_name

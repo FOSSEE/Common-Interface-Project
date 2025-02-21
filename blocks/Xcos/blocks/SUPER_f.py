@@ -6,7 +6,7 @@ from blocks.TEXT_f import TEXT_f
 from common.AAAAAA import *
 
 
-def SUPER_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def SUPER_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'SUPER_f'
     if style is None:
         style = func_name

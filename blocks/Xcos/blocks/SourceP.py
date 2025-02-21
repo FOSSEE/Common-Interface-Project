@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def SourceP(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def SourceP(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'SourceP'
     if style is None:
         style = func_name

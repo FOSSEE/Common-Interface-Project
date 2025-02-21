@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def generic_block3(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def generic_block3(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'generic_block3'
     if style is None:
         style = func_name

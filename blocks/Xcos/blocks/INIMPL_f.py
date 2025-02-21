@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def INIMPL_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def INIMPL_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'INIMPL_f'
     if style is None:
         style = func_name

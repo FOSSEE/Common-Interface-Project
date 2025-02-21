@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def EXTTRI(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def EXTTRI(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'EXTTRI'
     if style is None:
         style = func_name

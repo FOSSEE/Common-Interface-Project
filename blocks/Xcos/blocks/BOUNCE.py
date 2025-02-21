@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def BOUNCE(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def BOUNCE(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'BOUNCE'
     if style is None:
         style = func_name

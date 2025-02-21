@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def PNP(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def PNP(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'PNP'
     if style is None:
         style = func_name

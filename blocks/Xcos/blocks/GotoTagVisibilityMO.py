@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def GotoTagVisibilityMO(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def GotoTagVisibilityMO(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'GotoTagVisibilityMO'
     if style is None:
         style = func_name

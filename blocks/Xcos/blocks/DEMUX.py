@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def DEMUX(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def DEMUX(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'DEMUX'
     if style is None:
         style = func_name

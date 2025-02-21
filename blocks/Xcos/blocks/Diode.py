@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def Diode(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def Diode(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'Diode'
     if style is None:
         style = func_name

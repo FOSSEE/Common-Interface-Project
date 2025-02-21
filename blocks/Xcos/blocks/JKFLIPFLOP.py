@@ -8,7 +8,7 @@ from blocks.OUT_f import OUT_f
 from common.AAAAAA import *
 
 
-def JKFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def JKFLIPFLOP(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'JKFLIPFLOP'
     if style is None:
         style = func_name

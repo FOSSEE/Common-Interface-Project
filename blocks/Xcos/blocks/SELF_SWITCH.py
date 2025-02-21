@@ -5,7 +5,7 @@ from blocks.SWITCH_f import SWITCH_f
 from common.AAAAAA import *
 
 
-def SELF_SWITCH(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def SELF_SWITCH(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'SELF_SWITCH'
     if style is None:
         style = func_name

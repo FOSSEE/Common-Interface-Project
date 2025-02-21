@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def BOUNCEXY(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def BOUNCEXY(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'BOUNCEXY'
     if style is None:
         style = func_name

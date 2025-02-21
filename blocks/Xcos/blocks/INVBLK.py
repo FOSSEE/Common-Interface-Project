@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def INVBLK(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def INVBLK(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'INVBLK'
     if style is None:
         style = func_name

@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def HALT_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def HALT_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'HALT_f'
     if style is None:
         style = func_name

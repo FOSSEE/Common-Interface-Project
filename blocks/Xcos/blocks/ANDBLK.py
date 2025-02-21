@@ -6,7 +6,7 @@ from blocks.CLKSPLIT_f import CLKSPLIT_f
 from common.AAAAAA import *
 
 
-def ANDBLK(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def ANDBLK(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'ANDBLK'
     if style is None:
         style = func_name

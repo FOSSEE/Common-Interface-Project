@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def CLKGotoTagVisibility(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def CLKGotoTagVisibility(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'CLKGotoTagVisibility'
     if style is None:
         style = func_name

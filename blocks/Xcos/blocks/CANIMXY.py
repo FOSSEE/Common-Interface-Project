@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def CANIMXY(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def CANIMXY(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'CANIMXY'
     if style is None:
         style = func_name

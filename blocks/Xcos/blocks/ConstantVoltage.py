@@ -1,7 +1,7 @@
 from common.AAAAAA import *
 
 
-def ConstantVoltage(outroot, attribid, ordering, geometry, parameters, parent=1, style=None):
+def ConstantVoltage(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
     func_name = 'ConstantVoltage'
     if style is None:
         style = func_name
