@@ -2,7 +2,9 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Canvg } from 'canvg'
-import { Box, IconButton, Tooltip, Snackbar } from '@material-ui/core'
+import {
+  IconButton, Tooltip, Drawer, List, ListItem, ListItemIcon, ListItemText, Divider, useMediaQuery, Snackbar
+} from '@material-ui/core'
 import AddBoxOutlinedIcon from '@material-ui/icons/AddBoxOutlined'
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline'
@@ -97,10 +99,16 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
   const title2 = useSelector(state => state.saveSchematicReducer.title)
 
   const dispatch = useDispatch()
+  const isMobile = useMediaQuery('(max-width:600px)')
+  const [drawerOpen, setDrawerOpen] = useState(false)
+  const toggleDrawer = (open) => () => setDrawerOpen(open)
 
   // Netlist Modal Control
   const [open, setOpen] = useState(false)
   const [netlist] = useState('')
+  const handleNetlistOpen = () => {
+    dispatch(toggleSimulate())
+  }
 
   const handleClose = () => {
     setOpen(false)
@@ -424,120 +432,107 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
     setSchOpen(false)
   }
 
+  // All toolbar icons in order
+  const toolbarItems = [
+    { icon: <CreateNewFolderOutlinedIcon fontSize='small' />, label: 'New', link: '/editor' },
+    { icon: <OpenInBrowserIcon fontSize='small' />, label: 'Open', action: handleSchDialOpen },
+    { icon: <SaveOutlinedIcon fontSize='small' />, label: 'Save', action: handleSchSave },
+    'pipe',
+    { icon: <SystemUpdateAltOutlinedIcon fontSize='small' />, label: 'Export', action: handleLocalSchSave },
+    { icon: <SystemUpdateAltOutlinedIcon fontSize='small' />, label: 'Export in Xcos', action: handleLocalSchSaveXcos },
+    { icon: <ImageOutlinedIcon fontSize='small' />, label: 'Image Export', action: handleImgClickOpen },
+    { icon: <PrintOutlinedIcon fontSize='small' />, label: 'Print Preview', action: PrintPreview },
+    'pipe',
+    { icon: <PlayCircleOutlineIcon fontSize='small' />, label: 'Simulate', action: handleNetlistOpen },
+    'pipe',
+    { icon: <UndoIcon fontSize='small' />, label: 'Undo', action: editorUndo },
+    { icon: <RedoIcon fontSize='small' />, label: 'Redo', action: editorRedo },
+    { icon: <RotateRightIcon fontSize='small' />, label: 'Rotate', action: Rotate },
+    'pipe',
+    { icon: <ZoomInIcon fontSize='small' />, label: 'Zoom In', action: editorZoomIn },
+    { icon: <ZoomOutIcon fontSize='small' />, label: 'Zoom Out', action: editorZoomOut },
+    { icon: <SettingsOverscanIcon fontSize='small' />, label: 'Default Size', action: editorZoomAct },
+    'pipe',
+    { icon: <DeleteIcon fontSize='small' />, label: 'Delete', action: handleDeleteComp },
+    { icon: <ClearAllIcon fontSize='small' />, label: 'Clear All', action: ClearGrid },
+    { icon: <HelpOutlineIcon fontSize='small' />, label: 'Help', action: handleHelpOpen }
+  ]
+
+  // Only first 7 icons will be shown in mobile view, rest will go into the drawer
+  const visibleIcons = isMobile ? toolbarItems.slice(0, 7) : toolbarItems
+
   return (
-    <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', padding: 1 }}>
-      <Tooltip title='New'>
-        <IconButton color='inherit' className={classes.tools} size='small' target='_blank' component={RouterLink} to='/editor'>
-          <CreateNewFolderOutlinedIcon fontSize='small' />
-        </IconButton>
-      </Tooltip>
-      <Tooltip title='Open'>
-        <IconButton color='inherit' className={classes.tools} size='small' onClick={handleSchDialOpen}>
-          <OpenInBrowserIcon fontSize='small' />
-        </IconButton>
-      </Tooltip>
+    <>
+      <div style={{ display: 'flex', gap: '2px', alignItems: 'center' }}>
+        {/* ✅ Desktop: Show all icons */}
+        {!isMobile && visibleIcons.map((item, index) =>
+          item === 'pipe'
+            ? (
+              <span key={index} style={{ margin: '0 8px', fontWeight: 'bold', opacity: 0.7, fontSize: '18px' }}>|</span>
+            )
+            : (
+              <Tooltip key={index} title={item.label}>
+                {item.link
+                  ? (
+                    <IconButton color='inherit' className={classes.tools} size='small' component={RouterLink} to={item.link}>
+                      {item.icon}
+                    </IconButton>
+                  )
+                  : (
+                    <IconButton color='inherit' className={classes.tools} size='small' onClick={item.action}>
+                      {item.icon}
+                    </IconButton>
+                  )}
+              </Tooltip>
+            )
+        )}
+
+        {/* ✅ Mobile: Show only hamburger menu */}
+        {isMobile && (
+          <>
+            <Tooltip title="More">
+              <IconButton
+                color='inherit'
+                aria-label='open drawer'
+                edge='end'
+                size='small'
+                onClick={toggleDrawer(true)}
+                className={classes.menuButton}
+              >
+                <AddBoxOutlinedIcon fontSize='small' />
+              </IconButton>
+            </Tooltip>
+          </>
+        )}
+      </div>
+
+      {/* ✅ Mobile Hamburger Drawer */}
+      <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer(false)}>
+        <List>
+          {toolbarItems.map((item, index) =>
+            item === 'pipe'
+              ? <Divider key={index} />
+              : (
+                <ListItem button key={index} onClick={item.action}>
+                  <ListItemIcon>{item.icon}</ListItemIcon>
+                  <ListItemText primary={item.label} />
+                </ListItem>
+              )
+          )}
+          <Divider />
+          <ListItem button onClick={toggleDrawer(false)}>
+            <ListItemText primary="Close Menu" />
+          </ListItem>
+        </List>
+      </Drawer>
+
+      {/* ✅ Dialogs & Modals */}
       <OpenSchDialog open={schOpen} close={handleSchDialClose} openLocal={handleLocalSchOpen} />
-      <Tooltip title='Save'>
-        <IconButton color='inherit' className={classes.tools} size='small' onClick={handleSchSave}>
-          <SaveOutlinedIcon fontSize='small' />
-        </IconButton>
-      </Tooltip>
       <SimpleSnackbar open={snacOpen} close={handleSnacClose} message={message} />
-      <span className={classes.pipe}>|</span>
-
-      <Tooltip title='Export'>
-        <IconButton color='inherit' className={classes.tools} size='small' onClick={handleLocalSchSave}>
-          <SystemUpdateAltOutlinedIcon fontSize='small' />
-        </IconButton>
-      </Tooltip>
-      <Tooltip title='Export in xcos'>
-        <IconButton color='inherit' className={classes.tools} size='small' onClick={handleLocalSchSaveXcos}>
-          <SystemUpdateAltOutlinedIcon fontSize='small' />
-        </IconButton>
-      </Tooltip>
-      <Tooltip title='Image Export'>
-        <IconButton color='inherit' className={classes.tools} size='small' onClick={handleImgClickOpen}>
-          <ImageOutlinedIcon fontSize='small' />
-        </IconButton>
-      </Tooltip>
       <ImageExportDialog open={imgopen} onClose={handleImgClose} />
-      <Tooltip title='Print Preview'>
-        <IconButton color='inherit' className={classes.tools} size='small' onClick={PrintPreview}>
-          <PrintOutlinedIcon fontSize='small' />
-        </IconButton>
-      </Tooltip>
-      <span className={classes.pipe}>|</span>
-
-      <Tooltip title='Simulate'>
-        <IconButton color='inherit' className={classes.tools} size='small' onClick={() => { dispatch(toggleSimulate()) }}>
-          <PlayCircleOutlineIcon fontSize='small' />
-        </IconButton>
-      </Tooltip>
       <NetlistModal open={open} close={handleClose} netlist={netlist} />
-      <span className={classes.pipe}>|</span>
-
-      <Tooltip title='Undo'>
-        <IconButton color='inherit' className={classes.tools} size='small' onClick={editorUndo}>
-          <UndoIcon fontSize='small' />
-        </IconButton>
-      </Tooltip>
-      <Tooltip title='Redo'>
-        <IconButton color='inherit' className={classes.tools} size='small' onClick={editorRedo}>
-          <RedoIcon fontSize='small' />
-        </IconButton>
-      </Tooltip>
-      <Tooltip title='Rotate'>
-        <IconButton color='inherit' className={classes.tools} size='small' onClick={Rotate}>
-          <RotateRightIcon fontSize='small' />
-        </IconButton>
-      </Tooltip>
-      <span className={classes.pipe}>|</span>
-
-      <Tooltip title='Zoom In'>
-        <IconButton color='inherit' className={classes.tools} size='small' onClick={editorZoomIn}>
-          <ZoomInIcon fontSize='small' />
-        </IconButton>
-      </Tooltip>
-      <Tooltip title='Zoom Out'>
-        <IconButton color='inherit' className={classes.tools} size='small' onClick={editorZoomOut}>
-          <ZoomOutIcon fontSize='small' />
-        </IconButton>
-      </Tooltip>
-      <Tooltip title='Default Size'>
-        <IconButton color='inherit' className={classes.tools} size='small' onClick={editorZoomAct}>
-          <SettingsOverscanIcon fontSize='small' />
-        </IconButton>
-      </Tooltip>
-      <span className={classes.pipe}>|</span>
-
-      <Tooltip title='Delete'>
-        <IconButton color='inherit' className={classes.tools} size='small' onClick={handleDeleteComp}>
-          <DeleteIcon fontSize='small' />
-        </IconButton>
-      </Tooltip>
-      <Tooltip title='Clear All'>
-        <IconButton color='inherit' className={classes.tools} size='small' onClick={ClearGrid}>
-          <ClearAllIcon fontSize='small' />
-        </IconButton>
-      </Tooltip>
-      <Tooltip title='Help'>
-        <IconButton color='inherit' className={classes.tools} size='small' onClick={handleHelpOpen}>
-          <HelpOutlineIcon fontSize='small' />
-        </IconButton>
-      </Tooltip>
       <HelpScreen open={helpOpen} close={handleHelpClose} />
-
-      <IconButton
-        color='inherit'
-        aria-label='open drawer'
-        edge='end'
-        size='small'
-        onClick={mobileClose}
-        className={classes.menuButton}
-      >
-        <AddBoxOutlinedIcon fontSize='small' />
-      </IconButton>
-    </Box>
+    </>
   )
 }
 

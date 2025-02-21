@@ -17,7 +17,7 @@ def CSCOPE(outroot, attribid, ordering, geometry, parameters, parent=1, style=No
         format_real_number(parameters[8]),
         format_real_number(parameters[4]),
         format_real_number(parameters[5]),
-        format_real_number(parameters[6])])
+        parameters[6]])
     param = strarray(parameters)
     addPrecNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 15, param)
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
