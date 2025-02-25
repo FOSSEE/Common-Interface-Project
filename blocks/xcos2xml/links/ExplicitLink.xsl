@@ -44,7 +44,7 @@
         </xsl:attribute>
         <xsl:attribute name="CellType">Unknown</xsl:attribute>
         <xsl:apply-templates />
-        <Object as="parameter_values"/>
-        <Object as="displayProperties"/>
+        <Object as="parameter_values" />
+        <Object as="displayProperties" />
       </mxCell>
     </xsl:template>

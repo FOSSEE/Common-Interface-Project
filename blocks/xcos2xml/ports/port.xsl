@@ -1,11 +1,11 @@
       <xsl:template match="ExplicitInputPort | ExplicitOutputPort | ImplicitInputPort | ImplicitOutputPort | ControlPort | CommandPort">
 
         <xsl:copy>
-          <xsl:copy-of select="@*"/>
+          <xsl:copy-of select="@*" />
         </xsl:copy>
 
       </xsl:template>
-    
+
       <xsl:template name="port">
         <xsl:param name="id" />
         <xsl:param name="explicitInputPorts" />
@@ -37,16 +37,16 @@
             <mxGeometry>
               <xsl:variable name="numerator" select="2 * @ordering - 1" />
               <xsl:attribute name="y">
-                <xsl:value-of select="$numerator div (2 * number($explicitInputPorts + $implicitInputPorts))"/>
+                <xsl:value-of select="$numerator div (2 * number($explicitInputPorts + $implicitInputPorts))" />
               </xsl:attribute>
               <xsl:attribute name="width">8</xsl:attribute>
               <xsl:attribute name="height">8</xsl:attribute>
               <xsl:attribute name="relative">1</xsl:attribute>
               <xsl:attribute name="as">geometry</xsl:attribute>
-              <mxPoint x="-8" y="-4" as="offset"/>
+              <mxPoint x="-8" y="-4" as="offset" />
             </mxGeometry>
-            <Object as="parameter_values"/>
-            <Object as="displayProperties"/>
+            <Object as="parameter_values" />
+            <Object as="displayProperties" />
           </xsl:element>
         </xsl:for-each>
         <xsl:for-each select="key('k-out', $id)">
@@ -73,16 +73,16 @@
               <xsl:variable name="numerator" select="2 * @ordering - 1" />
               <xsl:attribute name="x">1</xsl:attribute>
               <xsl:attribute name="y">
-                <xsl:value-of select="$numerator div (2 * number($explicitOutputPorts + $implicitOutputPorts))"/>
+                <xsl:value-of select="$numerator div (2 * number($explicitOutputPorts + $implicitOutputPorts))" />
               </xsl:attribute>
               <xsl:attribute name="width">8</xsl:attribute>
               <xsl:attribute name="height">8</xsl:attribute>
               <xsl:attribute name="relative">1</xsl:attribute>
               <xsl:attribute name="as">geometry</xsl:attribute>
-              <mxPoint y="-4" as="offset"/>
+              <mxPoint y="-4" as="offset" />
             </mxGeometry>
-            <Object as="parameter_values"/>
-            <Object as="displayProperties"/>
+            <Object as="parameter_values" />
+            <Object as="displayProperties" />
           </xsl:element>
         </xsl:for-each>
         <xsl:for-each select="key('k-command', $id)">
@@ -108,17 +108,17 @@
             <mxGeometry>
               <xsl:variable name="numerator" select="2 * @ordering - 1" />
               <xsl:attribute name="x">
-                <xsl:value-of select="$numerator div (2 * number($commandPorts))"/>
+                <xsl:value-of select="$numerator div (2 * number($commandPorts))" />
               </xsl:attribute>
               <xsl:attribute name="y">1</xsl:attribute>
               <xsl:attribute name="width">8</xsl:attribute>
               <xsl:attribute name="height">8</xsl:attribute>
               <xsl:attribute name="relative">1</xsl:attribute>
               <xsl:attribute name="as">geometry</xsl:attribute>
-              <mxPoint x="-4" as="offset"/>
+              <mxPoint x="-4" as="offset" />
             </mxGeometry>
-            <Object as="parameter_values"/>
-            <Object as="displayProperties"/>
+            <Object as="parameter_values" />
+            <Object as="displayProperties" />
           </xsl:element>
         </xsl:for-each>
         <xsl:for-each select="key('k-control', $id)">
@@ -144,16 +144,16 @@
             <mxGeometry>
               <xsl:variable name="numerator" select="2 * @ordering - 1" />
               <xsl:attribute name="x">
-                <xsl:value-of select="$numerator div (2 * number($controlPorts))"/>
+                <xsl:value-of select="$numerator div (2 * number($controlPorts))" />
               </xsl:attribute>
               <xsl:attribute name="width">8</xsl:attribute>
               <xsl:attribute name="height">8</xsl:attribute>
               <xsl:attribute name="relative">1</xsl:attribute>
               <xsl:attribute name="as">geometry</xsl:attribute>
-              <mxPoint x="-4" y="-8" as="offset"/>
+              <mxPoint x="-4" y="-8" as="offset" />
             </mxGeometry>
-            <Object as="parameter_values"/>
-            <Object as="displayProperties"/>
+            <Object as="parameter_values" />
+            <Object as="displayProperties" />
           </xsl:element>
         </xsl:for-each>
       </xsl:template>

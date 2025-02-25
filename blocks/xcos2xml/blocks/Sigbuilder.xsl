@@ -41,7 +41,7 @@
         <xsl:attribute name="targetVertex">0</xsl:attribute>
         <xsl:attribute name="tarx">0</xsl:attribute>
         <xsl:attribute name="tary">0</xsl:attribute>
-        <xsl:apply-templates select="mxGeometry"/>
+        <xsl:apply-templates select="mxGeometry" />
 
         <xsl:variable name="value1">
           <xsl:choose>
@@ -49,12 +49,12 @@
               <xsl:value-of select="SuperBlockDiagram/mxGraphModel/root
                               /BasicBlock[@interfaceFunctionName='CURVE_c']
                               /ScilabString[@as='exprs']
-                              /data[@column='0' and @line='0']/@value"/>   
+                              /data[@column='0' and @line='0']/@value" />
             </xsl:when>
             <xsl:otherwise>
-              <xsl:value-of select="3"/>
+              <xsl:value-of select="3" />
             </xsl:otherwise>
-          </xsl:choose>                          
+          </xsl:choose>
         </xsl:variable>
 
         <xsl:variable name="value2">
@@ -63,12 +63,12 @@
               <xsl:value-of select="SuperBlockDiagram/mxGraphModel/root
                               /BasicBlock[@interfaceFunctionName='CURVE_c']
                               /ScilabString[@as='exprs']
-                              /data[@column='0' and @line='1']/@value"/>   
+                              /data[@column='0' and @line='1']/@value" />
             </xsl:when>
             <xsl:otherwise>
               <xsl:value-of select="'[0,1,2]'" />
             </xsl:otherwise>
-          </xsl:choose>                          
+          </xsl:choose>
         </xsl:variable>
 
         <xsl:variable name="value3">
@@ -77,12 +77,12 @@
               <xsl:value-of select="SuperBlockDiagram/mxGraphModel/root
                               /BasicBlock[@interfaceFunctionName='CURVE_c']
                               /ScilabString[@as='exprs']
-                              /data[@column='0' and @line='2']/@value"/>   
+                              /data[@column='0' and @line='2']/@value" />
             </xsl:when>
             <xsl:otherwise>
               <xsl:value-of select="'[10,20,-30]'" />
             </xsl:otherwise>
-          </xsl:choose>                          
+          </xsl:choose>
         </xsl:variable>
 
         <xsl:variable name="value4">
@@ -91,12 +91,12 @@
               <xsl:value-of select="SuperBlockDiagram/mxGraphModel/root
                               /BasicBlock[@interfaceFunctionName='CURVE_c']
                               /ScilabString[@as='exprs']
-                              /data[@column='0' and @line='3']/@value"/>   
+                              /data[@column='0' and @line='3']/@value" />
             </xsl:when>
             <xsl:otherwise>
-              <xsl:value-of select="'y'"/>
+              <xsl:value-of select="'y'" />
             </xsl:otherwise>
-          </xsl:choose>                          
+          </xsl:choose>
         </xsl:variable>
 
         <xsl:variable name="value5">
@@ -105,24 +105,24 @@
               <xsl:value-of select="SuperBlockDiagram/mxGraphModel/root
                               /BasicBlock[@interfaceFunctionName='CURVE_c']
                               /ScilabString[@as='exprs']
-                              /data[@column='0' and @line='4']/@value"/>   
+                              /data[@column='0' and @line='4']/@value" />
             </xsl:when>
             <xsl:otherwise>
-              <xsl:value-of select="'n'"/>
+              <xsl:value-of select="'n'" />
             </xsl:otherwise>
-          </xsl:choose>                          
+          </xsl:choose>
         </xsl:variable>
 
-        <Object display_parameter="" as="displayProperties"/>
-        <Object p000_value="{$value1}" p001_value="{$value2}" p002_value="{$value3}" p003_value="{$value4}" p004_value="{$value5}" as="parameter_values"/>
+        <Object display_parameter="" as="displayProperties" />
+        <Object p000_value="{$value1}" p001_value="{$value2}" p002_value="{$value3}" p003_value="{$value4}" p004_value="{$value5}" as="parameter_values" />
       </xsl:element>
       <xsl:call-template name="port">
-        <xsl:with-param name="id" select="@id"/>
-        <xsl:with-param name="explicitInputPorts" select="$explicitInputPorts"/>
-        <xsl:with-param name="explicitOutputPorts" select="$explicitOutputPorts"/>
-        <xsl:with-param name="implicitInputPorts" select="$implicitInputPorts"/>
-        <xsl:with-param name="implicitOutputPorts" select="$implicitOutputPorts"/>
-        <xsl:with-param name="controlPorts" select="$controlPorts"/>
-        <xsl:with-param name="commandPorts" select="$commandPorts"/>
+        <xsl:with-param name="id" select="@id" />
+        <xsl:with-param name="explicitInputPorts" select="$explicitInputPorts" />
+        <xsl:with-param name="explicitOutputPorts" select="$explicitOutputPorts" />
+        <xsl:with-param name="implicitInputPorts" select="$implicitInputPorts" />
+        <xsl:with-param name="implicitOutputPorts" select="$implicitOutputPorts" />
+        <xsl:with-param name="controlPorts" select="$controlPorts" />
+        <xsl:with-param name="commandPorts" select="$commandPorts" />
       </xsl:call-template>
     </xsl:template>

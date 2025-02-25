@@ -45,7 +45,7 @@
         <xsl:attribute name="targetVertex">0</xsl:attribute>
         <xsl:attribute name="tarx">0</xsl:attribute>
         <xsl:attribute name="tary">0</xsl:attribute>
-        <xsl:apply-templates select="mxGeometry"/>
+        <xsl:apply-templates select="mxGeometry" />
         <Object>
           <xsl:attribute name="display_parameter">
           </xsl:attribute>
@@ -53,18 +53,18 @@
         </Object>
         <Object>
           <xsl:attribute name="p000_value">
-            <xsl:value-of select="*[@as='exprs']/data/@value"/>
+            <xsl:value-of select="*[@as='exprs']/data/@value" />
           </xsl:attribute>
           <xsl:attribute name="as">parameter_values</xsl:attribute>
         </Object>
       </xsl:element>
       <xsl:call-template name="port">
-        <xsl:with-param name="id" select="@id"/>
-        <xsl:with-param name="explicitInputPorts" select="$explicitInputPorts"/>
-        <xsl:with-param name="explicitOutputPorts" select="$explicitOutputPorts"/>
-        <xsl:with-param name="implicitInputPorts" select="$implicitInputPorts"/>
-        <xsl:with-param name="implicitOutputPorts" select="$implicitOutputPorts"/>
-        <xsl:with-param name="controlPorts" select="$controlPorts"/>
-        <xsl:with-param name="commandPorts" select="$commandPorts"/>
+        <xsl:with-param name="id" select="@id" />
+        <xsl:with-param name="explicitInputPorts" select="$explicitInputPorts" />
+        <xsl:with-param name="explicitOutputPorts" select="$explicitOutputPorts" />
+        <xsl:with-param name="implicitInputPorts" select="$implicitInputPorts" />
+        <xsl:with-param name="implicitOutputPorts" select="$implicitOutputPorts" />
+        <xsl:with-param name="controlPorts" select="$controlPorts" />
+        <xsl:with-param name="commandPorts" select="$commandPorts" />
       </xsl:call-template>
     </xsl:template>

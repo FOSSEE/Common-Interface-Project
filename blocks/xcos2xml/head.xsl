@@ -4,30 +4,30 @@
 >
 
   <xsl:template name="log2">
-     <xsl:param name="pX"/>
-     <xsl:param name="count" select="0"/>
+     <xsl:param name="pX" />
+     <xsl:param name="count" select="0" />
 
      <xsl:choose>
        <xsl:when test="$pX &lt;= 1">
-         <xsl:value-of select="$count"/>
+         <xsl:value-of select="$count" />
        </xsl:when>
        <xsl:otherwise>
          <xsl:call-template name="log2">
-           <xsl:with-param name="pX" select="$pX div 2"/>
-           <xsl:with-param name="count" select="$count + 1"/>
+           <xsl:with-param name="pX" select="$pX div 2" />
+           <xsl:with-param name="count" select="$count + 1" />
          </xsl:call-template>
        </xsl:otherwise>
      </xsl:choose>
   </xsl:template>
 
   <xsl:template name="si-format">
-        <xsl:param name="num"/>
+        <xsl:param name="num" />
 
         <!-- Compute absolute value manually -->
         <xsl:variable name="absNum">
             <xsl:choose>
-                <xsl:when test="$num &lt; 0"><xsl:value-of select="-$num"/></xsl:when>
-                <xsl:otherwise><xsl:value-of select="$num"/></xsl:otherwise>
+                <xsl:when test="$num &lt; 0"><xsl:value-of select="-$num" /></xsl:when>
+                <xsl:otherwise><xsl:value-of select="$num" /></xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
 
@@ -37,8 +37,8 @@
                 <xsl:when test="$absNum = 0">0</xsl:when>
                 <xsl:otherwise>
                     <xsl:call-template name="compute-exp">
-                        <xsl:with-param name="n" select="$absNum"/>
-                        <xsl:with-param name="exp" select="0"/>
+                        <xsl:with-param name="n" select="$absNum" />
+                        <xsl:with-param name="exp" select="0" />
                     </xsl:call-template>
                 </xsl:otherwise>
             </xsl:choose>
@@ -47,56 +47,56 @@
         <!-- Define SI prefixes -->
         <xsl:choose>
             <xsl:when test="$exponent &gt;= -2 and $exponent &lt;= 0">
-                <xsl:value-of select="round($num div 1E-3)"/> m
+                <xsl:value-of select="round($num div 1E-3)" /> m
             </xsl:when>
             <xsl:when test="$exponent &gt;= -5 and $exponent &lt;= -3">
-                <xsl:value-of select="round($num div 1E-6)"/> &#956;  <!-- Unicode for μ -->
+                <xsl:value-of select="round($num div 1E-6)" /> &#956;  <!-- Unicode for μ -->
             </xsl:when>
             <xsl:when test="$exponent &gt;= -8 and $exponent &lt;= -6">
-                <xsl:value-of select="round($num div 1E-9)"/> n
+                <xsl:value-of select="round($num div 1E-9)" /> n
             </xsl:when>
             <xsl:when test="$exponent &gt;= -11 and $exponent &lt;= -9">
-                <xsl:value-of select="round($num div 1E-12)"/> p
+                <xsl:value-of select="round($num div 1E-12)" /> p
             </xsl:when>
             <xsl:when test="$exponent &gt;= 1 and $exponent &lt;= 3">
-                <xsl:value-of select="round($num div 1)"/>
+                <xsl:value-of select="round($num div 1)" />
             </xsl:when>
             <xsl:when test="$exponent &gt;= 4 and $exponent &lt;= 6">
-                <xsl:value-of select="round($num div 1E3)"/> k</xsl:when>
+                <xsl:value-of select="round($num div 1E3)" /> k</xsl:when>
             <xsl:when test="$exponent &gt;= 7 and $exponent &lt;= 9">
-                <xsl:value-of select="round($num div 1E6)"/> M
+                <xsl:value-of select="round($num div 1E6)" /> M
             </xsl:when>
             <xsl:when test="$exponent &gt;= 10 and $exponent &lt;= 12">
-                <xsl:value-of select="round($num div 1E9)"/> G
+                <xsl:value-of select="round($num div 1E9)" /> G
             </xsl:when>
             <xsl:when test="$exponent &gt;= 13 and $exponent &lt;= 15">
-                <xsl:value-of select="round($num div 1E12)"/> T
+                <xsl:value-of select="round($num div 1E12)" /> T
             </xsl:when>
             <xsl:otherwise>
-                <xsl:value-of select="$num"/> 10^<xsl:value-of select="$exponent"/>
+                <xsl:value-of select="$num" /> 10^<xsl:value-of select="$exponent " />
             </xsl:otherwise>
         </xsl:choose>
   </xsl:template>
     <!-- Recursive template to compute the exponent -->
   <xsl:template name="compute-exp">
-        <xsl:param name="n"/>
-        <xsl:param name="exp"/>
+        <xsl:param name="n" />
+        <xsl:param name="exp" />
 
         <xsl:choose>
             <xsl:when test="$n &lt; 1">
                 <xsl:call-template name="compute-exp">
-                    <xsl:with-param name="n" select="$n * 10"/>
-                    <xsl:with-param name="exp" select="$exp - 1"/>
+                    <xsl:with-param name="n" select="$n * 10" />
+                    <xsl:with-param name="exp" select="$exp - 1" />
                 </xsl:call-template>
             </xsl:when>
             <xsl:when test="$n &gt;= 10">
                 <xsl:call-template name="compute-exp">
-                    <xsl:with-param name="n" select="$n div 10"/>
-                    <xsl:with-param name="exp" select="$exp + 1"/>
+                    <xsl:with-param name="n" select="$n div 10" />
+                    <xsl:with-param name="exp" select="$exp + 1" />
                 </xsl:call-template>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:value-of select="$exp"/>
+                <xsl:value-of select="$exp" />
             </xsl:otherwise>
         </xsl:choose>
   </xsl:template>
@@ -125,17 +125,17 @@
   </xsl:variable>
   <xsl:template match="@*|node()">
     <xsl:copy>
-      <xsl:apply-templates select="@*|node()"/>
+      <xsl:apply-templates select="@*|node()" />
     </xsl:copy>
   </xsl:template>
-  <xsl:template match="comment()"/>
+  <xsl:template match="comment()" />
   <xsl:template match="XcosDiagram">
-    <xsl:apply-templates select="node()"/>
+    <xsl:apply-templates select="node()" />
   </xsl:template>
   <xsl:template match="mxGraphModel">
     <xsl:copy>
-      <xsl:apply-templates select="@*[name(.)!='as']"/>
-      <xsl:apply-templates select="node()"/>
+      <xsl:apply-templates select="@*[name(.)!='as']" />
+      <xsl:apply-templates select="node()" />
     </xsl:copy>
   </xsl:template>
   <xsl:template match="mxCell[position()=1]">
@@ -150,9 +150,9 @@
       <xsl:attribute name="targetVertex">0</xsl:attribute>
       <xsl:attribute name="tarx">0</xsl:attribute>
       <xsl:attribute name="tary">0</xsl:attribute>
-      <Object as="parameter_values"/>
-      <Object as="displayProperties"/>
-      <xsl:apply-templates select="node()"/>
+      <Object as="parameter_values" />
+      <Object as="displayProperties" />
+      <xsl:apply-templates select="node()" />
     </xsl:copy>
   </xsl:template>
   <xsl:template match="mxCell[position()=2]">
@@ -165,9 +165,9 @@
       <xsl:attribute name="targetVertex">0</xsl:attribute>
       <xsl:attribute name="tarx">0</xsl:attribute>
       <xsl:attribute name="tary">0</xsl:attribute>
-      <Object as="parameter_values"/>
-      <Object as="displayProperties"/>
-      <xsl:apply-templates select="node()"/>
+      <Object as="parameter_values" />
+      <Object as="displayProperties" />
+      <xsl:apply-templates select="node()" />
     </xsl:copy>
   </xsl:template>
   <xsl:template name="mxGeometry" match="mxGeometry">
@@ -183,7 +183,7 @@
             <xsl:value-of select="format-number(@y+$originy,'0.0')" />
           </xsl:attribute>
       </xsl:if>
-      
+
       <xsl:if test="@width">
         <xsl:attribute name="width">
           <xsl:value-of select="@width" />

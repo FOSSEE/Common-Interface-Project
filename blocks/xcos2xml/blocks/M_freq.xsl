@@ -9,12 +9,12 @@
         <xsl:variable name="count" select="string-length($value) - string-length(translate($value, ';, ', '')) + 1" />
         <xsl:variable name="power">
           <xsl:call-template name="pow">
-            <xsl:with-param name="pBase" select="2"/>
-            <xsl:with-param name="pPower" select="$count"/>
+            <xsl:with-param name="pBase" select="2" />
+            <xsl:with-param name="pPower" select="$count" />
           </xsl:call-template>
         </xsl:variable>
-        <xsl:variable name="integer-power" select="floor($power)"/>
-        <xsl:value-of select="$integer-power - 1"/>
+        <xsl:variable name="integer-power" select="floor($power)" />
+        <xsl:value-of select="$integer-power - 1" />
       </xsl:variable>
       <xsl:element name="mxCell">
         <xsl:attribute name="style">
@@ -52,29 +52,29 @@
         <xsl:attribute name="targetVertex">0</xsl:attribute>
         <xsl:attribute name="tarx">0</xsl:attribute>
         <xsl:attribute name="tary">0</xsl:attribute>
-        <xsl:apply-templates select="mxGeometry"/>
+        <xsl:apply-templates select="mxGeometry" />
         <Object>
           <xsl:attribute name="display_parameter">
-            <xsl:value-of select="@value"/>
+            <xsl:value-of select="@value" />
           </xsl:attribute>
           <xsl:attribute name="as">displayProperties</xsl:attribute>
         </Object>
         <Object>
           <xsl:for-each select="*[@as='exprs']/data">
             <xsl:attribute name="{concat('p', format-number(position() - 1, '000'), '_value')}">
-              <xsl:value-of select="@value"/>
+              <xsl:value-of select="@value" />
             </xsl:attribute>
           </xsl:for-each>
           <xsl:attribute name="as">parameter_values</xsl:attribute>
         </Object>
       </xsl:element>
       <xsl:call-template name="port">
-        <xsl:with-param name="id" select="@id"/>
-        <xsl:with-param name="explicitInputPorts" select="$explicitInputPorts"/>
-        <xsl:with-param name="explicitOutputPorts" select="$explicitOutputPorts"/>
-        <xsl:with-param name="implicitInputPorts" select="$implicitInputPorts"/>
-        <xsl:with-param name="implicitOutputPorts" select="$implicitOutputPorts"/>
-        <xsl:with-param name="controlPorts" select="$controlPorts"/>
-        <xsl:with-param name="commandPorts" select="$commandPorts"/>
+        <xsl:with-param name="id" select="@id" />
+        <xsl:with-param name="explicitInputPorts" select="$explicitInputPorts" />
+        <xsl:with-param name="explicitOutputPorts" select="$explicitOutputPorts" />
+        <xsl:with-param name="implicitInputPorts" select="$implicitInputPorts" />
+        <xsl:with-param name="implicitOutputPorts" select="$implicitOutputPorts" />
+        <xsl:with-param name="controlPorts" select="$controlPorts" />
+        <xsl:with-param name="commandPorts" select="$commandPorts" />
       </xsl:call-template>
     </xsl:template>
