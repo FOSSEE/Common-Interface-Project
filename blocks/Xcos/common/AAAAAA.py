@@ -719,15 +719,15 @@ def get_number_power(value):
 
 
 def format_real_number(parameter):
-    if parameter.strip() == '':
-        formatted_number = '0'
-    elif re.search(r'[dDeE\^]', parameter):
+    if not parameter.strip():  # Handle empty strings
+        return '0'
+    elif re.search(r'[dDeE\^]', parameter):  # Check for scientific notation
         real_number = float(parameter.replace('*10^', 'e').replace('10^', '1e').replace('d', 'e').replace('D', 'e'))
-        formatted_number = "{:.10g}".format(real_number)
-    else:
-        formatted_number = "{:.10g}".format(float(parameter))
-
-    return formatted_number
+        return "{:.10g}".format(real_number)
+    try:
+        return "{:.10g}".format(float(parameter))  # Convert numeric strings safely
+    except ValueError:
+        return parameter  # Return original non-numeric string
 
 
 def num2str(num):
@@ -1383,7 +1383,6 @@ def getSplitPoints(attrib, switch_split, blkgeometry, sourceVertex, targetVertex
 
 
 def process_xcos_model(model, title, rootattribid, parentattribid):
-    print('model:', model)
     checkModelTag(model)
     outdiagram = ET.Element('XcosDiagram')
     outdiagram.set('background', '-1')
@@ -1451,9 +1450,10 @@ def process_xcos_model(model, title, rootattribid, parentattribid):
                         # stylename = style_to_object(style)['default']
                         style_dict = style_to_object(style)
                         stylename = style_dict.get('default', 'TEXT_f')
-                        print('globals:', locals())
-                        # locals()[stylename](outroot, attribid, componentOrdering, componentGeometry, parameters, parent=parentattribid, style=style, superblock=superblock)
-                        eval(stylename + "(outroot, attribid, componentOrdering, componentGeometry, parameters, parent=parentattribid, style=style, superblock=superblock)")
+
+                        result = getattr(Blocks, stylename)(outroot, attribid, componentOrdering, componentGeometry, parameters, 
+                                        parent=parentattribid, style=style, superblock=superblock)
+
                         IDLIST[attribid] = cell_type
                         blkgeometry[attribid] = componentGeometry
 
@@ -1470,8 +1470,10 @@ def process_xcos_model(model, title, rootattribid, parentattribid):
 
                         geometry = getPinGeometry(mxGeometry, componentGeometry)
 
-                        globals()[stylename](outroot, attribid, ParentComponent, ordering, geometry, style=style)
-
+                        stylename = style_to_object(style).get('default', 'TEXT_f')
+                        
+                        getattr(Ports, stylename)(outroot, attribid, ParentComponent, ordering, geometry, style=style)
+                        
                         IDLIST[attribid] = stylename
                         blkgeometry[attribid] = geometry
 
@@ -1582,8 +1584,8 @@ def process_xcos_model(model, title, rootattribid, parentattribid):
             if get_int(attribid) >= 10000:
                 attribid = nextattribid
                 nextattribid += 1
-            globals()[style](outroot, attribid, sourceVertex, targetVertex,
-                             waypoints[1:-1], parent=parentattribid)
+
+            getattr(Links, style)(outroot, attribid, sourceVertex, targetVertex, waypoints[1:-1], parent=parentattribid)
 
     outnode = ET.SubElement(outdiagram, 'mxCell')
     outnode.set('as', 'defaultParent')
