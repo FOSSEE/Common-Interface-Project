@@ -573,7 +573,7 @@ from xcosblocks import SplitBlock
 #             "blocks": [],
 #             "parameters": []
 #         }
-        
+
 #         mxGraphModel = cell.find(".//mxGraphModel/root")
 #         if mxGraphModel is not None:
 #             for subcell in mxGraphModel.findall("mxCell"):
@@ -588,7 +588,7 @@ from xcosblocks import SplitBlock
 #                     superblock_data["parameters"].append(parameter_values[parameter])
 #                 else:
 #                     break
-        
+
 #         return superblock_data
 
 #     return None

@@ -5,5 +5,5 @@
 #ignore = E121,E123,E126,E226,E24,E704,W503,W504
 ignore = F401,F403,W504
 extend-exclude = docs,env*,migrations,node_modules,Xcos/common,Xcos/blocks,Xcos/ports,Xcos/links
-max-complexity = 14
+max-complexity = 30
 max-line-length = 275

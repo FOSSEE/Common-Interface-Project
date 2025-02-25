@@ -17,6 +17,7 @@ blocks/*.xcos
 blocks/*.xml
 blocks/*.xsl
 blocks/xcosblocks.py
+blocks/xcosblocks.sed
 blocks/Xcos/xcosblocks.py
 blocks/blocks/xcosblocks/xcosblocks.py
 blocks/eda-frontend/public/xcos2xml.xsl

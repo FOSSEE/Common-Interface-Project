@@ -31,8 +31,7 @@ def addCommandPortForSplit(outroot, splitBlock, sourceVertex, targetVertex,
     geometry['height'] = 8
     geometry['x'] = 7
     geometry['y'] = -4
-    CommandPort(outroot, nextAttrib, splitBlock, outputCount, geometry,
-                forSplitBlock=True)
+    CommandPort(outroot, nextAttrib, splitBlock, outputCount, geometry, forSplitBlock=True)
     nextAttrib += 1
     nextAttribForSplit += 1
     return (inputCount, outputCount, nextAttrib, nextAttribForSplit)

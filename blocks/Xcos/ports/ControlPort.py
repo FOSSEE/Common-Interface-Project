@@ -31,8 +31,7 @@ def addControlPortForSplit(outroot, splitBlock, sourceVertex, targetVertex,
     geometry['height'] = 8
     geometry['x'] = -8
     geometry['y'] = -4
-    ControlPort(outroot, nextAttrib, splitBlock, inputCount, geometry,
-                forSplitBlock=True)
+    ControlPort(outroot, nextAttrib, splitBlock, inputCount, geometry, forSplitBlock=True)
     nextAttrib += 1
     nextAttribForSplit += 1
     return (inputCount, outputCount, nextAttrib, nextAttribForSplit)

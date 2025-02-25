@@ -776,6 +776,7 @@ def style_to_object(style):
 
     return style_object
 
+
 # parserfunction
 def remove_hyphen_number(s):
     return re.sub(r'-\d+$', '', s)
@@ -1333,7 +1334,7 @@ def getParameters(cell):
 def getSuperblock(cell):
     if "style" in cell.attrib and "SUPER_f" in cell.attrib["style"]:
         mxGraphModel = cell.find(".//mxGraphModel")
-     
+
         return mxGraphModel
 
     return None
@@ -1452,7 +1453,7 @@ def process_xcos_model(model, title, rootattribid, parentattribid):
                         stylename = style_dict.get('default', 'TEXT_f')
                         print('globals:', locals())
                         # locals()[stylename](outroot, attribid, componentOrdering, componentGeometry, parameters, parent=parentattribid, style=style, superblock=superblock)
-                        eval(stylename + "(outroot, attribid, componentOrdering, componentGeometry, parameters, parent=parentattribid, style=style, superblock=superblock)" )
+                        eval(stylename + "(outroot, attribid, componentOrdering, componentGeometry, parameters, parent=parentattribid, style=style, superblock=superblock)")
                         IDLIST[attribid] = cell_type
                         blkgeometry[attribid] = componentGeometry
 
@@ -1566,7 +1567,6 @@ def process_xcos_model(model, title, rootattribid, parentattribid):
             nextAttribForSplit += 1
             LINKTOPORT[linkid] = port3
 
-
     for key, newEdges in newEdgeDict.items():
         for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point, split_point2) in newEdges:
             try:
@@ -1583,7 +1583,7 @@ def process_xcos_model(model, title, rootattribid, parentattribid):
                 attribid = nextattribid
                 nextattribid += 1
             globals()[style](outroot, attribid, sourceVertex, targetVertex,
-                            waypoints[1:-1], parent=parentattribid)
+                             waypoints[1:-1], parent=parentattribid)
 
     outnode = ET.SubElement(outdiagram, 'mxCell')
     outnode.set('as', 'defaultParent')

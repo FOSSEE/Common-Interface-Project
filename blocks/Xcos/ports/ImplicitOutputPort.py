@@ -38,8 +38,7 @@ def addImplicitOutputPortForSplit(outroot, splitBlock, sourceVertex, targetVerte
     geometry['height'] = 8
     geometry['x'] = 7
     geometry['y'] = -4
-    ImplicitOutputPort(outroot, nextAttrib, splitBlock, outputCount, geometry,
-                       forSplitBlock=True)
+    ImplicitOutputPort(outroot, nextAttrib, splitBlock, outputCount, geometry, forSplitBlock=True)
     nextAttrib += 1
     nextAttribForSplit += 1
     return (inputCount, outputCount, nextAttrib, nextAttribForSplit)

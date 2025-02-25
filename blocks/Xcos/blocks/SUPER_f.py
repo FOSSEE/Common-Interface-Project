@@ -60,7 +60,7 @@ def SUPER_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=N
     # addmxCellNode(root, TYPE_MXCELL,
     #               id=block_id[1],
     #               parent=block_id[0])
-    
+
     # CLOCK_c(root, block_id[2], ordering, geometry, ['0', '0'], parent=block_id[1])
     # CommandPort
     # CLOCK_c
