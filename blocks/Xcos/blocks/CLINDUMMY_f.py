@@ -15,7 +15,7 @@ def CLINDUMMY_f(outroot, attribid, ordering, geometry, parameters, parent=1, sty
     addExprsNode(outnode, TYPE_DOUBLE, 0, parameters)
     addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM,
                  0, [])
-    addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 0, parameters[0])
+    addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 0, parameters)
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
     array = ['0']
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NBZERO, 1, array)

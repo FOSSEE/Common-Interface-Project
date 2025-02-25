@@ -1,10 +1,10 @@
     <xsl:template match="SuperBlock">
-      <xsl:variable name="explicitInputPorts">1</xsl:variable>
-      <xsl:variable name="implicitInputPorts">0</xsl:variable>
-      <xsl:variable name="explicitOutputPorts">1</xsl:variable>
-      <xsl:variable name="implicitOutputPorts">0</xsl:variable>
-      <xsl:variable name="controlPorts">0</xsl:variable>
-      <xsl:variable name="commandPorts">0</xsl:variable>
+      <xsl:variable name="explicitInputPorts" select="count(SuperBlockDiagram/mxGraphModel/root/ExplicitOutBlock)"/>
+    <xsl:variable name="implicitInputPorts" select="count(SuperBlockDiagram/mxGraphModel/root/ImplicitOutBlock)"/>
+    <xsl:variable name="explicitOutputPorts" select="count(SuperBlockDiagram/mxGraphModel/root/ExplicitInBlock)"/>
+    <xsl:variable name="implicitOutputPorts" select="count(SuperBlockDiagram/mxGraphModel/root/ImplicitInBlock)"/>
+    <xsl:variable name="controlPorts" select="count(SuperBlockDiagram/mxGraphModel/root/EventInBlock)"/>
+    <xsl:variable name="commandPorts" select="count(SuperBlockDiagram/mxGraphModel/root/EventOutBlock)"/>
       <xsl:element name="mxCell">
         <xsl:attribute name="style">
           <xsl:value-of select="@style" />
@@ -44,6 +44,7 @@
         <xsl:apply-templates select="mxGeometry"/>
         <Object display_parameter="" as="displayProperties"/>
         <Object as="parameter_values"/>
+        <xsl:apply-templates select="SuperBlockDiagram/node()"/>
       </xsl:element>
       <xsl:call-template name="port">
         <xsl:with-param name="id" select="@id"/>
