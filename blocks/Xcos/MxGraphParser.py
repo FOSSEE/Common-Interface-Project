@@ -7,13 +7,7 @@ import traceback
 import xml.etree.ElementTree as ET
 import defusedxml.ElementTree as goodET
 
-# from xcosblocks import SplitBlock
-# from xcosblocks import num2str, style_to_object
-from xcosblocks import *
-# from ParserFunctions import addPort1ForSplit, addPort2ForSplit, addPort3ForSplit
-# from ParserFunctions import createOutnode, checkModelTag, checkRootTag
-# from ParserFunctions import getComponentGeometry, get_int, getLinkStyle, getNextAttribId, getOrdering, getorderingname, getParameters, getPinGeometry, getSplitPoints, getWaypoints, getSuperblock
-from xcosblocks import remove_hyphen_number  # identify_segment,
+from xcosblocks import remove_hyphen_number
 from xcosblocks import process_xcos_model
 
 

@@ -4,7 +4,6 @@
 # from blocks.SPLIT_f import SPLIT_f
 # from blocks.TEXT_f import TEXT_f
 from common.AAAAAA import *
-# from ParserFunctions import process_xcos_model
 
 
 def SUPER_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None, superblock=None):
