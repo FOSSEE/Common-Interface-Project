@@ -1406,9 +1406,7 @@ def process_xcos_model(model, title, rootattribid, parentattribid):
         nextAttribForSplit = 10000
         edgeDict = {}
         edgeList = []
-        mxPointList = {}
         blkgeometry = {}
-        points1 = []
         cells = list(root)
         remainingcells = []
         cellslength = len(cells)
@@ -1451,8 +1449,8 @@ def process_xcos_model(model, title, rootattribid, parentattribid):
                         style_dict = style_to_object(style)
                         stylename = style_dict.get('default', 'TEXT_f')
 
-                        result = getattr(Blocks, stylename)(outroot, attribid, componentOrdering, componentGeometry, parameters, 
-                                        parent=parentattribid, style=style, superblock=superblock)
+                        getattr(Blocks, stylename)(outroot, attribid, componentOrdering, componentGeometry, parameters,
+                                                   parent=parentattribid, style=style, superblock=superblock)
 
                         IDLIST[attribid] = cell_type
                         blkgeometry[attribid] = componentGeometry
@@ -1470,10 +1468,8 @@ def process_xcos_model(model, title, rootattribid, parentattribid):
 
                         geometry = getPinGeometry(mxGeometry, componentGeometry)
 
-                        stylename = style_to_object(style).get('default', 'TEXT_f')
-                        
                         getattr(Ports, stylename)(outroot, attribid, ParentComponent, ordering, geometry, style=style)
-                        
+
                         IDLIST[attribid] = stylename
                         blkgeometry[attribid] = geometry
 
