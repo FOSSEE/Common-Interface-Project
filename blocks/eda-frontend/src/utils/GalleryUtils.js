@@ -1,3 +1,5 @@
+import { saveAs } from 'file-saver'
+
 const getXsltProcessor = async () => {
   const xcos2xml = '/xcos2xml.xsl'
   const response = await fetch(xcos2xml)
@@ -172,4 +174,15 @@ export const styleToObject = (style) => {
   }
 
   return styleObject
+}
+
+export const saveToFile = (filename, filetype, data) => {
+  const blob = new Blob([data], { type: filetype + ';charset=utf-8' })
+  saveAs(blob, filename)
+}
+
+export const saveXmlToFile = (filename, xmlDoc) => {
+  const serializer = new XMLSerializer()
+  const data = serializer.serializeToString(xmlDoc)
+  saveToFile(filename, 'application/xml', data)
 }
