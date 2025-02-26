@@ -3,12 +3,10 @@
 import os
 import re
 import sys
-import traceback
 import xml.etree.ElementTree as ET
 import defusedxml.ElementTree as goodET
 
-from xcosblocks import remove_hyphen_number
-from xcosblocks import process_xcos_model
+from xcosblocks import process_xcos_model, remove_hyphen_number
 
 
 if len(sys.argv) != 2:

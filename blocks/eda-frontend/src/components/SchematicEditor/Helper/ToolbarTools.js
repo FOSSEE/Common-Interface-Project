@@ -428,6 +428,10 @@ function parseXmlToGraph (xmlDoc, graph) {
           v1.controlPorts = 0
           v1.commandPorts = 0
           v1.simulationFunction = cellAttrs.simulationFunction?.value
+          const mxGraphModel = cell.querySelector('mxGraphModel')
+          if (mxGraphModel !== null) {
+            v1.mxGraphModel = mxGraphModel
+          }
         } else if (cellAttrs.CellType?.value === 'Pin') {
           const style = cellAttrs.style.value
           const styleObject = styleToObject(style)
