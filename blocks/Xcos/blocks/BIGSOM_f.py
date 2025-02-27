@@ -13,9 +13,10 @@ def BIGSOM_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=
                          dependsOnU='1',
                          value='+')
 
+    numbers = list(map(float, re.findall(r'-?\d+', parameters[0])))
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
     addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM,
-                 2, realParts=[1.0, 1.0])
+                 2, realParts=[numbers[0], numbers[1]])
     addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 0, [])
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, [])
     array = ['0']
