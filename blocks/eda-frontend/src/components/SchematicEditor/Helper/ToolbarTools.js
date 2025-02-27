@@ -381,10 +381,10 @@ function parseXmlToGraph (xmlDoc, graph) {
           firstportrotation = null
           const vertexId = cellAttrs.id.value
           const geom = cellChildren[0].attributes
-          const xPos = (geom.x !== undefined) ? Number(geom.x.value) : 0
-          const yPos = (geom.y !== undefined) ? Number(geom.y.value) : 0
-          const height = Number(geom.height.value)
-          const width = Number(geom.width.value)
+          const xPos = (geom.x !== undefined) ? geom.x.value : '0.0'
+          const yPos = (geom.y !== undefined) ? geom.y.value : '0.0'
+          const height = geom.height.value
+          const width = geom.width.value
           v1 = graph.insertVertex(parent, vertexId, null, xPos, yPos, width, height, style)
           v1.connectable = 0
           v1.CellType = 'Component'
@@ -462,8 +462,8 @@ function parseXmlToGraph (xmlDoc, graph) {
           const vertexId = cellAttrs.id.value
           const geom = cellChildren[0].attributes
           console.log('CELLATTR:', cellAttrs)
-          let xPos = (geom.x !== undefined) ? Number(geom.x.value) : 0
-          let yPos = (geom.y !== undefined) ? Number(geom.y.value) : 0
+          let xPos = (geom.x !== undefined) ? geom.x.value : '0.0'
+          let yPos = (geom.y !== undefined) ? geom.y.value : '0.0'
 
           const rotationParameters = getRotationParameters(stylename, rotation)
 
