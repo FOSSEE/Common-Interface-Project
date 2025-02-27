@@ -6,10 +6,19 @@ def CLR(outroot, attribid, ordering, geometry, parameters, parent=1, style=None,
     if style is None:
         style = func_name
 
+    num_str = parameters[0]
+    den_str = parameters[1]
+
+    num_max_exponent = get_max_exponent(num_str, 's')
+    den_max_exponent = get_max_exponent(den_str, 's')
+
+    depends_on_flag = 1 if num_max_exponent == den_max_exponent else 0
+
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'csslti4', 'C_OR_FORTRAN',
                          style, BLOCKTYPE_C,
+                         dependsOnU=depends_on_flag,
                          dependsOnT='1')
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)

@@ -737,6 +737,20 @@ def num2str(num):
     return str(num)
 
 
+def get_max_exponent(polynomial, chr='s'):
+    exponents = []
+    regex = chr + r'\s*\^\s*\d+|' + chr
+    matches = re.findall(regex, polynomial)
+    if len(matches) == 0:
+        exponents.append(0)
+    else:
+        for match in matches:
+            splits = re.split(r'\s*\^\s*', match)
+            exponent = int(splits[1]) if len(splits) == 2 else 1
+            exponents.append(exponent)
+    return max(exponents)
+
+
 def generate_id(block_count, port_count, link_count):
     def random_hex(part1, sequence):
         part3 = f"{sequence:x}"

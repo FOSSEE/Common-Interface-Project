@@ -6,43 +6,13 @@ def DLR(outroot, attribid, ordering, geometry, parameters, parent=1, style=None,
     if style is None:
         style = func_name
 
-    depends_on_flag = 0
-
     num_str = parameters[0]
     den_str = parameters[1]
 
-    num_exponents = []
-    den_exponents = []
+    num_max_exponent = get_max_exponent(num_str, 'z')
+    den_max_exponent = get_max_exponent(den_str, 'z')
 
-    num_matches = re.findall(r'z\s*\^\s*\d+|z', num_str)
-    den_matches = re.findall(r'z\s*\^\s*\d+|z', den_str)
-
-    if len(num_matches) == 0:
-        num_exponents.append(0)
-    else:
-
-        for match in num_matches:
-            splits = match.split('^')
-
-            if len(splits) == 1:
-                num_exponents.append(1)
-            else:
-                num_exponents.append(int(splits[1]))
-
-    if len(den_matches) == 0:
-        den_exponents.append(0)
-    else:
-
-        for match in den_matches:
-            splits = match.split('^')
-
-            if len(splits) == 1:
-                den_exponents.append(1)
-            else:
-                den_exponents.append(int(splits[1]))
-
-    if max(num_exponents) == max(den_exponents):
-        depends_on_flag = 1
+    depends_on_flag = 1 if num_max_exponent == den_max_exponent else 0
 
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
