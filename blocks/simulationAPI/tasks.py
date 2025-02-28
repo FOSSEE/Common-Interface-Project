@@ -16,13 +16,13 @@ def process_task(task_id):
         file_obj = TaskFile.objects.get(task_id=task_id)
 
         logger.info("Processing %s %s %s",
-                    file_obj.file.path, file_obj.file_id, file_obj.app_name)
+                    task_id, file_obj.file.path, file_obj.app_name)
 
         current_task.update_state(
             state='PROGRESS',
             meta={'current_process': 'Started Processing File'})
 
-        output = ngspice_helper.ExecXml(file_obj)
+        output = ngspice_helper.ExecXml(task_id, file_obj)
         if output == "Streaming":
             state = 'STREAMING'
             current_process = 'Processed Xml, Streaming Output'

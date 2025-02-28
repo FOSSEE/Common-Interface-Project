@@ -42,9 +42,9 @@ class CannotRunParser(Exception):
     """ Base class for exceptions in this module. """
 
 
-def CreateXml(file_path, parameters, file_id):
+def CreateXml(file_path, parameters, task_id):
     parameters = json.loads(parameters)
-    current_dir = settings.MEDIA_ROOT + '/' + str(file_id)
+    current_dir = settings.MEDIA_ROOT + '/' + str(task_id)
     # Make Unique Directory for simulation to run
     Path(current_dir).mkdir(parents=True, exist_ok=True)
     try:
@@ -80,18 +80,16 @@ def CreateXml(file_path, parameters, file_id):
         raise e
 
 
-def CreateXcos(file_path, parameters, file_id):
-    xcosfile = CreateXml(file_path, parameters, file_id)
+def CreateXcos(file_path, parameters, task_id):
+    xcosfile = CreateXml(file_path, parameters, task_id)
     return xcosfile
 
 
-def ExecXml(file_obj):
+def ExecXml(task_id, file_obj):
     file_path = file_obj.file.path
-    file_id = file_obj.file_id
-    current_dir = settings.MEDIA_ROOT + '/' + str(file_id)
+    current_dir = settings.MEDIA_ROOT + '/' + str(task_id)
     try:
-        xcosfile = CreateXml(file_path, file_obj.parameters,
-                             file_id)
+        xcosfile = CreateXml(file_path, file_obj.parameters, task_id)
         (logfilefd, log_name) = mkstemp(prefix=datetime.now().strftime(
             'scilab-log-%Y%m%d-'), suffix='.txt', dir=current_dir)
 
