@@ -84,7 +84,7 @@ const App = () => {
 
       if (!sessionId) {
         // Generate a new session ID
-        api.get('simulation/get_session')
+        api.get('simulation/get_session?app_name=' + process.env.REACT_APP_NAME)
           .then(res => {
             sessionId = res.data.session_id
             localStorage.setItem('session_id', sessionId)

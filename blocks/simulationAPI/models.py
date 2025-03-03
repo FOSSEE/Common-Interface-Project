@@ -1,14 +1,17 @@
 from django.db import models
 from django.core.files.storage import FileSystemStorage
 from django.conf import settings
+from django.utils import timezone
+from datetime import timedelta
 import uuid
 
 
 # session
 class Session(models.Model):
-    session_id = models.CharField(primary_key=True, max_length=100, null=False, editable=False)
+    session_id = models.CharField(primary_key=True, max_length=40, null=False, editable=False)
     app_name = models.CharField(max_length=100, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    expire_at = models.DateTimeField(default=timezone.now() + timedelta(days=1))
 
     def __str__(self):
         return self.session_id

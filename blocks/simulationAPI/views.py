@@ -13,7 +13,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from blocks.celery_tasks import app
 
-from simulationAPI.models import Task
+from simulationAPI.models import Task, Session
 from simulationAPI.negotiation import IgnoreClientContentNegotiation
 from simulationAPI.serializers import TaskSerializer
 from simulationAPI.tasks import process_task
@@ -344,6 +344,11 @@ def get_session(request):
     if not request.session.session_key:
         request.session.save()  # Create a new session if not already exists
 
-    return JsonResponse({
-        'session_id': request.session.session_key
-    })
+    session_id = request.session.session_key
+
+    # Save or update session in the custom table
+    session, created = Session.objects.update_or_create(
+        session_id=session_id
+    )
+
+    return JsonResponse({'session_id': session_id, 'stored': not created})
