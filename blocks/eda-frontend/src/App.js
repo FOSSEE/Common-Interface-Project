@@ -84,9 +84,12 @@ const App = () => {
 
       if (!sessionId) {
         // Generate a new session ID
-        const response = api.get('simulation/get_session')
-        localStorage.setItem('session_id', response.data.session_id)
-        sessionId = response.data.session_id
+        api.get('simulation/get_session')
+          .then(res => {
+            sessionId = res.data.session_id
+            localStorage.setItem('session_id', sessionId)
+            console.log('new sessionId', sessionId)
+          })
       }
     }
 

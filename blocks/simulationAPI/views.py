@@ -341,9 +341,9 @@ class StreamView(APIView):
 
 
 def get_session(request):
-    if not request.session.session_id:
+    if not request.session.session_key:
         request.session.save()  # Create a new session if not already exists
 
     return JsonResponse({
-        'session_id': request.session.session_id
+        'session_id': request.session.session_key
     })
