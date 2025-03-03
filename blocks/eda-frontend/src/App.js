@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { HashRouter, Switch, Route, Redirect } from 'react-router-dom'
-import { v4 as uuidv4 } from 'uuid'
+// import { v4 as uuidv4 } from 'uuid'
+import api from './utils/Api'
 import CircularProgress from '@material-ui/core/CircularProgress'
 
 import Navbar from './components/Shared/Navbar'
@@ -76,7 +77,6 @@ PublicRoute.propTypes = {
   restricted: PropTypes.bool
 }
 
-
 const App = () => {
   const [sessionId, setSessionId] = useState(null)
 
@@ -87,12 +87,11 @@ const App = () => {
 
       if (!existingSession) {
         // Generate a new session ID
-        const response = api.get("init-session")
-        setSessionData(response.data);
-        localStorage.setItem("session_id", response.data.session_id)
+        const response = api.get('init-session')
+        // setSessionData(response.data)
+        localStorage.setItem('session_id', response.data.session_id)
         // localStorage.setItem('session_id', newSession)
         existingSession = response.data.session_id
-
       }
 
       setSessionId(existingSession)
@@ -100,22 +99,9 @@ const App = () => {
     fetchSession()
   }, [])
 
-  // const get_sessionid = () => {
-  //   return sessionId
-  // }
-
   return (
     // Handles Routing for an application
     <HashRouter>
-      {/* <div>
-        <h1>React Session Management</h1>
-        {sessionId ? (
-          <p><strong>Session ID:</strong> {sessionId}<br />
-            <strong>Length:</strong> {sessionId.length}</p>
-        ) : (
-          <p>Generating session...</p>
-        )}
-      </div> */}
       <Switch>
         <PublicRoute exact path='/login' restricted nav={false} component={Login} />
         <PublicRoute exact path='/signup' restricted nav={false} component={SignUp} />

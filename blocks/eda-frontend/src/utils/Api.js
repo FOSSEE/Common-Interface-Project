@@ -23,7 +23,7 @@ const getCookie = (name) => {
 
 const csrftoken = getCookie('csrftoken')
 
-export default axios.create({
+const api = axios.create({
   baseURL: '/api/',
   responseType: 'json',
   xsrfCookieName: 'csrftoken',
@@ -34,3 +34,16 @@ export default axios.create({
   },
   withCredentials: true
 })
+
+api.interceptors.request.use((config) => {
+  const sessionId = localStorage.getItem('session_id')
+  if (sessionId) {
+    config.headers['Session-ID'] = sessionId // Custom header for session ID
+    console.log('sessionId', sessionId)
+  }
+  return config
+}, (error) => {
+  return Promise.reject(error)
+})
+
+export default api
