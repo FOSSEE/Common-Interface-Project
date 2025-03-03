@@ -345,10 +345,12 @@ def get_session(request):
         request.session.save()  # Create a new session if not already exists
 
     session_id = request.session.session_key
+    app_name = request.GET.get('app_name', None)
 
     # Save or update session in the custom table
     session, created = Session.objects.update_or_create(
-        session_id=session_id
+        session_id=session_id,
+        app_name=app_name
     )
 
-    return JsonResponse({'session_id': session_id, 'stored': not created})
+    return JsonResponse({'session_id': session_id, 'expire_at': session.expire_at})

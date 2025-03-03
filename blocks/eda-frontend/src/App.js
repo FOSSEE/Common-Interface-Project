@@ -81,13 +81,16 @@ const App = () => {
     const fetchSession = async () => {
       // Check if session ID already exists
       let sessionId = localStorage.getItem('session_id')
+      let expireAt = localStorage.getItem('expire_at')
 
-      if (!sessionId) {
+      if (!sessionId || !expireAt || new Date(expireAt) < new Date()) {
         // Generate a new session ID
         api.get('simulation/get_session?app_name=' + process.env.REACT_APP_NAME)
           .then(res => {
             sessionId = res.data.session_id
+            expireAt = res.data.expire_at
             localStorage.setItem('session_id', sessionId)
+            localStorage.setItem('expire_at', expireAt)
             console.log('new sessionId', sessionId)
           })
       }
