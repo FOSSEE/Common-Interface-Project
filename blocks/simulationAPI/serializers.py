@@ -2,24 +2,24 @@ import json
 from celery.utils.log import get_task_logger
 from rest_framework import serializers
 
-from simulationAPI.models import TaskFile, Task
+from simulationAPI.models import Task, Session
 
 logger = get_task_logger(__name__)
 
 
-class TaskFileSerializer(serializers.ModelSerializer):
+class SessionSerializer(serializers.ModelSerializer):
     class Meta:
-        model = TaskFile
-        fields = ('file_id', 'file', 'app_name', 'parameters', 'upload_time',
-                  'log_name', 'returncode', 'task')
+        model = Session
+        fields = ('session_id', 'app_name', 'created_at')
 
 
 class TaskSerializer(serializers.HyperlinkedModelSerializer):
-    file = TaskFileSerializer(read_only=True)
+    session = SessionSerializer(read_only=True)
 
     class Meta:
         model = Task
-        fields = ('task_id', 'task_time', 'file')
+        fields = ('task_id', 'file', 'parameters', 'upload_time',
+                  'log_name', 'returncode', 'task_time', 'session')
 
     def create(self, validated_data):
         # Takes file from request and stores it along with a taskid
@@ -29,9 +29,10 @@ class TaskSerializer(serializers.HyperlinkedModelSerializer):
         post = request.POST
         postdata = post.dict()
         app_name = postdata.pop('app_name')
+        session_id = postdata.pop('session_id')
         parameters = json.dumps(postdata, separators=(',', ':'))
-        task = Task.objects.create()
-        taskfile = TaskFile.objects.create(
-            task=task, file=file, app_name=app_name, parameters=parameters)
-        logger.info('task: %s, taskfile: %s', task, taskfile)
+        session = Session.objects.create(session_id, app_name)
+        task = Task.objects.create(
+            session=session, file=file, parameters=parameters)
+        logger.info('session: %s, task: %s', session, task)
         return task

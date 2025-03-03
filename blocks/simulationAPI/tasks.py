@@ -4,7 +4,7 @@ from celery.exceptions import Ignore
 from celery.utils.log import get_task_logger
 
 from simulationAPI.helpers import ngspice_helper
-from simulationAPI.models import TaskFile
+from simulationAPI.models import Task
 
 
 logger = get_task_logger(__name__)
@@ -13,7 +13,7 @@ logger = get_task_logger(__name__)
 @shared_task
 def process_task(task_id):
     try:
-        file_obj = TaskFile.objects.get(task_id=task_id)
+        file_obj = Task.objects.get(task_id=task_id)
 
         logger.info("Processing %s %s %s",
                     task_id, file_obj.file.path, file_obj.app_name)

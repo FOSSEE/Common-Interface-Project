@@ -13,7 +13,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from blocks.celery_tasks import app
 
-from simulationAPI.models import TaskFile
+from simulationAPI.models import Task
 from simulationAPI.negotiation import IgnoreClientContentNegotiation
 from simulationAPI.serializers import TaskSerializer
 from simulationAPI.tasks import process_task
@@ -241,7 +241,7 @@ class StreamView(APIView):
 
     def get_log_name(self, task_id):
         while True:
-            file_obj = TaskFile.objects.get(task_id=task_id)
+            file_obj = Task.objects.get(task_id=task_id)
             log_name = file_obj.log_name
             returncode = file_obj.returncode
             if log_name is None:

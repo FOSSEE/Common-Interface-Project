@@ -9,33 +9,34 @@ from datetime import datetime
 from pathlib import Path
 from tempfile import mkstemp
 from django.conf import settings
+from simulationAPI.helpers.scilab_manager import run_scilab, prestart_scilab
 
 logger = get_task_logger(__name__)
 XmlToXcos = join(settings.BASE_DIR, 'Xcos/XmlToXcos.sh')
-SCILAB_DIR = abspath(settings.SCILAB_DIR)
-SCILAB = join(SCILAB_DIR, 'bin', 'scilab-adv-cli')
+# SCILAB_DIR = abspath(settings.SCILAB_DIR)
+# SCILAB = join(SCILAB_DIR, 'bin', 'scilab-adv-cli')
 # handle scilab startup
-SCILAB_START = (
-    "try;funcprot(0);lines(0,120);"
-    "clearfun('messagebox');"
-    "function messagebox(msg,title,icon,buttons,modal),disp(msg),endfunction;"
-    "funcprot(1);"
-    "catch;[error_message,error_number,error_line,error_func]=lasterror();"
-    "disp(error_message,error_number,error_line,error_func);exit(3);end;"
-)
+# SCILAB_START = (
+#     "try;funcprot(0);lines(0,120);"
+#     "clearfun('messagebox');"
+#     "function messagebox(msg,title,icon,buttons,modal),disp(msg),endfunction;"
+#     "funcprot(1);"
+#     "catch;[error_message,error_number,error_line,error_func]=lasterror();"
+#     "disp(error_message,error_number,error_line,error_func);exit(3);end;"
+# )
 
-SCILAB_END = (
-    "catch;[error_message,error_number,error_line,error_func]=lasterror();"
-    "disp(error_message,error_number,error_line,error_func);exit(2);end;exit;"
-)
-SCILAB_CMD = [SCILAB,
-              "-noatomsautoload",
-              "-nogui",
-              "-nouserstartup",
-              "-nb",
-              "-nw",
-              "-e", SCILAB_START]
-LOGFILEFD = 123
+# SCILAB_END = (
+#     "catch;[error_message,error_number,error_line,error_func]=lasterror();"
+#     "disp(error_message,error_number,error_line,error_func);exit(2);end;exit;"
+# )
+# SCILAB_CMD = [SCILAB,
+#               "-noatomsautoload",
+#               "-nogui",
+#               "-nouserstartup",
+#               "-nb",
+#               "-nw",
+#               "-e", SCILAB_START]
+# LOGFILEFD = 123
 
 
 class CannotRunParser(Exception):
@@ -89,26 +90,29 @@ def ExecXml(task_id, file_obj):
     file_path = file_obj.file.path
     current_dir = settings.MEDIA_ROOT + '/' + str(task_id)
     try:
+        # proc, log_name = prestart_scilab()
+        # if not proc:
+        #     raise RuntimeError("Failed to start Scilab.")
         xcosfile = CreateXml(file_path, file_obj.parameters, task_id)
-        (logfilefd, log_name) = mkstemp(prefix=datetime.now().strftime(
-            'scilab-log-%Y%m%d-'), suffix='.txt', dir=current_dir)
+        # (logfilefd, log_name) = mkstemp(prefix=datetime.now().strftime(
+        #     'scilab-log-%Y%m%d-'), suffix='.txt', dir=current_dir)
 
-        if logfilefd != LOGFILEFD:
-            os.dup2(logfilefd, LOGFILEFD)
-            os.close(logfilefd)
+        # if logfilefd != LOGFILEFD:
+        #     os.dup2(logfilefd, LOGFILEFD)
+        #     os.close(logfilefd)
 
         file_obj.log_name = log_name
         file_obj.save()
 
-        logger.info('will run %s %s> %s', SCILAB_CMD[0], LOGFILEFD, log_name)
-        logger.info('running command %s', SCILAB_CMD[-1])
-        proc = subprocess.Popen(
-            SCILAB_CMD,
-            stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-            start_new_session=True, universal_newlines=True, cwd=current_dir,
-            pass_fds=(LOGFILEFD, ))
+        # logger.info('will run %s %s> %s', SCILAB_CMD[0], LOGFILEFD, log_name)
+        # logger.info('running command %s', SCILAB_CMD[-1])
+        # proc = subprocess.Popen(
+        #     SCILAB_CMD,
+        #     stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+        #     start_new_session=True, universal_newlines=True, cwd=current_dir,
+        #     pass_fds=(LOGFILEFD, ))
 
-        os.close(LOGFILEFD)
+        # os.close(LOGFILEFD)
 
         current_task.update_state(
             state='STREAMING',
@@ -119,15 +123,18 @@ def ExecXml(task_id, file_obj):
         cmd += "loadXcosLibs();"
         cmd += "importXcosDiagram('%s');" % xcosfile
         cmd += "xcos_simulate(scs_m,4);"
-        cmd += SCILAB_END
+        # cmd += SCILAB_END
+
+
 
         logger.info('running command %s', cmd)
-        proc.stdin.write(cmd)
+        # proc.stdin.write(cmd)
 
-        (out, err) = proc.communicate()
+        # (out, err) = proc.communicate()
+        out, err, returncode = run_scilab(cmd, current_dir, createlogfile=False, timeout=70)
 
         maxlines = 15
-        logger.info('Ran %s', SCILAB_CMD[0])
+        # logger.info('Ran %s', SCILAB_CMD[0])
         if out:
             out = out.rstrip()
             if out:
@@ -140,7 +147,7 @@ def ExecXml(task_id, file_obj):
                 err = '\n'.join(re.split(r'\n+', err, maxlines + 1)[:maxlines])
                 logger.info('err=%s', err)
 
-        file_obj.returncode = proc.returncode
+        file_obj.returncode = returncode
         file_obj.save()
 
         return 'Streaming'
