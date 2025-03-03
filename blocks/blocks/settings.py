@@ -125,6 +125,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Session Settings
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # Use DB to store sessions
+SESSION_COOKIE_NAME = 'sessionid'  # Default session cookie name
+SESSION_COOKIE_HTTPONLY = False    # Allow frontend access if needed
+SESSION_COOKIE_SAMESITE = 'Lax'
+
 # Mail server config
 
 # use this for console emails

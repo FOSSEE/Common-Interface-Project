@@ -125,8 +125,6 @@ def ExecXml(task_id, file_obj):
         cmd += "xcos_simulate(scs_m,4);"
         # cmd += SCILAB_END
 
-
-
         logger.info('running command %s', cmd)
         # proc.stdin.write(cmd)
 
@@ -136,13 +134,13 @@ def ExecXml(task_id, file_obj):
         maxlines = 15
         # logger.info('Ran %s', SCILAB_CMD[0])
         if out:
-            out = out.rstrip()
+            out = out.strip()
             if out:
                 out = '\n'.join(re.split(r'\n+', out, maxlines + 1)[:maxlines])
                 logger.info('out=%s', out)
         if err:
             err = re.sub(r'Undefined variable: helpbrowser_update', '', err)
-            err = err.rstrip()
+            err = err.strip()
             if err:
                 err = '\n'.join(re.split(r'\n+', err, maxlines + 1)[:maxlines])
                 logger.info('err=%s', err)

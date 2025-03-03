@@ -18,12 +18,12 @@ class Task(models.Model):
     task_id = models.UUIDField(
         primary_key=True, default=uuid.uuid4, editable=False)
     file = models.FileField(storage=FileSystemStorage(location=settings.MEDIA_ROOT), default='default_file.txt')
-    
+
     parameters = models.TextField(blank=True, null=True)
     upload_time = models.DateTimeField(auto_now=True)
     log_name = models.CharField(max_length=500, blank=True, null=True)
     returncode = models.IntegerField(blank=True, null=True)
-    
+
     task_time = models.DateTimeField(auto_now=True)
 
     session = models.ForeignKey(Session, on_delete=models.CASCADE, related_name='task_files', null=True, blank=True)
@@ -34,4 +34,3 @@ class Task(models.Model):
     def __str__(self):
         """String for representing the Model object."""
         return self.task_id.hex
-

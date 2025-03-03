@@ -15,5 +15,7 @@ urlpatterns = [
     path('streaming/<uuid:task_id>',
          simulationAPI_views.StreamView.as_view(), name='stream_status'),
 
-    path('cancel/<uuid:task_id>', simulationAPI_views.CancelTaskView.as_view(), name='cancel')
+    path('cancel/<uuid:task_id>', simulationAPI_views.CancelTaskView.as_view(), name='cancel'),
+
+    path('get_session', simulationAPI_views.get_session, name='get_session'),
 ]

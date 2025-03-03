@@ -11,8 +11,9 @@ import time
 import signal
 import logging
 import subprocess
-from tempfile import mkstemp
+from tempfile import mkdtemp, mkstemp
 from threading import current_thread
+import uuid
 
 from simulationAPI.helpers import config
 
@@ -26,10 +27,18 @@ IMAGEDIR = join(BASEDIR, config.IMAGEDIR)
 
 SESSIONDIR = abspath(config.SESSIONDIR)
 
+UPLOAD_FOLDER = 'uploads'  # to store xcos file
 VALUES_FOLDER = 'values'  # to store files related to tkscale block
+# to store uploaded sci files for sci-func block
+SCRIPT_FILES_FOLDER = 'script_files'
+# to store workspace files for TOWS_c block
+WORKSPACE_FILES_FOLDER = 'workspace_files'
 
 # Delay time to look for new line (in s)
 LOOK_DELAY = 0.1
+
+# display limit for long strings
+DISPLAY_LIMIT = 10
 
 SCILAB_START = (
     "try;funcprot(0);lines(0,120);"
@@ -58,6 +67,14 @@ USER_DATA = {}
 def makedirs(dirname, dirtype):
     if not exists(dirname):
         os.makedirs(dirname)
+
+
+def rmdir(dirname, dirtype):
+    try:
+        if exists(dirname):
+            os.rmdir(dirname)
+    except Exception as e:
+        logger.warning('could not remove %s: %s', dirname, str(e))
 
 
 def remove(filename):
@@ -152,6 +169,61 @@ class Diagram:
         if self.file_image != '':
             remove(join(IMAGEDIR, self.file_image))
             self.file_image = ''
+
+
+class UserData:
+    sessiondir = None
+    diagrams = None
+    scripts = None
+    datafiles = None
+    scriptcount = None
+    scifile = None
+    diagramlock = None
+    timestamp = None
+
+    def __init__(self):
+        self.sessiondir = mkdtemp(
+            prefix=datetime.now().strftime('%Y%m%d.'), dir=SESSIONDIR)
+        self.diagrams = []
+        self.datafiles = []
+        self.scripts = {}
+        self.scriptcount = 0
+        self.diagramlock = RLock()
+        self.timestamp = time()
+
+    def getscriptcount(self):
+        with self.diagramlock:
+            rv = self.scriptcount
+            self.scriptcount += 1
+
+        return str(rv)
+
+    def clean(self):
+        for diagram in self.diagrams:
+            diagram.clean()
+        self.diagrams = None
+        for script in self.scripts:
+            self.scripts[script].clean()
+        self.scripts = None
+        for datafile in self.datafiles:
+            datafile.clean()
+        self.datafiles = None
+        self.scifile.clean()
+        self.scifile = None
+        self.diagramlock = None
+        # name of workspace file
+        workspace = join(self.sessiondir, WORKSPACE_FILES_FOLDER,
+                         "workspace.dat")
+        if exists(workspace):
+            remove(workspace)
+
+        sessiondir = self.sessiondir
+
+        rmdir(join(sessiondir, WORKSPACE_FILES_FOLDER), 'workspace files')
+        rmdir(join(sessiondir, SCRIPT_FILES_FOLDER), 'script files')
+        rmdir(join(sessiondir, VALUES_FOLDER), 'values')
+        rmdir(join(sessiondir, UPLOAD_FOLDER), 'upload')
+        rmdir(sessiondir, 'session')
 
 
 INSTANCES_1 = []
@@ -417,6 +489,38 @@ logfilefdrlock = RLock()
 LOGFILEFD = 123
 
 
+def set_session(session):
+    if 'uid' not in session:
+        session['uid'] = str(uuid.uuid4())
+
+    uid = session['uid']
+    if not hasattr(current_thread(), 's_name'):
+        current_thread().s_name = current_thread().name
+    current_thread().name = 'S-%s-%s' % (current_thread().s_name[12:], uid[:6])
+    return uid
+
+
+def init_session():
+    uid = set_session()
+
+    if uid not in USER_DATA:
+        USER_DATA[uid] = UserData()
+
+    ud = USER_DATA[uid]
+    ud.timestamp = time()
+
+    sessiondir = ud.sessiondir
+
+    makedirs(sessiondir, 'session')
+    makedirs(join(sessiondir, UPLOAD_FOLDER), 'upload')
+    makedirs(join(sessiondir, VALUES_FOLDER), 'values')
+    makedirs(join(sessiondir, SCRIPT_FILES_FOLDER), 'script files')
+    makedirs(join(sessiondir, WORKSPACE_FILES_FOLDER), 'workspace files')
+
+    return (ud.diagrams, ud.scripts, ud.getscriptcount, ud.scifile,
+            ud.datafiles, sessiondir, ud.diagramlock)
+
+
 def prestart_scilab():
     cmd = SCILAB_START
     cmdarray = [SCILAB,
@@ -473,6 +577,170 @@ def run_scilab(command, base, createlogfile=False, timeout=70):
     return instance
 
 
+def load_variables(filename):
+    '''
+    add scilab commands to load only user defined variables
+    '''
+
+    command = "[__V1,__V2]=listvarinfile('%s');" % filename
+    command += "__V5=grep(string(__V2),'/^([124568]|1[07])$/','r');"
+    command += "__V1=__V1(__V5);"
+    command += "__V2=__V2(__V5);"
+    command += "__V5=grep(__V1,'/^[^%]+$/','r');"
+    command += "if ~isempty(__V5) then;"
+    command += "__V1=__V1(__V5);"
+    command += "__V2=__V2(__V5);"
+    command += "__V6=''''+strcat(__V1,''',''')+'''';"
+    command += "__V7='load(''%s'','+__V6+');';" % filename
+    command += "execstr(__V7);"
+    command += "end;"
+    command += "clear __V1 __V2 __V5 __V6 __V7;"
+    return command
+
+
+def start_scilab():
+    '''
+    function to execute xcos file using scilab (scilab-adv-cli), access log
+    file written by scilab
+    '''
+    diagram = get_diagram(get_request_id())
+    if diagram is None:
+        logger.warning('no diagram')
+        return "error"
+
+    # name of primary workspace file
+    workspace_filename = diagram.workspace_filename
+    # name of workspace file
+    workspace = join(diagram.sessiondir, WORKSPACE_FILES_FOLDER,
+                     "workspace.dat")
+
+    if diagram.workspace_counter in (2, 3) and not exists(workspace):
+        logger.warning('no workspace')
+        return ("Workspace does not exist. "
+                "Please simulate a diagram with TOWS_c block first. "
+                "Do not use any FROMWSB block in that diagram.")
+
+    loadfile = workspace_filename is not None or \
+        diagram.workspace_counter in (2, 3)
+
+    command = ""
+
+    if loadfile:
+        # ignore import errors
+        command += "try;"
+
+        if workspace_filename is not None:
+            command += load_variables(workspace_filename)
+
+        if diagram.workspace_counter in (2, 3):
+            # 3 - for both TOWS_c and FROMWSB and also workspace dat file exist
+            # In this case workspace is saved in format of dat file (Scilab way
+            # of saying workpsace)
+            # For FROMWSB block and also workspace dat file exist
+            command += load_variables(workspace)
+
+        command += "catch;disp('Error: ' + lasterror());end;"
+
+    # Scilab Commands for running of scilab based on existence of different
+    # blocks in same diagram from workspace_counter's value
+    #    1: Indicate TOWS_c exist
+    #    2: Indicate FROMWSB exist
+    #    3: Both TOWS_c and FROMWSB exist
+    #    4: Indicate AFFICH_m exist (We dont want graphic window to open so
+    #    xs2jpg() command is removed)
+    #    5: Indicate Sci-func block as it some time return image as output
+    #    rather than Sinks's log file.
+    #    0/No-condition : For all other blocks
+
+    command += "loadXcosLibs();"
+    command += "importXcosDiagram('%s');" % diagram.xcos_file_name
+    command += "xcos_simulate(scs_m,4);"
+
+    if diagram.workspace_counter == 4:
+        # For AFFICH-m block
+        pass
+    elif diagram.workspace_counter == 5:
+        # For Sci-Func block (Image are return as output in some cases)
+        diagram.file_image = 'img-%s-%s.jpg' % (
+            datetime.now().strftime('%Y%m%d'), str(uuid.uuid4()))
+        command += "xs2jpg(gcf(),'%s/%s');" % (IMAGEDIR, diagram.file_image)
+    elif config.CREATEIMAGE:
+        # For all other block
+        command += "xs2jpg(gcf(),'%s/%s');" % (IMAGEDIR, 'img_test.jpg')
+
+    if diagram.workspace_counter in (1, 3):
+        if diagram.save_variables:
+            command += "save('%s','%s');" % (
+                workspace, "','".join(diagram.save_variables))
+        else:
+            command += "save('%s');" % workspace
+
+    diagram.instance = run_scilab(command, diagram, True,
+                                  config.SCILAB_INSTANCE_TIMEOUT_INTERVAL + 60)
+
+    if diagram.instance is None:
+        return "Resource not available"
+
+    instance = diagram.instance
+    logger.info('log_name=%s', instance.log_name)
+
+    # Start sending log to chart function for creating chart
+    try:
+        # For processes taking less than 10 seconds
+        scilab_out = instance.proc.communicate(timeout=4)[0]
+        scilab_out = re.sub(r'^[ !\\-]*\n', r'',
+                            scilab_out, flags=re.MULTILINE)
+        if scilab_out:
+            logger.info('=== Output from scilab console ===\n%s', scilab_out)
+        # Check for errors in Scilab
+        if "Empty diagram" in scilab_out:
+            remove_scilab_instance(diagram.instance)
+            diagram.instance = None
+            return "Empty diagram"
+
+        m = re.search(r'Fatal error: exception Failure\("([^"]*)"\)',
+                      scilab_out)
+        if m:
+            msg = 'modelica error: ' + m.group(1)
+            remove_scilab_instance(diagram.instance)
+            diagram.instance = None
+            return msg
+
+        if ("xcos_simulate: "
+                "Error during block parameters update.") in scilab_out:
+            remove_scilab_instance(diagram.instance)
+            diagram.instance = None
+            return "Error in block parameter. Please check block parameters"
+
+        if "xcosDiagramToScilab:" in scilab_out:
+            remove_scilab_instance(diagram.instance)
+            diagram.instance = None
+            return "Error in xcos diagram. Please check diagram"
+
+        if "Simulation problem:" in scilab_out:
+            remove_scilab_instance(diagram.instance)
+            diagram.instance = None
+            return "Error in simulation. Please check script uploaded/executed"
+
+        if "Cannot find scilab-bin" in scilab_out:
+            remove_scilab_instance(diagram.instance)
+            diagram.instance = None
+            return ("scilab has not been built. "
+                    "Follow the installation instructions")
+
+        if os.stat(instance.log_name).st_size == 0 and \
+                diagram.workspace_counter not in (1, 5):
+            remove_scilab_instance(diagram.instance)
+            diagram.instance = None
+            return "log file is empty"
+
+    # For processes taking more than 10 seconds
+    except subprocess.TimeoutExpired:
+        pass
+
+    return ""
+
+
 def stopDetailsThread(diagram):
     diagram.tkbool = False  # stops the thread
     gevent.sleep(LOOK_DELAY)
@@ -503,10 +771,28 @@ def get_diagram(xcos_file_id, remove=False):
     return diagram
 
 
-def kill_scilab(task_id, diagram=None):
+def get_request_id(request, key='id'):
+    args = request.args
+    if args is None:
+        logger.warning('No args in request')
+        return ''
+    if key not in args:
+        logger.warning('No %s in request.args', key)
+        return ''
+    value = args[key]
+    if re.fullmatch(r'[0-9]+', value):
+        return value
+    displayvalue = value if len(
+        value) <= DISPLAY_LIMIT + 3 else value[:DISPLAY_LIMIT] + '...'
+    logger.warning('Invalid value %s for %s in request.args',
+                   displayvalue, key)
+    return ''
+
+
+def kill_scilab(diagram=None):
     '''Define function to kill scilab(if still running) and remove files'''
     if diagram is None:
-        diagram = get_diagram(task_id, True)
+        diagram = get_diagram(get_request_id(), True)
 
     if diagram is None:
         logger.warning('no diagram')

@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { HashRouter, Switch, Route, Redirect } from 'react-router-dom'
-// import { v4 as uuidv4 } from 'uuid'
 import api from './utils/Api'
 import CircularProgress from '@material-ui/core/CircularProgress'
 
@@ -20,7 +19,7 @@ import { loadUser } from './redux/actions/index'
 
 // Controls Private routes, this are accessible for authenticated users.  [ e.g : dashboard ]
 // and restricted routes disabled for authenticated users. [ e.g : login , signup ]
-function PrivateRoute ({ component: Component, ...rest }) {
+const PrivateRoute = ({ component: Component, ...rest }) => {
   const isAuthenticated = useSelector(state => state.authReducer.isAuthenticated)
   const isLoading = useSelector(state => state.authReducer.isLoading)
   const dispatch = useDispatch()
@@ -47,7 +46,7 @@ PrivateRoute.propTypes = {
 }
 
 // Public routes accessible to all users. [ e.g. editor, gallery ]
-function PublicRoute ({ component: Component, restricted, nav, ...rest }) {
+const PublicRoute = ({ component: Component, restricted, nav, ...rest }) => {
   const isAuthenticated = useSelector(state => state.authReducer.isAuthenticated)
   const isLoading = useSelector(state => state.authReducer.isLoading)
   const dispatch = useDispatch()
@@ -78,24 +77,19 @@ PublicRoute.propTypes = {
 }
 
 const App = () => {
-  const [sessionId, setSessionId] = useState(null)
-
   useEffect(() => {
     const fetchSession = async () => {
       // Check if session ID already exists
-      let existingSession = localStorage.getItem('session_id')
+      let sessionId = localStorage.getItem('session_id')
 
-      if (!existingSession) {
+      if (!sessionId) {
         // Generate a new session ID
-        const response = api.get('init-session')
-        // setSessionData(response.data)
+        const response = api.get('simulation/get_session')
         localStorage.setItem('session_id', response.data.session_id)
-        // localStorage.setItem('session_id', newSession)
-        existingSession = response.data.session_id
+        sessionId = response.data.session_id
       }
-
-      setSessionId(existingSession)
     }
+
     fetchSession()
   }, [])
 

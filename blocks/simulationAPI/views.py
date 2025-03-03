@@ -4,7 +4,7 @@ import time
 import uuid
 from celery.result import AsyncResult
 from celery.utils.log import get_task_logger
-from django.http import StreamingHttpResponse
+from django.http import StreamingHttpResponse, JsonResponse
 from rest_framework import status
 from rest_framework.exceptions import ValidationError
 from rest_framework.parsers import MultiPartParser, FormParser
@@ -338,3 +338,12 @@ class StreamView(APIView):
 
         # Notify Client
         yield "event: DONE\ndata: None\n\n"
+
+
+def get_session(request):
+    if not request.session.session_id:
+        request.session.save()  # Create a new session if not already exists
+
+    return JsonResponse({
+        'session_id': request.session.session_id
+    })
