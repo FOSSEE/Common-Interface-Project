@@ -28,13 +28,19 @@ class Session(models.Model):
             return
 
         old_instance = old_instances.first()
-        if old_instance.app_name == self.app_name:
+        if old_instance.app_name == self.app_name and old_instance.expire_at > timezone.now():
             self.count += 1
-            kwargs['update_fields'] = ['count']
+            kwargs['update_fields'] = {'count'}
             super().save(*args, **kwargs)
             return
 
-        raise ValidationError("mismatch: Cannot update app name.")
+        if old_instance.app_name != self.app_name:
+            raise ValidationError("mismatch: Cannot update app name.")
+
+        if old_instance.expire_at <= timezone.now():
+            raise ValidationError("mismatch: Cannot update expired session.")
+
+        raise ValidationError("mismatch: Cannot update.")
 
     def __str__(self):
         return self.session_id
