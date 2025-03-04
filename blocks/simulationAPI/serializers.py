@@ -33,9 +33,8 @@ class TaskSerializer(serializers.HyperlinkedModelSerializer):
         postdata = post.dict()
         app_name = postdata.pop('app_name')
         parameters = json.dumps(postdata, separators=(',', ':'))
-        session, created = Session.objects.get_or_create(session_id=session_id, defaults={"app_name": app_name})
-        task = Task.objects.create(session=session,
-            file=file, parameters=parameters)
+        session, created = Session.objects.get_or_create(session_id=session_id, app_name=app_name)
+        task = Task.objects.create(session=session, file=file, parameters=parameters)
         # logger.info('session: %s, task: %s', session, task)
         logger.info("Session: %s (created: %s), Task: %s", session, created, task)
         return task

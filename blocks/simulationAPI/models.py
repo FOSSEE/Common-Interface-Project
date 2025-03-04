@@ -35,10 +35,10 @@ class Session(models.Model):
             return
 
         if old_instance.app_name != self.app_name:
-            raise ValidationError("mismatch: Cannot update app name.")
+            raise ValidationError(f"mismatch: Cannot update app name {old_instance.app_name} != {self.app_name}.")
 
         if old_instance.expire_at <= timezone.now():
-            raise ValidationError("mismatch: Cannot update expired session.")
+            raise ValidationError(f"mismatch: Cannot update expired session {old_instance.expire_at} <= {timezone.now()}.")
 
         raise ValidationError("mismatch: Cannot update.")
 

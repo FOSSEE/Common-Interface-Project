@@ -85,11 +85,12 @@ def CreateXcos(file_path, parameters, task_id):
     return xcosfile
 
 
-def ExecXml(task_id, file_obj):
-    file_path = file_obj.file.path
+def ExecXml(task):
+    task_id = task.task_id
+    file_path = task.file.path
     current_dir = settings.MEDIA_ROOT + '/' + str(task_id)
     try:
-        xcosfile = CreateXml(file_path, file_obj.parameters, task_id)
+        xcosfile = CreateXml(file_path, task.parameters, task_id)
         (logfilefd, log_name) = mkstemp(prefix=datetime.now().strftime(
             'scilab-log-%Y%m%d-'), suffix='.txt', dir=current_dir)
 
@@ -97,8 +98,8 @@ def ExecXml(task_id, file_obj):
             os.dup2(logfilefd, LOGFILEFD)
             os.close(logfilefd)
 
-        file_obj.log_name = log_name
-        file_obj.save()
+        task.log_name = log_name
+        task.save()
 
         logger.info('will run %s %s> %s', SCILAB_CMD[0], LOGFILEFD, log_name)
         logger.info('running command %s', SCILAB_CMD[-1])
@@ -140,8 +141,8 @@ def ExecXml(task_id, file_obj):
                 err = '\n'.join(re.split(r'\n+', err, maxlines + 1)[:maxlines])
                 logger.info('err=%s', err)
 
-        file_obj.returncode = proc.returncode
-        file_obj.save()
+        task.returncode = proc.returncode
+        task.save()
 
         return 'Streaming'
     except BaseException as e:
