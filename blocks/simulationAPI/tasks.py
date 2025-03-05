@@ -1,7 +1,6 @@
 from celery import shared_task, current_task, states
 from celery.exceptions import Ignore
 from celery.utils.log import get_task_logger
-from gevent.local import local
 from redis import Redis
 import traceback
 
@@ -11,24 +10,23 @@ from simulationAPI.models import Task
 
 logger = get_task_logger(__name__)
 
-greenlet_local = local()
-
 
 def acquire_lock(session_id, timeout=1800):
     redis_client = Redis.from_url(app.conf.broker_url)
-    greenlet_local.lock = redis_client.lock(f"simulation_lock:{session_id}", timeout=timeout)
-    greenlet_local.lock.acquire(blocking=True)
+    lock = redis_client.lock(f"simulation_lock:{session_id}", timeout=timeout)
+    lock.acquire(blocking=True)
+    return lock
 
 
-def release_lock():
-    greenlet_local.lock.release()
+def release_lock(lock):
+    lock.release()
 
 
 @shared_task
 def process_task(task_id):
     task = Task.objects.get(task_id=task_id)
     session_id = task.session.session_id
-    acquire_lock(session_id)  # Prevent multiple runs per session
+    lock = acquire_lock(session_id)  # Prevent multiple runs per session
 
     try:
         logger.info("Processing %s %s %s",
@@ -59,4 +57,4 @@ def process_task(task_id):
         raise Ignore()
 
     finally:
-        release_lock()  # Ensure lock is always released
+        release_lock(lock)  # Ensure lock is always released
