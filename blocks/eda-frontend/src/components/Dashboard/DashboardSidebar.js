@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import { deepPurple } from '@material-ui/core/colors'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchSchematics } from '../../redux/actions/index'
+import { getUppercaseInitial } from '../../utils/GalleryUtils'
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -67,7 +68,7 @@ export default function DashSidebar (props) {
         >
           <ListItemAvatar>
             <Avatar className={classes.purple}>
-              {user.username.charAt(0).toUpperCase()}
+              {getUppercaseInitial(user.username)}
             </Avatar>
           </ListItemAvatar>
           <ListItemText

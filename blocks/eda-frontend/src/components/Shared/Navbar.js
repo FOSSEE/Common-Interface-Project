@@ -7,6 +7,7 @@ import { deepPurple } from '@material-ui/core/colors'
 import { Link as RouterLink, useHistory } from 'react-router-dom'
 import logo from '../../static/favicon.ico'
 import { logout } from '../../redux/actions/index'
+import { getUppercaseInitial } from '../../utils/GalleryUtils'
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -168,7 +169,7 @@ export function Header () {
               onClick={handleClick}
             >
               <Avatar className={classes.purple}>
-                {user.username.charAt(0).toUpperCase()}
+                {getUppercaseInitial(user.username)}
               </Avatar>
             </IconButton>
             <Menu

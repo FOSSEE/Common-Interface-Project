@@ -31,7 +31,7 @@ import { deepPurple } from '@material-ui/core/colors'
 
 import logo from '../../static/favicon.ico'
 import { setTitle, logout, setSchTitle, setSchShared } from '../../redux/actions/index'
-import { getDateTime as getDate } from '../../utils/GalleryUtils'
+import { getDateTime as getDate, getUppercaseInitial } from '../../utils/GalleryUtils'
 
 const useStyles = makeStyles((theme) => ({
   toolbarTitle: {
@@ -303,7 +303,7 @@ function Header () {
               onClick={handleClick}
             >
               <Avatar className={classes.purple}>
-                {user.username.charAt(0).toUpperCase()}
+                {getUppercaseInitial(user.username)}
               </Avatar>
             </IconButton>
             <Menu

@@ -36,7 +36,7 @@ import CloseIcon from '@material-ui/icons/Close'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchSchematics, fetchSchematic, fetchDiagram, fetchGallery } from '../../redux/actions/index'
 import { blue } from '@material-ui/core/colors'
-import { getDateTime as getDate } from '../../utils/GalleryUtils'
+import { getDateTime as getDate, getUppercaseInitial } from '../../utils/GalleryUtils'
 
 const Transition = forwardRef(function Transition (props, ref) {
   return <Slide direction='up' ref={ref} {...props} />
@@ -357,7 +357,7 @@ export function ImageExportDialog (props) {
           <ListItem button onClick={() => handleListItemClick(img)} key={img}>
             <ListItemAvatar>
               <Avatar className={classes.avatar}>
-                {img.charAt(0).toUpperCase()}
+                {getUppercaseInitial(img)}
               </Avatar>
             </ListItemAvatar>
             <ListItemText primary={img} />

@@ -186,3 +186,9 @@ export const saveXmlToFile = (filename, xmlDoc) => {
   const data = serializer.serializeToString(xmlDoc)
   saveToFile(filename, 'application/xml', data)
 }
+
+export const getUppercaseInitial = (str) => {
+  const match = str.match(/[a-zA-Z]/)
+  const char = match ? match[0] : str.charAt(0)
+  return char.toUpperCase()
+}
