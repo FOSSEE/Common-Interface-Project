@@ -141,28 +141,36 @@ def main():
             button.click()
             driver.switch_to.window(driver.window_handles[-1])  # Switch to the newly opened editor tab/window
 
-            # Wait for the page to load and the Save button to be clickable
-            save_button = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="root"]/div/header/div[2]/button[3]')))
-
-            # Wait for the gallery to fully load
-            wait_for_gallery_load()
-
-            # Click the "Save" button
-            ActionChains(driver).move_to_element(save_button).click().perform()
-
             try:
+                state = 0
+
+                # Wait for the page to load and the Save button to be clickable
+                save_button = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="root"]/div/header/div[2]/div[1]/button[2]')))
+                state += 1
+
+                # Wait for the gallery to fully load
+                wait_for_gallery_load()
+                state += 1
+
+                # Click the "Save" button
+                ActionChains(driver).move_to_element(save_button).click().perform()
+                state += 1
+
                 # Optionally, you can verify the snackbar message if needed
                 wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "MuiSnackbar-root")))
+                state += 1
 
                 # Verify the share button is displayed
                 wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="root"]/div/header/div[1]/button[2]')))
+                state += 1
 
                 # Verify the "last saved" text is displayed
                 last_saved_text = wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="root"]/div/header/div[1]/p')))
+                state += 1
                 savecount += 1
                 print(f"[{i + 1:3d}/{count}]: {last_saved_text.text}")
             except Exception:
-                print(f"[{i + 1:3d}/{count}]: Error while saving diagram")
+                print(f"[{i + 1:3d}/{count}]: Error while saving diagram {state}")
 
             # Close the editor tab/window and switch back to the gallery
             driver.close()
