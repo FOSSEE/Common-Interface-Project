@@ -76,6 +76,10 @@ PublicRoute.propTypes = {
   restricted: PropTypes.bool
 }
 
+function deleteCookie (name) {
+  document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+}
+
 const App = () => {
   useEffect(() => {
     const fetchSession = async () => {
@@ -85,6 +89,10 @@ const App = () => {
 
       if (!sessionId || !expireAt || new Date(expireAt) < new Date()) {
         // Generate a new session ID
+        localStorage.removeItem('session_id')
+        localStorage.removeItem('expire_at')
+        deleteCookie("sessionid")
+        console.log(document.cookie)
         api.get('simulation/get_session?app_name=' + process.env.REACT_APP_NAME)
           .then(res => {
             sessionId = res.data.session_id
