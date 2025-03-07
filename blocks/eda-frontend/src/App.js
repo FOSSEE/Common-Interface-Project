@@ -76,8 +76,8 @@ PublicRoute.propTypes = {
   restricted: PropTypes.bool
 }
 
-function deleteCookie (name) {
-  document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+const deleteCookie = (name) => {
+  document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
 }
 
 const App = () => {
@@ -91,8 +91,7 @@ const App = () => {
         // Generate a new session ID
         localStorage.removeItem('session_id')
         localStorage.removeItem('expire_at')
-        deleteCookie("sessionid")
-        console.log(document.cookie)
+        deleteCookie('sessionid')
         api.get('simulation/get_session?app_name=' + process.env.REACT_APP_NAME)
           .then(res => {
             sessionId = res.data.session_id
