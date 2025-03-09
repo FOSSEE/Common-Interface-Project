@@ -39,7 +39,7 @@ LOOK_DELAY = 0.1
 
 # display limit for long strings
 DISPLAY_LIMIT = 10
-
+# handle scilab startup
 SCILAB_START = (
     "try;funcprot(0);lines(0,120);"
     "clearfun('messagebox');"
@@ -171,6 +171,43 @@ class Diagram:
             self.file_image = ''
 
 
+class Script:
+    script_id = None
+    sessiondir = None
+    filename = None
+    status = 0
+    instance = None
+    workspace_filename = None
+
+    def __str__(self):
+        return (
+            "{script_id: %s, filename: %s, status: %d, instance: %s, "
+            "workspace_filename: %s}") % (
+                self.script_id, self.filename, self.status, self.instance,
+                self.workspace_filename)
+
+    def clean(self):
+        if self.instance is not None:
+            kill_script(self)
+            self.instance = None
+        if self.filename is not None:
+            remove(self.filename)
+            self.filename = None
+        if self.workspace_filename is not None:
+            remove(self.workspace_filename)
+            self.workspace_filename = None
+
+
+class SciFile:
+    '''Variables used in sci-func block'''
+    instance = None
+
+    def clean(self):
+        if self.instance is not None:
+            kill_scifile(self)
+            self.instance = None
+
+
 class UserData:
     sessiondir = None
     diagrams = None
@@ -188,6 +225,7 @@ class UserData:
         self.datafiles = []
         self.scripts = {}
         self.scriptcount = 0
+        self.scifile = SciFile()
         self.diagramlock = RLock()
         self.timestamp = time()
 
@@ -380,15 +418,32 @@ def stop_scilab_instance(base, createlogfile=False):
 
 
 def kill_scilab_with(proc, sig):
-    """Send a signal to a Scilab process."""
+    '''
+    function to kill a process group with a signal. wait for maximum 2 seconds
+    for process to exit. return True on exit, False otherwise
+    '''
+
+    if proc.poll() is not None:
+        return True
+
     try:
-        if proc and proc.pid:
-            os.kill(proc.pid, sig)
-            return True
+        os.killpg(proc.pid, sig)
+    except OSError:
+        logger.warning('could not kill %s with signal %s', proc.pid, sig)
+        return False
+    except TypeError:
+        logger.warning('could not kill invalid process %s with signal %s', proc.pid, sig)
+        return True
     except ProcessLookupError:
-        print(f"Process {proc.pid} not found.")
+        logger.warning('could not find process %s to kill with signal %s', proc.pid, sig)
+        return True
     except Exception as e:
-        print(f"Error killing Scilab process: {e}")
+        logger.warning('Error killing process %s with signal %s', proc.pid, sig, e)
+
+    for i in range(0, 20):
+        gevent.sleep(LOOK_DELAY)
+        if proc.poll() is not None:
+            return True
     return False
 
 
@@ -450,9 +505,23 @@ def reap_scilab_instances():
                 stop_instance(instance)
             elif isinstance(base, Diagram):
                 kill_scilab(base)
+            elif isinstance(base, Script):
+                kill_script(base)
+            elif isinstance(base, SciFile):
+                kill_scifile(base)
             else:
                 logger.warning('cannot stop instance %s', instance)
                 stop_instance(instance)
+
+
+class DataFile:
+    sessiondir = None
+    data_filename = None
+
+    def clean(self):
+        if self.data_filename is not None:
+            remove(self.data_filename)
+            self.data_filename = None
 
 
 def clean_sessions(final=False):
@@ -771,6 +840,63 @@ def get_diagram(xcos_file_id, remove=False):
     return diagram
 
 
+def add_diagram():
+    (diagrams, scripts, __, __, __, sessiondir, diagramlock) = init_session()
+
+    with diagramlock:
+        diagram = Diagram()
+        diagram.diagram_id = str(len(diagrams))
+        diagram.sessiondir = sessiondir
+        diagrams.append(diagram)
+
+    return (diagram, scripts, sessiondir)
+
+
+def get_script(script_id, scripts=None, remove=False):
+    if script_id is None:
+        return None
+    if not script_id:
+        logger.warning('no id')
+        return None
+
+    if scripts is None:
+        (__, scripts, __, __, __, __, __) = init_session()
+
+    if script_id not in scripts:
+        logger.warning('id %s not in scripts', script_id)
+        return None
+
+    script = scripts[script_id]
+
+    if remove:
+        del scripts[script_id]
+
+    return script
+
+
+def add_script():
+    (__, scripts, getscriptcount, __, __, sessiondir, __) = init_session()
+
+    script_id = getscriptcount()
+
+    script = Script()
+    script.script_id = script_id
+    script.sessiondir = sessiondir
+    scripts[script_id] = script
+
+    return (script, sessiondir)
+
+
+def add_datafile():
+    (__, __, __, __, datafiles, sessiondir, __) = init_session()
+
+    datafile = DataFile()
+    datafile.sessiondir = sessiondir
+    datafiles.append(datafile)
+
+    return (datafile, sessiondir, str(len(datafiles)))
+
+
 def get_request_id(request, key='id'):
     args = request.args
     if args is None:
@@ -787,6 +913,24 @@ def get_request_id(request, key='id'):
     logger.warning('Invalid value %s for %s in request.args',
                    displayvalue, key)
     return ''
+
+
+def get_script_id(request, key='script_id', default=''):
+    form = request.form
+    if form is None:
+        logger.warning('No form in request')
+        return default
+    if key not in form:
+        logger.warning('No %s in request.form', key)
+        return default
+    value = form[key]
+    if re.fullmatch(r'[0-9]+', value):
+        return value
+    displayvalue = value if len(
+        value) <= DISPLAY_LIMIT + 3 else value[:DISPLAY_LIMIT] + '...'
+    logger.warning('Invalid value %s for %s in request.form',
+                   displayvalue, key)
+    return default
 
 
 def kill_scilab(diagram=None):
@@ -812,6 +956,46 @@ def kill_scilab(diagram=None):
         logger.warning('not removing %s', diagram.file_image)
 
     stopDetailsThread(diagram)
+
+
+def kill_script(script=None):
+    '''Below route is called for stopping a running script file.'''
+    if script is None:
+        script = get_script(get_script_id(), remove=True)
+        if script is None:
+            # when called with same script_id again or with incorrect script_id
+            logger.warning('no script')
+            return "error"
+
+    logger.info('kill_script: script=%s', script)
+
+    stop_scilab_instance(script)
+
+    if script.filename is None:
+        logger.warning('empty script')
+    else:
+        remove(script.filename)
+        script.filename = None
+
+    if script.workspace_filename is None:
+        logger.warning('empty workspace')
+    else:
+        remove(script.workspace_filename)
+        script.workspace_filename = None
+
+    return "ok"
+
+
+def kill_scifile(scifile=None):
+    '''Below route is called for stopping a running sci file.'''
+    if scifile is None:
+        (__, __, __, scifile, __, __, __) = init_session()
+
+    logger.info('kill_scifile: scifile=%s', scifile)
+
+    stop_scilab_instance(scifile)
+
+    return "ok"
 
 
 worker = None
