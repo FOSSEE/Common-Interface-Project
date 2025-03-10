@@ -9,6 +9,7 @@ from datetime import datetime
 from pathlib import Path
 from tempfile import mkstemp
 from django.conf import settings
+from simulationAPI.models import Task
 
 logger = get_task_logger(__name__)
 XmlToXcos = join(settings.BASE_DIR, 'Xcos/XmlToXcos.sh')
@@ -40,6 +41,14 @@ LOGFILEFD = 123
 
 class CannotRunParser(Exception):
     """ Base class for exceptions in this module. """
+
+
+def update_task_status(task_id, status, meta=None):
+    # Update Celery backend state
+    current_task.update_state(state=status, meta=meta or {})
+
+    # Update Django database
+    Task.objects.filter(task_id=task_id).update(status=status)
 
 
 def CreateXml(file_path, parameters, task_id):
@@ -111,9 +120,8 @@ def ExecXml(task):
 
         os.close(LOGFILEFD)
 
-        current_task.update_state(
-            state='STREAMING',
-            meta={'current_process': 'Processed Xml, Streaming Output'})
+        update_task_status(task_id, 'STREAMING',
+                           meta={'current_process': 'Processed Xml, Streaming Output'})
 
         cmd = "try;"
         cmd += "chdir('%s');" % current_dir

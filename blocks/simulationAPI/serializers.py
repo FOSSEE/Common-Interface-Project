@@ -10,7 +10,7 @@ logger = get_task_logger(__name__)
 class SessionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Session
-        fields = ('session_id', 'app_name', 'created_at')
+        fields = ('session_id', 'app_name', 'created_at', 'expire_at', 'count')
 
 
 class TaskSerializer(serializers.HyperlinkedModelSerializer):
@@ -18,8 +18,8 @@ class TaskSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Task
-        fields = ('task_id', 'file', 'parameters', 'upload_time',
-                  'log_name', 'returncode', 'task_time', 'session')
+        fields = ('task_id', 'file', 'status', 'parameters', 'upload_time',
+                  'log_name', 'returncode', 'session', 'start_time', 'end_time')
 
     def create(self, validated_data):
         # Takes file from request and stores it along with a taskid
@@ -35,6 +35,5 @@ class TaskSerializer(serializers.HyperlinkedModelSerializer):
         parameters = json.dumps(postdata, separators=(',', ':'))
         session, created = Session.objects.get_or_create(session_id=session_id, app_name=app_name)
         task = Task.objects.create(session=session, file=file, parameters=parameters)
-        # logger.info('session: %s, task: %s', session, task)
         logger.info("Session: %s (created: %s), Task: %s", session, created, task)
         return task

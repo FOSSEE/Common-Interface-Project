@@ -5,9 +5,20 @@ from django.conf import settings
 from django.utils import timezone
 from datetime import timedelta
 import uuid
+from celery.result import AsyncResult
 
 
-# session
+TASK_STATUS_CHOICES = [
+    ("PENDING", "Pending"),
+    ("STARTED", "Started"),
+    ("STREAMING", "Streaming"),
+    ("SUCCESS", "Success"),
+    ("FAILURE", "Failure"),
+    ("RETRY", "Retry"),
+    ("CANCELED", "Canceled"),
+]
+
+
 class Session(models.Model):
     session_id = models.CharField(primary_key=True, max_length=40, null=False, editable=False)
     app_name = models.CharField(max_length=40, blank=False, null=False, default='')
@@ -43,25 +54,25 @@ class Session(models.Model):
         raise ValidationError("mismatch: Cannot update.")
 
     def __str__(self):
+        """String for representing the Model object."""
         return self.session_id
 
 
 class Task(models.Model):
     task_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    file = models.FileField(storage=FileSystemStorage(location=settings.MEDIA_ROOT), default='default_file.txt')
-
+    file = models.FileField(storage=FileSystemStorage(location=settings.MEDIA_ROOT))
+    status = models.CharField(max_length=20, choices=TASK_STATUS_CHOICES, null=False, default="PENDING")
     parameters = models.TextField(blank=True, null=True)
     upload_time = models.DateTimeField(auto_now=True)
     log_name = models.CharField(max_length=500, blank=True, null=True)
     returncode = models.IntegerField(blank=True, null=True)
-
-    task_time = models.DateTimeField(auto_now=True)
-
-    session = models.ForeignKey(Session, on_delete=models.CASCADE, related_name='task_files', null=True, blank=True)
+    session = models.ForeignKey(Session, on_delete=models.CASCADE, related_name='task', null=True)
+    start_time = models.DateTimeField(null=True)
+    end_time = models.DateTimeField(null=True)
 
     def save(self, *args, **kwargs):
         super(Task, self).save(*args, **kwargs)
 
     def __str__(self):
         """String for representing the Model object."""
-        return self.task_id.hex
+        return f"{self.task_id.hex} - {self.status}"
