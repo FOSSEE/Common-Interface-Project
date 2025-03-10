@@ -1,18 +1,21 @@
 from datetime import datetime
 from django.conf import settings
+from django.http import JsonResponse
 import gevent
 from gevent.event import Event
 from gevent.lock import RLock
 import glob
+import json
+import logging
 import os
 from os.path import abspath, exists, join
 import re
-import time
 import signal
-import logging
 import subprocess
 from tempfile import mkdtemp, mkstemp
 from threading import current_thread
+import time
+import unicodedata
 import uuid
 
 from simulationAPI.helpers import config
@@ -26,7 +29,9 @@ IMAGEDIR = join(BASEDIR, config.IMAGEDIR)
 
 
 SESSIONDIR = abspath(config.SESSIONDIR)
+SYSTEM_COMMANDS = re.compile(config.SYSTEM_COMMANDS)
 
+# This is the path to the upload directory and values directory
 UPLOAD_FOLDER = 'uploads'  # to store xcos file
 VALUES_FOLDER = 'values'  # to store files related to tkscale block
 # to store uploaded sci files for sci-func block
@@ -62,6 +67,13 @@ SCILAB_CMD = [SCILAB,
               "-e", SCILAB_START]
 
 USER_DATA = {}
+
+
+def secure_filename(filename: str) -> str:
+    filename = unicodedata.normalize("NFKD", filename)
+    filename = filename.encode("ascii", "ignore").decode("ascii")  # Remove accents
+    filename = re.sub(r"[^a-zA-Z0-9_.-]", "_", filename)  # Replace invalid characters
+    return filename.strip("._")  # Prevent filenames like ".." or "."
 
 
 def makedirs(dirname, dirtype):
@@ -644,6 +656,83 @@ def run_scilab(command, base, createlogfile=False, timeout=70):
     instance.starttime = time()
     instance.endtime = time() + timeout
     return instance
+
+
+def is_unsafe_script(filename):
+    '''
+    Read file and check for system commands and return error if file contains
+    system commands
+    '''
+    with open(filename, 'r') as f:
+        if not re.search(SYSTEM_COMMANDS, f.read()):
+            return False
+
+    # Delete saved file if system commands are encountered in that file
+    remove(filename)
+    return True
+
+
+def uploaddatafile(request):
+    '''
+    Below route is called for uploading audio/other file.
+    '''
+    # Get the au/other data file
+    file = request.files['file']
+    # Check if the data file is not null
+    if not file:
+        msg = "Error occured while uploading file. Please try again\n"
+        rv = {'msg': msg}
+        return JsonResponse(rv)
+
+    (datafile, sessiondir, currlen) = add_datafile()
+    fname = join(sessiondir, UPLOAD_FOLDER, currlen + '@@' + secure_filename(file.filename))
+    file.save(fname)
+    datafile.data_filename = fname
+    rv = {'filepath': datafile.data_filename}
+    return JsonResponse(rv)
+
+
+def uploadscript(request):
+    '''
+    Below route is called for uploading script file.
+    '''
+    (script, sessiondir) = add_script()
+
+    file = request.files['file']
+    if not file:
+        msg = "Upload Error\n"
+        rv = {'msg': msg}
+        return JsonResponse(rv)
+
+    fname = join(sessiondir, SCRIPT_FILES_FOLDER,
+                 script.script_id + '_script.sce')
+    file.save(fname)
+    script.filename = fname
+
+    if is_unsafe_script(fname):
+        msg = ("System calls are not allowed in script.\n"
+               "Please edit the script again.\n")
+        script.status = -1
+        rv = {'status': script.status, 'msg': msg}
+        return JsonResponse(rv)
+
+    wfname = join(sessiondir, SCRIPT_FILES_FOLDER,
+                  script.script_id + '_script_workspace.dat')
+    script.workspace_filename = wfname
+    command = "exec('%s');save('%s');" % (fname, wfname)
+
+    script.instance = run_scilab(command, script)
+
+    if script.instance is None:
+        msg = "Resource not available"
+        script.status = -2
+        rv = {'status': script.status, 'msg': msg}
+        return JsonResponse(rv)
+
+    msg = ''
+    script.status = 1
+    rv = {'script_id': script.script_id, 'status': script.status, 'msg': msg}
+    return JsonResponse(rv)
 
 
 def load_variables(filename):
