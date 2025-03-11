@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { HashRouter, Switch, Route, Redirect } from 'react-router-dom'
-import api from './utils/Api'
 import CircularProgress from '@material-ui/core/CircularProgress'
 
 import Navbar from './components/Shared/Navbar'
@@ -76,36 +75,7 @@ PublicRoute.propTypes = {
   restricted: PropTypes.bool
 }
 
-const deleteCookie = (name) => {
-  document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
-}
-
 const App = () => {
-  useEffect(() => {
-    const fetchSession = async () => {
-      // Check if session ID already exists
-      let sessionId = localStorage.getItem('session_id')
-      let expireAt = localStorage.getItem('expire_at')
-
-      if (!sessionId || !expireAt || new Date(expireAt) < new Date()) {
-        // Generate a new session ID
-        localStorage.removeItem('session_id')
-        localStorage.removeItem('expire_at')
-        deleteCookie('sessionid')
-        api.get('simulation/get_session?app_name=' + process.env.REACT_APP_NAME)
-          .then(res => {
-            sessionId = res.data.session_id
-            expireAt = res.data.expire_at
-            localStorage.setItem('session_id', sessionId)
-            localStorage.setItem('expire_at', expireAt)
-            console.log('new sessionId', sessionId)
-          })
-      }
-    }
-
-    fetchSession()
-  }, [])
-
   return (
     // Handles Routing for an application
     <HashRouter>
