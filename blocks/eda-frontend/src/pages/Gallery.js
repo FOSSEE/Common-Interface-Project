@@ -122,6 +122,7 @@ const BookDropdown = ({ onBookChange }) => {
 
   useEffect(() => {
     fetchBooks()
+    return () => { setBooks([]) }
   }, [fetchBooks])
 
   // Handle dropdown selection change
