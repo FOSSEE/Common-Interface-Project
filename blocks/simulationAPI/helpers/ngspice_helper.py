@@ -9,6 +9,8 @@ from datetime import datetime
 from pathlib import Path
 from tempfile import mkstemp
 from django.conf import settings
+from django.db.models import Case, F, Value, When
+from django.utils.timezone import now
 from simulationAPI.models import Task
 
 logger = get_task_logger(__name__)
@@ -38,6 +40,9 @@ SCILAB_CMD = [SCILAB,
               "-e", SCILAB_START]
 LOGFILEFD = 123
 
+START_STATES = ["STARTED"]
+END_STATES = ["SUCCESS", "FAILURE", "CANCELED"]
+
 
 class CannotRunParser(Exception):
     """ Base class for exceptions in this module. """
@@ -48,7 +53,17 @@ def update_task_status(task_id, status, meta=None):
     current_task.update_state(state=status, meta=meta or {})
 
     # Update Django database
-    Task.objects.filter(task_id=task_id).update(status=status)
+    Task.objects.filter(task_id=task_id).update(
+        status=status,
+        start_time=Case(
+            When(status__in=START_STATES, then=Value(now())),
+            default=F("start_time")
+        ),
+        end_time=Case(
+            When(status__in=END_STATES, then=Value(now())),
+            default=F("end_time")
+        )
+    )
 
 
 def CreateXml(file_path, parameters, task_id):
