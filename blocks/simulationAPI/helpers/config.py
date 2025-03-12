@@ -2,7 +2,6 @@ import os
 
 # The location to keep the session data on server.
 SESSIONDIR = '/tmp/sessiondir'
-IMAGEDIR = 'images'
 SESSIONTIMEOUT = 21600
 
 # the instances
@@ -19,3 +18,6 @@ SYSTEM_COMMANDS = (
     r'|newfun|execstr|ascii|mputl|dir\(\)'
 )
 SPECIAL_CHARACTERS = r'["\'\\]'
+
+# The directory where images are created
+IMAGEDIR = 'images'

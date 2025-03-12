@@ -632,9 +632,14 @@ export default function SimulationScreen ({ open, close }) {
 
           case 'FAILURE':
           case 'CANCELED':
+            if (timeoutRef.current !== null) {
+              clearTimeout(timeoutRef.current)
+              timeoutRef.current = null
+            }
+            break
 
           default:
-            console.log('Unhandled case:', res)
+            console.log('unhandled case', res)
             if (timeoutRef.current !== null) {
               clearTimeout(timeoutRef.current)
               timeoutRef.current = null

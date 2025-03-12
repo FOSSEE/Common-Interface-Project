@@ -30,6 +30,7 @@ IMAGEDIR = join(BASEDIR, config.IMAGEDIR)
 
 SESSIONDIR = abspath(config.SESSIONDIR)
 SYSTEM_COMMANDS = re.compile(config.SYSTEM_COMMANDS)
+SPECIAL_CHARACTERS = re.compile(config.SPECIAL_CHARACTERS)
 
 # This is the path to the upload directory and values directory
 UPLOAD_FOLDER = 'uploads'  # to store xcos file
