@@ -60,6 +60,11 @@ const refreshSession = async () => {
 }
 
 api.interceptors.request.use(async (config) => {
+  // Avoid infinite loop by skipping the interceptor for session refresh requests
+  if (config.url.includes('simulation/get_session')) {
+    return config
+  }
+
   let sessionId = localStorage.getItem('session_id')
 
   // Check if session is expired and refresh if necessary
