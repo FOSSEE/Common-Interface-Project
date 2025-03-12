@@ -71,7 +71,12 @@ api.interceptors.request.use(async (config) => {
   if (!sessionId || isSessionExpired()) {
     console.log('Session expired, refreshing...')
     deleteCookie('sessionid')
+
+    // Refresh session but avoid triggering interceptor again
     sessionId = await refreshSession()
+    if (!sessionId) {
+      return Promise.reject(new Error('Failed to refresh session'))
+    }
   }
 
   if (sessionId) {
