@@ -13,6 +13,76 @@ import os
 from celery import Celery
 from celery.signals import worker_ready, worker_shutdown
 from django.conf import settings
+import logging
+import logging.config
+
+# Define log format
+LOG_FILE = "logs/celery.log"
+
+TASK_LOG_FORMAT = "%(asctime)s - %(levelname)s - [%(task_name)s/%(task_id)s]: %(message)s"
+WORKER_LOG_FORMAT = "%(asctime)s - %(levelname)s - [%(processName)s/%(process)d]: %(message)s"
+
+LOG_DATE_FORMAT = "%H:%M:%S"
+
+CELERY_LOGGING_CONFIG = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "task_formatter": {
+            "format": TASK_LOG_FORMAT,
+            "datefmt": LOG_DATE_FORMAT,
+        },
+        "worker_formatter": {
+            "format": WORKER_LOG_FORMAT,
+            "datefmt": LOG_DATE_FORMAT,
+        },
+    },
+    "handlers": {
+        "task_console": {
+            "class": "logging.StreamHandler",
+            "formatter": "task_formatter",
+        },
+        "worker_console": {
+            "class": "logging.StreamHandler",
+            "formatter": "worker_formatter",
+        },
+
+        "task_file": {
+            "class": "logging.handlers.TimedRotatingFileHandler",
+            "filename": LOG_FILE,
+            "when": "midnight",
+            "interval": 1,
+            "backupCount": 15,
+            "formatter": "task_formatter",
+            "encoding": "utf-8",
+        },
+        "worker_file": {
+            "class": "logging.handlers.TimedRotatingFileHandler",
+            "filename": LOG_FILE,
+            "when": "midnight",
+            "interval": 1,
+            "backupCount": 15,
+            "formatter": "worker_formatter",
+            "encoding": "utf-8",
+        },
+    },
+    "loggers": {
+        "celery.task": {
+            "handlers": ["task_console", "task_file"],
+            "level": "INFO",
+            "propagate": False,
+        },
+        "celery": {
+            "handlers": ["worker_console", "worker_file"],
+            "level": "INFO",
+            "propagate": False,
+        },
+    },
+}
+
+logging.config.dictConfig(CELERY_LOGGING_CONFIG)
+
+worker_logger = logging.getLogger("celery")
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'blocks.settings')
 
@@ -20,6 +90,7 @@ app = Celery('blocks')
 app.config_from_object('django.conf:settings', namespace='CELERY')
 app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 app.conf.broker_connection_retry_on_startup = True
+app.conf.worker_hijack_root_logger = False
 
 
 @app.task(bind=True)
@@ -29,11 +100,11 @@ def debug_task(self):
 
 @worker_ready.connect
 def startup_code(**kwargs):
-    print("Running global startup code")
+    worker_logger.info("Running global startup code")
     start_threads()
 
 
 @worker_shutdown.connect
 def shutdown_code(**kwargs):
-    print("Running global shutdown code")
+    worker_logger.info("Running global shutdown code")
     stop_threads()

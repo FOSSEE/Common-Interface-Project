@@ -1,3 +1,4 @@
+from celery.utils.log import get_task_logger
 from datetime import datetime
 from django.conf import settings
 from django.http import JsonResponse
@@ -8,13 +9,13 @@ import glob
 import json
 import logging
 import os
-from os.path import abspath, exists, join
+from os.path import abspath, exists, isfile, join
 import re
 import signal
 import subprocess
 from tempfile import mkdtemp, mkstemp
 from threading import current_thread
-import time
+from time import time
 import unicodedata
 import uuid
 
@@ -104,20 +105,8 @@ def remove(filename):
         return False
 
 
-# Configure logger
-logger = logging.getLogger(__name__)  # Create a logger for this module
-logger.setLevel(logging.INFO)  # Set logging level
-
-# Create a console handler
-console_handler = logging.StreamHandler()
-console_handler.setLevel(logging.INFO)
-
-# Define log message format
-formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
-console_handler.setFormatter(formatter)
-
-# Add the handler to the logger
-logger.addHandler(console_handler)
+worker_logger = logging.getLogger("celery")
+logger = get_task_logger(__name__)
 
 makedirs(SESSIONDIR, 'top session')
 
@@ -300,7 +289,7 @@ def start_scilab_instances():
     lssi = min(config.SCILAB_START_INSTANCES,
                config.SCILAB_MAX_INSTANCES - l2) - l1
     if lssi > 0:
-        logger.info('can start %s instances', lssi)
+        worker_logger.info('can start %s instances', lssi)
     return lssi
 
 
@@ -312,7 +301,7 @@ def print_scilab_instances():
         msg += ', free=' + str(l1)
     if l2 > 0:
         msg += ', in use=' + str(l2)
-    logger.info('instance count: %s', msg[2:])
+    worker_logger.info('instance count: %s', msg[2:])
 
 
 FIRST_INSTANCE = True
@@ -483,13 +472,13 @@ def stop_instance(instance, createlogfile=False, removeinstance=True):
 
 def stop_scilab_instances():
     if len(INSTANCES_1) > 0:
-        logger.info('stopping %s idle instances', len(INSTANCES_1))
+        worker_logger.info('stopping %s idle instances', len(INSTANCES_1))
         while len(INSTANCES_1) > 0:
             instance = INSTANCES_1.pop()
             stop_instance(instance, removeinstance=False)
 
     if len(INSTANCES_2) > 0:
-        logger.info('stopping %s busy instances', len(INSTANCES_2))
+        worker_logger.info('stopping %s busy instances', len(INSTANCES_2))
         while len(INSTANCES_2) > 0:
             instance = INSTANCES_2.pop()
             stop_instance(instance, removeinstance=False)
@@ -510,11 +499,11 @@ def reap_scilab_instances():
         if count == 0:
             continue
 
-        logger.info('removing %s stale instances', count)
+        worker_logger.info('removing %s stale instances', count)
         for instance in remove_instances:
             base = instance.base
             if base is None:
-                logger.warning('cannot stop instance %s', instance)
+                worker_logger.warning('cannot stop instance %s', instance)
                 stop_instance(instance)
             elif isinstance(base, Diagram):
                 kill_scilab(base)
@@ -523,7 +512,7 @@ def reap_scilab_instances():
             elif isinstance(base, SciFile):
                 kill_scifile(base)
             else:
-                logger.warning('cannot stop instance %s', instance)
+                worker_logger.warning('cannot stop instance %s', instance)
                 stop_instance(instance)
 
 
@@ -546,15 +535,15 @@ def clean_sessions(final=False):
         if final or time() - ud.timestamp > config.SESSIONTIMEOUT:
             cleanuids.append(uid)
 
-    logger.info('cleaning %s/%s sessions', len(cleanuids), totalcount)
+    worker_logger.info('cleaning %s/%s sessions', len(cleanuids), totalcount)
     for uid in cleanuids:
         current_thread().name = 'Clean-%s' % uid[:6]
         try:
-            logger.info('cleaning')
+            worker_logger.info('cleaning')
             ud = USER_DATA.pop(uid)
             ud.clean()
         except Exception as e:
-            logger.warning('could not clean: %s', str(e))
+            worker_logger.warning('could not clean: %s', str(e))
 
 
 def clean_sessions_thread():
@@ -564,7 +553,7 @@ def clean_sessions_thread():
         try:
             clean_sessions()
         except Exception as e:
-            logger.warning('Exception in clean_sessions: %s', str(e))
+            worker_logger.warning('Exception in clean_sessions: %s', str(e))
 
 
 logfilefdrlock = RLock()
@@ -1023,6 +1012,105 @@ def get_script_id(request, key='script_id', default=''):
     return default
 
 
+def internal_fun(request, internal_key):
+    (__, __, __, scifile, __, sessiondir, __) = init_session()
+
+    if internal_key not in config.INTERNAL:
+        msg = internal_key + ' not found'
+        logger.warning(msg)
+        return JsonResponse({'msg': msg})
+    internal_data = config.INTERNAL[internal_key]
+
+    cmd = ""
+    for scriptfile in internal_data['scriptfiles']:
+        cmd += "exec('%s');" % scriptfile
+    file_name = join(sessiondir, internal_key + ".txt")
+    function = internal_data['function']
+    parameters = internal_data['parameters']
+    if 'num' in parameters:
+        p = 's'
+        cmd += "%s=poly(0,'%s');" % (p, p)
+        p = 'z'
+        cmd += "%s=poly(0,'%s');" % (p, p)
+    cmd += "%s('%s'" % (function, file_name)
+    for parameter in parameters:
+        if parameter not in request.form:
+            msg = parameter + ' parameter is missing'
+            logger.warning(msg)
+            return JsonResponse({'msg': msg})
+        value = request.form[parameter]
+        try:
+            value.encode('ascii')
+        except UnicodeEncodeError:
+            msg = parameter + ' parameter has non-ascii value'
+            logger.warning(msg)
+            return JsonResponse({'msg': msg})
+        if re.search(SYSTEM_COMMANDS, value):
+            msg = parameter + ' parameter has unsafe value'
+            logger.warning(msg)
+            return JsonResponse({'msg': msg})
+        if re.search(SPECIAL_CHARACTERS, value):
+            msg = parameter + ' parameter has value with special characters'
+            logger.warning(msg)
+            return JsonResponse({'msg': msg})
+        if 'num' in parameters:
+            cmd += ",%s" % value
+        else:
+            cmd += ",'%s'" % value
+    cmd += ");"
+
+    if scifile.instance is not None:
+        msg = 'Cannot execute more than one script at the same time.'
+        return JsonResponse({'msg': msg})
+
+    scifile.instance = run_scilab(cmd, scifile)
+    if scifile.instance is None:
+        msg = "Resource not available"
+        return JsonResponse({'msg': msg})
+
+    proc = scifile.instance.proc
+    (out, err) = proc.communicate()
+    out = re.sub(r'^[ !\\-]*\n', r'', out, flags=re.MULTILINE)
+    if out:
+        logger.info('=== Output from scilab console ===\n%s', out)
+    if err:
+        logger.info('=== Error from scilab console ===\n%s', err)
+    remove_scilab_instance(scifile.instance)
+    scifile.instance = None
+
+    if not isfile(file_name):
+        msg = "Output file not available"
+        logger.warning(msg)
+        return JsonResponse({'msg': msg})
+
+    with open(file_name) as f:
+        data = f.read()  # Read the data into a variable
+
+    remove(file_name)
+
+    return data
+
+
+def clean_text(s):
+    return re.sub(r'[ \t]*[\r\n]+[ \t]*', r'', s)
+
+
+def clean_text_2(s, forindex):
+    '''handle whitespace'''
+    s = re.sub(r'[\a\b\f\r\v]', r'', s)
+    s = re.sub(r'\t', r'    ', s)
+    s = re.sub(r' +(\n|$)', r'\n', s)
+    if forindex:
+        s = re.sub(r'\n+$', r'', s)
+        # double each backslash
+        s = re.sub(r'\\', r'\\\\', s)
+        # replace each newline with '\n'
+        s = re.sub(r'\n', r'\\n', s)
+    else:
+        s = re.sub(r'\n{2,}$', r'\n', s)
+    return s
+
+
 def kill_scilab(diagram=None):
     '''Define function to kill scilab(if still running) and remove files'''
     if diagram is None:
@@ -1113,4 +1201,4 @@ def stop_threads():
     cleaner = None
     clean_sessions(True)
     stop_scilab_instances()
-    logger.info('exiting')
+    worker_logger.info('exiting')

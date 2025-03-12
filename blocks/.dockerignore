@@ -28,6 +28,7 @@ blocks/xcosblocks/xcosblocks.py
 file_storage/*
 !file_storage/uploads
 file_storage/uploads/*
+logs/*.log
 media/*
 !media/saves
 !media/uploads
