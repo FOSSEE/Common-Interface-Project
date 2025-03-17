@@ -612,8 +612,9 @@ export default function SimulationScreen ({ open, close }) {
       .get(url)
       .then((res) => {
         switch (res.data.state) {
-          case 'PROGRESS':
           case 'PENDING':
+          case 'STARTED':
+          case 'RETRY':
             setIsResult(false)
             timeoutRef.current = setTimeout(() => simulationResult(url, streamingUrl), 10000)
             break
@@ -629,15 +630,11 @@ export default function SimulationScreen ({ open, close }) {
             }
             break
 
-          case 'REVOKED':
-            if (timeoutRef.current !== null) {
-              clearTimeout(timeoutRef.current)
-              timeoutRef.current = null
-            }
-            break
+          case 'FAILURE':
+          case 'CANCELED':
 
           default:
-            console.log('unhandled case', res)
+            console.log('Unhandled case:', res)
             if (timeoutRef.current !== null) {
               clearTimeout(timeoutRef.current)
               timeoutRef.current = null
