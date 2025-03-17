@@ -9,10 +9,10 @@ def SUPER_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=N
     block_id, port_id, link_id = generate_id(2, 0, 0)
     outnode = addOutNode(outroot, BLOCK_SUPER,
                          attribid, ordering, parent,
-                         func_name, 'cscope', 'C_OR_FORTRAN',
-                         style, BLOCKTYPE_C)
+                         func_name, 'super', 'DEFAULT',
+                         style, BLOCKTYPE_C, dependsOnU='0', dependsOnT='0')
 
-    addExprsNode(outnode, TYPE_STRING, 0, parameters)
+    addExprsNode(outnode, TYPE_DOUBLE, 0, parameters)
     addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM,
                  0, [])
     addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 0, [])
