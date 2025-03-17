@@ -45,6 +45,7 @@ class StateSave(models.Model):
     data_dump = models.TextField(null=False)
     base64_image = models.ImageField(
         upload_to='simulation_images', storage=file_storage, null=True)
+    script_dump = models.TextField(null=True)
 
     def save(self, *args, **kwargs):
         super(StateSave, self).save(*args, **kwargs)
@@ -62,6 +63,7 @@ class Gallery(models.Model):
     book = models.ForeignKey(Book, related_name='examples', on_delete=models.CASCADE, null=True)
     data_dump = models.TextField(null=False)
     media = models.CharField(max_length=100, null=True)
+    script_dump = models.TextField(null=True)
 
     def lcname(self):
         return self.name.lower()
