@@ -9,7 +9,7 @@ import glob
 import json
 import logging
 import os
-from os.path import abspath, exists, isfile, join
+from os.path import abspath, dirname, exists, isfile, join
 import re
 import signal
 import subprocess
@@ -23,6 +23,7 @@ from simulationAPI.helpers import config
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'blocks.settings')
 
+# Scilab dir
 SCILAB_DIR = abspath(settings.SCILAB_DIR)
 SCILAB = join(SCILAB_DIR, 'bin', 'scilab-adv-cli')
 BASEDIR = abspath('src/static')
@@ -51,6 +52,7 @@ SCILAB_START = (
     "try;funcprot(0);lines(0,120);"
     "clearfun('messagebox');"
     "function messagebox(msg,title,icon,buttons,modal),disp(msg),endfunction;"
+    "function xinfo(msg),disp(msg),endfunction;"
     "funcprot(1);"
     "catch;[error_message,error_number,error_line,error_func]=lasterror();"
     "disp(error_message,error_number,error_line,error_func);exit(3);end;"
@@ -104,6 +106,10 @@ def remove(filename):
         logger.error('could not remove %s', filename)
         return False
 
+
+# change directory before using relative paths
+ROOTDIR = dirname(abspath(__file__))
+os.chdir(ROOTDIR)
 
 worker_logger = logging.getLogger("celery")
 logger = get_task_logger(__name__)
@@ -723,6 +729,18 @@ def uploadscript(request):
     script.status = 1
     rv = {'script_id': script.script_id, 'status': script.status, 'msg': msg}
     return JsonResponse(rv)
+
+
+def clean_output(s):
+    '''handle whitespace and sequences in output'''
+    s = re.sub(r'[\a\b\f\r\v]', r'', s)
+    # https://en.wikipedia.org/wiki/ANSI_escape_code#CSI_sequences
+    s = re.sub(r'\x1b\[[\x30-\x3f]*[\x20-\x2f]*[\x40-\x7e]', r'', s)
+    s = re.sub(r'\t', r'    ', s)
+    s = re.sub(r' +(\n|$)', r'\n', s)
+    s = re.sub(r'\n+', r'\n', s)
+    s = re.sub(r'^\n', r'', s)
+    return s
 
 
 def load_variables(filename):
