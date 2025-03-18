@@ -7,6 +7,7 @@ import {
 } from '@material-ui/core'
 import AddBoxOutlinedIcon from '@material-ui/icons/AddBoxOutlined'
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
+import DescriptionIcon from '@material-ui/icons/Description'
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline'
 import UndoIcon from '@material-ui/icons/Undo'
 import RedoIcon from '@material-ui/icons/Redo'
@@ -29,12 +30,12 @@ import { Link as RouterLink } from 'react-router-dom'
 import beautify from 'xml-beautifier'
 import mxGraphFactory from 'mxgraph'
 
-import { NetlistModal, HelpScreen, ImageExportDialog, OpenSchDialog } from './ToolbarExtension'
+import { NetlistModal, HelpScreen, ImageExportDialog, OpenSchDialog, ScriptScreen } from './ToolbarExtension'
 import { editorZoomIn, editorZoomOut, editorZoomAct, deleteComp, PrintPreview, Rotate, editorUndo, editorRedo, saveXml, ClearGrid } from './Helper/ToolbarTools'
 import { useSelector, useDispatch } from 'react-redux'
 import { toggleSimulate, closeCompProperties, setSchXmlData, saveSchematic, openLocalSch, setLoadingDiagram } from '../../redux/actions/index'
 import api from '../../utils/Api'
-import { transformXcos } from '../../utils/GalleryUtils'
+import { transformXcos, saveToFile } from '../../utils/GalleryUtils'
 
 const {
   mxUtils
@@ -97,6 +98,8 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
   const isAuthenticated = useSelector(state => state.authReducer.isAuthenticated)
   const description = useSelector(state => state.saveSchematicReducer.description)
   const title2 = useSelector(state => state.saveSchematicReducer.title)
+
+  const scriptData = useSelector(state => state.saveSchematicReducer.scriptData)
 
   const dispatch = useDispatch()
   const isMobile = useMediaQuery('(max-width:600px)')
@@ -297,7 +300,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
       dispatch(setSchXmlData(xml))
       exportImage('PNG')
         .then(res => {
-          dispatch(saveSchematic(title2, description, xml, res))
+          dispatch(saveSchematic(title2, description, xml, res, scriptData))
           setMessage('Saved Successfully')
         })
         .catch(err => {
@@ -362,6 +365,10 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
     } catch (error) {
       console.error('There was an error!', error)
     }
+  }
+
+  const handleLocalSchSaveScript = () => {
+    saveToFile(title2 + '_' + process.env.REACT_APP_NAME + '_on_Cloud.sce', 'application/sce', scriptData)
   }
 
   const readXmlFile = (xmlDoc, dataDump, title) => {
@@ -440,9 +447,11 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
     'pipe',
     { icon: <SystemUpdateAltOutlinedIcon fontSize='small' />, label: 'Export', action: handleLocalSchSave },
     { icon: <SystemUpdateAltOutlinedIcon fontSize='small' />, label: 'Export in Xcos', action: handleLocalSchSaveXcos },
+    { icon: <SystemUpdateAltOutlinedIcon fontSize='small' />, label: 'Export Script', action: handleLocalSchSaveScript },
     { icon: <ImageOutlinedIcon fontSize='small' />, label: 'Image Export', action: handleImgClickOpen },
     { icon: <PrintOutlinedIcon fontSize='small' />, label: 'Print Preview', action: PrintPreview },
     'pipe',
+    { icon: <DescriptionIcon fontSize='small' />, label: 'Show Script', action: handleSchWinOpen },
     { icon: <PlayCircleOutlineIcon fontSize='small' />, label: 'Simulate', action: handleNetlistOpen },
     'pipe',
     { icon: <UndoIcon fontSize='small' />, label: 'Undo', action: editorUndo },
