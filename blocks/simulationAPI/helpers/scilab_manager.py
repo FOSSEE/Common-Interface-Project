@@ -1,7 +1,7 @@
 from celery.utils.log import get_task_logger
 from datetime import datetime
 from django.conf import settings
-from django.http import JsonResponse
+from django.http import FileResponse, Http404, JsonResponse
 import gevent
 from gevent.event import Event
 from gevent.lock import RLock
@@ -599,15 +599,6 @@ def init_session():
 
 
 def prestart_scilab():
-    cmd = SCILAB_START
-    cmdarray = [SCILAB,
-                "-nogui",
-                "-noatomsautoload",
-                "-nouserstartup",
-                "-nb",
-                "-nw",
-                "-e", cmd]
-
     logfilefd, log_name = mkstemp(prefix=datetime.now().strftime(
         'scilab-log-%Y%m%d-'), suffix='.txt', dir=SESSIONDIR)
 
@@ -618,7 +609,7 @@ def prestart_scilab():
 
         try:
             proc = subprocess.Popen(
-                cmdarray,
+                SCILAB_CMD,
                 stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE, start_new_session=True,
                 universal_newlines=True, pass_fds=(LOGFILEFD, ))
@@ -992,6 +983,34 @@ def add_datafile():
     datafiles.append(datafile)
 
     return (datafile, sessiondir, str(len(datafiles)))
+
+
+def DownloadFile(request):
+    '''route for download of binary and audio'''
+    fn = request.form['path']
+    if fn == '' or fn[0] == '.' or '/' in fn:
+        logger.warning('downloadfile=%s', fn)
+        return "error"
+    # check if audio file or binary file
+    if "audio" in fn:
+        mimetype = 'audio/basic'
+    else:
+        mimetype = 'application/octet-stream'
+    file_path = os.path.join(SESSIONDIR, fn)
+    if not os.path.exists(file_path):
+        raise Http404("File not found")
+    return FileResponse(open(file_path, 'r'),
+                        as_attachment=True, mimetype=mimetype)
+
+
+def DeleteFile(request):
+    '''route for deletion of binary and audio file'''
+    fn = request.form['path']
+    if fn == '' or fn[0] == '.' or '/' in fn:
+        logger.warning('deletefile=%s', fn)
+        return "error"
+    remove(fn)  # deleting the file
+    return "0"
 
 
 def get_request_id(request, key='id'):
