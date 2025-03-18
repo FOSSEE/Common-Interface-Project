@@ -7,7 +7,7 @@ import {
 } from '@material-ui/core'
 import AddBoxOutlinedIcon from '@material-ui/icons/AddBoxOutlined'
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
-import DescriptionIcon from '@material-ui/icons/Description'
+// import DescriptionIcon from '@material-ui/icons/Description'
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline'
 import UndoIcon from '@material-ui/icons/Undo'
 import RedoIcon from '@material-ui/icons/Redo'
@@ -30,7 +30,7 @@ import { Link as RouterLink } from 'react-router-dom'
 import beautify from 'xml-beautifier'
 import mxGraphFactory from 'mxgraph'
 
-import { NetlistModal, HelpScreen, ImageExportDialog, OpenSchDialog, ScriptScreen } from './ToolbarExtension'
+import { NetlistModal, HelpScreen, ImageExportDialog, OpenSchDialog /*, ScriptScreen */ } from './ToolbarExtension'
 import { editorZoomIn, editorZoomOut, editorZoomAct, deleteComp, PrintPreview, Rotate, editorUndo, editorRedo, saveXml, ClearGrid } from './Helper/ToolbarTools'
 import { useSelector, useDispatch } from 'react-redux'
 import { toggleSimulate, closeCompProperties, setSchXmlData, saveSchematic, openLocalSch, setLoadingDiagram } from '../../redux/actions/index'
@@ -99,7 +99,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
   const description = useSelector(state => state.saveSchematicReducer.description)
   const title2 = useSelector(state => state.saveSchematicReducer.title)
 
-  const scriptData = useSelector(state => state.saveSchematicReducer.scriptData)
+  const scriptDump = useSelector(state => state.saveSchematicReducer.scriptDump)
 
   const dispatch = useDispatch()
   const isMobile = useMediaQuery('(max-width:600px)')
@@ -248,18 +248,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
 
   // Download SVG image
   function downloadText (data, options) {
-    const blob = new Blob(data, options)
-    const evt = new MouseEvent('click', {
-      view: window,
-      bubbles: false,
-      cancelable: true
-    })
-    const a = document.createElement('a')
-    a.setAttribute('download', title2 + '_' + process.env.REACT_APP_NAME + '_on_Cloud.svg')
-    a.href = URL.createObjectURL(blob)
-    a.target = '_blank'
-    a.setAttribute('target', '_blank')
-    a.dispatchEvent(evt)
+    saveToFile(title2 + '_' + process.env.REACT_APP_NAME + '_on_Cloud.svg', options, data)
   }
 
   const [imgopen, setImgOpen] = useState(false)
@@ -273,9 +262,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
     if (value === 'SVG') {
       exportImage('SVG')
         .then(v => {
-          downloadText([v], {
-            type: 'data:image/svg+xml;charset=utf-8;'
-          })
+          downloadText(v, 'data:image/svg+xml')
         })
     } else if (value === 'PNG') {
       exportImage('PNG')
@@ -300,7 +287,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
       dispatch(setSchXmlData(xml))
       exportImage('PNG')
         .then(res => {
-          dispatch(saveSchematic(title2, description, xml, res, scriptData))
+          dispatch(saveSchematic(title2, description, xml, res, scriptDump))
           setMessage('Saved Successfully')
         })
         .catch(err => {
@@ -315,18 +302,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
 
   // Save Schematics Locally
   const handleLocalSchSave = () => {
-    const blob = new Blob([beautify(saveXml(description))], { type: 'application/xml' })
-    const evt = new MouseEvent('click', {
-      view: window,
-      bubbles: false,
-      cancelable: true
-    })
-    const a = document.createElement('a')
-    a.setAttribute('download', title2 + '_' + process.env.REACT_APP_NAME + '_on_Cloud.xml')
-    a.href = URL.createObjectURL(blob)
-    a.target = '_blank'
-    a.setAttribute('target', '_blank')
-    a.dispatchEvent(evt)
+    saveToFile(title2 + '_' + process.env.REACT_APP_NAME + '_on_Cloud.xml', 'application/xml', beautify(saveXml(description)))
   }
 
   const handleLocalSchSaveXcos = async () => {
@@ -348,27 +324,14 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
       if (!response || response.status !== 200) {
         throw new Error('Network response was not ok')
       }
-      const xcosBlob = new Blob([response.data], { type: 'application/xcos' })
-
-      const a = document.createElement('a')
-      a.setAttribute('download', title2 + '_' + process.env.REACT_APP_NAME + '_on_Cloud.xcos')
-      a.href = URL.createObjectURL(xcosBlob)
-      a.target = '_blank'
-      a.setAttribute('target', '_blank')
-
-      const evt = new MouseEvent('click', {
-        view: window,
-        bubbles: false,
-        cancelable: true
-      })
-      a.dispatchEvent(evt)
+      saveToFile(title2 + '_' + process.env.REACT_APP_NAME + '_on_Cloud.xcos', 'application/x-scilab-xcos', response.data)
     } catch (error) {
       console.error('There was an error!', error)
     }
   }
 
   const handleLocalSchSaveScript = () => {
-    saveToFile(title2 + '_' + process.env.REACT_APP_NAME + '_on_Cloud.sce', 'application/sce', scriptData)
+    saveToFile(title2 + '_' + process.env.REACT_APP_NAME + '_on_Cloud.sce', 'application/x-scilab', scriptDump)
   }
 
   const readXmlFile = (xmlDoc, dataDump, title) => {
@@ -451,7 +414,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
     { icon: <ImageOutlinedIcon fontSize='small' />, label: 'Image Export', action: handleImgClickOpen },
     { icon: <PrintOutlinedIcon fontSize='small' />, label: 'Print Preview', action: PrintPreview },
     'pipe',
-    { icon: <DescriptionIcon fontSize='small' />, label: 'Show Script', action: handleSchWinOpen },
+    // { icon: <DescriptionIcon fontSize='small' />, label: 'Show Script', action: handleSchWinOpen },
     { icon: <PlayCircleOutlineIcon fontSize='small' />, label: 'Simulate', action: handleNetlistOpen },
     'pipe',
     { icon: <UndoIcon fontSize='small' />, label: 'Undo', action: editorUndo },

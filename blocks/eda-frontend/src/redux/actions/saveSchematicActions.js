@@ -41,23 +41,23 @@ export const setSchXmlData = (xmlData) => (dispatch) => {
   })
 }
 
-export const setSchScriptData = (scriptData) => (dispatch) => {
+export const setSchScriptDump = (scriptDump) => (dispatch) => {
   dispatch({
-    type: actions.SET_SCH_SCRIPT_DATA,
+    type: actions.SET_SCH_SCRIPT_DUMP,
     payload: {
-      scriptData
+      scriptDump
     }
   })
 }
 
 // Api call to save new schematic or updating saved schematic.
-export const saveSchematic = (title, description, xml, base64, scriptData) => (dispatch, getState) => {
+export const saveSchematic = (title, description, xml, base64, scriptDump) => (dispatch, getState) => {
   const body = {
     data_dump: xml,
     base64_image: base64,
     name: title,
     description,
-    script_dump: scriptData
+    script_dump: scriptDump
   }
 
   // Get token from localstorage
@@ -207,7 +207,7 @@ export const loadGallery = (data) => async (dispatch) => {
       dispatch(setSchTitle(data.name))
       dispatch(setSchDescription(data.description))
       dispatch(setSchXmlData(dataDump))
-      dispatch(setSchScriptData(data.script_dump))
+      dispatch(setSchScriptDump(data.script_dump))
       renderGalleryXML(dataDump)
     }
 
@@ -235,6 +235,6 @@ export const openLocalSch = (obj) => (dispatch) => {
   dispatch(setSchTitle(data.title))
   dispatch(setSchDescription(data.description))
   dispatch(setSchXmlData(data.data_dump))
-  dispatch(setSchScriptData(data.script_dump))
+  dispatch(setSchScriptDump(data.script_dump))
   renderGalleryXML(data.data_dump)
 }

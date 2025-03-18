@@ -82,10 +82,10 @@ export default function saveSchematicReducer (state = initialState, action) {
       }
     }
 
-    case actions.SET_SCH_SCRIPT_DATA: {
+    case actions.SET_SCH_SCRIPT_DUMP: {
       return {
         ...state,
-        scriptData: action.payload.scriptData
+        scriptDump: action.payload.scriptDump
       }
     }
 
