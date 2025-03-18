@@ -36,13 +36,11 @@ import CloseIcon from '@material-ui/icons/Close'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchSchematics, fetchSchematic, fetchDiagram, fetchGallery } from '../../redux/actions/index'
 import { blue } from '@material-ui/core/colors'
-import { getDateTime as getDate, getUppercaseInitial } from '../../utils/GalleryUtils'
+import { getDateTime as getDate, getUppercaseInitial, saveToFile } from '../../utils/GalleryUtils'
 
 const Transition = forwardRef(function Transition (props, ref) {
   return <Slide direction='up' ref={ref} {...props} />
 })
-
-const FileSaver = require('file-saver')
 
 // Dialog box to display generated netlist
 export function NetlistModal ({ open, close, netlist }) {
@@ -50,8 +48,7 @@ export function NetlistModal ({ open, close, netlist }) {
   const createNetlistFile = () => {
     const titleA = title.split(' ')[1]
     const name = process.env.REACT_APP_NAME
-    const blob = new Blob([netlist], { type: 'text/plain;charset=utf-8' })
-    FileSaver.saveAs(blob, `${titleA}_${name}_on_Cloud.cir`)
+    saveToFile(`${titleA}_${name}_on_Cloud.cir`, 'text/plain', netlist)
   }
   const typography2 = 'Current netlist for given ' + process.env.REACT_APP_SMALL_DIAGRAM_NAME + '...'
   return (
