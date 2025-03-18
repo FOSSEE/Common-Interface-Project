@@ -43,6 +43,7 @@ class StateSaveSerializer(serializers.ModelSerializer):
                   'shared',
                   'owner',
                   'base64_image',
+                  'script_dump',
                   )
 
 
@@ -84,6 +85,7 @@ class GalleryDetailSerializer(serializers.ModelSerializer):
                   'book_id',
                   'data_dump',
                   'media',
+                  'script_dump',
                   )
 
 

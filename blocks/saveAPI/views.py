@@ -45,6 +45,7 @@ class StateSaveView(APIView):
                 img = Base64ImageField(max_length=None, use_url=True)
                 filename, content = img.update(request.data['base64_image'])
                 queryset.data_dump = request.data.get("data_dump")
+                queryset.script_dump = request.data.get("script_dump")
                 queryset.save()
                 queryset.base64_image.save(filename, content)
                 return Response(data=serializer.data,
@@ -56,7 +57,10 @@ class StateSaveView(APIView):
             try:
                 queryset = StateSave.objects.get(
                     save_id=request.data.get("save_id", None),
-                    data_dump=request.data["data_dump"])
+                    data_dump=request.data["data_dump"],
+                    script_dump=request.data["script_dump"]
+                    ),
+                    
                 serializer = StateSaveSerializer(data=request.data)
                 if serializer.is_valid():
                     queryset.name = serializer.data["name"]
@@ -74,6 +78,7 @@ class StateSaveView(APIView):
                 try:
                     state_save = StateSave(
                         data_dump=request.data.get('data_dump'),
+                        script_dump=request.data.get('script_dump'),
                         description=request.data.get('description'),
                         name=request.data.get('name'),
                         owner=request.user if request.user.is_authenticated else None,
@@ -82,6 +87,7 @@ class StateSaveView(APIView):
                 except Exception:
                     state_save = StateSave(
                         data_dump=request.data.get('data_dump'),
+                        script_dump=request.data.get('script_dump'),
                         description=request.data.get('description'),
                         name=request.data.get('name'),
                         owner=request.user if request.user.is_authenticated else None,
