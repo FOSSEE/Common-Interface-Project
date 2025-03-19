@@ -28,8 +28,7 @@ SCILAB_DIR = abspath(settings.SCILAB_DIR)
 SCILAB = join(SCILAB_DIR, 'bin', 'scilab-adv-cli')
 BASEDIR = abspath('src/static')
 IMAGEDIR = join(BASEDIR, config.IMAGEDIR)
-
-
+IMAGEURLDIR = '/' + config.IMAGEDIR + '/'
 SESSIONDIR = abspath(config.SESSIONDIR)
 SYSTEM_COMMANDS = re.compile(config.SYSTEM_COMMANDS)
 SPECIAL_CHARACTERS = re.compile(config.SPECIAL_CHARACTERS)
@@ -728,6 +727,177 @@ def clean_output(s):
     s = re.sub(r'\n+', r'\n', s)
     s = re.sub(r'^\n', r'', s)
     return s
+
+
+def getscriptoutput():
+    '''
+    Below route is called for uploading script file.
+    '''
+    script = get_script(get_script_id())
+    if script is None:
+        # when called with same script_id again or with incorrect script_id
+        logger.warning('no script')
+        msg = "no script"
+        rv = {'msg': msg}
+        return JsonResponse(rv)
+
+    instance = script.instance
+    if instance is None:
+        logger.warning('no instance')
+        msg = "no instance"
+        rv = {'msg': msg}
+        return JsonResponse(rv)
+
+    proc = instance.proc
+
+    try:
+        # output from scilab terminal is saved for checking error msg
+        output = proc.communicate(timeout=30)[0]
+        output = clean_output(output)
+        remove_scilab_instance(script.instance)
+        script.instance = None
+
+        returncode = proc.returncode
+        if returncode < 0 or returncode == 2:
+            logger.warning('return code is %s', returncode)
+            msg = 'Script stopped'
+            script.status = -5
+            rv = {'status': script.status, 'msg': msg, 'output': output}
+            return JsonResponse(rv)
+        if returncode > 0:
+            logger.info('return code is %s', returncode)
+            if output:
+                logger.info('=== Output from scilab console ===\n%s', output)
+
+        # if error is encountered while execution of script file, then error
+        # message is returned to the user
+        if '!--error' in output:
+            msg = ("Check result window for details.\n"
+                   "Please edit the script and execute again.\n")
+            script.status = -3
+            rv = {'status': script.status, 'msg': msg, 'output': output}
+            return JsonResponse(rv)
+
+        logger.info('workspace for %s saved in %s',
+                    script.script_id, script.workspace_filename)
+        msg = ''
+        script.status = 0
+
+        cmd = list_variables(script.workspace_filename)
+        script.instance = run_scilab(cmd, script)
+        instance = script.instance
+
+        if instance is None:
+            msg = "Resource not available"
+            script.status = -2
+            rv = {'status': script.status, 'msg': msg}
+            return JsonResponse(rv)
+
+        proc = instance.proc
+        listoutput = proc.communicate(timeout=10)[0]
+        remove_scilab_instance(script.instance)
+        script.instance = None
+
+        returncode = proc.returncode
+        if returncode < 0 or returncode == 2:
+            logger.warning('return code is %s', returncode)
+            msg = 'Script stopped'
+            script.status = -5
+            rv = {'status': script.status, 'msg': msg, 'output': listoutput}
+            return JsonResponse(rv)
+        if returncode > 0:
+            logger.info('return code is %s', returncode)
+            if listoutput:
+                logger.info('=== List output from scilab console ===\n%s',
+                            listoutput)
+        try:
+            listoutput = listoutput.strip()
+            variables = json.loads(listoutput)
+        except Exception as e:
+            logger.warning('error while loading: %s: %s', listoutput, str(e))
+            variables = []
+
+        rv = {'script_id': script.script_id, 'status': script.status,
+              'msg': msg, 'output': output, 'returncode': returncode,
+              'variables': variables}
+        return JsonResponse(rv)
+    except subprocess.TimeoutExpired:
+        kill_script(script)
+        msg = 'Timeout'
+        script.status = -4
+        rv = {'status': script.status, 'msg': msg}
+        return JsonResponse(rv)
+    except UnicodeDecodeError:
+        kill_script(script)
+        msg = 'Unicode Decode Error'
+        script.status = -6
+        rv = {'status': script.status, 'msg': msg}
+        return JsonResponse(rv)
+
+
+def sendfile():
+    '''
+    This route is used in chart.js for sending image filename
+    '''
+    diagram = get_diagram(get_request_id())
+    if diagram is None:
+        logger.warning('no diagram')
+        return ''
+    if diagram.file_image == '':
+        logger.warning('no diagram image')
+        return ''
+
+    return IMAGEURLDIR + diagram.file_image
+
+
+def list_variables(filename):
+    '''
+    add scilab commands to list only user defined variables
+    '''
+
+    command = "[__V1,__V2,__V3]=listvarinfile('%s');" % filename
+    command += "__V5=grep(string(__V2),'/^([124568]|1[0])$/','r');"
+    command += "__V1=__V1(__V5);"
+    command += "__V2=__V2(__V5);"
+    command += "__V3=list(__V3(__V5));"
+    command += "__V5=setdiff(grep(__V1,'/^[^%]+$/','r'),grep(__V1,'/^PWD$/','r'));"
+    command += "if ~isempty(__V5) then;"
+    command += "__V1=__V1(__V5);"
+    command += "__V2=__V2(__V5);"
+    command += "__V3=list(__V3(__V5));"
+    command += "__V6=''''+strcat(__V1,''',''')+'''';"
+    command += "__V7='load(''%s'','+__V6+');';" % filename
+    command += "execstr(__V7);"
+    command += "__V9='[';"
+    command += "for __V8=1:size(__V5,2);"
+    command += "__V18=__V1(__V8);"
+    command += "__V28=__V2(__V8);"
+    command += "__V38=__V3(__V8);"
+    command += "__V9=__V9+'{\"\"name\"\":\"\"'+__V18+'\"\",'+"
+    command += "'\"\"type\"\":\"\"'+string(__V28)+'\"\",'+"
+    command += "'\"\"size\"\":\"\"'+sci2exp(__V38)+'\"\",'+"
+    command += "'\"\"value\"\":';"
+    command += "if size(__V38,2)>1 then;"
+    command += "__V10=__V38(1)*__V38(2);"
+    command += "else;"
+    command += "__V10=__V38;"
+    command += "end;"
+    command += "if __V10<=100 then;"
+    command += "if __V28<>10 then;"
+    command += "__V9=__V9+'\"\"'+sci2exp(evstr(__V18))+'\"\"';"
+    command += "else;"
+    command += "__V9=__V9+sci2exp(evstr(__V18));"
+    command += "end;"
+    command += "end;"
+    command += "__V9=__V9+'}';"
+    command += "if __V8<size(__V5,2) then;"
+    command += "__V9=__V9+',';"
+    command += "end;"
+    command += "end;"
+    command += "__V9=__V9+']';"
+    command += "printf('%s',__V9);"
+    command += "end;"
+    return command
 
 
 def load_variables(filename):
