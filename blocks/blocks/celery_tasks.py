@@ -12,9 +12,22 @@ if "celery" in sys.argv[0]:
 import os
 from celery import Celery
 from celery.signals import worker_ready, worker_shutdown
+from datetime import datetime
 from django.conf import settings
 import logging
 import logging.config
+
+
+class DateChangeFilter(logging.Filter):
+    last_date = None
+
+    def filter(self, record):
+        current_date = datetime.now().date()
+        if DateChangeFilter.last_date != current_date:
+            DateChangeFilter.last_date = current_date
+            logging.getLogger().info(f"--- {current_date} ---")
+        return True
+
 
 # Define log format
 LOG_FILE = "logs/celery.log"
@@ -37,6 +50,11 @@ CELERY_LOGGING_CONFIG = {
             "datefmt": LOG_DATE_FORMAT,
         },
     },
+    "filters": {
+        "date_change_filter": {
+            "()": DateChangeFilter,
+        },
+    },
     "handlers": {
         "task_console": {
             "class": "logging.StreamHandler",
@@ -45,8 +63,8 @@ CELERY_LOGGING_CONFIG = {
         "worker_console": {
             "class": "logging.StreamHandler",
             "formatter": "worker_formatter",
+            "filters": ["date_change_filter"],
         },
-
         "task_file": {
             "class": "logging.handlers.TimedRotatingFileHandler",
             "filename": LOG_FILE,

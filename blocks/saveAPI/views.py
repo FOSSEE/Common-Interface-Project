@@ -58,9 +58,7 @@ class StateSaveView(APIView):
                 queryset = StateSave.objects.get(
                     save_id=request.data.get("save_id", None),
                     data_dump=request.data["data_dump"],
-                    script_dump=request.data["script_dump"]
-                    ),
-                    
+                    script_dump=request.data["script_dump"])
                 serializer = StateSaveSerializer(data=request.data)
                 if serializer.is_valid():
                     queryset.name = serializer.data["name"]

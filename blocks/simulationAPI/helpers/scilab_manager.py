@@ -9,7 +9,7 @@ import glob
 import json
 import logging
 import os
-from os.path import abspath, dirname, exists, isfile, join
+from os.path import abspath, exists, isfile, join
 import re
 import signal
 import subprocess
@@ -106,10 +106,6 @@ def remove(filename):
         logger.error('could not remove %s', filename)
         return False
 
-
-# change directory before using relative paths
-ROOTDIR = dirname(abspath(__file__))
-os.chdir(ROOTDIR)
 
 worker_logger = logging.getLogger("celery")
 logger = get_task_logger(__name__)
