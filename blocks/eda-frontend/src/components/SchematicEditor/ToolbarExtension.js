@@ -28,13 +28,15 @@ import {
   TextareaAutosize,
   Toolbar,
   Tooltip,
-  Typography
+  Typography,
+  Box,
+  TextField
 } from '@material-ui/core'
 
 import { makeStyles } from '@material-ui/core/styles'
 import CloseIcon from '@material-ui/icons/Close'
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchSchematics, fetchSchematic, fetchDiagram, fetchGallery } from '../../redux/actions/index'
+import { fetchSchematics, fetchSchematic, fetchDiagram, fetchGallery, setSchScriptDump } from '../../redux/actions/index'
 import { blue } from '@material-ui/core/colors'
 import { getDateTime as getDate, getUppercaseInitial, saveToFile } from '../../utils/GalleryUtils'
 
@@ -330,6 +332,105 @@ export function HelpScreen ({ open, close }) {
 HelpScreen.propTypes = {
   open: PropTypes.bool,
   close: PropTypes.func
+}
+
+export function ScriptScreen ({ isOpen, onClose }) {
+  const scriptDump = useSelector(state => state.saveSchematicReducer.scriptDump)
+  const dispatch = useDispatch()
+  const scriptHandler = (e) => {
+    dispatch(setSchScriptDump(e.target.value))
+  }
+
+  const [result, setResult] = useState('')
+
+  const executeCode = () => {
+    setResult('Executing Scilab code...')
+  }
+
+  const resetCode = () => {
+    setCode('')
+    setResult('')
+  }
+
+
+  return (
+    <Dialog fullScreen open={isOpen} onClose={onClose}>
+      {/* Top AppBar */}
+      <AppBar position='static'>
+        <Toolbar>
+          <Typography variant='h6' sx={{ flexGrow: 1 }}>
+            Script Editor
+          </Typography>
+          <IconButton edge='end' color='inherit' onClick={onClose}>
+            <CloseIcon />
+          </IconButton>
+        </Toolbar>
+      </AppBar>
+
+      {/* Main Content */}
+      <Box sx={{ p: 4 }}>
+
+        {/* Code and Result Sections */}
+        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 4, alignItems: 'stretch' }}>
+          {/* Scilab Code Input */}
+          <Box sx={{ p: 2, bgcolor: 'white', boxShadow: 2, borderRadius: 2, display: 'flex', flexDirection: 'column', height: '100%' }}>
+            <Typography variant='subtitle1' sx={{ fontWeight: 'bold', mb: 1 }}>
+              Scilab Code:
+            </Typography>
+            <TextField
+              value={scriptDump}
+              onChange={scriptHandler}
+              multiline
+              minRows={12}
+              variant='outlined'
+              fullWidth
+              sx={{ fontFamily: "Courier New, monospace", fontSize: "14px", flexGrow: 1 }}
+            />
+          </Box>
+
+          {/* Execution Result */}
+          <Box sx={{ p: 2, bgcolor: 'white', boxShadow: 2, borderRadius: 2, display: 'flex', flexDirection: 'column', height: '100%' }}>
+            <Typography variant='subtitle1' sx={{ fontWeight: 'bold', mb: 1 }}>
+              Result:
+            </Typography>
+            <Box
+              sx={{
+                flexGrow: 1,
+                width: '100%',
+                height: '200px',
+                p: 2,
+                border: '1px solid gray',
+                borderRadius: 1,
+                overflowY: 'auto',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                minHeight: '200px'
+              }}
+            >
+              {result || 'No output yet...'}
+            </Box>
+          </Box>
+        </Box>
+
+        {/* Action Buttons */}
+        <Box sx={{ mt: 4, display: 'flex', gap: 2 }}>
+          <Button onClick={executeCode} color='primary' variant='contained'>
+            Execute
+          </Button>
+          <Button onClick={resetCode} color='secondary' variant='contained'>
+            Reset
+          </Button>
+        </Box>
+      </Box>
+    </Dialog>
+  )
+}
+
+// PropTypes validation
+ScriptScreen.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired
 }
 
 // Image Export Dialog box

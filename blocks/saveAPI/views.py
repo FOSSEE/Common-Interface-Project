@@ -177,6 +177,8 @@ class FetchSaveDiagram(APIView):
         # if data dump, shared, name, or description needs to be updated
         if 'data_dump' in data:
             state.data_dump = data['data_dump']
+        if 'script_dump' in data:
+            state.script_dump = data['script_dump']
         if 'shared' in data:
             state.shared = bool(data['shared'])
         if 'name' in data:
