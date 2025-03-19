@@ -348,10 +348,9 @@ export function ScriptScreen ({ isOpen, onClose }) {
   }
 
   const resetCode = () => {
-    setCode('')
+    dispatch(setSchScriptDump(''))
     setResult('')
   }
-
 
   return (
     <Dialog fullScreen open={isOpen} onClose={onClose}>
@@ -384,7 +383,7 @@ export function ScriptScreen ({ isOpen, onClose }) {
               minRows={12}
               variant='outlined'
               fullWidth
-              sx={{ fontFamily: "Courier New, monospace", fontSize: "14px", flexGrow: 1 }}
+              sx={{ fontFamily: 'Courier New, monospace', fontSize: '14px', flexGrow: 1 }}
             />
           </Box>
 
