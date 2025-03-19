@@ -7,7 +7,7 @@ import {
 } from '@material-ui/core'
 import AddBoxOutlinedIcon from '@material-ui/icons/AddBoxOutlined'
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
-// import DescriptionIcon from '@material-ui/icons/Description'
+import DescriptionIcon from '@material-ui/icons/Description'
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline'
 import UndoIcon from '@material-ui/icons/Undo'
 import RedoIcon from '@material-ui/icons/Redo'
@@ -30,7 +30,7 @@ import { Link as RouterLink } from 'react-router-dom'
 import beautify from 'xml-beautifier'
 import mxGraphFactory from 'mxgraph'
 
-import { NetlistModal, HelpScreen, ImageExportDialog, OpenSchDialog /*, ScriptScreen */ } from './ToolbarExtension'
+import { NetlistModal, HelpScreen, ImageExportDialog, OpenSchDialog, ScriptScreen } from './ToolbarExtension'
 import { editorZoomIn, editorZoomOut, editorZoomAct, deleteComp, PrintPreview, Rotate, editorUndo, editorRedo, saveXml, ClearGrid } from './Helper/ToolbarTools'
 import { useSelector, useDispatch } from 'react-redux'
 import { toggleSimulate, closeCompProperties, setSchXmlData, saveSchematic, openLocalSch, setLoadingDiagram } from '../../redux/actions/index'
@@ -119,6 +119,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
 
   // Control Help dialog window
   const [helpOpen, setHelpOpen] = useState(false)
+  const [scriptOpen, setScriptOpen] = useState(false)
 
   const handleHelpOpen = () => {
     setHelpOpen(true)
@@ -126,6 +127,14 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
 
   const handleHelpClose = () => {
     setHelpOpen(false)
+  }
+
+  const handleSchWinOpen = () => {
+    setScriptOpen(true)
+  }
+
+  const handleScriptClose = () => {
+    setScriptOpen(false)
   }
 
   // Handle Delete component
@@ -414,7 +423,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
     { icon: <ImageOutlinedIcon fontSize='small' />, label: 'Image Export', action: handleImgClickOpen },
     { icon: <PrintOutlinedIcon fontSize='small' />, label: 'Print Preview', action: PrintPreview },
     'pipe',
-    // { icon: <DescriptionIcon fontSize='small' />, label: 'Show Script', action: handleSchWinOpen },
+    { icon: <DescriptionIcon fontSize='small' style={{ color: scriptDump ? 'red' : 'inherit' }} />, label: 'Show Script', action: handleSchWinOpen },
     { icon: <PlayCircleOutlineIcon fontSize='small' />, label: 'Simulate', action: handleNetlistOpen },
     'pipe',
     { icon: <UndoIcon fontSize='small' />, label: 'Undo', action: editorUndo },
@@ -504,6 +513,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
       <ImageExportDialog open={imgopen} onClose={handleImgClose} />
       <NetlistModal open={open} close={handleClose} netlist={netlist} />
       <HelpScreen open={helpOpen} close={handleHelpClose} />
+      <ScriptScreen isOpen={scriptOpen} onClose={handleScriptClose} />
     </>
   )
 }
