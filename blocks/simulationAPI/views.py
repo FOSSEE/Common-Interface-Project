@@ -1,9 +1,9 @@
 import os
 from django.conf import settings
+import logging
 import time
 import uuid
 from celery.result import AsyncResult
-from celery.utils.log import get_task_logger
 from django.http import StreamingHttpResponse, JsonResponse
 from rest_framework import status
 from rest_framework.exceptions import ValidationError
@@ -34,7 +34,7 @@ DATA = 2
 # to indicate there is no line in log file further
 NOLINE = -1
 
-logger = get_task_logger(__name__)
+logger = logging.getLogger("celery")
 
 
 class XmlUploader(APIView):
@@ -53,8 +53,7 @@ class XmlUploader(APIView):
         if serializer.is_valid():
             serializer.save()
             task_id = serializer.data['task_id']
-            celery_task = process_task.apply_async(
-                kwargs={'task_id': str(task_id)}, task_id=str(task_id))
+            celery_task = process_task.delay(str(task_id))
             response_data = {
                 'state': celery_task.state,
                 'details': serializer.data,

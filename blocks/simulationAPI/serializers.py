@@ -1,10 +1,10 @@
 import json
-from celery.utils.log import get_task_logger
+import logging
 from rest_framework import serializers
 
 from simulationAPI.models import Task, Session
 
-logger = get_task_logger(__name__)
+logger = logging.getLogger("celery")
 
 
 class SessionSerializer(serializers.ModelSerializer):
@@ -18,8 +18,9 @@ class TaskSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Task
-        fields = ('task_id', 'file', 'status', 'parameters', 'upload_time',
-                  'log_name', 'returncode', 'session', 'start_time', 'end_time')
+        fields = ('task_id', 'file', 'type', 'status',
+                  'parameters', 'upload_time', 'log_name', 'workspace_file',
+                  'returncode', 'session', 'start_time', 'end_time')
 
     def create(self, validated_data):
         # Takes file from request and stores it along with a taskid

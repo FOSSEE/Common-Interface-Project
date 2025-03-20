@@ -8,6 +8,11 @@ import uuid
 from celery.result import AsyncResult
 
 
+TASK_TYPE_CHOICES = [
+    ("XCOS", "Xcos"),
+    ("SCRIPT", "Scilab Script"),
+]
+
 TASK_STATUS_CHOICES = [
     ("PENDING", "Pending"),
     ("STARTED", "Started"),
@@ -61,10 +66,12 @@ class Session(models.Model):
 class Task(models.Model):
     task_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     file = models.FileField(storage=FileSystemStorage(location=settings.MEDIA_ROOT))
+    type = models.CharField(max_length=20, choices=TASK_TYPE_CHOICES, null=False, default="XCOS")
     status = models.CharField(max_length=20, choices=TASK_STATUS_CHOICES, null=False, default="PENDING")
     parameters = models.TextField(blank=True, null=True)
     upload_time = models.DateTimeField(auto_now=True)
     log_name = models.CharField(max_length=500, blank=True, null=True)
+    workspace_file = models.CharField(max_length=500, blank=True, null=True)
     returncode = models.IntegerField(blank=True, null=True)
     session = models.ForeignKey(Session, on_delete=models.CASCADE, related_name='task', null=True)
     start_time = models.DateTimeField(null=True)
