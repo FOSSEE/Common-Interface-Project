@@ -51,7 +51,7 @@ class StateSave(models.Model):
         super(StateSave, self).save(*args, **kwargs)
 
     def __str__(self):
-        return self.name
+        return f"{self.save_id.hex} - {self.name}"
 
 
 class Gallery(models.Model):
@@ -81,4 +81,4 @@ class Gallery(models.Model):
     image_tag.short_description = 'Image'
 
     def __str__(self):
-        return self.name
+        return f"{self.save_id.hex} - {self.name}"

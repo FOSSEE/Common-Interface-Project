@@ -33,71 +33,28 @@ class StateSaveView(APIView):
     # parser_classes = (FormParser,)
 
     @swagger_auto_schema(request_body=StateSaveSerializer)
-    def post(self, request, *args, **kwargs):
-        print("Getting Saved State")
-
-        logger.info('Got POST for state save ')
+    def post(self, request):
+        logger.info('Got POST for state save=%s', request.data.get('name'))
         try:
-            queryset = StateSave.objects.get(
-                save_id=request.data.get("save_id", None))
-            serializer = StateSaveSerializer(data=request.data)
-            if serializer.is_valid():
-                img = Base64ImageField(max_length=None, use_url=True)
-                filename, content = img.update(request.data['base64_image'])
-                queryset.data_dump = request.data.get("data_dump")
-                queryset.script_dump = request.data.get("script_dump")
-                queryset.save()
-                queryset.base64_image.save(filename, content)
-                return Response(data=serializer.data,
-                                status=status.HTTP_200_OK)
-            else:
-                return Response(data=serializer.errors,
-                                status=status.HTTP_400_BAD_REQUEST)
-        except StateSave.DoesNotExist:
-            try:
-                queryset = StateSave.objects.get(
-                    save_id=request.data.get("save_id", None),
-                    data_dump=request.data["data_dump"],
-                    script_dump=request.data["script_dump"])
-                serializer = StateSaveSerializer(data=request.data)
-                if serializer.is_valid():
-                    queryset.name = serializer.data["name"]
-                    queryset.description = serializer.data["description"]
-                    queryset.save()
-                    response = serializer.data
-                    response['duplicate'] = True
-                    response['owner'] = queryset.owner.username
-                    return Response(response)
-                return Response(serializer.errors,
-                                status=status.HTTP_400_BAD_REQUEST)
-            except StateSave.DoesNotExist:
-                img = Base64ImageField(max_length=None, use_url=True)
-                filename, content = img.update(request.data['base64_image'])
-                try:
-                    state_save = StateSave(
-                        data_dump=request.data.get('data_dump'),
-                        script_dump=request.data.get('script_dump'),
-                        description=request.data.get('description'),
-                        name=request.data.get('name'),
-                        owner=request.user if request.user.is_authenticated else None,
-                        shared=True,
-                    )
-                except Exception:
-                    state_save = StateSave(
-                        data_dump=request.data.get('data_dump'),
-                        script_dump=request.data.get('script_dump'),
-                        description=request.data.get('description'),
-                        name=request.data.get('name'),
-                        owner=request.user if request.user.is_authenticated else None,
-                    )
-                if request.data.get('save_id'):
-                    state_save.save_id = request.data.get('save_id')
-                state_save.base64_image.save(filename, content)
-                try:
-                    state_save.save()
-                    return Response(StateSaveSerializer(state_save).data)
-                except Exception:
-                    return Response(status=status.HTTP_400_BAD_REQUEST)
+            state_save = StateSave(
+                data_dump=request.data.get('data_dump'),
+                script_dump=request.data.get('script_dump'),
+                description=request.data.get('description'),
+                name=request.data.get('name'),
+                owner=request.user if request.user.is_authenticated else None,
+                shared=True,
+            )
+            state_save.save()
+
+            img = Base64ImageField(max_length=None, use_url=True)
+            filename, content = img.update(request.data['base64_image'])
+            state_save.base64_image.save(filename, content)
+
+            logger.info('Saved state=%s', str(state_save))
+            return Response(SaveListSerializer(state_save).data)
+        except Exception as e:
+            logger.error('Error saving state=%s', e)
+            return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
 class CopyStateView(APIView):
@@ -108,15 +65,15 @@ class CopyStateView(APIView):
         if isinstance(save_id, uuid.UUID):
             # Check for permissions and sharing settings here
             try:
-                saved_state = StateSave.objects.get(
+                state_save = StateSave.objects.get(
                     save_id=save_id)
             except StateSave.DoesNotExist:
                 return Response({'error': 'Does not Exist'},
                                 status=status.HTTP_404_NOT_FOUND)
-            copy_state = StateSave(name=saved_state.name,
-                                   description=saved_state.description,
-                                   data_dump=saved_state.data_dump,
-                                   base64_image=saved_state.base64_image,
+            copy_state = StateSave(name=state_save.name,
+                                   description=state_save.description,
+                                   data_dump=state_save.data_dump,
+                                   base64_image=state_save.base64_image,
                                    owner=self.request.user)
             copy_state.save()
             return Response(
@@ -136,41 +93,40 @@ class FetchSaveDiagram(APIView):
 
     @swagger_auto_schema(responses={200: StateSaveSerializer})
     def get(self, request, save_id):
+        logger.info('Got GET for state save id=%s', save_id)
 
-        if isinstance(save_id, uuid.UUID):
-            # Check for permissions and sharing settings here
-            try:
-                saved_state = StateSave.objects.get(
-                    save_id=save_id)
-            except StateSave.DoesNotExist:
-                return Response({'error': 'Does not Exist'},
-                                status=status.HTTP_404_NOT_FOUND)
-            # Verifies owner
-            if self.request.user != saved_state.owner and not saved_state.shared:
-                print("Here")
-                return Response({'error': 'not the owner and not shared'},
-                                status=status.HTTP_401_UNAUTHORIZED)
-            try:
-                serialized = StateSaveSerializer(
-                    saved_state, context={'request': request})
-                User = get_user_model()
-                try:
-                    owner_name = User.objects.get(
-                        id=serialized.data.get('owner'))
-                    data = {}
-                    data.update(serialized.data)
-                    data['owner'] = owner_name.username
-                except User.DoesNotExist:
-                    data = {}
-                    data.update(serialized.data)
-                    data['owner'] = None
-                return Response(data)
-            except Exception:
-                traceback.print_exc()
-                return Response({'error': 'Not Able To Serialize'},
-                                status=status.HTTP_400_BAD_REQUEST)
-        else:
+        if not isinstance(save_id, uuid.UUID):
             return Response({'error': 'Invalid sharing state'},
+                            status=status.HTTP_400_BAD_REQUEST)
+
+        # Check for permissions and sharing settings here
+        try:
+            state_save = StateSave.objects.get(save_id=save_id)
+        except StateSave.DoesNotExist:
+            return Response({'error': 'Does not Exist'},
+                            status=status.HTTP_404_NOT_FOUND)
+
+        # Verifies owner
+        if self.request.user != state_save.owner and not state_save.shared:
+            return Response({'error': 'not the owner and not shared'},
+                            status=status.HTTP_401_UNAUTHORIZED)
+
+        try:
+            serialized = StateSaveSerializer(state_save, context={'request': request})
+            data = {}
+            data.update(serialized.data)
+
+            User = get_user_model()
+            try:
+                owner_name = User.objects.get(id=serialized.data.get('owner'))
+                data['owner'] = owner_name.username
+            except User.DoesNotExist:
+                data['owner'] = None
+
+            return Response(data)
+        except Exception:
+            traceback.print_exc()
+            return Response({'error': 'Not Able To Serialize'},
                             status=status.HTTP_400_BAD_REQUEST)
 
     def update_state(self, state, data):
@@ -188,51 +144,53 @@ class FetchSaveDiagram(APIView):
         # if thumbnail needs to be updated
         if 'base64_image' in data:
             img = Base64ImageField(max_length=None, use_url=True)
-            filename, content = img.update(
-                data['base64_image'])
+            filename, content = img.update(data['base64_image'])
             state.base64_image.save(filename, content)
 
     @swagger_auto_schema(responses={200: StateSaveSerializer})
     def post(self, request, save_id):
-        if isinstance(save_id, uuid.UUID):
-            # Check for permissions and sharing settings here
-            try:
-                saved_state = StateSave.objects.get(save_id=save_id)
-            except StateSave.DoesNotExist:
-                return Response({'error': 'Does not Exist'},
-                                status=status.HTTP_404_NOT_FOUND)
+        logger.info('Got POST for state save id=%s', save_id)
 
-            # Verifies owner
-            if self.request.user != saved_state.owner:
-                return Response({'error': 'not the owner and not shared'},
-                                status=status.HTTP_401_UNAUTHORIZED)
-
-            if not request.data['data_dump'] and not request.data['shared']:
-                return Response({'error': 'not a valid PUT request'},
-                                status=status.HTTP_406_NOT_ACCEPTABLE)
-
-            try:
-                self.update_state(saved_state, request.data)
-                saved_state.save()
-                serialized = SaveListSerializer(saved_state)
-                return Response(serialized.data)
-            except Exception:
-                return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        else:
+        if not isinstance(save_id, uuid.UUID):
             return Response({'error': 'Invalid sharing state'},
                             status=status.HTTP_400_BAD_REQUEST)
+
+        # Check for permissions and sharing settings here
+        try:
+            state_save = StateSave.objects.get(save_id=save_id)
+        except StateSave.DoesNotExist:
+            return Response({'error': 'Does not Exist'},
+                            status=status.HTTP_404_NOT_FOUND)
+
+        # Verifies owner
+        if self.request.user != state_save.owner:
+            return Response({'error': 'not the owner'},
+                            status=status.HTTP_401_UNAUTHORIZED)
+
+        if not request.data['data_dump'] and not request.data['shared']:
+            return Response({'error': 'not a valid POST request'},
+                            status=status.HTTP_406_NOT_ACCEPTABLE)
+
+        try:
+            self.update_state(state_save, request.data)
+            state_save.save()
+            logger.info('Saved state=%s', str(state_save))
+            return Response(SaveListSerializer(state_save).data)
+        except Exception as e:
+            logger.error('Error saving state=%s', e)
+            return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     @swagger_auto_schema(responses={200: StateSaveSerializer})
     def delete(self, request, save_id):
         if isinstance(save_id, uuid.UUID):
             try:
-                saved_state = StateSave.objects.get(
+                state_save = StateSave.objects.get(
                     save_id=save_id,
                     owner=self.request.user)
             except StateSave.DoesNotExist:
                 return Response({'error': 'Does not Exist'},
                                 status=status.HTTP_404_NOT_FOUND)
-            saved_state.delete()
+            state_save.delete()
             return Response({'done': True})
         else:
             return Response({'error': 'Invalid sharing state'},
@@ -254,26 +212,26 @@ class StateShareView(APIView):
         if isinstance(save_id, uuid.UUID):
             # Check for permissions and sharing settings here
             try:
-                saved_state = StateSave.objects.get(
+                state_save = StateSave.objects.get(
                     save_id=save_id)
             except StateSave.DoesNotExist:
                 return Response({'error': 'Does not Exist'},
                                 status=status.HTTP_404_NOT_FOUND)
 
             # Verifies owner
-            if self.request.user != saved_state.owner:
+            if self.request.user != state_save.owner:
                 return Response({'error': 'Not the owner'},
                                 status=status.HTTP_401_UNAUTHORIZED)
             try:
                 if sharing == 'on':
-                    saved_state.shared = True
+                    state_save.shared = True
                 elif sharing == 'off':
-                    saved_state.shared = False
+                    state_save.shared = False
                 else:
                     return Response({'error': 'Invalid sharing state'},
                                     status=status.HTTP_400_BAD_REQUEST)
-                saved_state.save()
-                serialized = StateSaveSerializer(saved_state)
+                state_save.save()
+                serialized = StateSaveSerializer(state_save)
                 return Response(serialized.data)
             except Exception:
                 return Response(serialized.error)
@@ -296,21 +254,12 @@ class UserSavesView(APIView):
     @swagger_auto_schema(responses={200: StateSaveSerializer})
     def get(self, request):
         try:
-            # Subquery to get the latest save_time for each save_id
-            latest_save_time_subquery = StateSave.objects.filter(
-                save_id=OuterRef('save_id'),
+            state_save = StateSave.objects.filter(
                 owner=self.request.user
-            ).order_by('-save_time').values('save_time')[:1]
-
-            # Annotate the main query with the latest save time
-            saved_state = StateSave.objects.filter(
-                owner=self.request.user
-            ).annotate(
-                latest_save_time=Subquery(latest_save_time_subquery)
-            ).order_by('save_id', '-latest_save_time')
+            ).order_by('-save_time')
 
             # Serialize the data
-            serialized = StateSaveSerializer(saved_state, many=True)
+            serialized = StateSaveSerializer(state_save, many=True)
             return Response(serialized.data)
         except Exception:
             return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
