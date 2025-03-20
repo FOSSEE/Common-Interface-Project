@@ -1,11 +1,11 @@
 from celery import shared_task, states
 from celery.exceptions import Ignore
-from celery.utils.log import get_task_logger
 from redis import Redis
 import traceback
 
 from blocks.celery_tasks import app
 from simulationAPI.helpers.ngspice_helper import ExecXml, update_task_status
+from simulationAPI.logging_utils import get_task_logger_adapter as get_task_logger
 from simulationAPI.models import Task
 
 logger = get_task_logger(__name__)
@@ -22,8 +22,9 @@ def release_lock(lock):
     lock.release()
 
 
-@shared_task
-def process_task(task_id):
+@shared_task(bind=True)
+def process_task(self, task_id):
+    logger.extra = {'task_name': self.name, 'task_id': self.request.id}
     task = Task.objects.get(task_id=task_id)
     session_id = task.session.session_id
     lock = acquire_lock(session_id)  # Prevent multiple runs per session
@@ -35,7 +36,7 @@ def process_task(task_id):
         update_task_status(task_id, 'STARTED',
                            meta={'current_process': 'Started Processing File'})
 
-        output = ExecXml(task)
+        output = ExecXml(task, self.name)
         if output == "Streaming":
             state = 'STREAMING'
             current_process = 'Processed Xml, Streaming Output'

@@ -1,4 +1,3 @@
-from celery.utils.log import get_task_logger
 from datetime import datetime
 from django.conf import settings
 from django.http import FileResponse, Http404, JsonResponse
@@ -19,6 +18,7 @@ from time import time
 import unicodedata
 import uuid
 
+from simulationAPI.logging_utils import get_task_logger_adapter as get_task_logger
 from simulationAPI.helpers import config
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'blocks.settings')

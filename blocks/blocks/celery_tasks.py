@@ -32,8 +32,8 @@ class DateChangeFilter(logging.Filter):
 # Define log format
 LOG_FILE = "logs/celery.log"
 
-TASK_LOG_FORMAT = "%(asctime)s - %(levelname)s - [%(task_name)s/%(task_id)s]: %(message)s"
-WORKER_LOG_FORMAT = "%(asctime)s - %(levelname)s - [%(processName)s/%(process)d]: %(message)s"
+TASK_LOG_FORMAT = "%(asctime)s - %(levelname)s - [%(task_id)s]: %(message)s"
+WORKER_LOG_FORMAT = "%(asctime)s - %(levelname)s - [%(processName)s]: %(message)s"
 
 LOG_DATE_FORMAT = "%H:%M:%S"
 
