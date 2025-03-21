@@ -1159,14 +1159,14 @@ def DownloadFile(request):
         return "error"
     # check if audio file or binary file
     if "audio" in fn:
-        mimetype = 'audio/basic'
+        mime_type = 'audio/basic'
     else:
-        mimetype = 'application/octet-stream'
+        mime_type = 'application/octet-stream'
     file_path = os.path.join(SESSIONDIR, fn)
     if not os.path.exists(file_path):
         raise Http404("File not found")
     return FileResponse(open(file_path, 'r'),
-                        as_attachment=True, mimetype=mimetype)
+                        as_attachment=True, content_type=mime_type)
 
 
 def DeleteFile(request):
