@@ -49,6 +49,18 @@ class XmlUploader(APIView):
 
     def post(self, request, *args, **kwargs):
         logger.info('Got POST for Xml upload: data=%s', request.data)
+
+        uploaded_file = request.FILES.get('file')
+        if not uploaded_file:
+            return Response({"error": "No file provided"}, status=status.HTTP_400_BAD_REQUEST)
+
+        file_extension = uploaded_file.name.split('.')[-1].lower()
+        
+        # Validate file type
+        if file_extension not in ['xml', 'sce']:
+            return Response({"error": "Invalid file type. Only .xml and .sce files are allowed."},
+                            status=status.HTTP_400_BAD_REQUEST)
+        
         serializer = TaskSerializer(data=request.data, context={'request': request})
         if serializer.is_valid():
             serializer.save()

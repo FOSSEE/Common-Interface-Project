@@ -36,9 +36,10 @@ import {
 import { makeStyles } from '@material-ui/core/styles'
 import CloseIcon from '@material-ui/icons/Close'
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchSchematics, fetchSchematic, fetchDiagram, fetchGallery, setSchScriptDump } from '../../redux/actions/index'
+import { fetchSchematics, fetchSchematic, fetchDiagram, fetchGallery, setSchScriptDump, setScriptTaskId } from '../../redux/actions/index'
 import { blue } from '@material-ui/core/colors'
 import { getDateTime as getDate, getUppercaseInitial, saveToFile } from '../../utils/GalleryUtils'
+import api from '../../utils/Api'
 
 const Transition = forwardRef(function Transition (props, ref) {
   return <Slide direction='up' ref={ref} {...props} />
@@ -336,6 +337,7 @@ HelpScreen.propTypes = {
 
 export function ScriptScreen ({ isOpen, onClose }) {
   const scriptDump = useSelector(state => state.saveSchematicReducer.scriptDump)
+  const title = useSelector(state => state.netlistReducer.title)
   const dispatch = useDispatch()
   const scriptHandler = (e) => {
     dispatch(setSchScriptDump(e.target.value))
@@ -343,8 +345,47 @@ export function ScriptScreen ({ isOpen, onClose }) {
 
   const [result, setResult] = useState('')
 
-  const executeCode = () => {
-    setResult('Executing Scilab code...')
+  const prepareScriptNetlist = (scriptDump) => {
+    const titleA = title.split(' ')[1]
+    const myblob = new Blob([scriptDump], {
+      type: 'text/plain'
+    })
+    const file = new File([myblob], `${titleA}.sce`, { type: 'text/sce', lastModified: Date.now() })
+    const type = 'SCRIPT'
+    sendSriptNetlist(file, type)
+  }
+
+  function sendSriptNetlist (file, type) {
+    netlistConfig(file, type)
+      .then((response) => {
+        const res = response.data
+        const taskId = res.details.task_id
+        dispatch(setScriptTaskId(taskId))
+      })
+      .catch(function (error) {
+        console.error(error)
+      })
+  }
+
+  function netlistConfig (file, type) {
+    const formData = new FormData()
+
+    formData.append('app_name', process.env.REACT_APP_NAME)
+    formData.append('file', file)
+    formData.append('type', type)
+
+    const config = {
+      headers: {
+        'content-type': 'multipart/form-data'
+      }
+    }
+    return api.post('simulation/upload', formData, config)
+  }
+
+  const executeScript = () => {
+    dispatch(setScriptTaskId(''))
+    prepareScriptNetlist(scriptDump)
+
   }
 
   const resetCode = () => {
@@ -414,7 +455,7 @@ export function ScriptScreen ({ isOpen, onClose }) {
 
         {/* Action Buttons */}
         <Box sx={{ mt: 4, display: 'flex', gap: 2 }}>
-          <Button onClick={executeCode} color='primary' variant='contained'>
+          <Button onClick={executeScript} color='primary' variant='contained'>
             Execute
           </Button>
           <Button onClick={resetCode} color='secondary' variant='contained'>

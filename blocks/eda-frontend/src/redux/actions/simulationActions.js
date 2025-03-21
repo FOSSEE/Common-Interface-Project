@@ -39,3 +39,12 @@ export const setResultTaskId = (taskId) => (dispatch) => {
     }
   })
 }
+
+export const setScriptTaskId = (scriptTaskId) => (dispatch) => {
+  dispatch({
+    type: actions.SET_SCRIPT_TASK_ID,
+    payload: {
+      scriptTaskId
+    }
+  })
+}
