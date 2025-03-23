@@ -31,7 +31,7 @@ class TaskSerializer(serializers.HyperlinkedModelSerializer):
         file_extension = file.name.split('.')[-1].lower()
         if file_extension not in ['xml', 'sce']:
             raise serializers.ValidationError({"file": "Invalid file type. Only .xml and .sce files are allowed."})
-        
+
         session_id = request.headers.get("Session-ID")
 
         post = request.POST

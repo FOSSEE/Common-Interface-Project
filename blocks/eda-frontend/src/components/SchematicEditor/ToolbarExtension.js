@@ -385,7 +385,6 @@ export function ScriptScreen ({ isOpen, onClose }) {
   const executeScript = () => {
     dispatch(setScriptTaskId(''))
     prepareScriptNetlist(scriptDump)
-
   }
 
   const resetCode = () => {
