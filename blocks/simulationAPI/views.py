@@ -1,18 +1,18 @@
-import os
+from celery.result import AsyncResult
+from celery.utils.log import get_task_logger
 from django.conf import settings
-import logging
+from django.http import StreamingHttpResponse, JsonResponse
+import os
 import time
 import uuid
-from celery.result import AsyncResult
-from django.http import StreamingHttpResponse, JsonResponse
 from rest_framework import status
 from rest_framework.exceptions import ValidationError
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from blocks.celery_tasks import app
 
+from blocks.celery_tasks import app
 from simulationAPI.models import Task, Session
 from simulationAPI.negotiation import IgnoreClientContentNegotiation
 from simulationAPI.serializers import TaskSerializer
@@ -34,7 +34,7 @@ DATA = 2
 # to indicate there is no line in log file further
 NOLINE = -1
 
-logger = logging.getLogger("celery")
+logger = get_task_logger(__name__)
 
 
 class XmlUploader(APIView):

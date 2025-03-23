@@ -1,10 +1,10 @@
+from celery.utils.log import get_task_logger
 import json
-import logging
 from rest_framework import serializers
 
 from simulationAPI.models import Task, Session
 
-logger = logging.getLogger("celery")
+logger = get_task_logger(__name__)
 
 
 class SessionSerializer(serializers.ModelSerializer):

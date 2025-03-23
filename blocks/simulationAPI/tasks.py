@@ -1,11 +1,12 @@
 from celery import shared_task, states
 from celery.exceptions import Ignore
+from celery.utils.log import get_task_logger
 from redis import Redis
+from threading import current_thread
 import traceback
 
 from blocks.celery_tasks import app
 from simulationAPI.helpers.ngspice_helper import ExecXml, update_task_status
-from simulationAPI.logging_utils import get_task_logger_adapter as get_task_logger
 from simulationAPI.models import Task
 
 logger = get_task_logger(__name__)
@@ -24,7 +25,7 @@ def release_lock(lock):
 
 @shared_task(bind=True)
 def process_task(self, task_id):
-    logger.extra = {'task_name': self.name, 'task_id': self.request.id}
+    current_thread().name = task_id[:8]
     task = Task.objects.get(task_id=task_id)
     session_id = task.session.session_id
     lock = acquire_lock(session_id)  # Prevent multiple runs per session

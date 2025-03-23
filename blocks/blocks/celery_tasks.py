@@ -32,8 +32,7 @@ class DateChangeFilter(logging.Filter):
 # Define log format
 LOG_FILE = "logs/celery.log"
 
-TASK_LOG_FORMAT = "%(asctime)s - %(levelname)s - [%(task_id)s]: %(message)s"
-WORKER_LOG_FORMAT = "%(asctime)s - %(levelname)s - [%(processName)s]: %(message)s"
+LOG_FORMAT = "%(asctime)s - %(levelname)s - [%(threadName)s]: %(message)s"
 
 LOG_DATE_FORMAT = "%H:%M:%S"
 
@@ -41,12 +40,8 @@ CELERY_LOGGING_CONFIG = {
     "version": 1,
     "disable_existing_loggers": False,
     "formatters": {
-        "task_formatter": {
-            "format": TASK_LOG_FORMAT,
-            "datefmt": LOG_DATE_FORMAT,
-        },
-        "worker_formatter": {
-            "format": WORKER_LOG_FORMAT,
+        "formatter": {
+            "format": LOG_FORMAT,
             "datefmt": LOG_DATE_FORMAT,
         },
     },
@@ -56,42 +51,29 @@ CELERY_LOGGING_CONFIG = {
         },
     },
     "handlers": {
-        "task_console": {
+        "console": {
             "class": "logging.StreamHandler",
-            "formatter": "task_formatter",
-        },
-        "worker_console": {
-            "class": "logging.StreamHandler",
-            "formatter": "worker_formatter",
+            "formatter": "formatter",
             "filters": ["date_change_filter"],
         },
-        "task_file": {
+        "file": {
             "class": "logging.handlers.TimedRotatingFileHandler",
             "filename": LOG_FILE,
             "when": "midnight",
             "interval": 1,
             "backupCount": 15,
-            "formatter": "task_formatter",
-            "encoding": "utf-8",
-        },
-        "worker_file": {
-            "class": "logging.handlers.TimedRotatingFileHandler",
-            "filename": LOG_FILE,
-            "when": "midnight",
-            "interval": 1,
-            "backupCount": 15,
-            "formatter": "worker_formatter",
+            "formatter": "formatter",
             "encoding": "utf-8",
         },
     },
     "loggers": {
         "celery.task": {
-            "handlers": ["task_console", "task_file"],
+            "handlers": ["console", "file"],
             "level": "INFO",
             "propagate": False,
         },
         "celery": {
-            "handlers": ["worker_console", "worker_file"],
+            "handlers": ["console", "file"],
             "level": "INFO",
             "propagate": False,
         },
@@ -100,7 +82,7 @@ CELERY_LOGGING_CONFIG = {
 
 logging.config.dictConfig(CELERY_LOGGING_CONFIG)
 
-worker_logger = logging.getLogger("celery")
+logger = logging.getLogger("celery")
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'blocks.settings')
 
@@ -118,11 +100,11 @@ def debug_task(self):
 
 @worker_ready.connect
 def startup_code(**kwargs):
-    worker_logger.info("Running global startup code")
+    logger.info("Running global startup code")
     start_threads()
 
 
 @worker_shutdown.connect
 def shutdown_code(**kwargs):
-    worker_logger.info("Running global shutdown code")
+    logger.info("Running global shutdown code")
     stop_threads()

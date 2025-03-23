@@ -4,6 +4,7 @@ from os.path import abspath, join, splitext
 import re
 import subprocess
 from celery import current_task
+from celery.utils.log import get_task_logger
 from datetime import datetime
 from pathlib import Path
 from tempfile import mkstemp
@@ -11,7 +12,6 @@ from django.conf import settings
 from django.db.models import Case, F, Value, When
 from django.utils.timezone import now
 
-from simulationAPI.logging_utils import get_task_logger_adapter as get_task_logger
 from simulationAPI.models import Task
 
 logger = get_task_logger(__name__)
@@ -113,7 +113,6 @@ def CreateXcos(file_path, parameters, task_id):
 def ExecXml(task, task_name):
     task_id = task.task_id
     file_path = task.file.path
-    logger.extra = {'task_name': task_name, 'task_id': task_id}
     current_dir = settings.MEDIA_ROOT + '/' + str(task_id)
     try:
         xcosfile = CreateXml(file_path, task.parameters, task_id)

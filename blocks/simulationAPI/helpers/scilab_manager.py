@@ -1,3 +1,4 @@
+from celery.utils.log import get_task_logger
 from datetime import datetime
 from django.conf import settings
 from django.http import FileResponse, Http404, JsonResponse
@@ -6,7 +7,6 @@ from gevent.event import Event
 from gevent.lock import RLock
 import glob
 import json
-import logging
 import os
 from os.path import abspath, exists, isfile, join
 import re
@@ -18,7 +18,6 @@ from time import time
 import unicodedata
 import uuid
 
-from simulationAPI.logging_utils import get_task_logger_adapter as get_task_logger
 from simulationAPI.helpers import config
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'blocks.settings')
@@ -106,7 +105,6 @@ def remove(filename):
         return False
 
 
-worker_logger = logging.getLogger("celery")
 logger = get_task_logger(__name__)
 
 makedirs(SESSIONDIR, 'top session')
@@ -290,7 +288,7 @@ def start_scilab_instances():
     lssi = min(config.SCILAB_START_INSTANCES,
                config.SCILAB_MAX_INSTANCES - l2) - l1
     if lssi > 0:
-        worker_logger.info('can start %s instances', lssi)
+        logger.info('can start %s instances', lssi)
     return lssi
 
 
@@ -302,7 +300,7 @@ def print_scilab_instances():
         msg += ', free=' + str(l1)
     if l2 > 0:
         msg += ', in use=' + str(l2)
-    worker_logger.info('instance count: %s', msg[2:])
+    logger.info('instance count: %s', msg[2:])
 
 
 FIRST_INSTANCE = True
@@ -473,13 +471,13 @@ def stop_instance(instance, createlogfile=False, removeinstance=True):
 
 def stop_scilab_instances():
     if len(INSTANCES_1) > 0:
-        worker_logger.info('stopping %s idle instances', len(INSTANCES_1))
+        logger.info('stopping %s idle instances', len(INSTANCES_1))
         while len(INSTANCES_1) > 0:
             instance = INSTANCES_1.pop()
             stop_instance(instance, removeinstance=False)
 
     if len(INSTANCES_2) > 0:
-        worker_logger.info('stopping %s busy instances', len(INSTANCES_2))
+        logger.info('stopping %s busy instances', len(INSTANCES_2))
         while len(INSTANCES_2) > 0:
             instance = INSTANCES_2.pop()
             stop_instance(instance, removeinstance=False)
@@ -500,11 +498,11 @@ def reap_scilab_instances():
         if count == 0:
             continue
 
-        worker_logger.info('removing %s stale instances', count)
+        logger.info('removing %s stale instances', count)
         for instance in remove_instances:
             base = instance.base
             if base is None:
-                worker_logger.warning('cannot stop instance %s', instance)
+                logger.warning('cannot stop instance %s', instance)
                 stop_instance(instance)
             elif isinstance(base, Diagram):
                 kill_scilab(base)
@@ -513,7 +511,7 @@ def reap_scilab_instances():
             elif isinstance(base, SciFile):
                 kill_scifile(base)
             else:
-                worker_logger.warning('cannot stop instance %s', instance)
+                logger.warning('cannot stop instance %s', instance)
                 stop_instance(instance)
 
 
@@ -536,15 +534,15 @@ def clean_sessions(final=False):
         if final or time() - ud.timestamp > config.SESSIONTIMEOUT:
             cleanuids.append(uid)
 
-    worker_logger.info('cleaning %s/%s sessions', len(cleanuids), totalcount)
+    logger.info('cleaning %s/%s sessions', len(cleanuids), totalcount)
     for uid in cleanuids:
         current_thread().name = 'Clean-%s' % uid[:6]
         try:
-            worker_logger.info('cleaning')
+            logger.info('cleaning')
             ud = USER_DATA.pop(uid)
             ud.clean()
         except Exception as e:
-            worker_logger.warning('could not clean: %s', str(e))
+            logger.warning('could not clean: %s', str(e))
 
 
 def clean_sessions_thread():
@@ -554,7 +552,7 @@ def clean_sessions_thread():
         try:
             clean_sessions()
         except Exception as e:
-            worker_logger.warning('Exception in clean_sessions: %s', str(e))
+            logger.warning('Exception in clean_sessions: %s', str(e))
 
 
 logfilefdrlock = RLock()
@@ -1404,4 +1402,4 @@ def stop_threads():
     cleaner = None
     clean_sessions(True)
     stop_scilab_instances()
-    worker_logger.info('exiting')
+    logger.info('exiting')
