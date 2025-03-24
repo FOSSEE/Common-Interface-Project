@@ -25,14 +25,14 @@ def release_lock(lock):
 
 @shared_task(bind=True)
 def process_task(self, task_id):
-    current_thread().name = task_id[:8]
     task = Task.objects.get(task_id=task_id)
     session_id = task.session.session_id
+    current_thread().name = f"{session_id[:6]}:{task_id[:8]}"
     lock = acquire_lock(session_id)  # Prevent multiple runs per session
 
     try:
         logger.info("Processing %s %s %s",
-                    session_id, task.file.path, task.session.app_name)
+                    task_id, task.file.path, task.session.app_name)
 
         update_task_status(task_id, 'STARTED',
                            meta={'current_process': 'Started Processing File'})
