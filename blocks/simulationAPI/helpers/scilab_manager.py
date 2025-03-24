@@ -528,18 +528,18 @@ class DataFile:
 def clean_sessions(final=False):
     current_thread().name = 'Clean'
     totalcount = 0
-    cleanuids = []
-    for uid, ud in USER_DATA.items():
+    cleanuds = []
+    for session_id, ud in USER_DATA.items():
         totalcount += 1
         if final or time() - ud.timestamp > config.SESSIONTIMEOUT:
-            cleanuids.append(uid)
+            cleanuds.append(session_id)
 
-    logger.info('cleaning %s/%s sessions', len(cleanuids), totalcount)
-    for uid in cleanuids:
-        current_thread().name = 'Clean-%s' % uid[:6]
+    logger.info('cleaning %s/%s sessions', len(cleanuds), totalcount)
+    for session_id in cleanuds:
+        current_thread().name = 'Clean-%s' % session_id[:6]
         try:
             logger.info('cleaning')
-            ud = USER_DATA.pop(uid)
+            ud = USER_DATA.pop(session_id)
             ud.clean()
         except Exception as e:
             logger.warning('could not clean: %s', str(e))
@@ -559,24 +559,21 @@ logfilefdrlock = RLock()
 LOGFILEFD = 123
 
 
-def set_session(session):
-    if 'uid' not in session:
-        session['uid'] = str(uuid.uuid4())
-
-    uid = session['uid']
+def get_session(session):
+    session_id = session.session_id
     if not hasattr(current_thread(), 's_name'):
         current_thread().s_name = current_thread().name
-    current_thread().name = 'S-%s-%s' % (current_thread().s_name[12:], uid[:6])
-    return uid
+    current_thread().name = 'S-%s-%s' % (current_thread().s_name[12:], session_id[:6])
+    return session_id
 
 
-def init_session():
-    uid = set_session()
+def init_session(session):
+    session_id = get_session(session)
 
-    if uid not in USER_DATA:
-        USER_DATA[uid] = UserData()
+    if session_id not in USER_DATA:
+        USER_DATA[session_id] = UserData()
 
-    ud = USER_DATA[uid]
+    ud = USER_DATA[session_id]
     ud.timestamp = time()
 
     sessiondir = ud.sessiondir
@@ -652,19 +649,19 @@ def is_unsafe_script(filename):
     return True
 
 
-def uploaddatafile(request):
+def uploaddatafile(session, task):
     '''
     Below route is called for uploading audio/other file.
     '''
     # Get the au/other data file
-    file = request.files['file']
+    file = task.file.name
     # Check if the data file is not null
     if not file:
         msg = "Error occured while uploading file. Please try again\n"
         rv = {'msg': msg}
         return JsonResponse(rv)
 
-    (datafile, sessiondir, currlen) = add_datafile()
+    (datafile, sessiondir, currlen) = add_datafile(session)
     fname = join(sessiondir, UPLOAD_FOLDER, currlen + '@@' + secure_filename(file.filename))
     file.save(fname)
     datafile.data_filename = fname
@@ -672,13 +669,13 @@ def uploaddatafile(request):
     return JsonResponse(rv)
 
 
-def uploadscript(request):
+def uploadscript(session, task):
     '''
     Below route is called for uploading script file.
     '''
-    (script, sessiondir) = add_script()
+    (script, sessiondir) = add_script(session)
 
-    file = request.files['file']
+    file = task.file.name
     if not file:
         msg = "Upload Error\n"
         rv = {'msg': msg}
@@ -727,11 +724,11 @@ def clean_output(s):
     return s
 
 
-def getscriptoutput():
+def getscriptoutput(session):
     '''
     Below route is called for uploading script file.
     '''
-    script = get_script(get_script_id())
+    script = get_script(session, get_script_id())
     if script is None:
         # when called with same script_id again or with incorrect script_id
         logger.warning('no script')
@@ -833,11 +830,11 @@ def getscriptoutput():
         return JsonResponse(rv)
 
 
-def sendfile():
+def sendfile(session):
     '''
     This route is used in chart.js for sending image filename
     '''
-    diagram = get_diagram(get_request_id())
+    diagram = get_diagram(session, get_request_id())
     if diagram is None:
         logger.warning('no diagram')
         return ''
@@ -919,12 +916,12 @@ def load_variables(filename):
     return command
 
 
-def start_scilab():
+def start_scilab(session):
     '''
     function to execute xcos file using scilab (scilab-adv-cli), access log
     file written by scilab
     '''
-    diagram = get_diagram(get_request_id())
+    diagram = get_diagram(session, get_request_id())
     if diagram is None:
         logger.warning('no diagram')
         return "error"
@@ -1072,13 +1069,13 @@ def stopDetailsThread(diagram):
         remove(fn)
 
 
-def get_diagram(xcos_file_id, remove=False):
+def get_diagram(session, xcos_file_id, remove=False):
     if not xcos_file_id:
         logger.warning('no id')
         return None
     xcos_file_id = int(xcos_file_id)
 
-    (diagrams, __, __, __, __, __, __) = init_session()
+    (diagrams, __, __, __, __, __, __) = init_session(session)
 
     if xcos_file_id < 0 or xcos_file_id >= len(diagrams):
         logger.warning('id %s not in diagrams', xcos_file_id)
@@ -1092,8 +1089,8 @@ def get_diagram(xcos_file_id, remove=False):
     return diagram
 
 
-def add_diagram():
-    (diagrams, scripts, __, __, __, sessiondir, diagramlock) = init_session()
+def add_diagram(session):
+    (diagrams, scripts, __, __, __, sessiondir, diagramlock) = init_session(session)
 
     with diagramlock:
         diagram = Diagram()
@@ -1104,7 +1101,7 @@ def add_diagram():
     return (diagram, scripts, sessiondir)
 
 
-def get_script(script_id, scripts=None, remove=False):
+def get_script(session, script_id, scripts=None, remove=False):
     if script_id is None:
         return None
     if not script_id:
@@ -1112,7 +1109,7 @@ def get_script(script_id, scripts=None, remove=False):
         return None
 
     if scripts is None:
-        (__, scripts, __, __, __, __, __) = init_session()
+        (__, scripts, __, __, __, __, __) = init_session(session)
 
     if script_id not in scripts:
         logger.warning('id %s not in scripts', script_id)
@@ -1126,8 +1123,8 @@ def get_script(script_id, scripts=None, remove=False):
     return script
 
 
-def add_script():
-    (__, scripts, getscriptcount, __, __, sessiondir, __) = init_session()
+def add_script(session):
+    (__, scripts, getscriptcount, __, __, sessiondir, __) = init_session(session)
 
     script_id = getscriptcount()
 
@@ -1139,8 +1136,8 @@ def add_script():
     return (script, sessiondir)
 
 
-def add_datafile():
-    (__, __, __, __, datafiles, sessiondir, __) = init_session()
+def add_datafile(session):
+    (__, __, __, __, datafiles, sessiondir, __) = init_session(session)
 
     datafile = DataFile()
     datafile.sessiondir = sessiondir
@@ -1213,8 +1210,8 @@ def get_script_id(request, key='script_id', default=''):
     return default
 
 
-def internal_fun(request, internal_key):
-    (__, __, __, scifile, __, sessiondir, __) = init_session()
+def internal_fun(session, task, internal_key):
+    (__, __, __, scifile, __, sessiondir, __) = init_session(session)
 
     if internal_key not in config.INTERNAL:
         msg = internal_key + ' not found'
@@ -1234,12 +1231,13 @@ def internal_fun(request, internal_key):
         p = 'z'
         cmd += "%s=poly(0,'%s');" % (p, p)
     cmd += "%s('%s'" % (function, file_name)
+    task_parameters = json.loads(task.parameters)
     for parameter in parameters:
-        if parameter not in request.form:
+        if parameter not in task_parameters:
             msg = parameter + ' parameter is missing'
             logger.warning(msg)
             return JsonResponse({'msg': msg})
-        value = request.form[parameter]
+        value = task_parameters[parameter]
         try:
             value.encode('ascii')
         except UnicodeEncodeError:
@@ -1312,10 +1310,10 @@ def clean_text_2(s, forindex):
     return s
 
 
-def kill_scilab(diagram=None):
+def kill_scilab(diagram=None, session=None):
     '''Define function to kill scilab(if still running) and remove files'''
     if diagram is None:
-        diagram = get_diagram(get_request_id(), True)
+        diagram = get_diagram(session, get_request_id(), True)
 
     if diagram is None:
         logger.warning('no diagram')
@@ -1337,10 +1335,10 @@ def kill_scilab(diagram=None):
     stopDetailsThread(diagram)
 
 
-def kill_script(script=None):
+def kill_script(script=None, session=None):
     '''Below route is called for stopping a running script file.'''
     if script is None:
-        script = get_script(get_script_id(), remove=True)
+        script = get_script(session, get_script_id(), remove=True)
         if script is None:
             # when called with same script_id again or with incorrect script_id
             logger.warning('no script')
@@ -1365,10 +1363,10 @@ def kill_script(script=None):
     return "ok"
 
 
-def kill_scifile(scifile=None):
+def kill_scifile(scifile=None, session=None):
     '''Below route is called for stopping a running sci file.'''
     if scifile is None:
-        (__, __, __, scifile, __, __, __) = init_session()
+        (__, __, __, scifile, __, __, __) = init_session(session)
 
     logger.info('kill_scifile: scifile=%s', scifile)
 
