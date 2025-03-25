@@ -7,7 +7,6 @@ import CloseIcon from '@material-ui/icons/Close'
 import { useSelector, useDispatch } from 'react-redux'
 
 import Graph, { setStatusDone, setStatusClosed } from '../Shared/Graph'
-// import { setResultGraph } from '../../redux/actions/index'
 import { setResultGraph } from '../../redux/simulationSlice'
 import api from '../../utils/Api'
 
@@ -624,7 +623,7 @@ export default function SimulationScreen ({ open, close }) {
           case 'SUCCESS':
             streamSimulationResult(streamingUrl)
             setIsResult(true)
-            dispatch(setResultGraph(null))
+            dispatch(setResultGraph({}))
             if (timeoutRef.current !== null) {
               clearTimeout(timeoutRef.current)
               timeoutRef.current = null
@@ -769,7 +768,7 @@ export default function SimulationScreen ({ open, close }) {
             {isResult === true
               ? <>
                 {
-                  (isGraph === 'true')
+                  isGraph
                     ? <>
                       <Grid item xs={12} sm={12}>
                         <Paper className={classes.paper}>

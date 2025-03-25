@@ -17,12 +17,6 @@ export const SET_NETLIST = 'SET_NETLIST'
 export const SET_TITLE = 'SET_TITLE'
 export const SET_MODEL = 'SET_MODEL'
 
-// Actions for handling simulation result display
-export const SET_RESULT_TITLE = 'SET_RESULT_TITLE'
-export const SET_RESULT_GRAPH = 'SET_RESULT_GRAPH'
-export const SET_RESULT_TEXT = 'SET_RESULT_TEXT'
-export const SET_RESULT_TASK_ID = 'SET_RESULT_TASK_ID'
-
 // Actions for handling user authentication and registration
 export const USER_LOADING = 'USER_LOADING'
 export const USER_LOADED = 'USER_LOADED'
@@ -46,7 +40,6 @@ export const SET_SCH_SHARED = 'SET_SCH_SHARED'
 export const CLEAR_DETAILS = 'CLEAR_DETAILS'
 export const LOAD_GALLERY = 'LOAD_GALLERY'
 export const SET_SCH_SCRIPT_DUMP = 'SET_SCH_SCRIPT_DUMP'
-export const SET_SCRIPT_TASK_ID = 'SET_SCRIPT_TASK_ID'
 
 // Action for fetching on-cloud saved schematics for authenticated user to display in dashboard
 export const FETCH_SCHEMATICS = 'FETCH_SCHEMATICS'

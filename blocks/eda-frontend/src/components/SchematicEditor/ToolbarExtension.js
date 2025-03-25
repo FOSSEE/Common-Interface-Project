@@ -36,7 +36,7 @@ import {
 import { makeStyles } from '@material-ui/core/styles'
 import CloseIcon from '@material-ui/icons/Close'
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchSchematics, fetchSchematic, fetchDiagram, fetchGallery, setSchScriptDump /* setScriptTaskId */ } from '../../redux/actions/index'
+import { fetchSchematics, fetchSchematic, fetchDiagram, fetchGallery, setSchScriptDump } from '../../redux/actions/index'
 import { setScriptTaskId } from '../../redux/simulationSlice'
 import { blue } from '@material-ui/core/colors'
 import { getDateTime as getDate, getUppercaseInitial, saveToFile } from '../../utils/GalleryUtils'

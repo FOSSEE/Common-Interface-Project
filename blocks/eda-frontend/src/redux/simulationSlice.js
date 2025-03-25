@@ -1,47 +1,56 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  title: "",
+  title: '',
   isGraph: false,
   text: [],
   graph: {},
   isSimRes: false,
-  taskId: "",
-  scriptTaskId: "",
-};
+  taskId: '',
+  scriptTaskId: ''
+}
 
 const simulationSlice = createSlice({
-  name: "simulation",
+  name: 'simulation',
   initialState,
   reducers: {
+    resetResult: (state) => {
+      state.title = ''
+      state.isGraph = false
+      state.text = []
+      state.graph = {}
+      state.isSimRes = false
+      state.taskId = ''
+    },
     setResultTitle: (state, action) => {
-      state.title = action.payload;
+      state.title = action.payload
     },
     setResultGraph: (state, action) => {
-      state.isSimRes = true;
-      state.isGraph = true;
-      state.graph = action.payload;
+      state.isSimRes = true
+      state.isGraph = true
+      state.graph = action.payload
     },
     setResultText: (state, action) => {
-      state.isSimRes = true;
-      state.isGraph = false;
-      state.text = action.payload;
+      state.isSimRes = true
+      state.isGraph = false
+      state.text = action.payload
     },
     setResultTaskId: (state, action) => {
-      state.taskId = action.payload;
+      state.taskId = action.payload
     },
     setScriptTaskId: (state, action) => {
-      state.scriptTaskId = action.payload;
-    },
-  },
-});
+      state.scriptTaskId = action.payload
+    }
+  }
+})
 
 export const {
+  resetResult,
   setResultTitle,
   setResultGraph,
   setResultText,
   setResultTaskId,
-  setScriptTaskId,
-} = simulationSlice.actions;
+  setScriptTaskId
+} = simulationSlice.actions
 
-export default simulationSlice.reducer;
+export default simulationSlice.reducer
