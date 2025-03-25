@@ -7,7 +7,8 @@ import CloseIcon from '@material-ui/icons/Close'
 import { useSelector, useDispatch } from 'react-redux'
 
 import Graph, { setStatusDone, setStatusClosed } from '../Shared/Graph'
-import { setResultGraph } from '../../redux/actions/index'
+// import { setResultGraph } from '../../redux/actions/index'
+import { setResultGraph } from '../../redux/simulationSlice'
 import api from '../../utils/Api'
 
 let sse = null
@@ -112,10 +113,10 @@ export function setGraphStatusClosed () {
 export default function SimulationScreen ({ open, close }) {
   const classes = useStyles()
   const dispatch = useDispatch()
-  const isGraph = useSelector(state => state.simulationReducer.isGraph)
-  const rtitle = useSelector(state => state.simulationReducer.title)
+  const isGraph = useSelector(state => state.simulation.isGraph)
+  const rtitle = useSelector(state => state.simulation.title)
   const stitle = useSelector(state => state.netlistReducer.title)
-  const taskId = useSelector(state => state.simulationReducer.taskId)
+  const taskId = useSelector(state => state.simulation.taskId)
   const [isResult, setIsResult] = useState(false)
   const graphsRef = useRef([])
   const datapointsRef = useRef([])

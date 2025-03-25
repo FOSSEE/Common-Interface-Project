@@ -15,10 +15,17 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import { makeStyles } from '@material-ui/core/styles'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { setResultTitle, setResultTaskId } from '../../redux/actions/index'
+// import { setResultTitle, setResultTaskId } from '../../redux/actions/index'
 import { saveXml } from './Helper/ToolbarTools'
 import SimulationScreen, { setGraphStatusClosed } from './SimulationScreen'
 import api from '../../utils/Api'
+import {
+  setResultTitle,
+  setResultGraph,
+  setResultText,
+  setResultTaskId,
+  setScriptTaskId
+} from '../../redux/simulationSlice'
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -43,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SimulationProperties () {
   const title = useSelector(state => state.netlistReducer.title)
-  const isSimRes = useSelector(state => state.simulationReducer.isSimRes)
+  const isSimRes = useSelector(state => state.simulation.isSimRes)
   const dispatch = useDispatch()
   const classes = useStyles()
   const [transientAnalysisControlLine, setTransientAnalysisControlLine] = useState({
