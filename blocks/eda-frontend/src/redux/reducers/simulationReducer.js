@@ -42,6 +42,13 @@ export default function (state = initialState, action) {
       }
     }
 
+    case actions.SET_SCRIPT_TASK_ID: {
+      return {
+        ...state,
+        scriptTaskId: action.payload.taskId
+      }
+    }
+
     default:
       return state
   }
