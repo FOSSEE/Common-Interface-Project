@@ -30,7 +30,8 @@ import { makeStyles } from '@material-ui/core/styles'
 import { deepPurple } from '@material-ui/core/colors'
 
 import logo from '../../static/favicon.ico'
-import { setTitle, logout, setSchTitle, setSchShared } from '../../redux/actions/index'
+import { setTitle, setSchTitle, setSchShared } from '../../redux/actions/index'
+import { logout } from '../../redux/authSlice'
 import { getDateTime as getDate, getUppercaseInitial } from '../../utils/GalleryUtils'
 
 const useStyles = makeStyles((theme) => ({
@@ -101,8 +102,8 @@ SimpleSnackbar.propTypes = {
 function Header () {
   const history = useHistory()
   const classes = useStyles()
-  const isAuthenticated = useSelector(state => state.authReducer.isAuthenticated)
-  const user = useSelector(state => state.authReducer.user)
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
+  const user = useSelector(state => state.auth.user)
   const details = useSelector(state => state.saveSchematicReducer.details)
   const isSaved = useSelector(state => state.saveSchematicReducer.isSaved)
   const isShared = useSelector(state => state.saveSchematicReducer.isShared)

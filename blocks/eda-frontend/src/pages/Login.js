@@ -22,7 +22,7 @@ import Visibility from '@material-ui/icons/Visibility'
 import VisibilityOff from '@material-ui/icons/VisibilityOff'
 import { Link as RouterLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { login, authDefault, googleLogin, githubLogin } from '../redux/actions/index'
+import { login, authDefault, googleLogin, githubLogin } from '../redux/authSlice'
 import google from '../static/google.png'
 import github from '../static/github-mark.png'
 
@@ -51,13 +51,12 @@ let url = ''
 
 export default function SignIn (props) {
   const classes = useStyles()
-  const errors = useSelector(state => state.authReducer.errors)
+  const errors = useSelector(state => state.auth.errors)
 
   const dispatch = useDispatch()
   const homeURL = `${window.location.protocol}\\\\${window.location.host}/`
 
   useEffect(() => {
-    dispatch(authDefault())
     document.title = 'Login - ' + process.env.REACT_APP_NAME
     if (props.location.search !== '') {
       const query = new URLSearchParams(props.location.search)
@@ -65,6 +64,10 @@ export default function SignIn (props) {
       localStorage.setItem('ard_redurl', url)
     } else {
       url = ''
+    }
+
+    return () => {
+      dispatch(authDefault())
     }
   }, [props.location.search])
 
@@ -76,20 +79,19 @@ export default function SignIn (props) {
 
   // Function call for normal user login.
   const handleLogin = () => {
-    dispatch(login(username, password, url))
+    dispatch(login({ email: username, password, toUrl: url }))
   }
 
   // Function call for google oAuth login.
   const handleGoogleLogin = () => {
-    const host = window.location.protocol + '//' + window.location.host
+    const host = window.location.origin
     dispatch(googleLogin(host))
   }
 
   // Function call for github login.
   const handleGithubLogin = () => {
     const host = window.location.origin
-    const toUrl = '' // Add any redirect URL logic if needed
-    dispatch(githubLogin(host, toUrl))
+    dispatch(githubLogin(host))
   }
 
   return (

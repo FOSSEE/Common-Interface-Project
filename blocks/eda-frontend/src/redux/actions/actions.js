@@ -17,18 +17,6 @@ export const SET_NETLIST = 'SET_NETLIST'
 export const SET_TITLE = 'SET_TITLE'
 export const SET_MODEL = 'SET_MODEL'
 
-// Actions for handling user authentication and registration
-export const USER_LOADING = 'USER_LOADING'
-export const USER_LOADED = 'USER_LOADED'
-export const LOGIN_SUCCESSFUL = 'LOGIN_SUCCESSFUL'
-export const AUTHENTICATION_ERROR = 'AUTHENTICATION_ERROR'
-export const LOGIN_FAILED = 'LOGIN_FAILED'
-export const LOGOUT_SUCCESSFUL = 'LOGOUT_SUCCESSFUL'
-export const LOADING_FAILED = 'LOADING_FAILED'
-export const SIGNUP_SUCCESSFUL = 'SIGNUP_SUCCESSFUL'
-export const SIGNUP_FAILED = 'SIGNUP_FAILED'
-export const DEFAULT_STORE = 'DEFAULT_STORE'
-
 // Actions for saving scheamtics and loading saved, gallery and local schematics.
 export const LOADING_DIAGRAM = 'LOADING_DIAGRAM'
 export const SAVE_SCHEMATICS = 'SAVE_SCHEMATICS'

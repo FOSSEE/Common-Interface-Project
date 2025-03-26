@@ -522,8 +522,8 @@ export function OpenSchDialog (props) {
   const [isLocal, setisLocal] = useState(true)
   const [isGallery, setisGallery] = useState(false)
   const details = useSelector(state => state.saveSchematicReducer.details)
-  const isAuthenticated = useSelector(state => state.authReducer.isAuthenticated)
-  const user = useSelector(state => state.authReducer.user)
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
+  const user = useSelector(state => state.auth.user)
   const schematics = useSelector(state => state.dashboardReducer.schematics)
   const GallerySchSample = useSelector(state => state.dashboardReducer.gallery)
 

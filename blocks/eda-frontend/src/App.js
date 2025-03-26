@@ -14,13 +14,13 @@ import Dashboard from './pages/Dashboard'
 import SignUp from './pages/signUp'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { loadUser } from './redux/actions/index'
+import { loadUser } from './redux/authSlice'
 
 // Controls Private routes, this are accessible for authenticated users.  [ e.g : dashboard ]
 // and restricted routes disabled for authenticated users. [ e.g : login , signup ]
 const PrivateRoute = ({ component: Component, ...rest }) => {
-  const isAuthenticated = useSelector(state => state.authReducer.isAuthenticated)
-  const isLoading = useSelector(state => state.authReducer.isLoading)
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
+  const isLoading = useSelector(state => state.auth.isLoading)
   const dispatch = useDispatch()
 
   useEffect(() => dispatch(loadUser()), [])
@@ -46,8 +46,8 @@ PrivateRoute.propTypes = {
 
 // Public routes accessible to all users. [ e.g. editor, gallery ]
 const PublicRoute = ({ component: Component, restricted, nav, ...rest }) => {
-  const isAuthenticated = useSelector(state => state.authReducer.isAuthenticated)
-  const isLoading = useSelector(state => state.authReducer.isLoading)
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
+  const isLoading = useSelector(state => state.auth.isLoading)
   const dispatch = useDispatch()
 
   useEffect(() => dispatch(loadUser()), [])

@@ -61,7 +61,7 @@ export const saveSchematic = (title, description, xml, base64, scriptDump) => (d
   }
 
   // Get token from localstorage
-  const token = getState().authReducer.token
+  const token = getState().auth.token
   const details = getState().saveSchematicReducer.details
   const isSaved = getState().saveSchematicReducer.isSaved
 
@@ -107,7 +107,7 @@ export const saveSchematic = (title, description, xml, base64, scriptDump) => (d
 // Action for Loading on-cloud saved schematics
 export const fetchSchematic = (saveId) => (dispatch, getState) => {
   // Get token from localstorage
-  const token = getState().authReducer.token
+  const token = getState().auth.token
 
   // add headers
   const config = {
@@ -150,7 +150,7 @@ export const fetchDiagram = (saveId) => (dispatch) => {
 
 export const setSchShared = (share) => (dispatch, getState) => {
   // Get token from localstorage
-  const token = getState().authReducer.token
+  const token = getState().auth.token
   const details = getState().saveSchematicReducer.details
 
   // add headers

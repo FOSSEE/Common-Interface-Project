@@ -3,7 +3,7 @@ import * as actions from './actions'
 
 // Api call for listing saved schematic to display on dashboard
 export const fetchSchematics = () => (dispatch, getState) => {
-  const token = getState().authReducer.token
+  const token = getState().auth.token
 
   const config = {
     headers: {
@@ -42,7 +42,7 @@ export const fetchGallery = () => (dispatch) => {
 
 // Api call for deleting saved schematic
 export const deleteSchematic = (saveId) => (dispatch, getState) => {
-  const token = getState().authReducer.token
+  const token = getState().auth.token
 
   const config = {
     headers: {

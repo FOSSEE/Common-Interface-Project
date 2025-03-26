@@ -95,7 +95,7 @@ SimpleSnackbar.propTypes = {
 
 export default function SchematicToolbar ({ mobileClose, gridRef }) {
   const classes = useStyles()
-  const isAuthenticated = useSelector(state => state.authReducer.isAuthenticated)
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
   const description = useSelector(state => state.saveSchematicReducer.description)
   const title2 = useSelector(state => state.saveSchematicReducer.title)
 

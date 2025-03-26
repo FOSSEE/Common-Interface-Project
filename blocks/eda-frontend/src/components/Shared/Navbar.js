@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import { deepPurple } from '@material-ui/core/colors'
 import { Link as RouterLink, useHistory } from 'react-router-dom'
 import logo from '../../static/favicon.ico'
-import { logout } from '../../redux/actions/index'
+import { logout } from '../../redux/authSlice'
 import { getUppercaseInitial } from '../../utils/GalleryUtils'
 
 const useStyles = makeStyles((theme) => ({
@@ -43,8 +43,8 @@ export function Header () {
   const history = useHistory()
   const classes = useStyles()
   const [anchorEl, setAnchorEl] = useState(null)
-  const isAuthenticated = useSelector(state => state.authReducer.isAuthenticated)
-  const user = useSelector(state => state.authReducer.user)
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
+  const user = useSelector(state => state.auth.user)
 
   const dispatch = useDispatch()
 
