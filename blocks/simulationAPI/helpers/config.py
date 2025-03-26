@@ -21,3 +21,5 @@ SPECIAL_CHARACTERS = r'["\'\\]'
 
 # The directory where images are created
 IMAGEDIR = 'images'
+
+REMOVEFILE = True

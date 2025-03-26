@@ -17,6 +17,7 @@ from threading import current_thread
 from time import time
 import unicodedata
 import uuid
+import logging
 
 from simulationAPI.helpers import config
 
@@ -66,7 +67,8 @@ SCILAB_CMD = [SCILAB,
               "-nouserstartup",
               "-nb",
               "-nw",
-              "-e", SCILAB_START]
+              "-e", SCILAB_START
+            ]
 
 USER_DATA = {}
 
@@ -615,15 +617,22 @@ def prestart_scilab():
     return (proc, log_name)
 
 
-def run_scilab(command, base, createlogfile=False, timeout=70):
+def run_scilab(command, base, createlogfile=False, timeout=1800):
     instance = get_scilab_instance()
     if instance is None:
         logger.error('cannot run command %s', command)
         return None
 
-    cmd = command + SCILAB_END
+    logger.info('Scilab instance log file: %s', instance.log_name)
+    cmd = command + SCILAB_END + '\n'
     logger.info('running command %s', cmd)
     instance.proc.stdin.write(cmd)
+    instance.proc.stdin.flush()
+
+    # output, error = instance.proc.communicate(timeout=timeout)
+    # with open(instance.log_name, 'a') as log:
+    #     log.write(output if output else '')
+    #     log.write(error if error else '')
 
     if not createlogfile:
         remove(instance.log_name)
@@ -673,17 +682,20 @@ def uploadscript(session, task):
     '''
     Below route is called for uploading script file.
     '''
-    (script, sessiondir) = add_script(session)
+    (script, sessiondir) = add_script(session, task)
 
-    file = task.file.name
+    file = task.file
     if not file:
         msg = "Upload Error\n"
         rv = {'msg': msg}
-        return JsonResponse(rv)
+        return rv
 
     fname = join(sessiondir, SCRIPT_FILES_FOLDER,
                  script.script_id + '_script.sce')
-    file.save(fname)
+    # file.save(fname)
+    with open(fname, 'wb+') as destination:
+        for chunk in file.chunks():
+            destination.write(chunk)
     script.filename = fname
 
     if is_unsafe_script(fname):
@@ -691,25 +703,30 @@ def uploadscript(session, task):
                "Please edit the script again.\n")
         script.status = -1
         rv = {'status': script.status, 'msg': msg}
-        return JsonResponse(rv)
+        return rv
 
-    wfname = join(sessiondir, SCRIPT_FILES_FOLDER,
+    wfname = join(sessiondir, WORKSPACE_FILES_FOLDER,
                   script.script_id + '_script_workspace.dat')
     script.workspace_filename = wfname
-    command = "exec('%s');save('%s');" % (fname, wfname)
+    command = "try;exec('%s');save('%s');" % (fname, wfname)
 
     script.instance = run_scilab(command, script)
+    
 
     if script.instance is None:
         msg = "Resource not available"
         script.status = -2
         rv = {'status': script.status, 'msg': msg}
-        return JsonResponse(rv)
+        return rv
+    
+    # Save workspace file in task model
+    task.workspace_file = wfname
+    task.save()
 
     msg = ''
     script.status = 1
-    rv = {'script_id': script.script_id, 'status': script.status, 'msg': msg}
-    return JsonResponse(rv)
+    rv = {'task_id': task.task_id, 'script_id': script.script_id, 'status': script.status, 'msg': msg}
+    return rv
 
 
 def clean_output(s):
@@ -724,24 +741,24 @@ def clean_output(s):
     return s
 
 
-def getscriptoutput(session):
+def getscriptoutput(session, task):
     '''
     Below route is called for uploading script file.
     '''
-    script = get_script(session, get_script_id())
+    script = get_script(session, task)
     if script is None:
         # when called with same script_id again or with incorrect script_id
         logger.warning('no script')
         msg = "no script"
         rv = {'msg': msg}
-        return JsonResponse(rv)
+        return rv
 
     instance = script.instance
     if instance is None:
         logger.warning('no instance')
         msg = "no instance"
         rv = {'msg': msg}
-        return JsonResponse(rv)
+        return rv
 
     proc = instance.proc
 
@@ -758,7 +775,7 @@ def getscriptoutput(session):
             msg = 'Script stopped'
             script.status = -5
             rv = {'status': script.status, 'msg': msg, 'output': output}
-            return JsonResponse(rv)
+            return rv
         if returncode > 0:
             logger.info('return code is %s', returncode)
             if output:
@@ -771,7 +788,7 @@ def getscriptoutput(session):
                    "Please edit the script and execute again.\n")
             script.status = -3
             rv = {'status': script.status, 'msg': msg, 'output': output}
-            return JsonResponse(rv)
+            return rv
 
         logger.info('workspace for %s saved in %s',
                     script.script_id, script.workspace_filename)
@@ -786,7 +803,7 @@ def getscriptoutput(session):
             msg = "Resource not available"
             script.status = -2
             rv = {'status': script.status, 'msg': msg}
-            return JsonResponse(rv)
+            return rv
 
         proc = instance.proc
         listoutput = proc.communicate(timeout=10)[0]
@@ -799,7 +816,7 @@ def getscriptoutput(session):
             msg = 'Script stopped'
             script.status = -5
             rv = {'status': script.status, 'msg': msg, 'output': listoutput}
-            return JsonResponse(rv)
+            return rv
         if returncode > 0:
             logger.info('return code is %s', returncode)
             if listoutput:
@@ -815,19 +832,19 @@ def getscriptoutput(session):
         rv = {'script_id': script.script_id, 'status': script.status,
               'msg': msg, 'output': output, 'returncode': returncode,
               'variables': variables}
-        return JsonResponse(rv)
+        return rv
     except subprocess.TimeoutExpired:
         kill_script(script)
         msg = 'Timeout'
         script.status = -4
         rv = {'status': script.status, 'msg': msg}
-        return JsonResponse(rv)
+        return rv
     except UnicodeDecodeError:
         kill_script(script)
         msg = 'Unicode Decode Error'
         script.status = -6
         rv = {'status': script.status, 'msg': msg}
-        return JsonResponse(rv)
+        return rv
 
 
 def sendfile(session):
@@ -1101,37 +1118,32 @@ def add_diagram(session):
     return (diagram, scripts, sessiondir)
 
 
-def get_script(session, script_id, scripts=None, remove=False):
-    if script_id is None:
-        return None
-    if not script_id:
-        logger.warning('no id')
+def get_script(session, task, scripts=None, remove=False):
+    if task is None:
         return None
 
     if scripts is None:
         (__, scripts, __, __, __, __, __) = init_session(session)
 
-    if script_id not in scripts:
-        logger.warning('id %s not in scripts', script_id)
+    if task.task_id not in scripts:
+        logger.warning('id %s not in scripts', task.task_id)
         return None
 
-    script = scripts[script_id]
+    script = scripts[task.task_id]
 
     if remove:
-        del scripts[script_id]
+        del scripts[task.task_id]
 
     return script
 
 
-def add_script(session):
-    (__, scripts, getscriptcount, __, __, sessiondir, __) = init_session(session)
-
-    script_id = getscriptcount()
+def add_script(session, task):
+    (__, scripts, __, __, __, sessiondir, __) = init_session(session)
 
     script = Script()
-    script.script_id = script_id
+    script.script_id = task.task_id
     script.sessiondir = sessiondir
-    scripts[script_id] = script
+    scripts[task.task_id] = script
 
     return (script, sessiondir)
 
@@ -1190,24 +1202,6 @@ def get_request_id(request, key='id'):
     logger.warning('Invalid value %s for %s in request.args',
                    displayvalue, key)
     return ''
-
-
-def get_script_id(request, key='script_id', default=''):
-    form = request.form
-    if form is None:
-        logger.warning('No form in request')
-        return default
-    if key not in form:
-        logger.warning('No %s in request.form', key)
-        return default
-    value = form[key]
-    if re.fullmatch(r'[0-9]+', value):
-        return value
-    displayvalue = value if len(
-        value) <= DISPLAY_LIMIT + 3 else value[:DISPLAY_LIMIT] + '...'
-    logger.warning('Invalid value %s for %s in request.form',
-                   displayvalue, key)
-    return default
 
 
 def internal_fun(session, task, internal_key):
@@ -1335,10 +1329,10 @@ def kill_scilab(diagram=None, session=None):
     stopDetailsThread(diagram)
 
 
-def kill_script(script=None, session=None):
+def kill_script(script=None, session=None, task=None):
     '''Below route is called for stopping a running script file.'''
     if script is None:
-        script = get_script(session, get_script_id(), remove=True)
+        script = get_script(session, task, remove=True)
         if script is None:
             # when called with same script_id again or with incorrect script_id
             logger.warning('no script')

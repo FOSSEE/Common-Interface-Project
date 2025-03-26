@@ -137,7 +137,7 @@ def ExecXml(task, task_name):
         os.close(LOGFILEFD)
 
         update_task_status(task_id, 'STREAMING',
-                           meta={'current_process': 'Processed Xml, Streaming Output'})
+                        meta={'current_process': 'Processed Xml, Streaming Output'})
 
         cmd = "try;"
         cmd += "chdir('%s');" % current_dir

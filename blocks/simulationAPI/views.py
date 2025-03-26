@@ -18,6 +18,7 @@ from simulationAPI.negotiation import IgnoreClientContentNegotiation
 from simulationAPI.serializers import TaskSerializer
 from simulationAPI.tasks import process_task
 from simulationAPI.helpers.ngspice_helper import CreateXcos
+from simulationAPI.helpers.scilab_manager import getscriptoutput
 
 
 SCILAB_INSTANCE_TIMEOUT_INTERVAL = 300
@@ -351,6 +352,23 @@ class StreamView(APIView):
 
         # Notify Client
         yield "event: DONE\ndata: None\n\n"
+
+
+class GetScriptOutputView(APIView):
+    """
+    API endpoint to get the output of a script execution.
+    """
+
+    def get(self, request, task_id, *args, **kwargs):
+        
+        task = Task.objects.get(task_id=task_id)
+        session = task.session
+        try:
+            result = getscriptoutput(session, task)
+            return Response(result, status=status.HTTP_200_OK)
+        except Exception as e:
+            logger.error(f"Error calling getscriptoutput (Session: {session}): {str(e)}")
+            return Response({"error": "Internal server error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 def get_session(request):
