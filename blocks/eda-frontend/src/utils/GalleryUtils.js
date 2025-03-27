@@ -192,3 +192,10 @@ export const getUppercaseInitial = (str) => {
   const char = match ? match[0] : str.charAt(0)
   return char.toUpperCase()
 }
+
+export const removeBySaveIdInPlace = (schematics, saveId) => {
+  const index = schematics.findIndex(item => item.save_id === saveId)
+  if (index !== -1) {
+    schematics.splice(index, 1)
+  }
+}

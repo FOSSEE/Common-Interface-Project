@@ -36,7 +36,8 @@ import {
 import { makeStyles } from '@material-ui/core/styles'
 import CloseIcon from '@material-ui/icons/Close'
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchSchematics, fetchSchematic, fetchDiagram, fetchGallery, setSchScriptDump } from '../../redux/actions/index'
+import { fetchSchematic, fetchDiagram, setSchScriptDump } from '../../redux/actions/index'
+import { fetchSchematics, fetchGallery } from '../../redux/dashboardSlice'
 import { setScriptTaskId } from '../../redux/simulationSlice'
 import { blue } from '@material-ui/core/colors'
 import { getDateTime as getDate, getUppercaseInitial, saveToFile } from '../../utils/GalleryUtils'
@@ -524,8 +525,8 @@ export function OpenSchDialog (props) {
   const details = useSelector(state => state.saveSchematicReducer.details)
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
   const user = useSelector(state => state.auth.user)
-  const schematics = useSelector(state => state.dashboardReducer.schematics)
-  const GallerySchSample = useSelector(state => state.dashboardReducer.gallery)
+  const schematics = useSelector(state => state.dashboard.schematics)
+  const GallerySchSample = useSelector(state => state.dashboard.gallery)
 
   const dispatch = useDispatch()
 

@@ -4,7 +4,7 @@ import { Link as RouterLink } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import { deepPurple } from '@material-ui/core/colors'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchSchematics } from '../../redux/actions/index'
+import { fetchSchematics } from '../../redux/dashboardSlice'
 import { getUppercaseInitial } from '../../utils/GalleryUtils'
 
 const useStyles = makeStyles((theme) => ({
@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
 export default function DashSidebar (props) {
   const classes = useStyles()
   const user = useSelector(state => state.auth.user)
-  const schematics = useSelector(state => state.dashboardReducer.schematics)
+  const schematics = useSelector(state => state.dashboard.schematics)
 
   const dispatch = useDispatch()
 

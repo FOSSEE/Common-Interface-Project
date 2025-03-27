@@ -30,6 +30,4 @@ export const LOAD_GALLERY = 'LOAD_GALLERY'
 export const SET_SCH_SCRIPT_DUMP = 'SET_SCH_SCRIPT_DUMP'
 
 // Action for fetching on-cloud saved schematics for authenticated user to display in dashboard
-export const FETCH_SCHEMATICS = 'FETCH_SCHEMATICS'
-export const FETCH_GALLERY = 'FETCH_GALLERY'
 export const FETCH_DIAGRAM = 'FETCH_DIAGRAM'

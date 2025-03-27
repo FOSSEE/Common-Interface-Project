@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import { Link as RouterLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import api from '../utils/Api'
-import { fetchGallery } from '../redux/actions/index'
+import { fetchGallery } from '../redux/dashboardSlice'
 
 const useStyles = makeStyles((theme) => ({
   mainHead: {
@@ -196,7 +196,7 @@ SearchComponent.propTypes = {
 
 const Gallery = () => {
   const classes = useStyles()
-  const GallerySchSample = useSelector(state => state.dashboardReducer.gallery)
+  const GallerySchSample = useSelector(state => state.dashboard.gallery)
 
   // State to store the selected book ID
   const [selectedBook, setSelectedBook] = useState('')
