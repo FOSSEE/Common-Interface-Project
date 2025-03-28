@@ -232,6 +232,18 @@ class UserData:
         self.diagramlock = RLock()
         self.timestamp = time()
 
+    def __str__(self):
+        return (f"UserData(sessiondir={self.sessiondir}, "
+                f"diagrams={len(self.diagrams)}, "
+                f"datafiles={len(self.datafiles)}, "
+                f"scripts={list(self.scripts.keys())}, "
+                f"scriptcount={self.scriptcount}, "
+                f"scifile={self.scifile}, "
+                f"timestamp={self.timestamp})")
+    
+    def __repr__(self):
+        return self.__str__()
+
     def getscriptcount(self):
         with self.diagramlock:
             rv = self.scriptcount
@@ -624,7 +636,7 @@ def run_scilab(command, base, createlogfile=False, timeout=1800):
         return None
 
     logger.info('Scilab instance log file: %s', instance.log_name)
-    cmd = command + SCILAB_END + '\n'
+    cmd = 'try;' + command + SCILAB_END + '\n'
     logger.info('running command %s', cmd)
     instance.proc.stdin.write(cmd)
     instance.proc.stdin.flush()
@@ -691,7 +703,7 @@ def uploadscript(session, task):
         return rv
 
     fname = join(sessiondir, SCRIPT_FILES_FOLDER,
-                 script.script_id + '_script.sce')
+                 f"{script.script_id}_script.sce")
     # file.save(fname)
     with open(fname, 'wb+') as destination:
         for chunk in file.chunks():
@@ -706,9 +718,9 @@ def uploadscript(session, task):
         return rv
 
     wfname = join(sessiondir, WORKSPACE_FILES_FOLDER,
-                  script.script_id + '_script_workspace.dat')
+                  f"{script.script_id}_script_workspace.dat")
     script.workspace_filename = wfname
-    command = "try;exec('%s');save('%s');" % (fname, wfname)
+    command = "exec('%s');save('%s');" % (fname, wfname)
 
     script.instance = run_scilab(command, script)
     

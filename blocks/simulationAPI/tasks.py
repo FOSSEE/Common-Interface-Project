@@ -8,7 +8,7 @@ import traceback
 from blocks.celery_tasks import app
 from simulationAPI.helpers.ngspice_helper import ExecXml, update_task_status
 from simulationAPI.models import Task
-from simulationAPI.helpers.scilab_manager import uploadscript
+from simulationAPI.helpers.scilab_manager import uploadscript, getscriptoutput 
 
 logger = get_task_logger(__name__)
 
@@ -45,9 +45,6 @@ def process_task(self, task_id):
             current_process = 'Processed Script, Streaming Output'
         else:
             output = ExecXml(task, self.name)
-            # Set default values
-            # state = 'FAILED'
-            # current_process = 'Unknown error occurred'
             if output == "Streaming":
                 state = 'STREAMING'
                 current_process = 'Processed Xml, Streaming Output'
@@ -70,3 +67,10 @@ def process_task(self, task_id):
 
     finally:
         release_lock(lock)  # Ensure lock is always released
+
+
+@shared_task
+def process_task_script(task_id):
+    task = Task.objects.get(task_id=task_id)
+    session = task.session
+    return getscriptoutput(session, task)

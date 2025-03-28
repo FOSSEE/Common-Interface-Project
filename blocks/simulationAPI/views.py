@@ -16,9 +16,9 @@ from blocks.celery_tasks import app
 from simulationAPI.models import Task, Session
 from simulationAPI.negotiation import IgnoreClientContentNegotiation
 from simulationAPI.serializers import TaskSerializer
-from simulationAPI.tasks import process_task
+from simulationAPI.tasks import process_task, process_task_script
 from simulationAPI.helpers.ngspice_helper import CreateXcos
-from simulationAPI.helpers.scilab_manager import getscriptoutput
+
 
 
 SCILAB_INSTANCE_TIMEOUT_INTERVAL = 300
@@ -360,14 +360,14 @@ class GetScriptOutputView(APIView):
     """
 
     def get(self, request, task_id, *args, **kwargs):
-        
-        task = Task.objects.get(task_id=task_id)
-        session = task.session
+
         try:
-            result = getscriptoutput(session, task)
+            celery_task = process_task_script.apply_async(kwargs={'task_id': str(task_id)}, task_id=str(uuid.uuid4()))
+            result = celery_task.get(timeout=30)
+            print("RESULT:", result)
             return Response(result, status=status.HTTP_200_OK)
         except Exception as e:
-            logger.error(f"Error calling getscriptoutput (Session: {session}): {str(e)}")
+            logger.error(f"Error calling getscriptoutput (Task_id: {task_id}): {str(e)}")
             return Response({"error": "Internal server error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 

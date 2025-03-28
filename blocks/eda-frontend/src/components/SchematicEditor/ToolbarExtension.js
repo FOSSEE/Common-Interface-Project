@@ -339,11 +339,28 @@ export function ScriptScreen ({ isOpen, onClose }) {
   const scriptDump = useSelector(state => state.saveSchematicReducer.scriptDump)
   const title = useSelector(state => state.netlistReducer.title)
   const dispatch = useDispatch()
+  const [result, setResult] = useState('No output yet...')
+  const [variables, setVariables] = useState([])
   const scriptHandler = (e) => {
     dispatch(setSchScriptDump(e.target.value))
   }
 
-  const [result, setResult] = useState('')
+  const fetchScriptOutput = async (taskId) => {
+    console.log('Fetching script output for task:', taskId)
+    try {
+      const response = await api.get(`simulation/get_script_output/${taskId}`)
+      const data = response.data
+      setResult(data.output || 'No output available.')
+
+      if (data.variables && Array.isArray(data.variables)) {
+        console.log('Variables:', data.variables)
+        setVariables(data.variables)
+      }
+    } catch (error) {
+      console.error('Error fetching script output:', error)
+      setResult('Error fetching script output.')
+    }
+  }
 
   const prepareScriptNetlist = (scriptDump) => {
     const titleA = title.split(' ')[1]
@@ -361,13 +378,24 @@ export function ScriptScreen ({ isOpen, onClose }) {
         const res = response.data
         const taskId = res.details.task_id
         dispatch(setScriptTaskId(taskId))
+
+
+        setTimeout(() => {
+          fetchScriptOutput(taskId)
+            .then((response) => {
+              if (response.status === 200) {
+                const data = response.data
+                dispatch(setResult(data.output, data.variables))
+              }
+            })
+        }, 3000)
       })
       .catch(function (error) {
         console.error(error)
       })
   }
 
-  function netlistConfig (file, type) {
+  async function netlistConfig (file, type) {
     const formData = new FormData()
 
     formData.append('app_name', process.env.REACT_APP_NAME)
@@ -379,7 +407,7 @@ export function ScriptScreen ({ isOpen, onClose }) {
         'content-type': 'multipart/form-data'
       }
     }
-    return api.post('simulation/upload', formData, config)
+    return await api.post('simulation/upload', formData, config)
   }
 
   const executeScript = () => {
@@ -389,7 +417,9 @@ export function ScriptScreen ({ isOpen, onClose }) {
 
   const resetCode = () => {
     dispatch(setSchScriptDump(''))
-    setResult('')
+    setResult('No output yet...')
+    setVariables('')
+
   }
 
   return (
@@ -410,50 +440,190 @@ export function ScriptScreen ({ isOpen, onClose }) {
       <Box sx={{ p: 4 }}>
 
         {/* Code and Result Sections */}
-        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 4, alignItems: 'stretch' }}>
-          {/* Scilab Code Input */}
-          <Box sx={{ p: 2, bgcolor: 'white', boxShadow: 2, borderRadius: 2, display: 'flex', flexDirection: 'column', height: '100%' }}>
-            <Typography variant='subtitle1' sx={{ fontWeight: 'bold', mb: 1 }}>
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
+            gap: 4,
+            alignItems: 'stretch',
+          }}
+        >
+          <Box
+            sx={{
+              p: 2,
+              boxShadow: 2,
+              borderRadius: 2,
+              display: 'flex',
+              flexDirection: 'column',
+              flexGrow: 1,
+            }}
+          >
+            <Typography variant="subtitle1" style={{ fontWeight: 'bold', mb: 1 }}>
               Scilab Code:
             </Typography>
-            <TextField
-              value={scriptDump}
-              onChange={scriptHandler}
-              multiline
-              minRows={12}
-              variant='outlined'
-              fullWidth
-              sx={{ fontFamily: 'Courier New, monospace', fontSize: '14px', flexGrow: 1 }}
-            />
+
+            <Box
+              sx={{
+                height: '500px',
+                overflowY: 'scroll',
+                border: '1px solid #ccc',
+                borderRadius: 1,
+                '&::-webkit-scrollbar': {
+                  width: '8px',
+                },
+                '&::-webkit-scrollbar-track': {
+                  backgroundColor: '#f1f1f1',
+                },
+                '&::-webkit-scrollbar-thumb': {
+                  backgroundColor: '#888',
+                  borderRadius: '4px',
+                },
+                '&::-webkit-scrollbar-thumb:hover': {
+                  backgroundColor: '#555',
+                },
+              }}
+            >
+              <TextField
+                value={scriptDump}
+                onChange={scriptHandler}
+                multiline
+                variant="outlined"
+                fullWidth
+                InputProps={{
+                  disableUnderline: true,
+                  sx: {
+                    fontFamily: 'Courier New, monospace',
+                    fontSize: '14px',
+                  },
+                }}
+              />
+            </Box>
           </Box>
 
-          {/* Execution Result */}
-          <Box sx={{ p: 2, bgcolor: 'white', boxShadow: 2, borderRadius: 2, display: 'flex', flexDirection: 'column', height: '100%' }}>
-            <Typography variant='subtitle1' sx={{ fontWeight: 'bold', mb: 1 }}>
+          <Box
+            sx={{
+              p: 2,
+              boxShadow: 2,
+              borderRadius: 2,
+              display: 'flex',
+              flexDirection: 'column',
+              height: '100%',
+            }}
+          >
+            <Typography variant="subtitle1" style={{ fontWeight: 'bold', mb: 1 }}>
               Result:
             </Typography>
             <Box
               sx={{
                 flexGrow: 1,
                 width: '100%',
-                height: '200px',
                 p: 2,
                 border: '1px solid gray',
                 borderRadius: 1,
                 overflowY: 'auto',
                 display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                minHeight: '200px'
+                height: '500px',
+                whiteSpace: 'pre-wrap', // Keep line breaks
+                '&::-webkit-scrollbar': {
+                  width: '8px',
+                },
+                '&::-webkit-scrollbar-track': {
+                  backgroundColor: '#f1f1f1',
+                },
+                '&::-webkit-scrollbar-thumb': {
+                  backgroundColor: '#888',
+                  borderRadius: '4px',
+                },
+                '&::-webkit-scrollbar-thumb:hover': {
+                  backgroundColor: '#555',
+                },
               }}
             >
-              {result || 'No output yet...'}
+              {result}
+            </Box>
+
+            <Typography variant="subtitle1" style={{ fontWeight: "bold", marginTop: 16 }}>
+              Variable Browser :
+            </Typography>
+            <Box
+              style={{
+                flexGrow: 1,
+                padding: 8,
+                border: "1px solid gray",
+                borderRadius: 4
+              }}
+            >
+              <TableContainer
+                component={Paper}
+                elevation={0}
+                style={{ maxHeight: 150 }}
+              >
+                <Table size="small" stickyHeader>
+                  <TableHead>
+                    <TableRow style={{ backgroundColor: "#e0e0e0" }}>
+                      <TableCell
+                        style={{
+                          border: "1px solid gray",
+                          fontWeight: "bold",
+                          padding: "4px 8px",
+                        }}
+                      >
+                        Name
+                      </TableCell>
+                      <TableCell
+                        style={{
+                          border: "1px solid gray",
+                          fontWeight: "bold",
+                          padding: "4px 8px",
+                        }}
+                      >
+                        Value
+                      </TableCell>
+                      <TableCell
+                        style={{
+                          border: "1px solid gray",
+                          fontWeight: "bold",
+                          padding: "4px 8px",
+                        }}
+                      >
+                        Type
+                      </TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {variables.length > 0 ? (
+                      variables.map((variable, index) => (
+                        <TableRow key={index}>
+                          <TableCell style={{ border: "1px solid gray", padding: "4px 8px" }}>
+                            {variable.name}
+                          </TableCell>
+                          <TableCell style={{ border: "1px solid gray", padding: "4px 8px" }}>
+                            {variable.value}
+                          </TableCell>
+                          <TableCell style={{ border: "1px solid gray", padding: "4px 8px" }}>
+                            {variable.type}
+                          </TableCell>
+                        </TableRow>
+                      ))
+                    ) : (
+                      <TableRow>
+                        <TableCell colSpan={3} align="center">
+                          No variables available.
+                        </TableCell>
+                      </TableRow>
+                    )}
+                  </TableBody>
+                </Table>
+              </TableContainer>
             </Box>
           </Box>
+
         </Box>
 
+
+
         {/* Action Buttons */}
-        <Box sx={{ mt: 4, display: 'flex', gap: 2 }}>
+        <Box sx={{ mt: 4, display: 'flex', gap: 4 }}>
           <Button onClick={executeScript} color='primary' variant='contained'>
             Execute
           </Button>
