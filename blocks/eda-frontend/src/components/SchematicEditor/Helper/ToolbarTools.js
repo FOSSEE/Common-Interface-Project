@@ -139,7 +139,7 @@ export function PrintPreview () {
     header.style.lineHeight = (this.marginTop - 10) + 'px'
 
     const footer = header.cloneNode(true)
-    const title = store.getState().saveSchematicReducer.title
+    const title = store.getState().saveSchematic.title
     mxUtils.write(header, title + ' - ' + process.env.REACT_APP_NAME + ' on Cloud')
     header.style.borderBottom = '1px solid blue'
     header.style.top = '0px'

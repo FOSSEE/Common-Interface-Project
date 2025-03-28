@@ -1,5 +1,5 @@
 /* eslint new-cap: ["error", {"newIsCapExceptionPattern": "^mx"}] */
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { Canvg } from 'canvg'
 import {
@@ -31,9 +31,10 @@ import beautify from 'xml-beautifier'
 import mxGraphFactory from 'mxgraph'
 
 import { NetlistModal, HelpScreen, ImageExportDialog, OpenSchDialog, ScriptScreen } from './ToolbarExtension'
-import { editorZoomIn, editorZoomOut, editorZoomAct, deleteComp, PrintPreview, Rotate, editorUndo, editorRedo, saveXml, ClearGrid } from './Helper/ToolbarTools'
+import { editorZoomIn, editorZoomOut, editorZoomAct, deleteComp, PrintPreview, Rotate, editorUndo, editorRedo, saveXml, ClearGrid, renderGalleryXML } from './Helper/ToolbarTools'
 import { useSelector, useDispatch } from 'react-redux'
-import { toggleSimulate, closeCompProperties, setSchXmlData, saveSchematic, openLocalSch, setLoadingDiagram } from '../../redux/actions/index'
+import { toggleSimulate, closeCompProperties } from '../../redux/actions/index'
+import { setSchXmlData, saveSchematic, openLocalSch, setLoadingDiagram } from '../../redux/saveSchematicSlice'
 import api from '../../utils/Api'
 import { transformXcos, saveToFile } from '../../utils/GalleryUtils'
 
@@ -96,10 +97,11 @@ SimpleSnackbar.propTypes = {
 export default function SchematicToolbar ({ mobileClose, gridRef }) {
   const classes = useStyles()
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
-  const description = useSelector(state => state.saveSchematicReducer.description)
-  const title2 = useSelector(state => state.saveSchematicReducer.title)
+  const description = useSelector(state => state.saveSchematic.description)
+  const xmlData = useSelector(state => state.saveSchematic.xmlData)
+  const title2 = useSelector(state => state.saveSchematic.title)
 
-  const scriptDump = useSelector(state => state.saveSchematicReducer.scriptDump)
+  const scriptDump = useSelector(state => state.saveSchematic.scriptDump)
 
   const dispatch = useDispatch()
   const isMobile = useMediaQuery('(max-width:600px)')
@@ -157,6 +159,12 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
     }
     setSnacOpen(false)
   }
+
+  useEffect(() => {
+    if (xmlData) {
+      renderGalleryXML(xmlData)
+    }
+  }, [xmlData])
 
   // Image Export of Schematic Diagram
   async function exportImage (type) {
@@ -296,7 +304,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
       dispatch(setSchXmlData(xml))
       exportImage('PNG')
         .then(res => {
-          dispatch(saveSchematic(title2, description, xml, res, scriptDump))
+          dispatch(saveSchematic({ title: title2, description, xml, base64: res, scriptDump }))
           setMessage('Saved Successfully')
         })
         .catch(err => {

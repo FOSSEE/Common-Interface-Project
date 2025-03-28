@@ -36,11 +36,12 @@ import {
 import { makeStyles } from '@material-ui/core/styles'
 import CloseIcon from '@material-ui/icons/Close'
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchSchematic, fetchDiagram, setSchScriptDump } from '../../redux/actions/index'
+import { fetchSchematic, fetchDiagram, setSchScriptDump } from '../../redux/saveSchematicSlice'
 import { fetchSchematics, fetchGallery } from '../../redux/dashboardSlice'
 import { setScriptTaskId } from '../../redux/simulationSlice'
 import { blue } from '@material-ui/core/colors'
 import { getDateTime as getDate, getUppercaseInitial, saveToFile } from '../../utils/GalleryUtils'
+import { renderGalleryXML } from './Helper/ToolbarTools'
 import api from '../../utils/Api'
 
 const Transition = forwardRef(function Transition (props, ref) {
@@ -338,7 +339,7 @@ HelpScreen.propTypes = {
 }
 
 export function ScriptScreen ({ isOpen, onClose }) {
-  const scriptDump = useSelector(state => state.saveSchematicReducer.scriptDump)
+  const scriptDump = useSelector(state => state.saveSchematic.scriptDump)
   const title = useSelector(state => state.netlistReducer.title)
   const dispatch = useDispatch()
   const scriptHandler = (e) => {
@@ -522,17 +523,24 @@ export function OpenSchDialog (props) {
   const { open, close, openLocal } = props
   const [isLocal, setisLocal] = useState(true)
   const [isGallery, setisGallery] = useState(false)
-  const details = useSelector(state => state.saveSchematicReducer.details)
+  const details = useSelector(state => state.saveSchematic.details)
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
   const user = useSelector(state => state.auth.user)
   const schematics = useSelector(state => state.dashboard.schematics)
   const GallerySchSample = useSelector(state => state.dashboard.gallery)
+  const xmlData = useSelector(state => state.schematicEditor.xmlData)
 
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(fetchGallery())
   }, [])
+
+  useEffect(() => {
+    if (xmlData) {
+      renderGalleryXML(xmlData)
+    }
+  }, [xmlData])
 
   const title = 'Open ' + process.env.REACT_APP_DIAGRAM_NAME
   const typography1 = "You don't have any saved " + process.env.REACT_APP_SMALL_DIAGRAMS_NAME + '...'

@@ -4,7 +4,7 @@ import { Hidden, List, ListItem, ListItemText, TextField, MenuItem, TextareaAuto
 import { makeStyles } from '@material-ui/core/styles'
 import ComponentProperties from './ComponentProperties'
 import { useSelector, useDispatch } from 'react-redux'
-import { setSchDescription } from '../../redux/actions/index'
+import { setSchDescription } from '../../redux/saveSchematicSlice'
 
 import './Helper/SchematicEditor.css'
 
@@ -119,7 +119,7 @@ export default function PropertiesSidebar ({ gridRef, outlineRef }) {
   const classes = useStyles()
 
   const isOpen = useSelector(state => state.componentPropertiesReducer.isPropertiesWindowOpen)
-  const description1 = useSelector(state => state.saveSchematicReducer.description)
+  const description1 = useSelector(state => state.saveSchematic.description)
 
   const [description, setDescription] = useState(description1)
 

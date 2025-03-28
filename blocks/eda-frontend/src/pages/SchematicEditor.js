@@ -1,4 +1,4 @@
-// Main Layout for Schemaic Editor page.
+// Main Layout for Schematic Editor page.
 import React, { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import { TailSpin } from 'react-loader-spinner'
@@ -13,8 +13,9 @@ import SchematicToolbar from '../components/SchematicEditor/SchematicToolbar'
 import RightSidebar from '../components/SchematicEditor/RightSidebar'
 import PropertiesSidebar from '../components/SchematicEditor/PropertiesSidebar'
 import LoadGrid from '../components/SchematicEditor/Helper/ComponentDrag'
+import { renderGalleryXML } from '../components/SchematicEditor/Helper/ToolbarTools'
 import '../components/SchematicEditor/Helper/SchematicEditor.css'
-import { fetchDiagram, fetchSchematic } from '../redux/actions/index'
+import { fetchDiagram, fetchSchematic } from '../redux/saveSchematicSlice'
 import { useDispatch, useSelector } from 'react-redux'
 
 const useStyles = makeStyles((theme) => ({
@@ -34,11 +35,18 @@ export default function SchematicEditor (props) {
   const outlineRef = useRef()
   const dispatch = useDispatch()
   const [mobileOpen, setMobileOpen] = useState(false)
-  const isLoading = useSelector(state => state.saveSchematicReducer.isLoading)
+  const isLoading = useSelector(state => state.saveSchematic.isLoading)
+  const xmlData = useSelector(state => state.saveSchematic.xmlData)
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
   }
+
+  useEffect(() => {
+    if (xmlData) {
+      renderGalleryXML(xmlData)
+    }
+  }, [xmlData])
 
   useEffect(() => {
     document.title = process.env.REACT_APP_DIAGRAM_NAME + ' Editor - ' + process.env.REACT_APP_NAME
@@ -52,11 +60,11 @@ export default function SchematicEditor (props) {
       const cktid = query.get('id')
 
       if (cktid.substring(0, 7) === 'gallery') {
-        // Loading Gallery schemaic.
+        // Loading Gallery schematic.
 
         dispatch(fetchDiagram(cktid))
       } else {
-        // Loading User on-cloud saved schemaic.
+        // Loading User on-cloud saved schematic.
         dispatch(fetchSchematic(cktid))
       }
     }

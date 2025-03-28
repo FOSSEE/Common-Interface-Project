@@ -30,7 +30,8 @@ import { makeStyles } from '@material-ui/core/styles'
 import { deepPurple } from '@material-ui/core/colors'
 
 import logo from '../../static/favicon.ico'
-import { setTitle, setSchTitle, setSchShared } from '../../redux/actions/index'
+import { setTitle } from '../../redux/actions/index'
+import { setSchTitle, setSchShared } from '../../redux/saveSchematicSlice'
 import { logout } from '../../redux/authSlice'
 import { getDateTime as getDate, getUppercaseInitial } from '../../utils/GalleryUtils'
 
@@ -104,10 +105,10 @@ function Header () {
   const classes = useStyles()
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
   const user = useSelector(state => state.auth.user)
-  const details = useSelector(state => state.saveSchematicReducer.details)
-  const isSaved = useSelector(state => state.saveSchematicReducer.isSaved)
-  const isShared = useSelector(state => state.saveSchematicReducer.isShared)
-  const title = useSelector(state => state.saveSchematicReducer.title)
+  const details = useSelector(state => state.saveSchematic.details)
+  const isSaved = useSelector(state => state.saveSchematic.isSaved)
+  const isShared = useSelector(state => state.saveSchematic.isShared)
+  const title = useSelector(state => state.saveSchematic.title)
   const [anchorEl, setAnchorEl] = useState(null)
 
   const dispatch = useDispatch()

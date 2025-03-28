@@ -16,18 +16,3 @@ export const CLOSE_COMP_PROPERTIES = 'CLOSE_COMP_PROPERTIES'
 export const SET_NETLIST = 'SET_NETLIST'
 export const SET_TITLE = 'SET_TITLE'
 export const SET_MODEL = 'SET_MODEL'
-
-// Actions for saving scheamtics and loading saved, gallery and local schematics.
-export const LOADING_DIAGRAM = 'LOADING_DIAGRAM'
-export const SAVE_SCHEMATICS = 'SAVE_SCHEMATICS'
-export const SET_SCH_SAVED = 'SET_SCH_SAVED'
-export const SET_SCH_TITLE = 'SET_SCH_TITLE'
-export const SET_SCH_DESCRIPTION = 'SET_SCH_DESCRIPTION'
-export const SET_SCH_XML_DATA = 'SET_SCH_XML_DATA'
-export const SET_SCH_SHARED = 'SET_SCH_SHARED'
-export const CLEAR_DETAILS = 'CLEAR_DETAILS'
-export const LOAD_GALLERY = 'LOAD_GALLERY'
-export const SET_SCH_SCRIPT_DUMP = 'SET_SCH_SCRIPT_DUMP'
-
-// Action for fetching on-cloud saved schematics for authenticated user to display in dashboard
-export const FETCH_DIAGRAM = 'FETCH_DIAGRAM'
