@@ -346,16 +346,15 @@ export function ScriptScreen ({ isOpen, onClose }) {
   }
 
   const fetchScriptOutput = async (taskId) => {
-    console.log('Fetching script output for task:', taskId)
     try {
       const response = await api.get(`simulation/get_script_output/${taskId}`)
       const data = response.data
       setResult(data.output || 'No output available.')
 
       if (data.variables && Array.isArray(data.variables)) {
-        console.log('Variables:', data.variables)
         setVariables(data.variables)
       }
+      return data
     } catch (error) {
       console.error('Error fetching script output:', error)
       setResult('Error fetching script output.')
@@ -379,14 +378,10 @@ export function ScriptScreen ({ isOpen, onClose }) {
         const taskId = res.details.task_id
         dispatch(setScriptTaskId(taskId))
 
-
         setTimeout(() => {
           fetchScriptOutput(taskId)
-            .then((response) => {
-              if (response.status === 200) {
-                const data = response.data
-                dispatch(setResult(data.output, data.variables))
-              }
+            .then(() => {
+
             })
         }, 3000)
       })
@@ -417,6 +412,7 @@ export function ScriptScreen ({ isOpen, onClose }) {
 
   const resetCode = () => {
     dispatch(setSchScriptDump(''))
+    dispatch(setScriptTaskId(''))
     setResult('No output yet...')
     setVariables('')
 

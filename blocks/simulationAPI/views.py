@@ -17,7 +17,7 @@ from simulationAPI.models import Task, Session
 from simulationAPI.negotiation import IgnoreClientContentNegotiation
 from simulationAPI.serializers import TaskSerializer
 from simulationAPI.tasks import process_task, process_task_script
-from simulationAPI.helpers.ngspice_helper import CreateXcos
+from simulationAPI.helpers.ngspice_helper import CreateXcos, update_task_status
 
 
 
@@ -64,11 +64,26 @@ class XmlUploader(APIView):
 
         serializer = TaskSerializer(data=request.data, context={'request': request})
         if serializer.is_valid():
-            serializer.save()
+            task = serializer.save()
+
+            task_type = request.data.get('type')
+            script_task_id = request.data.get('script_task_id')
+
+            if task_type == 'XCOS' and script_task_id:
+                try:
+                    script_task = Task.objects.get(task_id=script_task_id, type='SCRIPT')
+                    if script_task.workspace_file:
+                        task.workspace_file = script_task.workspace_file
+                        task.save()
+                        logger.info(f'Copied workspace file from script task {script_task_id} to xcos task {task.task_id}')
+                    else:
+                        logger.warning(f'Script task {script_task_id} does not have a workspace file')
+                except Task.DoesNotExist:
+                    logger.warning(f'Script task {script_task_id} not found')
+            # serializer.save()
             task_id = serializer.data['task_id']
             celery_task = process_task.apply_async(
                 kwargs={'task_id': str(task_id)}, task_id=str(task_id))
-            # celery_task = process_task.delay(str(task_id))
             response_data = {
                 'state': celery_task.state,
                 'details': serializer.data,
@@ -350,6 +365,7 @@ class StreamView(APIView):
             else:
                 logger.info('lines = %s, log size = %s', lineno, log_size)
 
+        update_task_status(task_id, 'SUCCESS')
         # Notify Client
         yield "event: DONE\ndata: None\n\n"
 
@@ -364,6 +380,7 @@ class GetScriptOutputView(APIView):
         try:
             celery_task = process_task_script.apply_async(kwargs={'task_id': str(task_id)}, task_id=str(uuid.uuid4()))
             result = celery_task.get(timeout=30)
+            update_task_status(celery_task.id, 'SUCCESS', meta=result)
             print("RESULT:", result)
             return Response(result, status=status.HTTP_200_OK)
         except Exception as e:

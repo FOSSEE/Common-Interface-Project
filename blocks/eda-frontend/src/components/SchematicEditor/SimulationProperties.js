@@ -44,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
 export default function SimulationProperties () {
   const title = useSelector(state => state.netlistReducer.title)
   const isSimRes = useSelector(state => state.simulationReducer.isSimRes)
+  const scriptTaskId = useSelector(state => state.simulationReducer.scriptTaskId)
   const dispatch = useDispatch()
   const classes = useStyles()
   const [transientAnalysisControlLine, setTransientAnalysisControlLine] = useState({
@@ -86,11 +87,12 @@ export default function SimulationProperties () {
       type: 'text/plain'
     })
     const file = new File([myblob], `${titleA}.xml`, { type: 'text/xml', lastModified: Date.now() })
-    sendNetlist(file)
+    const type = 'XCOS'
+    sendNetlist(file, type)
   }
 
-  function sendNetlist (file) {
-    netlistConfig(file)
+  function sendNetlist (file, type) {
+    netlistConfig(file, type)
       .then((response) => {
         const res = response.data
         const taskId = res.details.task_id
@@ -102,10 +104,15 @@ export default function SimulationProperties () {
   }
 
   // Upload the nelist
-  function netlistConfig (file) {
+  function netlistConfig (file, type) {
     const formData = new FormData()
     formData.append('app_name', process.env.REACT_APP_NAME)
     formData.append('file', file)
+    formData.append('type', type)
+    if (scriptTaskId) {
+      formData.append('script_task_id', scriptTaskId)
+    }
+
     for (const [key, value] of Object.entries(transientAnalysisControlLine)) {
       formData.append(key, value)
     }

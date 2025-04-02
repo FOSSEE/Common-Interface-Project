@@ -33,8 +33,8 @@ def process_task(self, task_id):
     lock = acquire_lock(session_id)  # Prevent multiple runs per session
 
     try:
-        logger.info("Processing %s %s %s",
-                    task_id, task.file.path, task.session.app_name)
+        logger.info("Processing %s %s %s %s",
+                    task_id, task.file.path, task.session.app_name, task.workspace_file)
 
         update_task_status(task_id, 'STARTED',
                            meta={'current_process': 'Started Processing File'})
@@ -44,7 +44,7 @@ def process_task(self, task_id):
             state = 'STREAMING'
             current_process = 'Processed Script, Streaming Output'
         else:
-            output = ExecXml(task, self.name)
+            output = ExecXml(task, self.name, task.workspace_file)
             if output == "Streaming":
                 state = 'STREAMING'
                 current_process = 'Processed Xml, Streaming Output'
@@ -73,4 +73,6 @@ def process_task(self, task_id):
 def process_task_script(task_id):
     task = Task.objects.get(task_id=task_id)
     session = task.session
-    return getscriptoutput(session, task)
+    result = getscriptoutput(session, task)
+    update_task_status(task_id, 'SUCCESS', meta=result)
+    return result
