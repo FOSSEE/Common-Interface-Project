@@ -346,12 +346,15 @@ export function ScriptScreen ({ isOpen, onClose }) {
   }
 
   const fetchScriptOutput = async (taskId) => {
+    console.log('Fetching script output for task:', taskId)
     try {
       const response = await api.get(`simulation/get_script_output/${taskId}`)
       const data = response.data
+      console.log('data:', data)
       setResult(data.output || 'No output available.')
 
       if (data.variables && Array.isArray(data.variables)) {
+        console.log('Variables:', data.variables)
         setVariables(data.variables)
       }
       return data
