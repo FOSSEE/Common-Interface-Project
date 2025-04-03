@@ -50,7 +50,7 @@ const Transition = forwardRef(function Transition (props, ref) {
 
 // Dialog box to display generated netlist
 export function NetlistModal ({ open, close, netlist }) {
-  const title = useSelector(state => state.netlistReducer.title)
+  const title = useSelector(state => state.saveSchematic.title)
   const createNetlistFile = () => {
     const titleA = title.split(' ')[1]
     const name = process.env.REACT_APP_NAME
@@ -340,7 +340,7 @@ HelpScreen.propTypes = {
 
 export function ScriptScreen ({ isOpen, onClose }) {
   const scriptDump = useSelector(state => state.saveSchematic.scriptDump)
-  const title = useSelector(state => state.netlistReducer.title)
+  const title = useSelector(state => state.saveSchematic.title)
   const dispatch = useDispatch()
   const scriptHandler = (e) => {
     dispatch(setSchScriptDump(e.target.value))

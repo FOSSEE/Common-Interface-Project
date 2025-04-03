@@ -114,7 +114,7 @@ export default function SimulationScreen ({ open, close }) {
   const dispatch = useDispatch()
   const isGraph = useSelector(state => state.simulation.isGraph)
   const rtitle = useSelector(state => state.simulation.title)
-  const stitle = useSelector(state => state.netlistReducer.title)
+  const stitle = useSelector(state => state.saveSchematic.title)
   const taskId = useSelector(state => state.simulation.taskId)
   const [isResult, setIsResult] = useState(false)
   const graphsRef = useRef([])

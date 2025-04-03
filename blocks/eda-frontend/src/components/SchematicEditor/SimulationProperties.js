@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function SimulationProperties () {
-  const title = useSelector(state => state.netlistReducer.title)
+  const title = useSelector(state => state.saveSchematic.title)
   const isSimRes = useSelector(state => state.simulation.isSimRes)
   const dispatch = useDispatch()
   const classes = useStyles()

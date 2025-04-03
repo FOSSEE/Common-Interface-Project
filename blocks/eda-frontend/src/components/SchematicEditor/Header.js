@@ -30,7 +30,6 @@ import { makeStyles } from '@material-ui/core/styles'
 import { deepPurple } from '@material-ui/core/colors'
 
 import logo from '../../static/favicon.ico'
-import { setTitle } from '../../redux/actions/index'
 import { setSchTitle, setSchShared } from '../../redux/saveSchematicSlice'
 import { logout } from '../../redux/authSlice'
 import { getDateTime as getDate, getUppercaseInitial } from '../../utils/GalleryUtils'
@@ -122,7 +121,6 @@ function Header () {
   }
 
   const titleHandler = (e) => {
-    dispatch(setTitle(`* ${e.target.value}`))
     dispatch(setSchTitle(`${e.target.value}`))
   }
 
