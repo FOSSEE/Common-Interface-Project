@@ -118,7 +118,7 @@ GridProperties.propTypes = {
 export default function PropertiesSidebar ({ gridRef, outlineRef }) {
   const classes = useStyles()
 
-  const isOpen = useSelector(state => state.componentPropertiesReducer.isPropertiesWindowOpen)
+  const isOpen = useSelector(state => state.componentProperties.isPropertiesWindowOpen)
   const description1 = useSelector(state => state.saveSchematic.description)
 
   const [description, setDescription] = useState(description1)

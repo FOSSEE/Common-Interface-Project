@@ -5,10 +5,10 @@ import mxGraphFactory from 'mxgraph'
 import store from '../../../redux/store'
 import dot from '../../../static/dot.gif'
 import blockstyle from '../../../static/style.json'
-import { getCompProperties, closeCompProperties } from '../../../redux/actions/index'
+import { getCompProperties, closeCompProperties } from '../../../redux/componentPropertiesSlice'
 
 import { styleToObject } from '../../../utils/GalleryUtils'
-import toolbarTools from './ToolbarTools'
+import toolbarTools, { editorZoomAct } from './ToolbarTools'
 import keyboardShortcuts from './KeyboardShortcuts'
 import { sideBar } from './SideBar'
 
@@ -137,6 +137,7 @@ export default function LoadGrid (container, sidebar, outline) {
         store.dispatch(getCompProperties(cell))
       } else {
         store.dispatch(closeCompProperties())
+        editorZoomAct()
       }
       evt.consume()
     })
@@ -411,9 +412,9 @@ export default function LoadGrid (container, sidebar, outline) {
     toolbarTools(graph)
 
     store.subscribe(() => {
-      const id = store.getState().componentPropertiesReducer.id
-      const parameterValues = store.getState().componentPropertiesReducer.parameter_values
-      const displayProperties = store.getState().componentPropertiesReducer.displayProperties
+      const id = store.getState().componentProperties.id
+      const parameterValues = store.getState().componentProperties.parameter_values
+      const displayProperties = store.getState().componentProperties.displayProperties
       const cellList = graph.getModel().cells
       const c = cellList[id]
       if (c !== undefined) {
