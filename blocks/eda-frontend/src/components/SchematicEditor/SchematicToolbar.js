@@ -324,11 +324,12 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
       const formData = new FormData()
       formData.append('file', xmlBlob, xmlFileName)
 
-      const response = await api.post('/simulation/save', formData, {
+      const config = {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
-      })
+      }
+      const response = await api.post('/simulation/save', formData, config)
 
       if (!response || response.status !== 200) {
         throw new Error('Network response was not ok')

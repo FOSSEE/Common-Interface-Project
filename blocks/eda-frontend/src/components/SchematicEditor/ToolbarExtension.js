@@ -368,7 +368,7 @@ export function ScriptScreen ({ isOpen, onClose }) {
       })
   }
 
-  function netlistConfig (file, type) {
+  async function netlistConfig (file, type) {
     const formData = new FormData()
 
     formData.append('app_name', process.env.REACT_APP_NAME)
@@ -377,10 +377,10 @@ export function ScriptScreen ({ isOpen, onClose }) {
 
     const config = {
       headers: {
-        'content-type': 'multipart/form-data'
+        'Content-Type': 'multipart/form-data'
       }
     }
-    return api.post('simulation/upload', formData, config)
+    return await api.post('simulation/upload', formData, config)
   }
 
   const executeScript = () => {
