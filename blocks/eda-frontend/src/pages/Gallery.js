@@ -219,12 +219,12 @@ const Gallery = () => {
   }
 
   const filteredSchematics =
-    // Filter based on selected book ID first
-    selectedBook === '' // If no book is selected, show nothing
-      ? []
-      : selectedBook === 'all'
-        ? GallerySchSample // Show all schematics for 'All Books'
-        : GallerySchSample.filter((sch) => sch.book_id === parseInt(selectedBook))
+    (() => {
+      if (!selectedBook) return []
+      if (selectedBook === 'all') return GallerySchSample
+      const selectedBookId = Number(selectedBook)
+      return GallerySchSample.filter((sch) => sch.book_id === selectedBookId)
+    })()
 
   const st = searchTerm.trim().toLowerCase()
   const galleryst = 'gallery' + st
