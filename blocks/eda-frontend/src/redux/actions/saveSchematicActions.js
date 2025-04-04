@@ -50,6 +50,15 @@ export const setSchScriptDump = (scriptDump) => (dispatch) => {
   })
 }
 
+export const setShowDot = (value) => (dispatch) => {
+  dispatch({
+    type: actions.UPDATE_SHOW_DOT,
+    payload: {
+      value
+    }
+  })
+}
+
 // Api call to save new schematic or updating saved schematic.
 export const saveSchematic = (title, description, xml, base64, scriptDump) => (dispatch, getState) => {
   const body = {
@@ -132,6 +141,7 @@ export const fetchSchematic = (saveId) => (dispatch, getState) => {
         dispatch(setSchDescription(res.data.description))
         dispatch(setSchXmlData(res.data.data_dump))
         dispatch(setSchScriptDump(res.data.script_dump))
+        dispatch(setShowDot(res.data.script_dump !== ''))
         renderGalleryXML(res.data.data_dump)
       }
     )
@@ -209,6 +219,7 @@ export const loadGallery = (data) => async (dispatch) => {
       dispatch(setSchDescription(data.description))
       dispatch(setSchXmlData(dataDump))
       dispatch(setSchScriptDump(data.script_dump))
+      dispatch(setShowDot(data.script_dump !== ''))
       renderGalleryXML(dataDump)
     }
 
@@ -237,5 +248,6 @@ export const openLocalSch = (obj) => (dispatch) => {
   dispatch(setSchDescription(data.description))
   dispatch(setSchXmlData(data.data_dump))
   dispatch(setSchScriptDump(data.script_dump))
+  dispatch(setShowDot(data.script_dump !== ''))
   renderGalleryXML(data.data_dump)
 }

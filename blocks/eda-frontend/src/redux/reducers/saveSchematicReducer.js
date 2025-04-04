@@ -7,7 +7,8 @@ const initialState = {
   details: {},
   isLoading: false,
   isSaved: null,
-  isShared: null
+  isShared: null,
+  // showDot: true
 }
 
 export default function saveSchematicReducer (state = initialState, action) {
@@ -86,6 +87,13 @@ export default function saveSchematicReducer (state = initialState, action) {
       return {
         ...state,
         scriptDump: action.payload.scriptDump
+      }
+    }
+
+    case actions.UPDATE_SHOW_DOT: {
+      return {
+        ...state,
+        showDot: action.payload.value
       }
     }
 

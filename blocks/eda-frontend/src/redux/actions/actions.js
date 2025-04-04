@@ -47,6 +47,7 @@ export const CLEAR_DETAILS = 'CLEAR_DETAILS'
 export const LOAD_GALLERY = 'LOAD_GALLERY'
 export const SET_SCH_SCRIPT_DUMP = 'SET_SCH_SCRIPT_DUMP'
 export const SET_SCRIPT_TASK_ID = 'SET_SCRIPT_TASK_ID'
+export const UPDATE_SHOW_DOT = 'UPDATE_SHOW_DOT'
 
 // Action for fetching on-cloud saved schematics for authenticated user to display in dashboard
 export const FETCH_SCHEMATICS = 'FETCH_SCHEMATICS'

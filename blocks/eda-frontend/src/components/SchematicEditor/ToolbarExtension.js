@@ -36,7 +36,7 @@ import {
 import { makeStyles } from '@material-ui/core/styles'
 import CloseIcon from '@material-ui/icons/Close'
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchSchematics, fetchSchematic, fetchDiagram, fetchGallery, setSchScriptDump, setScriptTaskId } from '../../redux/actions/index'
+import { fetchSchematics, fetchSchematic, fetchDiagram, fetchGallery, setSchScriptDump, setScriptTaskId, setShowDot } from '../../redux/actions/index'
 import { blue } from '@material-ui/core/colors'
 import { getDateTime as getDate, getUppercaseInitial, saveToFile } from '../../utils/GalleryUtils'
 import api from '../../utils/Api'
@@ -337,12 +337,14 @@ HelpScreen.propTypes = {
 
 export function ScriptScreen ({ isOpen, onClose }) {
   const scriptDump = useSelector(state => state.saveSchematicReducer.scriptDump)
+  const showDot = useSelector(state => state.saveSchematicReducer.showDot)
   const title = useSelector(state => state.netlistReducer.title)
   const dispatch = useDispatch()
   const [result, setResult] = useState('No output yet...')
   const [variables, setVariables] = useState([])
   const scriptHandler = (e) => {
     dispatch(setSchScriptDump(e.target.value))
+    dispatch(setShowDot(true))
   }
 
   const fetchScriptOutput = async (taskId) => {
@@ -411,10 +413,12 @@ export function ScriptScreen ({ isOpen, onClose }) {
   const executeScript = () => {
     dispatch(setScriptTaskId(''))
     prepareScriptNetlist(scriptDump)
+    dispatch(setShowDot(false))
   }
 
   const resetCode = () => {
     dispatch(setSchScriptDump(''))
+    dispatch(setShowDot(false))
     dispatch(setScriptTaskId(''))
     setResult('No output yet...')
     setVariables('')
