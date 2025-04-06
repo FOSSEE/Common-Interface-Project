@@ -24,11 +24,15 @@ TASK_STATUS_CHOICES = [
 ]
 
 
+def get_expire_at():
+    return timezone.now() + timedelta(days=1)
+
+
 class Session(models.Model):
     session_id = models.CharField(primary_key=True, max_length=40, null=False, editable=False)
     app_name = models.CharField(max_length=40, blank=False, null=False, default='')
     created_at = models.DateTimeField(auto_now_add=True)
-    expire_at = models.DateTimeField(default=timezone.now() + timedelta(days=1))
+    expire_at = models.DateTimeField(default=get_expire_at)
     count = models.IntegerField(null=False, default=0)
 
     def save(self, *args, **kwargs):
