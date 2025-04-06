@@ -59,6 +59,8 @@ const refreshSession = async () => {
   }
 }
 
+let refreshingSession = null
+
 api.interceptors.request.use(async (config) => {
   // Avoid infinite loop by skipping the interceptor for session refresh requests
   if (config.url.includes('simulation/get_session')) {
@@ -69,11 +71,17 @@ api.interceptors.request.use(async (config) => {
 
   // Check if session is expired and refresh if necessary
   if (!sessionId || isSessionExpired()) {
-    console.log('Session expired, refreshing...')
-    deleteCookie('sessionid')
+    if (!refreshingSession) {
+      console.log('Session expired, refreshing...')
+      deleteCookie('sessionid')
+
+      refreshingSession = refreshSession().finally(() => {
+        refreshingSession = null
+      })
+    }
 
     // Refresh session but avoid triggering interceptor again
-    sessionId = await refreshSession()
+    sessionId = await refreshingSession
     if (!sessionId) {
       return Promise.reject(new Error('Failed to refresh session'))
     }
