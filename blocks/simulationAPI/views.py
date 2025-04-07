@@ -16,7 +16,7 @@ from blocks.celery_tasks import app
 from simulationAPI.models import Task, Session
 from simulationAPI.negotiation import IgnoreClientContentNegotiation
 from simulationAPI.serializers import TaskSerializer
-from simulationAPI.tasks import process_task, process_task_script
+from simulationAPI.tasks import process_task
 from simulationAPI.helpers.ngspice_helper import CreateXcos, update_task_status
 
 
@@ -84,10 +84,15 @@ class XmlUploader(APIView):
             task_id = serializer.data['task_id']
             celery_task = process_task.apply_async(
                 kwargs={'task_id': str(task_id)}, task_id=str(task_id))
-            response_data = {
-                'state': celery_task.state,
-                'details': serializer.data,
-            }
+            if task_type == 'XCOS':
+                response_data = {
+                    'state': celery_task.state,
+                    'details': serializer.data,
+                }
+            else:
+                rv = celery_task.get(timeout=10)
+                response_data = {**rv, 'task_id':task_id}
+               
             return Response(response_data)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -368,24 +373,6 @@ class StreamView(APIView):
         update_task_status(task_id, 'SUCCESS')
         # Notify Client
         yield "event: DONE\ndata: None\n\n"
-
-
-class GetScriptOutputView(APIView):
-    """
-    API endpoint to get the output of a script execution.
-    """
-
-    def get(self, request, task_id, *args, **kwargs):
-
-        try:
-            celery_task = process_task_script.apply_async(kwargs={'task_id': str(task_id)}, task_id=str(uuid.uuid4()))
-            result = celery_task.get(timeout=30)
-            update_task_status(celery_task.id, 'SUCCESS', meta=result)
-            print("RESULT:", result)
-            return Response(result, status=status.HTTP_200_OK)
-        except Exception as e:
-            logger.error(f"Error calling getscriptoutput (Task_id: {task_id}): {str(e)}")
-            return Response({"error": "Internal server error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 def get_session(request):

@@ -41,8 +41,10 @@ def process_task(self, task_id):
 
         if task_type == 'SCRIPT':
             output = uploadscript(task.session, task)
-            state = 'STREAMING'
-            current_process = 'Processed Script, Streaming Output'
+            output = getscriptoutput(task.session, task)
+            state = 'SUCCESS'
+            update_task_status(task_id, state,
+                        meta=output)
         else:
             output = ExecXml(task, self.name, task.workspace_file)
             if output == "Streaming":
@@ -52,8 +54,9 @@ def process_task(self, task_id):
                 state = 'SUCCESS'
                 current_process = 'Processed Xml, Loading Output'
 
-        update_task_status(task_id, state,
+            update_task_status(task_id, state,
                         meta={'current_process': current_process})
+
         return output
 
     except Exception as e:
@@ -68,11 +71,3 @@ def process_task(self, task_id):
     finally:
         release_lock(lock)  # Ensure lock is always released
 
-
-@shared_task
-def process_task_script(task_id):
-    task = Task.objects.get(task_id=task_id)
-    session = task.session
-    result = getscriptoutput(session, task)
-    update_task_status(task_id, 'SUCCESS', meta=result)
-    return result

@@ -347,24 +347,6 @@ export function ScriptScreen ({ isOpen, onClose }) {
     dispatch(setShowDot(true))
   }
 
-  const fetchScriptOutput = async (taskId) => {
-    console.log('Fetching script output for task:', taskId)
-    try {
-      const response = await api.get(`simulation/get_script_output/${taskId}`)
-      const data = response.data
-      console.log('data:', data)
-      setResult(data.output || 'No output available.')
-
-      if (data.variables && Array.isArray(data.variables)) {
-        console.log('Variables:', data.variables)
-        setVariables(data.variables)
-      }
-      return data
-    } catch (error) {
-      console.error('Error fetching script output:', error)
-      setResult('Error fetching script output.')
-    }
-  }
 
   const prepareScriptNetlist = (scriptDump) => {
     const titleA = title.split(' ')[1]
@@ -379,16 +361,14 @@ export function ScriptScreen ({ isOpen, onClose }) {
   function sendSriptNetlist (file, type) {
     netlistConfig(file, type)
       .then((response) => {
-        const res = response.data
-        const taskId = res.details.task_id
+        const data = response.data
+        const taskId = data.task_id
         dispatch(setScriptTaskId(taskId))
 
-        setTimeout(() => {
-          fetchScriptOutput(taskId)
-            .then(() => {
+        console.log('taskId2:', taskId)
+        setResult(data.output || 'No output available.')
+        setVariables(data.variables)
 
-            })
-        }, 3000)
       })
       .catch(function (error) {
         console.error(error)
