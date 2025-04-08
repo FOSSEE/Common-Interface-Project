@@ -7,8 +7,9 @@ from gevent.event import Event
 from gevent.lock import RLock
 import glob
 import json
+import fileinput
 import os
-from os.path import abspath, exists, isfile, join
+from os.path import abspath, exists, isfile, join, splitext
 import re
 import signal
 import subprocess
@@ -17,13 +18,18 @@ from threading import current_thread
 from time import time
 import unicodedata
 import uuid
+import logging
+from xml.dom import minidom
+import shutil
 
 from simulationAPI.helpers import config
+
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'blocks.settings')
 
 # Scilab dir
 SCILAB_DIR = abspath(settings.SCILAB_DIR)
+READCONTENTFILE = abspath("resources/Read_Content.txt")
 SCILAB = join(SCILAB_DIR, 'bin', 'scilab-adv-cli')
 BASEDIR = abspath('src/static')
 IMAGEDIR = join(BASEDIR, config.IMAGEDIR)
@@ -66,7 +72,8 @@ SCILAB_CMD = [SCILAB,
               "-nouserstartup",
               "-nb",
               "-nw",
-              "-e", SCILAB_START]
+              "-e", SCILAB_START
+            ]
 
 USER_DATA = {}
 
@@ -222,13 +229,25 @@ class UserData:
     def __init__(self):
         self.sessiondir = mkdtemp(
             prefix=datetime.now().strftime('%Y%m%d.'), dir=SESSIONDIR)
-        self.diagrams = []
+        self.diagrams = {}
         self.datafiles = []
         self.scripts = {}
         self.scriptcount = 0
         self.scifile = SciFile()
         self.diagramlock = RLock()
         self.timestamp = time()
+
+    def __str__(self):
+        return (f"UserData(sessiondir={self.sessiondir}, "
+                f"diagrams={len(self.diagrams)}, "
+                f"datafiles={len(self.datafiles)}, "
+                f"scripts={list(self.scripts.keys())}, "
+                f"scriptcount={self.scriptcount}, "
+                f"scifile={self.scifile}, "
+                f"timestamp={self.timestamp})")
+    
+    def __repr__(self):
+        return self.__str__()
 
     def getscriptcount(self):
         with self.diagramlock:
@@ -238,7 +257,7 @@ class UserData:
         return str(rv)
 
     def clean(self):
-        for diagram in self.diagrams:
+        for diagram in self.diagrams.values():
             diagram.clean()
         self.diagrams = None
         for script in self.scripts:
@@ -615,15 +634,22 @@ def prestart_scilab():
     return (proc, log_name)
 
 
-def run_scilab(command, base, createlogfile=False, timeout=70):
+def run_scilab(command, base, createlogfile=False, timeout=1800):
     instance = get_scilab_instance()
     if instance is None:
         logger.error('cannot run command %s', command)
         return None
 
-    cmd = command + SCILAB_END
+    logger.info('Scilab instance log file: %s', instance.log_name)
+    cmd = 'try;' + command + SCILAB_END + '\n'
     logger.info('running command %s', cmd)
     instance.proc.stdin.write(cmd)
+    instance.proc.stdin.flush()
+
+    # output, error = instance.proc.communicate(timeout=timeout)
+    # with open(instance.log_name, 'a') as log:
+    #     log.write(output if output else '')
+    #     log.write(error if error else '')
 
     if not createlogfile:
         remove(instance.log_name)
@@ -673,17 +699,20 @@ def uploadscript(session, task):
     '''
     Below route is called for uploading script file.
     '''
-    (script, sessiondir) = add_script(session)
+    (script, sessiondir) = add_script(session, task)
 
-    file = task.file.name
+    file = task.file
     if not file:
         msg = "Upload Error\n"
         rv = {'msg': msg}
-        return JsonResponse(rv)
+        return rv
 
     fname = join(sessiondir, SCRIPT_FILES_FOLDER,
-                 script.script_id + '_script.sce')
-    file.save(fname)
+                 f"{script.script_id}_script.sce")
+    # file.save(fname)
+    with open(fname, 'wb+') as destination:
+        for chunk in file.chunks():
+            destination.write(chunk)
     script.filename = fname
 
     if is_unsafe_script(fname):
@@ -691,25 +720,30 @@ def uploadscript(session, task):
                "Please edit the script again.\n")
         script.status = -1
         rv = {'status': script.status, 'msg': msg}
-        return JsonResponse(rv)
+        return rv
 
-    wfname = join(sessiondir, SCRIPT_FILES_FOLDER,
-                  script.script_id + '_script_workspace.dat')
+    wfname = join(sessiondir, WORKSPACE_FILES_FOLDER,
+                  f"{script.script_id}_script_workspace.dat")
     script.workspace_filename = wfname
     command = "exec('%s');save('%s');" % (fname, wfname)
 
     script.instance = run_scilab(command, script)
+    
 
     if script.instance is None:
         msg = "Resource not available"
         script.status = -2
         rv = {'status': script.status, 'msg': msg}
-        return JsonResponse(rv)
+        return rv
+    
+    # Save workspace file in task model
+    task.workspace_file = wfname
+    task.save()
 
     msg = ''
     script.status = 1
-    rv = {'script_id': script.script_id, 'status': script.status, 'msg': msg}
-    return JsonResponse(rv)
+    rv = {'task_id': task.task_id, 'script_id': script.script_id, 'status': script.status, 'msg': msg}
+    return rv
 
 
 def clean_output(s):
@@ -724,24 +758,24 @@ def clean_output(s):
     return s
 
 
-def getscriptoutput(session):
+def getscriptoutput(session, task):
     '''
     Below route is called for uploading script file.
     '''
-    script = get_script(session, get_script_id())
+    script = get_script(session, task)
     if script is None:
         # when called with same script_id again or with incorrect script_id
         logger.warning('no script')
         msg = "no script"
         rv = {'msg': msg}
-        return JsonResponse(rv)
+        return rv
 
     instance = script.instance
     if instance is None:
         logger.warning('no instance')
         msg = "no instance"
         rv = {'msg': msg}
-        return JsonResponse(rv)
+        return rv
 
     proc = instance.proc
 
@@ -758,7 +792,7 @@ def getscriptoutput(session):
             msg = 'Script stopped'
             script.status = -5
             rv = {'status': script.status, 'msg': msg, 'output': output}
-            return JsonResponse(rv)
+            return rv
         if returncode > 0:
             logger.info('return code is %s', returncode)
             if output:
@@ -771,7 +805,7 @@ def getscriptoutput(session):
                    "Please edit the script and execute again.\n")
             script.status = -3
             rv = {'status': script.status, 'msg': msg, 'output': output}
-            return JsonResponse(rv)
+            return rv
 
         logger.info('workspace for %s saved in %s',
                     script.script_id, script.workspace_filename)
@@ -786,7 +820,7 @@ def getscriptoutput(session):
             msg = "Resource not available"
             script.status = -2
             rv = {'status': script.status, 'msg': msg}
-            return JsonResponse(rv)
+            return rv
 
         proc = instance.proc
         listoutput = proc.communicate(timeout=10)[0]
@@ -799,7 +833,7 @@ def getscriptoutput(session):
             msg = 'Script stopped'
             script.status = -5
             rv = {'status': script.status, 'msg': msg, 'output': listoutput}
-            return JsonResponse(rv)
+            return rv
         if returncode > 0:
             logger.info('return code is %s', returncode)
             if listoutput:
@@ -815,26 +849,26 @@ def getscriptoutput(session):
         rv = {'script_id': script.script_id, 'status': script.status,
               'msg': msg, 'output': output, 'returncode': returncode,
               'variables': variables}
-        return JsonResponse(rv)
+        return rv
     except subprocess.TimeoutExpired:
         kill_script(script)
         msg = 'Timeout'
         script.status = -4
         rv = {'status': script.status, 'msg': msg}
-        return JsonResponse(rv)
+        return rv
     except UnicodeDecodeError:
         kill_script(script)
         msg = 'Unicode Decode Error'
         script.status = -6
         rv = {'status': script.status, 'msg': msg}
-        return JsonResponse(rv)
+        return rv
 
 
-def sendfile(session):
+def sendfile(session, task):
     '''
     This route is used in chart.js for sending image filename
     '''
-    diagram = get_diagram(session, get_request_id())
+    diagram = get_diagram(session, task)
     if diagram is None:
         logger.warning('no diagram')
         return ''
@@ -916,12 +950,12 @@ def load_variables(filename):
     return command
 
 
-def start_scilab(session):
+def start_scilab(session, task, xcosfile):
     '''
     function to execute xcos file using scilab (scilab-adv-cli), access log
     file written by scilab
     '''
-    diagram = get_diagram(session, get_request_id())
+    diagram = get_diagram(session, task)
     if diagram is None:
         logger.warning('no diagram')
         return "error"
@@ -1001,6 +1035,8 @@ def start_scilab(session):
 
     instance = diagram.instance
     logger.info('log_name=%s', instance.log_name)
+    task.log_name = instance.log_name
+    task.save()
 
     # Start sending log to chart function for creating chart
     try:
@@ -1069,15 +1105,313 @@ def stopDetailsThread(diagram):
         remove(fn)
 
 
-def get_diagram(session, xcos_file_id, remove=False):
-    if not xcos_file_id:
+def upload(session, task, xcosfile):
+    '''Route that will process the file upload'''
+    # Get the file
+    file = xcosfile
+    # Check if the file is not null
+    if not file:
+        return "error"
+    # flags to check if both TOWS_c and FROMWSB are present
+    flag1 = 0
+    flag2 = 0
+    list1 = []
+    list2 = []
+    # Make the filename safe, remove unsupported chars
+    (diagram, scripts, sessiondir) = add_diagram(session, task)
+
+    script = get_script(session, task, scripts=scripts)
+    if script is not None:
+        diagram.workspace_filename = script.workspace_filename
+    # Save the file in xml extension and using it for further modification
+    # by using xml parser
+    temp_file_xml_name = diagram.diagram_id + ".xml"
+    shutil.copy(xcosfile, temp_file_xml_name)
+    # file.save(temp_file_xml_name)
+    new_xml = minidom.parse(temp_file_xml_name)
+
+    # to identify if we have to load or save to workspace or neither #0 if
+    # neither TOWS_c or FROMWSB found
+    blocks = new_xml.getElementsByTagName("BasicBlock")
+    tk_is_present = False
+    pattern = re.compile(r"<SplitBlock")
+    for i, line in enumerate(open(temp_file_xml_name)):
+        for match in re.finditer(pattern, line):
+            list1.append(i + 1)
+    pattern1 = re.compile(r"<ControlPort")
+    for i, line in enumerate(open(temp_file_xml_name)):
+        for match in re.finditer(pattern1, line):
+            list2.append(i + 1)
+    pattern2 = re.compile(r"<ImplicitInputPort")
+    count1 = 0
+
+    for i, line in enumerate(open(temp_file_xml_name)):
+        for match in re.finditer(pattern2, line):
+            count1 += 1
+    if count1 >= 1:
+        splitline = []
+        count = 0
+        for i in range(len(list1)):
+            for j in range(len(list2)):
+                if list2[j] == list1[i] + 3:
+                    count += 1
+                    splitline.append(list1[i])
+        blocksplit = new_xml.getElementsByTagName("SplitBlock")
+        block_ids = []  # this stores the id of split blocks
+        for block in blocksplit:
+            if block.getAttribute("style") == "SPLIT_f":
+                block_ids.append(int(block.getAttribute("id")))
+        compsplit = []
+        for i in range(len(splitline)):
+            for j in range(len(list1)):
+                if splitline[i] == list1[j]:
+                    compsplit.append(j)
+
+        finalsplit = []
+        for i in range(len(compsplit)):
+            finalsplit.append(block_ids[compsplit[i]])
+
+        blockcontrol = new_xml.getElementsByTagName("ControlPort")
+        for block in blockcontrol:
+            for i in range(len(finalsplit)):
+                # match the lines with the parent of our spliblocks which
+                # we need to change
+                if block.getAttribute("parent") == str(finalsplit[i]):
+                    block.setAttribute('id', '-1')
+
+        blockcommand = new_xml.getElementsByTagName("CommandPort")
+        for block in blockcommand:
+            for i in range(len(finalsplit)):
+                if block.getAttribute("parent") == str(finalsplit[i]):
+                    block.setAttribute('id', '-1')
+
+        # here we take the ids of command controllink which we will search
+        # and change
+        finalchangeid = []
+        for i in range(len(finalsplit)):
+            finalchangeid.append(finalsplit[i] + 4)
+            finalchangeid.append(finalsplit[i] + 5)
+
+        # here we save the contents
+        with open(temp_file_xml_name, 'w') as f:
+            f.write(new_xml.toxml())
+
+        with open(temp_file_xml_name, "r") as f:
+            newline = []
+            i = 0
+            for word in f.readlines():
+
+                if "<CommandControlLink id=" in word:
+                    temp_word = ""
+                    for i in range(len(finalchangeid)):
+                        fcid = str(finalchangeid[i])
+                        srch = '<CommandControlLink id="' + fcid + '"'
+                        if srch in word:
+                            rplc = '<ImplicitLink id="' + fcid + '"'
+                            temp_word = word.replace(srch, rplc)
+                            i += 1
+                    if temp_word != "":
+                        newline.append(temp_word)
+                    else:
+                        newline.append(word)
+                else:
+                    newline.append(word)
+        with open(temp_file_xml_name, "w") as f:
+            for line in newline:
+                f.writelines(line)
+        with open(temp_file_xml_name, "r") as in_file:
+            buf = in_file.readlines()
+        # length=len(finalsplit)
+        # return finalsplit
+        with open(temp_file_xml_name, "w") as out_file:
+            for line in buf:
+                for i in range(len(finalsplit)):
+                    fs = str(finalsplit[i])
+                    srch = ('<ControlPort connectable="0" '
+                            'dataType="UNKNOW_TYPE" id="-1" ordering="1" '
+                            'parent="' + fs + '"')
+                    if srch in line:
+                        line = (
+                            '\t    <ImplicitInputPort connectable="0" '
+                            'dataType="UNKNOW_TYPE" '
+                            'id="' + str(finalsplit[i] + 1) + '" '
+                            'ordering="1" parent="' + fs + '" '
+                            'style="ImplicitInputPort">\n'
+                            '\t\t<mxGeometry as="geometry" height="10" '
+                            'relative="1" width="10" y="0.5000">\n'
+                            '\t\t</mxGeometry>\n'
+                            '\t    </ImplicitInputPort>\n'
+                            '\t    <ImplicitOutputPort connectable="0" '
+                            'dataType="UNKNOW_TYPE" '
+                            'id="' + str(finalsplit[i] + 2) + '" '
+                            'ordering="1" parent="' + fs + '" '
+                            'style="ImplicitOutputPort">\n'
+                            '\t\t<mxGeometry as="geometry" height="10" '
+                            'relative="1" width="10" y="0.5000">\n'
+                            '\t\t</mxGeometry>\n'
+                            '\t    </ImplicitOutputPort>\n'
+                            '\t    <ImplicitOutputPort connectable="0" '
+                            'dataType="UNKNOW_TYPE" '
+                            'id="' + str(finalsplit[i] + 3) + '" '
+                            'ordering="1" parent="' + fs + '" '
+                            'style="ImplicitOutputPort">\n'
+                            '\t\t<mxGeometry as="geometry" height="10" '
+                            'relative="1" width="10" y="0.5000">\n'
+                            '\t\t</mxGeometry>\n'
+                            '\t    </ImplicitOutputPort>\n' + line)
+
+                out_file.write(line)
+        list3 = []
+        implitdetect = []
+        # return temp_file_xml_name
+        for i in range(len(finalsplit)):
+            implitdetect.append(finalsplit[i] + 5)
+            implitdetect.append(finalsplit[i] + 6)
+        for i in range(len(implitdetect)):
+            pattern3 = re.compile(
+                "<ImplicitLink id=\"" + str(implitdetect[i]) + "\"")
+            for i, line in enumerate(open(temp_file_xml_name)):
+                for match in re.finditer(pattern3, line):
+                    list3.append(i - 1)
+        with open(temp_file_xml_name, 'r+') as f:
+            data = f.read().splitlines()
+            replace = list3
+            for i in replace:
+                data[i] = '\t    </ImplicitLink>'
+            f.seek(0)
+            f.write('\n'.join(data))
+            f.truncate()
+        fname = join(sessiondir, UPLOAD_FOLDER,
+                     splitext(temp_file_xml_name)[0] + ".xcos")
+        os.rename(temp_file_xml_name, fname)
+        diagram.xcos_file_name = fname
+        return diagram.diagram_id
+
+    # List to contain all affich blocks
+    blockaffich = new_xml.getElementsByTagName("AfficheBlock")
+    for block in blockaffich:
+        interfaceFunctionName = block.getAttribute("interfaceFunctionName")
+        if interfaceFunctionName == "AFFICH_m":
+            diagram.workspace_counter = 4
+
+    # List to contain all the block IDs of tkscales so that we can create
+    # read blocks with these IDs
+    block_id = []
+    for block in blocks:
+        interfaceFunctionName = block.getAttribute("interfaceFunctionName")
+        if interfaceFunctionName == "TKSCALE":
+            block_id.append(block.getAttribute("id"))
+            block.setAttribute('id', '-1')
+            tk_is_present = True
+            # Changed the ID of tkscales to -1 so that virtually the
+            # tkscale blocks get disconnected from diagram at the backend
+        # Taking workspace_counter 1 for TOWS_c and 2 for FROMWSB
+        elif interfaceFunctionName == "scifunc_block_m":
+            diagram.workspace_counter = 5
+        elif interfaceFunctionName == "TOWS_c":
+            if block.childNodes:
+                for node in block.childNodes:
+                    if not isinstance(node, minidom.Element):
+                        continue
+                    if node.getAttribute("as") != "exprs":
+                        continue
+                    if node.childNodes is None:
+                        continue
+                    childCount = 0
+                    for childChildNode in node.childNodes:
+                        if not isinstance(childChildNode, minidom.Element):
+                            continue
+                        childCount += 1
+                        if childCount != 2:
+                            continue
+                        value = childChildNode.getAttribute("value")
+                        if value is not None:
+                            diagram.save_variables.add(value)
+                        break
+            diagram.workspace_counter = 1
+            flag1 = 1
+        elif interfaceFunctionName == "FROMWSB":
+            diagram.workspace_counter = 2
+            flag2 = 1
+    if diagram.save_variables:
+        logger.info("save variables = %s", diagram.save_variables)
+    if flag1 and flag2:
+        # Both TOWS_c and FROMWSB are present
+        diagram.workspace_counter = 3
+    # Hardcoded the real time scaling to 1.0 (i.e., no scaling of time
+    # occurs) only if tkscale is present
+    if tk_is_present:
+        for dia in new_xml.getElementsByTagName("XcosDiagram"):
+            dia.setAttribute('realTimeScaling', '1.0')
+
+    # Save the changes made by parser
+    with open(temp_file_xml_name, 'w') as f:
+        f.write(new_xml.toxml())
+
+    # In front of block tkscale printing the block corresponding to read
+    # function and assigning corresponding values
+    skipblock = False
+    for line in fileinput.input(temp_file_xml_name, inplace=1):
+
+        if 'interfaceFunctionName=\"TKSCALE\"' in line:
+            # change the block ID
+            i = diagram.tk_count
+            print('<BasicBlock blockType="d" id="', block_id[i], '" '
+                  'interfaceFunctionName="RFILE_f" parent="1" '
+                  'simulationFunctionName="readf" '
+                  'simulationFunctionType="DEFAULT" style="RFILE_f">',
+                  sep='')
+            print('<ScilabString as="exprs" height="5" width="1">')
+            print('<data column="0" line="0" value="1"/>')
+            # Value equal to 1 implies take readings from first column in
+            # the file
+            print('<data column="0" line="1" value="2"/>')
+            # Path to the file from which read block obtains the values
+            fname = join(diagram.sessiondir, VALUES_FOLDER,
+                         diagram.diagram_id + "_tk" + str(i + 1) + ".txt")
+            print('<data column="0" line="2" value="', fname, '"/>',
+                  sep='')
+            print('<data column="0" line="3" value="(2(e10.3,1x))"/>')
+            # (2(e10.3,1x)) The format in which numbers are written
+            # Two columns with base 10 and 3 digits after decimal and 1x
+            # represents 1 unit space between two columns.
+            print('<data column="0" line="4" value="2"/>')
+            print('</ScilabString>')
+            print('<ScilabDouble as="realParameters" '
+                  'height="0" width="0"/>')
+            print('<ScilabDouble as="integerParameters" '
+                  'height="105" width="1">')
+            diagram.tk_count += 1
+            # The remaining part of the block is read from the
+            # Read_Content.txt file and written to the xml file
+            with open(READCONTENTFILE, "r") as read_file:
+                for line_content in read_file:
+                    print(line_content, end='')
+            skipblock = True
+        elif skipblock:
+            if '</BasicBlock>' in line:
+                skipblock = False
+        else:
+            print(line, end='')
+
+    # Changing the file extension from xml to xcos
+    fname = join(sessiondir, UPLOAD_FOLDER,
+                 splitext(temp_file_xml_name)[0] + ".xcos")
+    # Move the xcos file to uploads directory
+    os.rename(temp_file_xml_name, fname)
+    diagram.xcos_file_name = fname
+    return diagram.diagram_id
+
+
+def get_diagram(session, task, remove=False):
+    if not task:
         logger.warning('no id')
         return None
-    xcos_file_id = int(xcos_file_id)
+    xcos_file_id = task.task_id
 
     (diagrams, __, __, __, __, __, __) = init_session(session)
 
-    if xcos_file_id < 0 or xcos_file_id >= len(diagrams):
+    if xcos_file_id not in diagrams:
         logger.warning('id %s not in diagrams', xcos_file_id)
         return None
 
@@ -1089,49 +1423,45 @@ def get_diagram(session, xcos_file_id, remove=False):
     return diagram
 
 
-def add_diagram(session):
+def add_diagram(session, task):
     (diagrams, scripts, __, __, __, sessiondir, diagramlock) = init_session(session)
 
     with diagramlock:
         diagram = Diagram()
         diagram.diagram_id = str(len(diagrams))
         diagram.sessiondir = sessiondir
-        diagrams.append(diagram)
+        # diagrams.append(diagram)
+        diagrams[task.task_id] = diagram
 
     return (diagram, scripts, sessiondir)
 
 
-def get_script(session, script_id, scripts=None, remove=False):
-    if script_id is None:
-        return None
-    if not script_id:
-        logger.warning('no id')
+def get_script(session, task, scripts=None, remove=False):
+    if task is None:
         return None
 
     if scripts is None:
         (__, scripts, __, __, __, __, __) = init_session(session)
 
-    if script_id not in scripts:
-        logger.warning('id %s not in scripts', script_id)
+    if task.task_id not in scripts:
+        logger.warning('id %s not in scripts', task.task_id)
         return None
 
-    script = scripts[script_id]
+    script = scripts[task.task_id]
 
     if remove:
-        del scripts[script_id]
+        del scripts[task.task_id]
 
     return script
 
 
-def add_script(session):
-    (__, scripts, getscriptcount, __, __, sessiondir, __) = init_session(session)
-
-    script_id = getscriptcount()
+def add_script(session, task):
+    (__, scripts, __, __, __, sessiondir, __) = init_session(session)
 
     script = Script()
-    script.script_id = script_id
+    script.script_id = task.task_id
     script.sessiondir = sessiondir
-    scripts[script_id] = script
+    scripts[task.task_id] = script
 
     return (script, sessiondir)
 
@@ -1190,24 +1520,6 @@ def get_request_id(request, key='id'):
     logger.warning('Invalid value %s for %s in request.args',
                    displayvalue, key)
     return ''
-
-
-def get_script_id(request, key='script_id', default=''):
-    form = request.form
-    if form is None:
-        logger.warning('No form in request')
-        return default
-    if key not in form:
-        logger.warning('No %s in request.form', key)
-        return default
-    value = form[key]
-    if re.fullmatch(r'[0-9]+', value):
-        return value
-    displayvalue = value if len(
-        value) <= DISPLAY_LIMIT + 3 else value[:DISPLAY_LIMIT] + '...'
-    logger.warning('Invalid value %s for %s in request.form',
-                   displayvalue, key)
-    return default
 
 
 def internal_fun(session, task, internal_key):
@@ -1310,10 +1622,10 @@ def clean_text_2(s, forindex):
     return s
 
 
-def kill_scilab(diagram=None, session=None):
+def kill_scilab(diagram=None, session=None, task=None):
     '''Define function to kill scilab(if still running) and remove files'''
     if diagram is None:
-        diagram = get_diagram(session, get_request_id(), True)
+        diagram = get_diagram(session, task, True)
 
     if diagram is None:
         logger.warning('no diagram')
@@ -1335,10 +1647,10 @@ def kill_scilab(diagram=None, session=None):
     stopDetailsThread(diagram)
 
 
-def kill_script(script=None, session=None):
+def kill_script(script=None, session=None, task=None):
     '''Below route is called for stopping a running script file.'''
     if script is None:
-        script = get_script(session, get_script_id(), remove=True)
+        script = get_script(session, task, remove=True)
         if script is None:
             # when called with same script_id again or with incorrect script_id
             logger.warning('no script')

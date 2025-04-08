@@ -8,6 +8,7 @@ const initialState = {
   description: '',
   xmlData: null,
   scriptDump: '',
+  showDot: false,
   details: {},
   isLoading: false,
   isSaved: null,
@@ -186,6 +187,9 @@ const saveSchematicSlice = createSlice({
     },
     setSchScriptDump: (state, action) => {
       state.scriptDump = action.payload
+    },
+    setShowDot: (state, action) => {
+      state.showDot = action.payload
     }
   },
   extraReducers: (builder) => {
@@ -214,6 +218,7 @@ const saveSchematicSlice = createSlice({
         state.title = action.payload.name
         state.xmlData = action.payload.data_dump
         state.scriptDump = action.payload.script_dump
+        state.showDot = action.payload.script_dump !== ''
       })
       .addCase(fetchSchematic.rejected, (state) => {
         state.isLoading = false
@@ -230,6 +235,7 @@ const saveSchematicSlice = createSlice({
         state.title = action.payload.name
         state.xmlData = action.payload.data_dump
         state.scriptDump = action.payload.script_dump
+        state.showDot = action.payload.script_dump !== ''
       })
       .addCase(fetchDiagram.rejected, (state) => {
         state.isLoading = false
@@ -257,6 +263,7 @@ const saveSchematicSlice = createSlice({
         state.title = action.payload.name
         state.xmlData = action.payload.data_dump
         state.scriptDump = action.payload.script_dump
+        state.showDot = action.payload.script_dump !== ''
       })
       .addCase(openLocalSch.rejected, (state) => {
         state.isLoading = false
@@ -269,7 +276,8 @@ export const {
   setSchTitle,
   setSchDescription,
   setSchXmlData,
-  setSchScriptDump
+  setSchScriptDump,
+  setShowDot
 } = saveSchematicSlice.actions
 
 export default saveSchematicSlice.reducer
