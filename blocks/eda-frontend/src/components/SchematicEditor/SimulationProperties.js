@@ -19,6 +19,7 @@ import { setResultTitle, setResultTaskId, resetResult } from '../../redux/simula
 import { saveXml } from './Helper/ToolbarTools'
 import SimulationScreen, { setGraphStatusClosed } from './SimulationScreen'
 import api from '../../utils/Api'
+import { sanitizeTitle } from '../../utils/GalleryUtils'
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -82,7 +83,7 @@ export default function SimulationProperties () {
 
   // Prepare Netlist to file
   const prepareNetlist = (netlist) => {
-    const titleA = title
+    const titleA = sanitizeTitle(title)
     const myblob = new Blob([netlist], {
       type: 'text/plain'
     })

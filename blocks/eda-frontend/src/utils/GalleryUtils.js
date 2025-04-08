@@ -199,3 +199,7 @@ export const removeBySaveIdInPlace = (schematics, saveId) => {
     schematics.splice(index, 1)
   }
 }
+
+export const sanitizeTitle = (title, replacement = '_') => {
+  return title.replace(/[<>:"/\\|?* ]/g, replacement).trim()
+}

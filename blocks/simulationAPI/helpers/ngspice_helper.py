@@ -159,4 +159,3 @@ def ExecXml(task, task_name, workspace_file):
             pass
         logger.info('Deleted Files and Directory for task %s', task_id)
         raise e
-

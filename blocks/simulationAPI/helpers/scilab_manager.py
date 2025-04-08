@@ -73,7 +73,7 @@ SCILAB_CMD = [SCILAB,
               "-nb",
               "-nw",
               "-e", SCILAB_START
-            ]
+              ]
 
 USER_DATA = {}
 
@@ -245,7 +245,7 @@ class UserData:
                 f"scriptcount={self.scriptcount}, "
                 f"scifile={self.scifile}, "
                 f"timestamp={self.timestamp})")
-    
+
     def __repr__(self):
         return self.__str__()
 
@@ -728,14 +728,13 @@ def uploadscript(session, task):
     command = "exec('%s');save('%s');" % (fname, wfname)
 
     script.instance = run_scilab(command, script)
-    
 
     if script.instance is None:
         msg = "Resource not available"
         script.status = -2
         rv = {'status': script.status, 'msg': msg}
         return rv
-    
+
     # Save workspace file in task model
     task.workspace_file = wfname
     task.save()

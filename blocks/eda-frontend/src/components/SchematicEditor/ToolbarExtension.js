@@ -40,7 +40,7 @@ import { fetchSchematic, fetchDiagram, setSchScriptDump, setShowDot } from '../.
 import { fetchSchematics, fetchGallery } from '../../redux/dashboardSlice'
 import { setScriptTaskId } from '../../redux/simulationSlice'
 import { blue } from '@material-ui/core/colors'
-import { getDateTime as getDate, getUppercaseInitial, saveToFile } from '../../utils/GalleryUtils'
+import { getDateTime as getDate, getUppercaseInitial, saveToFile, sanitizeTitle } from '../../utils/GalleryUtils'
 import { renderGalleryXML } from './Helper/ToolbarTools'
 import api from '../../utils/Api'
 
@@ -52,7 +52,7 @@ const Transition = forwardRef(function Transition (props, ref) {
 export function NetlistModal ({ open, close, netlist }) {
   const title = useSelector(state => state.saveSchematic.title)
   const createNetlistFile = () => {
-    const titleA = title.split(' ')[1]
+    const titleA = sanitizeTitle(title)
     const name = process.env.REACT_APP_NAME
     saveToFile(`${titleA}_${name}_on_Cloud.cir`, 'text/plain', netlist)
   }
@@ -341,7 +341,6 @@ HelpScreen.propTypes = {
 export function ScriptScreen ({ isOpen, onClose }) {
   const scriptDump = useSelector(state => state.saveSchematic.scriptDump)
   const title = useSelector(state => state.saveSchematic.title)
-  const showDot = useSelector(state => state.saveSchematic.showDot)
   const dispatch = useDispatch()
   const [result, setResult] = useState('No output yet...')
   const [variables, setVariables] = useState([])
@@ -350,9 +349,8 @@ export function ScriptScreen ({ isOpen, onClose }) {
     dispatch(setShowDot(true))
   }
 
-
   const prepareScriptNetlist = (scriptDump) => {
-    const titleA = title
+    const titleA = sanitizeTitle(title)
     const myblob = new Blob([scriptDump], {
       type: 'text/plain'
     })
@@ -371,7 +369,6 @@ export function ScriptScreen ({ isOpen, onClose }) {
         console.log('taskId2:', taskId)
         setResult(data.output || 'No output available.')
         setVariables(data.variables)
-
       })
       .catch(function (error) {
         console.error(error)
@@ -405,7 +402,6 @@ export function ScriptScreen ({ isOpen, onClose }) {
     dispatch(setScriptTaskId(''))
     setResult('No output yet...')
     setVariables('')
-
   }
 
   return (
@@ -431,7 +427,7 @@ export function ScriptScreen ({ isOpen, onClose }) {
             display: 'grid',
             gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
             gap: 4,
-            alignItems: 'stretch',
+            alignItems: 'stretch'
           }}
         >
           <Box
@@ -441,7 +437,7 @@ export function ScriptScreen ({ isOpen, onClose }) {
               borderRadius: 2,
               display: 'flex',
               flexDirection: 'column',
-              flexGrow: 1,
+              flexGrow: 1
             }}
           >
             <Typography variant="subtitle1" style={{ fontWeight: 'bold', mb: 1 }}>
@@ -451,36 +447,23 @@ export function ScriptScreen ({ isOpen, onClose }) {
             <Box
               sx={{
                 height: '500px',
-                overflowY: 'scroll',
+                overflowY: 'auto',
                 border: '1px solid #ccc',
-                borderRadius: 1,
-                '&::-webkit-scrollbar': {
-                  width: '8px',
-                },
-                '&::-webkit-scrollbar-track': {
-                  backgroundColor: '#f1f1f1',
-                },
-                '&::-webkit-scrollbar-thumb': {
-                  backgroundColor: '#888',
-                  borderRadius: '4px',
-                },
-                '&::-webkit-scrollbar-thumb:hover': {
-                  backgroundColor: '#555',
-                },
+                borderRadius: 1
               }}
             >
               <TextField
                 value={scriptDump}
                 onChange={scriptHandler}
                 multiline
-                variant="outlined"
+                variant='outlined'
                 fullWidth
                 InputProps={{
                   disableUnderline: true,
                   sx: {
-                    fontFamily: 'Courier New, monospace',
-                    fontSize: '14px',
-                  },
+                    fontFamily: "'Roboto Mono', monospace",
+                    fontSize: '14px'
+                  }
                 }}
               />
             </Box>
@@ -493,7 +476,7 @@ export function ScriptScreen ({ isOpen, onClose }) {
               borderRadius: 2,
               display: 'flex',
               flexDirection: 'column',
-              height: '100%',
+              height: '100%'
             }}
           >
             <Typography variant="subtitle1" style={{ fontWeight: 'bold', mb: 1 }}>
@@ -510,32 +493,20 @@ export function ScriptScreen ({ isOpen, onClose }) {
                 display: 'flex',
                 height: '500px',
                 whiteSpace: 'pre-wrap', // Keep line breaks
-                '&::-webkit-scrollbar': {
-                  width: '8px',
-                },
-                '&::-webkit-scrollbar-track': {
-                  backgroundColor: '#f1f1f1',
-                },
-                '&::-webkit-scrollbar-thumb': {
-                  backgroundColor: '#888',
-                  borderRadius: '4px',
-                },
-                '&::-webkit-scrollbar-thumb:hover': {
-                  backgroundColor: '#555',
-                },
+                fontFamily: "'Roboto Mono', monospace"
               }}
             >
               {result}
             </Box>
 
-            <Typography variant="subtitle1" style={{ fontWeight: "bold", marginTop: 16 }}>
+            <Typography variant="subtitle1" style={{ fontWeight: 'bold', marginTop: 16 }}>
               Variable Browser :
             </Typography>
             <Box
               style={{
                 flexGrow: 1,
                 padding: 8,
-                border: "1px solid gray",
+                border: '1px solid gray',
                 borderRadius: 4
               }}
             >
@@ -546,30 +517,30 @@ export function ScriptScreen ({ isOpen, onClose }) {
               >
                 <Table size="small" stickyHeader>
                   <TableHead>
-                    <TableRow style={{ backgroundColor: "#e0e0e0" }}>
+                    <TableRow style={{ backgroundColor: '#e0e0e0' }}>
                       <TableCell
                         style={{
-                          border: "1px solid gray",
-                          fontWeight: "bold",
-                          padding: "4px 8px",
+                          border: '1px solid gray',
+                          fontWeight: 'bold',
+                          padding: '4px 8px'
                         }}
                       >
                         Name
                       </TableCell>
                       <TableCell
                         style={{
-                          border: "1px solid gray",
-                          fontWeight: "bold",
-                          padding: "4px 8px",
+                          border: '1px solid gray',
+                          fontWeight: 'bold',
+                          padding: '4px 8px'
                         }}
                       >
                         Value
                       </TableCell>
                       <TableCell
                         style={{
-                          border: "1px solid gray",
-                          fontWeight: "bold",
-                          padding: "4px 8px",
+                          border: '1px solid gray',
+                          fontWeight: 'bold',
+                          padding: '4px 8px'
                         }}
                       >
                         Type
@@ -577,27 +548,29 @@ export function ScriptScreen ({ isOpen, onClose }) {
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {variables.length > 0 ? (
-                      variables.map((variable, index) => (
-                        <TableRow key={index}>
-                          <TableCell style={{ border: "1px solid gray", padding: "4px 8px" }}>
-                            {variable.name}
-                          </TableCell>
-                          <TableCell style={{ border: "1px solid gray", padding: "4px 8px" }}>
-                            {variable.value}
-                          </TableCell>
-                          <TableCell style={{ border: "1px solid gray", padding: "4px 8px" }}>
-                            {variable.type}
+                    {variables.length > 0
+                      ? (
+                          variables.map((variable, index) => (
+                          <TableRow key={index}>
+                            <TableCell style={{ border: '1px solid gray', padding: '4px 8px' }}>
+                              {variable.name}
+                            </TableCell>
+                            <TableCell style={{ border: '1px solid gray', padding: '4px 8px' }}>
+                              {variable.value}
+                            </TableCell>
+                            <TableCell style={{ border: '1px solid gray', padding: '4px 8px' }}>
+                              {variable.type}
+                            </TableCell>
+                          </TableRow>
+                          ))
+                        )
+                      : (
+                        <TableRow>
+                          <TableCell colSpan={3} align="center">
+                            No variables available.
                           </TableCell>
                         </TableRow>
-                      ))
-                    ) : (
-                      <TableRow>
-                        <TableCell colSpan={3} align="center">
-                          No variables available.
-                        </TableCell>
-                      </TableRow>
-                    )}
+                        )}
                   </TableBody>
                 </Table>
               </TableContainer>
@@ -605,8 +578,6 @@ export function ScriptScreen ({ isOpen, onClose }) {
           </Box>
 
         </Box>
-
-
 
         {/* Action Buttons */}
         <Box sx={{ mt: 4, display: 'flex', gap: 4 }}>

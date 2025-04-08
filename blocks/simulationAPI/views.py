@@ -20,7 +20,6 @@ from simulationAPI.tasks import process_task
 from simulationAPI.helpers.ngspice_helper import CreateXcos, update_task_status
 
 
-
 SCILAB_INSTANCE_TIMEOUT_INTERVAL = 300
 MAX_LOG_SIZE = 512 * 1024
 LOOK_DELAY = 0.1
@@ -91,8 +90,8 @@ class XmlUploader(APIView):
                 }
             else:
                 rv = celery_task.get(timeout=10)
-                response_data = {**rv, 'task_id':task_id}
-               
+                response_data = {**rv, 'task_id': task_id}
+
             return Response(response_data)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
