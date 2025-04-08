@@ -13,6 +13,7 @@ from django.db.models import Case, F, Value, When
 from django.utils.timezone import now
 
 from simulationAPI.models import Task
+from simulationAPI.helpers.scilab_manager import start_scilab, upload
 
 logger = get_task_logger(__name__)
 XmlToXcos = join(settings.BASE_DIR, 'Xcos/XmlToXcos.sh')
@@ -50,8 +51,13 @@ class CannotRunParser(Exception):
 
 
 def update_task_status(task_id, status, meta=None):
+    print("status:", status, task_id)
     # Update Celery backend state
-    current_task.update_state(state=status, meta=meta or {})
+    if current_task is not None:
+        try:
+            current_task.update_state(state=status, meta=meta or {})
+        except Exception as e:
+            print(f"Error updating Celery task state: {e}")
 
     # Update Django database
     Task.objects.filter(task_id=task_id).update(
@@ -110,74 +116,47 @@ def CreateXcos(file_path, parameters, task_id):
     return xcosfile
 
 
-def ExecXml(task, task_name):
+def ExecXml(task, task_name, workspace_file):
     task_id = task.task_id
     file_path = task.file.path
+
     current_dir = settings.MEDIA_ROOT + '/' + str(task_id)
     try:
+        # Create xcos file
         xcosfile = CreateXml(file_path, task.parameters, task_id)
-        (logfilefd, log_name) = mkstemp(prefix=datetime.now().strftime(
-            'scilab-log-%Y%m%d-'), suffix='.txt', dir=current_dir)
 
-        if logfilefd != LOGFILEFD:
-            os.dup2(logfilefd, LOGFILEFD)
-            os.close(logfilefd)
+        upload(task.session, task, xcosfile)
+        result = start_scilab(task.session, task, xcosfile)
 
-        task.log_name = log_name
-        task.save()
+        if result == "":
+            logger.info('Simulation completed successfully for task %s', task_id)
+            update_task_status(task_id, 'SUCCESS',
+                               meta={'current_process': 'Simulation Completed'})
+            return 'Streaming'
+        else:
+            logger.warning('Simulation failed for task %s: %s', task_id, result)
+            update_task_status(task_id, 'FAILURE',
+                               meta={'current_process': result})
+            return 'Failure'
 
-        logger.info('will run %s %s> %s', SCILAB_CMD[0], LOGFILEFD, log_name)
-        logger.info('running command %s', SCILAB_CMD[-1])
-        proc = subprocess.Popen(
-            SCILAB_CMD,
-            stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-            start_new_session=True, universal_newlines=True, cwd=current_dir,
-            pass_fds=(LOGFILEFD, ))
-
-        os.close(LOGFILEFD)
-
-        update_task_status(task_id, 'STREAMING',
-                           meta={'current_process': 'Processed Xml, Streaming Output'})
-
-        cmd = "try;"
-        cmd += "chdir('%s');" % current_dir
-        cmd += "loadXcosLibs();"
-        cmd += "importXcosDiagram('%s');" % xcosfile
-        cmd += "xcos_simulate(scs_m,4);"
-        cmd += SCILAB_END
-
-        logger.info('running command %s', cmd)
-        proc.stdin.write(cmd)
-
-        (out, err) = proc.communicate()
-
-        maxlines = 15
-        logger.info('Ran %s', SCILAB_CMD[0])
-        if out:
-            out = out.strip()
-            if out:
-                out = '\n'.join(re.split(r'\n+', out, maxlines + 1)[:maxlines])
-                logger.info('out=%s', out)
-        if err:
-            err = re.sub(r'Undefined variable: helpbrowser_update', '', err)
-            err = err.strip()
-            if err:
-                err = '\n'.join(re.split(r'\n+', err, maxlines + 1)[:maxlines])
-                logger.info('err=%s', err)
-
-        task.returncode = proc.returncode
-        task.save()
-
-        return 'Streaming'
     except BaseException as e:
-        logger.exception('Encountered Exception:')
-        logger.info('removing %s', file_path)
-        os.remove(file_path)
+        logger.exception('Encountered Exception during XML Execution:')
+        logger.info('Cleaning up files for task %s', task_id)
+        # Cleanup
+        try:
+            os.remove(file_path)
+        except FileNotFoundError:
+            pass
         target = os.listdir(current_dir)
         for item in target:
-            logger.info('removing %s', item)
-            os.remove(join(current_dir, item))
-        logger.info('removing %s', current_dir)
-        os.rmdir(current_dir)
-        logger.info('Deleted Files')
+            try:
+                os.remove(join(current_dir, item))
+            except FileNotFoundError:
+                continue
+        try:
+            os.rmdir(current_dir)
+        except OSError:
+            pass
+        logger.info('Deleted Files and Directory for task %s', task_id)
         raise e
+

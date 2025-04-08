@@ -103,6 +103,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
   const title2 = useSelector(state => state.saveSchematic.title)
 
   const scriptDump = useSelector(state => state.saveSchematic.scriptDump)
+  const showDot = useSelector(state => state.saveSchematic.showDot)
 
   const dispatch = useDispatch()
   const isMobile = useMediaQuery('(max-width:600px)')
@@ -433,7 +434,43 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
     { icon: <ImageOutlinedIcon fontSize='small' />, label: 'Image Export', action: handleImgClickOpen },
     { icon: <PrintOutlinedIcon fontSize='small' />, label: 'Print Preview', action: PrintPreview },
     'pipe',
-    { icon: <DescriptionIcon fontSize='small' style={{ color: scriptDump ? 'red' : 'inherit' }} />, label: 'Show Script', action: handleSchWinOpen },
+    {
+      icon: (
+        <div style={{ position: 'relative', display: 'inline-block', cursor: 'pointer' }} onClick={handleSchWinOpen}>
+          <DescriptionIcon fontSize="small" style={{ color: scriptDump ? 'red' : 'inherit' }} />
+
+          {/* Blinking Dot */}
+          {showDot && (
+            <div
+              style={{
+                position: 'absolute',
+                top: '-3px', // Adjust position to be visible
+                right: '-3px',
+                width: '5px',
+                height: '5px',
+                borderRadius: '50%',
+                backgroundColor: 'green',
+                animation: 'blink-animation 1s infinite alternate',
+                zIndex: 10 // Ensure visibility
+              }}
+            />
+          )}
+
+          {/* CSS for blinking effect */}
+          <style>
+            {`
+              @keyframes blink-animation {
+                0% { opacity: 1; }
+                50% { opacity: 0.3; }
+                100% { opacity: 1; }
+              }
+            `}
+          </style>
+        </div>
+      ),
+      label: 'Show Script',
+      action: handleSchWinOpen
+    },
     { icon: <PlayCircleOutlineIcon fontSize='small' />, label: 'Simulate', action: handleNetlistOpen },
     'pipe',
     { icon: <UndoIcon fontSize='small' />, label: 'Undo', action: editorUndo },
