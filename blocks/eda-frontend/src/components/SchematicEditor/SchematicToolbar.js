@@ -101,6 +101,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
   const description = useSelector(state => state.saveSchematic.description)
   const xmlData = useSelector(state => state.saveSchematic.xmlData)
   const title2 = useSelector(state => state.saveSchematic.title)
+  const scriptTaskId = useSelector(state => state.simulation.scriptTaskId)
 
   const scriptDump = useSelector(state => state.saveSchematic.scriptDump)
   const showDot = useSelector(state => state.saveSchematic.showDot)
@@ -333,6 +334,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
 
       const formData = new FormData()
       formData.append('file', xmlBlob, xmlFileName)
+      formData.append('scriptTaskId', scriptTaskId)
 
       const config = {
         headers: {

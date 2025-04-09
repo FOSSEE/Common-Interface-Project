@@ -110,6 +110,7 @@ class XmlSave(APIView):
     def post(self, request, *args, **kwargs):
         logger.info('Got POST for Xml save: data=%s', request.data)
         file = request.FILES.get('file', None)
+        script_task_id = request.POST.get('scriptTaskId', None)
         if not file:
             return Response({"error": "No file provided"}, status=status.HTTP_400_BAD_REQUEST)
         file_name = file.name
@@ -122,11 +123,21 @@ class XmlSave(APIView):
             for chunk in file.chunks():
                 destination.write(chunk)
 
+        if script_task_id:
+            try:
+                script_task = Task.objects.get(task_id=script_task_id)
+                workspace_file = script_task.workspace_file
+            except Task.DoesNotExist:
+                print("Task not found")
+        else:
+            print("No scriptTaskId provided")
+
+        logger.info('workspace_file: %s', workspace_file)
         try:
             # Update the request data to include the file path
             data = request.data.copy()
             data['file_path'] = file_path
-            filename = CreateXcos(data['file_path'], '{}', 'saves')
+            filename = CreateXcos(data['file_path'], '{}', 'saves', workspace_file)
             with open(filename, 'r') as file:
                 filecontent = file.read()
 

@@ -73,7 +73,7 @@ def update_task_status(task_id, status, meta=None):
     )
 
 
-def CreateXml(file_path, parameters, task_id):
+def CreateXml(file_path, parameters, task_id, workspace_file):
     parameters = json.loads(parameters)
     current_dir = settings.MEDIA_ROOT + '/' + str(task_id)
     # Make Unique Directory for simulation to run
@@ -82,7 +82,7 @@ def CreateXml(file_path, parameters, task_id):
         (xcosfilebase, __) = splitext(file_path)
         xcosfile = xcosfilebase + '.xcos'
         logger.info('will run %s %s', 'XmlToXcos', file_path)
-        proc = subprocess.Popen([XmlToXcos, file_path],
+        proc = subprocess.Popen([XmlToXcos, file_path, workspace_file],
                                 stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         (stdout, stderr) = proc.communicate()
 
@@ -111,8 +111,8 @@ def CreateXml(file_path, parameters, task_id):
         raise e
 
 
-def CreateXcos(file_path, parameters, task_id):
-    xcosfile = CreateXml(file_path, parameters, task_id)
+def CreateXcos(file_path, parameters, task_id, workspace_file):
+    xcosfile = CreateXml(file_path, parameters, task_id, workspace_file)
     return xcosfile
 
 
@@ -123,7 +123,7 @@ def ExecXml(task, task_name, workspace_file):
     current_dir = settings.MEDIA_ROOT + '/' + str(task_id)
     try:
         # Create xcos file
-        xcosfile = CreateXml(file_path, task.parameters, task_id)
+        xcosfile = CreateXml(file_path, task.parameters, task_id, workspace_file)
 
         upload(task.session, task, xcosfile)
         result = start_scilab(task.session, task, xcosfile)
