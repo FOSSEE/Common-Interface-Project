@@ -236,6 +236,8 @@ const saveSchematicSlice = createSlice({
         state.xmlData = action.payload.data_dump
         state.scriptDump = action.payload.script_dump
         state.showDot = action.payload.script_dump !== ''
+        state.fetchComplete = action.payload.script_dump !== ''
+        // state.showDot = true
       })
       .addCase(fetchDiagram.rejected, (state) => {
         state.isLoading = false

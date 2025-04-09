@@ -341,6 +341,8 @@ HelpScreen.propTypes = {
 export function ScriptScreen ({ isOpen, onClose }) {
   const scriptDump = useSelector(state => state.saveSchematic.scriptDump)
   const title = useSelector(state => state.saveSchematic.title)
+  const showDot = useSelector(state => state.saveSchematic.showDot)
+  const fetchComplete = useSelector((state) => state.saveSchematic.fetchComplete)
   const dispatch = useDispatch()
   const [result, setResult] = useState('No output yet...')
   const [variables, setVariables] = useState([])
@@ -348,6 +350,16 @@ export function ScriptScreen ({ isOpen, onClose }) {
     dispatch(setSchScriptDump(e.target.value))
     dispatch(setShowDot(true))
   }
+
+  useEffect(() => {
+    if (fetchComplete) {
+      const timer = setTimeout(() => {
+        executeScript()
+      }, 1000)
+
+      return () => clearTimeout(timer)
+    }
+  }, [fetchComplete])
 
   const prepareScriptNetlist = (scriptDump) => {
     const titleA = sanitizeTitle(title)
@@ -581,7 +593,7 @@ export function ScriptScreen ({ isOpen, onClose }) {
 
         {/* Action Buttons */}
         <Box sx={{ mt: 4, display: 'flex', gap: 4 }}>
-          <Button onClick={executeScript} color='primary' variant='contained'>
+          <Button onClick={executeScript} color='primary' variant='contained' disabled={!showDot}>
             Execute
           </Button>
           <Button onClick={resetCode} color='secondary' variant='contained'>
