@@ -66,7 +66,7 @@ export const deleteSchematic = createAsyncThunk(
     }
 
     try {
-      const res = await api.delete('save/diagram/' + saveId, config)
+      const res = await api.delete(`save/diagram/${saveId}`, config)
       if (res.status === 200) {
         await dispatch(fetchSchematics())
         return saveId

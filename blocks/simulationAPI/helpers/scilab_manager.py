@@ -9,7 +9,7 @@ import glob
 import json
 import fileinput
 import os
-from os.path import abspath, exists, isfile, join, splitext
+from os.path import abspath, exists, isdir, isfile, join, splitext
 import re
 import signal
 import subprocess
@@ -85,30 +85,42 @@ def secure_filename(filename: str) -> str:
     return filename.strip("._")  # Prevent filenames like ".." or "."
 
 
-def makedirs(dirname, dirtype):
+def makedirs(dirname, dirtype=None):
     if not exists(dirname):
         os.makedirs(dirname)
 
 
-def rmdir(dirname, dirtype):
+def rmdir(dirname, dirtype=None):
+    if dirname is None:
+        return False
+    if not isdir(dirname):
+        logger.error('dir %s does not exist', dirname)
+        return False
+    if not config.REMOVEFILE:
+        logger.debug('not removing dir %s', dirname)
+        return True
     try:
-        if exists(dirname):
-            os.rmdir(dirname)
+        os.rmdir(dirname)
+        return True
     except Exception as e:
-        logger.warning('could not remove %s: %s', dirname, str(e))
+        logger.warning('could not remove dir %s: %s', dirname, str(e))
+        return False
 
 
 def remove(filename):
     if filename is None:
         return False
+    if not isfile(filename):
+        logger.error('file %s does not exist', filename)
+        return False
     if not config.REMOVEFILE:
-        logger.debug('not removing %s', filename)
+        logger.debug('not removing file %s', filename)
         return True
     try:
         os.remove(filename)
         return True
-    except BaseException:
-        logger.error('could not remove %s', filename)
+    except Exception as e:
+        logger.error('could not remove file %s: %s', filename, str(e))
         return False
 
 

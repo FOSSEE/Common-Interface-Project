@@ -27,4 +27,4 @@ IMAGEDIR = 'images'
 # Set CREATEIMAGE to True to create img_test.jpg in IMAGEDIR
 CREATEIMAGE = False
 
-REMOVEFILE = True
+REMOVEFILE = False

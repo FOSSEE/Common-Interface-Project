@@ -13,7 +13,7 @@ from django.db.models import Case, F, Value, When
 from django.utils.timezone import now
 
 from simulationAPI.models import Task
-from simulationAPI.helpers.scilab_manager import start_scilab, upload
+from simulationAPI.helpers.scilab_manager import start_scilab, upload, remove, rmdir
 
 logger = get_task_logger(__name__)
 XmlToXcos = join(settings.BASE_DIR, 'Xcos/XmlToXcos.sh')
@@ -51,13 +51,13 @@ class CannotRunParser(Exception):
 
 
 def update_task_status(task_id, status, meta=None):
-    print("status:", status, task_id)
+    logger.info(f"status: {status} {task_id}")
     # Update Celery backend state
     if current_task is not None:
         try:
             current_task.update_state(state=status, meta=meta or {})
         except Exception as e:
-            print(f"Error updating Celery task state: {e}")
+            logger.error(f"Error updating Celery task state: {e}")
 
     # Update Django database
     Task.objects.filter(task_id=task_id).update(
@@ -81,7 +81,7 @@ def CreateXml(file_path, parameters, task_id, workspace_file):
     try:
         (xcosfilebase, __) = splitext(file_path)
         xcosfile = xcosfilebase + '.xcos'
-        logger.info('will run %s %s', 'XmlToXcos', file_path)
+        logger.info('will run %s %s %s', 'XmlToXcos', file_path, workspace_file)
         proc = subprocess.Popen([XmlToXcos, file_path, workspace_file],
                                 stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         (stdout, stderr) = proc.communicate()
@@ -100,13 +100,13 @@ def CreateXml(file_path, parameters, task_id, workspace_file):
     except BaseException as e:
         logger.exception('Encountered Exception:')
         logger.info('removing %s', file_path)
-        os.remove(file_path)
+        remove(file_path)
         target = os.listdir(current_dir)
         for item in target:
             logger.info('removing %s', item)
-            os.remove(join(current_dir, item))
+            remove(join(current_dir, item))
         logger.info('removing %s', current_dir)
-        os.rmdir(current_dir)
+        rmdir(current_dir)
         logger.info('Deleted Files')
         raise e
 
@@ -143,19 +143,10 @@ def ExecXml(task, task_name, workspace_file):
         logger.exception('Encountered Exception during XML Execution:')
         logger.info('Cleaning up files for task %s', task_id)
         # Cleanup
-        try:
-            os.remove(file_path)
-        except FileNotFoundError:
-            pass
+        remove(file_path)
         target = os.listdir(current_dir)
         for item in target:
-            try:
-                os.remove(join(current_dir, item))
-            except FileNotFoundError:
-                continue
-        try:
-            os.rmdir(current_dir)
-        except OSError:
-            pass
+            remove(join(current_dir, item))
+        rmdir(current_dir)
         logger.info('Deleted Files and Directory for task %s', task_id)
         raise e

@@ -164,7 +164,7 @@ export const googleLogin = createAsyncThunk(
   'auth/googleLogin',
   async (host, { rejectWithValue }) => {
     try {
-      const res = await api.get('auth/o/google-oauth2/?redirect_uri=' + host + '/api/auth/google-callback')
+      const res = await api.get(`auth/o/google-oauth2/?redirect_uri=${host}/api/auth/google-callback`)
       if (res.status === 200) {
         // Open google login page
         window.open(res.data.authorization_url, '_self')
@@ -184,7 +184,7 @@ export const githubLogin = createAsyncThunk(
   'auth/githubLogin',
   async (host, { rejectWithValue }) => {
     try {
-      const res = await api.get('auth/o/github/?redirect_uri=' + host + '/api/auth/github-callback')
+      const res = await api.get(`auth/o/github/?redirect_uri=${host}/api/auth/github-callback`)
       if (res.status === 200) {
         // Open GitHub login page
         window.open(res.data.authorization_url, '_self')

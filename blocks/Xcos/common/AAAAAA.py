@@ -723,8 +723,8 @@ def format_real_number(parameter, workspace_file):
         return '0'
     elif re.search(r'[dDeE\^]', parameter):  # Check for scientific notation
         real_number = float(parameter.replace('*10^', 'e').replace('10^', '1e').replace('d', 'e').replace('D', 'e'))
-        return "{:.10g}".format(real_number) 
-    elif re.search(r'[a-zA-Z]', parameter): # Check if parameter contains alphabetic characters
+        return "{:.10g}".format(real_number)
+    elif re.search(r'[a-zA-Z]', parameter):  # Check if parameter contains alphabetic characters
         print('send to Scilab', workspace_file)
         with open("params.txt", "a") as f:
             f.write(parameter + "\n")
@@ -1402,7 +1402,8 @@ def getSplitPoints(attrib, switch_split, blkgeometry, sourceVertex, targetVertex
     return split_point, split_point2
 
 
-def process_xcos_model(model, title, rootattribid, parentattribid):
+def process_xcos_model(model, title, rootattribid, parentattribid,
+                       workspace_file=None):
     checkModelTag(model)
     outdiagram = ET.Element('XcosDiagram')
     outdiagram.set('background', '-1')
