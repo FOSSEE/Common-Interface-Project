@@ -72,6 +72,7 @@ class XmlUploader(APIView):
                 try:
                     script_task = Task.objects.get(task_id=script_task_id, type='SCRIPT')
                     if script_task.workspace_file:
+                        task.script_task_id = script_task_id
                         task.workspace_file = script_task.workspace_file
                         task.save()
                         logger.info(f'Copied workspace file from script task {script_task_id} to xcos task {task.task_id}')

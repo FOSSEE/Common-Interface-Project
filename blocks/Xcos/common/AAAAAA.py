@@ -1,10 +1,12 @@
 import datetime
+import os
+from os.path import abspath, join
+import pexpect
 import re
 import sys
 import traceback
 import xml.etree.ElementTree as ET
 import math
-import random
 import uuid
 
 TYPE_ARRAY = 'Array'
@@ -69,10 +71,85 @@ LINK_EXPLICIT = 'ExplicitLink'
 LINK_IMPLICIT = 'ImplicitLink'
 LINK_COMMANDCONTROL = 'CommandControlLink'
 
+SCILAB_DIR = '../../scilab_for_xcos_on_cloud'
+SCILAB_DIR = abspath(SCILAB_DIR)
+SCILAB = join(SCILAB_DIR, 'bin', 'scilab-cli')
+
+WORKSPACE = None
+
+
+def load_variables(filename):
+    '''
+    add scilab commands to load only user defined variables
+    '''
+
+    command = "[__V1,__V2]=listvarinfile('%s');" % filename
+    command += "__V5=grep(string(__V2),'/^([124568]|1[07])$/','r');"
+    command += "__V1=__V1(__V5);"
+    command += "__V2=__V2(__V5);"
+    command += "__V5=grep(__V1,'/^[^%]+$/','r');"
+    command += "if ~isempty(__V5) then;"
+    command += "__V1=__V1(__V5);"
+    command += "__V2=__V2(__V5);"
+    command += "__V6=''''+strcat(__V1,''',''')+'''';"
+    command += "__V7='load(''%s'','+__V6+');';" % filename
+    command += "execstr(__V7);"
+    command += "end;"
+    command += "clear __V1 __V2 __V5 __V6 __V7;"
+    return command
+
+
+class ScilabWorkspace:
+    def __init__(self, workspace):
+        cmd = load_variables(workspace)
+
+        scilab_cmd = [SCILAB,
+                      "-noatomsautoload",
+                      "-nogui",
+                      "-nouserstartup",
+                      "-nb",
+                      "-e", cmd
+                      ]
+
+        env = os.environ.copy()
+        env['TERM'] = 'dumb'
+        self.child = pexpect.spawn(scilab_cmd[0], scilab_cmd[1:], env=env, encoding='utf-8', timeout=15)
+        self.child.expect('--> ')
+
+    def clean_output(self, text, expr):
+        # Remove echoed input and Scilab formatting
+        text = re.sub(r'\x1b\[[0-9;]*[a-zA-Z]', '', text)
+        text = re.sub(r'.\x08', '', text)
+        lines = [line.strip() for line in text.splitlines()]
+        if lines and lines[0] == expr:
+            lines = lines[1:]
+        text = '\n'.join(lines).strip()
+        return text
+
+    def send_expression(self, expression):
+        """Send a line to the process and return its output"""
+        expression = expression.strip(' \t\n\r\f\v;')
+        if expression == '':
+            print('No expression')
+            return ''
+
+        expr = f'disp({expression})'
+        self.child.sendline(expr)
+        self.child.expect('--> ')
+        output = self.child.before.strip()
+
+        return self.clean_output(output, expr)
+
+    def clean(self):
+        """Terminate the process cleanly"""
+        self.child.sendline('exit')
+        self.child.close()
+        self.child = None
+
 
 def addNode(node, subNodeType, **kwargs):
     subNode = ET.SubElement(node, subNodeType)
-    for (key, value) in kwargs.items():
+    for key, value in kwargs.items():
         if value is not None:
             subNode.set(key, str(value))
     return subNode
@@ -332,8 +409,7 @@ def addSuperNode(node, subNodeType,
                  title, **kwargs):
     newkwargs = {'as': a, 'background': background,
                  'gridEnabled': gridEnabled,
-                 'title': title
-                 }
+                 'title': title}
     newkwargs.update(kwargs)
     return addNode(node, subNodeType, **newkwargs)
 
@@ -341,8 +417,7 @@ def addSuperNode(node, subNodeType,
 def addSuperBlkNode(node, subNodeType,
                     a, scilabClass,
                     **kwargs):
-    newkwargs = {'as': a, 'scilabClass': scilabClass
-                 }
+    newkwargs = {'as': a, 'scilabClass': scilabClass}
     newkwargs.update(kwargs)
     return addNode(node, subNodeType, **newkwargs)
 
@@ -350,8 +425,7 @@ def addSuperBlkNode(node, subNodeType,
 def superAddNode(node, subNodeType,
                  value,
                  **kwargs):
-    newkwargs = {'value': value
-                 }
+    newkwargs = {'value': value}
     newkwargs.update(kwargs)
     return addNode(node, subNodeType, **newkwargs)
 
@@ -359,8 +433,7 @@ def superAddNode(node, subNodeType,
 def addmxGraphModelNode(node, subNodeType,
                         a,
                         **kwargs):
-    newkwargs = {'as': a
-                 }
+    newkwargs = {'as': a}
     newkwargs.update(kwargs)
     return addNode(node, subNodeType, **newkwargs)
 
@@ -368,8 +441,7 @@ def addmxGraphModelNode(node, subNodeType,
 def addmxCellNode(node, subNodeType,
                   id,
                   **kwargs):
-    newkwargs = {'id': id
-                 }
+    newkwargs = {'id': id}
     newkwargs.update(kwargs)
     return addNode(node, subNodeType, **newkwargs)
 
@@ -377,8 +449,7 @@ def addmxCellNode(node, subNodeType,
 def addNodemxCell(node, subNodeType, a,
                   id,
                   **kwargs):
-    newkwargs = {'as': a, 'id': id
-                 }
+    newkwargs = {'as': a, 'id': id}
     newkwargs.update(kwargs)
     return addNode(node, subNodeType, **newkwargs)
 
@@ -386,8 +457,7 @@ def addNodemxCell(node, subNodeType, a,
 def addmxCell(node, subNodeType,
               id,
               **kwargs):
-    newkwargs = {'id': id
-                 }
+    newkwargs = {'id': id}
     newkwargs.update(kwargs)
     return addNode(node, subNodeType, **newkwargs)
 
@@ -718,19 +788,37 @@ def get_number_power(value):
                   value)
 
 
-def format_real_number(parameter, workspace_file):
+def convert_scientific_notation(parameter):
+    def repl(match):
+        if match.group('bare_exp'):  # Case: '10^3' with no coefficient
+            return f"1e{match.group('bare_exp')}"
+        elif match.group('with_coeff'):  # Case: '2*10^3' or '*10^3'
+            return 'e' + match.group('with_coeff')
+        elif match.group('fortran'):  # Case: '1.23d4' or '1.23D4'
+            return f"{match.group('num')}e{match.group('exp')}"
+        return match.group(0)  # Fallback (shouldn't happen)
+
+    pattern = re.compile(
+        r"(?P<bare> (?<![\d*])10\^(?P<bare_exp>[-+]?\d+))"
+        r"|(?P<with_star>\*?10\^(?P<with_coeff>[-+]?\d+))"
+        r"|(?P<fortran>(?P<num>\d+\.?\d*)[dD](?P<exp>[-+]?\d+))",
+        re.VERBOSE
+    )
+
+    return pattern.sub(repl, parameter)
+
+
+def format_real_number(parameter):
+    if re.search(r'[a-zA-Z]', parameter):  # Check if parameter contains alphabetic characters
+        if WORKSPACE is None:
+            print(f'No Scilab workspace available for {parameter} evaluation')
+            return parameter
+        print(f'send {parameter} to Scilab')
+        parameter = WORKSPACE.send_expression(parameter)
     if not parameter.strip():  # Handle empty strings
         return '0'
-    elif re.search(r'[dDeE\^]', parameter):  # Check for scientific notation
-        real_number = float(parameter.replace('*10^', 'e').replace('10^', '1e').replace('d', 'e').replace('D', 'e'))
-        return "{:.10g}".format(real_number)
-    elif re.search(r'[a-zA-Z]', parameter):  # Check if parameter contains alphabetic characters
-        print('send to Scilab', workspace_file)
-        with open("params.txt", "a") as f:
-            f.write(parameter + "\n")
-        # uploadscript("params.txt")
-        # return parameter  # Or return some status
     try:
+        parameter = convert_scientific_notation(parameter)
         return "{:.10g}".format(float(parameter))  # Convert numeric strings safely
     except ValueError:
         return parameter  # Return original non-numeric string
@@ -1404,6 +1492,12 @@ def getSplitPoints(attrib, switch_split, blkgeometry, sourceVertex, targetVertex
 
 def process_xcos_model(model, title, rootattribid, parentattribid,
                        workspace_file=None):
+    global WORKSPACE
+
+    if workspace_file is not None and workspace_file != '' and WORKSPACE is None:
+        print('workspace_file=', workspace_file)
+        WORKSPACE = ScilabWorkspace(workspace_file)
+
     checkModelTag(model)
     outdiagram = ET.Element('XcosDiagram')
     outdiagram.set('background', '-1')
@@ -1608,5 +1702,9 @@ def process_xcos_model(model, title, rootattribid, parentattribid,
     outnode.set('as', 'defaultParent')
     outnode.set('id', parentattribid)
     outnode.set('parent', rootattribid)
+
+    if WORKSPACE is not None:
+        WORKSPACE.clean()
+        WORKSPACE = None
 
     return outdiagram

@@ -75,6 +75,7 @@ class Task(models.Model):
     parameters = models.TextField(blank=True, null=True)
     upload_time = models.DateTimeField(auto_now=True)
     log_name = models.CharField(max_length=500, blank=True, null=True)
+    script_task_id = models.CharField(max_length=40, blank=True, null=True)
     workspace_file = models.CharField(max_length=500, blank=True, null=True)
     returncode = models.IntegerField(blank=True, null=True)
     session = models.ForeignKey(Session, on_delete=models.CASCADE, related_name='task', null=True)

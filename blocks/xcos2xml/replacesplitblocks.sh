@@ -2,12 +2,12 @@
 
 usage() {
   echo "Usage:" >&2
-  echo "    $0 input-file.xcos" >&2
-  echo "    $0 input-file.xml" >&2
+  echo "    $0 input-file.xcos workspace.dat" >&2
+  echo "    $0 input-file.xml workspace.dat" >&2
   exit 101
 }
 
-if test $# -ne 1; then
+if test $# -ne 1 -a $# -ne 2; then
   usage
 fi
 
@@ -58,6 +58,18 @@ elif test "${INPUT%.xcos}" != "$INPUT"; then
 else
   echo "$INPUT: not xml / xcos" >&2
   usage
+fi
+
+WORKSPACE="$2"
+if test -n "$WORKSPACE"; then
+  if test ! -f "$WORKSPACE"; then
+    echo "$WORKSPACE: not found" >&2
+    usage
+  fi
+  if test "${WORKSPACE%.dat}" = "$WORKSPACE"; then
+    echo "$WORKSPACE: not dat" >&2
+    usage
+  fi
 fi
 
 set -e
@@ -145,8 +157,8 @@ INPUT1="$BASE-$rv.xml"
 xmllint --format "$INPUT1" >"$TMPFILE2"
 cp -f "$TMPFILE2" "$INPUT1"
 
-echo "Running Xcos/MxGraphParser.py $INPUT1" >&2
-Xcos/MxGraphParser.py "$INPUT1" >&2
+echo "Running Xcos/MxGraphParser.py $INPUT1 $WORKSPACE" >&2
+Xcos/MxGraphParser.py "$INPUT1" "$WORKSPACE" >&2
 INPUT1="$BASE.xcos"
 echo "Created $INPUT1" >&2
 

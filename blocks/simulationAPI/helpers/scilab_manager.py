@@ -91,8 +91,6 @@ def makedirs(dirname, dirtype=None):
 
 
 def rmdir(dirname, dirtype=None):
-    if dirname is None:
-        return False
     if not isdir(dirname):
         logger.error('dir %s does not exist', dirname)
         return False
@@ -108,8 +106,6 @@ def rmdir(dirname, dirtype=None):
 
 
 def remove(filename):
-    if filename is None:
-        return False
     if not isfile(filename):
         logger.error('file %s does not exist', filename)
         return False
@@ -153,7 +149,7 @@ class Diagram:
     workspace_counter = 0
     save_variables = set()
     # workspace from script
-    workspace_filename = None
+    workspace_file = None
     # tk count
     tk_count = 0
     # store log name
@@ -183,9 +179,9 @@ class Diagram:
         if self.xcos_file_name is not None:
             remove(self.xcos_file_name)
             self.xcos_file_name = None
-        if self.workspace_filename is not None:
-            remove(self.workspace_filename)
-            self.workspace_filename = None
+        if self.workspace_file is not None:
+            remove(self.workspace_file)
+            self.workspace_file = None
         if self.file_image != '':
             remove(join(IMAGEDIR, self.file_image))
             self.file_image = ''
@@ -197,14 +193,14 @@ class Script:
     filename = None
     status = 0
     instance = None
-    workspace_filename = None
+    workspace_file = None
 
     def __str__(self):
         return (
             "{script_id: %s, filename: %s, status: %d, instance: %s, "
-            "workspace_filename: %s}") % (
+            "workspace_file: %s}") % (
                 self.script_id, self.filename, self.status, self.instance,
-                self.workspace_filename)
+                self.workspace_file)
 
     def clean(self):
         if self.instance is not None:
@@ -213,14 +209,17 @@ class Script:
         if self.filename is not None:
             remove(self.filename)
             self.filename = None
-        if self.workspace_filename is not None:
-            remove(self.workspace_filename)
-            self.workspace_filename = None
+        if self.workspace_file is not None:
+            remove(self.workspace_file)
+            self.workspace_file = None
 
 
 class SciFile:
     '''Variables used in sci-func block'''
     instance = None
+
+    def __str__(self):
+        return "{instance: %s}" % self.instance
 
     def clean(self):
         if self.instance is not None:
@@ -233,9 +232,7 @@ class UserData:
     diagrams = None
     scripts = None
     datafiles = None
-    scriptcount = None
     scifile = None
-    diagramlock = None
     timestamp = None
 
     def __init__(self):
@@ -244,29 +241,19 @@ class UserData:
         self.diagrams = {}
         self.datafiles = []
         self.scripts = {}
-        self.scriptcount = 0
         self.scifile = SciFile()
-        self.diagramlock = RLock()
         self.timestamp = time()
 
     def __str__(self):
         return (f"UserData(sessiondir={self.sessiondir}, "
-                f"diagrams={len(self.diagrams)}, "
+                f"diagrams={list(self.diagrams.keys())}, "
                 f"datafiles={len(self.datafiles)}, "
                 f"scripts={list(self.scripts.keys())}, "
-                f"scriptcount={self.scriptcount}, "
                 f"scifile={self.scifile}, "
-                f"timestamp={self.timestamp})")
+                f"timestamp={datetime.fromtimestamp(self.timestamp).strftime('%Y-%m-%dT%H:%M:%S')})")
 
     def __repr__(self):
         return self.__str__()
-
-    def getscriptcount(self):
-        with self.diagramlock:
-            rv = self.scriptcount
-            self.scriptcount += 1
-
-        return str(rv)
 
     def clean(self):
         for diagram in self.diagrams.values():
@@ -280,7 +267,6 @@ class UserData:
         self.datafiles = None
         self.scifile.clean()
         self.scifile = None
-        self.diagramlock = None
         # name of workspace file
         workspace = join(self.sessiondir, WORKSPACE_FILES_FOLDER,
                          "workspace.dat")
@@ -615,8 +601,7 @@ def init_session(session):
     makedirs(join(sessiondir, SCRIPT_FILES_FOLDER), 'script files')
     makedirs(join(sessiondir, WORKSPACE_FILES_FOLDER), 'workspace files')
 
-    return (ud.diagrams, ud.scripts, ud.getscriptcount, ud.scifile,
-            ud.datafiles, sessiondir, ud.diagramlock)
+    return (ud.diagrams, ud.scripts, ud.scifile, ud.datafiles, sessiondir)
 
 
 def prestart_scilab():
@@ -711,7 +696,7 @@ def uploadscript(session, task):
     '''
     Below route is called for uploading script file.
     '''
-    (script, sessiondir) = add_script(session, task)
+    (script, sessiondir) = add_script(session, str(task.task_id))
 
     file = task.file
     if not file:
@@ -736,7 +721,7 @@ def uploadscript(session, task):
 
     wfname = join(sessiondir, WORKSPACE_FILES_FOLDER,
                   f"{script.script_id}_script_workspace.dat")
-    script.workspace_filename = wfname
+    script.workspace_file = wfname
     command = "exec('%s');save('%s');" % (fname, wfname)
 
     script.instance = run_scilab(command, script)
@@ -753,7 +738,7 @@ def uploadscript(session, task):
 
     msg = ''
     script.status = 1
-    rv = {'task_id': task.task_id, 'script_id': script.script_id, 'status': script.status, 'msg': msg}
+    rv = {'task_id': str(task.task_id), 'script_id': script.script_id, 'status': script.status, 'msg': msg}
     return rv
 
 
@@ -773,7 +758,7 @@ def getscriptoutput(session, task):
     '''
     Below route is called for uploading script file.
     '''
-    script = get_script(session, task)
+    script = get_script(session, str(task.task_id))
     if script is None:
         # when called with same script_id again or with incorrect script_id
         logger.warning('no script')
@@ -819,11 +804,11 @@ def getscriptoutput(session, task):
             return rv
 
         logger.info('workspace for %s saved in %s',
-                    script.script_id, script.workspace_filename)
+                    script.script_id, script.workspace_file)
         msg = ''
         script.status = 0
 
-        cmd = list_variables(script.workspace_filename)
+        cmd = list_variables(script.workspace_file)
         script.instance = run_scilab(cmd, script)
         instance = script.instance
 
@@ -972,7 +957,7 @@ def start_scilab(session, task, xcosfile):
         return "error"
 
     # name of primary workspace file
-    workspace_filename = diagram.workspace_filename
+    workspace_file = diagram.workspace_file
     # name of workspace file
     workspace = join(diagram.sessiondir, WORKSPACE_FILES_FOLDER,
                      "workspace.dat")
@@ -983,7 +968,7 @@ def start_scilab(session, task, xcosfile):
                 "Please simulate a diagram with TOWS_c block first. "
                 "Do not use any FROMWSB block in that diagram.")
 
-    loadfile = workspace_filename is not None or \
+    loadfile = workspace_file is not None or \
         diagram.workspace_counter in (2, 3)
 
     command = ""
@@ -992,8 +977,8 @@ def start_scilab(session, task, xcosfile):
         # ignore import errors
         command += "try;"
 
-        if workspace_filename is not None:
-            command += load_variables(workspace_filename)
+        if workspace_file is not None:
+            command += load_variables(workspace_file)
 
         if diagram.workspace_counter in (2, 3):
             # 3 - for both TOWS_c and FROMWSB and also workspace dat file exist
@@ -1131,9 +1116,13 @@ def upload(session, task, xcosfile):
     # Make the filename safe, remove unsupported chars
     (diagram, scripts, sessiondir) = add_diagram(session, task)
 
-    script = get_script(session, task, scripts=scripts)
+    script = get_script(session, task.script_task_id, scripts=scripts)
+    if script is None and task.workspace_file is not None:
+        logger.info('adding script')
+        (script, __) = add_script(session, task.script_task_id)
+        script.workspace_file = task.workspace_file
     if script is not None:
-        diagram.workspace_filename = script.workspace_filename
+        diagram.workspace_file = script.workspace_file
     # Save the file in xml extension and using it for further modification
     # by using xml parser
     temp_file_xml_name = diagram.diagram_id + ".xml"
@@ -1294,7 +1283,7 @@ def upload(session, task, xcosfile):
             f.truncate()
         fname = join(sessiondir, UPLOAD_FOLDER,
                      splitext(temp_file_xml_name)[0] + ".xcos")
-        os.rename(temp_file_xml_name, fname)
+        shutil.move(temp_file_xml_name, fname)
         diagram.xcos_file_name = fname
         return diagram.diagram_id
 
@@ -1409,7 +1398,7 @@ def upload(session, task, xcosfile):
     fname = join(sessiondir, UPLOAD_FOLDER,
                  splitext(temp_file_xml_name)[0] + ".xcos")
     # Move the xcos file to uploads directory
-    os.rename(temp_file_xml_name, fname)
+    shutil.move(temp_file_xml_name, fname)
     diagram.xcos_file_name = fname
     return diagram.diagram_id
 
@@ -1418,67 +1407,67 @@ def get_diagram(session, task, remove=False):
     if not task:
         logger.warning('no id')
         return None
-    xcos_file_id = task.task_id
+    task_id = str(task.task_id)
 
-    (diagrams, __, __, __, __, __, __) = init_session(session)
+    (diagrams, __, __, __, __) = init_session(session)
 
-    if xcos_file_id not in diagrams:
-        logger.warning('id %s not in diagrams', xcos_file_id)
+    if task_id not in diagrams:
+        logger.warning('id %s not in diagrams', task_id)
         return None
 
-    diagram = diagrams[xcos_file_id]
+    diagram = diagrams[task_id]
 
     if remove:
-        diagrams[xcos_file_id] = Diagram()
+        diagrams[task_id] = Diagram()
 
     return diagram
 
 
 def add_diagram(session, task):
-    (diagrams, scripts, __, __, __, sessiondir, diagramlock) = init_session(session)
+    task_id = str(task.task_id)
 
-    with diagramlock:
-        diagram = Diagram()
-        diagram.diagram_id = str(len(diagrams))
-        diagram.sessiondir = sessiondir
-        # diagrams.append(diagram)
-        diagrams[task.task_id] = diagram
+    (diagrams, scripts, __, __, sessiondir) = init_session(session)
+
+    diagram = Diagram()
+    diagram.diagram_id = task_id
+    diagram.sessiondir = sessiondir
+    diagrams[task_id] = diagram
 
     return (diagram, scripts, sessiondir)
 
 
-def get_script(session, task, scripts=None, remove=False):
-    if task is None:
+def get_script(session, task_id, scripts=None, remove=False):
+    if task_id is None:
         return None
 
     if scripts is None:
-        (__, scripts, __, __, __, __, __) = init_session(session)
+        (__, scripts, __, __, __) = init_session(session)
 
-    if task.task_id not in scripts:
-        logger.warning('id %s not in scripts', task.task_id)
+    if task_id not in scripts:
+        logger.warning('id %s not in scripts', task_id)
         return None
 
-    script = scripts[task.task_id]
+    script = scripts[task_id]
 
     if remove:
-        del scripts[task.task_id]
+        del scripts[task_id]
 
     return script
 
 
-def add_script(session, task):
-    (__, scripts, __, __, __, sessiondir, __) = init_session(session)
+def add_script(session, task_id):
+    (__, scripts, __, __, sessiondir) = init_session(session)
 
     script = Script()
-    script.script_id = task.task_id
+    script.script_id = task_id
     script.sessiondir = sessiondir
-    scripts[task.task_id] = script
+    scripts[task_id] = script
 
     return (script, sessiondir)
 
 
 def add_datafile(session):
-    (__, __, __, __, datafiles, sessiondir, __) = init_session(session)
+    (__, __, __, datafiles, sessiondir) = init_session(session)
 
     datafile = DataFile()
     datafile.sessiondir = sessiondir
@@ -1534,7 +1523,7 @@ def get_request_id(request, key='id'):
 
 
 def internal_fun(session, task, internal_key):
-    (__, __, __, scifile, __, sessiondir, __) = init_session(session)
+    (__, __, scifile, __, sessiondir) = init_session(session)
 
     if internal_key not in config.INTERNAL:
         msg = internal_key + ' not found'
@@ -1661,7 +1650,7 @@ def kill_scilab(diagram=None, session=None, task=None):
 def kill_script(script=None, session=None, task=None):
     '''Below route is called for stopping a running script file.'''
     if script is None:
-        script = get_script(session, task, remove=True)
+        script = get_script(session, str(task.task_id), remove=True)
         if script is None:
             # when called with same script_id again or with incorrect script_id
             logger.warning('no script')
@@ -1677,11 +1666,11 @@ def kill_script(script=None, session=None, task=None):
         remove(script.filename)
         script.filename = None
 
-    if script.workspace_filename is None:
+    if script.workspace_file is None:
         logger.warning('empty workspace')
     else:
-        remove(script.workspace_filename)
-        script.workspace_filename = None
+        remove(script.workspace_file)
+        script.workspace_file = None
 
     return "ok"
 
@@ -1689,7 +1678,7 @@ def kill_script(script=None, session=None, task=None):
 def kill_scifile(scifile=None, session=None):
     '''Below route is called for stopping a running sci file.'''
     if scifile is None:
-        (__, __, __, scifile, __, __, __) = init_session(session)
+        (__, __, scifile, __, __) = init_session(session)
 
     logger.info('kill_scifile: scifile=%s', scifile)
 

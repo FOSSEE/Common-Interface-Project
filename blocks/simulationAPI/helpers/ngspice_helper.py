@@ -130,13 +130,9 @@ def ExecXml(task, task_name, workspace_file):
 
         if result == "":
             logger.info('Simulation completed successfully for task %s', task_id)
-            update_task_status(task_id, 'SUCCESS',
-                               meta={'current_process': 'Simulation Completed'})
             return 'Streaming'
         else:
             logger.warning('Simulation failed for task %s: %s', task_id, result)
-            update_task_status(task_id, 'FAILURE',
-                               meta={'current_process': result})
             return 'Failure'
 
     except BaseException as e:

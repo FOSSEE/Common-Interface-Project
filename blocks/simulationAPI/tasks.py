@@ -3,7 +3,6 @@ from celery.exceptions import Ignore
 from celery.utils.log import get_task_logger
 from redis import Redis
 from threading import current_thread
-import traceback
 
 from blocks.celery_tasks import app
 from simulationAPI.helpers.ngspice_helper import ExecXml, update_task_status
@@ -53,6 +52,10 @@ def process_task(self, task_id):
             elif output == "Success":
                 state = 'SUCCESS'
                 current_process = 'Processed Xml, Loading Output'
+            else:
+                logger.error('Failed %s', output)
+                state = 'FAILURE'
+                current_process = 'Failed'
 
             update_task_status(task_id, state,
                                meta={'current_process': current_process})
@@ -63,7 +66,7 @@ def process_task(self, task_id):
         update_task_status(task_id, 'FAILURE',
                            meta={
                                'exc_type': type(e).__name__,
-                               'exc_message': traceback.format_exc().split('\n')
+                               'exc_message': str(e)
                            })
         logger.exception('Exception Occurred:')
         raise Ignore()
