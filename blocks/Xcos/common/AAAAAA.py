@@ -1494,9 +1494,11 @@ def process_xcos_model(model, title, rootattribid, parentattribid,
                        workspace_file=None):
     global WORKSPACE
 
+    started_workspace = False
     if workspace_file is not None and workspace_file != '' and WORKSPACE is None:
         print('workspace_file=', workspace_file)
         WORKSPACE = ScilabWorkspace(workspace_file)
+        started_workspace = True
 
     checkModelTag(model)
     outdiagram = ET.Element('XcosDiagram')
@@ -1703,8 +1705,10 @@ def process_xcos_model(model, title, rootattribid, parentattribid,
     outnode.set('id', parentattribid)
     outnode.set('parent', rootattribid)
 
-    if WORKSPACE is not None:
+    if started_workspace:
+        print('Terminating workspace')
         WORKSPACE.clean()
         WORKSPACE = None
+        started_workspace = False
 
     return outdiagram
