@@ -82,6 +82,49 @@ SCILAB_PROMPT = re.compile(rf'{ANSI_ESCAPE_PATTERN}*--> {ANSI_ESCAPE_PATTERN}*')
 BACKSPACE = re.compile(r'.\x08')
 
 
+SCILAB_CURVE_C_SCI = "macros/Sources/CURVE_c.sci"
+SCILAB_EXPRESSION_SCI = "macros/Misc/EXPRESSION.sci"
+
+CONT_FRM_WRITE = "ajax-scilab/cont_frm_write.sci"
+CLEANDATA_SCI_FUNC_WRITE = "ajax-scilab/scifunc-cleandata-do_spline.sci"
+EXP_SCI_FUNC_WRITE = "ajax-scilab/expression-sci-function.sci"
+GET_COLORMAP_VALUES_SCI_FUNC_WRITE = "ajax-scilab/get_colormap_values.sci"
+RANDFUNC = "ajax-scilab/randfunc.sci"
+
+INTERNAL = {
+    'getOutput': {
+        'scriptfiles': [CONT_FRM_WRITE],
+        'function': 'calculate_cont_frm',
+        'parameters': ['num', 'den'],
+    },
+    'getExpressionOutput': {
+        'scriptfiles': [SCILAB_EXPRESSION_SCI, EXP_SCI_FUNC_WRITE],
+        'function': 'callFunctionAcctoMethod',
+        'parameters': ['head', 'exx'],
+    },
+    'cleandata': {
+        'scriptfiles': [SCILAB_CURVE_C_SCI, CLEANDATA_SCI_FUNC_WRITE],
+        'function': 'callFunctioncleandata',
+        'parameters': ['xye'],
+    },
+    'do_Spline': {
+        'scriptfiles': [SCILAB_CURVE_C_SCI, CLEANDATA_SCI_FUNC_WRITE],
+        'function': 'callFunction_do_Spline',
+        'parameters': ['N', 'order', 'x', 'y'],
+    },
+    'get_colormap_values': {
+        'scriptfiles': [GET_COLORMAP_VALUES_SCI_FUNC_WRITE],
+        'function': 'getvaluesfromcolormap',
+        'parameters': ['colormapString'],
+    },
+    'randfunc': {
+        'scriptfiles': [RANDFUNC],
+        'function': 'randfunc',
+        'parameters': ['inputvalue'],
+    }
+}
+
+
 def load_variables(filename):
     '''
     add scilab commands to load only user defined variables
@@ -103,9 +146,22 @@ def load_variables(filename):
     return command
 
 
+def load_scripts():
+    # handle duplicate scriptfiles
+    scriptfiles = set()
+    for script in INTERNAL.values():
+        for scriptfile in script['scriptfiles']:
+            scriptfiles.add(scriptfile)
+
+    cmd = ''
+    for scriptfile in scriptfiles:
+        cmd += f"exec('{scriptfile}');"
+    return cmd
+
+
 class ScilabWorkspace:
     def __init__(self, workspace):
-        cmd = load_variables(workspace)
+        cmd = load_variables(workspace) + load_scripts()
 
         scilab_cmd = [SCILAB,
                       "-noatomsautoload",
