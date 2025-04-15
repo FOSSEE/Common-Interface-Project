@@ -76,6 +76,10 @@ SCILAB_DIR = abspath(SCILAB_DIR)
 SCILAB = join(SCILAB_DIR, 'bin', 'scilab-cli')
 
 WORKSPACE = None
+ANSI_ESCAPE_PATTERN = r'(?:\x1b\[[0-9;]*m)'
+ANSI_ESCAPE = re.compile(ANSI_ESCAPE_PATTERN)
+SCILAB_PROMPT = re.compile(rf'{ANSI_ESCAPE_PATTERN}*--> {ANSI_ESCAPE_PATTERN}*')
+BACKSPACE = re.compile(r'.\x08')
 
 
 def load_variables(filename):
@@ -114,12 +118,12 @@ class ScilabWorkspace:
         env = os.environ.copy()
         env['TERM'] = 'dumb'
         self.child = pexpect.spawn(scilab_cmd[0], scilab_cmd[1:], env=env, encoding='utf-8', timeout=15)
-        self.child.expect('--> ')
+        self.child.expect(SCILAB_PROMPT)
 
     def clean_output(self, text, expr):
         # Remove echoed input and Scilab formatting
-        text = re.sub(r'\x1b\[[0-9;]*[a-zA-Z]', '', text)
-        text = re.sub(r'.\x08', '', text)
+        text = re.sub(ANSI_ESCAPE, '', text)
+        text = re.sub(BACKSPACE, '', text)
         lines = [line.strip() for line in text.splitlines()]
         if lines and lines[0] == expr:
             lines = lines[1:]
@@ -135,7 +139,7 @@ class ScilabWorkspace:
 
         expr = f'disp({expression})'
         self.child.sendline(expr)
-        self.child.expect('--> ')
+        self.child.expect(SCILAB_PROMPT)
         output = self.child.before.strip()
 
         return self.clean_output(output, expr)
@@ -815,6 +819,7 @@ def format_real_number(parameter):
             return parameter
         print(f'send {parameter} to Scilab')
         parameter = WORKSPACE.send_expression(parameter)
+        print(f'received {parameter} from Scilab')
     if not parameter.strip():  # Handle empty strings
         return '0'
     try:
