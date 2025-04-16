@@ -30,15 +30,9 @@ def REGISTER(outroot, attribid, ordering, geometry, parameters, parent=1, style=
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NMODE, 1, array)
     addTypeNode(outnode, TYPE_DOUBLE, AS_STATE, 0, [])
     numbers = parameters[0].split(';')
-    formatted_numbers = []
-    for num in numbers:
-        formatted_numbers.append(num)
-    addScilabDNode(outnode, AS_DSTATE, width=5, realParts=[
-                   format_real_number(formatted_numbers[0]),
-                   format_real_number(formatted_numbers[1]),
-                   format_real_number(formatted_numbers[2]),
-                   format_real_number(formatted_numbers[3]),
-                   format_real_number(formatted_numbers[4])])
+    addScilabDNode(outnode, AS_DSTATE, width=len(numbers), realParts=[
+        format_real_number(x) for x in numbers
+    ])
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE, [])
     addObjNode(outnode, TYPE_ARRAY,
                CLASS_LIST, AS_EQUATIONS, [])

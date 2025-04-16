@@ -1,6 +1,7 @@
+import ast
 import datetime
 import os
-from os.path import abspath, join
+from os.path import abspath, isfile, join
 import pexpect
 import re
 import sys
@@ -82,6 +83,14 @@ SCILAB_PROMPT = re.compile(rf'{ANSI_ESCAPE_PATTERN}*--> {ANSI_ESCAPE_PATTERN}*')
 BACKSPACE = re.compile(r'.\x08')
 
 
+# Following are system command which are not permitted in sci files
+# (Reference scilab-on-cloud project)
+SYSTEM_COMMANDS = (
+    r'unix\(.*\)|unix_g\(.*\)|unix_w\(.*\)|unix_x\(.*\)|unix_s\(.*\)|host'
+    r'|newfun|execstr|ascii|mputl|dir\(\)'
+)
+SPECIAL_CHARACTERS = r'["\'\\]'
+
 SCILAB_CURVE_C_SCI = "macros/Sources/CURVE_c.sci"
 SCILAB_EXPRESSION_SCI = "macros/Misc/EXPRESSION.sci"
 
@@ -149,8 +158,8 @@ def load_variables(filename):
 def load_scripts():
     # handle duplicate scriptfiles
     scriptfiles = set()
-    for script in INTERNAL.values():
-        for scriptfile in script['scriptfiles']:
+    for internal in INTERNAL.values():
+        for scriptfile in internal['scriptfiles']:
             scriptfiles.add(scriptfile)
 
     cmd = ''
@@ -160,8 +169,13 @@ def load_scripts():
 
 
 class ScilabWorkspace:
-    def __init__(self, workspace):
-        cmd = load_variables(workspace) + load_scripts()
+    def __init__(self, title, workspace):
+        self.title = title
+        self.workspace = workspace
+
+        cmd = load_scripts()
+        if workspace is not None and workspace != '':
+            cmd += load_variables(workspace)
 
         scilab_cmd = [SCILAB,
                       "-noatomsautoload",
@@ -199,6 +213,19 @@ class ScilabWorkspace:
         output = self.child.before.strip()
 
         return self.clean_output(output, expr)
+
+    def send_command(self, command):
+        """Send a line to the process and return its output"""
+        command = command.strip(' \t\n\r\f\v')
+        if command == '':
+            print('No command')
+            return ''
+
+        self.child.sendline(command)
+        self.child.expect(SCILAB_PROMPT)
+        output = self.child.before.strip()
+
+        return self.clean_output(output, command)
 
     def clean(self):
         """Terminate the process cleanly"""
@@ -869,6 +896,8 @@ def convert_scientific_notation(parameter):
 
 
 def format_real_number(parameter):
+    if type(parameter) is not str:
+        return parameter
     if re.search(r'[a-zA-Z]', parameter):  # Check if parameter contains alphabetic characters
         if WORKSPACE is None:
             print(f'No Scilab workspace available for {parameter} evaluation')
@@ -1556,9 +1585,10 @@ def process_xcos_model(model, title, rootattribid, parentattribid,
     global WORKSPACE
 
     started_workspace = False
-    if workspace_file is not None and workspace_file != '' and WORKSPACE is None:
-        print('workspace_file=', workspace_file)
-        WORKSPACE = ScilabWorkspace(workspace_file)
+    if WORKSPACE is None:
+        if workspace_file is not None and workspace_file != '':
+            print('workspace_file=', workspace_file)
+        WORKSPACE = ScilabWorkspace(title, workspace_file)
         started_workspace = True
 
     checkModelTag(model)
@@ -1773,3 +1803,60 @@ def process_xcos_model(model, title, rootattribid, parentattribid,
         started_workspace = False
 
     return outdiagram
+
+
+def internal_fun(internal_key, **kwargs):
+    try:
+        internal = INTERNAL[internal_key]
+        function = internal['function']
+        parameters = internal['parameters']
+        cmd = ""
+        file_name = f"{WORKSPACE.title}-{internal_key}.txt"
+        if 'num' in parameters:
+            p = 's'
+            cmd += f"{p}=poly(0,'{p}');"
+            p = 'z'
+            cmd += f"{p}=poly(0,'{p}');"
+        cmd += f"{function}('{file_name}'"
+        for parameter in parameters:
+            value = kwargs[parameter]
+            try:
+                value.encode('ascii')
+            except UnicodeEncodeError:
+                msg = f"{parameter} parameter has non-ascii characters"
+                print(msg)
+                return {'msg': msg}
+            if re.search(SYSTEM_COMMANDS, value):
+                msg = f"{parameter} parameter has unsafe value"
+                print(msg)
+                return {'msg': msg}
+            if re.search(SPECIAL_CHARACTERS, value):
+                msg = f"{parameter} parameter has value with special characters"
+                print(msg)
+                return {'msg': msg}
+            cmd += f",{value}" if 'num' in parameters else f",'{value}'"
+        cmd += ");"
+        print(f"send command {cmd} to Scilab")
+        WORKSPACE.send_command(cmd)
+        if not isfile(file_name):
+            msg = f"output {file_name} does not exist"
+            print(msg)
+            return {'msg': msg}
+        with open(file_name, 'r') as f:
+            data = f.read()
+            data = ast.literal_eval(data)
+            # flatten only if data is a list of lists with length 1
+            if type(data) is list and \
+                    all(type(item) is list and len(item) == 1 for item in data):
+                data = [item[0] for item in data]
+            print(f"data: {data}")
+        os.remove(file_name)
+        return data
+    except Exception as e:
+        msg = f"Error in internal function '{internal_key}': {str(e)}"
+        print(msg)
+        return {'msg': msg}
+
+
+def cont_frm(num, den):
+    return internal_fun('getOutput', num=num, den=den)

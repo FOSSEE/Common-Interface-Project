@@ -21,12 +21,12 @@ def DLR(outroot, attribid, ordering, geometry, parameters, parent=1, style=None,
                          dependsOnU=depends_on_flag)
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)
-    addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 25, realParts=[0.0,
-                 0.0, 0.0, -0.0, 1.0, 0.0, 0.0, -0.0, 0.0, 1.0, 0.0,
-                 0.09848421882252024, 0.0, 0.0, 1.0,
-                 0.2812414377454626, 0.0, 0.0, 0.0,
-                 1.0, 0.0, 0.0, -46.91897551521227,
-                 104.4178961198787, -127.69161340324949])
+    realParams = cont_frm(num_str, den_str)
+    if type(realParams) is not list:
+        realParams = []
+    addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, len(realParams), realParts=[
+        format_real_number(x) for x in realParams
+    ])
     addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 0, [])
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
     array = ['0']
