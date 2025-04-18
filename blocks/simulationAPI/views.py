@@ -16,7 +16,7 @@ from blocks.celery_tasks import app
 from simulationAPI.models import Task, Session
 from simulationAPI.negotiation import IgnoreClientContentNegotiation
 from simulationAPI.serializers import TaskSerializer
-from simulationAPI.tasks import process_task
+from simulationAPI.tasks import process_task, kill_task
 from simulationAPI.helpers.ngspice_helper import CreateXcos, update_task_status
 
 
@@ -86,8 +86,9 @@ class XmlUploader(APIView):
                 kwargs={'task_id': str(task_id)}, task_id=str(task_id))
             if task_type == 'XCOS':
                 response_data = {
+                    'task_id': task_id,
                     'state': celery_task.state,
-                    'details': serializer.data,
+                    'details': str(celery_task.info),
                 }
             else:
                 rv = celery_task.get(timeout=10)
@@ -188,7 +189,8 @@ class CancelTaskView(APIView):
         task_id = str(task_id)
 
         # Cancel the task
-        app.control.revoke(task_id, terminate=True)
+        app.control.revoke(task_id)
+        kill_task.delay(task_id)
 
         # Check if task was actually revoked
         celery_result = AsyncResult(task_id)

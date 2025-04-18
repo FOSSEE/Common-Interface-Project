@@ -7,7 +7,7 @@ from threading import current_thread
 from blocks.celery_tasks import app
 from simulationAPI.helpers.ngspice_helper import ExecXml, update_task_status
 from simulationAPI.models import Task
-from simulationAPI.helpers.scilab_manager import uploadscript, getscriptoutput
+from simulationAPI.helpers.scilab_manager import uploadscript, getscriptoutput, kill_scilab
 
 logger = get_task_logger(__name__)
 
@@ -73,3 +73,11 @@ def process_task(self, task_id):
 
     finally:
         release_lock(lock)  # Ensure lock is always released
+
+
+@shared_task(bind=True)
+def kill_task(self, task_id):
+    task = Task.objects.get(task_id=task_id)
+    logger.info("Killing task %s", task)
+    kill_scilab(None, task.session, task)
+    return True

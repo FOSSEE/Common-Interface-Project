@@ -18,6 +18,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { setResultTitle, setResultTaskId, resetResult } from '../../redux/simulationSlice'
 import { saveXml } from './Helper/ToolbarTools'
 import SimulationScreen, { setGraphStatusClosed } from './SimulationScreen'
+import { isStatusDone } from '../Shared/Graph'
 import api from '../../utils/Api'
 import { sanitizeTitle } from '../../utils/GalleryUtils'
 
@@ -75,8 +76,10 @@ export default function SimulationProperties () {
   }
 
   const handleSimulateClose = (taskId) => {
-    const getUrl = 'simulation/cancel/' + taskId
-    api.get(getUrl)
+    if (taskId && !isStatusDone()) {
+      const getUrl = 'simulation/cancel/' + taskId
+      api.get(getUrl)
+    }
     setGraphStatusClosed()
     setSimulateOpen(false)
   }
@@ -96,7 +99,7 @@ export default function SimulationProperties () {
     netlistConfig(file, type)
       .then((response) => {
         const res = response.data
-        const taskId = res.details.task_id
+        const taskId = res.task_id
         dispatch(setResultTaskId(taskId))
       })
       .catch(function (error) {
@@ -130,11 +133,11 @@ export default function SimulationProperties () {
 
     const compNetlist = saveXml()
     switch (type) {
-      case 'Transient':
-        dispatch(setResultTitle('Transient Analysis Output'))
-        break
-      default:
-        break
+    case 'Transient':
+      dispatch(setResultTitle('Transient Analysis Output'))
+      break
+    default:
+      break
     }
 
     const netlist = compNetlist

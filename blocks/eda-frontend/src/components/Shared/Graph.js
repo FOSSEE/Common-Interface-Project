@@ -15,6 +15,14 @@ export function setStatusClosed () {
   statusClosed = true
 }
 
+export function isStatusDone () {
+  return statusDone
+}
+
+export function isStatusClosed () {
+  return statusClosed
+}
+
 class Graph extends Component {
   pointList = new Queue()
 

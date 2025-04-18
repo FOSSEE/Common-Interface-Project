@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import CloseIcon from '@material-ui/icons/Close'
 import { useSelector, useDispatch } from 'react-redux'
 
-import Graph, { setStatusDone, setStatusClosed } from '../Shared/Graph'
+import Graph, { setStatusDone, setStatusClosed, isStatusDone } from '../Shared/Graph'
 import { setResultGraph } from '../../redux/simulationSlice'
 import api from '../../utils/Api'
 
@@ -526,7 +526,7 @@ export default function SimulationScreen ({ open, close }) {
 
       // below code creates a html code which is table with data in that
       // (To display it as matrix)
-      let p = '<b>Value of Block : ' + data[lengthOfData - 1] + '-' + blockId + "</b> (Refer to label on block)<br><br><table style='width:100%'><tr>"
+      let p = `<b>Value of Block : ${data[lengthOfData - 1]}-${blockId}</b> (Refer to label on block)<br><br><table style='width:100%'><tr>`
       let count = 1
       for (let k = 6; k < lengthOfData - 1; k++) {
         if (data[k].length !== 0) {
@@ -612,39 +612,39 @@ export default function SimulationScreen ({ open, close }) {
       .get(url)
       .then((res) => {
         switch (res.data.state) {
-          case 'PENDING':
-          case 'STARTED':
-          case 'RETRY':
-            setIsResult(false)
-            timeoutRef.current = setTimeout(() => simulationResult(url, streamingUrl), 10000)
-            break
+        case 'PENDING':
+        case 'STARTED':
+        case 'RETRY':
+          setIsResult(false)
+          timeoutRef.current = setTimeout(() => simulationResult(url, streamingUrl), 10000)
+          break
 
-          case 'STREAMING':
-          case 'SUCCESS':
-            streamSimulationResult(streamingUrl)
-            setIsResult(true)
-            dispatch(setResultGraph({}))
-            if (timeoutRef.current !== null) {
-              clearTimeout(timeoutRef.current)
-              timeoutRef.current = null
-            }
-            break
+        case 'STREAMING':
+        case 'SUCCESS':
+          streamSimulationResult(streamingUrl)
+          setIsResult(true)
+          dispatch(setResultGraph({}))
+          if (timeoutRef.current !== null) {
+            clearTimeout(timeoutRef.current)
+            timeoutRef.current = null
+          }
+          break
 
-          case 'FAILURE':
-          case 'CANCELED':
-            if (timeoutRef.current !== null) {
-              clearTimeout(timeoutRef.current)
-              timeoutRef.current = null
-            }
-            break
+        case 'FAILURE':
+        case 'CANCELED':
+          if (timeoutRef.current !== null) {
+            clearTimeout(timeoutRef.current)
+            timeoutRef.current = null
+          }
+          break
 
-          default:
-            console.log('unhandled case', res)
-            if (timeoutRef.current !== null) {
-              clearTimeout(timeoutRef.current)
-              timeoutRef.current = null
-            }
-            break
+        default:
+          console.log('unhandled case', res)
+          if (timeoutRef.current !== null) {
+            clearTimeout(timeoutRef.current)
+            timeoutRef.current = null
+          }
+          break
         }
       })
       .catch(function (error) {
@@ -683,12 +683,14 @@ export default function SimulationScreen ({ open, close }) {
       close(taskId)
     }
 
-    window.addEventListener('beforeunload', handleTabClose)
+    if (!isStatusDone()) {
+      window.addEventListener('beforeunload', handleTabClose)
+    }
 
     return () => {
       window.removeEventListener('beforeunload', handleTabClose)
     }
-  }, [taskId])
+  }, [taskId, isStatusDone()])
 
   /*
    * Function to display values of all affich blocks
