@@ -165,6 +165,11 @@ def load_scripts():
     cmd = ''
     for scriptfile in scriptfiles:
         cmd += f"exec('{scriptfile}');"
+
+    p = 's'
+    cmd += f"{p}=poly(0,'{p}');"
+    p = 'z'
+    cmd += f"{p}=poly(0,'{p}');"
     return cmd
 
 
@@ -1811,11 +1816,6 @@ def internal_fun(internal_key, **kwargs):
         parameters = internal['parameters']
         cmd = ""
         file_name = f"{WORKSPACE.title}-{internal_key}.txt"
-        if 'num' in parameters:
-            p = 's'
-            cmd += f"{p}=poly(0,'{p}');"
-            p = 'z'
-            cmd += f"{p}=poly(0,'{p}');"
         cmd += f"{function}('{file_name}'"
         for parameter in parameters:
             value = kwargs[parameter]
