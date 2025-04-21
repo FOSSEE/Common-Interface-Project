@@ -12,7 +12,9 @@ blocks/env*/
 .env
 scilab-log-*.txt
 tags
-blocks/U*.sci
+blocks/*.dat
+blocks/*.sce
+blocks/*.sci
 blocks/*.xcos
 blocks/*.xml
 blocks/*.xsl

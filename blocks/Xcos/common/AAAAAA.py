@@ -174,7 +174,8 @@ class ScilabWorkspace:
         self.workspace = workspace
 
         cmd = load_scripts()
-        if workspace is not None and workspace != '':
+        if workspace not in [None, '', 'None']:
+            print('workspace=', workspace)
             cmd += load_variables(workspace)
 
         scilab_cmd = [SCILAB,
@@ -1586,8 +1587,6 @@ def process_xcos_model(model, title, rootattribid, parentattribid,
 
     started_workspace = False
     if WORKSPACE is None:
-        if workspace_file is not None and workspace_file != '':
-            print('workspace_file=', workspace_file)
         WORKSPACE = ScilabWorkspace(title, workspace_file)
         started_workspace = True
 
