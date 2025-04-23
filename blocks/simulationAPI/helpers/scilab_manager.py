@@ -966,6 +966,8 @@ def list_variables(filename):
     command += "else;"
     command += "__V9=__V9+sci2exp(evstr(__V18));"
     command += "end;"
+    command += "else;"
+    command += "__V9=__V9+'\"\"'+sci2exp(evstr(__V18))+'\"\"';"
     command += "end;"
     command += "__V9=__V9+'}';"
     command += "if __V8<size(__V5,2) then;"

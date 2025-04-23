@@ -105,7 +105,7 @@ FROM base AS build-xcos
 RUN apt-get update -qq && \
   apt-get install -qq --no-install-recommends gawk python3-pip python3-venv wget xz-utils
 
-ARG NODE_VERSION=v18.20.2
+ARG NODE_VERSION=v20.19.0
 ARG NODE=node-${NODE_VERSION}-linux-x64
 WORKDIR ${HOME}
 RUN wget -q --no-hsts https://nodejs.org/download/release/${NODE_VERSION}/${NODE}.tar.xz && \

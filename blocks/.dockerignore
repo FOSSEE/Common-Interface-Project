@@ -17,9 +17,12 @@ tags
 .srcflake8
 .xcosblocks.txt
 scilab-log-*.txt
-U*.sci
+*.dat
+*.sce
+*.sci
 *.xcos
 *.xml
+*.xsl
 xcosblocks.py
 Xcos/xcosblocks.py
 blocks/xcosblocks/xcosblocks.py
