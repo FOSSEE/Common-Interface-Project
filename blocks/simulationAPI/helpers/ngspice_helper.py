@@ -82,6 +82,8 @@ def CreateXml(file_path, parameters, task_id, workspace_file):
         (xcosfilebase, __) = splitext(file_path)
         xcosfile = xcosfilebase + '.xcos'
         logger.info('will run %s %s %s', 'XmlToXcos', file_path, workspace_file)
+        if workspace_file is None:
+            workspace_file = ''
         proc = subprocess.Popen([XmlToXcos, file_path, workspace_file],
                                 stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         (stdout, stderr) = proc.communicate()

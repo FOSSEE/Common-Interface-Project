@@ -22,8 +22,8 @@ def ExplicitOutputPort(outroot, attribid, parentattribid, ordering, geometry,
         outnode = addNode(outroot, func_name, **{'id': attribid},
                           parent=parentattribid, ordering=ordering,
                           dataType='REAL_MATRIX', dataColumns=1,
-                          initialState="-1.0", style=style,
-                          value=value)
+                          dataLines=1, initialState="-1.0",
+                          style=style, value=value)
 
     return outnode
 

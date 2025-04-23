@@ -14,7 +14,7 @@ def GAINBLK(outroot, attribid, ordering, geometry, parameters, parent=1, style=N
 
     addExprsNode(outnode, TYPE_STRING, 2, parameters)
     addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM,
-                 1, realParts=[parameters[0]])
+                 1, realParts=[format_real_number(parameters[0])])
     addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 0, [])
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, [])
     array = ['0']

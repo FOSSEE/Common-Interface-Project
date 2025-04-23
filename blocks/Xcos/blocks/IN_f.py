@@ -13,7 +13,7 @@ def IN_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=None
 
     addExprsNode(outnode, TYPE_STRING, len(parameters), parameters)
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0, [])
-    addPrecisionNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 1, parameters)
+    addPrecisionNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 1, parameters[0])
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
     array = ['0']
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NBZERO, 1, array)
