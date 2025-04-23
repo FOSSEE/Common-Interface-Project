@@ -262,7 +262,7 @@ function Header () {
             {shared === true
               ? <input
                 ref={textAreaRef}
-                value={`${window.location.protocol}\\\\${window.location.host}/eda/#/editor?id=${details.save_id}`}
+                value={`${window.location.origin}/#/editor?id=${details.save_id}`}
                 readOnly
               />
               : <> Turn On sharing </>}

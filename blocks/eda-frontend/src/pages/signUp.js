@@ -52,7 +52,7 @@ export default function SignUp () {
   const regErrors = useSelector(state => state.auth.regErrors)
 
   const dispatch = useDispatch()
-  const homeURL = `${window.location.protocol}\\\\${window.location.host}/`
+  const homeURL = `${window.location.origin}/#/`
 
   useEffect(() => {
     document.title = 'Sign Up - ' + process.env.REACT_APP_NAME

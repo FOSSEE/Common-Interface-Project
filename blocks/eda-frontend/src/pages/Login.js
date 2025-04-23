@@ -54,7 +54,7 @@ export default function SignIn (props) {
   const errors = useSelector(state => state.auth.errors)
 
   const dispatch = useDispatch()
-  const homeURL = `${window.location.protocol}\\\\${window.location.host}/`
+  const homeURL = `${window.location.origin}/#/`
 
   useEffect(() => {
     document.title = 'Login - ' + process.env.REACT_APP_NAME
