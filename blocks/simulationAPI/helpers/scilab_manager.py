@@ -692,6 +692,62 @@ def uploaddatafile(session, task):
     return JsonResponse(rv)
 
 
+def handle_line(current_line, line):
+    line = line.rstrip()
+    if line.endswith('...'):
+        # Remove continuation and add to buffer
+        current_line += line.rstrip('.').rstrip() + ' '
+        logger.info('Current line: %s#', current_line.rstrip())
+        complete_line = False
+    else:
+        if current_line:
+            current_line += line
+            logger.info('Line: %s$', current_line.rstrip())
+        else:
+            current_line = line
+        complete_line = True
+    return current_line, complete_line
+
+
+def handle_uploaded_sce_file(file, fname):
+    with open(fname, 'w') as f:
+        current_line = ''
+        partial_line = ''
+
+        for chunk in file.chunks():
+            text = chunk.decode('ascii')
+            lines = text.splitlines()
+
+            if not lines:
+                continue
+
+            # Add partial_line to the first line
+            if partial_line:
+                lines[0] = partial_line + lines[0]
+                partial_line = ''
+                logger.info('Complete line: %s$', lines[0].rstrip())
+
+            # If the last line doesn't end with a newline, it is partial
+            if not lines[-1].endswith('\n'):
+                partial_line = lines.pop()  # Save the partial line
+                logger.info('Partial line: %s#', partial_line)
+
+            for line in lines:
+                current_line, complete_line = handle_line(current_line, line)
+                if complete_line:
+                    f.write(current_line.rstrip() + '\n')
+                    current_line = ''
+
+        # Add partial_line to the remaining line
+        if partial_line:
+            current_line, complete_line = handle_line(current_line, partial_line)
+
+        # Write remaining line if any
+        if current_line:
+            logger.info('Last line: %s$', current_line.rstrip())
+            f.write(current_line.rstrip() + '\n')
+
+
 def uploadscript(session, task):
     '''
     Below route is called for uploading script file.
@@ -706,10 +762,7 @@ def uploadscript(session, task):
 
     fname = join(sessiondir, SCRIPT_FILES_FOLDER,
                  f"{script.script_id}_script.sce")
-    # file.save(fname)
-    with open(fname, 'wb+') as destination:
-        for chunk in file.chunks():
-            destination.write(chunk)
+    handle_uploaded_sce_file(file, fname)
     script.filename = fname
 
     if is_unsafe_script(fname):
