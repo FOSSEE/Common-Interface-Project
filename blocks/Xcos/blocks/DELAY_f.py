@@ -58,7 +58,7 @@ def DELAY_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=N
 
     REGISTER_f(root, block_id[4], ordering, geometry, [parameters[1]])
 
-    EVTDLY_f(root, block_id[5], ordering, geometry, [parameters[0], '0'])
+    EVTDLY_f(root, block_id[5], ordering, geometry, ['0.01', parameters[0]])
 
     addNodemxCell(SuperBlockDiagram, TYPE_MXCELL, a='defaultParent',
                   id=block_id[1],

@@ -14,7 +14,7 @@ def STEP(outroot, attribid, ordering, geometry, parameters, parent=1, style=None
 
     addExprsNode(outnode, TYPE_STRING, 3, parameters)
     addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 2, realParts=[
-        format_real_number(parameters[2]),
+        format_real_number(parameters[1]),
         format_real_number(parameters[2])])
     addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 0, [])
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)

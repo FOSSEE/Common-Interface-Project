@@ -14,7 +14,7 @@ def SineVoltage(outroot, attribid, ordering, geometry, parameters, parent=1, sty
 
     addExprsNode(outnode, TYPE_STRING, 5, parameters)
     addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 5, realParts=[
-                 parameters[0], parameters[1], parameters[2],
+                 format_real_number(parameters[0]), format_real_number(parameters[1]), format_real_number(parameters[2]),
                  parameters[3], parameters[4]])
     array = ['0']
     addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 0, [])
@@ -48,9 +48,9 @@ def SineVoltage(outroot, attribid, ordering, geometry, parameters, parent=1, sty
     addSciStringNode(innerArrayNode, height=5,
                      parameters=scilabStringParameters)
     nestedArrayNode = addArrayNode(innerArrayNode, scilabClass="ScilabList")
-    addScilabDoubleNode(nestedArrayNode, width=1, realParts=[parameters[0]])
-    addScilabDoubleNode(nestedArrayNode, width=1, realParts=[parameters[1]])
-    addScilabDoubleNode(nestedArrayNode, width=1, realParts=[parameters[2]])
+    addScilabDoubleNode(nestedArrayNode, width=1, realParts=[format_real_number(parameters[0])])
+    addScilabDoubleNode(nestedArrayNode, width=1, realParts=[format_real_number(parameters[1])])
+    addScilabDoubleNode(nestedArrayNode, width=1, realParts=[format_real_number(parameters[2])])
     addScilabDoubleNode(nestedArrayNode, width=1, realParts=[parameters[3]])
     addScilabDoubleNode(nestedArrayNode, width=1, realParts=[parameters[4]])
 

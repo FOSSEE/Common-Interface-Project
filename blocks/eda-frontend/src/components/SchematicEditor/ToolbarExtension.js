@@ -560,9 +560,9 @@ export function ScriptScreen ({ isOpen, onClose }) {
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {variables.length > 0
+                    {variables?.length > 0
                       ? (
-                          variables.map((variable, index) => (
+                        variables.map((variable, index) => (
                           <TableRow key={index}>
                             <TableCell style={{ border: '1px solid gray', padding: '4px 8px' }}>
                               {variable.name}
