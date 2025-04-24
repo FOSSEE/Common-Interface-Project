@@ -64,6 +64,8 @@ class SaveListSerializer(serializers.ModelSerializer):
 
 
 class GalleryListSerializer(serializers.ModelSerializer):
+    has_script = serializers.SerializerMethodField()
+
     class Meta:
         model = Gallery
         fields = ('save_id',
@@ -73,7 +75,11 @@ class GalleryListSerializer(serializers.ModelSerializer):
                   'media',
                   'lcname',
                   'lcdescription',
+                  'has_script',
                   )
+
+    def get_has_script(self, obj):
+        return bool(obj.script_dump)
 
 
 class GalleryDetailSerializer(serializers.ModelSerializer):

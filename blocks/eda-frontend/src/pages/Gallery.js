@@ -228,6 +228,8 @@ const Gallery = () => {
 
   const st = searchTerm.trim().toLowerCase()
   const galleryst = 'gallery' + st
+  const hasScript = /^(sce|sci|script)/.test(st)
+  const hasNoScript = /^no(sce|sci|script)/.test(st)
 
   // Then, filter based on the search term (independent from book selection)
   const finalfilteredSchematics =
@@ -237,7 +239,9 @@ const Gallery = () => {
         return (
           sch.lcname.includes(st) ||
           sch.lcdescription.includes(st) ||
-          sch.save_id.startsWith(galleryst)
+          sch.save_id.startsWith(galleryst) ||
+          (hasScript && sch.has_script) ||
+          (hasNoScript && !sch.has_script)
         )
       })
 

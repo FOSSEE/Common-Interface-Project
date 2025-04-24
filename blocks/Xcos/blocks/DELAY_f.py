@@ -102,7 +102,7 @@ def DELAY_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=N
     addArray(gemotryNode, TYPE_ARRAY, a="points")
     addmxPointNode(gemotryNode, 'mxPoint',
                    a="targetPoint", x="0.0", y="-4.0")
-    
+
     CCLink = addExplicitLink(root, link_id[3], block_id[1], port_id[0], port_id[2])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
