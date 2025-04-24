@@ -9,7 +9,8 @@ def VoltageSensor(outroot, attribid, ordering, geometry, parameters, parent=1, s
     outnode = addOutNode(outroot, BLOCK_VOLTAGESENSOR,
                          attribid, ordering, parent,
                          func_name, 'VoltageSensor', 'DEFAULT',
-                         style, BLOCKTYPE_C)
+                         style, BLOCKTYPE_C,
+                         dependsOnU='1', dependsOnT='0')
 
     addExprsNode(outnode, TYPE_DOUBLE, 0, parameters)
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0,

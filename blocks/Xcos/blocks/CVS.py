@@ -10,7 +10,7 @@ def CVS(outroot, attribid, ordering, geometry, parameters, parent=1, style=None,
                          attribid, ordering, parent,
                          func_name, 'CVS', 'DEFAULT',
                          style, BLOCKTYPE_C,
-                         dependsOnT='1')
+                         dependsOnU='0', dependsOnT='1')
 
     addExprsNode(outnode, TYPE_DOUBLE, 0, parameters)
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0,

@@ -11,7 +11,7 @@ def CLKSPLIT_f(outroot, attribid, ordering, geometry, parameters, parent=1, styl
                          func_name, 'split', 'DEFAULT',
                          style, BLOCKTYPE_D)
 
-    addExprsNode(outnode, TYPE_STRING, 0, [])
+    addExprsNode(outnode, TYPE_DOUBLE, 0, [])
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0, [])
     addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 0, [])
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)

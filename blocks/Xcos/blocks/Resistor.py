@@ -10,7 +10,7 @@ def Resistor(outroot, attribid, ordering, geometry, parameters, parent=1, style=
                          attribid, ordering, parent,
                          func_name, 'resistor', 'DEFAULT',
                          style, BLOCKTYPE_C,
-                         dependsOnU='1')
+                         dependsOnU='1', dependsOnT='0')
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
     addScilabDNode(outnode, AS_REAL_PARAM,
