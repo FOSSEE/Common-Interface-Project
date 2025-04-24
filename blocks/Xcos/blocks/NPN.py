@@ -14,15 +14,24 @@ def NPN(outroot, attribid, ordering, geometry, parameters, parent=1, style=None,
 
     addExprsNode(outnode, TYPE_STRING, 17, parameters)
     addNodeScilabDB(outnode, AS_REAL_PARAM, height=17, realParts=[
-                    format_real_number(parameters[0]), format_real_number(parameters[1]),
-                    format_real_number(parameters[2]), format_real_number(parameters[3]),
-                    format_real_number(parameters[4]), format_real_number(parameters[5]),
-                    format_real_number(parameters[6]), format_real_number(parameters[7]),
-                    format_real_number(parameters[8]), format_real_number(parameters[9]),
-                    format_real_number(parameters[10]), format_real_number(parameters[11]),
-                    format_real_number(parameters[12]), format_real_number(parameters[13]),
-                    format_real_number(parameters[14]), format_real_number(parameters[15]),
-                    format_real_number(parameters[16])])
+        format_real_number(parameters[0]),
+        format_real_number(parameters[1]),
+        format_real_number(parameters[2]),
+        format_real_number(parameters[3]),
+        format_real_number(parameters[4]),
+        format_real_number(parameters[5]),
+        format_real_number(parameters[6]),
+        format_real_number(parameters[7]),
+        format_real_number(parameters[8]),
+        format_real_number(parameters[9]),
+        format_real_number(parameters[10]),
+        format_real_number(parameters[11]),
+        format_real_number(parameters[12]),
+        format_real_number(parameters[13]),
+        format_real_number(parameters[14]),
+        format_real_number(parameters[15]),
+        format_real_number(parameters[16])
+    ])
     addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 0, [])
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
 
@@ -64,15 +73,24 @@ def NPN(outroot, attribid, ordering, geometry, parameters, parent=1, style=None,
     addSciStringNode(innerArrayNode, 17, param)
 
     addNodeScilabDouble(innerArrayNode, height=17, realParts=[
-                        format_real_number(parameters[0]), format_real_number(parameters[1]),
-                        format_real_number(parameters[2]), format_real_number(parameters[3]),
-                        format_real_number(parameters[4]), format_real_number(parameters[5]),
-                        format_real_number(parameters[6]), format_real_number(parameters[7]),
-                        format_real_number(parameters[8]), format_real_number(parameters[9]),
-                        format_real_number(parameters[10]), format_real_number(parameters[11]),
-                        format_real_number(parameters[12]), format_real_number(parameters[13]),
-                        format_real_number(parameters[14]), format_real_number(parameters[15]),
-                        format_real_number(parameters[16])])
+        format_real_number(parameters[0]),
+        format_real_number(parameters[1]),
+        format_real_number(parameters[2]),
+        format_real_number(parameters[3]),
+        format_real_number(parameters[4]),
+        format_real_number(parameters[5]),
+        format_real_number(parameters[6]),
+        format_real_number(parameters[7]),
+        format_real_number(parameters[8]),
+        format_real_number(parameters[9]),
+        format_real_number(parameters[10]),
+        format_real_number(parameters[11]),
+        format_real_number(parameters[12]),
+        format_real_number(parameters[13]),
+        format_real_number(parameters[14]),
+        format_real_number(parameters[15]),
+        format_real_number(parameters[16])
+    ])
 
     para = [0.0 for _ in range(17)]
     addNodeScilabDouble(innerArrayNode, para, 17)
