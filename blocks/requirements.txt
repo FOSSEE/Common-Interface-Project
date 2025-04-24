@@ -25,7 +25,7 @@ exceptiongroup==1.2.2
 flake8==7.1.1
 gevent==24.11.1
 greenlet==3.1.1
-h11==0.14.0
+h11==0.16.0
 idna==3.7
 inflection==0.5.1
 kombu==5.3.5
