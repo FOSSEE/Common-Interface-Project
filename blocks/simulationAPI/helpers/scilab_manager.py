@@ -1215,7 +1215,8 @@ def upload(session, task, xcosfile):
         block_ids = []  # this stores the id of split blocks
         for block in blocksplit:
             if block.getAttribute("style") == "SPLIT_f":
-                block_ids.append(int(block.getAttribute("id")))
+                # block_ids.append(int(block.getAttribute("id")))
+                block_ids.append(block.getAttribute("id"))
         compsplit = []
         for i in range(len(splitline)):
             for j in range(len(list1)):

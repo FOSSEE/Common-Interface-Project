@@ -2,6 +2,7 @@ from blocks.EVTDLY_f import EVTDLY_f
 from blocks.REGISTER_f import REGISTER_f
 from blocks.IN_f import IN_f
 from blocks.OUT_f import OUT_f
+from blocks.CLKSPLIT_f import CLKSPLIT_f
 from common.AAAAAA import *
 
 
@@ -10,11 +11,12 @@ def DELAY_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=N
     if style is None:
         style = func_name
 
-    block_id, port_id, link_id = generate_id(6, 1, 0)
+    block_id, port_id, link_id = generate_id(7, 10, 5)
     outnode = addOutNode(outroot, BLOCK_BASIC,
                          attribid, ordering, parent,
                          func_name, 'csuper', 'DEFAULT',
-                         style, BLOCKTYPE_H)
+                         style, BLOCKTYPE_H,
+                         dependsOnU='0', dependsOnT='0')
 
     addExprsNode(outnode, TYPE_DOUBLE, 0, parameters)
     addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM,
@@ -55,10 +57,68 @@ def DELAY_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=N
     addExplicitOutputPort(root, port_id[0], block_id[2], "1", "0.0")
 
     OUT_f(root, block_id[3], ordering, geometry, ['1', '1'])
+    addExplicitInputPort(root, port_id[1], block_id[3], "1", "0.0")
 
     REGISTER_f(root, block_id[4], ordering, geometry, [parameters[1]])
+    addExplicitInputPort(root, port_id[2], block_id[4], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
+    addExplicitOutputPort(root, port_id[3], block_id[4], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
+    addControlPort(root, port_id[4], block_id[4], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="-1")
 
     EVTDLY_f(root, block_id[5], ordering, geometry, ['0.01', parameters[0]])
+    addControlPort(root, port_id[5], block_id[5], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="-1")
+    addCommandPort(root, port_id[6], block_id[5], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="-1")
+
+    CLKSPLIT_f(root, block_id[6], ordering, geometry, ['0'])
+    addControlPort(root, port_id[7], block_id[6], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="-1")
+    addCommandPort(root, port_id[8], block_id[6], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="-1")
+    addCommandPort(root, port_id[9], block_id[6], "2", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="-1")
+
+    CCLink = addCommandControlLink(root, link_id[0], block_id[1], port_id[9], port_id[5])
+    gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="sourcePoint", x="0.0", y="11.0")
+    ArrayNode = addArray(gemotryNode, TYPE_ARRAY, a="points")
+    addPointNode(ArrayNode, 'mxPoint',
+                 x="276.6", y="144.8")
+    addPointNode(ArrayNode, 'mxPoint', x="276.6",
+                 y="49.0")
+    addPointNode(ArrayNode, 'mxPoint', x="231.0",
+                 y="49.0")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="targetPoint", x="20.0", y="-4.0")
+
+    CCLink = addCommandControlLink(root, link_id[1], block_id[1], port_id[8], port_id[4])
+    gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="sourcePoint", x="0.0", y="11.0")
+    addArray(gemotryNode, TYPE_ARRAY, a="points")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="targetPoint", x="20.0", y="-4.0")
+
+    CCLink = addCommandControlLink(root, link_id[2], block_id[1], port_id[6], port_id[7])
+    gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="sourcePoint", x="20.0", y="44.0")
+    addArray(gemotryNode, TYPE_ARRAY, a="points")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="targetPoint", x="0.0", y="-4.0")
+    
+    CCLink = addExplicitLink(root, link_id[3], block_id[1], port_id[0], port_id[2])
+    gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="sourcePoint", x="24.0", y="10.0")
+    addArray(gemotryNode, TYPE_ARRAY, a="points")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="targetPoint", x="-4.0", y="20.0")
+
+    CCLink = addExplicitLink(root, link_id[4], block_id[1], port_id[3], port_id[1])
+    gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="sourcePoint", x="54.0", y="20.0")
+    addArray(gemotryNode, TYPE_ARRAY, a="points")
+    addmxPointNode(gemotryNode, 'mxPoint',
+                   a="targetPoint", x="-4.0", y="10.0")
+
 
     addNodemxCell(SuperBlockDiagram, TYPE_MXCELL, a='defaultParent',
                   id=block_id[1],

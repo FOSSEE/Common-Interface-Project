@@ -10,7 +10,7 @@ def GAINBLK_f(outroot, attribid, ordering, geometry, parameters, parent=1, style
                          attribid, ordering, parent,
                          func_name, 'gain', 'DEFAULT',
                          style, BLOCKTYPE_C,
-                         dependsOnU='1')
+                         dependsOnU='1', dependsOnT='0')
 
     addExprsNode(outnode, TYPE_STRING, 1, parameters)
     addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 1, realParts=[

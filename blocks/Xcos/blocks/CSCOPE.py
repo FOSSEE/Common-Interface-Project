@@ -10,7 +10,7 @@ def CSCOPE(outroot, attribid, ordering, geometry, parameters, parent=1, style=No
                          attribid, ordering, parent,
                          func_name, 'cscope', 'C_OR_FORTRAN',
                          style, BLOCKTYPE_C,
-                         dependsOnU='1')
+                         dependsOnU='1', dependsOnT='0')
 
     addExprsNode(outnode, TYPE_STRING, 10, parameters)
     addScilabDNode(outnode, AS_REAL_PARAM, width=4, realParts=[
