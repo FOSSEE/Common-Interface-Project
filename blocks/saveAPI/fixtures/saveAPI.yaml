@@ -168292,12 +168292,6 @@
 
       G_s=horner(Gs,-s);
 
-      evans(Gs*G_s)
-
-      //root locus
-
-      evans(Gs*Dc) //Correct root locus
-
       //Discrete-time controller
 
       nc=94.5*conv([7.98 1],[2.52 1])
@@ -170004,12 +169998,6 @@
       Ds=syslin(''c'',D*8.32)
 
       disp(Ds,''Ds='',"Compensator transfer function")
-
-      //------------------------------------------------------------------
-
-      //root locus
-
-      evans(D*Gs,100) //Correct root locus
 
       //------------------------------------------------------------------
 
@@ -174918,10 +174906,6 @@
       sysc=Gs*Ds;
 
 
-      //Root locus
-
-      evans(sysc)
-
       //Contonuous time response of the system
 
       tc=0:0.1:30;
@@ -176893,10 +176877,6 @@
       Gs=syslin(''c'',num/den)
 
 
-      //Root locus
-
-      evans(Gs,5)
-
       // Step response
 
       K=1;
@@ -177531,10 +177511,6 @@
       den=(s^3);
 
       Gs=syslin(''c'',num/den)
-
-      //Root locus
-
-      evans(Gs,7)
 
       //Response of the system
 
@@ -178239,10 +178215,6 @@
       Gs=syslin(''c'',num/den);
 
 
-      //Root locus
-
-      evans(Gs,40)
-
       //Response of the system
 
       K=0.5;
@@ -178256,10 +178228,6 @@
 
       D=123*(s^2+0.18*s+0.81)/(s+10)^2;
 
-
-      //Root locus
-
-      evans(Gs*D,40)
 
       //Response of the system witth notch filter
 
@@ -178916,10 +178884,6 @@
       Gs=syslin(''c'',num/den);
 
 
-      //Root locus
-
-      evans(Gs,40)
-
       //Response of the system
 
       K=0.5;
@@ -178933,10 +178897,6 @@
 
       D=123*(s^2+0.18*s+0.81)/(s+10)^2;
 
-
-      //Root locus
-
-      evans(Gs*D,40)
 
       //Response of the system witth notch filter
 
@@ -180628,11 +180588,11 @@
 
       if k*a/N > 1 then
 
-      Keq(i,1)=2/%pi*(k*asin(N/a/k)+N/a*sqrt(1-(N/k/a)^2))
+      Keq(i,1)=2/%pi*(k*asin(N/a/k)+N/a*sqrt(1-(N/k/a)^2));
 
       else
 
-      Keq(i,1)=k
+      Keq(i,1)=k;
 
       end
 
