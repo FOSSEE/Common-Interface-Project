@@ -472,8 +472,8 @@ export function ScriptScreen ({ isOpen, onClose }) {
                 fullWidth
                 InputProps={{
                   disableUnderline: true,
-                  sx: {
-                    fontFamily: "'Roboto Mono', monospace",
+                  style: {
+                    fontFamily: '"Roboto Mono", monospace',
                     fontSize: '14px'
                   }
                 }}
@@ -513,7 +513,7 @@ export function ScriptScreen ({ isOpen, onClose }) {
                 display: 'flex',
                 height: '500px',
                 whiteSpace: 'pre-wrap', // Keep line breaks
-                fontFamily: "'Roboto Mono', monospace"
+                fontFamily: '"Roboto Mono", monospace'
               }}
             >
               {result}
@@ -586,15 +586,15 @@ export function ScriptScreen ({ isOpen, onClose }) {
                               {variable.type}
                             </TableCell>
                           </TableRow>
-                          ))
-                        )
+                        ))
+                      )
                       : (
                         <TableRow>
                           <TableCell colSpan={3} align="center">
                             No variables available.
                           </TableCell>
                         </TableRow>
-                        )}
+                      )}
                   </TableBody>
                 </Table>
               </TableContainer>
@@ -684,7 +684,7 @@ export function OpenSchDialog (props) {
   }, [xmlData])
 
   const title = 'Open ' + process.env.REACT_APP_DIAGRAM_NAME
-  const typography1 = "You don't have any saved " + process.env.REACT_APP_SMALL_DIAGRAMS_NAME + '...'
+  const typography1 = 'You don\'t have any saved ' + process.env.REACT_APP_SMALL_DIAGRAMS_NAME + '...'
   return (
     <Dialog
       open={open}
