@@ -479,6 +479,14 @@ export function ScriptScreen ({ isOpen, onClose }) {
                 }}
               />
             </Box>
+            <Box sx={{ mt: 4, display: 'flex', gap: 4 }}>
+              <Button onClick={executeScript} color='primary' variant='contained' disabled={!showDot}>
+                Execute
+              </Button>
+              <Button onClick={resetCode} color='secondary' variant='contained'>
+                Reset
+              </Button>
+            </Box>
           </Box>
 
           <Box
@@ -592,14 +600,7 @@ export function ScriptScreen ({ isOpen, onClose }) {
         </Box>
 
         {/* Action Buttons */}
-        <Box sx={{ mt: 4, display: 'flex', gap: 4 }}>
-          <Button onClick={executeScript} color='primary' variant='contained' disabled={!showDot}>
-            Execute
-          </Button>
-          <Button onClick={resetCode} color='secondary' variant='contained'>
-            Reset
-          </Button>
-        </Box>
+
       </Box>
     </Dialog>
   )
