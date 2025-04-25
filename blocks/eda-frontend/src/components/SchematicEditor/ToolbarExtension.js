@@ -118,6 +118,19 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
+//To get type of variable from map value type
+const getType = (type) => {
+  let type_name = ''
+  switch (type) {
+  case '1': type_name = 'Double'; break
+  case '2': type_name = 'Polynomial'; break
+  case '4': type_name = 'Boolean'; break
+  case '10': type_name = 'String'; break
+  default: type_name = 'N/A'; break
+  }
+  return type_name
+}
+
 // Screen to display information about as keyboard shortcuts, units table and simulation modes
 export function HelpScreen ({ open, close }) {
   const classes = useStyles()
@@ -583,7 +596,7 @@ export function ScriptScreen ({ isOpen, onClose }) {
                               </Tooltip>
                             </TableCell>
                             <TableCell style={{ border: '1px solid gray', padding: '4px 8px' }}>
-                              {variable.type}
+                              {getType(variable.type)}
                             </TableCell>
                           </TableRow>
                         ))
