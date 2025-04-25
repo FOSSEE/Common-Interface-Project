@@ -575,8 +575,12 @@ export function ScriptScreen ({ isOpen, onClose }) {
                             <TableCell style={{ border: '1px solid gray', padding: '4px 8px' }}>
                               {variable.name}
                             </TableCell>
-                            <TableCell style={{ border: '1px solid gray', padding: '4px 8px' }}>
-                              {variable.value}
+                            <TableCell style={{ border: '1px solid gray', padding: '4px 8px', maxWidth: '300px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                              <Tooltip title={<span style={{ whiteSpace: 'pre-wrap' }}>{variable.value}</span>} arrow>
+                                <span style={{ cursor: 'pointer', display: 'inline-block', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '100%' }}>
+                                  {variable.value}
+                                </span>
+                              </Tooltip>
                             </TableCell>
                             <TableCell style={{ border: '1px solid gray', padding: '4px 8px' }}>
                               {variable.type}
