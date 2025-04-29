@@ -6,6 +6,7 @@ import { styleToObject } from '../utils/GalleryUtils'
 const initialState = {
   block: null,
   name: '',
+  id: '',
   parameter_values: {},
   errorFields: {},
   isPropertiesWindowOpen: false,
@@ -78,6 +79,7 @@ const componentPropertiesSlice = createSlice({
         const block = action.meta.arg
         state.block = block
         state.name = styleToObject(block.style).default
+        state.id = block.id
         state.parameter_values = block.parameter_values
         state.errorFields = block.errorFields
         state.displayProperties = block.displayProperties

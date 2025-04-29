@@ -158,7 +158,7 @@ export default function LoadGrid (container, sidebar, outline) {
     graph.setEnterStopsCellEditing(true)
 
     // Adds rubberband selection
-    new mxRubberband(graph) // eslint-disable-line no-new
+    new mxRubberband(graph)
 
     // Alternative solution for implementing connection points without child cells.
     // This can be extended as shown in portrefs.html example to allow for per-port
@@ -255,17 +255,17 @@ export default function LoadGrid (container, sidebar, outline) {
           const styleObject = styleToObject(source.style)
           let style = 'Link'
           switch (styleObject.default) {
-            case 'ExplicitOutputPort': case 'ExplicitInputPort':
-              style = 'ExplicitLink'
-              break
+          case 'ExplicitOutputPort': case 'ExplicitInputPort':
+            style = 'ExplicitLink'
+            break
 
-            case 'ImplicitOutputPort': case 'ImplicitInputPort':
-              style = 'ImplicitLink'
-              break
+          case 'ImplicitOutputPort': case 'ImplicitInputPort':
+            style = 'ImplicitLink'
+            break
 
-            case 'CommandPort': case 'ControlPort':
-              style = 'CommandControlLink'
-              break
+          case 'CommandPort': case 'ControlPort':
+            style = 'CommandControlLink'
+            break
           }
           text = style + '\n' +
             'UID: ' + cell.id + '\n' +
