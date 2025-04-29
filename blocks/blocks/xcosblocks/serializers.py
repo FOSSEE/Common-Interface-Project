@@ -160,32 +160,3 @@ class NewBlockSerializer(serializers.ModelSerializer):
     @staticmethod
     def prefetch_blockport(queryset):
         return queryset.prefetch_related('newblockport_set')
-
-
-class SetNewBlockParameterSerializer(serializers.Serializer):
-    block = serializers.CharField(max_length=100, required=True,
-                                  allow_blank=False, trim_whitespace=True)
-
-    def getblockportserializer(self):
-        data = self.data
-        name = data['block']
-
-        (parameters, display_parameter, ports) = \
-            getattr(Blocks, 'get_from_' + name)(data)
-        simulation_function = ''
-
-        return SetNewBlockPortSerializer(data={
-            'parameters': parameters,
-            'display_parameter': display_parameter,
-            'simulation_function': simulation_function,
-            'ports': ports,
-        })
-
-
-class SetNewBlockPortSerializer(serializers.Serializer):
-    parameters = serializers.StringRelatedField(many=True)
-    display_parameter = serializers.CharField(
-        max_length=100, allow_blank=True, trim_whitespace=True)
-    simulation_function = serializers.CharField(
-        max_length=100, allow_blank=True, trim_whitespace=True)
-    ports = serializers.StringRelatedField(many=True)
