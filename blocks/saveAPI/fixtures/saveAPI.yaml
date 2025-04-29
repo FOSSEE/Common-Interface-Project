@@ -142302,7 +142302,7 @@
       interfaceFunctionName="CLR" ordering="1" parent="6521d368:1479034e794:-7fa0"
       simulationFunctionName="csslti4" simulationFunctionType="C_OR_FORTRAN" style="CLR"><ScilabString
       as="exprs" height="2" width="1"><data column="0" line="0" value="1"/><data column="0"
-      line="1" value="s^2+2*k*w*s+w^2"/></ScilabString><ScilabDouble as="realParameters"
+      line="1" value="s^2+2*zeta*Wn*s+Wn^2"/></ScilabString><ScilabDouble as="realParameters"
       height="9" width="1"><data column="0" line="0" realPart="0.0"/><data column="0"
       line="1" realPart="-219.9289"/><data column="0" line="2" realPart="1.0"/><data
       column="0" line="3" realPart="-7.723464000000001"/><data column="0" line="4"
