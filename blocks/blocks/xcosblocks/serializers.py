@@ -4,7 +4,7 @@ from django.db.models import Prefetch
 from .models import BlockType, Category, ParameterDataType, BlockPrefix, \
     NewBlock, NewBlockParameter, NewBlockPort
 
-from .xcosblocks import *
+from .xcosblocks import Blocks
 
 
 class BlockTypeSerializer(serializers.ModelSerializer):
