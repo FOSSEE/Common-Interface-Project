@@ -1,11 +1,12 @@
 /* eslint new-cap: ["error", {"newIsCapExceptionPattern": "^mx"}] */
 import 'mxgraph/javascript/src/css/common.css'
 
+import { useSelector } from 'react-redux'
 import mxGraphFactory from 'mxgraph'
+
 import { portSize, getParameter } from './SvgParser'
 import { getPortType, InputPort, OutputPort } from './ComponentDrag'
 import { styleToObject } from '../../../utils/GalleryUtils'
-import store from '../../../redux/store'
 
 let graph
 let undoManager
@@ -40,7 +41,7 @@ export function saveXml (description = '') {
   firstCell.appname = process.env.REACT_APP_NAME
   firstCell.description = description
   const node = enc.encode(model)
-  const pins = node.querySelectorAll("Object[as='errorFields'],Object[as='pins']")
+  const pins = node.querySelectorAll('Object[as="errorFields"],Object[as="pins"]')
   pins.forEach(pin => { pin.remove() })
   const value = mxUtils.getXml(node)
   return value
@@ -139,7 +140,7 @@ export function PrintPreview () {
     header.style.lineHeight = (this.marginTop - 10) + 'px'
 
     const footer = header.cloneNode(true)
-    const title = store.getState().saveSchematic.title
+    const title = useSelector(state => state.saveSchematic.title)
     mxUtils.write(header, title + ' - ' + process.env.REACT_APP_NAME + ' on Cloud')
     header.style.borderBottom = '1px solid blue'
     header.style.top = '0px'
@@ -255,33 +256,33 @@ export function getRotationParameters (stylename, rotation) {
 export function getPins (portOrientation, v1) {
   let pins
   switch (portOrientation) {
-    case 'ExplicitInputPort':
-      v1.explicitInputPorts += 1
-      pins = v1.pins?.explicitInputPorts
-      break
-    case 'ImplicitInputPort':
-      v1.implicitInputPorts += 1
-      pins = v1.pins?.implicitInputPorts
-      break
-    case 'ControlPort':
-      v1.controlPorts += 1
-      pins = v1.pins?.controlPorts
-      break
-    case 'ExplicitOutputPort':
-      v1.explicitOutputPorts += 1
-      pins = v1.pins?.explicitOutputPorts
-      break
-    case 'ImplicitOutputPort':
-      v1.implicitOutputPorts += 1
-      pins = v1.pins?.implicitOutputPorts
-      break
-    case 'CommandPort':
-      v1.commandPorts += 1
-      pins = v1.pins?.commandPorts
-      break
-    default:
-      pins = null
-      break
+  case 'ExplicitInputPort':
+    v1.explicitInputPorts += 1
+    pins = v1.pins?.explicitInputPorts
+    break
+  case 'ImplicitInputPort':
+    v1.implicitInputPorts += 1
+    pins = v1.pins?.implicitInputPorts
+    break
+  case 'ControlPort':
+    v1.controlPorts += 1
+    pins = v1.pins?.controlPorts
+    break
+  case 'ExplicitOutputPort':
+    v1.explicitOutputPorts += 1
+    pins = v1.pins?.explicitOutputPorts
+    break
+  case 'ImplicitOutputPort':
+    v1.implicitOutputPorts += 1
+    pins = v1.pins?.implicitOutputPorts
+    break
+  case 'CommandPort':
+    v1.commandPorts += 1
+    pins = v1.pins?.commandPorts
+    break
+  default:
+    pins = null
+    break
   }
   return pins
 }
@@ -290,26 +291,26 @@ export function getPointXY (rotationParameters) {
   let pointX
   let pointY
   switch (rotationParameters.rotatename) {
-    case 'ExplicitInputPort':
-      pointX = -portSize
-      pointY = -portSize / 2
-      break
-    case 'ControlPort':
-      pointX = -portSize / 2
-      pointY = -portSize
-      break
-    case 'ExplicitOutputPort':
-      pointX = 0
-      pointY = -portSize / 2
-      break
-    case 'CommandPort':
-      pointX = -portSize / 2
-      pointY = 0
-      break
-    default:
-      pointX = -portSize / 2
-      pointY = -portSize / 2
-      break
+  case 'ExplicitInputPort':
+    pointX = -portSize
+    pointY = -portSize / 2
+    break
+  case 'ControlPort':
+    pointX = -portSize / 2
+    pointY = -portSize
+    break
+  case 'ExplicitOutputPort':
+    pointX = 0
+    pointY = -portSize / 2
+    break
+  case 'CommandPort':
+    pointX = -portSize / 2
+    pointY = 0
+    break
+  default:
+    pointX = -portSize / 2
+    pointY = -portSize / 2
+    break
   }
   return { pointX, pointY }
 }
@@ -317,27 +318,27 @@ export function getPointXY (rotationParameters) {
 export function getXYPos (rotationParameters, xPos, yPos) {
   const xPosOld = xPos
   switch (rotationParameters.portdirection) {
-    case PORTDIRECTIONS.L2T:
-    case PORTDIRECTIONS.T2L:
-      xPos = yPos
-      yPos = xPosOld
-      break
-    case PORTDIRECTIONS.L2R:
-      xPos = 1 - xPosOld
-      /* same yPos */
-      break
-    case PORTDIRECTIONS.L2B:
-      xPos = yPos
-      yPos = 1 - xPosOld
-      break
-    case PORTDIRECTIONS.T2R:
-      xPos = 1 - yPos
-      yPos = xPosOld
-      break
-    case PORTDIRECTIONS.T2B:
-      /* same xPos */
-      yPos = 1 - yPos
-      break
+  case PORTDIRECTIONS.L2T:
+  case PORTDIRECTIONS.T2L:
+    xPos = yPos
+    yPos = xPosOld
+    break
+  case PORTDIRECTIONS.L2R:
+    xPos = 1 - xPosOld
+    /* same yPos */
+    break
+  case PORTDIRECTIONS.L2B:
+    xPos = yPos
+    yPos = 1 - xPosOld
+    break
+  case PORTDIRECTIONS.T2R:
+    xPos = 1 - yPos
+    yPos = xPosOld
+    break
+  case PORTDIRECTIONS.T2B:
+    /* same xPos */
+    yPos = 1 - yPos
+    break
   }
   return { xPos, yPos }
 }
