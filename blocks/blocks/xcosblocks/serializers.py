@@ -65,7 +65,7 @@ class SetBlockParameterSerializer(serializers.Serializer):
         name = data['block']
 
         (parameters, display_parameter, ports) = \
-            globals()['get_from_' + name](data)
+            getattr(Blocks, 'get_from_' + name)(data)
         simulation_function = ''
 
         return SetBlockPortSerializer(data={
@@ -171,7 +171,7 @@ class SetNewBlockParameterSerializer(serializers.Serializer):
         name = data['block']
 
         (parameters, display_parameter, ports) = \
-            globals()['get_from_' + name](data)
+            getattr(Blocks, 'get_from_' + name)(data)
         simulation_function = ''
 
         return SetNewBlockPortSerializer(data={
