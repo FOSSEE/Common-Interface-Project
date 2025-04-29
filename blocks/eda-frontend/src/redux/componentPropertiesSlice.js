@@ -74,19 +74,18 @@ const componentPropertiesSlice = createSlice({
       .addCase(getCompProperties.pending, (state, action) => {
         state.isLoading = true
         state.isPropertiesWindowOpen = true
-        state.compProperties = undefined
+        state.compProperties = []
         const block = action.meta.arg
+        state.block = block
         state.name = styleToObject(block.style).default
+        state.parameter_values = block.parameter_values
+        state.errorFields = block.errorFields
+        state.displayProperties = block.displayProperties
       })
       .addCase(getCompProperties.fulfilled, (state, action) => {
         state.isLoading = false
         state.isPropertiesWindowOpen = true
-        state.name = action.payload.name
-        state.block = action.payload.block
-        state.parameter_values = action.payload.parameter_values
-        state.errorFields = action.payload.errorFields
-        state.displayProperties = action.payload.displayProperties
-        state.compProperties = action.payload.compProperties
+        state.compProperties = action.payload
       })
       .addCase(getCompProperties.rejected, (state) => {
         state.isLoading = false

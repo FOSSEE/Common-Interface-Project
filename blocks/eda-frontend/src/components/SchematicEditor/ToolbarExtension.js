@@ -484,7 +484,6 @@ export function ScriptScreen ({ isOpen, onClose }) {
                 variant='outlined'
                 fullWidth
                 InputProps={{
-                  disableUnderline: true,
                   style: {
                     fontFamily: '"Roboto Mono", monospace',
                     fontSize: '14px'

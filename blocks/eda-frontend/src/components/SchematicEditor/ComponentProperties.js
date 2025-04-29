@@ -21,62 +21,62 @@ function getXY (portOrientation, offsetPorts, newTotalPorts, i, block) {
   let ports
   let pins
   switch (portOrientation) {
-    case 'ExplicitInputPort':
-      xPos = 0
-      yPos = 1 - (2 * i + 1) / (2 * newTotalPorts)
-      pointX = -portSize
-      pointY = -portSize / 2
-      ports = 'explicitInputPorts'
-      pins = block.pins.explicitInputPorts
-      break
-    case 'ImplicitInputPort':
-      xPos = 0
-      yPos = 1 - (2 * (offsetPorts + i) + 1) / (2 * newTotalPorts)
-      pointX = -portSize
-      pointY = -portSize / 2
-      ports = 'implicitInputPorts'
-      pins = block.pins.implicitInputPorts
-      break
-    case 'ControlPort':
-      xPos = (2 * i + 1) / (2 * newTotalPorts)
-      yPos = 0
-      pointX = -portSize / 2
-      pointY = -portSize
-      ports = 'controlPorts'
-      pins = block.pins.controlPorts
-      break
-    case 'ExplicitOutputPort':
-      xPos = 1
-      yPos = 1 - (2 * i + 1) / (2 * newTotalPorts)
-      pointX = 0
-      pointY = -portSize / 2
-      ports = 'explicitOutputPorts'
-      pins = block.pins.explicitOutputPorts
-      break
-    case 'ImplicitOutputPort':
-      xPos = 1
-      yPos = 1 - (2 * (offsetPorts + i) + 1) / (2 * newTotalPorts)
-      pointX = 0
-      pointY = -portSize / 2
-      ports = 'implicitOutputPorts'
-      pins = block.pins.implicitOutputPorts
-      break
-    case 'CommandPort':
-      xPos = (2 * i + 1) / (2 * newTotalPorts)
-      yPos = 1
-      pointX = -portSize / 2
-      pointY = 0
-      ports = 'commandPorts'
-      pins = block.pins.commandPorts
-      break
-    default:
-      xPos = 0
-      yPos = 0
-      pointX = -portSize / 2
-      pointY = -portSize / 2
-      ports = null
-      pins = null
-      break
+  case 'ExplicitInputPort':
+    xPos = 0
+    yPos = 1 - (2 * i + 1) / (2 * newTotalPorts)
+    pointX = -portSize
+    pointY = -portSize / 2
+    ports = 'explicitInputPorts'
+    pins = block.pins.explicitInputPorts
+    break
+  case 'ImplicitInputPort':
+    xPos = 0
+    yPos = 1 - (2 * (offsetPorts + i) + 1) / (2 * newTotalPorts)
+    pointX = -portSize
+    pointY = -portSize / 2
+    ports = 'implicitInputPorts'
+    pins = block.pins.implicitInputPorts
+    break
+  case 'ControlPort':
+    xPos = (2 * i + 1) / (2 * newTotalPorts)
+    yPos = 0
+    pointX = -portSize / 2
+    pointY = -portSize
+    ports = 'controlPorts'
+    pins = block.pins.controlPorts
+    break
+  case 'ExplicitOutputPort':
+    xPos = 1
+    yPos = 1 - (2 * i + 1) / (2 * newTotalPorts)
+    pointX = 0
+    pointY = -portSize / 2
+    ports = 'explicitOutputPorts'
+    pins = block.pins.explicitOutputPorts
+    break
+  case 'ImplicitOutputPort':
+    xPos = 1
+    yPos = 1 - (2 * (offsetPorts + i) + 1) / (2 * newTotalPorts)
+    pointX = 0
+    pointY = -portSize / 2
+    ports = 'implicitOutputPorts'
+    pins = block.pins.implicitOutputPorts
+    break
+  case 'CommandPort':
+    xPos = (2 * i + 1) / (2 * newTotalPorts)
+    yPos = 1
+    pointX = -portSize / 2
+    pointY = 0
+    ports = 'commandPorts'
+    pins = block.pins.commandPorts
+    break
+  default:
+    xPos = 0
+    yPos = 0
+    pointX = -portSize / 2
+    pointY = -portSize / 2
+    ports = null
+    pins = null
+    break
   }
   return { xPos, yPos, pointX, pointY, ports, pins }
 }
@@ -230,22 +230,22 @@ export default function ComponentProperties () {
     const fieldType = compProperties && compProperties[typeId]
     let isValid = true
     switch (fieldType) {
-      case 1: // boolean
-        // For boolean type, consider 0 as false and 1 as true
-        isValid = value === '0' || value === '1'
-        break
-      case 2: // integer
-        // For integer type, check if the input is a valid number
-        isValid = !isNaN(value) && Number.isInteger(Number(value))
-        break
-      case 3: // double
-        // For double type, check if the input is a valid number
-        isValid = !isNaN(value) && !Number.isNaN(parseFloat(value))
-        break
+    case 1: // boolean
+      // For boolean type, consider 0 as false and 1 as true
+      isValid = value === '0' || value === '1'
+      break
+    case 2: // integer
+      // For integer type, check if the input is a valid number
+      isValid = !isNaN(value) && Number.isInteger(Number(value))
+      break
+    case 3: // double
+      // For double type, check if the input is a valid number
+      isValid = !isNaN(value) && !Number.isNaN(parseFloat(value))
+      break
       // Add more cases for other types as needed
-      default:
-        // For other types, no specific validation
-        isValid = true
+    default:
+      // For other types, no specific validation
+      isValid = true
     }
     // Update error state for the field
     setErrorFields({
@@ -278,7 +278,13 @@ export default function ComponentProperties () {
       />
 
       <ListItem>
-        {compProperties && compProperties.length > 0 ? <ListItemText primary={link1} /> : isLoading ? <ListItemText primary={link4} /> : <ListItemText primary={link3} />}
+        {
+          compProperties && compProperties.length > 0
+            ? <ListItemText primary={link1} />
+            : isLoading
+              ? <ListItemText primary={link4} />
+              : <ListItemText primary={link3} />
+        }
       </ListItem>
 
       {
