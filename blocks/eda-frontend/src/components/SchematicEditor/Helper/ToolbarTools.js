@@ -373,7 +373,6 @@ function parseXmlToGraph (xmlDoc, graph) {
           }
           const style = cellAttrs.style.value
           const styleObject = styleToObject(style)
-          console.log('blckname:', styleObject)
           if (styleObject.rotation === undefined) {
             blockrotation = 0
           } else {
@@ -458,21 +457,16 @@ function parseXmlToGraph (xmlDoc, graph) {
             console.log('firstportrotation is not equal to rotation', firstportrotation, rotation)
             rotation = firstportrotation
           }
-          console.log('rotation:', rotation)
 
           const vertexId = cellAttrs.id.value
           const geom = cellChildren[0].attributes
-          console.log('CELLATTR:', cellAttrs)
           let xPos = (geom.x !== undefined) ? Number(geom.x.value) : 0
           let yPos = (geom.y !== undefined) ? Number(geom.y.value) : 0
 
           const rotationParameters = getRotationParameters(stylename, rotation)
 
           if (rotation !== 0) {
-            console.log('Ports:', styleObject)
-            console.log('DIFF:', rotation)
-            console.log(geom, xPos, yPos, portSize)
-            console.log('rotationParameters:', rotationParameters)
+            console.log('rotation:', styleObject, rotation, xPos, yPos, portSize, rotationParameters)
           }
 
           getPins(stylename, v1)
@@ -518,7 +512,6 @@ function parseXmlToGraph (xmlDoc, graph) {
           const targetCell = graph.getModel().getCell(target)
           const msgSource = (sourceCell == null) ? ' (not found)' : ''
           const msgTarget = (targetCell == null) ? ' (not found)' : ''
-          console.log(`ST ${source}${msgSource} ${target}${msgTarget}`)
           if (sourceCell == null || targetCell == null) {
             remainingcells.push(cell)
             continue
@@ -538,11 +531,10 @@ function parseXmlToGraph (xmlDoc, graph) {
           const sourceType = getPortType(sourceCell)
           const targetType = getPortType(targetCell)
           if (sourceType.type2 !== OutputPort && targetType.type2 !== InputPort) {
-            console.log('switch', source, target, points)
+            console.log('switch', source, target)
             // const tmp = source
             // source = target
             // target = tmp
-            console.log('sourceCell:', sourceCell)
             // const tmpCell = sourceCell
             // sourceCell = targetCell
             // targetCell = tmpCell
@@ -570,8 +562,6 @@ function parseXmlToGraph (xmlDoc, graph) {
               edge.geometry.setTerminalPoint(terminalPoint, true)
             }
             edge.geometry.points = points
-            console.log('Points:', points)
-            console.log('edge:', edge)
           } catch (e) {
             console.log(sourceCell)
             console.log(targetCell)
