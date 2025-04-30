@@ -86,8 +86,7 @@ BACKSPACE = re.compile(r'.\x08')
 # Following are system command which are not permitted in sci files
 # (Reference scilab-on-cloud project)
 SYSTEM_COMMANDS = (
-    r'unix\(.*\)|unix_g\(.*\)|unix_w\(.*\)|unix_x\(.*\)|unix_s\(.*\)|host'
-    r'|newfun|execstr|ascii|mputl|dir\(\)'
+    r'ascii|dir\(|execstr|host|mputl|newfun|system|unix(_[gswx])?\('
 )
 SPECIAL_CHARACTERS = r'["\'\\]'
 
@@ -174,14 +173,21 @@ def load_scripts():
 
 
 class ScilabWorkspace:
-    def __init__(self, title, workspace):
+    def __init__(self, title, workspace, context=None):
         self.title = title
         self.workspace = workspace
+        self.context = context
 
         cmd = load_scripts()
         if workspace not in [None, '', 'None']:
             print('workspace=', workspace)
             cmd += load_variables(workspace)
+        if context not in [None, '', 'None']:
+            msg = is_safe_string('context', context)
+            if not msg:
+                cmd += f"execstr('{context}');"
+            else:
+                print(f"Ignoring unsafe context {context}: {msg}")
 
         scilab_cmd = [SCILAB,
                       "-noatomsautoload",
@@ -907,6 +913,10 @@ def format_real_number(parameter):
     if re.search(r'[a-zA-Z]', parameter):  # Check if parameter contains alphabetic characters
         if WORKSPACE is None:
             print(f'No Scilab workspace available for {parameter} evaluation')
+            return parameter
+        msg = is_safe_string('parameter', parameter)
+        if msg:
+            print(f"Ignoring unsafe parameter {parameter}: {msg}")
             return parameter
         print(f'send {parameter} to Scilab')
         parameter = WORKSPACE.send_expression(parameter)
@@ -1810,6 +1820,18 @@ def process_xcos_model(model, title, rootattribid, parentattribid,
     return outdiagram
 
 
+def is_safe_string(parameter, value):
+    try:
+        value.encode('ascii')
+    except UnicodeEncodeError:
+        return f"{parameter} parameter has non-ascii characters"
+    if re.search(SYSTEM_COMMANDS, value):
+        return f"{parameter} parameter has unsafe value"
+    if re.search(SPECIAL_CHARACTERS, value):
+        return f"{parameter} parameter has value with special characters"
+    return None
+
+
 def internal_fun(internal_key, **kwargs):
     try:
         internal = INTERNAL[internal_key]
@@ -1820,18 +1842,8 @@ def internal_fun(internal_key, **kwargs):
         cmd += f"{function}('{file_name}'"
         for parameter in parameters:
             value = kwargs[parameter]
-            try:
-                value.encode('ascii')
-            except UnicodeEncodeError:
-                msg = f"{parameter} parameter has non-ascii characters"
-                print(msg)
-                return {'msg': msg}
-            if re.search(SYSTEM_COMMANDS, value):
-                msg = f"{parameter} parameter has unsafe value"
-                print(msg)
-                return {'msg': msg}
-            if re.search(SPECIAL_CHARACTERS, value):
-                msg = f"{parameter} parameter has value with special characters"
+            msg = is_safe_string(parameter, value)
+            if msg:
                 print(msg)
                 return {'msg': msg}
             cmd += f",{value}" if 'num' in parameters else f",'{value}'"
