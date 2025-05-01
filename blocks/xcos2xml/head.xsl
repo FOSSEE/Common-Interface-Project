@@ -130,8 +130,23 @@
   </xsl:template>
   <xsl:template match="comment()" />
   <xsl:template match="XcosDiagram">
-    <xsl:apply-templates select="node()" />
+    <xsl:copy>
+      <xsl:apply-templates select="@* | node()" />
+    </xsl:copy>
   </xsl:template>
+
+  <xsl:template match="SuperBlockDiagram">
+    <xsl:copy>
+      <xsl:apply-templates select="@* | node()" />
+    </xsl:copy>
+  </xsl:template>
+
+  <xsl:template match="Array[@as='context']">
+    <xsl:copy>
+      <xsl:apply-templates select="@* | node()" />
+    </xsl:copy>
+  </xsl:template>
+  
   <xsl:template match="mxGraphModel">
     <xsl:copy>
       <xsl:apply-templates select="@*[name(.)!='as']" />

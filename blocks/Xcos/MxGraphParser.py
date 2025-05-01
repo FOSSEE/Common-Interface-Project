@@ -26,11 +26,11 @@ title = re.sub(r'^.*/', r'', filename)
 title = re.sub(base, r'', title)
 
 tree = goodET.parse(filename)
-model = tree.getroot()
+diagram = tree.getroot()
 
 rootattribid = '0:1:0'
 parentattribid = '0:2:0'
-outdiagram = process_xcos_model(model, title, rootattribid, parentattribid,
+outdiagram = process_xcos_model(diagram, title, rootattribid, parentattribid,
                                 workspace_file, context)
 
 
