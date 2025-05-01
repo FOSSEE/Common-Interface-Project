@@ -2,12 +2,12 @@
 
 usage() {
   echo "Usage:" >&2
-  echo "    $0 input-file.xcos workspace.dat" >&2
-  echo "    $0 input-file.xml workspace.dat" >&2
+  echo "    $0 input-file.xcos [workspace.dat] [context]" >&2
+  echo "    $0 input-file.xml [workspace.dat] [context]" >&2
   exit 101
 }
 
-if test $# -ne 1 -a $# -ne 2; then
+if test $# -lt 1 -o $# -gt 3; then
   usage
 fi
 
@@ -72,6 +72,8 @@ if test -n "$WORKSPACE"; then
   fi
 fi
 
+CONTEXT="$3"
+
 set -e
 
 TMPFILE1="$(mktemp -t XXXXXX.xml)"
@@ -86,8 +88,8 @@ if test -n "$INPUTXML"; then
   fi
 
   # MxGraphParser creates $INPUT
-  echo "Running Xcos/MxGraphParser.py $INPUTXML" >&2
-  Xcos/MxGraphParser.py "$INPUTXML" >&2
+  echo "Running Xcos/MxGraphParser.py $INPUTXML $WORKSPACE $CONTEXT" >&2
+  Xcos/MxGraphParser.py "$INPUTXML" "$WORKSPACE" "$CONTEXT" >&2
 fi
 
 count=$(grep -c '^      <SplitBlock' "$INPUT") || :
@@ -157,8 +159,8 @@ INPUT1="$BASE-$rv.xml"
 xmllint --format "$INPUT1" >"$TMPFILE2"
 cp -f "$TMPFILE2" "$INPUT1"
 
-echo "Running Xcos/MxGraphParser.py $INPUT1 $WORKSPACE" >&2
-Xcos/MxGraphParser.py "$INPUT1" "$WORKSPACE" >&2
+echo "Running Xcos/MxGraphParser.py $INPUT1 $WORKSPACE $CONTEXT" >&2
+Xcos/MxGraphParser.py "$INPUT1" "$WORKSPACE" "$CONTEXT" >&2
 INPUT1="$BASE.xcos"
 echo "Created $INPUT1" >&2
 

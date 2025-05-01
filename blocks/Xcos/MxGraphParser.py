@@ -9,13 +9,14 @@ import defusedxml.ElementTree as goodET
 from xcosblocks import process_xcos_model, remove_hyphen_number
 
 
-if len(sys.argv) != 3:
-    print("Usage: %s filename.xml workspace.dat" % sys.argv[0])
+if len(sys.argv) != 4:
+    print("Usage: %s filename.xml workspace.dat context" % sys.argv[0])
     sys.exit(1)
 
 filename = sys.argv[1]
 (basename, ext) = os.path.splitext(filename)
 workspace_file = sys.argv[2]
+context = sys.argv[3]
 
 if ext != '.xml':
     print("Usage: %s filename.xml workspace.dat" % sys.argv[0])
@@ -30,7 +31,7 @@ model = tree.getroot()
 rootattribid = '0:1:0'
 parentattribid = '0:2:0'
 outdiagram = process_xcos_model(model, title, rootattribid, parentattribid,
-                                workspace_file)
+                                workspace_file, context)
 
 
 outtree = ET.ElementTree(outdiagram)

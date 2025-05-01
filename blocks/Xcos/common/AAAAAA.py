@@ -185,6 +185,7 @@ class ScilabWorkspace:
         if context not in [None, '', 'None']:
             msg = is_safe_string('context', context)
             if not msg:
+                print(f'setting context={context}')
                 cmd += f"execstr('{context}');"
             else:
                 print(f"Ignoring unsafe context {context}: {msg}")
@@ -201,6 +202,28 @@ class ScilabWorkspace:
         env['TERM'] = 'dumb'
         self.child = pexpect.spawn(scilab_cmd[0], scilab_cmd[1:], env=env, encoding='utf-8', timeout=15)
         self.child.expect(SCILAB_PROMPT)
+
+    def add_context(self, context):
+        if context in [None, '', 'None']:
+            return
+
+        msg = is_safe_string('context', context)
+        if msg:
+            print(f"Ignoring unsafe context {context}: {msg}")
+            return
+
+        if self.context == context:
+            print(f'context already set to {context}')
+            return
+
+        if self.context not in [None, '', 'None']:
+            print(f'adding new context={context}')
+            self.context += context
+        else:
+            print(f'setting context={context}')
+            self.context = context
+
+        self.send_command(f"execstr('{context}');")
 
     def clean_output(self, text, expr):
         # Remove echoed input and Scilab formatting
@@ -1598,12 +1621,12 @@ def getSplitPoints(attrib, switch_split, blkgeometry, sourceVertex, targetVertex
 
 
 def process_xcos_model(model, title, rootattribid, parentattribid,
-                       workspace_file=None):
+                       workspace_file=None, context=None):
     global WORKSPACE
 
     started_workspace = False
     if WORKSPACE is None:
-        WORKSPACE = ScilabWorkspace(title, workspace_file)
+        WORKSPACE = ScilabWorkspace(title, workspace_file, context)
         started_workspace = True
 
     checkModelTag(model)

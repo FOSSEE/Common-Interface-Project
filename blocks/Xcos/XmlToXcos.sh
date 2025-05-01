@@ -25,6 +25,8 @@ fi
 
 WORKSPACE="$2"
 
+CONTEXT=""
+
 set -e
 
 TMPFILE2="$(mktemp -t XXXXXX.xml)"
@@ -61,8 +63,8 @@ INPUT1="$BASE-$rv.xml"
 xmllint --format "$INPUT1" >"$TMPFILE2"
 cp -f "$TMPFILE2" "$INPUT1"
 
-echo "Running Xcos/MxGraphParser.py $INPUT1 $WORKSPACE" >&2
-Xcos/MxGraphParser.py "$INPUT1" "$WORKSPACE" >&2
+echo "Running Xcos/MxGraphParser.py $INPUT1 $WORKSPACE $CONTEXT" >&2
+Xcos/MxGraphParser.py "$INPUT1" "$WORKSPACE" "$CONTEXT" >&2
 INPUT1="$BASE.xcos"
 echo "Created $INPUT1" >&2
 
