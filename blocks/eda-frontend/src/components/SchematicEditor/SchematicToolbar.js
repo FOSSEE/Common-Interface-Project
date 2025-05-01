@@ -438,7 +438,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
     'pipe',
     {
       icon: (
-        <div style={{ position: 'relative', display: 'inline-block', cursor: 'pointer' }} onClick={handleSchWinOpen}>
+        <div style={{ position: 'relative', display: 'inline-block', cursor: 'pointer' }}>
           <DescriptionIcon fontSize="small" style={{ color: scriptDump ? 'red' : 'inherit' }} />
 
           {/* Blinking Dot */}
