@@ -183,6 +183,9 @@ class ScilabWorkspace:
             print('workspace=', workspace)
             cmd += load_variables(workspace)
         if context not in [None, '', 'None']:
+            context = context.strip(' \t\n\r\f\v;')
+            if context:
+                context += ';'
             msg = is_safe_string('context', context)
             if not msg:
                 print(f'setting context={context}')
