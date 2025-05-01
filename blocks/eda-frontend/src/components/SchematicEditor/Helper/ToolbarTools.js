@@ -40,10 +40,26 @@ export function saveXml (description = '') {
   const firstCell = model.cells[0]
   firstCell.appname = process.env.REACT_APP_NAME
   firstCell.description = description
+  console.log(model)
+
   const node = enc.encode(model)
   const pins = node.querySelectorAll('Object[as="errorFields"],Object[as="pins"]')
   pins.forEach(pin => { pin.remove() })
-  const value = mxUtils.getXml(node)
+  // const xmlDoc = document.implementation.createDocument('', '', null)
+  const xcosDiagram = document.createElementNS('', 'XcosDiagram')
+  xcosDiagram.setAttribute('background', '-1')
+  xcosDiagram.setAttribute('finalIntegrationTime', '0.5')
+  xcosDiagram.setAttribute('title', 'basic')
+
+  // const importedNode = xmlDoc.importNode(node, true)
+  xcosDiagram.appendChild(node)
+
+  // xmlDoc.appendChild(xcosDiagram)
+
+  console.log(xcosDiagram)
+
+  const value = mxUtils.getXml(xcosDiagram)
+  console.log(value)
   return value
 }
 
@@ -429,9 +445,9 @@ function parseXmlToGraph (xmlDoc, graph) {
           v1.controlPorts = 0
           v1.commandPorts = 0
           v1.simulationFunction = cellAttrs.simulationFunction?.value
-          const mxGraphModel = cell.querySelector('mxGraphModel')
-          if (mxGraphModel !== null) {
-            v1.mxGraphModel = mxGraphModel
+          const SuperBlockDiagram = cell.querySelector('SuperBlockDiagram')
+          if (SuperBlockDiagram !== null) {
+            v1.SuperBlockDiagram = SuperBlockDiagram
           }
         } else if (cellAttrs.CellType?.value === 'Pin') {
           const style = cellAttrs.style.value
