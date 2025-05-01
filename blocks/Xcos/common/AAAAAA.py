@@ -1636,6 +1636,19 @@ def process_xcos_model(diagram, title, rootattribid, parentattribid,
         started_workspace = True
     checkXcosDiagramTag(diagram)
 
+    context_array = diagram.find('Array[@as="context"]')
+    if context_array is not None:
+        context = ''
+        for context_add in context_array:
+            if context_add.tag == 'add':
+                context_value = context_add.attrib['value']
+                if context_value:
+                    context_value = context_value.strip(' \t\n\r\f\v;')
+                    if context_value:
+                        context += context_value + ';'
+        if context:
+            WORKSPACE.add_context(context)
+
     model = diagram.find('mxGraphModel')
     checkModelTag(model)
     outdiagram = ET.Element('XcosDiagram')
