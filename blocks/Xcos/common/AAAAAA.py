@@ -1040,6 +1040,12 @@ def checkModelTag(model):
         sys.exit(102)
 
 
+def checkXcosDiagramTag(diagram):
+    if diagram.tag != 'XcosDiagram' and diagram.tag != 'SuperBlockDiagram':
+        print(diagram.tag, '!= XcosDiagram')
+        sys.exit(102)
+
+
 def checkRootTag(root):
     if root.tag != 'root':
         print('Not root')
@@ -1571,7 +1577,7 @@ def getParameters(cell):
 
 def getSuperblock(cell):
     if "style" in cell.attrib and "SUPER_f" in cell.attrib["style"]:
-        mxGraphModel = cell.find(".//mxGraphModel")
+        mxGraphModel = cell.find("./SuperBlockDiagram")
 
         return mxGraphModel
 
@@ -1620,7 +1626,7 @@ def getSplitPoints(attrib, switch_split, blkgeometry, sourceVertex, targetVertex
     return split_point, split_point2
 
 
-def process_xcos_model(model, title, rootattribid, parentattribid,
+def process_xcos_model(diagram, title, rootattribid, parentattribid,
                        workspace_file=None, context=None):
     global WORKSPACE
 
@@ -1628,7 +1634,9 @@ def process_xcos_model(model, title, rootattribid, parentattribid,
     if WORKSPACE is None:
         WORKSPACE = ScilabWorkspace(title, workspace_file, context)
         started_workspace = True
+    checkXcosDiagramTag(diagram)
 
+    model = diagram.find('mxGraphModel')
     checkModelTag(model)
     outdiagram = ET.Element('XcosDiagram')
     outdiagram.set('background', '-1')

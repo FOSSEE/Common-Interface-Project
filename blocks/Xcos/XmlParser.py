@@ -11,7 +11,7 @@ import uuid
 
 from xcosblocks import num2str, style_to_object
 from xcosblocks import addtolinklist
-from xcosblocks import create_mxCell, create_mxCell_edge, create_mxCell_port, checkModelTag, check_point_on_array, checkRootTag
+from xcosblocks import create_mxCell, create_mxCell_edge, create_mxCell_port, checkModelTag, checkXcosDiagramTag, check_point_on_array, checkRootTag
 from xcosblocks import getComponentGeometry, getlinkdetails, getLinkStyle, getNextAttribId, getPinGeometry, getSplitPoints, getWaypoints
 from xcosblocks import identify_segment, initLinks, mergeLinks, portType1, portType2, portType3, remove_hyphen_number
 
@@ -29,7 +29,10 @@ if ext != '.xml':
 
 tree = goodET.parse(filename)
 
-model = tree.getroot()
+diagram = tree.getroot()
+checkXcosDiagramTag(diagram)
+
+model = diagram.find('mxGraphModel')
 checkModelTag(model)
 
 for root in model:

@@ -44,7 +44,7 @@
         <xsl:apply-templates select="mxGeometry" />
         <Object display_parameter="" as="displayProperties" />
         <Object as="parameter_values" />
-        <xsl:apply-templates select="SuperBlockDiagram/node()" />
+        <xsl:apply-templates select="SuperBlockDiagram" />
       </xsl:element>
       <xsl:call-template name="port">
         <xsl:with-param name="id" select="@id" />

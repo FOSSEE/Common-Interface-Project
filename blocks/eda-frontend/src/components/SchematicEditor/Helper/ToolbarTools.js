@@ -351,7 +351,8 @@ function parseXmlToGraph (xmlDoc, graph) {
   graph.getModel().beginUpdate()
 
   let oldcellslength = 0
-  let cells = xmlDoc.documentElement.children[0].children
+
+  let cells = xmlDoc.getElementsByTagName("root")[0].children
   let cellslength = cells.length
   let remainingcells = []
   let portCount
