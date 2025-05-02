@@ -126,7 +126,7 @@
               <xsl:value-of select="$srconeotherblocky" />
             </xsl:attribute>
             <xsl:attribute name="as">targetPoint</xsl:attribute>
-          </mxPoint>   
+          </mxPoint>
           <Array as="points">
             <xsl:for-each select="$tgtonelinkwaypoints">
               <xsl:copy-of select="." />
