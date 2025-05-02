@@ -42,12 +42,16 @@ const countNodesByXPath = (xpath, contextNode) => {
 }
 
 export const transformXcos = async (xmlDoc) => {
+  // saveXmlToFile('xcos.xml', xmlDoc)
   const splitProcessor = await getSplitXsltProcessor()
   xmlDoc = removeSplits1(xmlDoc, splitProcessor)
+  // saveXmlToFile('xcos-split.xml', xmlDoc)
   const processor = await getXsltProcessor()
   xmlDoc = processor.transformToDocument(xmlDoc)
+  // saveXmlToFile('xcos-xcos2xml.xml', xmlDoc)
   const geometryprocessor = await getGeometryXsltProcessor()
   xmlDoc = geometryprocessor.transformToDocument(xmlDoc)
+  // saveXmlToFile('xcos-geometry.xml', xmlDoc)
   return xmlDoc
 }
 
