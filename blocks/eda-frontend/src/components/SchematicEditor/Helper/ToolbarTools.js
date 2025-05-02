@@ -561,6 +561,29 @@ function parseXmlToGraph (xmlDoc, graph) {
             // points.reverse()
           }
 
+          // try {
+          //   const edge = graph.insertEdge(parent, edgeId, null, sourceCell, targetCell)
+          //   edge.tarx = cellAttrs.tarx.value
+          //   edge.tary = cellAttrs.tary.value
+          //   edge.tar2x = cellAttrs.tar2x.value
+          //   edge.tar2y = cellAttrs.tar2y.value
+          //   edge.sourceVertex = cellAttrs.sourceVertex.value
+          //   edge.targetVertex = cellAttrs.targetVertex.value
+
+          //   const terminalPoint = new mxPoint(Number(cellAttrs.tarx.value), Number(cellAttrs.tary.value))
+          //   const terminalPoint2 = new mxPoint(Number(cellAttrs.tar2x.value), Number(cellAttrs.tar2y.value))
+          //   if (targetCell?.edge === true) {
+          //     edge.geometry.setTerminalPoint(terminalPoint2, false)
+          //   }
+          //   if (sourceCell?.edge === true) {
+          //     edge.geometry.setTerminalPoint(terminalPoint, true)
+          //   }
+          //   edge.geometry.points = points
+          // } catch (e) {
+          //   console.log(sourceCell)
+          //   console.log(targetCell)
+          //   console.error('error', e)
+          // }
           try {
             const edge = graph.insertEdge(parent, edgeId, null, sourceCell, targetCell)
             edge.tarx = cellAttrs.tarx.value
@@ -569,21 +592,30 @@ function parseXmlToGraph (xmlDoc, graph) {
             edge.tar2y = cellAttrs.tar2y.value
             edge.sourceVertex = cellAttrs.sourceVertex.value
             edge.targetVertex = cellAttrs.targetVertex.value
-
-            const terminalPoint = new mxPoint(Number(cellAttrs.tarx.value), Number(cellAttrs.tary.value))
-            const terminalPoint2 = new mxPoint(Number(cellAttrs.tar2x.value), Number(cellAttrs.tar2y.value))
-            if (targetCell?.edge === true) {
+          
+            const x1 = Number(cellAttrs.tarx.value)
+            const y1 = Number(cellAttrs.tary.value)
+            const x2 = Number(cellAttrs.tar2x.value)
+            const y2 = Number(cellAttrs.tar2y.value)
+          
+            const terminalPoint = new mxPoint(x1, y1)
+            const terminalPoint2 = new mxPoint(x2, y2)
+          
+            if (targetCell && (x2 !== 0 || y2 !== 0)) {
               edge.geometry.setTerminalPoint(terminalPoint2, false)
             }
-            if (sourceCell?.edge === true) {
+          
+            if (sourceCell && (x1 !== 0 || y1 !== 0)) {
               edge.geometry.setTerminalPoint(terminalPoint, true)
             }
+          
             edge.geometry.points = points
           } catch (e) {
             console.log(sourceCell)
             console.log(targetCell)
             console.error('error', e)
           }
+          
         }
       }
 
