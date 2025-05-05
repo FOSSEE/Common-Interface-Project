@@ -36,13 +36,10 @@ export default function toolbarTools (grid) {
 // SAVE
 export function saveXml (description = '') {
   const enc = new mxCodec(mxUtils.createXmlDocument())
-  const arry = graph.contextArray
   const model = graph.getModel()
   const firstCell = model.cells[0]
   firstCell.appname = process.env.REACT_APP_NAME
   firstCell.description = description
-  console.log(model)
-  const node0 = enc.encode(arry)
   const node = enc.encode(model)
   const pins = node.querySelectorAll('Object[as="errorFields"],Object[as="pins"]')
   pins.forEach(pin => { pin.remove() })
@@ -50,16 +47,16 @@ export function saveXml (description = '') {
   xcosDiagram.setAttribute('background', '-1')
   xcosDiagram.setAttribute('finalIntegrationTime', '0.5')
   xcosDiagram.setAttribute('title', 'basic')
-  if (node0) {
+
+  const contextArray = graph.contextArray
+  if (contextArray) {
+    const node0 = enc.encode(contextArray)
     xcosDiagram.appendChild(node0)
   }
 
   xcosDiagram.appendChild(node)
 
-  console.log(xcosDiagram)
-
   const value = mxUtils.getXml(xcosDiagram)
-  console.log(value)
   return value
 }
 
@@ -368,10 +365,9 @@ function parseXmlToGraph (xmlDoc, graph) {
 
   let oldcellslength = 0
 
-  const contextArrayNode = xmlDoc.querySelector('Array[as="context"]')
-  graph.contextArray = contextArrayNode
+  graph.contextArray = xmlDoc.querySelector('Array[as="context"]')
 
-  let cells = xmlDoc.getElementsByTagName("root")[0].children
+  let cells = xmlDoc.getElementsByTagName('root')[0].children
   let cellslength = cells.length
   let remainingcells = []
   let portCount
@@ -564,29 +560,6 @@ function parseXmlToGraph (xmlDoc, graph) {
             // points.reverse()
           }
 
-          // try {
-          //   const edge = graph.insertEdge(parent, edgeId, null, sourceCell, targetCell)
-          //   edge.tarx = cellAttrs.tarx.value
-          //   edge.tary = cellAttrs.tary.value
-          //   edge.tar2x = cellAttrs.tar2x.value
-          //   edge.tar2y = cellAttrs.tar2y.value
-          //   edge.sourceVertex = cellAttrs.sourceVertex.value
-          //   edge.targetVertex = cellAttrs.targetVertex.value
-
-          //   const terminalPoint = new mxPoint(Number(cellAttrs.tarx.value), Number(cellAttrs.tary.value))
-          //   const terminalPoint2 = new mxPoint(Number(cellAttrs.tar2x.value), Number(cellAttrs.tar2y.value))
-          //   if (targetCell?.edge === true) {
-          //     edge.geometry.setTerminalPoint(terminalPoint2, false)
-          //   }
-          //   if (sourceCell?.edge === true) {
-          //     edge.geometry.setTerminalPoint(terminalPoint, true)
-          //   }
-          //   edge.geometry.points = points
-          // } catch (e) {
-          //   console.log(sourceCell)
-          //   console.log(targetCell)
-          //   console.error('error', e)
-          // }
           try {
             const edge = graph.insertEdge(parent, edgeId, null, sourceCell, targetCell)
             edge.tarx = cellAttrs.tarx.value
@@ -595,30 +568,25 @@ function parseXmlToGraph (xmlDoc, graph) {
             edge.tar2y = cellAttrs.tar2y.value
             edge.sourceVertex = cellAttrs.sourceVertex.value
             edge.targetVertex = cellAttrs.targetVertex.value
-          
+
             const x1 = Number(cellAttrs.tarx.value)
             const y1 = Number(cellAttrs.tary.value)
             const x2 = Number(cellAttrs.tar2x.value)
             const y2 = Number(cellAttrs.tar2y.value)
-          
-            const terminalPoint = new mxPoint(x1, y1)
-            const terminalPoint2 = new mxPoint(x2, y2)
-          
             if (targetCell && (x2 !== 0 || y2 !== 0)) {
+              const terminalPoint2 = new mxPoint(x2, y2)
               edge.geometry.setTerminalPoint(terminalPoint2, false)
             }
-          
             if (sourceCell && (x1 !== 0 || y1 !== 0)) {
+              const terminalPoint = new mxPoint(x1, y1)
               edge.geometry.setTerminalPoint(terminalPoint, true)
             }
-          
             edge.geometry.points = points
           } catch (e) {
             console.log(sourceCell)
             console.log(targetCell)
             console.error('error', e)
           }
-          
         }
       }
 

@@ -68793,9 +68793,9 @@
 
       [Cp,Dp] = cosfil_ip(C,D); // C/D
 
-      Num = numer(G1);
+      Num = G1.num;
 
-      Den = denom(G1);'
+      Den = G1.den;'
 - model: saveAPI.gallery
   pk: 36
   fields:
