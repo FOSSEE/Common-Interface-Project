@@ -36,25 +36,25 @@ export default function toolbarTools (grid) {
 // SAVE
 export function saveXml (description = '') {
   const enc = new mxCodec(mxUtils.createXmlDocument())
+  const arry = graph.contextArray
   const model = graph.getModel()
   const firstCell = model.cells[0]
   firstCell.appname = process.env.REACT_APP_NAME
   firstCell.description = description
   console.log(model)
-
+  const node0 = enc.encode(arry)
   const node = enc.encode(model)
   const pins = node.querySelectorAll('Object[as="errorFields"],Object[as="pins"]')
   pins.forEach(pin => { pin.remove() })
-  // const xmlDoc = document.implementation.createDocument('', '', null)
   const xcosDiagram = document.createElementNS('', 'XcosDiagram')
   xcosDiagram.setAttribute('background', '-1')
   xcosDiagram.setAttribute('finalIntegrationTime', '0.5')
   xcosDiagram.setAttribute('title', 'basic')
+  if (node0) {
+    xcosDiagram.appendChild(node0)
+  }
 
-  // const importedNode = xmlDoc.importNode(node, true)
   xcosDiagram.appendChild(node)
-
-  // xmlDoc.appendChild(xcosDiagram)
 
   console.log(xcosDiagram)
 
@@ -367,6 +367,9 @@ function parseXmlToGraph (xmlDoc, graph) {
   graph.getModel().beginUpdate()
 
   let oldcellslength = 0
+
+  const contextArrayNode = xmlDoc.querySelector('Array[as="context"]')
+  graph.contextArray = contextArrayNode
 
   let cells = xmlDoc.getElementsByTagName("root")[0].children
   let cellslength = cells.length
