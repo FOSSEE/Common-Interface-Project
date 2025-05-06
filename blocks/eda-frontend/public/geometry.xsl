@@ -17,12 +17,19 @@
   <xsl:template name="get-port">
     <xsl:param name="style" />
 
+    <xsl:variable name="first" select="substring-before($style, ';')" />
     <xsl:choose>
-      <xsl:when test="contains($style, ';')">
-        <xsl:value-of select="substring-before($style, ';')" />
+      <xsl:when test="$first = ''">
+        <xsl:value-of select="$style" />
+      </xsl:when>
+      <xsl:when test="not(contains($first, '='))">
+        <xsl:value-of select="$first" />
       </xsl:when>
       <xsl:otherwise>
-        <xsl:value-of select="$style" />
+        <xsl:variable name="rest" select="substring-after($style, ';')" />
+        <xsl:call-template name="get-port">
+          <xsl:with-param name="style" select="$rest" />
+        </xsl:call-template>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
