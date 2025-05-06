@@ -226,23 +226,20 @@ const Gallery = () => {
       return GallerySchSample.filter((sch) => sch.book_id === selectedBookId)
     })()
 
-  const st = searchTerm.trim().toLowerCase()
-  const galleryst = 'gallery' + st
-  const hasScript = /^(sce|sci|script)/.test(st)
-  const hasNoScript = /^no(sce|sci|script)/.test(st)
+  const terms = searchTerm.trim().toLowerCase().split(/\s+/).filter(Boolean)
 
   // Then, filter based on the search term (independent from book selection)
   const finalfilteredSchematics =
-    st === ''
+    terms.length === 0
       ? filteredSchematics
       : filteredSchematics.filter((sch) => {
-        return (
+        return terms.every((st) =>
           sch.lcname.includes(st) ||
           sch.lcdescription.includes(st) ||
           sch.blocks.includes(st) ||
-          sch.save_id.startsWith(galleryst) ||
-          (hasScript && sch.has_script) ||
-          (hasNoScript && !sch.has_script)
+          sch.save_id.startsWith('gallery' + st) ||
+          (/^(sce|sci|script)/.test(st) && sch.has_script) ||
+          (/^no(sce|sci|script)/.test(st) && !sch.has_script)
         )
       })
 
