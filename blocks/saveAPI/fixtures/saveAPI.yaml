@@ -75,7 +75,7 @@
     name: ch5_1
     description: 'Electric Circuits (Author: M. Navhi And J. A. Edminister), 5) Analysis
       Methods, 5.1) The branch current method'
-    save_time: 2025-05-06 10:53:14+00:00
+    save_time: 2025-05-06 12:43:49+00:00
     book: 154
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="10.0" title="ch51.scos"><!--Xcos - 1.0 - scilab-5.5.2
@@ -1062,6 +1062,7 @@
       scilabClass="ScilabList"><mxPoint x="260.0" y="240.0"/><mxPoint x="300.0" y="240.0"/><mxPoint
       x="300.0" y="190.0"/></Array></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-5c1d823d:130d68ab7d2:-7f7c" parent="-5c1d823d:130d68ab7d2:-7f7b"/></XcosDiagram>
+    blocks: clock_c;cmscope;constantvoltage;cscope;currentsensor;ground;resistor;split_f
     media: gallery0.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -1071,7 +1072,7 @@
     name: ch5_6
     description: 'Electric Circuits (Author: M. Navhi And J. A. Edminister), 5) Analysis
       Methods, 5.6) Network reduction'
-    save_time: 2025-05-06 10:53:14+00:00
+    save_time: 2025-05-06 12:43:49+00:00
     book: 154
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ch5_6"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -2758,6 +2759,7 @@
       x="614.0" y="450.0"/><mxPoint as="targetPoint" x="640.0" y="410.0"/><Array as="points"
       scilabClass="ScilabList"><mxPoint x="630.0" y="450.0"/><mxPoint x="630.0" y="410.0"/></Array></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="331568f2:130d6f18fe2:-8000" parent="331568f2:130d6f18fe2:-7fff"/></XcosDiagram>
+    blocks: clock_c;cmscope;constantvoltage;cscope;currentsensor;gainblk_f;ground;powblk_f;resistor;split_f;voltagesensor
     media: gallery1.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -2767,7 +2769,7 @@
     name: ch5_7
     description: 'Electric Circuits (Author: M. Navhi And J. A. Edminister), 5) Analysis
       Methods, 5.7) Superposition'
-    save_time: 2025-05-06 10:53:14+00:00
+    save_time: 2025-05-06 12:43:49+00:00
     book: 154
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ch5_7"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -3679,6 +3681,7 @@
       target="331568f2:130d6f18fe2:-7b8b"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="844.0" y="90.0"/><mxPoint as="targetPoint" x="880.0" y="90.0"/></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="331568f2:130d6f18fe2:-7db5" parent="331568f2:130d6f18fe2:-7db4"/></XcosDiagram>
+    blocks: bigsom_f;ccs;clock_c;constantvoltage;const_m;cscope;currentsensor;ground;resistor;split_f
     media: gallery2.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -3688,7 +3691,7 @@
     name: ch6_11
     description: 'Electric Circuits (Author: M. Navhi And J. A. Edminister), 6) Amplifiers
       and Operational Amplifiers, 6.11) Noninverting circuit'
-    save_time: 2025-05-06 10:53:14+00:00
+    save_time: 2025-05-06 12:43:49+00:00
     book: 154
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="10.0" title="ch611"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -4394,6 +4397,7 @@
       target="-55de3cf2:130fe0d1e6e:-7d13"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="594.0" y="200.0"/><mxPoint as="targetPoint" x="640.0" y="200.0"/></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-55de3cf2:130fe0d1e6e:-7e33" parent="-55de3cf2:130fe0d1e6e:-7e32"/></XcosDiagram>
+    blocks: clock_c;constantvoltage;cscope;ground;matdiv;opamp;potentialsensor;resistor;split_f
     media: gallery3.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -4403,7 +4407,7 @@
     name: ch6_15
     description: 'Electric Circuits (Author: M. Navhi And J. A. Edminister), 6) Amplifiers
       and Operational Amplifiers, 6.15) Circuits containing several Op amps'
-    save_time: 2025-05-06 10:53:14+00:00
+    save_time: 2025-05-06 12:43:49+00:00
     book: 154
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ch6_15"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -5569,6 +5573,7 @@
       target="-1e985524:130d9355380:-7ebb"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="584.0" y="180.0"/><mxPoint as="targetPoint" x="610.0" y="180.0"/></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-1e985524:130d9355380:-8000" parent="-1e985524:130d9355380:-7fff"/></XcosDiagram>
+    blocks: clock_c;constantvoltage;cscope;ground;opamp;potentialsensor;resistor;split_f
     media: gallery4.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -5578,7 +5583,7 @@
     name: ch6_9
     description: 'Electric Circuits (Author: M. Navhi And J. A. Edminister), 6) Amplifiers
       and Operational Amplifiers, 6.9) Analysis of circuits containing ideal op amps'
-    save_time: 2025-05-06 10:53:14+00:00
+    save_time: 2025-05-06 12:43:49+00:00
     book: 154
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ch6_9"><!--Xcos - 1.0 - scilab-5.5.2 - 20150331
@@ -7531,6 +7536,7 @@
       x="776.0" y="170.0"/><mxPoint as="targetPoint" x="860.0" y="130.0"/><Array as="points"
       scilabClass="ScilabList"><mxPoint x="740.0" y="170.0"/><mxPoint x="740.0" y="130.0"/></Array></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="5678f95b:130d8f27016:-8000" parent="5678f95b:130d8f27016:-7fff"/></XcosDiagram>
+    blocks: bigsom_f;clock_c;cmscope;constantvoltage;cscope;currentsensor;gainblk_f;ground;opamp;potentialsensor;powblk_f;resistor;split_f;summation;voltagesensor
     media: gallery5.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -7540,7 +7546,7 @@
     name: ch8_2
     description: 'Electric Circuits (Author: M. Navhi And J. A. Edminister), 8) First
       order Circuits, 8.2) Capacitor Discharge in a Resistor'
-    save_time: 2025-05-06 10:53:14+00:00
+    save_time: 2025-05-06 12:43:49+00:00
     book: 154
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="0.05" title="ch8_2"><!--Xcos - 1.0 - scilab-5.5.2 - 20150331
@@ -8076,6 +8082,7 @@
       x="120.0" y="64.0"/><mxPoint as="targetPoint" x="120.0" y="100.0"/><Array as="points"
       scilabClass="ScilabList"><mxPoint x="120.0" y="110.0"/></Array></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-1e985524:130d9355380:-7dc3" parent="-1e985524:130d9355380:-7dc2"/></XcosDiagram>
+    blocks: capacitor;clock_c;cscope;currentsensor;ground;resistor;split_f
     media: gallery6.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -8085,7 +8092,7 @@
     name: ch8_3
     description: 'Electric Circuits (Author: M. Navhi And J. A. Edminister), 8) First
       order Circuits, 8.3) Establishing a DC Voltage across a Capacitor'
-    save_time: 2025-05-06 10:53:14+00:00
+    save_time: 2025-05-06 12:43:49+00:00
     book: 154
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="0.1" title="ch8_3"><!--Xcos - 1.0 - scilab-5.5.2 - 20150331
@@ -8657,6 +8664,7 @@
       target="-1e985524:130d9355380:-7c81"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="430.0" y="84.0"/><mxPoint as="targetPoint" x="430.0" y="150.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-1e985524:130d9355380:-7d28" parent="-1e985524:130d9355380:-7d27"/></XcosDiagram>
+    blocks: capacitor;clock_c;cmscope;constantvoltage;currentsensor;ground;resistor;split_f;voltagesensor
     media: gallery7.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -8666,7 +8674,7 @@
     name: ch8_4
     description: 'Electric Circuits (Author: M. Navhi And J. A. Edminister), 8) First
       order Circuits, 8.4) The Source free RL Circuit'
-    save_time: 2025-05-06 10:53:14+00:00
+    save_time: 2025-05-06 12:43:49+00:00
     book: 154
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="0.1" title="ch8_4"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -9722,6 +9730,7 @@
       style="ExplicitInputPort;align=center;labelPosition=right;verticalLabelPosition=middle;spacingLeft=5;rotation=0;flip=false;mirror=false"
       value="+"><mxGeometry as="geometry" height="8.0" width="8.0" x="-8.0" y="6.0"/></ExplicitInputPort></root></mxGraphModel><mxCell
       as="defaultParent" id="-1e985524:130d9355380:-7b0d" parent="-1e985524:130d9355380:-7b0c"/></XcosDiagram>
+    blocks: clock_c;cscope;deriv;gainblk_f;integral_m;split_f;step_function;summation
     media: gallery8.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -9731,7 +9740,7 @@
     name: ch8_5
     description: 'Electric Circuits (Author: M. Navhi And J. A. Edminister), 8) First
       order Circuits, 8.5) Complex first order RL and RC Circuits'
-    save_time: 2025-05-06 10:53:14+00:00
+    save_time: 2025-05-06 12:43:49+00:00
     book: 154
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="10.0" title="ch8_5"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -10660,6 +10669,7 @@
       ordering="1" parent="-5c3e5c92:130db8fddce:-7fde" style="ImplicitOutputPort;align=center;labelPosition=center;verticalLabelPosition=top;spacingBottom=5;rotation=90;flip=false;mirror=false"><mxGeometry
       as="geometry" height="8.0" width="8.0" x="16.0" y="40.0"/></ImplicitOutputPort></root></mxGraphModel><mxCell
       as="defaultParent" id="-5c3e5c92:130db8fddce:-8000" parent="-5c3e5c92:130db8fddce:-7fff"/></XcosDiagram>
+    blocks: clock_c;constantvoltage;cscope;currentsensor;ground;inductor;potentialsensor;resistor;split_f
     media: gallery9.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -10669,7 +10679,7 @@
     name: ch8_6
     description: 'Electric Circuits (Author: M. Navhi And J. A. Edminister), 8) First
       order Circuits, 8.6) Complex first order RL and RC Circuits'
-    save_time: 2025-05-06 10:53:14+00:00
+    save_time: 2025-05-06 12:43:49+00:00
     book: 154
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="1.0" title="ch8_6"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -12524,6 +12534,7 @@
       scilabClass="ScilabList"><mxPoint x="210.0" y="160.0"/><mxPoint x="210.0" y="160.0"/><mxPoint
       x="210.0" y="190.0"/><mxPoint x="210.0" y="190.0"/><mxPoint x="160.0" y="190.0"/></Array></mxGeometry></ImplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="31befcfe:130dc407023:-8000" parent="31befcfe:130dc407023:-7fff"/></XcosDiagram>
+    blocks: clock_c;cmscope;cscope;currentsensor;ground;resistor;split_f;voltagesensor
     media: gallery10.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -12533,7 +12544,7 @@
     name: ch8_7
     description: 'Electric Circuits (Author: M. Navhi And J. A. Edminister), 8) First
       order Circuits, 8.7) DC Steady state in Inductors and Capacitors'
-    save_time: 2025-05-06 10:53:15+00:00
+    save_time: 2025-05-06 12:43:49+00:00
     book: 154
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="10.0" title="ch8_7"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -13715,6 +13726,7 @@
       scilabClass="ScilabList"><mxPoint x="160.0" y="90.0"/></Array></mxGeometry></ImplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="31befcfe:130dc407023:-7d8a" parent="31befcfe:130dc407023:-7d89"/><mxPoint
       as="origin" x="-6.0" y="-6.0"/></XcosDiagram>
+    blocks: ccs;clock_c;cmscope;constantvoltage;const_m;cscope;currentsensor;ground;resistor;split_f;voltagesensor
     media: gallery11.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -13724,7 +13736,7 @@
     name: ch8_8
     description: 'Electric Circuits (Author: M. Navhi And J. A. Edminister), 8) First
       order Circuits, 8.8) DC Steady state in Inductors and Capacitors'
-    save_time: 2025-05-06 10:53:15+00:00
+    save_time: 2025-05-06 12:43:49+00:00
     book: 154
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       title="ch8_8"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406 2040--><mxGraphModel
@@ -14499,6 +14511,7 @@
       target="4cf3be04:130e07e353b:-7fd6"><mxGeometry as="geometry" x="10.0" y="10.0"><mxPoint
       as="sourcePoint" x="736.0" y="362.0"/><mxPoint as="targetPoint" x="360.0" y="360.0"/></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="4cf3be04:130e07e353b:-8000" parent="4cf3be04:130e07e353b:-7fff"/></XcosDiagram>
+    blocks: capacitor;clock_c;cmscope;constantvoltage;deriv;gainblk_f;ground;resistor;split_f;voltagesensor
     media: gallery12.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -14508,7 +14521,7 @@
     name: ch8_9
     description: 'Electric Circuits (Author: M. Navhi And J. A. Edminister), 8) First
       order Circuits, 8.9) Transitions at Switching Time'
-    save_time: 2025-05-06 10:53:15+00:00
+    save_time: 2025-05-06 12:43:49+00:00
     book: 154
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="5.0" title="ch8_9"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -15792,6 +15805,7 @@
       target="-2f9abee8:166a9b44d48:-7c88"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="620.0" y="370.0"/><mxPoint as="targetPoint" x="400.0" y="370.0"/></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="0:2:0" parent="0:1:0"/></XcosDiagram>
+    blocks: clock_c;cmscope;constantvoltage;cscope;currentsensor;deriv;gainblk;ground;impsplit_f;integral_m;resistor;split_f;step_function;summation
     media: gallery13.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -15801,7 +15815,7 @@
     name: ch9_1
     description: 'Electric Circuits (Author: M. Navhi And J. A. Edminister), 9) Higher
       order circuits and Complex frequency, 9.1) Series RLC Circuit'
-    save_time: 2025-05-06 10:53:15+00:00
+    save_time: 2025-05-06 12:43:49+00:00
     book: 154
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       cellsLocked="1" finalIntegrationTime="0.05" title="ch9_1"><!--Xcos - 1.0 - scilab-5.5.2
@@ -16300,6 +16314,7 @@
       target="5f267dc3:130e0981282:-7ede"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="400.0" y="254.0"/><mxPoint as="targetPoint" x="400.0" y="290.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="5f267dc3:130e0981282:-8000" parent="5f267dc3:130e0981282:-7fff"/></XcosDiagram>
+    blocks: capacitor;clock_c;cscope;currentsensor;ground;inductor;resistor;split_f
     media: gallery14.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -16309,7 +16324,7 @@
     name: ch9_2
     description: 'Electric Circuits (Author: M. Navhi And J. A. Edminister), 9) Higher
       order circuits and Complex frequency, 9.2) Series RLC Circuit'
-    save_time: 2025-05-06 10:53:15+00:00
+    save_time: 2025-05-06 12:43:49+00:00
     book: 154
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="0.05" title="ch9_2"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -16810,6 +16825,7 @@
       ordering="1" parent="5f267dc3:130e0981282:-7eba" style="ImplicitOutputPort;align=center;labelPosition=left;verticalLabelPosition=middle;spacingRight=5;rotation=0;flip=false;mirror=false"><mxGeometry
       as="geometry" height="8.0" width="8.0" x="40.0" y="16.0"/></ImplicitOutputPort></root></mxGraphModel><mxCell
       as="defaultParent" id="5f267dc3:130e0981282:-7ebc" parent="5f267dc3:130e0981282:-7ebb"/></XcosDiagram>
+    blocks: capacitor;clock_c;cscope;currentsensor;ground;inductor;resistor;split_f
     media: gallery15.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -16819,7 +16835,7 @@
     name: ch9_5
     description: 'Electric Circuits (Author: M. Navhi And J. A. Edminister), 9) Higher
       order circuits and Complex frequency, 9.5) Parallel RLC circuit'
-    save_time: 2025-05-06 10:53:15+00:00
+    save_time: 2025-05-06 12:43:49+00:00
     book: 154
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="1.0" title="ch9_5"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -17389,6 +17405,7 @@
       target="5f267dc3:130e0981282:-7c6b"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="380.0" y="194.0"/><mxPoint as="targetPoint" x="380.0" y="240.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="5f267dc3:130e0981282:-7d6d" parent="5f267dc3:130e0981282:-7d6c"/></XcosDiagram>
+    blocks: capacitor;clock_c;cscope;ground;inductor;resistor;split_f;voltagesensor
     media: gallery16.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -17398,7 +17415,7 @@
     name: example3_27
     description: 'Basic Electronics (Author: D. De), 3) Diode Circuits, 3.27) Find
       currents and voltages'
-    save_time: 2025-05-06 10:53:15+00:00
+    save_time: 2025-05-06 12:43:49+00:00
     book: 181
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="Ex3_27"><!--Xcos - 1.0 - scilab-5.5.2 - 20150331
@@ -18126,6 +18143,7 @@
       x="240.0" y="40.0"/><Array as="points" scilabClass="ScilabList"><mxPoint x="150.0"
       y="20.0"/><mxPoint x="240.0" y="20.0"/></Array></mxGeometry></ImplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-3721ad33:1314dc6b131:-8000" parent="-3721ad33:1314dc6b131:-7fff"/></XcosDiagram>
+    blocks: clock_c;constantvoltage;cscope;diode;ground;resistor;split_f;text_f;voltagesensor
     media: gallery17.png
     script_dump: '// Find currents and voltages
 
@@ -18173,7 +18191,7 @@
     name: example3_28
     description: 'Basic Electronics (Author: D. De), 3) Diode Circuits, 3.28) Find
       voltage across diode'
-    save_time: 2025-05-06 10:53:15+00:00
+    save_time: 2025-05-06 12:43:49+00:00
     book: 181
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       title="example3_28"><!--Xcos - 1.0 - scilab-5.5.2 - 20200302--><mxGraphModel
@@ -18734,6 +18752,7 @@
       x="796.0" y="200.0"/><mxPoint as="targetPoint" x="620.0" y="470.0"/><Array as="points"
       scilabClass="ScilabList"><mxPoint x="510.0" y="470.0"/><mxPoint x="510.0" y="200.0"/></Array></mxGeometry></ImplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-3721ad33:1314dc6b131:-7f87" parent="-3721ad33:1314dc6b131:-7f86"/></XcosDiagram>
+    blocks: clock_c;constantvoltage;cscope;diode;ground;resistor;split_f;text_f;voltagesensor
     media: gallery18.png
     script_dump: '// Find voltage across diode
 
@@ -18772,7 +18791,7 @@
     name: example3_30
     description: 'Basic Electronics (Author: D. De), 3) Diode Circuits, 3.30) Calculate
       R Il max'
-    save_time: 2025-05-06 10:53:15+00:00
+    save_time: 2025-05-06 12:43:49+00:00
     book: 181
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="Ex3_30"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -19420,6 +19439,7 @@
       target="237940a5:16fc192cb4b:-7ba5"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="780.0" y="130.0"/><mxPoint as="targetPoint" x="780.0" y="180.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-3721ad33:1314dc6b131:-7f5d" parent="-3721ad33:1314dc6b131:-7f5c"/></XcosDiagram>
+    blocks: clock_c;cscope;diode;ground;impsplit_f;resistor;split_f;text_f;voltagesensor;vsourceac
     media: gallery19.png
     script_dump: '// Calculate R,I_l(max)
 
@@ -19466,7 +19486,7 @@
     name: example3_8
     description: 'Basic Electronics (Author: D. De), 3) Diode Circuits, 3.8) Calculate
       the dc load current'
-    save_time: 2025-05-06 10:53:15+00:00
+    save_time: 2025-05-06 12:43:49+00:00
     book: 181
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       title="Ex3_8"><!--Xcos - 1.0 - scilab-5.5.2 - 20150331 1216--><mxGraphModel
@@ -20140,6 +20160,7 @@
       scilabClass="ScilabList"><mxPoint x="950.0" y="320.0"/><mxPoint x="870.0" y="320.0"/><mxPoint
       x="870.0" y="200.0"/><mxPoint x="740.0" y="200.0"/></Array></mxGeometry></ImplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-2d85d470:1314777ee15:-7f7e" parent="-2d85d470:1314777ee15:-7f7d"/></XcosDiagram>
+    blocks: clock_c;cscope;diode;ground;impsplit_f;resistor;split_f;text_f;voltagesensor;vsourceac
     media: gallery20.png
     script_dump: '// Calculate the dc load current
 
@@ -20205,7 +20226,7 @@
     name: Ex10_1
     description: 'Digital Control (Author: K. M. Moudgalya), 10) Special Cases of
       Pole Placement Control, 10.1) Effect of delay in control performance'
-    save_time: 2025-05-06 10:53:15+00:00
+    save_time: 2025-05-06 12:43:49+00:00
     book: 2048
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="20.0" title="stb_disc"><!--Xcos - 1.0 - scilab-5.5.2 -
@@ -22642,6 +22663,7 @@
       as="realParameters" height="1" width="1"><data column="0" line="0" value="Ramp"/></ScilabString><mxGeometry
       as="geometry" height="40.0" width="40.0" x="40.0" y="320.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="-7476484f:145f8cd2a3c:-7be9" parent="-7476484f:145f8cd2a3c:-7be8"/></XcosDiagram>
+    blocks: bigsom_f;clindummy_f;clkoutv_f;clksplit_f;clock_c;cscope;dlr;ramp;rand_m;split_f;step_function;super_f;switch_f;text_f;tows_c
     media: gallery21.png
     script_dump: '// Effect of delay in control performance
 
@@ -23718,7 +23740,7 @@
     name: Ex10_2
     description: 'Digital Control (Author: K. M. Moudgalya), 10) Special Cases of
       Pole Placement Control, 10.2) Smith predictor for paper machine control'
-    save_time: 2025-05-06 10:53:15+00:00
+    save_time: 2025-05-06 12:43:49+00:00
     book: 2048
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="20.0" title="smith_disc"><!--Xcos - 1.0 - scilab-5.5.2
@@ -26320,6 +26342,7 @@
       as="realParameters" height="1" width="1"><data column="0" line="0" value="Delay"/></ScilabString><mxGeometry
       as="geometry" height="30.0" width="40.0" x="550.0" y="380.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="-5d8a58f8:147c67c0236:-7ffb" parent="-5d8a58f8:147c67c0236:-7ffa"/></XcosDiagram>
+    blocks: bigsom_f;clkoutv_f;clksplit_f;clock_c;cscope;dlr;rand_m;split_f;step_function;super_f;text_f;tows_c
     media: gallery22.png
     script_dump: '// Smith predictor for paper machine control in Example 10.2 on
       page 385.
@@ -27428,7 +27451,7 @@
     name: Ex11_4
     description: 'Digital Control (Author: K. M. Moudgalya), 11) Minimum Variance
       Control, 11.4) 1st control problem by MacGregor'
-    save_time: 2025-05-06 10:53:15+00:00
+    save_time: 2025-05-06 12:43:49+00:00
     book: 2048
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="1000.0" title="stb_disc"><!--Xcos - 1.0 - scilab-5.5.2
@@ -29865,6 +29888,7 @@
       as="realParameters" height="1" width="1"><data column="0" line="0" value="Ramp"/></ScilabString><mxGeometry
       as="geometry" height="40.0" width="40.0" x="40.0" y="320.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="-7476484f:145f8cd2a3c:-7be9" parent="-7476484f:145f8cd2a3c:-7be8"/></XcosDiagram>
+    blocks: bigsom_f;clindummy_f;clkoutv_f;clksplit_f;clock_c;cscope;dlr;ramp;rand_m;split_f;step_function;super_f;switch_f;text_f;tows_c
     media: gallery23.png
     script_dump: '// MacGregor''s first control problem, discussed in Example 11.4
       on page 213.
@@ -31158,7 +31182,7 @@
     name: Ex7_6
     description: 'Digital Control (Author: K. M. Moudgalya), 7) Structures and Specifications,
       7.6) Verification of performance of lead controller on antenna system'
-    save_time: 2025-05-06 10:53:15+00:00
+    save_time: 2025-05-06 12:43:49+00:00
     book: 2048
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="20.0" title="g_s_cl2"><!--Xcos - 1.0 - scilab-5.5.2 -
@@ -33736,6 +33760,7 @@
       column="0" line="0" value="ZOH"/></ScilabString><mxGeometry as="geometry" height="40.0"
       width="40.0" x="460.0" y="360.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="-75a601dc:14604d880d0:-7ffd" parent="-75a601dc:14604d880d0:-7ffc"/></XcosDiagram>
+    blocks: bigsom_f;clkoutv_f;clksplit_f;clock_c;clr;cscope;dlr;samphold_m;split_f;step_function;super_f;text_f;tows_c
     media: gallery24.png
     script_dump: '// Verification of performance of lead controller on antenna system,
       as discussed in Example 7.3.
@@ -33872,7 +33897,7 @@
     name: Ex7_7
     description: 'Digital Control (Author: K. M. Moudgalya), 7) Structures and Specifications,
       7.7) Illustration of system type'
-    save_time: 2025-05-06 10:53:15+00:00
+    save_time: 2025-05-06 12:43:49+00:00
     book: 2048
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="20.0" title="stb_disc"><!--Xcos - 1.0 - scilab-5.5.2 -
@@ -36324,6 +36349,7 @@
       as="realParameters" height="1" width="1"><data column="0" line="0" value="Ramp"/></ScilabString><mxGeometry
       as="geometry" height="40.0" width="40.0" x="40.0" y="320.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="-7476484f:145f8cd2a3c:-7be9" parent="-7476484f:145f8cd2a3c:-7be8"/></XcosDiagram>
+    blocks: bigsom_f;clindummy_f;clkoutv_f;clksplit_f;clock_c;cscope;dlr;ramp;rand_m;split_f;step_function;super_f;switch_f;text_f;tows_c
     media: gallery25.png
     script_dump: '// Illustration of system type, as explained in Example 7.10 on
       page 275.
@@ -37326,7 +37352,7 @@
     name: Ex9_10
     description: 'Digital Control (Author: K. M. Moudgalya), 9) Pole Placement Controllers,
       9.10) Pole placement controller IBM Lotus Domino server'
-    save_time: 2025-05-06 10:53:15+00:00
+    save_time: 2025-05-06 12:43:49+00:00
     book: 2048
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="40.0" title="Ex9_10"><!--Xcos - 1.0 - scilab-5.5.2 - 20150331
@@ -39701,6 +39727,7 @@
       as="geometry" height="40.0" width="60.0" x="-50.0" y="400.0"/></BasicBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="-2f864670:16fc63faf34:-7bc7" parent="-2f864670:16fc63faf34:-7bc6"/><mxPoint
       as="origin" x="-80.0"/></XcosDiagram>
+    blocks: bigsom_f;clindummy_f;clksplit_f;clock_c;cscope;dlr;ramp;rand_m;split_f;step_function;super_f;switch_f;tows_c
     media: gallery26.png
     script_dump: '// Pole placement controller IBM Lotus Domino server, discussed
       in Example 9.9 on page 341.
@@ -40796,7 +40823,7 @@
     name: Ex9_11
     description: 'Digital Control (Author: K. M. Moudgalya), 9) Pole Placement Controllers,
       9.11) Pole placement controller for motor problem'
-    save_time: 2025-05-06 10:53:15+00:00
+    save_time: 2025-05-06 12:43:50+00:00
     book: 2048
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="10.0" title="Untitled - 10:43:53 AM"><!--Xcos - 1.0 -
@@ -43115,6 +43142,7 @@
       as="targetPoint" x="520.0" y="350.0"/><Array as="points" scilabClass=""><mxPoint
       x="520.0" y="450.0"/></Array></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-2f864670:16fc63faf34:-759a" parent="-2f864670:16fc63faf34:-7599"/></XcosDiagram>
+    blocks: bigsom_f;clkoutv_f;clksplit_f;clock_c;clss;cscope;dlr;rand_m;samphold_m;split_f;step_function;super_f;tows_c
     media: gallery27.png
     script_dump: '// Pole placement controller for motor problem, discussed in Example
       9.10 on page 343.
@@ -44250,7 +44278,7 @@
     name: Ex9_14
     description: 'Digital Control (Author: K. M. Moudgalya), 9) Pole Placement Controllers,
       9.14) Controller design'
-    save_time: 2025-05-06 10:53:15+00:00
+    save_time: 2025-05-06 12:43:50+00:00
     book: 2048
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="1.5" title="Ex9_14"><!--Xcos - 1.0 - scilab-5.5.2 - 20150331
@@ -46819,6 +46847,7 @@
       as="realParameters" height="1" width="1"><data column="0" line="0" value="y1"/></ScilabString><mxGeometry
       as="geometry" height="40.0" width="40.0" x="680.0" y="400.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="-2f864670:16fc63faf34:-72c4" parent="-2f864670:16fc63faf34:-72c3"/></XcosDiagram>
+    blocks: bigsom_f;clkoutv_f;clksplit_f;clock_c;clr;cscope;dlr;samphold_m;split_f;step_function;super_f;text_f;tows_c
     media: gallery28.png
     script_dump: '// Controller design for the case study presented in Example 9.12
       on page 347.
@@ -48064,7 +48093,7 @@
     name: Ex9_15_1
     description: 'Digital Control (Author: K. M. Moudgalya), 9) Pole Placement Controllers,
       9.15) Evaluation of continuous time controller'
-    save_time: 2025-05-06 10:53:15+00:00
+    save_time: 2025-05-06 12:43:50+00:00
     book: 2048
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="5.0" title="Ex9_15_1"><!--Xcos - 1.0 - scilab-5.5.2 -
@@ -50586,6 +50615,7 @@
       as="realParameters" height="1" width="1"><data column="0" line="0" value="y"/></ScilabString><mxGeometry
       as="geometry" height="40.0" width="40.0" x="760.0" y="420.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="-2f864670:16fc63faf34:-6b2d" parent="-2f864670:16fc63faf34:-6b2c"/></XcosDiagram>
+    blocks: bigsom_f;clkoutv_f;clksplit_f;clock_c;clr;cscope;split_f;step_function;super_f;tows_c
     media: gallery29.png
     script_dump: '// Evaluation of continuous time controller for the case study presented
       in Example 9.13 on page 349.
@@ -50888,7 +50918,7 @@
     name: Ex9_15_2
     description: 'Digital Control (Author: K. M. Moudgalya), 9) Pole Placement Controllers,
       9.15) Evaluation of continuous time controller'
-    save_time: 2025-05-06 10:53:15+00:00
+    save_time: 2025-05-06 12:43:50+00:00
     book: 2048
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="5.0" title="Ex9_15_2"><!--Xcos - 1.0 - scilab-5.5.2 -
@@ -53527,6 +53557,7 @@
       as="geometry" height="40.0" width="40.0" x="770.0" y="430.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="-2f864670:16fc63faf34:-6546" parent="-2f864670:16fc63faf34:-6545"/><mxPoint
       as="origin" y="-10.0"/></XcosDiagram>
+    blocks: bigsom_f;clkoutv_f;clksplit_f;clock_c;clr;cscope;dlr;samphold_m;split_f;step_function;super_f;tows_c
     media: gallery30.png
     script_dump: '// Evaluation of continuous time controller for the case study presented
       in Example 9.13 on page 349.
@@ -53829,7 +53860,7 @@
     name: Ex9_16
     description: 'Digital Control (Author: K. M. Moudgalya), 9) Pole Placement Controllers,
       9.16) System type with 2 DOF controller'
-    save_time: 2025-05-06 10:53:15+00:00
+    save_time: 2025-05-06 12:43:50+00:00
     book: 2048
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="20.0" title="Ex9_16"><!--Xcos - 1.0 - scilab-5.5.2 - 20150331
@@ -56280,6 +56311,7 @@
       as="geometry" height="40.0" width="40.0" x="860.0" y="300.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="-2f864670:16fc63faf34:-5f92" parent="-2f864670:16fc63faf34:-5f91"/><mxPoint
       as="origin" x="-350.0"/></XcosDiagram>
+    blocks: bigsom_f;clindummy_f;clkoutv_f;clksplit_f;clock_c;cscope;dlr;ramp;rand_m;split_f;step_function;super_f;switch_f;tows_c
     media: gallery31.png
     script_dump: '// System type with 2-DOF controller. It is used to arrive at the
       results Example 9.14.
@@ -57342,7 +57374,7 @@
     name: Ex9_17
     description: 'Digital Control (Author: K. M. Moudgalya), 9) Pole Placement Controllers,
       9.17) Illustrating the benefit of cancellation'
-    save_time: 2025-05-06 10:53:15+00:00
+    save_time: 2025-05-06 12:43:50+00:00
     book: 2048
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="20.0" title="Ex9_17"><!--Xcos - 1.0 - scilab-5.5.2 - 20150331
@@ -59787,6 +59819,7 @@
       as="geometry" height="40.0" width="40.0" x="870.0" y="310.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="-2f864670:16fc63faf34:-5c8f" parent="-2f864670:16fc63faf34:-5c8e"/><mxPoint
       as="origin" x="-60.0"/></XcosDiagram>
+    blocks: bigsom_f;clindummy_f;clkoutv_f;clksplit_f;clock_c;cscope;dlr;ramp;rand_m;split_f;step_function;super_f;switch_f;tows_c
     media: gallery32.png
     script_dump: '// Illustrating the benefit of cancellation. It is used to arrive
       at the results of Example 9.15.
@@ -60837,7 +60870,7 @@
     name: Ex9_18
     description: 'Digital Control (Author: K. M. Moudgalya), 9) Pole Placement Controllers,
       9.18) Anti windup control of IBM Lotus Domino server'
-    save_time: 2025-05-06 10:53:15+00:00
+    save_time: 2025-05-06 12:43:50+00:00
     book: 2048
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="1000.0" title="stb_disc_sat"><!--Xcos - 1.0 - scilab-5.5.2
@@ -63906,6 +63939,7 @@
       as="realParameters" height="1" width="1"><data column="0" line="0" value="Step1"/></ScilabString><mxGeometry
       as="geometry" height="20.0" width="60.0" x="670.0" y="160.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="-98b0b2b:146d610f05a:-78c3" parent="-98b0b2b:146d610f05a:-78c2"/></XcosDiagram>
+    blocks: bigsom_f;clkoutv_f;clksplit_f;clock_c;cscope;dlr;saturation;split_f;step_function;summation;super_f;text_f;tows_c
     media: gallery33.png
     script_dump: '// Anti windup control (AWC) of IBM Lotus Domino server, studied
       in Example 9.16 on page 357. It can be used for the follwoing situations: with
@@ -65123,7 +65157,7 @@
     name: Ex9_19
     description: 'Digital Control (Author: K. M. Moudgalya), 9) Pole Placement Controllers,
       9.19) Demonstration of usefulness of negative PID parameters'
-    save_time: 2025-05-06 10:53:15+00:00
+    save_time: 2025-05-06 12:43:50+00:00
     book: 2048
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="20.0" title="g_s_cl"><!--Xcos - 1.0 - scilab-5.5.2 - 20150331
@@ -67638,6 +67672,7 @@
       filter"/></ScilabString><mxGeometry as="geometry" height="40.0" width="100.0"
       x="450.0" y="420.0"/></TextBlock></root></mxGraphModel><mxCell as="defaultParent"
       id="-7dc40e71:146d783a328:-7fa0" parent="-7dc40e71:146d783a328:-7f9f"/></XcosDiagram>
+    blocks: bigsom_f;clkoutv_f;clksplit_f;clock_c;clr;cscope;dlr;ramp;rand_m;samphold_m;split_f;step_function;super_f;switch_f;text_f;time_delay;tows_c
     media: gallery34.png
     script_dump: '// Demonstration of usefulness of negative PID parameters, discussed
       in Example 9.17 on page 361.
@@ -69498,7 +69533,7 @@
     name: Ex9_1_1
     description: 'Digital Control (Author: K. M. Moudgalya), 9) Pole Placement Controllers,
       9.1) Pole placement controller for magnetically suspended ball problem'
-    save_time: 2025-05-06 10:53:15+00:00
+    save_time: 2025-05-06 12:43:50+00:00
     book: 2048
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="0.5" title="basic"><!--Xcos - 1.0 - scilab-5.5.2 - 20150331
@@ -71700,6 +71735,7 @@
       as="realParameters" height="1" width="1"><data column="0" line="0" value="Plant"/></ScilabString><mxGeometry
       as="geometry" height="40.0" width="50.0" x="530.0" y="290.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="-64ce6d85:145ef6f2b4f:-7f9f" parent="-64ce6d85:145ef6f2b4f:-7f9e"/></XcosDiagram>
+    blocks: clkoutv_f;clksplit_f;clock_c;clr;cscope;dlr;samphold_m;split_f;step_function;summation;super_f;text_f;tows_c
     media: gallery35.png
     script_dump: '// Pole placement controller for magnetically suspended ball problem,
       discussed in Example 9.3 on page 331.
@@ -72865,7 +72901,7 @@
     name: Ex9_1_2
     description: 'Digital Control (Author: K. M. Moudgalya), 9) Pole Placement Controllers,
       9.1) Pole placement controller for magnetically suspended ball problem'
-    save_time: 2025-05-06 10:53:15+00:00
+    save_time: 2025-05-06 12:43:50+00:00
     book: 2048
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="0.5" title="Ex9_1_2"><!--Xcos - 1.0 - scilab-5.5.2 - 20150331
@@ -75225,6 +75261,7 @@
       as="realParameters" height="1" width="1"><data column="0" line="0" value="Filter1"/></ScilabString><mxGeometry
       as="geometry" height="40.0" width="60.0" x="560.0" y="230.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="3844e477:143914d2fde:-7fa0" parent="3844e477:143914d2fde:-7f9f"/></XcosDiagram>
+    blocks: bigsom_f;clkoutv_f;clksplit_f;clock_c;clss;cscope;dlr;rand_m;samphold_m;split_f;step_function;super_f;text_f;tows_c
     media: gallery36.png
     script_dump: '// Pole placement controller for magnetically suspended ball problem,
       discussed in Example 9.3 on page 331.
@@ -76390,7 +76427,7 @@
     name: Ex9_21_1
     description: 'Digital Control (Author: K. M. Moudgalya), 9) Pole Placement Controllers,
       9.21) DC motor with PID control tuned through pole placement technique'
-    save_time: 2025-05-06 10:53:15+00:00
+    save_time: 2025-05-06 12:43:50+00:00
     book: 2048
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="20.0" title="Ex9_21_1"><!--Xcos - 1.0 - scilab-5.5.2 -
@@ -78968,6 +79005,7 @@
       column="0" line="0" value="ZOH"/></ScilabString><mxGeometry as="geometry" height="40.0"
       width="40.0" x="460.0" y="360.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="-75a601dc:14604d880d0:-7ffd" parent="-75a601dc:14604d880d0:-7ffc"/></XcosDiagram>
+    blocks: bigsom_f;clkoutv_f;clksplit_f;clock_c;clr;cscope;dlr;samphold_m;split_f;step_function;super_f;text_f;tows_c
     media: gallery37.png
     script_dump: '// DC motor with PID control, tuned through pole placement technique,
       as in Example 9.18.
@@ -80083,7 +80121,7 @@
     name: Ex9_21_2
     description: 'Digital Control (Author: K. M. Moudgalya), 9) Pole Placement Controllers,
       9.21) DC motor with PID control tuned through pole placement technique'
-    save_time: 2025-05-06 10:53:15+00:00
+    save_time: 2025-05-06 12:43:50+00:00
     book: 2048
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="20.0" title="Ex9_21_2"><!--Xcos - 1.0 - scilab-5.5.2 -
@@ -82636,6 +82674,7 @@
       target="-548bef16:14614173ad7:-7e14"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="540.0" y="210.0"/><mxPoint as="targetPoint" x="570.0" y="210.0"/></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="7b254bcc:14613988545:-7cfe" parent="7b254bcc:14613988545:-7cfd"/></XcosDiagram>
+    blocks: bigsom_f;clkoutv_f;clksplit_f;clock_c;clr;cscope;split_f;step_function;super_f;text_f;tows_c
     media: gallery38.png
     script_dump: '// DC motor with PID control, tuned through pole placement technique,
       as in Example 9.18.
@@ -83751,7 +83790,7 @@
     name: basic_disc
     description: 'Digital Control (Author: K. M. Moudgalya), 9) Pole Placement Controllers,
       9.7) Simulation of closed loop system with an unstable controller'
-    save_time: 2025-05-06 10:53:15+00:00
+    save_time: 2025-05-06 12:43:50+00:00
     book: 2048
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="1000.0" title="basic_disc"><!--Xcos - 1.0 - scilab-5.5.2
@@ -85955,6 +85994,7 @@
       x="750.0" y="310.0"/><mxPoint as="targetPoint" x="540.0" y="290.0"/><Array as="points"
       scilabClass="ScilabList"><mxPoint x="750.0" y="290.0"/></Array></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-7476484f:145f8cd2a3c:-7f9e" parent="-7476484f:145f8cd2a3c:-7f9d"/></XcosDiagram>
+    blocks: bigsom_f;clkoutv_f;clksplit_f;clock_c;cscope;dlr;split_f;step_function;super_f;text_f;tows_c
     media: gallery39.png
     script_dump: '// Simulation of closed loop system with an unstable controller,
       as discussed in Example 9.5 on page 335.
@@ -87128,7 +87168,7 @@
     name: stb_disc
     description: 'Digital Control (Author: K. M. Moudgalya), 9) Pole Placement Controllers,
       9.7) Simulation of closed loop system with an unstable controller'
-    save_time: 2025-05-06 10:53:15+00:00
+    save_time: 2025-05-06 12:43:50+00:00
     book: 2048
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="0.5" title="stb_disc"><!--Xcos - 1.0 - scilab-5.5.2 -
@@ -89503,6 +89543,7 @@
       scilabClass="ScilabList"><mxPoint x="310.0" y="220.0"/><mxPoint x="310.0" y="140.0"/><mxPoint
       x="370.0" y="140.0"/></Array></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-7476484f:145f8cd2a3c:-7be9" parent="-7476484f:145f8cd2a3c:-7be8"/></XcosDiagram>
+    blocks: bigsom_f;clindummy_f;clkoutv_f;clksplit_f;clock_c;cscope;dlr;ramp;rand_m;split_f;step_function;super_f;switch_f;tows_c
     media: gallery40.png
     script_dump: '// Simulation of closed loop system with an unstable controller,
       as discussed in Example 9.5 on page 335.
@@ -90677,7 +90718,7 @@
     description: 'Digital Control (Author: K. M. Moudgalya), 9) Pole Placement Controllers,
       9.9) Pole placement controller with internal model of a step for the magnetically
       suspended ball problem'
-    save_time: 2025-05-06 10:53:15+00:00
+    save_time: 2025-05-06 12:43:50+00:00
     book: 2048
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="0.5" title="Ex9_9"><!--Xcos - 1.0 - scilab-5.5.2 - 20150331
@@ -92991,6 +93032,7 @@
       as="geometry"><mxPoint as="sourcePoint" x="570.0" y="440.0"/><mxPoint as="targetPoint"
       x="510.0" y="340.0"/><Array as="points" scilabClass=""><mxPoint x="510.0" y="440.0"/></Array></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="3af18dde:16fc1cf9366:-7cf3" parent="3af18dde:16fc1cf9366:-7cf2"/></XcosDiagram>
+    blocks: bigsom_f;clkoutv_f;clksplit_f;clock_c;clss;cscope;dlr;rand_m;samphold_m;split_f;step_function;super_f;tows_c
     media: gallery41.png
     script_dump: '// Pole placement controller, with internal model of a step, for
       the magnetically suspended ball problem, as discussed in Example 9.8 on page
@@ -94142,7 +94184,7 @@
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 10) Sinusoidal Steady state Analysis, 10.10) Superposition Source Transformations
       and Thevenin theorem'
-    save_time: 2025-05-06 10:53:15+00:00
+    save_time: 2025-05-06 12:43:50+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="1.0" title="ex10_10"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -94908,6 +94950,7 @@
       target="7a2a91ff:134d8462990:-7991"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="760.0" y="94.0"/><mxPoint as="targetPoint" x="760.0" y="120.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="7a2a91ff:134d8462990:-7b80" parent="7a2a91ff:134d8462990:-7b7f"/></XcosDiagram>
+    blocks: capacitor;ccs;clock_c;cscope;gensin_f;ground;inductor;resistor;split_f;text_f;voltagesensor
     media: gallery42.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -94918,7 +94961,7 @@
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 10) Sinusoidal Steady state Analysis, 10.11) Superposition Source Transformations
       and Thevenin theorem'
-    save_time: 2025-05-06 10:53:15+00:00
+    save_time: 2025-05-06 12:43:50+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ex10_11"><!--Xcos - 1.0 - scilab-5.5.2 -
@@ -95877,6 +95920,7 @@
       target="6641adef:135055938d4:-7a21"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="910.0" y="214.0"/><mxPoint as="targetPoint" x="910.0" y="230.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="7a2a91ff:134d8462990:-7955" parent="7a2a91ff:134d8462990:-7954"/></XcosDiagram>
+    blocks: bigsom_f;capacitor;ccs;clock_c;cscope;currentsensor;gainblk_f;gensin_f;ground;mux;powblk_f;resistor;split_f
     media: gallery43.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -95887,7 +95931,7 @@
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 10) Sinusoidal Steady state Analysis, 10.1) Forced Response to sinusoidal
       functions'
-    save_time: 2025-05-06 10:53:15+00:00
+    save_time: 2025-05-06 12:43:50+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="10.0" title="ex10_1"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -96615,6 +96659,7 @@
       target="-1fad1256:134d7ff92c3:-7f09"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="760.0" y="144.0"/><mxPoint as="targetPoint" x="760.0" y="170.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-1fad1256:134d7ff92c3:-7ffe" parent="-1fad1256:134d7ff92c3:-7ffd"/></XcosDiagram>
+    blocks: clock_c;cscope;currentsensor;ground;inductor;mux;resistor;sinevoltage;split_f;voltagesensor
     media: gallery44.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -96624,7 +96669,7 @@
     name: ex10_6
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 10) Sinusoidal Steady state Analysis, 10.6) Impedance'
-    save_time: 2025-05-06 10:53:15+00:00
+    save_time: 2025-05-06 12:43:50+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="10.0" title="ex10_6"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -97219,6 +97264,7 @@
       x="350.0" y="90.0"/><mxPoint as="targetPoint" x="400.0" y="140.0"/><Array as="points"
       scilabClass=""><mxPoint x="400.0" y="90.0"/></Array></mxGeometry></ImplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-1fad1256:134d7ff92c3:-7ef9" parent="-1fad1256:134d7ff92c3:-7ef8"/></XcosDiagram>
+    blocks: capacitor;clock_c;cscope;currentsensor;ground;impsplit_f;inductor;resistor;sinevoltage;split_f
     media: gallery45.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -97228,7 +97274,7 @@
     name: ex10_7
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 10) Sinusoidal Steady state Analysis, 10.7) Nodal and Mesh analysis'
-    save_time: 2025-05-06 10:53:15+00:00
+    save_time: 2025-05-06 12:43:50+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="1.0" title="ex10_7"><!--Xcos - 1.0 - scilab-5.5.2 - 20200302--><mxGraphModel
@@ -98169,6 +98215,7 @@
       x="790.0" y="94.0"/><mxPoint as="targetPoint" x="790.0" y="110.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-1fad1256:134d7ff92c3:-7e4a" parent="-1fad1256:134d7ff92c3:-7e49"/><mxPoint
       as="origin" x="-10.0"/></XcosDiagram>
+    blocks: capacitor;ccs;clock_c;cscope;gensin_f;ground;inductor;mux;potentialsensor;resistor;split_f;text_f
     media: gallery46.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -98178,7 +98225,7 @@
     name: ex10_8
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 10) Sinusoidal Steady state Analysis, 10.8) Nodal and Mesh analysis'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:50+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="0.1" title="ex10_8"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -99286,6 +99333,7 @@
       target="7a2a91ff:134d8462990:-7fcc"><mxGeometry as="geometry"><Array as="points"
       scilabClass=""><mxPoint x="230.0" y="250.0"/></Array></mxGeometry></ImplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="7a2a91ff:134d8462990:-7ffe" parent="7a2a91ff:134d8462990:-7ffd"/></XcosDiagram>
+    blocks: capacitor;clock_c;cscope;currentsensor;cvs;delay_f;gainblk_f;ground;mux;resistor;sinevoltage;split_f
     media: gallery47.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -99296,7 +99344,7 @@
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 10) Sinusoidal Steady state Analysis, 10.9) Superposition Source Transformations
       and Thevenin theorem'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:50+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="1.0" title="ex10_9"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -100559,6 +100607,7 @@
       as="geometry"><mxPoint as="sourcePoint" x="220.0" y="210.0"/><mxPoint as="targetPoint"
       x="130.0" y="180.0"/><Array as="points" scilabClass=""><mxPoint x="130.0" y="240.0"/></Array></mxGeometry></ImplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="7a2a91ff:134d8462990:-7e88" parent="7a2a91ff:134d8462990:-7e87"/></XcosDiagram>
+    blocks: bigsom_f;capacitor;ccs;clock_c;cscope;gensin_f;ground;impsplit_f;inductor;potentialsensor;resistor;split_f;text_f
     media: gallery48.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -100568,7 +100617,7 @@
     name: ex12_1
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 12) Polyphase Circuits, 12.1) Single phase three wire systems'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:50+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="1.0" title="ex12_1"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -101433,6 +101482,7 @@
       x="580.0" y="64.0"/><mxPoint as="targetPoint" x="580.0" y="80.0"/><Array as="points"
       scilabClass="ScilabList"><mxPoint x="580.0" y="80.0"/><mxPoint x="580.0" y="80.0"/></Array></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-10514b51:134e53d5ed9:-7ffe" parent="-10514b51:134e53d5ed9:-7ffd"/></XcosDiagram>
+    blocks: clock_c;cscope;currentsensor;cvs;gensin_f;ground;inductor;mux;resistor;split_f
     media: gallery49.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -101442,7 +101492,7 @@
     name: ex13_7
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 13) Magnetically coupled circuits, 13.7) The Ideal Transformer'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:50+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ex13_7"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -102055,6 +102105,7 @@
       x="330.0" y="80.0"/><mxPoint as="targetPoint" x="350.0" y="150.0"/><Array as="points"
       scilabClass=""><mxPoint x="350.0" y="80.0"/></Array></mxGeometry></ImplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="26015439:134e2b4e9d8:-7fd9" parent="26015439:134e2b4e9d8:-7fd8"/></XcosDiagram>
+    blocks: clock_c;constantvoltage;cscope;currentsensor;gainblk_f;ground;idealtransformer;impsplit_f;powblk_f;resistor
     media: gallery50.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -102064,7 +102115,7 @@
     name: ex17_4
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 17) Two Port Networks, 17.4) Admittance parameters'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:50+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ex17_4"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -103471,6 +103522,7 @@
       target="6641adef:135055938d4:-77af"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="930.0" y="234.0"/><mxPoint as="targetPoint" x="930.0" y="260.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-536a7494:134d5b6a3e7:-7ffa" parent="-536a7494:134d5b6a3e7:-7ff9"/></XcosDiagram>
+    blocks: clock_c;constantvoltage;cscope;currentsensor;ground;mux;resistor;split_f;text_f
     media: gallery51.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -103481,7 +103533,7 @@
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 18) Fourier Circuit Analysis, 18.2) Complete Response to periodic Forcing
       Functions'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:50+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="6.5" title="ex18_2"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -104237,6 +104289,7 @@
       x="410.0" y="200.0"/><mxPoint as="targetPoint" x="450.0" y="150.0"/><Array as="points"
       scilabClass=""><mxPoint x="410.0" y="150.0"/></Array></mxGeometry></ImplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="f4a86ca:134efd7fc02:-7ffe" parent="f4a86ca:134efd7fc02:-7ffd"/></XcosDiagram>
+    blocks: clock_c;cscope;currentsensor;cvs;diode;gensqr_f;ground;impsplit_f;inductor;potentialsensor;resistor;text_f
     media: gallery52.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -104247,7 +104300,7 @@
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 18) Fourier Circuit Analysis, 18.8) The physical significance of system
       function'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:50+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="5.0" title="ex18_8"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -104788,6 +104841,7 @@
       target="f4a86ca:134efd7fc02:-7db9"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="50.0" y="110.0"/><mxPoint as="targetPoint" x="220.0" y="110.0"/></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="f4a86ca:134efd7fc02:-7e66" parent="f4a86ca:134efd7fc02:-7e65"/></XcosDiagram>
+    blocks: clock_c;cscope;cvs;gainblk_f;ground;impsplit_f;inductor;potentialsensor;resistor;time_f
     media: gallery53.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -104797,7 +104851,7 @@
     name: ex3_11
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 3) Voltage and Current laws, 3.11) Resistors in series and parallel'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:50+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ex3_11"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -105402,6 +105456,7 @@
       x="70.0" y="190.0"/><mxPoint as="targetPoint" x="110.0" y="110.0"/><Array as="points"
       scilabClass=""><mxPoint x="70.0" y="110.0"/></Array></mxGeometry></ImplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-3b708aba:134ce795dea:-8000" parent="-3b708aba:134ce795dea:-7fff"/></XcosDiagram>
+    blocks: clock_c;constantvoltage;cscope;currentsensor;ground;impsplit_f;resistor
     media: gallery54.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -105411,7 +105466,7 @@
     name: ex3_13
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 3) Voltage and Current laws, 3.13) Voltage and Current division'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:51+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ex3_13"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -106007,6 +106062,7 @@
       as="geometry"><mxPoint as="sourcePoint" x="450.0" y="170.0"/><mxPoint as="targetPoint"
       x="510.0" y="170.0"/></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="73523f48:134cd91c16f:-7c19" parent="73523f48:134cd91c16f:-7c18"/></XcosDiagram>
+    blocks: clock_c;cscope;ground;impsplit_f;resistor;sinevoltage;voltagesensor
     media: gallery55.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -106016,7 +106072,7 @@
     name: ex3_14
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 3) Voltage and Current laws, 3.14) Voltage and Current division'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:51+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ex3_14"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -106579,6 +106635,7 @@
       as="sourcePoint" x="320.0" y="100.0"/><mxPoint as="targetPoint" x="340.0" y="210.0"/><Array
       as="points" scilabClass=""><mxPoint x="340.0" y="100.0"/></Array></mxGeometry></ImplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="73523f48:134cd91c16f:-7cca" parent="73523f48:134cd91c16f:-7cc9"/></XcosDiagram>
+    blocks: clock_c;cscope;currentsensor;ground;impsplit_f;resistor;sinevoltage
     media: gallery56.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -106588,7 +106645,7 @@
     name: ex3_1
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 3) Voltage and Current laws, 3.1) Kirchoff current law'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:51+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ex3_1"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -107223,6 +107280,7 @@
       id="48d7e1f7:16711003a12:-7f8a" parent="-3721b5e:1319cfae9ac:-8000" simulationFunctionType="DEFAULT"><mxGeometry
       as="geometry" height="40.0" width="40.0" x="230.0" y="260.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="-3721b5e:1319cfae9ac:-8000" parent="-3721b5e:1319cfae9ac:-7fff"/></XcosDiagram>
+    blocks: ccs;clock_c;const_m;cscope;currentsensor;ground;split_f;text_f
     media: gallery57.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -107232,7 +107290,7 @@
     name: ex3_2
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 3) Voltage and Current laws, 3.2) Kirchoff voltage law'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:51+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ex3_2"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -107776,6 +107834,7 @@
       target="29345a73:13501d7c6cc:-7f70"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="380.0" y="74.0"/><mxPoint as="targetPoint" x="380.0" y="110.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-3721b5e:1319cfae9ac:-7f30" parent="-3721b5e:1319cfae9ac:-7f2f"/></XcosDiagram>
+    blocks: clock_c;cmscope;constantvoltage;currentsensor;ground;potentialsensor;resistor;split_f
     media: gallery58.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -107785,7 +107844,7 @@
     name: ex3_3
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 3) Voltage and Current laws, 3.3) Kirchoff voltage law'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:51+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ex3_3"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -108383,6 +108442,7 @@
       x="340.0" y="244.0"/><mxPoint as="targetPoint" x="340.0" y="280.0"/><Array as="points"
       scilabClass="ScilabList"><mxPoint x="340.0" y="280.0"/></Array></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-16593537:1319d63fbbf:-7f80" parent="-16593537:1319d63fbbf:-7f7f"/></XcosDiagram>
+    blocks: clock_c;cmscope;constantvoltage;ground;split_f;voltagesensor
     media: gallery59.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -108392,7 +108452,7 @@
     name: ex3_4
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 3) Voltage and Current laws, 3.4) Kirchoff voltage law'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:51+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ex3_4"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -109033,6 +109093,7 @@
       target="-5fcba885:134ccedce1f:-7d22"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="480.0" y="104.0"/><mxPoint as="targetPoint" x="480.0" y="130.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-5fcba885:134ccedce1f:-8000" parent="-5fcba885:134ccedce1f:-7fff"/></XcosDiagram>
+    blocks: ccs;clock_c;constantvoltage;const_m;cscope;ground;potentialsensor;resistor;split_f
     media: gallery60.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -109042,7 +109103,7 @@
     name: ex3_5
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 3) Voltage and Current laws, 3.5) The Single Loop Circuit'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:51+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ex3_5"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -109971,6 +110032,7 @@
       target="-20c185b4:13501df43da:-7ec4"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="700.0" y="164.0"/><mxPoint as="targetPoint" x="700.0" y="190.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-5fcba885:134ccedce1f:-7cf6" parent="-5fcba885:134ccedce1f:-7cf5"/></XcosDiagram>
+    blocks: clock_c;constantvoltage;cscope;currentsensor;cvs;gainblk_f;ground;mux;powblk_f;prod_f;resistor;split_f;text_f;voltagesensor
     media: gallery61.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -109980,7 +110042,7 @@
     name: ex3_6
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 3) Voltage and Current laws, 3.6) The single node pair circuit'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:51+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ex3_6"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -110859,6 +110921,7 @@
       target="-20c185b4:13501df43da:-7def"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="800.0" y="124.0"/><mxPoint as="targetPoint" x="800.0" y="150.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-5005d4b1:131a4cd73b3:-7eb8" parent="-5005d4b1:131a4cd73b3:-7eb7"/></XcosDiagram>
+    blocks: ccs;clock_c;const_m;cscope;gainblk_f;ground;mux;potentialsensor;powblk_f;resistor;split_f
     media: gallery62.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -110868,7 +110931,7 @@
     name: ex3_9
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 3) Voltage and Current laws, 3.9) Series and Parallel connected sources'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:51+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ex3_9"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -111332,6 +111395,7 @@
       target="-5005d4b1:131a4cd73b3:-7ebb"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="190.0" y="130.0"/><mxPoint as="targetPoint" x="340.0" y="140.0"/></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-5005d4b1:131a4cd73b3:-7f84" parent="-5005d4b1:131a4cd73b3:-7f83"/></XcosDiagram>
+    blocks: clock_c;constantvoltage;cscope;currentsensor;ground;impsplit_f;resistor
     media: gallery63.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -111341,7 +111405,7 @@
     name: ex4_10
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 4) Basic Nodal and Mesh Analysis, 4.10) Mesh analysis'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:51+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ex4_10"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -112058,6 +112122,7 @@
       4.10"/></ScilabString><mxGeometry as="geometry" height="40.0" width="40.0" x="90.0"
       y="30.0"/></TextBlock></root></mxGraphModel><mxCell as="defaultParent" id="-5f02711f:131ec3f74c9:-7b98"
       parent="-5f02711f:131ec3f74c9:-7b97"/></XcosDiagram>
+    blocks: clock_c;constantvoltage;cscope;currentsensor;cvs;gainblk_f;ground;resistor;split_f;text_f;voltagesensor
     media: gallery64.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -112067,7 +112132,7 @@
     name: ex4_11
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 4) Basic Nodal and Mesh Analysis, 4.11) The Supermesh'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:51+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ex4_11"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -112871,6 +112936,7 @@
       x="580.0" y="216.0"/><mxPoint as="targetPoint" x="584.0" y="174.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-5f02711f:131ec3f74c9:-7a7c" parent="-5f02711f:131ec3f74c9:-7a7b"/><mxPoint
       as="origin" x="-6.0" y="-6.0"/></XcosDiagram>
+    blocks: ccs;clock_c;constantvoltage;const_m;cscope;currentsensor;ground;mux;resistor;split_f;text_f
     media: gallery65.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -112880,7 +112946,7 @@
     name: ex4_12
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 4) Basic Nodal and Mesh Analysis, 4.12) The Supermesh'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:51+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ex4_12"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -114231,6 +114297,7 @@
       target="-44770f3d:13503faa17d:-7d92"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="580.0" y="124.0"/><mxPoint as="targetPoint" x="580.0" y="150.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="5e6a3066:134dff9ba34:-7ffe" parent="5e6a3066:134dff9ba34:-7ffd"/></XcosDiagram>
+    blocks: ccs;clock_c;const_m;cscope;currentsensor;delay_f;gainblk_f;ground;mux;resistor;split_f;voltagesensor
     media: gallery66.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -114240,7 +114307,7 @@
     name: ex4_1
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 4) Basic Nodal and Mesh Analysis, 4.1) Nodal analysis'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:51+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ex4_1"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -114906,6 +114973,7 @@
       4.1"/></ScilabString><mxGeometry as="geometry" height="40.0" width="40.0" x="100.0"
       y="10.0"/></TextBlock></root></mxGraphModel><mxCell as="defaultParent" id="-16b82e93:131e810ab25:-8000"
       parent="-16b82e93:131e810ab25:-7fff"/></XcosDiagram>
+    blocks: ccs;clock_c;const_m;cscope;currentsensor;ground;resistor;split_f;text_f
     media: gallery67.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -114915,7 +114983,7 @@
     name: ex4_2
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 4) Basic Nodal and Mesh Analysis, 4.2) Nodal analysis'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:51+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ex4_2"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -116232,6 +116300,7 @@
       4.2"/></ScilabString><mxGeometry as="geometry" height="40.0" width="40.0" x="60.0"
       y="10.0"/></TextBlock></root></mxGraphModel><mxCell as="defaultParent" id="-16b82e93:131e810ab25:-7f1e"
       parent="-16b82e93:131e810ab25:-7f1d"/></XcosDiagram>
+    blocks: ccs;clock_c;cmscope;const_m;cscope;ground;potentialsensor;resistor;split_f;text_f;voltagesensor
     media: gallery68.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -116241,7 +116310,7 @@
     name: ex4_5
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 4) Basic Nodal and Mesh Analysis, 4.5) The supernode'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:51+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ex4_5"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -117092,6 +117161,7 @@
       4.5"/></ScilabString><mxGeometry as="geometry" height="40.0" width="40.0" x="70.0"
       y="10.0"/></TextBlock></root></mxGraphModel><mxCell as="defaultParent" id="-5f02711f:131ec3f74c9:-8000"
       parent="-5f02711f:131ec3f74c9:-7fff"/></XcosDiagram>
+    blocks: ccs;clock_c;constantvoltage;const_m;cscope;ground;potentialsensor;resistor;split_f;text_f
     media: gallery69.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -117101,7 +117171,7 @@
     name: ex4_6
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 4) Basic Nodal and Mesh Analysis, 4.6) The supernode'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:51+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ex4_6"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -119185,6 +119255,7 @@
       target="-44770f3d:13503faa17d:-7e73"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="720.0" y="204.0"/><mxPoint as="targetPoint" x="720.0" y="230.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="5e6a3066:134dff9ba34:-7e89" parent="5e6a3066:134dff9ba34:-7e88"/></XcosDiagram>
+    blocks: ccs;clock_c;constantvoltage;const_m;cscope;cvs;delay_f;gainblk_f;ground;mux;potentialsensor;resistor;split_f;text_f;voltagesensor
     media: gallery70.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -119194,7 +119265,7 @@
     name: ex4_7
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 4) Basic Nodal and Mesh Analysis, 4.7) Mesh analysis'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:51+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ex4_7"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -119907,6 +119978,7 @@
       4.7"/></ScilabString><mxGeometry as="geometry" height="40.0" width="40.0" x="50.0"
       y="10.0"/></TextBlock></root></mxGraphModel><mxCell as="defaultParent" id="-5f02711f:131ec3f74c9:-7da1"
       parent="-5f02711f:131ec3f74c9:-7da0"/></XcosDiagram>
+    blocks: clock_c;constantvoltage;cscope;currentsensor;ground;prod_f;resistor;split_f;text_f;voltagesensor
     media: gallery71.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -119916,7 +119988,7 @@
     name: ex4_8
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 4) Basic Nodal and Mesh Analysis, 4.8) Mesh analysis'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:51+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ex4_8"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -120999,6 +121071,7 @@
       4.8"/></ScilabString><mxGeometry as="geometry" height="40.0" width="40.0" x="70.0"
       y="20.0"/></TextBlock></root></mxGraphModel><mxCell as="defaultParent" id="-5f02711f:131ec3f74c9:-7c8d"
       parent="-5f02711f:131ec3f74c9:-7c8c"/></XcosDiagram>
+    blocks: clock_c;cmscope;constantvoltage;cscope;currentsensor;ground;resistor;split_f;text_f
     media: gallery72.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -121008,7 +121081,7 @@
     name: ex4_9
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 4) Basic Nodal and Mesh Analysis, 4.9) Mesh analysis'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:51+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ex4_9"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -121672,6 +121745,7 @@
       4.9"/></ScilabString><mxGeometry as="geometry" height="40.0" width="40.0" x="70.0"
       y="20.0"/></TextBlock></root></mxGraphModel><mxCell as="defaultParent" id="-5f02711f:131ec3f74c9:-7e53"
       parent="-5f02711f:131ec3f74c9:-7e52"/></XcosDiagram>
+    blocks: clock_c;constantvoltage;cscope;currentsensor;cvs;gainblk_f;ground;resistor;split_f;text_f
     media: gallery73.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -121682,7 +121756,7 @@
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 6) Network Theorems and useful Circuit Analysis Techniques, 6.11) Thevenin
       and Norton Equivalent circuit'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:51+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ex6_11"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -122185,6 +122259,7 @@
       target="2602728:132d47c9ecc:-7f6b"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="320.0" y="76.0"/><mxPoint as="targetPoint" x="320.0" y="100.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="2602728:132d47c9ecc:-8000" parent="2602728:132d47c9ecc:-7fff"/></XcosDiagram>
+    blocks: clock_c;constantvoltage;cscope;ground;potentialsensor;resistor;split_f
     media: gallery74.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -122195,7 +122270,7 @@
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 6) Network Theorems and useful Circuit Analysis Techniques, 6.13) Thevenin
       and Norton Equivalent circuit'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:51+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ex6_13"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -122967,6 +123042,7 @@
       target="77dfe223:134ebbf1891:-7e14"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="780.0" y="214.0"/><mxPoint as="targetPoint" x="780.0" y="240.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="2602728:132d47c9ecc:-7f5b" parent="2602728:132d47c9ecc:-7f5a"/></XcosDiagram>
+    blocks: ccs;clock_c;cmscope;constantvoltage;const_m;currentsensor;ground;potentialsensor;resistor;split_f
     media: gallery75.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -122977,7 +123053,7 @@
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 6) Network Theorems and useful Circuit Analysis Techniques, 6.14) Thevenin
       and Norton Equivalent circuit'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:51+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ex6_14"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -123995,6 +124071,7 @@
       as="geometry"><mxPoint as="sourcePoint" x="400.0" y="44.0"/><mxPoint as="targetPoint"
       x="400.0" y="70.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-1f470ada:134d070a228:-7f33" parent="-1f470ada:134d070a228:-7f32"/></XcosDiagram>
+    blocks: ccs;clock_c;constantvoltage;cscope;delay_f;gainblk_f;ground;potentialsensor;resistor;split_f
     media: gallery76.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -124005,7 +124082,7 @@
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 6) Network Theorems and useful Circuit Analysis Techniques, 6.15) Thevenin
       and Norton Equivalent circuit'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:51+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ex6_15"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -124553,6 +124630,7 @@
       as="geometry"><mxPoint as="sourcePoint" x="370.0" y="124.0"/><mxPoint as="targetPoint"
       x="370.0" y="150.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-1f470ada:134d070a228:-8000" parent="-1f470ada:134d070a228:-7fff"/></XcosDiagram>
+    blocks: clock_c;const_m;cscope;cvs;ground;resistor;split_f;voltagesensor
     media: gallery77.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -124563,7 +124641,7 @@
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 6) Network Theorems and useful Circuit Analysis Techniques, 6.16) Maximum
       power transfer'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:51+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ex6_16"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -125862,6 +125940,7 @@
       x="344.0" y="180.0"/><mxPoint as="targetPoint" x="370.0" y="180.0"/></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="6611b517:134eb867750:-7b61" parent="6611b517:134eb867750:-7b60"/><mxPoint
       as="origin" x="-2.5"/></XcosDiagram>
+    blocks: ccs;clock_c;cscope;delay_f;gainblk_f;ground;powblk_f;resistor;sinevoltage;split_f;text_f;voltagesensor
     media: gallery78.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -125872,7 +125951,7 @@
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 6) Network Theorems and useful Circuit Analysis Techniques, 6.1) The
       Superposition principle'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:51+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ex6_1"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -126605,6 +126684,7 @@
       target="-5872192d:1324f245276:-7ef5"><mxGeometry as="geometry" x="-30.0"><mxPoint
       as="sourcePoint" x="566.0" y="190.0"/><mxPoint as="targetPoint" x="550.0" y="190.0"/></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-5872192d:1324f245276:-8000" parent="-5872192d:1324f245276:-7fff"/></XcosDiagram>
+    blocks: bigsom_f;ccs;clock_c;constantvoltage;const_m;cscope;currentsensor;ground;resistor;split_f
     media: gallery79.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -126615,7 +126695,7 @@
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 6) Network Theorems and useful Circuit Analysis Techniques, 6.20) Compensation
       Theorem'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:51+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="1.0" title="ex6_20"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -127315,6 +127395,7 @@
       target="6611b517:134eb867750:-7ed6"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="570.0" y="74.0"/><mxPoint as="targetPoint" x="570.0" y="100.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="6611b517:134eb867750:-7ffe" parent="6611b517:134eb867750:-7ffd"/></XcosDiagram>
+    blocks: clock_c;cscope;currentsensor;ground;inductor;resistor;sinevoltage;split_f;summation
     media: gallery80.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -127325,7 +127406,7 @@
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 6) Network Theorems and useful Circuit Analysis Techniques, 6.21) Compensation
       Theorem'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:51+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ex6_21"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -128148,6 +128229,7 @@
       x="560.0" y="164.0"/><mxPoint as="targetPoint" x="560.0" y="180.0"/><Array as="points"
       scilabClass="ScilabList"><mxPoint x="560.0" y="180.0"/><mxPoint x="560.0" y="180.0"/></Array></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="6611b517:134eb867750:-7ec6" parent="6611b517:134eb867750:-7ec5"/></XcosDiagram>
+    blocks: clock_c;constantvoltage;cscope;currentsensor;ground;resistor;split_f;summation
     media: gallery81.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -128158,7 +128240,7 @@
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 6) Network Theorems and useful Circuit Analysis Techniques, 6.23) Source
       Transformations'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:51+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ex6_23"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -128707,6 +128789,7 @@
       target="6611b517:134eb867750:-7b63"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="490.0" y="94.0"/><mxPoint as="targetPoint" x="490.0" y="130.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="6611b517:134eb867750:-7be7" parent="6611b517:134eb867750:-7be6"/></XcosDiagram>
+    blocks: clock_c;constantvoltage;cscope;currentsensor;ground;resistor;split_f
     media: gallery82.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -128717,7 +128800,7 @@
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 6) Network Theorems and useful Circuit Analysis Techniques, 6.24) Source
       Transformations'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:51+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ex6_24"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -129903,6 +129986,7 @@
       x="216.0" y="120.0"/><mxPoint as="targetPoint" x="260.0" y="200.0"/><Array as="points"
       scilabClass="ScilabList"><mxPoint x="210.0" y="200.0"/><mxPoint x="210.0" y="120.0"/></Array></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="6611b517:134eb867750:-7d3e" parent="6611b517:134eb867750:-7d3d"/></XcosDiagram>
+    blocks: ccs;clock_c;constantvoltage;cscope;currentsensor;delay_f;ground;resistor;split_f;voltagesensor
     media: gallery83.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -129913,7 +129997,7 @@
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 6) Network Theorems and useful Circuit Analysis Techniques, 6.3) The
       Superposition principle'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:51+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ex6_3"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -130785,6 +130869,7 @@
       target="-5872192d:1324f245276:-7d31"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="710.0" y="44.0"/><mxPoint as="targetPoint" x="710.0" y="60.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-5872192d:1324f245276:-7ee4" parent="-5872192d:1324f245276:-7ee3"/></XcosDiagram>
+    blocks: bigsom_f;ccs;clock_c;constantvoltage;const_m;cscope;currentsensor;cvs;gainblk_f;ground;resistor;split_f
     media: gallery84.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -130795,7 +130880,7 @@
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 6) Network Theorems and useful Circuit Analysis Techniques, 6.4) The
       Superposition principle'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:51+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ex6_4"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -131621,6 +131706,7 @@
       x="800.0" y="120.0"/><Array as="points" scilabClass="ScilabList"><mxPoint x="800.0"
       y="120.0"/></Array></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-5872192d:1324f245276:-7d2f" parent="-5872192d:1324f245276:-7d2e"/></XcosDiagram>
+    blocks: bigsom_f;ccs;clock_c;constantvoltage;const_m;cscope;currentsensor;ground;resistor;split_f
     media: gallery85.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -131631,7 +131717,7 @@
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 6) Network Theorems and useful Circuit Analysis Techniques, 6.5) The
       Superposition principle'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:51+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ex6_5"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -132308,6 +132394,7 @@
       target="-5872192d:1324f245276:-7b3f"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="570.0" y="46.0"/><mxPoint as="targetPoint" x="570.0" y="70.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-5872192d:1324f245276:-7c11" parent="-5872192d:1324f245276:-7c10"/></XcosDiagram>
+    blocks: bigsom_f;clock_c;constantvoltage;cscope;currentsensor;ground;resistor;split_f
     media: gallery86.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -132318,7 +132405,7 @@
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 6) Network Theorems and useful Circuit Analysis Techniques, 6.6) The
       Superposition principle'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:51+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ex6_6"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -133192,6 +133279,7 @@
       ordering="1" parent="-5872192d:1324f245276:-79e2" style="ImplicitOutputPort;align=center;labelPosition=center;verticalLabelPosition=top;spacingBottom=5;rotation=90;flip=false;mirror=false"><mxGeometry
       as="geometry" height="8.0" width="8.0" x="16.0" y="40.0"/></ImplicitOutputPort></root></mxGraphModel><mxCell
       as="defaultParent" id="-5872192d:1324f245276:-7b3d" parent="-5872192d:1324f245276:-7b3c"/></XcosDiagram>
+    blocks: bigsom_f;ccs;clock_c;constantvoltage;const_m;cscope;currentsensor;cvs;gainblk_f;ground;resistor;split_f
     media: gallery87.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -133202,7 +133290,7 @@
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 6) Network Theorems and useful Circuit Analysis Techniques, 6.8) The
       Superposition principle'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:51+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ex6_8"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -134306,6 +134394,7 @@
       target="-1ed2b2d8:132d4611bb5:-7cc9"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="856.0" y="340.0"/><mxPoint as="targetPoint" x="830.0" y="340.0"/></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-1ed2b2d8:132d4611bb5:-7f3b" parent="-1ed2b2d8:132d4611bb5:-7f3a"/></XcosDiagram>
+    blocks: bigsom_f;ccs;clock_c;constantvoltage;const_m;cscope;currentsensor;cvs;gainblk_f;ground;resistor;split_f
     media: gallery88.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -134315,7 +134404,7 @@
     name: ex7_11
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 7) Capacitors and Inductors, 7.11) Modeling Capacitors and Inductors'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:51+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="1.0" title="ex7_11"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -134904,6 +134993,7 @@
       target="3a97bac1:134ed06dad1:-7f50"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="500.0" y="64.0"/><mxPoint as="targetPoint" x="500.0" y="100.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="3a97bac1:134ed06dad1:-7ffe" parent="3a97bac1:134ed06dad1:-7ffd"/></XcosDiagram>
+    blocks: capacitor;clock_c;cscope;ground;opamp;resistor;sinevoltage;split_f;voltagesensor
     media: gallery89.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -134913,7 +135003,7 @@
     name: ex8_10
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 8) Basic RL and RC circuits, 8.10) Driven RC circuits'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:51+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="5.0" title="ex8_10"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -136070,6 +136160,7 @@
       x="700.0" y="314.0"/><mxPoint as="targetPoint" x="700.0" y="334.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="75a896ca:134d365eac8:-7b7b" parent="75a896ca:134d365eac8:-7b7a"/><mxPoint
       as="origin" y="-6.0"/></XcosDiagram>
+    blocks: capacitor;clock_c;constantvoltage;cscope;currentsensor;ground;mux;resistor;split_f;voltagesensor
     media: gallery90.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -136079,7 +136170,7 @@
     name: ex8_11
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 8) Basic RL and RC circuits, 8.11) Driven RC circuits'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:52+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="0.01" title="ex8_11"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -136695,6 +136786,7 @@
       as="geometry"><mxPoint as="sourcePoint" x="340.0" y="186.0"/><mxPoint as="targetPoint"
       x="340.0" y="120.0"/></mxGeometry></ImplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-5e5c20b5:13506c8a689:-8000" parent="-5e5c20b5:13506c8a689:-7fff"/></XcosDiagram>
+    blocks: capacitor;ccs;clock_c;cscope;expression;ground;potentialsensor;resistor;split_f;time_f
     media: gallery91.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -136704,7 +136796,7 @@
     name: ex8_1
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 8) Basic RL and RC circuits, 8.1) The Source free RL Circuit'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:52+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="0.001" title="ex8_1"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -137196,6 +137288,7 @@
       target="77dd482d:134d2cc3c9e:-7f19"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="470.0" y="104.0"/><mxPoint as="targetPoint" x="470.0" y="150.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="77dd482d:134d2cc3c9e:-7f9a" parent="77dd482d:134d2cc3c9e:-7f99"/></XcosDiagram>
+    blocks: clock_c;cscope;gainblk_f;integral_m;split_f;step_function;summation
     media: gallery92.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -137205,7 +137298,7 @@
     name: ex8_2
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 8) Basic RL and RC circuits, 8.2) The Source free RL Circuit'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:52+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="1.0" title="ex8_2"><!--Xcos - 1.0 - scilab-5.5.2 - 20200302--><mxGraphModel
@@ -137891,6 +137984,7 @@
       scilabClass="ScilabList"><mxPoint x="180.0" y="360.0"/><mxPoint x="70.0" y="360.0"/><mxPoint
       x="70.0" y="230.0"/></Array></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-29171e7b:13894ec359c:-8000" parent="-29171e7b:13894ec359c:-7fff"/></XcosDiagram>
+    blocks: clock_c;cscope;gainblk_f;integral_m;split_f;step_function;summation
     media: gallery93.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -137900,7 +137994,7 @@
     name: ex8_3
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 8) Basic RL and RC circuits, 8.3) The Source free RC Circuit'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:52+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="5.0E-4" title="ex8_3"><!--Xcos - 1.0 - scilab-5.5.2 -
@@ -138430,6 +138524,7 @@
       target="-7550ec02:134d2eb8d96:-7c61"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="420.0" y="74.0"/><mxPoint as="targetPoint" x="420.0" y="120.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-7550ec02:134d2eb8d96:-7d27" parent="-7550ec02:134d2eb8d96:-7d26"/></XcosDiagram>
+    blocks: capacitor;clock_c;cscope;ground;resistor;split_f;voltagesensor
     media: gallery94.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -138439,7 +138534,7 @@
     name: ex8_4
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 8) Basic RL and RC circuits, 8.4) A more General Perspective'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:52+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="1.0E-4" title="ex8_4"><!--Xcos - 1.0 - scilab-5.5.2 -
@@ -139182,6 +139277,7 @@
       target="-7550ec02:134d2eb8d96:-7bd0"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="114.0" y="170.0"/><mxPoint as="targetPoint" x="170.0" y="170.0"/></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-7550ec02:134d2eb8d96:-7c3f" parent="-7550ec02:134d2eb8d96:-7c3e"/></XcosDiagram>
+    blocks: clock_c;cscope;gainblk_f;integral_m;mux;split_f;step_function;summation;text_f
     media: gallery95.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -139191,7 +139287,7 @@
     name: ex8_8
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 8) Basic RL and RC circuits, 8.8) Natural and Forced Response'
-    save_time: 2025-05-06 10:53:16+00:00
+    save_time: 2025-05-06 12:43:52+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ex8_8"><!--Xcos - 1.0 - scilab-5.5.2 - 20200302--><mxGraphModel
@@ -139850,6 +139946,7 @@
       target="6641adef:135055938d4:-7ecb"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="560.0" y="94.0"/><mxPoint as="targetPoint" x="560.0" y="120.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="75a896ca:134d365eac8:-7eb8" parent="75a896ca:134d365eac8:-7eb7"/></XcosDiagram>
+    blocks: clock_c;constantvoltage;cscope;currentsensor;gainblk_f;ground;integral_m;mux;resistor;split_f;step_function;summation;text_f
     media: gallery96.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -139859,7 +139956,7 @@
     name: ex9_2
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 9) The RLC Circuit, 9.2) The Overdamped parallel circuit'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:52+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="0.001" title="ex9_2"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -140399,6 +140496,7 @@
       target="1f781c6f:13506286c0b:-7f01"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="470.0" y="64.0"/><mxPoint as="targetPoint" x="470.0" y="90.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="2adc5834:134f2773fd2:-7ffe" parent="2adc5834:134f2773fd2:-7ffd"/></XcosDiagram>
+    blocks: capacitor;clock_c;cscope;ground;inductor;potentialsensor;resistor;split_f
     media: gallery97.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -140408,7 +140506,7 @@
     name: ex9_3
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 9) The RLC Circuit, 9.3) The Overdamped parallel circuit'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:52+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="0.001" title="ex9_3"><!--Xcos - 1.0 - scilab-5.5.2 - 20200302--><mxGraphModel
@@ -141242,6 +141340,7 @@
       target="-67b45fed:134f41509ef:-7b5e"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="850.0" y="154.0"/><mxPoint as="targetPoint" x="850.0" y="180.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-67b45fed:134f41509ef:-7ffe" parent="-67b45fed:134f41509ef:-7ffd"/></XcosDiagram>
+    blocks: capacitor;clock_c;constantvoltage;cscope;currentsensor;gainblk_f;ground;inductor;mux;potentialsensor;resistor;split_f
     media: gallery98.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -141251,7 +141350,7 @@
     name: ex9_6
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 9) The RLC Circuit, 9.6) The Underdamped parallel RLC circuit'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:52+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="5.0" title="ex9_6"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -141750,6 +141849,7 @@
       x="520.0" y="104.0"/><mxPoint as="targetPoint" x="520.0" y="130.0"/><Array as="points"
       scilabClass="ScilabList"><mxPoint x="520.0" y="130.0"/></Array></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-7cfb447d:134ed64a89d:-7ffe" parent="-7cfb447d:134ed64a89d:-7ffd"/></XcosDiagram>
+    blocks: clock_c;cscope;gainblk_f;integral_m;split_f;summation
     media: gallery99.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -141759,7 +141859,7 @@
     name: ex9_7
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 9) The RLC Circuit, 9.7) The Source free series RLC Circuit'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:52+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="0.001" title="ex9_7"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -142339,6 +142439,7 @@
       target="-3d3fe24b:134fb5bd9e1:-7c1f"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="440.0" y="94.0"/><mxPoint as="targetPoint" x="440.0" y="110.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-3d3fe24b:134fb5bd9e1:-7d4a" parent="-3d3fe24b:134fb5bd9e1:-7d49"/></XcosDiagram>
+    blocks: capacitor;ccs;clock_c;const_m;cscope;currentsensor;ground;inductor;resistor;split_f
     media: gallery100.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -142348,7 +142449,7 @@
     name: ex9_8
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 9) The RLC Circuit, 9.8) The Source free series RLC Circuit'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:52+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="5.0" title="ex9_8"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -143048,6 +143149,7 @@
       target="1f781c6f:13506286c0b:-7d59"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="500.0" y="64.0"/><mxPoint as="targetPoint" x="500.0" y="70.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="1f781c6f:13506286c0b:-7ffe" parent="1f781c6f:13506286c0b:-7ffd"/></XcosDiagram>
+    blocks: capacitor;clock_c;cscope;currentsensor;cvs;delay_f;gainblk_f;ground;inductor;resistor;split_f;voltagesensor
     media: gallery101.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -143057,7 +143159,7 @@
     name: ex9_9
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 9) The RLC Circuit, 9.9) The Complete response of RLC circuit'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:52+00:00
     book: 215
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="ex9_9"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -143720,6 +143822,7 @@
       target="1f781c6f:13506286c0b:-7c8b"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="600.0" y="164.0"/><mxPoint as="targetPoint" x="600.0" y="180.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="1f781c6f:13506286c0b:-7d57" parent="1f781c6f:13506286c0b:-7d56"/></XcosDiagram>
+    blocks: ccs;clock_c;const_m;cscope;currentsensor;ground;mux;potentialsensor;resistor;split_f;voltagesensor
     media: gallery102.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -143729,7 +143832,7 @@
     name: Ex6_23
     description: 'Electrical Machines (Author: R. K. Srivastava), 6) Synchronous Machines,
       6.23) To find maximum value of power angle and maximum value of overshoot'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:52+00:00
     book: 2777
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       title="Ex6_23"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406 2040--><Array as="context"
@@ -144244,6 +144347,7 @@
       as="oDState" scilabClass="ScilabList"/><Array as="equations" scilabClass="ScilabList"/><mxGeometry
       as="geometry" height="40.0" width="40.0" x="440.0" y="310.0"/></BasicBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="6521d368:1479034e794:-7fa0" parent="6521d368:1479034e794:-7f9f"/></XcosDiagram>
+    blocks: clock_c;clr;const;cscope;endblk
     media: gallery103.png
     script_dump: '
 
@@ -144354,7 +144458,7 @@
     name: eg12_2
     description: 'Electrical Engineering Fundamentals (Author: V. Del Toro), 12) Simplifying
       logical functions, 12.2) Prove the given theoram'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:52+00:00
     book: 293
     data_dump: '<?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="4.0" title="eg12_2"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -146436,6 +146540,7 @@
       as="geometry" height="40.0" width="40.0" x="230.0" y="10.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="47283b12:1341c9b3c8b:-78f7" parent="47283b12:1341c9b3c8b:-78f6"/><mxPoint
       as="origin" x="-10.0"/></XcosDiagram>'
+    blocks: clock_c;cmscope;convert;gensqr_f;in_f;logic;out_f;split_f;super_f;text_f
     media: gallery104.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -146446,7 +146551,7 @@
     description: 'Electrical Engineering Fundamentals (Author: V. Del Toro), 12) Simplifying
       logical functions, 12.3.a) Design a digital logic circuit that provides logic
       1 whenever majority votes yes'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:52+00:00
     book: 293
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="8.0" title="eg12_3a"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -149585,6 +149690,7 @@
       Table"/></ScilabString><mxGeometry as="geometry" height="40.0" width="40.0"
       x="520.0" y="200.0"/></TextBlock></root></mxGraphModel><mxCell as="defaultParent"
       id="47283b12:1341c9b3c8b:-8000" parent="47283b12:1341c9b3c8b:-7fff"/></XcosDiagram>
+    blocks: clock_c;cmscope;convert;gensqr_f;in_f;logic;out_f;split_f;super_f;text_f
     media: gallery105.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -149594,7 +149700,7 @@
     name: eg12_3b
     description: 'Electrical Engineering Fundamentals (Author: V. Del Toro), 12) Simplifying
       logical functions, 12.3.b) Modify part A so that only NAND gates are used'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:52+00:00
     book: 293
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="8.0" title="eg12_3b"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -152731,6 +152837,7 @@
       height="1" width="1"><data column="0" line="0" value="C"/></ScilabString><mxGeometry
       as="geometry" height="40.0" width="40.0" x="50.0" y="330.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="47283b12:1341c9b3c8b:-7c5b" parent="47283b12:1341c9b3c8b:-7c5a"/></XcosDiagram>
+    blocks: clock_c;cmscope;convert;gensqr_f;in_f;logic;out_f;split_f;super_f;text_f
     media: gallery106.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -152740,7 +152847,7 @@
     name: eg2_10
     description: 'Electrical Engineering Fundamentals (Author: V. Del Toro), 2) The
       circuit elements, 2.10) Design an opamp circuit solution of the given equation'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:52+00:00
     book: 293
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="10.0" title="eg2_10"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -155290,6 +155397,7 @@
       as="geometry"><mxPoint as="sourcePoint" x="190.0" y="180.0"/><mxPoint as="targetPoint"
       x="310.0" y="180.0"/></mxGeometry></ImplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="200893ff:13428736452:-8000" parent="200893ff:13428736452:-7fff"/></XcosDiagram>
+    blocks: clock_c;constantvoltage;cscope;ground;impsplit_f;inimpl_f;opamp;outimpl_f;resistor;split_f;super_f;text_f;voltagesensor
     media: gallery107.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -155299,7 +155407,7 @@
     name: eg3_10
     description: 'Electrical Engineering Fundamentals (Author: V. Del Toro), 3) Elementary
       network theory, 3.10) Find the value of the node pair voltages V1 and V2'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:52+00:00
     book: 293
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="10.0" title="eg3_10"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -156159,6 +156267,7 @@
       height="1" width="1"><data column="0" line="0" value="V2"/></ScilabString><mxGeometry
       as="geometry" height="40.0" width="40.0" x="490.0" y="180.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="-108078b6:1345b8f2778:-7b1d" parent="-108078b6:1345b8f2778:-7b1c"/></XcosDiagram>
+    blocks: clock_c;cmscope;constantvoltage;ground;resistor;split_f;text_f;voltagesensor
     media: gallery108.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -156168,7 +156277,7 @@
     name: eg3_11
     description: 'Electrical Engineering Fundamentals (Author: V. Del Toro), 3) Elementary
       network theory, 3.11) Find the branch current flowing through R2'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:52+00:00
     book: 293
     data_dump: '<?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="10.0" title="eg3_11"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -156793,6 +156902,7 @@
       &lt;br&gt;    ohm&lt;br&gt;&lt;br&gt;r"/></ScilabString><mxGeometry as="geometry"
       height="40.0" width="40.0" x="110.0" y="430.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="-108078b6:1345b8f2778:-79f9" parent="-108078b6:1345b8f2778:-79f8"/></XcosDiagram>'
+    blocks: clock_c;constantvoltage;cscope;currentsensor;ground;resistor;split_f;text_f
     media: gallery109.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -156802,7 +156912,7 @@
     name: eg3_14
     description: 'Electrical Engineering Fundamentals (Author: V. Del Toro), 3) Elementary
       network theory, 3.14) Find the value of the output voltage'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:52+00:00
     book: 293
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="10.0" title="eg3_14"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -157414,6 +157524,7 @@
       target="-108078b6:1345b8f2778:-78bb"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="460.0" y="144.0"/><mxPoint as="targetPoint" x="460.0" y="190.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-108078b6:1345b8f2778:-794d" parent="-108078b6:1345b8f2778:-794c"/></XcosDiagram>
+    blocks: clock_c;constantvoltage;cscope;ground;resistor;split_f;text_f;voltagesensor
     media: gallery110.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -157423,7 +157534,7 @@
     name: eg3_15
     description: 'Electrical Engineering Fundamentals (Author: V. Del Toro), 3) Elementary
       network theory, 3.15) Find the current delivered to the source by the network'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:52+00:00
     book: 293
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="10.0" title="eg3_15"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -158103,6 +158214,7 @@
       = 5"/></ScilabString><mxGeometry as="geometry" height="40.0" width="40.0" x="270.0"
       y="280.0"/></TextBlock></root></mxGraphModel><mxCell as="defaultParent" id="-108078b6:1345b8f2778:-78b9"
       parent="-108078b6:1345b8f2778:-78b8"/></XcosDiagram>
+    blocks: clock_c;constantvoltage;cscope;currentsensor;ground;resistor;split_f;text_f
     media: gallery111.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -158112,7 +158224,7 @@
     name: eg3_5
     description: 'Electrical Engineering Fundamentals (Author: V. Del Toro), 3) Elementary
       network theory, 3.5) Determine the current which flows through R2'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:52+00:00
     book: 293
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="10.0" title="eg3_5"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -158765,6 +158877,7 @@
       ordering="1" parent="-108078b6:1345b8f2778:-7fde" style="ImplicitOutputPort;align=center;verticalAlign=bottom;spacing=10;rotation=90;flip=false;mirror=false"><mxGeometry
       as="geometry" height="8.0" width="8.0" x="16.0" y="40.0"/></ImplicitOutputPort></root></mxGraphModel><mxCell
       as="defaultParent" id="-108078b6:1345b8f2778:-8000" parent="-108078b6:1345b8f2778:-7fff"/></XcosDiagram>
+    blocks: clock_c;constantvoltage;cscope;currentsensor;ground;resistor;split_f;text_f
     media: gallery112.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -158774,7 +158887,7 @@
     name: eg3_6
     description: 'Electrical Engineering Fundamentals (Author: V. Del Toro), 3) Elementary
       network theory, 3.6) Find the power dissipation in R1'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:52+00:00
     book: 293
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="10.0" title="eg3_6"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -159514,6 +159627,7 @@
       = (I^2)*R1"/></ScilabString><mxGeometry as="geometry" height="40.0" width="40.0"
       x="560.0" y="70.0"/></TextBlock></root></mxGraphModel><mxCell as="defaultParent"
       id="-108078b6:1345b8f2778:-7edc" parent="-108078b6:1345b8f2778:-7edb"/></XcosDiagram>
+    blocks: clock_c;constantvoltage;const_m;cscope;currentsensor;ground;powblk_f;prod_f;resistor;split_f;text_f
     media: gallery113.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -159523,7 +159637,7 @@
     name: eg3_7
     description: 'Electrical Engineering Fundamentals (Author: V. Del Toro), 3) Elementary
       network theory, 3.7) Find the current which flows through R2'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:52+00:00
     book: 293
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="10.0" title="eg3_7"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -160465,6 +160579,7 @@
       current flowing through R2"/></ScilabString><mxGeometry as="geometry" height="40.0"
       width="40.0" x="380.0" y="280.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="-108078b6:1345b8f2778:-7e22" parent="-108078b6:1345b8f2778:-7e21"/></XcosDiagram>
+    blocks: clock_c;constantvoltage;cscope;currentsensor;ground;resistor;split_f;sum_f;text_f
     media: gallery114.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -160475,7 +160590,7 @@
     description: 'Electrical Engineering Fundamentals (Author: V. Del Toro), 3) Elementary
       network theory, 3.9) Find the magnitude and direction of each of the branch
       currents'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:52+00:00
     book: 293
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="10.0" title="eg3_9"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -161203,6 +161318,7 @@
       black to white is considered as possitive direction"/></ScilabString><mxGeometry
       as="geometry" height="40.0" width="40.0" x="200.0" y="380.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="-108078b6:1345b8f2778:-7bff" parent="-108078b6:1345b8f2778:-7bfe"/></XcosDiagram>
+    blocks: clock_c;cmscope;constantvoltage;currentsensor;ground;resistor;split_f;text_f
     media: gallery115.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -161213,7 +161329,7 @@
     description: 'Electrical Engineering Fundamentals (Author: V. Del Toro), 5) Circuit
       dynamics and forced responses, 5.1) Find the expression for the current flowing
       through the circuit'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:52+00:00
     book: 293
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="20.0" title="eg5_1"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -162071,6 +162187,7 @@
       are closing the switch at t = 10sec"/></ScilabString><mxGeometry as="geometry"
       height="40.0" width="40.0" x="120.0" y="20.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="7ce57742:133f8596f12:-7f12" parent="7ce57742:133f8596f12:-7f11"/></XcosDiagram>
+    blocks: clock_c;constantvoltage;cscope;currentsensor;ground;inductor;resistor;split_f;step_function;switch;text_f
     media: gallery116.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -162081,7 +162198,7 @@
     description: 'Electrical Engineering Fundamentals (Author: V. Del Toro), 5) Circuit
       dynamics and forced responses, 5.2) Find the expression for the current flowing
       through the circuit and the total energy dissipated in the resistor'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:52+00:00
     book: 293
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="eg5_2"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -162827,6 +162944,7 @@
       target="5f9ca566:13492e0ce3c:-7f31"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="344.0" y="140.0"/><mxPoint as="targetPoint" x="420.0" y="140.0"/></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="4c3b265:134192dde3e:-7ed0" parent="4c3b265:134192dde3e:-7ecf"/></XcosDiagram>
+    blocks: capacitor;clock_c;cscope;currentsensor;ground;resistor;split_f;step_function;switch;text_f
     media: gallery117.png
     script_dump: 'C = 10*10^-6 ; //capacitance(in farads)
 
@@ -162853,7 +162971,7 @@
     description: 'Electrical Engineering Fundamentals (Author: V. Del Toro), 5) Circuit
       dynamics and forced responses, 5.3) Determine the voltage which appears across
       each capacitor at steady state'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:52+00:00
     book: 293
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="50.0" title="eg5_3"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -163758,6 +163876,7 @@
       20V and voltage across C2 = -20V"/></ScilabString><mxGeometry as="geometry"
       height="40.0" width="40.0" x="260.0" y="390.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="4c3b265:134192dde3e:-7e2e" parent="4c3b265:134192dde3e:-7e2d"/></XcosDiagram>
+    blocks: capacitor;clock_c;cmscope;ground;resistor;split_f;step_function;switch;text_f;voltagesensor
     media: gallery118.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -163768,7 +163887,7 @@
     description: 'Electrical Engineering Fundamentals (Author: V. Del Toro), 5) Circuit
       dynamics and forced responses, 5.5) Find the complete solution for the charge
       on the capacitor and show a plot of the response'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:52+00:00
     book: 293
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="0.5" title="eg5_5"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -164690,6 +164809,7 @@
       ordering="1" parent="4c3b265:134192dde3e:-7d09" style="ImplicitInputPort;align=center;verticalAlign=top;spacing=10;rotation=90;flip=false;mirror=false"><mxGeometry
       as="geometry" height="8.0" width="8.0" x="16.0" y="-8.0"/></ImplicitInputPort></root></mxGraphModel><mxCell
       as="defaultParent" id="4c3b265:134192dde3e:-7d26" parent="4c3b265:134192dde3e:-7d25"/></XcosDiagram>
+    blocks: capacitor;clock_c;cmscope;constantvoltage;const_m;ground;inductor;prod_f;resistor;split_f;step_function;switch;text_f;voltagesensor
     media: gallery119.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -164700,7 +164820,7 @@
     description: 'Electrical Engineering Fundamentals (Author: V. Del Toro), 5) Circuit
       dynamics and forced responses, 5.6) Describe the dynamic behaviour of the given
       circuit'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:52+00:00
     book: 293
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="5.0" title="eg5_6"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -165561,6 +165681,7 @@
       across the capacitor for constant source voltage"/></ScilabString><mxGeometry
       as="geometry" height="40.0" width="40.0" x="230.0" y="360.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="4c3b265:134192dde3e:-7bc3" parent="4c3b265:134192dde3e:-7bc2"/></XcosDiagram>
+    blocks: capacitor;clock_c;constantvoltage;cscope;ground;inductor;resistor;split_f;step_function;switch;text_f;voltagesensor
     media: gallery120.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -165571,7 +165692,7 @@
     description: 'Electrical Engineering Fundamentals (Author: V. Del Toro), 5) Circuit
       dynamics and forced responses, 5.7) Obtain the critically damped response for
       the circuit'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:52+00:00
     book: 293
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="5.0" title="eg5_7"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -166430,6 +166551,7 @@
       ordering="1" parent="774ef901:13456c50b60:-7ea6" style="ImplicitOutputPort;align=center;verticalAlign=bottom;spacing=10;rotation=90;flip=false;mirror=false"><mxGeometry
       as="geometry" height="8.0" width="8.0" x="16.0" y="40.0"/></ImplicitOutputPort></root></mxGraphModel><mxCell
       as="defaultParent" id="774ef901:13456c50b60:-7ee1" parent="774ef901:13456c50b60:-7ee0"/></XcosDiagram>
+    blocks: capacitor;clock_c;constantvoltage;cscope;ground;inductor;resistor;split_f;step_function;switch;text_f;voltagesensor
     media: gallery121.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -166440,7 +166562,7 @@
     description: 'Electrical Engineering Fundamentals (Author: V. Del Toro), 5) Circuit
       dynamics and forced responses, 5.8) Repeat the previous example for the case
       where the resistance R is changed'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:52+00:00
     book: 293
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="5.0" title="eg5_8"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -167300,6 +167422,7 @@
       ordering="1" parent="774ef901:13456c50b60:-7e64" style="ImplicitOutputPort;align=center;verticalAlign=bottom;spacing=10;rotation=90;flip=false;mirror=false"><mxGeometry
       as="geometry" height="8.0" width="8.0" x="16.0" y="40.0"/></ImplicitOutputPort></root></mxGraphModel><mxCell
       as="defaultParent" id="774ef901:13456c50b60:-7e9f" parent="774ef901:13456c50b60:-7e9e"/></XcosDiagram>
+    blocks: capacitor;clock_c;constantvoltage;cscope;ground;inductor;resistor;split_f;step_function;switch;text_f;voltagesensor
     media: gallery122.png
     script_dump: ''
 - model: saveAPI.gallery
@@ -167310,7 +167433,7 @@
     description: 'Feedback Control of Dynamic Systems (Author: G. F. Franklin, J.
       D. Powell and A. Emami-Naeini), 6) The Frequency Response Design Method, 6.14)
       Lead compensation for DC motor'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:52+00:00
     book: 3432
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="5.0" title="Ex6_14_model"><!--Xcos - 1.0 - scilab-5.5.2
@@ -168546,6 +168669,7 @@
       x="1020.0" y="120.0"/><mxPoint as="targetPoint" x="1080.0" y="180.0"/><Array
       as="points" scilabClass=""><mxPoint x="1060.0" y="120.0"/></Array></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-2dd55334:14dcbdd0183:-7fd3" parent="-2dd55334:14dcbdd0183:-7fd2"/></XcosDiagram>
+    blocks: clock_c;clr;const_f;cscope;dlr;gainblk;mux_f;ramp;split_f;step_function;summation;switch2_m;text_f
     media: gallery123.png
     script_dump: '//Example 6.14
 
@@ -168568,7 +168692,7 @@
     description: 'Feedback Control of Dynamic Systems (Author: G. F. Franklin, J.
       D. Powell and A. Emami-Naeini), 7) State Space Design, 7.32) Redesign of the
       Dc servo compensator using SRL'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:52+00:00
     book: 3432
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="5.0" title="Ex7_32_model"><!--Xcos - 1.0 - scilab-5.5.2
@@ -169801,6 +169925,7 @@
       scilabClass=""><mxPoint x="990.0" y="170.0"/><mxPoint x="820.0" y="170.0"/></Array></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-2dd55334:14dcbdd0183:-7fd3" parent="-2dd55334:14dcbdd0183:-7fd2"/><mxPoint
       as="origin" y="-2.0"/></XcosDiagram>
+    blocks: clksplit_f;clock_c;clr;cscope;dlr;mux_f;split_f;step_function;summation;text_f
     media: gallery124.png
     script_dump: '//------------------------------------------------------------------
 
@@ -169987,7 +170112,7 @@
     description: 'Feedback Control of Dynamic Systems (Author: G. F. Franklin, J.
       D. Powell and A. Emami-Naeini), 7) State Space Design, 7.34) Servomechanism
       increasing the velocity constant through zero assignment'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:52+00:00
     book: 3432
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="5.0" title="Ex7_34_model"><!--Xcos - 1.0 - scilab-5.5.2
@@ -171484,6 +171609,7 @@
       x="960.0" y="200.0"/><mxPoint as="targetPoint" x="1000.0" y="200.0"/></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-2dd55334:14dcbdd0183:-7fd3" parent="-2dd55334:14dcbdd0183:-7fd2"/><mxPoint
       as="origin" y="-12.0"/></XcosDiagram>
+    blocks: clock_c;clr;cscope;dlr;mux_f;split_f;step_function;summation;text_f
     media: gallery125.png
     script_dump: '//Example 7.34
 
@@ -171712,7 +171838,7 @@
     description: 'Feedback Control of Dynamic Systems (Author: G. F. Franklin, J.
       D. Powell and A. Emami-Naeini), 7) State Space Design, 7.35) Integral Control
       of a Motor Speed System'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:52+00:00
     book: 3432
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="5.0" title="Ex7_35_model"><!--Xcos - 1.0 - scilab-5.5.2
@@ -173559,6 +173685,7 @@
       target="-7f3f8309:16686c89bf7:-789c"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="940.0" y="190.0"/><mxPoint as="targetPoint" x="940.0" y="260.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-2dd55334:14dcbdd0183:-7fd3" parent="-2dd55334:14dcbdd0183:-7fd2"/></XcosDiagram>
+    blocks: clock_c;clr;const;cscope;gainblk;gainblk_f;in_f;integral_f;out_f;split_f;summation;super_f;text_f
     media: gallery126.png
     script_dump: '//Example 7.35
 
@@ -173627,7 +173754,7 @@
     description: 'Feedback Control of Dynamic Systems (Author: G. F. Franklin, J.
       D. Powell and A. Emami-Naeini), 8) Digital Control, 8.1) Digital Controller
       using tustin approximation'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:53+00:00
     book: 3432
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="2.0" title="Ex8_1_model"><!--Xcos - 1.0 - scilab-5.5.2
@@ -174857,6 +174984,7 @@
       scilabClass=""><mxPoint x="890.0" y="350.0"/></Array></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-2dd55334:14dcbdd0183:-7fd3" parent="-2dd55334:14dcbdd0183:-7fd2"/><mxPoint
       as="origin" y="-3.0"/></XcosDiagram>
+    blocks: clksplit_f;clock_c;clr;cscope;dlr;gainblk;mux_f;split_f;step_function;summation;text_f
     media: gallery127.png
     script_dump: '///Example 8.1
 
@@ -174904,7 +175032,7 @@
     description: 'Feedback Control of Dynamic Systems (Author: G. F. Franklin, J.
       D. Powell and A. Emami-Naeini), 8) Digital Control, 8.2) Design of a Space Station
       Attitude Digital Controller using Discrete Equivalents'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:53+00:00
     book: 3432
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="Ex8_2_model"><!--Xcos - 1.0 - scilab-5.5.2
@@ -176609,6 +176737,7 @@
       x="770.0" y="110.0"/><mxPoint as="targetPoint" x="780.0" y="160.0"/><Array as="points"
       scilabClass=""><mxPoint x="810.0" y="160.0"/><mxPoint x="810.0" y="110.0"/></Array></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-2dd55334:14dcbdd0183:-7fd3" parent="-2dd55334:14dcbdd0183:-7fd2"/></XcosDiagram>
+    blocks: clock_c;clr;cscope;dlr;split_f;step_function;summation;text_f
     media: gallery128.png
     script_dump: '//Example 8.2
 
@@ -176672,7 +176801,7 @@
     description: 'Feedback Control of Dynamic Systems (Author: G. F. Franklin, J.
       D. Powell and A. Emami-Naeini), 9) Nonlinear Systems, 9.11) Describing Function
       for a relay with hysteresis non linearity'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:53+00:00
     book: 3432
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="5.0" title="Ex9_11_model"><!--Xcos - 1.0 - scilab-5.5.2
@@ -177238,6 +177367,7 @@
       target="10b0d773:1669a47c43a:-7a17"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="370.0" y="120.0"/><mxPoint as="targetPoint" x="370.0" y="170.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-2dd55334:14dcbdd0183:-7fd3" parent="-2dd55334:14dcbdd0183:-7fd2"/></XcosDiagram>
+    blocks: clock_c;cscope;endblk;gensin_f;hystheresis;mux_f;split_f;text_f
     media: gallery129.png
     script_dump: '//Example 9.11
 
@@ -177293,7 +177423,7 @@
     description: 'Feedback Control of Dynamic Systems (Author: G. F. Franklin, J.
       D. Powell and A. Emami-Naeini), 9) Nonlinear Systems, 9.13) Determination of
       stability with a hysteresis nonlinearity'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:53+00:00
     book: 3432
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="50.0" title="Ex9_13_model"><!--Xcos - 1.0 - scilab-5.5.2
@@ -177878,6 +178008,7 @@
       as="geometry"><mxPoint as="sourcePoint" x="590.0" y="60.0"/><mxPoint as="targetPoint"
       x="590.0" y="170.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-2dd55334:14dcbdd0183:-7fd3" parent="-2dd55334:14dcbdd0183:-7fd2"/></XcosDiagram>
+    blocks: clock_c;clr;const;cscope;endblk;hystheresis;summation;text_f
     media: gallery130.png
     script_dump: '//Example 9.13
 
@@ -177932,7 +178063,7 @@
     description: 'Feedback Control of Dynamic Systems (Author: G. F. Franklin, J.
       D. Powell and A. Emami-Naeini), 9) Nonlinear Systems, 9.5) Changing Overshoot
       and Saturation nonlinearity'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:53+00:00
     book: 3432
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="Ex9_5_model"><!--Xcos - 1.0 - scilab-5.5.2
@@ -178605,6 +178736,7 @@
       id="-7f3f8309:16686c89bf7:-7145" parent="-2dd55334:14dcbdd0183:-7fd3" simulationFunctionType="DEFAULT"><mxGeometry
       as="geometry" height="40.0" width="40.0" x="510.0" y="140.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="-2dd55334:14dcbdd0183:-7fd3" parent="-2dd55334:14dcbdd0183:-7fd2"/></XcosDiagram>
+    blocks: clksplit_f;clock_c;clr;const;cscope;endblk;gainblk;saturation;summation;text_f
     media: gallery131.png
     script_dump: '//Example 9.5
 
@@ -178638,7 +178770,7 @@
     description: 'Feedback Control of Dynamic Systems (Author: G. F. Franklin, J.
       D. Powell and A. Emami-Naeini), 9) Nonlinear Systems, 9.6) Stability of conditionally
       stable system using root locus'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:53+00:00
     book: 3432
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="20.0" title="Ex9_6_model"><!--Xcos - 1.0 - scilab-5.5.2
@@ -179248,6 +179380,7 @@
       target="10b0d773:1669a47c43a:-7773"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="530.0" y="70.0"/><mxPoint as="targetPoint" x="530.0" y="180.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-2dd55334:14dcbdd0183:-7fd3" parent="-2dd55334:14dcbdd0183:-7fd2"/></XcosDiagram>
+    blocks: clock_c;clr;const;cscope;endblk;gainblk;saturation;summation;text_f
     media: gallery132.png
     script_dump: '//Example 9.6
 
@@ -179279,7 +179412,7 @@
     description: 'Feedback Control of Dynamic Systems (Author: G. F. Franklin, J.
       D. Powell and A. Emami-Naeini), 9) Nonlinear Systems, 9.7) Analysis and design
       of the system with limit cycle using the root locus'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:53+00:00
     book: 3432
     data_dump: '<?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="50.0" title="Ex9_7_model_notch"><!--Xcos - 1.0 - scilab-5.5.2
@@ -179955,6 +180088,7 @@
       target="10b0d773:1669a47c43a:-7e6c"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="740.0" y="60.0"/><mxPoint as="targetPoint" x="740.0" y="170.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-2dd55334:14dcbdd0183:-7fd3" parent="-2dd55334:14dcbdd0183:-7fd2"/></XcosDiagram>'
+    blocks: clock_c;clr;const;cscope;endblk;gainblk;saturation;summation;text_f
     media: gallery133.png
     script_dump: '//Example 9.7
 
@@ -180001,7 +180135,7 @@
     description: 'Feedback Control of Dynamic Systems (Author: G. F. Franklin, J.
       D. Powell and A. Emami-Naeini), 9) Nonlinear Systems, 9.7) Analysis and design
       of the system with limit cycle using the root locus'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:53+00:00
     book: 3432
     data_dump: '<?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="150.0" title="Ex9_7_model"><!--Xcos - 1.0 - scilab-5.5.2
@@ -180630,6 +180764,7 @@
       target="10b0d773:1669a47c43a:-7dd0"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="750.0" y="50.0"/><mxPoint as="targetPoint" x="750.0" y="170.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-2dd55334:14dcbdd0183:-7fd3" parent="-2dd55334:14dcbdd0183:-7fd2"/></XcosDiagram>'
+    blocks: clock_c;clr;const;cscope;endblk;gainblk;saturation;summation;text_f
     media: gallery134.png
     script_dump: '//Example 9.7
 
@@ -180676,7 +180811,7 @@
     description: 'Feedback Control of Dynamic Systems (Author: G. F. Franklin, J.
       D. Powell and A. Emami-Naeini), 9) Nonlinear Systems, 9.8) Antiwindup compensation
       for a PI controller'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:53+00:00
     book: 3432
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="10.0" title="Ex9_8_model"><!--Xcos - 1.0 - scilab-5.5.2
@@ -181748,6 +181883,7 @@
       x="810.0" y="120.0"/><mxPoint as="targetPoint" x="890.0" y="100.0"/><Array as="points"
       scilabClass=""><mxPoint x="810.0" y="100.0"/></Array></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-2dd55334:14dcbdd0183:-7fd3" parent="-2dd55334:14dcbdd0183:-7fd2"/></XcosDiagram>
+    blocks: clksplit_f;clock_c;clr;cscope;endblk;gainblk;saturation;split_f;step_function;summation;text_f
     media: gallery135.png
     script_dump: '//Example 9.8
 
@@ -181780,7 +181916,7 @@
     description: 'Feedback Control of Dynamic Systems (Author: G. F. Franklin, J.
       D. Powell and A. Emami-Naeini), 9) Nonlinear Systems, 9.9) Describing Function
       for a saturation nonlinearity'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:53+00:00
     book: 3432
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="5.0" title="Ex9_9_model"><!--Xcos - 1.0 - scilab-5.5.2
@@ -182349,6 +182485,7 @@
       id="-7f3f8309:16686c89bf7:-7f85" parent="-2dd55334:14dcbdd0183:-7fd3" simulationFunctionType="DEFAULT"><mxGeometry
       as="geometry" height="40.0" width="40.0" x="360.0" y="140.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="-2dd55334:14dcbdd0183:-7fd3" parent="-2dd55334:14dcbdd0183:-7fd2"/></XcosDiagram>
+    blocks: clock_c;cscope;endblk;gensin_f;mux_f;saturation;split_f;text_f
     media: gallery136.png
     script_dump: '//Example 9.9
 
@@ -182395,7 +182532,7 @@
     name: Ex3_1
     description: 'Control Systems (Author: A Nagoor Kani), 3) TIME RESPONSE ANALYSIS,
       3.1) RESPONSE OF THE SYSTEM'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:53+00:00
     book: 3885
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="Ex3_1"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -183022,6 +183159,7 @@
       scilabClass=""><mxPoint x="400.0" y="260.0"/><mxPoint x="400.0" y="260.0"/><mxPoint
       x="190.0" y="260.0"/><mxPoint x="180.0" y="200.0"/><mxPoint x="180.0" y="200.0"/></Array></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="0:2:0" parent="0:1:0"/></XcosDiagram>
+    blocks: bigsom_f;clock_c;clr;cscope;step_function
     media: gallery137.png
     script_dump: '//control systems by Nagoor Kani A
 
@@ -183060,7 +183198,7 @@
     name: Ex3_2
     description: 'Control Systems (Author: A Nagoor Kani), 3) TIME RESPONSE ANALYSIS,
       3.2) RESPONSE OF THE SYSTEM'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:53+00:00
     book: 3885
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="Ex3_2"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -183646,6 +183784,7 @@
       target="73e2fecc:16667084192:-7db9"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="340.0" y="50.0"/><mxPoint as="targetPoint" x="340.0" y="70.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="0:2:0" parent="0:1:0"/></XcosDiagram>
+    blocks: clock_c;clr;cscope;step_function
     media: gallery138.png
     script_dump: '//control systems by Nagoor Kani A
 
@@ -183686,7 +183825,7 @@
     name: Ex3_6
     description: 'Control Systems (Author: A Nagoor Kani), 3) TIME RESPONSE ANALYSIS,
       3.6) RESPONSE OF THE SYSTEM'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:53+00:00
     book: 3885
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="Ex3_6"><!--Xcos - 1.0 - scilab-5.5.2 - 20181120--><mxGraphModel
@@ -184272,6 +184411,7 @@
       target="7ea52ad:167c0de0056:-7ee3"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="300.0" y="260.0"/><mxPoint as="targetPoint" x="360.0" y="260.0"/></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="0:2:0" parent="0:1:0"/></XcosDiagram>
+    blocks: clock_c;clr;cscope;step_function
     media: gallery139.png
     script_dump: '//control systems by Nagoor Kani A
 
@@ -184342,7 +184482,7 @@
     name: Ex3_7
     description: 'Control Systems (Author: A Nagoor Kani), 3) TIME RESPONSE ANALYSIS,
       3.7) RESPONSE OF THE SYSTEM'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:53+00:00
     book: 3885
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="Ex3_7"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -184928,6 +185068,7 @@
       target="73e2fecc:16667084192:-7d20"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="480.0" y="100.0"/><mxPoint as="targetPoint" x="480.0" y="170.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="0:2:0" parent="0:1:0"/></XcosDiagram>
+    blocks: clock_c;clr;cscope;step_function
     media: gallery140.png
     script_dump: '//control systems by Nagoor Kani A
 
@@ -184986,7 +185127,7 @@
     name: Ex7_10
     description: 'Control Systems (Author: A Nagoor Kani), 7) STATE SPACE ANALYSIS,
       7.10) STATE MODEL'
-    save_time: 2025-05-06 10:53:17+00:00
+    save_time: 2025-05-06 12:43:53+00:00
     book: 3885
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="Ex7_10"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -185578,6 +185719,7 @@
       target="-3088270e:166584c7420:-7ef4"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="360.0" y="70.0"/><mxPoint as="targetPoint" x="360.0" y="110.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="0:2:0" parent="0:1:0"/></XcosDiagram>
+    blocks: clock_c;clss;cscope;step_function
     media: gallery141.png
     script_dump: '//control systems by Nagoor Kani A
 
@@ -185608,7 +185750,7 @@
     name: Ex7_11
     description: 'Control Systems (Author: A Nagoor Kani), 7) STATE SPACE ANALYSIS,
       7.11) STATE MODEL'
-    save_time: 2025-05-06 10:53:18+00:00
+    save_time: 2025-05-06 12:43:53+00:00
     book: 3885
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="Ex7_11"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -186200,6 +186342,7 @@
       target="444cf09b:167c0310107:-7e7c"><mxGeometry as="geometry"><mxPoint as="sourcePoint"
       x="270.0" y="210.0"/><mxPoint as="targetPoint" x="330.0" y="220.0"/></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="0:2:0" parent="0:1:0"/></XcosDiagram>
+    blocks: clock_c;clss;cscope;step_function
     media: gallery142.png
     script_dump: '//control systems by Nagoor Kani A
 
@@ -186230,7 +186373,7 @@
     name: Ex7_12
     description: 'Control Systems (Author: A Nagoor Kani), 7) STATE SPACE ANALYSIS,
       7.12) STATE MODEL'
-    save_time: 2025-05-06 10:53:18+00:00
+    save_time: 2025-05-06 12:43:53+00:00
     book: 3885
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="30.0" title="Ex7_12"><!--Xcos - 1.0 - scilab-5.5.2 - 20160406
@@ -186822,6 +186965,7 @@
       target="73e2fecc:16667084192:-7afb"><mxGeometry as="geometry" x="10.0" y="-80.0"><mxPoint
       as="sourcePoint" x="360.0" y="120.0"/><mxPoint as="targetPoint" x="360.0" y="140.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="0:2:0" parent="0:1:0"/></XcosDiagram>
+    blocks: clock_c;clss;cscope;step_function
     media: gallery143.png
     script_dump: '//control systems by Nagoor Kani A
 
@@ -186856,7 +187000,7 @@
     name: example_11_1
     description: 'Modern Power System Analysis (Author: D. P. Kothari And I. J. Nagrath),
       11) Unsymmetrical Fault Analysis, 11.1) LG and 3Phase faults Comparision'
-    save_time: 2025-05-06 10:53:18+00:00
+    save_time: 2025-05-06 12:43:53+00:00
     book: 83
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="0.25" title="example_11_1"><!--Xcos - 1.0 - scilab-5.5.2
@@ -188000,6 +188144,7 @@
       ordering="1" parent="67e02cde:13157ae1f65:-7fd4" style="ImplicitInputPort;align=center;verticalAlign=top;spacing=10;rotation=90;flip=false;mirror=false"><mxGeometry
       as="geometry" height="8.0" width="8.0" x="16.0" y="-8.0"/></ImplicitInputPort></root></mxGraphModel><mxCell
       as="defaultParent" id="67e02cde:13157ae1f65:-8000" parent="67e02cde:13157ae1f65:-7fff"/></XcosDiagram>
+    blocks: clock_c;cmscope;currentsensor;ground;inductor;sinevoltage;split_f;step_function;switch;text_f
     media: gallery144.png
     script_dump: '//Chapter 11
 
@@ -188043,7 +188188,7 @@
     description: 'Modern Power System Analysis (Author: D. P. Kothari And I. J. Nagrath),
       11) Unsymmetrical Fault Analysis, 11.2) Grounding Resistor voltage and Fault
       Current'
-    save_time: 2025-05-06 10:53:18+00:00
+    save_time: 2025-05-06 12:43:53+00:00
     book: 83
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="0.25" title="example_11_2"><!--Xcos - 1.0 - scilab-5.5.2
@@ -189208,6 +189353,7 @@
       ordering="1" parent="67e02cde:13157ae1f65:-7ae7" style="ImplicitInputPort;align=center;verticalAlign=top;spacing=10;rotation=90;flip=false;mirror=false"><mxGeometry
       as="geometry" height="8.0" width="8.0" x="16.0" y="-8.0"/></ImplicitInputPort></root></mxGraphModel><mxCell
       as="defaultParent" id="67e02cde:13157ae1f65:-7afa" parent="67e02cde:13157ae1f65:-7af9"/></XcosDiagram>
+    blocks: clock_c;cmscope;currentsensor;ground;inductor;resistor;sinevoltage;split_f;step_function;switch;text_f;voltagesensor
     media: gallery145.png
     script_dump: '//Chapter 11
 
@@ -189255,7 +189401,7 @@
     description: 'Modern Power System Analysis (Author: D. P. Kothari And I. J. Nagrath),
       11) Unsymmetrical Fault Analysis, 11.3) Fault and subtransient currents of the
       system'
-    save_time: 2025-05-06 10:53:18+00:00
+    save_time: 2025-05-06 12:43:53+00:00
     book: 83
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="0.25" title="example_11_3"><!--Xcos - 1.0 - scilab-5.5.2
@@ -190593,6 +190739,7 @@
       width="1"><data column="0" line="0" value="Switch1"/></ScilabString><mxGeometry
       as="geometry" height="40.0" width="40.0" x="790.0" y="250.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="2af926ac:131590fb290:-7ef4" parent="2af926ac:131590fb290:-7ef3"/></XcosDiagram>
+    blocks: clock_c;cmscope;currentsensor;ground;inductor;mux;sinevoltage;split_f;step_function;switch;text_f
     media: gallery146.png
     script_dump: '//Chapter 11
 
@@ -190740,7 +190887,7 @@
     name: example_11_4
     description: 'Modern Power System Analysis (Author: D. P. Kothari And I. J. Nagrath),
       11) Unsymmetrical Fault Analysis, 11.4) LL Fault Current'
-    save_time: 2025-05-06 10:53:18+00:00
+    save_time: 2025-05-06 12:43:53+00:00
     book: 83
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="0.25" title="example_11_4"><!--Xcos - 1.0 - scilab-5.5.2
@@ -191621,6 +191768,7 @@
       ordering="1" parent="-1f09110a:1315ad634dc:-7fde" style="ImplicitOutputPort;align=center;verticalAlign=bottom;spacing=10;rotation=90;flip=false;mirror=false"><mxGeometry
       as="geometry" height="8.0" width="8.0" x="16.0" y="60.0"/></ImplicitOutputPort></root></mxGraphModel><mxCell
       as="defaultParent" id="-1f09110a:1315ad634dc:-8000" parent="-1f09110a:1315ad634dc:-7fff"/></XcosDiagram>
+    blocks: clock_c;cmscope;currentsensor;ground;inductor;sinevoltage;split_f;step_function;switch;text_f;voltagesensor
     media: gallery147.png
     script_dump: '//Chapter 11
 
@@ -191678,7 +191826,7 @@
     name: example_11_5
     description: 'Modern Power System Analysis (Author: D. P. Kothari And I. J. Nagrath),
       11) Unsymmetrical Fault Analysis, 11.5) Double line to ground Fault'
-    save_time: 2025-05-06 10:53:18+00:00
+    save_time: 2025-05-06 12:43:53+00:00
     book: 83
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="0.25" title="example_11_5"><!--Xcos - 1.0 - scilab-5.5.2
@@ -192720,6 +192868,7 @@
       ordering="1" parent="-1f09110a:1315ad634dc:-7fd4" style="ImplicitInputPort;align=center;verticalAlign=top;spacing=10;rotation=90;flip=false;mirror=false"><mxGeometry
       as="geometry" height="8.0" width="8.0" x="16.0" y="-8.0"/></ImplicitInputPort></root></mxGraphModel><mxCell
       as="defaultParent" id="-1f09110a:1315ad634dc:-8000" parent="-1f09110a:1315ad634dc:-7fff"/></XcosDiagram>
+    blocks: clock_c;cmscope;currentsensor;ground;inductor;mux;sinevoltage;split_f;step_function;switch;text_f;voltagesensor
     media: gallery148.png
     script_dump: '//Chapter 11
 
@@ -192789,7 +192938,7 @@
     name: example_9_1_3phase_plot
     description: 'Modern Power System Analysis (Author: D. P. Kothari And I. J. Nagrath),
       9) Symmetrical Fault Analysis, 9.1) Fault Current Calculation'
-    save_time: 2025-05-06 10:53:18+00:00
+    save_time: 2025-05-06 12:43:53+00:00
     book: 83
     data_dump: '<?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="0.2" title="example_9_1_3phase_plot"><!--Xcos - 1.0 -
@@ -195897,6 +196046,7 @@
       height="1" width="1"><data column="0" line="0" value="Fault Initiation"/></ScilabString><mxGeometry
       as="geometry" height="40.0" width="40.0" x="1590.0" y="550.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="-62268d13:130f6b46d8a:-7eeb" parent="-62268d13:130f6b46d8a:-7eea"/></XcosDiagram>'
+    blocks: clock_f;cmscope;currentsensor;ground;inductor;resistor;sinevoltage;split_f;step_function;switch;text_f;voltagesensor
     media: gallery149.png
     script_dump: '//Chapter 9
 
@@ -195986,7 +196136,7 @@
     name: example_9_2
     description: 'Modern Power System Analysis (Author: D. P. Kothari And I. J. Nagrath),
       9) Symmetrical Fault Analysis, 9.2) Subtransient and Momentary current Calculation'
-    save_time: 2025-05-06 10:53:18+00:00
+    save_time: 2025-05-06 12:43:53+00:00
     book: 83
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="0.5" title="example_9_2"><!--Xcos - 1.0 - scilab-5.5.2
@@ -197254,6 +197404,7 @@
       as="geometry" height="40.0" width="40.0" x="750.0" y="70.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="63eb11b3:131137cfac5:-8000" parent="63eb11b3:131137cfac5:-7fff"/><mxPoint
       as="origin" y="-20.0"/></XcosDiagram>
+    blocks: clock_c;cmscope;currentsensor;ground;inductor;sinevoltage;split_f;step_function;switch;text_f;voltagesensor
     media: gallery150.png
     script_dump: '//Chapter 9
 
@@ -197343,7 +197494,7 @@
     name: example_9_3
     description: 'Modern Power System Analysis (Author: D. P. Kothari And I. J. Nagrath),
       9) Symmetrical Fault Analysis, 9.3) Subtransient Current Calculation'
-    save_time: 2025-05-06 10:53:18+00:00
+    save_time: 2025-05-06 12:43:53+00:00
     book: 83
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="0.5" title="example_9_3"><!--Xcos - 1.0 - scilab-5.5.2
@@ -198411,6 +198562,7 @@
       ordering="1" parent="-487ef5e3:131246c8237:-7fde" style="ImplicitOutputPort;align=center;verticalAlign=top;spacing=10;rotation=270;flip=false;mirror=false"><mxGeometry
       as="geometry" height="8.0" width="8.0" x="16.0" y="-8.0"/></ImplicitOutputPort></root></mxGraphModel><mxCell
       as="defaultParent" id="-487ef5e3:131246c8237:-8000" parent="-487ef5e3:131246c8237:-7fff"/></XcosDiagram>
+    blocks: clock_c;cmscope;currentsensor;ground;inductor;sinevoltage;split_f;step_function;switch;text_f;voltagesensor
     media: gallery151.png
     script_dump: '//Chapter 9
 
@@ -198484,7 +198636,7 @@
     name: example_9_4
     description: 'Modern Power System Analysis (Author: D. P. Kothari And I. J. Nagrath),
       9) Symmetrical Fault Analysis, 9.4) Maximum MVA Calculation'
-    save_time: 2025-05-06 10:53:18+00:00
+    save_time: 2025-05-06 12:43:53+00:00
     book: 83
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="0.5" title="example_9_4"><!--Xcos - 1.0 - scilab-5.5.2
@@ -199624,6 +199776,7 @@
       ordering="1" parent="-487ef5e3:131246c8237:-7cbf" style="ImplicitOutputPort;align=center;verticalAlign=top;spacing=10;rotation=270;flip=false;mirror=false"><mxGeometry
       as="geometry" height="8.0" width="8.0" x="16.0" y="-8.0"/></ImplicitOutputPort></root></mxGraphModel><mxCell
       as="defaultParent" id="-487ef5e3:131246c8237:-7cc8" parent="-487ef5e3:131246c8237:-7cc7"/></XcosDiagram>
+    blocks: clock_c;cmscope;currentsensor;ground;inductor;resistor;sinevoltage;split_f;step_function;switch;text_f;voltagesensor
     media: gallery152.png
     script_dump: '//Chapter 9
 
@@ -199693,7 +199846,7 @@
     name: example_9_5
     description: 'Modern Power System Analysis (Author: D. P. Kothari And I. J. Nagrath),
       9) Symmetrical Fault Analysis, 9.5) Short Circuit Solution'
-    save_time: 2025-05-06 10:53:18+00:00
+    save_time: 2025-05-06 12:43:53+00:00
     book: 83
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="0.5" title="example_9_5"><!--Xcos - 1.0 - scilab-5.5.2
@@ -200856,6 +201009,7 @@
       ordering="1" parent="-487ef5e3:131246c8237:-7909" style="ImplicitOutputPort;align=center;verticalAlign=bottom;spacing=10;rotation=90;flip=false;mirror=false"><mxGeometry
       as="geometry" height="8.0" width="8.0" x="16.0" y="60.0"/></ImplicitOutputPort></root></mxGraphModel><mxCell
       as="defaultParent" id="-487ef5e3:131246c8237:-799b" parent="-487ef5e3:131246c8237:-799a"/></XcosDiagram>
+    blocks: clock_c;cmscope;currentsensor;ground;inductor;sinevoltage;split_f;step_function;switch;text_f;voltagesensor
     media: gallery153.png
     script_dump: '//Chapter 9
 
@@ -200930,7 +201084,7 @@
     name: example_9_7
     description: 'Modern Power System Analysis (Author: D. P. Kothari And I. J. Nagrath),
       9) Symmetrical Fault Analysis, 9.7) Current Injection Method'
-    save_time: 2025-05-06 10:53:18+00:00
+    save_time: 2025-05-06 12:43:53+00:00
     book: 83
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="6.0" title="example_9_7"><!--Xcos - 1.0 - scilab-5.5.2
@@ -202161,6 +202315,7 @@
       from t=0 to t=2&lt;br&gt;Current source I2 is ON from t=4 to t=6&lt;br&gt;"/></ScilabString><mxGeometry
       as="geometry" height="40.0" width="40.0" x="600.0" y="350.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="75289c83:1315698632f:-8000" parent="75289c83:1315698632f:-7fff"/></XcosDiagram>
+    blocks: ccs;clock_c;cmscope;ground;resistor;split_f;step_function;text_f;voltagesensor
     media: gallery154.png
     script_dump: '//Chapter 9
 

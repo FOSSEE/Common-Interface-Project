@@ -239,6 +239,7 @@ const Gallery = () => {
         return (
           sch.lcname.includes(st) ||
           sch.lcdescription.includes(st) ||
+          sch.blocks.includes(st) ||
           sch.save_id.startsWith(galleryst) ||
           (hasScript && sch.has_script) ||
           (hasNoScript && !sch.has_script)

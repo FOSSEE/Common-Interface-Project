@@ -62,6 +62,7 @@ class Gallery(models.Model):
     save_time = models.DateTimeField(auto_now=True)
     book = models.ForeignKey(Book, related_name='examples', on_delete=models.CASCADE, null=True)
     data_dump = models.TextField(null=False)
+    blocks = models.CharField(max_length=300, null=True)
     media = models.CharField(max_length=100, null=True)
     script_dump = models.TextField(null=True)
 
