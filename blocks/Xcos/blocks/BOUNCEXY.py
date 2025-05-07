@@ -20,7 +20,7 @@ def BOUNCEXY(outroot, attribid, ordering, geometry, parameters, parent=1, style=
                    ])
     param = ["-1", "1", "1", "2"]
     addPrecNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 4, param)
-    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
+    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM)
     array = ['0']
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NBZERO, 1, array)
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NMODE, 1, array)
@@ -28,9 +28,8 @@ def BOUNCEXY(outroot, attribid, ordering, geometry, parameters, parent=1, style=
     addScilabDNode(outnode, AS_DSTATE, width=12, realParts=[
                    "0.0", "0.0", "2.0", "2.0", "0.0", "23040.0",
                    "0.0", "0.0", "2.0", "2.0", "0.0", "23040.0"])
-    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE, parameters)
-    addObjNode(outnode, TYPE_ARRAY,
-               CLASS_LIST, AS_EQUATIONS, parameters)
+    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE)
+    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_EQUATIONS)
     addgeometryNode(outnode, GEOMETRY, geometry['height'],
                     geometry['width'], geometry['x'], geometry['y'])
 

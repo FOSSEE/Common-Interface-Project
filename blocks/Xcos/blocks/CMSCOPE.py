@@ -21,13 +21,13 @@ def CMSCOPE(outroot, attribid, ordering, geometry, parameters, parent=1, style=N
                  7, realParts=[parameters[9], a[0], a[1], a1[0], a2[0], a1[1], a2[1]])
     array = ['-1', '2', parameters[8], '-1', '-1', '-1', '-1', '1', '1', '1', '3', '0']
     addPrecNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 12, array)
-    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
+    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM)
     array = ['0']
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NBZERO, 1, array)
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NMODE, 1, array)
     addTypeNode(outnode, TYPE_DOUBLE, AS_STATE, 0, [])
     addTypeNode(outnode, TYPE_DOUBLE, AS_DSTATE, 0, [])
-    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE, parameters)
+    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE)
     addArrayNode(outnode, scilabClass="ScilabList",
                                       **{'as': 'equations'})
 

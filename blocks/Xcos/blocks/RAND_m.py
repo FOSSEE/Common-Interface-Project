@@ -19,14 +19,14 @@ def RAND_m(outroot, attribid, ordering, geometry, parameters, parent=1, style=No
     addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM,
                  2, realParts=[0.0, 1.0])
     addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 1, parameters[0])
-    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
+    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM)
     array = ['0']
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NBZERO, 1, array)
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NMODE, 1, array)
     addTypeNode(outnode, TYPE_DOUBLE, AS_STATE, 0, [])
     addSciDBNode(outnode, TYPE_DOUBLE, AS_DSTATE,
                  2, realParts=[2113248.0, 0.0])
-    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE, parameters)
+    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE)
     addArrayNode(outnode, scilabClass="ScilabList",
                                       **{'as': 'equations'})
     addgeometryNode(outnode, GEOMETRY, geometry['height'],

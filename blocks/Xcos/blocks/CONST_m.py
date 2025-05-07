@@ -15,7 +15,7 @@ def CONST_m(outroot, attribid, ordering, geometry, parameters, parent=1, style=N
     addSciDBNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM,
                  0, [])
     addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 0, [])
-    a = addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, [])
+    a = addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM)
     additionalStringNode = addDataNode(a,
                                        'ScilabDouble',
                                        height=1, width=1)
@@ -25,7 +25,7 @@ def CONST_m(outroot, attribid, ordering, geometry, parameters, parent=1, style=N
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NMODE, 1, array)
     addTypeNode(outnode, TYPE_DOUBLE, AS_STATE, 0, [])
     addTypeNode(outnode, TYPE_DOUBLE, AS_DSTATE, 0, [])
-    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE, [])
+    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE)
     addArrayNode(outnode, scilabClass="ScilabList",
                                       **{'as': 'equations'})
     addgeometryNode(outnode, GEOMETRY, geometry['height'],

@@ -11,8 +11,7 @@ def scifunc_block_m(outroot, attribid, ordering, geometry, parameters, parent=1,
                          func_name, 'cscope', 'C_OR_FORTRAN',
                          style, BLOCKTYPE_C)
 
-    ArrayNode = addObjNode(outnode, TYPE_ARRAY,
-                           CLASS_LIST, AS_EXPRS, parameters)
+    ArrayNode = addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_EXPRS)
     additionalStringNode = addDataNode(ArrayNode,
                                        'ScilabString',
                                        height=9, width=1)
@@ -67,8 +66,7 @@ def scifunc_block_m(outroot, attribid, ordering, geometry, parameters, parent=1,
     array = ['0']
     addPrecisionNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 1, array)
 
-    ArrayNode = addObjNode(outnode, TYPE_ARRAY,
-                           CLASS_LIST, AS_OBJ_PARAM, parameters)
+    ArrayNode = addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM)
     additionalStringNode = addDataNode(ArrayNode,
                                        'ScilabString',
                                        height=1, width=1)
@@ -110,7 +108,7 @@ def scifunc_block_m(outroot, attribid, ordering, geometry, parameters, parent=1,
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NMODE, 1, array)
     addTypeNode(outnode, TYPE_DOUBLE, AS_STATE, 0, [])
     addTypeNode(outnode, TYPE_DOUBLE, AS_DSTATE, 0, [])
-    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE, parameters)
+    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE)
     # Create the outer Array node for equations
     addArrayNode(outnode, scilabClass="ScilabList",
                  **{'as': 'equations'})

@@ -33,13 +33,13 @@ def NPN(outroot, attribid, ordering, geometry, parameters, parent=1, style=None,
         format_real_number(parameters[16])
     ])
     addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 0, [])
-    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
+    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM)
 
     addNodeScilabDB(outnode, AS_NBZERO, height=1, realParts=[0.0])
     addNodeScilabDB(outnode, AS_NMODE, height=1, realParts=[0.0])
     addTypeNode(outnode, TYPE_DOUBLE, AS_STATE, 0, [])
     addTypeNode(outnode, TYPE_DOUBLE, AS_DSTATE, 0, [])
-    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE, parameters)
+    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE)
     equationsArrayNode = addArrayNode(outnode, scilabClass="ScilabTList",
                                       **{'as': 'equations'})
 

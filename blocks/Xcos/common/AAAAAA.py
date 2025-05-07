@@ -280,7 +280,7 @@ def addNode(node, subNodeType, **kwargs):
     return subNode
 
 
-def addObjNode(node, subNodeType, scilabClass, type, parameters):
+def addObjNode(node, subNodeType, scilabClass, type):
     subNode = addDNode(node, subNodeType,
                        **{'as': type}, scilabClass=scilabClass)
     return subNode

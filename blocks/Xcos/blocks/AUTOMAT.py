@@ -18,7 +18,7 @@ def AUTOMAT(outroot, attribid, ordering, geometry, parameters, parent=1, style=N
                    ])
     param = ["2", "1", "1", "1", "1", "2", "1"]
     addPrecNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 7, param)
-    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
+    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM)
     array = ['1']
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NBZERO, 1, array)
     arr = ['0']
@@ -27,9 +27,8 @@ def AUTOMAT(outroot, attribid, ordering, geometry, parameters, parent=1, style=N
                    format_real_number(parameters[1]),
                    format_real_number(parameters[2])])
     addTypeNode(outnode, TYPE_DOUBLE, AS_DSTATE, 0, [])
-    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE, parameters)
-    addObjNode(outnode, TYPE_ARRAY,
-               CLASS_LIST, AS_EQUATIONS, parameters)
+    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE)
+    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_EQUATIONS)
     addgeometryNode(outnode, GEOMETRY, geometry['height'],
                     geometry['width'], geometry['x'], geometry['y'])
 

@@ -16,7 +16,7 @@ def READAU_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=
     param = ["7", "117", "99", "32", "0", "20", "1", "0", "1",
              "116", "101", "115", "116", "46", "97", "117", "1"]
     addPrecNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 17, param)
-    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
+    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM)
     array = ['0']
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NBZERO, 1, array)
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NMODE, 1, array)
@@ -27,9 +27,8 @@ def READAU_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=
                    "0.0", "0.0", "0.0", "0.0", "0.0", "0.0",
                    "0.0", "0.0", "0.0", "0.0", "0.0"
                    ])
-    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE, parameters)
-    addObjNode(outnode, TYPE_ARRAY,
-               CLASS_LIST, AS_EQUATIONS, parameters)
+    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE)
+    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_EQUATIONS)
     addgeometryNode(outnode, GEOMETRY, geometry['height'],
                     geometry['width'], geometry['x'], geometry['y'])
 

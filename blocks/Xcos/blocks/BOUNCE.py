@@ -18,7 +18,7 @@ def BOUNCE(outroot, attribid, ordering, geometry, parameters, parent=1, style=No
                    "0.0", "5.0", "9.81", "0.0"])
     param = ["1", "2"]
     addPrecNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 2, param)
-    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
+    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM)
     array = ['9']
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NBZERO, 1, array)
     arr = ['0']
@@ -26,9 +26,8 @@ def BOUNCE(outroot, attribid, ordering, geometry, parameters, parent=1, style=No
     addScilabDNode(outnode, AS_STATE, width=8, realParts=["2.0",
                    "0.0", "3.0", "0.0", "2.5", "0.0", "5.0", "0.0"])
     addTypeNode(outnode, TYPE_DOUBLE, AS_DSTATE, 0, [])
-    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE, parameters)
-    addObjNode(outnode, TYPE_ARRAY,
-               CLASS_LIST, AS_EQUATIONS, parameters)
+    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE)
+    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_EQUATIONS)
     addgeometryNode(outnode, GEOMETRY, geometry['height'],
                     geometry['width'], geometry['x'], geometry['y'])
 

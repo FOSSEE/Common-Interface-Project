@@ -16,16 +16,15 @@ def ZCROSS_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=
     addScilabDNode(outnode, AS_REAL_PARAM, width=4, realParts=[
                    "-1.0", "-1.0", "0.0", "0.0"])
     addTypeNode(outnode, TYPE_DOUBLE, AS_INT_PARAM, 0, [])
-    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
+    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM)
     array = ['1']
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NBZERO, 1, array)
     arr = ['0']
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NMODE, 1, arr)
     addTypeNode(outnode, TYPE_DOUBLE, AS_STATE, 0, [])
     addTypeNode(outnode, TYPE_DOUBLE, AS_DSTATE, 0, [])
-    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE, parameters)
-    addObjNode(outnode, TYPE_ARRAY,
-               CLASS_LIST, AS_EQUATIONS, parameters)
+    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE)
+    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_EQUATIONS)
     addgeometryNode(outnode, GEOMETRY, geometry['height'],
                     geometry['width'], geometry['x'], geometry['y'])
 

@@ -18,7 +18,7 @@ def REGISTER_f(outroot, attribid, ordering, geometry, parameters, parent=1, styl
                 [])
     array = ['0']
 
-    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM, parameters)
+    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM)
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NBZERO, 1, array)
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NMODE, 1, array)
     addTypeNode(outnode, TYPE_DOUBLE, AS_STATE, 0, [])
@@ -26,7 +26,7 @@ def REGISTER_f(outroot, attribid, ordering, geometry, parameters, parent=1, styl
     array = stringtoarray(parameters[0])
     addSciDBNode(outnode, TYPE_DOUBLE, AS_DSTATE,
                  len(array), realParts=array)
-    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE, parameters)
+    addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_ODSTATE)
     addArrayNode(outnode, scilabClass="ScilabList",
                                       **{'as': 'equations'})
 
