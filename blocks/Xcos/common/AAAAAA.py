@@ -329,7 +329,7 @@ def addScilabBoolNode(node, width, parameters):
 
 def addScilabDNode(node, type, realParts, width):
     height = 1 if width > 0 else 0
-    scilabDoubleNode = addADataNode(node, 'ScilabDouble', type, height, width, realParts)
+    scilabDoubleNode = addADataNode(node, 'ScilabDouble', type, height, width)
     for i, realPart in enumerate(realParts):
         addDData(scilabDoubleNode, column=i, line=0, realPart=realPart)
     return scilabDoubleNode
@@ -337,7 +337,7 @@ def addScilabDNode(node, type, realParts, width):
 
 def addNodeScilabDB(node, type, realParts, height):
     width = 1 if height > 0 else 0
-    scilabDoubleNode = addADataNode(node, 'ScilabDouble', type, height, width, realParts)
+    scilabDoubleNode = addADataNode(node, 'ScilabDouble', type, height, width)
     for i, realPart in enumerate(realParts):
         addDData(scilabDoubleNode, column=i, line=0, realPart=realPart)
     return scilabDoubleNode
@@ -430,9 +430,8 @@ def addAsDataNode(node, subNodeType, a, height, width, parameters, isReal, **kwa
     return subNode
 
 
-def addADataNode(node, subNodeType, a, height, width, parameters, **kwargs):
+def addADataNode(node, subNodeType, a, height, width):
     newkwargs = {'as': a, 'height': height, 'width': width}
-    newkwargs.update(kwargs)
     subNode = addDataNode(node, subNodeType, **newkwargs)
     return subNode
 
@@ -828,8 +827,8 @@ def addEquationsNode(node, scilabStringParameters=None,
 
 
 def strarray(parameter):
-    param = list(map(str, parameter[0].split(" ")))
-    params = parameter[3][1:8].split(";")
+    param = parameter[0].split(" ")
+    params = parameter[3].strip('[]').split(';')
     parameters = ['-1', '1'] + [parameter[7]] + param + ['-1', '-1'] + params
     return parameters
 
@@ -955,6 +954,10 @@ def format_real_number(parameter):
         return "{:.10g}".format(float(parameter))  # Convert numeric strings safely
     except ValueError:
         return parameter  # Return original non-numeric string
+
+
+def format_real_numbers(parameters):
+    return [format_real_number(p) for p in parameters]
 
 
 def num2str(num):
