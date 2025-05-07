@@ -226,6 +226,9 @@ const Gallery = () => {
       return GallerySchSample.filter((sch) => sch.book_id === selectedBookId)
     })()
 
+  const NOBLOCK = /^no./
+  const SCE = /^(sce|sci|script)/
+  const NOSCE = /^no(sce|sci|script)/
   const terms = searchTerm.trim().toLowerCase().split(/\s+/).filter(Boolean)
 
   // Then, filter based on the search term (independent from book selection)
@@ -236,10 +239,11 @@ const Gallery = () => {
         return terms.every((st) =>
           sch.lcname.includes(st) ||
           sch.lcdescription.includes(st) ||
-          sch.blocks.includes(st) ||
+          (!NOBLOCK.test(st) && (';' + sch.blocks).includes(';' + st)) ||
+          (NOBLOCK.test(st) && !(';' + sch.blocks + ';').includes(';' + st.substring(2) + ';')) ||
           sch.save_id.startsWith('gallery' + st) ||
-          (/^(sce|sci|script)/.test(st) && sch.has_script) ||
-          (/^no(sce|sci|script)/.test(st) && !sch.has_script)
+          (SCE.test(st) && sch.has_script) ||
+          (NOSCE.test(st) && !sch.has_script)
         )
       })
 
