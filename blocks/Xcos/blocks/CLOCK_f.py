@@ -1,7 +1,6 @@
-# from blocks.MFCLCK_f import MFCLCK_f
-from blocks.CLKSOM_f import CLKSOM_f
+from blocks.EVTDLY_f import EVTDLY_f
+from blocks.CLKSPLIT_f import CLKSPLIT_f
 from blocks.CLKOUT_f import CLKOUT_f
-from blocks.SplitBlock import SplitBlock
 from common.AAAAAA import *
 
 
@@ -50,94 +49,45 @@ def CLOCK_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=N
                   id=block_id[1],
                   parent=block_id[0])
 
-    # MFCLCK_f(root, block_id[2], ordering, geometry, parameters, parent=block_id[1])
-    # addControlPort(root, port_id[0], block_id[2], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
-    # addCommandPort(root, port_id[1], block_id[2], "1", "-1.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
-    # addCommandPort(root, port_id[2], block_id[2], "2", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
+    CLKOUT_f(root, block_id[2], ordering, geometry, ['1'], parent=block_id[1])
+    addControlPort(root, port_id[0], block_id[2], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
 
-    CLKSOM_f(root, block_id[3], ordering, geometry, parameters, parent=block_id[1])
-    addControlPort(root, port_id[3], block_id[3], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
-    addControlPort(root, port_id[4], block_id[3], "2", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
-    addControlPort(root, port_id[5], block_id[3], "3", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
-    addCommandPort(root, port_id[6], block_id[3], "1", "-1.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
+    EVTDLY_f(root, block_id[3], ordering, geometry, ['0.01', parameters[0]], parent=block_id[1])
+    addControlPort(root, port_id[1], block_id[3], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="-1")
+    addCommandPort(root, port_id[2], block_id[3], "1", "0.1", dataType="REAL_MATRIX", dataColumns="1", dataLines="-1")
 
-    CLKOUT_f(root, block_id[4], ordering, geometry, ['1'], parent=block_id[1])
-    addControlPort(root, port_id[7], block_id[4], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
+    CLKSPLIT_f(root, block_id[4], ordering, geometry, array)
+    addControlPort(root, port_id[3], block_id[4], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
+    addCommandPort(root, port_id[4], block_id[4], "1", "-1.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
+    addCommandPort(root, port_id[5], block_id[4], "2", "-1.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
 
-    CLKOUT_f(root, block_id[5], ordering, geometry, [parameters[1]], parent=block_id[1])
-    addControlPort(root, port_id[8], block_id[5], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
-
-    SplitBlock(root, block_id[6], ordering, geometry, parameters, parent=block_id[1])
-    addControlPort(root, port_id[9], block_id[6], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
-    addCommandPort(root, port_id[10], block_id[6], "1", "-1.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
-    addCommandPort(root, port_id[11], block_id[6], "2", "-1.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
-
-    SplitBlock(root, block_id[7], ordering, geometry, parameters, parent=block_id[1])
-    addControlPort(root, port_id[12], block_id[7], "1", "0.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
-    addCommandPort(root, port_id[13], block_id[7], "1", "-1.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
-    addCommandPort(root, port_id[14], block_id[7], "2", "-1.0", dataType="REAL_MATRIX", dataColumns="1", dataLines="1")
-
-    CCLink = addCommandControlLink(root, link_id[0], block_id[1], port_id[2], port_id[9])
+    CCLink = addCommandControlLink(root, link_id[0], block_id[1], port_id[5], port_id[2])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint',
-                   a="sourcePoint", x="360.7", y="193.3")
+                   a="sourcePoint", x="10.0", y="12.0")
     ArrayNode = addArray(gemotryNode, TYPE_ARRAY, a="points")
-    addPointNode(ArrayNode, 'mxPoint', x="360.7",
-                 y="169.3")
+    addPointNode(ArrayNode, 'mxPoint', x="363.71000000000004",
+                 y="234.0")
+    addPointNode(ArrayNode, 'mxPoint', x="323.0",
+                 y="234.0")
     addmxPointNode(gemotryNode, 'mxPoint',
-                   a="targetPoint", x="411.9", y="169.3")
-    CCLink = addCommandControlLink(root, link_id[1], block_id[1], port_id[1], port_id[3])
+                   a="targetPoint", x="20.0", y="44.0")
+    CCLink = addCommandControlLink(root, link_id[1], block_id[1], port_id[3], port_id[0])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint', a="sourcePoint",
-                   x="347.3", y="193.3")
-    ArrayNode = addArray(gemotryNode, TYPE_ARRAY, a="points")
-    addPointNode(ArrayNode, 'mxPoint',
-                 x="347.3", y="155.5")
-    addPointNode(ArrayNode, 'mxPoint', x="461.8",
-                 y="155.5")
+                   x="0.0", y="-4.0")
+    addArray(gemotryNode, TYPE_ARRAY, a="points")
     addmxPointNode(gemotryNode, 'mxPoint', a="targetPoint",
-                   x="461.8", y="161.0")
-    CCLink = addCommandControlLink(root, link_id[2], block_id[1], port_id[6], port_id[12])
+                   x="20.0", y="-4.0")
+    CCLink = addCommandControlLink(root, link_id[2], block_id[1], port_id[1], port_id[4])
     gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
     addmxPointNode(gemotryNode, 'mxPoint', a="sourcePoint",
-                   x="468.9", y="169.3")
+                   x="20.0", y="-4.0")
     ArrayNode = addArray(gemotryNode, TYPE_ARRAY, a="points")
+    addPointNode(ArrayNode, 'mxPoint', x="258.0",
+                 y="476.0")
     addmxPointNode(gemotryNode, 'mxPoint', a="targetPoint",
-                   x="482.5", y="169.3")
-
-    CCLink = addCommandControlLink(root, link_id[3], block_id[1], port_id[10], port_id[4])
-    gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
-    addmxPointNode(gemotryNode, 'mxPoint',
-                   a="sourcePoint", x="411.9", y="169.3")
-    ArrayNode = addArray(gemotryNode, TYPE_ARRAY, a="points")
-    addmxPointNode(gemotryNode, 'mxPoint',
-                   a="targetPoint", x="457.0", y="169.3")
-    CCLink = addCommandControlLink(root, link_id[4], block_id[1], port_id[11], port_id[7])
-    gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
-    addmxPointNode(gemotryNode, 'mxPoint', a="sourcePoint",
-                   x="411.9", y="169.3")
-    ArrayNode = addArray(gemotryNode, TYPE_ARRAY, a="points")
-    addPointNode(ArrayNode, 'mxPoint', x="411.9", y="271.0")
-    addmxPointNode(gemotryNode, 'mxPoint', a="targetPoint",
-                   x="509.0", y="271.0")
-    CCLink = addCommandControlLink(root, link_id[5], block_id[1], port_id[13], port_id[0])
-    gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
-    addmxPointNode(gemotryNode, 'mxPoint', a="sourcePoint",
-                   x="482.5", y="169.3")
-    ArrayNode = addArray(gemotryNode, TYPE_ARRAY, a="points")
-    addPointNode(ArrayNode, 'mxPoint', x="489.6", y="169.3")
-    addPointNode(ArrayNode, 'mxPoint', x="489.6", y="338.3")
-    addPointNode(ArrayNode, 'mxPoint', x="354.0", y="338.3")
-    addmxPointNode(gemotryNode, 'mxPoint', a="targetPoint",
-                   x="354.0", y="244.7")
-    CCLink = addCommandControlLink(root, link_id[6], block_id[1], port_id[14], port_id[8])
-    gemotryNode = addGeoNode(CCLink, GEOMETRY, a="geometry")
-    addmxPointNode(gemotryNode, 'mxPoint', a="sourcePoint",
-                   x="482.4", y="169.3")
-    ArrayNode = addArray(gemotryNode, TYPE_ARRAY, a="points")
-    addPointNode(ArrayNode, 'mxPoint', x="482.4", y="152.0")
-    addmxPointNode(gemotryNode, 'mxPoint', a="targetPoint",
-                   x="509.0", y="152.0")
+                   x="0.0", y="12.0")
 
     addNodemxCell(SuperBlockDiagram, TYPE_MXCELL, a='defaultParent',
                   id=block_id[1],
