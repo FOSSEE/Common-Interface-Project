@@ -11,9 +11,9 @@ function getvaluesfromcolormap(filename,colormapstring)
         mfprintf(f_temp, '[');
         for i = 1:arry_length
             if i == arry_length then
-            mfprintf(f_temp, '%g', cmp_array(i)); //print values of array
+            mfprintf(f_temp, '%.17g', cmp_array(i)); //print values of array
             else
-            mfprintf(f_temp, '%g,', cmp_array(i)); // print values of array
+            mfprintf(f_temp, '%.17g,', cmp_array(i)); // print values of array
             end
         end
         mfprintf(f_temp, ']');

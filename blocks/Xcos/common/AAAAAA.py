@@ -94,7 +94,6 @@ SCILAB_CURVE_C_SCI = "macros/Sources/CURVE_c.sci"
 SCILAB_EXPRESSION_SCI = "macros/Misc/EXPRESSION.sci"
 
 CONT_FRM_WRITE = "ajax-scilab/cont_frm_write.sci"
-# DISC_FRM_WRITE = "ajax-scilab/disc_frm_write.sci"
 CLEANDATA_SCI_FUNC_WRITE = "ajax-scilab/scifunc-cleandata-do_spline.sci"
 EXP_SCI_FUNC_WRITE = "ajax-scilab/expression-sci-function.sci"
 GET_COLORMAP_VALUES_SCI_FUNC_WRITE = "ajax-scilab/get_colormap_values.sci"
@@ -106,11 +105,6 @@ INTERNAL = {
         'function': 'calculate_cont_frm',
         'parameters': ['num', 'den'],
     },
-    # 'getDiscOutput': {
-    #     'scriptfiles': [DISC_FRM_WRITE],
-    #     'function': 'calculate_disc_frm',
-    #     'parameters': ['num', 'den'],
-    # },
     'getExpressionOutput': {
         'scriptfiles': [SCILAB_EXPRESSION_SCI, EXP_SCI_FUNC_WRITE],
         'function': 'callFunctionAcctoMethod',
@@ -175,6 +169,9 @@ def load_scripts():
     cmd += f"{p}=poly(0,'{p}');"
     p = 'z'
     cmd += f"{p}=poly(0,'{p}');"
+
+    cmd += 'format(17);'
+
     return cmd
 
 
@@ -1928,6 +1925,3 @@ def internal_fun(internal_key, **kwargs):
 
 def cont_frm(num, den):
     return internal_fun('getOutput', num=num, den=den)
-
-# def disc_frm(num, den):
-#     return internal_fun('getDiscOutput', num=num, den=den)

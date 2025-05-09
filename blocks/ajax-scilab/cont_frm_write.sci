@@ -17,9 +17,9 @@ function cont_frm_write(varargin)
     for y = 1:n
       for z = 1:m
         if (k == loop-1) & (y == n) & (z == m) then
-          mfprintf(f_temp, '%f', variable(z, y))
+          mfprintf(f_temp, '%.17g', variable(z, y))
         else
-          mfprintf(f_temp, '%f,', variable(z, y))
+          mfprintf(f_temp, '%.17g,', variable(z, y))
         end
       end
     end

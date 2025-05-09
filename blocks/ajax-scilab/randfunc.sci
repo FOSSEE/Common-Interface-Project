@@ -10,9 +10,9 @@ function randfunc(filename,inputvalue)
         for y = 1:m // no. of rows in variables
             for z = 1:n //no. of columns in variabes
                 if z == n then
-                mfprintf(f_temp, '%g', cmd_values(y,z)); //Print the variable values
+                mfprintf(f_temp, '%.17g', cmd_values(y,z)); //Print the variable values
                 else
-                mfprintf(f_temp, '%g,', cmd_values(y,z)); //Print the variable values
+                mfprintf(f_temp, '%.17g,', cmd_values(y,z)); //Print the variable values
                 end
             end
             if y ~= m then

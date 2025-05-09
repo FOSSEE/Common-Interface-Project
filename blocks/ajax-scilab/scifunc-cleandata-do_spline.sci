@@ -18,9 +18,9 @@ function callFunctioncleandata(filename,xye)
     for y = 1:m // no. of rows in variables
         for z = 1:n //no. of columns in variabes
             if z == n then
-            mfprintf(f_temp, '%g', xy(y,z)); //Print the variable values
+            mfprintf(f_temp, '%.17g', xy(y,z)); //Print the variable values
             else
-            mfprintf(f_temp, '%g,', xy(y,z)); //Print the variable values
+            mfprintf(f_temp, '%.17g,', xy(y,z)); //Print the variable values
             end
         end
         if y ~= m then
@@ -65,18 +65,18 @@ function Do_Spline_write(Xdummy,Ydummy,orpar,f_temp)
     mfprintf(f_temp, '""Xdummy"":[');
     for i = 1:length(Xdummy)
         if (i == length(Xdummy)) then
-            mfprintf(f_temp, '%f',  Xdummy(i));
+            mfprintf(f_temp, '%.17g',  Xdummy(i));
         else
-            mfprintf(f_temp, '%f,',  Xdummy(i));
+            mfprintf(f_temp, '%.17g,',  Xdummy(i));
         end
     end
     mfprintf(f_temp, ']');
     mfprintf(f_temp, ',""Ydummy"":[');
     for i = 1:length(Ydummy)
         if (i == length(Ydummy)) then
-            mfprintf(f_temp, '%f',  Ydummy(i));
+            mfprintf(f_temp, '%.17g',  Ydummy(i));
         else
-            mfprintf(f_temp, '%f,',  Ydummy(i));
+            mfprintf(f_temp, '%.17g,',  Ydummy(i));
         end
     end
     mfprintf(f_temp, ']');
