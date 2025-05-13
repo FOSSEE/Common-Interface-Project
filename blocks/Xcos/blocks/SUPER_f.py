@@ -38,9 +38,9 @@ def SUPER_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=N
     rootattribid = block_id[0]
     parentattribid = block_id[1]
     title = ''
-    outdiagram = process_xcos_model(superblock, title, rootattribid, parentattribid)
+    outmodel = process_xcos_model(superblock, title, rootattribid, parentattribid)
 
-    SuperBlockDiagram.append(outdiagram)
+    SuperBlockDiagram.append(outmodel)
 
     return outnode
 

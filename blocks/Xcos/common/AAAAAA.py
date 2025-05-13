@@ -1,5 +1,4 @@
 import ast
-import datetime
 import os
 from os.path import abspath, isfile, join
 import pexpect
@@ -1660,14 +1659,7 @@ def process_xcos_model(diagram, title, rootattribid, parentattribid,
 
     model = diagram.find('mxGraphModel')
     checkModelTag(model)
-    outdiagram = ET.Element('XcosDiagram')
-    outdiagram.set('background', '-1')
-    outdiagram.set('finalIntegrationTime', '30.0')   # TODO: From POST
-    outdiagram.set('title', title)
-    dt = datetime.datetime(2021, 7, 15, 15, 31)
-    comment = ET.Comment(dt.strftime('Xcos - 2.0 - scilab-6.1.1 - %Y%m%d %H%M'))
-    outdiagram.append(comment)
-    outmodel = ET.SubElement(outdiagram, 'mxGraphModel')
+    outmodel = ET.Element('mxGraphModel')
     outmodel.set('as', 'model')
 
     for root in model:
@@ -1859,10 +1851,11 @@ def process_xcos_model(diagram, title, rootattribid, parentattribid,
 
             getattr(Links, style)(outroot, attribid, sourceVertex, targetVertex, waypoints[1:-1], parent=parentattribid)
 
-    outnode = ET.SubElement(outdiagram, 'mxCell')
+    outnode = ET.Element('mxCell')
     outnode.set('as', 'defaultParent')
     outnode.set('id', parentattribid)
     outnode.set('parent', rootattribid)
+    outmodel.append(outnode)
 
     if started_workspace:
         print('Terminating workspace')
@@ -1870,7 +1863,7 @@ def process_xcos_model(diagram, title, rootattribid, parentattribid,
         WORKSPACE = None
         started_workspace = False
 
-    return outdiagram
+    return outmodel
 
 
 def is_safe_string(parameter, value):

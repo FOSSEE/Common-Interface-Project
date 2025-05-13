@@ -3,6 +3,7 @@
 import os
 import re
 import sys
+import datetime
 import xml.etree.ElementTree as ET
 import defusedxml.ElementTree as goodET
 
@@ -30,8 +31,16 @@ diagram = tree.getroot()
 
 rootattribid = '0:1:0'
 parentattribid = '0:2:0'
-outdiagram = process_xcos_model(diagram, title, rootattribid, parentattribid,
+outdiagram = ET.Element('XcosDiagram')
+outdiagram.set('background', '-1')
+outdiagram.set('finalIntegrationTime', '30.0')   # TODO: From POST
+outdiagram.set('title', title)
+dt = datetime.datetime(2021, 7, 15, 15, 31)
+comment = ET.Comment(dt.strftime('Xcos - 2.0 - scilab-6.1.1 - %Y%m%d %H%M'))
+outdiagram.append(comment)
+outmodel = process_xcos_model(diagram, title, rootattribid, parentattribid,
                                 workspace_file, context)
+outdiagram.append(outmodel)
 
 
 outtree = ET.ElementTree(outdiagram)
