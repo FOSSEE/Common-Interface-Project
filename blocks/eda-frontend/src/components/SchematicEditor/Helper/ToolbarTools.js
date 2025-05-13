@@ -571,15 +571,15 @@ function parseXmlToGraph (xmlDoc, graph) {
 
             const x1 = Number(cellAttrs.tarx.value)
             const y1 = Number(cellAttrs.tary.value)
+            if (sourceCell && (x1 !== 0 || y1 !== 0)) {
+              const terminalPoint = new mxPoint(x1, y1)
+              edge.geometry.setTerminalPoint(terminalPoint, true)
+            }
             const x2 = Number(cellAttrs.tar2x.value)
             const y2 = Number(cellAttrs.tar2y.value)
             if (targetCell && (x2 !== 0 || y2 !== 0)) {
               const terminalPoint2 = new mxPoint(x2, y2)
               edge.geometry.setTerminalPoint(terminalPoint2, false)
-            }
-            if (sourceCell && (x1 !== 0 || y1 !== 0)) {
-              const terminalPoint = new mxPoint(x1, y1)
-              edge.geometry.setTerminalPoint(terminalPoint, true)
             }
             edge.geometry.points = points
           } catch (e) {

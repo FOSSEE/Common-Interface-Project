@@ -39,7 +39,7 @@ dt = datetime.datetime(2021, 7, 15, 15, 31)
 comment = ET.Comment(dt.strftime('Xcos - 2.0 - scilab-6.1.1 - %Y%m%d %H%M'))
 outdiagram.append(comment)
 outmodel = process_xcos_model(diagram, title, rootattribid, parentattribid,
-                                workspace_file, context)
+                              workspace_file, context)
 outdiagram.append(outmodel)
 
 
