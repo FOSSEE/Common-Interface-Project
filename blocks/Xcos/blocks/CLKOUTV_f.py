@@ -19,7 +19,7 @@ def CLKOUTV_f(outroot, attribid, ordering, geometry, parameters, parent=1, style
     addTypeNode(outnode, TYPE_DOUBLE, AS_REAL_PARAM, 0,
                 [])
     array = ['0']
-    addPrecisionNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 1, array)
+    addPrecisionNode(outnode, TYPE_INTEGER, AS_INT_PARAM, 1, parameters)
     addObjNode(outnode, TYPE_ARRAY, CLASS_LIST, AS_OBJ_PARAM)
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NBZERO, 1, array)
     addPrecisionNode(outnode, TYPE_INTEGER, AS_NMODE, 1, array)
