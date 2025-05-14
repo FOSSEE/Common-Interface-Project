@@ -41,7 +41,11 @@ outdiagram.append(comment)
 outmodel = process_xcos_model(diagram, title, rootattribid, parentattribid,
                               workspace_file, context)
 outdiagram.append(outmodel)
-
+outnode = ET.Element('mxCell')
+outnode.set('as', 'defaultParent')
+outnode.set('id', parentattribid)
+outnode.set('parent', rootattribid)
+outdiagram.append(outnode)
 
 outtree = ET.ElementTree(outdiagram)
 ET.indent(outtree)

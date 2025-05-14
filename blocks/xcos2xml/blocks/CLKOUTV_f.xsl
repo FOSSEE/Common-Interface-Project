@@ -7,7 +7,14 @@
       <xsl:variable name="commandPorts">0</xsl:variable>
       <xsl:element name="mxCell">
         <xsl:attribute name="style">
-          <xsl:value-of select="@style" />
+          <xsl:choose>
+            <xsl:when test="@style">
+              <xsl:value-of select="@style"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:text>CLKOUTV_f</xsl:text>
+            </xsl:otherwise>
+          </xsl:choose>
         </xsl:attribute>
         <xsl:attribute name="id">
           <xsl:value-of select="@id" />

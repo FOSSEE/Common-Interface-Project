@@ -9,7 +9,6 @@ def CLKOUTV_f(outroot, attribid, ordering, geometry, parameters, parent=1, style
     if style is None:
         style = func_name
 
-    block_id, port_id, link_id = generate_id(3, 0, 0)
     outnode = addOutNode(outroot, BLOCK_EVENT_OUT,
                          attribid, ordering, parent,
                          func_name, 'output', 'DEFAULT',
