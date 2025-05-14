@@ -1851,12 +1851,6 @@ def process_xcos_model(diagram, title, rootattribid, parentattribid,
 
             getattr(Links, style)(outroot, attribid, sourceVertex, targetVertex, waypoints[1:-1], parent=parentattribid)
 
-    outnode = ET.Element('mxCell')
-    outnode.set('as', 'defaultParent')
-    outnode.set('id', parentattribid)
-    outnode.set('parent', rootattribid)
-    outmodel.append(outnode)
-
     if started_workspace:
         print('Terminating workspace')
         WORKSPACE.clean()

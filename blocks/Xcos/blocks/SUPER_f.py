@@ -41,8 +41,13 @@ def SUPER_f(outroot, attribid, ordering, geometry, parameters, parent=1, style=N
     outmodel = process_xcos_model(superblock, title, rootattribid, parentattribid)
 
     SuperBlockDiagram.append(outmodel)
+    outnode = ET.Element('mxCell')
+    outnode.set('as', 'defaultParent')
+    outnode.set('id', parentattribid)
+    outnode.set('parent', rootattribid)
+    SuperBlockDiagram.append(outnode)
 
-    return outnode
+    return SuperBlockDiagram
 
 
 def get_from_SUPER_f(cell):
