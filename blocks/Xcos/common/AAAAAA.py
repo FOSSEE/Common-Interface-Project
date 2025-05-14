@@ -1634,6 +1634,14 @@ def getSplitPoints(attrib, switch_split, blkgeometry, sourceVertex, targetVertex
     return split_point, split_point2
 
 
+def createDefaultParent(parentattribid, rootattribid):
+    defaultParent = ET.Element('mxCell')
+    defaultParent.set('as', 'defaultParent')
+    defaultParent.set('id', parentattribid)
+    defaultParent.set('parent', rootattribid)
+    return defaultParent
+
+
 def process_xcos_model(diagram, title, rootattribid, parentattribid,
                        workspace_file=None, context=None):
     global WORKSPACE

@@ -42,10 +42,7 @@ outmodel = process_xcos_model(diagram, title, rootattribid, parentattribid,
                               workspace_file, context)
 outdiagram.append(outmodel)
 
-defaultParent = ET.Element('mxCell')
-defaultParent.set('as', 'defaultParent')
-defaultParent.set('id', parentattribid)
-defaultParent.set('parent', rootattribid)
+defaultParent = createDefaultParent(parentattribid, rootattribid)
 outdiagram.append(defaultParent)
 
 outtree = ET.ElementTree(outdiagram)
