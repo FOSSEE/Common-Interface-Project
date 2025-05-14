@@ -7,7 +7,7 @@ import datetime
 import xml.etree.ElementTree as ET
 import defusedxml.ElementTree as goodET
 
-from xcosblocks import process_xcos_model, remove_hyphen_number
+from xcosblocks import createDefaultParent, process_xcos_model, remove_hyphen_number
 
 
 if len(sys.argv) != 4:
