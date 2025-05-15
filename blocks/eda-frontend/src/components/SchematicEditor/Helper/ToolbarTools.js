@@ -43,6 +43,8 @@ export function saveXml (description = '') {
   const node = enc.encode(model)
   const pins = node.querySelectorAll('Object[as="errorFields"],Object[as="pins"]')
   pins.forEach(pin => { pin.remove() })
+  const id2 = node.querySelectorAll('[id="2"]')
+  id2.forEach(id => { id.remove() })
   const xcosDiagram = document.createElementNS('', 'XcosDiagram')
   xcosDiagram.setAttribute('background', '-1')
   xcosDiagram.setAttribute('finalIntegrationTime', '0.5')
@@ -562,6 +564,19 @@ function parseXmlToGraph (xmlDoc, graph) {
 
           try {
             const edge = graph.insertEdge(parent, edgeId, null, sourceCell, targetCell)
+            if (edgeId == "2") {
+              console.log("ID=2")
+            }
+            const enc = new mxCodec(mxUtils.createXmlDocument())
+            const model = graph.getModel()
+            const node = enc.encode(model)
+            const element = node.querySelector('[id="2"]');
+            if (element != null) {
+              const ele = node.querySelector('[id="' + edgeId + '"]');
+              console.log('edgeId:', edgeId, edge)
+              console.log('ele:', ele)
+            }
+
             edge.tarx = cellAttrs.tarx.value
             edge.tary = cellAttrs.tary.value
             edge.tar2x = cellAttrs.tar2x.value
