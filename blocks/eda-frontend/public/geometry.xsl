@@ -123,7 +123,7 @@
             <xsl:value-of select="@x" />
           </xsl:when>
           <xsl:otherwise>
-            <xsl:value-of select="$newx" />
+            <xsl:value-of select="format-number($newx,'0.0')" />
           </xsl:otherwise>
         </xsl:choose>
       </xsl:attribute>
@@ -193,7 +193,7 @@
             <xsl:value-of select="@y" />
           </xsl:when>
           <xsl:otherwise>
-            <xsl:value-of select="$newy" />
+            <xsl:value-of select="format-number($newy,'0.0')" />
           </xsl:otherwise>
         </xsl:choose>
       </xsl:attribute>
@@ -273,7 +273,7 @@
             <xsl:value-of select="@x" />
           </xsl:when>
           <xsl:otherwise>
-            <xsl:value-of select="$newx" />
+            <xsl:value-of select="format-number($newx,'0.0')" />
           </xsl:otherwise>
         </xsl:choose>
       </xsl:attribute>
@@ -343,7 +343,7 @@
             <xsl:value-of select="@y" />
           </xsl:when>
           <xsl:otherwise>
-            <xsl:value-of select="$newy" />
+            <xsl:value-of select="format-number($newy,'0.0')" />
           </xsl:otherwise>
         </xsl:choose>
       </xsl:attribute>
@@ -422,7 +422,7 @@
             <xsl:value-of select="@tarx" />
           </xsl:when>
           <xsl:otherwise>
-            <xsl:value-of select="$newtarx" />
+            <xsl:value-of select="format-number($newtarx,'0.0')" />
           </xsl:otherwise>
         </xsl:choose>
       </xsl:attribute>
@@ -488,7 +488,7 @@
             <xsl:value-of select="@tary" />
           </xsl:when>
           <xsl:otherwise>
-            <xsl:value-of select="$newtary" />
+            <xsl:value-of select="format-number($newtary,'0.0')" />
           </xsl:otherwise>
         </xsl:choose>
       </xsl:attribute>
@@ -555,7 +555,7 @@
             <xsl:value-of select="@tar2x" />
           </xsl:when>
           <xsl:otherwise>
-            <xsl:value-of select="$newtar2x" />
+            <xsl:value-of select="format-number($newtar2x,'0.0')" />
           </xsl:otherwise>
         </xsl:choose>
       </xsl:attribute>
@@ -621,7 +621,7 @@
             <xsl:value-of select="@tar2y" />
           </xsl:when>
           <xsl:otherwise>
-            <xsl:value-of select="$newtar2y" />
+            <xsl:value-of select="format-number($newtar2y,'0.0')" />
           </xsl:otherwise>
         </xsl:choose>
       </xsl:attribute>
