@@ -15,6 +15,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import { makeStyles } from '@material-ui/core/styles'
 import { useSelector, useDispatch } from 'react-redux'
 
+import store from '../../redux/store'
 import { setResultTitle, setResultTaskId, resetResult } from '../../redux/simulationSlice'
 import { saveXml } from './Helper/ToolbarTools'
 import SimulationScreen, { setGraphStatusClosed } from './SimulationScreen'
@@ -46,7 +47,6 @@ const useStyles = makeStyles((theme) => ({
 export default function SimulationProperties () {
   const title = useSelector(state => state.saveSchematic.title)
   const isSimRes = useSelector(state => state.simulation.isSimRes)
-  const scriptTaskId = useSelector(state => state.simulation.scriptTaskId)
   const dispatch = useDispatch()
   const classes = useStyles()
   const [transientAnalysisControlLine, setTransientAnalysisControlLine] = useState({
@@ -109,6 +109,7 @@ export default function SimulationProperties () {
 
   // Upload the nelist
   async function netlistConfig (file, type) {
+    const scriptTaskId = store.getState().simulation.scriptTaskId
     const formData = new FormData()
     formData.append('app_name', process.env.REACT_APP_NAME)
     formData.append('file', file)

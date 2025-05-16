@@ -43,8 +43,6 @@ export function saveXml (description = '') {
   const node = enc.encode(model)
   const pins = node.querySelectorAll('Object[as="errorFields"],Object[as="pins"]')
   pins.forEach(pin => { pin.remove() })
-  const id2 = node.querySelectorAll('[id="2"]')
-  id2.forEach(id => { id.remove() })
   const xcosDiagram = document.createElementNS('', 'XcosDiagram')
   xcosDiagram.setAttribute('background', '-1')
   xcosDiagram.setAttribute('finalIntegrationTime', '0.5')
@@ -363,7 +361,8 @@ function parseXmlToGraph (xmlDoc, graph) {
   let v1
   let blockrotation
   let firstportrotation
-  graph.getModel().beginUpdate()
+  const model = graph.getModel()
+  model.beginUpdate()
 
   let oldcellslength = 0
 
@@ -526,8 +525,8 @@ function parseXmlToGraph (xmlDoc, graph) {
 
           const source = cellAttrs.sourceVertex.value
           const target = cellAttrs.targetVertex.value
-          const sourceCell = graph.getModel().getCell(source)
-          const targetCell = graph.getModel().getCell(target)
+          const sourceCell = model.getCell(source)
+          const targetCell = model.getCell(target)
           const msgSource = (sourceCell == null) ? ' (not found)' : ''
           const msgTarget = (targetCell == null) ? ' (not found)' : ''
           if (sourceCell == null || targetCell == null) {
@@ -564,19 +563,6 @@ function parseXmlToGraph (xmlDoc, graph) {
 
           try {
             const edge = graph.insertEdge(parent, edgeId, null, sourceCell, targetCell)
-            if (edgeId == "2") {
-              console.log("ID=2")
-            }
-            const enc = new mxCodec(mxUtils.createXmlDocument())
-            const model = graph.getModel()
-            const node = enc.encode(model)
-            const element = node.querySelector('[id="2"]');
-            if (element != null) {
-              const ele = node.querySelector('[id="' + edgeId + '"]');
-              console.log('edgeId:', edgeId, edge)
-              console.log('ele:', ele)
-            }
-
             edge.tarx = cellAttrs.tarx.value
             edge.tary = cellAttrs.tary.value
             edge.tar2x = cellAttrs.tar2x.value
@@ -613,12 +599,18 @@ function parseXmlToGraph (xmlDoc, graph) {
     }
     graph.view.refresh()
   } finally {
-    graph.getModel().endUpdate()
+    model.endUpdate()
   }
 }
 
 export function renderGalleryXML (xml) {
-  graph.removeCells(graph.getChildVertices(graph.getDefaultParent()))
+  if (!graph) {
+    console.log('graph is not initialized')
+    return
+  }
+  const parent = graph.getDefaultParent()
+  graph.removeCells(graph.getChildVertices(parent))
+  graph.removeCells(graph.getChildEdges(parent))
   graph.view.refresh()
   const xmlDoc = mxUtils.parseXml(xml)
   parseXmlToGraph(xmlDoc, graph)

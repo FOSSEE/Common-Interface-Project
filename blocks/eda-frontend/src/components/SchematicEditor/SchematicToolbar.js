@@ -33,6 +33,7 @@ import mxGraphFactory from 'mxgraph'
 import { NetlistModal, HelpScreen, ImageExportDialog, OpenSchDialog, ScriptScreen } from './ToolbarExtension'
 import { editorZoomIn, editorZoomOut, editorZoomAct, deleteComp, PrintPreview, Rotate, editorUndo, editorRedo, saveXml, ClearGrid, renderGalleryXML } from './Helper/ToolbarTools'
 import { useSelector, useDispatch } from 'react-redux'
+import store from '../../redux/store'
 import { closeCompProperties } from '../../redux/componentPropertiesSlice'
 import { setSchXmlData, saveSchematic, openLocalSch, setLoadingDiagram } from '../../redux/saveSchematicSlice'
 import { toggleSimulate } from '../../redux/schematicEditorSlice'
@@ -101,7 +102,6 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
   const description = useSelector(state => state.saveSchematic.description)
   const xmlData = useSelector(state => state.saveSchematic.xmlData)
   const title2 = useSelector(state => state.saveSchematic.title)
-  const scriptTaskId = useSelector(state => state.simulation.scriptTaskId)
 
   const scriptDump = useSelector(state => state.saveSchematic.scriptDump)
   const showDot = useSelector(state => state.saveSchematic.showDot)
@@ -331,6 +331,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
       const xmlBlob = new Blob([xmlContent], { type: 'application/xml' })
 
       const xmlFileName = title2 + '.xml'
+      const scriptTaskId = store.getState().simulation.scriptTaskId
 
       const formData = new FormData()
       formData.append('file', xmlBlob, xmlFileName)
