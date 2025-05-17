@@ -948,6 +948,8 @@ def format_real_number(parameter):
         print(f'send {parameter} to Scilab')
         parameter = WORKSPACE.send_expression(parameter)
         print(f'received {parameter} from Scilab')
+        if re.search(r'^Undefined', parameter):
+            raise ValueError(f"Scilab workspace: {parameter}")
     if not parameter.strip():  # Handle empty strings
         return '0'
     try:
@@ -1771,7 +1773,7 @@ def process_xcos_model(diagram, title, rootattribid, parentattribid,
                         edgeList.append(link_data)
                 except BaseException:
                     traceback.print_exc()
-                    sys.exit(0)
+                    sys.exit(127)
             oldcellslength = cellslength
             cells = remainingcells
             cellslength = len(remainingcells)

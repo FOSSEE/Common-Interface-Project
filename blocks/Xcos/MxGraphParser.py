@@ -10,6 +10,8 @@ import defusedxml.ElementTree as goodET
 from xcosblocks import createDefaultParent, process_xcos_model, remove_hyphen_number
 
 
+sys.tracebacklimit = 0
+
 if len(sys.argv) != 4:
     print("Usage: %s filename.xml workspace.dat context" % sys.argv[0])
     sys.exit(1)

@@ -9,6 +9,8 @@ if "celery" in sys.argv[0]:
     from simulationAPI.helpers.scilab_manager import \
         start_threads, stop_threads
 
+    sys.tracebacklimit = 0
+
 import os
 from celery import Celery
 from celery.signals import worker_ready, worker_shutdown
