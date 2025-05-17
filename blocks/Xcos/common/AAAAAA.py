@@ -1771,7 +1771,7 @@ def process_xcos_model(diagram, title, rootattribid, parentattribid,
                         link_data = (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point, split_point2)
                         edgeDict[attribid] = link_data
                         edgeList.append(link_data)
-                except BaseException:
+                except Exception:
                     traceback.print_exc()
                     sys.exit(127)
             oldcellslength = cellslength

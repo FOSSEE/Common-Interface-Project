@@ -99,7 +99,7 @@ def CreateXml(file_path, parameters, task_id, workspace_file):
 
         logger.info('Ran %s', 'XmlToXcos')
         return xcosfile
-    except BaseException as e:
+    except Exception as e:
         logger.exception('Encountered Exception:')
         logger.info('removing %s', file_path)
         remove(file_path)
@@ -137,7 +137,7 @@ def ExecXml(task, task_name, workspace_file):
             logger.warning('Simulation failed for task %s: %s', task_id, result)
             return 'Failure'
 
-    except BaseException as e:
+    except Exception as e:
         logger.exception('Encountered Exception during XML Execution:')
         logger.info('Cleaning up files for task %s', task_id)
         # Cleanup

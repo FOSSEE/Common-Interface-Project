@@ -114,7 +114,7 @@ for root in model:
                     mergeLinks(attribid, sourceVertex, key1, graph_link, removable_link)
                     mergeLinks(attribid, targetVertex, key1, graph_link, removable_link)
 
-            except BaseException:
+            except Exception:
                 traceback.print_exc()
                 sys.exit(103)
 
@@ -288,7 +288,7 @@ for k, r_link in removable_link.items():
 
             root.append(xml_output_port)
 
-    except BaseException:
+    except Exception:
         traceback.print_exc()
         sys.exit(103)
 
