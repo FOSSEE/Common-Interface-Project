@@ -5,7 +5,7 @@ from redis import Redis
 from threading import current_thread
 
 from blocks.celery_tasks import app
-from simulationAPI.helpers.ngspice_helper import ExecXml, update_task_status
+from simulationAPI.helpers.ngspice_helper import CannotRunParser, ExecXml, update_task_status
 from simulationAPI.models import Task
 from simulationAPI.helpers.scilab_manager import uploadscript, getscriptoutput, kill_scilab
 
@@ -53,9 +53,8 @@ def process_task(self, task_id):
                 state = 'SUCCESS'
                 current_process = 'Processed Xml, Loading Output'
             else:
-                logger.error('Failed %s', output)
-                state = 'FAILURE'
-                current_process = 'Failed'
+                logger.error('%s', output)
+                raise CannotRunParser(output)
 
             update_task_status(task_id, state,
                                meta={'current_process': current_process})
