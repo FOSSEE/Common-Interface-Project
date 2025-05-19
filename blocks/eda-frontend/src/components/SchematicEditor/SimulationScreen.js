@@ -670,7 +670,7 @@ export default function SimulationScreen ({ open, close }) {
     simulationResult(getUrl, getStreamingUrl)
   }, [isResult, simulationResult])
 
-  useEffect(() => getSimulationResult(taskId), [taskId])
+  useEffect(() => getSimulationResult(taskId), [taskId, getSimulationResult])
 
   useEffect(() => {
     for (let i = 0; i < Highcharts.charts.length; i++) {
@@ -683,17 +683,23 @@ export default function SimulationScreen ({ open, close }) {
   useEffect(() => {
     const handleTabClose = (event) => {
       event.preventDefault() // Prevents immediate closing in some browsers
+      event.returnValue = ''
+    }
+
+    const handleClose = () => {
       close(taskId)
     }
 
     if (isSimulating) {
       window.addEventListener('beforeunload', handleTabClose)
+      window.addEventListener('unload', handleClose)
     }
 
     return () => {
       window.removeEventListener('beforeunload', handleTabClose)
+      window.removeEventListener('unload', handleClose)
     }
-  }, [taskId, isSimulating])
+  }, [taskId, isSimulating, close])
 
   /*
    * Function to display values of all affich blocks
