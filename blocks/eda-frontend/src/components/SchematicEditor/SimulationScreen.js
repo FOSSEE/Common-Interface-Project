@@ -547,7 +547,6 @@ export default function SimulationScreen ({ open, close }) {
       createAffichDisplaytext(p, blockId)
     }
 
-    dispatch(setSimulating(true))
     sse = new EventSource('/api/' + streamingUrl, { withCredentials: true })
     sse.addEventListener('log', e => {
       ++loglines
@@ -664,6 +663,7 @@ export default function SimulationScreen ({ open, close }) {
       return
     }
 
+    dispatch(setSimulating(true))
     const getUrl = 'simulation/status/' + taskId
     const getStreamingUrl = 'simulation/streaming/' + taskId
 
