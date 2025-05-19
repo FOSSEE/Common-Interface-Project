@@ -6,8 +6,8 @@ import { makeStyles } from '@material-ui/core/styles'
 import CloseIcon from '@material-ui/icons/Close'
 import { useSelector, useDispatch } from 'react-redux'
 
-import Graph, { setStatusDone, setStatusClosed, isStatusDone } from '../Shared/Graph'
-import { setResultGraph } from '../../redux/simulationSlice'
+import Graph, { setStatusDone, setStatusClosed } from '../Shared/Graph'
+import { setResultGraph, setSimulating } from '../../redux/simulationSlice'
 import api from '../../utils/Api'
 
 let sse = null
@@ -112,6 +112,7 @@ export function setGraphStatusClosed () {
 export default function SimulationScreen ({ open, close }) {
   const classes = useStyles()
   const dispatch = useDispatch()
+  const isSimulating = useSelector(state => state.simulation.isSimulating)
   const isGraph = useSelector(state => state.simulation.isGraph)
   const rtitle = useSelector(state => state.simulation.title)
   const stitle = useSelector(state => state.saveSchematic.title)
@@ -151,7 +152,7 @@ export default function SimulationScreen ({ open, close }) {
       if (graphsRef.current[refId] !== undefined) {
         graphsRef.current[refId].addPointToQueue(id, point)
       } else {
-        console.log('cannot add point', id, point, chartIdList)
+        console.log('cannot add point', id, point, chartIdList.current)
       }
     }
 
@@ -546,6 +547,7 @@ export default function SimulationScreen ({ open, close }) {
       createAffichDisplaytext(p, blockId)
     }
 
+    dispatch(setSimulating(true))
     sse = new EventSource('/api/' + streamingUrl, { withCredentials: true })
     sse.addEventListener('log', e => {
       ++loglines
@@ -590,6 +592,7 @@ export default function SimulationScreen ({ open, close }) {
       sse.close()
       sse = null
       setGraphStatusDone()
+      dispatch(setSimulating(false))
     }, false)
     sse.addEventListener('ERROR', e => {
       printloglines()
@@ -683,14 +686,14 @@ export default function SimulationScreen ({ open, close }) {
       close(taskId)
     }
 
-    if (!isStatusDone()) {
+    if (isSimulating) {
       window.addEventListener('beforeunload', handleTabClose)
     }
 
     return () => {
       window.removeEventListener('beforeunload', handleTabClose)
     }
-  }, [taskId, isStatusDone()])
+  }, [taskId, isSimulating])
 
   /*
    * Function to display values of all affich blocks

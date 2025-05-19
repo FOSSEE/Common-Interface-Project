@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
+  isSimulating: false,
   title: '',
   isGraph: false,
   text: [],
@@ -15,12 +16,16 @@ const simulationSlice = createSlice({
   initialState,
   reducers: {
     resetResult: (state) => {
+      state.isSimulating = false
       state.title = ''
       state.isGraph = false
       state.text = []
       state.graph = {}
       state.isSimRes = false
       state.taskId = ''
+    },
+    setSimulating: (state, action) => {
+      state.isSimulating = action.payload
     },
     setResultTitle: (state, action) => {
       state.title = action.payload
@@ -46,6 +51,7 @@ const simulationSlice = createSlice({
 
 export const {
   resetResult,
+  setSimulating,
   setResultTitle,
   setResultGraph,
   setResultText,
