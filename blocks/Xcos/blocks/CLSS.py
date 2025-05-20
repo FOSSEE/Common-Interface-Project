@@ -6,8 +6,7 @@ def CLSS(outroot, attribid, ordering, geometry, parameters, parent=1, style=None
     if style is None:
         style = func_name
 
-    para4 = int(float(parameters[3]))
-
+    para4 = format_real_number(parameters[3])
     if para4 == 0:
         depends_u = '0'
     else:

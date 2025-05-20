@@ -1703,7 +1703,8 @@ def process_xcos_model(diagram, title, rootattribid, parentattribid,
                     attribid = attrib['id']
                     nextattribid = getNextAttribId(attribid, nextattribid)
 
-                    cell_type = attrib['CellType']
+                    # cell_type = attrib['CellType']
+                    cell_type = attrib.get('CellType')
                     mxGeometry = cell.find('mxGeometry')
 
                     if cell_type == 'Component':
