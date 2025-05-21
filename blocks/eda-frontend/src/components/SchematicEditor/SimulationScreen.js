@@ -7,7 +7,7 @@ import CloseIcon from '@material-ui/icons/Close'
 import { useSelector, useDispatch } from 'react-redux'
 
 import Graph, { setStatusDone, setStatusClosed } from '../Shared/Graph'
-import { setResultGraph, setSimulating } from '../../redux/simulationSlice'
+import { setResultGraph, setSimulating, setErrorMessage } from '../../redux/simulationSlice'
 import api from '../../utils/Api'
 
 let sse = null
@@ -117,6 +117,7 @@ export default function SimulationScreen ({ open, close }) {
   const rtitle = useSelector(state => state.simulation.title)
   const stitle = useSelector(state => state.saveSchematic.title)
   const taskId = useSelector(state => state.simulation.taskId)
+  const errorMessage = useSelector(state => state.simulation.errorMessage)
   const [isResult, setIsResult] = useState(false)
   const graphsRef = useRef([])
   const datapointsRef = useRef([])
@@ -634,6 +635,8 @@ export default function SimulationScreen ({ open, close }) {
 
         case 'FAILURE':
         case 'CANCELED':
+          setIsResult(true)
+          dispatch(setErrorMessage(res.data.details))
           if (timeoutRef.current !== null) {
             clearTimeout(timeoutRef.current)
             timeoutRef.current = null
@@ -730,7 +733,7 @@ export default function SimulationScreen ({ open, close }) {
     return arrayData
   }
 
-  const typography1 = 'SOMETHING WENT WRONG. Please Check The Simulation Parameters.'
+  const typography1 = 'Error in simulation. Please check the simulation parameters.'
   const typography2 = 'Please Wait. The Graph is Rendering with ' + process.env.REACT_APP_DIAGRAM_NAME + '.'
   return (
     <div>
@@ -804,7 +807,13 @@ export default function SimulationScreen ({ open, close }) {
                           : <div />
                       }
                     </>
-                    : (isGraph === 'false') ? <span>{typography1}</span> : <span />
+                    : <Grid item xs={12} sm={12}>
+                      <Paper className={classes.paper}>
+                        <Typography variant='h4' align='center' gutterBottom>
+                          {typography1}
+                        </Typography>
+                      </Paper>
+                    </Grid>
                 }
                 {/* Diplay of Simulation parameter Not present */}
                 {
@@ -820,11 +829,11 @@ export default function SimulationScreen ({ open, close }) {
                 }
                 {/* Display text result */}
                 {
-                  (isGraph === 'false')
+                  !isGraph
                     ? <Grid item xs={12} sm={12}>
                       <Paper className={classes.paper}>
                         <Typography variant='h4' align='center' gutterBottom>
-                          OUTPUT
+                          {errorMessage}
                         </Typography>
                       </Paper>
                     </Grid>
@@ -834,7 +843,7 @@ export default function SimulationScreen ({ open, close }) {
               : <Grid item xs={12} sm={12}>
                 <Paper className={classes.paper}>
                   <Typography variant='h6' align='center' gutterBottom>
-                    {typography2} {/* Error handling message in case of null result */}
+                    {typography2} {/* Waiting for result message */}
                   </Typography>
                 </Paper>
               </Grid>

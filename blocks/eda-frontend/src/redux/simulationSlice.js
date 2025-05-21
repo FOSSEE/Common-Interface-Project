@@ -5,6 +5,7 @@ const initialState = {
   title: '',
   isGraph: false,
   text: [],
+  errorMessage: '',
   graph: {},
   isSimRes: false,
   taskId: '',
@@ -20,6 +21,7 @@ const simulationSlice = createSlice({
       state.title = ''
       state.isGraph = false
       state.text = []
+      state.errorMessage = ''
       state.graph = {}
       state.isSimRes = false
       state.taskId = ''
@@ -40,6 +42,11 @@ const simulationSlice = createSlice({
       state.isGraph = false
       state.text = action.payload
     },
+    setErrorMessage: (state, action) => {
+      state.isSimulating = false
+      state.isGraph = false
+      state.errorMessage = action.payload
+    },
     setResultTaskId: (state, action) => {
       state.taskId = action.payload
     },
@@ -55,6 +62,7 @@ export const {
   setResultTitle,
   setResultGraph,
   setResultText,
+  setErrorMessage,
   setResultTaskId,
   setScriptTaskId
 } = simulationSlice.actions
