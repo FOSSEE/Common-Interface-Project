@@ -2,11 +2,11 @@
 
 usage() {
   echo "Usage:" >&2
-  echo "    $0 input-file.xml workspace.dat" >&2
+  echo "    $0 input-file.xml [workspace.dat]" >&2
   exit 101
 }
 
-if test $# -ne 2; then
+if test $# -lt 1 -o $# -gt 2; then
   usage
 fi
 
@@ -24,6 +24,16 @@ else
 fi
 
 WORKSPACE="$2"
+if test -n "$WORKSPACE"; then
+  if test ! -f "$WORKSPACE"; then
+    echo "$WORKSPACE: not found" >&2
+    usage
+  fi
+  if test "${WORKSPACE%.dat}" = "$WORKSPACE"; then
+    echo "$WORKSPACE: not dat" >&2
+    usage
+  fi
+fi
 
 CONTEXT=""
 
@@ -36,8 +46,8 @@ rm -f "$BASE-"*.xml
 
 oldrv=100
 
-echo "Running Xcos/XmlParser.py $INPUT1" >&2
-Xcos/XmlParser.py "$INPUT1" >&2 && rv=$? || rv=$?
+echo "Running Xcos/XmlParser.py $INPUT1"
+Xcos/XmlParser.py "$INPUT1" && rv=$? || rv=$?
 
 if ((rv >= oldrv)); then
   echo "ERROR: $rv >= $oldrv" >&2
@@ -50,8 +60,8 @@ while test $rv -gt 0; do
   INPUT1="$BASE-$rv.xml"
   xmllint --format "$INPUT1" >"$TMPFILE2"
   cp -f "$TMPFILE2" "$INPUT1"
-  echo "Running Xcos/XmlParser.py $INPUT1" >&2
-  Xcos/XmlParser.py "$INPUT1" >&2 && rv=$? || rv=$?
+  echo "Running Xcos/XmlParser.py $INPUT1"
+  Xcos/XmlParser.py "$INPUT1" && rv=$? || rv=$?
 
   if ((rv >= oldrv)); then
     echo "ERROR: $rv >= $oldrv" >&2
@@ -63,9 +73,9 @@ INPUT1="$BASE-$rv.xml"
 xmllint --format "$INPUT1" >"$TMPFILE2"
 cp -f "$TMPFILE2" "$INPUT1"
 
-echo "Running Xcos/MxGraphParser.py $INPUT1 $WORKSPACE $CONTEXT" >&2
-Xcos/MxGraphParser.py "$INPUT1" "$WORKSPACE" "$CONTEXT" >&2
+echo "Running Xcos/MxGraphParser.py $INPUT1 $WORKSPACE $CONTEXT"
+Xcos/MxGraphParser.py "$INPUT1" "$WORKSPACE" "$CONTEXT"
 INPUT1="$BASE.xcos"
-echo "Created $INPUT1" >&2
+echo "Created $INPUT1"
 
 exit 0

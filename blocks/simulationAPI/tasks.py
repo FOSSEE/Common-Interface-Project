@@ -61,15 +61,6 @@ def process_task(self, task_id):
 
         return output
 
-    except Exception as e:
-        update_task_status(task_id, 'FAILURE',
-                           meta={
-                               'exc_type': type(e).__name__,
-                               'exc_message': str(e)
-                           })
-        logger.exception('Exception Occurred:')
-        raise Ignore()
-
     finally:
         release_lock(lock)  # Ensure lock is always released
 

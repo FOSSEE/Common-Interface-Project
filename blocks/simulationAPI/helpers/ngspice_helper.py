@@ -91,11 +91,17 @@ def CreateXml(file_path, parameters, task_id, workspace_file):
         if proc.returncode != 0:
             logger.error('%s error encountered', 'XmlToXcos')
             logger.error('rv=%s', proc.returncode)
+            msg = 'exited with error'
             if stdout:
                 logger.info('Stdout:\n%s', stdout.decode())
             if stderr:
-                logger.error('Stderr:\n%s', stderr.decode())
-            raise CannotRunParser('exited with error')
+                stderr = stderr.decode()
+                logger.error('Stderr:\n%s', stderr)
+                # Get last non-empty line from stderr
+                last_line = next((line for line in reversed(stderr.strip().splitlines()) if line.strip()), None)
+                if last_line:
+                    msg = last_line
+            raise CannotRunParser(msg)
 
         logger.info('Ran %s', 'XmlToXcos')
         return xcosfile

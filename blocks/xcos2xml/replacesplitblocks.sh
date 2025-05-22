@@ -2,16 +2,16 @@
 
 usage() {
   echo "Usage:" >&2
-  echo "    $0 input-file.xcos [workspace.dat] [context]" >&2
-  echo "    $0 input-file.xml [workspace.dat] [context]" >&2
+  echo "    $0 input-file.xcos [workspace.dat]" >&2
+  echo "    $0 input-file.xml [workspace.dat]" >&2
   exit 101
 }
 
-if test $# -lt 1 -o $# -gt 3; then
+if test $# -lt 1 -o $# -gt 2; then
   usage
 fi
 
-make -s >&2
+make -s
 
 SPLITXSL="eda-frontend/public/splitblock.xsl"
 if test ! -f "$SPLITXSL"; then
@@ -72,7 +72,7 @@ if test -n "$WORKSPACE"; then
   fi
 fi
 
-CONTEXT="$3"
+CONTEXT=""
 
 set -e
 
@@ -82,19 +82,19 @@ trap "rm -f $TMPFILE1 $TMPFILE2" 0 1 2 15
 
 if test -n "$INPUTXML"; then
   xmllint --format "$INPUTXML" >"$TMPFILE2"
-  if ! diff -q "$TMPFILE2" "$INPUTXML" >&2; then
+  if ! diff -q "$TMPFILE2" "$INPUTXML"; then
     cp -f "$TMPFILE2" "$INPUTXML"
-    echo "$INPUTXML updated" >&2
+    echo "$INPUTXML updated"
   fi
 
   # MxGraphParser creates $INPUT
-  echo "Running Xcos/MxGraphParser.py $INPUTXML $WORKSPACE $CONTEXT" >&2
-  Xcos/MxGraphParser.py "$INPUTXML" "$WORKSPACE" "$CONTEXT" >&2
+  echo "Running Xcos/MxGraphParser.py $INPUTXML $WORKSPACE $CONTEXT"
+  Xcos/MxGraphParser.py "$INPUTXML" "$WORKSPACE" "$CONTEXT"
 fi
 
 count=$(grep -c '^      <SplitBlock' "$INPUT") || :
 INPUT1="$BASE-$count.xml"
-echo "Creating $INPUT1" >&2
+echo "Creating $INPUT1"
 cp -f "$INPUT" "$INPUT1"
 
 while test $count -gt 0; do
@@ -104,7 +104,7 @@ while test $count -gt 0; do
   xmllint --format "$TMPFILE1" >"$TMPFILE2"
   count=$(grep -c '^      <SplitBlock' "$TMPFILE2") || :
   INPUT1="$BASE-$count.xml"
-  echo "Creating $INPUT1" >&2
+  echo "Creating $INPUT1"
   cp -f "$TMPFILE2" "$INPUT1"
 
   if ((count != oldcount - 1)); then
@@ -116,7 +116,7 @@ done
 xsltproc "$XSL" "$INPUT1" >"$TMPFILE1"
 xmllint --format "$TMPFILE1" >"$TMPFILE2"
 INPUT1="$BASE-xcos2xml.xml"
-echo "Creating $INPUT1" >&2
+echo "Creating $INPUT1"
 cp -f "$TMPFILE2" "$INPUT1"
 
 # Change BASE
@@ -125,15 +125,15 @@ BASE="$BASE-geometry"
 xsltproc "$GEOMETRYXSL" "$INPUT1" >"$TMPFILE1"
 xmllint --format "$TMPFILE1" >"$TMPFILE2"
 INPUT1="$BASE.xml"
-echo "Creating $INPUT1" >&2
+echo "Creating $INPUT1"
 cp -f "$TMPFILE2" "$INPUT1"
 
 rm -f "$BASE-"*.xml
 
 oldrv=100
 
-echo "Running Xcos/XmlParser.py $INPUT1" >&2
-Xcos/XmlParser.py "$INPUT1" >&2 && rv=$? || rv=$?
+echo "Running Xcos/XmlParser.py $INPUT1"
+Xcos/XmlParser.py "$INPUT1" && rv=$? || rv=$?
 
 if ((rv >= oldrv)); then
   echo "ERROR: $rv >= $oldrv" >&2
@@ -146,8 +146,8 @@ while test $rv -gt 0; do
   INPUT1="$BASE-$rv.xml"
   xmllint --format "$INPUT1" >"$TMPFILE2"
   cp -f "$TMPFILE2" "$INPUT1"
-  echo "Running Xcos/XmlParser.py $INPUT1" >&2
-  Xcos/XmlParser.py "$INPUT1" >&2 && rv=$? || rv=$?
+  echo "Running Xcos/XmlParser.py $INPUT1"
+  Xcos/XmlParser.py "$INPUT1" && rv=$? || rv=$?
 
   if ((rv >= oldrv)); then
     echo "ERROR: $rv >= $oldrv" >&2
@@ -159,9 +159,9 @@ INPUT1="$BASE-$rv.xml"
 xmllint --format "$INPUT1" >"$TMPFILE2"
 cp -f "$TMPFILE2" "$INPUT1"
 
-echo "Running Xcos/MxGraphParser.py $INPUT1 $WORKSPACE $CONTEXT" >&2
-Xcos/MxGraphParser.py "$INPUT1" "$WORKSPACE" "$CONTEXT" >&2
+echo "Running Xcos/MxGraphParser.py $INPUT1 $WORKSPACE $CONTEXT"
+Xcos/MxGraphParser.py "$INPUT1" "$WORKSPACE" "$CONTEXT"
 INPUT1="$BASE.xcos"
-echo "Created $INPUT1" >&2
+echo "Created $INPUT1"
 
 exit 0
