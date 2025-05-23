@@ -809,7 +809,7 @@ export default function SimulationScreen ({ open, close }) {
                     </>
                     : <Grid item xs={12} sm={12}>
                       <Paper className={classes.paper}>
-                        <Typography variant='h4' align='center' gutterBottom>
+                        <Typography variant='h5' align='center' gutterBottom>
                           {typography1}
                         </Typography>
                       </Paper>
@@ -832,7 +832,7 @@ export default function SimulationScreen ({ open, close }) {
                   !isGraph
                     ? <Grid item xs={12} sm={12}>
                       <Paper className={classes.paper}>
-                        <Typography variant='h4' align='center' gutterBottom>
+                        <Typography variant='h6' align='center' gutterBottom>
                           {errorMessage}
                         </Typography>
                       </Paper>
