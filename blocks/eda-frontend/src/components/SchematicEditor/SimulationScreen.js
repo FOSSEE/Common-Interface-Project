@@ -610,7 +610,7 @@ export default function SimulationScreen ({ open, close }) {
   }, [taskId, chartIdList])
 
   // Get the simulation result with task_Id
-  const simulationResult = useCallback((url, streamingUrl) => {
+  const simulationResult = useCallback((url, streamingUrl, timeout) => {
     api
       .get(url)
       .then((res) => {
@@ -619,7 +619,7 @@ export default function SimulationScreen ({ open, close }) {
         case 'STARTED':
         case 'RETRY':
           setIsResult(false)
-          timeoutRef.current = setTimeout(() => simulationResult(url, streamingUrl), 10000)
+          timeoutRef.current = setTimeout(() => simulationResult(url, streamingUrl, 10000), timeout)
           break
 
         case 'STREAMING':
@@ -670,7 +670,7 @@ export default function SimulationScreen ({ open, close }) {
     const getUrl = 'simulation/status/' + taskId
     const getStreamingUrl = 'simulation/streaming/' + taskId
 
-    simulationResult(getUrl, getStreamingUrl)
+    simulationResult(getUrl, getStreamingUrl, 2000)
   }, [isResult, simulationResult])
 
   useEffect(() => getSimulationResult(taskId), [taskId, getSimulationResult])
