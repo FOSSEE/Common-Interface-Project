@@ -172,8 +172,13 @@ class CeleryResultView(APIView):
         response_data = {
             'task_id': task_id,
             'state': celery_result.state,
-            'details': str(celery_result.info)
         }
+
+        # If the task failed, clean up the error message
+        e = celery_result.info
+        details = str(e)
+        response_data['details'] = details.split(': ', 1)[-1] if celery_result.failed() and isinstance(e, BaseException) else details
+
         return Response(response_data)
 
 
