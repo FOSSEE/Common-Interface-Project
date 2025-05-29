@@ -12,7 +12,7 @@ import LayoutMain from '../components/Shared/LayoutMain'
 import SchematicToolbar from '../components/SchematicEditor/SchematicToolbar'
 import RightSidebar from '../components/SchematicEditor/RightSidebar'
 import PropertiesSidebar from '../components/SchematicEditor/PropertiesSidebar'
-import LoadGrid from '../components/SchematicEditor/Helper/ComponentDrag'
+import loadGrid from '../components/SchematicEditor/Helper/ComponentDrag'
 import { renderGalleryXML } from '../components/SchematicEditor/Helper/ToolbarTools'
 import '../components/SchematicEditor/Helper/SchematicEditor.css'
 import { fetchDiagram, fetchSchematic } from '../redux/saveSchematicSlice'
@@ -53,7 +53,7 @@ export default function SchematicEditor (props) {
     const container = gridRef.current
     const sidebar = compRef.current
     const outline = outlineRef.current
-    LoadGrid(container, sidebar, outline)
+    loadGrid(container, sidebar, outline)
 
     if (props.location.search !== '') {
       const query = new URLSearchParams(props.location.search)
@@ -83,6 +83,30 @@ export default function SchematicEditor (props) {
       <LayoutMain>
         <div className={classes.toolbar} />
         <center>
+        <button
+          id="closeButton"
+          style={{
+            display: 'none',
+            // position: 'absolute',
+            top: '10px',
+            right: '10px',
+            zIndex: 1000,
+            width: '24px',
+            height: '24px',
+            backgroundColor: '#f44336',
+            color: 'white',
+            fontSize: '16px',
+            fontWeight: 'bold',
+            border: 'none',
+            borderRadius: '50%',
+            cursor: 'pointer',
+            lineHeight: '24px',
+            textAlign: 'center',
+            padding: 0
+          }}
+        >
+          ✕
+        </button>
           <div className='grid-container A4-L' ref={gridRef} id='divGrid'>
             <TailSpin
               color='#F44336'
