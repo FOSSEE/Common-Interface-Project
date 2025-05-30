@@ -955,7 +955,7 @@ def format_real_number(parameter):
     try:
         parameter = convert_scientific_notation(parameter)
         parameter = eval(parameter)
-        return "{:.10g}".format(float(parameter))  # Convert numeric strings safely
+        return "{:.17g}".format(float(parameter))  # Convert numeric strings safely
     except ValueError:
         return parameter  # Return original non-numeric string
 

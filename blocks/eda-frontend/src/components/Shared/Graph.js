@@ -37,6 +37,9 @@ class Graph extends Component {
     let myInterval = null
     this.state = {
       options: {
+        accessibility: {
+          enabled: false
+        },
         chart: {
           events: {
             load: function () {

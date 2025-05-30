@@ -31182,7 +31182,7 @@
     name: Ex7_6
     description: 'Digital Control (Author: K. M. Moudgalya), 7) Structures and Specifications,
       7.6) Verification of performance of lead controller on antenna system'
-    save_time: 2025-05-08 12:24:26+00:00
+    save_time: 2025-05-30 12:29:41+00:00
     book: 2048
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="20.0" title="g_s_cl2"><!--Xcos - 1.0 - scilab-5.5.2 -
@@ -33796,7 +33796,7 @@
 
       st = 1; st1 = 0;
 
-      t_init = 0; t_final = 20;
+      t_init = 0; t_final = 20; t = 0.5;
 
 
       // u1: -4 to 11
@@ -65157,7 +65157,7 @@
     name: Ex9_19
     description: 'Digital Control (Author: K. M. Moudgalya), 9) Pole Placement Controllers,
       9.19) Demonstration of usefulness of negative PID parameters'
-    save_time: 2025-05-08 12:24:26+00:00
+    save_time: 2025-05-30 12:29:41+00:00
     book: 2048
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="20.0" title="g_s_cl"><!--Xcos - 1.0 - scilab-5.5.2 - 20150331
@@ -69512,7 +69512,7 @@
 
       C = 0; D = 1; N_var = 0;
 
-      st = 1; t_init = 0; t_final = 20;
+      st = 1; t_init = 0; t_final = 20; t = 0.5;
 
 
       [Tcp1,Tcp2] = cosfil_ip(Tc,1); // Tc/1
@@ -76427,7 +76427,7 @@
     name: Ex9_21_1
     description: 'Digital Control (Author: K. M. Moudgalya), 9) Pole Placement Controllers,
       9.21) DC motor with PID control tuned through pole placement technique'
-    save_time: 2025-05-08 12:24:27+00:00
+    save_time: 2025-05-30 12:29:41+00:00
     book: 2048
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="20.0" title="Ex9_21_1"><!--Xcos - 1.0 - scilab-5.5.2 -
@@ -80078,6 +80078,8 @@
 
       t_final = 20; // simulation end time
 
+      t = 0.5; // sampling time
+
       st1 = 0;
 
 
@@ -80121,7 +80123,7 @@
     name: Ex9_21_2
     description: 'Digital Control (Author: K. M. Moudgalya), 9) Pole Placement Controllers,
       9.21) DC motor with PID control tuned through pole placement technique'
-    save_time: 2025-05-08 12:24:27+00:00
+    save_time: 2025-05-30 12:29:41+00:00
     book: 2048
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="20.0" title="Ex9_21_2"><!--Xcos - 1.0 - scilab-5.5.2 -
@@ -83746,6 +83748,8 @@
       t_init = 0; // simulation start time
 
       t_final = 20; // simulation end time
+
+      t = 0.5; // sampling time
 
       st1 = 0;
 
@@ -167433,7 +167437,7 @@
     description: 'Feedback Control of Dynamic Systems (Author: G. F. Franklin, J.
       D. Powell and A. Emami-Naeini), 6) The Frequency Response Design Method, 6.14)
       Lead compensation for DC motor'
-    save_time: 2025-05-08 12:24:29+00:00
+    save_time: 2025-05-30 12:29:42+00:00
     book: 3432
     data_dump: <?xml version="1.0" encoding="UTF-8"?><XcosDiagram background="-1"
       finalIntegrationTime="5.0" title="Ex6_14_model"><!--Xcos - 1.0 - scilab-5.5.2
@@ -168683,7 +168687,9 @@
       // for ramp response, set sw to 0
 
 
-      sw=2'
+      sw=2;
+
+      Ts=1;'
 - model: saveAPI.gallery
   pk: 125
   fields:

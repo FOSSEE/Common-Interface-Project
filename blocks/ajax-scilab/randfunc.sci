@@ -1,18 +1,18 @@
 function randfunc(filename,inputvalue)
-    f_temp = mopen(filename, 'wt'); // Creating a text file
-    string_to_pass = strcat(["cmd_values = ", inputvalue]); //storing value in cmd_values
+    f_temp = mopen(filename, 'wt');  // Creating a text file
+    string_to_pass = strcat(["cmd_values = ", inputvalue]);  // storing value in cmd_values
     ok = execstr(string_to_pass,'errcatch');
     if (ok~=0) then
-        mfprintf(f_temp, '%s',  lasterror()); //catch error message if any
+        mfprintf(f_temp, '%s', lasterror());  // catch error message if any
     else
         [m,n] = size(cmd_values)
         mfprintf(f_temp, '[[');
-        for y = 1:m // no. of rows in variables
-            for z = 1:n //no. of columns in variabes
+        for y = 1:m  // no. of rows in variables
+            for z = 1:n  // no. of columns in variables
                 if z == n then
-                mfprintf(f_temp, '%.17g', cmd_values(y,z)); //Print the variable values
+                mfprintf(f_temp, '%.17g', cmd_values(y,z));  // Print the variable values
                 else
-                mfprintf(f_temp, '%.17g,', cmd_values(y,z)); //Print the variable values
+                mfprintf(f_temp, '%.17g,', cmd_values(y,z));  // Print the variable values
                 end
             end
             if y ~= m then
