@@ -11,6 +11,7 @@ import { styleToObject } from '../../../utils/GalleryUtils'
 import toolbarTools, { editorZoomAct } from './ToolbarTools'
 import keyboardShortcuts from './KeyboardShortcuts'
 import { sideBar } from './SideBar'
+import { renderGalleryXML } from './ToolbarTools'
 
 export let graph
 
@@ -81,7 +82,6 @@ export function getPortType (cell, isSplit = false) {
   return { type1, type2 }
 }
 
-// export default function loadGrid (container, sidebar, outline) {
 export default function loadGrid (container, sidebar, outline) {
   let mainDiagramBackup = ''
   let graph = null
@@ -118,72 +118,16 @@ export default function loadGrid (container, sidebar, outline) {
     // Creates the graph inside the given container
     graph = new mxGraph(container)
 
-    const listener = function(sender, evt) {
+    const listener = function (sender, evt) {
       console.log('Undo event detected', evt);
     }
 
-    function getCurrentDiagramXML() {
+    function getCurrentDiagramXML () {
       graph.getModel().addListener(mxEvent.UNDO, listener)
       const encoder = new mxCodec()
       const node = encoder.encode(graph.getModel())
       return mxUtils.getXml(node)
     }
-
-    // function loadGraphFromDoc(xmlDoc) {
-    //   console.log('xmlDoc:', xmlDoc)
-    //   const modelNode = xmlDoc.getElementsByTagName('mxGraphModel')[0]
-    //   container.innerHTML = ''  // Clear old diagram
-    
-    //   graph = new mxGraph(container)
-    //   graph.setPanning(true)
-    //   graph.setTooltips(true)
-    //   graph.setConnectable(false)
-    
-    //   const codec = new mxCodec(xmlDoc)
-    //   const model = graph.getModel()
-    
-    //   model.beginUpdate()
-    //   try {
-    //     codec.decode(modelNode, model)
-    //   } finally {
-    //     model.endUpdate()
-    //   }
-    
-    //   // Optional: reattach listeners (like double-click) to new graph
-    // }
-    function loadGraphFromDoc(xmlDoc) {
-      const modelNode = xmlDoc.getElementsByTagName('mxGraphModel')[0]
-      if (!modelNode) {
-        console.error('No <mxGraphModel> found in subdiagram')
-        return
-      }
-      //console.log(modelNode.outerHTML)
-    
-      // Clear previous content
-      container.innerHTML = ''
-    
-      graph = new mxGraph(container)
-      graph.setPanning(true)
-      graph.setTooltips(true)
-      graph.setConnectable(false)
-    
-      const codec = new mxCodec(xmlDoc)
-      const model = graph.getModel()
-    
-      model.beginUpdate()
-      try {
-        codec.decode(modelNode, model)
-      } catch (e) {
-        console.error('Error decoding subdiagram:', e)
-      } finally {
-        model.endUpdate()
-      }
-    
-      graph.view.setScale(1)      // Ensure visible
-      graph.refresh()             // Refresh canvas
-      graph.fit()                 // Optional zoom-to-fit
-    }
-    
 
     mxConnectionHandler.prototype.movePreviewAway = false
     mxConnectionHandler.prototype.waypointsEnabled = true
@@ -204,27 +148,20 @@ export default function loadGrid (container, sidebar, outline) {
 
     graph.addListener(mxEvent.DOUBLE_CLICK, function (sender, evt) {
       const cell = evt.getProperty('cell')
-      console.log('cell contains:', cell)
-    
+
       if (cell !== undefined && cell.CellType === 'Component') {
         const blockType = cell.style?.split(';')[0]  // Extract block type like 'SUPER_f'
-        console.log('blockType:', blockType)
-    
+
         if (blockType === 'SUPER_f') {
           // Save current diagram
           mainDiagramBackup = getCurrentDiagramXML()
-    
+
           // Parse the subdiagram
           const subDiagramXML = new XMLSerializer().serializeToString(cell.SuperBlockDiagram)
-          const parser = new DOMParser()
-          const subDiagramDoc = parser.parseFromString(subDiagramXML, 'text/xml')
-    
-          // console.log('mainDiagram:', mainDiagramBackup)
-          // console.log('subDiagram:', subDiagramXML)
-    
+
           // Load subdiagram directly into canvas
-          loadGraphFromDoc(subDiagramDoc)
-    
+          renderGalleryXML(subDiagramXML)
+
           // Show close button
           document.getElementById('closeButton').style.display = 'block'
         } else {
@@ -248,18 +185,13 @@ export default function loadGrid (container, sidebar, outline) {
 
     document.getElementById('closeButton').addEventListener('click', function () {
       if (mainDiagramBackup) {
-        const parser = new DOMParser()
-        const mainDoc = parser.parseFromString(mainDiagramBackup, 'text/xml')
-        console.log("BACK TO MAIN", mainDoc)
-        loadGraphFromDoc(mainDoc)
-        console.log("BACK TO MAIN Dia")
-        // mainDiagramBackup = null
+        renderGalleryXML(mainDiagramBackup)
         document.getElementById('closeButton').style.display = 'none'
         document.title = `${process.env.REACT_APP_DIAGRAM_NAME} Editor - ${process.env.REACT_APP_NAME}`
         mainDiagramBackup = null
       }
     })
-    
+
 
     // Panning handler consumed right click so this must be
     // disabled if right click should stop connection handler.
