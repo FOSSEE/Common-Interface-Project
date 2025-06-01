@@ -8,6 +8,7 @@ pip install -q -U pip setuptools wheel
 pip install -q -r requirements.txt
 pip uninstall -q -y pip wheel
 
+mkdir -p file_storage/uploads logs media/saves media/uploads
 make -s
 python manage.py makemigrations -v0 saveAPI simulationAPI xcosblocks
 python manage.py migrate -v0

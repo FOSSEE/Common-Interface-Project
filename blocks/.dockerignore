@@ -28,12 +28,7 @@ Xcos/xcosblocks.py
 blocks/xcosblocks/xcosblocks.py
 **/__pycache__
 **/__snapshots__
-file_storage/*
-!file_storage/uploads
-file_storage/uploads/*
-logs/*.log
-media/*
-!media/saves
-!media/uploads
-media/saves/*
-media/uploads/*
+file_storage
+logs
+media
+uploads
