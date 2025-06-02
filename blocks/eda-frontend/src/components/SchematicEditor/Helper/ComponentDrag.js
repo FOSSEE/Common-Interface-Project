@@ -85,7 +85,7 @@ export function getPortType (cell, isSplit = false) {
 export default function loadGrid (container, sidebar, outline) {
   let mainDiagramBackup = ''
   let activeSuperBlockCell = null
-  let graph = null
+
   // Checks if the browser is supported
   if (!mxClient.isBrowserSupported()) {
     // Displays an error message if the browser is not supported.
