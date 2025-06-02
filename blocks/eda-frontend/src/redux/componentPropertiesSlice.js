@@ -80,7 +80,6 @@ const componentPropertiesSlice = createSlice({
 
         state.block = block
 
-        state.block = { id, style }
         state.name = styleToObject(block.style).default
         state.id = block.id
         state.parameter_values = block.parameter_values

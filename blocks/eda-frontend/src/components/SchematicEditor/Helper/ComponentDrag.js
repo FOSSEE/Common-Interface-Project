@@ -84,6 +84,7 @@ export function getPortType (cell, isSplit = false) {
 
 export default function loadGrid (container, sidebar, outline) {
   let mainDiagramBackup = ''
+  let activeSuperBlockCell = null
   let graph = null
   // Checks if the browser is supported
   if (!mxClient.isBrowserSupported()) {
@@ -155,9 +156,12 @@ export default function loadGrid (container, sidebar, outline) {
         if (blockType === 'SUPER_f') {
           // Save current diagram
           mainDiagramBackup = getCurrentDiagramXML()
+          activeSuperBlockCell = cell
 
+          //update cell.SuperBlockDiagram whenever new block is added in editor manually
           // Parse the subdiagram
-          const subDiagramXML = new XMLSerializer().serializeToString(cell.SuperBlockDiagram)
+          const serializer = new XMLSerializer()
+          const subDiagramXML = serializer.serializeToString(cell.SuperBlockDiagram)
 
           // Load subdiagram directly into canvas
           renderGalleryXML(subDiagramXML)
@@ -172,6 +176,31 @@ export default function loadGrid (container, sidebar, outline) {
         editorZoomAct()
       }
       evt.consume()
+    })
+    closeButton.addEventListener('click', function () {
+      const updatedXML = getCurrentDiagramXML()
+      const updatedDOM = new DOMParser().parseFromString(updatedXML, 'text/xml')
+
+      activeSuperBlockCell.SuperBlockDiagram = updatedDOM.documentElement
+
+      const superBlockID = activeSuperBlockCell.id
+
+      const mainDOM = new DOMParser().parseFromString(mainDiagramBackup, 'text/xml')
+      const blockElem = mainDOM.querySelector(`mxCell[id="${superBlockID}"]`)
+
+      if (blockElem) {
+        const existing = blockElem.querySelector('SuperBlockDiagram')
+        if (existing) existing.remove()
+
+        const newElem = mainDOM.importNode(updatedDOM.documentElement, true)
+        const wrapper = mainDOM.createElement('SuperBlockDiagram')
+        wrapper.appendChild(newElem)
+        blockElem.appendChild(wrapper)
+      }
+
+      mainDiagramBackup = new XMLSerializer().serializeToString(mainDOM)
+
+      renderGalleryXML(mainDiagramBackup)
     })
 
     graph.view.scale = 1
