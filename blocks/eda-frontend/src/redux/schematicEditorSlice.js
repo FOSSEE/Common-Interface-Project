@@ -104,11 +104,11 @@ const schematicEditorSlice = createSlice({
   initialState,
   reducers: {
     toggleCollapse: (state, action) => {
-      const existingState = state.collapse[action.payload.id]
+      const existingState = state.collapse[action.payload]
       Object.keys(state.collapse).forEach((key) => {
         state.collapse[key] = false
       })
-      state.collapse[action.payload.id] = !existingState
+      state.collapse[action.payload] = !existingState
     },
     toggleSimulate: (state) => {
       state.isSimulate = !state.isSimulate
