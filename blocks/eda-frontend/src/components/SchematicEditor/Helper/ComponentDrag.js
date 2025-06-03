@@ -82,10 +82,13 @@ export function getPortType (cell, isSplit = false) {
   return { type1, type2 }
 }
 
-export default function loadGrid (container, sidebar, outline) {
-  let mainDiagramBackup = ''
-  let activeSuperBlockCell = null
+export function getCurrentDiagramXML () {
+  const encoder = new mxCodec()
+  const node = encoder.encode(graph.getModel())
+  return mxUtils.getXml(node)
+}
 
+export default function loadGrid (container, sidebar, outline, setMainDiagramBackup, setActiveSuperBlockCell) {
   // Checks if the browser is supported
   if (!mxClient.isBrowserSupported()) {
     // Displays an error message if the browser is not supported.
@@ -119,17 +122,6 @@ export default function loadGrid (container, sidebar, outline) {
     // Creates the graph inside the given container
     graph = new mxGraph(container)
 
-    const listener = function (sender, evt) {
-      console.log('Undo event detected', evt);
-    }
-
-    function getCurrentDiagramXML () {
-      graph.getModel().addListener(mxEvent.UNDO, listener)
-      const encoder = new mxCodec()
-      const node = encoder.encode(graph.getModel())
-      return mxUtils.getXml(node)
-    }
-
     mxConnectionHandler.prototype.movePreviewAway = false
     mxConnectionHandler.prototype.waypointsEnabled = true
     mxGraph.prototype.resetEdgesOnConnect = false
@@ -155,8 +147,8 @@ export default function loadGrid (container, sidebar, outline) {
 
         if (blockType === 'SUPER_f') {
           // Save current diagram
-          mainDiagramBackup = getCurrentDiagramXML()
-          activeSuperBlockCell = cell
+          setMainDiagramBackup(getCurrentDiagramXML())
+          setActiveSuperBlockCell(cell)
 
           //update cell.SuperBlockDiagram whenever new block is added in editor manually
           // Parse the subdiagram
@@ -177,31 +169,6 @@ export default function loadGrid (container, sidebar, outline) {
       }
       evt.consume()
     })
-    closeButton.addEventListener('click', function () {
-      const updatedXML = getCurrentDiagramXML()
-      const updatedDOM = new DOMParser().parseFromString(updatedXML, 'text/xml')
-
-      activeSuperBlockCell.SuperBlockDiagram = updatedDOM.documentElement
-
-      const superBlockID = activeSuperBlockCell.id
-
-      const mainDOM = new DOMParser().parseFromString(mainDiagramBackup, 'text/xml')
-      const blockElem = mainDOM.querySelector(`mxCell[id="${superBlockID}"]`)
-
-      if (blockElem) {
-        const existing = blockElem.querySelector('SuperBlockDiagram')
-        if (existing) existing.remove()
-
-        const newElem = mainDOM.importNode(updatedDOM.documentElement, true)
-        const wrapper = mainDOM.createElement('SuperBlockDiagram')
-        wrapper.appendChild(newElem)
-        blockElem.appendChild(wrapper)
-      }
-
-      mainDiagramBackup = new XMLSerializer().serializeToString(mainDOM)
-
-      renderGalleryXML(mainDiagramBackup)
-    })
 
     graph.view.scale = 1
     configureStylesheet(graph)
@@ -210,16 +177,6 @@ export default function loadGrid (container, sidebar, outline) {
     graph.setConnectableEdges(true)
     graph.setDisconnectOnMove(false)
     graph.foldingEnabled = false
-
-
-    document.getElementById('closeButton').addEventListener('click', function () {
-      if (mainDiagramBackup) {
-        renderGalleryXML(mainDiagramBackup)
-        document.getElementById('closeButton').style.display = 'none'
-        document.title = `${process.env.REACT_APP_DIAGRAM_NAME} Editor - ${process.env.REACT_APP_NAME}`
-        mainDiagramBackup = null
-      }
-    })
 
 
     // Panning handler consumed right click so this must be
