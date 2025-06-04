@@ -12,7 +12,7 @@ const initialState = {
   isPropertiesWindowOpen: false,
   compProperties: [],
   displayProperties: {},
-  isLoading: false,
+  isLoading: false
 }
 
 // Actions for listing stored component properites on double click on component
@@ -77,9 +77,7 @@ const componentPropertiesSlice = createSlice({
         state.isPropertiesWindowOpen = true
         state.compProperties = []
         const block = action.meta.arg
-
         state.block = block
-
         state.name = styleToObject(block.style).default
         state.id = block.id
         state.parameter_values = block.parameter_values
