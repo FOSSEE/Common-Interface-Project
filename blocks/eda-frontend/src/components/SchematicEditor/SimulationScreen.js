@@ -1,4 +1,4 @@
-import React, { forwardRef, useCallback, useEffect, useRef, useState } from 'react'
+import { forwardRef, useCallback, useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import Highcharts from 'highcharts'
 import { AppBar, Button, Container, Dialog, Grid, IconButton, Paper, Slide, Toolbar, Typography } from '@material-ui/core'
@@ -505,7 +505,7 @@ export default function SimulationScreen ({ open, close }) {
       // store block number for chart creation
     }
 
-    const addPointTo13 = (block, figureId, data) => {
+    const addPointTo13 = (_block, _figureId, _data) => {
       // const blockUid = data[2]
       // const m = data[8]
       // const n = data[10]
@@ -710,7 +710,7 @@ export default function SimulationScreen ({ open, close }) {
    * block
    * blockId : is used to get needed div according to affichm id
    */
-  function createAffichDisplaytext (displayParameter, blockId) {
+  function createAffichDisplaytext (_displayParameter, _blockId) {
     // updating html data of div html for each time change according to each
     // affich
     // $('#affichdata-' + blockId).html(displayParameter)

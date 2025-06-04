@@ -1,5 +1,5 @@
 // Main Layout for Schematic Editor page.
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import { TailSpin } from 'react-loader-spinner'
 import { CssBaseline } from '@material-ui/core'
@@ -19,7 +19,7 @@ import '../components/SchematicEditor/Helper/SchematicEditor.css'
 import { fetchDiagram, fetchSchematic } from '../redux/saveSchematicSlice'
 import { useDispatch, useSelector } from 'react-redux'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((_theme) => ({
   root: {
     display: 'flex',
     minHeight: '100vh'

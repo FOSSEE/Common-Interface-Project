@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import { List, ListItemText, Tooltip, Popover } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'

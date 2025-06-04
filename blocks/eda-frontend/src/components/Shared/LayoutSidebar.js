@@ -1,4 +1,3 @@
-import React from 'react'
 import PropTypes from 'prop-types'
 import { Drawer, Hidden, IconButton } from '@material-ui/core'
 import HighlightOffIcon from '@material-ui/icons/HighlightOff'

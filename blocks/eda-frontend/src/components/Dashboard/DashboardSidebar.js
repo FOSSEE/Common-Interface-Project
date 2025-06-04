@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { Avatar, Divider, Hidden, InputBase, List, ListItem, ListItemAvatar, ListItemText, Typography } from '@material-ui/core'
 import { Link as RouterLink } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 // Vertical Navbar for user dashboard
-export default function DashSidebar (props) {
+export default function DashSidebar (_props) {
   const classes = useStyles()
   const user = useSelector(state => state.auth.user)
   const schematics = useSelector(state => state.dashboard.schematics)

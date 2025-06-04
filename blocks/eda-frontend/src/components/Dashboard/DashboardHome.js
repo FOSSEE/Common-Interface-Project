@@ -1,4 +1,3 @@
-import React from 'react'
 import { Button, Card, CardActions, CardContent, Grid, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { Link as RouterLink } from 'react-router-dom'
@@ -6,7 +5,7 @@ import { useSelector } from 'react-redux'
 
 import ProgressPanel from './ProgressPanel'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((_theme) => ({
   mainHead: {
     width: '100%',
     backgroundColor: '#404040',

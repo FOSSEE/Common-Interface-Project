@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import api from '../../utils/Api'
 import { Collapse, Hidden, IconButton, InputAdornment, List, ListItem, ListItemIcon, TextField, Tooltip } from '@material-ui/core'
@@ -34,7 +34,7 @@ const searchOptions = {
   NAME: 'name__istartswith'
 }
 
-export default function ComponentSidebar ({ compRef }) {
+export default function ComponentSidebar ({ _compRef }) {
   const classes = useStyles()
   const libraries = useSelector(state => state.schematicEditor.libraries)
   const collapse = useSelector(state => state.schematicEditor.collapse)

@@ -595,6 +595,7 @@ export default function loadGrid (container, sidebar, outline, setMainDiagramBac
       try {
         mxConnectionHandlerUpdateCurrentState.apply(this, arguments)
       } catch (err) {
+        console.error('Error in mxConnectionHandler.updateCurrentState:', err)
       }
       if (this.edgeState != null) {
         this.edgeState.cell.geometry.setTerminalPoint(null, false)

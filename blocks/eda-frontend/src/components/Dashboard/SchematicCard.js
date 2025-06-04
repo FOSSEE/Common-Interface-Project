@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Button, Card, CardActionArea, CardActions, CardContent, CardHeader, CardMedia, Snackbar, Tooltip, Typography } from '@material-ui/core'
 import ShareIcon from '@material-ui/icons/Share'

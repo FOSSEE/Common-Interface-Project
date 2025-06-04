@@ -1,5 +1,5 @@
 // Page to display Page Not Found (i.e. 404) error.
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 
 import { Container, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'

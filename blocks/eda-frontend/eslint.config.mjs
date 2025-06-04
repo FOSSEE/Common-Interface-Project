@@ -63,6 +63,7 @@ export default [
       indent: ['error', 2],
       'no-var': 'error',
       'prefer-const': 'error',
+      'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
 
       // React/React Hooks
       'react/jsx-uses-vars': 'error',

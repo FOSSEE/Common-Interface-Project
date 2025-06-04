@@ -1,5 +1,5 @@
 /* eslint new-cap: ["error", {"newIsCapExceptionPattern": "^mx"}] */
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { Canvg } from 'canvg'
 import {
@@ -96,7 +96,7 @@ SimpleSnackbar.propTypes = {
   message: PropTypes.string
 }
 
-export default function SchematicToolbar ({ mobileClose, gridRef }) {
+export default function SchematicToolbar ({ _mobileClose, gridRef }) {
   const classes = useStyles()
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
   const description = useSelector(state => state.saveSchematic.description)

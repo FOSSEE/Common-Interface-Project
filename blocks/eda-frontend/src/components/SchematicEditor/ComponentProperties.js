@@ -1,5 +1,5 @@
 /* eslint new-cap: ["error", {"newIsCapExceptionPattern": "^mx"}] */
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import mxGraphFactory from 'mxgraph'
 import { ListItem, ListItemText, Button, TextField } from '@material-ui/core'
@@ -188,6 +188,9 @@ export default function ComponentProperties () {
           }
         }
         if (con !== '') {
+          if (con === '') {
+            con = block.controlPorts
+          }
           if (con !== block.controlPorts) {
             console.log('changing control ports')
             adjustPorts(con, 0, con, block.controlPorts, block, 'ControlPort')
@@ -209,6 +212,9 @@ export default function ComponentProperties () {
           }
         }
         if (com !== '') {
+          if (com === '') {
+            com = block.commandPorts
+          }
           if (com !== block.commandPorts) {
             console.log('changing command ports')
             adjustPorts(com, 0, com, block.commandPorts, block, 'CommandPort')

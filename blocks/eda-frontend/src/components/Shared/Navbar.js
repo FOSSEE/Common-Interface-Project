@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { AppBar, Avatar, Button, Fade, IconButton, Link, ListItemText, Menu, MenuItem, Toolbar, Typography } from '@material-ui/core'
