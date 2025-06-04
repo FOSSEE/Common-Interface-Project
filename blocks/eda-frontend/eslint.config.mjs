@@ -6,6 +6,7 @@ import reactHooksPlugin from 'eslint-plugin-react-hooks'
 import importPlugin from 'eslint-plugin-import'
 import nPlugin from 'eslint-plugin-n'
 import promisePlugin from 'eslint-plugin-promise'
+import globals from 'globals'
 
 export default [
   js.configs.recommended,
@@ -25,8 +26,8 @@ export default [
         sourceType: 'module'
       },
       globals: {
-        Atomics: 'readonly',
-        SharedArrayBuffer: 'readonly'
+        ...globals.browser,
+        ...globals.node
       }
     },
 
