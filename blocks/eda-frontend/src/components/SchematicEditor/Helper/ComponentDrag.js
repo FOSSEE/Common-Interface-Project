@@ -11,6 +11,7 @@ import { styleToObject } from '../../../utils/GalleryUtils'
 import toolbarTools, { editorZoomAct } from './ToolbarTools'
 import keyboardShortcuts from './KeyboardShortcuts'
 import { sideBar } from './SideBar'
+import { renderGalleryXML } from './ToolbarTools'
 
 export let graph
 
@@ -36,7 +37,8 @@ const {
   mxCylinder,
   mxCellRenderer,
   mxConstraintHandler,
-  mxImage
+  mxImage,
+  mxCodec
 } = new mxGraphFactory()
 
 function configureStylesheet (graph) {
@@ -80,7 +82,13 @@ export function getPortType (cell, isSplit = false) {
   return { type1, type2 }
 }
 
-export default function LoadGrid (container, sidebar, outline) {
+export function getCurrentDiagramXML () {
+  const encoder = new mxCodec()
+  const node = encoder.encode(graph.getModel())
+  return mxUtils.getXml(node)
+}
+
+export default function loadGrid (container, sidebar, outline, setMainDiagramBackup, setActiveSuperBlockCell) {
   // Checks if the browser is supported
   if (!mxClient.isBrowserSupported()) {
     // Displays an error message if the browser is not supported.
@@ -133,8 +141,28 @@ export default function LoadGrid (container, sidebar, outline) {
 
     graph.addListener(mxEvent.DOUBLE_CLICK, function (sender, evt) {
       const cell = evt.getProperty('cell')
+
       if (cell !== undefined && cell.CellType === 'Component') {
-        store.dispatch(getCompProperties(cell))
+        const blockType = styleToObject(cell.style).default  // Extract block type like 'SUPER_f'
+
+        if (blockType === 'SUPER_f') {
+          // Save current diagram
+          setMainDiagramBackup(getCurrentDiagramXML())
+          setActiveSuperBlockCell(cell)
+
+          //update cell.SuperBlockDiagram whenever new block is added in editor manually
+          // Parse the subdiagram
+          const serializer = new XMLSerializer()
+          const subDiagramXML = serializer.serializeToString(cell.SuperBlockDiagram)
+
+          // Load subdiagram directly into canvas
+          renderGalleryXML(subDiagramXML)
+
+          // Show close button
+          document.getElementById('closeButton').style.display = 'block'
+        } else {
+          store.dispatch(getCompProperties(cell))
+        }
       } else {
         store.dispatch(closeCompProperties())
         editorZoomAct()
@@ -149,6 +177,7 @@ export default function LoadGrid (container, sidebar, outline) {
     graph.setConnectableEdges(true)
     graph.setDisconnectOnMove(false)
     graph.foldingEnabled = false
+
 
     // Panning handler consumed right click so this must be
     // disabled if right click should stop connection handler.
