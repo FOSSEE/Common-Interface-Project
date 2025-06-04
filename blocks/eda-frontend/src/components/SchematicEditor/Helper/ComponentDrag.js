@@ -143,7 +143,7 @@ export default function loadGrid (container, sidebar, outline, setMainDiagramBac
       const cell = evt.getProperty('cell')
 
       if (cell !== undefined && cell.CellType === 'Component') {
-        const blockType = cell.style?.split(';')[0]  // Extract block type like 'SUPER_f'
+        const blockType = styleToObject(cell.style).default  // Extract block type like 'SUPER_f'
 
         if (blockType === 'SUPER_f') {
           // Save current diagram
