@@ -500,7 +500,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
           item === 'pipe'
             ? (
               <span key={index} style={{ margin: '0 8px', fontWeight: 'bold', opacity: 0.7, fontSize: '18px' }}>|</span>
-              )
+            )
             : (
               <Tooltip key={index} title={item.label}>
                 {item.link
@@ -508,14 +508,14 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
                     <IconButton color='inherit' className={classes.tools} size='small' component={RouterLink} to={item.link}>
                       {item.icon}
                     </IconButton>
-                    )
+                  )
                   : (
                     <IconButton color='inherit' className={classes.tools} size='small' onClick={item.action}>
                       {item.icon}
                     </IconButton>
-                    )}
+                  )}
               </Tooltip>
-              )
+            )
         )}
 
         {/* ✅ Mobile: Show only hamburger menu */}
@@ -548,7 +548,7 @@ export default function SchematicToolbar ({ mobileClose, gridRef }) {
                   <ListItemIcon>{item.icon}</ListItemIcon>
                   <ListItemText primary={item.label} />
                 </ListItem>
-                )
+              )
           )}
           <Divider />
           <ListItem button onClick={toggleDrawer(false)}>

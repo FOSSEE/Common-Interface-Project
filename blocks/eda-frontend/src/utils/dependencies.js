@@ -54,9 +54,9 @@ export function updateDetails (graph, cell, details, detailsInstance, styleName,
   const fullStyleName = styleName
   if (styleName != null) {
     const idx = styleName.indexOf(';')
-    if (styleName.startsWith("SELF_SWITCH")) {
+    if (styleName.startsWith('SELF_SWITCH')) {
       const stateOpen = detailsInstance.stateOpen
-      styleName = stateOpen ? "SELF_SWITCH_OFF" : "SELF_SWITCH_ON"
+      styleName = stateOpen ? 'SELF_SWITCH_OFF' : 'SELF_SWITCH_ON'
     } else {
       if (idx !== -1) {
         styleName = styleName.substring(0, idx)
@@ -137,17 +137,17 @@ export function objToArrayList (graphPoints) {
 
 // For Sigbuilder block
 export function getmethod (mtd) {
-  let METHOD = ""
+  let METHOD = ''
   switch (mtd) {
-    case 0: METHOD = "zero order"; break
-    case 1: METHOD = "linear"; break
-    case 2: METHOD = "order 2"; break
-    case 3: METHOD = "not_a_knot"; break
-    case 4: METHOD = "periodic"; break
-    case 5: METHOD = "monotone"; break
-    case 6: METHOD = "fast"; break
-    case 7: METHOD = "clamped"; break
-    default: METHOD = "zero order"; break
+  case 0: METHOD = 'zero order'; break
+  case 1: METHOD = 'linear'; break
+  case 2: METHOD = 'order 2'; break
+  case 3: METHOD = 'not_a_knot'; break
+  case 4: METHOD = 'periodic'; break
+  case 5: METHOD = 'monotone'; break
+  case 6: METHOD = 'fast'; break
+  case 7: METHOD = 'clamped'; break
+  default: METHOD = 'zero order'; break
   }
   return METHOD
 }

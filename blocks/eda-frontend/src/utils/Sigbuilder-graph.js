@@ -6,10 +6,10 @@ const {
   mxEvent
 } = new mxGraphFactory()
 
-export const graphSigbuilder = ""
-export let sigbuilderGraph = ""
+export const graphSigbuilder = ''
+export let sigbuilderGraph = ''
 
-let wind = ""
+let wind = ''
 
 // Function to create a chart with responsive points for Sigbuilder
 function createDraggablePointsChartSigbuilder (graphParameters, pointsHistory, xmin, xmax, ymin, ymax, chartType, points, method, xmaxtitle, step, stepname) {
@@ -33,7 +33,7 @@ function createDraggablePointsChartSigbuilder (graphParameters, pointsHistory, x
       enabled: false
     },
     title: {
-      text: ""
+      text: ''
     },
     subtitle: {
       text: subtitle
@@ -116,11 +116,11 @@ function createDraggablePointsChartSigbuilder (graphParameters, pointsHistory, x
 }
 
 export function updateSubtitleForSigbuilderGraph (points, method, xmaxtitle, periodicFlag) {
-  let subTitle = ""
-  if (periodicFlag === "y") {
-    subTitle = "<b>" + points + " points, Method: " + getmethod(method) + ", periodic, T = " + xmaxtitle + "</b>"
+  let subTitle = ''
+  if (periodicFlag === 'y') {
+    subTitle = '<b>' + points + ' points, Method: ' + getmethod(method) + ', periodic, T = ' + xmaxtitle + '</b>'
   } else {
-    subTitle = "<b>" + points + " points, Method: " + getmethod(method) + ", aperiodic</b>"
+    subTitle = '<b>' + points + ' points, Method: ' + getmethod(method) + ', aperiodic</b>'
   }
   return subTitle
 }
@@ -145,22 +145,22 @@ function autoscaleFunctionalityForGraph (graphParameters, pointsHistory) {
 }
 
 export function editPointsValue (graphObject, graphParameters, pointsHistory) {
-  document.getElementById("messageLabel").innerHTML = ""
+  document.getElementById('messageLabel').innerHTML = ''
   // Making graph window inaccessible
-  const graphWind = document.getElementById("graphcontentwind")
-  graphWind.style.pointerEvents = "none"
+  const graphWind = document.getElementById('graphcontentwind')
+  graphWind.style.pointerEvents = 'none'
   // Create basic structure for the form
   const content = document.createElement('div')
-  content.setAttribute("id", "editCoordinates")
+  content.setAttribute('id', 'editCoordinates')
 
   // Add Form
-  const myform = document.createElement("form")
-  myform.method = "post"
-  myform.id = "formEditCoordinate"
-  myform.style.padding = "10px"
+  const myform = document.createElement('form')
+  myform.method = 'post'
+  myform.id = 'formEditCoordinate'
+  myform.style.padding = '10px'
 
   const titlelabel = document.createElement('span')
-  titlelabel.innerHTML = "Enter new x and y"
+  titlelabel.innerHTML = 'Enter new x and y'
   myform.appendChild(titlelabel)
   // Line break
   const linebreak = document.createElement('br')
@@ -173,21 +173,21 @@ export function editPointsValue (graphObject, graphParameters, pointsHistory) {
     // Input Title
     const namelabel = document.createElement('label')
     namelabel.innerHTML = keys[i].toString()
-    namelabel.style.marginLeft = "30px"
+    namelabel.style.marginLeft = '30px'
     myform.appendChild(namelabel)
 
     let value = 0
-    if (((graphObject.point.options[keys[i]]).toString()).includes(".")) {
+    if (((graphObject.point.options[keys[i]]).toString()).includes('.')) {
       value = (graphObject.point.options[keys[i]]).toFixed(6)
     } else {
       value = (graphObject.point.options[keys[i]])
     }
     // Input
-    const input = document.createElement("input")
-    input.name = "edit_" + keys[i]
+    const input = document.createElement('input')
+    input.name = 'edit_' + keys[i]
     input.value = value
-    input.setAttribute("id", "edit_" + keys[i])
-    input.setAttribute("class", "fieldInput")
+    input.setAttribute('id', 'edit_' + keys[i])
+    input.setAttribute('class', 'fieldInput')
     myform.appendChild(input)
 
     myform.appendChild(linebreak)
@@ -197,41 +197,41 @@ export function editPointsValue (graphObject, graphParameters, pointsHistory) {
   myform.appendChild(linebreak)
 
   // Button - Cancel
-  const cancelBtn = document.createElement("button")
-  cancelBtn.style.cssFloat = "right"
+  const cancelBtn = document.createElement('button')
+  cancelBtn.style.cssFloat = 'right'
   cancelBtn.innerHTML = 'Cancel'
-  cancelBtn.type = "button"
-  cancelBtn.name = "Cancel"
+  cancelBtn.type = 'button'
+  cancelBtn.name = 'Cancel'
   myform.appendChild(cancelBtn)
 
   // Button - OK
-  const okBtn = document.createElement("button")
-  okBtn.style.cssFloat = "right"
-  okBtn.style.marginRight = "20px"
+  const okBtn = document.createElement('button')
+  okBtn.style.cssFloat = 'right'
+  okBtn.style.marginRight = '20px'
   okBtn.innerHTML = 'OK'
-  okBtn.type = "button"
-  okBtn.name = "OK"
+  okBtn.type = 'button'
+  okBtn.name = 'OK'
 
   myform.appendChild(okBtn)
   content.appendChild(myform)
   const height = 150
   wind = showModalWindow(graphSigbuilder, 'Scilab Multiple Values Request', content, 200, height)
   wind.addListener(mxEvent.DESTROY, function () {
-    graphWind.style.pointerEvents = "auto"
+    graphWind.style.pointerEvents = 'auto'
   })
   // Executes when button 'cancelBtn' is clicked
   cancelBtn.onclick = function () {
-    document.getElementById("messageLabel").innerHTML = ""
-    graphWind.style.pointerEvents = "auto"
+    document.getElementById('messageLabel').innerHTML = ''
+    graphWind.style.pointerEvents = 'auto'
     wind.destroy()
   }
   // Executes when button 'okBtn' is clicked
   okBtn.onclick = function () {
-    let xValue = parseFloat(document.getElementById("edit_x").value)
+    let xValue = parseFloat(document.getElementById('edit_x').value)
     if (xValue < 0) {
       xValue = 0
     }
-    const yValue = parseFloat(document.getElementById("edit_y").value)
+    const yValue = parseFloat(document.getElementById('edit_y').value)
     const points = graphParameters.graphPoints
     const xArry = []
     for (let i = 0; i < points.length; i++) {
@@ -244,22 +244,22 @@ export function editPointsValue (graphObject, graphParameters, pointsHistory) {
       removePointsFromChart(graphObject, graphParameters, pointsHistory)
       addPointsOnChart(graphParameters, pointsHistory, xValue, yValue)
       autoscaleFunctionalityForGraph(graphParameters, pointsHistory)
-      document.getElementById("messageLabel").innerHTML = ""
-      graphWind.style.pointerEvents = "auto"
+      document.getElementById('messageLabel').innerHTML = ''
+      graphWind.style.pointerEvents = 'auto'
       wind.destroy()
     } else {
       if (mtdCheck) {
         removePointsFromChart(graphObject, graphParameters, pointsHistory)
         addPointsOnChart(graphParameters, pointsHistory, xValue, yValue)
         autoscaleFunctionalityForGraph(graphParameters, pointsHistory)
-        document.getElementById("messageLabel").innerHTML = ""
-        graphWind.style.pointerEvents = "auto"
+        document.getElementById('messageLabel').innerHTML = ''
+        graphWind.style.pointerEvents = 'auto'
         wind.destroy()
       } else {
-        document.getElementById("messageLabel").innerHTML = "ERROR IN SPLINE : " + getmethod(graphParameters.mtd)
+        document.getElementById('messageLabel').innerHTML = 'ERROR IN SPLINE : ' + getmethod(graphParameters.mtd)
         wind.destroy()
-        graphWind.style.pointerEvents = "auto"
-        throw new Error("incorrect")
+        graphWind.style.pointerEvents = 'auto'
+        throw new Error('incorrect')
       }
     }
   }
@@ -275,7 +275,7 @@ export function removePointsFromChart (graphObject, graphParameters, pointsHisto
 }
 
 export function addPointsOnChart (graphParameters, pointsHistory, xValue, yValue) {
-  document.getElementById("messageLabel").innerHTML = ""
+  document.getElementById('messageLabel').innerHTML = ''
   if (xValue === 0 && yValue === 0) {
     graphParameters.flag_for_zeros = true
   }
@@ -301,8 +301,8 @@ export function addPointsOnChart (graphParameters, pointsHistory, xValue, yValue
       graphParameters.xmaxTitle = sigbuilderGraph.xAxis[0].getExtremes().dataMax.toFixed(6)
       sigbuilderGraph.setTitle(null, { text: updateSubtitleForSigbuilderGraph(graphParameters.points, graphParameters.mtd, graphParameters.xmaxTitle, graphParameters.PeriodicOption) })
     } else {
-      document.getElementById("messageLabel").innerHTML = "ERROR IN SPLINE : " + getmethod(graphParameters.mtd)
-      throw new Error("incorrect")
+      document.getElementById('messageLabel').innerHTML = 'ERROR IN SPLINE : ' + getmethod(graphParameters.mtd)
+      throw new Error('incorrect')
     }
   }
 }

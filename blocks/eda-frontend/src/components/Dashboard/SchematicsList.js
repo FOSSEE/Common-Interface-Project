@@ -65,7 +65,7 @@ export default function SchematicsList () {
     dispatch(fetchSchematics())
   }, [])
 
-  const typography1 = "You don't have any saved " + process.env.REACT_APP_SMALL_DIAGRAMS_NAME + '...'
+  const typography1 = 'You don\'t have any saved ' + process.env.REACT_APP_SMALL_DIAGRAMS_NAME + '...'
   return (
     <>
       <Grid
