@@ -1,4 +1,4 @@
-// eslint.config.js
+// eslint.config.mjs
 import js from '@eslint/js'
 import babelParser from '@babel/eslint-parser'
 import reactPlugin from 'eslint-plugin-react'
@@ -24,7 +24,7 @@ export default [
         ecmaFeatures: {
           jsx: true
         },
-        ecmaVersion: 2018,
+        ecmaVersion: 2022,
         sourceType: 'module'
       },
       globals: {
