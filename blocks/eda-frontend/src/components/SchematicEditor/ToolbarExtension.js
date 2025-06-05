@@ -364,26 +364,6 @@ export function ScriptScreen ({ isOpen, onClose }) {
     dispatch(setShowDot(true))
   }
 
-  useEffect(() => {
-    if (fetchComplete) {
-      const timer = setTimeout(() => {
-        executeScript()
-      }, 1000)
-
-      return () => clearTimeout(timer)
-    }
-  }, [executeScript, fetchComplete])
-
-  const prepareScriptNetlist = useCallback((scriptDump) => {
-    const titleA = sanitizeTitle(title)
-    const myblob = new Blob([scriptDump], {
-      type: 'text/plain'
-    })
-    const file = new File([myblob], `${titleA}.sce`, { type: 'text/sce', lastModified: Date.now() })
-    const type = 'SCRIPT'
-    sendScriptNetlist(file, type)
-  }, [sendScriptNetlist, title])
-
   const sendScriptNetlist = useCallback((file, type) => {
     netlistConfig(file, type)
       .then((response) => {
@@ -400,6 +380,32 @@ export function ScriptScreen ({ isOpen, onClose }) {
       })
   }, [dispatch])
 
+  const prepareScriptNetlist = useCallback((scriptDump) => {
+    const titleA = sanitizeTitle(title)
+    const myblob = new Blob([scriptDump], {
+      type: 'text/plain'
+    })
+    const file = new File([myblob], `${titleA}.sce`, { type: 'text/sce', lastModified: Date.now() })
+    const type = 'SCRIPT'
+    sendScriptNetlist(file, type)
+  }, [sendScriptNetlist, title])
+
+  const executeScript = useCallback(() => {
+    dispatch(setScriptTaskId(''))
+    prepareScriptNetlist(scriptDump)
+    dispatch(setShowDot(false))
+  }, [dispatch, prepareScriptNetlist, scriptDump])
+
+  useEffect(() => {
+    if (fetchComplete) {
+      const timer = setTimeout(() => {
+        executeScript()
+      }, 1000)
+
+      return () => clearTimeout(timer)
+    }
+  }, [executeScript, fetchComplete])
+
   async function netlistConfig (file, type) {
     const formData = new FormData()
 
@@ -414,12 +420,6 @@ export function ScriptScreen ({ isOpen, onClose }) {
     }
     return await api.post('simulation/upload', formData, config)
   }
-
-  const executeScript = useCallback(() => {
-    dispatch(setScriptTaskId(''))
-    prepareScriptNetlist(scriptDump)
-    dispatch(setShowDot(false))
-  }, [dispatch, prepareScriptNetlist, scriptDump])
 
   const resetCode = () => {
     dispatch(setSchScriptDump(''))
