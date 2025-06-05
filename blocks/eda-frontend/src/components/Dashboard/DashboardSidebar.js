@@ -47,7 +47,7 @@ export default function DashSidebar (_props) {
   // For Fetching Saved Schematics
   useEffect(() => {
     dispatch(fetchSchematics())
-  }, [])
+  }, [dispatch])
 
   const button = 'My ' + process.env.REACT_APP_DIAGRAMS_NAME
   const placeholder = 'Find your ' + process.env.REACT_APP_SMALL_DIAGRAM_NAME + '...'

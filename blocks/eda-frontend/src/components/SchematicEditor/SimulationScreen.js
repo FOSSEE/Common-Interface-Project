@@ -607,7 +607,7 @@ export default function SimulationScreen ({ open, close }) {
       sse.close()
       sse = null
     }, false)
-  }, [taskId, chartIdList])
+  }, [dispatch, taskId, chartIdList])
 
   // Get the simulation result with task_Id
   const simulationResult = useCallback((url, streamingUrl, timeout) => {
@@ -671,7 +671,7 @@ export default function SimulationScreen ({ open, close }) {
     const getStreamingUrl = 'simulation/streaming/' + taskId
 
     simulationResult(getUrl, getStreamingUrl, 2000)
-  }, [isResult, simulationResult])
+  }, [dispatch, isResult, simulationResult])
 
   useEffect(() => getSimulationResult(taskId), [taskId, getSimulationResult])
 
@@ -681,7 +681,7 @@ export default function SimulationScreen ({ open, close }) {
         Highcharts.charts[i].reflow()
       }
     }
-  }, [chartIdCount.current])
+  }, [])
 
   useEffect(() => {
     const handleTabClose = (event) => {

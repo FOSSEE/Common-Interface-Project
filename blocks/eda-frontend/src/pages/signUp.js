@@ -60,7 +60,7 @@ export default function SignUp () {
     return () => {
       dispatch(authDefault())
     }
-  }, [])
+  }, [dispatch])
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')

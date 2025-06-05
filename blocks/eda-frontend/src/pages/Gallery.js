@@ -206,7 +206,7 @@ const Gallery = () => {
 
   useEffect(() => {
     dispatch(fetchGallery())
-  }, [])
+  }, [dispatch])
 
   // Handle dropdown selection change
   const handleBookChange = (book) => {

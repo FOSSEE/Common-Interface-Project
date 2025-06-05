@@ -1,4 +1,4 @@
-import { forwardRef, useState, useEffect } from 'react'
+import { forwardRef, useCallback, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import {
   AppBar,
@@ -372,19 +372,19 @@ export function ScriptScreen ({ isOpen, onClose }) {
 
       return () => clearTimeout(timer)
     }
-  }, [fetchComplete])
+  }, [executeScript, fetchComplete])
 
-  const prepareScriptNetlist = (scriptDump) => {
+  const prepareScriptNetlist = useCallback((scriptDump) => {
     const titleA = sanitizeTitle(title)
     const myblob = new Blob([scriptDump], {
       type: 'text/plain'
     })
     const file = new File([myblob], `${titleA}.sce`, { type: 'text/sce', lastModified: Date.now() })
     const type = 'SCRIPT'
-    sendSriptNetlist(file, type)
-  }
+    sendScriptNetlist(file, type)
+  }, [sendScriptNetlist, title])
 
-  function sendSriptNetlist (file, type) {
+  const sendScriptNetlist = useCallback((file, type) => {
     netlistConfig(file, type)
       .then((response) => {
         const data = response.data
@@ -398,7 +398,7 @@ export function ScriptScreen ({ isOpen, onClose }) {
       .catch(function (error) {
         console.error(error)
       })
-  }
+  }, [dispatch])
 
   async function netlistConfig (file, type) {
     const formData = new FormData()
@@ -415,11 +415,11 @@ export function ScriptScreen ({ isOpen, onClose }) {
     return await api.post('simulation/upload', formData, config)
   }
 
-  const executeScript = () => {
+  const executeScript = useCallback(() => {
     dispatch(setScriptTaskId(''))
     prepareScriptNetlist(scriptDump)
     dispatch(setShowDot(false))
-  }
+  }, [dispatch, prepareScriptNetlist, scriptDump])
 
   const resetCode = () => {
     dispatch(setSchScriptDump(''))
@@ -687,7 +687,7 @@ export function OpenSchDialog (props) {
 
   useEffect(() => {
     dispatch(fetchGallery())
-  }, [])
+  }, [dispatch])
 
   useEffect(() => {
     if (xmlData) {

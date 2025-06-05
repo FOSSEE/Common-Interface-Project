@@ -69,7 +69,7 @@ export default function SignIn (props) {
     return () => {
       dispatch(authDefault())
     }
-  }, [props.location.search])
+  }, [dispatch, props.location.search])
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')

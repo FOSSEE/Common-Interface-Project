@@ -82,7 +82,7 @@ export default function SchematicEditor (props) {
     if (xmlData) {
       renderGalleryXML(xmlData)
     }
-  }, [xmlData])
+  }, [dispatch, xmlData])
 
   useEffect(() => {
     document.title = process.env.REACT_APP_DIAGRAM_NAME + ' Editor - ' + process.env.REACT_APP_NAME
@@ -104,7 +104,7 @@ export default function SchematicEditor (props) {
         dispatch(fetchSchematic(cktid))
       }
     }
-  }, [props.location.search])
+  }, [dispatch, props.location.search])
 
   return (
     <div className={classes.root}>
