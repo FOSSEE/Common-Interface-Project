@@ -88,6 +88,20 @@ export function getCurrentDiagramXML () {
   return mxUtils.getXml(node)
 }
 
+function getXY (cell) {
+  let x, y
+
+  if (cell.geometry?.relative === true && cell.parent?.geometry) {
+    x = cell.parent.geometry.x + (cell.geometry.x * cell.parent.geometry.width)
+    y = cell.parent.geometry.y + (cell.geometry.y * cell.parent.geometry.height)
+  } else {
+    x = cell.geometry.x
+    y = cell.geometry.y
+  }
+
+  return [x, y]
+}
+
 export default function loadGrid (container, sidebar, outline, setMainDiagramBackup, setActiveSuperBlockCell) {
   // Checks if the browser is supported
   if (!mxClient.isBrowserSupported()) {
@@ -265,9 +279,21 @@ export default function loadGrid (container, sidebar, outline, setMainDiagramBac
       if (source == null || target == null) {
         return null
       }
+      const edge = mxGraph.prototype.addEdge.apply(this, arguments)
 
-      return mxGraph.prototype.addEdge.apply(this, arguments)
+      const [tarx, tary] = getXY(source)
+      const [tar2x, tar2y] = getXY(target)
+
+      edge.sourceVertex = source.id
+      edge.targetVertex = target.id
+      edge.tarx = tarx
+      edge.tary = tary
+      edge.tar2x = tar2x
+      edge.tar2y = tar2y
+
+      return edge
     }
+
 
     // Adds a special tooltip for edges
     graph.setTooltips(true)
