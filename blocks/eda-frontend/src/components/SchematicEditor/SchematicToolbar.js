@@ -358,7 +358,7 @@ export default function SchematicToolbar ({ _mobileClose, gridRef }) {
   }
 
   const readXmlFile = (xmlDoc, dataDump, title) => {
-    const firstCell = xmlDoc.documentElement.children[0].children[0]
+    const firstCell = xmlDoc.documentElement.children[0].children[0].children[0]
     const firstCellAttrs = firstCell.attributes
     const appname = firstCellAttrs.appname.value
     const description = (firstCellAttrs.description !== undefined) ? firstCellAttrs.description.value : ''

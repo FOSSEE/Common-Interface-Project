@@ -262,7 +262,7 @@ const saveSchematicSlice = createSlice({
         state.description = action.payload.description
         state.isSaved = true
         state.isShared = action.payload.shared
-        state.title = action.payload.name
+        state.title = action.payload.title
         state.xmlData = action.payload.data_dump
         state.scriptDump = action.payload.script_dump
         state.showDot = action.payload.script_dump !== ''
