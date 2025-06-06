@@ -143,6 +143,59 @@ const getErrorText = (compType) => {
   return errorText[compType] || ''
 }
 
+export function changePorts (block, eiv, iiv, con, eov, iov, com, refreshDisplay) {
+  if (eiv !== '' || iiv !== '') {
+    if (eiv === '') {
+      eiv = block.explicitInputPorts
+    }
+    if (iiv === '') {
+      iiv = block.implicitInputPorts
+    }
+    if (eiv !== block.explicitInputPorts || iiv !== block.implicitInputPorts) {
+      console.log('changing input ports')
+      adjustPorts(eiv, 0, eiv + iiv, block.explicitInputPorts, block, 'ExplicitInputPort')
+      adjustPorts(iiv, eiv, eiv + iiv, block.implicitInputPorts, block, 'ImplicitInputPort')
+      refreshDisplay = true
+    }
+  }
+  if (con !== '') {
+    if (con === '') {
+      con = block.controlPorts
+    }
+    if (con !== block.controlPorts) {
+      console.log('changing control ports')
+      adjustPorts(con, 0, con, block.controlPorts, block, 'ControlPort')
+      refreshDisplay = true
+    }
+  }
+  if (eov !== '' || iov !== '') {
+    if (eov === '') {
+      eov = block.explicitOutputPorts
+    }
+    if (iov === '') {
+      iov = block.implicitOutputPorts
+    }
+    if (eov !== block.explicitOutputPorts || iov !== block.implicitOutputPorts) {
+      console.log('changing output ports')
+      adjustPorts(eov, 0, eov + iov, block.explicitOutputPorts, block, 'ExplicitOutputPort')
+      adjustPorts(iov, eov, eov + iov, block.implicitOutputPorts, block, 'ImplicitOutputPort')
+      refreshDisplay = true
+    }
+  }
+  if (com !== '') {
+    if (com === '') {
+      com = block.commandPorts
+    }
+    if (com !== block.commandPorts) {
+      console.log('changing command ports')
+      adjustPorts(com, 0, com, block.commandPorts, block, 'CommandPort')
+      refreshDisplay = true
+    }
+  }
+  return refreshDisplay
+}
+
+
 export default function ComponentProperties () {
   // compProperties that are displayed on the right side bar when user clicks on a component on the grid.
 
@@ -172,55 +225,8 @@ export default function ComponentProperties () {
       }
       // make the component images smaller by scaling
       if (Array.isArray(displayProperties.ports)) {
-        let [eiv, iiv, con, eov, iov, com] = displayProperties.ports
-        if (eiv !== '' || iiv !== '') {
-          if (eiv === '') {
-            eiv = block.explicitInputPorts
-          }
-          if (iiv === '') {
-            iiv = block.implicitInputPorts
-          }
-          if (eiv !== block.explicitInputPorts || iiv !== block.implicitInputPorts) {
-            console.log('changing input ports')
-            adjustPorts(eiv, 0, eiv + iiv, block.explicitInputPorts, block, 'ExplicitInputPort')
-            adjustPorts(iiv, eiv, eiv + iiv, block.implicitInputPorts, block, 'ImplicitInputPort')
-            refreshDisplay = true
-          }
-        }
-        if (con !== '') {
-          if (con === '') {
-            con = block.controlPorts
-          }
-          if (con !== block.controlPorts) {
-            console.log('changing control ports')
-            adjustPorts(con, 0, con, block.controlPorts, block, 'ControlPort')
-            refreshDisplay = true
-          }
-        }
-        if (eov !== '' || iov !== '') {
-          if (eov === '') {
-            eov = block.explicitOutputPorts
-          }
-          if (iov === '') {
-            iov = block.implicitOutputPorts
-          }
-          if (eov !== block.explicitOutputPorts || iov !== block.implicitOutputPorts) {
-            console.log('changing output ports')
-            adjustPorts(eov, 0, eov + iov, block.explicitOutputPorts, block, 'ExplicitOutputPort')
-            adjustPorts(iov, eov, eov + iov, block.implicitOutputPorts, block, 'ImplicitOutputPort')
-            refreshDisplay = true
-          }
-        }
-        if (com !== '') {
-          if (com === '') {
-            com = block.commandPorts
-          }
-          if (com !== block.commandPorts) {
-            console.log('changing command ports')
-            adjustPorts(com, 0, com, block.commandPorts, block, 'CommandPort')
-            refreshDisplay = true
-          }
-        }
+        const [eiv, iiv, con, eov, iov, com] = displayProperties.ports
+        refreshDisplay = changePorts(block, eiv, iiv, con, eov, iov, com, refreshDisplay)
       }
       if (refreshDisplay) {
         graph.refresh()
