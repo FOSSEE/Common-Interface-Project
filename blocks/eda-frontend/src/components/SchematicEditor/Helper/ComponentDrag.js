@@ -160,6 +160,7 @@ export default function loadGrid (container, sidebar, outline, setMainDiagramBac
         const blockType = styleToObject(cell.style).default  // Extract block type like 'SUPER_f'
 
         if (blockType === 'SUPER_f') {
+          console.log("CE:", cell.SuperBlockDiagram)
           // Save current diagram
           setMainDiagramBackup(getCurrentDiagramXML())
           setActiveSuperBlockCell(cell)

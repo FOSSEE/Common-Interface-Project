@@ -18,6 +18,20 @@ import { renderGalleryXML } from '../components/SchematicEditor/Helper/ToolbarTo
 import '../components/SchematicEditor/Helper/SchematicEditor.css'
 import { fetchDiagram, fetchSchematic } from '../redux/saveSchematicSlice'
 import { useDispatch, useSelector } from 'react-redux'
+import { styleToObject } from '../utils/GalleryUtils'
+import { changePorts } from '../components/SchematicEditor/ComponentProperties'
+import { graph } from '../components/SchematicEditor/Helper/ComponentDrag'
+import mxGraphFactory from 'mxgraph'
+const {
+  mxPrintPreview,
+  mxConstants,
+  mxRectangle,
+  mxUtils,
+  mxUndoManager,
+  mxEvent,
+  mxCodec,
+  mxPoint
+} = new mxGraphFactory()
 
 const useStyles = makeStyles((_theme) => ({
   root: {
@@ -50,16 +64,84 @@ export default function SchematicEditor (props) {
     if (!activeSuperBlockCell) return
 
     const updatedXML = getCurrentDiagramXML()
-    const updatedDOM = new DOMParser().parseFromString(updatedXML, 'text/xml')
+    console.log('updatedXML::', updatedXML)
+    const updatedDOM = mxUtils.parseXml(updatedXML)
+    // const updatedDOM = new DOMParser().parseFromString(updatedXML, 'text/xml')
 
-    activeSuperBlockCell.SuperBlockDiagram = updatedDOM.documentElement
+    activeSuperBlockCell.SuperBlockDiagram = updatedDOM
+    console.log('activeSuperBlockCell.SuperBlockDiagram:', activeSuperBlockCell.SuperBlockDiagram)
 
+    const prefixes = ['CLKOUTV_f', 'CLKINV_f', 'INIMPL_f', 'OUTIMPL_f', 'IN_f', 'OUT_f']
+    // eiv, iiv, con, eov, iov, com
+
+    const xpath = ".//mxCell[@style]"
+    const xpathResult = document.evaluate(
+      xpath,
+      activeSuperBlockCell.SuperBlockDiagram,
+      null,
+      XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
+      null
+    )
+
+    // Convert XPathResult to an array
+    const allCells = []
+    for (let i = 0; i < xpathResult.snapshotLength; i++) {
+      allCells.push(xpathResult.snapshotItem(i))
+    }
+    const styleCounts = {}
+    // Now filter the cells
+    allCells.forEach(cell => {
+      console.log("CELL", cell)
+      const defaultStyle = styleToObject(cell.style).default
+      // For more precise matching, get only the prefix before the first semicolon
+      console.log("CELL", defaultStyle)
+
+      styleCounts[defaultStyle] = (styleCounts[defaultStyle] || 0) + 1
+
+    })
+
+
+    console.log('Style counts:', styleCounts)
+
+
+    // Apply counts from matching styles
+    // Object.entries(styleCounts).forEach(([blockStyle, count]) => {
+    //   const blockType = styleToObject(blockStyle).default // get clean style prefix
+    //   console.log('blockType:', blockType)
+    //   const mapping = styleCounts[blockType]
+    //   console.log('mapping:', mapping)
+    //   if (mapping) {
+    //     portCounts[mapping.field] += count * mapping.count
+    //   }
+    // })
+
+
+    // const superBlockID = activeSuperBlockCell.id
+    // const mainDOM = new DOMParser().parseFromString(mainDiagramBackup, 'text/xml')
+    // const blockElem = mainDOM.querySelector(`mxCell[id="${superBlockID}"]`)
     const superBlockID = activeSuperBlockCell.id
     const mainDOM = new DOMParser().parseFromString(mainDiagramBackup, 'text/xml')
-    const blockElem = mainDOM.querySelector(`mxCell[id="${superBlockID}"]`)
+
+    const cells = mainDOM.getElementsByTagName('mxCell')
+    let blockElem = null
+
+    for (let i = 0; i < cells.length; i++) {
+      if (cells[i].getAttribute('id') === superBlockID) {
+        blockElem = cells[i]
+        break
+      }
+    }
 
     if (blockElem) {
-      const existing = blockElem.querySelector('SuperBlockDiagram')
+
+      const refreshDisplay = changePorts(activeSuperBlockCell, styleCounts['IN_f'], styleCounts[2], styleCounts[0], styleCounts[5], styleCounts[4], styleCounts[1], true)
+      console.log('blockElem:', blockElem, refreshDisplay)
+      if (refreshDisplay) {
+        graph.refresh()
+      }
+      // const existing = blockElem.querySelector('SuperBlockDiagram')
+      // if (existing) existing.remove()
+      const existing = Array.from(blockElem.childNodes).find(node => node.nodeName === 'SuperBlockDiagram')
       if (existing) existing.remove()
 
       const newElem = mainDOM.importNode(updatedDOM.documentElement, true)
@@ -70,6 +152,7 @@ export default function SchematicEditor (props) {
 
     const updatedMainXML = new XMLSerializer().serializeToString(mainDOM)
     setMainDiagramBackup(updatedMainXML)
+    console.log('updatedMainXML:', updatedMainXML)
     renderGalleryXML(updatedMainXML)
 
     // Hide the close button
