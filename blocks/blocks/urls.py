@@ -33,9 +33,6 @@ urlpatterns = [
     # Simulation API Routes
     path('api/simulation/', include('simulationAPI.urls')),
 
-    # Instructions Routes
-    path('api/instructions/', include('instructions.urls')),
-
     # libAPI routes
     path('api/', include('blocks.xcosblocks.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
