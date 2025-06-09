@@ -123,19 +123,15 @@
               </xsl:call-template>
             </xsl:variable>
 
-            <xsl:for-each select="mxGeometry">
-              <xsl:choose>
-                <xsl:when test="$port = 'ExplicitInputPort' or $port = 'ImplicitInputPort'">
-                  <xsl:value-of select="@x" />
-                </xsl:when>
-                <xsl:when test="$port = 'ExplicitOutputPort' or $port = 'ImplicitOutputPort'">
-                  <xsl:value-of select="@x + @width" />
-                </xsl:when>
-                <xsl:when test="$port = 'ControlPort' or $port = 'CommandPort'">
-                  <xsl:value-of select="@x + @width * (2 * $ordering - 1) div (2 * $noofport)" />
-                </xsl:when>
-              </xsl:choose>
-            </xsl:for-each>
+            <xsl:variable name="x-pos">
+              <xsl:call-template name="get-x-position">
+                <xsl:with-param name="port" select="$port" />
+                <xsl:with-param name="ordering" select="$ordering" />
+                <xsl:with-param name="noofport" select="$noofport" />
+                <xsl:with-param name="geometry" select="mxGeometry" />
+              </xsl:call-template>
+            </xsl:variable>
+            <xsl:value-of select="$x-pos" />
           </xsl:for-each>
         </xsl:for-each>
       </xsl:variable>
@@ -178,19 +174,15 @@
               </xsl:call-template>
             </xsl:variable>
 
-            <xsl:for-each select="mxGeometry">
-              <xsl:choose>
-                <xsl:when test="($port = 'ExplicitInputPort' or $port = 'ImplicitInputPort') or ($port = 'ExplicitOutputPort' or $port = 'ImplicitOutputPort')">
-                  <xsl:value-of select="@y + @height * (2 * $ordering - 1) div (2 * $noofport)" />
-                </xsl:when>
-                <xsl:when test="$port = 'ControlPort'">
-                  <xsl:value-of select="@y" />
-                </xsl:when>
-                <xsl:when test="$port = 'CommandPort'">
-                  <xsl:value-of select="@y + @height" />
-                </xsl:when>
-              </xsl:choose>
-            </xsl:for-each>
+            <xsl:variable name="y-pos">
+              <xsl:call-template name="get-y-position">
+                <xsl:with-param name="port" select="$port" />
+                <xsl:with-param name="ordering" select="$ordering" />
+                <xsl:with-param name="noofport" select="$noofport" />
+                <xsl:with-param name="geometry" select="mxGeometry" />
+              </xsl:call-template>
+            </xsl:variable>
+            <xsl:value-of select="$y-pos" />
           </xsl:for-each>
         </xsl:for-each>
       </xsl:variable>
@@ -243,19 +235,15 @@
               </xsl:call-template>
             </xsl:variable>
 
-            <xsl:for-each select="mxGeometry">
-              <xsl:choose>
-                <xsl:when test="$port = 'ExplicitInputPort' or $port = 'ImplicitInputPort'">
-                  <xsl:value-of select="@x" />
-                </xsl:when>
-                <xsl:when test="$port = 'ExplicitOutputPort' or $port = 'ImplicitOutputPort'">
-                  <xsl:value-of select="@x + @width" />
-                </xsl:when>
-                <xsl:when test="$port = 'ControlPort' or $port = 'CommandPort'">
-                  <xsl:value-of select="@x + @width * (2 * $ordering - 1) div (2 * $noofport)" />
-                </xsl:when>
-              </xsl:choose>
-            </xsl:for-each>
+            <xsl:variable name="x-pos">
+              <xsl:call-template name="get-x-position">
+                <xsl:with-param name="port" select="$port" />
+                <xsl:with-param name="ordering" select="$ordering" />
+                <xsl:with-param name="noofport" select="$noofport" />
+                <xsl:with-param name="geometry" select="mxGeometry" />
+              </xsl:call-template>
+            </xsl:variable>
+            <xsl:value-of select="$x-pos" />
           </xsl:for-each>
         </xsl:for-each>
       </xsl:variable>
@@ -298,19 +286,15 @@
               </xsl:call-template>
             </xsl:variable>
 
-            <xsl:for-each select="mxGeometry">
-              <xsl:choose>
-                <xsl:when test="($port = 'ExplicitInputPort' or $port = 'ImplicitInputPort') or ($port = 'ExplicitOutputPort' or $port = 'ImplicitOutputPort')">
-                  <xsl:value-of select="@y + @height * (2 * $ordering - 1) div (2 * $noofport)" />
-                </xsl:when>
-                <xsl:when test="$port = 'ControlPort'">
-                  <xsl:value-of select="@y" />
-                </xsl:when>
-                <xsl:when test="$port = 'CommandPort'">
-                  <xsl:value-of select="@y + @height" />
-                </xsl:when>
-              </xsl:choose>
-            </xsl:for-each>
+            <xsl:variable name="y-pos">
+              <xsl:call-template name="get-y-position">
+                <xsl:with-param name="port" select="$port" />
+                <xsl:with-param name="ordering" select="$ordering" />
+                <xsl:with-param name="noofport" select="$noofport" />
+                <xsl:with-param name="geometry" select="mxGeometry" />
+              </xsl:call-template>
+            </xsl:variable>
+            <xsl:value-of select="$y-pos" />
           </xsl:for-each>
         </xsl:for-each>
       </xsl:variable>
@@ -362,19 +346,15 @@
               </xsl:call-template>
             </xsl:variable>
 
-            <xsl:for-each select="mxGeometry">
-              <xsl:choose>
-                <xsl:when test="$port = 'ExplicitInputPort' or $port = 'ImplicitInputPort'">
-                  <xsl:value-of select="@x" />
-                </xsl:when>
-                <xsl:when test="$port = 'ExplicitOutputPort' or $port = 'ImplicitOutputPort'">
-                  <xsl:value-of select="@x + @width" />
-                </xsl:when>
-                <xsl:when test="$port = 'ControlPort' or $port = 'CommandPort'">
-                  <xsl:value-of select="@x + @width * (2 * $ordering - 1) div (2 * $noofport)" />
-                </xsl:when>
-              </xsl:choose>
-            </xsl:for-each>
+            <xsl:variable name="x-pos">
+              <xsl:call-template name="get-x-position">
+                <xsl:with-param name="port" select="$port" />
+                <xsl:with-param name="ordering" select="$ordering" />
+                <xsl:with-param name="noofport" select="$noofport" />
+                <xsl:with-param name="geometry" select="mxGeometry" />
+              </xsl:call-template>
+            </xsl:variable>
+            <xsl:value-of select="$x-pos" />
           </xsl:for-each>
         </xsl:for-each>
       </xsl:variable>
@@ -413,19 +393,15 @@
               </xsl:call-template>
             </xsl:variable>
 
-            <xsl:for-each select="mxGeometry">
-              <xsl:choose>
-                <xsl:when test="($port = 'ExplicitInputPort' or $port = 'ImplicitInputPort') or ($port = 'ExplicitOutputPort' or $port = 'ImplicitOutputPort')">
-                  <xsl:value-of select="@y + @height * (2 * $ordering - 1) div (2 * $noofport)" />
-                </xsl:when>
-                <xsl:when test="$port = 'ControlPort'">
-                  <xsl:value-of select="@y" />
-                </xsl:when>
-                <xsl:when test="$port = 'CommandPort'">
-                  <xsl:value-of select="@y + @height" />
-                </xsl:when>
-              </xsl:choose>
-            </xsl:for-each>
+            <xsl:variable name="y-pos">
+              <xsl:call-template name="get-y-position">
+                <xsl:with-param name="port" select="$port" />
+                <xsl:with-param name="ordering" select="$ordering" />
+                <xsl:with-param name="noofport" select="$noofport" />
+                <xsl:with-param name="geometry" select="mxGeometry" />
+              </xsl:call-template>
+            </xsl:variable>
+            <xsl:value-of select="$y-pos" />
           </xsl:for-each>
         </xsl:for-each>
       </xsl:variable>
@@ -465,19 +441,15 @@
               </xsl:call-template>
             </xsl:variable>
 
-            <xsl:for-each select="mxGeometry">
-              <xsl:choose>
-                <xsl:when test="$port = 'ExplicitInputPort' or $port = 'ImplicitInputPort'">
-                  <xsl:value-of select="@x" />
-                </xsl:when>
-                <xsl:when test="$port = 'ExplicitOutputPort' or $port = 'ImplicitOutputPort'">
-                  <xsl:value-of select="@x + @width" />
-                </xsl:when>
-                <xsl:when test="$port = 'ControlPort' or $port = 'CommandPort'">
-                  <xsl:value-of select="@x + @width * (2 * $ordering - 1) div (2 * $noofport)" />
-                </xsl:when>
-              </xsl:choose>
-            </xsl:for-each>
+            <xsl:variable name="x-pos">
+              <xsl:call-template name="get-x-position">
+                <xsl:with-param name="port" select="$port" />
+                <xsl:with-param name="ordering" select="$ordering" />
+                <xsl:with-param name="noofport" select="$noofport" />
+                <xsl:with-param name="geometry" select="mxGeometry" />
+              </xsl:call-template>
+            </xsl:variable>
+            <xsl:value-of select="$x-pos" />
           </xsl:for-each>
         </xsl:for-each>
       </xsl:variable>
@@ -516,19 +488,15 @@
               </xsl:call-template>
             </xsl:variable>
 
-            <xsl:for-each select="mxGeometry">
-              <xsl:choose>
-                <xsl:when test="($port = 'ExplicitInputPort' or $port = 'ImplicitInputPort') or ($port = 'ExplicitOutputPort' or $port = 'ImplicitOutputPort')">
-                  <xsl:value-of select="@y + @height * (2 * $ordering - 1) div (2 * $noofport)" />
-                </xsl:when>
-                <xsl:when test="$port = 'ControlPort'">
-                  <xsl:value-of select="@y" />
-                </xsl:when>
-                <xsl:when test="$port = 'CommandPort'">
-                  <xsl:value-of select="@y + @height" />
-                </xsl:when>
-              </xsl:choose>
-            </xsl:for-each>
+            <xsl:variable name="y-pos">
+              <xsl:call-template name="get-y-position">
+                <xsl:with-param name="port" select="$port" />
+                <xsl:with-param name="ordering" select="$ordering" />
+                <xsl:with-param name="noofport" select="$noofport" />
+                <xsl:with-param name="geometry" select="mxGeometry" />
+              </xsl:call-template>
+            </xsl:variable>
+            <xsl:value-of select="$y-pos" />
           </xsl:for-each>
         </xsl:for-each>
       </xsl:variable>
