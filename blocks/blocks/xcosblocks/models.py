@@ -64,6 +64,7 @@ class NewBlock(models.Model):
                                         blank=True, null=True)
     block_width = models.IntegerField(default=40)
     block_height = models.IntegerField(default=40)
+    super_block = models.CharField(max_length=10000, null=True)
 
     def __str__(self):
         """String for representing the Model object."""

@@ -240,6 +240,7 @@
     block_image_path: palettes/LOGICAL_OP.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 1
 - model: xcosblocks.newblock
@@ -254,6 +255,7 @@
     block_image_path: palettes/RELATIONALOP.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 1
 - model: xcosblocks.newblock
@@ -268,6 +270,7 @@
     block_image_path: palettes/CLINDUMMY_f.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 2
 - model: xcosblocks.newblock
@@ -282,6 +285,7 @@
     block_image_path: palettes/CLR.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 2
 - model: xcosblocks.newblock
@@ -296,6 +300,7 @@
     block_image_path: palettes/CLSS.png
     block_width: 80
     block_height: 40
+    super_block: null
     categories:
     - 2
 - model: xcosblocks.newblock
@@ -310,6 +315,7 @@
     block_image_path: palettes/DERIV.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 2
 - model: xcosblocks.newblock
@@ -324,6 +330,7 @@
     block_image_path: palettes/INTEGRAL_f.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 1
     - 2
@@ -339,6 +346,7 @@
     block_image_path: palettes/INTEGRAL_m.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 2
 - model: xcosblocks.newblock
@@ -353,6 +361,7 @@
     block_image_path: palettes/PDE.png
     block_width: 60
     block_height: 60
+    super_block: null
     categories:
     - 2
     - 21
@@ -368,6 +377,7 @@
     block_image_path: palettes/PID.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 2
 - model: xcosblocks.newblock
@@ -382,6 +392,7 @@
     block_image_path: palettes/TCLSS.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 2
     - 4
@@ -397,6 +408,7 @@
     block_image_path: palettes/TIME_DELAY.png
     block_width: 70
     block_height: 40
+    super_block: null
     categories:
     - 2
 - model: xcosblocks.newblock
@@ -411,6 +423,7 @@
     block_image_path: palettes/VARIABLE_DELAY.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 2
 - model: xcosblocks.newblock
@@ -425,6 +438,7 @@
     block_image_path: palettes/BACKLASH.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 3
 - model: xcosblocks.newblock
@@ -439,6 +453,7 @@
     block_image_path: palettes/DEADBAND.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 3
 - model: xcosblocks.newblock
@@ -453,6 +468,7 @@
     block_image_path: palettes/HYSTHERESIS.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 3
 - model: xcosblocks.newblock
@@ -467,6 +483,7 @@
     block_image_path: palettes/QUANT_f.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 3
     - 14
@@ -482,6 +499,7 @@
     block_image_path: palettes/RATELIMITER.png
     block_width: 70
     block_height: 40
+    super_block: null
     categories:
     - 3
 - model: xcosblocks.newblock
@@ -496,6 +514,7 @@
     block_image_path: palettes/SATURATION.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 1
     - 3
@@ -511,6 +530,7 @@
     block_image_path: palettes/AUTOMAT.png
     block_width: 80
     block_height: 40
+    super_block: null
     categories:
     - 4
 - model: xcosblocks.newblock
@@ -525,6 +545,7 @@
     block_image_path: palettes/DELAY_f.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 4
 - model: xcosblocks.newblock
@@ -539,6 +560,7 @@
     block_image_path: palettes/DELAYV_f.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 3
     - 4
@@ -554,6 +576,7 @@
     block_image_path: palettes/DLR.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 4
 - model: xcosblocks.newblock
@@ -568,6 +591,7 @@
     block_image_path: palettes/DLRADAPT_f.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 4
 - model: xcosblocks.newblock
@@ -582,6 +606,7 @@
     block_image_path: palettes/DLSS.png
     block_width: 80
     block_height: 40
+    super_block: null
     categories:
     - 4
 - model: xcosblocks.newblock
@@ -596,6 +621,7 @@
     block_image_path: palettes/DOLLAR.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 4
 - model: xcosblocks.newblock
@@ -610,6 +636,7 @@
     block_image_path: palettes/DOLLAR_f.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 1
     - 4
@@ -625,6 +652,7 @@
     block_image_path: palettes/DOLLAR_m.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 4
 - model: xcosblocks.newblock
@@ -639,6 +667,7 @@
     block_image_path: palettes/REGISTER.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 4
 - model: xcosblocks.newblock
@@ -653,6 +682,7 @@
     block_image_path: palettes/SAMPHOLD_m.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 4
     - 14
@@ -668,6 +698,7 @@
     block_image_path: palettes/INTRP2BLK_f.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 5
 - model: xcosblocks.newblock
@@ -682,6 +713,7 @@
     block_image_path: palettes/INTRPLBLK_f.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 5
 - model: xcosblocks.newblock
@@ -696,6 +728,7 @@
     block_image_path: palettes/LOOKUP_f.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 5
 - model: xcosblocks.newblock
@@ -710,6 +743,7 @@
     block_image_path: palettes/ANDBLK.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 1
     - 6
@@ -725,6 +759,7 @@
     block_image_path: palettes/ANDLOG_f.png
     block_width: 60
     block_height: 60
+    super_block: null
     categories:
     - 6
 - model: xcosblocks.newblock
@@ -739,6 +774,7 @@
     block_image_path: palettes/CEVENTSCOPE.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 6
 - model: xcosblocks.newblock
@@ -753,6 +789,7 @@
     block_image_path: palettes/CLKGotoTagVisibility.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 6
 - model: xcosblocks.newblock
@@ -767,6 +804,7 @@
     block_image_path: palettes/CLKSOMV_f.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 6
 - model: xcosblocks.newblock
@@ -781,6 +819,7 @@
     block_image_path: palettes/EDGE_TRIGGER.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 6
 - model: xcosblocks.newblock
@@ -795,6 +834,7 @@
     block_image_path: palettes/END_c.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 6
     - 17
@@ -810,6 +850,7 @@
     block_image_path: palettes/ENDBLK.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 6
     - 17
@@ -825,6 +866,7 @@
     block_image_path: palettes/ESELECT_f.png
     block_width: 80
     block_height: 40
+    super_block: null
     categories:
     - 6
 - model: xcosblocks.newblock
@@ -839,6 +881,7 @@
     block_image_path: palettes/EVTDLY_c.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 6
 - model: xcosblocks.newblock
@@ -853,6 +896,7 @@
     block_image_path: palettes/EVTGEN_f.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 6
 - model: xcosblocks.newblock
@@ -867,6 +911,7 @@
     block_image_path: palettes/EVTVARDLY.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 6
 - model: xcosblocks.newblock
@@ -881,6 +926,7 @@
     block_image_path: palettes/Extract_Activation.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 6
 - model: xcosblocks.newblock
@@ -895,6 +941,7 @@
     block_image_path: palettes/freq_div.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 6
 - model: xcosblocks.newblock
@@ -909,6 +956,7 @@
     block_image_path: palettes/HALT_f.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 6
     - 17
@@ -924,6 +972,7 @@
     block_image_path: palettes/IFTHEL_f.png
     block_width: 60
     block_height: 60
+    super_block: null
     categories:
     - 6
 - model: xcosblocks.newblock
@@ -938,6 +987,7 @@
     block_image_path: palettes/M_freq.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 6
 - model: xcosblocks.newblock
@@ -952,6 +1002,7 @@
     block_image_path: palettes/MCLOCK_f.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 6
 - model: xcosblocks.newblock
@@ -966,6 +1017,7 @@
     block_image_path: palettes/MFCLCK_f.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 6
 - model: xcosblocks.newblock
@@ -980,6 +1032,7 @@
     block_image_path: palettes/VirtualCLK0.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 6
 - model: xcosblocks.newblock
@@ -994,6 +1047,7 @@
     block_image_path: palettes/ABS_VALUE.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 7
 - model: xcosblocks.newblock
@@ -1008,6 +1062,7 @@
     block_image_path: palettes/BIGSOM_f.png
     block_width: 40
     block_height: 60
+    super_block: null
     categories:
     - 1
     - 7
@@ -1023,6 +1078,7 @@
     block_image_path: palettes/COSBLK_f.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 7
 - model: xcosblocks.newblock
@@ -1037,6 +1093,7 @@
     block_image_path: palettes/EXPBLK_m.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 7
 - model: xcosblocks.newblock
@@ -1051,6 +1108,7 @@
     block_image_path: palettes/GAIN_f.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 7
 - model: xcosblocks.newblock
@@ -1065,6 +1123,7 @@
     block_image_path: palettes/GAINBLK.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 7
 - model: xcosblocks.newblock
@@ -1079,6 +1138,7 @@
     block_image_path: palettes/GAINBLK_f.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 7
 - model: xcosblocks.newblock
@@ -1093,6 +1153,7 @@
     block_image_path: palettes/INVBLK.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 7
 - model: xcosblocks.newblock
@@ -1107,6 +1168,7 @@
     block_image_path: palettes/LOGBLK_f.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 7
 - model: xcosblocks.newblock
@@ -1121,6 +1183,7 @@
     block_image_path: palettes/MAX_f.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 7
 - model: xcosblocks.newblock
@@ -1135,6 +1198,7 @@
     block_image_path: palettes/MAXMIN.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 7
 - model: xcosblocks.newblock
@@ -1149,6 +1213,7 @@
     block_image_path: palettes/MIN_f.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 7
 - model: xcosblocks.newblock
@@ -1163,6 +1228,7 @@
     block_image_path: palettes/POWBLK_f.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 7
 - model: xcosblocks.newblock
@@ -1177,6 +1243,7 @@
     block_image_path: palettes/PROD_f.png
     block_width: 20
     block_height: 20
+    super_block: null
     categories:
     - 7
 - model: xcosblocks.newblock
@@ -1191,6 +1258,7 @@
     block_image_path: palettes/PRODUCT.png
     block_width: 40
     block_height: 60
+    super_block: null
     categories:
     - 1
     - 7
@@ -1206,6 +1274,7 @@
     block_image_path: palettes/SIGNUM.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 7
 - model: xcosblocks.newblock
@@ -1220,6 +1289,7 @@
     block_image_path: palettes/SINBLK_f.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 7
 - model: xcosblocks.newblock
@@ -1234,6 +1304,7 @@
     block_image_path: palettes/SOM_f.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 7
 - model: xcosblocks.newblock
@@ -1248,6 +1319,7 @@
     block_image_path: palettes/SUM_f.png
     block_width: 20
     block_height: 20
+    super_block: null
     categories:
     - 7
 - model: xcosblocks.newblock
@@ -1262,6 +1334,7 @@
     block_image_path: palettes/SUMMATION.png
     block_width: 40
     block_height: 60
+    super_block: null
     categories:
     - 7
 - model: xcosblocks.newblock
@@ -1276,6 +1349,7 @@
     block_image_path: palettes/TANBLK_f.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 7
 - model: xcosblocks.newblock
@@ -1290,6 +1364,7 @@
     block_image_path: palettes/TrigFun.png
     block_width: 80
     block_height: 40
+    super_block: null
     categories:
     - 7
 - model: xcosblocks.newblock
@@ -1304,6 +1379,7 @@
     block_image_path: palettes/CUMSUM.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 8
 - model: xcosblocks.newblock
@@ -1318,6 +1394,7 @@
     block_image_path: palettes/EXTRACT.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 8
 - model: xcosblocks.newblock
@@ -1332,6 +1409,7 @@
     block_image_path: palettes/EXTTRI.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 8
 - model: xcosblocks.newblock
@@ -1346,6 +1424,7 @@
     block_image_path: palettes/MATBKSL.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 8
 - model: xcosblocks.newblock
@@ -1360,6 +1439,7 @@
     block_image_path: palettes/MATCATH.png
     block_width: 40
     block_height: 60
+    super_block: null
     categories:
     - 8
 - model: xcosblocks.newblock
@@ -1374,6 +1454,7 @@
     block_image_path: palettes/MATCATV.png
     block_width: 40
     block_height: 60
+    super_block: null
     categories:
     - 8
 - model: xcosblocks.newblock
@@ -1388,6 +1469,7 @@
     block_image_path: palettes/MATDET.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 8
 - model: xcosblocks.newblock
@@ -1402,6 +1484,7 @@
     block_image_path: palettes/MATDIAG.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 8
 - model: xcosblocks.newblock
@@ -1416,6 +1499,7 @@
     block_image_path: palettes/MATDIV.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 8
 - model: xcosblocks.newblock
@@ -1430,6 +1514,7 @@
     block_image_path: palettes/MATEIG.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 8
 - model: xcosblocks.newblock
@@ -1444,6 +1529,7 @@
     block_image_path: palettes/MATEXPM.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 8
 - model: xcosblocks.newblock
@@ -1458,6 +1544,7 @@
     block_image_path: palettes/MATINV.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 8
 - model: xcosblocks.newblock
@@ -1472,6 +1559,7 @@
     block_image_path: palettes/MATLU.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 8
 - model: xcosblocks.newblock
@@ -1486,6 +1574,7 @@
     block_image_path: palettes/MATMAGPHI.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 7
     - 8
@@ -1501,6 +1590,7 @@
     block_image_path: palettes/MATMUL.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 8
 - model: xcosblocks.newblock
@@ -1515,6 +1605,7 @@
     block_image_path: palettes/MATPINV.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 8
 - model: xcosblocks.newblock
@@ -1529,6 +1620,7 @@
     block_image_path: palettes/MATRESH.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 8
 - model: xcosblocks.newblock
@@ -1543,6 +1635,7 @@
     block_image_path: palettes/MATSING.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 8
 - model: xcosblocks.newblock
@@ -1557,6 +1650,7 @@
     block_image_path: palettes/MATSUM.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 8
 - model: xcosblocks.newblock
@@ -1571,6 +1665,7 @@
     block_image_path: palettes/MATTRAN.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 8
 - model: xcosblocks.newblock
@@ -1585,6 +1680,7 @@
     block_image_path: palettes/MATZCONJ.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 8
 - model: xcosblocks.newblock
@@ -1599,6 +1695,7 @@
     block_image_path: palettes/MATZREIM.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 7
     - 8
@@ -1614,6 +1711,7 @@
     block_image_path: palettes/RICC.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 8
 - model: xcosblocks.newblock
@@ -1628,6 +1726,7 @@
     block_image_path: palettes/ROOTCOEF.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 8
 - model: xcosblocks.newblock
@@ -1642,6 +1741,7 @@
     block_image_path: palettes/SQRT.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 7
     - 8
@@ -1657,6 +1757,7 @@
     block_image_path: palettes/SUBMAT.png
     block_width: 50
     block_height: 40
+    super_block: null
     categories:
     - 8
 - model: xcosblocks.newblock
@@ -1671,6 +1772,7 @@
     block_image_path: palettes/Capacitor.png
     block_width: 40
     block_height: 22
+    super_block: null
     categories:
     - 9
 - model: xcosblocks.newblock
@@ -1685,6 +1787,7 @@
     block_image_path: palettes/CCS.png
     block_width: 42
     block_height: 60
+    super_block: null
     categories:
     - 9
 - model: xcosblocks.newblock
@@ -1699,6 +1802,7 @@
     block_image_path: palettes/ConstantVoltage.png
     block_width: 30
     block_height: 22
+    super_block: null
     categories:
     - 9
 - model: xcosblocks.newblock
@@ -1713,6 +1817,7 @@
     block_image_path: palettes/CurrentSensor.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 9
 - model: xcosblocks.newblock
@@ -1727,6 +1832,7 @@
     block_image_path: palettes/CVS.png
     block_width: 42
     block_height: 60
+    super_block: null
     categories:
     - 9
 - model: xcosblocks.newblock
@@ -1741,6 +1847,7 @@
     block_image_path: palettes/Diode.png
     block_width: 40
     block_height: 20
+    super_block: null
     categories:
     - 9
 - model: xcosblocks.newblock
@@ -1755,6 +1862,7 @@
     block_image_path: palettes/Ground.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 9
 - model: xcosblocks.newblock
@@ -1769,6 +1877,7 @@
     block_image_path: palettes/Gyrator.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 9
 - model: xcosblocks.newblock
@@ -1783,6 +1892,7 @@
     block_image_path: palettes/IdealTransformer.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 9
 - model: xcosblocks.newblock
@@ -1797,6 +1907,7 @@
     block_image_path: palettes/Inductor.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 9
 - model: xcosblocks.newblock
@@ -1811,6 +1922,7 @@
     block_image_path: palettes/NMOS.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 9
 - model: xcosblocks.newblock
@@ -1825,6 +1937,7 @@
     block_image_path: palettes/NPN.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 9
 - model: xcosblocks.newblock
@@ -1839,6 +1952,7 @@
     block_image_path: palettes/OpAmp.png
     block_width: 60
     block_height: 100
+    super_block: null
     categories:
     - 9
 - model: xcosblocks.newblock
@@ -1853,6 +1967,7 @@
     block_image_path: palettes/PMOS.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 9
 - model: xcosblocks.newblock
@@ -1867,6 +1982,7 @@
     block_image_path: palettes/PNP.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 9
 - model: xcosblocks.newblock
@@ -1881,6 +1997,7 @@
     block_image_path: palettes/PotentialSensor.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 9
 - model: xcosblocks.newblock
@@ -1895,6 +2012,7 @@
     block_image_path: palettes/Resistor.png
     block_width: 40
     block_height: 20
+    super_block: null
     categories:
     - 9
 - model: xcosblocks.newblock
@@ -1909,6 +2027,7 @@
     block_image_path: palettes/SineVoltage.png
     block_width: 50
     block_height: 60
+    super_block: null
     categories:
     - 9
 - model: xcosblocks.newblock
@@ -1923,6 +2042,7 @@
     block_image_path: palettes/Switch.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 9
 - model: xcosblocks.newblock
@@ -1937,6 +2057,7 @@
     block_image_path: palettes/VariableResistor.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 9
 - model: xcosblocks.newblock
@@ -1951,6 +2072,7 @@
     block_image_path: palettes/VoltageSensor.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 9
 - model: xcosblocks.newblock
@@ -1965,6 +2087,7 @@
     block_image_path: palettes/VsourceAC.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 9
 - model: xcosblocks.newblock
@@ -1979,6 +2102,7 @@
     block_image_path: palettes/VVsourceAC.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 9
 - model: xcosblocks.newblock
@@ -1993,6 +2117,7 @@
     block_image_path: palettes/BITCLEAR.png
     block_width: 80
     block_height: 40
+    super_block: null
     categories:
     - 10
 - model: xcosblocks.newblock
@@ -2007,6 +2132,7 @@
     block_image_path: palettes/BITSET.png
     block_width: 80
     block_height: 40
+    super_block: null
     categories:
     - 10
 - model: xcosblocks.newblock
@@ -2021,6 +2147,7 @@
     block_image_path: palettes/CONVERT.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 1
     - 10
@@ -2036,6 +2163,7 @@
     block_image_path: palettes/DFLIPFLOP.png
     block_width: 40
     block_height: 60
+    super_block: null
     categories:
     - 10
 - model: xcosblocks.newblock
@@ -2050,6 +2178,7 @@
     block_image_path: palettes/DLATCH.png
     block_width: 40
     block_height: 60
+    super_block: null
     categories:
     - 10
 - model: xcosblocks.newblock
@@ -2064,6 +2193,7 @@
     block_image_path: palettes/EXTRACTBITS.png
     block_width: 80
     block_height: 40
+    super_block: null
     categories:
     - 10
 - model: xcosblocks.newblock
@@ -2078,6 +2208,7 @@
     block_image_path: palettes/INTMUL.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 10
 - model: xcosblocks.newblock
@@ -2092,6 +2223,7 @@
     block_image_path: palettes/JKFLIPFLOP.png
     block_width: 40
     block_height: 60
+    super_block: null
     categories:
     - 10
 - model: xcosblocks.newblock
@@ -2106,6 +2238,7 @@
     block_image_path: palettes/LOGIC.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 10
 - model: xcosblocks.newblock
@@ -2120,6 +2253,7 @@
     block_image_path: palettes/SHIFT.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 10
 - model: xcosblocks.newblock
@@ -2134,6 +2268,7 @@
     block_image_path: palettes/SRFLIPFLOP.png
     block_width: 40
     block_height: 60
+    super_block: null
     categories:
     - 10
 - model: xcosblocks.newblock
@@ -2148,6 +2283,7 @@
     block_image_path: palettes/GENERAL_f.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 12
 - model: xcosblocks.newblock
@@ -2162,6 +2298,7 @@
     block_image_path: palettes/NEGTOPOS_f.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 12
 - model: xcosblocks.newblock
@@ -2176,6 +2313,7 @@
     block_image_path: palettes/POSTONEG_f.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 12
 - model: xcosblocks.newblock
@@ -2190,6 +2328,7 @@
     block_image_path: palettes/ZCROSS_f.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 12
 - model: xcosblocks.newblock
@@ -2204,6 +2343,7 @@
     block_image_path: palettes/CLKFROM.png
     block_width: 40
     block_height: 20
+    super_block: null
     categories:
     - 6
     - 13
@@ -2219,6 +2359,7 @@
     block_image_path: palettes/CLKGOTO.png
     block_width: 40
     block_height: 20
+    super_block: null
     categories:
     - 6
     - 13
@@ -2234,6 +2375,7 @@
     block_image_path: palettes/DEMUX.png
     block_width: 10
     block_height: 40
+    super_block: null
     categories:
     - 1
     - 13
@@ -2249,6 +2391,7 @@
     block_image_path: palettes/DEMUX_f.png
     block_width: 10
     block_height: 40
+    super_block: null
     categories:
     - 13
 - model: xcosblocks.newblock
@@ -2263,6 +2406,7 @@
     block_image_path: palettes/EXTRACTOR.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 13
 - model: xcosblocks.newblock
@@ -2277,6 +2421,7 @@
     block_image_path: palettes/FROM.png
     block_width: 40
     block_height: 20
+    super_block: null
     categories:
     - 13
 - model: xcosblocks.newblock
@@ -2291,6 +2436,7 @@
     block_image_path: palettes/FROMMO.png
     block_width: 40
     block_height: 20
+    super_block: null
     categories:
     - 13
 - model: xcosblocks.newblock
@@ -2305,6 +2451,7 @@
     block_image_path: palettes/GOTO.png
     block_width: 40
     block_height: 20
+    super_block: null
     categories:
     - 13
 - model: xcosblocks.newblock
@@ -2319,6 +2466,7 @@
     block_image_path: palettes/GOTOMO.png
     block_width: 40
     block_height: 20
+    super_block: null
     categories:
     - 13
 - model: xcosblocks.newblock
@@ -2333,6 +2481,7 @@
     block_image_path: palettes/GotoTagVisibility.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 13
 - model: xcosblocks.newblock
@@ -2347,6 +2496,7 @@
     block_image_path: palettes/GotoTagVisibilityMO.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 13
 - model: xcosblocks.newblock
@@ -2361,6 +2511,7 @@
     block_image_path: palettes/ISELECT_m.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 13
 - model: xcosblocks.newblock
@@ -2375,6 +2526,7 @@
     block_image_path: palettes/M_SWITCH.png
     block_width: 50
     block_height: 40
+    super_block: null
     categories:
     - 13
 - model: xcosblocks.newblock
@@ -2389,6 +2541,7 @@
     block_image_path: palettes/MUX.png
     block_width: 10
     block_height: 40
+    super_block: null
     categories:
     - 1
     - 13
@@ -2404,6 +2557,7 @@
     block_image_path: palettes/MUX_f.png
     block_width: 10
     block_height: 40
+    super_block: null
     categories:
     - 13
 - model: xcosblocks.newblock
@@ -2418,6 +2572,7 @@
     block_image_path: palettes/NRMSOM_f.png
     block_width: 4
     block_height: 40
+    super_block: null
     categories:
     - 1
     - 13
@@ -2433,6 +2588,7 @@
     block_image_path: palettes/RELAY_f.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 13
 - model: xcosblocks.newblock
@@ -2447,6 +2603,7 @@
     block_image_path: palettes/SCALAR2VECTOR.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 13
 - model: xcosblocks.newblock
@@ -2461,6 +2618,7 @@
     block_image_path: palettes/SELECT_m.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 13
 - model: xcosblocks.newblock
@@ -2475,6 +2633,7 @@
     block_image_path: palettes/SELF_SWITCH.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 13
 - model: xcosblocks.newblock
@@ -2489,6 +2648,7 @@
     block_image_path: palettes/SWITCH_f.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 13
 - model: xcosblocks.newblock
@@ -2503,6 +2663,7 @@
     block_image_path: palettes/SWITCH2_m.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 1
     - 13
@@ -2518,6 +2679,7 @@
     block_image_path: palettes/CONSTRAINT_c.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 15
 - model: xcosblocks.newblock
@@ -2532,6 +2694,7 @@
     block_image_path: palettes/CONSTRAINT2_c.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 15
 - model: xcosblocks.newblock
@@ -2546,6 +2709,7 @@
     block_image_path: palettes/DIFF_f.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 15
 - model: xcosblocks.newblock
@@ -2560,6 +2724,7 @@
     block_image_path: palettes/TEXT_f.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 1
     - 16
@@ -2575,6 +2740,7 @@
     block_image_path: palettes/AFFICH_m.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 17
 - model: xcosblocks.newblock
@@ -2589,6 +2755,7 @@
     block_image_path: palettes/BARXY.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 17
 - model: xcosblocks.newblock
@@ -2603,6 +2770,7 @@
     block_image_path: palettes/CANIMXY.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 17
 - model: xcosblocks.newblock
@@ -2617,6 +2785,7 @@
     block_image_path: palettes/CANIMXY3D.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 17
 - model: xcosblocks.newblock
@@ -2631,6 +2800,7 @@
     block_image_path: palettes/CFSCOPE.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 17
 - model: xcosblocks.newblock
@@ -2645,6 +2815,7 @@
     block_image_path: palettes/CLKOUTV_f.png
     block_width: 20
     block_height: 20
+    super_block: null
     categories:
     - 6
     - 11
@@ -2661,6 +2832,7 @@
     block_image_path: palettes/CMAT3D.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 17
 - model: xcosblocks.newblock
@@ -2675,6 +2847,7 @@
     block_image_path: palettes/CMATVIEW.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 17
 - model: xcosblocks.newblock
@@ -2689,6 +2862,7 @@
     block_image_path: palettes/CMSCOPE.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 1
     - 17
@@ -2704,6 +2878,7 @@
     block_image_path: palettes/CSCOPE.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 17
 - model: xcosblocks.newblock
@@ -2718,6 +2893,7 @@
     block_image_path: palettes/CSCOPXY.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 1
     - 17
@@ -2733,6 +2909,7 @@
     block_image_path: palettes/CSCOPXY3D.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 17
 - model: xcosblocks.newblock
@@ -2747,6 +2924,7 @@
     block_image_path: palettes/OUT_f.png
     block_width: 20
     block_height: 20
+    super_block: null
     categories:
     - 1
     - 11
@@ -2763,6 +2941,7 @@
     block_image_path: palettes/OUTIMPL_f.png
     block_width: 20
     block_height: 20
+    super_block: null
     categories:
     - 11
     - 17
@@ -2778,6 +2957,7 @@
     block_image_path: palettes/TOWS_c.png
     block_width: 80
     block_height: 40
+    super_block: null
     categories:
     - 17
 - model: xcosblocks.newblock
@@ -2792,6 +2972,7 @@
     block_image_path: palettes/TRASH_f.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 17
 - model: xcosblocks.newblock
@@ -2806,6 +2987,7 @@
     block_image_path: palettes/WRITEAU_f.png
     block_width: 80
     block_height: 40
+    super_block: null
     categories:
     - 17
 - model: xcosblocks.newblock
@@ -2820,6 +3002,7 @@
     block_image_path: palettes/WRITEC_f.png
     block_width: 80
     block_height: 40
+    super_block: null
     categories:
     - 17
 - model: xcosblocks.newblock
@@ -2834,6 +3017,7 @@
     block_image_path: palettes/CLKINV_f.png
     block_width: 20
     block_height: 20
+    super_block: null
     categories:
     - 11
     - 18
@@ -2849,6 +3033,7 @@
     block_image_path: palettes/CLOCK_c.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 6
     - 18
@@ -2864,6 +3049,7 @@
     block_image_path: palettes/CONST.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 18
 - model: xcosblocks.newblock
@@ -2878,6 +3064,7 @@
     block_image_path: palettes/CONST_f.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 18
 - model: xcosblocks.newblock
@@ -2892,6 +3079,7 @@
     block_image_path: palettes/CONST_m.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 1
     - 18
@@ -2907,6 +3095,7 @@
     block_image_path: palettes/Counter.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 18
 - model: xcosblocks.newblock
@@ -2921,6 +3110,7 @@
     block_image_path: palettes/CURV_f.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 18
 - model: xcosblocks.newblock
@@ -2935,6 +3125,7 @@
     block_image_path: palettes/FROMWSB.png
     block_width: 100
     block_height: 40
+    super_block: null
     categories:
     - 18
 - model: xcosblocks.newblock
@@ -2949,6 +3140,7 @@
     block_image_path: palettes/GENSIN_f.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 18
 - model: xcosblocks.newblock
@@ -2963,6 +3155,7 @@
     block_image_path: palettes/GENSQR_f.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 18
 - model: xcosblocks.newblock
@@ -2977,6 +3170,7 @@
     block_image_path: palettes/IN_f.png
     block_width: 20
     block_height: 20
+    super_block: null
     categories:
     - 1
     - 11
@@ -2993,6 +3187,7 @@
     block_image_path: palettes/INIMPL_f.png
     block_width: 20
     block_height: 20
+    super_block: null
     categories:
     - 11
     - 18
@@ -3008,6 +3203,7 @@
     block_image_path: palettes/Modulo_Count.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 18
 - model: xcosblocks.newblock
@@ -3022,6 +3218,7 @@
     block_image_path: palettes/PULSE_SC.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 18
 - model: xcosblocks.newblock
@@ -3036,6 +3233,7 @@
     block_image_path: palettes/RAMP.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 18
 - model: xcosblocks.newblock
@@ -3050,6 +3248,7 @@
     block_image_path: palettes/RAND_m.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 18
 - model: xcosblocks.newblock
@@ -3064,6 +3263,7 @@
     block_image_path: palettes/READAU_f.png
     block_width: 100
     block_height: 40
+    super_block: null
     categories:
     - 18
 - model: xcosblocks.newblock
@@ -3078,6 +3278,7 @@
     block_image_path: palettes/READC_f.png
     block_width: 80
     block_height: 40
+    super_block: null
     categories:
     - 18
 - model: xcosblocks.newblock
@@ -3092,6 +3293,7 @@
     block_image_path: palettes/RFILE_f.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 18
 - model: xcosblocks.newblock
@@ -3106,6 +3308,7 @@
     block_image_path: palettes/SampleCLK.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 6
     - 18
@@ -3121,6 +3324,7 @@
     block_image_path: palettes/SAWTOOTH_f.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 18
 - model: xcosblocks.newblock
@@ -3135,6 +3339,7 @@
     block_image_path: palettes/Sigbuilder.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 18
 - model: xcosblocks.newblock
@@ -3149,6 +3354,7 @@
     block_image_path: palettes/STEP_FUNCTION.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 18
 - model: xcosblocks.newblock
@@ -3163,6 +3369,7 @@
     block_image_path: palettes/TIME_f.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 18
 - model: xcosblocks.newblock
@@ -3177,6 +3384,7 @@
     block_image_path: palettes/TKSCALE.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 18
 - model: xcosblocks.newblock
@@ -3191,6 +3399,7 @@
     block_image_path: palettes/Bache.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 19
 - model: xcosblocks.newblock
@@ -3205,6 +3414,7 @@
     block_image_path: palettes/Flowmeter.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 19
 - model: xcosblocks.newblock
@@ -3219,6 +3429,7 @@
     block_image_path: palettes/PerteDP.png
     block_width: 40
     block_height: 20
+    super_block: null
     categories:
     - 19
 - model: xcosblocks.newblock
@@ -3233,6 +3444,7 @@
     block_image_path: palettes/PuitsP.png
     block_width: 50
     block_height: 40
+    super_block: null
     categories:
     - 19
 - model: xcosblocks.newblock
@@ -3247,6 +3459,7 @@
     block_image_path: palettes/SourceP.png
     block_width: 50
     block_height: 40
+    super_block: null
     categories:
     - 19
 - model: xcosblocks.newblock
@@ -3261,6 +3474,7 @@
     block_image_path: palettes/VanneReglante.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 19
 - model: xcosblocks.newblock
@@ -3275,6 +3489,7 @@
     block_image_path: palettes/BOUNCE.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 20
 - model: xcosblocks.newblock
@@ -3289,6 +3504,7 @@
     block_image_path: palettes/BOUNCEXY.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 20
 - model: xcosblocks.newblock
@@ -3303,6 +3519,7 @@
     block_image_path: palettes/BPLATFORM.png
     block_width: 40
     block_height: 40
+    super_block: null
     categories:
     - 20
 - model: xcosblocks.newblock
@@ -3317,6 +3534,7 @@
     block_image_path: palettes/c_block.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 21
 - model: xcosblocks.newblock
@@ -3331,6 +3549,7 @@
     block_image_path: palettes/CBLOCK.png
     block_width: 80
     block_height: 40
+    super_block: null
     categories:
     - 21
 - model: xcosblocks.newblock
@@ -3345,6 +3564,7 @@
     block_image_path: palettes/CBLOCK4.png
     block_width: 80
     block_height: 40
+    super_block: null
     categories:
     - 21
 - model: xcosblocks.newblock
@@ -3359,6 +3579,7 @@
     block_image_path: palettes/DEBUG.png
     block_width: 160
     block_height: 40
+    super_block: null
     categories:
     - 21
 - model: xcosblocks.newblock
@@ -3373,6 +3594,7 @@
     block_image_path: palettes/EXPRESSION.png
     block_width: 100
     block_height: 40
+    super_block: null
     categories:
     - 21
 - model: xcosblocks.newblock
@@ -3387,6 +3609,7 @@
     block_image_path: palettes/fortran_block.png
     block_width: 80
     block_height: 40
+    super_block: null
     categories:
     - 21
 - model: xcosblocks.newblock
@@ -3401,6 +3624,7 @@
     block_image_path: palettes/generic_block3.png
     block_width: 80
     block_height: 40
+    super_block: null
     categories:
     - 21
 - model: xcosblocks.newblock
@@ -3415,6 +3639,7 @@
     block_image_path: palettes/MBLOCK.png
     block_width: 60
     block_height: 40
+    super_block: null
     categories:
     - 21
 - model: xcosblocks.newblock
@@ -3429,6 +3654,7 @@
     block_image_path: palettes/scifunc_block_m.png
     block_width: 80
     block_height: 40
+    super_block: null
     categories:
     - 21
 - model: xcosblocks.newblock
@@ -3443,6 +3669,59 @@
     block_image_path: palettes/SUPER_f.png
     block_width: 40
     block_height: 40
+    super_block: <mxGraphModel><root><mxCell id="4eafe707:146046df912:-7ded" appname="Xcos"
+      description="" CellType="Unknown" sourceVertex="0" targetVertex="0" tarx="0"
+      tary="0"><Object as="parameter_values"/><Object as="displayProperties"/></mxCell><mxCell
+      id="4eafe707:146046df912:-7dee" CellType="Unknown" sourceVertex="0" targetVertex="0"
+      tarx="0" tary="0"><Object as="parameter_values"/><Object as="displayProperties"/></mxCell><mxCell
+      style="CLOCK_c;flip=false;mirror=false" id="-7476484f:145f8cd2a3c:-7b7b" vertex="1"
+      connectable="0" CellType="Component" blockprefix="XCOS" explicitInputPorts="0"
+      implicitInputPorts="0" explicitOutputPorts="0" implicitOutputPorts="0" controlPorts="0"
+      commandPorts="1" simulationFunction="csuper" sourceVertex="0" targetVertex="0"
+      tarx="0" tary="0"><mxGeometry x="190.0" y="60.0" width="40.0" height="40.0"
+      as="geometry"/><Object display_parameter="" as="displayProperties"/><Object
+      p000_value="Ts" p001_value="0" as="parameter_values"/></mxCell><mxCell style="CommandPort;align=center;verticalAlign=bottom;spacing=10.0;rotation=90;flip=false;mirror=false"
+      id="1291ab5f:146046633c5:-7cca" ordering="1" vertex="1" CellType="Pin" ParentComponent="-7476484f:145f8cd2a3c:-7b7b"
+      sourceVertex="0" targetVertex="0" tarx="0" tary="0"><mxGeometry x="0.5" y="1"
+      width="8" height="8" relative="1" as="geometry"><mxPoint x="-4" as="offset"/></mxGeometry><Object
+      as="parameter_values"/><Object as="displayProperties"/></mxCell><mxCell style="CLOCK_c;flip=false;mirror=false"
+      id="4eafe707:146046df912:-7df8" vertex="1" connectable="0" CellType="Component"
+      blockprefix="XCOS" explicitInputPorts="0" implicitInputPorts="0" explicitOutputPorts="0"
+      implicitOutputPorts="0" controlPorts="0" commandPorts="1" simulationFunction="csuper"
+      sourceVertex="0" targetVertex="0" tarx="0" tary="0"><mxGeometry x="280.0" y="60.0"
+      width="40.0" height="40.0" as="geometry"/><Object display_parameter="" as="displayProperties"/><Object
+      p000_value="Ts/30" p001_value="0" as="parameter_values"/></mxCell><mxCell style="CommandPort;align=center;verticalAlign=bottom;spacing=10.0;rotation=90;flip=false;mirror=false"
+      id="6e4925f9:1460474cdcb:-7bd4" ordering="1" vertex="1" CellType="Pin" ParentComponent="4eafe707:146046df912:-7df8"
+      sourceVertex="0" targetVertex="0" tarx="0" tary="0"><mxGeometry x="0.5" y="1"
+      width="8" height="8" relative="1" as="geometry"><mxPoint x="-4" as="offset"/></mxGeometry><Object
+      as="parameter_values"/><Object as="displayProperties"/></mxCell><mxCell style="CLKOUTV_f;flip=false;mirror=false"
+      id="4eafe707:146046df912:-7dec" vertex="1" connectable="0" CellType="Component"
+      blockprefix="XCOS" explicitInputPorts="0" implicitInputPorts="0" explicitOutputPorts="0"
+      implicitOutputPorts="0" controlPorts="1" commandPorts="0" simulationFunction=""
+      sourceVertex="0" targetVertex="0" tarx="0" tary="0"><mxGeometry x="190.0" y="180.0"
+      width="40.0" height="40.0" as="geometry"/><Object display_parameter="1" as="displayProperties"/><Object
+      p000_value="1" as="parameter_values"/></mxCell><mxCell style="ControlPort;align=center;verticalAlign=top;spacing=10.0;rotation=90;flip=false;mirror=false"
+      id="4eafe707:146046df912:-7deb" ordering="1" vertex="1" CellType="Pin" ParentComponent="4eafe707:146046df912:-7dec"
+      sourceVertex="0" targetVertex="0" tarx="0" tary="0"><mxGeometry x="0.5" width="8"
+      height="8" relative="1" as="geometry"><mxPoint x="-4" y="-8" as="offset"/></mxGeometry><Object
+      as="parameter_values"/><Object as="displayProperties"/></mxCell><mxCell style="CLKOUTV_f;flip=false;mirror=false"
+      id="4eafe707:146046df912:-7de8" vertex="1" connectable="0" CellType="Component"
+      blockprefix="XCOS" explicitInputPorts="0" implicitInputPorts="0" explicitOutputPorts="0"
+      implicitOutputPorts="0" controlPorts="1" commandPorts="0" simulationFunction=""
+      sourceVertex="0" targetVertex="0" tarx="0" tary="0"><mxGeometry x="280.0" y="180.0"
+      width="40.0" height="40.0" as="geometry"/><Object display_parameter="2" as="displayProperties"/><Object
+      p000_value="2" as="parameter_values"/></mxCell><mxCell style="ControlPort;align=center;verticalAlign=top;spacing=10.0;rotation=90;flip=false;mirror=false"
+      id="4eafe707:146046df912:-7de7" ordering="1" vertex="1" CellType="Pin" ParentComponent="4eafe707:146046df912:-7de8"
+      sourceVertex="0" targetVertex="0" tarx="0" tary="0"><mxGeometry x="0.5" width="8"
+      height="8" relative="1" as="geometry"><mxPoint x="-4" y="-8" as="offset"/></mxGeometry><Object
+      as="parameter_values"/><Object as="displayProperties"/></mxCell><mxCell id="4eafe707:146046df912:-7db7"
+      edge="1" sourceVertex="1291ab5f:146046633c5:-7cca" targetVertex="4eafe707:146046df912:-7deb"
+      tarx="210.0" tary="100.0" tar2x="210.0" tar2y="180.0" CellType="Unknown"><mxGeometry
+      x="-140.0" y="20.0" as="geometry"/><Object as="parameter_values"/><Object as="displayProperties"/></mxCell><mxCell
+      id="4eafe707:146046df912:-7db5" edge="1" sourceVertex="6e4925f9:1460474cdcb:-7bd4"
+      targetVertex="4eafe707:146046df912:-7de7" tarx="300.0" tary="100.0" tar2x="300.0"
+      tar2y="180.0" CellType="Unknown"><mxGeometry x="60.0" y="20.0" as="geometry"/><Object
+      as="parameter_values"/><Object as="displayProperties"/></mxCell></root></mxGraphModel>
     categories:
     - 11
     - 21
