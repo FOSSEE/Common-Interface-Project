@@ -145,6 +145,7 @@ class NewBlockSerializer(serializers.ModelSerializer):
             'block_height',
             'newblockparameter_set',
             'newblockport_set',
+            'super_block',
         ]
 
     @staticmethod
