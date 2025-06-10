@@ -82,9 +82,9 @@ export function getPortType (cell, isSplit = false) {
   return { type1, type2 }
 }
 
-export function getCurrentDiagramXML () {
+export function getCurrentDiagramXML (model) {
   const encoder = new mxCodec()
-  const node = encoder.encode(graph.getModel())
+  const node = encoder.encode(model)
   return mxUtils.getXml(node)
 }
 
@@ -162,13 +162,18 @@ export default function loadGrid (container, sidebar, outline, setMainDiagramBac
         if (blockType === 'SUPER_f') {
           console.log("CE:", cell.SuperBlockDiagram)
           // Save current diagram
-          setMainDiagramBackup(getCurrentDiagramXML())
+
+          setMainDiagramBackup(getCurrentDiagramXML(graph.getModel()))
           setActiveSuperBlockCell(cell)
 
           //update cell.SuperBlockDiagram whenever new block is added in editor manually
           // Parse the subdiagram
-          const serializer = new XMLSerializer()
-          const subDiagramXML = serializer.serializeToString(cell.SuperBlockDiagram)
+          let subDiagramXML = ''
+          if (typeof cell.SuperBlockDiagram === 'string') {
+            subDiagramXML = cell.SuperBlockDiagram
+          } else if (cell.SuperBlockDiagram instanceof Node) {
+            subDiagramXML = new XMLSerializer().serializeToString(cell.SuperBlockDiagram)
+          }
 
           // Load subdiagram directly into canvas
           renderGalleryXML(subDiagramXML)

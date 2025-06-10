@@ -270,33 +270,33 @@ export function getRotationParameters (stylename, rotation) {
 export function getPins (portOrientation, v1) {
   let pins
   switch (portOrientation) {
-  case 'ExplicitInputPort':
-    v1.explicitInputPorts += 1
-    pins = v1.pins?.explicitInputPorts
-    break
-  case 'ImplicitInputPort':
-    v1.implicitInputPorts += 1
-    pins = v1.pins?.implicitInputPorts
-    break
-  case 'ControlPort':
-    v1.controlPorts += 1
-    pins = v1.pins?.controlPorts
-    break
-  case 'ExplicitOutputPort':
-    v1.explicitOutputPorts += 1
-    pins = v1.pins?.explicitOutputPorts
-    break
-  case 'ImplicitOutputPort':
-    v1.implicitOutputPorts += 1
-    pins = v1.pins?.implicitOutputPorts
-    break
-  case 'CommandPort':
-    v1.commandPorts += 1
-    pins = v1.pins?.commandPorts
-    break
-  default:
-    pins = null
-    break
+    case 'ExplicitInputPort':
+      v1.explicitInputPorts += 1
+      pins = v1.pins?.explicitInputPorts
+      break
+    case 'ImplicitInputPort':
+      v1.implicitInputPorts += 1
+      pins = v1.pins?.implicitInputPorts
+      break
+    case 'ControlPort':
+      v1.controlPorts += 1
+      pins = v1.pins?.controlPorts
+      break
+    case 'ExplicitOutputPort':
+      v1.explicitOutputPorts += 1
+      pins = v1.pins?.explicitOutputPorts
+      break
+    case 'ImplicitOutputPort':
+      v1.implicitOutputPorts += 1
+      pins = v1.pins?.implicitOutputPorts
+      break
+    case 'CommandPort':
+      v1.commandPorts += 1
+      pins = v1.pins?.commandPorts
+      break
+    default:
+      pins = null
+      break
   }
   return pins
 }
@@ -305,26 +305,26 @@ export function getPointXY (rotationParameters) {
   let pointX
   let pointY
   switch (rotationParameters.rotatename) {
-  case 'ExplicitInputPort':
-    pointX = -portSize
-    pointY = -portSize / 2
-    break
-  case 'ControlPort':
-    pointX = -portSize / 2
-    pointY = -portSize
-    break
-  case 'ExplicitOutputPort':
-    pointX = 0
-    pointY = -portSize / 2
-    break
-  case 'CommandPort':
-    pointX = -portSize / 2
-    pointY = 0
-    break
-  default:
-    pointX = -portSize / 2
-    pointY = -portSize / 2
-    break
+    case 'ExplicitInputPort':
+      pointX = -portSize
+      pointY = -portSize / 2
+      break
+    case 'ControlPort':
+      pointX = -portSize / 2
+      pointY = -portSize
+      break
+    case 'ExplicitOutputPort':
+      pointX = 0
+      pointY = -portSize / 2
+      break
+    case 'CommandPort':
+      pointX = -portSize / 2
+      pointY = 0
+      break
+    default:
+      pointX = -portSize / 2
+      pointY = -portSize / 2
+      break
   }
   return { pointX, pointY }
 }
@@ -332,27 +332,27 @@ export function getPointXY (rotationParameters) {
 export function getXYPos (rotationParameters, xPos, yPos) {
   const xPosOld = xPos
   switch (rotationParameters.portdirection) {
-  case PORTDIRECTIONS.L2T:
-  case PORTDIRECTIONS.T2L:
-    xPos = yPos
-    yPos = xPosOld
-    break
-  case PORTDIRECTIONS.L2R:
-    xPos = 1 - xPosOld
-    /* same yPos */
-    break
-  case PORTDIRECTIONS.L2B:
-    xPos = yPos
-    yPos = 1 - xPosOld
-    break
-  case PORTDIRECTIONS.T2R:
-    xPos = 1 - yPos
-    yPos = xPosOld
-    break
-  case PORTDIRECTIONS.T2B:
-    /* same xPos */
-    yPos = 1 - yPos
-    break
+    case PORTDIRECTIONS.L2T:
+    case PORTDIRECTIONS.T2L:
+      xPos = yPos
+      yPos = xPosOld
+      break
+    case PORTDIRECTIONS.L2R:
+      xPos = 1 - xPosOld
+      /* same yPos */
+      break
+    case PORTDIRECTIONS.L2B:
+      xPos = yPos
+      yPos = 1 - xPosOld
+      break
+    case PORTDIRECTIONS.T2R:
+      xPos = 1 - yPos
+      yPos = xPosOld
+      break
+    case PORTDIRECTIONS.T2B:
+      /* same xPos */
+      yPos = 1 - yPos
+      break
   }
   return { xPos, yPos }
 }
@@ -457,6 +457,43 @@ function parseXmlToGraph (xmlDoc, graph) {
           const SuperBlockDiagram = cell.querySelector('SuperBlockDiagram')
           if (SuperBlockDiagram !== null) {
             v1.SuperBlockDiagram = SuperBlockDiagram
+          } else {
+            SuperBlockDiagram = cellAttrs.SuperBlockDiagram?.value
+            if (SuperBlockDiagram !== null) {
+              console.log('SuperBlockDiagram2:', SuperBlockDiagram)
+              SuperBlockDiagram = '<SuperBlockDiagram as="child" background="-1" title="">' + SuperBlockDiagram + '</SuperBlockDiagram>'
+              const superblock = mxUtils.parseXml(SuperBlockDiagram)
+              const superblock2 = superblock.getElementsByTagName('SuperBlockDiagram')[0]
+              v1.SuperBlockDiagram = superblock2
+              console.log('V!:', v1)
+            }
+
+          }
+          let pins = cell.querySelector('Object[as="pins"]')
+          if (pins !== null) {
+            const portTypes = [
+              'explicitInputPorts',
+              'implicitInputPorts',
+              'controlPorts',
+              'explicitOutputPorts',
+              'implicitOutputPorts'
+            ]
+            const pinData = {}
+
+
+            portTypes.forEach(type => {
+              const arrayElement = pins.querySelector(`Array[as="${type}"]`)
+              pinData[type] = []
+
+              if (arrayElement) {
+                const mxCells = arrayElement.querySelectorAll('mxCell')
+                mxCells.forEach(mxCell => {
+                  pinData[type].push(mxCell)
+                })
+
+              }
+            })
+            v1.pins = pinData
           }
         } else if (cellAttrs.CellType?.value === 'Pin') {
           const style = cellAttrs.style.value

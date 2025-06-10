@@ -56,6 +56,7 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
   v1.controlPorts = 0
   v1.commandPorts = 0
   v1.simulationFunction = component.simulation_function
+  v1.SuperBlockDiagram = component.super_block
   v1.pins = {
     explicitInputPorts: [],
     implicitInputPorts: [],

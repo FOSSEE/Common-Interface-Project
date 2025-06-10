@@ -13,14 +13,14 @@ import SchematicToolbar from '../components/SchematicEditor/SchematicToolbar'
 import RightSidebar from '../components/SchematicEditor/RightSidebar'
 import PropertiesSidebar from '../components/SchematicEditor/PropertiesSidebar'
 import loadGrid from '../components/SchematicEditor/Helper/ComponentDrag'
-import { getCurrentDiagramXML } from '../components/SchematicEditor/Helper/ComponentDrag'
+
 import { renderGalleryXML } from '../components/SchematicEditor/Helper/ToolbarTools'
 import '../components/SchematicEditor/Helper/SchematicEditor.css'
 import { fetchDiagram, fetchSchematic } from '../redux/saveSchematicSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { styleToObject } from '../utils/GalleryUtils'
 import { changePorts } from '../components/SchematicEditor/ComponentProperties'
-import { graph } from '../components/SchematicEditor/Helper/ComponentDrag'
+import { graph, getCurrentDiagramXML } from '../components/SchematicEditor/Helper/ComponentDrag'
 import mxGraphFactory from 'mxgraph'
 const {
   mxPrintPreview,
@@ -59,26 +59,22 @@ export default function SchematicEditor (props) {
     setMobileOpen(!mobileOpen)
   }
 
+  // function getCurrentDiagramXML (model) {
+  //   const encoder = new mxCodec()
+  //   const node = encoder.encode(model)
+  //   return mxUtils.getXml(node)
+  // }
 
   function handleCloseClick () {
     if (!activeSuperBlockCell) return
 
-    const updatedXML = getCurrentDiagramXML()
-    // console.log('updatedXML::', updatedXML)
+    const updatedXML = getCurrentDiagramXML(graph.getModel())
+    console.log('updatedXML::', updatedXML)
     const xml = '<SuperBlockDiagram as="child" background="-1" title="">' + updatedXML + '</SuperBlockDiagram>'
     const updatedDOM = mxUtils.parseXml(xml)
     const updatedDOM1 = updatedDOM.getElementsByTagName('SuperBlockDiagram')[0]
     activeSuperBlockCell.SuperBlockDiagram = updatedDOM1
 
-    // Mapping block styles to port count fields
-    const portMapping = {
-      'IN_f': 'explicitInputPorts',
-      'INIMPL_f': 'implicitInputPorts',
-      'CLKINV_f': 'commandPorts',
-      'OUT_f': 'explicitOutputPorts',
-      'OUTIMPL_f': 'implicitOutputPorts',
-      'CLKOUTV_f': 'controlPorts'
-    }
 
     const xpath = "/SuperBlockDiagram/mxGraphModel/root/mxCell[@style]"
     const xpathResult = document.evaluate(
@@ -99,7 +95,6 @@ export default function SchematicEditor (props) {
     allCells.forEach(cell => {
       console.log("CELL1", cell)
       const cellAttrs = cell.attributes
-      console.log('cellAttrs:', cellAttrs)
       const style = cellAttrs.style.value
       const defaultStyle = styleToObject(style).default
       console.log("CELL2", defaultStyle)
@@ -110,19 +105,18 @@ export default function SchematicEditor (props) {
 
     console.log('Style counts:', styleCounts)
 
-    // Object.entries(styleCounts).forEach(([blockStyle, count]) => {
-    //   const mapping = portMapping[blockStyle]
-    //   console.log('mapping:', mapping)
-    //   if (mapping) {
-    //     activeSuperBlockCell[mapping] = count
-    //   }
-
-    // })
     console.log('activeSuperBlockCell1:', activeSuperBlockCell)
 
-    if (activeSuperBlockCell) {
+    const maindiagram = mainDiagramBackup
+    console.log('main:', maindiagram)
+    renderGalleryXML(maindiagram)
+    console.log('after render main:', graph.getModel(), activeSuperBlockCell.id)
+
+    if (graph.getModel().getCell(activeSuperBlockCell.id) !== null) {
+      const blkcell = graph.getModel().getCell(activeSuperBlockCell.id)
+      console.log('bkcell:', blkcell)
       const refreshDisplay = changePorts(
-        activeSuperBlockCell,
+        blkcell,
         styleCounts['OUT_f'] || 0,
         styleCounts['OUTIMPL_f'] || 0,
         styleCounts['CLKOUTV_f'] || 0,
@@ -133,34 +127,13 @@ export default function SchematicEditor (props) {
       )
 
       console.log('blockElem:', activeSuperBlockCell, refreshDisplay)
-      if (refreshDisplay) {
-        graph.refresh()
-      }
 
-      // Remove existing <SuperBlockDiagram> child if present
-      const existing = activeSuperBlockCell.getElementsByTagName?.('SuperBlockDiagram')?.[0]
-      if (existing && existing.parentNode) {
-        existing.parentNode.removeChild(existing)
-      }
-      if (existing) {
-        activeSuperBlockCell.removeChild(existing)
-      }
 
-      // Create and append the new SuperBlockDiagram element
-      const newDiagramElement = updatedDOM.documentElement // this is <SuperBlockDiagram>
-      const importedElement = mainDOM.importNode(newDiagramElement, true)
-      activeSuperBlockCell.appendChild(importedElement)
+
+      // Hide the close button
+      const closeBtn = document.getElementById('closeButton')
+      if (closeBtn) closeBtn.style.display = 'none'
     }
-
-    // Update the XML string and reflect it
-    const updatedMainXML = new XMLSerializer().serializeToString(mainDOM)
-    setMainDiagramBackup(updatedMainXML)
-    console.log('updatedMainXML:', updatedMainXML)
-    renderGalleryXML(updatedMainXML)
-
-    // Hide the close button
-    const closeBtn = document.getElementById('closeButton')
-    if (closeBtn) closeBtn.style.display = 'none'
   }
 
 
