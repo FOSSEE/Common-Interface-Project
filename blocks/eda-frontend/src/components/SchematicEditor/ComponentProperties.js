@@ -23,7 +23,7 @@ function getXY (portOrientation, offsetPorts, newTotalPorts, i, block) {
   switch (portOrientation) {
   case 'ExplicitInputPort':
     xPos = 0
-    yPos = 1 - (2 * i + 1) / (2 * newTotalPorts)
+    yPos = (2 * i + 1) / (2 * newTotalPorts)
     pointX = -portSize
     pointY = -portSize / 2
     ports = 'explicitInputPorts'
@@ -31,7 +31,7 @@ function getXY (portOrientation, offsetPorts, newTotalPorts, i, block) {
     break
   case 'ImplicitInputPort':
     xPos = 0
-    yPos = 1 - (2 * (offsetPorts + i) + 1) / (2 * newTotalPorts)
+    yPos = (2 * (offsetPorts + i) + 1) / (2 * newTotalPorts)
     pointX = -portSize
     pointY = -portSize / 2
     ports = 'implicitInputPorts'
@@ -47,7 +47,7 @@ function getXY (portOrientation, offsetPorts, newTotalPorts, i, block) {
     break
   case 'ExplicitOutputPort':
     xPos = 1
-    yPos = 1 - (2 * i + 1) / (2 * newTotalPorts)
+    yPos = (2 * i + 1) / (2 * newTotalPorts)
     pointX = 0
     pointY = -portSize / 2
     ports = 'explicitOutputPorts'
@@ -55,7 +55,7 @@ function getXY (portOrientation, offsetPorts, newTotalPorts, i, block) {
     break
   case 'ImplicitOutputPort':
     xPos = 1
-    yPos = 1 - (2 * (offsetPorts + i) + 1) / (2 * newTotalPorts)
+    yPos = (2 * (offsetPorts + i) + 1) / (2 * newTotalPorts)
     pointX = 0
     pointY = -portSize / 2
     ports = 'implicitOutputPorts'
@@ -85,8 +85,10 @@ function adjustPorts (newPorts, offsetPorts, newTotalPorts, oldPorts, block, por
   for (let i = 0; i < Math.min(newPorts, oldPorts); i++) {
     console.log('moving port', i)
     const { xPos, yPos, pins } = getXY(portOrientation, offsetPorts, newTotalPorts, i, block)
-    pins[i].geometry.x = xPos
-    pins[i].geometry.y = yPos
+    const geometry = pins[i].geometry.clone()
+    geometry.x = xPos
+    geometry.y = yPos
+    graph.getModel().setGeometry(pins[i], geometry)
   }
   for (let i = oldPorts; i < newPorts; i++) {
     console.log('adding port', i)
