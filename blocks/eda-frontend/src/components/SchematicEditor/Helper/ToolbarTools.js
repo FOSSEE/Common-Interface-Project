@@ -446,6 +446,14 @@ function parseXmlToGraph (xmlDoc, graph) {
           v1.controlPorts = 0
           v1.commandPorts = 0
           v1.simulationFunction = cellAttrs.simulationFunction?.value
+          v1.pins = {
+            explicitInputPorts: [],
+            implicitInputPorts: [],
+            controlPorts: [],
+            explicitOutputPorts: [],
+            implicitOutputPorts: [],
+            commandPorts: []
+          }
           const SuperBlockDiagram = cell.querySelector('SuperBlockDiagram')
           if (SuperBlockDiagram !== null) {
             v1.SuperBlockDiagram = SuperBlockDiagram
@@ -487,7 +495,7 @@ function parseXmlToGraph (xmlDoc, graph) {
             console.log('rotation:', styleObject, rotation, xPos, yPos, portSize, rotationParameters)
           }
 
-          getPins(stylename, v1)
+          const pins = getPins(stylename, v1)
 
           const pointXY = getPointXY(rotationParameters)
           const pointX = pointXY.pointX
@@ -521,6 +529,9 @@ function parseXmlToGraph (xmlDoc, graph) {
 
           vp.ordering = ordering
           vp.ParentComponent = v1.id
+          if (pins != null) {
+            pins.push(vp)
+          }
         } else if (cellAttrs.edge) { // is edge
           const edgeId = cellAttrs.id.value
 

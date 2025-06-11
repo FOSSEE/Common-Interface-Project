@@ -14,6 +14,7 @@
 
   <xsl:key name="k-cell" match="mxCell" use="@id" />
 
+  <!-- templates {{{2 -->
   <xsl:template name="get-port">
     <xsl:param name="style" />
 
@@ -91,8 +92,9 @@
       </xsl:when>
     </xsl:choose>
   </xsl:template>
+  <!-- }}}2 -->
 
-  <!-- sourcePoint {{{2 -->
+  <!-- sourcePoint {{{3 -->
   <xsl:template match="mxPoint[@as='sourcePoint']">
     <xsl:copy>
       <xsl:apply-templates select="@*" />
@@ -202,9 +204,9 @@
       <xsl:apply-templates select="node()" />
     </xsl:copy>
   </xsl:template>
-  <!-- }}}2 -->
+  <!-- }}}3 -->
 
-  <!-- targetpoint {{{3 -->
+  <!-- targetpoint {{{4 -->
   <xsl:template match="mxPoint[@as='targetPoint']">
     <xsl:copy>
       <xsl:apply-templates select="@*" />
@@ -314,9 +316,9 @@
       <xsl:apply-templates select="node()" />
     </xsl:copy>
   </xsl:template>
-  <!-- }}}3 -->
+  <!-- }}}4 -->
 
-  <!-- mxcell tarx & tary & tar2x & tar2y {{{4 -->
+  <!-- mxcell tarx & tary & tar2x & tar2y {{{5 -->
   <xsl:template match="mxCell[@edge='1']">
     <xsl:copy>
       <xsl:apply-templates select="@*" />
@@ -515,6 +517,6 @@
       <xsl:apply-templates select="node()" />
     </xsl:copy>
   </xsl:template>
-  <!-- }}}4 -->
+  <!-- }}}5 -->
 
 </xsl:stylesheet>
