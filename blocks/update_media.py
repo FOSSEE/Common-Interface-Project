@@ -69,6 +69,11 @@ def join_and_copy_images(db_path, statesave_table, gallery_table):
 
         print("All image copy operations completed.")
 
+        sql = f"DELETE FROM {statesave_table} WHERE description IN ( SELECT description FROM {gallery_table} );"
+        cursor.execute(sql)
+        print(f"Rows deleted: {cursor.rowcount}")
+        conn.commit()
+
     except sqlite3.Error as e:
         print(f"An error occurred while querying the database: {e}")
 
