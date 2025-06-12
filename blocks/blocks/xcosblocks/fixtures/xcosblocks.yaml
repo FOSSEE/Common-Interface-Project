@@ -3674,23 +3674,23 @@
       tary="0"><Object as="parameter_values"/><Object as="displayProperties"/></mxCell><mxCell
       id="-5b191802:19762f74f03:-7ff6" CellType="Unknown" sourceVertex="0" targetVertex="0"
       tarx="0" tary="0"><Object as="parameter_values"/><Object as="displayProperties"/></mxCell><mxCell
-      style="" id="-5b191802:19762f74f01:-7ff3" vertex="1" connectable="0" CellType="Component"
+      style="IN_f" id="-5b191802:19762f74f01:-7ff3" vertex="1" connectable="0" CellType="Component"
       blockprefix="XCOS" explicitInputPorts="0" implicitInputPorts="0" explicitOutputPorts="1"
       implicitOutputPorts="0" controlPorts="0" commandPorts="0" simulationFunction="input"
       sourceVertex="0" targetVertex="0" tarx="0" tary="0"><mxGeometry x="40.0" y="40.0"
       width="20.0" height="20.0" as="geometry"/><Object display_parameter="1" as="displayProperties"/><Object
-      p000_value="1" as="parameter_values"/></mxCell><mxCell style="" id="-5b191802:19762f74f01:-7ff2"
-      ordering="1" vertex="1" CellType="Pin" ParentComponent="-5b191802:19762f74f01:-7ff3"
+      p000_value="1" as="parameter_values"/></mxCell><mxCell style="ExplicitOutputPort"
+      id="-5b191802:19762f74f01:-7ff2" ordering="1" vertex="1" CellType="Pin" ParentComponent="-5b191802:19762f74f01:-7ff3"
       sourceVertex="0" targetVertex="0" tarx="0" tary="0"><mxGeometry x="1" y="0.5"
       width="8" height="8" relative="1" as="geometry"><mxPoint y="-4" as="offset"/></mxGeometry><Object
-      as="parameter_values"/><Object as="displayProperties"/></mxCell><mxCell style=""
+      as="parameter_values"/><Object as="displayProperties"/></mxCell><mxCell style="OUT_f"
       id="-5b191802:19762f74f01:-7ff1" vertex="1" connectable="0" CellType="Component"
       blockprefix="XCOS" explicitInputPorts="1" implicitInputPorts="0" explicitOutputPorts="0"
       implicitOutputPorts="0" controlPorts="0" commandPorts="0" simulationFunction="output"
       sourceVertex="0" targetVertex="0" tarx="0" tary="0"><mxGeometry x="240.0" y="40.0"
       width="20.0" height="20.0" as="geometry"/><Object display_parameter="1" as="displayProperties"/><Object
-      p000_value="1" as="parameter_values"/></mxCell><mxCell style="" id="-5b191802:19762f74f01:-7ff0"
-      ordering="1" vertex="1" CellType="Pin" ParentComponent="-5b191802:19762f74f01:-7ff1"
+      p000_value="1" as="parameter_values"/></mxCell><mxCell style="ExplicitInputPort"
+      id="-5b191802:19762f74f01:-7ff0" ordering="1" vertex="1" CellType="Pin" ParentComponent="-5b191802:19762f74f01:-7ff1"
       sourceVertex="0" targetVertex="0" tarx="0" tary="0"><mxGeometry y="0.5" width="8"
       height="8" relative="1" as="geometry"><mxPoint x="-8" y="-4" as="offset"/></mxGeometry><Object
       as="parameter_values"/><Object as="displayProperties"/></mxCell></root></mxGraphModel>
