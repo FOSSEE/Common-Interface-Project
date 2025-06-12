@@ -13,11 +13,14 @@ import SchematicToolbar from '../components/SchematicEditor/SchematicToolbar'
 import RightSidebar from '../components/SchematicEditor/RightSidebar'
 import PropertiesSidebar from '../components/SchematicEditor/PropertiesSidebar'
 import loadGrid from '../components/SchematicEditor/Helper/ComponentDrag'
-import { getCurrentDiagramXML } from '../components/SchematicEditor/Helper/ComponentDrag'
-import { renderGalleryXML } from '../components/SchematicEditor/Helper/ToolbarTools'
+
+import { renderGalleryXML, getSuperblockdiagram } from '../components/SchematicEditor/Helper/ToolbarTools'
 import '../components/SchematicEditor/Helper/SchematicEditor.css'
 import { fetchDiagram, fetchSchematic } from '../redux/saveSchematicSlice'
 import { useDispatch, useSelector } from 'react-redux'
+import { styleToObject } from '../utils/GalleryUtils'
+import { changePorts } from '../components/SchematicEditor/ComponentProperties'
+import { graph, getCurrentDiagramXML } from '../components/SchematicEditor/Helper/ComponentDrag'
 
 const useStyles = makeStyles((_theme) => ({
   root: {
@@ -45,36 +48,64 @@ export default function SchematicEditor (props) {
     setMobileOpen(!mobileOpen)
   }
 
-
   function handleCloseClick () {
     if (!activeSuperBlockCell) return
 
-    const updatedXML = getCurrentDiagramXML()
-    const updatedDOM = new DOMParser().parseFromString(updatedXML, 'text/xml')
+    const updatedXML = getCurrentDiagramXML(graph.getModel())
+    console.log('updatedXML::', typeof updatedXML, updatedXML)
+    const updatedDOM1 = getSuperblockdiagram(updatedXML)
+    console.log('updatedDOM1:', typeof updatedDOM1, updatedDOM1)
 
-    activeSuperBlockCell.SuperBlockDiagram = updatedDOM.documentElement
+    const xpath = "/SuperBlockDiagram/mxGraphModel/root/mxCell[@style]"
+    const xpathResult = document.evaluate(
+      xpath,
+      updatedDOM1,
+      null,
+      XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
+      null
+    )
 
-    const superBlockID = activeSuperBlockCell.id
-    const mainDOM = new DOMParser().parseFromString(mainDiagramBackup, 'text/xml')
-    const blockElem = mainDOM.querySelector(`mxCell[id="${superBlockID}"]`)
-
-    if (blockElem) {
-      const existing = blockElem.querySelector('SuperBlockDiagram')
-      if (existing) existing.remove()
-
-      const newElem = mainDOM.importNode(updatedDOM.documentElement, true)
-      const wrapper = mainDOM.createElement('SuperBlockDiagram')
-      wrapper.appendChild(newElem)
-      blockElem.appendChild(wrapper)
+    const allCells = []
+    for (let i = 0; i < xpathResult.snapshotLength; i++) {
+      allCells.push(xpathResult.snapshotItem(i))
     }
 
-    const updatedMainXML = new XMLSerializer().serializeToString(mainDOM)
-    setMainDiagramBackup(updatedMainXML)
-    renderGalleryXML(updatedMainXML)
+    const styleCounts = {}
 
-    // Hide the close button
-    const closeBtn = document.getElementById('closeButton')
-    if (closeBtn) closeBtn.style.display = 'none'
+    allCells.forEach(cell => {
+      const cellAttrs = cell.attributes
+      const style = cellAttrs.style.value
+      const defaultStyle = styleToObject(style).default
+      styleCounts[defaultStyle] = (styleCounts[defaultStyle] || 0) + 1
+    })
+    console.log('Style counts:', styleCounts)
+
+    const maindiagram = mainDiagramBackup
+    renderGalleryXML(maindiagram)
+    const blkcell = graph.getModel().getCell(activeSuperBlockCell.id)
+    if (blkcell !== null) {
+      blkcell.SuperBlockDiagram = updatedDOM1
+      console.log('bkcell:', blkcell)
+      const refreshDisplay = changePorts(
+        blkcell,
+        styleCounts['OUT_f'] || 0,
+        styleCounts['OUTIMPL_f'] || 0,
+        styleCounts['CLKOUTV_f'] || 0,
+        styleCounts['IN_f'] || 0,
+        styleCounts['INIMPL_f'] || 0,
+        styleCounts['CLKINV_f'] || 0,
+        false
+      )
+      if (refreshDisplay) {
+        graph.refresh()
+      }
+
+      console.log('blockElem:', refreshDisplay, blkcell)
+
+      // Hide the close button
+      const closeBtn = document.getElementById('closeButton')
+      if (closeBtn) closeBtn.style.display = 'none'
+    }
   }
 
 

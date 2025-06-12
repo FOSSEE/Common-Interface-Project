@@ -82,9 +82,9 @@ export function getPortType (cell, isSplit = false) {
   return { type1, type2 }
 }
 
-export function getCurrentDiagramXML () {
+export function getCurrentDiagramXML (model) {
   const encoder = new mxCodec()
-  const node = encoder.encode(graph.getModel())
+  const node = encoder.encode(model)
   return mxUtils.getXml(node)
 }
 
@@ -155,21 +155,29 @@ export default function loadGrid (container, sidebar, outline, setMainDiagramBac
 
     graph.addListener(mxEvent.DOUBLE_CLICK, function (sender, evt) {
       const cell = evt.getProperty('cell')
+      console.log("cell1:", cell)
 
       if (cell !== undefined && cell.CellType === 'Component') {
         const blockType = styleToObject(cell.style).default  // Extract block type like 'SUPER_f'
 
         if (blockType === 'SUPER_f') {
+          console.log("CE:", typeof cell.SuperBlockDiagram, cell.SuperBlockDiagram)
           // Save current diagram
-          setMainDiagramBackup(getCurrentDiagramXML())
+
+          setMainDiagramBackup(getCurrentDiagramXML(graph.getModel()))
           setActiveSuperBlockCell(cell)
 
           //update cell.SuperBlockDiagram whenever new block is added in editor manually
           // Parse the subdiagram
-          const serializer = new XMLSerializer()
-          const subDiagramXML = serializer.serializeToString(cell.SuperBlockDiagram)
+          let subDiagramXML = ''
+          if (typeof cell.SuperBlockDiagram === 'string') {
+            subDiagramXML = cell.SuperBlockDiagram
+          } else if (cell.SuperBlockDiagram instanceof Node) {
+            subDiagramXML = new XMLSerializer().serializeToString(cell.SuperBlockDiagram)
+          }
 
           // Load subdiagram directly into canvas
+          console.log('subDiagramXML:', subDiagramXML)
           renderGalleryXML(subDiagramXML)
 
           // Show close button
@@ -310,17 +318,17 @@ export default function loadGrid (container, sidebar, outline, setMainDiagramBac
           const styleObject = styleToObject(source.style)
           let style = 'Link'
           switch (styleObject.default) {
-          case 'ExplicitOutputPort': case 'ExplicitInputPort':
-            style = 'ExplicitLink'
-            break
+            case 'ExplicitOutputPort': case 'ExplicitInputPort':
+              style = 'ExplicitLink'
+              break
 
-          case 'ImplicitOutputPort': case 'ImplicitInputPort':
-            style = 'ImplicitLink'
-            break
+            case 'ImplicitOutputPort': case 'ImplicitInputPort':
+              style = 'ImplicitLink'
+              break
 
-          case 'CommandPort': case 'ControlPort':
-            style = 'CommandControlLink'
-            break
+            case 'CommandPort': case 'ControlPort':
+              style = 'CommandControlLink'
+              break
           }
           text = style + '\n' +
             'UID: ' + cell.id + '\n' +
