@@ -56,7 +56,7 @@ export default function SchematicEditor (props) {
     const updatedDOM1 = getSuperblockdiagram(updatedXML)
     console.log('updatedDOM1:', typeof updatedDOM1, updatedDOM1)
 
-    const xpath = "/SuperBlockDiagram/mxGraphModel/root/mxCell[@style]"
+    const xpath = '/SuperBlockDiagram/mxGraphModel/root/mxCell[@style]'
     const xpathResult = document.evaluate(
       xpath,
       updatedDOM1,

@@ -6,8 +6,7 @@ import mxGraphFactory from 'mxgraph'
 import { getRotationParameters, getPins, getPointXY, getXYPos, getSuperblockdiagram } from './ToolbarTools'
 
 const {
-  mxPoint,
-  mxUtils
+  mxPoint
 } = new mxGraphFactory()
 
 // we need to divide the svg width and height by the same number in order to maintain the aspect ratio.
