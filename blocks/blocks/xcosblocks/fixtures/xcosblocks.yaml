@@ -3669,36 +3669,31 @@
     block_image_path: palettes/SUPER_f.png
     block_width: 40
     block_height: 40
-    super_block: <mxGraphModel as="model"><root><mxCell id="-5b191802:19762f74f02:-7ff6"/><mxCell
-      id="-5b191802:19762f74f03:-7ff6" parent="-5b191802:19762f74f02:-7ff6"/><ExplicitInBlock
-      id="-5b191802:19762f74f01:-7ff3" parent="-5b191802:19762f74f03:-7ff6" interfaceFunctionName="IN_f"
-      blockType="c" dependsOnU="0" dependsOnT="0" simulationFunctionName="input" simulationFunctionType="DEFAULT"
-      style=""><ScilabString as="exprs" height="1" width="1"><data line="0" column="0"
-      value="1"/></ScilabString><ScilabDouble as="realParameters" height="0" width="0"/><ScilabInteger
-      as="integerParameters" height="1" width="1" intPrecision="sci_int32"><data line="0"
-      column="0" value="1"/></ScilabInteger><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabInteger
-      as="nbZerosCrossing" height="1" width="1" intPrecision="sci_int32"><data line="0"
-      column="0" value="0"/></ScilabInteger><ScilabInteger as="nmode" height="1" width="1"
-      intPrecision="sci_int32"><data line="0" column="0" value="0"/></ScilabInteger><ScilabDouble
-      as="state" height="0" width="0"/><ScilabDouble as="dState" height="0" width="0"/><Array
-      as="oDState" scilabClass="ScilabList"/><Array as="equations" scilabClass="ScilabList"/><mxGeometry
-      as="geometry" x="40.0" y="40.0" width="20.0" height="20.0"/></ExplicitInBlock><ExplicitOutputPort
-      id="-5b191802:19762f74f01:-7ff2" parent="-5b191802:19762f74f01:-7ff3" ordering="1"
-      initialState="0.0" style="" value=""/><ExplicitOutBlock id="-5b191802:19762f74f01:-7ff1"
-      parent="-5b191802:19762f74f03:-7ff6" interfaceFunctionName="OUT_f" blockType="c"
-      dependsOnU="0" dependsOnT="0" simulationFunctionName="output" simulationFunctionType="DEFAULT"
-      style=""><ScilabString as="exprs" height="1" width="1"><data line="0" column="0"
-      value="1"/></ScilabString><ScilabDouble as="realParameters" height="0" width="0"/><ScilabInteger
-      as="integerParameters" height="1" width="1" intPrecision="sci_int32"><data line="0"
-      column="0" value="1"/></ScilabInteger><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabInteger
-      as="nbZerosCrossing" height="1" width="1" intPrecision="sci_int32"><data line="0"
-      column="0" value="0"/></ScilabInteger><ScilabInteger as="nmode" height="1" width="1"
-      intPrecision="sci_int32"><data line="0" column="0" value="0"/></ScilabInteger><ScilabDouble
-      as="state" height="0" width="0"/><ScilabDouble as="dState" height="0" width="0"/><Array
-      as="oDState" scilabClass="ScilabList"/><Array as="equations" scilabClass="ScilabList"/><mxGeometry
-      as="geometry" x="240.0" y="40.0" width="20.0" height="20.0"/></ExplicitOutBlock><ExplicitInputPort
-      id="-5b191802:19762f74f01:-7ff0" parent="-5b191802:19762f74f01:-7ff1" ordering="1"
-      initialState="0.0" style="" value=""/></root></mxGraphModel>
+    super_block: <mxGraphModel><root><mxCell id="-5b191802:19762f74f02:-7ff6" appname="Xcos"
+      description="" CellType="Unknown" sourceVertex="0" targetVertex="0" tarx="0"
+      tary="0"><Object as="parameter_values"/><Object as="displayProperties"/></mxCell><mxCell
+      id="-5b191802:19762f74f03:-7ff6" CellType="Unknown" sourceVertex="0" targetVertex="0"
+      tarx="0" tary="0"><Object as="parameter_values"/><Object as="displayProperties"/></mxCell><mxCell
+      style="" id="-5b191802:19762f74f01:-7ff3" vertex="1" connectable="0" CellType="Component"
+      blockprefix="XCOS" explicitInputPorts="0" implicitInputPorts="0" explicitOutputPorts="1"
+      implicitOutputPorts="0" controlPorts="0" commandPorts="0" simulationFunction="input"
+      sourceVertex="0" targetVertex="0" tarx="0" tary="0"><mxGeometry x="40.0" y="40.0"
+      width="20.0" height="20.0" as="geometry"/><Object display_parameter="1" as="displayProperties"/><Object
+      p000_value="1" as="parameter_values"/></mxCell><mxCell style="" id="-5b191802:19762f74f01:-7ff2"
+      ordering="1" vertex="1" CellType="Pin" ParentComponent="-5b191802:19762f74f01:-7ff3"
+      sourceVertex="0" targetVertex="0" tarx="0" tary="0"><mxGeometry x="1" y="0.5"
+      width="8" height="8" relative="1" as="geometry"><mxPoint y="-4" as="offset"/></mxGeometry><Object
+      as="parameter_values"/><Object as="displayProperties"/></mxCell><mxCell style=""
+      id="-5b191802:19762f74f01:-7ff1" vertex="1" connectable="0" CellType="Component"
+      blockprefix="XCOS" explicitInputPorts="1" implicitInputPorts="0" explicitOutputPorts="0"
+      implicitOutputPorts="0" controlPorts="0" commandPorts="0" simulationFunction="output"
+      sourceVertex="0" targetVertex="0" tarx="0" tary="0"><mxGeometry x="240.0" y="40.0"
+      width="20.0" height="20.0" as="geometry"/><Object display_parameter="1" as="displayProperties"/><Object
+      p000_value="1" as="parameter_values"/></mxCell><mxCell style="" id="-5b191802:19762f74f01:-7ff0"
+      ordering="1" vertex="1" CellType="Pin" ParentComponent="-5b191802:19762f74f01:-7ff1"
+      sourceVertex="0" targetVertex="0" tarx="0" tary="0"><mxGeometry y="0.5" width="8"
+      height="8" relative="1" as="geometry"><mxPoint x="-8" y="-4" as="offset"/></mxGeometry><Object
+      as="parameter_values"/><Object as="displayProperties"/></mxCell></root></mxGraphModel>
     categories:
     - 11
     - 21
