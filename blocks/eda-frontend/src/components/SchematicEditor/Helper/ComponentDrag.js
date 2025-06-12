@@ -102,7 +102,7 @@ function getXY (cell) {
   return [x, y]
 }
 
-export default function loadGrid (container, sidebar, outline, setMainDiagramBackup, setActiveSuperBlockCell) {
+export default function LoadGrid (container, sidebar, outline, setMainDiagramBackup, setActiveCellId) {
   // Checks if the browser is supported
   if (!mxClient.isBrowserSupported()) {
     // Displays an error message if the browser is not supported.
@@ -163,7 +163,7 @@ export default function loadGrid (container, sidebar, outline, setMainDiagramBac
           // Save current diagram
 
           setMainDiagramBackup(getCurrentDiagramXML(graph.getModel()))
-          setActiveSuperBlockCell(cell)
+          setActiveCellId(cell.id)
 
           //update cell.SuperBlockDiagram whenever new block is added in editor manually
           // Parse the subdiagram

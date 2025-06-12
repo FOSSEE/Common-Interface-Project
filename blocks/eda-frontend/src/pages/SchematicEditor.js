@@ -12,9 +12,9 @@ import LayoutMain from '../components/Shared/LayoutMain'
 import SchematicToolbar from '../components/SchematicEditor/SchematicToolbar'
 import RightSidebar from '../components/SchematicEditor/RightSidebar'
 import PropertiesSidebar from '../components/SchematicEditor/PropertiesSidebar'
-import loadGrid from '../components/SchematicEditor/Helper/ComponentDrag'
+import LoadGrid from '../components/SchematicEditor/Helper/ComponentDrag'
 
-import { renderGalleryXML, getSuperblockdiagram } from '../components/SchematicEditor/Helper/ToolbarTools'
+import { renderGalleryXML, getSuperBlockDiagram } from '../components/SchematicEditor/Helper/ToolbarTools'
 import '../components/SchematicEditor/Helper/SchematicEditor.css'
 import { fetchDiagram, fetchSchematic } from '../redux/saveSchematicSlice'
 import { useDispatch, useSelector } from 'react-redux'
@@ -42,24 +42,22 @@ export default function SchematicEditor (props) {
   const isLoading = useSelector(state => state.saveSchematic.isLoading)
   const xmlData = useSelector(state => state.saveSchematic.xmlData)
   const [mainDiagramBackup, setMainDiagramBackup] = useState('')
-  const [activeSuperBlockCell, setActiveSuperBlockCell] = useState(null)
+  const [activeCellId, setActiveCellId] = useState(null)
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
   }
 
   function handleCloseClick () {
-    if (!activeSuperBlockCell) return
+    if (!activeCellId) return
 
     const updatedXML = getCurrentDiagramXML(graph.getModel())
-    console.log('updatedXML::', typeof updatedXML, updatedXML)
-    const updatedDOM1 = getSuperblockdiagram(updatedXML)
-    console.log('updatedDOM1:', typeof updatedDOM1, updatedDOM1)
+    const superBlockDiagram = getSuperBlockDiagram(updatedXML)
 
     const xpath = '/SuperBlockDiagram/mxGraphModel/root/mxCell[@style]'
     const xpathResult = document.evaluate(
       xpath,
-      updatedDOM1,
+      superBlockDiagram,
       null,
       XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
       null
@@ -78,16 +76,14 @@ export default function SchematicEditor (props) {
       const defaultStyle = styleToObject(style).default
       styleCounts[defaultStyle] = (styleCounts[defaultStyle] || 0) + 1
     })
-    console.log('Style counts:', styleCounts)
 
     const maindiagram = mainDiagramBackup
     renderGalleryXML(maindiagram)
-    const blkcell = graph.getModel().getCell(activeSuperBlockCell.id)
-    if (blkcell !== null) {
-      blkcell.SuperBlockDiagram = updatedDOM1
-      console.log('bkcell:', blkcell)
+    const activeCell = graph.getModel().getCell(activeCellId)
+    if (activeCell !== null) {
+      activeCell.SuperBlockDiagram = superBlockDiagram
       const refreshDisplay = changePorts(
-        blkcell,
+        activeCell,
         styleCounts['OUT_f'] || 0,
         styleCounts['OUTIMPL_f'] || 0,
         styleCounts['CLKOUTV_f'] || 0,
@@ -100,12 +96,11 @@ export default function SchematicEditor (props) {
         graph.refresh()
       }
 
-      console.log('blockElem:', refreshDisplay, blkcell)
-
       // Hide the close button
       const closeBtn = document.getElementById('closeButton')
       if (closeBtn) closeBtn.style.display = 'none'
     }
+    setActiveCellId(null)
   }
 
 
@@ -120,7 +115,7 @@ export default function SchematicEditor (props) {
     const container = gridRef.current
     const sidebar = compRef.current
     const outline = outlineRef.current
-    loadGrid(container, sidebar, outline, setMainDiagramBackup, setActiveSuperBlockCell)
+    LoadGrid(container, sidebar, outline, setMainDiagramBackup, setActiveCellId)
 
     if (props.location.search !== '') {
       const query = new URLSearchParams(props.location.search)

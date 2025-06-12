@@ -357,7 +357,7 @@ export function getXYPos (rotationParameters, xPos, yPos) {
   return { xPos, yPos }
 }
 
-export function getSuperblockdiagram (xml) {
+export function getSuperBlockDiagram (xml) {
   xml = '<SuperBlockDiagram as="child" background="-1" title="">' + xml + '</SuperBlockDiagram>'
   const updatedDOM = mxUtils.parseXml(xml)
   return updatedDOM.getElementsByTagName('SuperBlockDiagram')[0]
