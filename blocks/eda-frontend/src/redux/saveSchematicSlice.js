@@ -9,6 +9,7 @@ const initialState = {
   xmlData: null,
   scriptDump: '',
   showDot: false,
+  hasScript: false,
   details: {},
   isLoading: false,
   isSaved: null,
