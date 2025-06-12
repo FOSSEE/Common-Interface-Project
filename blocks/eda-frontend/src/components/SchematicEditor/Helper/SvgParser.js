@@ -3,10 +3,11 @@ import 'mxgraph/javascript/src/css/common.css'
 
 import mxGraphFactory from 'mxgraph'
 
-import { getRotationParameters, getPins, getPointXY, getXYPos } from './ToolbarTools'
+import { getRotationParameters, getPins, getPointXY, getXYPos, getSuperblockdiagram } from './ToolbarTools'
 
 const {
-  mxPoint
+  mxPoint,
+  mxUtils
 } = new mxGraphFactory()
 
 // we need to divide the svg width and height by the same number in order to maintain the aspect ratio.
@@ -56,7 +57,7 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
   v1.controlPorts = 0
   v1.commandPorts = 0
   v1.simulationFunction = component.simulation_function
-  v1.SuperBlockDiagram = component.super_block
+  v1.SuperBlockDiagram = getSuperblockdiagram(component.super_block)
   v1.pins = {
     explicitInputPorts: [],
     implicitInputPorts: [],

@@ -357,6 +357,12 @@ export function getXYPos (rotationParameters, xPos, yPos) {
   return { xPos, yPos }
 }
 
+export function getSuperblockdiagram (xml) {
+  xml = '<SuperBlockDiagram as="child" background="-1" title="">' + xml + '</SuperBlockDiagram>'
+  const updatedDOM = mxUtils.parseXml(xml)
+  return updatedDOM.getElementsByTagName('SuperBlockDiagram')[0]
+}
+
 function parseXmlToGraph (xmlDoc, graph) {
   const parent = graph.getDefaultParent()
   let v1
@@ -374,11 +380,13 @@ function parseXmlToGraph (xmlDoc, graph) {
   let remainingcells = []
   let portCount
   try {
-    console.log('cellslength=', cellslength)
+    console.log('cellslength1=', cellslength)
     while (cellslength > 0 && cellslength !== oldcellslength) {
       for (let i = 0; i < cellslength; i++) {
         const cell = cells[i]
+
         const cellAttrs = cell.attributes
+        console.log('cellAttrs:', cellAttrs)
         const cellChildren = cell.children
         if (cellAttrs.CellType?.value === 'Component') { // is component
           portCount = {
@@ -454,7 +462,7 @@ function parseXmlToGraph (xmlDoc, graph) {
             implicitOutputPorts: [],
             commandPorts: []
           }
-          const SuperBlockDiagram = cell.querySelector('SuperBlockDiagram')
+          let SuperBlockDiagram = cell.querySelector('SuperBlockDiagram')
           if (SuperBlockDiagram !== null) {
             v1.SuperBlockDiagram = SuperBlockDiagram
           } else {
@@ -465,36 +473,11 @@ function parseXmlToGraph (xmlDoc, graph) {
               const superblock = mxUtils.parseXml(SuperBlockDiagram)
               const superblock2 = superblock.getElementsByTagName('SuperBlockDiagram')[0]
               v1.SuperBlockDiagram = superblock2
-              console.log('V!:', v1)
+              // console.log('V!:', v1)
             }
 
           }
-          let pins = cell.querySelector('Object[as="pins"]')
-          if (pins !== null) {
-            const portTypes = [
-              'explicitInputPorts',
-              'implicitInputPorts',
-              'controlPorts',
-              'explicitOutputPorts',
-              'implicitOutputPorts'
-            ]
-            const pinData = {}
 
-
-            portTypes.forEach(type => {
-              const arrayElement = pins.querySelector(`Array[as="${type}"]`)
-              pinData[type] = []
-
-              if (arrayElement) {
-                const mxCells = arrayElement.querySelectorAll('mxCell')
-                mxCells.forEach(mxCell => {
-                  pinData[type].push(mxCell)
-                })
-
-              }
-            })
-            v1.pins = pinData
-          }
         } else if (cellAttrs.CellType?.value === 'Pin') {
           const style = cellAttrs.style.value
           const styleObject = styleToObject(style)
@@ -660,5 +643,6 @@ export function renderGalleryXML (xml) {
   graph.removeCells(graph.getChildEdges(parent))
   graph.view.refresh()
   const xmlDoc = mxUtils.parseXml(xml)
+  console.log('xmlDOC:', xmlDoc)
   parseXmlToGraph(xmlDoc, graph)
 }

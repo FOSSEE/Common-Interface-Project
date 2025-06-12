@@ -155,12 +155,13 @@ export default function loadGrid (container, sidebar, outline, setMainDiagramBac
 
     graph.addListener(mxEvent.DOUBLE_CLICK, function (sender, evt) {
       const cell = evt.getProperty('cell')
+      console.log("cell1:", cell)
 
       if (cell !== undefined && cell.CellType === 'Component') {
         const blockType = styleToObject(cell.style).default  // Extract block type like 'SUPER_f'
 
         if (blockType === 'SUPER_f') {
-          console.log("CE:", cell.SuperBlockDiagram)
+          console.log("CE:", typeof cell.SuperBlockDiagram, cell.SuperBlockDiagram)
           // Save current diagram
 
           setMainDiagramBackup(getCurrentDiagramXML(graph.getModel()))
@@ -176,6 +177,7 @@ export default function loadGrid (container, sidebar, outline, setMainDiagramBac
           }
 
           // Load subdiagram directly into canvas
+          console.log('subDiagramXML:', subDiagramXML)
           renderGalleryXML(subDiagramXML)
 
           // Show close button
@@ -316,17 +318,17 @@ export default function loadGrid (container, sidebar, outline, setMainDiagramBac
           const styleObject = styleToObject(source.style)
           let style = 'Link'
           switch (styleObject.default) {
-          case 'ExplicitOutputPort': case 'ExplicitInputPort':
-            style = 'ExplicitLink'
-            break
+            case 'ExplicitOutputPort': case 'ExplicitInputPort':
+              style = 'ExplicitLink'
+              break
 
-          case 'ImplicitOutputPort': case 'ImplicitInputPort':
-            style = 'ImplicitLink'
-            break
+            case 'ImplicitOutputPort': case 'ImplicitInputPort':
+              style = 'ImplicitLink'
+              break
 
-          case 'CommandPort': case 'ControlPort':
-            style = 'CommandControlLink'
-            break
+            case 'CommandPort': case 'ControlPort':
+              style = 'CommandControlLink'
+              break
           }
           text = style + '\n' +
             'UID: ' + cell.id + '\n' +

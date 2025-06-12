@@ -14,24 +14,13 @@ import RightSidebar from '../components/SchematicEditor/RightSidebar'
 import PropertiesSidebar from '../components/SchematicEditor/PropertiesSidebar'
 import loadGrid from '../components/SchematicEditor/Helper/ComponentDrag'
 
-import { renderGalleryXML } from '../components/SchematicEditor/Helper/ToolbarTools'
+import { renderGalleryXML, getSuperblockdiagram } from '../components/SchematicEditor/Helper/ToolbarTools'
 import '../components/SchematicEditor/Helper/SchematicEditor.css'
 import { fetchDiagram, fetchSchematic } from '../redux/saveSchematicSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { styleToObject } from '../utils/GalleryUtils'
 import { changePorts } from '../components/SchematicEditor/ComponentProperties'
 import { graph, getCurrentDiagramXML } from '../components/SchematicEditor/Helper/ComponentDrag'
-import mxGraphFactory from 'mxgraph'
-const {
-  mxPrintPreview,
-  mxConstants,
-  mxRectangle,
-  mxUtils,
-  mxUndoManager,
-  mxEvent,
-  mxCodec,
-  mxPoint
-} = new mxGraphFactory()
 
 const useStyles = makeStyles((_theme) => ({
   root: {
@@ -59,27 +48,18 @@ export default function SchematicEditor (props) {
     setMobileOpen(!mobileOpen)
   }
 
-  // function getCurrentDiagramXML (model) {
-  //   const encoder = new mxCodec()
-  //   const node = encoder.encode(model)
-  //   return mxUtils.getXml(node)
-  // }
-
   function handleCloseClick () {
     if (!activeSuperBlockCell) return
 
     const updatedXML = getCurrentDiagramXML(graph.getModel())
-    console.log('updatedXML::', updatedXML)
-    const xml = '<SuperBlockDiagram as="child" background="-1" title="">' + updatedXML + '</SuperBlockDiagram>'
-    const updatedDOM = mxUtils.parseXml(xml)
-    const updatedDOM1 = updatedDOM.getElementsByTagName('SuperBlockDiagram')[0]
-    activeSuperBlockCell.SuperBlockDiagram = updatedDOM1
-
+    console.log('updatedXML::', typeof updatedXML, updatedXML)
+    const updatedDOM1 = getSuperblockdiagram(updatedXML)
+    console.log('updatedDOM1:', typeof updatedDOM1, updatedDOM1)
 
     const xpath = "/SuperBlockDiagram/mxGraphModel/root/mxCell[@style]"
     const xpathResult = document.evaluate(
       xpath,
-      activeSuperBlockCell.SuperBlockDiagram,
+      updatedDOM1,
       null,
       XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
       null
@@ -93,27 +73,18 @@ export default function SchematicEditor (props) {
     const styleCounts = {}
 
     allCells.forEach(cell => {
-      console.log("CELL1", cell)
       const cellAttrs = cell.attributes
       const style = cellAttrs.style.value
       const defaultStyle = styleToObject(style).default
-      console.log("CELL2", defaultStyle)
-
       styleCounts[defaultStyle] = (styleCounts[defaultStyle] || 0) + 1
-
     })
-
     console.log('Style counts:', styleCounts)
 
-    console.log('activeSuperBlockCell1:', activeSuperBlockCell)
-
     const maindiagram = mainDiagramBackup
-    console.log('main:', maindiagram)
     renderGalleryXML(maindiagram)
-    console.log('after render main:', graph.getModel(), activeSuperBlockCell.id)
-
-    if (graph.getModel().getCell(activeSuperBlockCell.id) !== null) {
-      const blkcell = graph.getModel().getCell(activeSuperBlockCell.id)
+    const blkcell = graph.getModel().getCell(activeSuperBlockCell.id)
+    if (blkcell !== null) {
+      blkcell.SuperBlockDiagram = updatedDOM1
       console.log('bkcell:', blkcell)
       const refreshDisplay = changePorts(
         blkcell,
@@ -125,10 +96,11 @@ export default function SchematicEditor (props) {
         styleCounts['CLKINV_f'] || 0,
         false
       )
+      if (refreshDisplay) {
+        graph.refresh()
+      }
 
-      console.log('blockElem:', activeSuperBlockCell, refreshDisplay)
-
-
+      console.log('blockElem:', refreshDisplay, blkcell)
 
       // Hide the close button
       const closeBtn = document.getElementById('closeButton')
