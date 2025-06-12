@@ -3669,59 +3669,36 @@
     block_image_path: palettes/SUPER_f.png
     block_width: 40
     block_height: 40
-    super_block: <mxGraphModel><root><mxCell id="4eafe707:146046df912:-7ded" appname="Xcos"
-      description="" CellType="Unknown" sourceVertex="0" targetVertex="0" tarx="0"
-      tary="0"><Object as="parameter_values"/><Object as="displayProperties"/></mxCell><mxCell
-      id="4eafe707:146046df912:-7dee" CellType="Unknown" sourceVertex="0" targetVertex="0"
-      tarx="0" tary="0"><Object as="parameter_values"/><Object as="displayProperties"/></mxCell><mxCell
-      style="CLOCK_c;flip=false;mirror=false" id="-7476484f:145f8cd2a3c:-7b7b" vertex="1"
-      connectable="0" CellType="Component" blockprefix="XCOS" explicitInputPorts="0"
-      implicitInputPorts="0" explicitOutputPorts="0" implicitOutputPorts="0" controlPorts="0"
-      commandPorts="1" simulationFunction="csuper" sourceVertex="0" targetVertex="0"
-      tarx="0" tary="0"><mxGeometry x="190.0" y="60.0" width="40.0" height="40.0"
-      as="geometry"/><Object display_parameter="" as="displayProperties"/><Object
-      p000_value="Ts" p001_value="0" as="parameter_values"/></mxCell><mxCell style="CommandPort;align=center;verticalAlign=bottom;spacing=10.0;rotation=90;flip=false;mirror=false"
-      id="1291ab5f:146046633c5:-7cca" ordering="1" vertex="1" CellType="Pin" ParentComponent="-7476484f:145f8cd2a3c:-7b7b"
-      sourceVertex="0" targetVertex="0" tarx="0" tary="0"><mxGeometry x="0.5" y="1"
-      width="8" height="8" relative="1" as="geometry"><mxPoint x="-4" as="offset"/></mxGeometry><Object
-      as="parameter_values"/><Object as="displayProperties"/></mxCell><mxCell style="CLOCK_c;flip=false;mirror=false"
-      id="4eafe707:146046df912:-7df8" vertex="1" connectable="0" CellType="Component"
-      blockprefix="XCOS" explicitInputPorts="0" implicitInputPorts="0" explicitOutputPorts="0"
-      implicitOutputPorts="0" controlPorts="0" commandPorts="1" simulationFunction="csuper"
-      sourceVertex="0" targetVertex="0" tarx="0" tary="0"><mxGeometry x="280.0" y="60.0"
-      width="40.0" height="40.0" as="geometry"/><Object display_parameter="" as="displayProperties"/><Object
-      p000_value="Ts/30" p001_value="0" as="parameter_values"/></mxCell><mxCell style="CommandPort;align=center;verticalAlign=bottom;spacing=10.0;rotation=90;flip=false;mirror=false"
-      id="6e4925f9:1460474cdcb:-7bd4" ordering="1" vertex="1" CellType="Pin" ParentComponent="4eafe707:146046df912:-7df8"
-      sourceVertex="0" targetVertex="0" tarx="0" tary="0"><mxGeometry x="0.5" y="1"
-      width="8" height="8" relative="1" as="geometry"><mxPoint x="-4" as="offset"/></mxGeometry><Object
-      as="parameter_values"/><Object as="displayProperties"/></mxCell><mxCell style="CLKOUTV_f;flip=false;mirror=false"
-      id="4eafe707:146046df912:-7dec" vertex="1" connectable="0" CellType="Component"
-      blockprefix="XCOS" explicitInputPorts="0" implicitInputPorts="0" explicitOutputPorts="0"
-      implicitOutputPorts="0" controlPorts="1" commandPorts="0" simulationFunction=""
-      sourceVertex="0" targetVertex="0" tarx="0" tary="0"><mxGeometry x="190.0" y="180.0"
-      width="40.0" height="40.0" as="geometry"/><Object display_parameter="1" as="displayProperties"/><Object
-      p000_value="1" as="parameter_values"/></mxCell><mxCell style="ControlPort;align=center;verticalAlign=top;spacing=10.0;rotation=90;flip=false;mirror=false"
-      id="4eafe707:146046df912:-7deb" ordering="1" vertex="1" CellType="Pin" ParentComponent="4eafe707:146046df912:-7dec"
-      sourceVertex="0" targetVertex="0" tarx="0" tary="0"><mxGeometry x="0.5" width="8"
-      height="8" relative="1" as="geometry"><mxPoint x="-4" y="-8" as="offset"/></mxGeometry><Object
-      as="parameter_values"/><Object as="displayProperties"/></mxCell><mxCell style="CLKOUTV_f;flip=false;mirror=false"
-      id="4eafe707:146046df912:-7de8" vertex="1" connectable="0" CellType="Component"
-      blockprefix="XCOS" explicitInputPorts="0" implicitInputPorts="0" explicitOutputPorts="0"
-      implicitOutputPorts="0" controlPorts="1" commandPorts="0" simulationFunction=""
-      sourceVertex="0" targetVertex="0" tarx="0" tary="0"><mxGeometry x="280.0" y="180.0"
-      width="40.0" height="40.0" as="geometry"/><Object display_parameter="2" as="displayProperties"/><Object
-      p000_value="2" as="parameter_values"/></mxCell><mxCell style="ControlPort;align=center;verticalAlign=top;spacing=10.0;rotation=90;flip=false;mirror=false"
-      id="4eafe707:146046df912:-7de7" ordering="1" vertex="1" CellType="Pin" ParentComponent="4eafe707:146046df912:-7de8"
-      sourceVertex="0" targetVertex="0" tarx="0" tary="0"><mxGeometry x="0.5" width="8"
-      height="8" relative="1" as="geometry"><mxPoint x="-4" y="-8" as="offset"/></mxGeometry><Object
-      as="parameter_values"/><Object as="displayProperties"/></mxCell><mxCell id="4eafe707:146046df912:-7db7"
-      edge="1" sourceVertex="1291ab5f:146046633c5:-7cca" targetVertex="4eafe707:146046df912:-7deb"
-      tarx="210.0" tary="100.0" tar2x="210.0" tar2y="180.0" CellType="Unknown"><mxGeometry
-      x="-140.0" y="20.0" as="geometry"/><Object as="parameter_values"/><Object as="displayProperties"/></mxCell><mxCell
-      id="4eafe707:146046df912:-7db5" edge="1" sourceVertex="6e4925f9:1460474cdcb:-7bd4"
-      targetVertex="4eafe707:146046df912:-7de7" tarx="300.0" tary="100.0" tar2x="300.0"
-      tar2y="180.0" CellType="Unknown"><mxGeometry x="60.0" y="20.0" as="geometry"/><Object
-      as="parameter_values"/><Object as="displayProperties"/></mxCell></root></mxGraphModel>
+    super_block: <mxGraphModel as="model"><root><mxCell id="-5b191802:19762f74f02:-7ff6"/><mxCell
+      id="-5b191802:19762f74f03:-7ff6" parent="-5b191802:19762f74f02:-7ff6"/><ExplicitInBlock
+      id="-5b191802:19762f74f01:-7ff3" parent="-5b191802:19762f74f03:-7ff6" interfaceFunctionName="IN_f"
+      blockType="c" dependsOnU="0" dependsOnT="0" simulationFunctionName="input" simulationFunctionType="DEFAULT"
+      style=""><ScilabString as="exprs" height="1" width="1"><data line="0" column="0"
+      value="1"/></ScilabString><ScilabDouble as="realParameters" height="0" width="0"/><ScilabInteger
+      as="integerParameters" height="1" width="1" intPrecision="sci_int32"><data line="0"
+      column="0" value="1"/></ScilabInteger><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabInteger
+      as="nbZerosCrossing" height="1" width="1" intPrecision="sci_int32"><data line="0"
+      column="0" value="0"/></ScilabInteger><ScilabInteger as="nmode" height="1" width="1"
+      intPrecision="sci_int32"><data line="0" column="0" value="0"/></ScilabInteger><ScilabDouble
+      as="state" height="0" width="0"/><ScilabDouble as="dState" height="0" width="0"/><Array
+      as="oDState" scilabClass="ScilabList"/><Array as="equations" scilabClass="ScilabList"/><mxGeometry
+      as="geometry" x="40.0" y="40.0" width="20.0" height="20.0"/></ExplicitInBlock><ExplicitOutputPort
+      id="-5b191802:19762f74f01:-7ff2" parent="-5b191802:19762f74f01:-7ff3" ordering="1"
+      initialState="0.0" style="" value=""/><ExplicitOutBlock id="-5b191802:19762f74f01:-7ff1"
+      parent="-5b191802:19762f74f03:-7ff6" interfaceFunctionName="OUT_f" blockType="c"
+      dependsOnU="0" dependsOnT="0" simulationFunctionName="output" simulationFunctionType="DEFAULT"
+      style=""><ScilabString as="exprs" height="1" width="1"><data line="0" column="0"
+      value="1"/></ScilabString><ScilabDouble as="realParameters" height="0" width="0"/><ScilabInteger
+      as="integerParameters" height="1" width="1" intPrecision="sci_int32"><data line="0"
+      column="0" value="1"/></ScilabInteger><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabInteger
+      as="nbZerosCrossing" height="1" width="1" intPrecision="sci_int32"><data line="0"
+      column="0" value="0"/></ScilabInteger><ScilabInteger as="nmode" height="1" width="1"
+      intPrecision="sci_int32"><data line="0" column="0" value="0"/></ScilabInteger><ScilabDouble
+      as="state" height="0" width="0"/><ScilabDouble as="dState" height="0" width="0"/><Array
+      as="oDState" scilabClass="ScilabList"/><Array as="equations" scilabClass="ScilabList"/><mxGeometry
+      as="geometry" x="240.0" y="40.0" width="20.0" height="20.0"/></ExplicitOutBlock><ExplicitInputPort
+      id="-5b191802:19762f74f01:-7ff0" parent="-5b191802:19762f74f01:-7ff1" ordering="1"
+      initialState="0.0" style="" value=""/></root></mxGraphModel>
     categories:
     - 11
     - 21
