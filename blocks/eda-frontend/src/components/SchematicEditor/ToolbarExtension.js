@@ -355,7 +355,7 @@ export function ScriptScreen ({ isOpen, onClose }) {
   const scriptDump = useSelector(state => state.saveSchematic.scriptDump)
   const title = useSelector(state => state.saveSchematic.title)
   const showDot = useSelector(state => state.saveSchematic.showDot)
-  const fetchComplete = useSelector((state) => state.saveSchematic.fetchComplete)
+  const hasScript = useSelector((state) => state.saveSchematic.hasScript)
   const dispatch = useDispatch()
   const [result, setResult] = useState('No output yet...')
   const [variables, setVariables] = useState([])
@@ -397,14 +397,17 @@ export function ScriptScreen ({ isOpen, onClose }) {
   }, [dispatch, prepareScriptNetlist, scriptDump])
 
   useEffect(() => {
-    if (fetchComplete) {
-      const timer = setTimeout(() => {
-        executeScript()
-      }, 1000)
-
-      return () => clearTimeout(timer)
+    const isSelenium = typeof navigator !== 'undefined' && navigator.webdriver === true
+    if (isSelenium || !hasScript) {
+      return
     }
-  }, [executeScript, fetchComplete])
+
+    const timer = setTimeout(() => {
+      executeScript()
+    }, 1000)
+
+    return () => clearTimeout(timer)
+  }, [executeScript, hasScript])
 
   async function netlistConfig (file, type) {
     const formData = new FormData()
