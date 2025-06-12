@@ -36,6 +36,7 @@ import {
 import { makeStyles } from '@material-ui/core/styles'
 import CloseIcon from '@material-ui/icons/Close'
 import { useSelector, useDispatch } from 'react-redux'
+import store from '../../redux/store'
 import { fetchSchematic, fetchDiagram, setSchScriptDump, setShowDot } from '../../redux/saveSchematicSlice'
 import { fetchSchematics, fetchGallery } from '../../redux/dashboardSlice'
 import { setScriptTaskId } from '../../redux/simulationSlice'
@@ -391,10 +392,15 @@ export function ScriptScreen ({ isOpen, onClose }) {
   }, [sendScriptNetlist, title])
 
   const executeScript = useCallback(() => {
+    const scriptDump = store.getState().saveSchematic.scriptDump
+    if (!scriptDump) {
+      return
+    }
+
     dispatch(setScriptTaskId(''))
     prepareScriptNetlist(scriptDump)
     dispatch(setShowDot(false))
-  }, [dispatch, prepareScriptNetlist, scriptDump])
+  }, [dispatch, prepareScriptNetlist])
 
   useEffect(() => {
     const isSelenium = typeof navigator !== 'undefined' && navigator.webdriver === true
