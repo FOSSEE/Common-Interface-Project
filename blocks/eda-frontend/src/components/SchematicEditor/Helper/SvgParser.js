@@ -4,6 +4,7 @@ import 'mxgraph/javascript/src/css/common.css'
 import mxGraphFactory from 'mxgraph'
 
 import { getRotationParameters, getPins, getPointXY, getXYPos, getSuperBlockDiagram } from './ToolbarTools'
+import { updateMxGraphXML } from '../../../utils/GalleryUtils'
 
 const {
   mxPoint
@@ -56,7 +57,7 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
   v1.controlPorts = 0
   v1.commandPorts = 0
   v1.simulationFunction = component.simulation_function
-  v1.SuperBlockDiagram = getSuperBlockDiagram(component.super_block)
+  v1.SuperBlockDiagram = getSuperBlockDiagram(updateMxGraphXML(component.super_block))
   v1.pins = {
     explicitInputPorts: [],
     implicitInputPorts: [],

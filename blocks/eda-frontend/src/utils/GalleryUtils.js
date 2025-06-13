@@ -207,3 +207,53 @@ export const removeBySaveIdInPlace = (schematics, saveId) => {
 export const sanitizeTitle = (title, replacement = '_') => {
   return title.replace(/[<>:"/\\|?* ]/g, replacement).trim()
 }
+
+export const generate_ids = (() => {
+  let prefixCounter = 0
+
+  const generate = (count) => {
+    const prefix = prefixCounter.toString().padStart(9, '0')
+    const ids = Array.from({ length: count }, (_, i) => {
+      const hex = i.toString(16).padStart(4, '0')
+      return `${prefix}:${hex}`
+    })
+    prefixCounter++
+    return ids
+  }
+
+  generate.reset = () => {
+    prefixCounter = 0
+  }
+
+  return generate
+})()
+
+export const updateMxGraphXML = (xmlString) => {
+  const xmlDoc = new DOMParser().parseFromString(xmlString, 'application/xml')
+
+  const idMap = new Map()
+
+  // Step 1: Generate new IDs for all mxCell elements
+  const cells = xmlDoc.querySelectorAll('mxCell[id]')
+  const ids = generate_ids(cells.length)
+  let count = 0
+  cells.forEach(cell => {
+    const oldId = cell.getAttribute('id')
+    const newId = ids[count++]
+    idMap.set(oldId, newId)
+    cell.setAttribute('id', newId)
+  })
+
+  // Step 2: update ParentComponent and other references as needed
+  cells.forEach(cell => {
+    ['ParentComponent', 'sourceVertex', 'targetVertex'].forEach(attr => {
+      const val = cell.getAttribute(attr)
+      if (val && idMap.has(val)) {
+        cell.setAttribute(attr, idMap.get(val))
+      }
+    })
+  })
+
+  // Step 3: Serialize back to XML
+  return new XMLSerializer().serializeToString(xmlDoc)
+}
