@@ -335,18 +335,8 @@ export default function LoadGrid (container, sidebar, outline, setMainDiagramBac
         }
 
         const styleObject = styleToObject(attribute)
-        let flip
-        let mirror
-        if (styleObject.flip == null) {
-          flip = false
-        } else {
-          flip = (styleObject.flip === 'true')
-        }
-        if (styleObject.mirror == null) {
-          mirror = false
-        } else {
-          mirror = (styleObject.mirror === 'true')
-        }
+        const flip = styleObject.flip === 'true'
+        const mirror = styleObject.mirror === 'true'
 
         if (cell.CellType === 'Component') {
           const inputPorts = cell.explicitInputPorts + cell.implicitInputPorts
