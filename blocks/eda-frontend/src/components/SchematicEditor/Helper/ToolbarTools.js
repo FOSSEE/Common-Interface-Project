@@ -386,7 +386,6 @@ function parseXmlToGraph (xmlDoc, graph) {
         const cell = cells[i]
 
         const cellAttrs = cell.attributes
-        console.log('cellAttrs:', cellAttrs)
         const cellChildren = cell.children
         if (cellAttrs.CellType?.value === 'Component') { // is component
           portCount = {
@@ -468,12 +467,10 @@ function parseXmlToGraph (xmlDoc, graph) {
           } else {
             SuperBlockDiagram = cellAttrs.SuperBlockDiagram?.value
             if (SuperBlockDiagram !== null) {
-              console.log('SuperBlockDiagram2:', SuperBlockDiagram)
               SuperBlockDiagram = '<SuperBlockDiagram as="child" background="-1" title="">' + SuperBlockDiagram + '</SuperBlockDiagram>'
               const superblock = mxUtils.parseXml(SuperBlockDiagram)
               const superblock2 = superblock.getElementsByTagName('SuperBlockDiagram')[0]
               v1.SuperBlockDiagram = superblock2
-              // console.log('V!:', v1)
             }
 
           }
@@ -500,7 +497,6 @@ function parseXmlToGraph (xmlDoc, graph) {
           if (firstportrotation === null) {
             firstportrotation = rotation
           } else if (rotation !== firstportrotation) {
-            console.log('firstportrotation is not equal to rotation', firstportrotation, rotation)
             rotation = firstportrotation
           }
 
@@ -510,10 +506,6 @@ function parseXmlToGraph (xmlDoc, graph) {
           let yPos = (geom.y !== undefined) ? Number(geom.y.value) : 0
 
           const rotationParameters = getRotationParameters(stylename, rotation)
-
-          if (rotation !== 0) {
-            console.log('rotation:', styleObject, rotation, xPos, yPos, portSize, rotationParameters)
-          }
 
           const pins = getPins(stylename, v1)
 
@@ -643,6 +635,5 @@ export function renderGalleryXML (xml) {
   graph.removeCells(graph.getChildEdges(parent))
   graph.view.refresh()
   const xmlDoc = mxUtils.parseXml(xml)
-  console.log('xmlDOC:', xmlDoc)
   parseXmlToGraph(xmlDoc, graph)
 }

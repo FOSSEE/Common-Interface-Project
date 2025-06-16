@@ -74,7 +74,6 @@ const removeSplits1 = (xmlDoc, splitProcessor) => {
     const rv = removeOneSplit(xmlDoc, count, splitProcessor)
     xmlDoc = rv.xmlDoc
     count = rv.count
-    console.log('count=', count)
     if (count === 0) {
       return xmlDoc
     }
@@ -83,7 +82,6 @@ const removeSplits1 = (xmlDoc, splitProcessor) => {
   }
 
   const count = countNodesByXPath(splitBlockXPathCount, xmlDoc)
-  console.log('count=', count)
   if (count === 0) {
     return xmlDoc
   }
@@ -96,7 +94,6 @@ const removeSplits = async (xmlDoc, splitProcessor, delay) => {
     const rv = removeOneSplit(xmlDoc, count, splitProcessor)
     xmlDoc = rv.xmlDoc
     count = rv.count
-    console.log('count=', count)
     if (count === 0) {
       return xmlDoc
     }
@@ -110,7 +107,6 @@ const removeSplits = async (xmlDoc, splitProcessor, delay) => {
   }
 
   const count = countNodesByXPath(splitBlockXPathCount, xmlDoc)
-  console.log('count=', count)
   if (count === 0) {
     return xmlDoc
   }
