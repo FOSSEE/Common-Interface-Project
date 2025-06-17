@@ -22,6 +22,8 @@ const {
   mxPoint
 } = new mxGraphFactory()
 
+const DEBUG_PORT = false
+
 export default function toolbarTools (grid) {
   graph = grid
 
@@ -233,10 +235,7 @@ const PORTDIRECTIONS = {
   T2L: 15
 }
 
-export function getRotationParameters (stylename, rotation) {
-  const RotateNames = ['ExplicitInputPort', 'ControlPort', 'ExplicitOutputPort', 'CommandPort',
-    'ExplicitInputPort', 'ControlPort', 'ExplicitOutputPort', 'CommandPort']
-
+export function getRotationParameters (stylename) {
   let rotatename
   if (stylename === 'ImplicitInputPort') {
     rotatename = 'ExplicitInputPort'
@@ -246,22 +245,11 @@ export function getRotationParameters (stylename, rotation) {
     rotatename = stylename
   }
 
-  let index = RotateNames.indexOf(rotatename)
-
   let portdirection = PORTDIRECTIONS.UNK
   if (rotatename === 'ExplicitInputPort' || rotatename === 'ExplicitOutputPort') {
     portdirection = PORTDIRECTIONS.LOR
   } else if (rotatename === 'ControlPort' || rotatename === 'CommandPort') {
     portdirection = PORTDIRECTIONS.TOB
-  }
-
-  const turns = Math.round(rotation / 90)
-
-  if (turns !== 0) {
-    index += turns
-    rotatename = RotateNames[index]
-
-    portdirection += turns
   }
 
   return { rotatename, portdirection }
@@ -301,13 +289,18 @@ export function getPins (portOrientation, v1) {
   return pins
 }
 
-export function getPointXY (rotationParameters) {
+export function getPointXY (rotationParameters, blockname) {
   let pointX
   let pointY
   switch (rotationParameters.rotatename) {
   case 'ExplicitInputPort':
-    pointX = -portSize
-    pointY = -portSize / 2
+    if (blockname === 'Ground') {
+      pointX = -portSize / 2
+      pointY = -portSize
+    } else {
+      pointX = -portSize
+      pointY = -portSize / 2
+    }
     break
   case 'ControlPort':
     pointX = -portSize / 2
@@ -366,8 +359,6 @@ export function getSuperBlockDiagram (xml) {
 function parseXmlToGraph (xmlDoc, graph) {
   const parent = graph.getDefaultParent()
   let v1
-  let blockrotation
-  let firstportrotation
   const model = graph.getModel()
   model.beginUpdate()
 
@@ -379,6 +370,7 @@ function parseXmlToGraph (xmlDoc, graph) {
   let cellslength = cells.length
   let remainingcells = []
   let portCount
+  let blockname
   try {
     console.log('cellslength1=', cellslength)
     while (cellslength > 0 && cellslength !== oldcellslength) {
@@ -398,18 +390,17 @@ function parseXmlToGraph (xmlDoc, graph) {
           }
           const style = cellAttrs.style.value
           const styleObject = styleToObject(style)
-          if (styleObject.rotation === undefined) {
-            blockrotation = 0
-          } else {
-            blockrotation = parseInt(styleObject.rotation)
-          }
-          firstportrotation = null
+          const stylename = styleObject.default
+          blockname = stylename
           const vertexId = cellAttrs.id.value
           const geom = cellChildren[0].attributes
           const xPos = (geom.x !== undefined) ? Number(geom.x.value) : 0
           const yPos = (geom.y !== undefined) ? Number(geom.y.value) : 0
           const height = Number(geom.height.value)
           const width = Number(geom.width.value)
+          if (DEBUG_PORT && stylename === 'TEXT_f') {
+            continue
+          }
           v1 = graph.insertVertex(parent, vertexId, null, xPos, yPos, width, height, style)
           v1.connectable = 0
           v1.CellType = 'Component'
@@ -479,43 +470,19 @@ function parseXmlToGraph (xmlDoc, graph) {
           const style = cellAttrs.style.value
           const styleObject = styleToObject(style)
           const stylename = styleObject.default
-          let portrotation
-
-          if (styleObject.rotation === undefined) {
-            portrotation = 0
-          } else {
-            portrotation = parseInt(styleObject.rotation)
-          }
-
-          let rotation = portrotation - blockrotation
-          if (stylename === 'ControlPort' || stylename === 'CommandPort') {
-            rotation -= 90
-          }
-          if (rotation < 0) {
-            rotation += 360
-          }
-          if (firstportrotation === null) {
-            firstportrotation = rotation
-          } else if (rotation !== firstportrotation) {
-            rotation = firstportrotation
-          }
 
           const vertexId = cellAttrs.id.value
           const geom = cellChildren[0].attributes
-          let xPos = (geom.x !== undefined) ? Number(geom.x.value) : 0
-          let yPos = (geom.y !== undefined) ? Number(geom.y.value) : 0
+          const xPos = (geom.x !== undefined) ? Number(geom.x.value) : 0
+          const yPos = (geom.y !== undefined) ? Number(geom.y.value) : 0
 
-          const rotationParameters = getRotationParameters(stylename, rotation)
+          const rotationParameters = getRotationParameters(stylename)
 
           const pins = getPins(stylename, v1)
 
-          const pointXY = getPointXY(rotationParameters)
+          const pointXY = getPointXY(rotationParameters, blockname)
           const pointX = pointXY.pointX
           const pointY = pointXY.pointY
-
-          const xyPos = getXYPos(rotationParameters, xPos, yPos)
-          xPos = xyPos.xPos
-          yPos = xyPos.yPos
 
           const point = new mxPoint(pointX, pointY)
           const vp = graph.insertVertex(v1, vertexId, null, xPos, yPos, portSize, portSize, style)
@@ -545,6 +512,9 @@ function parseXmlToGraph (xmlDoc, graph) {
             pins.push(vp)
           }
         } else if (cellAttrs.edge) { // is edge
+          if (DEBUG_PORT) {
+            continue
+          }
           const edgeId = cellAttrs.id.value
 
           const source = cellAttrs.sourceVertex.value

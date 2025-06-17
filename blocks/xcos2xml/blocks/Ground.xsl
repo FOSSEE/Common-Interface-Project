@@ -63,5 +63,6 @@
         <xsl:with-param name="implicitOutputPorts" select="$implicitOutputPorts" />
         <xsl:with-param name="controlPorts" select="$controlPorts" />
         <xsl:with-param name="commandPorts" select="$commandPorts" />
+        <xsl:with-param name="blockname" select="@interfaceFunctionName" />
       </xsl:call-template>
     </xsl:template>

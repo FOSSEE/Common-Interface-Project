@@ -43,7 +43,8 @@ def join_and_copy_images(db_path, statesave_table, gallery_table):
         sql = f"""
         SELECT s.base64_image, g.media
         FROM {statesave_table} AS s
-        JOIN {gallery_table} AS g ON s.description = g.description;
+        JOIN {gallery_table} AS g ON s.description = g.description
+        ORDER BY g.id;
         """
 
         # Execute the query to fetch the data

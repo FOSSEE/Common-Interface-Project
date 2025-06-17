@@ -14,6 +14,8 @@
         <xsl:param name="implicitOutputPorts" />
         <xsl:param name="controlPorts" />
         <xsl:param name="commandPorts" />
+        <xsl:param name="blockname" select="''"/> <!-- Optional with default -->
+
         <xsl:for-each select="key('k-in', $id)">
           <xsl:element name="mxCell">
             <xsl:attribute name="style">
@@ -36,14 +38,30 @@
             <xsl:attribute name="tary">0</xsl:attribute>
             <mxGeometry>
               <xsl:variable name="numerator" select="2 * @ordering - 1" />
-              <xsl:attribute name="y">
-                <xsl:value-of select="$numerator div (2 * number($explicitInputPorts + $implicitInputPorts))" />
-              </xsl:attribute>
-              <xsl:attribute name="width">8</xsl:attribute>
-              <xsl:attribute name="height">8</xsl:attribute>
-              <xsl:attribute name="relative">1</xsl:attribute>
-              <xsl:attribute name="as">geometry</xsl:attribute>
-              <mxPoint x="-8" y="-4" as="offset" />
+              <xsl:choose>
+                <xsl:when test="$blockname = 'Ground'">
+                  <xsl:attribute name="x">
+                    <xsl:value-of select="$numerator div (2 * number($explicitInputPorts + $implicitInputPorts))" />
+                  </xsl:attribute>
+                  <xsl:attribute name="y">0</xsl:attribute>
+                  <xsl:attribute name="width">8</xsl:attribute>
+                  <xsl:attribute name="height">8</xsl:attribute>
+                  <xsl:attribute name="relative">1</xsl:attribute>
+                  <xsl:attribute name="as">geometry</xsl:attribute>
+                  <mxPoint x="-4" y="-8" as="offset" />
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:attribute name="x">0</xsl:attribute>
+                  <xsl:attribute name="y">
+                    <xsl:value-of select="$numerator div (2 * number($explicitInputPorts + $implicitInputPorts))" />
+                  </xsl:attribute>
+                  <xsl:attribute name="width">8</xsl:attribute>
+                  <xsl:attribute name="height">8</xsl:attribute>
+                  <xsl:attribute name="relative">1</xsl:attribute>
+                  <xsl:attribute name="as">geometry</xsl:attribute>
+                  <mxPoint x="-8" y="-4" as="offset" />
+                </xsl:otherwise>
+              </xsl:choose>
             </mxGeometry>
             <Object as="parameter_values" />
             <Object as="displayProperties" />
@@ -146,6 +164,7 @@
               <xsl:attribute name="x">
                 <xsl:value-of select="$numerator div (2 * number($controlPorts))" />
               </xsl:attribute>
+              <xsl:attribute name="y">0</xsl:attribute>
               <xsl:attribute name="width">8</xsl:attribute>
               <xsl:attribute name="height">8</xsl:attribute>
               <xsl:attribute name="relative">1</xsl:attribute>
