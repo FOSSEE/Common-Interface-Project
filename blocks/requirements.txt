@@ -63,7 +63,7 @@ trio-websocket==0.11.1
 typing_extensions==4.12.2
 tzdata==2024.1
 uritemplate==4.1.1
-urllib3==2.2.2
+urllib3==2.5.0
 vine==5.1.0
 wcwidth==0.2.6
 webdriver-manager==4.0.2
