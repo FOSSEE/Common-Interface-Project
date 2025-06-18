@@ -15,42 +15,19 @@ import {
   Link,
   TextField,
   Typography
-} from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
-import Visibility from '@material-ui/icons/Visibility'
-import VisibilityOff from '@material-ui/icons/VisibilityOff'
+} from '@mui/material'
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
+import Visibility from '@mui/icons-material/Visibility'
+import VisibilityOff from '@mui/icons-material/VisibilityOff'
 import { Link as RouterLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { login, authDefault, googleLogin, githubLogin } from '../redux/authSlice'
 import google from '../static/google.png'
 import github from '../static/github-mark.png'
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(24),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    padding: theme.spacing(3, 5)
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.primary.main
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1)
-  },
-  submit: {
-    margin: theme.spacing(2, 0)
-  }
-}))
-
 let url = ''
 
 export default function SignIn (props) {
-  const classes = useStyles()
   const errors = useSelector(state => state.auth.errors)
 
   const dispatch = useDispatch()
@@ -96,8 +73,22 @@ export default function SignIn (props) {
 
   return (
     <Container component='main' maxWidth='xs'>
-      <Card className={classes.paper}>
-        <Avatar className={classes.avatar}>
+      <Card
+        sx={{
+          mt: 24,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          px: 5,
+          py: 3
+        }}
+      >
+        <Avatar
+          sx={{
+            m: 1,
+            bgcolor: theme => theme.palette.primary.main
+          }}
+        >
           <LockOutlinedIcon />
         </Avatar>
 
@@ -110,7 +101,12 @@ export default function SignIn (props) {
           {errors}
         </Typography>
 
-        <form className={classes.form} noValidate>
+        <form
+          noValidate
+          sx={{
+            mt: 1
+          }}
+        >
           <TextField
             variant='outlined'
             margin='normal'
@@ -160,18 +156,20 @@ export default function SignIn (props) {
             variant='contained'
             color='primary'
             onClick={handleLogin}
-            className={classes.submit}
+            sx={{
+              my: 2
+            }}
           >
             Login
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link component={RouterLink} to='#' variant='body2'>
+              <Link underline='hover' component={RouterLink} to='#' variant='body2'>
                 Forgot password?
               </Link>
             </Grid>
             <Grid item>
-              <Link component={RouterLink} to='/signup' variant='body2'>
+              <Link underline='hover' component={RouterLink} to='/signup' variant='body2'>
                 New User? Sign Up
               </Link>
             </Grid>
@@ -185,7 +183,9 @@ export default function SignIn (props) {
           variant='outlined'
           color='primary'
           onClick={handleGoogleLogin}
-          className={classes.submit}
+          sx={{
+            my: 2
+          }}
         >
           <img alt='Google' src={google} height='20' />&emsp; Login With Google
         </Button>
@@ -195,7 +195,9 @@ export default function SignIn (props) {
           variant='outlined'
           color='primary'
           onClick={handleGithubLogin}
-          className={classes.submit}
+          sx={{
+            my: 2
+          }}
         >
           <img alt='GitHub' src={github} height='20' />&emsp; Login With GitHub
         </Button>
@@ -204,7 +206,9 @@ export default function SignIn (props) {
         onClick={() => { window.open(homeURL, '_self') }}
         fullWidth
         color='default'
-        className={classes.submit}
+        sx={{
+          my: 2
+        }}
       >
         Back to home
       </Button>

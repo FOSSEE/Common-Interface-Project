@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { useHistory, Link as RouterLink } from 'react-router-dom'
 import {
   Avatar,
+  Box,
   Button,
   Dialog,
   DialogActions,
@@ -11,7 +12,6 @@ import {
   DialogTitle,
   Fade,
   FormControlLabel,
-  Hidden,
   IconButton,
   Input,
   Link,
@@ -22,51 +22,16 @@ import {
   Switch,
   Toolbar,
   Typography
-} from '@material-ui/core'
+} from '@mui/material'
 import { useSelector, useDispatch } from 'react-redux'
-import ShareIcon from '@material-ui/icons/Share'
-import CloseIcon from '@material-ui/icons/Close'
-import { makeStyles } from '@material-ui/core/styles'
-import { deepPurple } from '@material-ui/core/colors'
+import ShareIcon from '@mui/icons-material/Share'
+import CloseIcon from '@mui/icons-material/Close'
+import { deepPurple } from '@mui/material/colors'
 
 import logo from '../../static/favicon.ico'
 import { setSchTitle, setSchShared } from '../../redux/saveSchematicSlice'
 import { logout } from '../../redux/authSlice'
 import { getDateTime as getDate, getUppercaseInitial } from '../../utils/GalleryUtils'
-
-const useStyles = makeStyles((theme) => ({
-  toolbarTitle: {
-    marginRight: theme.spacing(2)
-  },
-  input: {
-    marginLeft: theme.spacing(1),
-    width: '200px',
-    color: '#595959'
-  },
-  rightBlock: {
-    marginLeft: 'auto',
-    marginRight: theme.spacing(2)
-  },
-  button: {
-    marginRight: theme.spacing(0.7)
-  },
-  small: {
-    width: theme.spacing(3.7),
-    height: theme.spacing(3.7)
-  },
-  tools: {
-    padding: theme.spacing(1),
-    margin: theme.spacing(0, 0.8),
-    color: '#262626'
-  },
-  purple: {
-    width: theme.spacing(3.75),
-    height: theme.spacing(3.75),
-    color: theme.palette.getContrastText(deepPurple[500]),
-    backgroundColor: deepPurple[500],
-    fontSize: '17px'
-  }
-}))
 
 // Notification snackbar to give alert messages
 function SimpleSnackbar ({ open, close, message }) {
@@ -101,7 +66,6 @@ SimpleSnackbar.propTypes = {
 
 function Header () {
   const history = useHistory()
-  const classes = useStyles()
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
   const user = useSelector(state => state.auth.user)
   const details = useSelector(state => state.saveSchematic.details)
@@ -194,30 +158,48 @@ function Header () {
       <SimpleSnackbar open={snacOpen} close={handleSnacClose} message={message} />
 
       {/* Display logo */}
-      <IconButton edge='start' className={classes.button} color='primary'>
-        <Avatar alt={altImage} src={logo} className={classes.small} />
+      <IconButton
+        edge='start'
+        color='primary'
+        sx={{
+          mr: 0.7
+        }}
+      >
+        <Avatar
+          alt={altImage}
+          src={logo}
+          sx={{
+            width: { xs: 30, md: 40 },
+            height: { xs: 30, md: 40 }
+          }}
+        />
       </IconButton>
       <Typography
         variant='h6'
         color='inherit'
         noWrap
-        className={classes.toolbarTitle}
+        sx={{
+          mr: 2
+        }}
       >
-        <Link color='inherit' target='_blank' component={RouterLink} to='/'>
+        <Link underline="hover" color='inherit' target='_blank' component={RouterLink} to='/'>
           {link}
         </Link>
       </Typography>
 
       {/* Input field for schematic title */}
-      <Hidden xsDown>
-        <Input
-          className={classes.input}
-          color='secondary'
-          value={title === 'Untitled' ? 'Untitled' : title}
-          onChange={titleHandler}
-          inputProps={{ 'aria-label': 'SchematicTitle' }}
-        />
-      </Hidden>
+      <Input
+        color='secondary'
+        value={title === 'Untitled' ? 'Untitled' : title}
+        onChange={titleHandler}
+        inputProps={{ 'aria-label': 'SchematicTitle' }}
+        sx={{
+          ml: 1,
+          width: '200px',
+          color: '#595959',
+          display: { xs: 'none', sm: 'inline-flex' }
+        }}
+      />
 
       {/* Display last saved and shared option for saved schematics */}
       {isAuthenticated === true
@@ -234,11 +216,21 @@ function Header () {
             size='small'
             variant={shared !== true ? 'outlined' : 'contained'}
             color='primary'
-            className={isSaved === true && details.save_time !== undefined ? classes.button : classes.rightBlock}
             startIcon={<ShareIcon />}
             onClick={handleShare}
+            sx={
+              isSaved === true && details.save_time !== undefined
+                ? { mr: 0.7 }
+                : { ml: 'auto', mr: 2 }
+            }
           >
-            <Hidden xsDown>Share</Hidden>
+            <Box
+              sx={{
+                display: { xs: 'none' }
+              }}
+            >
+              Share
+            </Box>
           </Button>
         </>
         : <></>}
@@ -302,7 +294,15 @@ function Header () {
               aria-haspopup='true'
               onClick={handleClick}
             >
-              <Avatar className={classes.purple}>
+              <Avatar
+                sx={{
+                  width: { xs: 30, md: 40 },
+                  height: { xs: 30, md: 40 },
+                  color: theme => theme.palette.getContrastText(deepPurple[500]),
+                  bgcolor: deepPurple[500],
+                  fontSize: '17px'
+                }}
+              >
                 {getUppercaseInitial(user.username)}
               </Avatar>
             </IconButton>

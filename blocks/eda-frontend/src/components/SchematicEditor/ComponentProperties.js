@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import mxGraphFactory from 'mxgraph'
-import { ListItem, ListItemText, Button, TextField } from '@material-ui/core'
+import { ListItem, ListItemText, Button, TextField } from '@mui/material'
 import { TailSpin } from 'react-loader-spinner'
 
 import { setCompProperties } from '../../redux/componentPropertiesSlice'

@@ -1,21 +1,11 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
-import { Hidden, List, ListItem, ListItemText, TextField, MenuItem, TextareaAutosize } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
+import { Box, List, ListItem, ListItemText, TextField, MenuItem, TextareaAutosize } from '@mui/material'
 import ComponentProperties from './ComponentProperties'
 import { useSelector, useDispatch } from 'react-redux'
 import { setSchDescription } from '../../redux/saveSchematicSlice'
 
 import './Helper/SchematicEditor.css'
-
-const useStyles = makeStyles((theme) => ({
-  toolbar: {
-    minHeight: '90px'
-  },
-  pages: {
-    margin: theme.spacing(0, 0.7)
-  }
-}))
 
 const pageSize = [
   {
@@ -53,7 +43,6 @@ const pageLayout = [
 
 // Display grid size and orientation
 function GridProperties ({ gridRef }) {
-  const classes = useStyles()
 
   const [gridSize, setGridSize] = useState('A4')
   const [gridLayout, setGridLayout] = useState('L')
@@ -78,11 +67,13 @@ function GridProperties ({ gridRef }) {
           id='filled-select-currency'
           select
           size='small'
-          className={classes.pages}
           value={gridSize}
           onChange={handleSizeChange}
           helperText='Grid size'
           variant='outlined'
+          sx={{
+            mx: 0.7
+          }}
         >
           {pageSize.map((option) => (
             <MenuItem key={option.value} value={option.value}>
@@ -94,11 +85,13 @@ function GridProperties ({ gridRef }) {
           id='grid-layout'
           select
           size='small'
-          className={classes.pages}
           value={gridLayout}
           onChange={handleLayoutChange}
           helperText='Grid Layout'
           variant='outlined'
+          sx={{
+            mx: 0.7
+          }}
         >
           {pageLayout.map((option) => (
             <MenuItem key={option.value} value={option.value}>
@@ -116,7 +109,6 @@ GridProperties.propTypes = {
 }
 
 export default function PropertiesSidebar ({ gridRef, outlineRef }) {
-  const classes = useStyles()
 
   const isOpen = useSelector(state => state.componentProperties.isPropertiesWindowOpen)
   const description1 = useSelector(state => state.saveSchematic.description)
@@ -135,9 +127,13 @@ export default function PropertiesSidebar ({ gridRef, outlineRef }) {
   const typography3 = process.env.REACT_APP_BLOCKS_NAME + ' Position'
   return (
     <>
-      <Hidden mdDown>
-        <div className={classes.toolbar} />
-      </Hidden>
+      <Box
+        component='div'
+        sx={{
+          minHeight: '90px',
+          display: { xs: 'none', md: 'block' }
+        }}
+      />
 
       <List>
         <ListItem button divider>

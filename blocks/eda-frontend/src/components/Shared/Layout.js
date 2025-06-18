@@ -1,28 +1,12 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
-import { AppBar, IconButton, Toolbar } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import MenuIcon from '@material-ui/icons/Menu'
+import { AppBar, IconButton, Toolbar } from '@mui/material'
+import MenuIcon from '@mui/icons-material/Menu'
 
 import LayoutSidebar from './LayoutSidebar'
 
-const useStyles = makeStyles((theme) => ({
-  appBar: {
-    borderBottom: `1px solid ${theme.palette.divider}`,
-    zIndex: theme.zIndex.drawer + 1
-  },
-  menuButton: {
-    marginRight: theme.spacing(1),
-    padding: theme.spacing(1),
-    [theme.breakpoints.up('md')]: {
-      display: 'none'
-    }
-  }
-}))
-
 // Common layout for Dashboard and Schematic Editor
 function Layout ({ header, resToolbar, sidebar }) {
-  const classes = useStyles()
   const [mobileOpen, setMobileOpen] = useState(false)
 
   const handleDrawerToggle = () => {
@@ -36,7 +20,10 @@ function Layout ({ header, resToolbar, sidebar }) {
         position='fixed'
         color='default'
         elevation={0}
-        className={classes.appBar}
+        sx={{
+          borderBottom: theme => `1px solid ${theme.palette.divider}`,
+          zIndex: theme => theme.zIndex.drawer + 1
+        }}
       >
         {header}
 
@@ -47,7 +34,14 @@ function Layout ({ header, resToolbar, sidebar }) {
             edge='start'
             size='small'
             onClick={handleDrawerToggle}
-            className={classes.menuButton}
+            sx={{
+              mr: 1,
+              p: 1,
+              display: {
+                xs: 'inline-flex',
+                md: 'none'
+              }
+            }}
           >
             <MenuIcon fontSize='small' />
           </IconButton>

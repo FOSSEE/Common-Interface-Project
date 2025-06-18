@@ -1,34 +1,32 @@
 import { useEffect } from 'react'
-import { Button, Card, CardActions, CardContent, Grid, Typography } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
+import { Button, Card, CardActions, CardContent, Grid, Typography } from '@mui/material'
 import { Link as RouterLink } from 'react-router-dom'
 
 import SchematicCard from './SchematicCard'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchSchematics } from '../../redux/dashboardSlice'
 
-const useStyles = makeStyles({
-  mainHead: {
-    width: '100%',
-    backgroundColor: '#404040',
-    color: '#fff'
-  },
-  title: {
-    fontSize: 14,
-    color: '#80ff80'
-  }
-})
-
 // Card displaying user my schematics page header.
 function MainCard () {
-  const classes = useStyles()
   const typography1 = 'All ' + process.env.REACT_APP_SMALL_DIAGRAMS_NAME + ' are listed below'
   const typography2 = 'My ' + process.env.REACT_APP_DIAGRAMS_NAME
 
   return (
-    <Card className={classes.mainHead}>
+    <Card
+      sx={{
+        width: '100%',
+        bgcolor: '#404040',
+        color: '#fff'
+      }}
+    >
       <CardContent>
-        <Typography className={classes.title} gutterBottom>
+        <Typography
+          gutterBottom
+          sx={{
+            fontSize: 14,
+            color: '#80ff80'
+          }}
+        >
           {typography1}
         </Typography>
         <Typography variant='h5' component='h2'>
@@ -54,7 +52,6 @@ function MainCard () {
 }
 
 export default function SchematicsList () {
-  const classes = useStyles()
   const user = useSelector(state => state.auth.user)
   const schematics = useSelector(state => state.dashboard.schematics)
 
@@ -95,7 +92,15 @@ export default function SchematicsList () {
             )}
           </>
           : <Grid item xs={12}>
-            <Card style={{ padding: '7px 15px' }} className={classes.mainHead}>
+            <Card
+              sx={{
+                width: '100%',
+                bgcolor: '#404040',
+                color: '#fff',
+                px: '15px',
+                py: '7px'
+              }}
+            >
               <Typography variant='subtitle1' gutterBottom>
                 Hey {user.username} , {typography1}
               </Typography>

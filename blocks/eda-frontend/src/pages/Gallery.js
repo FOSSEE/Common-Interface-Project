@@ -1,43 +1,16 @@
 // Main layout for gallery page.
 import { useCallback, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Container, CssBaseline, Grid, Typography, FormControl, InputLabel, Select, MenuItem, Input } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
+import { Box, Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Container, CssBaseline, Grid, Typography, FormControl, InputLabel, Select, MenuItem, Input } from '@mui/material'
 import { Link as RouterLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import api from '../utils/Api'
 import { fetchGallery } from '../redux/dashboardSlice'
 
-const useStyles = makeStyles((theme) => ({
-  mainHead: {
-    width: '100%',
-    backgroundColor: '#404040',
-    color: '#fff'
-  },
-  title: {
-    fontSize: 18,
-    color: '#80ff80'
-  },
-  header: {
-    padding: theme.spacing(5, 0, 6, 0)
-  },
-  root: {
-    display: 'flex',
-    minHeight: '100vh',
-    backgroundColor: '#f4f6f8'
-  },
-  media: {
-    marginTop: theme.spacing(3),
-    height: 170
-  }
-}))
-
 const images = require.context('../static/gallery', true)
 
 // Card displaying overview of gallery sample schematics.
 const SchematicCard = ({ sch }) => {
-  const classes = useStyles()
-
   useEffect(() => {
     document.title = 'Gallery - ' + process.env.REACT_APP_NAME
   }, [])
@@ -50,10 +23,14 @@ const SchematicCard = ({ sch }) => {
         <CardActionArea>
           <CardMedia
             component='img'
-            className={classes.media}
             image={imageName}
             title={sch.name}
-            style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
+            sx={{
+              width: '100%',
+              height: 'auto',
+              objectFit: 'contain',
+              mt: 3
+            }}
           />
           <CardContent>
             <Typography gutterBottom variant='h5' component='h2'>
@@ -86,17 +63,28 @@ SchematicCard.propTypes = {
 
 // Card displaying gallery page header.
 const MainCard = () => {
-  const classes = useStyles()
-
   const typography = process.env.REACT_APP_NAME + ' Gallery'
   const diagramTypography = 'Sample ' + process.env.REACT_APP_SMALL_DIAGRAMS_NAME + ' are listed below...'
   return (
-    <Card className={classes.mainHead}>
+    <Card
+      sx={{
+        width: '100%',
+        bgcolor: '#404040',
+        color: '#fff'
+      }}
+    >
       <CardContent>
         <Typography variant='h2' align='center' gutterBottom>
           {typography}
         </Typography>
-        <Typography className={classes.title} align='center' gutterBottom>
+        <Typography
+          align='center'
+          gutterBottom
+          sx={{
+            fontSize: 18,
+            color: '#80ff80'
+          }}
+        >
           {diagramTypography}
         </Typography>
       </CardContent>
@@ -134,7 +122,7 @@ const BookDropdown = ({ onBookChange }) => {
 
   return (
     <Grid container spacing={2} alignItems='center'>
-      <Grid item xs={12}>
+      <Grid>
         <FormControl fullWidth>
           <InputLabel id='book-label'>Book</InputLabel>
           <Select
@@ -174,7 +162,7 @@ const SearchComponent = ({ onSearch }) => {
 
   return (
     <Grid container spacing={2}>
-      <Grid item xs={12}>
+      <Grid>
         <FormControl fullWidth>
           <InputLabel htmlFor='search-input'>Search</InputLabel>
           <Input
@@ -195,7 +183,6 @@ SearchComponent.propTypes = {
 }
 
 const Gallery = () => {
-  const classes = useStyles()
   const GallerySchSample = useSelector(state => state.dashboard.gallery)
 
   // State to store the selected book ID
@@ -248,31 +235,44 @@ const Gallery = () => {
       })
 
   return (
-    <div className={classes.root}>
+    <Box
+      component='div'
+      sx={{
+        display: 'flex',
+        minHeight: '100vh',
+        bgcolor: '#f4f6f8'
+      }}
+    >
       <CssBaseline />
-      <Container maxWidth='lg' className={classes.header}>
+      <Container
+        maxWidth='lg'
+        sx={{
+          pt: 5,
+          pb: 6
+        }}
+      >
         <Grid container direction='row' justifyContent='flex-start' alignItems='flex-start' alignContent='center' spacing={3}>
           {/* Gallery Header */}
-          <Grid item xs={12}>
+          <Grid>
             <MainCard />
           </Grid>
 
-          <Grid item xs={12}>
+          <Grid>
             <Grid container spacing={2}>
               {/* BookDropdown */}
-              <Grid item xs={12} md={6}>
+              <Grid>
                 <BookDropdown onBookChange={handleBookChange} />
               </Grid>
 
               {/* SearchComponent */}
-              <Grid item xs={12} md={6}>
+              <Grid>
                 <SearchComponent onSearch={handleSearch} />
               </Grid>
             </Grid>
           </Grid>
 
           {/* Display a message or blank gallery */}
-          <Grid item xs={12}>
+          <Grid>
             <Typography variant='h6' align='center' color='textSecondary'>
               {
                 finalfilteredSchematics.length === 0
@@ -291,14 +291,14 @@ const Gallery = () => {
 
           {
             finalfilteredSchematics.map((sch) => (
-              <Grid item xs={12} sm={6} lg={4} key={sch.save_id}>
+              <Grid size={4} key={sch.save_id}>
                 <SchematicCard sch={sch} />
               </Grid>
             ))
           }
         </Grid>
       </Container>
-    </div>
+    </Box>
   )
 }
 

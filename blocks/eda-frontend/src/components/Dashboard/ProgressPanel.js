@@ -1,19 +1,10 @@
 import { useEffect, useState } from 'react'
-import { Tab, Box, Tabs, AppBar, Typography, Grid } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
+import { Tab, Box, Tabs, AppBar, Typography, Grid } from '@mui/material'
 import PropTypes from 'prop-types'
 
 import SchematicCard from './SchematicCard'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchSchematics } from '../../redux/dashboardSlice'
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    width: '100%',
-    backgroundColor: theme.palette.background.paper
-  }
-}))
 
 function TabPanel (props) {
   const { children, value, index, ...other } = props
@@ -49,7 +40,6 @@ function a11yProps (index) {
 }
 
 export default function ProgressPanel () {
-  const classes = useStyles()
   const [value, setValue] = useState(0)
 
   const handleChange = (event, newValue) => {
@@ -68,7 +58,14 @@ export default function ProgressPanel () {
   const tab = 'Recent ' + process.env.REACT_APP_DIAGRAMS_NAME
   const typography = 'You have not created any ' + process.env.REACT_APP_SMALL_DIAGRAM_NAME
   return (
-    <div className={classes.root}>
+    <Box
+      component='div'
+      sx={{
+        flexGrow: 1,
+        width: '100%',
+        bgcolor: 'background.paper'
+      }}
+    >
       <AppBar position='static'>
         <Tabs
           value={value}
@@ -106,6 +103,6 @@ export default function ProgressPanel () {
             {typography} , Create your first one now...
           </Typography>}
       </TabPanel>
-    </div>
+    </Box>
   )
 }

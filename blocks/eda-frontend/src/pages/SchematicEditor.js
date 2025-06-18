@@ -2,8 +2,7 @@
 import { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import { TailSpin } from 'react-loader-spinner'
-import { CssBaseline } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
+import { CssBaseline } from '@mui/material'
 
 import Layout from '../components/Shared/Layout'
 import Header from '../components/SchematicEditor/Header'
@@ -22,18 +21,7 @@ import { styleToObject } from '../utils/GalleryUtils'
 import { changePorts } from '../components/SchematicEditor/ComponentProperties'
 import { graph, getCurrentDiagramXML } from '../components/SchematicEditor/Helper/ComponentDrag'
 
-const useStyles = makeStyles((_theme) => ({
-  root: {
-    display: 'flex',
-    minHeight: '100vh'
-  },
-  toolbar: {
-    minHeight: '80px'
-  }
-}))
-
 export default function SchematicEditor (props) {
-  const classes = useStyles()
   const compRef = useRef()
   const gridRef = useRef()
   const outlineRef = useRef()
@@ -133,7 +121,12 @@ export default function SchematicEditor (props) {
   }, [dispatch, props.location.search])
 
   return (
-    <div className={classes.root}>
+    <div
+      style={{
+        display: 'flex',
+        minHeight: '100vh'
+      }}
+    >
 
       <CssBaseline />
 
@@ -143,14 +136,17 @@ export default function SchematicEditor (props) {
 
       {/* Grid for drawing and designing circuits */}
       <LayoutMain>
-        <div className={classes.toolbar} />
+        <div
+          style={{
+            minHeight: '80px'
+          }}
+        />
         <center>
           <button
             id="closeButton"
             onClick={handleCloseClick}
             style={{
               display: 'none',
-              // position: 'absolute',
               top: '10px',
               right: '10px',
               zIndex: 1000,

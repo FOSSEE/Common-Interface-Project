@@ -1,8 +1,7 @@
 // Main Layout for user dashboard.
 import { useEffect } from 'react'
 import { Switch, Route } from 'react-router-dom'
-import { CssBaseline } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
+import { Box, CssBaseline } from '@mui/material'
 
 import { Header } from '../components/Shared/Navbar'
 import Layout from '../components/Shared/Layout'
@@ -11,32 +10,31 @@ import DashboardSidebar from '../components/Dashboard/DashboardSidebar'
 import DashboardHome from '../components/Dashboard/DashboardHome'
 import SchematicsList from '../components/Dashboard/SchematicsList'
 
-const useStyles = makeStyles((_theme) => ({
-  root: {
-    display: 'flex',
-    minHeight: '100vh'
-  },
-  toolbar: {
-    minHeight: '40px'
-  }
-}))
-
 export default function Dashboard () {
-  const classes = useStyles()
-
   useEffect(() => {
     document.title = 'Dashboard - ' + process.env.REACT_APP_NAME
   }, [])
 
   return (
-    <div className={classes.root}>
+    <Box
+      component='div'
+      sx={{
+        display: 'flex',
+        minHeight: '100vh'
+      }}
+    >
       <CssBaseline />
 
       {/* Schematic editor header and left side pane */}
       <Layout resToolbar={<Header />} sidebar={<DashboardSidebar />} />
 
       <LayoutMain>
-        <div className={classes.toolbar} />
+        <Box
+          component='div'
+          sx={{
+            minHeight: '40px'
+          }}
+        />
 
         {/* Subroutes under dashboard section */}
         <Switch>
@@ -49,6 +47,6 @@ export default function Dashboard () {
           />
         </Switch>
       </LayoutMain>
-    </div>
+    </Box>
   )
 }

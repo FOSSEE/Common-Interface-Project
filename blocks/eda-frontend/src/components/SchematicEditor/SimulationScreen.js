@@ -1,9 +1,8 @@
 import { forwardRef, useCallback, useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import Highcharts from 'highcharts'
-import { AppBar, Button, Container, Dialog, Grid, IconButton, Paper, Slide, Toolbar, Typography } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import CloseIcon from '@material-ui/icons/Close'
+import { AppBar, Button, Container, Dialog, Grid, IconButton, Paper, Slide, Toolbar, Typography } from '@mui/material'
+import CloseIcon from '@mui/icons-material/Close'
 import { useSelector, useDispatch } from 'react-redux'
 
 import Graph, { setStatusDone, setStatusClosed } from '../Shared/Graph'
@@ -76,26 +75,6 @@ const Transition = forwardRef(function Transition (props, ref) {
   return <Slide direction='up' ref={ref} {...props} />
 })
 
-const useStyles = makeStyles((theme) => ({
-  appBar: {
-    position: 'relative'
-  },
-  title: {
-    marginLeft: theme.spacing(2),
-    flex: 1
-  },
-  header: {
-    padding: theme.spacing(5, 0, 6),
-    color: '#fff'
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    backgroundColor: '#404040',
-    color: '#fff'
-  }
-}))
-
 export function setGraphStatusDone () {
   setStatusDone()
 }
@@ -110,7 +89,6 @@ export function setGraphStatusClosed () {
 
 // Screen to display simulation result in graph or text format
 export default function SimulationScreen ({ open, close }) {
-  const classes = useStyles()
   const dispatch = useDispatch()
   const isSimulating = useSelector(state => state.simulation.isSimulating)
   const isGraph = useSelector(state => state.simulation.isGraph)
@@ -748,12 +726,21 @@ export default function SimulationScreen ({ open, close }) {
           }
         }}
       >
-        <AppBar position='static' elevation={0} className={classes.appBar}>
+        <AppBar
+          position='relative'
+          elevation={0}
+        >
           <Toolbar variant='dense' style={{ backgroundColor: '#404040' }}>
             <IconButton edge='start' color='inherit' onClick={() => close(taskId)} aria-label='close'>
               <CloseIcon />
             </IconButton>
-            <Typography variant='h6' className={classes.title}>
+            <Typography
+              variant='h6'
+              sx={{
+                ml: 2,
+                flex: 1
+              }}
+            >
               Simulation Result
             </Typography>
             <Button autoFocus color='inherit' onClick={() => close(taskId)}>
@@ -761,7 +748,14 @@ export default function SimulationScreen ({ open, close }) {
             </Button>
           </Toolbar>
         </AppBar>
-        <Container maxWidth='lg' className={classes.header}>
+        <Container
+          maxWidth='lg'
+          sx={{
+            pt: 5,
+            pb: 6,
+            color: '#fff'
+          }}
+        >
           <Grid
             container
             spacing={3}
@@ -771,7 +765,14 @@ export default function SimulationScreen ({ open, close }) {
           >
             {/* Card to display simulation result screen header */}
             <Grid item xs={12} sm={12}>
-              <Paper className={classes.paper}>
+              <Paper
+                sx={{
+                  p: 2,
+                  textAlign: 'center',
+                  bgcolor: '#404040',
+                  color: '#fff'
+                }}
+              >
                 <Typography variant='h2' align='center' gutterBottom>
                   {rtitle}
                 </Typography>
@@ -788,7 +789,14 @@ export default function SimulationScreen ({ open, close }) {
                   isGraph
                     ? <>
                       <Grid item xs={12} sm={12}>
-                        <Paper className={classes.paper}>
+                        <Paper
+                          sx={{
+                            p: 2,
+                            textAlign: 'center',
+                            bgcolor: '#404040',
+                            color: '#fff'
+                          }}
+                        >
                           <Typography variant='h4' align='center' gutterBottom>
                             GRAPH OUTPUT
                           </Typography>
@@ -811,7 +819,14 @@ export default function SimulationScreen ({ open, close }) {
                       }
                     </>
                     : <Grid item xs={12} sm={12}>
-                      <Paper className={classes.paper}>
+                      <Paper
+                        sx={{
+                          p: 2,
+                          textAlign: 'center',
+                          bgcolor: '#404040',
+                          color: '#fff'
+                        }}
+                      >
                         <Typography variant='h5' align='center' gutterBottom>
                           {typography1}
                         </Typography>
@@ -822,7 +837,14 @@ export default function SimulationScreen ({ open, close }) {
                 {
                   (error !== '')
                     ? <Grid item xs={12} sm={12}>
-                      <Paper className={classes.paper}>
+                      <Paper
+                        sx={{
+                          p: 2,
+                          textAlign: 'center',
+                          bgcolor: '#404040',
+                          color: '#fff'
+                        }}
+                      >
                         <Typography variant='h4' align='center' gutterBottom>
                           {error}
                         </Typography>
@@ -834,7 +856,14 @@ export default function SimulationScreen ({ open, close }) {
                 {
                   !isGraph
                     ? <Grid item xs={12} sm={12}>
-                      <Paper className={classes.paper}>
+                      <Paper
+                        sx={{
+                          p: 2,
+                          textAlign: 'center',
+                          bgcolor: '#404040',
+                          color: '#fff'
+                        }}
+                      >
                         <Typography variant='h6' align='center' gutterBottom>
                           {errorMessage}
                         </Typography>
@@ -844,7 +873,14 @@ export default function SimulationScreen ({ open, close }) {
                 }
               </>
               : <Grid item xs={12} sm={12}>
-                <Paper className={classes.paper}>
+                <Paper
+                  sx={{
+                    p: 2,
+                    textAlign: 'center',
+                    bgcolor: '#404040',
+                    color: '#fff'
+                  }}
+                >
                   <Typography variant='h6' align='center' gutterBottom>
                     {typography2} {/* Waiting for result message */}
                   </Typography>
