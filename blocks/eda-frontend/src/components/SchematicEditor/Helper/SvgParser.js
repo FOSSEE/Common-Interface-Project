@@ -3,7 +3,7 @@ import 'mxgraph/javascript/src/css/common.css'
 
 import mxGraphFactory from 'mxgraph'
 
-import { getRotationParameters, getPins, getPointXY, getXYPos, getSuperBlockDiagram } from './ToolbarTools'
+import { getRotationParameters, getPins, getPointXY, getSuperBlockDiagram } from './ToolbarTools'
 import { updateMxGraphXML } from '../../../utils/GalleryUtils'
 
 const {
@@ -73,22 +73,17 @@ export function getSvgMetadata (graph, parent, evt, target, x, y, component) {
     if (!allowedDmg.includes(blockport.port_dmg)) { continue }
     if (blockport.port_name === 'NC') { continue }
 
-    let xPos = 1 / 2 + blockport.port_x / defaultScale / width
-    let yPos = 1 / 2 + blockport.port_y / defaultScale / height
+    const xPos = 1 / 2 + blockport.port_x / defaultScale / width
+    const yPos = 1 / 2 + blockport.port_y / defaultScale / height
 
     const portOrientation = blockport.port_orientation
-    const portRotation = blockport.port_rotation
-    const rotationParameters = getRotationParameters(portOrientation, portRotation)
+    const rotationParameters = getRotationParameters(portOrientation)
 
     const pins = getPins(portOrientation, v1)
 
-    const pointXY = getPointXY(rotationParameters)
+    const pointXY = getPointXY(rotationParameters, blockName)
     const pointX = pointXY.pointX
     const pointY = pointXY.pointY
-
-    const xyPos = getXYPos(rotationParameters, xPos, yPos)
-    xPos = xyPos.xPos
-    yPos = xyPos.yPos
 
     const point = new mxPoint(pointX, pointY)
 

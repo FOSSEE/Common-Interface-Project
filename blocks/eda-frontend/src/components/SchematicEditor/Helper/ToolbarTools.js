@@ -322,34 +322,6 @@ export function getPointXY (rotationParameters, blockname) {
   return { pointX, pointY }
 }
 
-export function getXYPos (rotationParameters, xPos, yPos) {
-  const xPosOld = xPos
-  switch (rotationParameters.portdirection) {
-  case PORTDIRECTIONS.L2T:
-  case PORTDIRECTIONS.T2L:
-    xPos = yPos
-    yPos = xPosOld
-    break
-  case PORTDIRECTIONS.L2R:
-    xPos = 1 - xPosOld
-    /* same yPos */
-    break
-  case PORTDIRECTIONS.L2B:
-    xPos = yPos
-    yPos = 1 - xPosOld
-    break
-  case PORTDIRECTIONS.T2R:
-    xPos = 1 - yPos
-    yPos = xPosOld
-    break
-  case PORTDIRECTIONS.T2B:
-    /* same xPos */
-    yPos = 1 - yPos
-    break
-  }
-  return { xPos, yPos }
-}
-
 export function getSuperBlockDiagram (xml) {
   xml = '<SuperBlockDiagram as="child" background="-1" title="">' + xml + '</SuperBlockDiagram>'
   const superBlockDiagram = mxUtils.parseXml(xml)
