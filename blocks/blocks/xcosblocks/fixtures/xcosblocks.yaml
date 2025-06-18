@@ -9392,7 +9392,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 2
   fields:
@@ -9406,7 +9405,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 3
   fields:
@@ -9420,7 +9418,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 4
   fields:
@@ -9434,7 +9431,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 5
   fields:
@@ -9448,7 +9444,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 6
   fields:
@@ -9462,7 +9457,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 7
   fields:
@@ -9476,7 +9470,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 8
   fields:
@@ -9490,7 +9483,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 9
   fields:
@@ -9504,7 +9496,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 10
   fields:
@@ -9518,7 +9509,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 11
   fields:
@@ -9532,7 +9522,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 12
   fields:
@@ -9546,7 +9535,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 13
   fields:
@@ -9560,7 +9548,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 14
   fields:
@@ -9574,7 +9561,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 15
   fields:
@@ -9588,7 +9574,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 16
   fields:
@@ -9602,7 +9587,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 17
   fields:
@@ -9616,7 +9600,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 18
   fields:
@@ -9630,7 +9613,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 19
   fields:
@@ -9644,7 +9626,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 20
   fields:
@@ -9658,7 +9639,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 21
   fields:
@@ -9672,7 +9652,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 22
   fields:
@@ -9686,7 +9665,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 23
   fields:
@@ -9700,7 +9678,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 24
   fields:
@@ -9714,7 +9691,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 25
   fields:
@@ -9728,7 +9704,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 26
   fields:
@@ -9742,7 +9717,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 27
   fields:
@@ -9756,7 +9730,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 28
   fields:
@@ -9770,7 +9743,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 29
   fields:
@@ -9784,7 +9756,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 30
   fields:
@@ -9798,7 +9769,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 31
   fields:
@@ -9812,7 +9782,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 32
   fields:
@@ -9826,7 +9795,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 33
   fields:
@@ -9840,7 +9808,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 34
   fields:
@@ -9854,7 +9821,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 35
   fields:
@@ -9868,7 +9834,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 36
   fields:
@@ -9882,7 +9847,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 37
   fields:
@@ -9896,7 +9860,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 38
   fields:
@@ -9910,7 +9873,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 39
   fields:
@@ -9924,7 +9886,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 40
   fields:
@@ -9938,7 +9899,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 41
   fields:
@@ -9952,7 +9912,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 42
   fields:
@@ -9966,7 +9925,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 43
   fields:
@@ -9980,7 +9938,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 44
   fields:
@@ -9994,7 +9951,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 45
   fields:
@@ -10008,7 +9964,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 46
   fields:
@@ -10022,7 +9977,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 47
   fields:
@@ -10036,7 +9990,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 48
   fields:
@@ -10050,7 +10003,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 49
   fields:
@@ -10064,7 +10016,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 50
   fields:
@@ -10078,7 +10029,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 51
   fields:
@@ -10092,7 +10042,6 @@
     port_part: 1
     port_dmg: 1
     port_type: CommandPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 52
   fields:
@@ -10106,7 +10055,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 53
   fields:
@@ -10120,7 +10068,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 54
   fields:
@@ -10134,7 +10081,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 55
   fields:
@@ -10148,7 +10094,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 56
   fields:
@@ -10162,7 +10107,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 57
   fields:
@@ -10176,7 +10120,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 58
   fields:
@@ -10190,7 +10133,6 @@
     port_part: 1
     port_dmg: 1
     port_type: CommandPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 59
   fields:
@@ -10204,7 +10146,6 @@
     port_part: 1
     port_dmg: 1
     port_type: CommandPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 60
   fields:
@@ -10218,7 +10159,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 61
   fields:
@@ -10232,7 +10172,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 62
   fields:
@@ -10246,7 +10185,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 63
   fields:
@@ -10260,7 +10198,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 64
   fields:
@@ -10274,7 +10211,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 65
   fields:
@@ -10288,7 +10224,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 66
   fields:
@@ -10302,7 +10237,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 67
   fields:
@@ -10316,7 +10250,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 68
   fields:
@@ -10330,7 +10263,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 69
   fields:
@@ -10344,7 +10276,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 70
   fields:
@@ -10358,7 +10289,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 71
   fields:
@@ -10372,7 +10302,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 72
   fields:
@@ -10386,7 +10315,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 73
   fields:
@@ -10400,7 +10328,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 74
   fields:
@@ -10414,7 +10341,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 75
   fields:
@@ -10428,7 +10354,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 76
   fields:
@@ -10442,7 +10367,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 77
   fields:
@@ -10456,7 +10380,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 78
   fields:
@@ -10470,7 +10393,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 79
   fields:
@@ -10484,7 +10406,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 80
   fields:
@@ -10498,7 +10419,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 81
   fields:
@@ -10512,7 +10432,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 82
   fields:
@@ -10526,7 +10445,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 83
   fields:
@@ -10540,7 +10458,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 84
   fields:
@@ -10554,7 +10471,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 85
   fields:
@@ -10568,7 +10484,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 86
   fields:
@@ -10582,7 +10497,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 87
   fields:
@@ -10596,7 +10510,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 88
   fields:
@@ -10610,7 +10523,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 89
   fields:
@@ -10624,7 +10536,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 90
   fields:
@@ -10638,7 +10549,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 91
   fields:
@@ -10652,7 +10562,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 92
   fields:
@@ -10666,7 +10575,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 93
   fields:
@@ -10680,7 +10588,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 94
   fields:
@@ -10694,7 +10601,6 @@
     port_part: 1
     port_dmg: 1
     port_type: CommandPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 95
   fields:
@@ -10708,7 +10614,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 96
   fields:
@@ -10722,7 +10627,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 97
   fields:
@@ -10736,7 +10640,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 98
   fields:
@@ -10750,7 +10653,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 99
   fields:
@@ -10764,7 +10666,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 100
   fields:
@@ -10778,7 +10679,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 101
   fields:
@@ -10792,7 +10692,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 102
   fields:
@@ -10806,7 +10705,6 @@
     port_part: 1
     port_dmg: 1
     port_type: CommandPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 103
   fields:
@@ -10820,7 +10718,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 104
   fields:
@@ -10834,7 +10731,6 @@
     port_part: 1
     port_dmg: 1
     port_type: CommandPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 105
   fields:
@@ -10848,7 +10744,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 106
   fields:
@@ -10862,7 +10757,6 @@
     port_part: 1
     port_dmg: 1
     port_type: CommandPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 107
   fields:
@@ -10876,7 +10770,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 108
   fields:
@@ -10890,7 +10783,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 109
   fields:
@@ -10904,7 +10796,6 @@
     port_part: 1
     port_dmg: 1
     port_type: CommandPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 110
   fields:
@@ -10918,7 +10809,6 @@
     port_part: 1
     port_dmg: 1
     port_type: CommandPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 111
   fields:
@@ -10932,7 +10822,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 112
   fields:
@@ -10946,7 +10835,6 @@
     port_part: 1
     port_dmg: 1
     port_type: CommandPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 113
   fields:
@@ -10960,7 +10848,6 @@
     port_part: 1
     port_dmg: 1
     port_type: CommandPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 114
   fields:
@@ -10974,7 +10861,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 115
   fields:
@@ -10988,7 +10874,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 116
   fields:
@@ -11002,7 +10887,6 @@
     port_part: 1
     port_dmg: 1
     port_type: CommandPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 117
   fields:
@@ -11016,7 +10900,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 118
   fields:
@@ -11030,7 +10913,6 @@
     port_part: 1
     port_dmg: 1
     port_type: CommandPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 119
   fields:
@@ -11044,7 +10926,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 120
   fields:
@@ -11058,7 +10939,6 @@
     port_part: 1
     port_dmg: 1
     port_type: CommandPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 121
   fields:
@@ -11072,7 +10952,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 122
   fields:
@@ -11086,7 +10965,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 123
   fields:
@@ -11100,7 +10978,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 124
   fields:
@@ -11114,7 +10991,6 @@
     port_part: 1
     port_dmg: 1
     port_type: CommandPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 125
   fields:
@@ -11128,7 +11004,6 @@
     port_part: 1
     port_dmg: 1
     port_type: CommandPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 126
   fields:
@@ -11142,7 +11017,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 127
   fields:
@@ -11156,7 +11030,6 @@
     port_part: 1
     port_dmg: 1
     port_type: CommandPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 128
   fields:
@@ -11170,7 +11043,6 @@
     port_part: 1
     port_dmg: 1
     port_type: CommandPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 129
   fields:
@@ -11184,7 +11056,6 @@
     port_part: 1
     port_dmg: 1
     port_type: CommandPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 130
   fields:
@@ -11198,7 +11069,6 @@
     port_part: 1
     port_dmg: 1
     port_type: CommandPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 131
   fields:
@@ -11212,7 +11082,6 @@
     port_part: 1
     port_dmg: 1
     port_type: CommandPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 132
   fields:
@@ -11226,7 +11095,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 133
   fields:
@@ -11240,7 +11108,6 @@
     port_part: 1
     port_dmg: 1
     port_type: CommandPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 134
   fields:
@@ -11254,7 +11121,6 @@
     port_part: 1
     port_dmg: 1
     port_type: CommandPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 135
   fields:
@@ -11268,7 +11134,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 136
   fields:
@@ -11282,7 +11147,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 137
   fields:
@@ -11296,7 +11160,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 138
   fields:
@@ -11310,7 +11173,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 139
   fields:
@@ -11324,7 +11186,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 140
   fields:
@@ -11338,7 +11199,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 141
   fields:
@@ -11352,7 +11212,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 142
   fields:
@@ -11366,7 +11225,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 143
   fields:
@@ -11380,7 +11238,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 144
   fields:
@@ -11394,7 +11251,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 145
   fields:
@@ -11408,7 +11264,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 146
   fields:
@@ -11422,7 +11277,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 147
   fields:
@@ -11436,7 +11290,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 148
   fields:
@@ -11450,7 +11303,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 149
   fields:
@@ -11464,7 +11316,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 150
   fields:
@@ -11478,7 +11329,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 151
   fields:
@@ -11492,7 +11342,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 152
   fields:
@@ -11506,7 +11355,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 153
   fields:
@@ -11520,7 +11368,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 154
   fields:
@@ -11534,7 +11381,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 155
   fields:
@@ -11548,7 +11394,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 156
   fields:
@@ -11562,7 +11407,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 157
   fields:
@@ -11576,7 +11420,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 158
   fields:
@@ -11590,7 +11433,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 159
   fields:
@@ -11604,7 +11446,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 160
   fields:
@@ -11618,7 +11459,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 161
   fields:
@@ -11632,7 +11472,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 162
   fields:
@@ -11646,7 +11485,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 163
   fields:
@@ -11660,7 +11498,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 164
   fields:
@@ -11674,7 +11511,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 165
   fields:
@@ -11688,7 +11524,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 166
   fields:
@@ -11702,7 +11537,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 167
   fields:
@@ -11716,7 +11550,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 168
   fields:
@@ -11730,7 +11563,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 169
   fields:
@@ -11744,7 +11576,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 170
   fields:
@@ -11758,7 +11589,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 171
   fields:
@@ -11772,7 +11602,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 172
   fields:
@@ -11786,7 +11615,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 173
   fields:
@@ -11800,7 +11628,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 174
   fields:
@@ -11814,7 +11641,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 175
   fields:
@@ -11828,7 +11654,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 176
   fields:
@@ -11842,7 +11667,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 177
   fields:
@@ -11856,7 +11680,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 178
   fields:
@@ -11870,7 +11693,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 179
   fields:
@@ -11884,7 +11706,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 180
   fields:
@@ -11898,7 +11719,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 181
   fields:
@@ -11912,7 +11732,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 182
   fields:
@@ -11926,7 +11745,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 183
   fields:
@@ -11940,7 +11758,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 184
   fields:
@@ -11954,7 +11771,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 185
   fields:
@@ -11968,7 +11784,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 186
   fields:
@@ -11982,7 +11797,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 187
   fields:
@@ -11996,7 +11810,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 188
   fields:
@@ -12010,7 +11823,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 189
   fields:
@@ -12024,7 +11836,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 190
   fields:
@@ -12038,7 +11849,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 191
   fields:
@@ -12052,7 +11862,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 192
   fields:
@@ -12066,7 +11875,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 193
   fields:
@@ -12080,7 +11888,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 194
   fields:
@@ -12094,7 +11901,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 195
   fields:
@@ -12108,7 +11914,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 196
   fields:
@@ -12122,7 +11927,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 197
   fields:
@@ -12136,7 +11940,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 198
   fields:
@@ -12150,7 +11953,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 199
   fields:
@@ -12164,7 +11966,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 200
   fields:
@@ -12178,7 +11979,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 201
   fields:
@@ -12192,7 +11992,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 202
   fields:
@@ -12206,7 +12005,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 203
   fields:
@@ -12220,7 +12018,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 204
   fields:
@@ -12234,7 +12031,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 205
   fields:
@@ -12248,7 +12044,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 206
   fields:
@@ -12262,7 +12057,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 207
   fields:
@@ -12276,7 +12070,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 208
   fields:
@@ -12290,7 +12083,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 209
   fields:
@@ -12304,7 +12096,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 210
   fields:
@@ -12318,7 +12109,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 211
   fields:
@@ -12332,7 +12122,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 212
   fields:
@@ -12346,7 +12135,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 213
   fields:
@@ -12360,7 +12148,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 214
   fields:
@@ -12374,7 +12161,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 215
   fields:
@@ -12388,7 +12174,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 216
   fields:
@@ -12402,7 +12187,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 217
   fields:
@@ -12416,7 +12200,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 218
   fields:
@@ -12430,7 +12213,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 219
   fields:
@@ -12444,7 +12226,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 220
   fields:
@@ -12458,7 +12239,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 221
   fields:
@@ -12472,7 +12252,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 222
   fields:
@@ -12486,7 +12265,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 223
   fields:
@@ -12500,7 +12278,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 224
   fields:
@@ -12514,7 +12291,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 225
   fields:
@@ -12528,7 +12304,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 226
   fields:
@@ -12542,7 +12317,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 227
   fields:
@@ -12556,7 +12330,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 228
   fields:
@@ -12570,7 +12343,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 229
   fields:
@@ -12584,7 +12356,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 230
   fields:
@@ -12598,7 +12369,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 231
   fields:
@@ -12612,7 +12382,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 232
   fields:
@@ -12626,7 +12395,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 233
   fields:
@@ -12640,7 +12408,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 234
   fields:
@@ -12654,7 +12421,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 235
   fields:
@@ -12668,7 +12434,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 236
   fields:
@@ -12682,7 +12447,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 237
   fields:
@@ -12696,7 +12460,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 238
   fields:
@@ -12710,7 +12473,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 239
   fields:
@@ -12724,7 +12486,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 240
   fields:
@@ -12738,7 +12499,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 241
   fields:
@@ -12752,7 +12512,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 242
   fields:
@@ -12766,7 +12525,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 243
   fields:
@@ -12780,7 +12538,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 244
   fields:
@@ -12794,7 +12551,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 245
   fields:
@@ -12808,7 +12564,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 246
   fields:
@@ -12822,7 +12577,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 247
   fields:
@@ -12836,7 +12590,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 248
   fields:
@@ -12850,7 +12603,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 249
   fields:
@@ -12864,7 +12616,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 250
   fields:
@@ -12878,7 +12629,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 251
   fields:
@@ -12892,7 +12642,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 252
   fields:
@@ -12906,7 +12655,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 253
   fields:
@@ -12920,7 +12668,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 254
   fields:
@@ -12934,7 +12681,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 255
   fields:
@@ -12948,7 +12694,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 256
   fields:
@@ -12962,7 +12707,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 257
   fields:
@@ -12976,7 +12720,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 258
   fields:
@@ -12990,7 +12733,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 259
   fields:
@@ -13004,7 +12746,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 260
   fields:
@@ -13018,7 +12759,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 261
   fields:
@@ -13032,7 +12772,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 262
   fields:
@@ -13046,7 +12785,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 263
   fields:
@@ -13060,7 +12798,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 264
   fields:
@@ -13074,7 +12811,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 265
   fields:
@@ -13088,7 +12824,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitInputPort
-    port_rotation: 90
 - model: xcosblocks.newblockport
   pk: 266
   fields:
@@ -13102,7 +12837,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 267
   fields:
@@ -13116,7 +12850,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 268
   fields:
@@ -13130,7 +12863,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 269
   fields:
@@ -13144,7 +12876,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 270
   fields:
@@ -13158,7 +12889,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 271
   fields:
@@ -13172,7 +12902,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 272
   fields:
@@ -13186,7 +12915,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 273
   fields:
@@ -13200,7 +12928,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 274
   fields:
@@ -13214,7 +12941,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 275
   fields:
@@ -13228,7 +12954,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 276
   fields:
@@ -13242,7 +12967,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 277
   fields:
@@ -13256,7 +12980,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 278
   fields:
@@ -13270,7 +12993,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 279
   fields:
@@ -13284,7 +13006,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 280
   fields:
@@ -13298,7 +13019,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 281
   fields:
@@ -13312,7 +13032,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 282
   fields:
@@ -13326,7 +13045,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 283
   fields:
@@ -13340,7 +13058,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 284
   fields:
@@ -13354,7 +13071,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 285
   fields:
@@ -13368,7 +13084,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 286
   fields:
@@ -13382,7 +13097,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 287
   fields:
@@ -13396,7 +13110,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 288
   fields:
@@ -13410,7 +13123,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 289
   fields:
@@ -13424,7 +13136,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 290
   fields:
@@ -13438,7 +13149,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 291
   fields:
@@ -13452,7 +13162,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 292
   fields:
@@ -13466,7 +13175,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 293
   fields:
@@ -13480,7 +13188,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 294
   fields:
@@ -13494,7 +13201,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 295
   fields:
@@ -13508,7 +13214,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 296
   fields:
@@ -13522,7 +13227,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 297
   fields:
@@ -13536,7 +13240,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 298
   fields:
@@ -13550,7 +13253,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 299
   fields:
@@ -13564,7 +13266,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 300
   fields:
@@ -13578,7 +13279,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 301
   fields:
@@ -13592,7 +13292,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 302
   fields:
@@ -13606,7 +13305,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 303
   fields:
@@ -13620,7 +13318,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 304
   fields:
@@ -13634,7 +13331,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 305
   fields:
@@ -13648,7 +13344,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 306
   fields:
@@ -13662,7 +13357,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 307
   fields:
@@ -13676,7 +13370,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 308
   fields:
@@ -13690,7 +13383,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 309
   fields:
@@ -13704,7 +13396,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 310
   fields:
@@ -13718,7 +13409,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 311
   fields:
@@ -13732,7 +13422,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 312
   fields:
@@ -13746,7 +13435,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 313
   fields:
@@ -13760,7 +13448,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 314
   fields:
@@ -13774,7 +13461,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 315
   fields:
@@ -13788,7 +13474,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 316
   fields:
@@ -13802,7 +13487,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 317
   fields:
@@ -13816,7 +13500,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 318
   fields:
@@ -13830,7 +13513,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 319
   fields:
@@ -13844,7 +13526,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 320
   fields:
@@ -13858,7 +13539,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 321
   fields:
@@ -13872,7 +13552,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 322
   fields:
@@ -13886,7 +13565,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 323
   fields:
@@ -13900,7 +13578,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 324
   fields:
@@ -13914,7 +13591,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 325
   fields:
@@ -13928,7 +13604,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 326
   fields:
@@ -13942,7 +13617,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 327
   fields:
@@ -13956,7 +13630,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 328
   fields:
@@ -13970,7 +13643,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 329
   fields:
@@ -13984,7 +13656,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 330
   fields:
@@ -13998,7 +13669,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 331
   fields:
@@ -14012,7 +13682,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 332
   fields:
@@ -14026,7 +13695,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 333
   fields:
@@ -14040,7 +13708,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 334
   fields:
@@ -14054,7 +13721,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 335
   fields:
@@ -14068,7 +13734,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 336
   fields:
@@ -14082,7 +13747,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 337
   fields:
@@ -14096,7 +13760,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 338
   fields:
@@ -14110,7 +13773,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 339
   fields:
@@ -14124,7 +13786,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 340
   fields:
@@ -14138,7 +13799,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 341
   fields:
@@ -14152,7 +13812,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 342
   fields:
@@ -14166,7 +13825,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 343
   fields:
@@ -14180,7 +13838,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 344
   fields:
@@ -14194,7 +13851,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 345
   fields:
@@ -14208,7 +13864,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 346
   fields:
@@ -14222,7 +13877,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 347
   fields:
@@ -14236,7 +13890,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 348
   fields:
@@ -14250,7 +13903,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 349
   fields:
@@ -14264,7 +13916,6 @@
     port_part: 1
     port_dmg: 1
     port_type: CommandPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 350
   fields:
@@ -14278,7 +13929,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 351
   fields:
@@ -14292,7 +13942,6 @@
     port_part: 1
     port_dmg: 1
     port_type: CommandPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 352
   fields:
@@ -14306,7 +13955,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 353
   fields:
@@ -14320,7 +13968,6 @@
     port_part: 1
     port_dmg: 1
     port_type: CommandPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 354
   fields:
@@ -14334,7 +13981,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 355
   fields:
@@ -14348,7 +13994,6 @@
     port_part: 1
     port_dmg: 1
     port_type: CommandPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 356
   fields:
@@ -14362,7 +14007,6 @@
     port_part: 1
     port_dmg: 1
     port_type: CommandPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 357
   fields:
@@ -14376,7 +14020,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 358
   fields:
@@ -14390,7 +14033,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 359
   fields:
@@ -14404,7 +14046,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 360
   fields:
@@ -14418,7 +14059,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 361
   fields:
@@ -14432,7 +14072,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 362
   fields:
@@ -14446,7 +14085,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 363
   fields:
@@ -14460,7 +14098,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 364
   fields:
@@ -14474,7 +14111,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 365
   fields:
@@ -14488,7 +14124,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 366
   fields:
@@ -14502,7 +14137,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 367
   fields:
@@ -14516,7 +14150,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 368
   fields:
@@ -14530,7 +14163,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 369
   fields:
@@ -14544,7 +14176,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 370
   fields:
@@ -14558,7 +14189,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 371
   fields:
@@ -14572,7 +14202,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 372
   fields:
@@ -14586,7 +14215,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 373
   fields:
@@ -14600,7 +14228,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 374
   fields:
@@ -14614,7 +14241,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 375
   fields:
@@ -14628,7 +14254,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 376
   fields:
@@ -14642,7 +14267,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 377
   fields:
@@ -14656,7 +14280,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 378
   fields:
@@ -14670,7 +14293,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 379
   fields:
@@ -14684,7 +14306,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 380
   fields:
@@ -14698,7 +14319,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 381
   fields:
@@ -14712,7 +14332,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 382
   fields:
@@ -14726,7 +14345,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 383
   fields:
@@ -14740,7 +14358,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 384
   fields:
@@ -14754,7 +14371,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 385
   fields:
@@ -14768,7 +14384,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 386
   fields:
@@ -14782,7 +14397,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 387
   fields:
@@ -14796,7 +14410,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 388
   fields:
@@ -14810,7 +14423,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 389
   fields:
@@ -14824,7 +14436,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 390
   fields:
@@ -14838,7 +14449,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 391
   fields:
@@ -14852,7 +14462,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 392
   fields:
@@ -14866,7 +14475,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 393
   fields:
@@ -14880,7 +14488,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 394
   fields:
@@ -14894,7 +14501,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 395
   fields:
@@ -14908,7 +14514,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 396
   fields:
@@ -14922,7 +14527,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 397
   fields:
@@ -14936,7 +14540,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 398
   fields:
@@ -14950,7 +14553,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 399
   fields:
@@ -14964,7 +14566,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 400
   fields:
@@ -14978,7 +14579,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 401
   fields:
@@ -14992,7 +14592,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 402
   fields:
@@ -15006,7 +14605,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 403
   fields:
@@ -15020,7 +14618,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 404
   fields:
@@ -15034,7 +14631,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 405
   fields:
@@ -15048,7 +14644,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 406
   fields:
@@ -15062,7 +14657,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 407
   fields:
@@ -15076,7 +14670,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 408
   fields:
@@ -15090,7 +14683,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 409
   fields:
@@ -15104,7 +14696,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 410
   fields:
@@ -15118,7 +14709,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 411
   fields:
@@ -15132,7 +14722,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 412
   fields:
@@ -15146,7 +14735,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 413
   fields:
@@ -15160,7 +14748,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 414
   fields:
@@ -15174,7 +14761,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 415
   fields:
@@ -15188,7 +14774,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 416
   fields:
@@ -15202,7 +14787,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 417
   fields:
@@ -15216,7 +14800,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 418
   fields:
@@ -15230,7 +14813,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 419
   fields:
@@ -15244,7 +14826,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 420
   fields:
@@ -15258,7 +14839,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 421
   fields:
@@ -15272,7 +14852,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 422
   fields:
@@ -15286,7 +14865,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 423
   fields:
@@ -15300,7 +14878,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 424
   fields:
@@ -15314,7 +14891,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 425
   fields:
@@ -15328,7 +14904,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 426
   fields:
@@ -15342,7 +14917,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 427
   fields:
@@ -15356,7 +14930,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 428
   fields:
@@ -15370,7 +14943,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 429
   fields:
@@ -15384,7 +14956,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 430
   fields:
@@ -15398,7 +14969,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 431
   fields:
@@ -15412,7 +14982,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 432
   fields:
@@ -15426,7 +14995,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 433
   fields:
@@ -15440,7 +15008,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 434
   fields:
@@ -15454,7 +15021,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 435
   fields:
@@ -15468,7 +15034,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 436
   fields:
@@ -15482,7 +15047,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 437
   fields:
@@ -15496,7 +15060,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 438
   fields:
@@ -15510,7 +15073,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 439
   fields:
@@ -15524,7 +15086,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 440
   fields:
@@ -15538,7 +15099,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 441
   fields:
@@ -15552,7 +15112,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 442
   fields:
@@ -15566,7 +15125,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 443
   fields:
@@ -15580,7 +15138,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 444
   fields:
@@ -15594,7 +15151,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 445
   fields:
@@ -15608,7 +15164,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 446
   fields:
@@ -15622,7 +15177,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 447
   fields:
@@ -15636,7 +15190,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 448
   fields:
@@ -15650,7 +15203,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 449
   fields:
@@ -15664,7 +15216,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 450
   fields:
@@ -15678,7 +15229,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 451
   fields:
@@ -15692,7 +15242,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 452
   fields:
@@ -15706,7 +15255,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 453
   fields:
@@ -15720,7 +15268,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 454
   fields:
@@ -15734,7 +15281,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 455
   fields:
@@ -15748,7 +15294,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 456
   fields:
@@ -15762,7 +15307,6 @@
     port_part: 1
     port_dmg: 1
     port_type: CommandPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 457
   fields:
@@ -15776,7 +15320,6 @@
     port_part: 1
     port_dmg: 1
     port_type: CommandPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 458
   fields:
@@ -15790,7 +15333,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 459
   fields:
@@ -15804,7 +15346,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 460
   fields:
@@ -15818,7 +15359,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 461
   fields:
@@ -15832,7 +15372,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 462
   fields:
@@ -15846,7 +15385,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 463
   fields:
@@ -15860,7 +15398,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 464
   fields:
@@ -15874,7 +15411,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 465
   fields:
@@ -15888,7 +15424,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 466
   fields:
@@ -15902,7 +15437,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 467
   fields:
@@ -15916,7 +15450,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 468
   fields:
@@ -15930,7 +15463,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 469
   fields:
@@ -15944,7 +15476,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 470
   fields:
@@ -15958,7 +15489,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 471
   fields:
@@ -15972,7 +15502,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 472
   fields:
@@ -15986,7 +15515,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 473
   fields:
@@ -16000,7 +15528,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 474
   fields:
@@ -16014,7 +15541,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 475
   fields:
@@ -16028,7 +15554,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 476
   fields:
@@ -16042,7 +15567,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 477
   fields:
@@ -16056,7 +15580,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 478
   fields:
@@ -16070,7 +15593,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 479
   fields:
@@ -16084,7 +15606,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 480
   fields:
@@ -16098,7 +15619,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 481
   fields:
@@ -16112,7 +15632,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 482
   fields:
@@ -16126,7 +15645,6 @@
     port_part: 1
     port_dmg: 1
     port_type: CommandPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 483
   fields:
@@ -16140,7 +15658,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 484
   fields:
@@ -16154,7 +15671,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 485
   fields:
@@ -16168,7 +15684,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 486
   fields:
@@ -16182,7 +15697,6 @@
     port_part: 1
     port_dmg: 1
     port_type: CommandPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 487
   fields:
@@ -16196,7 +15710,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 488
   fields:
@@ -16210,7 +15723,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 489
   fields:
@@ -16224,7 +15736,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 490
   fields:
@@ -16238,7 +15749,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 491
   fields:
@@ -16252,7 +15762,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 492
   fields:
@@ -16266,7 +15775,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 493
   fields:
@@ -16280,7 +15788,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 494
   fields:
@@ -16294,7 +15801,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 495
   fields:
@@ -16308,7 +15814,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 496
   fields:
@@ -16322,7 +15827,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 497
   fields:
@@ -16336,7 +15840,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 498
   fields:
@@ -16350,7 +15853,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 499
   fields:
@@ -16364,7 +15866,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 500
   fields:
@@ -16378,7 +15879,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 501
   fields:
@@ -16392,7 +15892,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 502
   fields:
@@ -16406,7 +15905,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 503
   fields:
@@ -16420,7 +15918,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 504
   fields:
@@ -16434,7 +15931,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 505
   fields:
@@ -16448,7 +15944,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 506
   fields:
@@ -16462,7 +15957,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 507
   fields:
@@ -16476,7 +15970,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 508
   fields:
@@ -16490,7 +15983,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 509
   fields:
@@ -16504,7 +15996,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 510
   fields:
@@ -16518,7 +16009,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 511
   fields:
@@ -16532,7 +16022,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 512
   fields:
@@ -16546,7 +16035,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 513
   fields:
@@ -16560,7 +16048,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ControlPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 514
   fields:
@@ -16574,7 +16061,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 515
   fields:
@@ -16588,7 +16074,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 516
   fields:
@@ -16602,7 +16087,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 517
   fields:
@@ -16616,7 +16100,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 518
   fields:
@@ -16630,7 +16113,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 519
   fields:
@@ -16644,7 +16126,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 520
   fields:
@@ -16658,7 +16139,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 521
   fields:
@@ -16672,7 +16152,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 522
   fields:
@@ -16686,7 +16165,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 523
   fields:
@@ -16700,7 +16178,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 524
   fields:
@@ -16714,7 +16191,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 525
   fields:
@@ -16728,7 +16204,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 526
   fields:
@@ -16742,7 +16217,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 527
   fields:
@@ -16756,7 +16230,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 528
   fields:
@@ -16770,7 +16243,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 529
   fields:
@@ -16784,7 +16256,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ImplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 530
   fields:
@@ -16798,7 +16269,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 531
   fields:
@@ -16812,7 +16282,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 532
   fields:
@@ -16826,7 +16295,6 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitInputPort
-    port_rotation: 0
 - model: xcosblocks.newblockport
   pk: 533
   fields:
@@ -16840,4 +16308,3 @@
     port_part: 1
     port_dmg: 1
     port_type: ExplicitOutputPort
-    port_rotation: 0

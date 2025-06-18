@@ -110,7 +110,6 @@ class NewBlockPort(models.Model):
     port_part = models.IntegerField(default=1)
     port_dmg = models.IntegerField(default=1)
     port_type = models.CharField(max_length=100)
-    port_rotation = models.IntegerField(default=0)
 
     def __str__(self):
         """String for representing the Model object."""
