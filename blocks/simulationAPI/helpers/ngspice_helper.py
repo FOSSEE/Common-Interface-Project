@@ -50,27 +50,27 @@ class CannotRunParser(Exception):
     """ Base class for exceptions in this module. """
 
 
-def update_task_status(task_id, status, meta=None):
-    logger.info(f"status: {status} {task_id}")
+def update_task_status(task, task_id, status, meta=None):
     # Update Celery backend state
-    if current_task is not None:
+    if task is not None:
         try:
-            current_task.update_state(state=status, meta=meta or {})
+            task.update_state(state=status, meta=meta or {})
         except Exception as e:
             logger.error(f"Error updating Celery task state: {e}")
 
     # Update Django database
-    Task.objects.filter(task_id=task_id).update(
-        status=status,
-        start_time=Case(
-            When(status__in=START_STATES, then=Value(now())),
-            default=F("start_time")
-        ),
-        end_time=Case(
-            When(status__in=END_STATES, then=Value(now())),
-            default=F("end_time")
+    if task_id is not None:
+        Task.objects.filter(task_id=task_id).update(
+            status=status,
+            start_time=Case(
+                When(status__in=START_STATES, then=Value(now())),
+                default=F("start_time")
+            ),
+            end_time=Case(
+                When(status__in=END_STATES, then=Value(now())),
+                default=F("end_time")
+            )
         )
-    )
 
 
 def CreateXml(file_path, parameters, task_id, workspace_file):

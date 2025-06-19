@@ -615,33 +615,34 @@ export default function SimulationScreen ({ open, close }) {
       .get(url)
       .then((res) => {
         switch (res.data.state) {
-        case 'PENDING':
-        case 'STARTED':
-        case 'RETRY':
-          setIsResult(false)
-          timeoutRef.current = setTimeout(() => simulationResult(url, streamingUrl, 10000), timeout)
-          break
+          case 'PENDING':
+          case 'STARTED':
+          case 'RETRY':
+            setIsResult(false)
+            timeoutRef.current = setTimeout(() => simulationResult(url, streamingUrl, 10000), timeout)
+            break
 
-        case 'STREAMING':
-        case 'SUCCESS':
-          streamSimulationResult(streamingUrl)
-          setIsResult(true)
-          dispatch(setResultGraph({}))
-          if (timeoutRef.current !== null) {
-            clearTimeout(timeoutRef.current)
-            timeoutRef.current = null
-          }
-          break
+          case 'STREAMING':
+          case 'SUCCESS':
+            streamSimulationResult(streamingUrl)
+            setIsResult(true)
+            dispatch(setResultGraph({}))
+            if (timeoutRef.current !== null) {
+              clearTimeout(timeoutRef.current)
+              timeoutRef.current = null
+            }
+            break
 
-        case 'FAILURE':
-        case 'CANCELED':
-          setIsResult(true)
-          dispatch(setErrorMessage(res.data.details))
-          if (timeoutRef.current !== null) {
-            clearTimeout(timeoutRef.current)
-            timeoutRef.current = null
-          }
-          break
+          case 'FAILURE':
+          case 'CANCELED':
+            setIsResult(true)
+            dispatch(setErrorMessage(res.data.details))
+            setGraphStatusDone()
+            if (timeoutRef.current !== null) {
+              clearTimeout(timeoutRef.current)
+              timeoutRef.current = null
+            }
+            break
 
         default:
           console.log('unhandled case', res)
