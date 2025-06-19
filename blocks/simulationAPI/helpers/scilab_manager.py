@@ -1143,7 +1143,13 @@ def start_scilab(session, task, xcosfile):
     except subprocess.TimeoutExpired:
         pass
 
+    gevent.spawn(wait_for_instance, diagram)
     return ""
+
+
+def wait_for_instance(diagram):
+    diagram.instance.proc.wait()
+    kill_scilab(diagram)
 
 
 def stopDetailsThread(diagram):
