@@ -388,7 +388,7 @@ class StreamView(APIView):
             else:
                 logger.info('lines = %s, log size = %s', lineno, log_size)
 
-        update_task_status(task_id, 'SUCCESS')
+        update_task_status(None, task_id, 'SUCCESS')
         # Notify Client
         yield "event: DONE\ndata: None\n\n"
 

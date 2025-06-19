@@ -37,13 +37,13 @@ def process_task(self, task_id):
 
         state = 'STARTED'
         status = 'Started Processing File'
-        update_task_status(task_id, state, meta={'status': status})
+        update_task_status(self, task_id, state, meta={'status': status})
 
         if task_type == 'SCRIPT':
             output = uploadscript(task.session, task)
             output = getscriptoutput(task.session, task)
             state = 'SUCCESS'
-            update_task_status(task_id, state, meta=output)
+            update_task_status(self, task_id, state, meta=output)
         else:
             output = ExecXml(task, self.name, task.workspace_file)
             if output == "Streaming":
@@ -56,7 +56,7 @@ def process_task(self, task_id):
                 logger.error('%s', output)
                 raise CannotRunParser(output)
 
-            update_task_status(task_id, state, meta={'status': status})
+            update_task_status(self, task_id, state, meta={'status': status})
 
         return output
 
