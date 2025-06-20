@@ -33,7 +33,7 @@ const getSplitXsltProcessor = async () => {
   return processor
 }
 
-const splitBlockXPathCount = 'count(/XcosDiagram/mxGraphModel/root/SplitBlock)'
+const splitBlockXPathCount = 'count(//SplitBlock)'
 
 const countNodesByXPath = (xpath, contextNode) => {
   const result = contextNode.evaluate(xpath, contextNode, null, XPathResult.NUMBER_TYPE, null)
@@ -62,7 +62,7 @@ const removeOneSplit = (xmlDoc, count, splitProcessor) => {
 
   xmlDoc = splitProcessor.transformToDocument(xmlDoc)
   const newCount = countNodesByXPath(splitBlockXPathCount, xmlDoc)
-  if (newCount !== count - 1) {
+  if (newCount >= count) {
     console.error('newCount=', newCount, ', count=', count)
     throw new Error('count mismatch')
   }
