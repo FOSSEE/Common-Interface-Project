@@ -674,7 +674,9 @@ export default function SimulationScreen ({ open, close }) {
     simulationResult(getUrl, getStreamingUrl, 2000)
   }, [dispatch, isResult, simulationResult])
 
-  useEffect(() => getSimulationResult(taskId), [taskId, getSimulationResult])
+  useEffect(() => {
+    getSimulationResult(taskId)
+  }, [taskId, getSimulationResult])
 
   useEffect(() => {
     for (let i = 0; i < Highcharts.charts.length; i++) {

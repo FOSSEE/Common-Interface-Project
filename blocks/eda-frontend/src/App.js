@@ -23,7 +23,9 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   const isLoading = useSelector(state => state.auth.isLoading)
   const dispatch = useDispatch()
 
-  useEffect(() => dispatch(loadUser()), [dispatch])
+  useEffect(() => {
+    dispatch(loadUser())
+  }, [dispatch])
 
   return (
     <Route
@@ -50,7 +52,9 @@ const PublicRoute = ({ component: Component, restricted, nav, ...rest }) => {
   const isLoading = useSelector(state => state.auth.isLoading)
   const dispatch = useDispatch()
 
-  useEffect(() => dispatch(loadUser()), [dispatch])
+  useEffect(() => {
+    dispatch(loadUser())
+  }, [dispatch])
 
   return (
     <Route
