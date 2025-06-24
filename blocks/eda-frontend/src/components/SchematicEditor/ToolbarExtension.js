@@ -356,7 +356,7 @@ export function ScriptScreen ({ isOpen, onClose }) {
   const scriptDump = useSelector(state => state.saveSchematic.scriptDump)
   const title = useSelector(state => state.saveSchematic.title)
   const showDot = useSelector(state => state.saveSchematic.showDot)
-  const hasScript = useSelector((state) => state.saveSchematic.hasScript)
+  const hasScript = useSelector(state => state.saveSchematic.hasScript)
   const dispatch = useDispatch()
   const [result, setResult] = useState('No output yet...')
   const [variables, setVariables] = useState([])
