@@ -8,17 +8,18 @@ pip install -q -U pip setuptools wheel
 pip install -q -r requirements.txt
 pip uninstall -q -y pip wheel
 
+sed -i \
+  -e "s,\\(SCILAB_DIR = '\\).*\\('\\),\\1/usr/local\\2," \
+  -e "s,\\(CELERY_BROKER_URL = '\\).*\\('\\),\\1redis://localhost:6379/1\\2," \
+  -e "s,\\(CELERY_RESULT_BACKEND = '\\).*\\('\\),\\1redis://localhost:6379/1\\2," \
+  Xcos/common/AAAAAA.py \
+  blocks/settings.py
+
 mkdir -p file_storage/uploads logs media/saves media/uploads
 make -s
 python manage.py makemigrations -v0 saveAPI simulationAPI xcosblocks
 python manage.py migrate -v0
 python manage.py loaddata -v0 saveAPI xcosblocks
-
-sed -i \
-  -e "s/\\(SCILAB_DIR = \\).*/\\1'\/usr\/local'/" \
-  -e "s/\\(CELERY_BROKER_URL = \\).*/\\1'redis:\\/\\/localhost:6379\\/1'/" \
-  -e "s/\\(CELERY_RESULT_BACKEND = \\).*/\\1'redis:\\/\\/localhost:6379\\/1'/" \
-  blocks/settings.py
 
 sed -i -e '/^\s*location \/ {/,/^\s*}/c\
         location / {\
