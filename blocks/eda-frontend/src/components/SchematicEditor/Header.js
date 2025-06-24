@@ -169,8 +169,9 @@ function Header () {
           alt={altImage}
           src={logo}
           sx={{
-            width: { xs: 30, md: 40 },
-            height: { xs: 30, md: 40 }
+            width: { xs: 28, sm: 32, md: 36 },
+            height: { xs: 28, sm: 32, md: 36 },
+            borderRadius: '10%'
           }}
         />
       </IconButton>
