@@ -20,7 +20,7 @@ django-templated-mail==1.1.1
 djangorestframework==3.15.2
 djangorestframework_simplejwt==5.4.0
 djoser==2.3.1
-drf-yasg==1.21.7
+drf-yasg==1.21.10
 exceptiongroup==1.2.2
 flake8==7.1.1
 gevent==24.11.1
