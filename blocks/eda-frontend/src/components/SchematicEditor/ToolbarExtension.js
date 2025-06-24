@@ -481,7 +481,7 @@ export function ScriptScreen ({ isOpen, onClose }) {
           <Box
             sx={{
               p: 2,
-              boxShadow: 2,
+              // boxShadow: 2,
               borderRadius: 2,
               display: 'flex',
               flexDirection: 'column',
@@ -527,7 +527,7 @@ export function ScriptScreen ({ isOpen, onClose }) {
           <Box
             sx={{
               p: 2,
-              boxShadow: 2,
+              // boxShadow: 2,
               borderRadius: 2,
               display: 'flex',
               flexDirection: 'column',
