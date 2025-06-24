@@ -253,26 +253,22 @@ const Gallery = () => {
       >
         <Grid container direction='row' justifyContent='flex-start' alignItems='flex-start' alignContent='center' spacing={3}>
           {/* Gallery Header */}
-          <Grid>
+          <Grid size={12}>
             <MainCard />
           </Grid>
 
-          <Grid>
-            <Grid container spacing={2}>
-              {/* BookDropdown */}
-              <Grid>
-                <BookDropdown onBookChange={handleBookChange} />
-              </Grid>
+          {/* BookDropdown */}
+          <Grid size={6}>
+            <BookDropdown onBookChange={handleBookChange} />
+          </Grid>
 
-              {/* SearchComponent */}
-              <Grid>
-                <SearchComponent onSearch={handleSearch} />
-              </Grid>
-            </Grid>
+          {/* SearchComponent */}
+          <Grid size={6}>
+            <SearchComponent onSearch={handleSearch} />
           </Grid>
 
           {/* Display a message or blank gallery */}
-          <Grid>
+          <Grid size={12}>
             <Typography variant='h6' align='center' color='textSecondary'>
               {
                 finalfilteredSchematics.length === 0
