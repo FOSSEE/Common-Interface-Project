@@ -159,6 +159,7 @@ export default function SimulationProperties () {
               >
                 <Typography
                   sx={{
+                    width: 150,
                     fontSize: theme => theme.typography.pxToRem(15),
                     fontWeight: theme => theme.typography.fontWeightRegular
                   }}
@@ -180,28 +181,28 @@ export default function SimulationProperties () {
                         id='final_integration_time' label='Final integration time' size='small' variant='outlined'
                         InputProps={{ endAdornment: <InputAdornment position='end'>S</InputAdornment> }}
                         value={transientAnalysisControlLine.final_integration_time}
-                        onChange={handleTransientAnalysisControlLine}
+                        onChange={handleTransientAnalysisControlLine} sx={{ width: 190 }}
                       />
                     </ListItem>
                     <ListItem>
                       <TextField
                         id='real_time_scaling' label='Real time scaling' size='small' variant='outlined'
                         value={transientAnalysisControlLine.real_time_scaling}
-                        onChange={handleTransientAnalysisControlLine}
+                        onChange={handleTransientAnalysisControlLine} sx={{ width: 190 }}
                       />
                     </ListItem>
                     <ListItem>
                       <TextField
                         id='integrator_absolute_tolerance' label='Integrator absolute tolerance' size='small' variant='outlined'
                         value={transientAnalysisControlLine.integrator_absolute_tolerance}
-                        onChange={handleTransientAnalysisControlLine}
+                        onChange={handleTransientAnalysisControlLine} sx={{ width: 190 }}
                       />
                     </ListItem>
                     <ListItem>
                       <TextField
                         id='integrator_relative_tolerance' label='Integrator relative tolerance' size='small' variant='outlined'
                         value={transientAnalysisControlLine.integrator_relative_tolerance}
-                        onChange={handleTransientAnalysisControlLine}
+                        onChange={handleTransientAnalysisControlLine} sx={{ width: 190 }}
                       />
                     </ListItem>
                     <ListItem>
@@ -209,7 +210,7 @@ export default function SimulationProperties () {
                         id='tolerance_on_time' label='Tolerance on time' size='small' variant='outlined'
                         InputProps={{ endAdornment: <InputAdornment position='end'>S</InputAdornment> }}
                         value={transientAnalysisControlLine.tolerance_on_time}
-                        onChange={handleTransientAnalysisControlLine}
+                        onChange={handleTransientAnalysisControlLine} sx={{ width: 190 }}
                       />
                     </ListItem>
                     <ListItem>
@@ -217,14 +218,14 @@ export default function SimulationProperties () {
                         id='max_integration_time_interval' label='Max integration time interval' size='small' variant='outlined'
                         InputProps={{ endAdornment: <InputAdornment position='end'>S</InputAdornment> }}
                         value={transientAnalysisControlLine.max_integration_time_interval}
-                        onChange={handleTransientAnalysisControlLine}
+                        onChange={handleTransientAnalysisControlLine} sx={{ width: 190 }}
                       />
                     </ListItem>
                     <ListItem>
                       <TextField
                         id='solver_kind' select label='Solver kind' size='small' variant='outlined'
                         value={transientAnalysisControlLine.solver_kind}
-                        onChange={handleTransientAnalysisControlLine}
+                        onChange={handleTransientAnalysisControlLine} sx={{ width: 190 }}
                       >
                         <MenuItem value='0'>LSodar</MenuItem>
                         <MenuItem value='1'>Sundials/CVODE - BDF - NEWTON</MenuItem>
@@ -243,7 +244,7 @@ export default function SimulationProperties () {
                       <TextField
                         id='maximum_step_size' label='Maximum step size' size='small' variant='outlined'
                         value={transientAnalysisControlLine.maximum_step_size}
-                        onChange={handleTransientAnalysisControlLine}
+                        onChange={handleTransientAnalysisControlLine} sx={{ width: 190 }}
                       />
                     </ListItem>
 

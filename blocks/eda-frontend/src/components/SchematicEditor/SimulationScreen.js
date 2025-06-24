@@ -764,7 +764,7 @@ export default function SimulationScreen ({ open, close }) {
             alignItems='center'
           >
             {/* Card to display simulation result screen header */}
-            <Grid item xs={12} sm={12}>
+            <Grid size={12}>
               <Paper
                 sx={{
                   p: 2,
@@ -788,7 +788,7 @@ export default function SimulationScreen ({ open, close }) {
                 {
                   isGraph
                     ? <>
-                      <Grid item xs={12} sm={12}>
+                      <Grid size={12}>
                         <Paper
                           sx={{
                             p: 2,
@@ -807,7 +807,7 @@ export default function SimulationScreen ({ open, close }) {
                           ? datapointsRef.current.map((element, i, arr) => {
                             const gridSize = (arr.length - 1 === i && i % 2 === 0) ? 12 : 6
                             return (
-                              <Grid item key={i} xs={gridSize}>
+                              <Grid size={gridSize}>
                                 <Graph
                                   ref={el => { graphsRef.current[i] = el }}
                                   datapoint={element}
@@ -818,7 +818,7 @@ export default function SimulationScreen ({ open, close }) {
                           : <div />
                       }
                     </>
-                    : <Grid item xs={12} sm={12}>
+                    : <Grid size={12}>
                       <Paper
                         sx={{
                           p: 2,
@@ -836,7 +836,7 @@ export default function SimulationScreen ({ open, close }) {
                 {/* Diplay of Simulation parameter Not present */}
                 {
                   (error !== '')
-                    ? <Grid item xs={12} sm={12}>
+                    ? <Grid size={12}>
                       <Paper
                         sx={{
                           p: 2,
@@ -855,7 +855,7 @@ export default function SimulationScreen ({ open, close }) {
                 {/* Display text result */}
                 {
                   !isGraph
-                    ? <Grid item xs={12} sm={12}>
+                    ? <Grid size={12}>
                       <Paper
                         sx={{
                           p: 2,
@@ -872,7 +872,7 @@ export default function SimulationScreen ({ open, close }) {
                     : <span />
                 }
               </>
-              : <Grid item xs={12} sm={12}>
+              : <Grid size={12}>
                 <Paper
                   sx={{
                     p: 2,

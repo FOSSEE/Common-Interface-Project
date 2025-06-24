@@ -158,7 +158,7 @@ export function HelpScreen ({ open, close }) {
             alignItems='center'
           >
 
-            <Grid item xs={12} sm={12}>
+            <Grid size={12}>
               <Paper
                 sx={{
                   p: 2,
@@ -211,7 +211,7 @@ export function HelpScreen ({ open, close }) {
               </Paper>
             </Grid>
 
-            <Grid item xs={12} sm={12}>
+            <Grid size={12}>
               <Paper
                 sx={{
                   p: 2,
@@ -308,7 +308,7 @@ export function HelpScreen ({ open, close }) {
                 </fieldset>
               </Paper>
             </Grid>
-            <Grid item xs={12} sm={12}>
+            <Grid size={12}>
               <Paper
                 sx={{
                   p: 2,
@@ -746,7 +746,7 @@ export function OpenSchDialog (props) {
               Upload File
             </Button>
             : isGallery
-              ? <Grid item xs={12} sm={12}>
+              ? <Grid size={12}>
                 {/* Listing Gallery Schematics */}
                 <TableContainer component={Paper} style={{ maxHeight: '45vh' }}>
                   <Table stickyHeader size='small' aria-label='simple table'>

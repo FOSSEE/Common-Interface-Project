@@ -61,11 +61,11 @@ export default function DashboardHome () {
         spacing={3}
       >
         {/* User Dashboard Home Header */}
-        <Grid item xs={12}>
+        <Grid size={12}>
           <MainCard />
         </Grid>
 
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Card
             sx={{
               width: '100%',
@@ -82,7 +82,7 @@ export default function DashboardHome () {
         </Grid>
 
         {/* List recent schematics saved by user */}
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Card>
             <ProgressPanel />
           </Card>
