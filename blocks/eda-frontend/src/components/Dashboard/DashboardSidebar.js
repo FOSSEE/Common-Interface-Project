@@ -39,7 +39,8 @@ export default function DashSidebar (_props) {
           divider
           sx={{
             px: 2,
-            py: 1.5
+            py: 1.5,
+            width: 270
           }}
         >
           <ListItemAvatar>

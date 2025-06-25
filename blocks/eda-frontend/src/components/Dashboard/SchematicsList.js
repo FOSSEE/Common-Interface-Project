@@ -74,7 +74,7 @@ export default function SchematicsList () {
         spacing={3}
       >
         {/* User Dashboard My Schematic Header */}
-        <Grid item xs={12}>
+        <Grid size={12}>
           <MainCard />
         </Grid>
 
@@ -84,14 +84,14 @@ export default function SchematicsList () {
             {schematics.map(
               (sch) => {
                 return (
-                  <Grid item xs={12} sm={6} lg={3} key={sch.save_id}>
+                  <Grid gridSize={12} sm={6} lg={3} key={sch.save_id}>
                     <SchematicCard sch={sch} />
                   </Grid>
                 )
               }
             )}
           </>
-          : <Grid item xs={12}>
+          : <Grid size={12}>
             <Card
               sx={{
                 width: '100%',

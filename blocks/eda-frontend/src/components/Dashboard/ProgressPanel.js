@@ -92,7 +92,7 @@ export default function ProgressPanel () {
             {schematics.slice(0, 4).map(
               (sch) => {
                 return (
-                  <Grid item xs={12} sm={6} lg={3} key={sch.save_id}>
+                  <Grid gridSize={12} sm={6} lg={3} key={sch.save_id}>
                     <SchematicCard sch={sch} />
                   </Grid>
                 )

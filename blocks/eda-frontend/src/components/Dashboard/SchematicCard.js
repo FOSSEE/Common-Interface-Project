@@ -8,6 +8,8 @@ import { useDispatch } from 'react-redux'
 import { deleteSchematic } from '../../redux/dashboardSlice'
 import MuiAlert from '@mui/material/Alert'
 import { getDate } from '../../utils/GalleryUtils'
+import { Grid } from '@mui/material'
+import { useSelector } from 'react-redux'
 
 function Alert (props) {
   return <MuiAlert elevation={6} variant='filled' {...props} />
@@ -84,7 +86,8 @@ function timeSince (jsonDate) {
 }
 
 // Card displaying overview of onCloud saved schematic.
-export default function SchematicCard ({ sch }) {
+export default function SchematicCard () {
+  const schematics = useSelector(state => state.dashboard.schematics)
   // To handle delete schematic snackbar
   const [snacOpen, setSnacOpen] = useState(false)
 
@@ -102,64 +105,76 @@ export default function SchematicCard ({ sch }) {
   return (
     <>
       {/* User saved Schematic Overview Card */}
-      <Card>
-        <CardActionArea>
-          <CardHeader
-            title={sch.name}
-            subheader={'Created On ' + getDate(sch.create_time)} /* Display created date */
-          />
-          <CardMedia
-            style={{
-              height: 0,
-              paddingTop: '56.25%' // 16:9
-            }}
-            image={sch.base64_image}
-            title={sch.name}
-          />
-          <CardContent>
-            <Typography variant='body2' component='p'>
-              {sch.description}
-            </Typography>
-            {/* Display updated status */}
-            <Typography variant='body2' color='textSecondary' component='p' style={{ margin: '5px 0px 0px 0px' }}>
-              Updated {timeSince(sch.save_time)} ago...
-            </Typography>
-          </CardContent>
-        </CardActionArea>
 
-        <CardActions>
-          <Button
-            target='_blank'
-            component={RouterLink}
-            to={'/editor?id=' + sch.save_id}
-            size='small'
-            color='primary'
-          >
-            Launch in Editor
-          </Button>
+      <Grid container spacing={3}>
+        {schematics.map((sch) => (
+          <Grid size={4}>
+            < Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+              <CardActionArea component={RouterLink} to={`/editor?id=${sch.save_id}`}>
+                <CardHeader
+                  title={sch.name}
+                  subheader={`Created On ${getDate(sch.create_time)}`}
+                  sx={{ pt: 2, pb: 0 }}
+                />
+                <CardMedia
+                  component='img'
+                  image={sch.base64_image}
+                  alt={sch.name}
+                  sx={{
+                    width: '100%',
+                    height: 240,
+                    objectFit: 'contain',
+                    mt: 1
+                  }}
+                />
+                <CardContent sx={{ pt: 1, pb: 0 }}>
+                  <Typography variant='body2' color='text.primary'>
+                    {sch.description}
+                  </Typography>
+                  <Typography variant='body2' color='text.secondary' sx={{ mt: 1 }}>
+                    Updated {timeSince(sch.save_time)} ago...
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+              <CardActions sx={{ justifyContent: 'space-between', px: 1 }}>
+                <Button
+                  size='small'
+                  color='primary'
+                  component={RouterLink}
+                  to={`/editor?id=${sch.save_id}`}
+                >
+                  Launch in Editor
+                </Button>
 
-          {/* Display delete option */}
-          <Tooltip title='Delete' placement='bottom' arrow>
-            <DeleteIcon
-              color='secondary'
-              fontSize='small'
-              style={{ marginLeft: 'auto' }}
-              onClick={() => { handleSnacClick() }}
-            />
-          </Tooltip>
-          <SimpleSnackbar open={snacOpen} close={handleSnacClose} sch={sch} />
+                {/* Display delete option */}
+                <Tooltip title='Delete' placement='bottom' arrow>
+                  <DeleteIcon
+                    color='secondary'
+                    fontSize='small'
+                    style={{ marginLeft: 'auto' }}
+                    onClick={() => { handleSnacClick() }}
+                  />
+                </Tooltip>
+                <SimpleSnackbar open={snacOpen} close={handleSnacClose} sch={sch} />
 
-          {/* Display share status */}
-          <Tooltip title={!sch.shared ? 'SHARE OFF' : 'SHARE ON'} placement='bottom' arrow>
-            <ShareIcon
-              color={!sch.shared ? 'disabled' : 'primary'}
-              fontSize='small'
-              style={{ marginRight: '10px' }}
-            />
-          </Tooltip>
-        </CardActions>
-      </Card>
+                {/* Display share status */}
+                <Tooltip title={!sch.shared ? 'SHARE OFF' : 'SHARE ON'} placement='bottom' arrow>
+                  <ShareIcon
+                    color={!sch.shared ? 'disabled' : 'primary'}
+                    fontSize='small'
+                    style={{ marginRight: '10px' }}
+                  />
+                </Tooltip>
+              </CardActions>
+            </Card >
+          </Grid>
+        ))
+        }
+      </Grid >
     </>
+
+
+
   )
 }
 
