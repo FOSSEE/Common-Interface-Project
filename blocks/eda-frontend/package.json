@@ -11,7 +11,7 @@
     "axios": "^1.10.0",
     "canvg": "^4.0.3",
     "file-saver": "^2.0.5",
-    "highcharts": "^12.1.2",
+    "highcharts": "^12.3.0",
     "highcharts-react-official": "^3.2.2",
     "mxgraph": "^4.2.2",
     "prop-types": "^15.8.1",
@@ -49,7 +49,7 @@
   "devDependencies": {
     "@babel/eslint-parser": "^7.27.5",
     "eslint": "^9.29.0",
-    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-n": "^17.20.0",
     "eslint-plugin-promise": "^7.2.1",
     "eslint-plugin-react": "^7.37.5",
