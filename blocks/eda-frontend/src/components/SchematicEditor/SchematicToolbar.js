@@ -592,12 +592,12 @@ export default function SchematicToolbar ({ _mobileClose, gridRef }) {
       </Drawer>
 
       {/* ✅ Dialogs & Modals */}
-      <OpenSchDialog open={schOpen} close={handleSchDialClose} openLocal={handleLocalSchOpen} />
-      <SimpleSnackbar open={snacOpen} close={handleSnacClose} message={message} />
-      <ImageExportDialog open={imgopen} onClose={handleImgClose} />
-      <NetlistModal open={open} close={handleClose} netlist={netlist} />
-      <HelpScreen open={helpOpen} close={handleHelpClose} />
-      <ScriptScreen isOpen={scriptOpen} onClose={handleScriptClose} />
+      {schOpen && <OpenSchDialog open={schOpen} close={handleSchDialClose} openLocal={handleLocalSchOpen} /> }
+      {snacOpen && <SimpleSnackbar open={snacOpen} close={handleSnacClose} message={message} /> }
+      {imgopen && <ImageExportDialog open={imgopen} onClose={handleImgClose} /> }
+      {open && <NetlistModal open={open} close={handleClose} netlist={netlist} /> }
+      {helpOpen && <HelpScreen open={helpOpen} close={handleHelpClose} /> }
+      {scriptOpen && <ScriptScreen isOpen={scriptOpen} onClose={handleScriptClose} /> }
     </>
   )
 }

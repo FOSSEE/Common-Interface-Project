@@ -20,6 +20,7 @@ import SchematicToolbar from '../components/SchematicEditor/SchematicToolbar'
 import Layout from '../components/Shared/Layout'
 import LayoutMain from '../components/Shared/LayoutMain'
 import { fetchDiagram, fetchSchematic } from '../redux/saveSchematicSlice'
+import store from '../redux/store'
 import { styleToObject } from '../utils/GalleryUtils'
 
 const useStyles = makeStyles((_theme) => ({
@@ -40,7 +41,6 @@ export default function SchematicEditor (props) {
   const dispatch = useDispatch()
   const [mobileOpen, setMobileOpen] = useState(false)
   const isLoading = useSelector(state => state.saveSchematic.isLoading)
-  const xmlData = useSelector(state => state.saveSchematic.xmlData)
   const [mainDiagramBackup, setMainDiagramBackup] = useState('')
   const [activeCellId, setActiveCellId] = useState(null)
 
@@ -105,10 +105,11 @@ export default function SchematicEditor (props) {
 
 
   useEffect(() => {
+    const xmlData = store.getState().saveSchematic.xmlData
     if (xmlData) {
       renderGalleryXML(xmlData)
     }
-  }, [dispatch, xmlData])
+  }, [])
 
   useEffect(() => {
     document.title = process.env.REACT_APP_DIAGRAM_NAME + ' Editor - ' + process.env.REACT_APP_NAME
