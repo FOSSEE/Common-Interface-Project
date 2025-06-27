@@ -690,7 +690,7 @@ export function OpenSchDialog (props) {
   const user = useSelector(state => state.auth.user)
   const schematics = useSelector(state => state.dashboard.schematics)
   const GallerySchSample = useSelector(state => state.dashboard.gallery)
-  const xmlData = useSelector(state => state.saveSchematic.xmlData)
+  
 
   const dispatch = useDispatch()
 
@@ -699,10 +699,11 @@ export function OpenSchDialog (props) {
   }, [dispatch])
 
   useEffect(() => {
+    const xmlData = store.getState().saveSchematic.xmlData
     if (xmlData) {
       renderGalleryXML(xmlData)
     }
-  }, [xmlData])
+  }, [])
 
   const title = 'Open ' + process.env.REACT_APP_DIAGRAM_NAME
   const typography1 = 'You don\'t have any saved ' + process.env.REACT_APP_SMALL_DIAGRAMS_NAME + '...'

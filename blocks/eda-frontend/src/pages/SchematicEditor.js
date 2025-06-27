@@ -18,6 +18,7 @@ import { renderGalleryXML, getSuperBlockDiagram } from '../components/SchematicE
 import '../components/SchematicEditor/Helper/SchematicEditor.css'
 import { fetchDiagram, fetchSchematic } from '../redux/saveSchematicSlice'
 import { useDispatch, useSelector } from 'react-redux'
+import store from '../redux/store'
 import { styleToObject } from '../utils/GalleryUtils'
 import { changePorts } from '../components/SchematicEditor/ComponentProperties'
 import { graph, getCurrentDiagramXML } from '../components/SchematicEditor/Helper/ComponentDrag'
@@ -40,7 +41,6 @@ export default function SchematicEditor (props) {
   const dispatch = useDispatch()
   const [mobileOpen, setMobileOpen] = useState(false)
   const isLoading = useSelector(state => state.saveSchematic.isLoading)
-  const xmlData = useSelector(state => state.saveSchematic.xmlData)
   const [mainDiagramBackup, setMainDiagramBackup] = useState('')
   const [activeCellId, setActiveCellId] = useState(null)
 
@@ -105,10 +105,11 @@ export default function SchematicEditor (props) {
 
 
   useEffect(() => {
+    const xmlData = store.getState().saveSchematic.xmlData
     if (xmlData) {
       renderGalleryXML(xmlData)
     }
-  }, [dispatch, xmlData])
+  }, [])
 
   useEffect(() => {
     document.title = process.env.REACT_APP_DIAGRAM_NAME + ' Editor - ' + process.env.REACT_APP_NAME

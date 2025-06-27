@@ -113,6 +113,7 @@ class XmlSave(APIView):
         logger.info('Got POST for Xml save: data=%s', request.data)
         file = request.FILES.get('file', None)
         script_task_id = request.POST.get('scriptTaskId', None)
+        workspace_file = None
         if not file:
             return Response({"error": "No file provided"}, status=status.HTTP_400_BAD_REQUEST)
         file_name = file.name
@@ -134,7 +135,7 @@ class XmlSave(APIView):
         else:
             print("No scriptTaskId provided")
 
-        logger.info('workspace_file: %s', workspace_file)
+        # logger.info('workspace_file: %s', workspace_file)
         try:
             # Update the request data to include the file path
             data = request.data.copy()
