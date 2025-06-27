@@ -1,44 +1,78 @@
 /* eslint new-cap: ["error", {"newIsCapExceptionPattern": "^mx"}] */
 import { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
+import { useSelector, useDispatch } from 'react-redux'
+import { Link as RouterLink } from 'react-router-dom'
+
 import { Canvg } from 'canvg'
+import mxGraphFactory from 'mxgraph'
+import PropTypes from 'prop-types'
+import beautify from 'xml-beautifier'
+
 import {
-  IconButton, Tooltip, Drawer, List, ListItem, ListItemIcon, ListItemText, Divider, useMediaQuery, Snackbar
+  Divider,
+  Drawer,
+  IconButton,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Snackbar,
+  Tooltip,
+  useMediaQuery
 } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
 import AddBoxOutlinedIcon from '@material-ui/icons/AddBoxOutlined'
-import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
+import ClearAllIcon from '@material-ui/icons/ClearAll'
+import CloseIcon from '@material-ui/icons/Close'
+import CreateNewFolderOutlinedIcon from '@material-ui/icons/CreateNewFolderOutlined'
+import DeleteIcon from '@material-ui/icons/Delete'
 import DescriptionIcon from '@material-ui/icons/Description'
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline'
-import UndoIcon from '@material-ui/icons/Undo'
+import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined'
+import OpenInBrowserIcon from '@material-ui/icons/OpenInBrowser'
+import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
+import PrintOutlinedIcon from '@material-ui/icons/PrintOutlined'
 import RedoIcon from '@material-ui/icons/Redo'
+import RotateRightIcon from '@material-ui/icons/RotateRight'
+import SaveOutlinedIcon from '@material-ui/icons/SaveOutlined'
+import SettingsOverscanIcon from '@material-ui/icons/SettingsOverscan'
+import SystemUpdateAltOutlinedIcon from '@material-ui/icons/SystemUpdateAltOutlined'
+import UndoIcon from '@material-ui/icons/Undo'
 import ZoomInIcon from '@material-ui/icons/ZoomIn'
 import ZoomOutIcon from '@material-ui/icons/ZoomOut'
-import DeleteIcon from '@material-ui/icons/Delete'
-import SettingsOverscanIcon from '@material-ui/icons/SettingsOverscan'
-import PrintOutlinedIcon from '@material-ui/icons/PrintOutlined'
-import RotateRightIcon from '@material-ui/icons/RotateRight'
-// import BorderClearIcon from '@material-ui/icons/BorderClear'
-import { makeStyles } from '@material-ui/core/styles'
-import CloseIcon from '@material-ui/icons/Close'
-import SaveOutlinedIcon from '@material-ui/icons/SaveOutlined'
-import OpenInBrowserIcon from '@material-ui/icons/OpenInBrowser'
-import ClearAllIcon from '@material-ui/icons/ClearAll'
-import CreateNewFolderOutlinedIcon from '@material-ui/icons/CreateNewFolderOutlined'
-import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined'
-import SystemUpdateAltOutlinedIcon from '@material-ui/icons/SystemUpdateAltOutlined'
-import { Link as RouterLink } from 'react-router-dom'
-import beautify from 'xml-beautifier'
-import mxGraphFactory from 'mxgraph'
 
-import { NetlistModal, HelpScreen, ImageExportDialog, OpenSchDialog, ScriptScreen } from './ToolbarExtension'
-import { editorZoomIn, editorZoomOut, editorZoomAct, deleteComp, PrintPreview, Rotate, editorUndo, editorRedo, saveXml, ClearGrid, renderGalleryXML } from './Helper/ToolbarTools'
-import { useSelector, useDispatch } from 'react-redux'
-import store from '../../redux/store'
 import { closeCompProperties } from '../../redux/componentPropertiesSlice'
-import { setSchXmlData, saveSchematic, openLocalSch, setLoadingDiagram } from '../../redux/saveSchematicSlice'
+import {
+  openLocalSch,
+  saveSchematic,
+  setLoadingDiagram,
+  setSchXmlData
+} from '../../redux/saveSchematicSlice'
 import { toggleSimulate } from '../../redux/schematicEditorSlice'
+import store from '../../redux/store'
 import api from '../../utils/Api'
 import { transformXcos, saveToFile } from '../../utils/GalleryUtils'
+
+import {
+  ClearGrid,
+  PrintPreview,
+  Rotate,
+  deleteComp,
+  editorRedo,
+  editorUndo,
+  editorZoomAct,
+  editorZoomIn,
+  editorZoomOut,
+  renderGalleryXML,
+  saveXml
+} from './Helper/ToolbarTools'
+import {
+  HelpScreen,
+  ImageExportDialog,
+  NetlistModal,
+  OpenSchDialog,
+  ScriptScreen
+} from './ToolbarExtension'
 
 const {
   mxUtils

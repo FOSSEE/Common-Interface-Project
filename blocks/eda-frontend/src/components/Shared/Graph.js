@@ -1,7 +1,9 @@
 import { Component } from 'react'
-import PropTypes from 'prop-types'
+
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
+import PropTypes from 'prop-types'
+
 import { Queue } from '../../utils/Queue'
 
 let statusDone = false

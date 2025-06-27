@@ -1,27 +1,27 @@
 // Main Layout for Schematic Editor page.
 import { useEffect, useRef, useState } from 'react'
-import PropTypes from 'prop-types'
 import { TailSpin } from 'react-loader-spinner'
+import { useDispatch, useSelector } from 'react-redux'
+
+import PropTypes from 'prop-types'
+
 import { CssBaseline } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
-import Layout from '../components/Shared/Layout'
-import Header from '../components/SchematicEditor/Header'
+import { changePorts } from '../components/SchematicEditor/ComponentProperties'
 import ComponentSidebar, { ComponentImages } from '../components/SchematicEditor/ComponentSidebar'
-import LayoutMain from '../components/Shared/LayoutMain'
-import SchematicToolbar from '../components/SchematicEditor/SchematicToolbar'
-import RightSidebar from '../components/SchematicEditor/RightSidebar'
-import PropertiesSidebar from '../components/SchematicEditor/PropertiesSidebar'
-import LoadGrid from '../components/SchematicEditor/Helper/ComponentDrag'
-
-import { renderGalleryXML, getSuperBlockDiagram } from '../components/SchematicEditor/Helper/ToolbarTools'
+import Header from '../components/SchematicEditor/Header'
+import LoadGrid, { graph, getCurrentDiagramXML } from '../components/SchematicEditor/Helper/ComponentDrag'
 import '../components/SchematicEditor/Helper/SchematicEditor.css'
+import { renderGalleryXML, getSuperBlockDiagram } from '../components/SchematicEditor/Helper/ToolbarTools'
+import PropertiesSidebar from '../components/SchematicEditor/PropertiesSidebar'
+import RightSidebar from '../components/SchematicEditor/RightSidebar'
+import SchematicToolbar from '../components/SchematicEditor/SchematicToolbar'
+import Layout from '../components/Shared/Layout'
+import LayoutMain from '../components/Shared/LayoutMain'
 import { fetchDiagram, fetchSchematic } from '../redux/saveSchematicSlice'
-import { useDispatch, useSelector } from 'react-redux'
 import store from '../redux/store'
 import { styleToObject } from '../utils/GalleryUtils'
-import { changePorts } from '../components/SchematicEditor/ComponentProperties'
-import { graph, getCurrentDiagramXML } from '../components/SchematicEditor/Helper/ComponentDrag'
 
 const useStyles = makeStyles((_theme) => ({
   root: {

@@ -1,15 +1,16 @@
 // Main Layout for user dashboard.
 import { useEffect } from 'react'
 import { Switch, Route } from 'react-router-dom'
+
 import { CssBaseline } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
-import { Header } from '../components/Shared/Navbar'
+import DashboardHome from '../components/Dashboard/DashboardHome'
+import DashboardSidebar from '../components/Dashboard/DashboardSidebar'
+import SchematicsList from '../components/Dashboard/SchematicsList'
 import Layout from '../components/Shared/Layout'
 import LayoutMain from '../components/Shared/LayoutMain'
-import DashboardSidebar from '../components/Dashboard/DashboardSidebar'
-import DashboardHome from '../components/Dashboard/DashboardHome'
-import SchematicsList from '../components/Dashboard/SchematicsList'
+import { Header } from '../components/Shared/Navbar'
 
 const useStyles = makeStyles((_theme) => ({
   root: {

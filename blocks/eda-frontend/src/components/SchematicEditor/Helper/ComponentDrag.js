@@ -2,15 +2,16 @@
 import 'mxgraph/javascript/src/css/common.css'
 
 import mxGraphFactory from 'mxgraph'
+
+import { getCompProperties, closeCompProperties } from '../../../redux/componentPropertiesSlice'
 import store from '../../../redux/store'
 import dot from '../../../static/dot.gif'
 import blockstyle from '../../../static/style.json'
-import { getCompProperties, closeCompProperties } from '../../../redux/componentPropertiesSlice'
-
 import { styleToObject } from '../../../utils/GalleryUtils'
-import toolbarTools, { editorZoomAct } from './ToolbarTools'
+
 import keyboardShortcuts from './KeyboardShortcuts'
 import { sideBar } from './SideBar'
+import toolbarTools, { editorZoomAct } from './ToolbarTools'
 import { renderGalleryXML } from './ToolbarTools'
 
 export let graph

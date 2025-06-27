@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types'
+
 import { Drawer, Hidden, IconButton } from '@material-ui/core'
-import HighlightOffIcon from '@material-ui/icons/HighlightOff'
 import { makeStyles } from '@material-ui/core/styles'
+import HighlightOffIcon from '@material-ui/icons/HighlightOff'
 
 const drawerWidth = 250
 

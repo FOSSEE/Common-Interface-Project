@@ -1,11 +1,12 @@
 // Main layout for home page.
 import { useEffect } from 'react'
+import { Link as RouterLink } from 'react-router-dom'
 
 import Button from '@material-ui/core/Button'
-import Typography from '@material-ui/core/Typography'
-import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
-import { Link as RouterLink } from 'react-router-dom'
+import { makeStyles } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
+
 import logo from '../static/favicon.ico'
 
 const useStyles = makeStyles((theme) => ({

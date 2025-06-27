@@ -1,9 +1,21 @@
 import { useEffect } from 'react'
-import { Avatar, Divider, Hidden, InputBase, List, ListItem, ListItemAvatar, ListItemText, Typography } from '@material-ui/core'
-import { Link as RouterLink } from 'react-router-dom'
-import { makeStyles } from '@material-ui/core/styles'
-import { deepPurple } from '@material-ui/core/colors'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link as RouterLink } from 'react-router-dom'
+
+import {
+  Avatar,
+  Divider,
+  Hidden,
+  InputBase,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+  Typography
+} from '@material-ui/core'
+import { deepPurple } from '@material-ui/core/colors'
+import { makeStyles } from '@material-ui/core/styles'
+
 import { fetchSchematics } from '../../redux/dashboardSlice'
 import { getUppercaseInitial } from '../../utils/GalleryUtils'
 

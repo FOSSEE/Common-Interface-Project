@@ -2,7 +2,14 @@
 import 'mxgraph/javascript/src/css/common.css'
 
 import mxGraphFactory from 'mxgraph'
-import { editorUndo, editorRedo, editorZoomIn, editorZoomOut, editorZoomAct } from './ToolbarTools'
+
+import {
+  editorRedo,
+  editorUndo,
+  editorZoomAct,
+  editorZoomIn,
+  editorZoomOut
+} from './ToolbarTools'
 
 const {
   mxKeyHandler,

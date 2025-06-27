@@ -1,5 +1,8 @@
 import { forwardRef, useCallback, useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+
 import PropTypes from 'prop-types'
+
 import {
   AppBar,
   Avatar,
@@ -32,18 +35,28 @@ import {
   Box,
   TextField
 } from '@material-ui/core'
-
+import { blue } from '@material-ui/core/colors'
 import { makeStyles } from '@material-ui/core/styles'
 import CloseIcon from '@material-ui/icons/Close'
-import { useSelector, useDispatch } from 'react-redux'
-import store from '../../redux/store'
-import { fetchSchematic, fetchDiagram, setSchScriptDump, setShowDot } from '../../redux/saveSchematicSlice'
+
 import { fetchSchematics, fetchGallery } from '../../redux/dashboardSlice'
+import {
+  fetchDiagram,
+  fetchSchematic,
+  setSchScriptDump,
+  setShowDot
+} from '../../redux/saveSchematicSlice'
 import { setScriptTaskId } from '../../redux/simulationSlice'
-import { blue } from '@material-ui/core/colors'
-import { getDateTime as getDate, getUppercaseInitial, saveToFile, sanitizeTitle } from '../../utils/GalleryUtils'
-import { renderGalleryXML } from './Helper/ToolbarTools'
+import store from '../../redux/store'
 import api from '../../utils/Api'
+import {
+  getDateTime as getDate,
+  getUppercaseInitial,
+  sanitizeTitle,
+  saveToFile
+} from '../../utils/GalleryUtils'
+
+import { renderGalleryXML } from './Helper/ToolbarTools'
 
 const Transition = forwardRef(function Transition (props, ref) {
   return <Slide direction='up' ref={ref} {...props} />

@@ -3,8 +3,14 @@ import 'mxgraph/javascript/src/css/common.css'
 
 import mxGraphFactory from 'mxgraph'
 
-import { getRotationParameters, getPins, getPointXY, getSuperBlockDiagram } from './ToolbarTools'
 import { updateMxGraphXML } from '../../../utils/GalleryUtils'
+
+import {
+  getPins,
+  getPointXY,
+  getRotationParameters,
+  getSuperBlockDiagram
+} from './ToolbarTools'
 
 const {
   mxPoint
