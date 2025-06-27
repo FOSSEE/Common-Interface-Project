@@ -1,11 +1,13 @@
 import { useEffect } from 'react'
-import { Button, Card, CardActions, CardContent, Grid, Typography } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link as RouterLink } from 'react-router-dom'
 
-import SchematicCard from './SchematicCard'
-import { useDispatch, useSelector } from 'react-redux'
+import { Button, Card, CardActions, CardContent, Grid, Typography } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
+
 import { fetchSchematics } from '../../redux/dashboardSlice'
+
+import SchematicCard from './SchematicCard'
 
 const useStyles = makeStyles({
   mainHead: {

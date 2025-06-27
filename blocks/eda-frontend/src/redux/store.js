@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
+
 import authReducer from './authSlice'
 import componentPropertiesReducer from './componentPropertiesSlice'
 import dashboardReducer from './dashboardSlice'

@@ -1,20 +1,39 @@
 import { useEffect, useRef, useState } from 'react'
-import PropTypes from 'prop-types'
-import api from '../../utils/Api'
-import { Collapse, Hidden, IconButton, InputAdornment, List, ListItem, ListItemIcon, TextField, Tooltip } from '@material-ui/core'
 import { TailSpin } from 'react-loader-spinner'
-import SearchIcon from '@material-ui/icons/Search'
+import { useDispatch, useSelector } from 'react-redux'
 
+import PropTypes from 'prop-types'
+
+import {
+  Collapse,
+  Hidden,
+  IconButton,
+  InputAdornment,
+  List,
+  ListItem,
+  ListItemIcon,
+  TextField,
+  Tooltip
+} from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
+import CloseIcon from '@material-ui/icons/Close'
 import ExpandLess from '@material-ui/icons/ExpandLess'
 import ExpandMore from '@material-ui/icons/ExpandMore'
-import CloseIcon from '@material-ui/icons/Close'
+import SearchIcon from '@material-ui/icons/Search'
+
+import {
+  fetchComponents,
+  fetchComponentImages,
+  fetchLibraries,
+  toggleCollapse,
+  toggleSimulate
+} from '../../redux/schematicEditorSlice'
+import api from '../../utils/Api'
 
 import './Helper/SchematicEditor.css'
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchLibraries, toggleCollapse, fetchComponents, fetchComponentImages, toggleSimulate } from '../../redux/schematicEditorSlice'
 import SideComp from './SideComp'
 import SimulationProperties from './SimulationProperties'
+
 const COMPONENTS_PER_ROW = 3
 
 const useStyles = makeStyles((theme) => ({

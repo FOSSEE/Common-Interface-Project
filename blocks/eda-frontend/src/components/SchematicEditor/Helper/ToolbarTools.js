@@ -2,11 +2,13 @@
 import 'mxgraph/javascript/src/css/common.css'
 
 import { useSelector } from 'react-redux'
+
 import mxGraphFactory from 'mxgraph'
 
-import { portSize, getParameter } from './SvgParser'
-import { getPortType, InputPort, OutputPort } from './ComponentDrag'
 import { styleToObject } from '../../../utils/GalleryUtils'
+
+import { getPortType, InputPort, OutputPort } from './ComponentDrag'
+import { portSize, getParameter } from './SvgParser'
 
 let graph
 let undoManager

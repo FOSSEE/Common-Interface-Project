@@ -1,10 +1,22 @@
 import { useState } from 'react'
-import PropTypes from 'prop-types'
-import { Hidden, List, ListItem, ListItemText, TextField, MenuItem, TextareaAutosize } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import ComponentProperties from './ComponentProperties'
 import { useSelector, useDispatch } from 'react-redux'
+
+import PropTypes from 'prop-types'
+
+import {
+  Hidden,
+  List,
+  ListItem,
+  ListItemText,
+  MenuItem,
+  TextField,
+  TextareaAutosize
+} from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
+
 import { setSchDescription } from '../../redux/saveSchematicSlice'
+
+import ComponentProperties from './ComponentProperties'
 
 import './Helper/SchematicEditor.css'
 

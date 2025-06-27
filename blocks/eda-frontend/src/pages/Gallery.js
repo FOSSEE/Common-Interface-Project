@@ -1,12 +1,31 @@
 // Main layout for gallery page.
 import { useCallback, useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
-import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Container, CssBaseline, Grid, Typography, FormControl, InputLabel, Select, MenuItem, Input } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import { Link as RouterLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import api from '../utils/Api'
+import { Link as RouterLink } from 'react-router-dom'
+
+import PropTypes from 'prop-types'
+
+import {
+  Button,
+  Card,
+  CardActionArea,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Container,
+  CssBaseline,
+  FormControl,
+  Grid,
+  Input,
+  InputLabel,
+  MenuItem,
+  Select,
+  Typography
+} from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
+
 import { fetchGallery } from '../redux/dashboardSlice'
+import api from '../utils/Api'
 
 const useStyles = makeStyles((theme) => ({
   mainHead: {

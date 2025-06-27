@@ -1,13 +1,16 @@
 // This is the JavaScript entry point of react application.
 import ReactDOM from 'react-dom'
-import * as serviceWorker from './serviceWorker'
+import { Provider } from 'react-redux'
+
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { ThemeProvider } from '@material-ui/core/styles'
+
+import App from './App'
+import store from './redux/store'
+import * as serviceWorker from './serviceWorker'
 import theme from './theme'
 import './index.css'
-import App from './App'
-import { Provider } from 'react-redux'
-import store from './redux/store'
+
 ReactDOM.render(
   <ThemeProvider theme={theme}>
     {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}

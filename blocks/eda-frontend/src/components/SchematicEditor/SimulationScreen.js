@@ -1,14 +1,27 @@
 import { forwardRef, useCallback, useEffect, useRef, useState } from 'react'
-import PropTypes from 'prop-types'
-import Highcharts from 'highcharts'
-import { AppBar, Button, Container, Dialog, Grid, IconButton, Paper, Slide, Toolbar, Typography } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import CloseIcon from '@material-ui/icons/Close'
 import { useSelector, useDispatch } from 'react-redux'
 
-import Graph, { setStatusDone, setStatusClosed } from '../Shared/Graph'
+import Highcharts from 'highcharts'
+import PropTypes from 'prop-types'
+
+import {
+  AppBar,
+  Button,
+  Container,
+  Dialog,
+  Grid,
+  IconButton,
+  Paper,
+  Slide,
+  Toolbar,
+  Typography
+} from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
+import CloseIcon from '@material-ui/icons/Close'
+
 import { setResultGraph, setSimulating, setErrorMessage } from '../../redux/simulationSlice'
 import api from '../../utils/Api'
+import Graph, { setStatusDone, setStatusClosed } from '../Shared/Graph'
 
 let sse = null
 

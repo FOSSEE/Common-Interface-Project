@@ -2,6 +2,7 @@
 import 'mxgraph/javascript/src/css/common.css'
 
 import mxGraphFactory from 'mxgraph'
+
 import { defaultScale, getSvgMetadata } from './SvgParser'
 
 const {

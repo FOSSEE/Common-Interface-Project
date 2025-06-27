@@ -1,13 +1,27 @@
 import { useState } from 'react'
-import PropTypes from 'prop-types'
-import { Button, Card, CardActionArea, CardActions, CardContent, CardHeader, CardMedia, Snackbar, Tooltip, Typography } from '@material-ui/core'
-import ShareIcon from '@material-ui/icons/Share'
-import { makeStyles } from '@material-ui/core/styles'
-import { Link as RouterLink } from 'react-router-dom'
-import DeleteIcon from '@material-ui/icons/Delete'
 import { useDispatch } from 'react-redux'
-import { deleteSchematic } from '../../redux/dashboardSlice'
+import { Link as RouterLink } from 'react-router-dom'
+
+import PropTypes from 'prop-types'
+
+import {
+  Button,
+  Card,
+  CardActionArea,
+  CardActions,
+  CardContent,
+  CardHeader,
+  CardMedia,
+  Snackbar,
+  Tooltip,
+  Typography
+} from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
+import DeleteIcon from '@material-ui/icons/Delete'
+import ShareIcon from '@material-ui/icons/Share'
 import MuiAlert from '@material-ui/lab/Alert'
+
+import { deleteSchematic } from '../../redux/dashboardSlice'
 import { getDate } from '../../utils/GalleryUtils'
 
 const useStyles = makeStyles((theme) => ({

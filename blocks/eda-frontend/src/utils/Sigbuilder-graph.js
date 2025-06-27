@@ -1,5 +1,6 @@
-import mxGraphFactory from 'mxgraph'
 import Highcharts from 'highcharts'
+import mxGraphFactory from 'mxgraph'
+
 import { getmethod, showModalWindow } from './dependencies'
 
 const {
