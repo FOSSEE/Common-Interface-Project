@@ -40,7 +40,8 @@ const useStyles = makeStyles((theme) => ({
   },
   small: {
     width: theme.spacing(3.7),
-    height: theme.spacing(3.7)
+    height: theme.spacing(3.7),
+    borderRadius: '10%'
   },
   purple: {
     width: theme.spacing(3.75),
