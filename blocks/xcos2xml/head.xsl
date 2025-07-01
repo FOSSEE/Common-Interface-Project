@@ -288,6 +288,8 @@
     <xsl:param name="blockId"/>
     <xsl:param name="style"/>
     <xsl:param name="simulationFunction"/>
+    <xsl:param name="display_parameter"/>
+    <xsl:param name="data"/>
 
     <xsl:element name="mxCell">
         <xsl:attribute name="style"><xsl:value-of select="$style"/></xsl:attribute>
@@ -311,13 +313,15 @@
         <xsl:apply-templates select="mxGeometry"/>
         <Object as="displayProperties">
         <xsl:attribute name="display_parameter">
-            <xsl:value-of select="*[@as='exprs']/data/@value"/>
+            <xsl:value-of select="$display_parameter"/>
         </xsl:attribute>
         </Object>
         <Object as="parameter_values">
-        <xsl:attribute name="p000_value">
-            <xsl:value-of select="*[@as='exprs']/data/@value"/>
-        </xsl:attribute>
+          <xsl:for-each select="$data">
+            <xsl:attribute name="{concat('p', format-number(position() - 1, '000'), '_value')}">
+              <xsl:value-of select="@value" />
+            </xsl:attribute>
+          </xsl:for-each>
         </Object>
     </xsl:element>
 
