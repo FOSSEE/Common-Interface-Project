@@ -277,3 +277,57 @@
       <xsl:apply-templates />
     </xsl:element>
   </xsl:template>
+
+  <xsl:template name="generate-block">
+    <xsl:param name="explicitInputPorts"/>
+    <xsl:param name="implicitInputPorts"/>
+    <xsl:param name="explicitOutputPorts"/>
+    <xsl:param name="implicitOutputPorts"/>
+    <xsl:param name="controlPorts"/>
+    <xsl:param name="commandPorts"/>
+    <xsl:param name="blockId"/>
+    <xsl:param name="style"/>
+    <xsl:param name="simulationFunction"/>
+
+    <xsl:element name="mxCell">
+        <xsl:attribute name="style"><xsl:value-of select="$style"/></xsl:attribute>
+        <xsl:attribute name="id"><xsl:value-of select="$blockId"/></xsl:attribute>
+        <xsl:attribute name="vertex">1</xsl:attribute>
+        <xsl:attribute name="connectable">0</xsl:attribute>
+        <xsl:attribute name="CellType">Component</xsl:attribute>
+        <xsl:attribute name="blockprefix">XCOS</xsl:attribute>
+        <xsl:attribute name="explicitInputPorts"><xsl:value-of select="$explicitInputPorts"/></xsl:attribute>
+        <xsl:attribute name="implicitInputPorts"><xsl:value-of select="$implicitInputPorts"/></xsl:attribute>
+        <xsl:attribute name="explicitOutputPorts"><xsl:value-of select="$explicitOutputPorts"/></xsl:attribute>
+        <xsl:attribute name="implicitOutputPorts"><xsl:value-of select="$implicitOutputPorts"/></xsl:attribute>
+        <xsl:attribute name="controlPorts"><xsl:value-of select="$controlPorts"/></xsl:attribute>
+        <xsl:attribute name="commandPorts"><xsl:value-of select="$commandPorts"/></xsl:attribute>
+        <xsl:attribute name="simulationFunction"><xsl:value-of select="$simulationFunction"/></xsl:attribute>
+        <xsl:attribute name="sourceVertex">0</xsl:attribute>
+        <xsl:attribute name="targetVertex">0</xsl:attribute>
+        <xsl:attribute name="tarx">0</xsl:attribute>
+        <xsl:attribute name="tary">0</xsl:attribute>
+
+        <xsl:apply-templates select="mxGeometry"/>
+        <Object as="displayProperties">
+        <xsl:attribute name="display_parameter">
+            <xsl:value-of select="*[@as='exprs']/data/@value"/>
+        </xsl:attribute>
+        </Object>
+        <Object as="parameter_values">
+        <xsl:attribute name="p000_value">
+            <xsl:value-of select="*[@as='exprs']/data/@value"/>
+        </xsl:attribute>
+        </Object>
+    </xsl:element>
+
+    <xsl:call-template name="port">
+        <xsl:with-param name="id" select="$blockId"/>
+        <xsl:with-param name="explicitInputPorts" select="$explicitInputPorts"/>
+        <xsl:with-param name="explicitOutputPorts" select="$explicitOutputPorts"/>
+        <xsl:with-param name="implicitInputPorts" select="$implicitInputPorts"/>
+        <xsl:with-param name="implicitOutputPorts" select="$implicitOutputPorts"/>
+        <xsl:with-param name="controlPorts" select="$controlPorts"/>
+        <xsl:with-param name="commandPorts" select="$commandPorts"/>
+    </xsl:call-template>
+  </xsl:template>
