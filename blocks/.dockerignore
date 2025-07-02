@@ -8,7 +8,6 @@ env*
 *.pyc
 *.sqlite3
 *.swp
-**/migrations
 .DS_Store
 **/.env.*
 **/build

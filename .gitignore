@@ -5,8 +5,6 @@
 .srcflake8
 .xcosblocks.txt
 __pycache__/
-blocks/blocks/*/migrations/*.py
-blocks/*/migrations/*.py
 blocks/env*/
 .DS_Store
 .env

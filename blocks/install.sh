@@ -17,7 +17,6 @@ sed -i \
 
 mkdir -p file_storage/uploads logs media/saves media/uploads
 make -s
-python manage.py makemigrations -v0 saveAPI simulationAPI xcosblocks
 python manage.py migrate -v0
 python manage.py loaddata -v0 saveAPI xcosblocks
 
