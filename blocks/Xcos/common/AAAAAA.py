@@ -679,7 +679,7 @@ def addControlPort(root, id, parent, ordering, initialState,
 
 
 def addCommandPort(root, id, parent, ordering, initialState,
-                   style="CpmmandPort;align=center;verticalAlign=bottom;spacing=10.0;rotation=0;flip=false;mirror=false",
+                   style="CommandPort;align=center;verticalAlign=bottom;spacing=10.0;rotation=0;flip=false;mirror=false",
                    value="",
                    **kwargs):
     return addPort(root, PORT_COMMAND,
