@@ -51,9 +51,7 @@
                               /ScilabString[@as='exprs']
                               /data[@column='0' and @line='0']/@value" />
             </xsl:when>
-            <xsl:otherwise>
-              <xsl:value-of select="1.000E+08" />
-            </xsl:otherwise>
+            <xsl:otherwise>1.000E+08</xsl:otherwise>
           </xsl:choose>
         </xsl:variable>
         <Object display_parameter="" as="displayProperties" />
