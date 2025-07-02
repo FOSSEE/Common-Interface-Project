@@ -21,85 +21,50 @@
   </xsl:template>
 
   <xsl:template name="si-format">
-        <xsl:param name="num" />
+  <xsl:param name="num" />
 
-        <!-- Compute absolute value manually -->
-        <xsl:variable name="absNum">
-            <xsl:choose>
-                <xsl:when test="$num &lt; 0"><xsl:value-of select="-$num" /></xsl:when>
-                <xsl:otherwise><xsl:value-of select="$num" /></xsl:otherwise>
-            </xsl:choose>
-        </xsl:variable>
-
-        <!-- Compute exponent -->
-        <xsl:variable name="exponent">
-            <xsl:choose>
-                <xsl:when test="$absNum = 0">0</xsl:when>
-                <xsl:otherwise>
-                    <xsl:call-template name="compute-exp">
-                        <xsl:with-param name="n" select="$absNum" />
-                        <xsl:with-param name="exp" select="0" />
-                    </xsl:call-template>
-                </xsl:otherwise>
-            </xsl:choose>
-        </xsl:variable>
-
-        <!-- Define SI prefixes -->
-        <xsl:choose>
-            <xsl:when test="$exponent &gt;= -2 and $exponent &lt;= 0">
-                <xsl:value-of select="round($num div 1E-3)" /> m
-            </xsl:when>
-            <xsl:when test="$exponent &gt;= -5 and $exponent &lt;= -3">
-                <xsl:value-of select="round($num div 1E-6)" /> &#956;  <!-- Unicode for μ -->
-            </xsl:when>
-            <xsl:when test="$exponent &gt;= -8 and $exponent &lt;= -6">
-                <xsl:value-of select="round($num div 1E-9)" /> n
-            </xsl:when>
-            <xsl:when test="$exponent &gt;= -11 and $exponent &lt;= -9">
-                <xsl:value-of select="round($num div 1E-12)" /> p
-            </xsl:when>
-            <xsl:when test="$exponent &gt;= 1 and $exponent &lt;= 3">
-                <xsl:value-of select="round($num div 1)" />
-            </xsl:when>
-            <xsl:when test="$exponent &gt;= 4 and $exponent &lt;= 6">
-                <xsl:value-of select="round($num div 1E3)" /> k</xsl:when>
-            <xsl:when test="$exponent &gt;= 7 and $exponent &lt;= 9">
-                <xsl:value-of select="round($num div 1E6)" /> M
-            </xsl:when>
-            <xsl:when test="$exponent &gt;= 10 and $exponent &lt;= 12">
-                <xsl:value-of select="round($num div 1E9)" /> G
-            </xsl:when>
-            <xsl:when test="$exponent &gt;= 13 and $exponent &lt;= 15">
-                <xsl:value-of select="round($num div 1E12)" /> T
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:value-of select="$num" /> 10^<xsl:value-of select="$exponent " />
-            </xsl:otherwise>
-        </xsl:choose>
-  </xsl:template>
-    <!-- Recursive template to compute the exponent -->
-  <xsl:template name="compute-exp">
-        <xsl:param name="n" />
-        <xsl:param name="exp" />
-
-        <xsl:choose>
-            <xsl:when test="$n &lt; 1">
-                <xsl:call-template name="compute-exp">
-                    <xsl:with-param name="n" select="$n * 10" />
-                    <xsl:with-param name="exp" select="$exp - 1" />
-                </xsl:call-template>
-            </xsl:when>
-            <xsl:when test="$n &gt;= 10">
-                <xsl:call-template name="compute-exp">
-                    <xsl:with-param name="n" select="$n div 10" />
-                    <xsl:with-param name="exp" select="$exp + 1" />
-                </xsl:call-template>
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:value-of select="$exp" />
-            </xsl:otherwise>
-        </xsl:choose>
-  </xsl:template>
+  <xsl:choose>
+    <xsl:when test="number($num) &gt;= 1000000000000">
+      <xsl:value-of select="format-number($num div 1000000000000, '#.##')" />
+      <xsl:text> T</xsl:text>
+    </xsl:when>
+    <xsl:when test="number($num) &gt;= 1000000000">
+      <xsl:value-of select="format-number($num div 1000000000, '#.##')" />
+      <xsl:text> G</xsl:text>
+    </xsl:when>
+    <xsl:when test="number($num) &gt;= 1000000">
+      <xsl:value-of select="format-number($num div 1000000, '#.##')" />
+      <xsl:text> M</xsl:text>
+    </xsl:when>
+    <xsl:when test="number($num) &gt;= 1000">
+      <xsl:value-of select="format-number($num div 1000, '#.##')" />
+      <xsl:text> k</xsl:text>
+    </xsl:when>
+    <xsl:when test="number($num) &gt;= 1">
+      <xsl:value-of select="format-number($num, '#.##')" />
+    </xsl:when>
+    <xsl:when test="number($num) &gt;= 0.001">
+      <xsl:value-of select="format-number($num div 0.001, '#.##')" />
+      <xsl:text> m</xsl:text>
+    </xsl:when>
+    <xsl:when test="number($num) &gt;= 0.000001">
+      <xsl:value-of select="format-number($num div 0.000001, '#.##')" />
+      <xsl:text> &#956;</xsl:text>
+    </xsl:when>
+    <xsl:when test="number($num) &gt;= 0.000000001">
+      <xsl:value-of select="format-number($num div 0.000000001, '#.##')" />
+      <xsl:text> n</xsl:text>
+    </xsl:when>
+    <xsl:when test="number($num) &gt;= 0.000000000001">
+      <xsl:value-of select="format-number($num div 0.000000000001, '#.##')" />
+      <xsl:text> p</xsl:text>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:value-of select="format-number($num, '#.##')" />
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:template>
+  
 
   <xsl:output method="xml" indent="no" />
   <xsl:key name="k-in" match="ExplicitInputPort | ImplicitInputPort" use="@parent" />
