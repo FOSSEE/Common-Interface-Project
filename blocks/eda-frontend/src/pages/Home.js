@@ -7,7 +7,7 @@ import Container from '@material-ui/core/Container'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 
-import logo from '../static/favicon.ico'
+import logo from '../static/logo.png'
 
 const useStyles = makeStyles((theme) => ({
   header: {

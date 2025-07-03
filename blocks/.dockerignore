@@ -9,6 +9,7 @@ env*
 *.sqlite3
 *.swp
 .DS_Store
+**/.env
 **/.env.*
 **/build
 **/node_modules
@@ -22,6 +23,7 @@ scilab-log-*.txt
 *.xcos
 *.xml
 *.xsl
+init.sh
 xcosblocks.py
 Xcos/xcosblocks.py
 blocks/xcosblocks/xcosblocks.py

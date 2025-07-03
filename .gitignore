@@ -8,6 +8,7 @@ __pycache__/
 blocks/env*/
 .DS_Store
 .env
+.env.*
 scilab-log-*.txt
 tags
 blocks/*.dat
