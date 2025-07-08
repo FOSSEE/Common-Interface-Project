@@ -9,8 +9,11 @@ env*
 *.sqlite3
 *.swp
 .DS_Store
-**/.env
+.env
 **/.env.*
+**/.git*
+**/.nvmrc
+**/.vscode
 **/build
 **/node_modules
 tags
