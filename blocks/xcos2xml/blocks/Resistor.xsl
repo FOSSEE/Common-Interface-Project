@@ -44,9 +44,8 @@
         <xsl:apply-templates select="mxGeometry" />
         <Object>
           <xsl:attribute name="display_parameter">
-            <!-- <xsl:value-of select="si-format(number(*[@as='exprs']/data[1]/@value), '0')" /> -->
             <xsl:call-template name="si-format">
-                <xsl:with-param name="num" select="number(*[@as='exprs']/data[1]/@value)" />
+              <xsl:with-param name="expr" select="*[@as='exprs']/data[1]/@value" />
             </xsl:call-template>
           </xsl:attribute>
           <xsl:attribute name="as">displayProperties</xsl:attribute>

@@ -20,51 +20,71 @@
      </xsl:choose>
   </xsl:template>
 
-  <xsl:template name="si-format">
-  <xsl:param name="num" />
+  <xsl:template name="eval-rational">
+    <xsl:param name="expr"/>
 
-  <xsl:choose>
-    <xsl:when test="number($num) &gt;= 1000000000000">
-      <xsl:value-of select="format-number($num div 1000000000000, '#.##')" />
-      <xsl:text> T</xsl:text>
-    </xsl:when>
-    <xsl:when test="number($num) &gt;= 1000000000">
-      <xsl:value-of select="format-number($num div 1000000000, '#.##')" />
-      <xsl:text> G</xsl:text>
-    </xsl:when>
-    <xsl:when test="number($num) &gt;= 1000000">
-      <xsl:value-of select="format-number($num div 1000000, '#.##')" />
-      <xsl:text> M</xsl:text>
-    </xsl:when>
-    <xsl:when test="number($num) &gt;= 1000">
-      <xsl:value-of select="format-number($num div 1000, '#.##')" />
-      <xsl:text> k</xsl:text>
-    </xsl:when>
-    <xsl:when test="number($num) &gt;= 1">
-      <xsl:value-of select="format-number($num, '#.##')" />
-    </xsl:when>
-    <xsl:when test="number($num) &gt;= 0.001">
-      <xsl:value-of select="format-number($num div 0.001, '#.##')" />
-      <xsl:text> m</xsl:text>
-    </xsl:when>
-    <xsl:when test="number($num) &gt;= 0.000001">
-      <xsl:value-of select="format-number($num div 0.000001, '#.##')" />
-      <xsl:text> &#956;</xsl:text>
-    </xsl:when>
-    <xsl:when test="number($num) &gt;= 0.000000001">
-      <xsl:value-of select="format-number($num div 0.000000001, '#.##')" />
-      <xsl:text> n</xsl:text>
-    </xsl:when>
-    <xsl:when test="number($num) &gt;= 0.000000000001">
-      <xsl:value-of select="format-number($num div 0.000000000001, '#.##')" />
-      <xsl:text> p</xsl:text>
-    </xsl:when>
-    <xsl:otherwise>
-      <xsl:value-of select="format-number($num, '#.##')" />
-    </xsl:otherwise>
-  </xsl:choose>
-</xsl:template>
-  
+    <xsl:choose>
+      <xsl:when test="contains($expr, '/')">
+        <xsl:variable name="num" select="number(substring-before($expr, '/'))" />
+        <xsl:variable name="den" select="number(substring-after($expr, '/'))" />
+        <xsl:value-of select="$num div $den" />
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="number($expr)" />
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template name="si-format">
+    <xsl:param name="expr" />
+
+    <xsl:variable name="num">
+      <xsl:call-template name="eval-rational">
+        <xsl:with-param name="expr" select="$expr" />
+      </xsl:call-template>
+    </xsl:variable>
+
+    <xsl:choose>
+      <xsl:when test="number($num) &gt;= 1000000000000">
+        <xsl:value-of select="format-number($num div 1000000000000, '#.##')" />
+        <xsl:text> T</xsl:text>
+      </xsl:when>
+      <xsl:when test="number($num) &gt;= 1000000000">
+        <xsl:value-of select="format-number($num div 1000000000, '#.##')" />
+        <xsl:text> G</xsl:text>
+      </xsl:when>
+      <xsl:when test="number($num) &gt;= 1000000">
+        <xsl:value-of select="format-number($num div 1000000, '#.##')" />
+        <xsl:text> M</xsl:text>
+      </xsl:when>
+      <xsl:when test="number($num) &gt;= 1000">
+        <xsl:value-of select="format-number($num div 1000, '#.##')" />
+        <xsl:text> k</xsl:text>
+      </xsl:when>
+      <xsl:when test="number($num) &gt;= 1">
+        <xsl:value-of select="format-number($num, '#.##')" />
+      </xsl:when>
+      <xsl:when test="number($num) &gt;= 0.001">
+        <xsl:value-of select="format-number($num div 0.001, '#.##')" />
+        <xsl:text> m</xsl:text>
+      </xsl:when>
+      <xsl:when test="number($num) &gt;= 0.000001">
+        <xsl:value-of select="format-number($num div 0.000001, '#.##')" />
+        <xsl:text> &#956;</xsl:text>
+      </xsl:when>
+      <xsl:when test="number($num) &gt;= 0.000000001">
+        <xsl:value-of select="format-number($num div 0.000000001, '#.##')" />
+        <xsl:text> n</xsl:text>
+      </xsl:when>
+      <xsl:when test="number($num) &gt;= 0.000000000001">
+        <xsl:value-of select="format-number($num div 0.000000000001, '#.##')" />
+        <xsl:text> p</xsl:text>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="format-number($num, '#.##')" />
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
 
   <xsl:output method="xml" indent="no" />
   <xsl:key name="k-in" match="ExplicitInputPort | ImplicitInputPort" use="@parent" />
