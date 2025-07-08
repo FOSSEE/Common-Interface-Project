@@ -211,6 +211,9 @@ TRUSTED_ORIGINS = os.environ.get('TRUSTED_ORIGINS', 'http://localhost')
 CORS_ALLOWED_ORIGINS = [i for i in ALLOWED_ORIGINS.split(',') if i != '']
 CSRF_TRUSTED_ORIGINS = [i for i in TRUSTED_ORIGINS.split(',') if i != '']
 CORS_ALLOW_CREDENTIALS = True
+CSRF_COOKIE_HTTPONLY = os.environ.get('COOKIE_HTTPONLY', 'false').lower() == 'true'
+CSRF_COOKIE_SAMESITE = os.environ.get('COOKIE_SAMESITE', 'Lax')
+CSRF_COOKIE_SECURE = os.environ.get('COOKIE_SECURE', 'false').lower() == 'true'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/

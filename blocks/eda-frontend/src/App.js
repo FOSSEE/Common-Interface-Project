@@ -15,6 +15,7 @@ import NotFound from './pages/NotFound'
 import SchematicEditor from './pages/SchematicEditor'
 import SignUp from './pages/signUp'
 import { loadUser } from './redux/authSlice'
+import api from './utils/Api'
 
 // Controls Private routes, this are accessible for authenticated users.  [ e.g : dashboard ]
 // and restricted routes disabled for authenticated users. [ e.g : login , signup ]
@@ -80,6 +81,18 @@ PublicRoute.propTypes = {
 }
 
 const App = () => {
+  useEffect(() => {
+    const initializeCsrf = async () => {
+      try {
+        await api.get('init')
+      } catch (err) {
+        console.error('Failed to initialize csrf:', err)
+      }
+    }
+
+    initializeCsrf()
+  }, [])
+
   return (
     // Handles Routing for an application
     <HashRouter>

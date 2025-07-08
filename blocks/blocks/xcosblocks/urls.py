@@ -1,7 +1,7 @@
 from django.urls import path
 from rest_framework.routers import SimpleRouter
 
-from .views import CategoryViewSet, \
+from .views import init_csrf, CategoryViewSet, \
     NewBlockViewSet, NewBlockParameterViewSet, \
     get_block_images, set_block_parameter
 
@@ -12,7 +12,7 @@ router.register(r'newblocks', NewBlockViewSet)
 router.register(r'newblockparameters', NewBlockParameterViewSet)
 
 urlpatterns = router.urls + [
+    path(r'init', init_csrf, name='init-csrf'),
     path(r'block_images', get_block_images),
-
     path(r'setblockparameter', set_block_parameter),
 ]

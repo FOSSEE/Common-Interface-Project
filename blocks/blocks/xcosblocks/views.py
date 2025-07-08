@@ -1,4 +1,5 @@
 from django.http import JsonResponse
+from django.views.decorators.csrf import ensure_csrf_cookie
 from django_filters import FilterSet
 from django_filters.rest_framework import DjangoFilterBackend
 import io
@@ -11,6 +12,11 @@ from .serializers import CategorySerializer, \
     ErrorSerializer, \
     SetBlockParameterSerializer, \
     NewBlockSerializer, NewBlockParameterSerializer, NewBlockPortSerializer
+
+
+@ensure_csrf_cookie
+def init_csrf(request):
+    return JsonResponse({"message": "CSRF cookie set"})
 
 
 class CategoryFilterSet(FilterSet):
