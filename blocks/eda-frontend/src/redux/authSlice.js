@@ -32,7 +32,7 @@ export const loadUser = createAsyncThunk(
 
     try {
       const res = await api.get('auth/users/me/', config)
-      if (res.status === 200) {
+      if ([200, 201, 204].includes(res.status)) {
         return res.data
       }
       return rejectWithValue(res.data || 'Failed to load user')
@@ -69,7 +69,7 @@ export const login = createAsyncThunk(
         email,
         password
       })
-      if (res.status === 200) {
+      if ([200, 201, 204].includes(res.status)) {
         localStorage.setItem(tokenKey, res.data.auth_token)
         if (toUrl === '') {
           dispatch(loadUser())
@@ -117,7 +117,7 @@ export const signUp = createAsyncThunk(
         password,
         re_password: reenterPassword
       })
-      if (res.status === 200) {
+      if ([200, 201, 204].includes(res.status)) {
         return 'Successfully Signed Up! A verification link has been sent to your email account.'
       }
 
@@ -165,7 +165,7 @@ export const googleLogin = createAsyncThunk(
   async (host, { rejectWithValue }) => {
     try {
       const res = await api.get(`auth/o/google-oauth2/?redirect_uri=${host}/api/auth/google-callback`)
-      if (res.status === 200) {
+      if ([200, 201, 204].includes(res.status)) {
         // Open google login page
         window.open(res.data.authorization_url, '_self')
         return res.data.authorization_url
@@ -185,7 +185,7 @@ export const githubLogin = createAsyncThunk(
   async (host, { rejectWithValue }) => {
     try {
       const res = await api.get(`auth/o/github/?redirect_uri=${host}/api/auth/github-callback`)
-      if (res.status === 200) {
+      if ([200, 201, 204].includes(res.status)) {
         // Open GitHub login page
         window.open(res.data.authorization_url, '_self')
         return res.data.authorization_url

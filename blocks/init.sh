@@ -7,8 +7,8 @@ PASSWORD=''
 
 rm -f xcosblocks.sqlite3
 
-./manage.py migrate -v0
-./manage.py loaddata xcosblocks
+python manage.py migrate -v0
+python manage.py loaddata -v0 saveAPI xcosblocks
 
 echo "from authAPI.models import User; User.objects.create_superuser('$EMAIL', '$EMAIL', '$PASSWORD')" |
-  ./manage.py shell
+  python manage.py shell
