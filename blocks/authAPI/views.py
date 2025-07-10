@@ -34,6 +34,25 @@ def activate_user(request, uid, token):
                    })
 
 
+def pwd_reset(request, uid, token):
+    """
+    Used to reset password,
+    sends POST request to /api/auth/users/reset_password_confirm/ route
+    internally to reset user password.
+    Link to this route is sent via email to user for verification
+    """
+
+    protocol = 'https://' if request.is_secure() else 'http://'
+    web_url = protocol + request.get_host() + '/api/auth/users/reset_password_confirm/'  # Djoser endpoint
+    return render(request, 'reset_password.html',
+                  {
+                      'uid': uid,
+                      'token': token,
+                      'reset_url': web_url,
+                      'redirect_url': settings.POST_ACTIVATE_REDIRECT_URL
+                  })
+
+
 def get_social_user(email, request, callback, service):
     if not email:
         logger.error(f'Email not found for {service} user')

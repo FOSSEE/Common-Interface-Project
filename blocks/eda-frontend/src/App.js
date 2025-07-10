@@ -8,6 +8,7 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 
 import Navbar from './components/Shared/Navbar'
 import Dashboard from './pages/Dashboard'
+import ForgotPassword from './pages/forgotPassword'
 import Gallery from './pages/Gallery'
 import Home from './pages/Home'
 import Login from './pages/Login'
@@ -95,6 +96,7 @@ const App = () => {
       <Switch>
         <PublicRoute exact path='/login' restricted nav={false} component={Login} />
         <PublicRoute exact path='/signup' restricted nav={false} component={SignUp} />
+        <PublicRoute exact path='/forgotpwd' restricted nav={false} component={ForgotPassword} />
         <PublicRoute exact path='/' restricted={false} nav component={Home} />
         {localStorage.getItem(process.env.REACT_APP_NAME + '_token') !== null
           ? <PublicRoute exact path='/editor' restricted={false} nav={false} component={SchematicEditor} />
