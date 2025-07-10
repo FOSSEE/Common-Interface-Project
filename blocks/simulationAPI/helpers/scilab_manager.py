@@ -86,8 +86,7 @@ def secure_filename(filename: str) -> str:
 
 
 def makedirs(dirname, dirtype=None):
-    if not exists(dirname):
-        os.makedirs(dirname)
+    os.makedirs(dirname, exist_ok=True)
 
 
 def rmdir(dirname, dirtype=None):
