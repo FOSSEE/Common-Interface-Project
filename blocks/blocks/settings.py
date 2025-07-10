@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import os
 from pathlib import Path
 from dotenv import load_dotenv
+from urllib.parse import urlparse
 
 # Loading the .env file
 load_dotenv()
@@ -155,6 +156,10 @@ GITHUB_OAUTH_REDIRECT_URI = os.environ.get('GITHUB_OAUTH_REDIRECT_URI',
                                            'http://localhost/api/auth/github-callback')
 POST_ACTIVATE_REDIRECT_URL = os.environ.get('POST_ACTIVATE_REDIRECT_URL',
                                             'http://localhost/')
+parsed_url = urlparse(POST_ACTIVATE_REDIRECT_URL)
+DEFAULT_PROTOCOL = parsed_url.scheme or 'http'
+DOMAIN = parsed_url.netloc or 'localhost'
+SITE_NAME = os.environ.get('EMAIL_SITE_NAME', 'Xcos')
 
 DJOSER = {
     'LOGIN_FIELD': 'email',
@@ -178,6 +183,10 @@ DJOSER = {
         'user_delete': 'djoser.serializers.UserDeleteSerializer',
         'token_create': 'authAPI.serializers.TokenCreateSerializer',
     },
+    'EMAIL': {
+        'activation': 'authAPI.emails.CustomActivationEmail',
+        'password_reset': 'authAPI.emails.CustomPasswordResetEmail',
+    }
 }
 
 REST_FRAMEWORK = {
