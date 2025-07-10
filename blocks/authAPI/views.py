@@ -9,7 +9,9 @@ from django.shortcuts import render
 from django.http import HttpResponseNotFound
 from djoser import utils
 from djoser.serializers import TokenSerializer
+from rest_framework.generics import GenericAPIView
 from authAPI.serializers import TokenCreateSerializer
+from djoser import serializers
 
 Token = djoser_settings.TOKEN_MODEL
 
@@ -154,3 +156,20 @@ class CustomTokenCreateView(utils.ActionViewMixin, generics.GenericAPIView):
             'user_id': serializer.user.id
         }
         return Response(data=data, status=status.HTTP_200_OK)
+
+
+class CustomPasswordResetConfirmView(GenericAPIView):
+    serializer_class = serializers.PasswordResetConfirmSerializer
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        user = serializer.user
+        if not user.is_active:
+            user.is_active = True
+            user.save()
+
+        serializer.save()  # This sets the new password
+
+        return Response(status=status.HTTP_204_NO_CONTENT)

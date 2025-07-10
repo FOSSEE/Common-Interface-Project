@@ -168,7 +168,7 @@ DJOSER = {
     'PASSWORD_CHANGED_EMAIL_CONFIRMATION': True,
     'SEND_CONFIRMATION_EMAIL': True,
     'SET_PASSWORD_RETYPE': True,
-    'PASSWORD_RESET_CONFIRM_URL': 'api/auth/password/reset/{uid}/{token}',
+    'PASSWORD_RESET_CONFIRM_URL': 'api/auth/users/reset/{uid}/{token}',
     'SEND_PASSWORD_RESET_EMAIL': True,
     'ACTIVATION_URL': 'api/auth/users/activate/{uid}/{token}/',
     'SEND_ACTIVATION_EMAIL': True,
