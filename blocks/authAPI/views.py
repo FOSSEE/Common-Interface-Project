@@ -10,7 +10,6 @@ from django.http import HttpResponseNotFound
 from djoser import utils
 from djoser.serializers import TokenSerializer
 from authAPI.serializers import TokenCreateSerializer
-from blocks.settings import DOMAIN
 
 Token = djoser_settings.TOKEN_MODEL
 
@@ -50,8 +49,7 @@ def get_social_user(email, request, callback, service):
         user.save()
     token, created = Token.objects.get_or_create(user=user)
 
-    protocol = 'https://' if request.is_secure() else 'http://'
-    web_url = protocol + DOMAIN + '/#/dashboard'
+    web_url = settings.POST_ACTIVATE_REDIRECT_URL + '#/dashboard'
 
     return render(request, callback,
                   {'token': token,

@@ -155,8 +155,6 @@ GITHUB_OAUTH_REDIRECT_URI = os.environ.get('GITHUB_OAUTH_REDIRECT_URI',
                                            'http://localhost/api/auth/github-callback')
 POST_ACTIVATE_REDIRECT_URL = os.environ.get('POST_ACTIVATE_REDIRECT_URL',
                                             'http://localhost/')
-DOMAIN = os.environ.get('EMAIL_DOMAIN', 'localhost')
-SITE_NAME = os.environ.get('EMAIL_SITE_NAME', 'Xcos')
 
 DJOSER = {
     'LOGIN_FIELD': 'email',
