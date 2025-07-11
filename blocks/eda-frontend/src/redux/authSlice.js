@@ -129,35 +129,33 @@ export const signUp = createAsyncThunk(
     }
   })
 
-// Handle api call for user logout
 export const logout = createAsyncThunk(
   'auth/logout',
-  async (history, { getState }) => {
+  async (_, { getState, rejectWithValue }) => {
     try {
-      // Get token from localstorage
       const token = getState().auth.token
-
-      // add headers
       const config = {
         headers: {
           'Content-Type': 'application/json'
         }
       }
-
-      // If token available add to headers
       if (token) {
         config.headers.Authorization = `Token ${token}`
       }
 
       await api.post('auth/token/logout/', {}, config)
-      localStorage.removeItem(tokenKey)
-      history.push('/login')
+
+      // Clear token from localStorage
+      localStorage.removeItem('token')
+
       return 'Logout successful'
     } catch (err) {
-      console.log(err)
-      return 'Logout successful'
+      localStorage.removeItem('token') // still clear it on error
+      console.error(err)
+      return rejectWithValue('Logout failed')
     }
-  })
+  }
+)
 
 // Api call for Google oAuth login or sign up
 export const googleLogin = createAsyncThunk(
@@ -199,6 +197,29 @@ export const githubLogin = createAsyncThunk(
     }
   })
 
+export const resetPassword = createAsyncThunk(
+  'auth/resetPassword',
+  async ({ email }, { rejectWithValue }) => {
+    try {
+      const res = await api.post('/auth/users/reset_password/', { email })
+
+      if ([200, 204].includes(res.status)) {
+        return { detail: 'Password reset link sent to your email.' }
+      }
+
+      return rejectWithValue({ detail: 'Unexpected response from the server.' })
+
+    } catch (err) {
+      const res = err.response
+      if (res && res.data) {
+        return rejectWithValue(res.data)
+      } else {
+        return rejectWithValue({ detail: 'Network error. Please try again later.' })
+      }
+    }
+  }
+)
+  
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -287,6 +308,28 @@ const authSlice = createSlice({
         state.user = null
         state.isAuthenticated = false
         state.errors = ''
+      })
+      .addCase(logout.rejected, (state) => {
+        state.isLoading = false
+        state.token = null
+        state.user = null
+        state.isAuthenticated = false
+      })
+      .addCase(resetPassword.pending, (state) => {
+        state.isLoading = true
+        state.regErrors = ''
+        state.resetSuccess = false
+      })
+      .addCase(resetPassword.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.resetSuccess = true
+        state.regErrors = action.payload.detail
+      })
+      .addCase(resetPassword.rejected, (state, action) => {
+        state.isLoading = false
+        state.resetSuccess = false
+        state.regErrors = action.payload?.detail || 'Something went wrong'
+        
       })
   }
 })
