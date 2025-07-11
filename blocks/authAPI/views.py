@@ -25,8 +25,7 @@ def activate_user(request, uid, token):
     Link to this route is sent via email to user for verification
     """
 
-    protocol = 'https://' if request.is_secure() else 'http://'
-    web_url = protocol + request.get_host() + '/api/auth/users/activation/'  # URL comes from Djoser library
+    web_url = settings.POST_ACTIVATE_REDIRECT_URL + 'api/auth/users/activation/'  # URL comes from Djoser library
     return render(request, 'activate_user.html',
                   {'uid': uid,
                    'token': token,
