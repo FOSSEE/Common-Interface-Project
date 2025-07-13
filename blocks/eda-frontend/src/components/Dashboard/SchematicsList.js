@@ -1,11 +1,8 @@
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { Link as RouterLink } from 'react-router-dom'
 
 import { Button, Card, CardActions, CardContent, Grid, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-
-import { fetchSchematics } from '../../redux/dashboardSlice'
 
 import SchematicCard from './SchematicCard'
 
@@ -59,13 +56,6 @@ export default function SchematicsList () {
   const classes = useStyles()
   const user = useSelector(state => state.auth.user)
   const schematics = useSelector(state => state.dashboard.schematics)
-
-  const dispatch = useDispatch()
-
-  // For Fetching Saved Schematics
-  useEffect(() => {
-    dispatch(fetchSchematics())
-  }, [dispatch])
 
   const typography1 = 'You don\'t have any saved ' + process.env.REACT_APP_SMALL_DIAGRAMS_NAME + '...'
   return (

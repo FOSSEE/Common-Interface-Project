@@ -54,19 +54,21 @@ function a11yProps (index) {
 export default function ProgressPanel () {
   const classes = useStyles()
   const [value, setValue] = useState(0)
+  const isLoggingOut = useSelector(state => state.auth.isLoggingOut)
+  const schematics = useSelector(state => state.dashboard.schematics)
+
+  const dispatch = useDispatch()
 
   const handleChange = (event, newValue) => {
     setValue(newValue)
   }
 
-  const schematics = useSelector(state => state.dashboard.schematics)
-
-  const dispatch = useDispatch()
-
   // For Fetching Saved Schematics
   useEffect(() => {
+    if (isLoggingOut) return
+
     dispatch(fetchSchematics())
-  }, [dispatch])
+  }, [dispatch, isLoggingOut])
 
   const tab = 'Recent ' + process.env.REACT_APP_DIAGRAMS_NAME
   const typography = 'You have not created any ' + process.env.REACT_APP_SMALL_DIAGRAM_NAME

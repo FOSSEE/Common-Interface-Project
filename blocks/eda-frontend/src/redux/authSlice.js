@@ -7,6 +7,7 @@ const tokenKey = process.env.REACT_APP_NAME + '_token'
 const initialState = {
   token: localStorage.getItem(tokenKey),
   isAuthenticated: false,
+  isLoggingOut: false,
   isRegistered: false,
   isLoading: false,
   user: null,
@@ -282,8 +283,13 @@ const authSlice = createSlice({
         state.isRegistered = false
         state.regErrors = action.payload
       })
+      .addCase(logout.pending, (state) => {
+        state.isLoading = true
+        state.isLoggingOut = true
+      })
       .addCase(logout.fulfilled, (state) => {
         state.isLoading = false
+        state.isLoggingOut = false
         state.token = null
         state.user = null
         state.isAuthenticated = false

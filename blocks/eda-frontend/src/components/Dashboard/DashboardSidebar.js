@@ -1,5 +1,4 @@
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { Link as RouterLink } from 'react-router-dom'
 
 import {
@@ -16,7 +15,6 @@ import {
 import { deepPurple } from '@material-ui/core/colors'
 import { makeStyles } from '@material-ui/core/styles'
 
-import { fetchSchematics } from '../../redux/dashboardSlice'
 import { getUppercaseInitial } from '../../utils/GalleryUtils'
 
 const useStyles = makeStyles((theme) => ({
@@ -53,13 +51,6 @@ export default function DashSidebar (_props) {
   const classes = useStyles()
   const user = useSelector(state => state.auth.user)
   const schematics = useSelector(state => state.dashboard.schematics)
-
-  const dispatch = useDispatch()
-
-  // For Fetching Saved Schematics
-  useEffect(() => {
-    dispatch(fetchSchematics())
-  }, [dispatch])
 
   const button = 'My ' + process.env.REACT_APP_DIAGRAMS_NAME
   const placeholder = 'Find your ' + process.env.REACT_APP_SMALL_DIAGRAM_NAME + '...'

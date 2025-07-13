@@ -2,6 +2,8 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 import api from '../utils/Api'
 
+import { logout } from './authSlice'
+
 const initialState = {
   isLoading: false,
   schematics: [],
@@ -105,6 +107,9 @@ const dashboardSlice = createSlice({
       .addCase(fetchGallery.rejected, (state) => {
         state.isLoading = false
         state.gallery = []
+      })
+      .addCase(logout.fulfilled, (state) => {
+        state.schematics = []
       })
   }
 })
