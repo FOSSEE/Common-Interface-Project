@@ -73,14 +73,21 @@ export default function SignIn (props) {
     }
   }, [dispatch, props.location.search])
 
-  const [username, setUsername] = useState('')
+  const rememberedUsername = localStorage.getItem('rememberedUsername') || ''
+  const [username, setUsername] = useState(rememberedUsername)
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
+  const [rememberMe, setRememberMe] = useState(!!rememberedUsername)
   const handleClickShowPassword = () => setShowPassword(!showPassword)
   const handleMouseDownPassword = () => setShowPassword(!showPassword)
 
   // Function call for normal user login.
   const handleLogin = () => {
+    if (rememberMe) {
+      localStorage.setItem('rememberedUsername', username)
+    } else {
+      localStorage.removeItem('rememberedUsername')
+    }
     dispatch(login({ email: username, password, toUrl: url }))
   }
 
@@ -154,7 +161,13 @@ export default function SignIn (props) {
             autoComplete='current-password'
           />
           <FormControlLabel
-            control={<Checkbox value='remember' color='primary' />}
+            control={
+              <Checkbox
+                color='primary'
+                checked={rememberMe}
+                onChange={e => setRememberMe(e.target.checked)}
+              />
+            }
             label='Remember me'
           />
           <Button
