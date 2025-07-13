@@ -22,11 +22,6 @@ import api from './utils/Api'
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
   const isLoading = useSelector(state => state.auth.isLoading)
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(loadUser())
-  }, [dispatch])
 
   return (
     <Route
@@ -51,11 +46,6 @@ PrivateRoute.propTypes = {
 const PublicRoute = ({ component: Component, restricted, nav, ...rest }) => {
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
   const isLoading = useSelector(state => state.auth.isLoading)
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(loadUser())
-  }, [dispatch])
 
   return (
     <Route
@@ -81,6 +71,8 @@ PublicRoute.propTypes = {
 }
 
 const App = () => {
+  const dispatch = useDispatch()
+
   useEffect(() => {
     const initializeCsrf = async () => {
       try {
@@ -92,6 +84,10 @@ const App = () => {
 
     initializeCsrf()
   }, [])
+
+  useEffect(() => {
+    dispatch(loadUser())
+  }, [dispatch])
 
   return (
     // Handles Routing for an application

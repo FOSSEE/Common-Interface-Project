@@ -17,9 +17,9 @@ const initialState = {
 // Api call for maintaining user login state throughout the application
 export const loadUser = createAsyncThunk(
   'auth/loadUser',
-  async (_, { getState, rejectWithValue }) => {
+  async (tokenFromLogin, { getState, rejectWithValue }) => {
     // Get token from localstorage
-    const token = getState().auth.token
+    const token = tokenFromLogin || getState().auth.token
     if (!token) return rejectWithValue('No token found')
 
     // add headers
@@ -70,16 +70,17 @@ export const login = createAsyncThunk(
         password
       })
       if ([200, 201, 204].includes(res.status)) {
-        localStorage.setItem(tokenKey, res.data.auth_token)
+        const token = res.data.auth_token
+        localStorage.setItem(tokenKey, token)
         if (toUrl === '') {
-          dispatch(loadUser())
+          dispatch(loadUser(token))
         } else if (!allowedUrls.includes(toUrl)) {
           console.log('Not redirecting to', toUrl)
-          dispatch(loadUser())
+          dispatch(loadUser(token))
         } else {
           window.open(toUrl, '_self')
         }
-        return res.data.auth_token
+        return token
       }
 
       return loginError(res, rejectWithValue)
