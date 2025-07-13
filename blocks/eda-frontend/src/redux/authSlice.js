@@ -230,7 +230,6 @@ const authSlice = createSlice({
         state.isAuthenticated = false
       })
       .addCase(login.fulfilled, (state, action) => {
-        state.isLoading = false
         state.token = action.payload
         state.errors = ''
       })
@@ -245,9 +244,6 @@ const authSlice = createSlice({
         state.isLoading = true
         state.isAuthenticated = false
       })
-      .addCase(googleLogin.fulfilled, (state) => {
-        state.isLoading = false
-      })
       .addCase(googleLogin.rejected, (state, action) => {
         state.isLoading = false
         state.token = null
@@ -258,9 +254,6 @@ const authSlice = createSlice({
       .addCase(githubLogin.pending, (state) => {
         state.isLoading = true
         state.isAuthenticated = false
-      })
-      .addCase(githubLogin.fulfilled, (state) => {
-        state.isLoading = false
       })
       .addCase(githubLogin.rejected, (state, action) => {
         state.isLoading = false
