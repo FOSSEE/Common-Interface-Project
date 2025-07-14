@@ -1,6 +1,6 @@
 import json
 import os
-from os.path import abspath, join, splitext
+from os.path import join, splitext
 import re
 import subprocess
 from celery import current_task
@@ -17,30 +17,6 @@ from simulationAPI.helpers.scilab_manager import start_scilab, upload, remove, r
 
 logger = get_task_logger(__name__)
 XmlToXcos = join(settings.BASE_DIR, 'Xcos/XmlToXcos.sh')
-SCILAB_DIR = abspath(settings.SCILAB_DIR)
-SCILAB = join(SCILAB_DIR, 'bin', 'scilab-adv-cli')
-# handle scilab startup
-SCILAB_START = (
-    "try;funcprot(0);lines(0,120);"
-    "clearfun('messagebox');"
-    "function messagebox(msg,title,icon,buttons,modal),disp(msg),endfunction;"
-    "funcprot(1);"
-    "catch;[error_message,error_number,error_line,error_func]=lasterror();"
-    "disp(error_message,error_number,error_line,error_func);exit(3);end;"
-)
-
-SCILAB_END = (
-    "catch;[error_message,error_number,error_line,error_func]=lasterror();"
-    "disp(error_message,error_number,error_line,error_func);exit(2);end;exit;"
-)
-SCILAB_CMD = [SCILAB,
-              "-noatomsautoload",
-              "-nogui",
-              "-nouserstartup",
-              "-nb",
-              "-nw",
-              "-e", SCILAB_START]
-LOGFILEFD = 123
 
 START_STATES = ["STARTED"]
 END_STATES = ["SUCCESS", "FAILURE", "CANCELED"]
