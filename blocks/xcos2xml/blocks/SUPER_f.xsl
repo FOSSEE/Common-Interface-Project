@@ -1,8 +1,8 @@
     <xsl:template match="SuperBlock">
-      <xsl:variable name="explicitInputPorts" select="count(SuperBlockDiagram/mxGraphModel/root/ExplicitOutBlock)" />
-      <xsl:variable name="implicitInputPorts" select="count(SuperBlockDiagram/mxGraphModel/root/ImplicitOutBlock)" />
-      <xsl:variable name="explicitOutputPorts" select="count(SuperBlockDiagram/mxGraphModel/root/ExplicitInBlock)" />
-      <xsl:variable name="implicitOutputPorts" select="count(SuperBlockDiagram/mxGraphModel/root/ImplicitInBlock)" />
+      <xsl:variable name="explicitInputPorts" select="count(SuperBlockDiagram/mxGraphModel/root/ExplicitInBlock)" />
+      <xsl:variable name="implicitInputPorts" select="count(SuperBlockDiagram/mxGraphModel/root/ImplicitInBlock)" />
+      <xsl:variable name="explicitOutputPorts" select="count(SuperBlockDiagram/mxGraphModel/root/ExplicitOutBlock)" />
+      <xsl:variable name="implicitOutputPorts" select="count(SuperBlockDiagram/mxGraphModel/root/ImplicitOutBlock)" />
       <xsl:variable name="controlPorts" select="count(SuperBlockDiagram/mxGraphModel/root/EventInBlock)" />
       <xsl:variable name="commandPorts" select="count(SuperBlockDiagram/mxGraphModel/root/EventOutBlock)" />
       <xsl:element name="mxCell">
