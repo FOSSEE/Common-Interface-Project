@@ -693,6 +693,37 @@ ImageExportDialog.propTypes = {
   open: PropTypes.bool.isRequired
 }
 
+function SchematicRow ({ sch, onClick, details, showDates = false }) {
+  return (
+    <TableRow key={sch.save_id}>
+      <TableCell align='center'>{sch.name}</TableCell>
+      <TableCell align='center'>
+        <Tooltip title={sch.description !== null ? sch.description : 'No description'}>
+          <span>
+            {sch.description !== null ? sch.description.slice(0, 30) + (sch.description.length < 30 ? '' : '...') : '-'}
+          </span>
+        </Tooltip>
+      </TableCell>
+      {showDates && (
+        <>
+          <TableCell align='center'>{getDate(sch.create_time)}</TableCell>
+          <TableCell align='center'>{getDate(sch.save_time)}</TableCell>
+        </>
+      )}
+      <TableCell align='center'>
+        <Button
+          size='small'
+          color='primary'
+          onClick={() => onClick(sch.save_id)}
+          variant={details.save_id === undefined ? 'outlined' : details.save_id !== sch.save_id ? 'outlined' : 'contained'}
+        >
+          Launch
+        </Button>
+      </TableCell>
+    </TableRow>
+  )
+}
+
 // Dialog box to open saved Schematics
 export function OpenSchDialog (props) {
   const { open, close, openLocal } = props
@@ -753,32 +784,15 @@ export function OpenSchDialog (props) {
                     </TableHead>
                     <TableBody>
                       <>
-                        {GallerySchSample.map(
-                          (sch) => {
-                            return (
-                              <TableRow key={sch.save_id}>
-                                <TableCell align='center'>{sch.name}</TableCell>
-                                <TableCell align='center'>
-                                  <Tooltip title={sch.description !== null ? sch.description : 'No description'}>
-                                    <span>
-                                      {sch.description !== null ? sch.description.slice(0, 30) + (sch.description.length < 30 ? '' : '...') : '-'}
-                                    </span>
-                                  </Tooltip>
-                                </TableCell>
-                                <TableCell align='center'>
-                                  <Button
-                                    size='small'
-                                    color='primary'
-                                    onClick={() => { dispatch(fetchDiagram(sch.save_id)) }}
-                                    variant={details.save_id === undefined ? 'outlined' : details.save_id !== sch.save_id ? 'outlined' : 'contained'}
-                                  >
-                                    Launch
-                                  </Button>
-                                </TableCell>
-                              </TableRow>
-                            )
-                          }
-                        )}
+                        {GallerySchSample.map((sch) => (
+                          <SchematicRow
+                            key={sch.save_id}
+                            sch={sch}
+                            onClick={(id) => dispatch(fetchDiagram(id))}
+                            details={details}
+                            showDates={false}
+                          />
+                        ))}
                       </>
                     </TableBody>
                   </Table>
@@ -803,34 +817,15 @@ export function OpenSchDialog (props) {
                       </TableHead>
                       <TableBody>
                         <>
-                          {schematics.map(
-                            (sch) => {
-                              return (
-                                <TableRow key={sch.save_id}>
-                                  <TableCell align='center'>{sch.name}</TableCell>
-                                  <TableCell align='center'>
-                                    <Tooltip title={sch.description !== null ? sch.description : 'No description'}>
-                                      <span>
-                                        {sch.description !== null ? sch.description.slice(0, 30) + (sch.description.length < 30 ? '' : '...') : '-'}
-                                      </span>
-                                    </Tooltip>
-                                  </TableCell>
-                                  <TableCell align='center'>{getDate(sch.create_time)}</TableCell>
-                                  <TableCell align='center'>{getDate(sch.save_time)}</TableCell>
-                                  <TableCell align='center'>
-                                    <Button
-                                      size='small'
-                                      color='primary'
-                                      onClick={() => { dispatch(fetchSchematic(sch.save_id)) }}
-                                      variant={details.save_id === undefined ? 'outlined' : details.save_id !== sch.save_id ? 'outlined' : 'contained'}
-                                    >
-                                      Launch
-                                    </Button>
-                                  </TableCell>
-                                </TableRow>
-                              )
-                            }
-                          )}
+                          {schematics.map((sch) => (
+                            <SchematicRow
+                              key={sch.save_id}
+                              sch={sch}
+                              onClick={(id) => dispatch(fetchSchematic(id))}
+                              details={details}
+                              showDates={true}
+                            />
+                          ))}
                         </>
                       </TableBody>
                     </Table>
