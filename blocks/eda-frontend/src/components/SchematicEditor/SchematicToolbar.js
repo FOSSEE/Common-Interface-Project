@@ -22,7 +22,6 @@ import {
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import AddBoxOutlinedIcon from '@material-ui/icons/AddBoxOutlined'
-import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward'
 import ClearAllIcon from '@material-ui/icons/ClearAll'
 import CloseIcon from '@material-ui/icons/Close'
 import CompareArrowsIcon from '@material-ui/icons/CompareArrows'
@@ -518,7 +517,7 @@ export default function SchematicToolbar ({ _mobileClose, gridRef }) {
     { icon: <RedoIcon fontSize='small' />, label: 'Redo', action: editorRedo },
     'pipe',
     { icon: <RotateRightIcon fontSize='small' />, label: 'Rotate', action: Rotate },
-    { icon: <ArrowDownwardIcon fontSize='small' />, label: 'Flip', action: Flip },
+    { icon: <CompareArrowsIcon style={{ transform: 'rotate(90deg)' }} fontSize='small' />, label: 'Flip', action: Flip },
     { icon: <CompareArrowsIcon fontSize='small' />, label: 'Mirror', action: Mirror },
     'pipe',
     { icon: <ZoomInIcon fontSize='small' />, label: 'Zoom In', action: editorZoomIn },
