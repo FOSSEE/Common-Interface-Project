@@ -53,10 +53,15 @@ let url = ''
 
 export default function SignIn (props) {
   const classes = useStyles()
-  const errors = useSelector(state => state.auth.errors)
-
+  const authErrors = useSelector(state => state.auth.errors)
+  const [errors, setErrors] = useState(authErrors || '')
+  
   const dispatch = useDispatch()
   const homeURL = `${window.location.origin}/#/`
+
+  useEffect(() => {
+    setErrors(authErrors || '')
+  }, [authErrors])
 
   useEffect(() => {
     document.title = 'Login - ' + process.env.REACT_APP_NAME
@@ -115,9 +120,11 @@ export default function SignIn (props) {
         </Typography>
 
         {/* Display's error messages while logging in */}
-        <Typography variant='body1' align='center' style={{ marginTop: '10px' }} color='error'>
-          {errors}
-        </Typography>
+        {authErrors && (
+          <Typography variant='body1' align='center' style={{ marginTop: '10px' }} color='error'>
+            {errors}
+          </Typography>
+        )}
 
         <form className={classes.form} noValidate>
           <TextField
@@ -131,7 +138,7 @@ export default function SignIn (props) {
             autoComplete='email'
             value={username}
             onChange={e => setUsername(e.target.value)}
-            autoFocus
+            onFocus={() => setErrors('')}
           />
           <TextField
             variant='outlined'
@@ -149,7 +156,7 @@ export default function SignIn (props) {
                     onClick={handleClickShowPassword}
                     onMouseDown={handleMouseDownPassword}
                   >
-                    {showPassword ? <Visibility fontSize='small' /> : <VisibilityOff fontSize='small' />} {/* Handle password visibility */}
+                    {showPassword ? <Visibility fontSize='small' /> : <VisibilityOff fontSize='small' />}
                   </IconButton>
                 </InputAdornment>
               )
@@ -158,6 +165,7 @@ export default function SignIn (props) {
             id='password'
             value={password}
             onChange={e => setPassword(e.target.value)}
+            onFocus={() => setErrors('')}
             autoComplete='current-password'
           />
           <FormControlLabel
