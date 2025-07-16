@@ -177,21 +177,15 @@ export const styleToObject = (style) => {
 }
 
 export const objectToStyle = (styleObject) => {
-  let style = ''
-
-  for (const key in styleObject) {
-    if (Object.hasOwnProperty.call(styleObject, key)) {
-      const value = styleObject[key]
-      if (value !== undefined && value !== null && value !== '') {
-        if (key === 'default') {
-          style += `${value};`
-        } else {
-          style += `${key}=${value};`
-        }
-      }
+  let style = styleObject.default
+  for (const [key, value] of Object.entries(styleObject)) {
+    if (key === 'default') {
+      continue
     }
+    if (value !== undefined && value !== null && value !== '') {
+      style += `;${key}=${value}`
+    } 
   }
-
   return style
 }
 
