@@ -176,6 +176,25 @@ export const styleToObject = (style) => {
   return styleObject
 }
 
+export const objectToStyle = (styleObject) => {
+  let style = ''
+
+  for (const key in styleObject) {
+    if (Object.hasOwnProperty.call(styleObject, key)) {
+      const value = styleObject[key]
+      if (value !== undefined && value !== null && value !== '') {
+        if (key === 'default') {
+          style += `${value};`
+        } else {
+          style += `${key}=${value};`
+        }
+      }
+    }
+  }
+
+  return style
+}
+
 export const saveToFile = (filename, filetype, data) => {
   const blob = new Blob([data], { type: filetype + ';charset=utf-8' })
   saveAs(blob, filename)
