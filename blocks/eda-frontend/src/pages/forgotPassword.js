@@ -43,8 +43,15 @@ export default function ForgotPassword () {
   const dispatch = useDispatch()
   const resetSuccess = useSelector(state => state.auth.resetSuccess)
   const regErrors = useSelector(state => state.auth.regErrors)
+  const [isResetSuccess, setIsResetSuccess] = useState(false)
 
   const [email, setEmail] = useState('')
+
+  useEffect(() => {
+    if (resetSuccess) {
+      setIsResetSuccess(true)
+    }
+  }, [resetSuccess])
 
   useEffect(() => {
     document.title = 'Forgot Password - ' + process.env.REACT_APP_NAME
@@ -87,6 +94,7 @@ export default function ForgotPassword () {
             value={email}
             onChange={e => setEmail(e.target.value)}
             autoFocus
+            disabled={isResetSuccess}
           />
           <Button
             fullWidth
@@ -94,6 +102,7 @@ export default function ForgotPassword () {
             color='primary'
             onClick={handleReset}
             className={classes.submit}
+            disabled={isResetSuccess}
           >
             Send Reset Link
           </Button>
