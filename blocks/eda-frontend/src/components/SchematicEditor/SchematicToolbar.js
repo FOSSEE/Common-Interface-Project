@@ -24,6 +24,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import AddBoxOutlinedIcon from '@material-ui/icons/AddBoxOutlined'
 import ClearAllIcon from '@material-ui/icons/ClearAll'
 import CloseIcon from '@material-ui/icons/Close'
+import CompareArrowsIcon from '@material-ui/icons/CompareArrows'
 import CreateNewFolderOutlinedIcon from '@material-ui/icons/CreateNewFolderOutlined'
 import DeleteIcon from '@material-ui/icons/Delete'
 import DescriptionIcon from '@material-ui/icons/Description'
@@ -64,6 +65,8 @@ import {
   editorZoomIn,
   editorZoomOut,
   renderGalleryXML,
+  Flip,
+  Mirror,
   saveXml
 } from './Helper/ToolbarTools'
 import {
@@ -512,7 +515,10 @@ export default function SchematicToolbar ({ _mobileClose, gridRef }) {
     'pipe',
     { icon: <UndoIcon fontSize='small' />, label: 'Undo', action: editorUndo },
     { icon: <RedoIcon fontSize='small' />, label: 'Redo', action: editorRedo },
+    'pipe',
     { icon: <RotateRightIcon fontSize='small' />, label: 'Rotate', action: Rotate },
+    { icon: <CompareArrowsIcon style={{ transform: 'rotate(90deg)' }} fontSize='small' />, label: 'Flip', action: Flip },
+    { icon: <CompareArrowsIcon fontSize='small' />, label: 'Mirror', action: Mirror },
     'pipe',
     { icon: <ZoomInIcon fontSize='small' />, label: 'Zoom In', action: editorZoomIn },
     { icon: <ZoomOutIcon fontSize='small' />, label: 'Zoom Out', action: editorZoomOut },

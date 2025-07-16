@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 
 import mxGraphFactory from 'mxgraph'
 
-import { styleToObject } from '../../../utils/GalleryUtils'
+import { styleToObject, objectToStyle } from '../../../utils/GalleryUtils'
 
 import { getPortType, InputPort, OutputPort } from './ComponentDrag'
 import { portSize, getParameter } from './SvgParser'
@@ -108,6 +108,33 @@ export function Rotate () {
     const vHandler = graph.createVertexHandler(state)
     vHandler.rotateCell(cell, 90, cell.getParent())
     vHandler.destroy()
+  }
+}
+
+// vertically
+export function Flip () {
+  const cell = graph.getSelectionCell()
+  if (cell && cell.CellType === 'Component') {
+    const model = graph.getModel()
+    const currentStyle = model.getStyle(cell) || ''
+    const styleMap = styleToObject(currentStyle)
+
+    styleMap.flip = styleMap.flip === 'true' ? 'false' : 'true'
+    model.setStyle(cell, objectToStyle(styleMap))
+  }
+}
+
+// horizontally
+export function Mirror () {
+  const cell = graph.getSelectionCell()
+  if (cell && cell.CellType === 'Component') {
+    const model = graph.getModel()
+    const currentStyle = model.getStyle(cell) || ''
+    const styleMap = styleToObject(currentStyle)
+
+    styleMap.mirror = styleMap.mirror === 'true' ? 'false' : 'true'
+
+    model.setStyle(cell, objectToStyle(styleMap))
   }
 }
 
