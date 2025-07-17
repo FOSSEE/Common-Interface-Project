@@ -111,6 +111,63 @@ export function Rotate () {
   }
 }
 
+function rotatePort (port, model) {
+  const currentStyle = model.getStyle(port) || ''
+  const styleMap = styleToObject(currentStyle)
+
+  if ('rotation' in styleMap) {
+    styleMap.rotation = (parseFloat(styleMap.rotation) + 180) % 360
+  } else {
+    styleMap.rotation = 180
+  }
+
+  model.setStyle(port, objectToStyle(styleMap))
+}
+
+const EPSILON = 0.001
+
+function isLeftOrRight (x) {
+  return Math.abs(x - 0) < EPSILON || Math.abs(x - 1) < EPSILON
+}
+
+function isTopOrBottom (y) {
+  return Math.abs(y - 0) < EPSILON || Math.abs(y - 1) < EPSILON
+}
+
+function flipMirrorPorts (cell, flip, mirror) {
+  const model = graph.getModel()
+  const childCount = model.getChildCount(cell)
+
+  for (let i = 0; i < childCount; i++) {
+    const port = model.getChildAt(cell, i)
+    let geo = model.getGeometry(port)
+
+    if (geo != null && geo.relative) {
+      geo = geo.clone()
+      if (mirror) {
+        geo.x = 1 - geo.x
+        if (geo.offset != null) {
+          geo.offset.x = -portSize - geo.offset.x
+        }
+      }
+      if (flip) {
+        geo.y = 1 - geo.y
+        if (geo.offset != null) {
+          geo.offset.y = -portSize - geo.offset.y
+        }
+      }
+      model.setGeometry(port, geo)
+
+      if (mirror && isLeftOrRight(geo.x)) {
+        rotatePort(port, model)
+      }
+      if (flip && isTopOrBottom(geo.y)) {
+        rotatePort(port, model)
+      }
+    }
+  }
+}
+
 // vertically
 export function Flip () {
   const cell = graph.getSelectionCell()
@@ -118,9 +175,10 @@ export function Flip () {
     const model = graph.getModel()
     const currentStyle = model.getStyle(cell) || ''
     const styleMap = styleToObject(currentStyle)
-
     styleMap.flip = styleMap.flip === 'true' ? 'false' : 'true'
     model.setStyle(cell, objectToStyle(styleMap))
+
+    flipMirrorPorts(cell, true, false)
   }
 }
 
@@ -131,10 +189,10 @@ export function Mirror () {
     const model = graph.getModel()
     const currentStyle = model.getStyle(cell) || ''
     const styleMap = styleToObject(currentStyle)
-
     styleMap.mirror = styleMap.mirror === 'true' ? 'false' : 'true'
-
     model.setStyle(cell, objectToStyle(styleMap))
+
+    flipMirrorPorts(cell, false, true)
   }
 }
 
