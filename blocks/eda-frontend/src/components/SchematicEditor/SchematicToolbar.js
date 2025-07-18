@@ -603,7 +603,7 @@ export default function SchematicToolbar ({ _mobileClose, gridRef }) {
       {imgopen && <ImageExportDialog open={imgopen} onClose={handleImgClose} /> }
       {open && <NetlistModal open={open} close={handleClose} netlist={netlist} /> }
       {helpOpen && <HelpScreen open={helpOpen} close={handleHelpClose} /> }
-      {scriptOpen && <ScriptScreen isOpen={scriptOpen} onClose={handleScriptClose} /> }
+      <ScriptScreen isOpen={scriptOpen} onClose={handleScriptClose} />
     </>
   )
 }
