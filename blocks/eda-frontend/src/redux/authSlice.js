@@ -36,10 +36,12 @@ export const loadUser = createAsyncThunk(
       if ([200, 201, 204].includes(res.status)) {
         return res.data
       }
+
+      console.error(res.data || res)
       return rejectWithValue(res.data || 'Failed to load user')
     } catch (err) {
-      console.log(err)
       const res = err.response
+      console.error(res?.data || res || err)
       return rejectWithValue(res?.data || 'Failed to load user')
     }
   })
@@ -47,6 +49,7 @@ export const loadUser = createAsyncThunk(
 const loginError = (res, rejectWithValue) => {
   if ([400, 401, 403].includes(res.status)) {
     const data = res.data
+    console.error(data || res)
     const error = data.email?.[0] ??
       data.password?.[0] ??
       data.non_field_errors?.[0] ??
@@ -86,7 +89,6 @@ export const login = createAsyncThunk(
 
       return loginError(res, rejectWithValue)
     } catch (err) {
-      console.log(err)
       const res = err.response
       return loginError(res, rejectWithValue)
     }
@@ -95,6 +97,7 @@ export const login = createAsyncThunk(
 const signupError = (res, rejectWithValue) => {
   if ([400, 401, 403].includes(res.status)) {
     const data = res.data
+    console.error(data || res)
     const error = data.email?.[0] ??
       data.username?.[0] ??
       data.password?.[0] ??
@@ -125,7 +128,6 @@ export const signUp = createAsyncThunk(
 
       return signupError(res, rejectWithValue)
     } catch (err) {
-      console.log(err)
       const res = err.response
       return signupError(res, rejectWithValue)
     }
@@ -156,7 +158,7 @@ export const logout = createAsyncThunk(
       history.push('/login')
       return 'Logout successful'
     } catch (err) {
-      console.log(err)
+      console.log(err.response || err)
       return 'Logout successful'
     }
   })
@@ -175,7 +177,6 @@ export const googleLogin = createAsyncThunk(
 
       return loginError(res, rejectWithValue)
     } catch (err) {
-      console.log(err)
       const res = err.response
       return loginError(res, rejectWithValue)
     }
@@ -195,7 +196,6 @@ export const githubLogin = createAsyncThunk(
 
       return loginError(res, rejectWithValue)
     } catch (err) {
-      console.log(err)
       const res = err.response
       return loginError(res, rejectWithValue)
     }
