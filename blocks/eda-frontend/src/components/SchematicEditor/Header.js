@@ -170,7 +170,7 @@ function Header () {
       setMessage('You are not Logged In')
       handleSnacClick()
     } else if (isSaved !== true) {
-      setMessage('You have not saved the circuit')
+      setMessage('You have not saved the ' + process.env.REACT_APP_DIAGRAM_NAME + ' yet')
       handleSnacClick()
     } else {
       handleShareOpen()

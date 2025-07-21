@@ -142,7 +142,7 @@ export default function SchematicEditor (props) {
       <ComponentImages />
       <Layout header={<Header />} resToolbar={<SchematicToolbar gridRef={gridRef} mobileClose={handleDrawerToggle} />} sidebar={<ComponentSidebar compRef={compRef} />} />
 
-      {/* Grid for drawing and designing circuits */}
+      {/* Grid for drawing and designing diagrams */}
       <LayoutMain>
         <div className={classes.toolbar} />
         <center>

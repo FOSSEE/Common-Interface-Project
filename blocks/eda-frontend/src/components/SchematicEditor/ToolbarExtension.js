@@ -238,7 +238,7 @@ export function HelpScreen ({ open, close }) {
 
                     <TableContainer component={Paper}>
                       <Table className={classes.table} aria-label='simple table'>
-                        <caption>Ngspice scale factors naming conventions</caption>
+                        <caption>Scale factors naming conventions</caption>
                         <TableHead>
                           <TableRow>
                             <TableCell align='center'>SUFFIX</TableCell>
@@ -261,21 +261,15 @@ export function HelpScreen ({ open, close }) {
                           </TableRow>
 
                           <TableRow>
-                            <TableCell align='center'>Meg</TableCell>
+                            <TableCell align='center'>M</TableCell>
                             <TableCell align='center'>Mega</TableCell>
                             <TableCell align='center'>10<sup>6</sup></TableCell>
                           </TableRow>
 
                           <TableRow>
-                            <TableCell align='center'>K</TableCell>
+                            <TableCell align='center'>k</TableCell>
                             <TableCell align='center'>Kilo</TableCell>
                             <TableCell align='center'>10<sup>3</sup></TableCell>
-                          </TableRow>
-
-                          <TableRow>
-                            <TableCell align='center'>mil</TableCell>
-                            <TableCell align='center'>Mil</TableCell>
-                            <TableCell align='center'>25.4 X 10<sup>-6</sup></TableCell>
                           </TableRow>
 
                           <TableRow>
@@ -285,7 +279,7 @@ export function HelpScreen ({ open, close }) {
                           </TableRow>
 
                           <TableRow>
-                            <TableCell align='center'>u</TableCell>
+                            <TableCell align='center'>&#956;</TableCell>
                             <TableCell align='center'>micro</TableCell>
                             <TableCell align='center'>10<sup>-6</sup></TableCell>
                           </TableRow>
@@ -323,32 +317,10 @@ export function HelpScreen ({ open, close }) {
                     </Typography>
                   </legend>
                   <Typography variant='h6' align='left' gutterBottom>
-                    DC Solver
-                  </Typography>
-                  <Typography variant='subtitle1' align='left' style={{ color: '#b3b3b3' }} gutterBottom>
-                    A DC simulation attempts to find a stable DC solution of your circuit.
-                  </Typography>
-                  <Divider />
-                  <Typography variant='h6' align='left' gutterBottom>
-                    DC Sweep
-                  </Typography>
-                  <Typography variant='subtitle1' align='left' style={{ color: '#b3b3b3' }} gutterBottom>
-                    A DC Sweep will plot the DC solution of your circuit across different values of a parameter of a circuit element.
-                    You can sweep any numerical parameter of any circuit element in your circuit.
-                  </Typography>
-                  <Divider />
-                  <Typography variant='h6' align='left' gutterBottom>
                     Transient Analysis
                   </Typography>
                   <Typography variant='subtitle1' align='left' style={{ color: '#b3b3b3' }} gutterBottom>
-                    A Transient analysis does a Time-Domain Simulation of your circuit over a certain period of time.
-                  </Typography>
-                  <Divider />
-                  <Typography variant='h6' align='left' gutterBottom>
-                    AC Analysis
-                  </Typography>
-                  <Typography variant='subtitle1' align='left' style={{ color: '#b3b3b3' }} gutterBottom>
-                    AC Analysis does a small signal analysis of your circuit. The input can be any voltage source or current source.
+                    A Transient analysis does a Time-Domain Simulation of your {process.env.REACT_APP_SMALL_DIAGRAM_NAME} over a certain period of time.
                   </Typography>
                 </fieldset>
               </Paper>

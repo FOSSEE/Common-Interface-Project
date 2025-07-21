@@ -80,6 +80,10 @@
         <xsl:value-of select="format-number($num div 0.000000000001, '#.##')" />
         <xsl:text> p</xsl:text>
       </xsl:when>
+      <xsl:when test="number($num) &gt;= 0.000000000000001">
+        <xsl:value-of select="format-number($num div 0.000000000000001, '#.##')" />
+        <xsl:text> f</xsl:text>
+      </xsl:when>
       <xsl:otherwise>
         <xsl:value-of select="format-number($num, '#.##')" />
       </xsl:otherwise>
