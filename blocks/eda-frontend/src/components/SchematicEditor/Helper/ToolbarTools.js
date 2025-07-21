@@ -146,7 +146,7 @@ function rotatePorts (cell, model) {
   }
 }
 
-function flipMirrorPorts (cell, flip, mirror, model) {
+function flipMirrorPorts (cell, flip, mirror, model, rotatePorts=true) {
   const childCount = model.getChildCount(cell)
 
   for (let i = 0; i < childCount; i++) {
@@ -169,7 +169,8 @@ function flipMirrorPorts (cell, flip, mirror, model) {
       }
       model.setGeometry(port, geo)
 
-      if ((mirror && isLeftOrRight(geo.x)) || (flip && isTopOrBottom(geo.y))) {
+      if (rotatePorts &&
+          ((mirror && isLeftOrRight(geo.x)) || (flip && isTopOrBottom(geo.y)))) {
         rotateCell(port, 180, model)
       }
     }
