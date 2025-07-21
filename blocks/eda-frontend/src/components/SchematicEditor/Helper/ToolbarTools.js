@@ -673,6 +673,19 @@ function parseXmlToGraph (xmlDoc, graph) {
       remainingcells = []
       console.log('cellslength=', cellslength, ', oldcellslength=', oldcellslength)
     }
+    const allCells = model.getChildren(graph.getDefaultParent())
+    allCells.forEach(cell => {
+      if (cell.CellType === 'Component') {
+        const styleMap = styleToObject(model.getStyle(cell) || '')
+        const flip = styleMap.flip === 'true'
+        const mirror = styleMap.mirror === 'true'
+        const rotation = parseInt(styleMap.rotation || '0')
+
+        if (flip || mirror) {
+          flipMirrorPorts(cell, flip, mirror, model, false)
+        }
+      }
+    })
     graph.view.refresh()
   } finally {
     model.endUpdate()
