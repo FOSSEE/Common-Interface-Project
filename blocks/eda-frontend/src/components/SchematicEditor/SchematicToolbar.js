@@ -519,13 +519,13 @@ export default function SchematicToolbar ({ _mobileClose, gridRef }) {
     { icon: <RotateRightIcon fontSize='small' />, label: 'Rotate', action: Rotate },
     { icon: <CompareArrowsIcon style={{ transform: 'rotate(90deg)' }} fontSize='small' />, label: 'Flip', action: Flip },
     { icon: <CompareArrowsIcon fontSize='small' />, label: 'Mirror', action: Mirror },
+    { icon: <DeleteIcon fontSize='small' />, label: 'Delete', action: handleDeleteComp },
+    { icon: <ClearAllIcon fontSize='small' />, label: 'Clear All', action: ClearGrid },
     'pipe',
     { icon: <ZoomInIcon fontSize='small' />, label: 'Zoom In', action: editorZoomIn },
     { icon: <ZoomOutIcon fontSize='small' />, label: 'Zoom Out', action: editorZoomOut },
     { icon: <SettingsOverscanIcon fontSize='small' />, label: 'Default Size', action: editorZoomAct },
     'pipe',
-    { icon: <DeleteIcon fontSize='small' />, label: 'Delete', action: handleDeleteComp },
-    { icon: <ClearAllIcon fontSize='small' />, label: 'Clear All', action: ClearGrid },
     { icon: <HelpOutlineIcon fontSize='small' />, label: 'Help', action: handleHelpOpen }
   ]
 
