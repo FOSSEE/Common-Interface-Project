@@ -84,12 +84,12 @@ export default function SchematicEditor (props) {
       activeCell.SuperBlockDiagram = superBlockDiagram
       const refreshDisplay = changePorts(
         activeCell,
-        styleCounts['OUT_f'] || 0,
-        styleCounts['OUTIMPL_f'] || 0,
-        styleCounts['CLKOUTV_f'] || 0,
         styleCounts['IN_f'] || 0,
         styleCounts['INIMPL_f'] || 0,
         styleCounts['CLKINV_f'] || 0,
+        styleCounts['OUT_f'] || 0,
+        styleCounts['OUTIMPL_f'] || 0,
+        styleCounts['CLKOUTV_f'] || 0,
         false
       )
       if (refreshDisplay) {
