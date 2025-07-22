@@ -209,7 +209,7 @@ export default function ComponentProperties () {
   const block = useSelector(state => state.componentProperties.block)
   const name = useSelector(state => state.componentProperties.name)
   const parameterValues = useSelector(state => state.componentProperties.parameter_values)
-  const [val, setVal] = useState(parameterValues)
+  const [values, setValues] = useState(parameterValues)
   const displayProperties = useSelector(state => state.componentProperties.displayProperties)
   const isLoading = useSelector(state => state.componentProperties.isLoading)
   const dispatch = useDispatch()
@@ -217,7 +217,7 @@ export default function ComponentProperties () {
   const [errorFields, setErrorFields] = useState(errorFields1)
 
   useEffect(() => {
-    setVal(parameterValues)
+    setValues(parameterValues)
     setErrorFields(errorFields1)
     let refreshDisplay = false
     if (block != null && displayProperties != null) {
@@ -270,14 +270,14 @@ export default function ComponentProperties () {
       [fieldName]: !isValid
     })
     // Update the value in the state
-    setVal({
-      ...val,
+    setValues({
+      ...values,
       [fieldName]: value
     })
   }
 
   const setProps = () => {
-    dispatch(setCompProperties({ block, parameterValues: val, errorFields }))
+    dispatch(setCompProperties({ block, parameterValues: values, errorFields }))
   }
 
   const link1 = name + ' Parameters'
@@ -305,7 +305,7 @@ export default function ComponentProperties () {
       </ListItem>
 
       {
-        Object.keys(val).map((keyName, i) => {
+        Object.keys(values).map((keyName, i) => {
           const result = keyName.match(/^p0*([1-9]*[0-9])_value$/)
           if (result && compProperties) {
             const rootKeyId = parseInt(result[1])
@@ -317,7 +317,7 @@ export default function ComponentProperties () {
                 : compProperty.p_help
               return (
                 <ListItem key={i}>
-                  <TextField id={keyName} label={compProperty.p_label} value={val[keyName] || ''} helperText={helperText} error={error} size='small' variant='outlined' onChange={getInputValues} />
+                  <TextField id={keyName} label={compProperty.p_label} value={values[keyName] || ''} helperText={helperText} error={error} size='small' variant='outlined' onChange={getInputValues} />
                 </ListItem>
               )
             }
