@@ -101,6 +101,8 @@ RUN rm -f /etc/{passwd,shadow,group,gshadow}-
 
 FROM base AS build-xcos
 
+ARG NODE_DIR=${HOME}/node
+
 # packages to be removed later
 RUN apt-get update -qq && \
   apt-get install -qq --no-install-recommends gawk python3-pip python3-venv wget xz-utils
@@ -136,6 +138,8 @@ RUN rm -rf ${HOME}/.npm
 FROM base AS main
 
 EXPOSE 80
+
+ARG NODE_DIR=${HOME}/node
 
 # Install scilab
 COPY --from=build-scilab /usr/local /usr/local
