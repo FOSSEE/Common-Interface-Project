@@ -16,6 +16,10 @@ import { renderGalleryXML } from './ToolbarTools'
 
 export let graph
 
+export function initializeGraph (container) {
+  graph = new mxGraph(container)
+}
+
 const {
   mxGraph,
   mxRubberband,

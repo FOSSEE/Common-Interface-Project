@@ -1,5 +1,5 @@
 /* eslint new-cap: ["error", {"newIsCapExceptionPattern": "^mx"}] */
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { TailSpin } from 'react-loader-spinner'
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -9,6 +9,7 @@ import { ListItem, ListItemText, Button, TextField } from '@material-ui/core'
 
 import { setCompProperties } from '../../redux/componentPropertiesSlice'
 
+import { initializeGraph } from './Helper/ComponentDrag'
 import { graph } from './Helper/ComponentDrag'
 import { portSize } from './Helper/SvgParser'
 
@@ -206,7 +207,8 @@ export default function ComponentProperties () {
 
   const compProperties = useSelector(state => state.componentProperties.compProperties)
   const isOpen = useSelector(state => state.componentProperties.isPropertiesWindowOpen)
-  const block = useSelector(state => state.componentProperties.block)
+  // const block = useSelector(state => state.componentProperties.block)
+  const id = useSelector(state => state.componentProperties.id)
   const name = useSelector(state => state.componentProperties.name)
   const parameterValues = useSelector(state => state.componentProperties.parameter_values)
   const [values, setValues] = useState(parameterValues)
@@ -215,8 +217,18 @@ export default function ComponentProperties () {
   const dispatch = useDispatch()
   const errorFields1 = useSelector(state => state.componentProperties.errorFields)
   const [errorFields, setErrorFields] = useState(errorFields1)
+  
+  const containerRef = useRef(null)
+  useEffect(() => {
+    if (containerRef.current) {
+      initializeGraph(containerRef.current)
+    }
+  }, [])
+
+  const block = id && graph ? graph.getModel().getCell(id) : null
 
   useEffect(() => {
+    const block = id && graph ? graph.getModel().getCell(id) : null
     setValues(parameterValues)
     setErrorFields(errorFields1)
     let refreshDisplay = false
@@ -237,7 +249,7 @@ export default function ComponentProperties () {
         graph.refresh()
       }
     }
-  }, [parameterValues, errorFields1, displayProperties, block])
+  }, [parameterValues, errorFields1, displayProperties, id])
 
   const getInputValues = (evt) => {
     const value = evt.target.value.trim() // Trim to remove leading and trailing whitespace

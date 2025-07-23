@@ -48,7 +48,7 @@ export const setCompProperties = createAsyncThunk(
         block.parameter_values = parameterValues
         block.errorFields = errorFields
         return {
-          block,
+          id: block.id,
           parameter_values: parameterValues,
           errorFields,
           displayProperties: res.data
@@ -77,12 +77,11 @@ const componentPropertiesSlice = createSlice({
         state.isPropertiesWindowOpen = true
         state.compProperties = []
         const block = action.meta.arg
-        state.block = block
         state.name = styleToObject(block.style).default
         state.id = block.id
         state.parameter_values = block.parameter_values
         state.errorFields = block.errorFields
-        state.displayProperties = block.displayProperties
+        state.displayProperties = block.displayProperties       
       })
       .addCase(getCompProperties.fulfilled, (state, action) => {
         state.isLoading = false
@@ -100,7 +99,7 @@ const componentPropertiesSlice = createSlice({
       .addCase(setCompProperties.fulfilled, (state, action) => {
         state.isLoading = false
         state.isPropertiesWindowOpen = false
-        state.block = action.payload.block
+        state.id = action.payload.id
         state.parameter_values = action.payload.parameter_values
         state.errorFields = action.payload.errorFields
         state.displayProperties = action.payload.displayProperties
