@@ -241,7 +241,7 @@ export default function ComponentProperties () {
   }, [parameterValues, errorFields1, displayProperties, block])
 
   const getInputValues = (evt) => {
-    const value = evt.target.value.trim() // Trim to remove leading and trailing whitespace
+    const value = evt.target.value
     const fieldName = evt.target.id
     const fieldRoot = fieldName.substring(0, 4)
     const typeId = fieldRoot + '_type'
