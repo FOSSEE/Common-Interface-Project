@@ -16,14 +16,6 @@ import { renderGalleryXML } from './ToolbarTools'
 
 export let graph
 
-export function initializeGraph (container) {
-  // graph = new mxGraph(container)
-  if (!graph) {
-    graph = new mxGraph(container)
-  }
-  return graph
-}
-
 const {
   mxGraph,
   mxRubberband,
@@ -143,8 +135,7 @@ export default function LoadGrid (container, sidebar, outline, setMainDiagramBac
     // mxVertexHandler.prototype.rotationEnabled = true
 
     // Creates the graph inside the given container
-    // graph = new mxGraph(container)
-    graph = initializeGraph(container)
+    graph = new mxGraph(container)
 
     mxConnectionHandler.prototype.movePreviewAway = false
     mxConnectionHandler.prototype.waypointsEnabled = true

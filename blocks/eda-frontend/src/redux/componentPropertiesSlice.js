@@ -81,7 +81,7 @@ const componentPropertiesSlice = createSlice({
         state.id = block.id
         state.parameter_values = block.parameter_values
         state.errorFields = block.errorFields
-        state.displayProperties = block.displayProperties       
+        state.displayProperties = block.displayProperties
       })
       .addCase(getCompProperties.fulfilled, (state, action) => {
         state.isLoading = false
