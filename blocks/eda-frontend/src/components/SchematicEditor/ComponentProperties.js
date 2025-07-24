@@ -206,7 +206,8 @@ export default function ComponentProperties () {
 
   const compProperties = useSelector(state => state.componentProperties.compProperties)
   const isOpen = useSelector(state => state.componentProperties.isPropertiesWindowOpen)
-  const block = useSelector(state => state.componentProperties.block)
+  const id = useSelector(state => state.componentProperties.id)
+  const block = id && graph ? graph.getModel().getCell(id) : null
   const name = useSelector(state => state.componentProperties.name)
   const parameterValues = useSelector(state => state.componentProperties.parameter_values)
   const [values, setValues] = useState(parameterValues)
