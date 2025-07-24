@@ -1061,9 +1061,9 @@
   <!-- Port template {{{1 -->
   <xsl:template match="ExplicitInputPort | ExplicitOutputPort | ImplicitInputPort | ImplicitOutputPort | ControlPort | CommandPort">
     <xsl:variable name="parentId" select="@parent" />
-    <xsl:variable name="SPLIT" select="(//SplitBlock)[1]/@id" />
+    <xsl:variable name="splitId" select="//SplitBlock[position() = 1]/@id" />
 
-    <xsl:if test="$parentId != $SPLIT">
+    <xsl:if test="$parentId != $splitId">
       <xsl:copy>
         <xsl:copy-of select="@*" />
         <xsl:copy-of select="node()" />
@@ -1076,7 +1076,7 @@
   <xsl:template match="ExplicitLink | CommandControlLink | ImplicitLink">
     <xsl:variable name="sourceElement" select="key('k-portorlink', @source)" />
     <xsl:variable name="targetElement" select="key('k-portorlink', @target)" />
-    <xsl:variable name="SPLITID" select="(//SplitBlock)[1]/@id" />
+    <xsl:variable name="SPLITID" select="//SplitBlock[position() = 1]/@id" />
     <xsl:if test="$sourceElement/@parent != $SPLITID and $targetElement/@parent != $SPLITID">
       <xsl:variable name="srcsrcid" select="key('k-portorlink', $sourceElement/@source)/@parent" />
       <xsl:variable name="srctgtid" select="key('k-portorlink', $sourceElement/@target)/@parent" />
