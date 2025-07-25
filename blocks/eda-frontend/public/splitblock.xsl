@@ -1063,7 +1063,7 @@
     <xsl:variable name="parentId" select="@parent" />
     <xsl:variable name="splitId" select="//SplitBlock[position() = 1]/@id" />
 
-    <xsl:if test="$parentId != $splitId">
+    <xsl:if test="not($parentId = $splitId)">
       <xsl:copy>
         <xsl:copy-of select="@*" />
         <xsl:copy-of select="node()" />
@@ -1077,13 +1077,13 @@
     <xsl:variable name="sourceElement" select="key('k-portorlink', @source)" />
     <xsl:variable name="targetElement" select="key('k-portorlink', @target)" />
     <xsl:variable name="SPLITID" select="//SplitBlock[position() = 1]/@id" />
-    <xsl:if test="$sourceElement/@parent != $SPLITID and $targetElement/@parent != $SPLITID">
+    <xsl:if test="not($sourceElement/@parent = $SPLITID) and not($targetElement/@parent = $SPLITID)">
       <xsl:variable name="srcsrcid" select="key('k-portorlink', $sourceElement/@source)/@parent" />
       <xsl:variable name="srctgtid" select="key('k-portorlink', $sourceElement/@target)/@parent" />
       <xsl:variable name="tgtsrcid" select="key('k-portorlink', $targetElement/@source)/@parent" />
       <xsl:variable name="tgttgtid" select="key('k-portorlink', $targetElement/@target)/@parent" />
 
-      <xsl:if test="(string-length($tgtsrcid) = 0 or $tgtsrcid != $SPLITID) and (string-length($tgttgtid) = 0 or $tgttgtid != $SPLITID) and (string-length($srctgtid) = 0 or $srctgtid != $SPLITID) and (string-length($srcsrcid) = 0 or $srcsrcid != $SPLITID)">
+      <xsl:if test="(string-length($tgtsrcid) = 0 or not($tgtsrcid = $SPLITID)) and (string-length($tgttgtid) = 0 or not($tgttgtid = $SPLITID)) and (string-length($srctgtid) = 0 or not($srctgtid = $SPLITID)) and (string-length($srcsrcid) = 0 or not($srcsrcid = $SPLITID))">
         <xsl:copy>
           <xsl:copy-of select="@*" />
           <xsl:copy-of select="node()" />
