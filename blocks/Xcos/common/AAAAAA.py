@@ -1783,25 +1783,31 @@ def process_xcos_model(diagram, title, rootattribid, parentattribid,
 
     newEdgeDict = {}
     LINKTOPORT = {}
+    LINKWAYPOINTS = {}
     for (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point, split_point2) in edgeList:
         link_data = (attribid, sourceVertex, targetVertex, sourceType, targetType, style, waypoints, addSplit, split_point, split_point2)
 
         if not addSplit:
             newEdgeDict[attribid] = [link_data]
+            LINKWAYPOINTS[attribid] = waypoints
+            for key, value in newEdgeDict.items():
+                print('newEdgeDict:', key, value)
             continue
 
         for attribid2 in sourceVertex, targetVertex:
             try:
                 linkSegments = newEdgeDict[attribid2]
+                waypoints2 = LINKWAYPOINTS[attribid2]
             except KeyError:
                 continue
 
-            print('split_point:', split_point, linkSegments)
+            print('split_point:', split_point, linkSegments, waypoints2)
             if attribid2 == sourceVertex:
-                splitpoint = split_point
+                splitpoint = split_point2
+                # print('SP:', splitpoint)
             else:
                 splitpoint = split_point2
-            result, i, left_array, right_array = identify_segment(linkSegments, splitpoint)
+            result, i, left_array, right_array = identify_segment(waypoints2, splitpoint)
             if not result:
                 sys.exit(0)
             (linkid, sourceVertex2, targetVertex2, sourceType2, targetType2, style2, waypoints2, addSplit2, split_point_new, split_point2_new) = linkSegments[i]
