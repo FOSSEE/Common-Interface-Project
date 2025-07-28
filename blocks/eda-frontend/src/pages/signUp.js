@@ -52,9 +52,21 @@ export default function SignUp () {
 
   const isRegistered = useSelector(state => state.auth.isRegistered)
   const regErrors = useSelector(state => state.auth.regErrors)
+  const [errors, setErrors] = useState(regErrors || '')
+  const [isSignupSuccess, setIsSignupSuccess] = useState(false)
+
+  useEffect(() => {
+    if (isRegistered) {
+      setIsSignupSuccess(true)
+    }
+  }, [isRegistered])
 
   const dispatch = useDispatch()
   const homeURL = `${window.location.origin}/#/`
+
+  useEffect(() => {
+    setErrors(regErrors || '')
+  }, [regErrors])
 
   useEffect(() => {
     document.title = 'Sign Up - ' + process.env.REACT_APP_NAME
@@ -99,9 +111,11 @@ export default function SignUp () {
         </Typography>
 
         {/* Display's error messages while signing in */}
-        <Typography variant='body1' align='center' style={{ marginTop: '10px' }} color={isRegistered ? 'secondary' : 'error'}>
-          {regErrors}
-        </Typography>
+        {regErrors && (
+          <Typography variant='body1' align='center' style={{ marginTop: '10px' }} color={isRegistered ? 'secondary' : 'error'}>
+            {errors}
+          </Typography>
+        )}
 
         <form className={classes.form} noValidate>
           <TextField
@@ -116,7 +130,8 @@ export default function SignUp () {
             autoComplete='email'
             value={email}
             onChange={e => setEmail(e.target.value)}
-            autoFocus
+            onFocus={() => setErrors('')}
+            disabled={isSignupSuccess}
           />
           <TextField
             variant='outlined'
@@ -143,7 +158,9 @@ export default function SignUp () {
             id='password'
             value={password}
             onChange={e => setPassword(e.target.value)}
+            onFocus={() => setErrors('')}
             autoComplete='current-password'
+            disabled={isSignupSuccess}
           />
           <TextField
             variant='outlined'
@@ -170,10 +187,12 @@ export default function SignUp () {
             id='reenterPassword'
             value={reenterPassword}
             onChange={e => setReenterPassword(e.target.value)}
+            onFocus={() => setErrors('')}
             autoComplete='current-password'
+            disabled={isSignupSuccess}
           />
           <FormControlLabel
-            control={<Checkbox checked={accept} onChange={e => setAccept(e.target.checked)} color='primary' />}
+            control={<Checkbox checked={accept} onChange={e => setAccept(e.target.checked)} color='primary' disabled={isSignupSuccess} />}
             label='I accept the Terms of Use & Privacy Policy'
           />
           <Button
