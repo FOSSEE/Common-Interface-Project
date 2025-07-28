@@ -1789,9 +1789,7 @@ def process_xcos_model(diagram, title, rootattribid, parentattribid,
 
         if not addSplit:
             newEdgeDict[attribid] = [link_data]
-            LINKWAYPOINTS[attribid] = waypoints
-            for key, value in newEdgeDict.items():
-                print('newEdgeDict:', key, value)
+            LINKWAYPOINTS[attribid] = [waypoints]
             continue
 
         for attribid2 in sourceVertex, targetVertex:
@@ -1801,12 +1799,11 @@ def process_xcos_model(diagram, title, rootattribid, parentattribid,
             except KeyError:
                 continue
 
-            print('split_point:', split_point, linkSegments, waypoints2)
             if attribid2 == sourceVertex:
-                splitpoint = split_point2
-                # print('SP:', splitpoint)
+                splitpoint = split_point
             else:
                 splitpoint = split_point2
+
             result, i, left_array, right_array = identify_segment(waypoints2, splitpoint)
             if not result:
                 sys.exit(0)
