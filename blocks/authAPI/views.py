@@ -8,7 +8,8 @@ from djoser.conf import settings as djoser_settings
 from django.shortcuts import render
 from django.http import HttpResponseNotFound
 from djoser import utils
-from djoser.serializers import TokenSerializer
+from djoser.serializers import TokenSerializer, PasswordResetConfirmSerializer
+from rest_framework.generics import GenericAPIView
 from authAPI.serializers import TokenCreateSerializer
 
 Token = djoser_settings.TOKEN_MODEL
@@ -32,6 +33,24 @@ def activate_user(request, uid, token):
                    'activation_url': web_url,
                    'redirect_url': settings.POST_ACTIVATE_REDIRECT_URL
                    })
+
+
+def pwd_reset(request, uid, token):
+    """
+    Used to reset password,
+    sends POST request to /api/auth/users/reset_password_confirm/ route
+    internally to reset user password.
+    Link to this route is sent via email to user for verification
+    """
+
+    web_url = settings.POST_ACTIVATE_REDIRECT_URL + 'api/auth/users/reset_password_confirm/'  # Djoser endpoint
+    return render(request, 'reset_password.html',
+                  {
+                      'uid': uid,
+                      'token': token,
+                      'reset_url': web_url,
+                      'redirect_url': settings.POST_ACTIVATE_REDIRECT_URL
+                  })
 
 
 def get_social_user(email, request, callback, service):
@@ -135,3 +154,20 @@ class CustomTokenCreateView(utils.ActionViewMixin, generics.GenericAPIView):
             'user_id': serializer.user.id
         }
         return Response(data=data, status=status.HTTP_200_OK)
+
+
+class CustomPasswordResetConfirmView(GenericAPIView):
+    serializer_class = PasswordResetConfirmSerializer
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        user = serializer.user
+        if not user.is_active:
+            user.is_active = True
+            user.save()
+
+        serializer.save()  # This sets the new password
+
+        return Response(status=status.HTTP_204_NO_CONTENT)
