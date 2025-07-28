@@ -8,10 +8,9 @@ from djoser.conf import settings as djoser_settings
 from django.shortcuts import render
 from django.http import HttpResponseNotFound
 from djoser import utils
-from djoser.serializers import TokenSerializer
+from djoser.serializers import TokenSerializer, PasswordResetConfirmSerializer
 from rest_framework.generics import GenericAPIView
 from authAPI.serializers import TokenCreateSerializer
-from djoser import serializers
 
 Token = djoser_settings.TOKEN_MODEL
 
@@ -44,7 +43,6 @@ def pwd_reset(request, uid, token):
     Link to this route is sent via email to user for verification
     """
 
-    protocol = 'https://' if request.is_secure() else 'http://'
     web_url = settings.POST_ACTIVATE_REDIRECT_URL + 'api/auth/users/reset_password_confirm/'  # Djoser endpoint
     return render(request, 'reset_password.html',
                   {
@@ -159,7 +157,7 @@ class CustomTokenCreateView(utils.ActionViewMixin, generics.GenericAPIView):
 
 
 class CustomPasswordResetConfirmView(GenericAPIView):
-    serializer_class = serializers.PasswordResetConfirmSerializer
+    serializer_class = PasswordResetConfirmSerializer
 
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
