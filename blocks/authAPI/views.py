@@ -45,7 +45,7 @@ def pwd_reset(request, uid, token):
     """
 
     protocol = 'https://' if request.is_secure() else 'http://'
-    web_url = protocol + request.get_host() + '/api/auth/users/reset_password_confirm/'  # Djoser endpoint
+    web_url = settings.POST_ACTIVATE_REDIRECT_URL + 'api/auth/users/reset_password_confirm/'  # Djoser endpoint
     return render(request, 'reset_password.html',
                   {
                       'uid': uid,
