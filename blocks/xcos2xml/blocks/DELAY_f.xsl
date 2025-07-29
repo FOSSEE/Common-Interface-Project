@@ -51,14 +51,7 @@
                               /ScilabString[@as='exprs']
                               /data[@column='0' and @line='0']/@value" />
             </xsl:when>
-            <xsl:otherwise>
-              <xsl:value-of select="Array[@as='realParameters']
-                                /Array[@scilabClass='ScilabList']
-                                /Array[@scilabClass='ScilabMList']
-                                /Array[@scilabClass='ScilabMList']
-                                /ScilabString[@height='2' and @width='1']
-                                /data[@column='0' and @line='0']/@value" />
-            </xsl:otherwise>
+            <xsl:otherwise>0.1</xsl:otherwise>
           </xsl:choose>
         </xsl:variable>
 
@@ -70,14 +63,7 @@
                               /ScilabString[@as='exprs']
                               /data[@column='0' and @line='0']/@value" />
             </xsl:when>
-            <xsl:otherwise>
-              <xsl:value-of select="Array[@as='realParameters']
-                                /Array[@scilabClass='ScilabList']
-                                /Array[@scilabClass='ScilabMList'][3]
-                                /Array[@scilabClass='ScilabMList']
-                                /ScilabString[@height='1' and @width='1']
-                                /data[@column='0' and @line='0']/@value" />
-            </xsl:otherwise>
+            <xsl:otherwise>0;0;0;0;0;0;0;0;0;0</xsl:otherwise>
           </xsl:choose>
         </xsl:variable>
         <Object display_parameter="" as="displayProperties" />
