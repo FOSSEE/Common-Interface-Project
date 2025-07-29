@@ -65,9 +65,15 @@ export default function SignIn (props) {
   const homeURL = `${window.location.origin}/#/`
 
   useEffect(() => {
-    const error_description = query.get('error_description')
-    if (error_description) {
-      dispatch(setAuthErrors(error_description))
+    const error = query.get('error')
+    if (error) {
+      const errorMessages = {
+        'invalid_grant': 'Invalid username or password',
+        'access_denied': 'Access denied. Please try again.'
+      }
+
+      const errorMessage = errorMessages[error] || 'An unexpected error occurred. Please try again later.'
+      dispatch(setAuthErrors(errorMessage))
       window.history.replaceState({}, document.title, '/#/login')
     }
   }, [dispatch, query])
