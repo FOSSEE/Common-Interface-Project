@@ -1368,14 +1368,14 @@ def check_point_on_array(array, point, left_right_direction=True):
 
         # Check if the point lies on the line segment between array[i] and array[i + 1]
 
-        pointbetweenleftrightx = leftX <= pointX <= rightX or leftX >= pointX >= rightX
+        pointbetweenleftrightx = (leftX <= pointX + 10 and pointX - 10 <= rightX) or (leftX >= pointX - 10 and pointX + 10 >= rightX)
         samey = -40 <= leftY - pointY <= 40 and -40 <= rightY - pointY <= 40
         sameleftorrighty = -20 <= leftY - pointY <= 20 or -20 <= rightY - pointY <= 20
 
         if pointbetweenleftrightx and (samey or sameleftorrighty):
             return True, array[:i + 1] + [point], [point] + array[i + 1:]
 
-        pointbetweenleftrighty = leftY <= pointY <= rightY or leftY >= pointY >= rightY
+        pointbetweenleftrighty = (leftY <= pointY + 10 and pointY - 10 <= rightY) or (leftY >= pointY - 10 and pointY + 10 >= rightY)
         samex = -40 <= leftX - pointX <= 40 and -40 <= rightX - pointX <= 40
         sameleftorrightx = -20 <= leftX - pointX <= 20 or -20 <= rightX - pointX <= 20
 
