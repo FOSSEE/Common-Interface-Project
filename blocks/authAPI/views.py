@@ -5,11 +5,12 @@ from django.conf import settings
 from requests_oauthlib import OAuth2Session
 from django.contrib.auth import get_user_model
 from djoser.conf import settings as djoser_settings
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponseNotFound
 from djoser import utils
 from djoser.serializers import TokenSerializer, PasswordResetConfirmSerializer
 from rest_framework.generics import GenericAPIView
+from urllib.parse import urlencode
 from authAPI.serializers import TokenCreateSerializer
 
 Token = djoser_settings.TOKEN_MODEL
@@ -103,6 +104,16 @@ def GoogleOAuth2(request):
 
 
 def GitHubOAuth2(request):
+    error = request.GET.get('error', None)
+    if error is not None and error != '':
+        error_description = request.GET.get('error_description', 'Unknown error')
+        logger.error(f'GitHub OAuth2 error: {error}, {error_description}')
+        query = urlencode({
+            'error': error,
+            'error_description': error_description
+        })
+        return redirect(f'{settings.POST_ACTIVATE_REDIRECT_URL}#/login?{query}')
+
     state = request.GET.get('state', None)
     code = request.GET.get('code', None)
 

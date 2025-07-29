@@ -1,7 +1,7 @@
 // User Login / Sign In page.
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Link as RouterLink } from 'react-router-dom'
+import { Link as RouterLink, useLocation } from 'react-router-dom'
 
 import PropTypes from 'prop-types'
 
@@ -24,7 +24,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import Visibility from '@material-ui/icons/Visibility'
 import VisibilityOff from '@material-ui/icons/VisibilityOff'
 
-import { login, authDefault, googleLogin, githubLogin } from '../redux/authSlice'
+import { login, authDefault, setAuthErrors, googleLogin, githubLogin } from '../redux/authSlice'
 import github from '../static/github-mark.png'
 import google from '../static/google.png'
 
@@ -51,13 +51,26 @@ const useStyles = makeStyles((theme) => ({
 
 let url = ''
 
+function useQuery () {
+  return new URLSearchParams(useLocation().search)
+}
+
 export default function SignIn (props) {
   const classes = useStyles()
   const authErrors = useSelector(state => state.auth.errors)
   const [errors, setErrors] = useState(authErrors || '')
   
   const dispatch = useDispatch()
+  const query = useQuery()
   const homeURL = `${window.location.origin}/#/`
+
+  useEffect(() => {
+    const error_description = query.get('error_description')
+    if (error_description) {
+      dispatch(setAuthErrors(error_description))
+      window.history.replaceState({}, document.title, '/#/login')
+    }
+  }, [dispatch, query])
 
   useEffect(() => {
     setErrors(authErrors || '')
