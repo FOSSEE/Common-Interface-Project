@@ -20,7 +20,8 @@ import {
   InputLabel,
   MenuItem,
   Select,
-  Typography
+  Typography,
+  ButtonGroup
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
@@ -42,6 +43,7 @@ const useStyles = makeStyles((theme) => ({
   },
   root: {
     display: 'flex',
+    flexDirection: 'column',
     minHeight: '100vh',
     backgroundColor: '#f4f6f8'
   },
@@ -199,7 +201,7 @@ const SearchComponent = ({ onSearch }) => {
           <Input
             id='search-input'
             type='text'
-            placeholder='Search books, examples...'
+            placeholder='Search blocks, examples...'
             value={searchTerm}
             onChange={handleSearch}
           />
@@ -226,6 +228,13 @@ const Gallery = () => {
   useEffect(() => {
     dispatch(fetchGallery())
   }, [dispatch])
+
+  const ITEMS_PER_PAGE = 9 // Adjust as needed
+  const [page, setPage] = useState(1)
+
+  useEffect(() => {
+    setPage(1)
+  }, [searchTerm, selectedBook])
 
   // Handle dropdown selection change
   const handleBookChange = (book) => {
@@ -265,6 +274,53 @@ const Gallery = () => {
           (NOSCE.test(st) && !sch.has_script)
         )
       })
+
+  const totalPages = Math.ceil(finalfilteredSchematics.length / ITEMS_PER_PAGE)
+
+  const paginatedSchematics = finalfilteredSchematics.slice(
+    (page - 1) * ITEMS_PER_PAGE,
+    page * ITEMS_PER_PAGE
+  )
+
+  const renderPagination = () => {
+    if (totalPages <= 1) return null
+
+    const visiblePages = 5
+    let startPage = Math.max(1, page - 2)
+    const endPage = Math.min(totalPages, startPage + visiblePages - 1)
+
+    if (endPage - startPage < visiblePages - 1) {
+      startPage = Math.max(1, endPage - visiblePages + 1)
+    }
+
+    const pages = []
+    for (let i = startPage; i <= endPage; i++) {
+      pages.push(i)
+    }
+
+    return (
+      <Grid container justifyContent='center' style={{ marginTop: '1rem' }}>
+        <ButtonGroup variant="outlined" color="primary">
+          <Button onClick={() => setPage(1)} disabled={page === 1}>{'«'}</Button>
+          <Button onClick={() => setPage(page - 1)} disabled={page === 1}>{'<'}</Button>
+
+          {pages.map(p => (
+            <Button
+              key={p}
+              onClick={() => setPage(p)}
+              variant={p === page ? 'contained' : 'outlined'}
+              color={p === page ? 'primary' : 'default'}
+            >
+              {p}
+            </Button>
+          ))}
+
+          <Button onClick={() => setPage(page + 1)} disabled={page === totalPages}>{'>'}</Button>
+          <Button onClick={() => setPage(totalPages)} disabled={page === totalPages}>{'»'}</Button>
+        </ButtonGroup>
+      </Grid>
+    )
+  }
 
   return (
     <div className={classes.root}>
@@ -309,16 +365,67 @@ const Gallery = () => {
           </Grid>
 
           {
-            finalfilteredSchematics.map((sch) => (
+            paginatedSchematics.map((sch) => (
               <Grid item xs={12} sm={6} lg={4} key={sch.save_id}>
                 <SchematicCard sch={sch} />
               </Grid>
             ))
           }
+
         </Grid>
       </Container>
+      <BackToTopButton />
+      <div
+        style={{
+          position: 'fixed',
+          bottom: '1rem',
+          right: '1.75rem',
+          zIndex: 1100
+        }}
+      >
+        {renderPagination()}
+      </div>
     </div>
   )
+}
+
+const BackToTopButton = () => {
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const toggleVisibility = () => {
+      setVisible(window.pageYOffset > 100)
+    }
+
+    window.addEventListener('scroll', toggleVisibility)
+    return () => window.removeEventListener('scroll', toggleVisibility)
+  }, [])
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  return visible ? (
+    <div
+      onClick={scrollToTop}
+      style={{
+        position: 'fixed',
+        bottom: '60px',
+        right: '40px',
+        zIndex: 1000,
+        backgroundColor: '#3650c9',
+        color: 'white',
+        border: 'none',
+        padding: '5px 8px',
+        borderRadius: '8px',
+        fontSize: '28px',
+        cursor: 'pointer',
+        opacity: 0.9
+      }}
+    >
+      ↑
+    </div>
+  ) : null
 }
 
 export default Gallery
