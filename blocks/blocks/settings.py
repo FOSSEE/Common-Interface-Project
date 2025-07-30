@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get(
     'SECRET_KEY', '0nf@7n04(5$e7$*=lfdl088favhq5g29%=v@#l=zn=&os98s)%')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(os.environ.get('DJANGO_DEBUG', default=True))
+DEBUG = os.environ.get('DJANGO_DEBUG', 'true').lower() == 'true'
 
 ALLOWED_HOSTS = [
     'localhost',
@@ -39,6 +39,8 @@ ALLOWED_HOSTS = [
     'esimblocks.fossee.org',
     'test.xcosblocks.fossee.org',
     'test.esimblocks.fossee.org',
+    'xcosblocks-beta.fossee.org',
+    'esimblocks-beta.fossee.org',
 ]
 
 SCILAB_DIR = '../../scilab_for_xcos_on_cloud'
