@@ -42,9 +42,8 @@ sed -i -e '/^\s*location \/ {/,/^\s*}/c\
         location /open {\
                 if ($arg_efid) {\
                     return 302 /#/editor?id=gallery$arg_efid;\
-                } else {\
-                    return 302 /#/editor;\
                 }\
+                return 302 /#/editor;\
         }\
 \
         location /resources/ {\
