@@ -103,6 +103,13 @@ export default function SchematicEditor (props) {
     setActiveCellId(null)
   }
 
+  useEffect(() => {
+    document.body.classList.add('schematic-editor')
+
+    return () => {
+      document.body.classList.remove('schematic-editor')
+    }
+  }, [])
 
   useEffect(() => {
     const xmlData = store.getState().saveSchematic.xmlData
