@@ -41,6 +41,7 @@ ALLOWED_HOSTS = [
     'test.esimblocks.fossee.org',
     'xcosblocks-beta.fossee.org',
     'esimblocks-beta.fossee.org',
+    'xcos.scilab.in',
 ]
 
 SCILAB_DIR = '../../scilab_for_xcos_on_cloud'
