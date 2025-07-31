@@ -71,7 +71,7 @@
 - model: saveAPI.gallery
   pk: 1
   fields:
-    save_id: gallery0
+    save_id: gallery8414
     name: ch5_1
     description: 'Electric Circuits (Author: M. Navhi And J. A. Edminister), 5) Analysis
       Methods, 5.1) The branch current method'
@@ -1068,7 +1068,7 @@
 - model: saveAPI.gallery
   pk: 2
   fields:
-    save_id: gallery1
+    save_id: gallery8417
     name: ch5_6
     description: 'Electric Circuits (Author: M. Navhi And J. A. Edminister), 5) Analysis
       Methods, 5.6) Network reduction'
@@ -2765,7 +2765,7 @@
 - model: saveAPI.gallery
   pk: 3
   fields:
-    save_id: gallery2
+    save_id: gallery8420
     name: ch5_7
     description: 'Electric Circuits (Author: M. Navhi And J. A. Edminister), 5) Analysis
       Methods, 5.7) Superposition'
@@ -3687,7 +3687,7 @@
 - model: saveAPI.gallery
   pk: 4
   fields:
-    save_id: gallery3
+    save_id: gallery8441
     name: ch6_11
     description: 'Electric Circuits (Author: M. Navhi And J. A. Edminister), 6) Amplifiers
       and Operational Amplifiers, 6.11) Noninverting circuit'
@@ -4403,7 +4403,7 @@
 - model: saveAPI.gallery
   pk: 5
   fields:
-    save_id: gallery4
+    save_id: gallery7447
     name: ch6_15
     description: 'Electric Circuits (Author: M. Navhi And J. A. Edminister), 6) Amplifiers
       and Operational Amplifiers, 6.15) Circuits containing several Op amps'
@@ -5579,7 +5579,7 @@
 - model: saveAPI.gallery
   pk: 6
   fields:
-    save_id: gallery5
+    save_id: gallery7441
     name: ch6_9
     description: 'Electric Circuits (Author: M. Navhi And J. A. Edminister), 6) Amplifiers
       and Operational Amplifiers, 6.9) Analysis of circuits containing ideal op amps'
@@ -7542,7 +7542,7 @@
 - model: saveAPI.gallery
   pk: 7
   fields:
-    save_id: gallery6
+    save_id: gallery7609
     name: ch8_2
     description: 'Electric Circuits (Author: M. Navhi And J. A. Edminister), 8) First
       order Circuits, 8.2) Capacitor Discharge in a Resistor'
@@ -8088,7 +8088,7 @@
 - model: saveAPI.gallery
   pk: 8
   fields:
-    save_id: gallery7
+    save_id: gallery7611
     name: ch8_3
     description: 'Electric Circuits (Author: M. Navhi And J. A. Edminister), 8) First
       order Circuits, 8.3) Establishing a DC Voltage across a Capacitor'
@@ -8670,7 +8670,7 @@
 - model: saveAPI.gallery
   pk: 9
   fields:
-    save_id: gallery8
+    save_id: gallery7614
     name: ch8_4
     description: 'Electric Circuits (Author: M. Navhi And J. A. Edminister), 8) First
       order Circuits, 8.4) The Source free RL Circuit'
@@ -9736,7 +9736,7 @@
 - model: saveAPI.gallery
   pk: 10
   fields:
-    save_id: gallery9
+    save_id: gallery7617
     name: ch8_5
     description: 'Electric Circuits (Author: M. Navhi And J. A. Edminister), 8) First
       order Circuits, 8.5) Complex first order RL and RC Circuits'
@@ -10675,7 +10675,7 @@
 - model: saveAPI.gallery
   pk: 11
   fields:
-    save_id: gallery10
+    save_id: gallery7620
     name: ch8_6
     description: 'Electric Circuits (Author: M. Navhi And J. A. Edminister), 8) First
       order Circuits, 8.6) Complex first order RL and RC Circuits'
@@ -12540,7 +12540,7 @@
 - model: saveAPI.gallery
   pk: 12
   fields:
-    save_id: gallery11
+    save_id: gallery7623
     name: ch8_7
     description: 'Electric Circuits (Author: M. Navhi And J. A. Edminister), 8) First
       order Circuits, 8.7) DC Steady state in Inductors and Capacitors'
@@ -13732,7 +13732,7 @@
 - model: saveAPI.gallery
   pk: 13
   fields:
-    save_id: gallery12
+    save_id: gallery7625
     name: ch8_8
     description: 'Electric Circuits (Author: M. Navhi And J. A. Edminister), 8) First
       order Circuits, 8.8) DC Steady state in Inductors and Capacitors'
@@ -14517,7 +14517,7 @@
 - model: saveAPI.gallery
   pk: 14
   fields:
-    save_id: gallery13
+    save_id: gallery7628
     name: ch8_9
     description: 'Electric Circuits (Author: M. Navhi And J. A. Edminister), 8) First
       order Circuits, 8.9) Transitions at Switching Time'
@@ -15811,7 +15811,7 @@
 - model: saveAPI.gallery
   pk: 15
   fields:
-    save_id: gallery14
+    save_id: gallery7631
     name: ch9_1
     description: 'Electric Circuits (Author: M. Navhi And J. A. Edminister), 9) Higher
       order circuits and Complex frequency, 9.1) Series RLC Circuit'
@@ -16320,7 +16320,7 @@
 - model: saveAPI.gallery
   pk: 16
   fields:
-    save_id: gallery15
+    save_id: gallery7633
     name: ch9_2
     description: 'Electric Circuits (Author: M. Navhi And J. A. Edminister), 9) Higher
       order circuits and Complex frequency, 9.2) Series RLC Circuit'
@@ -16831,7 +16831,7 @@
 - model: saveAPI.gallery
   pk: 17
   fields:
-    save_id: gallery16
+    save_id: gallery7635
     name: ch9_5
     description: 'Electric Circuits (Author: M. Navhi And J. A. Edminister), 9) Higher
       order circuits and Complex frequency, 9.5) Parallel RLC circuit'
@@ -17411,7 +17411,7 @@
 - model: saveAPI.gallery
   pk: 18
   fields:
-    save_id: gallery17
+    save_id: gallery12884
     name: example3_27
     description: 'Basic Electronics (Author: D. De), 3) Diode Circuits, 3.27) Find
       currents and voltages'
@@ -18187,7 +18187,7 @@
 - model: saveAPI.gallery
   pk: 19
   fields:
-    save_id: gallery18
+    save_id: gallery12878
     name: example3_28
     description: 'Basic Electronics (Author: D. De), 3) Diode Circuits, 3.28) Find
       voltage across diode'
@@ -18787,7 +18787,7 @@
 - model: saveAPI.gallery
   pk: 20
   fields:
-    save_id: gallery19
+    save_id: gallery12875
     name: example3_30
     description: 'Basic Electronics (Author: D. De), 3) Diode Circuits, 3.30) Calculate
       R Il max'
@@ -19482,7 +19482,7 @@
 - model: saveAPI.gallery
   pk: 21
   fields:
-    save_id: gallery20
+    save_id: gallery12881
     name: example3_8
     description: 'Basic Electronics (Author: D. De), 3) Diode Circuits, 3.8) Calculate
       the dc load current'
@@ -20222,7 +20222,7 @@
 - model: saveAPI.gallery
   pk: 22
   fields:
-    save_id: gallery21
+    save_id: gallery107382
     name: Ex10_1
     description: 'Digital Control (Author: K. M. Moudgalya), 10) Special Cases of
       Pole Placement Control, 10.1) Effect of delay in control performance'
@@ -23736,7 +23736,7 @@
 - model: saveAPI.gallery
   pk: 23
   fields:
-    save_id: gallery22
+    save_id: gallery107386
     name: Ex10_2
     description: 'Digital Control (Author: K. M. Moudgalya), 10) Special Cases of
       Pole Placement Control, 10.2) Smith predictor for paper machine control'
@@ -27447,7 +27447,7 @@
 - model: saveAPI.gallery
   pk: 24
   fields:
-    save_id: gallery23
+    save_id: gallery107390
     name: Ex11_4
     description: 'Digital Control (Author: K. M. Moudgalya), 11) Minimum Variance
       Control, 11.4) 1st control problem by MacGregor'
@@ -31178,7 +31178,7 @@
 - model: saveAPI.gallery
   pk: 25
   fields:
-    save_id: gallery24
+    save_id: gallery105874
     name: Ex7_6
     description: 'Digital Control (Author: K. M. Moudgalya), 7) Structures and Specifications,
       7.6) Verification of performance of lead controller on antenna system'
@@ -33893,7 +33893,7 @@
 - model: saveAPI.gallery
   pk: 26
   fields:
-    save_id: gallery25
+    save_id: gallery97755
     name: Ex7_7
     description: 'Digital Control (Author: K. M. Moudgalya), 7) Structures and Specifications,
       7.7) Illustration of system type'
@@ -37348,7 +37348,7 @@
 - model: saveAPI.gallery
   pk: 27
   fields:
-    save_id: gallery26
+    save_id: gallery97754
     name: Ex9_10
     description: 'Digital Control (Author: K. M. Moudgalya), 9) Pole Placement Controllers,
       9.10) Pole placement controller IBM Lotus Domino server'
@@ -40819,7 +40819,7 @@
 - model: saveAPI.gallery
   pk: 28
   fields:
-    save_id: gallery27
+    save_id: gallery97763
     name: Ex9_11
     description: 'Digital Control (Author: K. M. Moudgalya), 9) Pole Placement Controllers,
       9.11) Pole placement controller for motor problem'
@@ -44274,7 +44274,7 @@
 - model: saveAPI.gallery
   pk: 29
   fields:
-    save_id: gallery28
+    save_id: gallery97896
     name: Ex9_14
     description: 'Digital Control (Author: K. M. Moudgalya), 9) Pole Placement Controllers,
       9.14) Controller design'
@@ -48089,7 +48089,7 @@
 - model: saveAPI.gallery
   pk: 30
   fields:
-    save_id: gallery29
+    save_id: gallery97905
     name: Ex9_15_1
     description: 'Digital Control (Author: K. M. Moudgalya), 9) Pole Placement Controllers,
       9.15) Evaluation of continuous time controller'
@@ -50914,7 +50914,7 @@
 - model: saveAPI.gallery
   pk: 31
   fields:
-    save_id: gallery30
+    save_id: gallery97909
     name: Ex9_15_2
     description: 'Digital Control (Author: K. M. Moudgalya), 9) Pole Placement Controllers,
       9.15) Evaluation of continuous time controller'
@@ -53856,7 +53856,7 @@
 - model: saveAPI.gallery
   pk: 32
   fields:
-    save_id: gallery31
+    save_id: gallery102820
     name: Ex9_16
     description: 'Digital Control (Author: K. M. Moudgalya), 9) Pole Placement Controllers,
       9.16) System type with 2 DOF controller'
@@ -57370,7 +57370,7 @@
 - model: saveAPI.gallery
   pk: 33
   fields:
-    save_id: gallery32
+    save_id: gallery102822
     name: Ex9_17
     description: 'Digital Control (Author: K. M. Moudgalya), 9) Pole Placement Controllers,
       9.17) Illustrating the benefit of cancellation'
@@ -60866,7 +60866,7 @@
 - model: saveAPI.gallery
   pk: 34
   fields:
-    save_id: gallery33
+    save_id: gallery106873
     name: Ex9_18
     description: 'Digital Control (Author: K. M. Moudgalya), 9) Pole Placement Controllers,
       9.18) Anti windup control of IBM Lotus Domino server'
@@ -65153,7 +65153,7 @@
 - model: saveAPI.gallery
   pk: 35
   fields:
-    save_id: gallery34
+    save_id: gallery106876
     name: Ex9_19
     description: 'Digital Control (Author: K. M. Moudgalya), 9) Pole Placement Controllers,
       9.19) Demonstration of usefulness of negative PID parameters'
@@ -69529,7 +69529,7 @@
 - model: saveAPI.gallery
   pk: 36
   fields:
-    save_id: gallery35
+    save_id: gallery106861
     name: Ex9_1_1
     description: 'Digital Control (Author: K. M. Moudgalya), 9) Pole Placement Controllers,
       9.1) Pole placement controller for magnetically suspended ball problem'
@@ -72897,7 +72897,7 @@
 - model: saveAPI.gallery
   pk: 37
   fields:
-    save_id: gallery36
+    save_id: gallery106860
     name: Ex9_1_2
     description: 'Digital Control (Author: K. M. Moudgalya), 9) Pole Placement Controllers,
       9.1) Pole placement controller for magnetically suspended ball problem'
@@ -76423,7 +76423,7 @@
 - model: saveAPI.gallery
   pk: 38
   fields:
-    save_id: gallery37
+    save_id: gallery107378
     name: Ex9_21_1
     description: 'Digital Control (Author: K. M. Moudgalya), 9) Pole Placement Controllers,
       9.21) DC motor with PID control tuned through pole placement technique'
@@ -80119,7 +80119,7 @@
 - model: saveAPI.gallery
   pk: 39
   fields:
-    save_id: gallery38
+    save_id: gallery107379
     name: Ex9_21_2
     description: 'Digital Control (Author: K. M. Moudgalya), 9) Pole Placement Controllers,
       9.21) DC motor with PID control tuned through pole placement technique'
@@ -83790,7 +83790,7 @@
 - model: saveAPI.gallery
   pk: 40
   fields:
-    save_id: gallery39
+    save_id: gallery97756
     name: basic_disc
     description: 'Digital Control (Author: K. M. Moudgalya), 9) Pole Placement Controllers,
       9.7) Simulation of closed loop system with an unstable controller'
@@ -90717,7 +90717,7 @@
 - model: saveAPI.gallery
   pk: 42
   fields:
-    save_id: gallery41
+    save_id: gallery97757
     name: Ex9_9
     description: 'Digital Control (Author: K. M. Moudgalya), 9) Pole Placement Controllers,
       9.9) Pole placement controller with internal model of a step for the magnetically
@@ -94183,7 +94183,7 @@
 - model: saveAPI.gallery
   pk: 43
   fields:
-    save_id: gallery42
+    save_id: gallery24849
     name: ex10_10
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 10) Sinusoidal Steady state Analysis, 10.10) Superposition Source Transformations
@@ -94960,7 +94960,7 @@
 - model: saveAPI.gallery
   pk: 44
   fields:
-    save_id: gallery43
+    save_id: gallery24850
     name: ex10_11
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 10) Sinusoidal Steady state Analysis, 10.11) Superposition Source Transformations
@@ -95930,7 +95930,7 @@
 - model: saveAPI.gallery
   pk: 45
   fields:
-    save_id: gallery44
+    save_id: gallery24844
     name: ex10_1
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 10) Sinusoidal Steady state Analysis, 10.1) Forced Response to sinusoidal
@@ -96669,7 +96669,7 @@
 - model: saveAPI.gallery
   pk: 46
   fields:
-    save_id: gallery45
+    save_id: gallery24845
     name: ex10_6
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 10) Sinusoidal Steady state Analysis, 10.6) Impedance'
@@ -97274,7 +97274,7 @@
 - model: saveAPI.gallery
   pk: 47
   fields:
-    save_id: gallery46
+    save_id: gallery24846
     name: ex10_7
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 10) Sinusoidal Steady state Analysis, 10.7) Nodal and Mesh analysis'
@@ -98225,7 +98225,7 @@
 - model: saveAPI.gallery
   pk: 48
   fields:
-    save_id: gallery47
+    save_id: gallery24847
     name: ex10_8
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 10) Sinusoidal Steady state Analysis, 10.8) Nodal and Mesh analysis'
@@ -99343,7 +99343,7 @@
 - model: saveAPI.gallery
   pk: 49
   fields:
-    save_id: gallery48
+    save_id: gallery24848
     name: ex10_9
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 10) Sinusoidal Steady state Analysis, 10.9) Superposition Source Transformations
@@ -100617,7 +100617,7 @@
 - model: saveAPI.gallery
   pk: 50
   fields:
-    save_id: gallery49
+    save_id: gallery24851
     name: ex12_1
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 12) Polyphase Circuits, 12.1) Single phase three wire systems'
@@ -101492,7 +101492,7 @@
 - model: saveAPI.gallery
   pk: 51
   fields:
-    save_id: gallery50
+    save_id: gallery22350
     name: ex13_7
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 13) Magnetically coupled circuits, 13.7) The Ideal Transformer'
@@ -102115,7 +102115,7 @@
 - model: saveAPI.gallery
   pk: 52
   fields:
-    save_id: gallery51
+    save_id: gallery24852
     name: ex17_4
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 17) Two Port Networks, 17.4) Admittance parameters'
@@ -103532,7 +103532,7 @@
 - model: saveAPI.gallery
   pk: 53
   fields:
-    save_id: gallery52
+    save_id: gallery24853
     name: ex18_2
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 18) Fourier Circuit Analysis, 18.2) Complete Response to periodic Forcing
@@ -104299,7 +104299,7 @@
 - model: saveAPI.gallery
   pk: 54
   fields:
-    save_id: gallery53
+    save_id: gallery24854
     name: ex18_8
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 18) Fourier Circuit Analysis, 18.8) The physical significance of system
@@ -104851,7 +104851,7 @@
 - model: saveAPI.gallery
   pk: 55
   fields:
-    save_id: gallery54
+    save_id: gallery24826
     name: ex3_11
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 3) Voltage and Current laws, 3.11) Resistors in series and parallel'
@@ -105466,7 +105466,7 @@
 - model: saveAPI.gallery
   pk: 56
   fields:
-    save_id: gallery55
+    save_id: gallery24827
     name: ex3_13
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 3) Voltage and Current laws, 3.13) Voltage and Current division'
@@ -106072,7 +106072,7 @@
 - model: saveAPI.gallery
   pk: 57
   fields:
-    save_id: gallery56
+    save_id: gallery24828
     name: ex3_14
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 3) Voltage and Current laws, 3.14) Voltage and Current division'
@@ -106645,7 +106645,7 @@
 - model: saveAPI.gallery
   pk: 58
   fields:
-    save_id: gallery57
+    save_id: gallery13069
     name: ex3_1
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 3) Voltage and Current laws, 3.1) Kirchoff current law'
@@ -107290,7 +107290,7 @@
 - model: saveAPI.gallery
   pk: 59
   fields:
-    save_id: gallery58
+    save_id: gallery24820
     name: ex3_2
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 3) Voltage and Current laws, 3.2) Kirchoff voltage law'
@@ -107844,7 +107844,7 @@
 - model: saveAPI.gallery
   pk: 60
   fields:
-    save_id: gallery59
+    save_id: gallery24821
     name: ex3_3
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 3) Voltage and Current laws, 3.3) Kirchoff voltage law'
@@ -108452,7 +108452,7 @@
 - model: saveAPI.gallery
   pk: 61
   fields:
-    save_id: gallery60
+    save_id: gallery24822
     name: ex3_4
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 3) Voltage and Current laws, 3.4) Kirchoff voltage law'
@@ -109103,7 +109103,7 @@
 - model: saveAPI.gallery
   pk: 62
   fields:
-    save_id: gallery61
+    save_id: gallery24823
     name: ex3_5
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 3) Voltage and Current laws, 3.5) The Single Loop Circuit'
@@ -110042,7 +110042,7 @@
 - model: saveAPI.gallery
   pk: 63
   fields:
-    save_id: gallery62
+    save_id: gallery24824
     name: ex3_6
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 3) Voltage and Current laws, 3.6) The single node pair circuit'
@@ -110931,7 +110931,7 @@
 - model: saveAPI.gallery
   pk: 64
   fields:
-    save_id: gallery63
+    save_id: gallery24825
     name: ex3_9
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 3) Voltage and Current laws, 3.9) Series and Parallel connected sources'
@@ -111405,7 +111405,7 @@
 - model: saveAPI.gallery
   pk: 65
   fields:
-    save_id: gallery64
+    save_id: gallery13095
     name: ex4_10
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 4) Basic Nodal and Mesh Analysis, 4.10) Mesh analysis'
@@ -112132,7 +112132,7 @@
 - model: saveAPI.gallery
   pk: 66
   fields:
-    save_id: gallery65
+    save_id: gallery22339
     name: ex4_11
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 4) Basic Nodal and Mesh Analysis, 4.11) The Supermesh'
@@ -112946,7 +112946,7 @@
 - model: saveAPI.gallery
   pk: 67
   fields:
-    save_id: gallery66
+    save_id: gallery22340
     name: ex4_12
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 4) Basic Nodal and Mesh Analysis, 4.12) The Supermesh'
@@ -114307,7 +114307,7 @@
 - model: saveAPI.gallery
   pk: 68
   fields:
-    save_id: gallery67
+    save_id: gallery13081
     name: ex4_1
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 4) Basic Nodal and Mesh Analysis, 4.1) Nodal analysis'
@@ -114983,7 +114983,7 @@
 - model: saveAPI.gallery
   pk: 69
   fields:
-    save_id: gallery68
+    save_id: gallery13084
     name: ex4_2
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 4) Basic Nodal and Mesh Analysis, 4.2) Nodal analysis'
@@ -116310,7 +116310,7 @@
 - model: saveAPI.gallery
   pk: 70
   fields:
-    save_id: gallery69
+    save_id: gallery13086
     name: ex4_5
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 4) Basic Nodal and Mesh Analysis, 4.5) The supernode'
@@ -117171,7 +117171,7 @@
 - model: saveAPI.gallery
   pk: 71
   fields:
-    save_id: gallery70
+    save_id: gallery22341
     name: ex4_6
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 4) Basic Nodal and Mesh Analysis, 4.6) The supernode'
@@ -119265,7 +119265,7 @@
 - model: saveAPI.gallery
   pk: 72
   fields:
-    save_id: gallery71
+    save_id: gallery13088
     name: ex4_7
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 4) Basic Nodal and Mesh Analysis, 4.7) Mesh analysis'
@@ -119988,7 +119988,7 @@
 - model: saveAPI.gallery
   pk: 73
   fields:
-    save_id: gallery72
+    save_id: gallery13091
     name: ex4_8
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 4) Basic Nodal and Mesh Analysis, 4.8) Mesh analysis'
@@ -121081,7 +121081,7 @@
 - model: saveAPI.gallery
   pk: 74
   fields:
-    save_id: gallery73
+    save_id: gallery13093
     name: ex4_9
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 4) Basic Nodal and Mesh Analysis, 4.9) Mesh analysis'
@@ -121755,7 +121755,7 @@
 - model: saveAPI.gallery
   pk: 75
   fields:
-    save_id: gallery74
+    save_id: gallery14857
     name: ex6_11
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 6) Network Theorems and useful Circuit Analysis Techniques, 6.11) Thevenin
@@ -122269,7 +122269,7 @@
 - model: saveAPI.gallery
   pk: 76
   fields:
-    save_id: gallery75
+    save_id: gallery24829
     name: ex6_13
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 6) Network Theorems and useful Circuit Analysis Techniques, 6.13) Thevenin
@@ -123052,7 +123052,7 @@
 - model: saveAPI.gallery
   pk: 77
   fields:
-    save_id: gallery76
+    save_id: gallery14859
     name: ex6_14
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 6) Network Theorems and useful Circuit Analysis Techniques, 6.14) Thevenin
@@ -124081,7 +124081,7 @@
 - model: saveAPI.gallery
   pk: 78
   fields:
-    save_id: gallery77
+    save_id: gallery14861
     name: ex6_15
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 6) Network Theorems and useful Circuit Analysis Techniques, 6.15) Thevenin
@@ -124640,7 +124640,7 @@
 - model: saveAPI.gallery
   pk: 79
   fields:
-    save_id: gallery78
+    save_id: gallery24830
     name: ex6_16
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 6) Network Theorems and useful Circuit Analysis Techniques, 6.16) Maximum
@@ -125950,7 +125950,7 @@
 - model: saveAPI.gallery
   pk: 80
   fields:
-    save_id: gallery79
+    save_id: gallery14845
     name: ex6_1
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 6) Network Theorems and useful Circuit Analysis Techniques, 6.1) The
@@ -126694,7 +126694,7 @@
 - model: saveAPI.gallery
   pk: 81
   fields:
-    save_id: gallery80
+    save_id: gallery24831
     name: ex6_20
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 6) Network Theorems and useful Circuit Analysis Techniques, 6.20) Compensation
@@ -127405,7 +127405,7 @@
 - model: saveAPI.gallery
   pk: 82
   fields:
-    save_id: gallery81
+    save_id: gallery24832
     name: ex6_21
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 6) Network Theorems and useful Circuit Analysis Techniques, 6.21) Compensation
@@ -128239,7 +128239,7 @@
 - model: saveAPI.gallery
   pk: 83
   fields:
-    save_id: gallery82
+    save_id: gallery24833
     name: ex6_23
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 6) Network Theorems and useful Circuit Analysis Techniques, 6.23) Source
@@ -128799,7 +128799,7 @@
 - model: saveAPI.gallery
   pk: 84
   fields:
-    save_id: gallery83
+    save_id: gallery24834
     name: ex6_24
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 6) Network Theorems and useful Circuit Analysis Techniques, 6.24) Source
@@ -129996,7 +129996,7 @@
 - model: saveAPI.gallery
   pk: 85
   fields:
-    save_id: gallery84
+    save_id: gallery14847
     name: ex6_3
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 6) Network Theorems and useful Circuit Analysis Techniques, 6.3) The
@@ -130879,7 +130879,7 @@
 - model: saveAPI.gallery
   pk: 86
   fields:
-    save_id: gallery85
+    save_id: gallery14849
     name: ex6_4
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 6) Network Theorems and useful Circuit Analysis Techniques, 6.4) The
@@ -131716,7 +131716,7 @@
 - model: saveAPI.gallery
   pk: 87
   fields:
-    save_id: gallery86
+    save_id: gallery14851
     name: ex6_5
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 6) Network Theorems and useful Circuit Analysis Techniques, 6.5) The
@@ -132404,7 +132404,7 @@
 - model: saveAPI.gallery
   pk: 88
   fields:
-    save_id: gallery87
+    save_id: gallery14853
     name: ex6_6
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 6) Network Theorems and useful Circuit Analysis Techniques, 6.6) The
@@ -133289,7 +133289,7 @@
 - model: saveAPI.gallery
   pk: 89
   fields:
-    save_id: gallery88
+    save_id: gallery14855
     name: ex6_8
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 6) Network Theorems and useful Circuit Analysis Techniques, 6.8) The
@@ -134404,7 +134404,7 @@
 - model: saveAPI.gallery
   pk: 90
   fields:
-    save_id: gallery89
+    save_id: gallery22342
     name: ex7_11
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 7) Capacitors and Inductors, 7.11) Modeling Capacitors and Inductors'
@@ -135003,7 +135003,7 @@
 - model: saveAPI.gallery
   pk: 91
   fields:
-    save_id: gallery90
+    save_id: gallery24837
     name: ex8_10
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 8) Basic RL and RC circuits, 8.10) Driven RC circuits'
@@ -136170,7 +136170,7 @@
 - model: saveAPI.gallery
   pk: 92
   fields:
-    save_id: gallery91
+    save_id: gallery15163
     name: ex8_11
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 8) Basic RL and RC circuits, 8.11) Driven RC circuits'
@@ -136796,7 +136796,7 @@
 - model: saveAPI.gallery
   pk: 93
   fields:
-    save_id: gallery92
+    save_id: gallery22343
     name: ex8_1
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 8) Basic RL and RC circuits, 8.1) The Source free RL Circuit'
@@ -137298,7 +137298,7 @@
 - model: saveAPI.gallery
   pk: 94
   fields:
-    save_id: gallery93
+    save_id: gallery24835
     name: ex8_2
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 8) Basic RL and RC circuits, 8.2) The Source free RL Circuit'
@@ -137994,7 +137994,7 @@
 - model: saveAPI.gallery
   pk: 95
   fields:
-    save_id: gallery94
+    save_id: gallery22344
     name: ex8_3
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 8) Basic RL and RC circuits, 8.3) The Source free RC Circuit'
@@ -138534,7 +138534,7 @@
 - model: saveAPI.gallery
   pk: 96
   fields:
-    save_id: gallery95
+    save_id: gallery22347
     name: ex8_4
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 8) Basic RL and RC circuits, 8.4) A more General Perspective'
@@ -139287,7 +139287,7 @@
 - model: saveAPI.gallery
   pk: 97
   fields:
-    save_id: gallery96
+    save_id: gallery24836
     name: ex8_8
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 8) Basic RL and RC circuits, 8.8) Natural and Forced Response'
@@ -139956,7 +139956,7 @@
 - model: saveAPI.gallery
   pk: 98
   fields:
-    save_id: gallery97
+    save_id: gallery24838
     name: ex9_2
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 9) The RLC Circuit, 9.2) The Overdamped parallel circuit'
@@ -140506,7 +140506,7 @@
 - model: saveAPI.gallery
   pk: 99
   fields:
-    save_id: gallery98
+    save_id: gallery24839
     name: ex9_3
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 9) The RLC Circuit, 9.3) The Overdamped parallel circuit'
@@ -141350,7 +141350,7 @@
 - model: saveAPI.gallery
   pk: 100
   fields:
-    save_id: gallery99
+    save_id: gallery24840
     name: ex9_6
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 9) The RLC Circuit, 9.6) The Underdamped parallel RLC circuit'
@@ -141859,7 +141859,7 @@
 - model: saveAPI.gallery
   pk: 101
   fields:
-    save_id: gallery100
+    save_id: gallery24841
     name: ex9_7
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 9) The RLC Circuit, 9.7) The Source free series RLC Circuit'
@@ -142449,7 +142449,7 @@
 - model: saveAPI.gallery
   pk: 102
   fields:
-    save_id: gallery101
+    save_id: gallery24842
     name: ex9_8
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 9) The RLC Circuit, 9.8) The Source free series RLC Circuit'
@@ -143159,7 +143159,7 @@
 - model: saveAPI.gallery
   pk: 103
   fields:
-    save_id: gallery102
+    save_id: gallery24843
     name: ex9_9
     description: 'Engineering Circuit Analysis (Author: W. Hayt, J. Kemmerly And S.
       Durbin), 9) The RLC Circuit, 9.9) The Complete response of RLC circuit'
@@ -143832,7 +143832,7 @@
 - model: saveAPI.gallery
   pk: 104
   fields:
-    save_id: gallery103
+    save_id: gallery106856
     name: Ex6_23
     description: 'Electrical Machines (Author: R. K. Srivastava), 6) Synchronous Machines,
       6.23) To find maximum value of power angle and maximum value of overshoot'
@@ -144458,7 +144458,7 @@
 - model: saveAPI.gallery
   pk: 105
   fields:
-    save_id: gallery104
+    save_id: gallery14602
     name: eg12_2
     description: 'Electrical Engineering Fundamentals (Author: V. Del Toro), 12) Simplifying
       logical functions, 12.2) Prove the given theoram'
@@ -146550,7 +146550,7 @@
 - model: saveAPI.gallery
   pk: 106
   fields:
-    save_id: gallery105
+    save_id: gallery14604
     name: eg12_3a
     description: 'Electrical Engineering Fundamentals (Author: V. Del Toro), 12) Simplifying
       logical functions, 12.3.a) Design a digital logic circuit that provides logic
@@ -149700,7 +149700,7 @@
 - model: saveAPI.gallery
   pk: 107
   fields:
-    save_id: gallery106
+    save_id: gallery14606
     name: eg12_3b
     description: 'Electrical Engineering Fundamentals (Author: V. Del Toro), 12) Simplifying
       logical functions, 12.3.b) Modify part A so that only NAND gates are used'
@@ -152847,7 +152847,7 @@
 - model: saveAPI.gallery
   pk: 108
   fields:
-    save_id: gallery107
+    save_id: gallery14674
     name: eg2_10
     description: 'Electrical Engineering Fundamentals (Author: V. Del Toro), 2) The
       circuit elements, 2.10) Design an opamp circuit solution of the given equation'
@@ -155407,7 +155407,7 @@
 - model: saveAPI.gallery
   pk: 109
   fields:
-    save_id: gallery108
+    save_id: gallery14680
     name: eg3_10
     description: 'Electrical Engineering Fundamentals (Author: V. Del Toro), 3) Elementary
       network theory, 3.10) Find the value of the node pair voltages V1 and V2'
@@ -156277,7 +156277,7 @@
 - model: saveAPI.gallery
   pk: 110
   fields:
-    save_id: gallery109
+    save_id: gallery14683
     name: eg3_11
     description: 'Electrical Engineering Fundamentals (Author: V. Del Toro), 3) Elementary
       network theory, 3.11) Find the branch current flowing through R2'
@@ -156912,7 +156912,7 @@
 - model: saveAPI.gallery
   pk: 111
   fields:
-    save_id: gallery110
+    save_id: gallery14687
     name: eg3_14
     description: 'Electrical Engineering Fundamentals (Author: V. Del Toro), 3) Elementary
       network theory, 3.14) Find the value of the output voltage'
@@ -157534,7 +157534,7 @@
 - model: saveAPI.gallery
   pk: 112
   fields:
-    save_id: gallery111
+    save_id: gallery14689
     name: eg3_15
     description: 'Electrical Engineering Fundamentals (Author: V. Del Toro), 3) Elementary
       network theory, 3.15) Find the current delivered to the source by the network'
@@ -158224,7 +158224,7 @@
 - model: saveAPI.gallery
   pk: 113
   fields:
-    save_id: gallery112
+    save_id: gallery14236
     name: eg3_5
     description: 'Electrical Engineering Fundamentals (Author: V. Del Toro), 3) Elementary
       network theory, 3.5) Determine the current which flows through R2'
@@ -158887,7 +158887,7 @@
 - model: saveAPI.gallery
   pk: 114
   fields:
-    save_id: gallery113
+    save_id: gallery14238
     name: eg3_6
     description: 'Electrical Engineering Fundamentals (Author: V. Del Toro), 3) Elementary
       network theory, 3.6) Find the power dissipation in R1'
@@ -159637,7 +159637,7 @@
 - model: saveAPI.gallery
   pk: 115
   fields:
-    save_id: gallery114
+    save_id: gallery14240
     name: eg3_7
     description: 'Electrical Engineering Fundamentals (Author: V. Del Toro), 3) Elementary
       network theory, 3.7) Find the current which flows through R2'
@@ -160589,7 +160589,7 @@
 - model: saveAPI.gallery
   pk: 116
   fields:
-    save_id: gallery115
+    save_id: gallery14243
     name: eg3_9
     description: 'Electrical Engineering Fundamentals (Author: V. Del Toro), 3) Elementary
       network theory, 3.9) Find the magnitude and direction of each of the branch
@@ -161328,7 +161328,7 @@
 - model: saveAPI.gallery
   pk: 117
   fields:
-    save_id: gallery116
+    save_id: gallery14659
     name: eg5_1
     description: 'Electrical Engineering Fundamentals (Author: V. Del Toro), 5) Circuit
       dynamics and forced responses, 5.1) Find the expression for the current flowing
@@ -162197,7 +162197,7 @@
 - model: saveAPI.gallery
   pk: 118
   fields:
-    save_id: gallery117
+    save_id: gallery14671
     name: eg5_2
     description: 'Electrical Engineering Fundamentals (Author: V. Del Toro), 5) Circuit
       dynamics and forced responses, 5.2) Find the expression for the current flowing
@@ -162970,7 +162970,7 @@
 - model: saveAPI.gallery
   pk: 119
   fields:
-    save_id: gallery118
+    save_id: gallery14661
     name: eg5_3
     description: 'Electrical Engineering Fundamentals (Author: V. Del Toro), 5) Circuit
       dynamics and forced responses, 5.3) Determine the voltage which appears across
@@ -163886,7 +163886,7 @@
 - model: saveAPI.gallery
   pk: 120
   fields:
-    save_id: gallery119
+    save_id: gallery14663
     name: eg5_5
     description: 'Electrical Engineering Fundamentals (Author: V. Del Toro), 5) Circuit
       dynamics and forced responses, 5.5) Find the complete solution for the charge
@@ -164819,7 +164819,7 @@
 - model: saveAPI.gallery
   pk: 121
   fields:
-    save_id: gallery120
+    save_id: gallery14665
     name: eg5_6
     description: 'Electrical Engineering Fundamentals (Author: V. Del Toro), 5) Circuit
       dynamics and forced responses, 5.6) Describe the dynamic behaviour of the given
@@ -165691,7 +165691,7 @@
 - model: saveAPI.gallery
   pk: 122
   fields:
-    save_id: gallery121
+    save_id: gallery14667
     name: eg5_7
     description: 'Electrical Engineering Fundamentals (Author: V. Del Toro), 5) Circuit
       dynamics and forced responses, 5.7) Obtain the critically damped response for
@@ -166561,7 +166561,7 @@
 - model: saveAPI.gallery
   pk: 123
   fields:
-    save_id: gallery122
+    save_id: gallery14678
     name: eg5_8
     description: 'Electrical Engineering Fundamentals (Author: V. Del Toro), 5) Circuit
       dynamics and forced responses, 5.8) Repeat the previous example for the case
@@ -167432,7 +167432,7 @@
 - model: saveAPI.gallery
   pk: 124
   fields:
-    save_id: gallery123
+    save_id: gallery118769
     name: Ex6_14_model
     description: 'Feedback Control of Dynamic Systems (Author: G. F. Franklin, J.
       D. Powell and A. Emami-Naeini), 6) The Frequency Response Design Method, 6.14)
@@ -168693,7 +168693,7 @@
 - model: saveAPI.gallery
   pk: 125
   fields:
-    save_id: gallery124
+    save_id: gallery118834
     name: Ex7_32_model
     description: 'Feedback Control of Dynamic Systems (Author: G. F. Franklin, J.
       D. Powell and A. Emami-Naeini), 7) State Space Design, 7.32) Redesign of the
@@ -170113,7 +170113,7 @@
 - model: saveAPI.gallery
   pk: 126
   fields:
-    save_id: gallery125
+    save_id: gallery118839
     name: Ex7_34_model
     description: 'Feedback Control of Dynamic Systems (Author: G. F. Franklin, J.
       D. Powell and A. Emami-Naeini), 7) State Space Design, 7.34) Servomechanism
@@ -171839,7 +171839,7 @@
 - model: saveAPI.gallery
   pk: 127
   fields:
-    save_id: gallery126
+    save_id: gallery118843
     name: Ex7_35_model
     description: 'Feedback Control of Dynamic Systems (Author: G. F. Franklin, J.
       D. Powell and A. Emami-Naeini), 7) State Space Design, 7.35) Integral Control
@@ -173755,7 +173755,7 @@
 - model: saveAPI.gallery
   pk: 128
   fields:
-    save_id: gallery127
+    save_id: gallery118629
     name: Ex8_1_model
     description: 'Feedback Control of Dynamic Systems (Author: G. F. Franklin, J.
       D. Powell and A. Emami-Naeini), 8) Digital Control, 8.1) Digital Controller
@@ -175033,7 +175033,7 @@
 - model: saveAPI.gallery
   pk: 129
   fields:
-    save_id: gallery128
+    save_id: gallery118634
     name: Ex8_2_model
     description: 'Feedback Control of Dynamic Systems (Author: G. F. Franklin, J.
       D. Powell and A. Emami-Naeini), 8) Digital Control, 8.2) Design of a Space Station
@@ -176802,7 +176802,7 @@
 - model: saveAPI.gallery
   pk: 130
   fields:
-    save_id: gallery129
+    save_id: gallery118682
     name: Ex9_11_model
     description: 'Feedback Control of Dynamic Systems (Author: G. F. Franklin, J.
       D. Powell and A. Emami-Naeini), 9) Nonlinear Systems, 9.11) Describing Function
@@ -177424,7 +177424,7 @@
 - model: saveAPI.gallery
   pk: 131
   fields:
-    save_id: gallery130
+    save_id: gallery118695
     name: Ex9_13_model
     description: 'Feedback Control of Dynamic Systems (Author: G. F. Franklin, J.
       D. Powell and A. Emami-Naeini), 9) Nonlinear Systems, 9.13) Determination of
@@ -178064,7 +178064,7 @@
 - model: saveAPI.gallery
   pk: 132
   fields:
-    save_id: gallery131
+    save_id: gallery118642
     name: Ex9_5_model
     description: 'Feedback Control of Dynamic Systems (Author: G. F. Franklin, J.
       D. Powell and A. Emami-Naeini), 9) Nonlinear Systems, 9.5) Changing Overshoot
@@ -178771,7 +178771,7 @@
 - model: saveAPI.gallery
   pk: 133
   fields:
-    save_id: gallery132
+    save_id: gallery118651
     name: Ex9_6_model
     description: 'Feedback Control of Dynamic Systems (Author: G. F. Franklin, J.
       D. Powell and A. Emami-Naeini), 9) Nonlinear Systems, 9.6) Stability of conditionally
@@ -179413,7 +179413,7 @@
 - model: saveAPI.gallery
   pk: 134
   fields:
-    save_id: gallery133
+    save_id: gallery118663
     name: Ex9_7_model_notch
     description: 'Feedback Control of Dynamic Systems (Author: G. F. Franklin, J.
       D. Powell and A. Emami-Naeini), 9) Nonlinear Systems, 9.7) Analysis and design
@@ -180136,7 +180136,7 @@
 - model: saveAPI.gallery
   pk: 135
   fields:
-    save_id: gallery134
+    save_id: gallery118662
     name: Ex9_7_model
     description: 'Feedback Control of Dynamic Systems (Author: G. F. Franklin, J.
       D. Powell and A. Emami-Naeini), 9) Nonlinear Systems, 9.7) Analysis and design
@@ -180812,7 +180812,7 @@
 - model: saveAPI.gallery
   pk: 136
   fields:
-    save_id: gallery135
+    save_id: gallery118667
     name: Ex9_8_model
     description: 'Feedback Control of Dynamic Systems (Author: G. F. Franklin, J.
       D. Powell and A. Emami-Naeini), 9) Nonlinear Systems, 9.8) Antiwindup compensation
@@ -181917,7 +181917,7 @@
 - model: saveAPI.gallery
   pk: 137
   fields:
-    save_id: gallery136
+    save_id: gallery118675
     name: Ex9_9_model
     description: 'Feedback Control of Dynamic Systems (Author: G. F. Franklin, J.
       D. Powell and A. Emami-Naeini), 9) Nonlinear Systems, 9.9) Describing Function
@@ -182534,7 +182534,7 @@
 - model: saveAPI.gallery
   pk: 138
   fields:
-    save_id: gallery137
+    save_id: gallery137587
     name: Ex3_1
     description: 'Control Systems (Author: A Nagoor Kani), 3) TIME RESPONSE ANALYSIS,
       3.1) RESPONSE OF THE SYSTEM'
@@ -183200,7 +183200,7 @@
 - model: saveAPI.gallery
   pk: 139
   fields:
-    save_id: gallery138
+    save_id: gallery137589
     name: Ex3_2
     description: 'Control Systems (Author: A Nagoor Kani), 3) TIME RESPONSE ANALYSIS,
       3.2) RESPONSE OF THE SYSTEM'
@@ -183827,7 +183827,7 @@
 - model: saveAPI.gallery
   pk: 140
   fields:
-    save_id: gallery139
+    save_id: gallery137593
     name: Ex3_6
     description: 'Control Systems (Author: A Nagoor Kani), 3) TIME RESPONSE ANALYSIS,
       3.6) RESPONSE OF THE SYSTEM'
@@ -184484,7 +184484,7 @@
 - model: saveAPI.gallery
   pk: 141
   fields:
-    save_id: gallery140
+    save_id: gallery137596
     name: Ex3_7
     description: 'Control Systems (Author: A Nagoor Kani), 3) TIME RESPONSE ANALYSIS,
       3.7) RESPONSE OF THE SYSTEM'
@@ -185129,7 +185129,7 @@
 - model: saveAPI.gallery
   pk: 142
   fields:
-    save_id: gallery141
+    save_id: gallery138023
     name: Ex7_10
     description: 'Control Systems (Author: A Nagoor Kani), 7) STATE SPACE ANALYSIS,
       7.10) STATE MODEL'
@@ -185752,7 +185752,7 @@
 - model: saveAPI.gallery
   pk: 143
   fields:
-    save_id: gallery142
+    save_id: gallery138025
     name: Ex7_11
     description: 'Control Systems (Author: A Nagoor Kani), 7) STATE SPACE ANALYSIS,
       7.11) STATE MODEL'
@@ -186375,7 +186375,7 @@
 - model: saveAPI.gallery
   pk: 144
   fields:
-    save_id: gallery143
+    save_id: gallery138027
     name: Ex7_12
     description: 'Control Systems (Author: A Nagoor Kani), 7) STATE SPACE ANALYSIS,
       7.12) STATE MODEL'
@@ -187002,7 +187002,7 @@
 - model: saveAPI.gallery
   pk: 145
   fields:
-    save_id: gallery144
+    save_id: gallery11579
     name: example_11_1
     description: 'Modern Power System Analysis (Author: D. P. Kothari And I. J. Nagrath),
       11) Unsymmetrical Fault Analysis, 11.1) LG and 3Phase faults Comparision'
@@ -188189,7 +188189,7 @@
 - model: saveAPI.gallery
   pk: 146
   fields:
-    save_id: gallery145
+    save_id: gallery11767
     name: example_11_2
     description: 'Modern Power System Analysis (Author: D. P. Kothari And I. J. Nagrath),
       11) Unsymmetrical Fault Analysis, 11.2) Grounding Resistor voltage and Fault
@@ -189402,7 +189402,7 @@
 - model: saveAPI.gallery
   pk: 147
   fields:
-    save_id: gallery146
+    save_id: gallery12103
     name: example_11_3
     description: 'Modern Power System Analysis (Author: D. P. Kothari And I. J. Nagrath),
       11) Unsymmetrical Fault Analysis, 11.3) Fault and subtransient currents of the
@@ -190889,7 +190889,7 @@
 - model: saveAPI.gallery
   pk: 148
   fields:
-    save_id: gallery147
+    save_id: gallery11775
     name: example_11_4
     description: 'Modern Power System Analysis (Author: D. P. Kothari And I. J. Nagrath),
       11) Unsymmetrical Fault Analysis, 11.4) LL Fault Current'
@@ -191828,7 +191828,7 @@
 - model: saveAPI.gallery
   pk: 149
   fields:
-    save_id: gallery148
+    save_id: gallery11779
     name: example_11_5
     description: 'Modern Power System Analysis (Author: D. P. Kothari And I. J. Nagrath),
       11) Unsymmetrical Fault Analysis, 11.5) Double line to ground Fault'
@@ -192940,7 +192940,7 @@
 - model: saveAPI.gallery
   pk: 150
   fields:
-    save_id: gallery149
+    save_id: gallery11537
     name: example_9_1_3phase_plot
     description: 'Modern Power System Analysis (Author: D. P. Kothari And I. J. Nagrath),
       9) Symmetrical Fault Analysis, 9.1) Fault Current Calculation'
@@ -196138,7 +196138,7 @@
 - model: saveAPI.gallery
   pk: 151
   fields:
-    save_id: gallery150
+    save_id: gallery11541
     name: example_9_2
     description: 'Modern Power System Analysis (Author: D. P. Kothari And I. J. Nagrath),
       9) Symmetrical Fault Analysis, 9.2) Subtransient and Momentary current Calculation'
@@ -197496,7 +197496,7 @@
 - model: saveAPI.gallery
   pk: 152
   fields:
-    save_id: gallery151
+    save_id: gallery12097
     name: example_9_3
     description: 'Modern Power System Analysis (Author: D. P. Kothari And I. J. Nagrath),
       9) Symmetrical Fault Analysis, 9.3) Subtransient Current Calculation'
@@ -198638,7 +198638,7 @@
 - model: saveAPI.gallery
   pk: 153
   fields:
-    save_id: gallery152
+    save_id: gallery11549
     name: example_9_4
     description: 'Modern Power System Analysis (Author: D. P. Kothari And I. J. Nagrath),
       9) Symmetrical Fault Analysis, 9.4) Maximum MVA Calculation'
@@ -199848,7 +199848,7 @@
 - model: saveAPI.gallery
   pk: 154
   fields:
-    save_id: gallery153
+    save_id: gallery11553
     name: example_9_5
     description: 'Modern Power System Analysis (Author: D. P. Kothari And I. J. Nagrath),
       9) Symmetrical Fault Analysis, 9.5) Short Circuit Solution'
@@ -201086,7 +201086,7 @@
 - model: saveAPI.gallery
   pk: 155
   fields:
-    save_id: gallery154
+    save_id: gallery11559
     name: example_9_7
     description: 'Modern Power System Analysis (Author: D. P. Kothari And I. J. Nagrath),
       9) Symmetrical Fault Analysis, 9.7) Current Injection Method'

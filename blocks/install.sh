@@ -39,6 +39,14 @@ sed -i -e '/^\s*location \/ {/,/^\s*}/c\
                 proxy_pass http://127.0.0.1:8000;\
         }\
 \
+        location /open {\
+                if ($arg_efid) {\
+                    return 302 /#/editor?id=gallery$arg_efid;\
+                } else {\
+                    return 302 /#/editor;\
+                }\
+        }\
+\
         location /resources/ {\
                 proxy_pass http://127.0.0.1:3500;\
                 expires 7d;\
