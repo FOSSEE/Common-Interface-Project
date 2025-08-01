@@ -35,15 +35,19 @@ sed -i -e '/^\s*location \/ {/,/^\s*}/c\
                 proxy_pass http://127.0.0.1:8000;\
         }\
 \
+        location ~ /exa[mp].* {\
+                return 302 $scheme://$host/#/gallery;\
+        }\
+\
         location /files/ {\
                 proxy_pass http://127.0.0.1:8000;\
         }\
 \
         location /open {\
                 if ($arg_efid) {\
-                    return 302 /#/editor?id=gallery$arg_efid;\
+                    return 302 $scheme://$host/#/editor?id=gallery$arg_efid;\
                 }\
-                return 302 /#/editor;\
+                return 302 $scheme://$host/#/editor;\
         }\
 \
         location /resources/ {\
