@@ -29,11 +29,11 @@ export default function keyboardShortcuts (graph) {
   }
 
   // Delete - Del
-  // keyHandler.bindKey(46, function (evt) {
-  //   if (graph.isEnabled()) {
-  //     graph.removeCells()
-  //   }
-  // })
+  keyHandler.bindKey(46, function () {
+    if (graph.isEnabled()) {
+      graph.removeCells()
+    }
+  })
 
   // Undo - Ctrl + Z
   keyHandler.bindControlKey(90, function () {
