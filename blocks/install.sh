@@ -20,7 +20,19 @@ make -s
 python manage.py migrate -v0
 python manage.py loaddata -v0 saveAPI xcosblocks
 
-sed -i -e '/^\s*location \/ {/,/^\s*}/c\
+sed -i \
+  -e '1i\
+map $http_x_forwarded_proto $scheme_override {\
+    default $http_x_forwarded_proto;\
+    '\'\''      $scheme;\
+}\
+\
+map $http_host $host_override {\
+    default $http_host;\
+    '\'\''      $host;\
+}\
+' \
+  -e '/^\s*location \/ {/,/^\s*}/c\
         location / {\
                 proxy_pass http://127.0.0.1:3500;\
         }\
