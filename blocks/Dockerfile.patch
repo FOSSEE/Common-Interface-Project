@@ -1,6 +1,6 @@
---- Dockerfile	2025-07-23 11:41:19.378894852 +0530
-+++ Dockerfile.1	2025-07-23 11:43:07.063018665 +0530
-@@ -121,7 +121,7 @@
+--- Dockerfile	2025-08-08 22:28:09.021434886 +0530
++++ Dockerfile.1	2025-08-08 22:29:01.916836525 +0530
+@@ -120,7 +120,7 @@
  COPY . .
  
  # Configure venv and sqlite3
@@ -9,7 +9,7 @@
  
  # Cleanup
  RUN apt-get autoremove -qq --purge gawk python3-pip python3-venv wget xz-utils
-@@ -174,4 +174,4 @@
+@@ -172,4 +172,4 @@
  
  WORKDIR ${XCOS_DIR}
  

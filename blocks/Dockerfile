@@ -36,12 +36,11 @@ RUN apt-get update -qq && \
   rm -f ./scilab-build-deps_*
 
 # Build scilab
-ARG BRANCH=master-2023.1
+#ARG BRANCH=master-2023.1
 ARG SCILAB_DIR=${HOME}/scilab_for_xcos_on_cloud
-WORKDIR ${HOME}
-ADD https://api.github.com/repos/FOSSEE/scilab_for_xcos_on_cloud/git/ref/heads/${BRANCH} scilab_for_xcos_on_cloud.json
-RUN git clone -q -b ${BRANCH} --depth 1 https://github.com/FOSSEE/scilab_for_xcos_on_cloud
+RUN mkdir -p ${SCILAB_DIR}
 WORKDIR ${SCILAB_DIR}
+COPY --from=scilabrepo . .
 RUN ./configure --disable-dependency-tracking --disable-build-help --disable-static-system-lib --without-tk
 RUN make -j4 -s V=0 || make
 RUN make -s V=0 install-strip
@@ -150,7 +149,6 @@ ARG JNILIBDIR=/usr/lib/jni
 COPY --from=build-scilab ${JNILIBDIR} ${JNILIBDIR}
 ARG SCILAB_DIR=${HOME}/scilab_for_xcos_on_cloud
 COPY --from=build-scilab ${SCILAB_DIR} ${SCILAB_DIR}
-COPY --from=build-scilab ${SCILAB_DIR}.json ${SCILAB_DIR}.json
 
 # Install Node
 COPY --from=build-xcos ${NODE_DIR} ${NODE_DIR}
