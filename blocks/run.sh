@@ -18,4 +18,6 @@ fi
 cd ..
 python manage.py migrate
 python manage.py loaddata saveAPI xcosblocks
+python manage.py collectstatic --no-input
+rm -rf /var/www/html/static/{admin,rest_framework}
 python manage.py runserver

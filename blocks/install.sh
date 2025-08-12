@@ -19,6 +19,8 @@ mkdir -p file_storage/uploads logs media/saves media/uploads
 make -s
 python manage.py migrate -v0
 python manage.py loaddata -v0 saveAPI xcosblocks
+python manage.py collectstatic -v0 --no-input
+rm -rf /var/www/html/static/{admin,rest_framework}
 
 sed -i \
   -e '1i\
@@ -45,6 +47,7 @@ map $http_host $host_override {\
 \
         location /django_static/ {\
                 proxy_pass http://127.0.0.1:8000;\
+                expires 7d;\
         }\
 \
         location ~ /exa[mp].* {\
@@ -76,6 +79,15 @@ map $http_host $host_override {\
                 proxy_buffering off;\
                 proxy_cache off;\
         }' /etc/nginx/sites-enabled/default
+
+if test "$1" = 'prod'; then
+  sed -i \
+    -e '/^\s*location \/django_static\/ {/,/^\s*}/c\
+        location /django_static/ {\
+              alias /var/www/html/static/;\
+              expires 7d;\
+        }' /etc/nginx/sites-enabled/default
+fi
 
 cd eda-frontend
 if test "$1" = 'prod'; then
