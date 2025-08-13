@@ -1,5 +1,5 @@
---- Dockerfile	2025-08-08 22:28:09.021434886 +0530
-+++ Dockerfile.1	2025-08-08 22:29:01.916836525 +0530
+--- Dockerfile	2025-08-13 07:39:33.842715454 +0530
++++ Dockerfile.1	2025-08-13 07:39:39.070338013 +0530
 @@ -120,7 +120,7 @@
  COPY . .
  
@@ -9,7 +9,7 @@
  
  # Cleanup
  RUN apt-get autoremove -qq --purge gawk python3-pip python3-venv wget xz-utils
-@@ -172,4 +172,4 @@
+@@ -173,4 +173,4 @@
  
  WORKDIR ${XCOS_DIR}
  

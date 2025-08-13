@@ -159,6 +159,7 @@ COPY --from=build-xcos ${XCOS_DIR} ${XCOS_DIR}
 
 # Install nginx
 COPY --from=build-xcos /etc/nginx/sites-enabled/default /etc/nginx/sites-enabled/default
+COPY --from=build-xcos /var/www/html/static /var/www/html/static
 
 # Comparison
 #COPY --from=build-scilab /tmp/dpkg-scilab /tmp/dpkg-scilab
