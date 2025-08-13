@@ -8,11 +8,9 @@ import uuid
 
 
 # For handling file uploads to a permenant direcrory
-file_storage = FileSystemStorage(
-    location=settings.FILE_STORAGE_ROOT, base_url=settings.FILE_STORAGE_URL)
-
-media = FileSystemStorage(
-    location=settings.MEDIA_ROOT, base_url='.')
+def get_file_storage():
+    return FileSystemStorage(location=settings.FILE_STORAGE_ROOT,
+                             base_url=settings.FILE_STORAGE_URL)
 
 
 class BookCategory(models.Model):
@@ -44,7 +42,7 @@ class StateSave(models.Model):
     owner = models.ForeignKey(get_user_model(), null=True, on_delete=models.CASCADE)
     data_dump = models.TextField(null=False)
     base64_image = models.ImageField(
-        upload_to='simulation_images', storage=file_storage, null=True)
+        upload_to='simulation_images', storage=get_file_storage, null=True)
     script_dump = models.TextField(null=True)
 
     def save(self, *args, **kwargs):

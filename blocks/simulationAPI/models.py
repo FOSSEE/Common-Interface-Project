@@ -28,6 +28,10 @@ def get_expire_at():
     return timezone.now() + timedelta(days=1)
 
 
+def get_task_file_storage():
+    return FileSystemStorage(location=settings.MEDIA_ROOT)
+
+
 class Session(models.Model):
     session_id = models.CharField(primary_key=True, max_length=40, null=False, editable=False)
     app_name = models.CharField(max_length=40, blank=False, null=False, default='')
@@ -69,7 +73,7 @@ class Session(models.Model):
 
 class Task(models.Model):
     task_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    file = models.FileField(storage=FileSystemStorage(location=settings.MEDIA_ROOT))
+    file = models.FileField(storage=get_task_file_storage)
     type = models.CharField(max_length=20, choices=TASK_TYPE_CHOICES, null=False, default="XCOS")
     status = models.CharField(max_length=20, choices=TASK_STATUS_CHOICES, null=False, default="PENDING")
     parameters = models.TextField(blank=True, null=True)
