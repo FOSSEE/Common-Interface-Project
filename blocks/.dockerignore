@@ -36,3 +36,6 @@ file_storage
 logs
 media
 uploads
+open_editor.py
+update_media.py
+requirements.dev.txt

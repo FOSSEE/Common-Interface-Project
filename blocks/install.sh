@@ -19,8 +19,18 @@ mkdir -p file_storage/uploads logs media/saves media/uploads
 make -s
 python manage.py migrate -v0
 python manage.py loaddata -v0 saveAPI xcosblocks
-python manage.py collectstatic -v0 --no-input
-rm -rf /var/www/html/static/{admin,rest_framework}
+python manage.py collectstatic -v0 --no-input --ignore=admin --ignore=rest_framework
+find -type d \( -name __pycache__ \) -print0 | xargs -0 rm -rf
+find env -type d \( -name docs -o -name tests \) -print0 | xargs -0 rm -rf
+# remove directories that are not needed
+rm -rf \
+  env/lib/python*/site-packages/django/contrib/admin/static/admin \
+  env/lib/python*/site-packages/django/contrib/{flatpages,gis,humanize,postgres,syndication} \
+  env/lib/python*/site-packages/drf_yasg/static/drf-yasg \
+  env/lib/python*/site-packages/rest_framework/static/rest_framework
+find env -name locale -print0 |
+  xargs -0 -I {} find {} -mindepth 1 -maxdepth 1 -type d ! -name en -print0 |
+  xargs -0 rm -rf
 
 sed -i \
   -e '1i\
