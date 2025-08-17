@@ -17,7 +17,9 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN apt-get update -qq && \
   apt-get install -qq --no-install-recommends gcc g++ libgfortran5 libxml2-utils make nginx openjdk-8-jre python3 redis sqlite3 tzdata xsltproc && \
   apt-get clean -qq && \
-  rm -rf /var/lib/apt/lists/*
+  rm -rf /var/lib/apt/lists/* && \
+  find / -mount -type d -name __pycache__ -print0 | xargs -0 rm -rf && \
+  rm -rf /usr/share/doc/*
 
 # Set timezone info
 RUN ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime && \
@@ -91,6 +93,7 @@ RUN find /usr/local/share/scilab -depth -type d \( -name demos -o -name examples
 RUN find /usr/local/share/locale -mindepth 1 -maxdepth 1 -type d -name \*_\* ! -name en_US -print0 | xargs -r0 rm -rf
 RUN apt-get clean -qq
 RUN rm -rf /var/lib/apt/lists/*
+RUN find / -mount -type d -name __pycache__ -print0 | xargs -0 rm -rf
 RUN rm -f /etc/{passwd,shadow,group,gshadow}-
 
 # Comparison
@@ -126,6 +129,7 @@ RUN ./install.sh
 RUN apt-get autoremove -qq --purge gawk python3-pip python3-venv wget xz-utils
 RUN apt-get clean -qq
 RUN rm -rf /var/lib/apt/lists/*
+RUN find / -mount -type d -name __pycache__ -print0 | xargs -0 rm -rf
 RUN rm -rf ${HOME}/.cache
 RUN rm -rf ${HOME}/.npm
 
@@ -150,6 +154,9 @@ COPY --from=build-scilab ${JNILIBDIR} ${JNILIBDIR}
 ARG SCILAB_DIR=${HOME}/scilab_for_xcos_on_cloud
 COPY --from=build-scilab ${SCILAB_DIR} ${SCILAB_DIR}
 
+# Install nginx
+COPY --from=build-xcos /etc/nginx/sites-enabled/default /etc/nginx/sites-enabled/default
+
 # Install Node
 COPY --from=build-xcos ${NODE_DIR} ${NODE_DIR}
 
@@ -157,19 +164,15 @@ COPY --from=build-xcos ${NODE_DIR} ${NODE_DIR}
 ARG XCOS_DIR=${HOME}/xcosblocks
 COPY --from=build-xcos ${XCOS_DIR} ${XCOS_DIR}
 
-# Install nginx
-COPY --from=build-xcos /etc/nginx/sites-enabled/default /etc/nginx/sites-enabled/default
-COPY --from=build-xcos /var/www/html/static /var/www/html/static
-
 # Comparison
 #COPY --from=build-scilab /tmp/dpkg-scilab /tmp/dpkg-scilab
 #COPY --from=build-xcos /tmp/dpkg-xcos /tmp/dpkg-xcos
 #RUN dpkg-query -Wf '${Installed-Size}\t${Package}\t${Version}\n' | sort > /tmp/dpkg-main
-#RUN sort -u /tmp/dpkg-scilab /tmp/dpkg-xcos | diff /tmp/dpkg-main -
+#RUN sort -u /tmp/dpkg-scilab /tmp/dpkg-xcos | diff -u /tmp/dpkg-main -
 #COPY --from=build-scilab /tmp/filelist-scilab /tmp/filelist-scilab
 #COPY --from=build-xcos /tmp/filelist-xcos /tmp/filelist-xcos
 #RUN find / -mount \( -path /tmp \) -prune -o ! -type d -print | sort > /tmp/filelist-main
-#RUN sort -u /tmp/filelist-scilab /tmp/filelist-xcos | diff /tmp/filelist-main -
+#RUN sort -u /tmp/filelist-scilab /tmp/filelist-xcos | diff -u /tmp/filelist-main -
 
 WORKDIR ${XCOS_DIR}
 

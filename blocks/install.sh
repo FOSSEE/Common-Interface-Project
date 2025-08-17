@@ -6,7 +6,6 @@ python3 -m venv env
 . env/bin/activate
 pip install -q -U pip setuptools wheel
 pip install -q -r requirements.txt
-pip uninstall -q -y pip wheel
 
 sed -i \
   -e "s,\\(SCILAB_DIR = '\\).*\\('\\),\\1/usr/local\\2," \
@@ -19,7 +18,9 @@ mkdir -p file_storage/uploads logs media/saves media/uploads
 make -s
 python manage.py migrate -v0
 python manage.py loaddata -v0 saveAPI xcosblocks
-python manage.py collectstatic -v0 --no-input --ignore=admin --ignore=rest_framework
+if test "$1" = 'prod'; then
+  python manage.py collectstatic -v0 --no-input --ignore=admin --ignore=rest_framework
+fi
 find -type d \( -name __pycache__ \) -print0 | xargs -0 rm -rf
 find env -type d \( -name docs -o -name tests \) -print0 | xargs -0 rm -rf
 # remove directories that are not needed
@@ -57,6 +58,7 @@ map $http_host $host_override {\
 \
         location /django_static/ {\
                 proxy_pass http://127.0.0.1:8000;\
+                autoindex off;\
                 expires 7d;\
         }\
 \
@@ -88,23 +90,39 @@ map $http_host $host_override {\
                 proxy_set_header Host $host;\
                 proxy_buffering off;\
                 proxy_cache off;\
-        }' /etc/nginx/sites-enabled/default
+        }' \
+  /etc/nginx/sites-enabled/default
 
 if test "$1" = 'prod'; then
   sed -i \
+    -e '/^\s*location \/ {/,/^\s*}/c\
+        location / {\
+              root /var/www/html;\
+              index index.html;\
+              try_files $uri /index.html;\
+        }' \
     -e '/^\s*location \/django_static\/ {/,/^\s*}/c\
         location /django_static/ {\
               alias /var/www/html/static/;\
+              autoindex off;\
               expires 7d;\
-        }' /etc/nginx/sites-enabled/default
+        }' \
+    -e '/^\s*location \/resources\/ {/,/^\s*}/d' \
+    -e '/^\s*location \/ws {/,/^\s*}/d' \
+    /etc/nginx/sites-enabled/default
 fi
 
 cd eda-frontend
-if test "$1" = 'prod'; then
-  npm install -g serve
-fi
 npm install --silent
 if test "$1" = 'prod'; then
   npm run build
-  rm -rf node_modules public src
+  cp -r build/* /var/www/html/
 fi
+
+cd ..
+if test "$1" = 'prod'; then
+  rm -rf eda-frontend
+fi
+
+pip uninstall -q -y flake8 mccabe pip pycodestyle pyflakes wheel
+rm -f .flake8 .srcflake8 Makefile requirements.txt xcosblocks.sed
