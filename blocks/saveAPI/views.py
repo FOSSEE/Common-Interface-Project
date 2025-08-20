@@ -1,7 +1,6 @@
 from django.contrib.auth import get_user_model
 import django_filters
 from django_filters import rest_framework as filters
-from drf_yasg.utils import swagger_auto_schema
 import logging
 from rest_framework import status, viewsets
 from rest_framework.parsers import FormParser, JSONParser
@@ -32,7 +31,6 @@ class StateSaveView(APIView):
     permission_classes = (AllowAny,)
     # parser_classes = (FormParser,)
 
-    @swagger_auto_schema(request_body=StateSaveSerializer)
     def post(self, request):
         logger.info('Got POST for state save=%s', request.data.get('name'))
         try:
@@ -91,7 +89,6 @@ class FetchSaveDiagram(APIView):
     parser_classes = (FormParser, JSONParser)
     methods = ['GET']
 
-    @swagger_auto_schema(responses={200: StateSaveSerializer})
     def get(self, request, save_id):
         logger.info('Got GET for state save id=%s', save_id)
 
@@ -147,7 +144,6 @@ class FetchSaveDiagram(APIView):
             filename, content = img.update(data['base64_image'])
             state.base64_image.save(filename, content)
 
-    @swagger_auto_schema(responses={200: StateSaveSerializer})
     def post(self, request, save_id):
         logger.info('Got POST for state save id=%s', save_id)
 
@@ -180,7 +176,6 @@ class FetchSaveDiagram(APIView):
             logger.error('Error saving state=%s', e)
             return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-    @swagger_auto_schema(responses={200: StateSaveSerializer})
     def delete(self, request, save_id):
         if isinstance(save_id, uuid.UUID):
             try:
@@ -206,7 +201,6 @@ class StateShareView(APIView):
     permission_classes = (AllowAny,)
     methods = ['GET']
 
-    @swagger_auto_schema(responses={200: StateSaveSerializer})
     def post(self, request, save_id, sharing):
 
         if isinstance(save_id, uuid.UUID):
@@ -251,7 +245,6 @@ class UserSavesView(APIView):
     parser_classes = (FormParser, JSONParser)
     methods = ['GET']
 
-    @swagger_auto_schema(responses={200: StateSaveSerializer})
     def get(self, request):
         try:
             state_save = StateSave.objects.filter(
