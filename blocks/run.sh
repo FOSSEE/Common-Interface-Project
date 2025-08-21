@@ -18,4 +18,4 @@ fi
 
 python manage.py migrate
 python manage.py loaddata saveAPI xcosblocks
-python manage.py runserver
+gunicorn blocks.wsgi:application -b 0.0.0.0:8000 -k gevent -w 4
