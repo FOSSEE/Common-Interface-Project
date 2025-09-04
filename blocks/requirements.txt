@@ -15,7 +15,7 @@ Django==5.2.5
 django-cors-headers==4.6.0
 django-filter==24.3
 djangorestframework==3.15.2
-djangorestframework_simplejwt==5.4.0
+djangorestframework_simplejwt==5.5.1
 djoser==2.3.1
 flake8==7.1.1
 gevent==24.11.1
