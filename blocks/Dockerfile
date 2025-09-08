@@ -123,7 +123,7 @@ WORKDIR ${XCOS_DIR}
 COPY . .
 
 # Configure venv and sqlite3
-RUN ./install.sh
+RUN ./install.sh prod
 
 # Cleanup
 RUN apt-get autoremove -qq --purge gawk python3-pip python3-venv wget xz-utils
@@ -132,6 +132,7 @@ RUN rm -rf /var/lib/apt/lists/*
 RUN find / -mount -type d -name __pycache__ -print0 | xargs -0 rm -rf
 RUN rm -rf ${HOME}/.cache
 RUN rm -rf ${HOME}/.npm
+RUN rm -rf ${NODE_DIR}
 
 # Comparison
 #RUN dpkg-query -Wf '${Installed-Size}\t${Package}\t${Version}\n' > /tmp/dpkg-xcos
@@ -157,12 +158,10 @@ COPY --from=build-scilab ${SCILAB_DIR} ${SCILAB_DIR}
 # Install nginx
 COPY --from=build-xcos /etc/nginx/sites-enabled/default /etc/nginx/sites-enabled/default
 
-# Install Node
-COPY --from=build-xcos ${NODE_DIR} ${NODE_DIR}
-
 # Install XCos
 ARG XCOS_DIR=${HOME}/xcosblocks
 COPY --from=build-xcos ${XCOS_DIR} ${XCOS_DIR}
+COPY --from=build-xcos /var/www/html /var/www/html
 
 # Comparison
 #COPY --from=build-scilab /tmp/dpkg-scilab /tmp/dpkg-scilab
@@ -176,4 +175,4 @@ COPY --from=build-xcos ${XCOS_DIR} ${XCOS_DIR}
 
 WORKDIR ${XCOS_DIR}
 
-CMD ["./run.sh"]
+CMD ["./run.sh", "prod"]
