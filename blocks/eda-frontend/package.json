@@ -8,7 +8,7 @@
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.52",
     "@reduxjs/toolkit": "^2.8.2",
-    "axios": "^1.11.0",
+    "axios": "^1.12.0",
     "canvg": "^4.0.3",
     "file-saver": "^2.0.5",
     "highcharts": "^12.3.0",
