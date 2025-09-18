@@ -5,6 +5,18 @@ if [[ "$ALREADY_SOURCED" = "yes" ]]; then
 fi
 ALREADY_SOURCED=yes
 
+# Configuration
+IMAGE=""
+CONTAINER=""
+
+ENV_VARS=()
+ENV_VALS=()
+HOST_PORTS=()
+DOCKER_PORTS=()
+HOST_FILES=()
+DOCKER_FILES=()
+# End Configuration
+
 cd ${0%/*} || exit 1
 test "$#" -eq 1 -a -n "$1" -a -f "$1" || {
   echo "Usage: $0 docker_config_file"

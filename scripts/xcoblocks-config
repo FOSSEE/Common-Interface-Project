@@ -8,8 +8,6 @@ PORT=9000
 SQLITE_FILE=~/Downloads/fossee/xcos/xcosblocks.sqlite3
 ENV_FILE=~/Downloads/fossee/xcos/env.production
 
-ENV_VARS=()
-ENV_VALS=()
 HOST_PORTS=($PORT)
 DOCKER_PORTS=(80)
 HOST_FILES=($SQLITE_FILE $ENV_FILE)
