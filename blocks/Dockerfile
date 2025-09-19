@@ -109,7 +109,7 @@ ARG NODE_DIR=${HOME}/node
 RUN apt-get update -qq && \
   apt-get install -qq --no-install-recommends gawk python3-pip python3-venv wget xz-utils
 
-ARG NODE_VERSION=v22.18.0
+ARG NODE_VERSION=v22.20.0
 ARG NODE=node-${NODE_VERSION}-linux-x64
 WORKDIR ${HOME}
 RUN wget -q --no-hsts https://nodejs.org/download/release/${NODE_VERSION}/${NODE}.tar.xz && \
