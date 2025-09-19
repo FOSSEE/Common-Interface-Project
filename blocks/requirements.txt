@@ -11,11 +11,11 @@ click-plugins==1.1.1
 click-repl==0.2.0
 cryptography==44.0.1
 defusedxml==0.7.1
-Django==5.2.5
-django-cors-headers==4.6.0
-django-filter==24.3
-djangorestframework==3.15.2
-djangorestframework_simplejwt==5.4.0
+Django==5.2.6
+django-cors-headers==4.9.0
+django-filter==25.1
+djangorestframework==3.16.1
+djangorestframework_simplejwt==5.5.1
 djoser==2.3.1
 flake8==7.1.1
 gevent==24.11.1
