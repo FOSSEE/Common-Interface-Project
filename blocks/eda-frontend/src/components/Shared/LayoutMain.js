@@ -1,26 +1,24 @@
 import PropTypes from 'prop-types'
 
-import { makeStyles } from '@material-ui/core/styles'
-
-const useStyles = makeStyles((theme) => ({
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(5, 3),
-    backgroundColor: '#f4f6f8',
-    height: '100vh',
-    overflow: 'auto'
-  }
-}))
+import { Box } from '@mui/material'
 
 // Display main content of layout
 export default function LayoutMain ({ children }) {
-  const classes = useStyles()
-
   return (
     <>
-      <main className={classes.content}>
+      <Box
+        component='main'
+        sx={{
+          flexGrow: 1,
+          px: 3,
+          py: 5,
+          bgcolor: '#f4f6f8',
+          height: '100vh',
+          overflow: 'auto'
+        }}
+      >
         {children}
-      </main>
+      </Box>
     </>
   )
 }

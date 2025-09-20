@@ -5,7 +5,12 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import mxGraphFactory from 'mxgraph'
 
-import { ListItem, ListItemText, Button, TextField } from '@material-ui/core'
+import {
+  Button,
+  ListItem,
+  ListItemText,
+  TextField
+} from '@mui/material'
 
 import { setCompProperties } from '../../redux/componentPropertiesSlice'
 

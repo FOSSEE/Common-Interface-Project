@@ -4,6 +4,8 @@ import { Link as RouterLink } from 'react-router-dom'
 
 import PropTypes from 'prop-types'
 
+import DeleteIcon from '@mui/icons-material/Delete'
+import ShareIcon from '@mui/icons-material/Share'
 import {
   Button,
   Card,
@@ -15,25 +17,12 @@ import {
   Snackbar,
   Tooltip,
   Typography
-} from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import DeleteIcon from '@material-ui/icons/Delete'
-import ShareIcon from '@material-ui/icons/Share'
-import MuiAlert from '@material-ui/lab/Alert'
+} from '@mui/material'
+import MuiAlert from '@mui/material/Alert'
 
 import { deleteSchematic } from '../../redux/dashboardSlice'
 import { getDate } from '../../utils/GalleryUtils'
 
-const useStyles = makeStyles((theme) => ({
-  media: {
-    height: 0,
-    paddingTop: '56.25%' // 16:9
-  },
-  rating: {
-    marginTop: theme.spacing(1),
-    marginLeft: 'auto'
-  }
-}))
 function Alert (props) {
   return <MuiAlert elevation={6} variant='filled' {...props} />
 }
@@ -110,8 +99,6 @@ function timeSince (jsonDate) {
 
 // Card displaying overview of onCloud saved schematic.
 export default function SchematicCard ({ sch }) {
-  const classes = useStyles()
-
   // To handle delete schematic snackbar
   const [snacOpen, setSnacOpen] = useState(false)
 
@@ -136,9 +123,12 @@ export default function SchematicCard ({ sch }) {
             subheader={'Created On ' + getDate(sch.create_time)} /* Display created date */
           />
           <CardMedia
-            className={classes.media}
             image={sch.base64_image}
             title={sch.name}
+            sx={{
+              height: 0,
+              pt: '56.25%' // 16:9
+            }}
           />
           <CardContent>
             <Typography variant='body2' component='p'>

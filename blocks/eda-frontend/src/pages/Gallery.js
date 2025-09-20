@@ -6,6 +6,7 @@ import { Link as RouterLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 import {
+  Box,
   Button,
   Card,
   CardActionArea,
@@ -22,43 +23,15 @@ import {
   Select,
   Typography,
   ButtonGroup
-} from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
+} from '@mui/material'
 
 import { fetchGallery } from '../redux/dashboardSlice'
 import api from '../utils/Api'
-
-const useStyles = makeStyles((theme) => ({
-  mainHead: {
-    width: '100%',
-    backgroundColor: '#404040',
-    color: '#fff'
-  },
-  title: {
-    fontSize: 18,
-    color: '#80ff80'
-  },
-  header: {
-    padding: theme.spacing(5, 0, 6, 0)
-  },
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    minHeight: '100vh',
-    backgroundColor: '#f4f6f8'
-  },
-  media: {
-    marginTop: theme.spacing(3),
-    height: 170
-  }
-}))
 
 const images = require.context('../static/gallery', true)
 
 // Card displaying overview of gallery sample schematics.
 const SchematicCard = ({ sch }) => {
-  const classes = useStyles()
-
   useEffect(() => {
     document.title = 'Gallery - ' + process.env.REACT_APP_NAME
   }, [])
@@ -71,10 +44,14 @@ const SchematicCard = ({ sch }) => {
         <CardActionArea>
           <CardMedia
             component='img'
-            className={classes.media}
             image={imageName}
             title={sch.name}
-            style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
+            sx={{
+              width: '100%',
+              objectFit: 'contain',
+              mt: 3,
+              height: 'auto'
+            }}
           />
           <CardContent>
             <Typography gutterBottom variant='h5' component='h2'>
@@ -107,17 +84,28 @@ SchematicCard.propTypes = {
 
 // Card displaying gallery page header.
 const MainCard = () => {
-  const classes = useStyles()
-
   const typography = process.env.REACT_APP_NAME + ' Gallery'
   const diagramTypography = 'Sample ' + process.env.REACT_APP_SMALL_DIAGRAMS_NAME + ' are listed below...'
   return (
-    <Card className={classes.mainHead}>
+    <Card
+      sx={{
+        width: '100%',
+        bgcolor: '#404040',
+        color: '#fff'
+      }}
+    >
       <CardContent>
         <Typography variant='h2' align='center' gutterBottom>
           {typography}
         </Typography>
-        <Typography className={classes.title} align='center' gutterBottom>
+        <Typography
+          align='center'
+          gutterBottom
+          sx={{
+            fontSize: 18,
+            color: '#80ff80'
+          }}
+        >
           {diagramTypography}
         </Typography>
       </CardContent>
@@ -216,7 +204,6 @@ SearchComponent.propTypes = {
 }
 
 const Gallery = () => {
-  const classes = useStyles()
   const GallerySchSample = useSelector(state => state.dashboard.gallery)
 
   // State to store the selected book ID
@@ -323,9 +310,24 @@ const Gallery = () => {
   }
 
   return (
-    <div className={classes.root}>
+    <Box
+      component='div'
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: '100vh',
+        bgcolor: '#f4f6f8'
+      }}
+    >
       <CssBaseline />
-      <Container maxWidth='lg' className={classes.header}>
+      <Container
+        maxWidth='lg'
+        sx={{
+          px: 0,
+          pt: 5,
+          pb: 6
+        }}
+      >
         <Grid container direction='row' justifyContent='flex-start' alignItems='flex-start' alignContent='center' spacing={3}>
           {/* Gallery Header */}
           <Grid item xs={12}>
@@ -385,7 +387,7 @@ const Gallery = () => {
       >
         {renderPagination()}
       </div>
-    </div>
+    </Box>
   )
 }
 

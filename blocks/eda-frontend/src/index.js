@@ -1,9 +1,10 @@
 // This is the JavaScript entry point of react application.
-import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 
-import CssBaseline from '@material-ui/core/CssBaseline'
-import { ThemeProvider } from '@material-ui/core/styles'
+import { createRoot } from 'react-dom/client'
+
+import CssBaseline from '@mui/material/CssBaseline'
+import { ThemeProvider } from '@mui/material/styles'
 
 import App from './App'
 import store from './redux/store'
@@ -11,15 +12,15 @@ import * as serviceWorker from './serviceWorker'
 import theme from './theme'
 import './index.css'
 
-ReactDOM.render(
+const root = createRoot(document.getElementById('root'))
+root.render(
   <ThemeProvider theme={theme}>
     {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
     <CssBaseline />
     <Provider store={store}>
       <App />
     </Provider>
-  </ThemeProvider>,
-  document.getElementById('root')
+  </ThemeProvider>
 )
 
 // If you want your app to work offline and load faster, you can change

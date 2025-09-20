@@ -5,8 +5,12 @@ import { Link as RouterLink, useLocation } from 'react-router-dom'
 
 import PropTypes from 'prop-types'
 
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
+import Visibility from '@mui/icons-material/Visibility'
+import VisibilityOff from '@mui/icons-material/VisibilityOff'
 import {
   Avatar,
+  Box,
   Button,
   Card,
   Checkbox,
@@ -18,36 +22,17 @@ import {
   Link,
   TextField,
   Typography
-} from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
-import Visibility from '@material-ui/icons/Visibility'
-import VisibilityOff from '@material-ui/icons/VisibilityOff'
+} from '@mui/material'
 
-import { login, authDefault, setAuthErrors, googleLogin, githubLogin } from '../redux/authSlice'
+import {
+  authDefault,
+  githubLogin,
+  googleLogin,
+  login,
+  setAuthErrors
+} from '../redux/authSlice'
 import github from '../static/github-mark.png'
 import google from '../static/google.png'
-
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(24),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    padding: theme.spacing(3, 5)
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.primary.main
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1)
-  },
-  submit: {
-    margin: theme.spacing(2, 0)
-  }
-}))
 
 let url = ''
 
@@ -56,7 +41,6 @@ function useQuery () {
 }
 
 export default function SignIn (props) {
-  const classes = useStyles()
   const authErrors = useSelector(state => state.auth.errors)
   const [errors, setErrors] = useState(authErrors || '')
   
@@ -129,8 +113,22 @@ export default function SignIn (props) {
 
   return (
     <Container component='main' maxWidth='xs'>
-      <Card className={classes.paper}>
-        <Avatar className={classes.avatar}>
+      <Card
+        sx={{
+          mt: 24,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          px: 5,
+          py: 3
+        }}
+      >
+        <Avatar
+          sx={{
+            m: 1,
+            bgcolor: 'primary.main'
+          }}
+        >
           <LockOutlinedIcon />
         </Avatar>
 
@@ -145,7 +143,14 @@ export default function SignIn (props) {
           </Typography>
         )}
 
-        <form className={classes.form} noValidate>
+        <Box
+          component='form'
+          noValidate
+          sx={{
+            width: '100%', // Fix IE 11 issue.
+            mt: 1
+          }}
+        >
           <TextField
             variant='outlined'
             margin='normal'
@@ -202,7 +207,10 @@ export default function SignIn (props) {
             variant='contained'
             color='primary'
             onClick={handleLogin}
-            className={classes.submit}
+            sx={{
+              mx: 0,
+              my: 2
+            }}
           >
             Login
           </Button>
@@ -218,7 +226,7 @@ export default function SignIn (props) {
               </Link>
             </Grid>
           </Grid>
-        </form>
+        </Box>
         <Typography variant='body1' color='secondary' align='center'>Or</Typography>
 
         {/* Google oAuth Sign In option */}
@@ -227,7 +235,10 @@ export default function SignIn (props) {
           variant='outlined'
           color='primary'
           onClick={handleGoogleLogin}
-          className={classes.submit}
+          sx={{
+            mx: 0,
+            my: 2
+          }}
         >
           <img alt='Google' src={google} height='20' />&emsp; Login With Google
         </Button>
@@ -237,7 +248,10 @@ export default function SignIn (props) {
           variant='outlined'
           color='primary'
           onClick={handleGithubLogin}
-          className={classes.submit}
+          sx={{
+            mx: 0,
+            my: 2
+          }}
         >
           <img alt='GitHub' src={github} height='20' />&emsp; Login With GitHub
         </Button>
@@ -246,7 +260,10 @@ export default function SignIn (props) {
         onClick={() => { window.open(homeURL, '_self') }}
         fullWidth
         color='default'
-        className={classes.submit}
+        sx={{
+          mx: 0,
+          my: 2
+        }}
       >
         Back to home
       </Button>

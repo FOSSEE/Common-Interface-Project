@@ -3,8 +3,12 @@ import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link as RouterLink } from 'react-router-dom'
 
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
+import Visibility from '@mui/icons-material/Visibility'
+import VisibilityOff from '@mui/icons-material/VisibilityOff'
 import {
   Avatar,
+  Box,
   Button,
   Card,
   Checkbox,
@@ -16,40 +20,18 @@ import {
   Link,
   TextField,
   Typography
-} from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
-import Visibility from '@material-ui/icons/Visibility'
-import VisibilityOff from '@material-ui/icons/VisibilityOff'
+} from '@mui/material'
 
-import { signUp, authDefault, googleLogin, githubLogin } from '../redux/authSlice'
+import {
+  authDefault,
+  githubLogin,
+  googleLogin,
+  signUp
+} from '../redux/authSlice'
 import github from '../static/github-mark.png'
 import google from '../static/google.png'
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(20),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    padding: theme.spacing(3, 5)
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.primary.main
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1)
-  },
-  submit: {
-    margin: theme.spacing(1.5, 0)
-  }
-}))
-
 export default function SignUp () {
-  const classes = useStyles()
-
   const isRegistered = useSelector(state => state.auth.isRegistered)
   const regErrors = useSelector(state => state.auth.regErrors)
   const [errors, setErrors] = useState(regErrors || '')
@@ -101,8 +83,22 @@ export default function SignUp () {
 
   return (
     <Container component='main' maxWidth='xs'>
-      <Card className={classes.paper}>
-        <Avatar className={classes.avatar}>
+      <Card
+        sx={{
+          mt: 20,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          px: 5,
+          py: 3
+        }}
+      >
+        <Avatar
+          sx={{
+            m: 1,
+            bgcolor: 'primary.main'
+          }}
+        >
           <LockOutlinedIcon />
         </Avatar>
 
@@ -117,7 +113,14 @@ export default function SignUp () {
           </Typography>
         )}
 
-        <form className={classes.form} noValidate>
+        <Box
+          component='form'
+          noValidate
+          sx={{
+            width: '100%', // Fix IE 11 issue.
+            mt: 1
+          }}
+        >
           <TextField
             variant='outlined'
             margin='normal'
@@ -200,8 +203,11 @@ export default function SignUp () {
             variant='contained'
             color='primary'
             onClick={() => dispatch(signUp({ email, password, reenterPassword }))}
-            className={classes.submit}
             disabled={!accept}
+            sx={{
+              mx: 0,
+              my: 1.5
+            }}
           >
             Sign Up
           </Button>
@@ -213,7 +219,10 @@ export default function SignUp () {
             variant='outlined'
             color='primary'
             onClick={handleGoogleSignup}
-            className={classes.submit}
+            sx={{
+              mx: 0,
+              my: 1.5
+            }}
           >
             <img alt='Google' src={google} height='20' />&emsp; Sign Up With Google
           </Button>
@@ -223,11 +232,14 @@ export default function SignUp () {
             variant='outlined'
             color='primary'
             onClick={handleGithubSignup}
-            className={classes.submit}
+            sx={{
+              mx: 0,
+              my: 1.5
+            }}
           >
             <img alt='GitHub' src={github} height='20' />&emsp; Sign Up With GitHub
           </Button>
-        </form>
+        </Box>
 
         <Grid container>
           <Grid item style={{ margin: 'auto' }}>
@@ -241,7 +253,10 @@ export default function SignUp () {
         fullWidth
         onClick={() => { window.open(homeURL, '_self') }}
         color='default'
-        className={classes.submit}
+        sx={{
+          mx: 0,
+          my: 1.5
+        }}
       >
         Back to home
       </Button>

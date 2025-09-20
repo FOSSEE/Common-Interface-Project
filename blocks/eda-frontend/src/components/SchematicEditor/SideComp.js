@@ -2,23 +2,17 @@ import { useEffect, useRef, useState } from 'react'
 
 import PropTypes from 'prop-types'
 
-import { List, ListItemText, Tooltip, Popover } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
+import {
+  List,
+  ListItemText,
+  Popover,
+  Tooltip
+} from '@mui/material'
 
 import './Helper/SchematicEditor.css'
 import { AddComponent } from './Helper/SideBar'
 
-const useStyles = makeStyles((theme) => ({
-  popupInfo: {
-    margin: theme.spacing(1.5),
-    padding: theme.spacing(1.5),
-    border: '1px solid blue',
-    borderRadius: '5px'
-  }
-}))
-
 export default function SideComp ({ component }) {
-  const classes = useStyles()
   const imageRef = useRef()
 
   const [anchorEl, setAnchorEl] = useState(null)
@@ -53,7 +47,6 @@ export default function SideComp ({ component }) {
       <Popover
         id={id}
         open={open}
-        className={classes.popup}
         anchorEl={anchorEl}
         onClose={handleClose}
         anchorOrigin={{
@@ -65,7 +58,17 @@ export default function SideComp ({ component }) {
           horizontal: 'center'
         }}
       >
-        <List component='div' className={classes.popupInfo} disablePadding dense>
+        <List
+          component='div'
+          disablePadding
+          dense
+          sx={{
+            m: 1.5,
+            p: 1.5,
+            border: '1px solid blue',
+            borderRadius: '5px'
+          }}
+        >
           <ListItemText>
             <b>{link1}:</b> {component.name}
           </ListItemText>

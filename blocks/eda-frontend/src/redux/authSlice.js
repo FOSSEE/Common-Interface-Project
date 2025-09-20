@@ -137,7 +137,7 @@ export const signUp = createAsyncThunk(
 // Handle api call for user logout
 export const logout = createAsyncThunk(
   'auth/logout',
-  async (history, { getState }) => {
+  async (navigate, { getState }) => {
     try {
       // Get token from localstorage
       const token = getState().auth.token
@@ -156,7 +156,7 @@ export const logout = createAsyncThunk(
 
       await api.post('auth/token/logout/', {}, config)
       localStorage.removeItem(tokenKey)
-      history.push('/login')
+      navigate('/login')
       return 'Logout successful'
     } catch (err) {
       console.log(err.response || err)

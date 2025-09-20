@@ -2,22 +2,13 @@
 import { useEffect } from 'react'
 import { Link as RouterLink } from 'react-router-dom'
 
-import Button from '@material-ui/core/Button'
-import Container from '@material-ui/core/Container'
-import { makeStyles } from '@material-ui/core/styles'
-import Typography from '@material-ui/core/Typography'
+import Button from '@mui/material/Button'
+import Container from '@mui/material/Container'
+import Typography from '@mui/material/Typography'
 
 import logo from '../static/logo.png'
 
-const useStyles = makeStyles((theme) => ({
-  header: {
-    padding: theme.spacing(23, 0, 6)
-  }
-}))
-
 export default function Home () {
-  const classes = useStyles()
-
   useEffect(() => {
     document.title = process.env.REACT_APP_NAME
   }, [])
@@ -26,7 +17,15 @@ export default function Home () {
   const typography2 = 'Online ' + process.env.REACT_APP_NAME + ' Simulator'
   const typography3 = process.env.REACT_APP_DIAGRAM_NAME + ' Editor'
   return (
-    <Container maxWidth='sm' component='main' className={classes.header}>
+    <Container
+      maxWidth='sm'
+      component='main'
+      sx={{
+        px: 0,
+        pt: 23,
+        pb: 6
+      }}
+    >
       <center>
         <img src={logo} width='120' height='120' alt='Logo' />
       </center>

@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link as RouterLink } from 'react-router-dom'
 
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import {
   Avatar,
+  Box,
   Button,
   Card,
   Container,
@@ -11,35 +13,11 @@ import {
   Link,
   TextField,
   Typography
-} from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
+} from '@mui/material'
 
 import { resetPassword, authDefault } from '../redux/authSlice'
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(20),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    padding: theme.spacing(3, 5)
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.primary.main
-  },
-  form: {
-    width: '100%',
-    marginTop: theme.spacing(1)
-  },
-  submit: {
-    margin: theme.spacing(1.5, 0)
-  }
-}))
-
 export default function ForgotPassword () {
-  const classes = useStyles()
   const dispatch = useDispatch()
   const resetSuccess = useSelector(state => state.auth.resetSuccess)
   const regErrors = useSelector(state => state.auth.regErrors)
@@ -69,8 +47,22 @@ export default function ForgotPassword () {
 
   return (
     <Container component='main' maxWidth='xs'>
-      <Card className={classes.paper}>
-        <Avatar className={classes.avatar}>
+      <Card
+        sx={{
+          mt: 20,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          px: 5,
+          py: 3
+        }}
+      >
+        <Avatar
+          sx={{
+            m: 1,
+            bgcolor: 'primary.main'
+          }}
+        >
           <LockOutlinedIcon />
         </Avatar>
         <Typography component='h1' variant='h5'>
@@ -81,7 +73,14 @@ export default function ForgotPassword () {
           {regErrors}
         </Typography>
 
-        <form className={classes.form} noValidate>
+        <Box
+          component='form'
+          noValidate
+          sx={{
+            width: '100%',
+            mt: 1
+          }}
+        >
           <TextField
             variant='outlined'
             margin='normal'
@@ -101,12 +100,15 @@ export default function ForgotPassword () {
             variant='contained'
             color='primary'
             onClick={handleReset}
-            className={classes.submit}
             disabled={isResetSuccess}
+            sx={{
+              mx: 0,
+              my: 1.5
+            }}
           >
             Send Reset Link
           </Button>
-        </form>
+        </Box>
 
         <Grid container>
           <Grid item xs>

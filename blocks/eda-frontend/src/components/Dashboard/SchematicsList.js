@@ -1,33 +1,38 @@
 import { useSelector } from 'react-redux'
 import { Link as RouterLink } from 'react-router-dom'
 
-import { Button, Card, CardActions, CardContent, Grid, Typography } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  Grid,
+  Typography
+} from '@mui/material'
 
 import SchematicCard from './SchematicCard'
 
-const useStyles = makeStyles({
-  mainHead: {
-    width: '100%',
-    backgroundColor: '#404040',
-    color: '#fff'
-  },
-  title: {
-    fontSize: 14,
-    color: '#80ff80'
-  }
-})
-
 // Card displaying user my schematics page header.
 function MainCard () {
-  const classes = useStyles()
   const typography1 = 'All ' + process.env.REACT_APP_SMALL_DIAGRAMS_NAME + ' are listed below'
   const typography2 = 'My ' + process.env.REACT_APP_DIAGRAMS_NAME
 
   return (
-    <Card className={classes.mainHead}>
+    <Card
+      sx={{
+        width: '100%',
+        bgcolor: '#404040',
+        color: '#fff'
+      }}
+    >
       <CardContent>
-        <Typography className={classes.title} gutterBottom>
+        <Typography
+          gutterBottom
+          sx={{
+            fontSize: 14,
+            color: '#80ff80'
+          }}
+        >
           {typography1}
         </Typography>
         <Typography variant='h5' component='h2'>
@@ -44,16 +49,12 @@ function MainCard () {
         >
           Create New
         </Button>
-        <Button size='small' color='secondary'>
-          Load More
-        </Button>
       </CardActions>
     </Card>
   )
 }
 
 export default function SchematicsList () {
-  const classes = useStyles()
   const user = useSelector(state => state.auth.user)
   const schematics = useSelector(state => state.dashboard.schematics)
 
@@ -87,7 +88,15 @@ export default function SchematicsList () {
             )}
           </>
           : <Grid item xs={12}>
-            <Card style={{ padding: '7px 15px' }} className={classes.mainHead}>
+            <Card
+              sx={{
+                width: '100%',
+                bgcolor: '#404040',
+                color: '#fff',
+                px: 2,
+                py: 1
+              }}
+            >
               <Typography variant='subtitle1' gutterBottom>
                 Hey {user.username} , {typography1}
               </Typography>

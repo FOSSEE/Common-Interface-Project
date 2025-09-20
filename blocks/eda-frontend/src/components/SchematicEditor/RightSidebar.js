@@ -1,71 +1,61 @@
 import PropTypes from 'prop-types'
 
-import { Drawer, Hidden, IconButton } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import HighlightOffIcon from '@material-ui/icons/HighlightOff'
+import HighlightOffIcon from '@mui/icons-material/HighlightOff'
+import { Box, Drawer, IconButton } from '@mui/material'
 
 const drawerWidth = 250
 
-const useStyles = makeStyles((theme) => ({
-  drawer: {
-    [theme.breakpoints.up('lg')]: {
-      width: drawerWidth,
-      flexShrink: 0
-    }
-  },
-  drawerPaper: {
-    width: drawerWidth
-  }
-}))
-
 // Editor right side pane to display grid and compProperties.
 export default function RightSidebar ({ window, mobileOpen, mobileClose, children }) {
-  const classes = useStyles()
-
   const container =
     window !== undefined ? () => window().document.body : undefined
 
   return (
     <>
-      <nav className={classes.drawer} aria-label='mailbox folders'>
-        <Hidden xlUp implementation='css'>
-          <Drawer
-            container={container}
-            variant='temporary'
-            open={mobileOpen}
-            anchor='right'
-            onClose={mobileClose}
-            classes={{
-              paper: classes.drawerPaper
-            }}
-            ModalProps={{
-              keepMounted: true // Better open performance on mobile.
-            }}
+      <Box
+        component='nav'
+        aria-label='mailbox folders'
+        sx={{
+          width: { lg: drawerWidth },
+          flexShrink: { lg: 0 }
+        }}
+      >
+        <Drawer
+          container={container}
+          variant='temporary'
+          open={mobileOpen}
+          anchor='right'
+          onClose={mobileClose}
+          sx={{ display: { xl: 'none' } }}
+          PaperProps={{
+            sx: { width: drawerWidth }
+          }}
+          ModalProps={{
+            keepMounted: true // Better open performance on mobile.
+          }}
+        >
+          <IconButton
+            onClick={mobileClose}
+            color='inherit'
+            style={{ marginRight: '190px' }}
           >
-            <IconButton
-              onClick={mobileClose}
-              color='inherit'
-              style={{ marginRight: '190px' }}
-            >
-              <HighlightOffIcon />
-            </IconButton>
-            {children}
-          </Drawer>
-        </Hidden>
+            <HighlightOffIcon />
+          </IconButton>
+          {children}
+        </Drawer>
 
-        <Hidden mdDown implementation='css'>
-          <Drawer
-            classes={{
-              paper: classes.drawerPaper
-            }}
-            anchor='right'
-            variant='permanent'
-            open
-          >
-            {children}
-          </Drawer>
-        </Hidden>
-      </nav>
+        <Drawer
+          sx={{ display: { xs: 'none', md: 'block' } }}
+          anchor='right'
+          variant='permanent'
+          open
+          PaperProps={{
+            sx: { width: drawerWidth }
+          }}
+        >
+          {children}
+        </Drawer>
+      </Box>
     </>
   )
 }

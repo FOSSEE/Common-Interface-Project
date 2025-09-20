@@ -8,6 +8,26 @@ import mxGraphFactory from 'mxgraph'
 import PropTypes from 'prop-types'
 import beautify from 'xml-beautifier'
 
+import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined'
+import ClearAllIcon from '@mui/icons-material/ClearAll'
+import CloseIcon from '@mui/icons-material/Close'
+import CompareArrowsIcon from '@mui/icons-material/CompareArrows'
+import CreateNewFolderOutlinedIcon from '@mui/icons-material/CreateNewFolderOutlined'
+import DeleteIcon from '@mui/icons-material/Delete'
+import DescriptionIcon from '@mui/icons-material/Description'
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
+import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined'
+import OpenInBrowserIcon from '@mui/icons-material/OpenInBrowser'
+import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline'
+import PrintOutlinedIcon from '@mui/icons-material/PrintOutlined'
+import RedoIcon from '@mui/icons-material/Redo'
+import RotateRightIcon from '@mui/icons-material/RotateRight'
+import SaveOutlinedIcon from '@mui/icons-material/SaveOutlined'
+import SettingsOverscanIcon from '@mui/icons-material/SettingsOverscan'
+import SystemUpdateAltOutlinedIcon from '@mui/icons-material/SystemUpdateAltOutlined'
+import UndoIcon from '@mui/icons-material/Undo'
+import ZoomInIcon from '@mui/icons-material/ZoomIn'
+import ZoomOutIcon from '@mui/icons-material/ZoomOut'
 import {
   Divider,
   Drawer,
@@ -19,28 +39,7 @@ import {
   Snackbar,
   Tooltip,
   useMediaQuery
-} from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import AddBoxOutlinedIcon from '@material-ui/icons/AddBoxOutlined'
-import ClearAllIcon from '@material-ui/icons/ClearAll'
-import CloseIcon from '@material-ui/icons/Close'
-import CompareArrowsIcon from '@material-ui/icons/CompareArrows'
-import CreateNewFolderOutlinedIcon from '@material-ui/icons/CreateNewFolderOutlined'
-import DeleteIcon from '@material-ui/icons/Delete'
-import DescriptionIcon from '@material-ui/icons/Description'
-import HelpOutlineIcon from '@material-ui/icons/HelpOutline'
-import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined'
-import OpenInBrowserIcon from '@material-ui/icons/OpenInBrowser'
-import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
-import PrintOutlinedIcon from '@material-ui/icons/PrintOutlined'
-import RedoIcon from '@material-ui/icons/Redo'
-import RotateRightIcon from '@material-ui/icons/RotateRight'
-import SaveOutlinedIcon from '@material-ui/icons/SaveOutlined'
-import SettingsOverscanIcon from '@material-ui/icons/SettingsOverscan'
-import SystemUpdateAltOutlinedIcon from '@material-ui/icons/SystemUpdateAltOutlined'
-import UndoIcon from '@material-ui/icons/Undo'
-import ZoomInIcon from '@material-ui/icons/ZoomIn'
-import ZoomOutIcon from '@material-ui/icons/ZoomOut'
+} from '@mui/material'
 
 import { closeCompProperties } from '../../redux/componentPropertiesSlice'
 import {
@@ -81,27 +80,6 @@ const {
   mxUtils
 } = new mxGraphFactory()
 
-const useStyles = makeStyles((theme) => ({
-  menuButton: {
-    marginLeft: 'auto',
-    marginRight: theme.spacing(0),
-    padding: theme.spacing(1),
-    [theme.breakpoints.up('lg')]: {
-      display: 'none'
-    }
-  },
-  tools: {
-    padding: theme.spacing(1),
-    margin: theme.spacing(0, 0.5),
-    color: '#262626'
-  },
-  pipe: {
-    fontSize: '1.45rem',
-    color: '#d6c4c2',
-    margin: theme.spacing(0, 1.5)
-  }
-}))
-
 // Notification snackbar to give alert messages
 function SimpleSnackbar ({ open, close, message }) {
   return (
@@ -134,7 +112,6 @@ SimpleSnackbar.propTypes = {
 }
 
 export default function SchematicToolbar ({ _mobileClose, gridRef }) {
-  const classes = useStyles()
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
   const description = useSelector(state => state.saveSchematic.description)
   const xmlData = useSelector(state => state.saveSchematic.xmlData)
@@ -545,12 +522,33 @@ export default function SchematicToolbar ({ _mobileClose, gridRef }) {
               <Tooltip key={index} title={item.label}>
                 {item.link
                   ? (
-                    <IconButton color='inherit' className={classes.tools} size='small' component={RouterLink} to={item.link}>
+                    <IconButton
+                      color='inherit'
+                      size='small'
+                      component={RouterLink}
+                      to={item.link}
+                      sx={{
+                        p: 1,
+                        mx: 0.5,
+                        my: 0,
+                        color: '#262626'
+                      }}
+                    >
                       {item.icon}
                     </IconButton>
                   )
                   : (
-                    <IconButton color='inherit' className={classes.tools} size='small' onClick={item.action}>
+                    <IconButton
+                      color='inherit'
+                      size='small'
+                      onClick={item.action}
+                      sx={{
+                        p: 1,
+                        mx: 0.5,
+                        my: 0,
+                        color: '#262626'
+                      }}
+                    >
                       {item.icon}
                     </IconButton>
                   )}
@@ -568,7 +566,12 @@ export default function SchematicToolbar ({ _mobileClose, gridRef }) {
                 edge='end'
                 size='small'
                 onClick={toggleDrawer(true)}
-                className={classes.menuButton}
+                sx={{
+                  ml: 'auto',
+                  mr: 0,
+                  p: 1,
+                  display: { lg: 'none' }
+                }}
               >
                 <AddBoxOutlinedIcon fontSize='small' />
               </IconButton>

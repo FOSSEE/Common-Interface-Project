@@ -3,52 +3,21 @@ import { Link as RouterLink } from 'react-router-dom'
 
 import {
   Avatar,
+  Box,
   Divider,
-  Hidden,
   InputBase,
   List,
   ListItem,
   ListItemAvatar,
   ListItemText,
   Typography
-} from '@material-ui/core'
-import { deepPurple } from '@material-ui/core/colors'
-import { makeStyles } from '@material-ui/core/styles'
+} from '@mui/material'
+import { deepPurple } from '@mui/material/colors'
 
 import { getUppercaseInitial } from '../../utils/GalleryUtils'
 
-const useStyles = makeStyles((theme) => ({
-  toolbar: {
-    minHeight: '45px'
-  },
-  purple: {
-    color: theme.palette.getContrastText(deepPurple[500]),
-    backgroundColor: deepPurple[500]
-  },
-  sideItem: {
-    padding: theme.spacing(1.5, 2)
-  },
-  nested: {
-    paddingLeft: theme.spacing(2),
-    overflow: 'auto',
-    width: '100%',
-    maxHeight: 200
-  },
-  nestedSearch: {
-    padding: theme.spacing(0),
-    border: '1px solid #cccccc',
-    margin: theme.spacing(1, 2),
-    borderRadius: '5px'
-  },
-  input: {
-    marginLeft: theme.spacing(1),
-    flex: 1
-  }
-}))
-
 // Vertical Navbar for user dashboard
 export default function DashSidebar (_props) {
-  const classes = useStyles()
   const user = useSelector(state => state.auth.user)
   const schematics = useSelector(state => state.dashboard.schematics)
 
@@ -56,21 +25,32 @@ export default function DashSidebar (_props) {
   const placeholder = 'Find your ' + process.env.REACT_APP_SMALL_DIAGRAM_NAME + '...'
   return (
     <>
-      <Hidden smDown>
-        <div className={classes.toolbar} />
-      </Hidden>
+      <Box
+        sx={{
+          minHeight: '45px',
+          display: { xs: 'none', sm: 'block' }
+        }}
+      />
       <List>
         <ListItem
           alignItems='flex-start'
           component={RouterLink}
           to='/dashboard'
-          style={{ marginTop: '15px' }}
-          className={classes.sideItem}
           button
           divider
+          sx={{
+            px: 2,
+            py: 1.5,
+            mt: '15px'
+          }}
         >
           <ListItemAvatar>
-            <Avatar className={classes.purple}>
+            <Avatar
+              sx={{
+                color: theme => theme.palette.getContrastText(deepPurple[500]),
+                bgcolor: deepPurple[500]
+              }}
+            >
               {getUppercaseInitial(user.username)}
             </Avatar>
           </ListItemAvatar>
@@ -92,26 +72,48 @@ export default function DashSidebar (_props) {
         <ListItem
           component={RouterLink}
           to='/dashboard/schematics'
-          className={classes.sideItem}
           button
+          sx={{
+            px: 2,
+            py: 1.5
+          }}
         >
           <ListItemText primary={button} />
         </ListItem>
 
         {/* List name of saved schematics */}
-        <List className={classes.nestedSearch}>
+        <List
+          sx={{
+            p: 0,
+            border: '1px solid #cccccc',
+            mx: 2,
+            my: 1,
+            borderRadius: '5px'
+          }}
+        >
           <InputBase
-            className={classes.input}
             placeholder={placeholder}
+            sx={{
+              ml: 1,
+              flex: 1
+            }}
           />
         </List>
-        <div className={classes.nested}>
+        <Box
+          component='div'
+          sx={{
+            pl: 2,
+            overflow: 'auto',
+            width: '100%',
+            maxHeight: 200
+          }}
+        >
           {schematics.map((sch) => (
             <ListItem key={sch.save_id} button>
               <ListItemText primary={`${sch.name}`} />
             </ListItem>
           ))}
-        </div>
+        </Box>
         <Divider />
       </List>
     </>

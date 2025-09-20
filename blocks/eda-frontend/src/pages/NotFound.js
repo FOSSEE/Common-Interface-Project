@@ -1,17 +1,9 @@
 // Page to display Page Not Found (i.e. 404) error.
 import { useEffect } from 'react'
 
-import { Container, Typography } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-
-const useStyles = makeStyles((theme) => ({
-  header: {
-    padding: theme.spacing(8, 0, 6)
-  }
-}))
+import { Container, Typography } from '@mui/material'
 
 export default function NotFound () {
-  const classes = useStyles()
   const name = process.env.REACT_APP_NAME
 
   useEffect(() => {
@@ -19,7 +11,14 @@ export default function NotFound () {
   }, [name])
 
   return (
-    <Container maxWidth='lg' className={classes.header}>
+    <Container
+      maxWidth='lg'
+      sx={{
+        px: 0,
+        pt: 8,
+        pb: 6
+      }}
+    >
       <Typography variant='h1' align='center' gutterBottom>
         404 Not Found
       </Typography>

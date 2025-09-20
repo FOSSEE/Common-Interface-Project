@@ -1,8 +1,14 @@
-import { forwardRef, useCallback, useState, useEffect } from 'react'
+import {
+  forwardRef,
+  useCallback,
+  useState,
+  useEffect
+} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import PropTypes from 'prop-types'
 
+import CloseIcon from '@mui/icons-material/Close'
 import {
   AppBar,
   Avatar,
@@ -34,10 +40,8 @@ import {
   Typography,
   Box,
   TextField
-} from '@material-ui/core'
-import { blue } from '@material-ui/core/colors'
-import { makeStyles } from '@material-ui/core/styles'
-import CloseIcon from '@material-ui/icons/Close'
+} from '@mui/material'
+import { blue } from '@mui/material/colors'
 
 import { fetchSchematics, fetchGallery } from '../../redux/dashboardSlice'
 import {
@@ -106,32 +110,6 @@ NetlistModal.propTypes = {
   netlist: PropTypes.string
 }
 
-const useStyles = makeStyles((theme) => ({
-  appBar: {
-    position: 'relative'
-  },
-  title: {
-    marginLeft: theme.spacing(2),
-    flex: 1
-  },
-  header: {
-    padding: theme.spacing(5, 0, 6),
-    color: '#fff'
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    backgroundColor: '#404040',
-    color: '#fff'
-  },
-  avatar: {
-    width: theme.spacing(4),
-    height: theme.spacing(4),
-    backgroundColor: blue[100],
-    color: blue[600]
-  }
-}))
-
 //To get type of variable from map value type
 const getType = (type) => {
   let type_name = ''
@@ -147,7 +125,6 @@ const getType = (type) => {
 
 // Screen to display information about as keyboard shortcuts, units table and simulation modes
 export function HelpScreen ({ open, close }) {
-  const classes = useStyles()
   return (
     <div>
       <Dialog
@@ -158,12 +135,24 @@ export function HelpScreen ({ open, close }) {
           }
         }}
       >
-        <AppBar position='static' elevation={0} className={classes.appBar}>
+        <AppBar
+          position='static'
+          elevation={0}
+          sx={{
+            position: 'relative'
+          }}
+        >
           <Toolbar variant='dense' style={{ backgroundColor: '#404040' }}>
             <IconButton edge='start' color='inherit' onClick={close} aria-label='close'>
               <CloseIcon />
             </IconButton>
-            <Typography variant='h6' className={classes.title}>
+            <Typography
+              variant='h6'
+              sx={{
+                ml: 2,
+                flex: 1
+              }}
+            >
               Help
             </Typography>
             <Button autoFocus color='inherit' onClick={close}>
@@ -171,7 +160,15 @@ export function HelpScreen ({ open, close }) {
             </Button>
           </Toolbar>
         </AppBar>
-        <Container maxWidth='lg' className={classes.header}>
+        <Container
+          maxWidth='lg'
+          sx={{
+            px: 0,
+            pt: 5,
+            pb: 6,
+            color: '#fff'
+          }}
+        >
           <Grid
             container
             spacing={3}
@@ -181,7 +178,14 @@ export function HelpScreen ({ open, close }) {
           >
 
             <Grid item xs={12} sm={12}>
-              <Paper className={classes.paper}>
+              <Paper
+                sx={{
+                  p: 2,
+                  textAlign: 'center',
+                  bgcolor: '#404040',
+                  color: '#fff'
+                }}
+              >
                 <fieldset style={{ padding: '20px 40px' }}>
                   <legend>
                     <Typography variant='h5' align='center' component='p' gutterBottom>
@@ -227,7 +231,14 @@ export function HelpScreen ({ open, close }) {
             </Grid>
 
             <Grid item xs={12} sm={12}>
-              <Paper className={classes.paper}>
+              <Paper
+                sx={{
+                  p: 2,
+                  textAlign: 'center',
+                  bgcolor: '#404040',
+                  color: '#fff'
+                }}
+              >
                 <fieldset style={{ padding: '20px 40px' }}>
                   <legend>
                     <Typography variant='h5' align='center' component='p' gutterBottom>
@@ -237,7 +248,9 @@ export function HelpScreen ({ open, close }) {
                   <Typography>
 
                     <TableContainer component={Paper}>
-                      <Table className={classes.table} aria-label='simple table'>
+                      <Table
+                        aria-label='simple table'
+                      >
                         <caption>Scale factors naming conventions</caption>
                         <TableHead>
                           <TableRow>
@@ -309,7 +322,14 @@ export function HelpScreen ({ open, close }) {
               </Paper>
             </Grid>
             <Grid item xs={12} sm={12}>
-              <Paper className={classes.paper}>
+              <Paper
+                sx={{
+                  p: 2,
+                  textAlign: 'center',
+                  bgcolor: '#404040',
+                  color: '#fff'
+                }}
+              >
                 <fieldset style={{ padding: '20px 40px' }}>
                   <legend>
                     <Typography variant='h5' align='center' component='p' gutterBottom>
@@ -625,7 +645,6 @@ ScriptScreen.propTypes = {
 // Image Export Dialog box
 const ImgTypes = ['PNG', 'JPG', 'SVG']
 export function ImageExportDialog (props) {
-  const classes = useStyles()
   const { onClose, open } = props
 
   const handleClose = () => {
@@ -643,7 +662,14 @@ export function ImageExportDialog (props) {
         {ImgTypes.map((img) => (
           <ListItem button onClick={() => handleListItemClick(img)} key={img}>
             <ListItemAvatar>
-              <Avatar className={classes.avatar}>
+              <Avatar
+                sx={{
+                  width: theme => theme.spacing(4),
+                  height: theme => theme.spacing(4),
+                  bgcolor: blue[100],
+                  color: blue[600]
+                }}
+              >
                 {getUppercaseInitial(img)}
               </Avatar>
             </ListItemAvatar>

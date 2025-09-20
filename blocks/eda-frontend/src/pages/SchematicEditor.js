@@ -5,8 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import PropTypes from 'prop-types'
 
-import { CssBaseline } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
+import { Box, CssBaseline } from '@mui/material'
 
 import { changePorts } from '../components/SchematicEditor/ComponentProperties'
 import ComponentSidebar, { ComponentImages } from '../components/SchematicEditor/ComponentSidebar'
@@ -23,18 +22,7 @@ import { fetchDiagram, fetchSchematic } from '../redux/saveSchematicSlice'
 import store from '../redux/store'
 import { styleToObject } from '../utils/GalleryUtils'
 
-const useStyles = makeStyles((_theme) => ({
-  root: {
-    display: 'flex',
-    minHeight: '100vh'
-  },
-  toolbar: {
-    minHeight: '80px'
-  }
-}))
-
 export default function SchematicEditor (props) {
-  const classes = useStyles()
   const compRef = useRef()
   const gridRef = useRef()
   const outlineRef = useRef()
@@ -141,7 +129,13 @@ export default function SchematicEditor (props) {
   }, [dispatch, props.location.search])
 
   return (
-    <div className={classes.root}>
+    <Box
+      component='div'
+      sx={{
+        display: 'flex',
+        minHeight: '100vh'
+      }}
+    >
 
       <CssBaseline />
 
@@ -151,7 +145,12 @@ export default function SchematicEditor (props) {
 
       {/* Grid for drawing and designing diagrams */}
       <LayoutMain>
-        <div className={classes.toolbar} />
+        <Box
+          component='div'
+          sx={{
+            minHeight: '80px'
+          }}
+        />
         <center>
           <button
             id="closeButton"
@@ -193,7 +192,7 @@ export default function SchematicEditor (props) {
       <RightSidebar mobileOpen={mobileOpen} mobileClose={handleDrawerToggle}>
         <PropertiesSidebar gridRef={gridRef} outlineRef={outlineRef} />
       </RightSidebar>
-    </div>
+    </Box>
   )
 }
 

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Link as RouterLink, useHistory } from 'react-router-dom'
+import { Link as RouterLink, useNavigate } from 'react-router-dom'
 
 import {
   AppBar,
@@ -14,48 +14,16 @@ import {
   MenuItem,
   Toolbar,
   Typography
-} from '@material-ui/core'
-import { deepPurple } from '@material-ui/core/colors'
-import { makeStyles } from '@material-ui/core/styles'
+} from '@mui/material'
+import { deepPurple } from '@mui/material/colors'
 
 import { logout } from '../../redux/authSlice'
 import logo from '../../static/favicon.ico'
 import { getUppercaseInitial } from '../../utils/GalleryUtils'
 
-const useStyles = makeStyles((theme) => ({
-  appBar: {
-    borderBottom: `1px solid ${theme.palette.divider}`
-  },
-  toolbar: {
-    flexWrap: 'wrap'
-  },
-  toolbarTitle: {
-    flexGrow: 1
-  },
-  link: {
-    margin: theme.spacing(1, 1.5)
-  },
-  button: {
-    marginRight: theme.spacing(0.7)
-  },
-  small: {
-    width: theme.spacing(3.7),
-    height: theme.spacing(3.7),
-    borderRadius: '10%'
-  },
-  purple: {
-    width: theme.spacing(3.75),
-    height: theme.spacing(3.75),
-    color: theme.palette.getContrastText(deepPurple[500]),
-    backgroundColor: deepPurple[500],
-    fontSize: '17px'
-  }
-}))
-
 // Common navbar for Dashboard, Home, Gallery, etc.
 export function Header () {
-  const history = useHistory()
-  const classes = useStyles()
+  const navigate = useNavigate()
   const [anchorEl, setAnchorEl] = useState(null)
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
   const user = useSelector(state => state.auth.user)
@@ -76,14 +44,30 @@ export function Header () {
   return (
     <>
       {/* Display logo */}
-      <IconButton edge='start' className={classes.button} color='primary'>
-        <Avatar alt={altImage} src={logo} className={classes.small} />
+      <IconButton
+        edge='start'
+        color='primary'
+        sx={{
+          mr: 0.7
+        }}
+      >
+        <Avatar
+          alt={altImage}
+          src={logo}
+          sx={{
+            width: theme => theme.spacing(3.7),
+            height: theme => theme.spacing(3.7),
+            borderRadius: '10%'
+          }}
+        />
       </IconButton>
       <Typography
         variant='h6'
         color='inherit'
         noWrap
-        className={classes.toolbarTitle}
+        sx={{
+          flexGrow: 1
+        }}
       >
         <Link color='inherit' to='/' component={RouterLink}>
           {link}
@@ -100,7 +84,10 @@ export function Header () {
                 color='textPrimary'
                 to='/'
                 component={RouterLink}
-                className={classes.link}
+                sx={{
+                  mx: 1.5,
+                  my: 1
+                }}
               >
                 Home
               </Link>
@@ -110,7 +97,10 @@ export function Header () {
                 color='textPrimary'
                 to='/editor'
                 component={RouterLink}
-                className={classes.link}
+                sx={{
+                  mx: 1.5,
+                  my: 1
+                }}
               >
                 Editor
               </Link>
@@ -120,7 +110,10 @@ export function Header () {
                 color='textPrimary'
                 to='/gallery'
                 component={RouterLink}
-                className={classes.link}
+                sx={{
+                  mx: 1.5,
+                  my: 1
+                }}
               >
                 Gallery
               </Link>
@@ -130,7 +123,10 @@ export function Header () {
                 color='textPrimary'
                 to='/dashboard'
                 component={RouterLink}
-                className={classes.link}
+                sx={{
+                  mx: 1.5,
+                  my: 1
+                }}
               >
                 Dashboard
               </Link>
@@ -182,7 +178,15 @@ export function Header () {
               aria-haspopup='true'
               onClick={handleClick}
             >
-              <Avatar className={classes.purple}>
+              <Avatar
+                sx={{
+                  width: theme => theme.spacing(3.75),
+                  height: theme => theme.spacing(3.75),
+                  color: theme => theme.palette.getContrastText(deepPurple[500]),
+                  bgcolor: deepPurple[500],
+                  fontSize: '17px'
+                }}
+              >
                 {getUppercaseInitial(user.username)}
               </Avatar>
             </IconButton>
@@ -210,7 +214,7 @@ export function Header () {
                 {typography}
               </MenuItem>
               <MenuItem onClick={() => {
-                dispatch(logout(history))
+                dispatch(logout(navigate))
               }}
               >
                 Logout
@@ -224,16 +228,23 @@ export function Header () {
 }
 
 export default function Navbar () {
-  const classes = useStyles()
-
   return (
     <AppBar
       position='static'
       color='default'
       elevation={0}
-      className={classes.appBar}
+      sx={{
+        borderBottom: 1,
+        borderColor: 'divider'
+      }}
     >
-      <Toolbar variant='dense' color='default' className={classes.toolbar}>
+      <Toolbar
+        variant='dense'
+        color='default'
+        sx={{
+          flexWrap: 'wrap'
+        }}
+      >
 
         <Header />
       </Toolbar>
