@@ -2,8 +2,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { TailSpin } from 'react-loader-spinner'
 import { useDispatch, useSelector } from 'react-redux'
-
-import PropTypes from 'prop-types'
+import { useLocation } from 'react-router-dom'
 
 import { Box, CssBaseline } from '@mui/material'
 
@@ -22,7 +21,8 @@ import { fetchDiagram, fetchSchematic } from '../redux/saveSchematicSlice'
 import store from '../redux/store'
 import { styleToObject } from '../utils/GalleryUtils'
 
-export default function SchematicEditor (props) {
+export default function SchematicEditor () {
+  const location = useLocation()
   const compRef = useRef()
   const gridRef = useRef()
   const outlineRef = useRef()
@@ -113,8 +113,8 @@ export default function SchematicEditor (props) {
     const outline = outlineRef.current
     LoadGrid(container, sidebar, outline, setMainDiagramBackup, setActiveCellId)
 
-    if (props.location.search !== '') {
-      const query = new URLSearchParams(props.location.search)
+    if (location.search !== '') {
+      const query = new URLSearchParams(location.search)
       const cktid = query.get('id')
 
       if (cktid.substring(0, 7) === 'gallery') {
@@ -126,7 +126,7 @@ export default function SchematicEditor (props) {
         dispatch(fetchSchematic(cktid))
       }
     }
-  }, [dispatch, props.location.search])
+  }, [dispatch, location.search])
 
   return (
     <Box
@@ -194,8 +194,4 @@ export default function SchematicEditor (props) {
       </RightSidebar>
     </Box>
   )
-}
-
-SchematicEditor.propTypes = {
-  location: PropTypes.object
 }

@@ -3,8 +3,6 @@ import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link as RouterLink, useLocation } from 'react-router-dom'
 
-import PropTypes from 'prop-types'
-
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import Visibility from '@mui/icons-material/Visibility'
 import VisibilityOff from '@mui/icons-material/VisibilityOff'
@@ -40,7 +38,8 @@ function useQuery () {
   return new URLSearchParams(useLocation().search)
 }
 
-export default function SignIn (props) {
+export default function Login () {
+  const location = useLocation()
   const authErrors = useSelector(state => state.auth.errors)
   const [errors, setErrors] = useState(authErrors || '')
   
@@ -68,8 +67,8 @@ export default function SignIn (props) {
 
   useEffect(() => {
     document.title = 'Login - ' + process.env.REACT_APP_NAME
-    if (props.location.search !== '') {
-      const query = new URLSearchParams(props.location.search)
+    if (location.search !== '') {
+      const query = new URLSearchParams(location.search)
       url = query.get('url')
       localStorage.setItem('ard_redurl', url)
     } else {
@@ -79,7 +78,7 @@ export default function SignIn (props) {
     return () => {
       dispatch(authDefault())
     }
-  }, [dispatch, props.location.search])
+  }, [dispatch, location.search])
 
   const rememberedUsername = localStorage.getItem('rememberedUsername') || ''
   const [username, setUsername] = useState(rememberedUsername)
@@ -269,8 +268,4 @@ export default function SignIn (props) {
       </Button>
     </Container>
   )
-}
-
-SignIn.propTypes = {
-  location: PropTypes.object
 }
