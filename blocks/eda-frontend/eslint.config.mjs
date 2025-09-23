@@ -71,6 +71,14 @@ export default [
       'react-hooks/exhaustive-deps': 'warn',
       'react-hooks/rules-of-hooks': 'error',
 
+      'no-restricted-imports': ['error', {
+        patterns: [
+          {
+            regex: '^@mui/[^/]+$'
+          }
+        ]
+      }],
+
       // Import order
       'import/order': ['warn', {
         groups: [

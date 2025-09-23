@@ -11,18 +11,16 @@ import Highcharts from 'highcharts'
 import PropTypes from 'prop-types'
 
 import CloseIcon from '@mui/icons-material/Close'
-import {
-  AppBar,
-  Button,
-  Container,
-  Dialog,
-  Grid,
-  IconButton,
-  Paper,
-  Slide,
-  Toolbar,
-  Typography
-} from '@mui/material'
+import AppBar from '@mui/material/AppBar'
+import Button from '@mui/material/Button'
+import Container from '@mui/material/Container'
+import Dialog from '@mui/material/Dialog'
+import Grid from '@mui/material/Grid'
+import IconButton from '@mui/material/IconButton'
+import Paper from '@mui/material/Paper'
+import Slide from '@mui/material/Slide'
+import Toolbar from '@mui/material/Toolbar'
+import Typography from '@mui/material/Typography'
 
 import { setResultGraph, setSimulating, setErrorMessage } from '../../redux/simulationSlice'
 import api from '../../utils/Api'

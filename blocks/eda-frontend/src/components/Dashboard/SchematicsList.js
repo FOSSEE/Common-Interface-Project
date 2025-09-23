@@ -1,14 +1,12 @@
 import { useSelector } from 'react-redux'
 import { Link as RouterLink } from 'react-router-dom'
 
-import {
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  Grid,
-  Typography
-} from '@mui/material'
+import Button from '@mui/material/Button'
+import Card from '@mui/material/Card'
+import CardActions from '@mui/material/CardActions'
+import CardContent from '@mui/material/CardContent'
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
 
 import SchematicCard from './SchematicCard'
 

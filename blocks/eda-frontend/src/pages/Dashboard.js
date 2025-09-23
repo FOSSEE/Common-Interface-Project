@@ -2,7 +2,8 @@
 import { useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
-import { Box, CssBaseline } from '@mui/material'
+import Box from '@mui/material/Box'
+import CssBaseline from '@mui/material/CssBaseline'
 
 import DashboardHome from '../components/Dashboard/DashboardHome'
 import DashboardSidebar from '../components/Dashboard/DashboardSidebar'

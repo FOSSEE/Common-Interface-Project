@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 
-import { Box } from '@mui/material'
+import Box from '@mui/material/Box'
 
 // Display main content of layout
 export default function LayoutMain ({ children }) {

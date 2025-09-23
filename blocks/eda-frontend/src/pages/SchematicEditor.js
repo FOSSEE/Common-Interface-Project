@@ -4,7 +4,8 @@ import { TailSpin } from 'react-loader-spinner'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 
-import { Box, CssBaseline } from '@mui/material'
+import Box from '@mui/material/Box'
+import CssBaseline from '@mui/material/CssBaseline'
 
 import { changePorts } from '../components/SchematicEditor/ComponentProperties'
 import ComponentSidebar, { ComponentImages } from '../components/SchematicEditor/ComponentSidebar'

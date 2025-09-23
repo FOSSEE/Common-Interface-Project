@@ -3,17 +3,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link as RouterLink } from 'react-router-dom'
 
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
-import {
-  Avatar,
-  Box,
-  Button,
-  Card,
-  Container,
-  Grid,
-  Link,
-  TextField,
-  Typography
-} from '@mui/material'
+import Avatar from '@mui/material/Avatar'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import Card from '@mui/material/Card'
+import Container from '@mui/material/Container'
+import Grid from '@mui/material/Grid'
+import Link from '@mui/material/Link'
+import TextField from '@mui/material/TextField'
+import Typography from '@mui/material/Typography'
 
 import { resetPassword, authDefault } from '../redux/authSlice'
 

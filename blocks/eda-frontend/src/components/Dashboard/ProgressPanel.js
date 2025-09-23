@@ -3,14 +3,12 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import PropTypes from 'prop-types'
 
-import {
-  AppBar,
-  Box,
-  Grid,
-  Tab,
-  Tabs,
-  Typography
-} from '@mui/material'
+import AppBar from '@mui/material/AppBar'
+import Box from '@mui/material/Box'
+import Grid from '@mui/material/Grid'
+import Tab from '@mui/material/Tab'
+import Tabs from '@mui/material/Tabs'
+import Typography from '@mui/material/Typography'
 
 import { fetchSchematics } from '../../redux/dashboardSlice'
 

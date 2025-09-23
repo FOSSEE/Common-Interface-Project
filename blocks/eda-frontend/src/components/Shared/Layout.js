@@ -3,7 +3,9 @@ import { useState } from 'react'
 import PropTypes from 'prop-types'
 
 import MenuIcon from '@mui/icons-material/Menu'
-import { AppBar, IconButton, Toolbar } from '@mui/material'
+import AppBar from '@mui/material/AppBar'
+import IconButton from '@mui/material/IconButton'
+import Toolbar from '@mui/material/Toolbar'
 
 import LayoutSidebar from './LayoutSidebar'
 

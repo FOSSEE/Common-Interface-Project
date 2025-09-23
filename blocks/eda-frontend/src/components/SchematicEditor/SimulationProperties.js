@@ -2,19 +2,17 @@ import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Box,
-  Button,
-  InputAdornment,
-  List,
-  ListItem,
-  MenuItem,
-  TextField,
-  Typography
-} from '@mui/material'
+import Accordion from '@mui/material/Accordion'
+import AccordionDetails from '@mui/material/AccordionDetails'
+import AccordionSummary from '@mui/material/AccordionSummary'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import InputAdornment from '@mui/material/InputAdornment'
+import List from '@mui/material/List'
+import ListItem from '@mui/material/ListItem'
+import MenuItem from '@mui/material/MenuItem'
+import TextField from '@mui/material/TextField'
+import Typography from '@mui/material/Typography'
 
 import { setResultTitle, setResultTaskId, resetResult } from '../../redux/simulationSlice'
 import store from '../../redux/store'

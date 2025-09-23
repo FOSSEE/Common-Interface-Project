@@ -6,29 +6,27 @@ import PropTypes from 'prop-types'
 
 import CloseIcon from '@mui/icons-material/Close'
 import ShareIcon from '@mui/icons-material/Share'
-import {
-  Avatar,
-  Box,
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  Fade,
-  FormControlLabel,
-  IconButton,
-  Input,
-  Link,
-  ListItemText,
-  Menu,
-  MenuItem,
-  Snackbar,
-  Switch,
-  Toolbar,
-  Typography
-} from '@mui/material'
+import Avatar from '@mui/material/Avatar'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
 import { deepPurple } from '@mui/material/colors'
+import Dialog from '@mui/material/Dialog'
+import DialogActions from '@mui/material/DialogActions'
+import DialogContent from '@mui/material/DialogContent'
+import DialogContentText from '@mui/material/DialogContentText'
+import DialogTitle from '@mui/material/DialogTitle'
+import Fade from '@mui/material/Fade'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import IconButton from '@mui/material/IconButton'
+import Input from '@mui/material/Input'
+import Link from '@mui/material/Link'
+import ListItemText from '@mui/material/ListItemText'
+import Menu from '@mui/material/Menu'
+import MenuItem from '@mui/material/MenuItem'
+import Snackbar from '@mui/material/Snackbar'
+import Switch from '@mui/material/Switch'
+import Toolbar from '@mui/material/Toolbar'
+import Typography from '@mui/material/Typography'
 
 import { logout } from '../../redux/authSlice'
 import { setSchTitle, setSchShared } from '../../redux/saveSchematicSlice'

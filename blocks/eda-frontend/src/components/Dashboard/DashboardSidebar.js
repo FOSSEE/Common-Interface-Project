@@ -1,18 +1,16 @@
 import { useSelector } from 'react-redux'
 import { Link as RouterLink } from 'react-router-dom'
 
-import {
-  Avatar,
-  Box,
-  Divider,
-  InputBase,
-  List,
-  ListItem,
-  ListItemAvatar,
-  ListItemText,
-  Typography
-} from '@mui/material'
+import Avatar from '@mui/material/Avatar'
+import Box from '@mui/material/Box'
 import { deepPurple } from '@mui/material/colors'
+import Divider from '@mui/material/Divider'
+import InputBase from '@mui/material/InputBase'
+import List from '@mui/material/List'
+import ListItem from '@mui/material/ListItem'
+import ListItemAvatar from '@mui/material/ListItemAvatar'
+import ListItemText from '@mui/material/ListItemText'
+import Typography from '@mui/material/Typography'
 
 import { getUppercaseInitial } from '../../utils/GalleryUtils'
 

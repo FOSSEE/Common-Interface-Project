@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types'
 
 import HighlightOffIcon from '@mui/icons-material/HighlightOff'
-import { Box, Drawer, IconButton } from '@mui/material'
+import Box from '@mui/material/Box'
+import Drawer from '@mui/material/Drawer'
+import IconButton from '@mui/material/IconButton'
 
 const drawerWidth = 250
 

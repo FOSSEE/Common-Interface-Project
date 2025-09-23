@@ -3,15 +3,13 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import PropTypes from 'prop-types'
 
-import {
-  Box,
-  List,
-  ListItem,
-  ListItemText,
-  MenuItem,
-  TextField,
-  TextareaAutosize
-} from '@mui/material'
+import Box from '@mui/material/Box'
+import List from '@mui/material/List'
+import ListItem from '@mui/material/ListItem'
+import ListItemText from '@mui/material/ListItemText'
+import MenuItem from '@mui/material/MenuItem'
+import TextareaAutosize from '@mui/material/TextareaAutosize'
+import TextField from '@mui/material/TextField'
 
 import { setSchDescription } from '../../redux/saveSchematicSlice'
 

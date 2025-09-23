@@ -11,8 +11,7 @@ import { styleToObject } from '../../../utils/GalleryUtils'
 
 import keyboardShortcuts from './KeyboardShortcuts'
 import { sideBar } from './SideBar'
-import toolbarTools, { editorZoomAct } from './ToolbarTools'
-import { renderGalleryXML } from './ToolbarTools'
+import toolbarTools, { editorZoomAct, renderGalleryXML } from './ToolbarTools'
 
 export let graph
 

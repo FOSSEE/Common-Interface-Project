@@ -1,7 +1,8 @@
 // Page to display Page Not Found (i.e. 404) error.
 import { useEffect } from 'react'
 
-import { Container, Typography } from '@mui/material'
+import Container from '@mui/material/Container'
+import Typography from '@mui/material/Typography'
 
 export default function NotFound () {
   const name = process.env.REACT_APP_NAME

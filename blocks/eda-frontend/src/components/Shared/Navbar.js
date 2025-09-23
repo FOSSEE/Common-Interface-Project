@@ -2,20 +2,18 @@ import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link as RouterLink, useNavigate } from 'react-router-dom'
 
-import {
-  AppBar,
-  Avatar,
-  Button,
-  Fade,
-  IconButton,
-  Link,
-  ListItemText,
-  Menu,
-  MenuItem,
-  Toolbar,
-  Typography
-} from '@mui/material'
+import AppBar from '@mui/material/AppBar'
+import Avatar from '@mui/material/Avatar'
+import Button from '@mui/material/Button'
 import { deepPurple } from '@mui/material/colors'
+import Fade from '@mui/material/Fade'
+import IconButton from '@mui/material/IconButton'
+import Link from '@mui/material/Link'
+import ListItemText from '@mui/material/ListItemText'
+import Menu from '@mui/material/Menu'
+import MenuItem from '@mui/material/MenuItem'
+import Toolbar from '@mui/material/Toolbar'
+import Typography from '@mui/material/Typography'
 
 import { logout } from '../../redux/authSlice'
 import logo from '../../static/favicon.ico'
