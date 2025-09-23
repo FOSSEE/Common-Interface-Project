@@ -144,7 +144,7 @@ const BookDropdown = ({ onBookChange }) => {
   return (
     <Grid container spacing={2} alignItems='center'>
       <Grid size={12}>
-        <FormControl fullWidth>
+        <FormControl variant='standard' fullWidth>
           <InputLabel id='book-label'>Book</InputLabel>
           <Select
             labelId='book-label'
@@ -184,7 +184,7 @@ const SearchComponent = ({ onSearch }) => {
   return (
     <Grid container spacing={2}>
       <Grid size={12}>
-        <FormControl fullWidth>
+        <FormControl variant='standard' fullWidth>
           <InputLabel htmlFor='search-input'>Search</InputLabel>
           <Input
             id='search-input'
