@@ -215,12 +215,12 @@ export default function SignIn (props) {
             Login
           </Button>
           <Grid container>
-            <Grid item xs>
+            <Grid size="grow" sx={{ m: 'auto' }}>
               <Link component={RouterLink} to='/forgotpwd' variant='body2'>
                 Forgot password?
               </Link>
             </Grid>
-            <Grid item>
+            <Grid size="grow" sx={{ m: 'auto' }}>
               <Link component={RouterLink} to='/signup' variant='body2'>
                 New User? Sign Up
               </Link>

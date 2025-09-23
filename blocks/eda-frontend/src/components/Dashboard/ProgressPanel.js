@@ -95,18 +95,11 @@ export default function ProgressPanel () {
       {/* Display overview of recently 4 saved schematics */}
       <TabPanel value={value} index={0}>
         {schematics.length !== 0
-          ? <Grid
-            container
-            direction='row'
-            justifyContent='flex-start'
-            alignItems='flex-start'
-            alignContent='center'
-            spacing={3}
-          >
+          ? <Grid container direction='row' justifyContent='flex-start' alignItems='flex-start' alignContent='center' spacing={3}>
             {schematics.slice(0, 4).map(
               (sch) => {
                 return (
-                  <Grid item xs={12} sm={6} lg={3} key={sch.save_id}>
+                  <Grid size={{ xs: 12, sm: 6, lg: 3 }} key={sch.save_id}>
                     <SchematicCard sch={sch} />
                   </Grid>
                 )

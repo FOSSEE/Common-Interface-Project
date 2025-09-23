@@ -206,12 +206,24 @@ export default function SignUp () {
             disabled={!accept}
             sx={{
               mx: 0,
-              my: 1.5
+              my: 2
             }}
           >
             Sign Up
           </Button>
-          <Typography variant='body2' color='secondary' align='center'>Or</Typography>
+          <Grid container justifyContent='space-between'>
+            <Grid size="6">
+              <Link component={RouterLink} to='/login' variant='body2'>
+                Back to Login
+              </Link>
+            </Grid>
+            <Grid size="6">
+              <Link component={RouterLink} to='/forgotpwd' variant='body2'>
+                Forgot password?
+              </Link>
+            </Grid>
+          </Grid>
+          <Typography variant='body1' color='secondary' align='center'>Or</Typography>
 
           {/* Google oAuth Sign Up option */}
           <Button
@@ -241,13 +253,6 @@ export default function SignUp () {
           </Button>
         </Box>
 
-        <Grid container>
-          <Grid item style={{ margin: 'auto' }}>
-            <Link component={RouterLink} to='/login' variant='body2'>
-              Already have account? Login
-            </Link>
-          </Grid>
-        </Grid>
       </Card>
       <Button
         fullWidth

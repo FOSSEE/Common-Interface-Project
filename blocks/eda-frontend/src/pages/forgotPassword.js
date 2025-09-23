@@ -111,7 +111,7 @@ export default function ForgotPassword () {
         </Box>
 
         <Grid container>
-          <Grid item xs>
+          <Grid size="grow" sx={{ m: 'auto' }}>
             <Link component={RouterLink} to='/login' variant='body2'>
               Back to Login
             </Link>

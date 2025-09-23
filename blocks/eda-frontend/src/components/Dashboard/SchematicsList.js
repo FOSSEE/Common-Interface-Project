@@ -61,16 +61,9 @@ export default function SchematicsList () {
   const typography1 = 'You don\'t have any saved ' + process.env.REACT_APP_SMALL_DIAGRAMS_NAME + '...'
   return (
     <>
-      <Grid
-        container
-        direction='row'
-        justifyContent='flex-start'
-        alignItems='flex-start'
-        alignContent='center'
-        spacing={3}
-      >
+      <Grid container direction='row' justifyContent='flex-start' alignItems='flex-start' alignContent='center' spacing={3}>
         {/* User Dashboard My Schematic Header */}
-        <Grid item xs={12}>
+        <Grid size={12}>
           <MainCard />
         </Grid>
 
@@ -80,14 +73,14 @@ export default function SchematicsList () {
             {schematics.map(
               (sch) => {
                 return (
-                  <Grid item xs={12} sm={6} lg={3} key={sch.save_id}>
+                  <Grid size={{ xs: 12, sm: 6, lg: 3 }} key={sch.save_id}>
                     <SchematicCard sch={sch} />
                   </Grid>
                 )
               }
             )}
           </>
-          : <Grid item xs={12}>
+          : <Grid size={12}>
             <Card
               sx={{
                 width: '100%',

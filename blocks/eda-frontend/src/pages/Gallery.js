@@ -143,7 +143,7 @@ const BookDropdown = ({ onBookChange }) => {
 
   return (
     <Grid container spacing={2} alignItems='center'>
-      <Grid item xs={12}>
+      <Grid size={12}>
         <FormControl fullWidth>
           <InputLabel id='book-label'>Book</InputLabel>
           <Select
@@ -183,7 +183,7 @@ const SearchComponent = ({ onSearch }) => {
 
   return (
     <Grid container spacing={2}>
-      <Grid item xs={12}>
+      <Grid size={12}>
         <FormControl fullWidth>
           <InputLabel htmlFor='search-input'>Search</InputLabel>
           <Input
@@ -216,7 +216,7 @@ const Gallery = () => {
     dispatch(fetchGallery())
   }, [dispatch])
 
-  const ITEMS_PER_PAGE = 9 // Adjust as needed
+  const ITEMS_PER_PAGE = parseInt(process.env.REACT_APP_ITEMS_PER_PAGE || '12', 10)
   const [page, setPage] = useState(1)
 
   useEffect(() => {
@@ -289,7 +289,7 @@ const Gallery = () => {
       <Grid container justifyContent='center' style={{ marginTop: '1rem' }}>
         <ButtonGroup variant="outlined" color="primary">
           <Button onClick={() => setPage(1)} disabled={page === 1}>{'«'}</Button>
-          <Button onClick={() => setPage(page - 1)} disabled={page === 1}>{'<'}</Button>
+          <Button onClick={() => setPage(page - 1)} disabled={page === 1}>{'‹'}</Button>
 
           {pages.map(p => (
             <Button
@@ -302,7 +302,7 @@ const Gallery = () => {
             </Button>
           ))}
 
-          <Button onClick={() => setPage(page + 1)} disabled={page === totalPages}>{'>'}</Button>
+          <Button onClick={() => setPage(page + 1)} disabled={page === totalPages}>{'›'}</Button>
           <Button onClick={() => setPage(totalPages)} disabled={page === totalPages}>{'»'}</Button>
         </ButtonGroup>
       </Grid>
@@ -321,35 +321,34 @@ const Gallery = () => {
     >
       <CssBaseline />
       <Container
-        maxWidth='lg'
+        maxWidth={false}
         sx={{
-          px: 0,
           pt: 5,
-          pb: 6
+          pb: 15
         }}
       >
         <Grid container direction='row' justifyContent='flex-start' alignItems='flex-start' alignContent='center' spacing={3}>
           {/* Gallery Header */}
-          <Grid item xs={12}>
+          <Grid size={12}>
             <MainCard />
           </Grid>
 
-          <Grid item xs={12}>
+          <Grid size={12}>
             <Grid container spacing={2}>
               {/* BookDropdown */}
-              <Grid item xs={12} md={6}>
+              <Grid size={{ xs: 12, md: 6 }}>
                 <BookDropdown onBookChange={handleBookChange} />
               </Grid>
 
               {/* SearchComponent */}
-              <Grid item xs={12} md={6}>
+              <Grid size={{ xs: 12, md: 6 }}>
                 <SearchComponent onSearch={handleSearch} />
               </Grid>
             </Grid>
           </Grid>
 
           {/* Display a message or blank gallery */}
-          <Grid item xs={12}>
+          <Grid size={12}>
             <Typography variant='h6' align='center' color='textSecondary'>
               {
                 finalfilteredSchematics.length === 0
@@ -368,7 +367,7 @@ const Gallery = () => {
 
           {
             paginatedSchematics.map((sch) => (
-              <Grid item xs={12} sm={6} lg={4} key={sch.save_id}>
+              <Grid size={{ xs: 12, md: 6, lg: 4, xl: 3 }} key={sch.save_id}>
                 <SchematicCard sch={sch} />
               </Grid>
             ))

@@ -161,6 +161,7 @@ export function HelpScreen ({ open, close }) {
           </Toolbar>
         </AppBar>
         <Container
+          disableGutters
           maxWidth='lg'
           sx={{
             px: 0,
@@ -169,15 +170,9 @@ export function HelpScreen ({ open, close }) {
             color: '#fff'
           }}
         >
-          <Grid
-            container
-            spacing={3}
-            direction='row'
-            justifyContent='center'
-            alignItems='center'
-          >
+          <Grid container spacing={3} direction='row' justifyContent='center' alignItems='center'>
 
-            <Grid item xs={12} sm={12}>
+            <Grid size={12}>
               <Paper
                 sx={{
                   p: 2,
@@ -230,7 +225,7 @@ export function HelpScreen ({ open, close }) {
               </Paper>
             </Grid>
 
-            <Grid item xs={12} sm={12}>
+            <Grid size={12}>
               <Paper
                 sx={{
                   p: 2,
@@ -321,7 +316,7 @@ export function HelpScreen ({ open, close }) {
                 </fieldset>
               </Paper>
             </Grid>
-            <Grid item xs={12} sm={12}>
+            <Grid size={12}>
               <Paper
                 sx={{
                   p: 2,
@@ -769,7 +764,7 @@ export function OpenSchDialog (props) {
               Upload File
             </Button>
             : isGallery
-              ? <Grid item xs={12} sm={12}>
+              ? <Grid size={12}>
                 {/* Listing Gallery Schematics */}
                 <TableContainer component={Paper} style={{ maxHeight: '45vh' }}>
                   <Table stickyHeader size='small' aria-label='simple table'>
@@ -796,7 +791,7 @@ export function OpenSchDialog (props) {
                   </Table>
                 </TableContainer>
               </Grid>
-              : <Grid item xs={12} sm={12}>
+              : <Grid size={12}>
                 {/* Listing Saved Schematics */}
                 {schematics.length === 0
                   ? <Typography variant='subtitle1' gutterBottom>
