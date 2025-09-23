@@ -40,7 +40,7 @@ export default function Login () {
   const location = useLocation()
   const authErrors = useSelector(state => state.auth.errors)
   const [errors, setErrors] = useState(authErrors || '')
-  
+
   const dispatch = useDispatch()
   const query = useQuery()
   const homeURL = `${window.location.origin}/#/`

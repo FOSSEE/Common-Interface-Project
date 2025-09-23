@@ -203,7 +203,6 @@ export function changePorts (block, eiv, iiv, con, eov, iov, com, refreshDisplay
   return refreshDisplay
 }
 
-
 export default function ComponentProperties () {
   // compProperties that are displayed on the right side bar when user clicks on a component on the grid.
 

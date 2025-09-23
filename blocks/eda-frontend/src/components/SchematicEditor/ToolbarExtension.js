@@ -725,7 +725,6 @@ export function OpenSchDialog (props) {
   const user = useSelector(state => state.auth.user)
   const schematics = useSelector(state => state.dashboard.schematics)
   const GallerySchSample = useSelector(state => state.dashboard.gallery)
-  
 
   const dispatch = useDispatch()
 

@@ -197,7 +197,6 @@ export default function LoadGrid (container, sidebar, outline, setMainDiagramBac
     graph.setDisconnectOnMove(false)
     graph.foldingEnabled = false
 
-
     // Panning handler consumed right click so this must be
     // disabled if right click should stop connection handler.
     graph.panningHandler.isPopupTrigger = function () { return false }
@@ -298,7 +297,6 @@ export default function LoadGrid (container, sidebar, outline, setMainDiagramBac
 
       return edge
     }
-
 
     // Adds a special tooltip for edges
     graph.setTooltips(true)

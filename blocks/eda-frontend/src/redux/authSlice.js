@@ -202,7 +202,6 @@ export const githubLogin = createAsyncThunk(
     }
   })
 
-
 export const resetPassword = createAsyncThunk(
   'auth/resetPassword',
   async ({ email }, { rejectWithValue }) => {
@@ -225,7 +224,6 @@ export const resetPassword = createAsyncThunk(
     }
   }
 )
-  
 
 const authSlice = createSlice({
   name: 'auth',
@@ -332,7 +330,6 @@ const authSlice = createSlice({
         state.isLoading = false
         state.resetSuccess = false
         state.regErrors = action.payload?.detail || 'Something went wrong'
-        
       })
   }
 })
