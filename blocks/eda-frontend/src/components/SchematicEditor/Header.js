@@ -185,7 +185,7 @@ function Header () {
           mr: 2
         }}
       >
-        <Link color='inherit' target='_blank' component={RouterLink} to='/'>
+        <Link color='inherit' target='_blank' component={RouterLink} to='/' underline='hover'>
           {link}
         </Link>
       </Typography>

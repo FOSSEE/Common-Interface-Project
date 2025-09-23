@@ -69,7 +69,7 @@ export function Header () {
           flexGrow: 1
         }}
       >
-        <Link color='inherit' to='/' component={RouterLink}>
+        <Link color='inherit' to='/' component={RouterLink} underline='hover'>
           {link}
         </Link>
       </Typography>
@@ -84,6 +84,7 @@ export function Header () {
                 color='textPrimary'
                 to='/'
                 component={RouterLink}
+                underline='hover'
                 sx={{
                   mx: 1.5,
                   my: 1
@@ -97,6 +98,7 @@ export function Header () {
                 color='textPrimary'
                 to='/editor'
                 component={RouterLink}
+                underline='hover'
                 sx={{
                   mx: 1.5,
                   my: 1
@@ -110,6 +112,7 @@ export function Header () {
                 color='textPrimary'
                 to='/gallery'
                 component={RouterLink}
+                underline='hover'
                 sx={{
                   mx: 1.5,
                   my: 1
@@ -123,6 +126,7 @@ export function Header () {
                 color='textPrimary'
                 to='/dashboard'
                 component={RouterLink}
+                underline='hover'
                 sx={{
                   mx: 1.5,
                   my: 1
@@ -137,6 +141,7 @@ export function Header () {
                 color='textPrimary'
                 to='/editor'
                 component={RouterLink}
+                underline='hover'
                 style={{ marginRight: '20px' }}
               >
                 Editor
@@ -147,6 +152,7 @@ export function Header () {
                 color='textPrimary'
                 to='/gallery'
                 component={RouterLink}
+                underline='hover'
                 style={{ marginRight: '20px' }}
               >
                 Gallery

@@ -213,12 +213,12 @@ export default function SignUp () {
           </Button>
           <Grid container justifyContent='space-between'>
             <Grid size="6">
-              <Link component={RouterLink} to='/login' variant='body2'>
+              <Link component={RouterLink} to='/login' underline='hover' variant='body2'>
                 Back to Login
               </Link>
             </Grid>
             <Grid size="6">
-              <Link component={RouterLink} to='/forgotpwd' variant='body2'>
+              <Link component={RouterLink} to='/forgotpwd' underline='hover' variant='body2'>
                 Forgot password?
               </Link>
             </Grid>
