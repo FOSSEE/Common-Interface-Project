@@ -3,6 +3,9 @@ import { createTheme } from '@mui/material/styles'
 
 // A custom Material UI theme for this application
 const theme = createTheme({
+  typography: {
+    fontFamily: 'Roboto, Helvetica, Arial, sans-serif'
+  },
   palette: {
     primary: {
       main: '#556cd6'
@@ -15,6 +18,15 @@ const theme = createTheme({
     },
     background: {
       default: '#fff'
+    }
+  },
+  components: {
+    MuiListItemButton: {
+      styleOverrides: {
+        root: {
+          fontSize: 14
+        }
+      }
     }
   }
 })
