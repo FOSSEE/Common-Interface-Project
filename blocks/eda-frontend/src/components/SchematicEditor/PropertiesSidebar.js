@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 import Box from '@mui/material/Box'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
+import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
 import MenuItem from '@mui/material/MenuItem'
 import TextareaAutosize from '@mui/material/TextareaAutosize'
@@ -145,9 +146,9 @@ export default function PropertiesSidebar ({ gridRef, outlineRef }) {
       />
 
       <List>
-        <ListItem button divider>
+        <ListItemButton divider>
           <h2 style={{ margin: '5px' }}>Properties</h2>
-        </ListItem>
+        </ListItemButton>
         <div style={isOpen ? { display: 'none' } : {}}>
           <GridProperties gridRef={gridRef} />
 

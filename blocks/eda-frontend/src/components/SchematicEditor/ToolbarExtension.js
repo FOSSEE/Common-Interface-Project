@@ -24,8 +24,8 @@ import Divider from '@mui/material/Divider'
 import Grid from '@mui/material/Grid'
 import IconButton from '@mui/material/IconButton'
 import List from '@mui/material/List'
-import ListItem from '@mui/material/ListItem'
 import ListItemAvatar from '@mui/material/ListItemAvatar'
+import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
 import Paper from '@mui/material/Paper'
 import Slide from '@mui/material/Slide'
@@ -653,7 +653,7 @@ export function ImageExportDialog (props) {
       <DialogTitle id='image-export-dialog-title'>Select Image type</DialogTitle>
       <List>
         {ImgTypes.map((img) => (
-          <ListItem button onClick={() => handleListItemClick(img)} key={img}>
+          <ListItemButton onClick={() => handleListItemClick(img)} key={img}>
             <ListItemAvatar>
               <Avatar
                 sx={{
@@ -667,7 +667,7 @@ export function ImageExportDialog (props) {
               </Avatar>
             </ListItemAvatar>
             <ListItemText primary={img} />
-          </ListItem>
+          </ListItemButton>
         ))}
       </List>
       <DialogActions>

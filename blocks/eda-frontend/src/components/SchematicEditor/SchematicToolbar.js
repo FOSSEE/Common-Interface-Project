@@ -32,7 +32,7 @@ import Divider from '@mui/material/Divider'
 import Drawer from '@mui/material/Drawer'
 import IconButton from '@mui/material/IconButton'
 import List from '@mui/material/List'
-import ListItem from '@mui/material/ListItem'
+import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import Snackbar from '@mui/material/Snackbar'
@@ -585,16 +585,16 @@ export default function SchematicToolbar ({ _mobileClose, gridRef }) {
             item === 'pipe'
               ? <Divider key={index} />
               : (
-                <ListItem button key={index} onClick={item.action}>
+                <ListItemButton key={index} onClick={item.action}>
                   <ListItemIcon>{item.icon}</ListItemIcon>
                   <ListItemText primary={item.label} />
-                </ListItem>
+                </ListItemButton>
               )
           )}
           <Divider />
-          <ListItem button onClick={toggleDrawer(false)}>
+          <ListItemButton onClick={toggleDrawer(false)}>
             <ListItemText primary="Close Menu" />
-          </ListItem>
+          </ListItemButton>
         </List>
       </Drawer>
 

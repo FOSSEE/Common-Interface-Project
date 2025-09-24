@@ -7,8 +7,8 @@ import { deepPurple } from '@mui/material/colors'
 import Divider from '@mui/material/Divider'
 import InputBase from '@mui/material/InputBase'
 import List from '@mui/material/List'
-import ListItem from '@mui/material/ListItem'
 import ListItemAvatar from '@mui/material/ListItemAvatar'
+import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
 import Typography from '@mui/material/Typography'
 
@@ -30,11 +30,10 @@ export default function DashSidebar (_props) {
         }}
       />
       <List>
-        <ListItem
+        <ListItemButton
           alignItems='flex-start'
           component={RouterLink}
           to='/dashboard'
-          button
           divider
           sx={{
             px: 2,
@@ -66,18 +65,17 @@ export default function DashSidebar (_props) {
               </>
             }
           />
-        </ListItem>
-        <ListItem
+        </ListItemButton>
+        <ListItemButton
           component={RouterLink}
           to='/dashboard/schematics'
-          button
           sx={{
             px: 2,
             py: 1.5
           }}
         >
           <ListItemText primary={button} />
-        </ListItem>
+        </ListItemButton>
 
         {/* List name of saved schematics */}
         <List
@@ -107,9 +105,9 @@ export default function DashSidebar (_props) {
           }}
         >
           {schematics.map((sch) => (
-            <ListItem key={sch.save_id} button>
+            <ListItemButton key={sch.save_id}>
               <ListItemText primary={`${sch.name}`} />
-            </ListItem>
+            </ListItemButton>
           ))}
         </Box>
         <Divider />

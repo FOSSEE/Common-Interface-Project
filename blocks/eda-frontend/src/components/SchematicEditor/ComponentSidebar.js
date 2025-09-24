@@ -14,6 +14,7 @@ import IconButton from '@mui/material/IconButton'
 import InputAdornment from '@mui/material/InputAdornment'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
+import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import TextField from '@mui/material/TextField'
 import Tooltip from '@mui/material/Tooltip'
@@ -134,9 +135,9 @@ export default function ComponentSidebar ({ _compRef }) {
       <div style={isSimulate ? { display: 'none' } : {}}>
         {/* Display List of categorized components */}
         <List>
-          <ListItem button>
+          <ListItemButton>
             <h2 style={{ margin: '5px' }}>{link1}</h2>
-          </ListItem>
+          </ListItemButton>
           <ListItem>
 
             <TextField
@@ -189,7 +190,7 @@ export default function ComponentSidebar ({ _compRef }) {
                 (library) => {
                   return (
                     <div key={library.id}>
-                      <ListItem onClick={(e, id = library.id) => handleCollapse(id)} button divider>
+                      <ListItemButton onClick={(e, id = library.id) => handleCollapse(id)} divider>
                         <Box
                           component='span'
                           sx={{
@@ -199,7 +200,7 @@ export default function ComponentSidebar ({ _compRef }) {
                           {library.name}
                         </Box>
                         {collapse[library.id] ? <ExpandLess /> : <ExpandMore />}
-                      </ListItem>
+                      </ListItemButton>
                       <Collapse in={collapse[library.id]} timeout='auto' unmountOnExit mountOnEnter exit={false}>
                         <List component='div' disablePadding dense>
 
@@ -235,7 +236,7 @@ export default function ComponentSidebar ({ _compRef }) {
       <div style={isSimulate ? {} : { display: 'none' }}>
         {/* Display simulation modes parameters on left side pane */}
         <List>
-          <ListItem button divider>
+          <ListItemButton divider>
             <h2 style={{ margin: '5px auto 5px 5px' }}>Simulation Modes</h2>
             <Tooltip title='close'>
               <IconButton
@@ -246,7 +247,7 @@ export default function ComponentSidebar ({ _compRef }) {
                 <CloseIcon fontSize='small' />
               </IconButton>
             </Tooltip>
-          </ListItem>
+          </ListItemButton>
           <SimulationProperties />
         </List>
       </div>
