@@ -45,7 +45,6 @@ export default function ComponentSidebar ({ _compRef }) {
   const isSimulate = useSelector(state => state.schematicEditor.isSimulate)
 
   const dispatch = useDispatch()
-  const [isSearchedResultsEmpty, setIssearchedResultsEmpty] = useState(false)
   const [searchText, setSearchText] = useState('')
   const [loading, setLoading] = useState(false)
 
@@ -68,6 +67,7 @@ export default function ComponentSidebar ({ _compRef }) {
   useEffect(() => {
     // if the user keeps typing, stop the API call!
     clearTimeout(timeoutId.current)
+    setLoading(searchText.length !== 0)
     setSearchedComponents([])
     // don't make an API call with no data
     if (searchText.length === 0) return
@@ -75,15 +75,10 @@ export default function ComponentSidebar ({ _compRef }) {
     // stop the call if the user keeps typing
     timeoutId.current = setTimeout(() => {
       // call api here
-      setLoading(true)
-
       api.get(`newblocks/?${searchOptions[searchOption]}=${searchText}`)
         .then(
           (res) => {
-            if (res.data.length === 0) {
-              setIssearchedResultsEmpty(true)
-            } else {
-              setIssearchedResultsEmpty(false)
+            if (res.data.length !== 0) {
               setSearchedComponents([...res.data])
             }
           }
@@ -132,46 +127,30 @@ export default function ComponentSidebar ({ _compRef }) {
         }}
       />
 
-      <div style={isSimulate ? { display: 'none' } : {}}>
-        {/* Display List of categorized components */}
-        <List>
-          <ListItemButton>
-            <h2 style={{ margin: '5px' }}>{link1}</h2>
-          </ListItemButton>
-          <ListItem>
-
-            <TextField
-              id='standard-number'
-              placeholder={link2}
-              variant='outlined'
-              size='small'
-              value={searchText}
-              onChange={handleSearchText}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position='start'>
-                    <SearchIcon />
-                  </InputAdornment>
-                )
-              }}
-            />
-
-          </ListItem>
-
-          <div style={{ maxHeight: '70vh', overflowY: 'auto', overflowX: 'hidden' }}>
-            {searchText.length !== 0 && searchedComponentList.length !== 0 &&
-
-              searchedComponentList.map((component, i) => {
-                return (
-                  <ListItemIcon key={i}>
-                    <SideComp component={component} />
-                  </ListItemIcon>
-                )
-              }
-              )}
-
+      {!isSimulate ? (
+        <>
+          <Box>
+            <ListItemButton>
+              <h2 style={{ margin: '5px' }}>{link1}</h2>
+            </ListItemButton>
             <ListItem>
-
+              <TextField
+                id='standard-number'
+                placeholder={link2}
+                variant='outlined'
+                size='small'
+                value={searchText}
+                onChange={handleSearchText}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position='start'>
+                      <SearchIcon />
+                    </InputAdornment>
+                  )
+                }}
+              />
+            </ListItem>
+            <ListItem>
               <TailSpin
                 color='#F44336'
                 height={100}
@@ -179,62 +158,60 @@ export default function ComponentSidebar ({ _compRef }) {
                 visible={loading}
               />
             </ListItem>
+          </Box>
 
-            {!loading && searchText.length !== 0 && isSearchedResultsEmpty &&
+          <Box
+            sx={{
+              flex: 1,
+              overflowY: 'auto',
+              pr: 1
+            }}
+          >
+            <List disablePadding>
+              {searchText.length === 0 && libraries.map(library => (
+                <div key={library.id}>
+                  <ListItemButton onClick={() => handleCollapse(library.id)} divider>
+                    <Box
+                      component='span'
+                      sx={{
+                        mr: 'auto'
+                      }}
+                    >
+                      {library.name}
+                    </Box>
+                    {collapse[library.id] ? <ExpandLess /> : <ExpandMore />}
+                  </ListItemButton>
+                  <Collapse in={collapse[library.id]} timeout='auto' unmountOnExit mountOnEnter exit={false}>
+                    <List component='div' disablePadding dense>
+                      {chunk(components[library.id], COMPONENTS_PER_ROW).map((componentChunk) => (
+                        <ListItem key={componentChunk[0].id} divider>
+                          {componentChunk.map((component) => (
+                            <ListItemIcon key={component.name}>
+                              <SideComp component={component} />
+                            </ListItemIcon>
+                          ))}
+                        </ListItem>
+                      ))}
+                    </List>
+                  </Collapse>
+                </div>
+              ))}
 
-              <span style={{ margin: '20px' }}>{link3}</span>}
-
-            {/* Collapsing List Mapped by Libraries fetched by the API */}
-            {searchText.length === 0 &&
-              libraries.map(
-                (library) => {
-                  return (
-                    <div key={library.id}>
-                      <ListItemButton onClick={(e, id = library.id) => handleCollapse(id)} divider>
-                        <Box
-                          component='span'
-                          sx={{
-                            mr: 'auto'
-                          }}
-                        >
-                          {library.name}
-                        </Box>
-                        {collapse[library.id] ? <ExpandLess /> : <ExpandMore />}
-                      </ListItemButton>
-                      <Collapse in={collapse[library.id]} timeout='auto' unmountOnExit mountOnEnter exit={false}>
-                        <List component='div' disablePadding dense>
-
-                          {/* Chunked Blocks of Library */}
-                          {
-                            chunk(components[library.id], COMPONENTS_PER_ROW).map((componentChunk) => {
-                              return (
-                                <ListItem key={componentChunk[0].id} divider>
-                                  {
-                                    componentChunk.map((component) => {
-                                      return (
-                                        <ListItemIcon key={component.name}>
-                                          <SideComp component={component} />
-                                        </ListItemIcon>
-                                      )
-                                    }
-                                    )
-                                  }
-                                </ListItem>
-                              )
-                            })
-                          }
-
-                        </List>
-                      </Collapse>
-                    </div>
-                  )
-                }
+              {!loading && searchText.length !== 0 && (
+                searchedComponentList.length === 0 ? (
+                  <Box component='span' sx={{ m: 2 }}>{link3}</Box>
+                ) : (
+                  searchedComponentList.map((component, i) => (
+                    <ListItemIcon key={i}>
+                      <SideComp component={component} />
+                    </ListItemIcon>
+                  ))
+                )
               )}
-          </div>
-        </List>
-      </div>
-      <div style={isSimulate ? {} : { display: 'none' }}>
-        {/* Display simulation modes parameters on left side pane */}
+            </List>
+          </Box>
+        </>
+      ) : (
         <List>
           <ListItemButton divider>
             <h2 style={{ margin: '5px auto 5px 5px' }}>Simulation Modes</h2>
@@ -250,7 +227,7 @@ export default function ComponentSidebar ({ _compRef }) {
           </ListItemButton>
           <SimulationProperties />
         </List>
-      </div>
+      )}
     </>
   )
 }
