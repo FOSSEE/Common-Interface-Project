@@ -317,7 +317,6 @@ function Header () {
               open={Boolean(anchorEl)}
               onClose={handleClose}
               TransitionComponent={Fade}
-              style={{ marginTop: '25px' }}
             >
               <MenuItem
                 target='_blank'

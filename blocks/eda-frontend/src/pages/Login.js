@@ -211,13 +211,13 @@ export default function Login () {
           >
             Login
           </Button>
-          <Grid container>
-            <Grid size="grow" sx={{ m: 'auto' }}>
+          <Grid container justifyContent='space-between'>
+            <Grid size="6">
               <Link component={RouterLink} to='/forgotpwd' underline='hover' variant='body2'>
                 Forgot password?
               </Link>
             </Grid>
-            <Grid size="grow" sx={{ m: 'auto' }}>
+            <Grid size="6">
               <Link component={RouterLink} to='/signup' underline='hover' variant='body2'>
                 New User? Sign Up
               </Link>

@@ -17,6 +17,7 @@ import { resetPassword, authDefault } from '../redux/authSlice'
 
 export default function ForgotPassword () {
   const dispatch = useDispatch()
+  const homeURL = `${window.location.origin}/#/`
   const resetSuccess = useSelector(state => state.auth.resetSuccess)
   const regErrors = useSelector(state => state.auth.regErrors)
   const [isResetSuccess, setIsResetSuccess] = useState(false)
@@ -106,16 +107,33 @@ export default function ForgotPassword () {
           >
             Send Reset Link
           </Button>
+
+          <Grid container justifyContent='space-between'>
+            <Grid size="6">
+              <Link component={RouterLink} to='/login' underline='hover' variant='body2'>
+                Back to Login
+              </Link>
+            </Grid>
+            <Grid size="6">
+              <Link component={RouterLink} to='/signup' underline='hover' variant='body2'>
+                New User? Sign Up
+              </Link>
+            </Grid>
+          </Grid>
         </Box>
 
-        <Grid container>
-          <Grid size="grow" sx={{ m: 'auto' }}>
-            <Link component={RouterLink} to='/login' underline='hover' variant='body2'>
-              Back to Login
-            </Link>
-          </Grid>
-        </Grid>
       </Card>
+      <Button
+        onClick={() => { window.open(homeURL, '_self') }}
+        fullWidth
+        color='default'
+        sx={{
+          mx: 0,
+          my: 2
+        }}
+      >
+        Back to home
+      </Button>
     </Container>
   )
 }
