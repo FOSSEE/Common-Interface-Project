@@ -6,6 +6,7 @@ fi
 ALREADY_SOURCED=yes
 
 # Configuration
+DOCKER="docker" # or "podman"
 IMAGE=""
 CONTAINER=""
 
@@ -19,7 +20,7 @@ DOCKER_FILES=()
 
 cd ${0%/*} || exit 1
 test "$#" -eq 1 -a -n "$1" -a -f "$1" || {
-  echo "Usage: $0 docker_config_file"
+  echo "Usage: $0 ${DOCKER}_config_file"
   exit 1
 }
 . "$1" || exit 2
@@ -44,20 +45,20 @@ set -euo pipefail
 echo ">>> Checking for updates to $IMAGE..."
 
 # Get currently running image ID (if container exists)
-if docker ps -a --format '{{.Names}}' | grep -q "^$CONTAINER\$"; then
-  OLD_IMAGE_ID=$(docker inspect --format='{{.Image}}' "$CONTAINER")
+if $DOCKER ps -a --format '{{.Names}}' | grep -q "^$CONTAINER\$"; then
+  OLD_IMAGE_ID=$($DOCKER inspect --format='{{.Image}}' "$CONTAINER")
 else
   OLD_IMAGE_ID=""
 fi
 
 # Pull latest image
-docker pull "$IMAGE" >/tmp/docker-pull.log 2>&1 || {
+$DOCKER pull "$IMAGE" >/tmp/$DOCKER-pull.log 2>&1 || {
   echo "!!! Failed to pull image $IMAGE"
-  cat /tmp/docker-pull.log
+  cat /tmp/$DOCKER-pull.log
   exit 1
 }
 
-NEW_IMAGE_ID=$(docker inspect --format='{{.Id}}' "$IMAGE")
+NEW_IMAGE_ID=$($DOCKER inspect --format='{{.Id}}' "$IMAGE")
 
 if [ "$OLD_IMAGE_ID" = "$NEW_IMAGE_ID" ]; then
   echo ">>> Image is unchanged, no restart needed."
@@ -68,17 +69,20 @@ echo ">>> New image detected. Restarting container $CONTAINER..."
 
 # Stop and remove old container if exists
 if [[ -n "$OLD_IMAGE_ID" ]]; then
-  docker stop "$CONTAINER" || true
-  docker rm "$CONTAINER" || true
+  $DOCKER stop "$CONTAINER" || true
+  $DOCKER rm "$CONTAINER" || true
 fi
 
 # Run new container (adjust options as needed)
-docker run -d --name "$CONTAINER" $DOCKER_OPTIONS "$IMAGE"
+$DOCKER run -d --name "$CONTAINER" $DOCKER_OPTIONS "$IMAGE"
 
 sleep 20
 
 # Verify container is running
-docker ps --filter "name=$CONTAINER" -a -s
-docker logs -n60 "$CONTAINER"
+$DOCKER ps --filter "name=$CONTAINER" -a -s
+$DOCKER logs --tail 60 "$CONTAINER"
+
+# Clean up old images
+$DOCKER system prune -f || true
 
 echo ">>> Update complete. Running container uses $NEW_IMAGE_ID"
