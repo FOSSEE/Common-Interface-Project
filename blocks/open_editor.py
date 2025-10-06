@@ -31,7 +31,7 @@ def login_with_github():
     try:
         print("Waiting for the GitHub login button to be clickable...")
         github_button = wait.until(
-            EC.element_to_be_clickable((By.XPATH, '//*[@id="root"]/main/div/button[2]/span[1]'))
+            EC.element_to_be_clickable((By.XPATH, '//button[contains(normalize-space(.), "Login With GitHub")]'))
         )
         print("GitHub login button is clickable now.")
         github_button.click()
@@ -109,6 +109,8 @@ def main():
     login_with_github()
     # After logging in, navigate to the gallery page
     driver.get("http://localhost/#/gallery")
+    count = 0
+    savecount = 0
 
     try:
         wait.until(EC.presence_of_element_located((By.CLASS_NAME, "MuiSelect-root")))
@@ -140,6 +142,8 @@ def main():
 
             button.click()
             driver.switch_to.window(driver.window_handles[-1])  # Switch to the newly opened editor tab/window
+
+            state = 0
 
             try:
                 state = 0

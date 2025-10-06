@@ -1,15 +1,11 @@
 #!/usr/bin/env python
 
-import datetime
 import os
-import re
 import sys
 import traceback
-import xml.etree.ElementTree as ET
 import defusedxml.ElementTree as goodET
-import uuid
 
-from xcosblocks import num2str, style_to_object
+from xcosblocks import style_to_object
 from xcosblocks import addtolinklist
 from xcosblocks import create_mxCell, create_mxCell_edge, create_mxCell_port, checkModelTag, checkXcosDiagramTag, check_point_on_array, checkRootTag
 from xcosblocks import getComponentGeometry, getlinkdetails, getLinkStyle, getNextAttribId, getPinGeometry, getSplitPoints, getWaypoints
@@ -95,6 +91,8 @@ for root in model:
 
                     sourceVertex = attrib['sourceVertex']
                     targetVertex = attrib['targetVertex']
+                    if sourceVertex == '' or targetVertex == '':
+                        continue
                     if sourceVertex not in IDLIST or targetVertex not in IDLIST:
                         remainingcells.append(cell)
                         continue

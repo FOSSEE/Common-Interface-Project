@@ -84,9 +84,7 @@ BACKSPACE = re.compile(r'.\x08')
 
 # Following are system command which are not permitted in sci files
 # (Reference scilab-on-cloud project)
-SYSTEM_COMMANDS = (
-    r'ascii|dir\(|execstr|host|mputl|newfun|system|unix(_[gswx])?\('
-)
+SYSTEM_COMMANDS = r'ascii|dir\(|execstr|host|mputl|newfun|system|unix(_[gswx])?\('
 SPECIAL_CHARACTERS = r'["\'\\]'
 
 SCILAB_CURVE_C_SCI = "macros/Sources/CURVE_c.sci"
@@ -1758,6 +1756,8 @@ def process_xcos_model(diagram, title, rootattribid, parentattribid,
 
                         sourceVertex = attrib['sourceVertex']
                         targetVertex = attrib['targetVertex']
+                        if sourceVertex == '' or targetVertex == '':
+                            continue
                         if sourceVertex not in IDLIST or targetVertex not in IDLIST:
                             remainingcells.append(cell)
                             continue

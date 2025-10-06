@@ -1077,7 +1077,7 @@
     <xsl:variable name="sourceElement" select="key('k-portorlink', @source)" />
     <xsl:variable name="targetElement" select="key('k-portorlink', @target)" />
     <xsl:variable name="SPLITID" select="//SplitBlock[position() = 1]/@id" />
-    <xsl:if test="not($sourceElement/@parent = $SPLITID) and not($targetElement/@parent = $SPLITID)">
+    <xsl:if test="@source and @target and $sourceElement and $targetElement and not($sourceElement/@parent = $SPLITID) and not($targetElement/@parent = $SPLITID)">
       <xsl:variable name="srcsrcid" select="key('k-portorlink', $sourceElement/@source)/@parent" />
       <xsl:variable name="srctgtid" select="key('k-portorlink', $sourceElement/@target)/@parent" />
       <xsl:variable name="tgtsrcid" select="key('k-portorlink', $targetElement/@source)/@parent" />

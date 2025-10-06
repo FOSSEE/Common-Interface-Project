@@ -110,7 +110,7 @@
       as="geometry" height="8.0" width="8.0" x="40.0" y="6.0"/></ImplicitOutputPort><GroundBlock
       angle="90" dependsOnU="1" id="-5c1d823d:130d68ab7d2:-7f5e" interfaceFunctionName="Ground"
       ordering="2" parent="-5c1d823d:130d68ab7d2:-7f7c" simulationFunctionName="Ground"
-      simulationFunctionType="DEFAULT" style="Ground;rotation=90;flip=false;mirror=false"><ScilabString
+      simulationFunctionType="DEFAULT" style="Ground;flip=false;mirror=false"><ScilabString
       as="exprs" height="1" width="1"><data column="0" line="0" value=""/></ScilabString><ScilabDouble
       as="realParameters" height="0" width="0"/><ScilabDouble as="integerParameters"
       height="0" width="0"/><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble
@@ -1063,7 +1063,7 @@
       x="300.0" y="190.0"/></Array></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-5c1d823d:130d68ab7d2:-7f7c" parent="-5c1d823d:130d68ab7d2:-7f7b"/></XcosDiagram>
     blocks: clock_c;cmscope;constantvoltage;cscope;currentsensor;ground;resistor;split_f
-    media: gallery0.png
+    media: gallery8414.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 2
@@ -1105,7 +1105,7 @@
       as="geometry" height="8.0" width="8.0" x="16.0" y="-8.0"/></ImplicitInputPort><GroundBlock
       angle="90" dependsOnU="1" id="331568f2:130d6f18fe2:-7fd6" interfaceFunctionName="Ground"
       ordering="2" parent="331568f2:130d6f18fe2:-8000" simulationFunctionName="Ground"
-      simulationFunctionType="DEFAULT" style="Ground;rotation=90;flip=false;mirror=false"><ScilabString
+      simulationFunctionType="DEFAULT" style="Ground;flip=false;mirror=false"><ScilabString
       as="exprs" height="1" width="1"><data column="0" line="0" value=""/></ScilabString><ScilabDouble
       as="realParameters" height="0" width="0"/><ScilabDouble as="integerParameters"
       height="0" width="0"/><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble
@@ -2760,7 +2760,7 @@
       scilabClass="ScilabList"><mxPoint x="630.0" y="450.0"/><mxPoint x="630.0" y="410.0"/></Array></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="331568f2:130d6f18fe2:-8000" parent="331568f2:130d6f18fe2:-7fff"/></XcosDiagram>
     blocks: clock_c;cmscope;constantvoltage;cscope;currentsensor;gainblk_f;ground;powblk_f;resistor;split_f;voltagesensor
-    media: gallery1.png
+    media: gallery8417.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 3
@@ -2802,7 +2802,7 @@
       as="geometry" height="8.0" width="8.0" x="16.0" y="-8.0"/></ImplicitInputPort><GroundBlock
       angle="90" dependsOnU="1" id="331568f2:130d6f18fe2:-7da4" interfaceFunctionName="Ground"
       ordering="2" parent="331568f2:130d6f18fe2:-7db5" simulationFunctionName="Ground"
-      simulationFunctionType="DEFAULT" style="Ground;rotation=90;flip=false;mirror=false"><ScilabString
+      simulationFunctionType="DEFAULT" style="Ground;flip=false;mirror=false"><ScilabString
       as="exprs" height="1" width="1"><data column="0" line="0" value=""/></ScilabString><ScilabDouble
       as="realParameters" height="0" width="0"/><ScilabDouble as="integerParameters"
       height="0" width="0"/><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble
@@ -3063,7 +3063,7 @@
       as="geometry" height="8.0" width="8.0" x="26.0" y="40.0"/></ImplicitInputPort><GroundBlock
       angle="90" dependsOnU="1" id="331568f2:130d6f18fe2:-7c45" interfaceFunctionName="Ground"
       ordering="13" parent="331568f2:130d6f18fe2:-7db5" simulationFunctionName="Ground"
-      simulationFunctionType="DEFAULT" style="Ground;rotation=90;flip=false;mirror=false"><ScilabString
+      simulationFunctionType="DEFAULT" style="Ground;flip=false;mirror=false"><ScilabString
       as="exprs" height="1" width="1"><data column="0" line="0" value=""/></ScilabString><ScilabDouble
       as="realParameters" height="0" width="0"/><ScilabDouble as="integerParameters"
       height="0" width="0"/><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble
@@ -3682,7 +3682,7 @@
       x="844.0" y="90.0"/><mxPoint as="targetPoint" x="880.0" y="90.0"/></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="331568f2:130d6f18fe2:-7db5" parent="331568f2:130d6f18fe2:-7db4"/></XcosDiagram>
     blocks: bigsom_f;ccs;clock_c;constantvoltage;const_m;cscope;currentsensor;ground;resistor;split_f
-    media: gallery2.png
+    media: gallery8420.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 4
@@ -4398,7 +4398,7 @@
       x="594.0" y="200.0"/><mxPoint as="targetPoint" x="640.0" y="200.0"/></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-55de3cf2:130fe0d1e6e:-7e33" parent="-55de3cf2:130fe0d1e6e:-7e32"/></XcosDiagram>
     blocks: clock_c;constantvoltage;cscope;ground;matdiv;opamp;potentialsensor;resistor;split_f
-    media: gallery3.png
+    media: gallery8441.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 5
@@ -4442,7 +4442,7 @@
       as="geometry" height="8.0" width="8.0" x="-8.0" y="56.0"/></ImplicitInputPort><GroundBlock
       angle="90" dependsOnU="1" id="-1e985524:130d9355380:-7fd3" interfaceFunctionName="Ground"
       ordering="2" parent="-1e985524:130d9355380:-8000" simulationFunctionName="Ground"
-      simulationFunctionType="DEFAULT" style="Ground;rotation=90;flip=false;mirror=false"><ScilabString
+      simulationFunctionType="DEFAULT" style="Ground;flip=false;mirror=false"><ScilabString
       as="exprs" height="1" width="1"><data column="0" line="0" value=""/></ScilabString><ScilabDouble
       as="realParameters" height="0" width="0"/><ScilabDouble as="integerParameters"
       height="0" width="0"/><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble
@@ -4753,11 +4753,11 @@
       x="370.0" y="290.0"/></mxGeometry></ImplicitLink><GroundBlock angle="90" dependsOnU="1"
       id="-1e985524:130d9355380:-7f38" interfaceFunctionName="Ground" ordering="15"
       parent="-1e985524:130d9355380:-8000" simulationFunctionName="Ground" simulationFunctionType="DEFAULT"
-      style="Ground;rotation=90;flip=false;mirror=false"><ScilabString as="exprs"
-      height="1" width="1"><data column="0" line="0" value=""/></ScilabString><ScilabDouble
-      as="realParameters" height="0" width="0"/><ScilabDouble as="integerParameters"
-      height="0" width="0"/><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble
-      as="nbZerosCrossing" height="1" width="1"><data column="0" line="0" realPart="0.0"/></ScilabDouble><ScilabDouble
+      style="Ground;flip=false;mirror=false"><ScilabString as="exprs" height="1" width="1"><data
+      column="0" line="0" value=""/></ScilabString><ScilabDouble as="realParameters"
+      height="0" width="0"/><ScilabDouble as="integerParameters" height="0" width="0"/><Array
+      as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble as="nbZerosCrossing"
+      height="1" width="1"><data column="0" line="0" realPart="0.0"/></ScilabDouble><ScilabDouble
       as="nmode" height="1" width="1"><data column="0" line="0" realPart="0.0"/></ScilabDouble><Array
       as="oDState" scilabClass="ScilabList"/><Array as="equations" scilabClass="ScilabTList"><ScilabString
       height="1" width="5"><data column="0" line="0" value="modelica"/><data column="1"
@@ -5574,7 +5574,7 @@
       x="584.0" y="180.0"/><mxPoint as="targetPoint" x="610.0" y="180.0"/></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-1e985524:130d9355380:-8000" parent="-1e985524:130d9355380:-7fff"/></XcosDiagram>
     blocks: clock_c;constantvoltage;cscope;ground;opamp;potentialsensor;resistor;split_f
-    media: gallery4.png
+    media: gallery7447.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 6
@@ -5618,7 +5618,7 @@
       as="geometry" height="8.0" width="8.0" x="-8.0" y="56.0"/></ImplicitInputPort><GroundBlock
       angle="90" dependsOnU="1" id="5678f95b:130d8f27016:-7fd3" interfaceFunctionName="Ground"
       ordering="2" parent="5678f95b:130d8f27016:-8000" simulationFunctionName="Ground"
-      simulationFunctionType="DEFAULT" style="Ground;rotation=90;flip=false;mirror=false"><ScilabString
+      simulationFunctionType="DEFAULT" style="Ground;flip=false;mirror=false"><ScilabString
       as="exprs" height="1" width="1"><data column="0" line="0" value=""/></ScilabString><ScilabDouble
       as="realParameters" height="0" width="0"/><ScilabDouble as="integerParameters"
       height="0" width="0"/><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble
@@ -7537,7 +7537,7 @@
       scilabClass="ScilabList"><mxPoint x="740.0" y="170.0"/><mxPoint x="740.0" y="130.0"/></Array></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="5678f95b:130d8f27016:-8000" parent="5678f95b:130d8f27016:-7fff"/></XcosDiagram>
     blocks: bigsom_f;clock_c;cmscope;constantvoltage;cscope;currentsensor;gainblk_f;ground;opamp;potentialsensor;powblk_f;resistor;split_f;summation;voltagesensor
-    media: gallery5.png
+    media: gallery7441.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 7
@@ -7584,7 +7584,7 @@
       as="geometry" height="8.0" width="8.0" x="16.0" y="-8.0"/></ImplicitInputPort><GroundBlock
       angle="90" dependsOnU="1" id="-1e985524:130d9355380:-7db2" interfaceFunctionName="Ground"
       ordering="2" parent="-1e985524:130d9355380:-7dc3" simulationFunctionName="Ground"
-      simulationFunctionType="DEFAULT" style="Ground;rotation=90;flip=false;mirror=false"><ScilabString
+      simulationFunctionType="DEFAULT" style="Ground;flip=false;mirror=false"><ScilabString
       as="exprs" height="1" width="1"><data column="0" line="0" value=""/></ScilabString><ScilabDouble
       as="realParameters" height="0" width="0"/><ScilabDouble as="integerParameters"
       height="0" width="0"/><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble
@@ -8083,7 +8083,7 @@
       scilabClass="ScilabList"><mxPoint x="120.0" y="110.0"/></Array></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-1e985524:130d9355380:-7dc3" parent="-1e985524:130d9355380:-7dc2"/></XcosDiagram>
     blocks: capacitor;clock_c;cscope;currentsensor;ground;resistor;split_f
-    media: gallery6.png
+    media: gallery7609.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 8
@@ -8130,7 +8130,7 @@
       as="geometry" height="8.0" width="8.0" x="16.0" y="-8.0"/></ImplicitInputPort><GroundBlock
       angle="90" dependsOnU="1" id="-1e985524:130d9355380:-7d17" interfaceFunctionName="Ground"
       ordering="2" parent="-1e985524:130d9355380:-7d28" simulationFunctionName="Ground"
-      simulationFunctionType="DEFAULT" style="Ground;rotation=90;flip=false;mirror=false"><ScilabString
+      simulationFunctionType="DEFAULT" style="Ground;flip=false;mirror=false"><ScilabString
       as="exprs" height="1" width="1"><data column="0" line="0" value=""/></ScilabString><ScilabDouble
       as="realParameters" height="0" width="0"/><ScilabDouble as="integerParameters"
       height="0" width="0"/><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble
@@ -8665,7 +8665,7 @@
       x="430.0" y="84.0"/><mxPoint as="targetPoint" x="430.0" y="150.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-1e985524:130d9355380:-7d28" parent="-1e985524:130d9355380:-7d27"/></XcosDiagram>
     blocks: capacitor;clock_c;cmscope;constantvoltage;currentsensor;ground;resistor;split_f;voltagesensor
-    media: gallery7.png
+    media: gallery7611.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 9
@@ -9731,7 +9731,7 @@
       value="+"><mxGeometry as="geometry" height="8.0" width="8.0" x="-8.0" y="6.0"/></ExplicitInputPort></root></mxGraphModel><mxCell
       as="defaultParent" id="-1e985524:130d9355380:-7b0d" parent="-1e985524:130d9355380:-7b0c"/></XcosDiagram>
     blocks: clock_c;cscope;deriv;gainblk_f;integral_m;split_f;step_function;summation
-    media: gallery8.png
+    media: gallery7614.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 10
@@ -9748,7 +9748,7 @@
       id="-5c3e5c92:130db8fddce:-8000" parent="-5c3e5c92:130db8fddce:-7fff"/><GroundBlock
       angle="90" dependsOnU="1" id="-5c3e5c92:130db8fddce:-7fd6" interfaceFunctionName="Ground"
       ordering="1" parent="-5c3e5c92:130db8fddce:-8000" simulationFunctionName="Ground"
-      simulationFunctionType="DEFAULT" style="Ground;rotation=90;flip=false;mirror=false"><ScilabString
+      simulationFunctionType="DEFAULT" style="Ground;flip=false;mirror=false"><ScilabString
       as="exprs" height="1" width="1"><data column="0" line="0" value=""/></ScilabString><ScilabDouble
       as="realParameters" height="0" width="0"/><ScilabDouble as="integerParameters"
       height="0" width="0"/><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble
@@ -10670,7 +10670,7 @@
       as="geometry" height="8.0" width="8.0" x="16.0" y="40.0"/></ImplicitOutputPort></root></mxGraphModel><mxCell
       as="defaultParent" id="-5c3e5c92:130db8fddce:-8000" parent="-5c3e5c92:130db8fddce:-7fff"/></XcosDiagram>
     blocks: clock_c;constantvoltage;cscope;currentsensor;ground;inductor;potentialsensor;resistor;split_f
-    media: gallery9.png
+    media: gallery7617.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 11
@@ -10687,7 +10687,7 @@
       id="31befcfe:130dc407023:-8000" parent="31befcfe:130dc407023:-7fff"/><GroundBlock
       angle="90" dependsOnU="1" id="31befcfe:130dc407023:-7f53" interfaceFunctionName="Ground"
       ordering="2" parent="31befcfe:130dc407023:-8000" simulationFunctionName="Ground"
-      simulationFunctionType="DEFAULT" style="Ground;rotation=90;flip=false;mirror=false"><ScilabString
+      simulationFunctionType="DEFAULT" style="Ground;flip=false;mirror=false"><ScilabString
       as="exprs" height="1" width="1"><data column="0" line="0" value=""/></ScilabString><ScilabDouble
       as="realParameters" height="0" width="0"/><ScilabDouble as="integerParameters"
       height="0" width="0"/><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble
@@ -12535,7 +12535,7 @@
       x="210.0" y="190.0"/><mxPoint x="210.0" y="190.0"/><mxPoint x="160.0" y="190.0"/></Array></mxGeometry></ImplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="31befcfe:130dc407023:-8000" parent="31befcfe:130dc407023:-7fff"/></XcosDiagram>
     blocks: clock_c;cmscope;cscope;currentsensor;ground;resistor;split_f;voltagesensor
-    media: gallery10.png
+    media: gallery7620.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 12
@@ -12580,7 +12580,7 @@
       as="geometry" height="8.0" width="8.0" x="26.0" y="40.0"/></ImplicitInputPort><GroundBlock
       angle="90" dependsOnU="1" id="31befcfe:130dc407023:-7d76" interfaceFunctionName="Ground"
       ordering="2" parent="31befcfe:130dc407023:-7d8a" simulationFunctionName="Ground"
-      simulationFunctionType="DEFAULT" style="Ground;rotation=90;flip=false;mirror=false"><ScilabString
+      simulationFunctionType="DEFAULT" style="Ground;flip=false;mirror=false"><ScilabString
       as="exprs" height="1" width="1"><data column="0" line="0" value=""/></ScilabString><ScilabDouble
       as="realParameters" height="0" width="0"/><ScilabDouble as="integerParameters"
       height="0" width="0"/><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble
@@ -13727,7 +13727,7 @@
       as="defaultParent" id="31befcfe:130dc407023:-7d8a" parent="31befcfe:130dc407023:-7d89"/><mxPoint
       as="origin" x="-6.0" y="-6.0"/></XcosDiagram>
     blocks: ccs;clock_c;cmscope;constantvoltage;const_m;cscope;currentsensor;ground;resistor;split_f;voltagesensor
-    media: gallery11.png
+    media: gallery7623.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 13
@@ -14330,7 +14330,7 @@
       as="geometry" height="8.0" width="8.0" x="16.0" y="-8.0"/></ImplicitInputPort><GroundBlock
       angle="90" dependsOnU="1" id="4cf3be04:130e07e353b:-7fcd" interfaceFunctionName="Ground"
       ordering="13" parent="4cf3be04:130e07e353b:-8000" simulationFunctionName="Ground"
-      simulationFunctionType="DEFAULT" style="Ground;rotation=90;flip=false;mirror=false"><ScilabString
+      simulationFunctionType="DEFAULT" style="Ground;flip=false;mirror=false"><ScilabString
       as="exprs" height="1" width="1"><data column="0" line="0" value=""/></ScilabString><ScilabDouble
       as="realParameters" height="0" width="0"/><ScilabDouble as="integerParameters"
       height="0" width="0"/><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble
@@ -14512,7 +14512,7 @@
       as="sourcePoint" x="736.0" y="362.0"/><mxPoint as="targetPoint" x="360.0" y="360.0"/></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="4cf3be04:130e07e353b:-8000" parent="4cf3be04:130e07e353b:-7fff"/></XcosDiagram>
     blocks: capacitor;clock_c;cmscope;constantvoltage;deriv;gainblk_f;ground;resistor;split_f;voltagesensor
-    media: gallery12.png
+    media: gallery7625.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 14
@@ -15806,7 +15806,7 @@
       x="620.0" y="370.0"/><mxPoint as="targetPoint" x="400.0" y="370.0"/></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="0:2:0" parent="0:1:0"/></XcosDiagram>
     blocks: clock_c;cmscope;constantvoltage;cscope;currentsensor;deriv;gainblk;ground;impsplit_f;integral_m;resistor;split_f;step_function;summation
-    media: gallery13.png
+    media: gallery7628.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 15
@@ -15853,7 +15853,7 @@
       as="geometry" height="8.0" width="8.0" x="-8.0" y="16.0"/></ImplicitInputPort><GroundBlock
       angle="90" dependsOnU="1" id="5f267dc3:130e0981282:-7fd6" interfaceFunctionName="Ground"
       ordering="2" parent="5f267dc3:130e0981282:-8000" simulationFunctionName="Ground"
-      simulationFunctionType="DEFAULT" style="Ground;rotation=90;flip=false;mirror=false"><ScilabString
+      simulationFunctionType="DEFAULT" style="Ground;flip=false;mirror=false"><ScilabString
       as="exprs" height="1" width="1"><data column="0" line="0" value=""/></ScilabString><ScilabDouble
       as="realParameters" height="0" width="0"/><ScilabDouble as="integerParameters"
       height="0" width="0"/><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble
@@ -16315,7 +16315,7 @@
       x="400.0" y="254.0"/><mxPoint as="targetPoint" x="400.0" y="290.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="5f267dc3:130e0981282:-8000" parent="5f267dc3:130e0981282:-7fff"/></XcosDiagram>
     blocks: capacitor;clock_c;cscope;currentsensor;ground;inductor;resistor;split_f
-    media: gallery14.png
+    media: gallery7631.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 16
@@ -16332,7 +16332,7 @@
       id="5f267dc3:130e0981282:-7ebc" parent="5f267dc3:130e0981282:-7ebb"/><GroundBlock
       angle="90" dependsOnU="1" id="5f267dc3:130e0981282:-7eb7" interfaceFunctionName="Ground"
       ordering="1" parent="5f267dc3:130e0981282:-7ebc" simulationFunctionName="Ground"
-      simulationFunctionType="DEFAULT" style="Ground;rotation=90;flip=false;mirror=false"><ScilabString
+      simulationFunctionType="DEFAULT" style="Ground;flip=false;mirror=false"><ScilabString
       as="exprs" height="1" width="1"><data column="0" line="0" value=""/></ScilabString><ScilabDouble
       as="realParameters" height="0" width="0"/><ScilabDouble as="integerParameters"
       height="0" width="0"/><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble
@@ -16826,7 +16826,7 @@
       as="geometry" height="8.0" width="8.0" x="40.0" y="16.0"/></ImplicitOutputPort></root></mxGraphModel><mxCell
       as="defaultParent" id="5f267dc3:130e0981282:-7ebc" parent="5f267dc3:130e0981282:-7ebb"/></XcosDiagram>
     blocks: capacitor;clock_c;cscope;currentsensor;ground;inductor;resistor;split_f
-    media: gallery15.png
+    media: gallery7633.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 17
@@ -16873,7 +16873,7 @@
       as="geometry" height="8.0" width="8.0" x="16.0" y="-8.0"/></ImplicitInputPort><GroundBlock
       angle="90" dependsOnU="1" id="5f267dc3:130e0981282:-7d5c" interfaceFunctionName="Ground"
       ordering="2" parent="5f267dc3:130e0981282:-7d6d" simulationFunctionName="Ground"
-      simulationFunctionType="DEFAULT" style="Ground;rotation=90;flip=false;mirror=false"><ScilabString
+      simulationFunctionType="DEFAULT" style="Ground;flip=false;mirror=false"><ScilabString
       as="exprs" height="1" width="1"><data column="0" line="0" value=""/></ScilabString><ScilabDouble
       as="realParameters" height="0" width="0"/><ScilabDouble as="integerParameters"
       height="0" width="0"/><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble
@@ -17406,7 +17406,7 @@
       x="380.0" y="194.0"/><mxPoint as="targetPoint" x="380.0" y="240.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="5f267dc3:130e0981282:-7d6d" parent="5f267dc3:130e0981282:-7d6c"/></XcosDiagram>
     blocks: capacitor;clock_c;cscope;ground;inductor;resistor;split_f;voltagesensor
-    media: gallery16.png
+    media: gallery7635.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 18
@@ -18144,7 +18144,7 @@
       y="20.0"/><mxPoint x="240.0" y="20.0"/></Array></mxGeometry></ImplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-3721ad33:1314dc6b131:-8000" parent="-3721ad33:1314dc6b131:-7fff"/></XcosDiagram>
     blocks: clock_c;constantvoltage;cscope;diode;ground;resistor;split_f;text_f;voltagesensor
-    media: gallery17.png
+    media: gallery12884.png
     script_dump: '// Find currents and voltages
 
       // Basic Electronics
@@ -18753,7 +18753,7 @@
       scilabClass="ScilabList"><mxPoint x="510.0" y="470.0"/><mxPoint x="510.0" y="200.0"/></Array></mxGeometry></ImplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-3721ad33:1314dc6b131:-7f87" parent="-3721ad33:1314dc6b131:-7f86"/></XcosDiagram>
     blocks: clock_c;constantvoltage;cscope;diode;ground;resistor;split_f;text_f;voltagesensor
-    media: gallery18.png
+    media: gallery12878.png
     script_dump: '// Find voltage across diode
 
       // Basic Electronics
@@ -19440,7 +19440,7 @@
       x="780.0" y="130.0"/><mxPoint as="targetPoint" x="780.0" y="180.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-3721ad33:1314dc6b131:-7f5d" parent="-3721ad33:1314dc6b131:-7f5c"/></XcosDiagram>
     blocks: clock_c;cscope;diode;ground;impsplit_f;resistor;split_f;text_f;voltagesensor;vsourceac
-    media: gallery19.png
+    media: gallery12875.png
     script_dump: '// Calculate R,I_l(max)
 
       // Basic Electronics
@@ -20161,7 +20161,7 @@
       x="870.0" y="200.0"/><mxPoint x="740.0" y="200.0"/></Array></mxGeometry></ImplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-2d85d470:1314777ee15:-7f7e" parent="-2d85d470:1314777ee15:-7f7d"/></XcosDiagram>
     blocks: clock_c;cscope;diode;ground;impsplit_f;resistor;split_f;text_f;voltagesensor;vsourceac
-    media: gallery20.png
+    media: gallery12881.png
     script_dump: '// Calculate the dc load current
 
       // Basic Electronics
@@ -22664,7 +22664,7 @@
       as="geometry" height="40.0" width="40.0" x="40.0" y="320.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="-7476484f:145f8cd2a3c:-7be9" parent="-7476484f:145f8cd2a3c:-7be8"/></XcosDiagram>
     blocks: bigsom_f;clindummy_f;clkoutv_f;clksplit_f;clock_c;cscope;dlr;ramp;rand_m;split_f;step_function;super_f;switch_f;text_f;tows_c
-    media: gallery21.png
+    media: gallery107382.png
     script_dump: '// Effect of delay in control performance
 
       // 10.1
@@ -26343,7 +26343,7 @@
       as="geometry" height="30.0" width="40.0" x="550.0" y="380.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="-5d8a58f8:147c67c0236:-7ffb" parent="-5d8a58f8:147c67c0236:-7ffa"/></XcosDiagram>
     blocks: bigsom_f;clkoutv_f;clksplit_f;clock_c;cscope;dlr;rand_m;split_f;step_function;super_f;text_f;tows_c
-    media: gallery22.png
+    media: gallery107386.png
     script_dump: '// Smith predictor for paper machine control in Example 10.2 on
       page 385.
 
@@ -29889,7 +29889,7 @@
       as="geometry" height="40.0" width="40.0" x="40.0" y="320.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="-7476484f:145f8cd2a3c:-7be9" parent="-7476484f:145f8cd2a3c:-7be8"/></XcosDiagram>
     blocks: bigsom_f;clindummy_f;clkoutv_f;clksplit_f;clock_c;cscope;dlr;ramp;rand_m;split_f;step_function;super_f;switch_f;text_f;tows_c
-    media: gallery23.png
+    media: gallery107390.png
     script_dump: '// MacGregor''s first control problem, discussed in Example 11.4
       on page 213.
 
@@ -33761,7 +33761,7 @@
       width="40.0" x="460.0" y="360.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="-75a601dc:14604d880d0:-7ffd" parent="-75a601dc:14604d880d0:-7ffc"/></XcosDiagram>
     blocks: bigsom_f;clkoutv_f;clksplit_f;clock_c;clr;cscope;dlr;samphold_m;split_f;step_function;super_f;text_f;tows_c
-    media: gallery24.png
+    media: gallery105874.png
     script_dump: '// Verification of performance of lead controller on antenna system,
       as discussed in Example 7.3.
 
@@ -36350,7 +36350,7 @@
       as="geometry" height="40.0" width="40.0" x="40.0" y="320.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="-7476484f:145f8cd2a3c:-7be9" parent="-7476484f:145f8cd2a3c:-7be8"/></XcosDiagram>
     blocks: bigsom_f;clindummy_f;clkoutv_f;clksplit_f;clock_c;cscope;dlr;ramp;rand_m;split_f;step_function;super_f;switch_f;text_f;tows_c
-    media: gallery25.png
+    media: gallery97755.png
     script_dump: '// Illustration of system type, as explained in Example 7.10 on
       page 275.
 
@@ -39728,7 +39728,7 @@
       as="defaultParent" id="-2f864670:16fc63faf34:-7bc7" parent="-2f864670:16fc63faf34:-7bc6"/><mxPoint
       as="origin" x="-80.0"/></XcosDiagram>
     blocks: bigsom_f;clindummy_f;clksplit_f;clock_c;cscope;dlr;ramp;rand_m;split_f;step_function;super_f;switch_f;tows_c
-    media: gallery26.png
+    media: gallery97754.png
     script_dump: '// Pole placement controller IBM Lotus Domino server, discussed
       in Example 9.9 on page 341.
 
@@ -43143,7 +43143,7 @@
       x="520.0" y="450.0"/></Array></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-2f864670:16fc63faf34:-759a" parent="-2f864670:16fc63faf34:-7599"/></XcosDiagram>
     blocks: bigsom_f;clkoutv_f;clksplit_f;clock_c;clss;cscope;dlr;rand_m;samphold_m;split_f;step_function;super_f;tows_c
-    media: gallery27.png
+    media: gallery97763.png
     script_dump: '// Pole placement controller for motor problem, discussed in Example
       9.10 on page 343.
 
@@ -46848,7 +46848,7 @@
       as="geometry" height="40.0" width="40.0" x="680.0" y="400.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="-2f864670:16fc63faf34:-72c4" parent="-2f864670:16fc63faf34:-72c3"/></XcosDiagram>
     blocks: bigsom_f;clkoutv_f;clksplit_f;clock_c;clr;cscope;dlr;samphold_m;split_f;step_function;super_f;text_f;tows_c
-    media: gallery28.png
+    media: gallery97896.png
     script_dump: '// Controller design for the case study presented in Example 9.12
       on page 347.
 
@@ -50616,7 +50616,7 @@
       as="geometry" height="40.0" width="40.0" x="760.0" y="420.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="-2f864670:16fc63faf34:-6b2d" parent="-2f864670:16fc63faf34:-6b2c"/></XcosDiagram>
     blocks: bigsom_f;clkoutv_f;clksplit_f;clock_c;clr;cscope;split_f;step_function;super_f;tows_c
-    media: gallery29.png
+    media: gallery97905.png
     script_dump: '// Evaluation of continuous time controller for the case study presented
       in Example 9.13 on page 349.
 
@@ -53558,7 +53558,7 @@
       as="defaultParent" id="-2f864670:16fc63faf34:-6546" parent="-2f864670:16fc63faf34:-6545"/><mxPoint
       as="origin" y="-10.0"/></XcosDiagram>
     blocks: bigsom_f;clkoutv_f;clksplit_f;clock_c;clr;cscope;dlr;samphold_m;split_f;step_function;super_f;tows_c
-    media: gallery30.png
+    media: gallery97909.png
     script_dump: '// Evaluation of continuous time controller for the case study presented
       in Example 9.13 on page 349.
 
@@ -56312,7 +56312,7 @@
       as="defaultParent" id="-2f864670:16fc63faf34:-5f92" parent="-2f864670:16fc63faf34:-5f91"/><mxPoint
       as="origin" x="-350.0"/></XcosDiagram>
     blocks: bigsom_f;clindummy_f;clkoutv_f;clksplit_f;clock_c;cscope;dlr;ramp;rand_m;split_f;step_function;super_f;switch_f;tows_c
-    media: gallery31.png
+    media: gallery102820.png
     script_dump: '// System type with 2-DOF controller. It is used to arrive at the
       results Example 9.14.
 
@@ -59820,7 +59820,7 @@
       as="defaultParent" id="-2f864670:16fc63faf34:-5c8f" parent="-2f864670:16fc63faf34:-5c8e"/><mxPoint
       as="origin" x="-60.0"/></XcosDiagram>
     blocks: bigsom_f;clindummy_f;clkoutv_f;clksplit_f;clock_c;cscope;dlr;ramp;rand_m;split_f;step_function;super_f;switch_f;tows_c
-    media: gallery32.png
+    media: gallery102822.png
     script_dump: '// Illustrating the benefit of cancellation. It is used to arrive
       at the results of Example 9.15.
 
@@ -63940,7 +63940,7 @@
       as="geometry" height="20.0" width="60.0" x="670.0" y="160.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="-98b0b2b:146d610f05a:-78c3" parent="-98b0b2b:146d610f05a:-78c2"/></XcosDiagram>
     blocks: bigsom_f;clkoutv_f;clksplit_f;clock_c;cscope;dlr;saturation;split_f;step_function;summation;super_f;text_f;tows_c
-    media: gallery33.png
+    media: gallery106873.png
     script_dump: '// Anti windup control (AWC) of IBM Lotus Domino server, studied
       in Example 9.16 on page 357. It can be used for the follwoing situations: with
       and without saturation, and with and without AWC.
@@ -67673,7 +67673,7 @@
       x="450.0" y="420.0"/></TextBlock></root></mxGraphModel><mxCell as="defaultParent"
       id="-7dc40e71:146d783a328:-7fa0" parent="-7dc40e71:146d783a328:-7f9f"/></XcosDiagram>
     blocks: bigsom_f;clkoutv_f;clksplit_f;clock_c;clr;cscope;dlr;ramp;rand_m;samphold_m;split_f;step_function;super_f;switch_f;text_f;time_delay;tows_c
-    media: gallery34.png
+    media: gallery106876.png
     script_dump: '// Demonstration of usefulness of negative PID parameters, discussed
       in Example 9.17 on page 361.
 
@@ -71736,7 +71736,7 @@
       as="geometry" height="40.0" width="50.0" x="530.0" y="290.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="-64ce6d85:145ef6f2b4f:-7f9f" parent="-64ce6d85:145ef6f2b4f:-7f9e"/></XcosDiagram>
     blocks: clkoutv_f;clksplit_f;clock_c;clr;cscope;dlr;samphold_m;split_f;step_function;summation;super_f;text_f;tows_c
-    media: gallery35.png
+    media: gallery106861.png
     script_dump: '// Pole placement controller for magnetically suspended ball problem,
       discussed in Example 9.3 on page 331.
 
@@ -75262,7 +75262,7 @@
       as="geometry" height="40.0" width="60.0" x="560.0" y="230.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="3844e477:143914d2fde:-7fa0" parent="3844e477:143914d2fde:-7f9f"/></XcosDiagram>
     blocks: bigsom_f;clkoutv_f;clksplit_f;clock_c;clss;cscope;dlr;rand_m;samphold_m;split_f;step_function;super_f;text_f;tows_c
-    media: gallery36.png
+    media: gallery106860.png
     script_dump: '// Pole placement controller for magnetically suspended ball problem,
       discussed in Example 9.3 on page 331.
 
@@ -79006,7 +79006,7 @@
       width="40.0" x="460.0" y="360.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="-75a601dc:14604d880d0:-7ffd" parent="-75a601dc:14604d880d0:-7ffc"/></XcosDiagram>
     blocks: bigsom_f;clkoutv_f;clksplit_f;clock_c;clr;cscope;dlr;samphold_m;split_f;step_function;super_f;text_f;tows_c
-    media: gallery37.png
+    media: gallery107378.png
     script_dump: '// DC motor with PID control, tuned through pole placement technique,
       as in Example 9.18.
 
@@ -82677,7 +82677,7 @@
       x="540.0" y="210.0"/><mxPoint as="targetPoint" x="570.0" y="210.0"/></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="7b254bcc:14613988545:-7cfe" parent="7b254bcc:14613988545:-7cfd"/></XcosDiagram>
     blocks: bigsom_f;clkoutv_f;clksplit_f;clock_c;clr;cscope;split_f;step_function;super_f;text_f;tows_c
-    media: gallery38.png
+    media: gallery107379.png
     script_dump: '// DC motor with PID control, tuned through pole placement technique,
       as in Example 9.18.
 
@@ -85999,7 +85999,7 @@
       scilabClass="ScilabList"><mxPoint x="750.0" y="290.0"/></Array></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-7476484f:145f8cd2a3c:-7f9e" parent="-7476484f:145f8cd2a3c:-7f9d"/></XcosDiagram>
     blocks: bigsom_f;clkoutv_f;clksplit_f;clock_c;cscope;dlr;split_f;step_function;super_f;text_f;tows_c
-    media: gallery39.png
+    media: gallery97756.png
     script_dump: '// Simulation of closed loop system with an unstable controller,
       as discussed in Example 9.5 on page 335.
 
@@ -93037,7 +93037,7 @@
       x="510.0" y="340.0"/><Array as="points" scilabClass=""><mxPoint x="510.0" y="440.0"/></Array></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="3af18dde:16fc1cf9366:-7cf3" parent="3af18dde:16fc1cf9366:-7cf2"/></XcosDiagram>
     blocks: bigsom_f;clkoutv_f;clksplit_f;clock_c;clss;cscope;dlr;rand_m;samphold_m;split_f;step_function;super_f;tows_c
-    media: gallery41.png
+    media: gallery97757.png
     script_dump: '// Pole placement controller, with internal model of a step, for
       the magnetically suspended ball problem, as discussed in Example 9.8 on page
       339.
@@ -94955,7 +94955,7 @@
       x="760.0" y="94.0"/><mxPoint as="targetPoint" x="760.0" y="120.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="7a2a91ff:134d8462990:-7b80" parent="7a2a91ff:134d8462990:-7b7f"/></XcosDiagram>
     blocks: capacitor;ccs;clock_c;cscope;gensin_f;ground;inductor;resistor;split_f;text_f;voltagesensor
-    media: gallery42.png
+    media: gallery24849.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 44
@@ -95925,7 +95925,7 @@
       x="910.0" y="214.0"/><mxPoint as="targetPoint" x="910.0" y="230.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="7a2a91ff:134d8462990:-7955" parent="7a2a91ff:134d8462990:-7954"/></XcosDiagram>
     blocks: bigsom_f;capacitor;ccs;clock_c;cscope;currentsensor;gainblk_f;gensin_f;ground;mux;powblk_f;resistor;split_f
-    media: gallery43.png
+    media: gallery24850.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 45
@@ -96664,7 +96664,7 @@
       x="760.0" y="144.0"/><mxPoint as="targetPoint" x="760.0" y="170.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-1fad1256:134d7ff92c3:-7ffe" parent="-1fad1256:134d7ff92c3:-7ffd"/></XcosDiagram>
     blocks: clock_c;cscope;currentsensor;ground;inductor;mux;resistor;sinevoltage;split_f;voltagesensor
-    media: gallery44.png
+    media: gallery24844.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 46
@@ -97269,7 +97269,7 @@
       scilabClass=""><mxPoint x="400.0" y="90.0"/></Array></mxGeometry></ImplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-1fad1256:134d7ff92c3:-7ef9" parent="-1fad1256:134d7ff92c3:-7ef8"/></XcosDiagram>
     blocks: capacitor;clock_c;cscope;currentsensor;ground;impsplit_f;inductor;resistor;sinevoltage;split_f
-    media: gallery45.png
+    media: gallery24845.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 47
@@ -98220,7 +98220,7 @@
       as="defaultParent" id="-1fad1256:134d7ff92c3:-7e4a" parent="-1fad1256:134d7ff92c3:-7e49"/><mxPoint
       as="origin" x="-10.0"/></XcosDiagram>
     blocks: capacitor;ccs;clock_c;cscope;gensin_f;ground;inductor;mux;potentialsensor;resistor;split_f;text_f
-    media: gallery46.png
+    media: gallery24846.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 48
@@ -99338,7 +99338,7 @@
       scilabClass=""><mxPoint x="230.0" y="250.0"/></Array></mxGeometry></ImplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="7a2a91ff:134d8462990:-7ffe" parent="7a2a91ff:134d8462990:-7ffd"/></XcosDiagram>
     blocks: capacitor;clock_c;cscope;currentsensor;cvs;delay_f;gainblk_f;ground;mux;resistor;sinevoltage;split_f
-    media: gallery47.png
+    media: gallery24847.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 49
@@ -100612,7 +100612,7 @@
       x="130.0" y="180.0"/><Array as="points" scilabClass=""><mxPoint x="130.0" y="240.0"/></Array></mxGeometry></ImplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="7a2a91ff:134d8462990:-7e88" parent="7a2a91ff:134d8462990:-7e87"/></XcosDiagram>
     blocks: bigsom_f;capacitor;ccs;clock_c;cscope;gensin_f;ground;impsplit_f;inductor;potentialsensor;resistor;split_f;text_f
-    media: gallery48.png
+    media: gallery24848.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 50
@@ -101487,7 +101487,7 @@
       scilabClass="ScilabList"><mxPoint x="580.0" y="80.0"/><mxPoint x="580.0" y="80.0"/></Array></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-10514b51:134e53d5ed9:-7ffe" parent="-10514b51:134e53d5ed9:-7ffd"/></XcosDiagram>
     blocks: clock_c;cscope;currentsensor;cvs;gensin_f;ground;inductor;mux;resistor;split_f
-    media: gallery49.png
+    media: gallery24851.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 51
@@ -102110,7 +102110,7 @@
       scilabClass=""><mxPoint x="350.0" y="80.0"/></Array></mxGeometry></ImplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="26015439:134e2b4e9d8:-7fd9" parent="26015439:134e2b4e9d8:-7fd8"/></XcosDiagram>
     blocks: clock_c;constantvoltage;cscope;currentsensor;gainblk_f;ground;idealtransformer;impsplit_f;powblk_f;resistor
-    media: gallery50.png
+    media: gallery22350.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 52
@@ -103527,7 +103527,7 @@
       x="930.0" y="234.0"/><mxPoint as="targetPoint" x="930.0" y="260.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-536a7494:134d5b6a3e7:-7ffa" parent="-536a7494:134d5b6a3e7:-7ff9"/></XcosDiagram>
     blocks: clock_c;constantvoltage;cscope;currentsensor;ground;mux;resistor;split_f;text_f
-    media: gallery51.png
+    media: gallery24852.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 53
@@ -104294,7 +104294,7 @@
       scilabClass=""><mxPoint x="410.0" y="150.0"/></Array></mxGeometry></ImplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="f4a86ca:134efd7fc02:-7ffe" parent="f4a86ca:134efd7fc02:-7ffd"/></XcosDiagram>
     blocks: clock_c;cscope;currentsensor;cvs;diode;gensqr_f;ground;impsplit_f;inductor;potentialsensor;resistor;text_f
-    media: gallery52.png
+    media: gallery24853.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 54
@@ -104846,7 +104846,7 @@
       x="50.0" y="110.0"/><mxPoint as="targetPoint" x="220.0" y="110.0"/></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="f4a86ca:134efd7fc02:-7e66" parent="f4a86ca:134efd7fc02:-7e65"/></XcosDiagram>
     blocks: clock_c;cscope;cvs;gainblk_f;ground;impsplit_f;inductor;potentialsensor;resistor;time_f
-    media: gallery53.png
+    media: gallery24854.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 55
@@ -105461,7 +105461,7 @@
       scilabClass=""><mxPoint x="70.0" y="110.0"/></Array></mxGeometry></ImplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-3b708aba:134ce795dea:-8000" parent="-3b708aba:134ce795dea:-7fff"/></XcosDiagram>
     blocks: clock_c;constantvoltage;cscope;currentsensor;ground;impsplit_f;resistor
-    media: gallery54.png
+    media: gallery24826.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 56
@@ -106067,7 +106067,7 @@
       x="510.0" y="170.0"/></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="73523f48:134cd91c16f:-7c19" parent="73523f48:134cd91c16f:-7c18"/></XcosDiagram>
     blocks: clock_c;cscope;ground;impsplit_f;resistor;sinevoltage;voltagesensor
-    media: gallery55.png
+    media: gallery24827.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 57
@@ -106640,7 +106640,7 @@
       as="points" scilabClass=""><mxPoint x="340.0" y="100.0"/></Array></mxGeometry></ImplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="73523f48:134cd91c16f:-7cca" parent="73523f48:134cd91c16f:-7cc9"/></XcosDiagram>
     blocks: clock_c;cscope;currentsensor;ground;impsplit_f;resistor;sinevoltage
-    media: gallery56.png
+    media: gallery24828.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 58
@@ -107285,7 +107285,7 @@
       as="geometry" height="40.0" width="40.0" x="230.0" y="260.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="-3721b5e:1319cfae9ac:-8000" parent="-3721b5e:1319cfae9ac:-7fff"/></XcosDiagram>
     blocks: ccs;clock_c;const_m;cscope;currentsensor;ground;split_f;text_f
-    media: gallery57.png
+    media: gallery13069.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 59
@@ -107839,7 +107839,7 @@
       x="380.0" y="74.0"/><mxPoint as="targetPoint" x="380.0" y="110.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-3721b5e:1319cfae9ac:-7f30" parent="-3721b5e:1319cfae9ac:-7f2f"/></XcosDiagram>
     blocks: clock_c;cmscope;constantvoltage;currentsensor;ground;potentialsensor;resistor;split_f
-    media: gallery58.png
+    media: gallery24820.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 60
@@ -108447,7 +108447,7 @@
       scilabClass="ScilabList"><mxPoint x="340.0" y="280.0"/></Array></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-16593537:1319d63fbbf:-7f80" parent="-16593537:1319d63fbbf:-7f7f"/></XcosDiagram>
     blocks: clock_c;cmscope;constantvoltage;ground;split_f;voltagesensor
-    media: gallery59.png
+    media: gallery24821.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 61
@@ -109098,7 +109098,7 @@
       x="480.0" y="104.0"/><mxPoint as="targetPoint" x="480.0" y="130.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-5fcba885:134ccedce1f:-8000" parent="-5fcba885:134ccedce1f:-7fff"/></XcosDiagram>
     blocks: ccs;clock_c;constantvoltage;const_m;cscope;ground;potentialsensor;resistor;split_f
-    media: gallery60.png
+    media: gallery24822.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 62
@@ -110037,7 +110037,7 @@
       x="700.0" y="164.0"/><mxPoint as="targetPoint" x="700.0" y="190.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-5fcba885:134ccedce1f:-7cf6" parent="-5fcba885:134ccedce1f:-7cf5"/></XcosDiagram>
     blocks: clock_c;constantvoltage;cscope;currentsensor;cvs;gainblk_f;ground;mux;powblk_f;prod_f;resistor;split_f;text_f;voltagesensor
-    media: gallery61.png
+    media: gallery24823.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 63
@@ -110926,7 +110926,7 @@
       x="800.0" y="124.0"/><mxPoint as="targetPoint" x="800.0" y="150.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-5005d4b1:131a4cd73b3:-7eb8" parent="-5005d4b1:131a4cd73b3:-7eb7"/></XcosDiagram>
     blocks: ccs;clock_c;const_m;cscope;gainblk_f;ground;mux;potentialsensor;powblk_f;resistor;split_f
-    media: gallery62.png
+    media: gallery24824.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 64
@@ -111400,7 +111400,7 @@
       x="190.0" y="130.0"/><mxPoint as="targetPoint" x="340.0" y="140.0"/></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-5005d4b1:131a4cd73b3:-7f84" parent="-5005d4b1:131a4cd73b3:-7f83"/></XcosDiagram>
     blocks: clock_c;constantvoltage;cscope;currentsensor;ground;impsplit_f;resistor
-    media: gallery63.png
+    media: gallery24825.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 65
@@ -111442,7 +111442,7 @@
       as="geometry" height="8.0" width="8.0" x="16.0" y="-8.0"/></ImplicitInputPort><GroundBlock
       angle="90" dependsOnU="1" id="-5f02711f:131ec3f74c9:-7af6" interfaceFunctionName="Ground"
       ordering="3" parent="-5f02711f:131ec3f74c9:-7b98" simulationFunctionName="Ground"
-      simulationFunctionType="DEFAULT" style="Ground;rotation=90;flip=false;mirror=false"><ScilabString
+      simulationFunctionType="DEFAULT" style="Ground;flip=false;mirror=false"><ScilabString
       as="exprs" height="1" width="1"><data column="0" line="0" value=""/></ScilabString><ScilabDouble
       as="realParameters" height="0" width="0"/><ScilabDouble as="integerParameters"
       height="0" width="0"/><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble
@@ -112127,7 +112127,7 @@
       y="30.0"/></TextBlock></root></mxGraphModel><mxCell as="defaultParent" id="-5f02711f:131ec3f74c9:-7b98"
       parent="-5f02711f:131ec3f74c9:-7b97"/></XcosDiagram>
     blocks: clock_c;constantvoltage;cscope;currentsensor;cvs;gainblk_f;ground;resistor;split_f;text_f;voltagesensor
-    media: gallery64.png
+    media: gallery13095.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 66
@@ -112550,7 +112550,7 @@
       as="points" scilabClass="ScilabList"><mxPoint x="280.0" y="250.0"/></Array></mxGeometry></ExplicitLink><GroundBlock
       angle="90" dependsOnU="1" id="-44770f3d:13503faa17d:-7d2f" interfaceFunctionName="Ground"
       ordering="17" parent="-5f02711f:131ec3f74c9:-7a7c" simulationFunctionName="Ground"
-      simulationFunctionType="DEFAULT" style="Ground;rotation=90;flip=false;mirror=false"><ScilabString
+      simulationFunctionType="DEFAULT" style="Ground;flip=false;mirror=false"><ScilabString
       as="exprs" height="1" width="1"><data column="0" line="0" value=""/></ScilabString><ScilabDouble
       as="realParameters" height="0" width="0"/><ScilabDouble as="integerParameters"
       height="0" width="0"/><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble
@@ -112941,7 +112941,7 @@
       as="defaultParent" id="-5f02711f:131ec3f74c9:-7a7c" parent="-5f02711f:131ec3f74c9:-7a7b"/><mxPoint
       as="origin" x="-6.0" y="-6.0"/></XcosDiagram>
     blocks: ccs;clock_c;constantvoltage;const_m;cscope;currentsensor;ground;mux;resistor;split_f;text_f
-    media: gallery65.png
+    media: gallery22339.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 67
@@ -114302,7 +114302,7 @@
       x="580.0" y="124.0"/><mxPoint as="targetPoint" x="580.0" y="150.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="5e6a3066:134dff9ba34:-7ffe" parent="5e6a3066:134dff9ba34:-7ffd"/></XcosDiagram>
     blocks: ccs;clock_c;const_m;cscope;currentsensor;delay_f;gainblk_f;ground;mux;resistor;split_f;voltagesensor
-    media: gallery66.png
+    media: gallery22340.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 68
@@ -114319,7 +114319,7 @@
       id="-16b82e93:131e810ab25:-8000" parent="-16b82e93:131e810ab25:-7fff"/><GroundBlock
       angle="90" dependsOnU="1" id="-16b82e93:131e810ab25:-7fd3" interfaceFunctionName="Ground"
       ordering="1" parent="-16b82e93:131e810ab25:-8000" simulationFunctionName="Ground"
-      simulationFunctionType="DEFAULT" style="Ground;rotation=90;flip=false;mirror=false"><ScilabString
+      simulationFunctionType="DEFAULT" style="Ground;flip=false;mirror=false"><ScilabString
       as="exprs" height="1" width="1"><data column="0" line="0" value=""/></ScilabString><ScilabDouble
       as="realParameters" height="0" width="0"/><ScilabDouble as="integerParameters"
       height="0" width="0"/><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble
@@ -114978,7 +114978,7 @@
       y="10.0"/></TextBlock></root></mxGraphModel><mxCell as="defaultParent" id="-16b82e93:131e810ab25:-8000"
       parent="-16b82e93:131e810ab25:-7fff"/></XcosDiagram>
     blocks: ccs;clock_c;const_m;cscope;currentsensor;ground;resistor;split_f;text_f
-    media: gallery67.png
+    media: gallery13081.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 69
@@ -114995,7 +114995,7 @@
       id="-16b82e93:131e810ab25:-7f1e" parent="-16b82e93:131e810ab25:-7f1d"/><GroundBlock
       angle="90" dependsOnU="1" id="-16b82e93:131e810ab25:-7f0a" interfaceFunctionName="Ground"
       ordering="1" parent="-16b82e93:131e810ab25:-7f1e" simulationFunctionName="Ground"
-      simulationFunctionType="DEFAULT" style="Ground;rotation=90;flip=false;mirror=false"><ScilabString
+      simulationFunctionType="DEFAULT" style="Ground;flip=false;mirror=false"><ScilabString
       as="exprs" height="1" width="1"><data column="0" line="0" value=""/></ScilabString><ScilabDouble
       as="realParameters" height="0" width="0"/><ScilabDouble as="integerParameters"
       height="0" width="0"/><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble
@@ -116305,7 +116305,7 @@
       y="10.0"/></TextBlock></root></mxGraphModel><mxCell as="defaultParent" id="-16b82e93:131e810ab25:-7f1e"
       parent="-16b82e93:131e810ab25:-7f1d"/></XcosDiagram>
     blocks: ccs;clock_c;cmscope;const_m;cscope;ground;potentialsensor;resistor;split_f;text_f;voltagesensor
-    media: gallery68.png
+    media: gallery13084.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 70
@@ -116350,7 +116350,7 @@
       as="geometry" height="8.0" width="8.0" x="40.0" y="16.0"/></ImplicitOutputPort><GroundBlock
       angle="90" dependsOnU="1" id="-5f02711f:131ec3f74c9:-7fc9" interfaceFunctionName="Ground"
       ordering="2" parent="-5f02711f:131ec3f74c9:-8000" simulationFunctionName="Ground"
-      simulationFunctionType="DEFAULT" style="Ground;rotation=90;flip=false;mirror=false"><ScilabString
+      simulationFunctionType="DEFAULT" style="Ground;flip=false;mirror=false"><ScilabString
       as="exprs" height="1" width="1"><data column="0" line="0" value=""/></ScilabString><ScilabDouble
       as="realParameters" height="0" width="0"/><ScilabDouble as="integerParameters"
       height="0" width="0"/><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble
@@ -117166,7 +117166,7 @@
       y="10.0"/></TextBlock></root></mxGraphModel><mxCell as="defaultParent" id="-5f02711f:131ec3f74c9:-8000"
       parent="-5f02711f:131ec3f74c9:-7fff"/></XcosDiagram>
     blocks: ccs;clock_c;constantvoltage;const_m;cscope;ground;potentialsensor;resistor;split_f;text_f
-    media: gallery69.png
+    media: gallery13086.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 71
@@ -119260,7 +119260,7 @@
       x="720.0" y="204.0"/><mxPoint as="targetPoint" x="720.0" y="230.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="5e6a3066:134dff9ba34:-7e89" parent="5e6a3066:134dff9ba34:-7e88"/></XcosDiagram>
     blocks: ccs;clock_c;constantvoltage;const_m;cscope;cvs;delay_f;gainblk_f;ground;mux;potentialsensor;resistor;split_f;text_f;voltagesensor
-    media: gallery70.png
+    media: gallery22341.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 72
@@ -119277,7 +119277,7 @@
       id="-5f02711f:131ec3f74c9:-7da1" parent="-5f02711f:131ec3f74c9:-7da0"/><GroundBlock
       angle="90" dependsOnU="1" id="-5f02711f:131ec3f74c9:-7d90" interfaceFunctionName="Ground"
       ordering="2" parent="-5f02711f:131ec3f74c9:-7da1" simulationFunctionName="Ground"
-      simulationFunctionType="DEFAULT" style="Ground;rotation=90;flip=false;mirror=false"><ScilabString
+      simulationFunctionType="DEFAULT" style="Ground;flip=false;mirror=false"><ScilabString
       as="exprs" height="1" width="1"><data column="0" line="0" value=""/></ScilabString><ScilabDouble
       as="realParameters" height="0" width="0"/><ScilabDouble as="integerParameters"
       height="0" width="0"/><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble
@@ -119983,7 +119983,7 @@
       y="10.0"/></TextBlock></root></mxGraphModel><mxCell as="defaultParent" id="-5f02711f:131ec3f74c9:-7da1"
       parent="-5f02711f:131ec3f74c9:-7da0"/></XcosDiagram>
     blocks: clock_c;constantvoltage;cscope;currentsensor;ground;prod_f;resistor;split_f;text_f;voltagesensor
-    media: gallery71.png
+    media: gallery13088.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 73
@@ -120000,7 +120000,7 @@
       id="-5f02711f:131ec3f74c9:-7c8d" parent="-5f02711f:131ec3f74c9:-7c8c"/><GroundBlock
       angle="90" dependsOnU="1" id="-5f02711f:131ec3f74c9:-7c7c" interfaceFunctionName="Ground"
       ordering="1" parent="-5f02711f:131ec3f74c9:-7c8d" simulationFunctionName="Ground"
-      simulationFunctionType="DEFAULT" style="Ground;rotation=90;flip=false;mirror=false"><ScilabString
+      simulationFunctionType="DEFAULT" style="Ground;flip=false;mirror=false"><ScilabString
       as="exprs" height="1" width="1"><data column="0" line="0" value=""/></ScilabString><ScilabDouble
       as="realParameters" height="0" width="0"/><ScilabDouble as="integerParameters"
       height="0" width="0"/><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble
@@ -121076,7 +121076,7 @@
       y="20.0"/></TextBlock></root></mxGraphModel><mxCell as="defaultParent" id="-5f02711f:131ec3f74c9:-7c8d"
       parent="-5f02711f:131ec3f74c9:-7c8c"/></XcosDiagram>
     blocks: clock_c;cmscope;constantvoltage;cscope;currentsensor;ground;resistor;split_f;text_f
-    media: gallery72.png
+    media: gallery13091.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 74
@@ -121146,7 +121146,7 @@
       as="geometry" height="8.0" width="8.0" x="16.0" y="40.0"/></ImplicitOutputPort><GroundBlock
       angle="90" dependsOnU="1" id="-5f02711f:131ec3f74c9:-7e32" interfaceFunctionName="Ground"
       ordering="4" parent="-5f02711f:131ec3f74c9:-7e53" simulationFunctionName="Ground"
-      simulationFunctionType="DEFAULT" style="Ground;rotation=90;flip=false;mirror=false"><ScilabString
+      simulationFunctionType="DEFAULT" style="Ground;flip=false;mirror=false"><ScilabString
       as="exprs" height="1" width="1"><data column="0" line="0" value=""/></ScilabString><ScilabDouble
       as="realParameters" height="0" width="0"/><ScilabDouble as="integerParameters"
       height="0" width="0"/><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble
@@ -121750,7 +121750,7 @@
       y="20.0"/></TextBlock></root></mxGraphModel><mxCell as="defaultParent" id="-5f02711f:131ec3f74c9:-7e53"
       parent="-5f02711f:131ec3f74c9:-7e52"/></XcosDiagram>
     blocks: clock_c;constantvoltage;cscope;currentsensor;cvs;gainblk_f;ground;resistor;split_f;text_f
-    media: gallery73.png
+    media: gallery13093.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 75
@@ -121793,7 +121793,7 @@
       as="geometry" height="8.0" width="8.0" x="16.0" y="-8.0"/></ImplicitInputPort><GroundBlock
       angle="90" dependsOnU="1" id="2602728:132d47c9ecc:-7fd6" interfaceFunctionName="Ground"
       ordering="2" parent="2602728:132d47c9ecc:-8000" simulationFunctionName="Ground"
-      simulationFunctionType="DEFAULT" style="Ground;rotation=90;flip=false;mirror=false"><ScilabString
+      simulationFunctionType="DEFAULT" style="Ground;flip=false;mirror=false"><ScilabString
       as="exprs" height="1" width="1"><data column="0" line="0" value=""/></ScilabString><ScilabDouble
       as="realParameters" height="0" width="0"/><ScilabDouble as="integerParameters"
       height="0" width="0"/><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble
@@ -122264,7 +122264,7 @@
       x="320.0" y="76.0"/><mxPoint as="targetPoint" x="320.0" y="100.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="2602728:132d47c9ecc:-8000" parent="2602728:132d47c9ecc:-7fff"/></XcosDiagram>
     blocks: clock_c;constantvoltage;cscope;ground;potentialsensor;resistor;split_f
-    media: gallery74.png
+    media: gallery14857.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 76
@@ -122307,7 +122307,7 @@
       as="geometry" height="8.0" width="8.0" x="16.0" y="40.0"/></ImplicitOutputPort><GroundBlock
       angle="90" dependsOnU="1" id="77dfe223:134ebbf1891:-7f31" interfaceFunctionName="Ground"
       ordering="2" parent="2602728:132d47c9ecc:-7f5b" simulationFunctionName="Ground"
-      simulationFunctionType="DEFAULT" style="Ground;rotation=90;flip=false;mirror=false"><ScilabString
+      simulationFunctionType="DEFAULT" style="Ground;flip=false;mirror=false"><ScilabString
       as="exprs" height="1" width="1"><data column="0" line="0" value=""/></ScilabString><ScilabDouble
       as="realParameters" height="0" width="0"/><ScilabDouble as="integerParameters"
       height="0" width="0"/><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble
@@ -122493,7 +122493,7 @@
       as="geometry" height="8.0" width="8.0" x="16.0" y="40.0"/></ImplicitOutputPort><GroundBlock
       angle="90" dependsOnU="1" id="77dfe223:134ebbf1891:-7ecf" interfaceFunctionName="Ground"
       ordering="10" parent="2602728:132d47c9ecc:-7f5b" simulationFunctionName="Ground"
-      simulationFunctionType="DEFAULT" style="Ground;rotation=90;flip=false;mirror=false"><ScilabString
+      simulationFunctionType="DEFAULT" style="Ground;flip=false;mirror=false"><ScilabString
       as="exprs" height="1" width="1"><data column="0" line="0" value=""/></ScilabString><ScilabDouble
       as="realParameters" height="0" width="0"/><ScilabDouble as="integerParameters"
       height="0" width="0"/><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble
@@ -123047,7 +123047,7 @@
       x="780.0" y="214.0"/><mxPoint as="targetPoint" x="780.0" y="240.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="2602728:132d47c9ecc:-7f5b" parent="2602728:132d47c9ecc:-7f5a"/></XcosDiagram>
     blocks: ccs;clock_c;cmscope;constantvoltage;const_m;currentsensor;ground;potentialsensor;resistor;split_f
-    media: gallery75.png
+    media: gallery24829.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 77
@@ -124076,7 +124076,7 @@
       x="400.0" y="70.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-1f470ada:134d070a228:-7f33" parent="-1f470ada:134d070a228:-7f32"/></XcosDiagram>
     blocks: ccs;clock_c;constantvoltage;cscope;delay_f;gainblk_f;ground;potentialsensor;resistor;split_f
-    media: gallery76.png
+    media: gallery14859.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 78
@@ -124635,7 +124635,7 @@
       x="370.0" y="150.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-1f470ada:134d070a228:-8000" parent="-1f470ada:134d070a228:-7fff"/></XcosDiagram>
     blocks: clock_c;const_m;cscope;cvs;ground;resistor;split_f;voltagesensor
-    media: gallery77.png
+    media: gallery14861.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 79
@@ -125945,7 +125945,7 @@
       as="defaultParent" id="6611b517:134eb867750:-7b61" parent="6611b517:134eb867750:-7b60"/><mxPoint
       as="origin" x="-2.5"/></XcosDiagram>
     blocks: ccs;clock_c;cscope;delay_f;gainblk_f;ground;powblk_f;resistor;sinevoltage;split_f;text_f;voltagesensor
-    media: gallery78.png
+    media: gallery24830.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 80
@@ -125988,7 +125988,7 @@
       as="geometry" height="8.0" width="8.0" x="16.0" y="-8.0"/></ImplicitInputPort><GroundBlock
       angle="90" dependsOnU="1" id="-5872192d:1324f245276:-7fd6" interfaceFunctionName="Ground"
       ordering="2" parent="-5872192d:1324f245276:-8000" simulationFunctionName="Ground"
-      simulationFunctionType="DEFAULT" style="Ground;rotation=90;flip=false;mirror=false"><ScilabString
+      simulationFunctionType="DEFAULT" style="Ground;flip=false;mirror=false"><ScilabString
       as="exprs" height="1" width="1"><data column="0" line="0" value=""/></ScilabString><ScilabDouble
       as="realParameters" height="0" width="0"/><ScilabDouble as="integerParameters"
       height="0" width="0"/><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble
@@ -126608,7 +126608,7 @@
       x="480.0" y="360.0"/></Array></mxGeometry></ImplicitLink><GroundBlock angle="90"
       dependsOnU="1" id="-5872192d:1324f245276:-7f36" interfaceFunctionName="Ground"
       ordering="16" parent="-5872192d:1324f245276:-8000" simulationFunctionName="Ground"
-      simulationFunctionType="DEFAULT" style="Ground;rotation=90;flip=false;mirror=false"><ScilabString
+      simulationFunctionType="DEFAULT" style="Ground;flip=false;mirror=false"><ScilabString
       as="exprs" height="1" width="1"><data column="0" line="0" value=""/></ScilabString><ScilabDouble
       as="realParameters" height="0" width="0"/><ScilabDouble as="integerParameters"
       height="0" width="0"/><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble
@@ -126689,7 +126689,7 @@
       as="sourcePoint" x="566.0" y="190.0"/><mxPoint as="targetPoint" x="550.0" y="190.0"/></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-5872192d:1324f245276:-8000" parent="-5872192d:1324f245276:-7fff"/></XcosDiagram>
     blocks: bigsom_f;ccs;clock_c;constantvoltage;const_m;cscope;currentsensor;ground;resistor;split_f
-    media: gallery79.png
+    media: gallery14845.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 81
@@ -127400,7 +127400,7 @@
       x="570.0" y="74.0"/><mxPoint as="targetPoint" x="570.0" y="100.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="6611b517:134eb867750:-7ffe" parent="6611b517:134eb867750:-7ffd"/></XcosDiagram>
     blocks: clock_c;cscope;currentsensor;ground;inductor;resistor;sinevoltage;split_f;summation
-    media: gallery80.png
+    media: gallery24831.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 82
@@ -128234,7 +128234,7 @@
       scilabClass="ScilabList"><mxPoint x="560.0" y="180.0"/><mxPoint x="560.0" y="180.0"/></Array></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="6611b517:134eb867750:-7ec6" parent="6611b517:134eb867750:-7ec5"/></XcosDiagram>
     blocks: clock_c;constantvoltage;cscope;currentsensor;ground;resistor;split_f;summation
-    media: gallery81.png
+    media: gallery24832.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 83
@@ -128794,7 +128794,7 @@
       x="490.0" y="94.0"/><mxPoint as="targetPoint" x="490.0" y="130.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="6611b517:134eb867750:-7be7" parent="6611b517:134eb867750:-7be6"/></XcosDiagram>
     blocks: clock_c;constantvoltage;cscope;currentsensor;ground;resistor;split_f
-    media: gallery82.png
+    media: gallery24833.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 84
@@ -129991,7 +129991,7 @@
       scilabClass="ScilabList"><mxPoint x="210.0" y="200.0"/><mxPoint x="210.0" y="120.0"/></Array></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="6611b517:134eb867750:-7d3e" parent="6611b517:134eb867750:-7d3d"/></XcosDiagram>
     blocks: ccs;clock_c;constantvoltage;cscope;currentsensor;delay_f;ground;resistor;split_f;voltagesensor
-    media: gallery83.png
+    media: gallery24834.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 85
@@ -130034,7 +130034,7 @@
       as="geometry" height="8.0" width="8.0" x="16.0" y="-8.0"/></ImplicitInputPort><GroundBlock
       angle="90" dependsOnU="1" id="-5872192d:1324f245276:-7ed3" interfaceFunctionName="Ground"
       ordering="2" parent="-5872192d:1324f245276:-7ee4" simulationFunctionName="Ground"
-      simulationFunctionType="DEFAULT" style="Ground;rotation=90;flip=false;mirror=false"><ScilabString
+      simulationFunctionType="DEFAULT" style="Ground;flip=false;mirror=false"><ScilabString
       as="exprs" height="1" width="1"><data column="0" line="0" value=""/></ScilabString><ScilabDouble
       as="realParameters" height="0" width="0"/><ScilabDouble as="integerParameters"
       height="0" width="0"/><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble
@@ -130195,7 +130195,7 @@
       as="targetPoint" x="150.0" y="300.0"/></mxGeometry></ImplicitLink><GroundBlock
       angle="90" dependsOnU="1" id="-5872192d:1324f245276:-7e70" interfaceFunctionName="Ground"
       ordering="8" parent="-5872192d:1324f245276:-7ee4" simulationFunctionName="Ground"
-      simulationFunctionType="DEFAULT" style="Ground;rotation=90;flip=false;mirror=false"><ScilabString
+      simulationFunctionType="DEFAULT" style="Ground;flip=false;mirror=false"><ScilabString
       as="exprs" height="1" width="1"><data column="0" line="0" value=""/></ScilabString><ScilabDouble
       as="realParameters" height="0" width="0"/><ScilabDouble as="integerParameters"
       height="0" width="0"/><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble
@@ -130874,7 +130874,7 @@
       x="710.0" y="44.0"/><mxPoint as="targetPoint" x="710.0" y="60.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-5872192d:1324f245276:-7ee4" parent="-5872192d:1324f245276:-7ee3"/></XcosDiagram>
     blocks: bigsom_f;ccs;clock_c;constantvoltage;const_m;cscope;currentsensor;cvs;gainblk_f;ground;resistor;split_f
-    media: gallery84.png
+    media: gallery14847.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 86
@@ -130920,7 +130920,7 @@
       as="geometry" height="8.0" width="8.0" x="26.0" y="40.0"/></ImplicitInputPort><GroundBlock
       angle="90" dependsOnU="1" id="-5872192d:1324f245276:-7d11" interfaceFunctionName="Ground"
       ordering="2" parent="-5872192d:1324f245276:-7d2f" simulationFunctionName="Ground"
-      simulationFunctionType="DEFAULT" style="Ground;rotation=90;flip=false;mirror=false"><ScilabString
+      simulationFunctionType="DEFAULT" style="Ground;flip=false;mirror=false"><ScilabString
       as="exprs" height="1" width="1"><data column="0" line="0" value=""/></ScilabString><ScilabDouble
       as="realParameters" height="0" width="0"/><ScilabDouble as="integerParameters"
       height="0" width="0"/><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble
@@ -130941,11 +130941,11 @@
       x="16.0" y="-8.0"/></ImplicitInputPort><GroundBlock angle="90" dependsOnU="1"
       id="-5872192d:1324f245276:-7d0d" interfaceFunctionName="Ground" ordering="3"
       parent="-5872192d:1324f245276:-7d2f" simulationFunctionName="Ground" simulationFunctionType="DEFAULT"
-      style="Ground;rotation=90;flip=false;mirror=false"><ScilabString as="exprs"
-      height="1" width="1"><data column="0" line="0" value=""/></ScilabString><ScilabDouble
-      as="realParameters" height="0" width="0"/><ScilabDouble as="integerParameters"
-      height="0" width="0"/><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble
-      as="nbZerosCrossing" height="1" width="1"><data column="0" line="0" realPart="0.0"/></ScilabDouble><ScilabDouble
+      style="Ground;flip=false;mirror=false"><ScilabString as="exprs" height="1" width="1"><data
+      column="0" line="0" value=""/></ScilabString><ScilabDouble as="realParameters"
+      height="0" width="0"/><ScilabDouble as="integerParameters" height="0" width="0"/><Array
+      as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble as="nbZerosCrossing"
+      height="1" width="1"><data column="0" line="0" realPart="0.0"/></ScilabDouble><ScilabDouble
       as="nmode" height="1" width="1"><data column="0" line="0" realPart="0.0"/></ScilabDouble><Array
       as="oDState" scilabClass="ScilabList"/><Array as="equations" scilabClass="ScilabTList"><ScilabString
       height="1" width="5"><data column="0" line="0" value="modelica"/><data column="1"
@@ -131711,7 +131711,7 @@
       y="120.0"/></Array></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-5872192d:1324f245276:-7d2f" parent="-5872192d:1324f245276:-7d2e"/></XcosDiagram>
     blocks: bigsom_f;ccs;clock_c;constantvoltage;const_m;cscope;currentsensor;ground;resistor;split_f
-    media: gallery85.png
+    media: gallery14849.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 87
@@ -131754,7 +131754,7 @@
       as="geometry" height="8.0" width="8.0" x="16.0" y="-8.0"/></ImplicitInputPort><GroundBlock
       angle="90" dependsOnU="1" id="-5872192d:1324f245276:-7c00" interfaceFunctionName="Ground"
       ordering="2" parent="-5872192d:1324f245276:-7c11" simulationFunctionName="Ground"
-      simulationFunctionType="DEFAULT" style="Ground;rotation=90;flip=false;mirror=false"><ScilabString
+      simulationFunctionType="DEFAULT" style="Ground;flip=false;mirror=false"><ScilabString
       as="exprs" height="1" width="1"><data column="0" line="0" value=""/></ScilabString><ScilabDouble
       as="realParameters" height="0" width="0"/><ScilabDouble as="integerParameters"
       height="0" width="0"/><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble
@@ -131878,7 +131878,7 @@
       as="geometry" height="8.0" width="8.0" x="40.0" y="16.0"/></ImplicitInputPort><GroundBlock
       angle="90" dependsOnU="1" id="-5872192d:1324f245276:-7bd7" interfaceFunctionName="Ground"
       ordering="7" parent="-5872192d:1324f245276:-7c11" simulationFunctionName="Ground"
-      simulationFunctionType="DEFAULT" style="Ground;rotation=90;flip=false;mirror=false"><ScilabString
+      simulationFunctionType="DEFAULT" style="Ground;flip=false;mirror=false"><ScilabString
       as="exprs" height="1" width="1"><data column="0" line="0" value=""/></ScilabString><ScilabDouble
       as="realParameters" height="0" width="0"/><ScilabDouble as="integerParameters"
       height="0" width="0"/><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble
@@ -132399,7 +132399,7 @@
       x="570.0" y="46.0"/><mxPoint as="targetPoint" x="570.0" y="70.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-5872192d:1324f245276:-7c11" parent="-5872192d:1324f245276:-7c10"/></XcosDiagram>
     blocks: bigsom_f;clock_c;constantvoltage;cscope;currentsensor;ground;resistor;split_f
-    media: gallery86.png
+    media: gallery14851.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 88
@@ -132417,7 +132417,7 @@
       id="-5872192d:1324f245276:-7b3d" parent="-5872192d:1324f245276:-7b3c"/><GroundBlock
       angle="90" dependsOnU="1" id="-5872192d:1324f245276:-7a4b" interfaceFunctionName="Ground"
       ordering="1" parent="-5872192d:1324f245276:-7b3d" simulationFunctionName="Ground"
-      simulationFunctionType="DEFAULT" style="Ground;rotation=90;flip=false;mirror=false"><ScilabString
+      simulationFunctionType="DEFAULT" style="Ground;flip=false;mirror=false"><ScilabString
       as="exprs" height="1" width="1"><data column="0" line="0" value=""/></ScilabString><ScilabDouble
       as="realParameters" height="0" width="0"/><ScilabDouble as="integerParameters"
       height="0" width="0"/><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble
@@ -132578,7 +132578,7 @@
       as="sourcePoint" x="160.0" y="348.0"/><mxPoint as="targetPoint" x="160.0" y="310.0"/></mxGeometry></ImplicitLink><GroundBlock
       angle="90" dependsOnU="1" id="-5872192d:1324f245276:-7a30" interfaceFunctionName="Ground"
       ordering="7" parent="-5872192d:1324f245276:-7b3d" simulationFunctionName="Ground"
-      simulationFunctionType="DEFAULT" style="Ground;rotation=90;flip=false;mirror=false"><ScilabString
+      simulationFunctionType="DEFAULT" style="Ground;flip=false;mirror=false"><ScilabString
       as="exprs" height="1" width="1"><data column="0" line="0" value=""/></ScilabString><ScilabDouble
       as="realParameters" height="0" width="0"/><ScilabDouble as="integerParameters"
       height="0" width="0"/><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble
@@ -133284,7 +133284,7 @@
       as="geometry" height="8.0" width="8.0" x="16.0" y="40.0"/></ImplicitOutputPort></root></mxGraphModel><mxCell
       as="defaultParent" id="-5872192d:1324f245276:-7b3d" parent="-5872192d:1324f245276:-7b3c"/></XcosDiagram>
     blocks: bigsom_f;ccs;clock_c;constantvoltage;const_m;cscope;currentsensor;cvs;gainblk_f;ground;resistor;split_f
-    media: gallery87.png
+    media: gallery14853.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 89
@@ -133327,7 +133327,7 @@
       as="geometry" height="8.0" width="8.0" x="16.0" y="-8.0"/></ImplicitInputPort><GroundBlock
       angle="90" dependsOnU="1" id="-1ed2b2d8:132d4611bb5:-7f2a" interfaceFunctionName="Ground"
       ordering="2" parent="-1ed2b2d8:132d4611bb5:-7f3b" simulationFunctionName="Ground"
-      simulationFunctionType="DEFAULT" style="Ground;rotation=90;flip=false;mirror=false"><ScilabString
+      simulationFunctionType="DEFAULT" style="Ground;flip=false;mirror=false"><ScilabString
       as="exprs" height="1" width="1"><data column="0" line="0" value=""/></ScilabString><ScilabDouble
       as="realParameters" height="0" width="0"/><ScilabDouble as="integerParameters"
       height="0" width="0"/><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble
@@ -133999,7 +133999,7 @@
       as="points" scilabClass="ScilabList"><mxPoint x="860.0" y="60.0"/></Array></mxGeometry></ImplicitLink><GroundBlock
       angle="90" dependsOnU="1" id="-1ed2b2d8:132d4611bb5:-7e13" interfaceFunctionName="Ground"
       ordering="17" parent="-1ed2b2d8:132d4611bb5:-7f3b" simulationFunctionName="Ground"
-      simulationFunctionType="DEFAULT" style="Ground;rotation=90;flip=false;mirror=false"><ScilabString
+      simulationFunctionType="DEFAULT" style="Ground;flip=false;mirror=false"><ScilabString
       as="exprs" height="1" width="1"><data column="0" line="0" value=""/></ScilabString><ScilabDouble
       as="realParameters" height="0" width="0"/><ScilabDouble as="integerParameters"
       height="0" width="0"/><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble
@@ -134174,7 +134174,7 @@
       x="380.0" y="330.0"/><mxPoint x="380.0" y="330.0"/><mxPoint x="410.0" y="330.0"/></Array></mxGeometry></ExplicitLink><GroundBlock
       angle="90" dependsOnU="1" id="-1ed2b2d8:132d4611bb5:-7db3" interfaceFunctionName="Ground"
       ordering="24" parent="-1ed2b2d8:132d4611bb5:-7f3b" simulationFunctionName="Ground"
-      simulationFunctionType="DEFAULT" style="Ground;rotation=90;flip=false;mirror=false"><ScilabString
+      simulationFunctionType="DEFAULT" style="Ground;flip=false;mirror=false"><ScilabString
       as="exprs" height="1" width="1"><data column="0" line="0" value=""/></ScilabString><ScilabDouble
       as="realParameters" height="0" width="0"/><ScilabDouble as="integerParameters"
       height="0" width="0"/><Array as="objectsParameters" scilabClass="ScilabList"/><ScilabDouble
@@ -134399,7 +134399,7 @@
       x="856.0" y="340.0"/><mxPoint as="targetPoint" x="830.0" y="340.0"/></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-1ed2b2d8:132d4611bb5:-7f3b" parent="-1ed2b2d8:132d4611bb5:-7f3a"/></XcosDiagram>
     blocks: bigsom_f;ccs;clock_c;constantvoltage;const_m;cscope;currentsensor;cvs;gainblk_f;ground;resistor;split_f
-    media: gallery88.png
+    media: gallery14855.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 90
@@ -134998,7 +134998,7 @@
       x="500.0" y="64.0"/><mxPoint as="targetPoint" x="500.0" y="100.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="3a97bac1:134ed06dad1:-7ffe" parent="3a97bac1:134ed06dad1:-7ffd"/></XcosDiagram>
     blocks: capacitor;clock_c;cscope;ground;opamp;resistor;sinevoltage;split_f;voltagesensor
-    media: gallery89.png
+    media: gallery22342.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 91
@@ -136165,7 +136165,7 @@
       as="defaultParent" id="75a896ca:134d365eac8:-7b7b" parent="75a896ca:134d365eac8:-7b7a"/><mxPoint
       as="origin" y="-6.0"/></XcosDiagram>
     blocks: capacitor;clock_c;constantvoltage;cscope;currentsensor;ground;mux;resistor;split_f;voltagesensor
-    media: gallery90.png
+    media: gallery24837.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 92
@@ -136791,7 +136791,7 @@
       x="340.0" y="120.0"/></mxGeometry></ImplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-5e5c20b5:13506c8a689:-8000" parent="-5e5c20b5:13506c8a689:-7fff"/></XcosDiagram>
     blocks: capacitor;ccs;clock_c;cscope;expression;ground;potentialsensor;resistor;split_f;time_f
-    media: gallery91.png
+    media: gallery15163.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 93
@@ -137293,7 +137293,7 @@
       x="470.0" y="104.0"/><mxPoint as="targetPoint" x="470.0" y="150.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="77dd482d:134d2cc3c9e:-7f9a" parent="77dd482d:134d2cc3c9e:-7f99"/></XcosDiagram>
     blocks: clock_c;cscope;gainblk_f;integral_m;split_f;step_function;summation
-    media: gallery92.png
+    media: gallery22343.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 94
@@ -137989,7 +137989,7 @@
       x="70.0" y="230.0"/></Array></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-29171e7b:13894ec359c:-8000" parent="-29171e7b:13894ec359c:-7fff"/></XcosDiagram>
     blocks: clock_c;cscope;gainblk_f;integral_m;split_f;step_function;summation
-    media: gallery93.png
+    media: gallery24835.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 95
@@ -138529,7 +138529,7 @@
       x="420.0" y="74.0"/><mxPoint as="targetPoint" x="420.0" y="120.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-7550ec02:134d2eb8d96:-7d27" parent="-7550ec02:134d2eb8d96:-7d26"/></XcosDiagram>
     blocks: capacitor;clock_c;cscope;ground;resistor;split_f;voltagesensor
-    media: gallery94.png
+    media: gallery22344.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 96
@@ -139282,7 +139282,7 @@
       x="114.0" y="170.0"/><mxPoint as="targetPoint" x="170.0" y="170.0"/></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-7550ec02:134d2eb8d96:-7c3f" parent="-7550ec02:134d2eb8d96:-7c3e"/></XcosDiagram>
     blocks: clock_c;cscope;gainblk_f;integral_m;mux;split_f;step_function;summation;text_f
-    media: gallery95.png
+    media: gallery22347.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 97
@@ -139951,7 +139951,7 @@
       x="560.0" y="94.0"/><mxPoint as="targetPoint" x="560.0" y="120.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="75a896ca:134d365eac8:-7eb8" parent="75a896ca:134d365eac8:-7eb7"/></XcosDiagram>
     blocks: clock_c;constantvoltage;cscope;currentsensor;gainblk_f;ground;integral_m;mux;resistor;split_f;step_function;summation;text_f
-    media: gallery96.png
+    media: gallery24836.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 98
@@ -140501,7 +140501,7 @@
       x="470.0" y="64.0"/><mxPoint as="targetPoint" x="470.0" y="90.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="2adc5834:134f2773fd2:-7ffe" parent="2adc5834:134f2773fd2:-7ffd"/></XcosDiagram>
     blocks: capacitor;clock_c;cscope;ground;inductor;potentialsensor;resistor;split_f
-    media: gallery97.png
+    media: gallery24838.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 99
@@ -141345,7 +141345,7 @@
       x="850.0" y="154.0"/><mxPoint as="targetPoint" x="850.0" y="180.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-67b45fed:134f41509ef:-7ffe" parent="-67b45fed:134f41509ef:-7ffd"/></XcosDiagram>
     blocks: capacitor;clock_c;constantvoltage;cscope;currentsensor;gainblk_f;ground;inductor;mux;potentialsensor;resistor;split_f
-    media: gallery98.png
+    media: gallery24839.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 100
@@ -141854,7 +141854,7 @@
       scilabClass="ScilabList"><mxPoint x="520.0" y="130.0"/></Array></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-7cfb447d:134ed64a89d:-7ffe" parent="-7cfb447d:134ed64a89d:-7ffd"/></XcosDiagram>
     blocks: clock_c;cscope;gainblk_f;integral_m;split_f;summation
-    media: gallery99.png
+    media: gallery24840.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 101
@@ -142444,7 +142444,7 @@
       x="440.0" y="94.0"/><mxPoint as="targetPoint" x="440.0" y="110.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-3d3fe24b:134fb5bd9e1:-7d4a" parent="-3d3fe24b:134fb5bd9e1:-7d49"/></XcosDiagram>
     blocks: capacitor;ccs;clock_c;const_m;cscope;currentsensor;ground;inductor;resistor;split_f
-    media: gallery100.png
+    media: gallery24841.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 102
@@ -143154,7 +143154,7 @@
       x="500.0" y="64.0"/><mxPoint as="targetPoint" x="500.0" y="70.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="1f781c6f:13506286c0b:-7ffe" parent="1f781c6f:13506286c0b:-7ffd"/></XcosDiagram>
     blocks: capacitor;clock_c;cscope;currentsensor;cvs;delay_f;gainblk_f;ground;inductor;resistor;split_f;voltagesensor
-    media: gallery101.png
+    media: gallery24842.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 103
@@ -143827,7 +143827,7 @@
       x="600.0" y="164.0"/><mxPoint as="targetPoint" x="600.0" y="180.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="1f781c6f:13506286c0b:-7d57" parent="1f781c6f:13506286c0b:-7d56"/></XcosDiagram>
     blocks: ccs;clock_c;const_m;cscope;currentsensor;ground;mux;potentialsensor;resistor;split_f;voltagesensor
-    media: gallery102.png
+    media: gallery24843.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 104
@@ -144352,7 +144352,7 @@
       as="geometry" height="40.0" width="40.0" x="440.0" y="310.0"/></BasicBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="6521d368:1479034e794:-7fa0" parent="6521d368:1479034e794:-7f9f"/></XcosDiagram>
     blocks: clock_c;clr;const;cscope;endblk
-    media: gallery103.png
+    media: gallery106856.png
     script_dump: '
 
       // ELECTRICAL MACHINES
@@ -146545,7 +146545,7 @@
       as="defaultParent" id="47283b12:1341c9b3c8b:-78f7" parent="47283b12:1341c9b3c8b:-78f6"/><mxPoint
       as="origin" x="-10.0"/></XcosDiagram>'
     blocks: clock_c;cmscope;convert;gensqr_f;in_f;logic;out_f;split_f;super_f;text_f
-    media: gallery104.png
+    media: gallery14602.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 106
@@ -149695,7 +149695,7 @@
       x="520.0" y="200.0"/></TextBlock></root></mxGraphModel><mxCell as="defaultParent"
       id="47283b12:1341c9b3c8b:-8000" parent="47283b12:1341c9b3c8b:-7fff"/></XcosDiagram>
     blocks: clock_c;cmscope;convert;gensqr_f;in_f;logic;out_f;split_f;super_f;text_f
-    media: gallery105.png
+    media: gallery14604.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 107
@@ -152842,7 +152842,7 @@
       as="geometry" height="40.0" width="40.0" x="50.0" y="330.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="47283b12:1341c9b3c8b:-7c5b" parent="47283b12:1341c9b3c8b:-7c5a"/></XcosDiagram>
     blocks: clock_c;cmscope;convert;gensqr_f;in_f;logic;out_f;split_f;super_f;text_f
-    media: gallery106.png
+    media: gallery14606.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 108
@@ -155402,7 +155402,7 @@
       x="310.0" y="180.0"/></mxGeometry></ImplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="200893ff:13428736452:-8000" parent="200893ff:13428736452:-7fff"/></XcosDiagram>
     blocks: clock_c;constantvoltage;cscope;ground;impsplit_f;inimpl_f;opamp;outimpl_f;resistor;split_f;super_f;text_f;voltagesensor
-    media: gallery107.png
+    media: gallery14674.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 109
@@ -156272,7 +156272,7 @@
       as="geometry" height="40.0" width="40.0" x="490.0" y="180.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="-108078b6:1345b8f2778:-7b1d" parent="-108078b6:1345b8f2778:-7b1c"/></XcosDiagram>
     blocks: clock_c;cmscope;constantvoltage;ground;resistor;split_f;text_f;voltagesensor
-    media: gallery108.png
+    media: gallery14680.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 110
@@ -156907,7 +156907,7 @@
       height="40.0" width="40.0" x="110.0" y="430.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="-108078b6:1345b8f2778:-79f9" parent="-108078b6:1345b8f2778:-79f8"/></XcosDiagram>'
     blocks: clock_c;constantvoltage;cscope;currentsensor;ground;resistor;split_f;text_f
-    media: gallery109.png
+    media: gallery14683.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 111
@@ -157529,7 +157529,7 @@
       x="460.0" y="144.0"/><mxPoint as="targetPoint" x="460.0" y="190.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-108078b6:1345b8f2778:-794d" parent="-108078b6:1345b8f2778:-794c"/></XcosDiagram>
     blocks: clock_c;constantvoltage;cscope;ground;resistor;split_f;text_f;voltagesensor
-    media: gallery110.png
+    media: gallery14687.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 112
@@ -158219,7 +158219,7 @@
       y="280.0"/></TextBlock></root></mxGraphModel><mxCell as="defaultParent" id="-108078b6:1345b8f2778:-78b9"
       parent="-108078b6:1345b8f2778:-78b8"/></XcosDiagram>
     blocks: clock_c;constantvoltage;cscope;currentsensor;ground;resistor;split_f;text_f
-    media: gallery111.png
+    media: gallery14689.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 113
@@ -158882,7 +158882,7 @@
       as="geometry" height="8.0" width="8.0" x="16.0" y="40.0"/></ImplicitOutputPort></root></mxGraphModel><mxCell
       as="defaultParent" id="-108078b6:1345b8f2778:-8000" parent="-108078b6:1345b8f2778:-7fff"/></XcosDiagram>
     blocks: clock_c;constantvoltage;cscope;currentsensor;ground;resistor;split_f;text_f
-    media: gallery112.png
+    media: gallery14236.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 114
@@ -159632,7 +159632,7 @@
       x="560.0" y="70.0"/></TextBlock></root></mxGraphModel><mxCell as="defaultParent"
       id="-108078b6:1345b8f2778:-7edc" parent="-108078b6:1345b8f2778:-7edb"/></XcosDiagram>
     blocks: clock_c;constantvoltage;const_m;cscope;currentsensor;ground;powblk_f;prod_f;resistor;split_f;text_f
-    media: gallery113.png
+    media: gallery14238.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 115
@@ -160584,7 +160584,7 @@
       width="40.0" x="380.0" y="280.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="-108078b6:1345b8f2778:-7e22" parent="-108078b6:1345b8f2778:-7e21"/></XcosDiagram>
     blocks: clock_c;constantvoltage;cscope;currentsensor;ground;resistor;split_f;sum_f;text_f
-    media: gallery114.png
+    media: gallery14240.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 116
@@ -161323,7 +161323,7 @@
       as="geometry" height="40.0" width="40.0" x="200.0" y="380.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="-108078b6:1345b8f2778:-7bff" parent="-108078b6:1345b8f2778:-7bfe"/></XcosDiagram>
     blocks: clock_c;cmscope;constantvoltage;currentsensor;ground;resistor;split_f;text_f
-    media: gallery115.png
+    media: gallery14243.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 117
@@ -162192,7 +162192,7 @@
       height="40.0" width="40.0" x="120.0" y="20.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="7ce57742:133f8596f12:-7f12" parent="7ce57742:133f8596f12:-7f11"/></XcosDiagram>
     blocks: clock_c;constantvoltage;cscope;currentsensor;ground;inductor;resistor;split_f;step_function;switch;text_f
-    media: gallery116.png
+    media: gallery14659.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 118
@@ -162949,7 +162949,7 @@
       x="344.0" y="140.0"/><mxPoint as="targetPoint" x="420.0" y="140.0"/></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="4c3b265:134192dde3e:-7ed0" parent="4c3b265:134192dde3e:-7ecf"/></XcosDiagram>
     blocks: capacitor;clock_c;cscope;currentsensor;ground;resistor;split_f;step_function;switch;text_f
-    media: gallery117.png
+    media: gallery14671.png
     script_dump: 'C = 10*10^-6 ; //capacitance(in farads)
 
       R = 0.2*10^6; //resistance (in ohms)
@@ -163881,7 +163881,7 @@
       height="40.0" width="40.0" x="260.0" y="390.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="4c3b265:134192dde3e:-7e2e" parent="4c3b265:134192dde3e:-7e2d"/></XcosDiagram>
     blocks: capacitor;clock_c;cmscope;ground;resistor;split_f;step_function;switch;text_f;voltagesensor
-    media: gallery118.png
+    media: gallery14661.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 120
@@ -164814,7 +164814,7 @@
       as="geometry" height="8.0" width="8.0" x="16.0" y="-8.0"/></ImplicitInputPort></root></mxGraphModel><mxCell
       as="defaultParent" id="4c3b265:134192dde3e:-7d26" parent="4c3b265:134192dde3e:-7d25"/></XcosDiagram>
     blocks: capacitor;clock_c;cmscope;constantvoltage;const_m;ground;inductor;prod_f;resistor;split_f;step_function;switch;text_f;voltagesensor
-    media: gallery119.png
+    media: gallery14663.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 121
@@ -165686,7 +165686,7 @@
       as="geometry" height="40.0" width="40.0" x="230.0" y="360.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="4c3b265:134192dde3e:-7bc3" parent="4c3b265:134192dde3e:-7bc2"/></XcosDiagram>
     blocks: capacitor;clock_c;constantvoltage;cscope;ground;inductor;resistor;split_f;step_function;switch;text_f;voltagesensor
-    media: gallery120.png
+    media: gallery14665.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 122
@@ -166556,7 +166556,7 @@
       as="geometry" height="8.0" width="8.0" x="16.0" y="40.0"/></ImplicitOutputPort></root></mxGraphModel><mxCell
       as="defaultParent" id="774ef901:13456c50b60:-7ee1" parent="774ef901:13456c50b60:-7ee0"/></XcosDiagram>
     blocks: capacitor;clock_c;constantvoltage;cscope;ground;inductor;resistor;split_f;step_function;switch;text_f;voltagesensor
-    media: gallery121.png
+    media: gallery14667.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 123
@@ -167427,7 +167427,7 @@
       as="geometry" height="8.0" width="8.0" x="16.0" y="40.0"/></ImplicitOutputPort></root></mxGraphModel><mxCell
       as="defaultParent" id="774ef901:13456c50b60:-7e9f" parent="774ef901:13456c50b60:-7e9e"/></XcosDiagram>
     blocks: capacitor;clock_c;constantvoltage;cscope;ground;inductor;resistor;split_f;step_function;switch;text_f;voltagesensor
-    media: gallery122.png
+    media: gallery14678.png
     script_dump: ''
 - model: saveAPI.gallery
   pk: 124
@@ -168674,7 +168674,7 @@
       as="points" scilabClass=""><mxPoint x="1060.0" y="120.0"/></Array></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-2dd55334:14dcbdd0183:-7fd3" parent="-2dd55334:14dcbdd0183:-7fd2"/></XcosDiagram>
     blocks: clock_c;clr;const_f;cscope;dlr;gainblk;mux_f;ramp;split_f;step_function;summation;switch2_m;text_f
-    media: gallery123.png
+    media: gallery118769.png
     script_dump: '//Example 6.14
 
       //Lead compensation for DC motor.
@@ -169932,7 +169932,7 @@
       as="defaultParent" id="-2dd55334:14dcbdd0183:-7fd3" parent="-2dd55334:14dcbdd0183:-7fd2"/><mxPoint
       as="origin" y="-2.0"/></XcosDiagram>
     blocks: clksplit_f;clock_c;clr;cscope;dlr;mux_f;split_f;step_function;summation;text_f
-    media: gallery124.png
+    media: gallery118834.png
     script_dump: '//------------------------------------------------------------------
 
       //------------------------------------------------------------------
@@ -171616,7 +171616,7 @@
       as="defaultParent" id="-2dd55334:14dcbdd0183:-7fd3" parent="-2dd55334:14dcbdd0183:-7fd2"/><mxPoint
       as="origin" y="-12.0"/></XcosDiagram>
     blocks: clock_c;clr;cscope;dlr;mux_f;split_f;step_function;summation;text_f
-    media: gallery125.png
+    media: gallery118839.png
     script_dump: '//Example 7.34
 
       // Servomechanism, increasing the velocity constant through
@@ -173692,7 +173692,7 @@
       x="940.0" y="190.0"/><mxPoint as="targetPoint" x="940.0" y="260.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-2dd55334:14dcbdd0183:-7fd3" parent="-2dd55334:14dcbdd0183:-7fd2"/></XcosDiagram>
     blocks: clock_c;clr;const;cscope;gainblk;gainblk_f;in_f;integral_f;out_f;split_f;summation;super_f;text_f
-    media: gallery126.png
+    media: gallery118843.png
     script_dump: '//Example 7.35
 
       // Integral Control of a Motor Speed System
@@ -174991,7 +174991,7 @@
       as="defaultParent" id="-2dd55334:14dcbdd0183:-7fd3" parent="-2dd55334:14dcbdd0183:-7fd2"/><mxPoint
       as="origin" y="-3.0"/></XcosDiagram>
     blocks: clksplit_f;clock_c;clr;cscope;dlr;gainblk;mux_f;split_f;step_function;summation;text_f
-    media: gallery127.png
+    media: gallery118629.png
     script_dump: '///Example 8.1
 
       // Digital Controller using tustin approximation.
@@ -176744,7 +176744,7 @@
       scilabClass=""><mxPoint x="810.0" y="160.0"/><mxPoint x="810.0" y="110.0"/></Array></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-2dd55334:14dcbdd0183:-7fd3" parent="-2dd55334:14dcbdd0183:-7fd2"/></XcosDiagram>
     blocks: clock_c;clr;cscope;dlr;split_f;step_function;summation;text_f
-    media: gallery128.png
+    media: gallery118634.png
     script_dump: '//Example 8.2
 
       // Design of a Space Station Attitude Digital Controller using
@@ -177374,7 +177374,7 @@
       x="370.0" y="120.0"/><mxPoint as="targetPoint" x="370.0" y="170.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-2dd55334:14dcbdd0183:-7fd3" parent="-2dd55334:14dcbdd0183:-7fd2"/></XcosDiagram>
     blocks: clock_c;cscope;endblk;gensin_f;hystheresis;mux_f;split_f;text_f
-    media: gallery129.png
+    media: gallery118682.png
     script_dump: '//Example 9.11
 
       //Describing Function for a relay with hysteresis nonlinearity.
@@ -178015,7 +178015,7 @@
       x="590.0" y="170.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-2dd55334:14dcbdd0183:-7fd3" parent="-2dd55334:14dcbdd0183:-7fd2"/></XcosDiagram>
     blocks: clock_c;clr;const;cscope;endblk;hystheresis;summation;text_f
-    media: gallery130.png
+    media: gallery118695.png
     script_dump: '//Example 9.13
 
       //Determination of stability with a hysteresis nonlinearity.
@@ -178743,7 +178743,7 @@
       as="geometry" height="40.0" width="40.0" x="510.0" y="140.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="-2dd55334:14dcbdd0183:-7fd3" parent="-2dd55334:14dcbdd0183:-7fd2"/></XcosDiagram>
     blocks: clksplit_f;clock_c;clr;const;cscope;endblk;gainblk;saturation;summation;text_f
-    media: gallery131.png
+    media: gallery118642.png
     script_dump: '//Example 9.5
 
       //Changing Overshoot and Saturation nonlinearity.
@@ -179387,7 +179387,7 @@
       x="530.0" y="70.0"/><mxPoint as="targetPoint" x="530.0" y="180.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-2dd55334:14dcbdd0183:-7fd3" parent="-2dd55334:14dcbdd0183:-7fd2"/></XcosDiagram>
     blocks: clock_c;clr;const;cscope;endblk;gainblk;saturation;summation;text_f
-    media: gallery132.png
+    media: gallery118651.png
     script_dump: '//Example 9.6
 
       //Stability of conditionally stable system using root locus.
@@ -180095,7 +180095,7 @@
       x="740.0" y="60.0"/><mxPoint as="targetPoint" x="740.0" y="170.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-2dd55334:14dcbdd0183:-7fd3" parent="-2dd55334:14dcbdd0183:-7fd2"/></XcosDiagram>'
     blocks: clock_c;clr;const;cscope;endblk;gainblk;saturation;summation;text_f
-    media: gallery133.png
+    media: gallery118663.png
     script_dump: '//Example 9.7
 
       //Analysis and design of the system with limit cycle using the root locus.
@@ -180771,7 +180771,7 @@
       x="750.0" y="50.0"/><mxPoint as="targetPoint" x="750.0" y="170.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-2dd55334:14dcbdd0183:-7fd3" parent="-2dd55334:14dcbdd0183:-7fd2"/></XcosDiagram>'
     blocks: clock_c;clr;const;cscope;endblk;gainblk;saturation;summation;text_f
-    media: gallery134.png
+    media: gallery118662.png
     script_dump: '//Example 9.7
 
       //Analysis and design of the system with limit cycle using the root locus.
@@ -181890,7 +181890,7 @@
       scilabClass=""><mxPoint x="810.0" y="100.0"/></Array></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="-2dd55334:14dcbdd0183:-7fd3" parent="-2dd55334:14dcbdd0183:-7fd2"/></XcosDiagram>
     blocks: clksplit_f;clock_c;clr;cscope;endblk;gainblk;saturation;split_f;step_function;summation;text_f
-    media: gallery135.png
+    media: gallery118667.png
     script_dump: '//Example 9.8
 
       //Antiwindup compensation for a PI controller.
@@ -182492,7 +182492,7 @@
       as="geometry" height="40.0" width="40.0" x="360.0" y="140.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="-2dd55334:14dcbdd0183:-7fd3" parent="-2dd55334:14dcbdd0183:-7fd2"/></XcosDiagram>
     blocks: clock_c;cscope;endblk;gensin_f;mux_f;saturation;split_f;text_f
-    media: gallery136.png
+    media: gallery118675.png
     script_dump: '//Example 9.9
 
       //Describing Function for a saturation nonlinearity.
@@ -183166,7 +183166,7 @@
       x="190.0" y="260.0"/><mxPoint x="180.0" y="200.0"/><mxPoint x="180.0" y="200.0"/></Array></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="0:2:0" parent="0:1:0"/></XcosDiagram>
     blocks: bigsom_f;clock_c;clr;cscope;step_function
-    media: gallery137.png
+    media: gallery137587.png
     script_dump: '//control systems by Nagoor Kani A
 
       //Edition 3
@@ -183791,7 +183791,7 @@
       x="340.0" y="50.0"/><mxPoint as="targetPoint" x="340.0" y="70.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="0:2:0" parent="0:1:0"/></XcosDiagram>
     blocks: clock_c;clr;cscope;step_function
-    media: gallery138.png
+    media: gallery137589.png
     script_dump: '//control systems by Nagoor Kani A
 
       //Edition 3
@@ -184418,7 +184418,7 @@
       x="300.0" y="260.0"/><mxPoint as="targetPoint" x="360.0" y="260.0"/></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="0:2:0" parent="0:1:0"/></XcosDiagram>
     blocks: clock_c;clr;cscope;step_function
-    media: gallery139.png
+    media: gallery137593.png
     script_dump: '//control systems by Nagoor Kani A
 
       //Edition 3
@@ -185075,7 +185075,7 @@
       x="480.0" y="100.0"/><mxPoint as="targetPoint" x="480.0" y="170.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="0:2:0" parent="0:1:0"/></XcosDiagram>
     blocks: clock_c;clr;cscope;step_function
-    media: gallery140.png
+    media: gallery137596.png
     script_dump: '//control systems by Nagoor Kani A
 
       //Edition 3
@@ -185726,7 +185726,7 @@
       x="360.0" y="70.0"/><mxPoint as="targetPoint" x="360.0" y="110.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="0:2:0" parent="0:1:0"/></XcosDiagram>
     blocks: clock_c;clss;cscope;step_function
-    media: gallery141.png
+    media: gallery138023.png
     script_dump: '//control systems by Nagoor Kani A
 
       //Edition 3
@@ -186349,7 +186349,7 @@
       x="270.0" y="210.0"/><mxPoint as="targetPoint" x="330.0" y="220.0"/></mxGeometry></ExplicitLink></root></mxGraphModel><mxCell
       as="defaultParent" id="0:2:0" parent="0:1:0"/></XcosDiagram>
     blocks: clock_c;clss;cscope;step_function
-    media: gallery142.png
+    media: gallery138025.png
     script_dump: '//control systems by Nagoor Kani A
 
       //Edition 3
@@ -186972,7 +186972,7 @@
       as="sourcePoint" x="360.0" y="120.0"/><mxPoint as="targetPoint" x="360.0" y="140.0"/></mxGeometry></CommandControlLink></root></mxGraphModel><mxCell
       as="defaultParent" id="0:2:0" parent="0:1:0"/></XcosDiagram>
     blocks: clock_c;clss;cscope;step_function
-    media: gallery143.png
+    media: gallery138027.png
     script_dump: '//control systems by Nagoor Kani A
 
       //Edition 3
@@ -188151,7 +188151,7 @@
       as="geometry" height="8.0" width="8.0" x="16.0" y="-8.0"/></ImplicitInputPort></root></mxGraphModel><mxCell
       as="defaultParent" id="67e02cde:13157ae1f65:-8000" parent="67e02cde:13157ae1f65:-7fff"/></XcosDiagram>
     blocks: clock_c;cmscope;currentsensor;ground;inductor;sinevoltage;split_f;step_function;switch;text_f
-    media: gallery144.png
+    media: gallery11579.png
     script_dump: '//Chapter 11
 
       //Example 11.1
@@ -189360,7 +189360,7 @@
       as="geometry" height="8.0" width="8.0" x="16.0" y="-8.0"/></ImplicitInputPort></root></mxGraphModel><mxCell
       as="defaultParent" id="67e02cde:13157ae1f65:-7afa" parent="67e02cde:13157ae1f65:-7af9"/></XcosDiagram>
     blocks: clock_c;cmscope;currentsensor;ground;inductor;resistor;sinevoltage;split_f;step_function;switch;text_f;voltagesensor
-    media: gallery145.png
+    media: gallery11767.png
     script_dump: '//Chapter 11
 
       //Example 11.2
@@ -190746,7 +190746,7 @@
       as="geometry" height="40.0" width="40.0" x="790.0" y="250.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="2af926ac:131590fb290:-7ef4" parent="2af926ac:131590fb290:-7ef3"/></XcosDiagram>
     blocks: clock_c;cmscope;currentsensor;ground;inductor;mux;sinevoltage;split_f;step_function;switch;text_f
-    media: gallery146.png
+    media: gallery12103.png
     script_dump: '//Chapter 11
 
       //Example 11.3
@@ -191775,7 +191775,7 @@
       as="geometry" height="8.0" width="8.0" x="16.0" y="60.0"/></ImplicitOutputPort></root></mxGraphModel><mxCell
       as="defaultParent" id="-1f09110a:1315ad634dc:-8000" parent="-1f09110a:1315ad634dc:-7fff"/></XcosDiagram>
     blocks: clock_c;cmscope;currentsensor;ground;inductor;sinevoltage;split_f;step_function;switch;text_f;voltagesensor
-    media: gallery147.png
+    media: gallery11775.png
     script_dump: '//Chapter 11
 
       //Example 11.4
@@ -192875,7 +192875,7 @@
       as="geometry" height="8.0" width="8.0" x="16.0" y="-8.0"/></ImplicitInputPort></root></mxGraphModel><mxCell
       as="defaultParent" id="-1f09110a:1315ad634dc:-8000" parent="-1f09110a:1315ad634dc:-7fff"/></XcosDiagram>
     blocks: clock_c;cmscope;currentsensor;ground;inductor;mux;sinevoltage;split_f;step_function;switch;text_f;voltagesensor
-    media: gallery148.png
+    media: gallery11779.png
     script_dump: '//Chapter 11
 
       //Example 11.5
@@ -196053,7 +196053,7 @@
       as="geometry" height="40.0" width="40.0" x="1590.0" y="550.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="-62268d13:130f6b46d8a:-7eeb" parent="-62268d13:130f6b46d8a:-7eea"/></XcosDiagram>'
     blocks: clock_f;cmscope;currentsensor;ground;inductor;resistor;sinevoltage;split_f;step_function;switch;text_f;voltagesensor
-    media: gallery149.png
+    media: gallery11537.png
     script_dump: '//Chapter 9
 
       //Example 9.1
@@ -197411,7 +197411,7 @@
       as="defaultParent" id="63eb11b3:131137cfac5:-8000" parent="63eb11b3:131137cfac5:-7fff"/><mxPoint
       as="origin" y="-20.0"/></XcosDiagram>
     blocks: clock_c;cmscope;currentsensor;ground;inductor;sinevoltage;split_f;step_function;switch;text_f;voltagesensor
-    media: gallery150.png
+    media: gallery11541.png
     script_dump: '//Chapter 9
 
       //Example 9.2
@@ -198569,7 +198569,7 @@
       as="geometry" height="8.0" width="8.0" x="16.0" y="-8.0"/></ImplicitOutputPort></root></mxGraphModel><mxCell
       as="defaultParent" id="-487ef5e3:131246c8237:-8000" parent="-487ef5e3:131246c8237:-7fff"/></XcosDiagram>
     blocks: clock_c;cmscope;currentsensor;ground;inductor;sinevoltage;split_f;step_function;switch;text_f;voltagesensor
-    media: gallery151.png
+    media: gallery12097.png
     script_dump: '//Chapter 9
 
       //Example 9.3
@@ -199783,7 +199783,7 @@
       as="geometry" height="8.0" width="8.0" x="16.0" y="-8.0"/></ImplicitOutputPort></root></mxGraphModel><mxCell
       as="defaultParent" id="-487ef5e3:131246c8237:-7cc8" parent="-487ef5e3:131246c8237:-7cc7"/></XcosDiagram>
     blocks: clock_c;cmscope;currentsensor;ground;inductor;resistor;sinevoltage;split_f;step_function;switch;text_f;voltagesensor
-    media: gallery152.png
+    media: gallery11549.png
     script_dump: '//Chapter 9
 
       //Example 9.4
@@ -201016,7 +201016,7 @@
       as="geometry" height="8.0" width="8.0" x="16.0" y="60.0"/></ImplicitOutputPort></root></mxGraphModel><mxCell
       as="defaultParent" id="-487ef5e3:131246c8237:-799b" parent="-487ef5e3:131246c8237:-799a"/></XcosDiagram>
     blocks: clock_c;cmscope;currentsensor;ground;inductor;sinevoltage;split_f;step_function;switch;text_f;voltagesensor
-    media: gallery153.png
+    media: gallery11553.png
     script_dump: '//Chapter 9
 
       //Example 9.5
@@ -202322,7 +202322,7 @@
       as="geometry" height="40.0" width="40.0" x="600.0" y="350.0"/></TextBlock></root></mxGraphModel><mxCell
       as="defaultParent" id="75289c83:1315698632f:-8000" parent="75289c83:1315698632f:-7fff"/></XcosDiagram>
     blocks: ccs;clock_c;cmscope;ground;resistor;split_f;step_function;text_f;voltagesensor
-    media: gallery154.png
+    media: gallery11559.png
     script_dump: '//Chapter 9
 
       //Example 9.7

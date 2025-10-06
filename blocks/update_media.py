@@ -1,6 +1,3 @@
-from datetime import datetime
-import json
-import os
 import shutil
 import sqlite3
 
@@ -9,6 +6,7 @@ def update_media_column(db_path, table_name):
     """
     Updates the media column in the table to store '<save_id>.png' based on the save_id value.
     """
+    conn = None
     try:
         # Connect to the database
         conn = sqlite3.connect(db_path)
@@ -34,6 +32,7 @@ def update_media_column(db_path, table_name):
 
 
 def join_and_copy_images(db_path, statesave_table, gallery_table):
+    conn = None
     try:
         # Connect to the database
         conn = sqlite3.connect(db_path)
