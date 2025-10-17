@@ -173,10 +173,19 @@ BookDropdown.propTypes = {
 const SearchComponent = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState('')
 
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      onSearch(searchTerm)
+    }, 300)
+
+    return () => {
+      clearTimeout(timeout)
+    }
+  }, [searchTerm, onSearch])
+
   const handleSearch = (event) => {
     const value = event.target.value.trimStart()
     setSearchTerm(value)
-    onSearch(value)
   }
 
   return (

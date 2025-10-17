@@ -146,7 +146,7 @@ function rotatePorts (cell, model) {
   }
 }
 
-function flipMirrorPorts (cell, flip, mirror, model, rotatePorts=true) {
+function flipMirrorPorts (cell, flip, mirror, model, rotatePorts = true) {
   const childCount = model.getChildCount(cell)
 
   for (let i = 0; i < childCount; i++) {
@@ -169,8 +169,9 @@ function flipMirrorPorts (cell, flip, mirror, model, rotatePorts=true) {
       }
       model.setGeometry(port, geo)
 
-      if (rotatePorts &&
-          ((mirror && isLeftOrRight(geo.x)) || (flip && isTopOrBottom(geo.y)))) {
+      if (rotatePorts && (
+        (mirror && isLeftOrRight(geo.x)) || (flip && isTopOrBottom(geo.y))
+      )) {
         rotateCell(port, 180, model)
       }
     }
@@ -603,6 +604,10 @@ function parseXmlToGraph (xmlDoc, graph) {
 
           const source = cellAttrs.sourceVertex.value
           const target = cellAttrs.targetVertex.value
+          if (!source || !target) {
+            console.log('source or target empty for edge', edgeId)
+            continue
+          }
           const sourceCell = model.getCell(source)
           const targetCell = model.getCell(target)
           if (sourceCell == null || targetCell == null) {

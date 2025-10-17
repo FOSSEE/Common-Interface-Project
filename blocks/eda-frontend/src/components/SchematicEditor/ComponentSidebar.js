@@ -51,8 +51,6 @@ export default function ComponentSidebar ({ _compRef }) {
   const [searchedComponentList, setSearchedComponents] = useState([])
   const searchOption = 'NAME'
 
-  const timeoutId = useRef()
-
   const handleSearchText = (evt) => {
     if (searchText.length === 0) {
       setSearchedComponents([])
@@ -66,14 +64,13 @@ export default function ComponentSidebar ({ _compRef }) {
 
   useEffect(() => {
     // if the user keeps typing, stop the API call!
-    clearTimeout(timeoutId.current)
     setLoading(searchText.length !== 0)
     setSearchedComponents([])
     // don't make an API call with no data
     if (searchText.length === 0) return
     // capture the timeoutId so we can
     // stop the call if the user keeps typing
-    timeoutId.current = setTimeout(() => {
+    const timeoutId = setTimeout(() => {
       // call api here
       api.get(`newblocks/?${searchOptions[searchOption]}=${searchText}`)
         .then(
@@ -85,7 +82,11 @@ export default function ComponentSidebar ({ _compRef }) {
         )
         .catch((err) => { console.error(err) })
       setLoading(false)
-    }, 800)
+    }, 600)
+
+    return () => {
+      clearTimeout(timeoutId)
+    }
   }, [searchText, searchOption])
 
   const handleCollapse = (id) => {
