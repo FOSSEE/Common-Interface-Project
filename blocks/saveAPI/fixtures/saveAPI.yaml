@@ -170080,9 +170080,11 @@
 
       DK=syslin(''c'',DK)
 
-      [pl,zr,Kp]=zpk_dk(DK);
+      // Code commented out to avoid using zpk_dk function
 
-      Dc=poly(zr,''s'',''roots'')/poly(pl,''s'',''roots'')
+      // [pl,zr,Kp]=zpk_dk(DK);
+
+      // Dc=poly(zr,''s'',''roots'')/poly(pl,''s'',''roots'')
 
       //------------------------------------------------------------------
 
