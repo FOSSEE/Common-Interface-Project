@@ -234,10 +234,7 @@ export function editPointsValue (graphObject, graphParameters, pointsHistory) {
     }
     const yValue = parseFloat(document.getElementById('edit_y').value)
     const points = graphParameters.graphPoints
-    const xArry = []
-    for (let i = 0; i < points.length; i++) {
-      xArry[i] = points[i][0]
-    }
+    const xArry = points.map(p => p[0])
     xArry[points.length] = xValue
     const result = checkDuplicateXValues(xArry)
     const mtdCheck = [0, 1, 2].includes(graphParameters.mtd)
@@ -281,10 +278,7 @@ export function addPointsOnChart (graphParameters, pointsHistory, xValue, yValue
     graphParameters.flag_for_zeros = true
   }
   const points = graphParameters.graphPoints
-  const xArry = []
-  for (let i = 0; i < points.length; i++) {
-    xArry[i] = points[i][0]
-  }
+  const xArry = points.map(p => p[0])
   xArry[points.length] = xValue
   const result = checkDuplicateXValues(xArry)
   const mtdCheck = [0, 1, 2].includes(graphParameters.mtd)

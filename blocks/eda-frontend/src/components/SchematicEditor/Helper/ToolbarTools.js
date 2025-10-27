@@ -495,11 +495,7 @@ function parseXmlToGraph (xmlDoc, graph) {
           if (cellChildrenBlockportSet !== undefined) {
             for (const b of cellChildrenBlockportSet.children) {
               const bc = {}
-              for (let i = 0, n = b.attributes.length; i < n; i++) {
-                const key = b.attributes[i].nodeName
-                const value = b.attributes[i].nodeValue
-                bc[key] = value
-              }
+              b.attributes.forEach(a => bc[a.nodeName] = a.nodeValue)
               blockportSet.push(bc)
             }
           }

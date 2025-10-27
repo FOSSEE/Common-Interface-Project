@@ -240,13 +240,9 @@ export default function SchematicToolbar ({ _mobileClose, gridRef }) {
           let image = ''
           if (type === 'JPG') {
             const imgdata = ctx.getImageData(0, 0, canvas.width, canvas.height)
-            for (let i = 0; i < imgdata.data.length; i += 4) {
-              if (imgdata.data[i + 3] === 0) {
-                imgdata.data[i] = 255
-                imgdata.data[i + 1] = 255
-                imgdata.data[i + 2] = 255
-                imgdata.data[i + 3] = 255
-              }
+            const data = imgdata.data
+            for (let i = 0; i < data.length; i += 4) {
+              !data[i + 3] && data.set([255, 255, 255, 255], i)
             }
             ctx.putImageData(imgdata, 0, 0)
             image = canvas.toDataURL('image/jpeg', 1.0)

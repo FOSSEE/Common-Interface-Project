@@ -125,13 +125,13 @@ export function updateDetails (graph, cell, details, detailsInstance, styleName,
 // to objects because of dragging the points
 export function objToArrayList (graphPoints) {
   const tempPoints = []
-  for (let i = 0; i < graphPoints.length; i++) {
-    if (graphPoints[i].x) {
-      tempPoints.push([graphPoints[i].x, graphPoints[i].y])
+  graphPoints.forEach(point => {
+    if (point.x) {
+      tempPoints.push([point.x, point.y])
     } else {
-      tempPoints.push(graphPoints[i])
+      tempPoints.push(point)
     }
-  }
+  })
   return tempPoints
 }
 

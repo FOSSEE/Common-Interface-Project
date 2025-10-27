@@ -674,11 +674,7 @@ export default function SimulationScreen ({ open, close }) {
   }, [taskId, getSimulationResult])
 
   useEffect(() => {
-    for (let i = 0; i < Highcharts.charts.length; i++) {
-      if (Highcharts.charts[i] !== undefined) {
-        Highcharts.charts[i].reflow()
-      }
-    }
+    Highcharts.charts.forEach(c => c && c.reflow())
   }, [])
 
   useEffect(() => {
