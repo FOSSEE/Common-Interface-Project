@@ -97,9 +97,13 @@ if test "$1" = 'prod'; then
   sed -i \
     -e '/^\s*location \/ {/,/^\s*}/c\
         location / {\
-              root /var/www/html;\
-              index index.html;\
               try_files $uri /index.html;\
+        }\
+\
+        location = /index.html {\
+              add_header Cache-Control "no-cache, no-store, must-revalidate";\
+              add_header Pragma "no-cache";\
+              add_header Expires 0;\
         }' \
     -e '/^\s*location \/django_static\/ {/,/^\s*}/c\
         location /django_static/ {\
