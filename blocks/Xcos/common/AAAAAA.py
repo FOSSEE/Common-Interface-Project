@@ -448,7 +448,7 @@ def addDtNode(node, subNodeType, **kwargs):
 
 
 def addDataData(node, value, isReal=False):
-    global DATA_HEIGHT, DATA_WIDTH, DATA_LINE, DATA_COLUMN
+    global DATA_LINE, DATA_COLUMN
     if DATA_LINE >= DATA_HEIGHT or DATA_COLUMN >= DATA_WIDTH:
         print('Invalid: height=', DATA_HEIGHT, ',width=', DATA_WIDTH,
               ',line=', DATA_LINE, ',column=', DATA_COLUMN)
