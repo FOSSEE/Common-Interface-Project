@@ -71,6 +71,7 @@ class GalleryListSerializer(serializers.ModelSerializer):
         fields = ('save_id',
                   'name',
                   'description',
+                  'save_time',
                   'book_id',
                   'blocks',
                   'media',

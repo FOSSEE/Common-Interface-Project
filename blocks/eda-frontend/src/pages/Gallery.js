@@ -25,6 +25,7 @@ import Typography from '@mui/material/Typography'
 
 import { fetchGallery } from '../redux/dashboardSlice'
 import api from '../utils/Api'
+import { getDate } from '../utils/GalleryUtils'
 
 const images = require.context('../static/gallery', true)
 
@@ -57,6 +58,9 @@ const SchematicCard = ({ sch }) => {
             </Typography>
             <Typography variant='body2' component='p'>
               {sch.description}
+            </Typography>
+            <Typography variant='body2' color='textSecondary' component='p' style={{ margin: '5px 0px 0px 0px' }}>
+              Created on {getDate(sch.save_time)}
             </Typography>
           </CardContent>
         </CardActionArea>
