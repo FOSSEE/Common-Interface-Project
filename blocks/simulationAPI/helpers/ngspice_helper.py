@@ -26,6 +26,20 @@ class CannotRunParser(Exception):
     """ Base class for exceptions in this module. """
 
 
+def validate_file_path(file_path):
+    logger.info(f"Validating file path {file_path}")
+    if not re.match(r'^[\w\-./]+$', file_path):
+        return False
+
+    if re.match(r'[/.][/.]', file_path):
+        return False
+
+    if not file_path.startswith(settings.FILE_STORAGE_ROOT):
+        return False
+
+    return True
+
+
 def update_task_status(task, task_id, status, meta=None):
     # Update Celery backend state
     if task is not None:
@@ -50,6 +64,10 @@ def update_task_status(task, task_id, status, meta=None):
 
 
 def CreateXml(file_path, parameters, task_id, workspace_file):
+    if not validate_file_path(file_path):
+        logger.error(f"Invalid file path detected: {file_path}")
+        raise CannotRunParser("Invalid file path.")
+
     parameters = json.loads(parameters)
     current_dir = settings.MEDIA_ROOT + '/' + str(task_id)
     # Make Unique Directory for simulation to run
