@@ -26,6 +26,20 @@ class CannotRunParser(Exception):
     """ Base class for exceptions in this module. """
 
 
+def validate_file_name(file_name):
+    logger.info(f"Validating file name {file_name}")
+    if not re.match(r'^[\w\-.]+$', file_name):
+        return False
+
+    if '..' in file_name or '.' not in file_name:
+        return False
+
+    if file_name.startswith('.') or file_name.endswith('.'):
+        return False
+
+    return True
+
+
 def validate_file_path(file_path):
     logger.info(f"Validating file path {file_path}")
     if not re.match(r'^[\w\-./]+$', file_path):

@@ -17,7 +17,7 @@ from simulationAPI.models import Task, Session
 from simulationAPI.negotiation import IgnoreClientContentNegotiation
 from simulationAPI.serializers import TaskSerializer
 from simulationAPI.tasks import process_task, kill_task
-from simulationAPI.helpers.ngspice_helper import CreateXcos, update_task_status
+from simulationAPI.helpers.ngspice_helper import CreateXcos, update_task_status, validate_file_name
 
 
 SCILAB_INSTANCE_TIMEOUT_INTERVAL = 300
@@ -53,8 +53,12 @@ class XmlUploader(APIView):
         uploaded_file = request.FILES.get('file')
         if not uploaded_file:
             return Response({"error": "No file provided"}, status=status.HTTP_400_BAD_REQUEST)
+        file_name = uploaded_file.name
+        if not validate_file_name(file_name):
+            logger.error(f"Invalid file name provided: {file_name}")
+            return Response({"error": "Invalid file name provided"}, status=status.HTTP_400_BAD_REQUEST)
 
-        file_extension = uploaded_file.name.split('.')[-1].lower()
+        file_extension = file_name.split('.')[-1].lower()
 
         # Validate file type
         if file_extension not in ['xml', 'sce']:
@@ -117,6 +121,10 @@ class XmlSave(APIView):
         if not file:
             return Response({"error": "No file provided"}, status=status.HTTP_400_BAD_REQUEST)
         file_name = file.name
+        if not validate_file_name(file_name):
+            logger.error(f"Invalid file name provided: {file_name}")
+            return Response({"error": "Invalid file name provided"}, status=status.HTTP_400_BAD_REQUEST)
+
         file_path = os.path.join(settings.MEDIA_ROOT, 'uploads', file_name)
 
         # Ensure the directory exists
@@ -130,12 +138,10 @@ class XmlSave(APIView):
             try:
                 script_task = Task.objects.get(task_id=script_task_id)
                 workspace_file = script_task.workspace_file
+                logger.info('workspace_file: %s', workspace_file)
             except Task.DoesNotExist:
-                print("Task not found")
-        else:
-            print("No scriptTaskId provided")
+                logger.error(f"Task {script_task_id} not found")
 
-        # logger.info('workspace_file: %s', workspace_file)
         try:
             # Update the request data to include the file path
             data = request.data.copy()
