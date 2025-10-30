@@ -31,10 +31,7 @@ def validate_file_name(file_name):
     if not re.match(r'^[\w\-.]+$', file_name):
         return False
 
-    if '..' in file_name or '.' not in file_name:
-        return False
-
-    if file_name.startswith('.') or file_name.endswith('.'):
+    if '.' not in file_name or '..' in file_name or file_name[0] == '.' or file_name[-1] == '.':
         return False
 
     return True
