@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { TailSpin } from 'react-loader-spinner'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -68,9 +68,8 @@ export default function ComponentSidebar ({ _compRef }) {
     setSearchedComponents([])
     // don't make an API call with no data
     if (searchText.length === 0) return
-    // capture the timeoutId so we can
-    // stop the call if the user keeps typing
-    const timeoutId = setTimeout(() => {
+    // capture the timeout so we can stop the call if the user keeps typing
+    const timeout = setTimeout(() => {
       // call api here
       api.get(`newblocks/?${searchOptions[searchOption]}=${searchText}`)
         .then(
@@ -85,7 +84,7 @@ export default function ComponentSidebar ({ _compRef }) {
     }, 600)
 
     return () => {
-      clearTimeout(timeoutId)
+      clearTimeout(timeout)
     }
   }, [searchText, searchOption])
 

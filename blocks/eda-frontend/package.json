@@ -28,8 +28,8 @@
   },
   "scripts": {
     "analyze": "source-map-explorer 'build/static/js/*.js' --only-mapped --html result.html",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "REACT_APP_GIT_COMMIT=$(git rev-parse --short HEAD) REACT_APP_BUILD_DATE=$(date +'%Y-%m-%dT%H:%M:%S%Z') react-scripts start",
+    "build": "REACT_APP_BUILD_DATE=$(date +'%Y-%m-%dT%H:%M:%S%Z') react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint .",

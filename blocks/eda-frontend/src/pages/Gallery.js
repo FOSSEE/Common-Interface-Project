@@ -23,6 +23,7 @@ import MenuItem from '@mui/material/MenuItem'
 import Select from '@mui/material/Select'
 import Typography from '@mui/material/Typography'
 
+import BuildInfo from '../components/Shared/BuildInfo'
 import { fetchGallery } from '../redux/dashboardSlice'
 import api from '../utils/Api'
 import { getDate } from '../utils/GalleryUtils'
@@ -110,6 +111,7 @@ const MainCard = () => {
         >
           {diagramTypography}
         </Typography>
+        <BuildInfo />
       </CardContent>
     </Card>
   )

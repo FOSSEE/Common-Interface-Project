@@ -17,7 +17,7 @@ def get_git_commit_time(file_path):
     """Return latest commit time (UTC datetime) for given file."""
     try:
         result = subprocess.run(
-            ["git", "log", "-1", "--format=%at", "--", file_path],
+            ["/usr/bin/git", "log", "-1", "--format=%at", "--", file_path],
             capture_output=True,
             text=True,
             check=True,

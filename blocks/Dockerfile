@@ -122,6 +122,12 @@ ARG XCOS_DIR=${HOME}/xcosblocks
 WORKDIR ${XCOS_DIR}
 COPY . .
 
+# Set build-time metadata
+ARG GIT_COMMIT
+
+# Make them available to the app
+ENV REACT_APP_GIT_COMMIT=$GIT_COMMIT
+
 # Configure venv and sqlite3
 RUN ./install.sh prod
 
