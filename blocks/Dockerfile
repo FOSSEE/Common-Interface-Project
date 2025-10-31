@@ -129,7 +129,7 @@ ARG GIT_COMMIT
 ENV REACT_APP_GIT_COMMIT=$GIT_COMMIT
 
 # Configure venv and sqlite3
-RUN ./install.sh prod
+RUN ./install.sh
 
 # Cleanup
 RUN apt-get autoremove -qq --purge gawk python3-pip python3-venv wget xz-utils
@@ -181,4 +181,4 @@ COPY --from=build-xcos /var/www/html /var/www/html
 
 WORKDIR ${XCOS_DIR}
 
-CMD ["./run.sh", "prod"]
+CMD ["./run.sh"]

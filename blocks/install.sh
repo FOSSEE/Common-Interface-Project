@@ -18,9 +18,7 @@ mkdir -p file_storage/uploads logs media/saves media/uploads
 make -s
 python manage.py migrate -v0
 python manage.py loaddata -v0 saveAPI xcosblocks
-if test "$1" = 'prod'; then
-  python manage.py collectstatic -v0 --no-input --ignore=admin --ignore=rest_framework
-fi
+python manage.py collectstatic -v0 --no-input --ignore=admin --ignore=rest_framework
 find -type d \( -name __pycache__ \) -print0 | xargs -0 rm -rf
 find env -type d \( -name docs -o -name tests \) -print0 | xargs -0 rm -rf
 # remove directories that are not needed
@@ -47,7 +45,13 @@ map $http_host $host_override {\
 ' \
   -e '/^\s*location \/ {/,/^\s*}/c\
         location / {\
-                proxy_pass http://127.0.0.1:3500;\
+                try_files $uri /index.html;\
+        }\
+\
+        location = /index.html {\
+                add_header Cache-Control "no-cache, no-store, must-revalidate";\
+                add_header Pragma "no-cache";\
+                add_header Expires 0;\
         }\
 \
         location /api/ {\
@@ -57,7 +61,7 @@ map $http_host $host_override {\
         }\
 \
         location /django_static/ {\
-                proxy_pass http://127.0.0.1:8000;\
+                alias /var/www/html/static/;\
                 autoindex off;\
                 expires 7d;\
         }\
@@ -75,58 +79,16 @@ map $http_host $host_override {\
                     return 302 $scheme://$host/#/editor?id=gallery$arg_efid;\
                 }\
                 return 302 $scheme://$host/#/editor;\
-        }\
-\
-        location /resources/ {\
-                proxy_pass http://127.0.0.1:3500;\
-                expires 7d;\
-        }\
-\
-        location /ws {\
-                proxy_pass http://127.0.0.1:3500;\
-                proxy_http_version 1.1;\
-                proxy_set_header Upgrade $http_upgrade;\
-                proxy_set_header Connection "Upgrade";\
-                proxy_set_header Host $host;\
-                proxy_buffering off;\
-                proxy_cache off;\
         }' \
   /etc/nginx/sites-enabled/default
 
-if test "$1" = 'prod'; then
-  sed -i \
-    -e '/^\s*location \/ {/,/^\s*}/c\
-        location / {\
-              try_files $uri /index.html;\
-        }\
-\
-        location = /index.html {\
-              add_header Cache-Control "no-cache, no-store, must-revalidate";\
-              add_header Pragma "no-cache";\
-              add_header Expires 0;\
-        }' \
-    -e '/^\s*location \/django_static\/ {/,/^\s*}/c\
-        location /django_static/ {\
-              alias /var/www/html/static/;\
-              autoindex off;\
-              expires 7d;\
-        }' \
-    -e '/^\s*location \/resources\/ {/,/^\s*}/d' \
-    -e '/^\s*location \/ws {/,/^\s*}/d' \
-    /etc/nginx/sites-enabled/default
-fi
-
 cd eda-frontend
 npm install --silent
-if test "$1" = 'prod'; then
-  npm run build
-  cp -r build/* /var/www/html/
-fi
+npm run build
+cp -r build/* /var/www/html/
 
 cd ..
-if test "$1" = 'prod'; then
-  rm -rf eda-frontend
-fi
+rm -rf eda-frontend
 
 pip uninstall -q -y flake8 mccabe pip pycodestyle pyflakes wheel
 rm -f .flake8 .srcflake8 Makefile requirements.txt xcosblocks.sed
