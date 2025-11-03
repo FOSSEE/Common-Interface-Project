@@ -16,18 +16,18 @@ PIDS+=($!)
 
 # Handle SIGTERM properly
 term_handler() {
-  echo "$(date +'%H:%M:%S') Stopping services with PIDs: ${PIDS[@]}"
+  echo "$(date +%H:%M:%S) Stopping services with PIDs: ${PIDS[*]}"
   kill -TERM "${PIDS[@]}" || true
   service redis-server stop || true
   service nginx stop || true
-  wait "${PIDS[@]}"
-  echo "$(date +'%H:%M:%S') All services stopped."
+  wait "${PIDS[@]}" || true
+  echo "$(date +%H:%M:%S) All services stopped."
   exit 0
 }
 
-trap 'echo SIGTERM received; term_handler' SIGTERM SIGINT
+trap 'echo "$(date +%H:%M:%S) SIGTERM received"; term_handler' SIGTERM SIGINT
 
-echo "$(date +'%H:%M:%S') Services started with PIDs: ${PIDS[@]}"
+echo "$(date +%H:%M:%S) Services started with PIDs: ${PIDS[*]}"
 wait -n
-echo "A service has exited, initiating shutdown..."
+echo "$(date +%H:%M:%S) A service has exited, initiating shutdown..."
 term_handler
