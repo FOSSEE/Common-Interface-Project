@@ -1,7 +1,7 @@
 // User Login / Sign In page.
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Link as RouterLink, useLocation } from 'react-router-dom'
+import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom'
 
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import Visibility from '@mui/icons-material/Visibility'
@@ -30,22 +30,17 @@ import {
 import github from '../static/github-mark.png'
 import google from '../static/google.png'
 
-let url = ''
-
-function useQuery () {
-  return new URLSearchParams(useLocation().search)
-}
-
 export default function Login () {
   const location = useLocation()
+  const navigate = useNavigate()
   const authErrors = useSelector(state => state.auth.errors)
   const [errors, setErrors] = useState(authErrors || '')
 
   const dispatch = useDispatch()
-  const query = useQuery()
   const homeURL = `${window.location.origin}/#/`
 
   useEffect(() => {
+    const query = new URLSearchParams(location.search)
     const error = query.get('error')
     if (error) {
       const errorMessages = {
@@ -55,9 +50,9 @@ export default function Login () {
 
       const errorMessage = errorMessages[error] || 'An unexpected error occurred. Please try again later.'
       dispatch(setAuthErrors(errorMessage))
-      window.history.replaceState({}, document.title, '/#/login')
+      navigate('/login', { replace: true })
     }
-  }, [dispatch, query])
+  }, [dispatch, location.search, navigate])
 
   useEffect(() => {
     setErrors(authErrors || '')
@@ -65,18 +60,11 @@ export default function Login () {
 
   useEffect(() => {
     document.title = 'Login - ' + process.env.REACT_APP_NAME
-    if (location.search !== '') {
-      const query = new URLSearchParams(location.search)
-      url = query.get('url')
-      localStorage.setItem('ard_redurl', url)
-    } else {
-      url = ''
-    }
 
     return () => {
       dispatch(authDefault())
     }
-  }, [dispatch, location.search])
+  }, [dispatch])
 
   const rememberedUsername = localStorage.getItem('rememberedUsername') || ''
   const [username, setUsername] = useState(rememberedUsername)
@@ -93,7 +81,7 @@ export default function Login () {
     } else {
       localStorage.removeItem('rememberedUsername')
     }
-    dispatch(login({ email: username, password, toUrl: url }))
+    dispatch(login({ email: username, password }))
   }
 
   // Function call for google oAuth login.

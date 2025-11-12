@@ -65,11 +65,8 @@ const loginError = (res, rejectWithValue) => {
 // Handle api call for user login
 export const login = createAsyncThunk(
   'auth/login',
-  async ({ email, password, toUrl }, { dispatch, rejectWithValue }) => {
+  async ({ email, password }, { dispatch, rejectWithValue }) => {
     try {
-      const allowedUrls = [
-        '/editor'
-      ]
       const res = await api.post('auth/token/login/', {
         email,
         password
@@ -77,14 +74,7 @@ export const login = createAsyncThunk(
       if ([200, 201, 204].includes(res.status)) {
         const token = res.data.auth_token
         localStorage.setItem(tokenKey, token)
-        if (toUrl === '') {
-          dispatch(loadUser(token))
-        } else if (!allowedUrls.includes(toUrl)) {
-          console.log('Not redirecting to', toUrl)
-          dispatch(loadUser(token))
-        } else {
-          window.open(toUrl, '_self')
-        }
+        dispatch(loadUser(token))
         return token
       }
 
