@@ -79,6 +79,7 @@ def get_social_user(email, request, callback, service):
 def GoogleOAuth2(request):
     error = request.GET.get('error', None)
     if error is not None and error != '':
+        error = error.strip().replace('\x00', '').replace('\r', '').replace('\n', '')[:200]
         logger.error(f'Google OAuth2 error: {error}')
         query = urlencode({'error': error})
         return redirect(f'{settings.POST_ACTIVATE_REDIRECT_URL}#/login?{query}')
@@ -112,6 +113,7 @@ def GoogleOAuth2(request):
 def GitHubOAuth2(request):
     error = request.GET.get('error', None)
     if error is not None and error != '':
+        error = error.strip().replace('\x00', '').replace('\r', '').replace('\n', '')[:200]
         logger.error(f'GitHub OAuth2 error: {error}')
         query = urlencode({'error': error})
         return redirect(f'{settings.POST_ACTIVATE_REDIRECT_URL}#/login?{query}')
