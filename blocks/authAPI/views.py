@@ -46,12 +46,11 @@ def pwd_reset(request, uid, token):
 
     web_url = settings.POST_ACTIVATE_REDIRECT_URL + 'api/auth/users/reset_password_confirm/'  # Djoser endpoint
     return render(request, 'reset_password.html',
-                  {
-                      'uid': uid,
-                      'token': token,
-                      'reset_url': web_url,
-                      'redirect_url': settings.POST_ACTIVATE_REDIRECT_URL
-                  })
+                  {'uid': uid,
+                   'token': token,
+                   'reset_url': web_url,
+                   'redirect_url': settings.POST_ACTIVATE_REDIRECT_URL
+                   })
 
 
 def get_social_user(email, request, callback, service):
@@ -82,7 +81,7 @@ def GoogleOAuth2(request):
         error = error.strip().replace('\x00', '').replace('\r', '').replace('\n', '')[:200]
         logger.error(f'Google OAuth2 error: {error}')
         query = urlencode({'error': error})
-        return redirect(f'{settings.POST_ACTIVATE_REDIRECT_URL}#/login?{query}')
+        return redirect(f'/#/login?{query}')
 
     state = request.GET.get('state', None)
     code = request.GET.get('code', None)
@@ -116,7 +115,7 @@ def GitHubOAuth2(request):
         error = error.strip().replace('\x00', '').replace('\r', '').replace('\n', '')[:200]
         logger.error(f'GitHub OAuth2 error: {error}')
         query = urlencode({'error': error})
-        return redirect(f'{settings.POST_ACTIVATE_REDIRECT_URL}#/login?{query}')
+        return redirect(f'/#/login?{query}')
 
     state = request.GET.get('state', None)
     code = request.GET.get('code', None)
