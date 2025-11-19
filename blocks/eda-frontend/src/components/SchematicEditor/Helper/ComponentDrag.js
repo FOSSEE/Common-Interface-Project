@@ -643,7 +643,6 @@ export default function LoadGrid (container, sidebar, outline, setMainDiagramBac
 
       // Sets the terminal point of an edge if we're moving one of the endpoints
       if (this.graph.getModel().isEdge(clone.cell)) {
-        // TODO: Only set this if the target or source terminal is an edge
         clone.cell.geometry.setTerminalPoint(point, this.isSource)
       } else {
         clone.cell.geometry.setTerminalPoint(null, this.isSource)
@@ -813,7 +812,6 @@ export default function LoadGrid (container, sidebar, outline, setMainDiagramBac
     }
 
     // Adds the first point
-    // TODO: Should move along connected segment
     let pt = pts[0]
 
     if (pt == null && source != null) {
@@ -826,22 +824,6 @@ export default function LoadGrid (container, sidebar, outline, setMainDiagramBac
 
     // Adds the waypoints
     if (hints != null && hints.length > 0) {
-      // FIXME: First segment not movable
-      /* hint = state.view.transformControlPoint(state, hints[0])
-         mxLog.show()
-         mxLog.debug(hints.length, 'hints0.y=' + hint.y, pt.y)
-
-         if (horizontal && Math.floor(hint.y) != Math.floor(pt.y))
-         {
-           mxLog.show()
-           mxLog.debug('add waypoint')
-
-           pt = new mxPoint(pt.x, hint.y)
-           result.push(pt)
-           pt = pt.clone()
-           horizontal = !horizontal
-         } */
-
       for (let i = 0; i < hints.length; i++) {
         horizontal = !horizontal
         hint = state.view.transformControlPoint(state, hints[i])
@@ -863,7 +845,6 @@ export default function LoadGrid (container, sidebar, outline, setMainDiagramBac
     // Adds the last point
     pt = pts[pts.length - 1]
 
-    // TODO: Should move along connected segment
     if (pt == null && target != null) {
       pt = new mxPoint(state.view.getRoutingCenterX(target), state.view.getRoutingCenterY(target))
     }
