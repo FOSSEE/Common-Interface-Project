@@ -59,14 +59,19 @@ fi
 
 set -euo pipefail
 
+NEW_IMAGE_ID=$($DOCKER inspect --format='{{.Id}}' "$IMAGE")
+SHORT_IMAGE_ID=${NEW_IMAGE_ID:0:12}
+IMAGE_MSG="$IMAGE ($SHORT_IMAGE_ID)"
+CONTAINER_MSG="$CONTAINER ($SHORT_IMAGE_ID)"
+
 start() {
-  echo ">>> Starting container $CONTAINER..."
+  echo ">>> Starting container $CONTAINER_MSG..."
   $DOCKER run -d --name "$CONTAINER" $DOCKER_OPTIONS "$IMAGE"
   echo "$DOCKER_OPTIONS" >"${CONTAINER}.options"
 }
 
 stop() {
-  echo ">>> Stopping container $CONTAINER..."
+  echo ">>> Stopping container $CONTAINER_MSG..."
   $DOCKER stop "$CONTAINER" || true
   $DOCKER rm "$CONTAINER" || true
   rm -f "${CONTAINER}.options" || true
@@ -80,22 +85,22 @@ restart() {
 reload() {
   LAST_DOCKER_OPTIONS=$(cat "${CONTAINER}.options" 2>/dev/null || echo)
   if [ "$LAST_DOCKER_OPTIONS" = "$DOCKER_OPTIONS" ]; then
-    echo ">>> No changes in $CONTAINER options, reload not needed."
+    echo ">>> No changes in $CONTAINER_MSG options, reload not needed."
     exit 0
   fi
-  echo ">>> Reloading container $CONTAINER with new options..."
+  echo ">>> Reloading container $CONTAINER_MSG with new options..."
   stop
   start
 }
 
 status() {
-  echo ">>> Status of container $CONTAINER:"
+  echo ">>> Status of container $CONTAINER_MSG:"
   $DOCKER ps --filter "name=$CONTAINER" -a -s
   $DOCKER logs --tail $LOG_LINES "$CONTAINER"
 }
 
 update() {
-  echo ">>> Checking for updates to $IMAGE..."
+  echo ">>> Checking for updates to $IMAGE_MSG..."
 
   # Get currently running image ID (if container exists)
   if $DOCKER ps -a --format '{{.Names}}' | grep -q "^$CONTAINER\$"; then
@@ -112,14 +117,17 @@ update() {
   }
 
   NEW_IMAGE_ID=$($DOCKER inspect --format='{{.Id}}' "$IMAGE")
+  SHORT_IMAGE_ID=${NEW_IMAGE_ID:0:12}
+  IMAGE_MSG="$IMAGE ($SHORT_IMAGE_ID)"
+  CONTAINER_MSG="$CONTAINER ($SHORT_IMAGE_ID)"
 
   if [ "$OLD_IMAGE_ID" = "$NEW_IMAGE_ID" ]; then
-    echo ">>> Image $IMAGE is unchanged."
+    echo ">>> Image $IMAGE_MSG is unchanged."
     reload
     exit 0
   fi
 
-  echo ">>> New image detected. Restarting container $CONTAINER..."
+  echo ">>> New image $IMAGE_MSG detected."
 
   # Stop and remove old container if exists
   if [[ -n "$OLD_IMAGE_ID" ]]; then
@@ -132,7 +140,7 @@ update() {
 
   # Verify container is running
   if ! $DOCKER ps --format '{{.Names}}' | grep -q "^$CONTAINER\$"; then
-    echo "!!! Container $CONTAINER failed to start with new image."
+    echo "!!! Container $CONTAINER_MSG failed to start with new image."
     exit 1
   fi
 
@@ -141,7 +149,7 @@ update() {
   # Clean up old images
   $DOCKER system prune -f || true
 
-  echo ">>> Update complete. Running container uses $NEW_IMAGE_ID"
+  echo ">>> Update complete. Running container $CONTAINER_MSG"
 }
 
 case "$MODE" in
