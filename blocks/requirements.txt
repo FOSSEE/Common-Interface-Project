@@ -17,6 +17,7 @@ django-filter==25.2
 djangorestframework==3.16.1
 djangorestframework_simplejwt==5.5.1
 djoser==2.3.3
+filetype==1.2.0
 flake8==7.3.0
 gevent==25.9.1
 greenlet==3.3.0

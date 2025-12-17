@@ -4,7 +4,7 @@ from django.core.files.base import ContentFile
 import base64
 import six
 import uuid
-import imghdr
+import filetype
 
 
 class Base64ImageField(serializers.ImageField):
@@ -22,7 +22,8 @@ class Base64ImageField(serializers.ImageField):
         except TypeError:
             self.fail('invalid_image')
         file_name = str(uuid.uuid4())
-        file_extension = imghdr.what(file_name, decoded_file)
+        kind = filetype.guess(decoded_file)
+        file_extension = kind.extension if kind else None
         complete_file_name = "%s.%s" % (file_name, file_extension,)
         data = ContentFile(decoded_file, name=complete_file_name)
         return complete_file_name, data
