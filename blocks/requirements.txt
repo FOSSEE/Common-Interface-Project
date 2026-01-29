@@ -51,6 +51,6 @@ tzdata==2025.3
 urllib3==2.6.3
 vine==5.1.0
 wcwidth==0.2.14
-wheel==0.45.1
+wheel==0.46.2
 zope.event==6.1
 zope.interface==8.1.1
